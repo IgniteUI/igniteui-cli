@@ -1,25 +1,22 @@
 ---
-title: React Grid Cascading combos - Ignite UI for React
-_description: Perform updating via cascading combos in Grid, using React Grid. See demos & examples!
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Grid Cascading combos - Ignite UI for React"
+description: Perform updating via cascading combos in Grid, using React Grid. See demos & examples!
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
 _language: en
-sharedComponents: ["Grid"]
-mentionedTypes: ["Column", "Combo"]
-namespace: Infragistics.Controls
+llms:
+  description: "The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components."
+_componentKey: Grid
 _tocName: Cascading Combos
 _premium: true
 ---
-
 # React Grid with Cascading Combos
 
 The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), the users will receive only the data that is relevant to their selection within the next React Combobox component.
 
-## Angular Grid with Cascading Combos Sample Overview
+## React Grid with Cascading Combos Sample Overview
 
 The sample below demonstrates how [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) works with nested Cascading [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) components.
-
-<!-- ComponentStart: Grid -->
 
 ```typescript
 export class WorldCitiesAbove500KItem {
@@ -257,13 +254,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Setup
 
-In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property is set to `true`.
+In order enable column editing, make sure [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property is set to `true`.
 
-Once the column editing is enabled, you can start by adding your [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property.
+Once the column editing is enabled, you can start by adding your [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo). Please note that here in order to have only one single selection available, you will need to use set the [`IgrCombo.singleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property.
 
 To get started with the [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), first you need to import it:
 
@@ -302,11 +297,12 @@ Then you should define the column template with the combo:
         </>
         );
     }
+
 ```
 
-- [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey), the  combo will use the specified [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) (if any).
+- [`IgrCombo.displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`IgrCombo.displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey), the  combo will use the specified [`IgrCombo.valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) (if any).
 
-In order to handle the selection change, we need the `onChange` event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+In order to handle the selection change, we need the change event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
 ```tsx
     const onCountryChange = (rowId: string, event: CustomEvent) => {
@@ -340,8 +336,8 @@ In order to handle the selection change, we need the `onChange` event. The emitt
 |--- |--- |
 | Combo drop-down list may hide behind other UI elements. | Due to the stacking order of elements in the grid the combo drop-down may hide behind other elements like header, footers etc. |
 
-## React Grid API Members
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
-- [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress)
+## API References
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
+[`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress)

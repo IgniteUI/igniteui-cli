@@ -1,23 +1,24 @@
 ---
 title: Web Components Data Aggregations | Data Visualization | Infragistics
-_description: Infragistics' Web Components Data Aggregations
-_keywords: Web Components Charts, Markers, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart"]
+description: Infragistics' Web Components Data Aggregations
+keywords: Web Components Charts, Markers, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In the Ignite UI for Web Components CategoryChart control Data Aggregations feature allows you to group data in the chart by unique values on the XAxis and then sort those groups."
 _tocName: Chart Data Aggregations
 _premium: true
 ---
-
 # Web Components Data Aggregations
 
-In the Ignite UI for Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control Data Aggregations feature allows you to group data in the chart by unique values on the `XAxis` and then sort those groups. You may then apply summaries which will be reflected by the range of the `YAxis` and will be displayed in the tooltip when hovering the series.
+In the Ignite UI for Web Components [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control Data Aggregations feature allows you to group data in the chart by unique values on the [`XAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMemberPath) and then sort those groups. You may then apply summaries which will be reflected by the range of the [`YAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMemberPath) and will be displayed in the tooltip when hovering the series.
 
 ## Web Components Data Aggregations Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member of the `XAxis` and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
+The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member of the [`XAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMemberPath) and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
 
-Note, the abbreviated functions found within the dropdowns for [`initialSummaries`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaries) and [`groupSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
+Note, the abbreviated functions found within the dropdowns for [`InitialSummaries`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialSummaries) and [`GroupSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=groupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
 
 ```typescript
 export class SalesDataItem {
@@ -71,21 +72,4 @@ export class SalesData extends Array<SalesDataItem> {
 ```
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`initialSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSortDescriptions)
-- [`initialSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSorts)
-- [`sortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=sortDescriptions)
-- [`initialGroups`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroups)
-- [`initialGroupDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroupDescriptions)
-- [`groupDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupDescriptions)
-- [`initialSummaries`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaries)
-- [`initialSummaryDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaryDescriptions)
-- [`summaryDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=summaryDescriptions)
-- [`initialGroupSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroupSortDescriptions)
-- [`groupSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSorts)
-- [`groupSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSortDescriptions)
-
-> [!Note]
-> Chart Aggregation will not work when using [`includedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=includedProperties) | [`excludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)

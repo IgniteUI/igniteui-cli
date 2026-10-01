@@ -1,15 +1,17 @@
 ---
-title: Angular Excel Library| Data Spreadsheet and Table | Infragistics
-_description: Use Infragistics' Angular excel library to work with spreadsheet data using Microsoft Excel features. Learn how easily you can transfer data from excel to your application using Ignite UI for Angular excel library!
-_keywords: Excel library, Ignite UI for Angular, Infragistics, workbook
-_license: commercial
+title: "Angular Excel Library| Data Spreadsheet and Table | Infragistics"
+description: Use Infragistics' Angular excel library to work with spreadsheet data using Microsoft Excel features.  Learn how easily you can transfer data from excel to your application using Ignite UI for Angular excel library!
+keywords: Excel library, Ignite UI for Angular, Infragistics, workbook
+license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "Cell", "Formula"]
+llms:
+  description: "The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like Workbook, Worksheet, Cell, Formula and many more."
 _tocName: Excel Library
+_premium: true
 ---
-
 # Angular Excel Library Overview
 
-The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook), [`Worksheet`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html), `Cell`, [`Formula`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.formula.html) and many more. The Infragistics Angular Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
+The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like `IgxWorkbook`, `IgxWorksheet`, `Cell`, `IgxFormula` and many more. The Infragistics Angular Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
 
 ## Angular Excel Library Example
 
@@ -292,10 +294,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
-
 When installing the excel package, the core package must also be installed.
 
 ```cmd
@@ -323,8 +322,6 @@ export class AppModule {}
 
 ## Modules Implementation
 
-The Excel Library contains 5 modules that you can use to limit bundle size of your app:
-
 - **IgxExcelCoreModule** – This contains the object model and much of the excel infrastructure
 - **IgxExcelFunctionsModule** – This contains the majority of the functions for formula evaluations, such as Sum, Average, Min, Max, etc. The absence of this module won’t cause any issues with formula parsing if the formula is to be calculated. For example, if you apply a formula like “=SUM(A1:A5)” and ask for the Value of the cell, then you would get a #NAME! error returned. This is not an exception throw – it’s an object that represents a particular error since formulas can result in errors.
 - **IgxExcelXlsModule** – This contains the load and save logic for xls (and related) type files – namely the Excel97to2003 related WorkbookFormats.
@@ -332,8 +329,7 @@ The Excel Library contains 5 modules that you can use to limit bundle size of yo
 - **IgxExcelModule** – This references the other 4 modules and so basically ensures that all the functionality is loaded/available.
 
 ## Supported Versions of Microsoft Excel
-
-The following is a list of the supported versions of Excel.\*\*
+The following is a list of the supported versions of Excel.**
 
 - Microsoft Excel 97
 
@@ -351,13 +347,16 @@ The following is a list of the supported versions of Excel.\*\*
 
 - Microsoft Excel 2016
 
+**Note:** 
+The Excel Library does not support the Excel Binary Workbook (.xlsb) format at this time.
+
 ## Load and Save Workbooks
 
 Now that the Excel Library module is imported, next step is to load a workbook.
 
-In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook).
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `IgxWorkbook`.
 
-In order to load and save [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook) objects, you can utilize the save method of the actual [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook) object, as well as its static `Load` method.
+In order to load and save `IgxWorkbook` objects, you can utilize the `Save` method of the actual `IgxWorkbook` object, as well as its static `Load` method.
 
 ```ts
 import { Workbook } from "igniteui-angular-excel";
@@ -402,8 +401,5 @@ Modify `angular.json` by setting the `vendorSourceMap` option under architect =>
 ```
 
 ## API References
-
-- `Load`
-- `WorkbookInProcessRuntime`
-- [`Worksheet`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook)
+`IgxWorksheet`
+`IgxWorkbook`

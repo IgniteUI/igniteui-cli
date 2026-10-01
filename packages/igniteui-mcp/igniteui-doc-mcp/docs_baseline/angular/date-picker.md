@@ -1,11 +1,12 @@
 ---
 title: Angular Datepicker Component – Ignite UI for Angular - MIT license 
-_description: Learn how to use a functionality to select a date from a calendar to your web application with Angular Datepicker Component by Ignite UI. Try it now. 
-_keywords: angular datepicker, angular datepicker component, angular UI components, angular component, ignite ui for angular
-_license: MIT
+description: Learn how to use a functionality to select a date from a calendar to your web application with Angular Datepicker Component by Ignite UI. Try it now. 
+keywords: angular datepicker, angular datepicker component, angular UI components, angular component, ignite ui for angular
+license: MIT
+llms:
+  description: "Angular Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up."
 _tocName: Date Picker
 ---
-
 # Angular Date Picker Component Overview
 
 Angular Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up. Lightweight and simple to use, the Date Picker in Angular lets users to navigate to a desired date with several view options – month, year, decade. There are the usual min, max, and required properties to add validation.
@@ -16,7 +17,6 @@ The Ignite UI for Angular Date Picker Component lets users pick a single date th
 
 Below you can see a sample that demonstrates how the Angular Date Picker works when users are enabled to pick a date through a manual text input and click on the calendar icon on the left to navigate to it. See how to render it.
 
-<!-- TODO: date picker sample with several options enabled -->
 ```typescript
 import { Component } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
@@ -47,7 +47,7 @@ export class DatepickerSample1Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Date Picker
 
@@ -57,33 +57,32 @@ To get started with the Ignite UI for Angular Date Picker component, first you n
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxDatePickerModule` in your **app.module.ts** file.
 
->[!NOTE]
-> As the picker uses the [**IgxCalendarComponent**](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), it is also dependent on the **BrowserAnimationsModule** and **optionally** on the **HammerModule** for touch interactions, so they need to be added to the module as well:
+**Note:** 
+As the picker uses the [`**IgxCalendarComponent**`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), it is also dependent on the **BrowserAnimationsModule**, so it needs to be added to the module as well:
+
 
 ```typescript
-import { HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxDatePickerModule } from 'igniteui-angular/date-picker';
 // import { IgxDatePickerModule } from '@infragistics/igniteui-angular'; for licensed package
 
 @NgModule({
     ...
-    imports: [..., IgxDatePickerModule, BrowserAnimationsModule, HammerModule],
+    imports: [..., IgxDatePickerModule, BrowserAnimationsModule],
     ...
 })
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxDatePickerComponent` as a standalone dependency, or use the [`IGX_DATE_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/date-picker/src/date-picker/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) as a standalone dependency, or use the [`IGX_DATE_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/date-picker/src/date-picker/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
 
-import { HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IGX_DATE_PICKER_DIRECTIVES } from 'igniteui-angular/date-picker';
 // import { IGX_DATE_PICKER_DIRECTIVES } from '@infragistics/igniteui-angular'; for licensed package
@@ -97,11 +96,12 @@ import { IGX_DATE_PICKER_DIRECTIVES } from 'igniteui-angular/date-picker';
     `,
     styleUrls: ['home.component.scss'],
     standalone: true,
-    imports: [BrowserAnimationsModule, HammerModule, IGX_DATE_PICKER_DIRECTIVES]
-    /* or imports: [BrowserAnimationsModule, HammerModule, IgxDatePickerComponent, IgxLabelDirective] */
+    imports: [BrowserAnimationsModule, IGX_DATE_PICKER_DIRECTIVES]
+    /* or imports: [BrowserAnimationsModule, IgxDatePickerComponent, IgxLabelDirective] */
 })
 export class HomeComponent {}
 ```
+
 
 Now that you have the Ignite UI for Angular Date Picker module or directives imported, you can start using the `igx-date-picker` component.
 
@@ -119,7 +119,7 @@ To instantiate a Date Picker in its default `dropdown` state, use the following 
 
 ### Options
 
-The `IgxDatePickerComponent` can be bound to a `date` or a `string`.
+The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be bound to a `date` or a `string`.
 
 ```html
 <igx-date-picker [value]="date"></igx-date-picker>
@@ -135,7 +135,7 @@ If a string is bound to the picker, it needs to be a date-only string in the `IS
 <igx-date-picker [value]="'2000-01-01'"></igx-date-picker>
 ```
 
-More information about this can be found in [DateTime Editor's ISO section](date-time-editor.md#iso).
+More information about this can be found in [DateTime Editor's ISO section](/date-time-editor#iso).
 
 Two-way binding is possible through `ngModel`:
 
@@ -143,7 +143,7 @@ Two-way binding is possible through `ngModel`:
 <igx-date-picker [(ngModel)]="date"></igx-date-picker>
 ```
 
-As well as through the `value` input:
+As well as through the [`value`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=value) input:
 
 ```html
 <igx-date-picker [(value)]="date"></igx-date-picker>
@@ -169,12 +169,12 @@ export class SampleFormComponent {
 }
 ```
 
-> [!NOTE]
-> The picker always returns a `Date` value, this means that If it is model bound or two-way bound to a string variable, after a new date has been chosen, it will be of type `Date`.
+**Note:** 
+The picker always returns a `Date` value, this means that If it is model bound or two-way bound to a string variable, after a new date has been chosen, it will be of type `Date`.
 
 ### Projecting components
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) allows the projection of child components that the [`IgxInputGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) supports (with the exception of [`IgxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)) - [`igxLabel`](label-input.md), [`igx-hint / IgxHint`](input-group.md#hints), [`igx-prefix / igxPrefix`](input-group.md#prefix--suffix), [`igx-suffix / igxSuffix`](input-group.md#prefix--suffix). More detailed information about this can be found in the [Label & Input](label-input.md) topic.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) allows the projection of child components that the [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) supports (with the exception of [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)) - [`igxLabel`](/label-input), [`igx-hint / IgxHint`](/input-group#hints), [`igx-prefix / igxPrefix`](/input-group#prefix--suffix), [`igx-suffix / igxSuffix`](/input-group#prefix--suffix). More detailed information about this can be found in the [Label & Input](/label-input) topic.
 
 ```html
 <igx-date-picker #datePicker>
@@ -182,14 +182,14 @@ The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=
 </igx-date-picker>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 The above snippet will add an additional toggle icon at the end of the input, right after the default clear icon. This will not remove the default toggle icon, though as prefixes and suffixes can be stacked one after the other.
 
 #### Customizing the toggle and clear icons
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be configured with [`IgxPickerToggleComponent`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) and [`IgxPickerClearComponent`](mcp:get_api_reference?platform=angular&component=IgxPickerClearComponent). These can be used to change the toggle and clear icons without having to add your own click handlers.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be configured with [`IgxPickerToggle`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) and [`IgxPickerClear`](mcp:get_api_reference?platform=angular&component=IgxPickerClearComponent). These can be used to change the toggle and clear icons without having to add your own click handlers.
 
 ```html
  <igx-date-picker>
@@ -213,8 +213,8 @@ The picker's action buttons can be modified in two ways:
 <igx-date-picker [todayButtonLabel]="'今日'" [cancelButtonLabel]="'キャンセル'"></igx-date-picker>
 ```
 
-- the whole buttons can be templated using the [`igxPickerActions`](mcp:get_api_reference?platform=angular&component=IgxPickerActionsDirective) directive:
-With it you gain access to the date picker's [`calendar`](calendar.md) and all of its members:
+- the whole buttons can be templated using the [`IgxPickerActionsDirective`](mcp:get_api_reference?platform=angular&component=IgxPickerActionsDirective) directive:
+With it you gain access to the date picker's [`calendar`](/calendar) and all of its members:
 
 ```html
 <igx-date-picker>
@@ -226,7 +226,7 @@ With it you gain access to the date picker's [`calendar`](calendar.md) and all o
 
 ### Keyboard Navigation
 
-Opening and closing the [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent)'s calendar UI with the keyboard is available only for `dropdown` mode and can be triggered via the key combinations below:
+Opening and closing the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent)'s calendar UI with the keyboard is available only for `dropdown` mode and can be triggered via the key combinations below:
 
 | Keys                               | Description                                                                                   |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------- |
@@ -236,13 +236,13 @@ Opening and closing the [`IgxDatePickerComponent`](mcp:get_api_reference?platfor
 | <kbd>Enter</kbd>                   | Closes the calendar pop-up, selecting the focused date and moves the focus to the input field |
 | <kbd>Alt</kbd> + <kbd>&uarr;</kbd> | Closes the calendar pop-up and focuses the input field                                        |
 
-Since the [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) uses the [`IgxDateTimeEditorDirective`](date-time-editor.md) it inherits its keyboard navigation.
+Since the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) uses the [`IgxDateTimeEditorDirective`](/date-time-editor) it inherits its keyboard navigation.
 
 ## Examples
 
 ### Dialog Mode
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) also supports a `dialog` mode:
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) also supports a `dialog` mode:
 
 ```html
 <igx-date-picker [mode]="'dialog'"></igx-date-picker>
@@ -277,7 +277,7 @@ export class DatepickerSample2Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Display and input format
 
@@ -288,7 +288,7 @@ A good thing to note is that the  the Angular Date Picker Component in Ignite UI
 [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayFormat) on the other hand uses Angular's [`DatePipe`](https://angular.io/api/common/DatePipe) and is used to format the picker's input when it is not focused. If no [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayFormat) is provided, the picker will use the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=inputFormat) as its [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayFormat).
 Alternatively, if the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=inputFormat) property is not set, the input format will be inferred from the [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayFormat) in case it can be parsed as containing numeric date-time parts only.
 
-More information about these can be found in the [`IgxDateTimeEditor`](date-time-editor.md#examples) examples section.
+More information about these can be found in the [`IgxDateTimeEditor`](/date-time-editor#examples) examples section.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -320,19 +320,19 @@ export class DatepickerSample3Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
->[!NOTE]
-> The `IgxDatePicker` now supports IME input. When composition ends, the control converts the wide-character numbers to ASCII characters.
+**Note:** 
+The `IgxDatePicker` now supports IME input. When composition ends, the control converts the wide-character numbers to ASCII characters.
 
 ### Increment and decrement
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) exposes [`increment`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=decrement) methods. Both of which come from the  [`IgxDateTimeEditorDirective`](date-time-editor.md#increment-decrement) and can be used for incrementing and decrementing a specific [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) of the currently set date.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) exposes [`increment`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=decrement) methods. Both of which come from the  [`IgxDateTimeEditorDirective`](/date-time-editor#increment-decrement) and can be used for incrementing and decrementing a specific [`IgxDatePart`](mcp:get_api_reference?platform=angular&component=DatePart) of the currently set date.
 
 ```html
 <igx-date-picker #datePicker>
     <igx-icon igxPrefix (click)="datePicker.increment(DatePart.Month, 3)">keyboard_arrow_up</igx-icon>
-    <igx-icon igxPrefix (click)="datePicker.decrement(DatePart.Year. 4)">keyboard_arrow_down</igx-icon>
+    <igx-icon igxPrefix (click)="datePicker.decrement(DatePart.Year, 4)">keyboard_arrow_down</igx-icon>
 </igx-date-picker>
 ```
 
@@ -344,13 +344,13 @@ It also has as a [`spinDelta`](mcp:get_api_reference?platform=angular&component=
 
 ### In Angular Forms
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) supports all directives from the core [FormsModule](https://angular.io/api/forms/FormsModule), [NgModel](https://angular.io/api/forms/NgModel) and [ReactiveFormsModule](https://angular.io/api/forms/ReactiveFormsModule) ([`FormControl`](https://angular.io/api/forms/FormControl), [`FormGroup`](https://angular.io/api/forms/FormGroup), etc.). This also includes the [Forms Validators](https://angular.io/api/forms/Validators) functions. In addition, the component's [`minValue`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=maxValue) properties act as form validators.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) supports all directives from the core [FormsModule](https://angular.io/api/forms/FormsModule), [NgModel](https://angular.io/api/forms/NgModel) and [ReactiveFormsModule](https://angular.io/api/forms/ReactiveFormsModule) ([`FormControl`](https://angular.io/api/forms/FormControl), [`FormGroup`](https://angular.io/api/forms/FormGroup), etc.). This also includes the [Forms Validators](https://angular.io/api/forms/Validators) functions. In addition, the component's [`minValue`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=maxValue) properties act as form validators.
 
-You can see the [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) in a reactive form by visiting our [Reactive Forms Integration](angular-reactive-form-validation.md) topic.
+You can see the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) in a reactive form by visiting our [Reactive Forms Integration](/angular-reactive-form-validation) topic.
 
 #### Using date and time picker together
 
-In some cases when the IgxDatePicker and the [`IgxTimePicker`](time-picker.md) are used together, we might need them to be bound to one and the same Date object value.
+In some cases when the IgxDatePicker and the [`IgxTimePicker`](/time-picker) are used together, we might need them to be bound to one and the same Date object value.
 
 To achieve that in template driven forms, use the `ngModel` to bind both components to the same Date object.
 
@@ -412,7 +412,7 @@ export class DateTimePickerTDFSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 In reactive forms, we can handle the [`valueChange`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=valueChange) event of each component and update the value of the other.
 
@@ -495,15 +495,15 @@ export class DateTimePickerRFSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Calendar Specific settings
 
-The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) uses the [`IgxCalendarComponent`](calendar.md) and you can modify some of its settings via the properties that the date picker exposes. Some of these include [`displayMonthsCount`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayMonthsCount) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) uses the [`IgxCalendarComponent`](/calendar) and you can modify some of its settings via the properties that the date picker exposes. Some of these include [`displayMonthsCount`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayMonthsCount) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=locale) input. Additionally, using the `igxCalendarHeader` and the `igxCalendarSubheader` templates, provided by the [`IgxCalendarComponent`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), you can specify the look of your header and subheader. More information on how to use these templates can be found in the [**IgxCalendarComponent**](calendar.md) topic.
+The localization of the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=locale) input. Additionally, using the `igxCalendarHeader` and the `igxCalendarSubheader` templates, provided by the [`IgxCalendar`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), you can specify the look of your header and subheader. More information on how to use these templates can be found in the [**IgxCalendarComponent**](/calendar) topic.
 
 Here is how an Angular Date Picker with Japanese locale definition would look like:
 
@@ -521,7 +521,7 @@ Here is how an Angular Date Picker with Japanese locale definition would look li
 
 ## Styling
 
-To get started with styling the date picker, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the date picker, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -530,7 +530,7 @@ To get started with styling the date picker, we need to import the `index` file,
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-The Angular Date Picker uses the calendar's theme, so we have to create a new theme that extends the [`calendar-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme). By setting the `$header-background`, the theme automatically computes the necessary colors for the other properties to ensure a visually balanced and accessible design.
+The Angular Date Picker uses the calendar's theme, so we have to create a new theme that extends the `calendar-theme`. By setting the `$header-background`, the theme automatically computes the necessary colors for the other properties to ensure a visually balanced and accessible design.
 
 ```scss
 $custom-datepicker-theme: calendar-theme(
@@ -546,8 +546,9 @@ The last step is to pass the custom Date Picker theme:
 }
 ```
 
->[!WARNING]
->If the component is using an [`Emulated`](themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`
+**Note:** 
+In some component templates, Emulated View Encapsulation can still prevent the generated token declarations from reaching nested Ignite UI elements. If the theme does not take effect, use `::ng-deep` as shown below or move the theme to a global stylesheet.
+
 
 ```scss
 :host {
@@ -596,34 +597,30 @@ $custom-datepicker-theme: calendar-theme(
 ```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxDatePickerComponent](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent)
-- [IgxDateTimeEditorDirective](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective)
-- [IgxCalendarComponent](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent)
-- [IgxCalendarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
-- [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-
+<hr/>
+- [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent)
+- [`IgxDateTimeEditorDirective`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective)
+- [`IgxCalendar`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent)
+- `IgxCalendarComponent Styles`
+- `IgxOverlay Styles`
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 ## Theming Dependencies
 
-<div class="divider--half"></div>
+<hr/>
 
-- [IgxCalendar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxInputGroup Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-
+- `IgxCalendar Theme`
+- `IgxOverlay Theme`
+- `IgxIcon Theme`
+- `IgxButton Theme`
+- `IgxInputGroup Theme`
+- `IgxDropDown Theme`
 
 ## Additional Resources
 
-- [Time Picker](time-picker.md)
-- [Date Time Editor](date-time-editor.md)
-- [Date Range Picker](date-range-picker.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
+- [Time Picker](/time-picker)
+- [Date Time Editor](/date-time-editor)
+- [Date Range Picker](/date-range-picker)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
 
 Our community is active and always welcoming to new ideas.
 

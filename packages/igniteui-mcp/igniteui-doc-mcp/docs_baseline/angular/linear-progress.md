@@ -1,14 +1,17 @@
 ---
 title: Angular Linear Progress Component - MIT license 
-_description: Display a progress bar and customize its appearance with endless color and striping options with Ignite UI for Angular Linear Progress Bar component.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Linear Progress component, Angular Linear Progress control
-_license: MIT
+description: Display a progress bar and customize its appearance with endless color and striping options with Ignite UI for Angular Linear Progress Bar component.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Linear Progress component, Angular Linear Progress control
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Linear Progress Bar Indicator component provides a visual indicator of an application’s process as it changes."
 _tocName: Linear Progress
 ---
-
 # Angular Linear Progress Component Overview
 
-<p class="highlight">The Ignite UI for Angular Linear Progress Bar Indicator component provides a visual indicator of an application’s process as it changes. The indicator updates its appearance as its state changes. The indicator can be styled with a choice of colors in stripes or solids.</p>
+<div class="highlight">
+The Ignite UI for Angular Linear Progress Bar Indicator component provides a visual indicator of an application’s process as it changes. The indicator updates its appearance as its state changes. The indicator can be styled with a choice of colors in stripes or solids.
+</div>
 
 ## Angular Linear Progress Example
 
@@ -33,7 +36,7 @@ igx-linear-bar {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Linear Progress
 
@@ -43,7 +46,7 @@ To get started with the Ignite UI for Angular Linear Progress component, first y
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxProgressBarModule` in the **app.module.ts** file:
 
@@ -101,12 +104,13 @@ You can set the type of your bar, using the [`type`](mcp:get_api_reference?platf
 
 ### Striped Progress
 
-You can make the bar striped, using the [`striped`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=type) property and by setting it to `true`.
+You can make the bar striped, using the [`striped`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=striped) property and by setting it to `true`.
 
 Let's see how we can create different types of progress bars that can be both striped or not.
 
 ```html
 <div class="linear-container">
+
   <igx-linear-bar [value]="100" type="default"></igx-linear-bar>
   <igx-linear-bar [value]="100" type="success" [striped]="true"></igx-linear-bar>
   <igx-linear-bar [value]="100" type="error"></igx-linear-bar>
@@ -114,6 +118,7 @@ Let's see how we can create different types of progress bars that can be both st
   <igx-linear-bar [value]="100" type="warning"></igx-linear-bar>
 </div>
 ```
+
 
 So if we set up everything correctly, you should see the following in your browser:
 
@@ -144,15 +149,15 @@ export class LinearProgressbarSample1Component {}
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=indeterminate) input property to `true`.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=indeterminate) input property to `true`.
 
 ### Animation Duration
 
-The [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=animationDuration) input property is used to specify how long the animation cycle should take.
+The [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=animationDuration) input property is used to specify how long the animation cycle should take.
 
 The following example specifies the animation duration set to 5 seconds.
 
@@ -174,6 +179,7 @@ Let's update our previous sample by using the aforementioned text properties. We
 
 ```html
 <div class="linear-container">
+
   <igx-linear-bar type="default" [value]="100"></igx-linear-bar>
   <igx-linear-bar
     type="success"
@@ -273,14 +279,15 @@ export class LinearProgressbarSample2Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
-> [!NOTE]
-> If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) input value is not defined, the progress update is **1% of the [`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) value**. In case you want the progress to be faster, the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value should be greater than (**[`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) * 1%**), respectfully for slower progress the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) should be less than the default progress update.
-> [!NOTE]
-> If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value is defined greater than the [`value`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=value) input, there is only one update, which gets **the value that is passed for progress update**.
+**Note:** 
+If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) input value is not defined, the progress update is **1% of the [`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) value**. In case you want the progress to be faster, the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value should be greater than (**[`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) * 1%**), respectfully for slower progress the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) should be less than the default progress update.
 
-<div class="divider--half"></div>
+**Note:** 
+If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value is defined greater than the [`value`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=value) input, there is only one update, which gets **the value that is passed for progress update**.
+
+<hr/>
 
 ### Dynamic Progress
 
@@ -288,21 +295,24 @@ You can dynamically change the value of the progress bar by using external contr
 
 ```html
 <div class="linear-container">
+
   <igx-linear-bar [value]="currentValue" [max]="100"></igx-linear-bar>
 
   <div class="button-container">
+
     <button igxIconButton="flat" (click)="decrementProgress()">
       <igx-icon fontSet="material">remove</igx-icon>
     </button>
     <button igxIconButton="flat" (click)="incrementProgress()">
       <igx-icon fontSet="material">add</igx-icon>
     </button>
-  </div>
+  
+</div>
 </div>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Create the methods that increment and decrement the value:
 
@@ -388,11 +398,11 @@ export class LinearDynamicSampleComponent implements OnInit{
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
-To get started with styling the linear progress bar, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the linear progress bar, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -401,7 +411,7 @@ To get started with styling the linear progress bar, we need to import the `inde
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`progress-linear-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme) and override the `$fill-color-default` and `$text-color` parameters.
+Following the simplest approach, we create a new theme that extends the `progress-linear-theme` and override the `$fill-color-default` and `$text-color` parameters.
 
 ```scss
 $custom-theme: progress-linear-theme(
@@ -453,8 +463,8 @@ $custom-theme: progress-linear-theme(
 
 ## API
 
-<div class="divider--half"></div>
+<hr/>
 
-- [IgxLinearProgressBarComponent](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
-- [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)
-- [IgxTextAlign](mcp:get_api_reference?platform=angular&component=IgxTextAlign)
+- [`IgxLinearProgressBar`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
+- `IgxLinearProgressBarComponent Styles`
+- [`IgxTextAlign`](mcp:get_api_reference?platform=angular&component=IgxTextAlign)

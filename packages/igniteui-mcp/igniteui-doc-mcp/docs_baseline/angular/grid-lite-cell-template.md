@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Cell Template | Ignite UI for Angular | MIT license
-_description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source Angular Grid Lite. Try now.
-_keywords: cell template, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source Angular Grid Lite. Try now.
+keywords: cell template, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "By default, the grid uses the field of the column to render the value as a string inside the cell."
 _tocName: Cell Template
 ---
-
 # Column Cell Template
 
 By default, the grid uses the field of the column to render the value as a string inside the cell. This is fine for basic scenarios, but if you want to customize the rendered output or the final output is a combination of different data fields, you can customize the cell template.
@@ -23,7 +24,7 @@ To achieve that, use **`<ng-template>`** inside `<igx-grid-lite-column>...</igx-
 </igx-grid-lite-column>
 ```
 
-You also need to import **`IgxGridLiteCellTemplateDirective`**
+You also need to import [`IgxGridLiteCellTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridLiteCellTemplateDirective)
 
 ```typescript
 import { IgxGridLiteComponent, IgxGridLiteColumnComponent, IgxGridLiteCellTemplateDirective } from 'igniteui-angular/grids/lite';
@@ -52,8 +53,7 @@ protected formatCurrency = (value: number) => {
 ```
 
 You can combine values different fields from the data source as well.
-<!-- TODO: 
-Refer to the API documentation for **`GridLiteCellContext`** for more information. -->
+
 
 ```typescript
 public formatter = new Intl.NumberFormat('en-150', {
@@ -95,7 +95,7 @@ defineComponents(
 ```
 
 ```html
-<!-- Use the rating component from Web Components in your template -->
+{/* Use the rating component from Web Components in your template */}
 <igx-grid-lite-column field="rating" header="Customer Rating" dataType="number">
     <ng-template igxGridLiteCell let-value>
         <igc-rating
@@ -108,12 +108,12 @@ defineComponents(
 </igx-grid-lite-column>
 ```
 
->[!NOTE]
->Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
+**Note:** 
+Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object
 
-The custom cell renderer is passed an **`GridLiteCellContext`** object as a parameter with the following props:
+The custom cell renderer is passed an [`IgxGridLiteCellTemplateContext`](mcp:get_api_reference?platform=angular&component=IgxGridLiteCellTemplateContext) object as a parameter with the following props:
 
 
 ```typescript
@@ -221,19 +221,18 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
-
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
+- [`IgxGridLiteCellTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridLiteCellTemplateDirective)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Sorting](/grid-lite/sorting)
+- [Filtering](/grid-lite/filtering)
+- [Theming & Styling](/grid-lite/theming)
 
 Our community is active and always welcoming to new ideas.
 

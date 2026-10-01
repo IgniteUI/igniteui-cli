@@ -1,18 +1,21 @@
 ---
 title: Angular Navigation Drawer Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Implement a user-friendly slide in/out navigation container with complete programmatic control with Ignite UI for Angular Navigation Drawer component.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Navigation Drawer component, Angular Navigation Drawer control
-_license: MIT
+description: Implement a user-friendly slide in/out navigation container with complete programmatic control with Ignite UI for Angular Navigation Drawer component.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Navigation Drawer component, Angular Navigation Drawer control
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Navigation Drawer component is a side navigation container."
 _tocName: Navigation Drawer
 ---
-
 # Angular Navigation Drawer Component Overview
 
-<p class="highlight">The Ignite UI for Angular Navigation Drawer component is a side navigation container. It can rest above content and slide in/out of view or be pinned to expand/collapse within the content. A mini version provides quick access to navigation even when closed. The Navigation Drawer features responsive mode selection and touch gestures. Content is completely customizable and can make use of default menu item styling.</p>
+<div class="highlight">
+The Ignite UI for Angular Navigation Drawer component is a side navigation container. It can rest above content and slide in/out of view or be pinned to expand/collapse within the content. A mini version provides quick access to navigation even when closed. The Navigation Drawer features responsive mode selection and touch gestures. Content is completely customizable and can make use of default menu item styling.
+</div>
 
 ## Angular Navigation Drawer Example
 
-<div class="divider--half"></div>
+<hr/>
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -93,7 +96,7 @@ main {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Navigation Drawer
 
@@ -103,24 +106,24 @@ To get started with the Ignite UI for Angular Navigation Drawer component, first
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The first step is to import the `IgxNavigationDrawerModule` inside our **app.module.ts** file.
 
-> [!NOTE]
-> The [`IgxNavigationDrawerComponent`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
+**Note:** 
+The [`IgxNavigationDrawer`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule), so it needs to be added to the AppModule as well:
+
 
 ```typescript
 // app.module.ts
 ...
-import { HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxNavigationDrawerModule } from 'igniteui-angular/navigation-drawer';
 // import { IgxNavigationDrawerModule } from '@infragistics/igniteui-angular'; for licensed package
 
 @NgModule({
     ...
-    imports: [..., BrowserAnimationsModule, HammerModule, IgxNavigationDrawerModule],
+    imports: [..., BrowserAnimationsModule, IgxNavigationDrawerModule],
     ...
 })
 export class AppModule {}
@@ -131,7 +134,6 @@ Alternatively, as of `16.0.0` you can import the `IgxNavigationDrawerComponent` 
 ```typescript
 // home.component.ts
 
-import { HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor } from '@angular/common';
 import { IGX_NAVIGATION_DRAWER_DIRECTIVES } from 'igniteui-angular/navigation-drawer';
@@ -143,6 +145,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
   selector: 'app-home',
   template: `
     <div class="content-wrap">
+
       <igx-nav-drawer [isOpen]="true">
         <ng-template igxDrawer>
             <span igxDrawerItem [isHeader]="true">Components</span>
@@ -159,22 +162,23 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
         </ng-template>
       </igx-nav-drawer>
       <main>
-        <!-- app content -->
+        {/* app content */}
       </main>
-    </div>
+    
+</div>
   `,
   styleUrls: ['home.component.scss'],
   standalone: true,
-  imports: [BrowserAnimationsModule, HammerModule, IGX_NAVIGATION_DRAWER_DIRECTIVES, IgxRippleDirective, IgxIconComponent, NgFor],
-  /* or imports: [BrowserAnimationsModule, HammerModule, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxIconComponent, IgxRippleDirective, NgFor] */
+  imports: [BrowserAnimationsModule, IGX_NAVIGATION_DRAWER_DIRECTIVES, IgxRippleDirective, IgxIconComponent, NgFor],
+  /* or imports: [BrowserAnimationsModule, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxIconComponent, IgxRippleDirective, NgFor] */
 })
 export class HomeComponent {
   public navItems: Product[];
 }
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Navigation Drawer module or directives imported, you can start using the `igx-nav-drawer` component.
 
@@ -184,22 +188,23 @@ With the dependencies imported, the Navigation Drawer can be defined in the app 
 
 ```html
 <igx-nav-drawer id="navdrawer" [isOpen]="true">
-  <!-- template(s) -->
+  {/* template(s) */}
 </igx-nav-drawer>
 ```
 
 The content for the drawer should be provided via `<ng-template>` decorated with `igxDrawer` directive.
-While any content can be provided in the template, the [`igxDrawerItem`](mcp:get_api_reference?platform=angular&component=IgxNavDrawerItemDirective) directive (see [Item styling](#styling)) is available to apply out-of-the-box styling to items.
+While any content can be provided in the template, the [`IgxNavDrawerItemDirective`](mcp:get_api_reference?platform=angular&component=IgxNavDrawerItemDirective) directive (see [Item styling](#styling)) is available to apply out-of-the-box styling to items.
 The directive has two `@Input` properties:
 
 - `active` to style an item as selected.
 - `isHeader` to style an item as a group header, cannot be active.
 
-The [`igxRipple`](ripple.md) directive completes the look and feel:
+The [`igxRipple`](/ripple) directive completes the look and feel:
 
 ```html
-<!-- app.component.html -->
+{/* app.component.html */}
 <div class="content-wrap">
+
   <igx-nav-drawer id="navigation" #drawer [isOpen]="true">
     <ng-template igxDrawer>
         <span igxDrawerItem [isHeader]="true">Components</span>
@@ -210,14 +215,14 @@ The [`igxRipple`](ripple.md) directive completes the look and feel:
     </ng-template>
   </igx-nav-drawer>
   <main>
-    <!-- app content -->
+    {/* app content */}
   </main>
 </div>
 ```
 
 > An additional template decorated with `igxDrawerMini` directive can be provided for the alternative [Mini variant](#mini-variant) as closed state.
-> [!NOTE]
-> The Navigation Drawer can float above the content or be pinned alongside it. By default the drawer switches between those modes depending on the viewport size. See [Modes](#modes) for more information.
+**Note:** 
+The Navigation Drawer can float above the content or be pinned alongside it. By default the drawer switches between those modes depending on the viewport size. See [Modes](#modes) for more information.
 
 To accommodate for the drawer switching modes, a simple flexible wrapper around the two content sections can be styled like so:
 
@@ -255,9 +260,9 @@ There are various ways to open and close the drawer. Input properties can be bou
 <button (click)="drawer.toggle()">Menu</button>
 ```
 
-The Navigation Drawer also integrates with [`igxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) and can be targeted by id with an [`igxToggleAction`](toggle.md#automatic-toggle-actions) directive.
+The Navigation Drawer also integrates with [`IgxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) and can be targeted by id with an [`igxToggleAction`](/toggle#automatic-toggle-actions) directive.
 
-Let's replace the `<main>` in **app.component.html** with the following, adding [`igxIconButton`](icon-button.md) and [Icon component](icon.md) to style our toggle:
+Let's replace the `<main>` in **app.component.html** with the following, adding [`igxIconButton`](/icon-button) and [Icon component](/icon) to style our toggle:
 
 ```html
 <main>
@@ -291,7 +296,7 @@ export class AppComponent  {
 
 If everything went well, you should see the demo sample in your browser.
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Modes
 
@@ -299,8 +304,8 @@ Unpinned (elevated above the content) mode is the normal behavior where the draw
 
 The drawer can be pinned to take advantage of larger screens, placing it within normal content flow with relative position. Depending on whether the app provides a way to toggle the drawer, the pinned mode can be used to achieve either [permanent or persistent behavior](https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-behavior).
 
-> [!NOTE]
-> By default the Navigation Drawer is responsive, actively changing between unpinned and pinned mode based on screen size. This behavior is controlled by the [`pinThreshold`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent&member=pinThreshold) property and can be disabled by setting a falsy value (e.g. 0).
+**Note:** 
+By default the Navigation Drawer is responsive, actively changing between unpinned and pinned mode based on screen size. This behavior is controlled by the [`pinThreshold`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent&member=pinThreshold) property and can be disabled by setting a falsy value (e.g. 0).
 
 ### Pinned (persistent) setup
 
@@ -311,10 +316,10 @@ Here's how that would look applied to the previous example:
 ```html
 <div class="content-wrap" igxLayout igxLayoutDir="row">
   <igx-nav-drawer id="navigation" #drawer [isOpen]="true" [pin]="true" [pinThreshold]="0">
-    <!-- template(s) -->
+    {/* template(s) */}
   </igx-nav-drawer>
   <main igxFlex>
-    <!-- content here -->
+    {/* content here */}
   </main>
 </div>
 ```
@@ -524,11 +529,11 @@ main {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Using Angular Router
 
-To use the Angular Router, first, we need to import git from `@angular/router` and create an instance of the router in our constructor.
+To use the Angular Router, first, we need to import it from `@angular/router` and create an instance of the router in our constructor.
 Then we have to define our navigation items using the router for their link values.
 
 ```typescript
@@ -558,7 +563,7 @@ You can use `routerLinkActive` where it's assigned to a template variable and it
 ```html
 /* app.component.html */
 
-<!-- ... -->
+{/* ... */}
 <ng-template igxDrawer>
   <nav>
     <span igxDrawerItem [isHeader]="true">Components</span>
@@ -575,7 +580,7 @@ You can use `routerLinkActive` where it's assigned to a template variable and it
     </span>
   </nav>
 </ng-template>
-<!-- ... -->
+{/* ... */}
 ```
 
 Finally, import the RouterModule along with the items' routes in your `app.module.ts` file:
@@ -584,16 +589,16 @@ Finally, import the RouterModule along with the items' routes in your `app.modul
 /*app.module.ts*/
 import { RouterModule } from '@angular/router';
 
-@NgModule([
+@NgModule({
     imports: [
         RouterModule,
-  RouterModule.forRoot([
+        RouterModule.forRoot([
             {path: 'avatar', component: NavDrawerRoutingComponent},
             {path: 'badge', component: NavDrawerRoutingComponent},
             {path: 'button-group', component: NavDrawerRoutingComponent}
         ])
     ]
-])
+})
 ```
 
 After all the steps above are completed, your app should look like that:
@@ -676,11 +681,11 @@ main {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Hierarchical Navigation
 
-To create a multi-level hierarchical navigation using the `IgxNavigationDrawerComponent`, you can use the [IgxTreeComponent](tree.md) in the `igxDrawer` template. The tree can be constructed directly from your application `Routes` object. Here's how this can be achieved:
+To create a multi-level hierarchical navigation using the `IgxNavigationDrawerComponent`, you can use the [IgxTreeComponent](/tree) in the `igxDrawer` template. The tree can be constructed directly from your application `Routes` object. Here's how this can be achieved:
 
 ```html
 <igx-nav-drawer [isOpen]="true" [enableGestures]="true" width="280px">
@@ -697,8 +702,9 @@ To create a multi-level hierarchical navigation using the `IgxNavigationDrawerCo
 </igx-nav-drawer>
 ```
 
-> [!NOTE]
-> In this example, we're not using the `igxDrawerItem`, instead we're populating directly with custom `igxDrawer` content, in this case using an `igx-tree`.
+**Note:** 
+In this example, we're not using the `igxDrawerItem`, instead we're populating directly with custom `igxDrawer` content, in this case using an `igx-tree`.
+
 
 ```typescript
 import { menusRoutes } from '../../menus-routing.module';
@@ -725,10 +731,10 @@ export const menusRoutes: Routes = [
 ];
 ```
 
-There's also child routing extracted from the `children` property of the routes. The sample shows two levels of hierarchy, but if your routing has more, then all you need to do is define the levels below the second one in the [tree node templates](tree.md#templating).
+There's also child routing extracted from the `children` property of the routes. The sample shows two levels of hierarchy, but if your routing has more, then all you need to do is define the levels below the second one in the [tree node templates](/tree#templating).
 
-> [!NOTE]
-> Keep in mind that some routes, like empty route redirect, error route, page not found, etc., might not be suitable for visualization directly. Before binding the tree to the routing object, you can strip those routes out of your object in your component logic.
+**Note:** 
+Keep in mind that some routes, like empty route redirect, error route, page not found, etc., might not be suitable for visualization directly. Before binding the tree to the routing object, you can strip those routes out of your object in your component logic.
 
 The example below presents the capabilities of a hierarchical structure by using predefined data with topic names and links. The structure allows users to easily generate functional and detailed navigations and to have the ability to define each element whether to be displayed as a link or as an indicator.
 
@@ -851,11 +857,11 @@ main {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
-To get started with styling the navigation drawer, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the navigation drawer, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -864,7 +870,7 @@ To get started with styling the navigation drawer, we need to import the `index`
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`navdrawer-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navdrawer-theme) and accepts a few parameters that style the navdrawer's items:
+Following the simplest approach, we create a new theme that extends the `navdrawer-theme` and accepts a few parameters that style the navdrawer's items:
 
 ```scss
 $custom-theme: navdrawer-theme(
@@ -884,8 +890,9 @@ The last step is to **include** the component theme in our application.
 }
 ```
 
->[!NOTE]
->If the component is using an [`Emulated`](themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep` to apply the styles.
+**Note:** 
+In some component templates, Emulated View Encapsulation can still prevent the generated token declarations from reaching nested Ignite UI elements. If the theme does not take effect, use `::ng-deep` as shown below or move the theme to a global stylesheet.
+
 
 ```scss
 :host {
@@ -894,6 +901,7 @@ The last step is to **include** the component theme in our application.
   }
 }
 ```
+
 
 ```typescript
 import { Component } from '@angular/core';
@@ -925,9 +933,9 @@ $custom-theme: navdrawer-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API and Style References
 
-- [IgxNavigationDrawerComponent API](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent)
-- [IgxNavigationDrawerComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navdrawer-theme)
+- [`IgxNavigationDrawer`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent)
+- `IgxNavigationDrawerComponent Styles`

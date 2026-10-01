@@ -1,12 +1,13 @@
 ---
-title: Blazor Chip | Infragistics
-_description: Infragistics' Blazor Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
-_keywords: Blazor, UI controls, web widgets, UI widgets, Web Components, Blazor Chip Components, Infragistics
-_license: MIT
+title: "Blazor Chip | Infragistics"
+description: Infragistics' Blazor Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
+keywords: "Blazor, UI controls, web widgets, UI widgets, Web Components, Blazor Chip Components, Infragistics"
+license: MIT
 mentionedTypes: ["Chip"]
+llms:
+  description: "Ignite UI for Blazor Chips help people enter information, make selections, filter content, or trigger actions."
 _tocName: Chip
 ---
-
 # Blazor Chip Overview
 
 Ignite UI for Blazor Chips help people enter information, make selections, filter content, or trigger actions.
@@ -30,19 +31,19 @@ Ignite UI for Blazor Chips help people enter information, make selections, filte
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
 Before using the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbChipModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -65,13 +66,13 @@ The simplest way to start using the [`IgbChip`](mcp:get_api_reference?platform=b
 }
 ```
 
-To display a selectable chip, you can use the [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Selectable) property of the chip.
+To display a selectable chip, you can use the [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=selectable) property of the chip.
 
 ```razor
 <IgbChip Selectable="true"></IgbChip>
 ```
 
-To display a removable chip, you can use the [`Removable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Removable) property of the chip.
+To display a removable chip, you can use the [`Removable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=removable) property of the chip.
 
 ```razor
 <IgbChip Removable="true"></IgbChip>
@@ -81,7 +82,7 @@ To display a removable chip, you can use the [`Removable`](mcp:get_api_reference
 
 ### Variants
 
-The Ignite UI for Blazor chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Variant) property.
+The Ignite UI for Blazor chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=variant) property.
 
 ```razor
 <IgbChip Variant="ChipVariant.Success"></IgbChip>
@@ -118,13 +119,68 @@ The Ignite UI for Blazor chip supports several pre-defined stylistic variants. Y
 }
 ```
 
+### Outlined
+
+The Ignite UI for Blazor chip can be rendered in an outlined style and have a border around it by setting the [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=outlined) property.
+
+```razor
+<IgbChip Outlined="true"></IgbChip>
+```
+
+```razor
+@using IgniteUI.Blazor.Controls
+
+
+<div class="container sample center" style="flex-direction: row; gap: 8px">
+    <IgbChip Outlined="true" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Default
+    </IgbChip>
+
+    <IgbChip Outlined="true" Variant="StyleVariant.Primary" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Primary
+    </IgbChip>
+
+    <IgbChip Outlined="true" Variant="StyleVariant.Info" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Info
+    </IgbChip>
+
+    <IgbChip Outlined="true" Variant="StyleVariant.Success" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Success
+    </IgbChip>
+
+    <IgbChip Outlined="true" Variant="StyleVariant.Warning" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Warning
+    </IgbChip>
+
+    <IgbChip Outlined="true" Variant="StyleVariant.Danger" Selectable="true" Removable="true" RemoveScript="handleChipRemove">
+        Danger
+    </IgbChip>
+</div>
+
+@code {
+
+}
+```
+
 ### Disabled
 
-The Ignite UI for Blazor chip can be disabled by using the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Disabled) property.
+The Ignite UI for Blazor chip can be disabled by using the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=disabled) property.
 
-### Prefix / Suffix
+### Slots
 
-With the `Prefix` and `Suffix` parts of the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the exposed component slots, you can add custom content to different parts of the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip). The component provides default select and remove icons, but you can customize them using the `select` and `remove` slots. You can also add additional content before or after the main content using the `start` and `end` slots.
+
+We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `remove`, `select`, `start`, and `end` slots.
+
+```razor
+<IgbChip Selectable="true" Removable="true">
+    <IgbIcon slot="select" IconName="verified-account" Collection="material"></IgbIcon>
+    <IgbIcon slot="start" IconName="brush" Collection="material"></IgbIcon>
+    Chip
+    <IgbIcon slot="end" IconName="blood" Collection="material"></IgbIcon>
+    <IgbIcon slot="remove" IconName="pacifier" Collection="material"></IgbIcon>
+</IgbChip>
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -270,10 +326,7 @@ igc-chip::part(suffix) {
 ```
 
 ## API References
-
-- [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

@@ -1,23 +1,24 @@
 ---
 title: Angular Chart Markers | Data Visualization | Infragistics
-_description: Infragistics' Angular Chart Markers
-_keywords: Angular Charts, Markers, Infragistics
-_license: commercial
-mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType"]
+description: Infragistics' Angular Chart Markers
+keywords: Angular Charts, Markers, Marker Size, Infragistics
+license: commercial
+mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeries", "ScatterLineSeries", "ScatterSplineSeries", "ScatterSeries", "LineSeries", "SplineSeries", "MarkerAutomaticBehavior", "SeriesViewer"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for Angular, markers are visual elements that display the values of data points in the chart's plot area."
 _tocName: Chart Markers
 _premium: true
 ---
-
 # Angular Chart Markers
 
 In Ignite UI for Angular, markers are visual elements that display the values of data points in the chart's plot area. Markers help your end-users immediately identify a data point's value even if the value falls between major or minor grid lines.
 
 ## Angular Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.markertype.html) property to [`Circle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.markertype.html#Circle) enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `MarkerTypes` property to `Circle` enum value.
 
-The colors of the markers are also managed by setting the [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#markerBrushes) and [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#markerOutlines) properties in the sample below. The markers and [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the `MarkerBrushes` and `MarkerOutlines` properties in the sample below. The markers and `CategoryChart.ChartType` is configurable in this sample by using the drop-downs as well.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -173,11 +174,276 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
+## Angular Chart Marker Size
+
+You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
+
+By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
+
+The `MarkerSize` property is available on all series types that derive from `MarkerSeries`, including `LineSeries`, `SplineSeries`, `AreaSeries`, `ColumnSeries`, `ScatterSeries`, `ScatterLineSeries`, `ScatterSplineSeries`, and polar/radial series types.
+
+The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a `ScatterLineSeries` in the `XamDataChart` control:
+
+To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
+
+The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
+
+```typescript
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppComponent } from "./app.component";
+
+import { IgxPropertyEditorPanelModule } from 'igniteui-angular-layouts';
+import { IgxLegendModule, IgxDataChartCoreModule, IgxDataChartScatterModule, IgxDataChartScatterCoreModule, IgxDataChartInteractivityModule, IgxDataChartAnnotationModule } from 'igniteui-angular-charts';
+
+@NgModule({
+  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent
+],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    IgxPropertyEditorPanelModule,
+    IgxLegendModule,
+    IgxDataChartCoreModule,
+    IgxDataChartScatterModule,
+    IgxDataChartScatterCoreModule,
+    IgxDataChartInteractivityModule,
+    IgxDataChartAnnotationModule
+],
+  providers: [],
+  schemas: []
+})
+export class AppModule {}
+```
+```typescript
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, DataChartCoreDescriptionModule, DataChartScatterDescriptionModule, DataChartScatterCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule } from 'igniteui-angular-core';
+import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
+import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
+import { IgxPropertyEditorPropertyDescriptionChangedEventArgs } from 'igniteui-angular-layouts';
+import { IgxDataChartComponent } from 'igniteui-angular-charts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxLegendComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterSeriesComponent } from 'igniteui-angular-charts';
+
+import { defineAllComponents } from 'igniteui-webcomponents';
+
+defineAllComponents();
+
+@Component({
+    standalone: false,
+    selector: "app-root",
+    styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class AppComponent implements AfterViewInit
+{
+
+	@ViewChild("propertyEditor", { static: true } )
+	private propertyEditor: IgxPropertyEditorPanelComponent
+	@ViewChild("markerSizeEditor", { static: true } )
+	private markerSizeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("markerTypeEditor", { static: true } )
+	private markerTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("scatterSeries1", { static: true } )
+	private scatterSeries1: IgxScatterSeriesComponent
+	@ViewChild("scatterSeries2", { static: true } )
+	private scatterSeries2: IgxScatterSeriesComponent
+    private _countryDemographicEurope: CountryDemographicEurope = null;
+    public get countryDemographicEurope(): CountryDemographicEurope {
+        if (this._countryDemographicEurope == null)
+        {
+            this._countryDemographicEurope = new CountryDemographicEurope();
+        }
+        return this._countryDemographicEurope;
+    }
+
+    private _countryDemographicAfrican: CountryDemographicAfrican = null;
+    public get countryDemographicAfrican(): CountryDemographicAfrican {
+        if (this._countryDemographicAfrican == null)
+        {
+            this._countryDemographicAfrican = new CountryDemographicAfrican();
+        }
+        return this._countryDemographicAfrican;
+    }
+
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            LegendDescriptionModule.register(context);
+            DataChartCoreDescriptionModule.register(context);
+            DataChartScatterDescriptionModule.register(context);
+            DataChartScatterCoreDescriptionModule.register(context);
+            DataChartInteractivityDescriptionModule.register(context);
+            DataChartAnnotationDescriptionModule.register(context);
+        }
+        return this._componentRenderer;
+    }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
+
+	public editorChangeUpdateDataChartMarkerSize({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+	    var chart = this.chart;
+	    var markerSizeVal = parseInt(args.newValue);
+	    var series = chart.actualSeries;
+	    for (var i = 0; i < series.length; i++) {
+	        (series[i] as any).markerSize = markerSizeVal;
+	    }
+	}
+
+	public editorChangeUpdateDataChartMarkerType({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+	    var chart = this.chart;
+	    var markerTypeVal = args.newValue;
+	    var series = chart.actualSeries;
+	    for (var i = 0; i < series.length; i++) {
+	        (series[i] as any).markerType = markerTypeVal;
+	    }
+	}
+
+}
+```
+```html
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="MarkerSizeHandler"
+          name="MarkerSizeEditor"
+          #markerSizeEditor
+          label="Marker Size"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="3, 5, 7, 10, 12, 15, 20, 25, 30"
+          dropDownValues="3, 5, 7, 10, 12, 15, 20, 25, 30"
+          primitiveValue="10"
+          (changed)="this.editorChangeUpdateDataChartMarkerSize($event)">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="MarkerTypeHandler"
+          name="MarkerTypeEditor"
+          #markerTypeEditor
+          label="Marker Type"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownValues="Circle, Checkmark, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, Hidden, Automatic, None"
+          dropDownNames="Circle, Checkmark, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, Hidden, Automatic, None"
+          primitiveValue="Circle"
+          (changed)="this.editorChangeUpdateDataChartMarkerType($event)">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Population Statistics for Selected Continents
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      [legend]="legend">
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          title="Death Rate (per 1,000 people)"
+          minimumValue="5"
+          maximumValue="15">
+          </igx-numeric-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="Birth Rate (per 1,000 people)"
+          minimumValue="0"
+          maximumValue="50"
+          interval="10">
+          </igx-numeric-y-axis>
+          <igx-scatter-series
+          name="scatterSeries1"
+          #scatterSeries1
+          title="Europe"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          xMemberPath="deathRate"
+          yMemberPath="birthRate"
+          [dataSource]="countryDemographicEurope"
+          markerType="Circle"
+          markerSize="10"
+          showDefaultTooltip="true">
+          </igx-scatter-series>
+          <igx-scatter-series
+          name="scatterSeries2"
+          #scatterSeries2
+          title="Africa"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          xMemberPath="deathRate"
+          yMemberPath="birthRate"
+          [dataSource]="countryDemographicAfrican"
+          markerType="Circle"
+          markerSize="10"
+          showDefaultTooltip="true">
+          </igx-scatter-series>
+      </igx-data-chart>
+  </div>
+</div>
+```
+```scss
+/* styles are loaded the Shared CSS file located at:
+https://dl.infragistics.com/x/css/samples/shared.v8.css
+*/
+```
+
+**Note:** 
+For `BubbleSeries`, the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the `RadiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
+
+## Angular Chart Checkmark Marker Type
+
+The Ignite UI for Angular charts include a `Checkmark` option in the `MarkerType` enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+
+You can apply the `Checkmark` marker type to an individual series by setting its `MarkerType` property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's `MarkerAutomaticBehavior` property to `MarkerAutomaticBehavior.Checkmark`.
+
+The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
 
 ## Angular Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the `IgxCategoryChart` control as it is demonstrated in example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -338,8 +604,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -348,10 +612,4 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#markerBrushes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#markerOutlines)
-- [`MarkerType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.markertype.html)
-- [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
+`IgxCategoryChart`

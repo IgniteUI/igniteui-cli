@@ -1,16 +1,17 @@
 ---
-title: Blazor Grid Lite Cell Template | Ignite UI for Blazor | MIT license
-_description: Grid Lite column configuration and column properties. Try our open-source Blazor Grid Lite - lightweight and packed with essential features.
-_keywords: column configuration, Blazor, {ComponentKeywords}, Ignite UI for Blazor, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Blazor Grid Lite Cell Template | Ignite UI for Blazor | MIT license"
+description: Grid Lite column configuration and column properties. Try our open-source Blazor Grid Lite - lightweight and packed with essential features.
+keywords: column configuration, Blazor, , Ignite UI for Blazor, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "Columns are defined declaratively using column child components within the grid."
 _tocName: Column Configuration
 ---
-
 # Column Configuration
 
-Columns are defined declaratively using `<GridLiteColumn>` child elements within the grid. The `Field` property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
+Columns are defined declaratively using `<IgbGridLiteColumn>` child elements within the grid. The [`Field`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=field) property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
 
 ```razor
 <IgbGridLite Data="@products">
@@ -24,7 +25,7 @@ Columns are defined declaratively using `<GridLiteColumn>` child elements within
 
 ## Configuration Based on the Data Source
 
-The grid supports inferring the column configuration based on the provided data source when `AutoGenerate` is set to true. It tries to infer the appropriate `Field` and `DataType` properties based on records in the data.
+The grid supports inferring the column configuration based on the provided data source when `AutoGenerate` is set to true. It tries to infer the appropriate [`Field`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=field) and [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) properties based on records in the data.
 
 ```razor
 <IgbGridLite AutoGenerate=true Data="@products"/>
@@ -70,7 +71,7 @@ By default, the columns have a width of **minmax(136px, 1fr)** which translates 
 1 part of the available space in the Grid Lite. This way the columns are fluid and responsive accommodating for changes
 in the grid width.
 
-To change the width of column, use the `Width` parameter of the `GridLiteColumn` component.
+To change the width of column, use the [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=width) parameter of the [`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn) component.
 
 ```razor
 <IgbGridLiteColumn Field="Price" Width="250px" />
@@ -80,7 +81,7 @@ The property accepts <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS
 
 ### Hiding columns
 
-Columns can be hidden/shown by setting the `Hidden` parameter on the `GridLiteColumn` component.
+Columns can be hidden/shown by setting the [`Hidden`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=hidden) parameter on the [`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn) component.
 
 ```razor
 <IgbGridLiteColumn Field="Price" Hidden="true" />
@@ -88,7 +89,7 @@ Columns can be hidden/shown by setting the `Hidden` parameter on the `GridLiteCo
 
 ### Column resize
 
-Each column of the Grid Lite can be configured to be resizable by setting the `Resizable` parameter on the `GridLiteColumn` component.
+Each column of the Grid Lite can be configured to be resizable by setting the [`Resizable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=resizable) parameter on the [`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn) component.
 
 ```razor
 <IgbGridLiteColumn Field="Price" Resizable="true" />
@@ -96,8 +97,8 @@ Each column of the Grid Lite can be configured to be resizable by setting the `R
 
 If a column is set to be resizable, you can drag the right size of the column header to either increase/decrease  the column width. Double-clicking on the resize area will trigger auto-sizing of the column where it will try set its width according to the largest content of its cells/header.
 
-> [!NOTE]
-> Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
+**Note:** 
+Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
 
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.
 
@@ -146,19 +147,17 @@ In the sample below you can try out the different column properties and how they
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgbGridLite<TItem>`](mcp:get_api_reference?platform=blazor&component=IgbGridLite%3CTItem%3E)<br />
+[`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn)<br />
 
 ## Additional Resources
 
-- [Data Binding](binding.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Data Binding](./binding.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,12 +1,13 @@
 ---
-title: Blazor Ripple
-_description: With Ignite UI for Blazor Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Ripple components, Blazor Ripple controls
-_license: MIT
+title: "Blazor Ripple"
+description: With Ignite UI for Blazor Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Ripple components, Blazor Ripple controls"
+license: MIT
 mentionedTypes: ["Ripple", "Button"]
+llms:
+  description: "The Ignite UI for Blazor Ripple component creates an animation in response to a touch or a mouse click."
 _tocName: Ripple
 ---
-
 # Blazor Ripple Overview
 
 The Ignite UI for Blazor Ripple component creates an animation in response to a touch or a mouse click.
@@ -33,13 +34,13 @@ The Ignite UI for Blazor Ripple component creates an animation in response to a 
 
 Before using the [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbRippleModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -93,9 +94,8 @@ igc-ripple {
 
 ## API References
 
-- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
-- [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)<br />
+[`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple)<br />
 
 ## Additional Resources
 

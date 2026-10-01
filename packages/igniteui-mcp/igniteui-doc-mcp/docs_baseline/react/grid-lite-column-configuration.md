@@ -1,13 +1,14 @@
 ---
-title: React Grid Lite Cell Template | Ignite UI for React | MIT license
-_description: Grid Lite column configuration and column properties. Try our open-source React Grid Lite - lightweight and packed with essential features.
-_keywords: column configuration, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "React Grid Lite Cell Template | Ignite UI for React | MIT license"
+description: Grid Lite column configuration and column properties. Try our open-source React Grid Lite - lightweight and packed with essential features.
+keywords: column configuration, React, , Ignite UI for React, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "Columns are defined declaratively using column child components within the grid."
 _tocName: Column Configuration
 ---
-
 # Column Configuration
 
 Columns are defined declaratively using column child components within the grid. The `field` property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
@@ -104,8 +105,8 @@ return (
 
 If a column is set to be resizable, you can drag the right size of the column header to either increase/decrease  the column width. Double-clicking on the resize area will trigger auto-sizing of the column where it will try set its width according to the largest content of its cells/header.
 
-> [!NOTE]
-> Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
+**Note:** 
+Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
 
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.
 
@@ -533,19 +534,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Sample />);
 ```
 
-<!-- TODO ## API References
-
-- `{ComponentName}`
-- `Column`
-
--->
-
 ## Additional Resources
 
-- [Data Binding](binding.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Data Binding](./binding.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

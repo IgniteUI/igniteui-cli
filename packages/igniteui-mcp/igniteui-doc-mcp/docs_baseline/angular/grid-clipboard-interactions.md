@@ -1,14 +1,19 @@
 ---
 title: Angular Grid Clipboard Interactions - Ignite UI for Angular
-_description: The Angular Data Grid Clipboard functionality provides fast, easy and customizable way to copy, paste and export data to Excel or other programs. Try it now!
-_keywords: copy data, igniteui for angular, infragistics
-_license: commercial
+description: The Angular Data Grid Clipboard functionality provides fast, easy and customizable way to copy, paste and export data to Excel or other programs. Try it now!
+keywords: copy data, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "Copy to clipboard operations are now available in the Grid."
 _tocName: Clipboard Interactions
 _premium: true
 ---
 # Angular Grid Clipboard Interactions
+
 Copy to clipboard operations are now available in the Grid. This functionality provides a fast, easy and customizable way to copy data of the Angular Data Grid through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the Grid into Excel or other external programs.
+
 ## Angular Grid Clipboard Interactions Example
+
 ```typescript
 import { Component } from '@angular/core';
 import { DATA } from '../../data/nwindData';
@@ -113,9 +118,11 @@ export class GridClipboardSampleComponent {
     margin-top: 7px;
 }
 ```
-<div class="divider--half"></div>
+
 ## Functionality
+
 Copy behavior is working with the default interaction defined by the browser and operating system. Thus for the copy and paste behaviors, these are:
+
 - Windows/Unix based
   - <kbd>Ctrl</kbd> + <kbd>C</kbd> / <kbd>Ctrl</kbd> + <kbd>Ins</kbd> as a keyboard shortcut
   - <kbd>Ctrl</kbd> + <kbd>V</kbd> / <kbd>Shift</kbd> + <kbd>Ins</kbd> as a keyboard shortcut
@@ -124,35 +131,48 @@ Copy behavior is working with the default interaction defined by the browser and
   - <kbd>⌘ Cmd</kbd> + <kbd>C</kbd> as a keyboard shortcut
   - <kbd>⌘ Cmd</kbd> + <kbd>V</kbd> as a keyboard shortcut
   - Copy action through the browser menu
+
 ## Limitations
+
 - Both the **cut** and **copy** events are not natively supported in Internet Explorer. The exception is the
 **paste** event (IE 11) which is emitted but does not expose the `clipboardData` property in the event.
-> [!NOTE]
-> In order to `copy` cells in IE 11, you can use the keyboard selection. Hold the `shift key` in order to make a multi-cell selection, press `Ctrl + C` in order to copy.
+
+**Note:** 
+In order to `copy` cells in IE 11, you can use the keyboard selection. Hold the `shift key` in order to make a multi-cell selection, press `Ctrl + C` in order to copy.
+
 - The copy behavior is disabled while the grid is in edit mode.
 - The current version of this feature covers only the `copy` from grid behavior. Later on we plan to expose `paste` within grid behavior.
- You can use a custom paste handler in order to configure `paste` behavior, have a look at our [Paste from Excel topic](paste-excel.md). 
+
+ You can use a custom paste handler in order to configure `paste` behavior, have a look at our [Paste from Excel topic](/grid/paste-excel).
+ 
+
 ## API Usage
+
 We expose [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardOptions) @Input property, which handles the following options:
+
 - [`enabled`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.enabled) Enables/disables copying of selected cells.
 - [`copyHeaders`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.copyHeaders) Include the associated headers when copying.
 - [`copyFormatters`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.copyFormatters) Apply any existing column formatters to the copied data.
 - [`separator`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
-> [!NOTE]
-> Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
-- [`gridCopy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboard%25D0%259Eptions)
+
+**Note:** 
+Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
+
+- [`gridCopy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardOptions)
+
 ## Additional Resources
-<div class="divider--half"></div>
-- [Grid overview](grid.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Pinning](column-pinning.md)
-- [Selection](selection.md)
-- [Virtualization and Performance](virtualization.md)
-- [Multi-column headers](multi-column-headers.md)
-<div class="divider--half"></div>
+
+- [Grid overview](/grid/grid)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Summaries](/grid/summaries)
+- [Column Pinning](/grid/column-pinning)
+- [Selection](/grid/selection)
+- [Virtualization and Performance](/grid/virtualization)
+- [Multi-column headers](/grid/multi-column-headers)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

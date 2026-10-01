@@ -1,17 +1,19 @@
 ---
 title: Angular Toast Component – Ignite UI for Angular | Infragistics | MIT license
-_description: With Ignite UI for Angular Toast component, users can provide quick, non-interactive messages to end users within their application.
-_keywords: Angular Toast component, Angular Toast control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: With Ignite UI for Angular Toast component, users can provide quick, non-interactive messages to end users within their application.
+keywords: Angular Toast component, Angular Toast control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Toast component provides information and warning messages that are auto-hiding, non-interactive and cannot be dismissed by the user."
 _tocName: Toast
 ---
-
 # Angular Toast Component Overview
 
-<p class="highlight">The Ignite UI for Angular Toast component provides information and warning messages that are auto-hiding, non-interactive and cannot be dismissed by the user. Notifications can be displayed at the bottom, the middle, or the top of the page.</p>
+<div class="highlight">
+The Ignite UI for Angular Toast component provides information and warning messages that are auto-hiding, non-interactive and cannot be dismissed by the user. Notifications can be displayed at the bottom, the middle, or the top of the page.
+</div>
 
 ## Angular Toast Example
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -39,8 +41,7 @@ button {
 }
 ```
 
-<div class="divider--half"></div>
-
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Toast
 
@@ -50,7 +51,7 @@ To get started with the Ignite UI for Angular Toast component, first you need to
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The next step is to import the `IgxToastModule` in your **app.module.ts** file.
 
@@ -103,7 +104,7 @@ Now that you have the Ignite UI for Angular Toast module or component imported, 
 In order to display the toast component, use its [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method and call it on a button click. You can pass the toast content inside the element.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="toast.open()">Show notification</button>
 <igx-toast #toast>Notification displayed</igx-toast>
@@ -112,7 +113,7 @@ In order to display the toast component, use its [`open()`](mcp:get_api_referenc
 Another way to set the toast content is to directly pass the message as a parameter to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="toast.open('Notification displayed')">Show notification</button>
 <igx-toast #toast></igx-toast>
@@ -142,7 +143,7 @@ public showMessage() {
 Once opened, the toast disappears after a period specified by the [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change this by setting [`autoHide`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=autoHide) to **false**. This way, the toast remains visible. Using the toast [`close()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=close) method, you can close the component.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="toast.open()">Show Toast</button>
 <button igxButton="contained" (click)="toast.close()">Hide Toast</button>
@@ -218,7 +219,7 @@ button {
 Use [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=displayTime) and set it to an interval in milliseconds to configure how long the toast component is visible.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="toast.open()">Show notification</button>
 <igx-toast #toast displayTime="1000">Notification displayed</igx-toast>
@@ -226,16 +227,32 @@ Use [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxToastCom
 
 If the sample is configured properly, the toast auto hides faster.
 
-<div class="sample-container loading">
-    <iframe id="toast-sample-4-iframe" frameborder="0" seamless width="100%" height="100%" data-src="{environment:demosBaseUrl}/notifications/toast-sample-4/" class="lazyload"></iframe>
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxToastComponent } from 'igniteui-angular/toast';
+
+@Component({
+    selector: 'app-toast-sample-4',
+    styleUrls: ['./toast-sample-4.component.scss'],
+    templateUrl: './toast-sample-4.component.html',
+    imports: [IgxButtonDirective, IgxToastComponent]
+})
+export class ToastSample4Component { }
+```
+```html
+<div>
+    <button igxButton="contained" (click)="toast.open()">Show notification</button>
+    <igx-toast #toast [displayTime]="1000">Notification displayed</igx-toast>
 </div>
+```
 
 ### Positioning
 
 Use [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=positionSettings) property to configure where the toast appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 <div>
     <button igxButton="contained" (click)="open(toast)">Show notification on top</button>
     <igx-toast #toast>Notification displayed</igx-toast>
@@ -280,7 +297,7 @@ export class ToastSample5Component {
 </div>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
@@ -310,7 +327,7 @@ When you modify a primary property, all related dependent properties are automat
   </tbody>
 </table>
 
-To get started with styling the toast, we need to import the index file, where all the theme functions and component mixins live:
+To get started with styling the toast, we need to import the index file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -319,7 +336,7 @@ To get started with styling the toast, we need to import the index file, where a
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`toast-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-toast-theme) and provide the `$background`, `$text-color` and `$border-radius` parameters.
+Following the simplest approach, we create a new theme that extends the `toast-theme` and provide the `$background`, `$text-color` and `$border-radius` parameters.
 
 ```scss
 $custom-toast-theme: toast-theme(
@@ -329,8 +346,8 @@ $custom-toast-theme: toast-theme(
 );
 ```
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
 The last step is to pass the custom toast theme:
 
@@ -415,7 +432,7 @@ $custom-toast-theme: toast-theme(
 
 ### Styling with Tailwind
 
-You can style the toast using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the toast using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
 
 Along with the Tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -433,7 +450,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [IgxToast Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-toast-theme). The syntax is as follows:
+You can find the full list of properties in the `IgxToast Theme`. The syntax is as follows:
 
 ```html
 <igx-toast
@@ -442,27 +459,63 @@ You can find the full list of properties in the [IgxToast Theme](https://www.inf
 </igx-toast>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your toast should look like this:
 
-<div class="sample-container loading" style="height:200px">
-    <iframe id="toast-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/notifications/toast-tailwind-style/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component, ElementRef, inject } from '@angular/core';
+import { IgxToastComponent } from 'igniteui-angular/toast';
+import { VerticalAlignment } from 'igniteui-angular/core';
+import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
-<div class="divider--half"></div>
+@Component({
+    selector: 'app-toast-tailwind-style',
+    styleUrls: ['./toast-tailwind-style.component.scss'],
+    templateUrl: './toast-tailwind-style.component.html',
+    imports: [IgxButtonDirective, IgxRippleDirective, IgxToastComponent]
+})
+export class ToastTailwindStyleComponent {
+    elem = inject(ElementRef);
+
+    public toast: IgxToastComponent;
+    public position = VerticalAlignment;
+
+    openToast(toast: IgxToastComponent, pos: VerticalAlignment) {
+        toast.positionSettings.verticalDirection = pos;
+        toast.open();
+    }
+}
+```
+```html
+<div class="sample-wrapper">
+    <article class="sample-column">
+        <div class="preview bottom"></div>
+        <div class="btn-group">
+            <button igxButton="contained" igxRipple="white" (click)="openToast(toast, position.Bottom)" [disabled]="toast.isVisible">Show Toast</button>
+            <button igxButton="contained" igxRipple="white" (click)="toast.close()" [disabled]="!toast.isVisible">Hide Toast</button>
+        </div>
+    </article>
+
+    <igx-toast class="!light-toast ![--background:#90B69F]" #toast [autoHide]="false" [outlet]="elem">This is the toast message.</igx-toast>
+</div>
+```
+```scss
+[igxButton] {
+    margin-inline-end: 8px;
+}
+```
+
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxToastComponent](mcp:get_api_reference?platform=angular&component=IgxToastComponent)
-- [IgxToastComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-toast-theme)
-
+<hr/>
+- [`IgxToast`](mcp:get_api_reference?platform=angular&component=IgxToastComponent)
+- `IgxToastComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

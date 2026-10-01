@@ -1,15 +1,15 @@
 ---
-title: Blazor Tree Grid Paging - Ignite UI for Blazor
-_description: Configure Blazor pagination and create custom pages in the Blazor table by Ignite UI, get data for the requested pages with variety of events.
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-_keywords: Paging, Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/paging
+title: "Blazor Tree Grid Paging - Ignite UI for Blazor"
+description: Configure Blazor pagination and create custom pages in the Blazor table by Ignite UI, get data for the requested pages with variety of events.
+keywords: Paging, Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/paging"
+llms:
+  description: "The Ignite UI for Blazor Pagination feature in Blazor Tree Grid is used to split a large set of data into a sequence of pages that have similar content."
+_componentKey: TreeGrid
 _tocName: Paging
 _premium: true
 ---
-
 # Blazor Tree Grid Pagination Overview
 
 The Ignite UI for Blazor Pagination feature in Blazor Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Tree Grid supports template for custom pages.
@@ -155,16 +155,12 @@ public class OrdersTreeData
 
 The [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator) component is used along with the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ```razor
-<IgbTreeGrid @ref=grid Data=Data className="gridSize">
+<IgbTreeGrid @ref=grid Data=Data class="gridSize">
     <IgbPaginator Page="grid.Page" TotalRecords="grid.TotalRecords" PerPage="10">
     </IgbPaginator>
 </IgbTreeGrid>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Paginator Component Demo
 
@@ -342,18 +338,10 @@ public class OrdersTreeData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- * [Paginator](../paginator.md) -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -363,8 +351,6 @@ public class OrdersTreeData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

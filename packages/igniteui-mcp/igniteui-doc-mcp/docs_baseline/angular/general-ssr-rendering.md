@@ -1,10 +1,11 @@
 ---
 title: Server-side rendering | Angular SSR | Ignite UI for Angular | Infragistics
-_description: How to use Angular Server-side rendering with Ignite UI for Angular.
-_keywords: Ignite UI for Angular, Angular SSR, Server-side rendering
+description: How to use Angular Server-side rendering with Ignite UI for Angular.
+keywords: Ignite UI for Angular, Angular SSR, Server-side rendering
+llms:
+  description: "All Angular applications run in the client's browser and often this may result in a negative performance hit on the Largest Contentful Paint (LCP) i.e. when a browser first renders the largest content of a page."
 _tocName: Server-side rendering (SSR)
 ---
-
 # Server-side Rendering with Angular SSR
 
 This topic aims at describing what Server-side Rendering is and how to configure it within Ignite UI for Angular application.
@@ -14,7 +15,6 @@ This topic aims at describing what Server-side Rendering is and how to configure
 All Angular applications run in the client's browser and often this may result in a negative performance hit on the [Largest Contentful Paint (LCP)](https://web.dev/articles/lcp) i.e. when a browser first renders the largest content of a page. This is when [Angular SSR](https://angular.dev/guide/ssr) comes in handy, you can generate the full HTML for a page on the server. It renders a client-side page to HTML on the server that is later bootstrapped on the client. Okay, but how it works?
 
 > [LCP](https://web.dev/articles/lcp) measures when the largest content of a page is visible to the user, as for [FCP](https://web.dev/first-contentful-paint) metric, it measures how long it takes the browser to render the first piece of DOM content after a user navigates to your page. See [Lighthouse performance scoring](https://web.dev/performance-scoring) for more information.
-
 
 ## How it works?
 
@@ -52,7 +52,7 @@ ng serve
 
 ## Build a new application from scratch
 
-1. Use `ng new` or the [Ignite UI CLI](./cli/getting-started-with-cli.md) `ig new` command. Alternatively, use `ng new --ssr` to create a new Angular SSR project directly, skipping step 3.
+1. Use `ng new` or the [Ignite UI CLI](/general/cli/getting-started-with-cli) `ig new` command. Alternatively, use `ng new --ssr` to create a new Angular SSR project directly, skipping step 3.
 2. Execute `ng add igniteui-angular` which installs the library's npm packages to your workspace and configures the project in the current working directory to use that library.
 3. Add Angular SSR with `ng add @angular/ssr`.
 4. Add Ignite UI for Angular components - e.g. Grid, Calendar
@@ -68,10 +68,10 @@ ng serve
 
 ## Useful resources
 
-<div class="divider--half"></div>
+<hr/>
 
 - [Angular SSR guide](https://angular.dev/guide/ssr)
 - [Server-side rendering terminology](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
-- [Getting started with Ignite UI for Angular](getting-started.md)
-- [Ignite UI CLI Guide](cli/step-by-step-guide-using-cli.md)
-- [Ignite UI for Angular Schematics](cli/step-by-step-guide-using-angular-schematics.md)
+- [Getting started with Ignite UI for Angular](/general/getting-started)
+- [Ignite UI CLI Guide](/general/cli/step-by-step-guide-using-cli)
+- [Ignite UI for Angular Schematics](/general/cli/step-by-step-guide-using-angular-schematics)

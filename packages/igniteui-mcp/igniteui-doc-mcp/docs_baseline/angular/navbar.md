@@ -1,14 +1,15 @@
 ---
 title: Angular Navbar Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Ignite UI for Angular Navbar control provides optimal UI experience with seamless integration to allow users to move within an application smoothly.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular NavBar component, Angular Navbar control, Angular Navigation Bar, Angular Navigation Bar component
-_license: MIT
+description: Ignite UI for Angular Navbar control provides optimal UI experience with seamless integration to allow users to move within an application smoothly.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular NavBar component, Angular Navbar control, Angular Navigation Bar, Angular Navigation Bar component
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Navbar is an application header component that informs the user of their current position in an app, and helps them move back (much like the “back” button in a browser)."
 _tocName: Navbar
 ---
-
 # Angular Navbar Component Overview
 
-The Ignite UI for Angular [`IgxNavbarComponent`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent) is an application header component that informs the user of their current position in an app, and helps them move back (much like the “back” button in a browser). The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
+The Ignite UI for Angular [`IgxNavbar`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent) is an application header component that informs the user of their current position in an app, and helps them move back (much like the “back” button in a browser). The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
 
 ## Angular Navbar Example
 
@@ -34,7 +35,7 @@ export class NavbarComponent { }
 </article>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Navbar
 
@@ -44,7 +45,7 @@ To get started with the Ignite UI for Angular Navbar component, first you need t
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The first step is to import the `IgxNavbarModule` inside our **app.module.ts** file.
 
@@ -88,7 +89,7 @@ Now that you have the Ignite UI for Angular Navbar module or directives imported
 Then in the template of our component we can add the following code to show a basic navbar with a title:
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <igx-navbar title="Ignite UI for Angular"> </igx-navbar>
 ```
@@ -98,17 +99,17 @@ Then in the template of our component we can add the following code to show a ba
 In order to add a menu button, we will show the action button using the `actionButtonIcon` property, and make it use a menu icon as follows:
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <igx-navbar title="Sample App" actionButtonIcon="menu" [isActionButtonVisible]="true"></igx-navbar>
 ```
 
-> [!NOTE]
-> The [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) uses the Material fontset by design.
+**Note:** 
+The [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) uses the Material fontset by design.
 
 ### Add Icon Buttons
 
-We can make our app a little more functional by adding options for searching, favorites and more. To do that let's grab the [**IgxIconButton**](icon-button.md) and [**IgxIcon**](icon.md) modules and import them in our **app.module.ts** file.
+We can make our app a little more functional by adding options for searching, favorites and more. To do that let's grab the [**IgxIconButton**](./icon-button.md) and [**IgxIcon**](./icon.md) modules and import them in our **app.module.ts** file.
 
 ```typescript
 // app.module.ts
@@ -129,7 +130,7 @@ export class AppModule {}
 Next, we need to update our template with an icon button for each of the options we want our app to provide:
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <igx-navbar title="Sample App">
   <button igxIconButton="flat">
@@ -144,8 +145,8 @@ Next, we need to update our template with an icon button for each of the options
 </igx-navbar>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 If all went well, you should see the following in your browser:
 
@@ -186,7 +187,7 @@ export class NavbarSample1Component { }
 </div>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Add Custom Action
 
@@ -201,7 +202,7 @@ What if we want to use a custom template for our app navigation on the left-most
 ```
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <igx-navbar title="Sample App">
   <igx-navbar-action>
@@ -266,14 +267,14 @@ export class NavbarSample2Component { }
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Add Navigation Icon
 
 If we want to create a navbar with an icon navigating back, we should follow a couple of steps. First, we can use the `actionButtonIcon` property to choose a suitable icon from the Material fontset. Then, we can make a simple check if there are any previously visited pages to go back to, and pass the result to the [`isActionButtonVisible`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=isActionButtonVisible) property. The last step is to create a method for navigating back and hook it to the [`action`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=action) property.
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <igx-navbar
   title="Ignite UI for Angular"
@@ -335,19 +336,20 @@ export class NavbarSample3Component {
 </div>
 ```
 
-> [!NOTE]
-> If [`igx-navbar-action`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) or [`igxNavbarAction`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) is provided, the default [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) will not be used.
+**Note:** 
+If [`igx-navbar-action`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) or [`igxNavbarAction`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) is provided, the default [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) will not be used.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Add Custom Title
 
 If we want to provide a custom content for a navbar's title, we can achieve this by using `igx-navbar-title` or `igxNavbarTitle` directive. They will replace the default navbar's title provided by `title` input property. The sample below has a custom title containing a link with an image:
 
 ```html
-<!--navbar.component.html-->
+{/*navbar.component.html*/}
 
 <div class="sample-column">
+
   <igx-navbar>
     <igx-navbar-action>
       <button igxIconButton="flat">
@@ -365,7 +367,8 @@ If we want to provide a custom content for a navbar's title, we can achieve this
           style="margin-top: 7px;"
         />
       </a>
-    </div>
+    
+</div>
 
     <button igxIconButton="flat">
       <igx-icon>search</igx-icon>
@@ -380,8 +383,8 @@ If we want to provide a custom content for a navbar's title, we can achieve this
 </div>
 ```
 
-> [!NOTE]
-> If [`igx-navbar-title`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) or [`igxNavbarTitle`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) is provided, the default [`title`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=title) will not be used.
+**Note:** 
+If [`igx-navbar-title`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) or [`igxNavbarTitle`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) is provided, the default [`title`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=title) will not be used.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -433,7 +436,7 @@ export class NavbarCustomTitleComponent { }
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
@@ -441,34 +444,15 @@ export class NavbarCustomTitleComponent { }
 
 When you modify a primary property, all related dependent properties are automatically updated to reflect the change:
 
-<table class="collapsible-table">
-    <thead>
-      <tr>
-        <th>Primary Property</th>
-        <th>Dependent Property</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody class="group">
-      <tr class="primary">
-        <td><details><summary><strong>$background</strong></summary></details></td>
-        <td>$text-color</td>
-        <td>The navbar text color</td>
-      </tr>
-      <tr class="dependent"><td></td><td>$idle-icon-color</td><td>The navbar idle icon color</td></tr>
-      <tr class="dependent"><td></td><td>$hover-icon-color</td><td>The navbar hover icon color</td></tr>
-      <tr class="dependent"><td></td><td>$border-color (changes for indigo variant only)</td><td>The navbar border color</td></tr>
-    </tbody>
-    <tbody class="group">
-      <tr class="primary">
-        <td><strong>$idle-icon-color</strong></td>
-        <td>$hover-icon-color</td>
-        <td>The navbar hover icon color</td>
-      </tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$background** | $text-color | The navbar text color |
+|  | $idle-icon-color | The navbar idle icon color |
+|  | $hover-icon-color | The navbar hover icon color |
+|  | $border-color (changes for indigo variant only) | The navbar border color |
+| **$idle-icon-color** | $hover-icon-color | The navbar hover icon color |
 
-To get started with styling the navbar, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the navbar, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -477,7 +461,7 @@ To get started with styling the navbar, we need to import the `index` file, wher
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`navbar-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navbar-theme) and provide just the `$background` and `$idle-icon-color` parameters. The theme will automatically compute all of the necessary background and foreground colors for various interaction states. If need, you can also manually override specific properties for finer control over the appearance.
+Following the simplest approach, we create a new theme that extends the `navbar-theme` and provide just the `$background` and `$idle-icon-color` parameters. The theme will automatically compute all of the necessary background and foreground colors for various interaction states. If need, you can also manually override specific properties for finer control over the appearance.
 
 ```scss
 $custom-navbar-theme: navbar-theme(
@@ -486,8 +470,8 @@ $custom-navbar-theme: navbar-theme(
 );
 ```
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
 The last step is to pass the newly created theme to the `tokens` mixin:
 
@@ -552,11 +536,11 @@ $custom-icon-button-theme: flat-icon-button-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the navbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the navbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -574,7 +558,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [navbar-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navbar-theme). The syntax is as follows:
+You can find the full list of properties in the `navbar-theme`. The syntax is as follows:
 
 ```html
 <igx-navbar class="!light-navbar ![--background:#7B9E89] ![--text-color:#121E17]" title="Sample App">
@@ -582,37 +566,65 @@ You can find the full list of properties in the [navbar-theme](https://www.infra
 </igx-navbar>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your navbar should look like this:
 
-<div class="sample-container loading" style="height:120px">
-    <iframe id="navbar-tailwind-style-iframe" data-src='{environment:demosBaseUrl}/menus/navbar-tailwind-style/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component } from '@angular/core';
+import { IgxNavbarActionDirective, IgxNavbarComponent } from 'igniteui-angular/navbar';
+import { IgxIconButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-navbar-tailwind-style',
+    styleUrls: ['./navbar-tailwind-style.component.scss'],
+    templateUrl: './navbar-tailwind-style.component.html',
+    imports: [IgxNavbarComponent, IgxNavbarActionDirective, IgxIconButtonDirective, IgxIconComponent]
+})
+
+export class NavbarTailwindStyleComponent { }
+```
+```html
+<div class="sample-column">
+    <igx-navbar class="!light-navbar ![--background:#7B9E89] ![--text-color:#121E17]" title="Sample App">
+        <igx-navbar-action>
+            <button class="!light-flat-icon-button ![--foreground:#121E17]" igxIconButton="flat">
+                <igx-icon>menu</igx-icon>
+            </button>
+        </igx-navbar-action>
+
+        <button class="!light-flat-icon-button ![--foreground:#121E17]" igxIconButton="flat">
+            <igx-icon>search</igx-icon>
+        </button>
+        <button class="!light-flat-icon-button ![--foreground:#121E17]" igxIconButton="flat">
+            <igx-icon>favorite</igx-icon>
+        </button>
+        <button class="!light-flat-icon-button ![--foreground:#121E17]" igxIconButton="flat">
+            <igx-icon>more_vert</igx-icon>
+        </button>
+    </igx-navbar>
 </div>
+```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxNavbarComponent](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent)
-- [IgxNavbarActionDirective](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective)
-- [IgxNavbarTitleDirective](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective)
-- [IgxNavbarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navbar-theme)
-
+<hr/>
+- [`IgxNavbar`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent)
+- [`IgxNavbarActionDirective`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective)
+- [`IgxNavbarTitleDirective`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective)
+- `IgxNavbarComponent Styles`
 Additional components and/or directives with relative APIs that were used:
-
-- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- `IgxIconComponent Styles`
 ## Theming Dependencies
 
-- [IgxIconComponent Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxButtonComponent Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
+- `IgxIconComponent Theme`
+- `IgxButtonComponent Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

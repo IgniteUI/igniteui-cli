@@ -1,15 +1,14 @@
 ---
-title: Blazor Hierarchical Grid Filtering - Ignite UI for Blazor
-_description: Start using angular filter to return specific data with Blazor Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "Blazor Hierarchical Grid Filtering - Ignite UI for Blazor"
+description: Start using angular filter to return specific data with Blazor Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for Blazor Filtering in Blazor Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: HierarchicalGrid
 _tocName: Filtering
 ---
-
 # Blazor Hierarchical Grid Filtering
 
 The Ignite UI for Blazor Filtering in Blazor Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
@@ -296,25 +295,21 @@ public class SingersData
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) exposes the following properties - [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowFiltering), [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowAdvancedFiltering), [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilterMode) and [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) exposes the following properties - [`IgbHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowFiltering), [`IgbHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowAdvancedFiltering), [`IgbHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=filterMode) and [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable).
 
-Property [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowFiltering) enables you to specify the following options:
-
+Property [`IgbHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgbHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilterMode) enables you to specify the following options:
-
+Property [`IgbHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) enables you to specify the following options:
-
+Property [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -325,18 +320,14 @@ Property [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColum
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowAdvancedFiltering) input property to **true**
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgbHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowAdvancedFiltering) input property to **true**
 
 ```razor
 <IgbHierarchicalGrid Data=data AutoGenerate=true AllowAdvancedFiltering=true />
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -346,11 +337,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpression&member=ignoreCase) and the initial `Condition` properties.
 
-The filtering feature is enabled for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component by setting the [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowFiltering) input to **true**. The default [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) input to **false**.
-
-<!-- ComponentEnd: HierarchicalGrid -->
+The filtering feature is enabled for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component by setting the [`IgbHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowFiltering) input to **true**. The default [`IgbHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) input to **false**.
 
 ```razor
 <IgbHierarchicalGrid Data=data AutoGenerate=false AllowFiltering=true>
@@ -359,12 +348,12 @@ The filtering feature is enabled for the [`IgbHierarchicalGrid`](mcp:get_api_ref
 </IgbHierarchicalGrid>
 ```
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), set the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilteringExpressionsTree) property to an array of [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), set the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) [`IgbFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpressionsTree) property to an array of [`IgbFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpressionsTree) for each column to be filtered.
 
 ```razor
 <IgbHierarchicalGrid
@@ -402,11 +391,12 @@ To set the initial filtering state of the [`IgbHierarchicalGrid`](mcp:get_api_re
 
     public IgbFilteringExpressionsTree filteringExpressions;
 }
+
 ```
 
 ### Filtering logic
 
-The [`FilteringLogic`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilteringLogic) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). You can change it at any time through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API, or through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) input property.
+The [`IgbFilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). You can change it at any time through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API, or through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) input property.
 
 ```razor
  <IgbHierarchicalGrid FilteringLogic="FilteringLogic.Or"></IgbHierarchicalGrid>
@@ -418,7 +408,7 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -713,14 +703,12 @@ public class SingersData
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

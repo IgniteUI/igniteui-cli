@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Scatter High Density Series | Data Binding | Infragistics
-_description: Use Infragistics Web Components map's scatter high density series to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time. Learn more about Ignite UI for Web Components map's series!
-_keywords: Web Components map, scatter high density series, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Web Components Map | Data Visualization Tools | Scatter High Density Series | Data Binding | Infragistics"
+description: Use Infragistics Web Components map's scatter high density series to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time. Learn more about Ignite UI for Web Components map's series!
+keywords: "Web Components map, scatter high density series, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "In Web Components map component, you can use the GeographicHighDensityScatterSeries to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time."
 _tocName: Geographic High Density Map
 _premium: true
 ---
-
 # Web Components Geographic High Density Map
 
-In Web Components map component, you can use the [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
+In Web Components map component, you can use the `IgcGeographicHighDensityScatterSeries` to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
 
 ## Web Components Geographic High Density Map Example
 
@@ -244,40 +245,35 @@ export class WorldUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The demo above shows the [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
+The demo above shows the `IgcGeographicHighDensityScatterSeries` series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
 
 Because there are so many data points, the series displays the scatter data as tiny dots as opposed to full size markers, and displays areas with the most data using a higher color density representing a cluster of data points.
 
 ## Data Requirements
-
-Similar to other types of scatter series in the map control, the [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) series has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#longitudeMemberPath) and [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#latitudeMemberPath) properties to map these data columns.
+Similar to other types of scatter series in the map control, the `IgcGeographicHighDensityScatterSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns.
 
 ### Data Binding
-
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `ItemsSource`|any|Gets or sets the items source |
-| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#longitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
-| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#latitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the latitude values on the assigned items |
+| `DataSource`|any|Gets or sets the items source |
+| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
 
 ## Heat Color Scale
-
 The Heat Color Scale, an optional feature, determines the color pattern within the series. The following table summarizes the properties used for determining the color scale.
 
 | Property |Type|Description |
 | ---|---|--- |
-| [`heatMinimum`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMinimum)|Double|Defines the double value representing the minimum end of the color scale |
-| [`heatMaximum`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMaximum)|Double|Defines the double value representing the maximum end of the color scale |
-| [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMinimumColor)|Color|Defines the point density color used at the bottom end of the color scale |
-| [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMaximumColor)|Color|Defines the point density color used at the top end of the color scale |
+| `HeatMinimum`|Double|Defines the double value representing the minimum end of the color scale |
+| `HeatMaximum`|Double|Defines the double value representing the maximum end of the color scale |
+| `HeatMinimumColor`|Color|Defines the point density color used at the bottom end of the color scale |
+| `HeatMaximumColor`|Color|Defines the point density color used at the top end of the color scale |
 
 ## Code Example
 
-The following code demonstrates how set the [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMinimumColor) and [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMaximumColor) properties of the [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
+The following code demonstrates how set the `HeatMinimumColor` and `HeatMaximumColor` properties of the `IgcGeographicHighDensityScatterSeries`
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -327,11 +323,4 @@ onDataLoaded(csvData: string) {
 ```
 
 ## API References
-
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMaximumColor)
-- [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMinimumColor)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#longitudeMemberPath)
+`IgcGeographicHighDensityScatterSeries`

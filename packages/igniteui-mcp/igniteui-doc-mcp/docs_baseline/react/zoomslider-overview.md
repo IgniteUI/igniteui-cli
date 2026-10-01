@@ -1,19 +1,20 @@
 ---
-title: React ZoomSlider | Data Visualization Tools | Navigation | Zooming | DataChart | Data Binding | Infragistics
-_description: Use Infragistics' React zoom slider control to easily display a subset of data with two handles representing minimum and maximum values. Improve your data visualization with Ignite UI for React zoom slider!
-_keywords: zoom slider, Ignite UI for React, Infragistics, data chart
-_license: commercial
-mentionedTypes: ["ZoomSlider", "XamDataChart"]
+title: "React ZoomSlider | Data Visualization Tools | Navigation | Zooming | DataChart | Data Binding | Infragistics"
+description: Use Infragistics' React zoom slider control to easily display a subset of data with two handles representing minimum and maximum values. Improve your data visualization with Ignite UI for React zoom slider!
+keywords: zoom slider, Ignite UI for React, Infragistics, data chart
+license: commercial
+mentionedTypes: ["ZoomSlider", "DataChart"]
+llms:
+  description: "The React ZoomSlider control provides zooming functionality to range-enabled controls."
 _tocName: Zoom Slider
 ---
-
 # React Zoom Slider Overview
 
 The React ZoomSlider control provides zooming functionality to range-enabled controls. The ZoomSlider features a horizontal scroll bar, a thumbnail of the whole range, and a resizable zoom-range window. The ZoomSlider cannot work as a standalone control and it acts as an enhancement for range-based controls like the DataChart or CategoryChart.
 
 ## React Zoom Slider Example
 
-The following sample demonstrates how to use [`IgrZoomSlider`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrzoomslider.html) to navigate content in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).
+The following sample demonstrates how to use `IgrZoomSlider` to navigate content in `IgrDataChart`.
 
 ```typescript
 export class SampleScatterStats {
@@ -763,8 +764,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ZoomSliderOverview/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 | Feature Name        | Description |
@@ -787,13 +786,13 @@ npm install --save igniteui-react-charts
 
 ## Component Modules
 
-The [`IgrZoomSlider`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrzoomslider.html) requires the following modules:
+The `IgrZoomSlider` requires the following modules:
 
 ```ts
 import { IgrZoomSliderModule } from 'igniteui-react-charts';
 import { IgrZoomSlider } from 'igniteui-react-charts';
 
-IgrDataChartInteractivityModule.register();
+IgrZoomSliderModule.register();
 ```
 
 ## Code Snippet
@@ -807,15 +806,10 @@ The following code demonstrates how to setup the ZoomSlider.
  />
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
-You can find more information about charts in [Chart Features](charts/chart-features.md) topic.
+You can find more information about charts in [Chart Features](./charts/chart-features.md) topic.
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrZoomSlider`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrzoomslider.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
+`IgrZoomSlider`
+`IgrDataChart`

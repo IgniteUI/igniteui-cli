@@ -1,19 +1,21 @@
 ---
 title: Angular Snackbar Component - MIT license 
-_description: Easily integrate a brief, single-line message within your mobile and desktop applications with Ignite UI for Angular Snackbar component.
-_keywords: Angular Snackbar component, Angular Snackbar control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: Easily integrate a brief, single-line message within your mobile and desktop applications with Ignite UI for Angular Snackbar component.
+keywords: Angular Snackbar component, Angular Snackbar control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Snackbar component provides feedback about an operation with a single-line message, which can include an action."
 _tocName: Snackbar
 ---
-
 # Angular Snackbar Component Overview
 
-<p class="highlight">The Ignite UI for Angular Snackbar component provides feedback about an operation with a single-line message, which can include an action. The Snackbar message appears above all other elements and is positioned at the bottom center of the screen.</p>
+<div class="highlight">
+The Ignite UI for Angular Snackbar component provides feedback about an operation with a single-line message, which can include an action. The Snackbar message appears above all other elements and is positioned at the bottom center of the screen.
+</div>
 
 ## Angular Snackbar Example
 
-<div class="divider--half"></div>
-
+<hr/>
 
 ```typescript
 import { Component } from '@angular/core';
@@ -43,8 +45,7 @@ export class SnackbarSample1Component { }
 } */
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Snackbar
 
@@ -54,7 +55,7 @@ To get started with the Ignite UI for Angular Snackbar component, first you need
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The next step is to import the `IgxSnackbarModule` in your **app.module.ts** file.
 
@@ -88,7 +89,8 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     <button igxButton="contained" (click)="snackbar.open()">Delete Message</button>
     <div>
         <igx-snackbar #snackbar>Message deleted</igx-snackbar>
-    </div>
+    
+</div>
     `,
     styleUrls: ['home.component.scss'],
     standalone: true,
@@ -106,7 +108,7 @@ Now that you have the Ignite UI for Angular Snackbar module or component importe
 In order to display the snackbar component, use its [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and call it on a button click.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="snackbar.open()">Delete Message</button>
 <div>
@@ -118,7 +120,7 @@ If the sample is configured properly, you should see the demo sample. A snackbar
 As you can see in the code snippet above, one way to set the massage displayed in the snackbar is to use the content projection. But if you need to switch the value programmatically based on some custom logic you can just pass the value as a parameter to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="snackbar.open('Message deleted')">Delete Message</button>
 <button igxButton="contained" (click)="snackbar.open('Message deletion was not successful. Please try again')">Delete Message</button>
@@ -132,7 +134,7 @@ As you can see in the code snippet above, one way to set the massage displayed i
 Once opened, the snackbar disappears after a period specified by the [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change it by setting [`autoHide`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=autoHide) to **false**. In this way, the snackbar will remain visible. Using the snackbar [`close()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=close) method, you can close the component in the code.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <button igxButton="contained" (click)="snackbar.open()">Send message</button>
 <div>
@@ -219,7 +221,7 @@ Use [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxSnackbar
 We can also customize the content of the Snackbar to display more complex elements than a message and a button. If we want to show the snackbar while loading a file, for example, a loading animation could be added to its content.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 <button igxButton="contained" (click)="snackbar.open()">Load file</button>
 <div>
   <igx-snackbar #snackbar displayTime="5000">File loading
@@ -264,7 +266,6 @@ We can also customize the content of the Snackbar to display more complex elemen
 ```
 
 As a result, a message and three loading dots appear in the snackbar.
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -321,7 +322,6 @@ export class SnackbarSample5Component { }
 }
 ```
 
-
 ### Snackbar in list
 
 Having all main snackbar features covered, we can integrate this component in a more interesting scenario. We can use the snackbar to provide a notification and the ability to revert actions.
@@ -329,22 +329,28 @@ Having all main snackbar features covered, we can integrate this component in a 
 Let’s create a list with contacts that can be deleted. When an item is deleted, a snackbar is displayed containing a message and a button to undo the action.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 <igx-list>
     <igx-list-item [isHeader]="true">Contacts</igx-list-item>
 
     <igx-list-item igxRipple="pink" igxRippleTarget=".igx-list__item" *ngFor="let item of navItems">
         <div class="item-container">
+
             <div class="contact">
+
                 <igx-avatar [src]="item.avatar" shape="circle"></igx-avatar>
                 <div class="contact__info">
+
                     <span class="name">{{item.text}}</span>
-                </div>
-            </div>
+                
+</div>
+            
+</div>
             <span igxIconButton="flat" igxRipple igxRippleCentered="true" (click)="delete(item)">
                 <igx-icon [style.color]="'#ff5252'">delete</igx-icon>
             </span>
-        </div>
+        
+</div>
 
     </igx-list-item>
 
@@ -352,8 +358,9 @@ Let’s create a list with contacts that can be deleted. When an item is deleted
 </igx-list>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 
 ```typescript
 //sample.component.ts
@@ -488,7 +495,7 @@ export class SnackbarSample4Component implements OnInit {
 Use [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=positionSettings) property to configure where the snackbar appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 <button igxButton="contained" (click)="open(snackbar)">Show notification on top</button>
 <igx-snackbar #snackbar>Notification displayed</igx-snackbar>
 ```
@@ -530,7 +537,7 @@ When you modify a primary property, all related dependent properties are automat
     </tbody>
 </table>
 
-To get started with styling the snackbar, we need to import the index file, where all the theme functions and component mixins live:
+To get started with styling the snackbar, we need to import the index file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -539,7 +546,7 @@ To get started with styling the snackbar, we need to import the index file, wher
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`snackbar-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-snackbar-theme) and accepts the `$text-color`, `$background`, `$button-color` and the `$border-radius` parameters.
+Following the simplest approach, we create a new theme that extends the `snackbar-theme` and accepts the `$text-color`, `$background`, `$button-color` and the `$border-radius` parameters.
 
 ```scss
 $dark-snackbar: snackbar-theme(
@@ -550,8 +557,8 @@ $dark-snackbar: snackbar-theme(
 );
 ```
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
 The last step is to **include** the component theme in our application.
 
@@ -606,11 +613,11 @@ $dark-snackbar: snackbar-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the snackbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the snackbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -628,7 +635,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [snackbar-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-snackbar-theme). The syntax is as follows:
+You can find the full list of properties in the `snackbar-theme`. The syntax is as follows:
 
 ```html
 <igx-snackbar
@@ -638,28 +645,61 @@ You can find the full list of properties in the [snackbar-theme](https://www.inf
 </igx-snackbar>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your snackbar should look like this:
 
-<div class="sample-container loading" style="height:150px">
-    <iframe id="snackbar-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/notifications/snackbar-tailwind-style/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component, ElementRef, inject } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
+
+@Component({
+    selector: 'app-snackbar-tailwind-style',
+    styleUrls: ['./snackbar-tailwind-style.component.scss'],
+    templateUrl: './snackbar-tailwind-style.component.html',
+    imports: [IgxButtonDirective, IgxSnackbarComponent]
+})
+export class SnackbarTailwindStyleComponent {
+  elem = inject(ElementRef);
+
+
+  public close(element) {
+    element.close();
+  }
+}
+```
+```html
+<button igxButton="contained" (click)="snackbar.open()">Send message</button>
+<div>
+  <igx-snackbar
+  class="!light-snackbar ![--background:#7B9E89]
+  ![--button-color:#DD0D4B]"
+  #snackbar
+  [autoHide]="false"
+  [outlet]="elem"
+  actionText="Close"
+  (clicked)="close(snackbar)">
+    Message sent
+  </igx-snackbar>
 </div>
+```
+```scss
+:host {
+    display: block;
+    height: 100vh;
+}
+```
 
 ## API References
-
-In this article we learned how to use and configure the [`IgxSnackbarComponent`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent). For more details in regards its API, take a look at the links below:
-
-- [`IgxSnackbarComponent`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
-
+In this article we learned how to use and configure the [`IgxSnackbar`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent). For more details in regards its API, take a look at the links below:
+- [`IgxSnackbar`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
 Styles:
-
-- [`IgxSnackbarComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-snackbar-theme)
-
+- `IgxSnackbarComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

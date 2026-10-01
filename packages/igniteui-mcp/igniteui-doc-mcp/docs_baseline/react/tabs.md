@@ -1,12 +1,13 @@
 ---
-title: React Tabs Control | Layout Controls | Ignite UI for React
-_description: React Tabs component allows users to place tabs at the top and switch between similar data sets. Try it Now
-_keywords: React, UI controls, web widgets, UI widgets, React Tabs Component, Infragistics
-_license: MIT
+title: "React Tabs Control | Layout Controls | Ignite UI for React"
+description: "React Tabs component allows users to place tabs at the top and switch between similar data sets. Try it Now"
+keywords: "React, UI controls, web widgets, UI widgets, React Tabs Component, Infragistics"
+license: MIT
 mentionedTypes: ["Tabs", "Tab", "Icon", "IconButton", "RadioGroup"]
+llms:
+  description: "The React Tabs is a lightweight and user-friendly component that organizes corresponding content in a tab format or a collection of tabs typically placed horizontally."
 _tocName: Tabs
 ---
-
 # React Tabs Overview
 
 The React Tabs is a lightweight and user-friendly component that organizes corresponding content in a tab format or a collection of tabs typically placed horizontally. The React Tab enables end-users to easily click through and display different views. There are several features and customization options like tab orientation, templating, built-in header styles, animation, scroll buttons, and more.
@@ -90,31 +91,33 @@ Simple [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) decla
 ```tsx
 <IgrTabs>
     <IgrTab label="Tab 1">
-      <span>Content for tab 1</span>
+        <span>Content for tab 1</span>
     </IgrTab>
     <IgrTab label="Tab 2">
-      <span>Content for tab 2</span>
+        <span>Content for tab 2</span>
     </IgrTab>
     <IgrTab>
-      <div slot="label">Tab 3</div>
-      <span>Content for tab 3</span>
+        <span slot="label">Tab 3</span>
+        <span>Content for tab 3</span>
     </IgrTab>
 </IgrTabs>
 ```
 
-Tab text can be set either as simple string using the [`label`](mcp:get_api_reference?platform=react&component=IgrTab&member=label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+Tab text can be set either as simple string using the [`Label`](mcp:get_api_reference?platform=react&component=IgrTab&member=label) property or by assigning children to the `label` slot. Any remaining children in the `default` slot are rendered as the tab content.
+
+When using the `label` slot, we recommend using a `<span>` element when you want to provide text and an [`<igc-icon>`](../layouts/icon.md) or [`<igc-icon-button>`](../inputs/icon-button.md) component when you want to display icons.
 
 ### Selection
 
-The [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) emits `Change` event when the user selects an item either by key press or click. The [`select`](mcp:get_api_reference?platform=react&component=IgrTabs&member=select) method allows you to select a tab by specifying the [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab) or its id.
+The [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) emits [`Change`](mcp:get_api_reference?platform=react&component=IgrTabs&member=change) event when the user selects an item either by key press or click. The [`Select`](mcp:get_api_reference?platform=react&component=IgrTabs&member=select) method allows you to select a tab by specifying the [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab) or its id.
 
 If the selected tab is not specified on initial load, the first tab that is not disabled will be selected.
 
-The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
+The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`Activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
 
 ### Disabled Tab
 
-A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=react&component=IgrTab&member=disabled) attribute:
+A tab is disabled by setting the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrTab&member=disabled) attribute:
 
 ```tsx
 <IgrTab label="Tab 1" disabled={true}></IgrTab>
@@ -122,7 +125,7 @@ A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=rea
 
 ### Alignment
 
-The [`alignment`](mcp:get_api_reference?platform=react&component=IgrTabs&member=alignment) property controls how React tabs are positioned. It accepts the following values:
+The [`Alignment`](mcp:get_api_reference?platform=react&component=IgrTabs&member=alignment) property controls how React tabs are positioned. It accepts the following values:
 
 - `Start` (default): the width of the tab depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container's left side.
 - `Center`: the width of the tab depends on the content and occupies the tabs container's center.
@@ -232,15 +235,15 @@ root.render(<Scrolling />);
 
 |Keys|Description|
 |----|-----------|
-| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
-| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
+| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab.  |
+| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
 | <kbd>HOME</kbd> | Selects the first tab. |
 | <kbd>END</kbd> | Selects the last tab. |
-| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is `Manual` |
+| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`Activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is `Manual` |
 
 ### Prefix / Suffix
 
-Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot, which can be used to display an icon, text, or both, each tab also provides `prefix` and `suffix` slots for displaying additional content at the beginning and/or the end. When slotting content into the `prefix` and `suffix` slots, we recommend using a `<span>` element for symbols or emojis, and an [`<igc-icon>`](../layouts/icon.md) or [`<igc-icon-button>`](../inputs/icon-button.md) component for icons.
 
 ```css
 /* shared styles are loaded from: */
@@ -463,12 +466,11 @@ root.render(<TabsStyling/>);
 
 ## API Reference
 
-- [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs)
-- [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab)
+[`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs)
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+[`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
 
 ## Additional Resources
 

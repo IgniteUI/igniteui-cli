@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics
-_description: Use Infragistics Web Components map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for Web Components map's series!
-_keywords: Web Components map, scatter proportional series, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Web Components Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics"
+description: Use Infragistics Web Components map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for Web Components map's series!
+keywords: "Web Components map, scatter proportional series, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "In Web Components map component, you can use the GeographicProportionalSymbolSeries to plot bubbles or proportional markers at the geographic locations specified by the data in your application."
 _tocName: Geographic Bubble Map
 _premium: true
 ---
-
 # Web Components Geographic Bubble Map
 
-In Web Components map component, you can use the [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html) to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
+In Web Components map component, you can use the `IgcGeographicProportionalSymbolSeries` to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
 
 ## Web Components Geographic Bubble Map Example
 
@@ -660,25 +661,22 @@ export class WorldLocations {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The demo above shows the [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html) series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
+The demo above shows the `IgcGeographicProportionalSymbolSeries` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
 
 ## Configuration Summary
-
-Similar to other types of scatter series in the map control, the [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html) series has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath) and [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath) properties to map these data columns. The [`radiusScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusScale) and [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusMemberPath) will settings configures the radius for the bubbles.
+Similar to other types of scatter series in the map control, the `IgcGeographicProportionalSymbolSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns. The `RadiusScale` and `RadiusMemberPath` will settings configures the radius for the bubbles.
 
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `ItemsSource`|any|Gets or sets the items source |
-| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
-| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the latitude values on the assigned items |
-| [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)|string|Sets the path to use to get the radius values for the series. |
-| [`radiusScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusScale)|[`IgcSizeScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent)|Gets or sets the radius scale property for the current bubble series. |
-| [`minimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
-| [`maximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
+| `DataSource`|any|Gets or sets the items source |
+| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `RadiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
+| `RadiusScale`|[`IgcSizeScale`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent)|Gets or sets the radius scale property for the current bubble series. |
+| [`MinimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
+| [`MaximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
 
 ## Code Snippet
 
@@ -732,9 +730,5 @@ addSeriesWith(locations: any[])
 
 ## API References
 
-- [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)
-- [`radiusScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusScale)
+`IgcGeographicProportionalSymbolSeries`<br />
+`RadiusScale`<br />

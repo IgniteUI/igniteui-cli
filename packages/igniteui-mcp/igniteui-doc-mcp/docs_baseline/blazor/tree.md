@@ -1,12 +1,13 @@
 ---
-title: Blazor Tree Component | Infragistics
-_description: With Blazor Tree component you can display hierarchical data in a tree-view structure, customize nodes easily and load data on demand. Try it now.
-_keywords: Blazor Tree, Item Tree, overview, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Tree Component | Infragistics"
+description: With Blazor Tree component you can display hierarchical data in a tree-view structure, customize nodes easily and load data on demand. Try it now.
+keywords: "Blazor Tree, Item Tree, overview, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["Tree", "TreeItem", "Icon", "CircularProgress"]
+llms:
+  description: "Ignite UI for Blazor Tree, also known as TreeView component, is a high-performance control that visualizes expandable data structures within a tree-like UI, enabling you to apply load on demand for child items."
 _tocName: Tree
 ---
-
 # Blazor Tree Overview
 
 Ignite UI for Blazor Tree, also known as TreeView component, is a high-performance control that visualizes expandable data structures within a tree-like UI, enabling you to apply load on demand for child items. The Ignite UI for Blazor Tree also provides features like expanding and collapsing nodes, nested app navigation, Ignite UI for Blazor Tree nodes either can be generated manually or from a bound data source.
@@ -55,17 +56,15 @@ In this basic Ignite UI for Blazor Tree example, you can see how to define a tre
 }
 ```
 
-<div class="divider--half"></div>
-
 ## How to Use Ignite UI for Blazor Tree With Ignite UI
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(
@@ -77,10 +76,9 @@ builder.Services.AddIgniteUIBlazor(
 The simplest way to start using the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) is as follows:
 
 ### Declaring a tree
-
 [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) is the representation of every item that belongs to the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree).
-Items provide [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Disabled), [`Active`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Active), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Selected) and [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
-The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Value) property can be used to add a reference to the data entry the item represents.
+Items provide [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=disabled), [`Active`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=active), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=selected) and [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
+The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=value) property can be used to add a reference to the data entry the item represents.
 
 Items can be declared using one of the following approaches.
 
@@ -100,7 +98,7 @@ Items can be bound to a data model so that their expanded and selected states ar
 
 - Declaring a tree by creating static unbound items
 
-In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`Label`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Label) property or provide a custom slot content for the [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) label.
+In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`Label`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=label) property or provide a custom slot content for the [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) label.
 
 ```razor
 <IgbTree>
@@ -121,21 +119,20 @@ In order to render a tree you do not necessarily need a data set - individual it
 </IgbTree>
 ```
 
-> [!Note]
-> You can provide a custom slot content for each [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
+**Note:** 
+You can provide a custom slot content for each [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions
 
 [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) could be expanded or collapsed:
-
 - by clicking on the item expand indicator (default behavior).
-- by clicking on the item if the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) [`ToggleNodeOnClick`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=ToggleNodeOnClick) property is set to `true`.
+- by clicking on the item if the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) [`ToggleNodeOnClick`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=toggleNodeOnClick) property is set to `true`.
 
-By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`SingleBranchExpand`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=SingleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
+By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`SingleBranchExpand`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=singleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
 
 ## Blazor Tree Selection
 
-In order to setup item selection in the Ignite UI for Blazor Tree component, you just need to set its [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=Selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
+In order to setup item selection in the Ignite UI for Blazor Tree component, you just need to set its [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
 
 ### None
 
@@ -143,7 +140,7 @@ In the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) by d
 
 ### Multiple
 
-To enable multiple item selection in the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) just set the [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=Selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
+To enable multiple item selection in the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) just set the [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
 
 ```razor
 <IgbTree Selection=TreeSelection.Multiple>
@@ -151,7 +148,6 @@ To enable multiple item selection in the [`IgbTree`](mcp:get_api_reference?platf
 ```
 
 ### Cascade
-
 To enable cascade item selection in the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree), just set the selection property to **cascade**. This will render a checkbox for every item.
 
 ```razor
@@ -162,7 +158,6 @@ To enable cascade item selection in the [`IgbTree`](mcp:get_api_reference?platfo
 In this mode a parent's selection state entirely depends on the selection state of its children. When a parent has some selected and some deselected children, its checkbox is in an indeterminate state.
 
 ## Keyboard Navigation
-
 Keyboard navigation in [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
 
 The [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) navigation is compliant with W3C accessibility standards and convenient to use.
@@ -182,7 +177,7 @@ The [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) navigat
 - <kbd>SPACE</kbd> - toggles selection of the current item. Marks the node as active.
 - <kbd>SHIFT</kbd> + <kbd>SPACE</kbd> - toggles selection of all items between the active one and the one pressed Space while holding <kbd>SHIFT</kbd> if selection is enabled.
 - <kbd>ENTER</kbd> - activates the focused item. If the item has link in it, opens the link.
-- <kbd>\*</kbd> - expands the item and all sibling items on the same level.
+- <kbd>*</kbd> - expands the item and all sibling items on the same level.
 
 When selection is enabled, end-user selection of items is only allowed through the rendered checkbox. Since both selection types allow multiple selection, the following mouse and keyboard interactions are available:
 
@@ -249,15 +244,12 @@ igc-tree-item {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree)
-- [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree)<br />
+[`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)<br />
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)<br />
+[`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)<br />
 
 ## Additional Resources
 

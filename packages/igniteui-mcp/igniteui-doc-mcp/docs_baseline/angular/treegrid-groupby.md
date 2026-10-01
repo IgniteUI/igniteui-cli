@@ -1,15 +1,16 @@
 ---
 title: Angular Tree Grid Group By | Group by multiple fields | Infragistics
-_description: Configure angular group by that allows visualizing of data records in Angular table, visualize the grouped data in separate and convenient column group.
-_keywords: angular group by, igniteui for angular, infragistics
-_license: commercial
+description: Configure angular group by that allows visualizing of data records in Angular table, visualize the grouped data in separate and convenient column group.
+keywords: angular group by, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "If you have non-hierarchical data and you want to group by one or more columns and populate the parent rows with aggregated values, you could use the TreeGrid along with treeGridGrouping pipe and the UI component with selector igx-tree-grid-group-by-area."
 _tocName: Group By
 _premium: true
 ---
-
 # Angular Tree Grid Group By
 
-If you have non-hierarchical data and you want to **group by** one or more columns and populate the parent rows with **aggregated values**, you could use the [`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) along with `treeGridGrouping` pipe and the UI component with selector `igx-tree-grid-group-by-area`.
+If you have non-hierarchical data and you want to **group by** one or more columns and populate the parent rows with **aggregated values**, you could use the [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) along with `treeGridGrouping` pipe and the UI component with selector `igx-tree-grid-group-by-area`.
 
 The `treeGridGrouping` pipe groups the data based on the provided parameters and the resulting hierarchy is displayed in a separate column. The pipe can also calculate aggregated values for the generated parent rows if aggregations are provided. Here is an example of how to use the pipe in the template:
 
@@ -18,11 +19,12 @@ The `treeGridGrouping` pipe groups the data based on the provided parameters and
                [data]="data | treeGridGrouping:groupingExpressions:groupKey:childDataKey:grid:aggregations"
                [childDataKey]="childDataKey"
                [sortStrategy]="sorting">
+</igx-tree-grid>
 ```
 
 The pipe arguments are the following:
 
-- groupingExpressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
+- groupingExpressions - an array of [`IgxIGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
 - groupKey - a string value for the name of the generated hierarchy column
 - childDataKey - a string value for the field where the child collection of the generated parent rows is stored
 - grid - `IgxTreeGridComponent` that is used for the grouping
@@ -41,13 +43,13 @@ The UI component with selector `igx-tree-grid-group-by-area` handles the UI inte
 The component's inputs are the following:
 
 - grid - `IgxTreeGridComponent` that is used for the grouping
-- expressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains the fields used to generate the hierarchy
+- expressions - an array of [`IgxIGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains the fields used to generate the hierarchy
 - hideGroupedColumns - a boolean value indicating whether to hide the columns by which grouping was performed
 - dropAreaTemplate - a template for the drop area that can be used to override the default drop area template
 - dropAreaMessage - a string that can be used to override the default message for the default drop area template
 
-> [!NOTE]
-> In order for the sorting to work correctly you should set the `sortStrategy` property of the `IgxTreeGridComponent` to an instance of `IgxGroupedTreeGridSorting`.
+**Note:** 
+In order for the sorting to work correctly you should set the `sortStrategy` property of the `IgxTreeGridComponent` to an instance of `IgxGroupedTreeGridSorting`.
 
 ## Angular Tree Grid Group By Example
 
@@ -714,8 +716,6 @@ igx-grid {
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Implementation
 
 In this sample we are using the `treeGridGrouping` pipe and the UI component with selector `igx-tree-grid-group-by-area` for the grouping. The data is grouped by the **"category"**, **"type"** and **"contract"** fields. The resulting hierarchy is displayed in the newly created **"categories"** column. The pipe also calculates aggregated values for the generated parent rows for the **"price"**, **"change"** and **"changeP"** columns.
@@ -731,6 +731,7 @@ In this sample we are using the `treeGridGrouping` pipe and the UI component wit
         [hideGroupedColumns]="true">
     </igx-tree-grid-group-by-area>
     <igx-column [field]="groupColumnKey"></igx-column>
+</igx-tree-grid>
 ```
 
 Here you can see how the grouping expressions and aggregations are defined:
@@ -906,11 +907,9 @@ igx-grid {
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Implementation
 
-In this sample, data is loaded in portions. Initially, only the top level categories are displayed, then child data is served once a parent row is expanded. For more information on this approach, please refer to the [Tree Grid Load On Demand](load-on-demand.md) topic. The data is grouped by the **"ShipCountry"**, **"ShipCity"** and **"Discontinued"** fields and the resulting hierarchy is displayed in a separate column. The grouping is performed on a remote service - the data is modified and corresponding child and parent keys are assigned that are used to display the final data in a hierarchical view. For more information on how this service works you can take a look at the `TreeGridGroupingLoadOnDemandService` class in the `remoteService.ts` file.
+In this sample, data is loaded in portions. Initially, only the top level categories are displayed, then child data is served once a parent row is expanded. For more information on this approach, please refer to the [Tree Grid Load On Demand](/treegrid/load-on-demand) topic. The data is grouped by the **"ShipCountry"**, **"ShipCity"** and **"Discontinued"** fields and the resulting hierarchy is displayed in a separate column. The grouping is performed on a remote service - the data is modified and corresponding child and parent keys are assigned that are used to display the final data in a hierarchical view. For more information on how this service works you can take a look at the `TreeGridGroupingLoadOnDemandService` class in the `remoteService.ts` file.
 
 Here is an example of how to use load on demand:
 
@@ -928,9 +927,10 @@ Here is an example of how to use load on demand:
             [hideGroupedColumns]="true">
         </igx-tree-grid-group-by-area>
         <igx-column [field]="groupColumnKey"></igx-column>
+</igx-tree-grid>
 ```
 
-In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand) - the children data is retrieved from the server and it is assigned to the requested parent row based on the grouping parameters.
+In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`IgxTreeGrid.loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand) - the children data is retrieved from the server and it is assigned to the requested parent row based on the grouping parameters.
 
 ```typescript
 public groupingExpressions: IGroupingExpression[] = [
@@ -973,21 +973,14 @@ private reloadData() {
 | Grouping is not updated with batch editing | When using Tree Grid Group By with batch editing enabled (`batchEditing=true`), the grouping is not automatically updated when editing column values that are used for grouping. The grouping will only be updated after committing the transaction. |
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- `IgxGridComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [TreeGrid overview](/treegrid/tree-grid)
+- [TreeGrid Summaries](/treegrid/summaries)
+- [Grid Summaries](/grid/summaries)
 
-- [TreeGrid overview](tree-grid.md)
-- [TreeGrid Summaries](summaries.md)
-- [Grid Summaries](../grid/summaries.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

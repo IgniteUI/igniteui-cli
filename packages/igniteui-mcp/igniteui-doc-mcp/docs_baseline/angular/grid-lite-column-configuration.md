@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Cell Template | Ignite UI for Angular | MIT license
-_description: Grid Lite column configuration and column properties. Try our open-source Angular Grid Lite - lightweight and packed with essential features.
-_keywords: column configuration, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Grid Lite column configuration and column properties. Try our open-source Angular Grid Lite - lightweight and packed with essential features.
+keywords: column configuration, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "Columns are defined declaratively using column child components within the grid."
 _tocName: Column Configuration
 ---
-
 # Column Configuration
 
 Columns are defined declaratively using column child components within the grid. The `field` property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
@@ -19,7 +20,7 @@ Columns are defined declaratively using column child components within the grid.
     header="Account Number"
     ...
   ></igx-grid-lite-column>
-  <!-- Additional columns -->
+  {/* Additional columns */}
 </igx-grid-lite>
 ```
 
@@ -50,8 +51,8 @@ The previous snippet will result in the grid automatically creating columns equi
 
 Useful for a quick render of some data without any additional customizations.
 
->[!NOTE]
->This is a one-time operation which is executed when the grid is initially added to the DOM. Passing an empty data source or having a late bound data source (such as a HTTP request) will usually result in empty column configuration for the grid. This property is ignored if any existing column configuration already exists in the grid. See [the data binding topic](./binding.md) for additional information on auto-generating the column configuration based on the data source.
+**Note:** 
+This is a one-time operation which is executed when the grid is initially added to the DOM. Passing an empty data source or having a late bound data source (such as a HTTP request) will usually result in empty column configuration for the grid. This property is ignored if any existing column configuration already exists in the grid. See [the data binding topic](/grid-lite/binding) for additional information on auto-generating the column configuration based on the data source.
 
 ## Additional Column Configuration
 
@@ -89,8 +90,8 @@ Each column of the Grid Lite component can be configured to be resizable by sett
 
 If a column is set to be resizable, you can drag the right size of the column header to either increase/decrease  the column width. Double-clicking on the resize area will trigger auto-sizing of the column where it will try set its width according to the largest content of its cells/header.
 
->[!NOTE]
->Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
+**Note:** 
+Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
 
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.
 
@@ -274,19 +275,17 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
-
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
 
 ## Additional Resources
 
-- [Data Binding](binding.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Data Binding](/grid-lite/binding)
+- [Sorting](/grid-lite/sorting)
+- [Filtering](/grid-lite/filtering)
+- [Theming & Styling](/grid-lite/theming)
 
 Our community is active and always welcoming to new ideas.
 

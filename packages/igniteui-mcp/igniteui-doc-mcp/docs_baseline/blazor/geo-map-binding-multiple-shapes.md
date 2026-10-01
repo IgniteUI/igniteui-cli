@@ -1,14 +1,15 @@
 ---
-title: Blazor Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics
-_description: Use Infragistics' Blazor to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for Blazor map tutorials!
-_keywords: Blazor map, shape files, Ignite UI for Blazor, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Blazor Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics"
+description: Use Infragistics' Blazor to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for Blazor map tutorials!
+keywords: "Blazor map, shape files, Ignite UI for Blazor, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "In the Ignite UI for Blazor map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data."
 _tocName: Binding Multiple Shapes
 _premium: true
 ---
-
 # Blazor Binding and Overlaying Multiple Shape Files
 
 In the Ignite UI for Blazor map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. For example, [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) for plotting geographic locations of ports, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) for plotting routes between ports, and the [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries) for plotting shapes of countries.
@@ -58,9 +59,7 @@ In the Ignite UI for Blazor map, you can add multiple geographic series objects 
 }
 ```
 
-<div class="divider--half"></div>
-
-This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) object.
+This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) class. Refer to the [Binding Shape Files](./geo-map-binding-shp-file.md) topic for more information about [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) object.
 
 - [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) – displays locations of major cities
 - [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) – displays routes between major ports
@@ -72,7 +71,7 @@ You can use geographic series in above or other combinations to plot desired dat
 
 First, let's import required components and modules:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(
@@ -94,7 +93,7 @@ Next, we need to create a map with a few Geographic Series that will later load 
 
 ## Loading Shapefiles
 
-Next, in constructor of your page, add a [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) for each shapefile that you want to display in the geographic map component.
+Next, in constructor of your page, add a [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) for each shapefile that you want to display in the geographic map component.
 
 ```razor
 public IgbShapeDataSource AsiaShape;
@@ -131,6 +130,7 @@ For your convenience, all above code snippets are combined into one code block b
 ```razor
 @using IgniteUI.Blazor.Controls
 
+
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicShapeSeries ShapefileDataSource="AsiaShape" Outline="Black" Thickness="1" Brush="Red" />
     <IgbGeographicShapeSeries ShapefileDataSource="EuropeShape" Outline="Black" Thickness="1" Brush="Purple" />
@@ -159,8 +159,7 @@ For your convenience, all above code snippets are combined into one code block b
 ```
 
 ## API References
-
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
-- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
-- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+[`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
+[`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord)

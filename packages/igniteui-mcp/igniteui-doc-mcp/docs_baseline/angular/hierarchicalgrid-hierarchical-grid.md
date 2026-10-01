@@ -1,18 +1,20 @@
 ---
 title: Angular Hierarchical Data Grid | Material Table | Ignite UI for Angular | Infragistics
-_description: Learn how to use Ignite UI for Angular data grid, based on Angular Table and create a touch-responsive angular component with variety of angular events.
-_keywords: angular hierarchical data grid, angular hierarchical table, angular hierarchical data grid component, angular hierarchical table component, angular UI components, igniteui for angular, infragistics
-_license: commercial
+description: Learn how to use Ignite UI for Angular data grid, based on Angular Table and create a touch-responsive angular component with variety of angular events.
+keywords: angular hierarchical data grid, angular hierarchical table, angular hierarchical data grid component, angular hierarchical table component, angular UI components, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for Angular Hierarchical Data Grid is used to display and manipulate hierarchical tabular data."
 _tocName: Hierarchical Grid
+_premium: true
 ---
-
 # Angular Hierarchical Data Grid Component Overview
 
 The Ignite UI for Angular Hierarchical Data Grid is used to display and manipulate hierarchical tabular data. Quickly bind your data with very little code or use a variety of events to customize different behaviors. This component provides a rich set of features like data selection, excel style filtering, sorting, paging, templating, column moving, column pinning, export to Excel, CSV and PDF and more. The Hierarchical Grid builds upon the Flat Grid Component and extends its functionality by allowing the users to expand or collapse the rows of the parent grid, revealing corresponding child grids, when more detailed information is needed.
 
 ## Angular Hierarchical Data Grid Example
 
-In this angular grid example you can see how users can visualize hierarchical sets of data and use cell templating to add other visual components like [Sparkline](../charts/types/sparkline-chart.md).
+In this angular grid example you can see how users can visualize hierarchical sets of data and use cell templating to add other visual components like [Sparkline](/charts/types/sparkline-chart).
 
 ```typescript
 import { Component, inject } from '@angular/core';
@@ -143,15 +145,7 @@ export class HGridColumnResizingSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Ignite UI for Angular Hierarchical Data Grid
-
-> [!NOTE]
-> This component can utilize the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) **optionally**. It can be imported in the root module of the application in order for touch interactions to work as expected.
-
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 To get started with the Ignite UI for Angular Hierarchical Data Grid component, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
 
@@ -159,7 +153,7 @@ To get started with the Ignite UI for Angular Hierarchical Data Grid component, 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](../general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxHierarchicalGridModule` in your **app.module.ts** file.
 
@@ -266,8 +260,8 @@ Each `igx-row-island` should specify the key of the property that holds the chil
 </igx-hierarchical-grid>
 ```
 
-> [!NOTE]
-> Note that instead of `data` the user configures only the `key` that the `igx-hierarchical-grid` needs to read to set the data automatically.
+**Note:** 
+Note that instead of `data` the user configures only the `key` that the `igx-hierarchical-grid` needs to read to set the data automatically.
 
 ### Using Load-On-Demand
 
@@ -357,7 +351,7 @@ export class RemoteLoDService {
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`IgxTreeGrid.hasChildrenKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igx-hierarchical-grid #grid [data]="data" primaryKey="ID" hasChildrenKey="hasChildren">
@@ -365,9 +359,9 @@ If you have a way to provide information whether a row has children prior to its
 </igx-hierarchical-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=haschildrenkey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`IgxHierarchicalGrid.haschildrenkey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=haschildrenkey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [showExpandAll](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=showExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`IgxHierarchicalGrid.showExpandAll`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -418,24 +412,22 @@ The Selection and Navigation features work globally for the whole `igx-hierarchi
 
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
-<img class="responsive-img" src="../../images/unfold_less_icon_screenshot.jpg" srcset="../../images/unfold_less_icon_screenshoto@2x.jpg 2x" alt="Collapse All Icon" />
-
 ## Sizing
 
-See the [Grid Sizing](sizing.md) topic.
+See the [Grid Sizing](/hierarchicalgrid/sizing) topic.
 
 ## CRUD operations
 
-> [!NOTE]
-> An important difference from the flat Data Grid is that each instance for a given row island has the same transaction service instance and accumulates the same transaction log. In order to enable the CRUD functionality users should inject the `IgxHierarchicalTransactionServiceFactory`.
+**Note:** 
+An important difference from the flat Data Grid is that each instance for a given row island has the same transaction service instance and accumulates the same transaction log. In order to enable the CRUD functionality users should inject the `IgxHierarchicalTransactionServiceFactory`.
 
 Calling CRUD API methods should still be done through each separate grid instance.
 
-Check out the How-to [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md) topic.
+Check out the How-to [Build CRUD operations with igxGrid](/general/how-to/how-to-perform-crud) topic.
 
 ## Styling
 
-The igxHierarchicalGrid allows styling through the [`Ignite UI for Angular Theme Library`](../themes/sass/component-themes.md). The grid's [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) exposes a wide variety of properties, which allow the customization of all the features of the grid.
+The igxHierarchicalGrid allows styling through the [`Ignite UI for Angular Theme Library`](/themes/sass/component-themes). The grid's `grid-theme` exposes a wide variety of properties, which allow the customization of all the features of the grid.
 
 In the below steps, we are going through the steps of customizing the igxHierarchicalGrid styling.
 
@@ -452,28 +444,27 @@ To begin the customization of the hierarchical grid, you need to import the `ind
 
 ### Defining custom theme
 
-Next, create a new theme, that extends the [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) and accepts the parameters, required to customize the hierarchical grid as desired.
+Next, you need to create a custom theme, the easiest and recommended way to style the `igx-hierarchical-grid` is to use the `grid-theme` and provide just the three main colors: `background`, `foreground`, and `accent-color`.
 
- >[!NOTE]
- >There is no specific `sass` hierarchical grid function.
+**Note:** 
+There is no specific `sass` hierarchical grid function.
+
+These are the core theme properties. When you set them, all grid parts and internal components derive their colors from those values, resulting in a consistent appearance throughout the entire grid. Nested components such as buttons, icons, inputs, dropdowns, checkboxes, scrollbars, chips, and other helper components also derive their styling tokens from the main `grid-theme` for a unified look.
 
 ```scss
-$custom-theme: grid-theme(
-  $cell-active-border-color: #ffcd0f,
-  $cell-selected-background: #6f6f6f,
-  $row-hover-background: #f8e495,
-  $row-selected-background: #8d8d8d,
-  $header-background: #494949,
-  $header-text-color: #fff,
-  $expand-icon-color: #ffcd0f,
-  $expand-icon-hover-color: #e0b710,
-  $resize-line-color: #ffcd0f,
-  $row-highlight: #ffcd0f
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
+
+$custom-grid: grid-theme(
+  $background: $background,
+  $foreground: $foreground,
+  $accent-color: $accent,
 );
 ```
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](/themes/sass/palettes) topic for detailed guidance on how to use them.
 
 ### Applying the custom theme
 
@@ -481,7 +472,7 @@ The easiest way to apply your theme is with a `sass` `@include` statement in the
 
 ```scss
 :host {
-  @include tokens($custom-theme);
+  @include tokens($custom-grid);
 }
 ```
 
@@ -491,7 +482,9 @@ This way, due to Angular's [`ViewEncapsulation`](https://angular.io/api/core/Com
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { SINGERS } from '../../data/singersData';
@@ -501,7 +494,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-styling',
     styleUrls: ['./hierarchical-grid-styling.component.scss'],
     templateUrl: 'hierarchical-grid-styling.component.html',
-    imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
+    imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxButtonGroupComponent, IgxButtonDirective]
 })
 
 export class HGridStylingComponent {
@@ -509,9 +502,21 @@ export class HGridStylingComponent {
     public col: IgxColumnComponent;
     public pWidth: string;
     public nWidth: string;
+    public themes = [
+        { label: 'Studio', class: 'theme-studio', swatch: 'theme-swatch--studio' },
+        { label: 'Ledger', class: 'theme-ledger', swatch: 'theme-swatch--ledger' },
+        { label: 'Editorial', class: 'theme-editorial', swatch: 'theme-swatch--editorial' },
+        { label: 'Midnight', class: 'theme-midnight', swatch: 'theme-swatch--midnight' }
+    ];
+
+    public activeTheme = signal(this.themes[0].class);
 
     constructor() {
         this.localdata = SINGERS;
+    }
+
+    public selectTheme(args: { index: number }) {
+        this.activeTheme.set(this.themes[args.index].class);
     }
 
     public onResize(event) {
@@ -525,63 +530,221 @@ export class HGridStylingComponent {
 ```
 ```html
 <div class="grid__wrapper">
-<igx-hierarchical-grid [igxPreventDocumentScroll]="true"  class="hierarchicalGrid" [data]="localdata" (columnResized)="onResize($event)" [autoGenerate]="false"
-    [height]="'480px'" [width]="'100%'" [rowHeight]="'65px'" #hierarchicalGrid>
-    <igx-column field="Artist" [resizable]="true"></igx-column>
-    <igx-column field="Photo" [resizable]="true" [minWidth]="'115px'">
-        <ng-template igxCell let-cell="cell">
-            <div class="cell__inner_2">
-                <img [src]="cell.value" class="photo" />
-            </div>
-        </ng-template>
-    </igx-column>
-    <igx-column field="Debut" [resizable]="true" [minWidth]="'88px'" [maxWidth]="'230px'" dataType="number" [formatter]="formatter"></igx-column>
-    <igx-column field="GrammyNominations" header="Grammy Nominations" [resizable]="true"></igx-column>
-    <igx-column field="GrammyAwards" header="Grammy Awards" [resizable]="true"></igx-column>
+    <div class="theme-picker">
+        <span class="theme-picker__label">Pick a theme</span>
 
-    <igx-row-island [height]="null" [key]="'Albums'" [autoGenerate]="false">
-        <igx-column field="Album" [resizable]="true"></igx-column>
-        <igx-column field="LaunchDate" header="Launch Date" [resizable]="true" [dataType]="'date'"></igx-column>
-        <igx-column field="BillboardReview" header="Billboard Review" [resizable]="true"></igx-column>
-        <igx-column field="USBillboard200" header="US Billboard 200" [resizable]="true"></igx-column>
-    <igx-row-island [height]="null" [key]="'Songs'" [autoGenerate]="false">
-            <igx-column field="Number" header="No." [resizable]="true"></igx-column>
-            <igx-column field="Title" [resizable]="true"></igx-column>
-            <igx-column field="Released" dataType="date" [resizable]="true"></igx-column>
-            <igx-column field="Genre" [resizable]="true"></igx-column>
-    </igx-row-island>
-    </igx-row-island>
+        <igx-buttongroup
+            class="theme-switcher"
+            selectionMode="singleRequired"
+            (selected)="selectTheme($event)">
+            @for (theme of themes; track theme.class) {
+                <button igxButton [selected]="activeTheme() === theme.class">
+                    <span class="theme-swatch" [class]="theme.swatch"></span>
+                    {{ theme.label }}
+                </button>
+            }
+        </igx-buttongroup>
 
-    <igx-row-island [height]="null" [key]="'Tours'" [autoGenerate]="false">
-        <igx-column field="Tour" [resizable]="true"></igx-column>
-        <igx-column field="StartedOn" header="Started on" [resizable]="true"></igx-column>
-        <igx-column field="Location" [resizable]="true"></igx-column>
-        <igx-column field="Headliner" [resizable]="true"></igx-column>
-    </igx-row-island>
-</igx-hierarchical-grid>
+        <p class="theme-picker__hint">
+            Custom themes, not built-in: each is a <code>grid-theme()</code> with its
+            own background and accent.
+        </p>
+    </div>
+
+    <igx-hierarchical-grid
+        [igxPreventDocumentScroll]="true"
+        [class]="activeTheme()"
+        [data]="localdata"
+        (columnResized)="onResize($event)"
+        [autoGenerate]="false"
+        [allowFiltering]="true"
+        [filterMode]="'excelStyleFilter'"
+        [rowSelection]="'multiple'"
+        [height]="'480px'"
+        [width]="'100%'"
+        #hierarchicalGrid>
+        <igx-column field="Artist" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+        <igx-column field="Photo" [resizable]="true" [minWidth]="'115px'">
+            <ng-template igxCell let-cell="cell">
+                <div class="cell__inner_2">
+                    <img [src]="cell.value" class="photo" />
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="Debut" [resizable]="true" [minWidth]="'88px'" [maxWidth]="'230px'" dataType="number" [formatter]="formatter" [sortable]="true" [filterable]="true"></igx-column>
+        <igx-column field="GrammyNominations" header="Grammy Nominations" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+        <igx-column field="GrammyAwards" header="Grammy Awards" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+
+        <igx-row-island [height]="null" [key]="'Albums'" [autoGenerate]="false" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
+            <igx-column field="Album" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="LaunchDate" header="Launch Date" [resizable]="true" [dataType]="'date'" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="BillboardReview" header="Billboard Review" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="USBillboard200" header="US Billboard 200" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-row-island [height]="null" [key]="'Songs'" [autoGenerate]="false">
+                <igx-column field="Number" header="No." [resizable]="true"></igx-column>
+                <igx-column field="Title" [resizable]="true"></igx-column>
+                <igx-column field="Released" dataType="date" [resizable]="true"></igx-column>
+                <igx-column field="Genre" [resizable]="true"></igx-column>
+            </igx-row-island>
+        </igx-row-island>
+
+        <igx-row-island [height]="null" [key]="'Tours'" [autoGenerate]="false" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
+            <igx-column field="Tour" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="StartedOn" header="Started on" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="Location" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+            <igx-column field="Headliner" [resizable]="true" [sortable]="true" [filterable]="true"></igx-column>
+        </igx-row-island>
+    </igx-hierarchical-grid>
 </div>
 ```
 ```scss
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$background: #292826;
-$foreground: #eeece1;
-$accent: #ffcd0f;
+$studio-bg: #faf4ed;
+$studio-accent: #907aa9;
+$ledger-bg: #eceff4;
+$ledger-accent: #5e81ac;
+$editorial-bg: #333c43;
+$editorial-accent: #a7c080;
+$midnight-bg: #282a36;
+$midnight-accent: #bd93f9;
 
-$custom-grid: grid-theme(
-	$background: $background,
-	$foreground: $foreground,
-	$accent-color: $accent,
-);
+.theme-studio {
+    --ig-size: var(--ig-size-large);
+    --ig-radius-factor: 0.6;
 
-:host {
-  @include tokens($custom-grid);
+    @include tokens(grid-theme(
+        $background: $studio-bg,
+        $foreground: #575279,
+        $accent-color: $studio-accent,
+        $header-background: #fffaf3,
+        $header-border-color: #dfdad9,
+        $row-border-color: #f2e9e1,
+        $grid-border-color: #dfdad9,
+        $grid-shadow: (0 1px 3px rgba(87, 82, 121, 0.10), 0 1px 2px rgba(87, 82, 121, 0.06))
+    ));
+}
+
+.theme-ledger {
+    --ig-size: var(--ig-size-small);
+    --ig-radius-factor: 0;
+
+    @include tokens(grid-theme(
+        $background: $ledger-bg,
+        $foreground: #2e3440,
+        $accent-color: $ledger-accent,
+        $header-background: #d8dee9,
+        $row-odd-background: #eceff4,
+        $row-even-background: #e5e9f0,
+        $body-column-border-color-odd: #d8dee9,
+        $body-column-border-color-even: #d8dee9,
+        $row-border-color: #d8dee9,
+        $grid-border-color: #c8d0dc
+    ));
+}
+
+.theme-editorial {
+    --ig-size: var(--ig-size-large);
+    --ig-radius-factor: 0;
+
+    @include tokens(grid-theme(
+        $schema: $dark-material-schema,
+        $background: $editorial-bg,
+        $foreground: #d3c6aa,
+        $accent-color: $editorial-accent,
+        $header-background: #3a464c,
+        $row-border-color: #333c43,
+        $grid-border-color: #333c43
+    ));
+}
+
+.theme-midnight {
+    --ig-size: var(--ig-size-medium);
+    --ig-radius-factor: 0.25;
+
+    @include tokens(grid-theme(
+        $schema: $dark-material-schema,
+        $background: $midnight-bg,
+        $foreground: #f8f8f2,
+        $accent-color: $midnight-accent,
+        $header-background: #21222c,
+        $body-column-border-color-odd: #44475a,
+        $body-column-border-color-even: #44475a,
+        $row-border-color: #44475a,
+        $grid-border-color: #44475a
+    ));
+}
+
+.grid__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.theme-picker {
+    --ig-button-group-elevation: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-self: flex-start;
+}
+
+.theme-picker__label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ig-gray-700);
+}
+
+.theme-picker__hint {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ig-gray-600);
+
+    code {
+        font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+        font-size: 11px;
+    }
+}
+
+.theme-swatch {
+    display: inline-block;
+    min-width: 14px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--ig-gray-300);
+    vertical-align: -2px;
+    background: linear-gradient(135deg, var(--swatch-bg) 0 50%, var(--swatch-accent) 50% 100%);
+}
+
+.theme-swatch--studio {
+    --swatch-bg: #{$studio-bg};
+    --swatch-accent: #{$studio-accent};
+}
+
+.theme-swatch--ledger {
+    --swatch-bg: #{$ledger-bg};
+    --swatch-accent: #{$ledger-accent};
+}
+
+.theme-swatch--editorial {
+    --swatch-bg: #{$editorial-bg};
+    --swatch-accent: #{$editorial-accent};
+}
+
+.theme-swatch--midnight {
+    --swatch-bg: #{$midnight-bg};
+    --swatch-accent: #{$midnight-accent};
 }
 ```
 
->[!NOTE]
->The sample will not be affected by the selected global theme from `Change Theme`.
+There are also additional parameters in the `grid-theme` that you can use if you want more specific customizations.
+
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
 
 ## Performance (Experimental)
 
@@ -593,10 +756,11 @@ platformBrowserDynamic()
   .catch(err => console.error(err));
 ```
 
->[!NOTE]
-> This is still in experimental feature for the `igxHierarchicalGrid`. This means that there might be some unexpected behaviors in the Hierarchical Grid. In case of encountering any such behavior, please contact us on our [Github](https://github.com/IgniteUI/igniteui-angular/discussions) page.
->[!NOTE]
-> Enabling it can affects other parts of an Angular application that the `igxHierarchicalGrid` is not related to.
+**Note:** 
+This is still in experimental feature for the `igxHierarchicalGrid`. This means that there might be some unexpected behaviors in the Hierarchical Grid. In case of encountering any such behavior, please contact us on our [Github](https://github.com/IgniteUI/igniteui-angular/discussions) page.
+
+**Note:** 
+Enabling it can affects other parts of an Angular application that the `igxHierarchicalGrid` is not related to.
 
 ## Known Limitations
 
@@ -604,50 +768,45 @@ platformBrowserDynamic()
 | :--------- | :---------------------------------------------------------- |
 | Group By   | Group By feature is not supported by the hierarchical grid. |
 
-> [!NOTE]
-> `igxHierarchicalGrid` uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for `igxHierarchicalGrid`. For more details see [igxForOf Known Issues](../for-of.md#known-limitations) section.
+**Note:** 
+`igxHierarchicalGrid` uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for `igxHierarchicalGrid`. For more details see [igxForOf Known Issues](/for-of#known-limitations) section.
 
 ## API References
-
-- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
-- [IgxRowIslandComponent](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent)
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IgxHierarchicalGridRow](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
-- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-
+- [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [`IgxRowIsland`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxHierarchicalGridRow`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 ## Theming Dependencies
 
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxInputGroup Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-- [IgxChip Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme)
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxCalendar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
-- [IgxActionStrip Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-action-strip-theme)
-- [IgxSnackBar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-snackbar-theme)
-- [IgxBadge Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme)
+- `IgxIcon Theme`
+- `IgxInputGroup Theme`
+- `IgxChip Theme`
+- `IgxRipple Theme`
+- `IgxButton Theme`
+- `IgxOverlay Theme`
+- `IgxDropDown Theme`
+- `IgxCalendar Theme`
+- `IgxActionStrip Theme`
+- `IgxSnackBar Theme`
+- `IgxBadge Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Grid Sizing](/hierarchicalgrid/sizing)
+- [Virtualization and Performance](/hierarchicalgrid/virtualization)
+- [Paging](/hierarchicalgrid/paging)
+- [Filtering](/hierarchicalgrid/filtering)
+- [Sorting](/hierarchicalgrid/sorting)
+- [Summaries](/hierarchicalgrid/summaries)
+- [Column Moving](/hierarchicalgrid/column-moving)
+- [Column Pinning](/hierarchicalgrid/column-pinning)
+- [Column Resizing](/hierarchicalgrid/column-resizing)
+- [Selection](/hierarchicalgrid/selection)
+- [Ignite UI for Angular Skills](/ai/skills) — Agent Skills for grids, data operations, and theming
 
-- [Grid Sizing](sizing.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-- [Ignite UI for Angular Skills](../ai/skills.md) — Agent Skills for grids, data operations, and theming
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

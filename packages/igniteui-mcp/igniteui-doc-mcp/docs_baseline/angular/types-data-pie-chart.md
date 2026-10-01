@@ -1,21 +1,20 @@
 ---
 title: Angular Pie Charts and Graphs | Ignite UI for Angular
-_description: The Ignite UI for Angular data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Try for FREE.
-_keywords: Angular charts, pie chart, Ignite UI for Angular, Infragistics, data binding, slice selection, animation, highlighting, legend
-_license: commercial
-mentionedTypes: ["DataPieChart", "XamDataChart", "OthersCategoryType", "SeriesSelectionMode", "SeriesSelectionBehavior", "SeriesHighlightingBehavior"]
+description: The Ignite UI for Angular data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+keywords: Angular charts, pie chart, Ignite UI for Angular, Infragistics, data binding, slice selection, animation, highlighting, legend
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Data Pie Chart is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
 _tocName: Data Pie Chart
 _premium: true
 ---
-
 # Angular Data Pie Chart
-
 The Ignite UI for Angular Data Pie Chart is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value. Categories are rendered as sections in a circular, or pie-shaped graph. Each section, or pie slice, has an arc length proportional to its underlying data value. Categories are shown in proportion to other categories based on their value percentage to the total value being analyzed, as parts of 100 or 100%.
 
 ## Angular Data Pie Chart Example
-
-You can create the Angular Pie Chart in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization.
+You can create the Angular Pie Chart in the `IgxDataPieChart` by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -102,10 +101,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Data Pie Chart Recommendations
-
 Pie Charts are appropriate for small data sets and are easy to read at a glance. Pie charts are just one type of part-to-whole visualization such as Doughnut (Ring) Chart, Funnel Chart, Stacked Area Chart, Stacked Bar Chart, and Treemap.
 
 The Angular Data Pie Chart includes interactive features that give the viewer tools to analyze data, like:
@@ -136,16 +132,15 @@ Do Not Use Pie Chart When:
 - It would be easier for the viewer to perceive the value difference in a Bar chart.
 
 ## Angular Data Pie Chart Legend
-
 Legends are used to show information about each point, to know about its contribution towards the total sum.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgxLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlegendcomponent.html) property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its [`orientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlegendcomponent.html#orientation) property.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `Legend` property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its `Orientation` property.
 
-The labels shown on the legend will display the same content as the label that is shown for each slice in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) by default, but this can be modified by utilizing the [`legendSliceLabelContentMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#legendSliceLabelContentMode) property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
+The labels shown on the legend will display the same content as the label that is shown for each slice in the `IgxDataPieChart` by default, but this can be modified by utilizing the `LegendSliceLabelContentMode` property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
 
-You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the [`legendItemBadgeShape`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#legendItemBadgeShape) property on the chart, and you can set this to be a circle, line, bar, column, and more.
+You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the `LegendItemBadgeShape` property on the chart, and you can set this to be a circle, line, bar, column, and more.
 
-Below is an example that demonstrates usage of the ItemLegend with the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html).
+Below is an example that demonstrates usage of the ItemLegend with the `IgxDataPieChart`.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -257,38 +252,34 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Pie Chart Others Category
-
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice.
 
-The Others category in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) has three main, configurable properties - [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryType), [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold), and [`othersCategoryText`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryText) that allow you to configure how the Others slice in the chart is shown. These are each described below:
+The Others category in the `IgxDataPieChart` has three main, configurable properties - `OthersCategoryType`, `OthersCategoryThreshold`, and `OthersCategoryText` that allow you to configure how the Others slice in the chart is shown. These are each described below:
 
-The [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryType) property works in tandem with the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold) property of the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html). For the [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryType), you can define whether you want the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold) to be evaluated as a number or a percentage. For example, if you decide on number and set the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold) to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) will become part of the Others category.
+The `OthersCategoryType` property works in tandem with the `OthersCategoryThreshold` property of the `IgxDataPieChart`. For the `OthersCategoryType`, you can define whether you want the `OthersCategoryThreshold` to be evaluated as a number or a percentage. For example, if you decide on number and set the `OthersCategoryThreshold` to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the `IgxDataPieChart` will become part of the Others category.
 
-To get the underlying data items that are contained within the Others slice in the chart, you can utilize the [`getOthersContext`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#getOthersContext) method on the chart. This return type of this method is an [`IgxOthersCategoryContextComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxotherscategorycontextcomponent.html) which exposes an [`items`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxotherscategorycontextcomponent.html#items) property. The [`items`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxotherscategorycontextcomponent.html#items) property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the `Item` property of the event arguments for the `SeriesClick` event will be will also return this [`IgxOthersCategoryContextComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxotherscategorycontextcomponent.html).
+To get the underlying data items that are contained within the Others slice in the chart, you can utilize the `GetOthersContext` method on the chart. This return type of this method is an `IgxOthersCategoryContext` which exposes an `Items` property. The `Items` property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the `Item` property of the event arguments for the `SeriesClick` event will be will also return this `IgxOthersCategoryContext`.
 
-By default, the Others slice will be represented by a label of "Others." You can change this by modifying the [`othersCategoryText`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryText) property of the chart.
+By default, the Others slice will be represented by a label of "Others." You can change this by modifying the `OthersCategoryText` property of the chart.
 
 ### Angular Styling the Others Slice
-
 You can style the aggregated Others slice separately from other slices by using these properties:
 
-- `OthersCategoryBrush`\
-    Sets the fill (brush) used for the Others slice.
+- `OthersCategoryBrush`
+  Sets the fill (brush) used for the Others slice.
 
-- `OthersCategoryOutline`\
-    Sets the outline (stroke) used for the Others slice.
+- `OthersCategoryOutline`
+  Sets the outline (stroke) used for the Others slice.
 
 These properties only affect the Others slice (when it exists). All other slices continue to use the normal palette and item-wise coloring behavior.
 
-> [!NOTE]
-> The Others slice is only rendered when the chart is configured to create it (for example, with [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold) greater than `0` and an appropriate [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryType)). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
+**Note:** 
+The Others slice is only rendered when the chart is configured to create it (for example, with `OthersCategoryThreshold` greater than `0` and an appropriate `OthersCategoryType`). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
 
-If you want to ensure that the Others category does not show up in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html), you can set the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold) to 0.
+If you want to ensure that the Others category does not show up in the `IgxDataPieChart`, you can set the `OthersCategoryThreshold` to 0.
 
-The following sample demonstrates usage of the Others slice in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html):
+The following sample demonstrates usage of the Others slice in the `IgxDataPieChart`:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -441,31 +432,28 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Data Pie Chart Selection
+The `IgxDataPieChart` supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the `SelectionBehavior` and `SelectionMode` properties of the chart, described below:
 
-The [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionBehavior) and [`selectionMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionMode) properties of the chart, described below:
+The main two options of the `SelectionBehavior` are `PerDataItemSingleSelect` and `PerDataItemMultiSelect`, which will enable single and multiple selection, respectively.
 
-The main two options of the [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionBehavior) are [`PerDataItemSingleSelect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionbehavior.html#PerDataItemSingleSelect) and [`PerDataItemMultiSelect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionbehavior.html#PerDataItemMultiSelect), which will enable single and multiple selection, respectively.
+The `SelectionMode` property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
 
-The [`selectionMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionMode) property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
+- `Brighten`: The selected slices will be highlighted.
+- `FadeOthers`: The selected slices will remain their same color and others will fade.
+- `FocusColorFill`: The selected slices will change their background to the FocusBrush of the chart.
+- `FocusColorOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart.
+- `FocusColorThickOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
+- `GrayscaleOthers`: The unselected slices will have a gray color filter applied to them.
+- `None`: There is no effect on the selected slices.
+- `SelectionColorFill`: The selected slices will change their background to the SelectionBrush of the chart.
+- `SelectionColorOutline`: The selected slices will have an outline with the color defined by the SelectionBrush of the chart.
+- `SelectionColorThickOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
+- `ThickOutline`: The selected slices will apply an outline with the thickness dependent on the Thickness property of the chart.
 
-- [`Brighten`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#Brighten): The selected slices will be highlighted.
-- [`FadeOthers`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#FadeOthers): The selected slices will remain their same color and others will fade.
-- [`FocusColorFill`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#FocusColorFill): The selected slices will change their background to the FocusBrush of the chart.
-- [`FocusColorOutline`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#FocusColorOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart.
-- [`FocusColorThickOutline`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#FocusColorThickOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
-- [`GrayscaleOthers`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#GrayscaleOthers): The unselected slices will have a gray color filter applied to them.
-- [`None`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#None): There is no effect on the selected slices.
-- [`SelectionColorFill`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#SelectionColorFill): The selected slices will change their background to the SelectionBrush of the chart.
-- [`SelectionColorOutline`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#SelectionColorOutline): The selected slices will have an outline with the color defined by the SelectionBrush of the chart.
-- [`SelectionColorThickOutline`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#SelectionColorThickOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
-- [`ThickOutline`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#ThickOutline): The selected slices will apply an outline with the thickness dependent on the Thickness property of the chart.
+When a slice is selected, its underlying data item will be added to the SelectedSeriesItems collection of the chart. As such, the DataPieChart exposes the SelectedSeriesItemsChanged event to detect when a slice has been selected and this collection is changed.
 
-When a slice is selected, its underlying data item will be added to the SelectedSeriesItems collection of the chart. As such, the XamDataPieChart exposes the SelectedSeriesItemsChanged event to detect when a slice has been selected and this collection is changed.
-
-The following sample demonstrates the selection feature of the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) control:
+The following sample demonstrates the selection feature of the `IgxDataPieChart` control:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -613,28 +601,23 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Data Pie Chart Highlighting
+The `IgxDataPieChart` supports mouse over highlighting, as well as a highlighting overlay that can be configured by providing a separate data source.
 
-The [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) supports mouse over highlighting, as well as a highlighting overlay that can be configured by providing a separate data source.
+First, the `HighlightingBehavior` enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
 
-First, the [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#highlightingBehavior) enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
+- `DirectlyOver`: The slices are only highlighted when the mouse is directly over them.
+- `NearestItems`: The nearest slice to the mouse position will be highlighted.
+- `NearestItemsAndSeries`: The nearest slice and series to the mouse position will be highlighted.
+- `NearestItemsRetainMainShapes`: The nearest items to the mouse position will be highlighted and the main shapes of the series will not be de-emphasized.
 
-- [`DirectlyOver`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.serieshighlightingbehavior.html#DirectlyOver): The slices are only highlighted when the mouse is directly over them.
-- [`NearestItems`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.serieshighlightingbehavior.html#NearestItems): The nearest slice to the mouse position will be highlighted.
-- [`NearestItemsAndSeries`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.serieshighlightingbehavior.html#NearestItemsAndSeries): The nearest slice and series to the mouse position will be highlighted.
-- [`NearestItemsRetainMainShapes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.serieshighlightingbehavior.html#NearestItemsRetainMainShapes): The nearest items to the mouse position will be highlighted and the main shapes of the series will not be de-emphasized.
+The `HighlightingMode` enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
 
-The [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#highlightingMode) enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
+- `Brighten`: The series will have its color brightened when the mouse position is over or near it.
+- `FadeOthers`: The series will retain its color when the mouse position is over or near it, while the others will appear faded.
+- `None`: The series and slices will not be highlighted.
 
-- [`Brighten`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#Brighten): The series will have its color brightened when the mouse position is over or near it.
-- `BrightenSpecific`: The specific slice will have its color brightened when the mouse position is over or near it.
-- [`FadeOthers`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#FadeOthers): The series will retain its color when the mouse position is over or near it, while the others will appear faded.
-- `FadeOthersSpecific`: The specific slice will retain its color when the mouse position is over or near it, while the others will appear faded.
-- [`None`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.seriesselectionmode.html#None): The series and slices will not be highlighted.
-
-The following example demonstrates the mouse highlighting behaviors of the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) component:
+The following example demonstrates the mouse highlighting behaviors of the `IgxDataPieChart` component:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -774,7 +757,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-In addition to the mouse highlighting, the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#highlightedValuesDisplayMode) property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html).
+In addition to the mouse highlighting, the `IgxDataPieChart` exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the `HighlightedValuesDisplayMode` property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the `IgxDataPieChart`.
 
 When these conditions are met, the values of the subset will be highlighted, while the remainder of the full set of data will be faded - effectively creating a highlight for the subset and allowing easier visualization of a subset of your data within the same control.
 
@@ -884,17 +867,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Data Pie Chart Animation
+The `IgxDataPieChart` supports animating its slices into view, as well as when a value changes.
 
-The [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) supports animating its slices into view, as well as when a value changes.
+You can set the `IsTransitionInEnabled` property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the `TransitionInMode` enumerated property to the type of animation you would like to see. Additionally, you can also set the `TransitionInSpeedType` property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the `TransitionInDuration` property, which takes a `TimeSpan`.
 
-You can set the [`isTransitionInEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#isTransitionInEnabled) property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the [`transitionInMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#transitionInMode) enumerated property to the type of animation you would like to see. Additionally, you can also set the [`transitionInSpeedType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#transitionInSpeedType) property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the [`transitionInDuration`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#transitionInDuration) property, which takes a `TimeSpan`.
+If you would like to animate data changes, this can also be done by setting the `AnimateSeriesWhenAxisRangeChanges` property to **true**. The duration of this change can be configured by setting the `TransitionDuration` property as well.
 
-If you would like to animate data changes, this can also be done by setting the [`animateSeriesWhenAxisRangeChanges`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#animateSeriesWhenAxisRangeChanges) property to **true**. The duration of this change can be configured by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#transitionDuration) property as well.
-
-The following sample demonstrates the usage of animation in the [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html):
+The following sample demonstrates the usage of animation in the `IgxDataPieChart`:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1035,25 +1015,10 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
-
 - [Donut Chart](donut-chart.md)
 - [Polar Chart](polar-chart.md)
 - [Radial Chart](radial-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#chartType)
-- [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryThreshold)
-- [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#othersCategoryType)
-- [`selectionMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionMode)
-- [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html#selectionBehavior)
-
-|Chart Type       | Control Name   | API Members |
-|-----------------|----------------|------------ |
-|Data Pie Chart      | [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html)     | [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html) |
-|Item Legend | [`IgxItemLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxitemlegendcomponent.html) | [`IgxItemLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxitemlegendcomponent.html) |
+`IgxDataPieChart`

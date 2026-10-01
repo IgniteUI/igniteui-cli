@@ -1,18 +1,18 @@
 ---
 title: Manage Angular Page Layout | Dock Manager | Ignite UI | Infragistics
-_description: Learn how the Dock Manager lets you customize the layout of your Angular application via panes that can be pinned, resized, moved, and hidden.
-_keywords: manage angular page layout, Ignite UI for Angular, Infragistics
-_license: commercial
+description: Learn how the Dock Manager lets you customize the layout of your Angular application via panes that can be pinned, resized, moved, and hidden.
+keywords: manage angular page layout, Ignite UI for Angular, Infragistics
+license: commercial
+llms:
+  description: "The Ignite UI Dock Manager component provides means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving and hiding panes."
 _tocName: Dock Manager
 _premium: true
 ---
-
 # Dock Manager
 
 The Ignite UI Dock Manager component provides means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving and hiding panes.
 
 ## Angular Dock Manager Example
-
 
 ```typescript
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -175,9 +175,7 @@ export class DockManagerComponent {
 }
 ```
 
-
-<div class="divider--half"></div>
-
+<hr/>
 
 ## Usage
 
@@ -229,6 +227,6 @@ This is it, you are now ready to use the Dock Manager component in an Angular co
 </igc-dockmanager>
 ```
 
-For further information on the usage of the Dock Manager component, you can check out [this topic]({environment:infragisticsBaseUrl}/products/ignite-ui-web-components/web-components/components/dock-manager.html).
+For further information on the usage of the Dock Manager component, you can check out [this topic](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/dock-manager.html).
 
-For a more advanced example of the usage of the Dock Manager component with panes hosting various Ignite UI for Angular components, see this version of the [data analysis sample](./general/data-analysis.md#data-analysis-with-dockmanager).
+For a more advanced example of the usage of the Dock Manager component with panes hosting various Ignite UI for Angular components, see this version of the [data analysis sample](/general/data-analysis#data-analysis-with-dockmanager).

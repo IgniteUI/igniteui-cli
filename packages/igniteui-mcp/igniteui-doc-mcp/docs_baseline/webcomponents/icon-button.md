@@ -1,15 +1,16 @@
 ---
-title: Web Components Icon Button Component
-_description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for Web Components Icon Button component.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Icon Button components, Web Components Icon Button controls
-_license: MIT
+title: "Web Components Icon Button Component"
+description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for Web Components Icon Button component.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Icon Button components, Web Components Icon Button controls"
+license: MIT
 mentionedTypes: ["IconButton", "ButtonBase", "Button", "Icon"]
+llms:
+  description: "The Ignite UI for Web Components Icon Button component allows developers to use registered icons as buttons in their application."
 _tocName: Icon Button
 ---
-
 # Web Components Icon Button Overview
 
-The Ignite UI for Web Components Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](button.md) component as well.
+The Ignite UI for Web Components Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](./button.md) component as well.
 
 ## Web Components Icon Button Example
 
@@ -31,7 +32,7 @@ The Ignite UI for Web Components Icon Button component allows developers to use 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
@@ -41,7 +42,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent), you need to register it as follows:
+Before using the [`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcIconButtonComponent } from "igniteui-webcomponents";
@@ -52,7 +53,7 @@ defineComponents(IgcIconButtonComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) is as follows:
+The simplest way to start using the [`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) is as follows:
 
 ```html
 <igc-icon-button name="thumb-up" collection="material"></igc-icon-button>
@@ -62,7 +63,7 @@ The simplest way to start using the [`IgcIconButtonComponent`](mcp:get_api_refer
 
 ### Variant
 
-Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the `variant` attribute of the icon button.
+Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=variant) attribute of the icon button.
 
 ```css
 /* shared styles are loaded from: */
@@ -103,7 +104,7 @@ igc-icon-button {
 
 ### Type
 
-The icon button component will change its internal structure from `<button>` to an `<a>` type element when the `href` attribute is set. In that case the icon button can be thought of as a regular link. Setting the `href` attribute will allow you to also set the `rel`, `target`, and `download` attributes of the icon button.
+The icon button component will change its internal structure from `<button>` to an `<a>` type element when the [`href`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=href) attribute is set. In that case the icon button can be thought of as a regular link. Setting the [`href`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=href) attribute will allow you to also set the [`rel`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=rel), [`target`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=target), and [`download`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent&member=download) attributes of the icon button.
 
 ```html
 <igc-icon-button
@@ -124,7 +125,7 @@ Some icons need to look a little different when used in Right-to-Left(RTL) mode.
 
 ## Styling
 
-The [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
+The [`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
 
 ```css
 igc-icon-button[variant="contained"]:not([disabled])::part(base) {
@@ -155,13 +156,9 @@ igc-icon-button::part(icon) {
 ```
 
 ## API References
-
-- [`IgcButtonBaseComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html)
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+[`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

@@ -1,21 +1,23 @@
 ---
-title: Web Components Pivot Grid Component - Ignite UI for Web Components by Infragistics
-_description: Create fast, responsive Web Components pivot grids and tables with Ignite UI for Web Components. Perform complex analysis and apply data sorting, grouping, or filtering.
-_keywords: Web Components pivot grid, Web Components material pivot table, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Pivot Grid Component - Ignite UI for Web Components by Infragistics"
+description: Create fast, responsive Web Components pivot grids and tables with Ignite UI for Web Components. Perform complex analysis and apply data sorting, grouping, or filtering.
+keywords: "Web Components pivot grid, Web Components material pivot table, Ignite UI for Web Components, Infragistics"
+license: commercial
 mentionedTypes: ["PivotGrid", "PivotDimension", "PivotValue"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Web Components Pivot Grid is used for summing up and representing voluminous multidimensional data in a cross-tabular format."
 _tocName: Pivot Grid
+_premium: true
 ---
-
 # Web Components Pivot Grid Overview
 
 The Web Components Pivot Grid is used for summing up and representing voluminous multidimensional data in a cross-tabular format. The data summery can be easily and quickly sorted, grouped, or filtered. Such data can include sums, averages, and other statistics. End-users are enabled to modify the pivot table layout through drag-and-drop operations, according to their needs.
 
 The Web Components Pivot Grid presents data in a pivot table and helps users performing complex analysis on the supplied data set. This sophisticated Pivot Grid control is used for organizing, summarizing, and filtering large volumes of data which is later displayed in a cross-table format. Key features of an Web Components Pivot Grid are row dimensions, column dimensions, aggregations, and filters.
 
-The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
-The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
+The [`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
+The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
 
 ## Web Components Pivot Grid Example
 
@@ -104,7 +106,7 @@ export class PivotSalesData extends Array<PivotSalesDataItem> {
 
 ## Getting Started With Web Components Pivot Grid
 
-The Web Components IgcPivotGrid can be configured via the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) property.
+The Web Components IgcPivotGrid can be configured via the [`PivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) property.
 
 ```html
 <igc-pivot-grid #grid1 data="data" pivot-configuration="pivotConfigHierarchy">
@@ -117,60 +119,60 @@ A filter can also be defined via the **filters** configuration property. It can 
 
 ### Dimensions Configuration
 
-Each basic dimension configuration requires a [`memberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) that matches a field from the provided **data**.
+Each basic dimension configuration requires a [`MemberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) that matches a field from the provided **data**.
 
 Multiple sibling dimensions can be defined, which creates a more complex nested group in the related row or column dimension area.
 
 The dimensions can be reordered or moved from one area to another via their corresponding chips using drag & drop.
 
-A dimension can also describe an expandable hierarchy via the [`childLevel`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=childLevel) property, for example:
+A dimension can also describe an expandable hierarchy via the [`ChildLevel`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=childLevel) property, for example:
 
 ```typescript
-   {
-            memberFunction: () => 'All',
-            memberName: 'AllProducts',
-            enabled: true,
-            childLevel: {
-                memberFunction: (data) => data.ProductCategory,
-                memberName: 'ProductCategory',
-                enabled: true
-            }
-    }
+{
+  memberFunction: () => 'All',
+  memberName: 'AllProducts',
+  enabled: true,
+  childLevel: {
+    memberFunction: (data) => data.ProductCategory,
+    memberName: 'ProductCategory',
+    enabled: true
+  }
+}
 ```
 
-In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=defaultExpandState) property of the Pivot Grid.
+In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`DefaultExpandState`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=defaultExpandState) property of the Pivot Grid.
 
 ### Predefined Dimensions
 
-As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration:
+As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration.
 
-- [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension)
-    Can be used for date fields. Describes the following hierarchy by default:
-  - All Periods
-  - Years
-  - Quarters
-  - Months
-  - Full Date
+[`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension) can be used for date fields. Describes the following hierarchy by default:
+
+- All Periods
+- Years
+- Quarters
+- Months
+- Full Date
 
 It can be set for rows or columns, for example:
 
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
-    rows: [
-        new IgcPivotDateDimension({ memberName: 'Date', enabled: true });
-    ]
+  rows: [
+    new IgcPivotDateDimension({ memberName: 'Date', enabled: true });
+  ]
 }
 ```
 
 It also allows for further customization via the second option parameter in order to enable or disable a particular part of the hierarchy, for example:
 
 ```typescript
- new IgcPivotDateDimension({ memberName: 'Date', enabled: true }, {
-    total: true,
-    years: true,
-    months: true,
-    fullDate: true,
-    quarters: false
+new IgcPivotDateDimension({ memberName: 'Date', enabled: true }, {
+  total: true,
+  years: true,
+  months: true,
+  fullDate: true,
+  quarters: false
 });
 ```
 
@@ -179,61 +181,61 @@ It also allows for further customization via the second option parameter in orde
 A value configuration requires a **member** that matches a field from the provided **data**, or it can define a custom **aggregator** function for more complex custom scenarios. Out of the box, there are 4 predefined aggregations that can be used depending on the data type of the data field:
 
 - `PivotNumericAggregate` - for numeric fields.
-    Contains the following aggregation functions: `SUM`, `AVG`, `MIN`, `MAX`, `COUNT`.
+  Contains the following aggregation functions: `SUM`, `AVG`, `MIN`, `MAX`, `COUNT`.
 - `PivotDateAggregate` - for date fields.
-    Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
+  Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
 - `PivotTimeAggregate` - for time fields.
-    Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
+  Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
 - `PivotAggregate` - for any other data types. This is the base aggregation.
-    Contains the following aggregation functions: `COUNT`.
+  Contains the following aggregation functions: `COUNT`.
 
-The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=aggregateList) property, for example:
+The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`AggregateList`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=aggregateList) property, for example:
 
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
-    values: [
-        {
-            member: 'AmountOfSale',
-            displayName: 'Amount of Sale',
-            aggregate: {
-                key: 'SUM',
-                aggregator: IgcTotalSaleAggregate.totalSale,
-                label: 'Sum of Sale'
-            },
-            aggregateList: [{
-                key: 'SUM',
-                aggregator: IgcTotalSaleAggregate.totalSale,
-                label: 'Sum of Sale'
-            }, {
-                key: 'MIN',
-                aggregator: IgcTotalSaleAggregate.totalMin,
-                label: 'Minimum of Sale'
-            }, {
-                key: 'MAX',
-                aggregator: IgcTotalSaleAggregate.totalMax,
-                label: 'Maximum of Sale'
-            }]
-        }
-    ]
+  values: [
+    {
+      member: 'AmountOfSale',
+      displayName: 'Amount of Sale',
+      aggregate: {
+        key: 'SUM',
+        aggregator: IgcTotalSaleAggregate.totalSale,
+        label: 'Sum of Sale'
+      },
+      aggregateList: [{
+        key: 'SUM',
+        aggregator: IgcTotalSaleAggregate.totalSale,
+        label: 'Sum of Sale'
+      }, {
+        key: 'MIN',
+        aggregator: IgcTotalSaleAggregate.totalMin,
+        label: 'Minimum of Sale'
+      }, {
+        key: 'MAX',
+        aggregator: IgcTotalSaleAggregate.totalMax,
+        label: 'Maximum of Sale'
+      }]
+    }
+  ]
 }
 
 public static totalSale: PivotAggregation = (members, data: any) =>
-    data.reduce((accumulator, value) => accumulator + value.UnitPrice * value.UnitsSold, 0);
+  data.reduce((accumulator, value) => accumulator + value.UnitPrice * value.UnitsSold, 0);
 
 public static totalMin: PivotAggregation = (members, data: any) => {
-    return data.map(x => x.UnitPrice * x.UnitsSold).reduce((a, b) => Math.min(a, b));
+  return data.map(x => x.UnitPrice * x.UnitsSold).reduce((a, b) => Math.min(a, b));
 };
 
 public static totalMax: PivotAggregation = (members, data: any) => {
-    return data.map(x => x.UnitPrice * x.UnitsSold).reduce((a, b) => Math.max(a,b));
+  return data.map(x => x.UnitPrice * x.UnitsSold).reduce((a, b) => Math.max(a,b));
 };
 ```
 
-The pivot value also provides a [`displayName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension&member=displayName) property. It can be used to display a custom name for this value in the column header.
+The pivot value also provides a [`DisplayName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=displayName) property. It can be used to display a custom name for this value in the column header.
 
 ### Enable Property
 
-[`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) is the interface that describes the current state of the [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgcPivotDataSelectorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
+[`PivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) is the interface that describes the current state of the [`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgcPivotDataSelector`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
 The `Enable` property controls if a given [`IgcPivotDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension) or [`IgcPivotValue`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue) is active and takes part in the pivot view rendered by the Pivot Grid.
 
 ### Full Configuration Code
@@ -241,43 +243,39 @@ The `Enable` property controls if a given [`IgcPivotDimension`](mcp:get_api_refe
 Let's take a look at a basic pivot configuration:
 
 ```typescript
-      public pivotConfigHierarchy: IgcPivotConfiguration = {
-        columns: [
-            {
-
-                memberName: 'ProductName',
-                memberFunction: (data) => data.ProductName,
-                enabled: true
-            },
-            {
-
-                memberName: 'SellerCity',
-                memberFunction: (data) => data.SellerCity,
-                enabled: true
-            }
-
-        ],
-        rows: [
-            {
-                memberName: 'SellerName',
-                memberFunction: (data) => data.SellerName,
-                enabled: true,
-            }
-        ],
-        values: [
-            {
-                member: 'AmountofSale',
-                displayName: "Amount of Sale",
-                aggregate: {
-                    aggregator: IgcPivotNumericAggregate.sum,
-                    key: 'SUM',
-                    label: 'Sum of Sale'
-                },
-                enabled: true
-
-            }
-        ]
-    };
+public pivotConfigHierarchy: IgcPivotConfiguration = {
+  columns: [
+    {
+      memberName: 'ProductName',
+      memberFunction: (data) => data.ProductName,
+      enabled: true
+    },
+    {
+      memberName: 'SellerCity',
+      memberFunction: (data) => data.SellerCity,
+      enabled: true
+    }
+  ],
+  rows: [
+    {
+      memberName: 'SellerName',
+      memberFunction: (data) => data.SellerName,
+      enabled: true,
+    }
+  ],
+  values: [
+    {
+      member: 'AmountofSale',
+      displayName: "Amount of Sale",
+      aggregate: {
+        aggregator: IgcPivotNumericAggregate.sum,
+        key: 'SUM',
+        label: 'Sum of Sale'
+      },
+      enabled: true
+    }
+  ]
+};
 ```
 
 This configuration defines 1 row, 1 column and 1 aggregation that sums the values of each dimension groups.
@@ -286,15 +284,15 @@ The members match fields available in the provided data source:
 ```typescript
 public data = [
 [
-    {
-        ProductName: `Clothing`,
-        ProductUnitPrice: 12.8,
-        SellerName: `Stanley Brooker`,
-        SellerCity: `Seattle`,
-        Date: `2007-01-01T00:00:00`,
-        Value: 94.4,
-        NumberOfUnits: 282
-    },
+  {
+    ProductName: `Clothing`,
+    ProductUnitPrice: 12.8,
+    SellerName: `Stanley Brooker`,
+    SellerCity: `Seattle`,
+    Date: `2007-01-01T00:00:00`,
+    Value: 94.4,
+    NumberOfUnits: 282
+  },
 ];
 ```
 
@@ -339,8 +337,7 @@ export class PivotDataFlat extends Array<PivotDataFlatItem> {
 ```
 
 ### Auto generate configuration
-
-The [`autoGenerateConfig`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
+The [`AutoGenerateConfig`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
 
 - Numeric Fields:
   - Created as [`IgcPivotValue`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue) using `PivotNumericAggregate.sum` aggregator.
@@ -365,20 +362,19 @@ A more detailed view of how they are used can be seen bellow in example data, wh
 
 ```json
 [
-    {
-        ProductCategory: 'All', AllProducts: 'All Products', All: 1000, 'All-Bulgaria': 774, 'All-USA': 829, 'All-Uruguay': 524,
-        AllProducts_records: [
-            { ProductCategory: 'Clothing', 'All-Bulgaria': 774, 'All-USA': 296, 'All-Uruguay': 456 },
-            { ProductCategory: 'Bikes', 'All-Uruguay': 68 },
-            { ProductCategory: 'Accessories', 'All-USA': 293 },
-            { ProductCategory: 'Components', 'All-USA': 240 }
-        ]
-    }
+  {
+    ProductCategory: 'All', AllProducts: 'All Products', All: 1000, 'All-Bulgaria': 774, 'All-USA': 829, 'All-Uruguay': 524,
+    AllProducts_records: [
+      { ProductCategory: 'Clothing', 'All-Bulgaria': 774, 'All-USA': 296, 'All-Uruguay': 456 },
+      { ProductCategory: 'Bikes', 'All-Uruguay': 68 },
+      { ProductCategory: 'Accessories', 'All-USA': 293 },
+      { ProductCategory: 'Components', 'All-USA': 240 }
+    ]
+  }
 ];
 ```
 
-All of these are stored in the **pivotKeys** property which is part of the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and can be used to change the default pivot keys.
-
+All of these are stored in the **pivotKeys** property which is part of the [`PivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and can be used to change the default pivot keys.
 - **children** - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
 - **records** - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the **pivotKeys**.
 - **aggregations** - Field that stores aggregation values. It's applied while creating the hierarchies and also it should not be changed for common scenarios.
@@ -390,41 +386,142 @@ The default values are:
 
 ```typescript
 {
-    aggregations: 'aggregations',
-    records: 'records',
-    children: 'children',
-    level: 'level',
-    rowDimensionSeparator: '_',
-    columnDimensionSeparator: '-'
+  aggregations: 'aggregations',
+  records: 'records',
+  children: 'children',
+  level: 'level',
+  rowDimensionSeparator: '_',
+  columnDimensionSeparator: '-'
 };
 ```
 
-> [!Note]
-> If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
+**Note:** 
+If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
+
+## Styling
+
+The Web Components Pivot Grid shares the same [CSS properties](../grid/theming-grid.md) as the base Grid. To style it, simply set the desired property values and scope them to the Pivot Grid component.
+
+```css
+igc-pivot-grid {
+  --header-background: #3b3a3a;
+  --header-text-color: #ffcd0f;
+  --content-background: #494949;
+  --content-text-color: #ffcd0f;
+  --row-odd-background: #494949;
+  --row-even-background: #494949;
+  --row-hover-background: #3b3a3a;
+  --row-hover-text-color: #ffcd0f;
+}
+```
+
+```typescript
+export class PivotSalesDataItem {
+  public constructor(init: Partial<PivotSalesDataItem>) {
+    Object.assign(this, init);
+  }
+
+  public Country: string;
+  public Product: string;
+  public UnitsSold: number;
+  public ManufacturingPrice: number;
+  public SalePrice: number;
+  public GrossSales: number;
+  public Discounts: number;
+  public Sales: number;
+  public COGS: number;
+  public Profit: number;
+  public Date: string;
+  public MonthName: string;
+  public Year: number;
+
+}
+export class PivotSalesData extends Array<PivotSalesDataItem> {
+  public constructor() {
+    super();
+    this.push(new PivotSalesDataItem(
+      {
+        Country: `UK`,
+        Product: `Vermont`,
+        UnitsSold: 501,
+        ManufacturingPrice: 15,
+        SalePrice: 23,
+        GrossSales: 26440,
+        Discounts: null,
+        Sales: 26440,
+        COGS: 16185,
+        Profit: 11255,
+        Date: `1/1/20`,
+        MonthName: `January`,
+        Year: 2020
+      }));
+    this.push(new PivotSalesDataItem(
+      {
+        Country: `Japan`,
+        Product: `Kensington`,
+        UnitsSold: 1372,
+        ManufacturingPrice: 3,
+        SalePrice: 20,
+        GrossSales: 27440,
+        Discounts: null,
+        Sales: 27440,
+        COGS: 16185,
+        Profit: 11255,
+        Date: `1/1/20`,
+        MonthName: `January`,
+        Year: 2020
+      }));
+    this.push(new PivotSalesDataItem(
+      {
+        Country: `India`,
+        Product: `Kensington`,
+        UnitsSold: 2762,
+        ManufacturingPrice: 3,
+        SalePrice: 20,
+        GrossSales: 55240,
+        Discounts: null,
+        Sales: 55240,
+        COGS: 13210,
+        Profit: 42030,
+        Date: `1/1/20`,
+        MonthName: `January`,
+        Year: 2020
+      }));
+    // ... 18 more items
+  }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-pivot-grid {
+  --header-background: #3b3a3a;
+  --header-text-color: #ffcd0f;
+  --content-background: #494949;
+  --content-text-color: #ffcd0f;
+  --row-odd-background: #494949;
+  --row-even-background: #494949;
+  --row-hover-background: #3b3a3a;
+  --row-hover-text-color: #ffcd0f;
+}
+```
 
 ## Known Issues and Limitations
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
-| Setting duplicate [`memberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) or [`member`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting duplicate [`MemberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) or [`Member`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 
 ## API References
 
-- [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration)
-- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
-- [`IgcPivotDataSelectorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent)
-- [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
-<!-- ## Additional Resources -->
-
-<!-- TODO write these topics: -->
-
-<!-- * [Web Components Pivot Grid Features](features.md) -->
-
-<!-- * [Web Components Pivot Grid Custom Aggregations](remote-operations.md) -->
+[`IgcPivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration)<br />
+[`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)<br />
+[`IgcPivotDataSelector`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent)<br />
+[`IgcPivotDateDimensionOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimensionOptions)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
 
 ## Additional Resources
 

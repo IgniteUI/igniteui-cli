@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid State Persistence - Ignite UI for Blazor
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Blazor. Learn how to restore columns, explore usage, and see demos!
-_keywords: state persistence, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["GridStateBaseDirective", "GridState", "PivotConfiguration", "PivotDimension", "PivotValue"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/state-persistence
+title: "Blazor Hierarchical Grid State Persistence - Ignite UI for Blazor"
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Blazor. Learn how to restore columns, explore usage, and see demos!
+keywords: state persistence, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/state-persistence"
+llms:
+  description: "The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows developers to easily save and restore the grid state."
+_componentKey: HierarchicalGrid
 _tocName: State Persistence
 _premium: true
 ---
-
 # Blazor Hierarchical Grid State Persistence
 
 The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) is applied on the Blazor [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
@@ -18,8 +17,6 @@ The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows de
 ## Supported Features
 
 [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) supports saving and restoring the state of the following features:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 - **RowIslands**
   - saving/restoring features for all child grids down the hierarchy
@@ -35,21 +32,13 @@ The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows de
 - **Columns**
   - Multi column headers
   - Columns order
-  - Column properties defined by the `IColumnState` interface.
-
-<!-- * Columns templates and functions are restored using application level code, see [Restoring Column](state-persistence.md#restoring-columns) section. -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
+  - Column properties defined by the [`IgbColumnState`](mcp:get_api_reference?platform=blazor&component=IgbColumnState) interface.
 
 ## Usage
 
 The `GetStateAsStringAsync` returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```razor
 <IgbHierarchicalGrid>
@@ -67,16 +56,14 @@ The developer may choose to get only the state for a certain feature/features, b
 
 `ApplyStateFromStringAsync` - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
-```razor
+```csharp
 gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=Options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
+The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-```razor
+```csharp
 gridState.Options = new IgbGridStateOptions
     {
         CellSelection = false,
@@ -85,10 +72,6 @@ gridState.Options = new IgbGridStateOptions
 ```
 
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `LocalStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -141,17 +124,29 @@ The simple to use single-point API's allows to achieve a full state persistence 
 }
 ```
 
-<!-- ComponentStart: HierarchicalGrid -->
+## Restoring columns
+
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will not persist columns templates, column formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. Let's show how to do this for templated columns:
+
+1 - Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the `ColumnInit` event:
+
+2 - In the `ColumnInit` event handler, assign the template to the column [`BodyTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=bodyTemplate) property:
+
+```razor
+@code {
+    public void OnColumnInit(IgbColumnComponentEventArgs args)
+    {
+        IgbColumn column = args.Detail;
+        if (column.Field == "IsActive")
+        {
+            column.BodyTemplate = ActiveTemplate;
+        }
+    }
+}
+```
 
 ## Restoring Child Grids
-
-Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+Saving / Restoring state for the child grids is controlled by the [`RowIslands`](mcp:get_api_reference?platform=blazor&component=IgbGridStateInfo&member=rowIslands) property and is enabled by default. [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
 
 ```razor
 <IgbHierarchicalGrid>
@@ -168,21 +163,16 @@ Saving / Restoring state for the child grids is controlled by the `RowIslands` p
         RowIslands = true
     };
 }
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+Then the [`IgbGridState.getState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and [`Sorting`](mcp:get_api_reference?platform=blazor&component=IgbGridStateInfo&member=sorting). If later on the developer wants to restore only the [`Filtering`](mcp:get_api_reference?platform=blazor&component=IgbGridStateInfo&member=filtering) state for all grids, use:
 
-<!-- ComponentStart: HierarchicalGrid -->
+Then the [`IgbGridState.getState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and [`Sorting`](mcp:get_api_reference?platform=blazor&component=IgbGridStateInfo&member=sorting). If later on the developer wants to restore only the [`Filtering`](mcp:get_api_reference?platform=blazor&component=IgbGridStateInfo&member=filtering) state for all grids, use:
 
-Then the [`GetState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
-
-Then the [`GetState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
-
-```razor
+```csharp
 gridState.ApplyStateFromStringAsync(gridStateString, new string[] { "filtering", "rowIslands" });
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ## Demo
 
@@ -571,18 +561,26 @@ public class SingersData
 
 ## Limitations
 
-<!-- ComponentStart: HierarchicalGrid -->
-
 - When restoring all grid features at once (using `applyState` API with no parameters), then column properties for the root grid might be reset to default. If this happens, restore the columns or column selection feature separately after that:
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```typescript
+state.applyState(gridState);
+state.applyState(gridState.columns);
+state.applyState(gridState.columnSelection);
+```
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+- [`IgbGridState.getStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns [`Formatter`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=formatter), [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=filters), [`Summaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=summaries), [`IgbHierarchicalGrid.sortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortStrategy), [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses), [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles), [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=headerTemplate) and [`BodyTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=bodyTemplate) properties.
 
-- [`GetStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns `Formatter`, [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+## API References
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)<br />
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState)<br />
+[`IgbPivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration)<br />
+[`IgbPivotDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension)<br />
+[`IgbPivotValue`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue)<br />
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+## Additional Resources
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Selection](selection.md)

@@ -1,16 +1,15 @@
 ---
-title: React Tree Grid Row Pinning in - Ignite UI for React
-_description: Use the React Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
-_keywords: React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-pinning
+title: "React Tree Grid Row Pinning in - Ignite UI for React"
+description: Use the React Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
+keywords: "React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-pinning"
+llms:
+  description: "The Ignite UI for React Row Pinning feature in React Tree Grid allows you to pin one or multiple rows to the top or bottom of grid."
+_componentKey: TreeGrid
 _tocName: Row Pinning
 _premium: true
 ---
-
 # React Tree Grid Row Pinning
 
 The Ignite UI for React Row Pinning feature in React Tree Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) vertically. The React Tree Grid has a built-in row pinning UI, which is enabled by initializing an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component in the context of Tree Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
@@ -217,10 +216,6 @@ root.render(<Sample/>);
 
 The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with the [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
-
 ```tsx
 <IgrTreeGrid>
     <IgrColumn field="Country" header="Country"> </IgrColumn>
@@ -231,28 +226,24 @@ The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](mcp:get_a
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
 ## Row Pinning API
 
-Row pinning is controlled through the [`pinned`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) body.
+Row pinning is controlled through the [`IgrRowDirective.pinned`](mcp:get_api_reference?platform=react&component=IgrRowDirective&member=pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) body.
 
 ```tsx
 gridRef.current.getRowByIndex(0).pinned = true;
 ```
 
-You may also use the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s [`pinRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=unpinRow) methods of the to pin or unpin records by their ID:
+You may also use the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s [`PinRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinRow) or [`UnpinRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=unpinRow) methods of the to pin or unpin records by their ID:
 
 ```tsx
 gridRef.current.pinRow('ALFKI');
 gridRef.current.unpinRow('ALFKI');
 ```
 
-Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`IgrTreeGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`IgrTreeGrid.rowPinning`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowPinning) event and changing the [`IgrPinRowEventArgs`](mcp:get_api_reference?platform=react&component=IgrPinRowEventArgs) property of the event arguments to the desired position index.
 
 ```tsx
 const rowPinning = (event: IgrPinRowEventArgs) => {
@@ -261,23 +252,21 @@ const rowPinning = (event: IgrPinRowEventArgs) => {
 
 <IgrTreeGrid autoGenerate={true} onRowPinning={rowPinning}>
 </IgrTreeGrid>
+
 ```
 
 ## Pinning Position
 
-You can change the row pinning position via the [`pinning`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`IgrTreeGrid.pinning`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 const pinning: IgrPinningConfig = { rows : RowPinningPosition.Bottom };
 
 <IgrTreeGrid ref={gridRef} autoGenerate={true} pinning={pinning}>
 </IgrTreeGrid>
-```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+```
 
 ## Custom Row Pinning UI
 
@@ -288,9 +277,22 @@ You can define your custom UI and change the pin state of the rows via the relat
 Let's say that instead of an action strip you would like to show a pin icon in every row allowing the end-user to click and change a particular row's pin state.
 This can be done by adding an extra column with a cell template containing the custom icon.
 
-<!-- ComponentEnd: Grid, TreeGrid -->
+```tsx
+const cellPinCellTemplate = (ctx: IgrCellTemplateContext) => {
+    const index = ctx.cell.row.index;
+    return (
+        <>
+            <span onPointerDown={(e: any) => toggleRowPin(index)}>📌</span>
+        </>
+    );
+}
 
-<!-- ComponentStart: Grid, TreeGrid -->
+<IgrTreeGrid primaryKey="ID" autoGenerate={false}>
+    <IgrColumn width="70px" bodyTemplate={cellPinCellTemplate}>
+    </IgrColumn>
+</IgrTreeGrid>
+
+```
 
 On click of the custom icon the pin state of the related row can be changed using the row's API methods.
 
@@ -300,8 +302,6 @@ const toggleRowPin = (index: number) => {
   grid.getRowByIndex(index).pinned = !grid.getRowByIndex(index).pinned;
 }
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 #### Demo
 
@@ -470,7 +470,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -656,9 +656,12 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-- `TreeGridRow`
-- [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType)
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)<br />
+
+  [`IgrGridRowComponent`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent)
+
+<br />
+[`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType)<br />
 
 ## Additional Resources
 

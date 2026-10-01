@@ -1,21 +1,22 @@
 ---
 title: Blazor Chart Trendlines | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Trendlines
-_keywords: Blazor Charts, Trendlines, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "FinancialChart", "CategoryChart", "XamDataChart", "TrendLineType"]
+description: Infragistics' Blazor Chart Trendlines
+keywords: Blazor Charts, Trendlines, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for Blazor charts, trendlines help in identifying a trend or finding patterns in data."
 _tocName: Chart Trendlines
 _premium: true
 ---
-
 # Blazor Chart Trendlines
 
 In Ignite UI for Blazor charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) (except for stacked series, shape series, and range series).
 
-Trendlines are off by default, but you can enable them by setting the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineType) property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
+Trendlines are off by default, but you can enable them by setting the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=trendLineType) property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
 
-The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the `TrendLineDashArray` property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
+The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the [`TrendLineDashArray`](mcp:get_api_reference?platform=blazor&component=IgbFinancialPriceSeries&member=trendLineDashArray) property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
 
 ## Blazor Chart Trendlines Example
 
@@ -83,11 +84,9 @@ The following sample depicts a [`IgbFinancialChart`](mcp:get_api_reference?platf
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Chart Trendlines Dash Array Example
 
-The following sample depicts a [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) showing a [`IgbFinancialPriceSeries`](mcp:get_api_reference?platform=blazor&component=IgbFinancialPriceSeries) with a **QuarticFit** dashed trendline applied via the [`TrendLineDashArray`](mcp:get_api_reference?platform=blazor&component=IgbFinancialPriceSeries&member=TrendLineDashArray) property:
+The following sample depicts a [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) showing a [`IgbFinancialPriceSeries`](mcp:get_api_reference?platform=blazor&component=IgbFinancialPriceSeries) with a **QuarticFit** dashed trendline applied via the [`TrendLineDashArray`](mcp:get_api_reference?platform=blazor&component=IgbFinancialPriceSeries&member=trendLineDashArray) property:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -198,33 +197,31 @@ public class Stock2Years
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Chart Trendline Layer
 
 The [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) is a series type, you can add more than one of them to the [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
 
 ## Trendline Layer Usage
 
-The [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) must be provided with a [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TargetSeries) and a [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TrendLineType) in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
+The [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) must be provided with a [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=targetSeries) and a [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=trendLineType) in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
 
-If you would like to show the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) in the Legend, you can do so by setting the `UseLegend` property to `true`.
+If you would like to show the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) in the Legend, you can do so by setting the [`UseLegend`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=useLegend) property to `true`.
 
 ## Styling the Trendline Layer
 
-By default, the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) renders with the same color as its [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TargetSeries) in a dashed line. This can be configured by using the various styling properties on the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer).
+By default, the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) renders with the same color as its [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=targetSeries) in a dashed line. This can be configured by using the various styling properties on the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer).
 
-To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's [`Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Brushes) palette based on the index in which the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) is placed in the chart's [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection.
+To change the color of the trendline that is drawn, you can set its [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=brush) property. Alternatively, you can also set the [`UseIndex`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=useIndex) property to `true`, which will pull from the chart's [`Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=brushes) palette based on the index in which the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) is placed in the chart's [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection.
 
-You can also modify the way that the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
+You can also modify the way that the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer) appears by using its [`AppearanceMode`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=appearanceMode) and [`ShiftAmount`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=shiftAmount) properties. The [`ShiftAmount`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=shiftAmount) takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
 
-The following are the options for the `AppearanceMode` property:
+The following are the options for the [`AppearanceMode`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=appearanceMode) property:
 
 - `Auto`: This will default to the DashPattern enumeration.
-- `BrightnessShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TargetSeries) brush and modify its brightness based on the provided `ShiftAmount`.
-- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `DashArray` property on the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer).
-- `OpacityShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TargetSeries) brush and modify its opacity based on the provided `ShiftAmount`.
-- `SaturationShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=TargetSeries) brush and modify its saturation based on the provided `ShiftAmount`.
+- `BrightnessShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=targetSeries) brush and modify its brightness based on the provided [`ShiftAmount`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=shiftAmount).
+- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the [`DashArray`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=dashArray) property on the [`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer).
+- `OpacityShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=targetSeries) brush and modify its opacity based on the provided [`ShiftAmount`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=shiftAmount).
+- `SaturationShift`: The trendline will take the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=targetSeries) brush and modify its saturation based on the provided [`ShiftAmount`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer&member=shiftAmount).
 
 ## Additional Resources
 
@@ -234,18 +231,7 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-
-The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components share the following API properties:
-
-- [`TrendLineBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineBrushes)
-- [`TrendLinePeriod`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLinePeriod)
-- [`TrendLineThickness`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineThickness)
-- [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineType)
-
-In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component, most types of series have the following API properties:
-
-- [`TrendLineBrush`](mcp:get_api_reference?platform=blazor&component=IgbScatterBase&member=TrendLineBrush)
-- [`TrendLineDashArray`](mcp:get_api_reference?platform=blazor&component=IgbScatterBase&member=TrendLineDashArray)
-- [`TrendLinePeriod`](mcp:get_api_reference?platform=blazor&component=IgbScatterBase&member=TrendLinePeriod)
-- [`TrendLineThickness`](mcp:get_api_reference?platform=blazor&component=IgbScatterBase&member=TrendLineThickness)
-- [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbScatterBase&member=TrendLineType)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+[`IgbTrendLineLayer`](mcp:get_api_reference?platform=blazor&component=IgbTrendLineLayer)

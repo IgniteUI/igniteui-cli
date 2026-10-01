@@ -1,18 +1,18 @@
 ---
-title: React ComboBox Component – Ignite UI for React
-_description: Ignite UI for React ComboBox Component Features
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox Component Features
-_license: MIT
+title: "React ComboBox Component – Ignite UI for React"
+description: "Ignite UI for React ComboBox Component Features"
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox Component Features"
+license: MIT
 mentionedTypes: ["Combo", "ComboList", "ComboItem"]
+llms:
+  description: "The Ignite UI for React ComboBox component exposes several features such as filtering and grouping."
 _tocName: Features
 ---
-
 # React ComboBox Features
 
 The Ignite UI for React ComboBox component exposes several features such as filtering and grouping.
 
 ## Combobox Features Example
-
 The following demo shows some [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) features that are enabled/disabled at runtime:
 
 ```typescript
@@ -140,6 +140,7 @@ const [comboDisabled, setComboDisabled] = useState(false);
     disabled={comboDisabled}>
 </IgrCombo>
 
+
 <IgrSwitch checked={disableFiltering} onChange={e => setDisableFiltering(e.detail.checked)}>
     <span>Disable Filtering</span>
 </IgrSwitch>
@@ -154,19 +155,19 @@ const [comboDisabled, setComboDisabled] = useState(false);
 </IgrSwitch>
 ```
 
-Note that grouping is enabled/disabled by setting the [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property to a corresponding data source field:
+Note that grouping is enabled/disabled by setting the [`GroupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property to a corresponding data source field:
 
 ```tsx
-groupKey={groupingEnabled ? "country" : undefined}
+<IgrCombo groupKey={groupingEnabled ? "country" : undefined}></IgrCombo>
 ```
 
 ## Features
 
 ### Filtering
 
-By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`disableFiltering`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disableFiltering) property.
+By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`DisableFiltering`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disableFiltering) property.
 
-Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`caseSensitiveIcon`](mcp:get_api_reference?platform=react&component=IgrCombo&member=caseSensitiveIcon) property so that end-users can control the case sensitivity.
+Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`CaseSensitiveIcon`](mcp:get_api_reference?platform=react&component=IgrCombo&member=caseSensitiveIcon) property so that end-users can control the case sensitivity.
 
 ```tsx
 <IgrCombo disableFiltering={true} caseSensitiveIcon={true}></IgrCombo>
@@ -189,14 +190,14 @@ const options = {
 
 ### Grouping
 
-Defining a [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) option will group the items, according to the provided key:
+Defining a [`GroupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) option will group the items, according to the provided key:
 
 ```tsx
 <IgrCombo groupKey="region" />
 ```
 
-> [!Note]
-> The [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property will only have effect if your data source consists of complex objects.
+**Note:** 
+The [`GroupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction
 
@@ -208,7 +209,7 @@ The ComboBox component also exposes an option for setting whether groups should 
 
 ### Label
 
-The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) label can be set easily using the [`label`](mcp:get_api_reference?platform=react&component=IgrCombo&member=label) property:
+The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) label can be set easily using the [`Label`](mcp:get_api_reference?platform=react&component=IgrCombo&member=label) property:
 
 ```tsx
 <IgrCombo label="Cities" />
@@ -232,7 +233,7 @@ If you want your ComboBox to be automatically focused on page load you can use t
 
 ### Search Input Focus
 
-The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`autofocusList`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocusList) property as shown below:
+The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`AutofocusList`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocusList) property as shown below:
 
 ```tsx
 <IgrCombo autofocusList={true} />
@@ -248,11 +249,15 @@ The ComboBox can be marked as required by setting the required property.
 
 ### Disable ComboBox
 
-You can disable the ComboBox using the [`disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled) property:
+You can disable the ComboBox using the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled) property:
 
 ```tsx
 <IgrCombo disabled={true} />
 ```
+
+## API References
+
+[`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)<br />
 
 ## Additional Resources
 

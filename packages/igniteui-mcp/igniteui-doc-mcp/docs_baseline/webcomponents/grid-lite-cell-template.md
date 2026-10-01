@@ -1,13 +1,14 @@
 ---
-title: Web Components Grid Lite Cell Template | Ignite UI for Web Components | MIT license
-_description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source Web Components Grid Lite. Try now.
-_keywords: cell template, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Web Components Grid Lite Cell Template | Ignite UI for Web Components | MIT license"
+description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source Web Components Grid Lite. Try now.
+keywords: cell template, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "By default, the grid uses the field of the column to render the value as a string inside the cell."
 _tocName: Cell Template
 ---
-
 # Column Cell Template
 
 By default, the grid uses the field of the column to render the value as a string inside the cell. This is fine for basic scenarios, but if you want to customize the rendered output or the final output is a combination of different data fields, you can customize the cell template.
@@ -21,12 +22,6 @@ const column = document.querySelector('igc-grid-lite-column[field="price"]');
 // Set the cellTemplate property
 column.cellTemplate = (params: IgcCellContext<T, K>) => { return html`<!-- template content -->`};
 ```
-
-<!-- End: WebComponents -->
-
-<!-- End: React -->
-
-<!-- End: Blazor -->
 
 ## Use as a Formatter Function
 
@@ -42,16 +37,8 @@ const column = document.querySelector('igc-grid-lite-column');
 column.cellTemplate = (params) => asCurrency(params.value); // => "€123,456.79"
 ```
 
-<!-- End: WebComponents -->
-
-<!-- End: React -->
-
-<!-- End: Blazor -->
-
 You can combine values of different fields from the data source as well.
 
-<!-- TODO:
-Refer to the API documentation for `GridLiteCellContext` for more information. -->
 
 ```typescript
 const { format: asCurrency } = new Intl.NumberFormat('en-150', { style: 'currency', currency: 'EUR' });
@@ -63,23 +50,16 @@ const column = document.querySelector('igc-grid-lite-column');
 column.cellTemplate = ({value, row}) => asCurrency(value * row.data.count);
 ```
 
-<!-- End: WebComponents -->
-
-<!-- End: React -->
-
-<!-- End: Blazor -->
-
 ## Custom DOM Templates
 
 Aside from using the `cellTemplate` property as a value formatter, you can also create your own DOM template, which
 will be rendered inside the cell container.
 
-We've decided to re-use the functionality provided by <a href="https://lit.dev/" target="_blank">Lit</a> and its <a href="https://lit.dev/docs/templates/expressions/" target="_blank">tagged template syntax</a> for building declarative
+We've decided to re-use the functionality provided by <a href="https://lit.dev/" target="_blank">Lit</a> and its
+<a href="https://lit.dev/docs/templates/expressions/" target="_blank">tagged template syntax</a> for building declarative
 DOM fragments.
 
 You can template any standard DOM elements as well as web components from other libraries.
-
-<!-- WebComponents -->
 
 ```typescript
 // Import the `html` tag function from the Lit package.
@@ -92,20 +72,12 @@ const column = document.querySelector('igc-grid-lite-column[field="rating"]');
 column.cellTemplate = ({ value }) => html`<igc-rating readonly value=${value}></igc-rating>`;
 ```
 
-<!-- End: WebComponents -->
-
-<!-- End: React -->
-
-<!-- End: Blazor -->
-
-> [!NOTE]
-> Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
+**Note:** 
+Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object
 
 The custom cell renderer is passed an `GridLiteCellContext` object as a parameter with the following props:
-
-<!-- React, WebComponents -->
 
 ```typescript
 /**
@@ -133,8 +105,6 @@ export interface GridLiteCellContext<
   value: PropertyType<T, K>;
 }
 ```
-
-<!-- End: React, WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -283,19 +253,17 @@ igc-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

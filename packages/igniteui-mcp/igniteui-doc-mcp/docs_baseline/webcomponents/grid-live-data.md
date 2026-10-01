@@ -1,17 +1,17 @@
 ---
-title: Web Components Grid Live Data updates - Ignite UI for Web Components
-_description: Check out how the Ignite UI for Web Components Grid can handle thousands of updates per second, while staying responsive for user interactions.
-_keywords: Web Components Grid, IgcGrid updates, Web Components live data, infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Live Data updates - Ignite UI for Web Components"
+description: Check out how the Ignite UI for Web Components Grid can handle thousands of updates per second, while staying responsive for user interactions.
+keywords: "Web Components Grid, IgcGrid updates, Web Components live data, infragistics"
+license: commercial
+llms:
+  description: "The Ignite UI for Web Components Live Data Updates feature in Web Components Grid is used for enabling real-time or near-real-time updates of data displayed within the grid."
+_componentKey: Grid
 _tocName: Live Data / Real-Time
 _premium: true
 ---
-
 # Web Components Grid Live Data Updates
 
-The Ignite UI for Web Components Live Data Updates feature in Web Components Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can handle thousands of updates per second, while staying responsive for user interactions.
+The Ignite UI for Web Components Live Data Updates feature in Web Components Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can handle thousands of updates per second, while staying responsive for user interactions.
 
 ## Web Components Live-data Update Example
 
@@ -1326,16 +1326,11 @@ private updateData(data: any[]) {
 ```
 
 ## Templates
-
 Updating the view works the same way for columns with a default template and for columns with a custom template. However, it is recommended to keep custom templates relatively simple. As number of elements in the template grows, negative performance impact rises as well.
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -1346,8 +1341,6 @@ Updating the view works the same way for columns with a default template and for
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

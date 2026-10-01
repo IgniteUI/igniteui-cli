@@ -1,16 +1,15 @@
 ---
-title: React Tree Grid Advanced Filtering - Ignite UI for React
-_description: Learn how to configure advanced filter of data with the React Tree Grid. The grid advanced filtering is more convenient and engaging than ever.
-_keywords: Advanced Filtering, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/advanced-filtering
+title: "React Tree Grid Advanced Filtering - Ignite UI for React"
+description: Learn how to configure advanced filter of data with the React Tree Grid. The grid advanced filtering is more convenient and engaging than ever.
+keywords: Advanced Filtering, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/advanced-filtering"
+llms:
+  description: "The Ignite UI for React Advanced Filtering in React Tree Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the IgrTreeGrid."
+_componentKey: TreeGrid
 _tocName: Advanced Filtering
 _premium: true
 ---
-
 # React Tree Grid Advanced Filtering
 
 The Ignite UI for React Advanced Filtering in React Tree Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
@@ -167,7 +166,7 @@ root.render(<Sample/>);
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
 
-In order to add a filtering condition, you have to select any of the [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) columns, an operand based on the column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
+In order to add a filtering condition, you have to select any of the [`IgrColumn.filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) columns, an operand based on the column [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
 
 If you select more than one filtering condition chip, a context menu appears with options to create a group or delete the filters. If you choose to create a group with the selected conditions, the newly created group will appear where the topmost selected condition was placed.
 
@@ -177,11 +176,7 @@ In order to filter the data once you are ready with creating the filtering condi
 
 ## Usage
 
-To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=allowAdvancedFiltering) input property should be set to **true**.
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: TreeGrid -->
+To enable the advanced filtering, the [`IgrTreeGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=allowAdvancedFiltering) input property should be set to **true**.
 
 ```tsx
 <IgrTreeGrid data={nwindData} autoGenerate={false} allowAdvancedFiltering={true}>
@@ -189,11 +184,7 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_ref
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-The advanced filtering generates a [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+The advanced filtering generates a [`IgrTreeGrid.filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=filteringExpressionsTree) which is stored in the [`IgrTreeGrid.advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) input property. You could use the [`IgrTreeGrid.advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
 ```tsx
 const filteringTree: IgrFilteringExpressionsTree = {
@@ -223,18 +214,17 @@ const filteringTree: IgrFilteringExpressionsTree = {
     <IgrColumn field="ProductID" filterable={true} dataType="number"></IgrColumn>
     <IgrColumn field="ProductName" dataType="string" filterable={true}></IgrColumn>
 </IgrTreeGrid>
+
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+In case you don't want to show the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) toolbar, you could use the [`IgrTreeGrid.openAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=openAdvancedFilteringDialog) and [`IgrTreeGrid.closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
-In case you don't want to show the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) toolbar, you could use the [`openAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
-
-> [!Note]
-> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is the intersection between the results of the two filters.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -412,10 +402,8 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

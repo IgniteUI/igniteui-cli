@@ -1,20 +1,21 @@
 ---
 title: Angular Query Builder Component - Ignite UI for Angular
-_description: Angular Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
-_keywords: Angular Query Builder component, Angular Query Builder control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: commercial
+description: Angular Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
+keywords: Angular Query Builder component, Angular Query Builder control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: commercial
+llms:
+  description: "Angular Query Builder is part of our Angular Components and it provides a rich UI that allows developers to build complex data filtering queries for a specified data set."
 _tocName: Query Builder
 ---
-
 # Angular Query Builder Component Overview
 
 Angular Query Builder is part of our [Angular Components](https://www.infragistics.com/products/ignite-ui-angular) and it provides a rich UI that allows developers to build complex data filtering queries for a specified data set. With this component they can build a tree of expressions and set AND/OR conditions between them with editors and condition lists determined by each field's data type. The expression tree can then be easily transformed to a query in the format the backend supports.
 
-<p class="highlight">
+<div class="highlight">
 
-The [`IgxQueryBuilderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component provides a way to build complex queries through the UI. By specifying AND/OR operators, conditions and values the user creates an expression tree which describes the query.
+The [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component provides a way to build complex queries through the UI. By specifying AND/OR operators, conditions and values the user creates an expression tree which describes the query.
 
-</p>
+</div>
 
 ## Angular Query Builder Example
 
@@ -138,7 +139,7 @@ export class QueryBuilderRequestSampleComponent implements OnInit, AfterViewInit
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Query Builder
 
@@ -148,7 +149,7 @@ To get started with the Ignite UI for Angular Query Builder component, first you
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The next step is to import the `IgxQueryBuilderModule` in the **app.module.ts** file.
 
@@ -207,7 +208,7 @@ If no expression tree is initially set, you start by choosing an entity and whic
 
 In order to add a condition you select a field, an operand based on the field data type and a value if the operand is not unary. The operands `In` and `Not In` will allow you to create an inner query with conditions for a different entity instead of simply providing a value. Once the condition is committed, a chip with the condition information appears. By clicking or hovering the chip, you have the options to modify it or add another condition or group right after it.
 
-Clicking on the ([`AND`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=and) or [`OR`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=or)) button placed above each group, will open a menu with options to change the group type or ungroup the conditions inside.
+Clicking on the ([`IgxFilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) or [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or)) button placed above each group, will open a menu with options to change the group type or ungroup the conditions inside.
 
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups. When selecting a new entity a confirmation dialog will be shown, unless the [`showEntityChangeDialog`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent&member=showEntityChangeDialog) input property is set to false.
 
@@ -252,7 +253,7 @@ ngAfterViewInit(): void {
 }
 ```
 
-The `expressionTree` is a two-way bindable property which means a corresponding `expressionTreeChange` output is implemented that emits when the end-user changes the UI by creating, editing or removing conditions. It can also be subscribed separately to receive notifications and react to such changes.
+The [`expressionTree`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent&member=expressionTree) is a two-way bindable property which means a corresponding [`expressionTreeChange`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent&member=expressionTreeChange) output is implemented that emits when the end-user changes the UI by creating, editing or removing conditions. It can also be subscribed separately to receive notifications and react to such changes.
 
 ```html
 <igx-query-builder #queryBuilder
@@ -264,16 +265,14 @@ The `expressionTree` is a two-way bindable property which means a corresponding 
 
 ## Expressions Dragging
 
-Condition chips can be easily repositioned using mouse [_Drag & Drop_](drag-drop.md) or [_Keyboard reordering_](#keyboard-interaction) approaches. With those, users can adjust their query logic dynamically.
+Condition chips can be easily repositioned using mouse [_Drag & Drop_](./drag-drop.md) or [_Keyboard reordering_](#keyboard-interaction) approaches. With those, users can adjust their query logic dynamically.
 
 - Dragging a chip does not modify its condition/contents, only its position.
 - Chip can also be dragged along groups and subgroups. For example, grouping/ungrouping expressions is achieved via the Expressions Dragging functionality.
 In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
 
->[!NOTE]
->Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
-
-<img class="responsive-img" alt="Animated Example of Query Builder Drag and Drop using the Mouse" src="../images/general/query-builder-drag-and-drop.gif" />
+**Note:** 
+Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
 
 ## Keyboard interaction
 
@@ -284,10 +283,8 @@ In order to group already existing conditions, first you need to add a new group
 - <kbd>Space</kbd> / <kbd>Enter</kbd> - focused expression enters edit mode. If chip is been moved, this confirms it's new position.
 - <kbd>Esc</kbd> - chip's reordering is canceled and it returns to it's original position.
 
->[!NOTE]
->Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
-
-<img class="responsive-img" alt="Animated Example of Keyboard Drag and Drop Using the Ignite UI for Angular Query Builder" src="../images/general/query-builder-keyboard-drag-and-drop.gif" />
+**Note:** 
+Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
 
 ## Templating
 
@@ -295,7 +292,7 @@ The Ignite UI for Angular Query Builder Component allows defining templates for 
 
 ### Header Template
 
-By default the [`IgxQueryBuilderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) header would not be displayed. In order to define such, the [`IgxQueryBuilderHeaderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderHeaderComponent) should be added inside of the `igx-query-builder`.
+By default the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) header would not be displayed. In order to define such, the [`IgxQueryBuilderHeader`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderHeaderComponent) should be added inside of the `igx-query-builder`.
 
 Then, for setting the header title could be used the [`title`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderHeaderComponent&member=title) input and passing content inside of the `igx-query-builder-header` allows templating the query builder header.
 
@@ -539,30 +536,17 @@ igx-radio-group{
 
 When you modify a primary property, all related dependent properties are automatically updated to reflect the change:
 
-<table class="collapsible-table">
-    <thead>
-      <tr>
-        <th>Primary Property</th>
-        <th>Dependent Property</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody class="group">
-      <tr class="primary">
-        <td><details><summary><strong>$background</strong></summary></details></td>
-        <td>$label-foreground</td>
-        <td>The color for query builder labels "from" & "select"</td>
-      </tr>
-      <tr class="dependent"><td></td><td>$header-background</td><td>The background color of the query builder header</td></tr>
-      <tr class="dependent"><td></td><td>$header-foreground</td><td>The foreground color of the query builder header</td></tr>
-      <tr class="dependent"><td></td><td>$subquery-header-background</td><td>The background color of the subquery header</td></tr>
-      <tr class="dependent"><td></td><td>$subquery-border-color</td><td>The border color of the query block</td></tr>
-      <tr class="dependent"><td></td><td>$separator-color</td><td>The separator color of the query block</td></tr>
-      <tr class="dependent"><td></td><td>$header-border (Bootstrap only)</td><td>The border color of the query builder header</td></tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$background** | $label-foreground | The color for query builder labels "from" & "select" |
+|  | $header-background | The background color of the query builder header |
+|  | $header-foreground | The foreground color of the query builder header |
+|  | $subquery-header-background | The background color of the subquery header |
+|  | $subquery-border-color | The border color of the query block |
+|  | $separator-color | The separator color of the query block |
+|  | $header-border (Bootstrap only) | The border color of the query builder header |
 
-To get started with styling the Query Builder, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the Query Builder, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -606,10 +590,10 @@ $custom-icon-button: outlined-icon-button-theme(
 );
 ```
 
-In this example we only changed some of the parameters for the listed components, but the [`button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme), [`chip-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme), [`drop-down-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme), [`input-group-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme) themes provide way more parameters to control their respective styling.
+In this example we only changed some of the parameters for the listed components, but the `button-theme`, `chip-theme`, `drop-down-theme`, `input-group-theme` themes provide way more parameters to control their respective styling.
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
 The last step is to **include** the new component themes using the `tokens` mixin.
 
@@ -626,8 +610,8 @@ The last step is to **include** the new component themes using the `tokens` mixi
 }
 ```
 
-> [!NOTE]
-> If the component is using an [`Emulated`](/themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep` to style the components inside the query builder component (button, chip, drop-down ...etc).
+**Note:** 
+Token overrides normally inherit through Emulated View Encapsulation, but generated selectors for nested query builder controls may still require `::ng-deep`. If the local theme does not take effect, wrap that include in `::ng-deep` or move it to a global stylesheet. If a drop-down is attached to a detached overlay outlet, emit its theme from a selector that can match the outlet or configure the outlet beneath the themed container.
 
 ### Demo
 
@@ -748,14 +732,14 @@ $custom-icon-button: outlined-icon-button-theme(
 }
 ```
 
-> [!NOTE]
-> The sample will not be affected by the selected global theme from `Change Theme`.
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the query builder using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the query builder using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -773,7 +757,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [query-builder-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-query-builder-theme). The syntax is as follows:
+You can find the full list of properties in the `query-builder-theme`. The syntax is as follows:
 
 ```html
 <igx-query-builder
@@ -782,29 +766,91 @@ You can find the full list of properties in the [query-builder-theme](https://ww
 </igx-query-builder>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your query builder should look like this:
 
-<div class="sample-container loading" style="height:500px">
-    <iframe id="query-builder-tailwind-style-iframe" data-src='{environment:demosBaseUrl}/interactions/query-builder-tailwind-style' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { IgxQueryBuilderComponent } from 'igniteui-angular/query-builder';
+
+@Component({
+    selector: 'app-query-builder-tailwind-style-sample',
+    styleUrls: ['./query-builder-tailwind-style.component.scss'],
+    templateUrl: 'query-builder-tailwind-style.component.html',
+    imports: [IgxQueryBuilderComponent]
+})
+export class QueryBuilderTailwindStyleComponent implements OnInit {
+    public entities: any[];
+    public companiesFields: any[];
+    public ordersFields: any[];
+    public ngOnInit(): void {
+        this.companiesFields = [
+            { field: "ID", dataType: "string" },
+            { field: "CompanyName", dataType: "string" },
+            { field: "ContactName", dataType: "string" },
+            { field: "Employees", dataType: "number" },
+            { field: "ContactTitle", dataType: "string" },
+            { field: "DateCreated", dataType: "date" },
+            { field: "TimeCreated", dataType: "time" },
+            { field: "Address", dataType: "string" },
+            { field: "City", dataType: "string" },
+            { field: "Region", dataType: "string" },
+            { field: "PostalCode", dataType: "string" },
+            { field: "Phone", dataType: "string" },
+            { field: "Fax", dataType: "string" },
+            { field: "Contract", dataType: "boolean" }
+        ];
+
+        this.ordersFields = [
+            { field: "CompanyID", dataType: "string" },
+            { field: "OrderID", dataType: "number" },
+            { field: "EmployeeId", dataType: "number" },
+            { field: "OrderDate", dataType: "date" },
+            { field: "RequiredDate", dataType: "date" },
+            { field: "ShippedDate", dataType: "date" },
+            { field: "ShipVia", dataType: "number" },
+            { field: "Freight", dataType: "number" },
+            { field: "ShipName", dataType: "string" },
+            { field: "ShipCity", dataType: "string" },
+            { field: "ShipPostalCode", dataType: "string" },
+            { field: "ShipCountry", dataType: "string" },
+            { field: "Region", dataType: "string" }
+        ];
+
+        this.entities = [
+            {
+                name: "Companies",
+                fields: this.companiesFields
+            },
+            {
+                name: "Orders",
+                fields: this.ordersFields
+            }
+        ];
+    }
+}
+```
+```html
+<div class="wrapper">
+    <igx-query-builder class="!light-query-builder ![--background:#90B69F]" #queryBuilder
+        [entities]="entities">
+    </igx-query-builder>
 </div>
+```
 
 You can also streamline your Angular app development using [WYSIWYG App Builder™](https://www.infragistics.com/products/appbuilder) with real UI components.
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxQueryBuilderComponent API](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent)
-- [IgxQueryBuilderHeaderComponent](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderHeaderComponent)
-- [IgxQueryBuilderSearchValueTemplateDirective](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderSearchValueTemplateDirective)
-- [IgxQueryBuilderComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-query-builder-theme)
-
+<hr/>
+- [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent)
+- [`IgxQueryBuilderHeader`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderHeaderComponent)
+- [`IgxQueryBuilderSearchValueTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderSearchValueTemplateDirective)
+- `IgxQueryBuilderComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

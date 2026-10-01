@@ -1,14 +1,15 @@
 ---
-title: Blazor Map | Data Visualization Tools | Binding JSON Files | Infragistics
-_description: Learn how to use Infragistics' Blazor map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Blazor map demos!
-_keywords: Blazor map, JSON files, Ignite UI for Blazor, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Blazor Map | Data Visualization Tools | Binding JSON Files | Infragistics"
+description: Learn how to use Infragistics' Blazor map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Blazor map demos!
+keywords: "Blazor map, JSON files, Ignite UI for Blazor, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Blazor map, you can plot geographic data loaded from various file types."
 _tocName: Binding JSON File
 _premium: true
 ---
-
 # Blazor Binding JSON Files with Geographic Locations
 
 With the Ignite UI for Blazor map, you can plot geographic data loaded from various file types. For example, you can load geographic locations from JavaScript Object Notation (JSON) file.
@@ -63,10 +64,7 @@ With the Ignite UI for Blazor map, you can plot geographic data loaded from vari
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from JSON file:
 
 ```json
@@ -79,7 +77,6 @@ Here is an example of data from JSON file:
 ```
 
 ## Code Snippet
-
 The following code loads and binds [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries) in the map component to an array of objects created from loaded JSON file with geographic locations:
 
 ```razor
@@ -123,10 +120,9 @@ The following code loads and binds [`IgbGeographicHighDensityScatterSeries`](mcp
 ```
 
 ## API References
-
-- [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
-- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
-- `GeographicMap`
-- `DataSource`
-- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
-- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
+[`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
+[`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
+[`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+[`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource)
+[`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=latitudeMemberPath)
+[`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=longitudeMemberPath)

@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Binding Geographic Shape Files | Infragistics
-_description: Use Infragistics' React JavaScript map to load geo-spatial data from shape files. View Ignite UI for React map demos!
-_keywords: React map, shapefiles, Ignite UI for React, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "React Map | Data Visualization Tools | Binding Geographic Shape Files | Infragistics"
+description: Use Infragistics' React JavaScript map to load geo-spatial data from shape files. View Ignite UI for React map demos!
+keywords: "React map, shapefiles, Ignite UI for React, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "The Ignite UI for React map component, the ShapefileRecord class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of IgxShapefileRecord objects."
 _tocName: Binding Shape File
 _premium: true
 ---
-
 # React Binding Shape Files with Geo-spatial Data
 
-The Ignite UI for React map component, the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapefilerecord.html) objects.
+The Ignite UI for React map component, the `IgrShapefileRecord` class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of `IgxShapefileRecord` objects.
 
 ## React Binding Shape Files with Geo-spatial Data Example
 
@@ -135,24 +136,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingShapefilePolylines/>);
 ```
 
-<div class="divider--half"></div>
-
-The following table explains properties of the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) class for loading shape files.
+The following table explains properties of the `IgrShapefileRecord` class for loading shape files.
 
 | Property | Type | Description   |
 |----------|------|---------------|
-| [`shapefileSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html#shapefileSource) | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
-|[`databaseSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html#databaseSource) | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
+| `ShapefileSource` | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
+|`DatabaseSource` | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
 
-<!-- TODO add for WPF only: -->
-
-<!-- Both of the source properties for shape files are of Uri type. This means that shape files can be embedded resources in the application assembly and on the internet (via http). Refer to the previous section for more information on this process. The rules for resolving Uri objects are equivalent to any standard Uri property, for example the BitmapImage.UriSource property. -->
-
-When both source properties are set to non-null values, then the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) is populated with [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapefilerecord.html) objects and the `ImportCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
+When both source properties are set to non-null values, then the `IgrShapefileRecord` object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the `IgrShapefileRecord` is populated with `IgxShapefileRecord` objects and the `ImportCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
 
 ## Loading Shapefiles
-
-The following code creates an instance of the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) object for loading a shape file that contains locations of major cities in the world. It also demonstrates how to handle the `ImportCompleted` event as a prerequisite for binding data to the map component.
+The following code creates an instance of the `IgrShapefileRecord` object for loading a shape file that contains locations of major cities in the world. It also demonstrates how to handle the `ImportCompleted` event as a prerequisite for binding data to the map component.
 
 ```ts
 import { IgrShapeDataSource } from 'igniteui-react-core';
@@ -166,10 +160,9 @@ sds.dataBind();
 ```
 
 ## Binding Shapefiles
+In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have an `DataSource` property which can be bound to an array of objects. The `IgrShapefileRecord` is an example such array because it contains a list of `IgxShapefileRecord` objects.
 
-In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have an `ItemsSource` property which can be bound to an array of objects. The [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) is an example such array because it contains a list of [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapefilerecord.html) objects.
-
-The [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapefilerecord.html) class provides properties for storing geo-spatial data, listed in the following table.
+The `ShapefileRecord` class provides properties for storing geo-spatial data, listed in the following table.
 
 | Property     | Description   |
 |--------------|---------------|
@@ -179,9 +172,8 @@ The [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react
 This data structure is suitable for use in most Geographic Series as long as appropriate data columns are mapped to them.
 
 ## Code Snippet
-
-This code example assumes that shape files were loaded using the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html).
-The following code binds [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) in the map component to the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) and maps the `Points` property of all [`IgrShapefileRecord`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapefilerecord.html) objects.
+This code example assumes that shape files were loaded using the `IgrShapefileRecord`.
+The following code binds `IgrGeographicPolylineSeries` in the map component to the `IgrShapefileRecord` and maps the `Points` property of all `IgxShapefileRecord` objects.
 
 ```ts
 import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
@@ -215,10 +207,9 @@ public onShapePolylinesLoaded(sds: IgrShapeDataSource, e: any) {
 ```
 
 ## API References
-
-- `Fields`
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html)
-- `ImportCompleted`
-- `ItemsSource`
-- `Points`
-- [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html)
+`IgrGeographicPolylineSeries`
+`IgrShapefileRecord`
+`Fields`
+`ImportCompleted`
+`DataSource`
+`Points`

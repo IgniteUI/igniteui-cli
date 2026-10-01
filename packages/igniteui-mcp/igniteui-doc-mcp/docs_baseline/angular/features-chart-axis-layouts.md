@@ -1,25 +1,26 @@
 ---
-title: Angular Axis Layouts | Data Visualization | Infragistics
-_description: Infragistics' Angular Axis Layouts
-_keywords: Angular Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics
-_license: commercial
-mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "XamDataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+title: "Angular Axis Layouts | Data Visualization | Infragistics"
+description: Infragistics' Angular Axis Layouts
+keywords: "Angular Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics"
+license: commercial
+mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+llms:
+  description: "All Ignite UI for Angular charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart."
 _tocName: Axis Layouts
 _premium: true
 ---
-
 # Angular Axis Layouts
 
 All Ignite UI for Angular charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart. These features are demonstrated in the examples given below.
 
-> [!Note]
-> the following examples can be applied to [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) as well as [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) controls.
+**Note:** 
+the following examples can be applied to `IgxCategoryChart` as well as `IgxFinancialChart` controls.
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisLabelLocation) property of the Angular charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisLabelLocation) property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The `XAxisLabelLocation` property of the Angular charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the `YAxisLabelLocation` property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the `YAxisLabelLocation` so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -166,19 +167,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<!-- ## Axis Orientation Example
-
-TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
-e.g. https://www.infragistics.com/help/wpf/datachart-axis-orientation
- -->
-
 ## Axis Advanced Scenarios
 
-For more advanced axis layout scenarios, you can use Angular Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html).
+For more advanced axis layout scenarios, you can use Angular Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the `IgxDataChart`.
 
 ### Axis Sharing Example
 
-You can share and add multiple axes in the same plot area of the Angular [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html). It a common scenario to use share [`IgxTimeXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtimexaxiscomponent.html) and add multiple [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
+You can share and add multiple axes in the same plot area of the Angular `IgxDataChart`. It a common scenario to use share `IgxTimeXAxis` and add multiple `IgxNumericYAxis` to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
 
 The following example depicts a stock price and trade volume chart with a [Stock Chart](../types/stock-chart.md) and a [Column Chart](../types/column-chart.md) plotted. In this case, the Y-Axis on the left is used by the [Column Chart](../types/column-chart.md) and the Y-Axis on the right is used by the [Stock Chart](../types/stock-chart.md), while the X-Axis is shared between the two.
 
@@ -286,11 +281,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ### Axis Crossing Example
 
-In addition to placing axes outside plot area, the Angular [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`crossingAxis`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#crossingAxis) and [`crossingValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#crossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
+In addition to placing axes outside plot area, the Angular `IgxDataChart` also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting `CrossingAxis` and `CrossingValue` properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
 
 The following example shows a Sin and Cos wave represented by a [Scatter Spline Chart](../types/scatter-chart.md) with the X and Y axes crossing each other at the (0, 0) origin point.
 
@@ -425,8 +418,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -439,25 +430,16 @@ You can find more information about related chart features in these topics:
 The following is a list of API members mentioned in the above sections:
 d in the above sections:
 
-| [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)                                         | [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)                 |
+| `IgxDataChart`                                         | `IgxCategoryChart`                 |
 | ------------------------------------------------------ | ------------------------------- |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`crossingAxis`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#crossingAxis)             | None                            |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`crossingValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#crossingValue)            | None                            |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`isInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#isInverted)               | [`xAxisInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisInverted)                 |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`isInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html#isInverted)               | [`yAxisInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisInverted)                 |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ `LabelLocation`            | [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisLabelLocation)            |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ `LabelLocation`            | [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisLabelLocation)            |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ `LabelHorizontalAlignment` | [`yAxisLabelHorizontalAlignment`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisLabelHorizontalAlignment) |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ `LabelVerticalAlignment`   | [`xAxisLabelVerticalAlignment`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisLabelVerticalAlignment)   |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ `LabelVisibility`          | [`yAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisLabelVisibility)          |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ `LabelVisibility`          | [`xAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisLabelVisibility)          |
+| `Axes` -> `IgxNumericYAxis` -> `CrossingAxis`             | None                            |
+| `Axes` -> `IgxNumericYAxis` -> `CrossingValue`            | None                            |
+| `Axes` -> `IgxNumericXAxis` -> `IsInverted`               | `XAxisInverted`                 |
+| `Axes` -> `IgxNumericYAxis` -> `IsInverted`               | `YAxisInverted`                 |
+| `Axes` -> `IgxNumericYAxis` -> `LabelLocation`            | `YAxisLabelLocation`            |
+| `Axes` -> `IgxNumericXAxis` -> `LabelLocation`            | `XAxisLabelLocation`            |
+| `Axes` -> `IgxNumericYAxis` -> `LabelHorizontalAlignment` | `YAxisLabelHorizontalAlignment` |
+| `Axes` -> `IgxNumericXAxis` -> `LabelVerticalAlignment`   | `XAxisLabelVerticalAlignment`   |
+| `Axes` -> `IgxNumericYAxis` -> `LabelVisibility`          | `YAxisLabelVisibility`          |
+| `Axes` -> `IgxNumericXAxis` -> `LabelVisibility`          | `XAxisLabelVisibility`          |
 
-<!-- TODO correct links in Transformer -->
-
-<!--
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.location`            | `YAxisLabelLocation`            |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.location`            | `XAxisLabelLocation`            |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.horizontalAlignment` | `YAxisLabelHorizontalAlignment` |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.verticalAlignment`   | `XAxisLabelVerticalAlignment`   |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.visibility`          | `YAxisLabelVisibility`          |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.visibility`          | `XAxisLabelVisibility`          | -->

@@ -1,23 +1,22 @@
 ---
-title: React Grid Editing Rows - Ignite UI for React
-_description: Want to enable row editing in React Grid? Need a powerful API for CRUD operations? Try our Ignite UI for React Grid rows editing component!
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-editing
+title: "React Grid Editing Rows - Ignite UI for React"
+description: Want to enable row editing in React Grid? Need a powerful API for CRUD operations? Try our Ignite UI for React Grid rows editing component!
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-editing"
+llms:
+  description: "The Ignite UI for React Row Editing feature in React Grid allows editing data directly within the IgrGrid."
+_componentKey: Grid
 _tocName: Row Editing
 _premium: true
 ---
-
 # React Grid Row Editing
 
-The Ignite UI for React Row Editing feature in React Grid allows editing data directly within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for React Row Editing feature in React Grid allows editing data directly within the `IgrGrid`. On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## React Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the `IgrGrid`. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```css
 /* shared styles are loaded from: */
@@ -128,14 +127,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-> [!Note]
-> When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
+**Note:** 
+When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
 
-Define a [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with bound data source and [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) set to true:
-
-<!-- ComponentStart: Grid -->
+Define a `IgrGrid` with bound data source and [`IgrGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) set to true:
 
 ```tsx
 const unitsInStockCellTemplate = (ctx: IgrCellTemplateContext) => {
@@ -148,24 +145,23 @@ const unitsInStockCellTemplate = (ctx: IgrCellTemplateContext) => {
 
 <IgrGrid primaryKey="ProductID" width="100%" height="500px" rowEditable={true}>
     <IgrColumn field="ProductID" header="Product ID" editable={false}></IgrColumn>
-    <IgrColumn field="ReorderLevel" header="ReorderLever" dataType="number"></IgrColumn>
-    <IgrColumn field="ProductName" header="ProductName" dataType="string"></IgrColumn>
-    <IgrColumn field="UnitsInStock" header="UnitsInStock" dataType="number" bodyTemplate={unitsInStockCellTemplate}></IgrColumn>
-    <IgrColumn field="OrderDate" dataType="date"></IgrColumn>
+    <IgrColumn field="ReorderLevel" header="Reorder Level" dataType="number"></IgrColumn>
+    <IgrColumn field="ProductName" header="Product Name" dataType="string"></IgrColumn>
+    <IgrColumn field="UnitsInStock" header="Units In Stock" dataType="number" bodyTemplate={unitsInStockCellTemplate}></IgrColumn>
+    <IgrColumn field="OrderDate" header="Order Date" dataType="date"></IgrColumn>
     <IgrColumn field="Discontinued" header="Discontinued" dataType="boolean"></IgrColumn>
 </IgrGrid>
+
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Setting primary key is mandatory for row editing operations.
 
-> [!Note]
-> Setting primary key is mandatory for row editing operations.
+**Note:** 
+Enabling editing for individual columns is not necessary. Using the [`IgrGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) property in the `IgrGrid`, all rows, with defined `Field` property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`IgrGrid.editable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=editable) input of that column to `false`.
 
-> [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) property in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), all rows, with defined [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) input of that column to `false`.
-
-> [!Note]
-> The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+**Note:** 
+The `IgrGrid` utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -185,13 +181,13 @@ const unitsInStockCellTemplate = (ctx: IgrCellTemplateContext) => {
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), the cell will also stay in edit mode.
+- If row is in edit mode and `IgrGrid` is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When `IgrGrid` is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the `IgrGrid`, the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when `IgrGrid` is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -207,21 +203,13 @@ const unitsInStockCellTemplate = (ctx: IgrCellTemplateContext) => {
 
 - Summaries will be updated after row edit is finished. Same is valid for the other features like sorting, filtering, etc.
 
-<!-- ComponentStart: Grid -->
-
 - Expanding and collapsing grouped rows will not terminate editing for the current row.
-
-<!-- ComponentEnd: Grid -->
 
 ## Customizing Row Editing Overlay
 
 ### Customizing Text
 
 Customizing the text of the row editing overlay is possible using via templating.
-
-The `RowChangesCount` property is exposed and it holds the count of the changed cells.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 const rowEditTextTemplate = (ctx: IgrGridRowEditTextTemplateContext) =>{
@@ -233,13 +221,9 @@ const rowEditTextTemplate = (ctx: IgrGridRowEditTextTemplateContext) =>{
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Customizing Buttons
 
 Customizing the buttons of the row editing overlay also possible via templating.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 const rowEditActionsTemplate =(ctx: IgrGridRowEditActionsTemplateContext) => {
@@ -253,11 +237,9 @@ const rowEditActionsTemplate =(ctx: IgrGridRowEditActionsTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -272,8 +254,6 @@ Then set the related CSS properties for that class:
     --ig-banner-banner-message-color: #423589;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -392,28 +372,15 @@ root.render(<Sample/>);
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgrGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrGrid&member=endEdit)
-- [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field)
-- [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable)
-- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

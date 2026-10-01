@@ -1,13 +1,15 @@
 ---
-title: Web Components Hierarchical Grid | Fastest Web Components Hierarchical Table | Infragistics
-_description: The Ignite UI for Web Components Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
-_keywords: Web Components hierarchical grid, igniteui for Web Components, infragistics
-_license: commercial
+title: "Web Components Hierarchical Grid | Fastest Web Components Hierarchical Table | Infragistics"
+description: The Ignite UI for Web Components Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
+keywords: "Web Components hierarchical grid, igniteui for Web Components, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGridBaseDirective"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Web Components Hierarchical Data Grid is used to display and manipulate hierarchical tabular data."
 _tocName: Hierarchical Grid
+_premium: true
 ---
-
 # Hierarchical Data Grid Overview and Configuration
 
 The Ignite UI for Web Components Hierarchical Data Grid is used to display and manipulate hierarchical tabular data. Quickly bind your data with very little code or use a variety of events to customize different behaviors. This component provides a rich set of features like data selection, excel style filtering, sorting, paging, templating, column moving, column pinning, export to Excel and CSV, and more. The Hierarchical Grid builds upon the Flat Grid Component and extends its functionality by allowing the users to expand or collapse the rows of the parent grid, revealing corresponding child grids, when more detailed information is needed.
@@ -49,7 +51,7 @@ Or to link it:
 <link rel='stylesheet' href='node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css'>
 ```
 
-For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](overview.md#styling) section.
+For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](./overview.md#Styling) section.
 
 ## Using the Web Components Hierarchical Data Grid
 
@@ -106,8 +108,8 @@ Each **igc-row-island** should specify the key of the property that holds the ch
 </igc-hierarchical-grid>
 ```
 
-> [!NOTE]
-> Note that instead of `data` the user configures only the `childDataKey` that the igc-hierarchical-grid needs to read to set the data automatically.
+**Note:** 
+Note that instead of `data` the user configures only the `childDataKey` that the igc-hierarchical-grid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
 
@@ -182,22 +184,22 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igc-hierarchical-grid data="data" primary-key="ID" has-children-key="hasChildren">
 </igc-hierarchical-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=showExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -248,17 +250,8 @@ The Selection and Navigation features work globally for the whole Hierarchical G
 
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
-<img class="responsive-img" src="../../../images/unfold_less_icon_screenshot.jpg" srcset="../../images/unfold_less_icon_screenshoto@2x.jpg 2x" alt="unfold_less_icon_screenshot" />
-
-<!-- TODO: uncomment when sizing topic is ready -->
-
-<!-- ## Sizing
-
-See the [Hierarchical Grid Sizing](sizing.md) topic. -->
-
 ## Styling
-
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```html
 <igc-hierarchical-grid class="grid"></igc-hierarchical-grid>
@@ -274,7 +267,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 ```
 
 ### Demo
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -301,28 +293,8 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- `Cell`
-
-<!-- TODO: uncomment when all of the topics are ready -->
-
-<!-- ## Additional Resources
-
-- [Grid Sizing](sizing.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md) -->
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
-- [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)<br />
+[`IgcRowIsland`](mcp:get_api_reference?platform=webcomponents&component=IgcRowIslandComponent)<br />
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
+[`IgcCellType`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType)<br />

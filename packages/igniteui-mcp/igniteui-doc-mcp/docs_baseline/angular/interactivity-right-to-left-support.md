@@ -1,10 +1,11 @@
 ---
 title: Ignite UI for Angular Frameworks and features  | Ignite UI for Angular | Infragistics
-_description: Learn how to configure ARIA Accessibility and Directionality of your application with Ignite UI for Angular
-_keywords: aria support, a11y, ignite ui for angular, infragistics
+description: Learn how to configure ARIA Accessibility and Directionality of your application with Ignite UI for Angular
+keywords: aria support, a11y, ignite ui for angular, infragistics
+llms:
+  description: "Most of the components in the framework have full right-to-left (RTL) support by default."
 _tocName: RTL Support
 ---
-
 # Right to Left (RTL) Support
 
 ## RTL Support
@@ -93,7 +94,6 @@ igx-calendar {
 }
 ```
 
-
 ## Enabling right-to-left direction (RTL)
 
 `Ignite UI for Angular` library is susceptible to `directionality` manipulation only when setting `dir` attribute on either `html` or `body` tags. Also, keep in mind that runtime changes are not detected.
@@ -118,10 +118,12 @@ or
 </html>
 ```
 
-> [!NOTE]
-> Currently the `Igx-Grid` component only has partial(visual) RTL support.
-> [!NOTE]
->
-> ### Breaking Changes in version 13.2.0
->
-> All RTL specific stylesheets have been removed, therefore, users who have previously used *-rtl.css specific themes must switch to the regular theme files.
+**Note:** 
+Currently the `Igx-Grid` component only has partial(visual) RTL support.
+
+**Note:** 
+
+### Breaking Changes in version 13.2.0
+
+All RTL specific stylesheets have been removed, therefore, users who have previously used *-rtl.css specific themes must switch to the regular theme files.
+

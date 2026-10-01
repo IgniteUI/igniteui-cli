@@ -1,22 +1,19 @@
 ---
-title: React Map | Data Visualization Tools | Displaying Azure Imagery | Infragistics
-_description: Use Infragistics' React to display imagery from Microsoft Azure Maps. View Ignite UI for React map tutorials!
-_keywords: React map, azure maps, Ignite UI for React, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "AzureMapsImagery", "GeographicTileSeries"]
+title: "React Map | Data Visualization Tools | Displaying Azure Imagery | Infragistics"
+description: Use Infragistics' React to display imagery from Microsoft Azure Maps. View Ignite UI for React map tutorials!
+keywords: "React map, azure maps, Ignite UI for React, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap", "AzureMapsImagery", "GeographicTileSeries"]
+llms:
+  description: "The React AzureMapsImagery is geographic imagery mapping service provided by Microsoft®."
 _tocName: Displaying Azure Imagery
 _premium: true
 ---
+# React Imagery from Azure Maps 
 
-# React Imagery from Azure Maps <label class="badge badge--preview">PREVIEW</label>
-
-The React [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for React map component can display geographic imagery from Azure Maps in the map’s background content using the [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) class.
+The React `IgrAzureMapsImagery` is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for React map component can display geographic imagery from Azure Maps in the map’s background content using the `IgrAzureMapsImagery` class.
 
 ## React Displaying Imagery from Azure Maps - Overview
-
-<img src="../images/general/AzureMapsImagery.png" alt="AzureMapsImagery" />
-
-<div class="divider--half"></div>
 
 ```typescript
 import { IgrGeographicMap } from 'igniteui-react-maps';
@@ -314,8 +311,7 @@ root.render(<MapDisplayImageryAzure/>);
 ```
 
 ## React Displaying Imagery from Azure Maps - Code Example
-
-The following code snippet shows how to display geographic imagery tiles from Azure Maps in React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) using [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) class.
+The following code snippet shows how to display geographic imagery tiles from Azure Maps in React `IgrGeographicMap` using `IgrAzureMapsImagery` class.
 
 ```ts
 import { IgrGeographicMap } from 'igniteui-react-maps';
@@ -334,27 +330,21 @@ geoMap.backgroundContent = tileSource;
 
 ## React Overlaying Imagery from Azure Maps - Overview
 
-When working with the [`IgrGeographicTileSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographictileseries.html), you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
+When working with the `IgrGeographicTileSeries`, you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
 
 - **Base Styles**: Satellite, Road, Terra, and DarkGrey provide the core background tiles.
 - **Overlay Styles**: Traffic and Weather imagery (e.g., `TrafficRelativeOverlay`, `WeatherRadarOverlay`) are designed to be layered on top of a base style by assigning them to a tile series.
 - **Hybrid Styles**: Variants like `HybridRoadOverlay` and `HybridDarkGreyOverlay` already combine a base style with overlays (labels, roads, etc.), so you don’t need to manage multiple layers manually.
 
 This design allows you to build richer maps, for example:
-
 - Displaying **Satellite imagery** with a **TrafficOverlay** to highlight congestion on real-world images.
 - Using **Terra** with **WeatherRadarOverlay** to visualize terrain with precipitation.
 - Applying **DarkGrey** with **LabelsRoadOverlay** for a dashboard-friendly, contrast-heavy view.
 
-<img src="../images/general/Azure_Traffic_Tile_Series_With_Background.png" alt="Azure Traffic Tile Series With Background" />
-
-<div class="divider--half"></div>
-
 ## React Overlaying Imagery from Azure Maps - Code Example
+The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the React `IgrGeographicMap` using `IgrAzureMapsImagery` and `IgrGeographicTileSeries` classes.
 
-The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) using [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) and [`IgrGeographicTileSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographictileseries.html) classes.
-
-```ts
+```tsx
 // App.tsx
 import React, { useEffect, useRef } from 'react';
 import {
@@ -369,23 +359,25 @@ export default function App() {
     const tileSeriesRef = useRef<IgrGeographicTileSeries>(null);
     const azureKey = "<YOUR_KEY_HERE>";
 
-    // Update TileSeries
-    const series = new IgrGeographicTileSeries({
-    name: "AzureTileSeries",
-    });
+    useEffect(() => {
+        // Update TileSeries
+        const overlay = new IgrAzureMapsImagery({});
+        overlay.apiKey = azureKey;
+        overlay.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
 
-    const overlay = new IgrAzureMapsImagery({});
-    overlay.apiKey = azureKey;
-    overlay.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
-    series.tileImagery = overlay;
+        if (tileSeriesRef.current) {
+            tileSeriesRef.current.tileImagery = overlay;
+        }
 
-    // Update Map Background
-    const background = new IgrAzureMapsImagery({});
-    background.apiKey = azureKey;
-    background.imageryStyle = AzureMapsImageryStyle.DarkGrey;
-    this.geoMap.backgroundContent = background;
+        // Update Map Background
+        const background = new IgrAzureMapsImagery({});
+        background.apiKey = azureKey;
+        background.imageryStyle = AzureMapsImageryStyle.DarkGrey;
 
-    this.geoMap.series.add(series);
+        if (mapRef.current) {
+            mapRef.current.backgroundContent = background;
+        }
+    }, []);
 
     return (
         <div style={{ height: "100vh" }}>
@@ -401,16 +393,13 @@ export default function App() {
 ```
 
 ## Properties
-
-The following table summarizes properties of the [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) class:
+The following table summarizes properties of the `IgrAzureMapsImagery` class:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|[`apiKey`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html#apiKey)|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
-|[`imageryStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html#imageryStyle)|[`AzureMapsImageryStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_maps.azuremapsimagerystyle.html)|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following [`AzureMapsImageryStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_maps.azuremapsimagerystyle.html) enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
+|`ApiKey`|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
+|`ImageryStyle`|`IgxAzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `IgxAzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
 
 ## API References
-
-- [`AzureMapsImageryStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_maps.azuremapsimagerystyle.html)
-- [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html)
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrAzureMapsImagery`
+`IgrGeographicMap`

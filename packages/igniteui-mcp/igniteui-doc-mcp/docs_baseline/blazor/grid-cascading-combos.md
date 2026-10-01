@@ -1,25 +1,22 @@
 ---
-title: Blazor Grid Cascading combos - Ignite UI for Blazor
-_description: Perform updating via cascading combos in Grid, using Blazor Grid. See demos & examples!
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
+title: "Blazor Grid Cascading combos - Ignite UI for Blazor"
+description: Perform updating via cascading combos in Grid, using Blazor Grid. See demos & examples!
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
 _language: en
-sharedComponents: ["Grid"]
-mentionedTypes: ["Column", "Combo"]
-namespace: Infragistics.Controls
+llms:
+  description: "The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components."
+_componentKey: Grid
 _tocName: Cascading Combos
 _premium: true
 ---
-
 # Blazor Grid with Cascading Combos
 
-The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo), the users will receive only the data that is relevant to their selection within the next Blazor Combobox component.
+The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule), the users will receive only the data that is relevant to their selection within the next Blazor Combobox component.
 
-## Angular Grid with Cascading Combos Sample Overview
+## Blazor Grid with Cascading Combos Sample Overview
 
-The sample below demonstrates how [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) works with nested Cascading [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) components.
-
-<!-- ComponentStart: Grid -->
+The sample below demonstrates how [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) works with nested Cascading [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) components.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -126,17 +123,15 @@ public class WorldCitiesAbove500K
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Setup
 
-In order enable column editing, make sure [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) property is set to `true`.
+In order enable column editing, make sure [`IgbColumn.editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=editable) property is set to `true`.
 
-Once the column editing is enabled, you can start by adding your [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo). Please note that here in order to have only one single selection available, you will need to use set the [`SingleSelect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=SingleSelect) property.
+Once the column editing is enabled, you can start by adding your [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule). Please note that here in order to have only one single selection available, you will need to use set the [`IgbCombo.singleSelect`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=singleSelect) property.
 
-To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo), first you need to import it:
+To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule), first you need to import it:
 
-```razor
+```csharp
 builder.Services.AddIgniteUIBlazor(
     typeof(IgbGridModule),
     typeof(IgbComboModule)
@@ -158,11 +153,11 @@ Then you should define the column template with the combo:
 
 ```
 
-- [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey), the  combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) (if any).
+- [`IgbCombo.displayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`IgbCombo.displayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey), the  combo will use the specified [`IgbCombo.valueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) (if any).
 
-In order to handle the selection change, we need the `onChange` event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+In order to handle the selection change, we need the change event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
-```razor
+```javascript
 //In Javascript
 igRegisterScript("CountryChange", (ctx) => {
     const value = e.detail.newValue;
@@ -186,7 +181,7 @@ igRegisterScript("CountryChange", (ctx) => {
 
 And lastly, adding the [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress), which is required while loading the list of data.
 
-```razor
+```csharp
     public static RenderFragment<IgbCellTemplateContext> WebGridRegionDropDownTemplate = (context) =>
     {
         var id = "region_" + context.Cell.Id.RowID;
@@ -200,8 +195,8 @@ And lastly, adding the [`IgbLinearProgress`](mcp:get_api_reference?platform=blaz
 |--- |--- |
 | Combo drop-down list may hide behind other UI elements. | Due to the stacking order of elements in the grid the combo drop-down may hide behind other elements like header, footers etc. |
 
-## Blazor Grid API Members
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo)
-- [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress)
+## API References
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+[`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule)
+[`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress)

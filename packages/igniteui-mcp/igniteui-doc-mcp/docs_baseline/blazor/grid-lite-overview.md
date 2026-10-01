@@ -1,13 +1,14 @@
 ---
 title: Free Blazor Data Grid Lite (Open Source) - Ignite UI Grid Lite | MIT license
-_description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
-_keywords: overview, Blazor, {ComponentKeywords}, Ignite UI for Blazor, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
+keywords: overview, Blazor, , Ignite UI for Blazor, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Ignite UI for Blazor Grid Lite is a lightweight, high-performance Blazor data grid that’s free to use, open-source, and built for modern Blazor applications."
 _tocName: Grid Lite
 ---
-
 # Free & Open-Source Blazor Data Grid (Grid Lite)
 
 The Ignite UI for Blazor Grid Lite is a lightweight, high-performance Blazor data grid that’s free to use, open-source, and built for modern Blazor applications.
@@ -36,7 +37,7 @@ dotnet add package IgniteUI.Blazor.GridLite
 
 ### Using Grid Lite
 
-1 - Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
+1 - Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -53,7 +54,7 @@ dotnet add package IgniteUI.Blazor.GridLite
 3 - Add the Grid Lite component to your razor page:
 
 ```razor
-<IgbGridLite Data="data" AutoGenerateColumns="true">
+<IgbGridLite Data="data" AutoGenerate="true">
 </IgbGridLite>
 
 @code {
@@ -67,7 +68,6 @@ dotnet add package IgniteUI.Blazor.GridLite
 ```
 
 ## Grid Lite in Action
-
 ```razor
 @page "/"
 @using Microsoft.AspNetCore.Components
@@ -87,7 +87,7 @@ dotnet add package IgniteUI.Blazor.GridLite
             <IgbGridLiteColumn Field="@nameof(User.Email)" Header="Email Address" DataType="GridLiteColumnDataType.String" />
             <IgbGridLiteColumn Field="@nameof(User.Priority)" Header="Priority" Width="150px" Sortable />
             <IgbGridLiteColumn Field="@nameof(User.Satisfaction)" Header="Satisfaction rating" DataType="GridLiteColumnDataType.Number" Sortable Filterable Width="180px" />
-            <IgbGridLiteColumn Field="@nameof(User.RegisteredAt)" Header="Registered @@" DataType="GridLiteColumnDataType.Date" Sortable Width="180px" />
+            <IgbGridLiteColumn Field="@nameof(User.RegisteredAt)" Header="Registered @@" DataType="GridLiteColumnDataType.String" Sortable Width="180px" />
             <IgbGridLiteColumn Field="@nameof(User.Active)" Header="Active" DataType="GridLiteColumnDataType.Boolean" Width="100px" />
         </IgbGridLite>
     }
@@ -139,3 +139,8 @@ Yes. Ignite UI Grid Lite is a free, open-source Blazor data grid released under 
 - No feature gating
 
 However, if your project scales and grows in complexity and functionality, and you require an enterprise-grade application, we have a seamless upgrade strategy. It will make the transitioning from the free Blazor data grid (Grid Lite) to the full-featured and advanced Data Grid simpler and faster.
+
+## API References
+
+[`IgbGridLite<TItem>`](mcp:get_api_reference?platform=blazor&component=IgbGridLite%3CTItem%3E)<br />
+[`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn)<br />

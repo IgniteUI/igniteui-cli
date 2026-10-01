@@ -1,21 +1,22 @@
 ---
-title: Web Components Step Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Step Chart
-_keywords: Web Components Charts, Step Chart, Step Area Chart, Step Line Chart, Infragistics
-_license: commercial
+title: "Web Components Step Chart | Data Visualization | Infragistics"
+description: Infragistics' Web Components Step Chart
+keywords: "Web Components Charts, Step Chart, Step Area Chart, Step Line Chart, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Step Chart belongs to a group of category charts that render as a collection of points connected by continuous vertical and horizontal lines."
 _tocName: Step Chart
 _premium: true
 ---
-
 # Web Components Step Chart
 
 The Ignite UI for Web Components Step Chart belongs to a group of category charts that render as a collection of points connected by continuous vertical and horizontal lines. Values are represented on the y-axis and categories are displayed on the x-axis. Step Chart emphasizes the amount of change over a period of time or compares multiple items.
 
 ## Web Components Step Area Chart
 
-You can create Web Components Step Area Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
+You can create Web Components Step Area Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -49,14 +50,12 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Step Line Chart
 
 The Web Components Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepLine`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepLine) value, as shown in the example below.
+You can create Step Line Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepLine`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepLine) value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -90,12 +89,10 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes), [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes), [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines), lines' [`brushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=brushes), and lines' [`outlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=outlines) properties on the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the [`MarkerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes), [`MarkerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes), [`MarkerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines), lines' [`Brushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=brushes), and lines' [`Outlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=outlines) properties on the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control as demonstrated below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -129,27 +126,14 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Line Chart](line-chart.md)
+- [Area Chart](./area-chart.md)
+- [Line Chart](./line-chart.md)
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-- [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType)
-- [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea)
-- [`StepLine`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepLine)
-- [`brushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=brushes)
-- [`outlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=outlines)
-- [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes)
-- [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines)
-- [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)

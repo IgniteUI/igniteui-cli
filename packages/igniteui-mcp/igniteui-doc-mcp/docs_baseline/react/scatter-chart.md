@@ -1,21 +1,22 @@
 ---
-title: React Scatter Chart | Data Visualization | Infragistics
-_description: Infragistics' React Scatter Chart
-_keywords: React Charts, Scatter Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "ScatterSeries", "ScatterLineSeries", "ScatterSplineSeries", "HighDensityScatterSeries", "ScatterAreaSeries", "ScatterContourSeries", "Series"]
+title: "React Scatter Chart | Data Visualization | Infragistics"
+description: Infragistics' React Scatter Chart
+keywords: "React Charts, Scatter Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "ScatterSeries", "ScatterLineSeries", "ScatterSplineSeries", "HighDensityScatterSeries", "ScatterAreaSeries", "ScatterContourSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Scatter Chart belongs to a group of charts that show the relationship among items in distinct series of data or to plot data items using numeric x and y coordinates."
 _tocName: Scatter Chart
 _premium: true
 ---
-
 # React Scatter Charts
 
 The Ignite UI for React Scatter Chart belongs to a group of charts that show the relationship among items in distinct series of data or to plot data items using numeric x and y coordinates. These charts draw attention to uneven intervals or clusters of data. They are often used to plot scientific data, and can highlight the deviation of collected data from predicted results. Also, you can use them to organize data chronologically (even if the data is not in chronological order).
 
 ## React Scatter Marker Chart
 
-React Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html), as shown in the example below:
+React Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterSeries`, as shown in the example below:
 
 ```typescript
 export class CountryDemographicAfricanItem {
@@ -205,11 +206,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter Line Chart
 
-React Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html), as shown in the example below:
+React Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterLineSeries`, as shown in the example below:
 
 ```typescript
 export class HealthDataForFranceItem {
@@ -406,11 +405,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter Spline Chart
 
-React Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html), as shown in the example below:
+React Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterSplineSeries`, as shown in the example below:
 
 ```typescript
 export class HealthDataForFranceItem {
@@ -607,11 +604,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter High Density Chart
 
-Use the React Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrhighdensityscatterseries.html), as shown in the example below:
+Use the React Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrHighDensityScatterSeries`, as shown in the example below:
 
 ```typescript
 export class SampleDensityData {
@@ -752,11 +747,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterDensitySeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter Area Chart
 
-React Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterareaseries.html), as shown in the example below:
+React Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterAreaSeries`, as shown in the example below:
 
 ```typescript
 export class SampleScatterData {
@@ -888,11 +881,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterAreaSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter Contour Chart
 
-React Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterContourSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattercontourseries.html), as shown in the example below:
+React Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterContourSeries`, as shown in the example below:
 
 ```typescript
 export class SampleScatterData {
@@ -1025,8 +1016,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterContourSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1038,14 +1027,13 @@ You can find more information about related chart types in these topics:
 - [Shape Chart](shape-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
-|Chart Type                  | Control Name   | API Members |
-|----------------------------|----------------|------------------------ |
-|Scatter Marker              | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html) |
-|Scatter Line                | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html) |
-|Scatter Spline              | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html) |
-|High Density Scatter        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrhighdensityscatterseries.html) |
-|Scatter Area                | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterareaseries.html) |
-|Scatter Contour             | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrScatterContourSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattercontourseries.html) |
+ |Chart Type                  | Control Name   | API Members |
+ |----------------------------|----------------|------------------------ |
+ |Scatter Marker              | `IgrDataChart` | `IgrScatterSeries` |
+ |Scatter Line                | `IgrDataChart` | `IgrScatterLineSeries` |
+ |Scatter Spline              | `IgrDataChart` | `IgrScatterSplineSeries` |
+ |High Density Scatter        | `IgrDataChart` | `IgrHighDensityScatterSeries` |
+ |Scatter Area                | `IgrDataChart` | `IgrScatterAreaSeries` |
+ |Scatter Contour             | `IgrDataChart` | `IgrScatterContourSeries` |

@@ -1,19 +1,21 @@
 ---
 title: Angular Drag and Drop | IgniteUI for Angular | Infragistics | MIT license
-_description: Learn how to use Angular drag and drop directives to perform dragging of elements around the page.
-_keywords: Angular Drag and Drop, Angular Drag and Drop Directives, Angular UI components, Ignite UI for Angular, Infragistics
-_license: MIT
+description: Learn how to use Angular drag and drop directives to perform dragging of elements around the page.
+keywords: Angular Drag and Drop, Angular Drag and Drop Directives, Angular UI components, Ignite UI for Angular, Infragistics
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Drag and Drop directives enable dragging of elements around the page."
 _tocName: Drag and Drop
 ---
-
 # Angular Drag and Drop Directives Overview
 
-<p class="highlight">The Ignite UI for Angular Drag and Drop directives enable dragging of elements around the page. The supported features include free dragging, using a drag handle, drag ghost, animations and multiple drop strategies.</p>
+<div class="highlight">
+The Ignite UI for Angular Drag and Drop directives enable dragging of elements around the page. The supported features include free dragging, using a drag handle, drag ghost, animations and multiple drop strategies.
+</div>
 
 ## Angular Drag and Drop Example
 
 Drag and drop icon to reposition it.
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -160,7 +162,7 @@ export class IconsSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Drag and Drop
 
@@ -170,7 +172,7 @@ To get started with the Ignite UI for Angular Drag and Drop directives, first yo
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxDragDropModule` in your **app.module.ts** file.
 
@@ -200,8 +202,10 @@ import { IGX_DRAG_DROP_DIRECTIVES } from 'igniteui-angular/directives';
 @Component({
     selector: 'app-home',
     template: `
-    <div igxDrag>Drag me</div>
-    <div igxDrop>Drop here</div>
+    <div igxDrag>Drag me
+</div>
+    <div igxDrop>Drop here
+</div>
     `,
     styleUrls: ['home.component.scss'],
     standalone: true,
@@ -221,21 +225,22 @@ When an element inside your Angular application needs to be dragged from one pla
 
 A drag operation starts when the end user swipes at least 5px in any direction. This is customizable and can be changed using the [`dragTolerance`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragTolerance) input. Otherwise the interaction is considered as a click and a `dragClick` event is triggered.
 
-When the dragging starts, the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`cancel`](mcp:get_api_reference?platform=angular&component=IDragStartEventArgs&member=cancel) property to `true`.
+When the dragging starts, the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`IgxIDragStartEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IDragStartEventArgs&member=cancel) property to `true`.
 
 Before any actual movement is about to be performed, the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event is also triggered, containing the last and next position of the pointer. It is triggered every time a movement is detected while dragging an element around.
 
 After the user releases the mouse/touch the drag ghost element is removed from the DOM and the [`dragEnd`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragEnd) event will be emitted.
 
-> [!Note]
-> Due to the nature of the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event, it can be triggered many times in a short period of time, which may cause performance issues for complex operations done when triggered.
+**Note:** 
+Due to the nature of the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event, it can be triggered many times in a short period of time, which may cause performance issues for complex operations done when triggered.
 
 ### Dragging With Ghost
 
 The [`igxDrag`](mcp:get_api_reference?platform=angular&component=IgxDragDirective) directive can be applied on any DOM element by just adding it to its template.
 
 ```html
-<div igxDrag>Drag me</div>
+<div igxDrag>Drag me
+</div>
 ```
 
 The default behavior of `igxDrag` directive is to leave the base element unmodified and to create a ghost element when drag operation is performed by the end user.
@@ -253,30 +258,37 @@ The ghost element by default is a copy of the base element the `igxDrag` is used
  igxDrag
  [ghostTemplate]="customGhost">
  <div class="sender">
+
   {{email.sender}} 
- </div>
+ 
+</div>
  <div class="email-title">
+
   {{email.title}}
- </div>
+ 
+</div>
 </div>
 <ng-template #customGhost>
  <div class="dragGhost">
+
   <igx-icon fontSet="material">email</igx-icon> 
   Moving {{ draggedElements }} item{{ (draggedElements > 1 ? 's' : '')}}
- </div>
+ 
+</div>
 </ng-template>
 
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ### Dragging Without Ghost
 
 If you would like to move the base element, to which the `igxDrag` directive is applied, you can do that by setting the [`ghost`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghost) input to `false`. That way there will be no extra ghost element rendered and if you need to apply custom styling when dragging and element, you can apply it directly to the base element.
 
 ```html
-<div igxDrag [ghost]="false">Drag me</div>
+<div igxDrag [ghost]="false">Drag me
+</div>
 ```
 
 ### Dragging Using a Handle
@@ -291,7 +303,9 @@ You can specify an element that is a child of the `igxDrag` by which to drag, si
     (dragMove)=onDragMove($event)>
     <igx-icon igxDragHandle fontSet="material" class="dialogHandle">drag_indicator</igx-icon>
     <div class="igx-dialog__window">
-    </div>
+
+    
+</div>
 </div>
 ```
 
@@ -408,7 +422,7 @@ $theme: dialog-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Animations
 
@@ -416,7 +430,7 @@ When an element is being dragged, there are no animations applied by default.
 
 You can apply transition animation to the `igxDrag` at any time, but it is advised to use it when dragging ends or the element is not currently dragged. This can be achieved by using the [`transitionToOrigin`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionToOrigin) and the [`transitionTo`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionTo) methods.
 
-The `transitionToOrigin` method, as the name suggests, animates the currently dragged element or its ghost to the start position, where the dragging began. The `transitionTo` method animates the element to a specific location relative to the page (i.e. `pageX` and `pageY`) or to the position of a specified element. If the element is not being currently dragged, it will animate anyway or create ghost and animate it to the desired position.
+The [`transitionToOrigin`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionToOrigin) method, as the name suggests, animates the currently dragged element or its ghost to the start position, where the dragging began. The [`transitionTo`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionTo) method animates the element to a specific location relative to the page (i.e. `pageX` and `pageY`) or to the position of a specified element. If the element is not being currently dragged, it will animate anyway or create ghost and animate it to the desired position.
 
 Both functions have arguments that you can set to customize the transition animation and set duration, timing function or delay. If specific start location is set it will animate the element starting from there.
 
@@ -607,11 +621,11 @@ export class ListReorderSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Ignoring draggable elements
 
-If the user wants to have interactable children of the main element which have igxDrag instanced, he can set the [`igxDragIgnore`](mcp:get_api_reference?platform=angular&component=IgxDragIgnoreDirective) directive in order to make them be ignored by the igxDrag and not perform any dragging action. This will leave these elements be fully interactable and receive all mouse events.
+If the user wants to have interactable children of the main element which have igxDrag instanced, he can set the [`IgxDragIgnoreDirective`](mcp:get_api_reference?platform=angular&component=IgxDragIgnoreDirective) directive in order to make them be ignored by the igxDrag and not perform any dragging action. This will leave these elements be fully interactable and receive all mouse events.
 
 ```html
 <div [igxDrag]="myData">
@@ -658,7 +672,7 @@ _Example:_
 
 ```html
 <div igxDrag></div>
-<!-- ... -->
+{/* ... */}
 <div igxDrop (dropped)="onDropped($event)"></div>
 ```
 
@@ -674,20 +688,26 @@ If you would like to implement your own drop logic, we advise binding to the `dr
 
 Using the [`dragChannel`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragChannel) and [`dropChannel`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=dropChannel) input on respectively `igxDrag` and `igxDrop` directives, you can link different elements to interact only between each other. For example, if an `igxDrag` element needs to be constrained so it can be dropped on specific `igxDrop` element and not all available, this can easily be achieved by assigning them the same channel.
 
-
 ```html
-<div igxDrag [dragChannel]="['Mammals', 'Land']"> Human </div>
-<div igxDrag [dragChannel]="['Mammals', 'Water']"> Dolphin </div>
-<div igxDrag [dragChannel]="['Insects', 'Air']"> Butterfly </div>
-<div igxDrag [dragChannel]="['Insects', 'Land']"> Ant </div>
+<div igxDrag [dragChannel]="['Mammals', 'Land']"> Human 
+</div>
+<div igxDrag [dragChannel]="['Mammals', 'Water']"> Dolphin 
+</div>
+<div igxDrag [dragChannel]="['Insects', 'Air']"> Butterfly 
+</div>
+<div igxDrag [dragChannel]="['Insects', 'Land']"> Ant 
+</div>
 
-<div igxDrop [dropChannel]="['Mammals']"> Mammals </div>
-<div igxDrop [dropChannel]="['Insects']"> Insects </div>
-<div igxDrop [dropChannel]="['Land']"> Land </div>
+<div igxDrop [dropChannel]="['Mammals']"> Mammals 
+</div>
+<div igxDrop [dropChannel]="['Insects']"> Insects 
+</div>
+<div igxDrop [dropChannel]="['Land']"> Land 
+</div>
 ```
 
-Drag e-mails on the right into the folders on the left.
 
+Drag e-mails on the right into the folders on the left.
 
 ```typescript
 import { ChangeDetectorRef, Component, Input, Renderer2, inject } from '@angular/core';
@@ -917,7 +937,7 @@ export class EmailSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Advanced Configuration
 
@@ -928,7 +948,6 @@ The user could reorder the cards in each column. It is done by setting each card
 It won't be Kanban board without also the ability to switch cards between columns. A card can be directly moved from one column to another column at a specific position. It is achieved here with a dummy object, so it would create a visual area where the card will be position if released. The dummy object is removed once the dragging of a card ends or exits another column.
 
 Drag items around the kanban board.
-
 
 ```typescript
 /* eslint-disable no-shadow */
@@ -1306,20 +1325,20 @@ igx-card {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API
 
-- [IgxDragDirective](mcp:get_api_reference?platform=angular&component=IgxDragDirective)
-- [IgxDropDirective](mcp:get_api_reference?platform=angular&component=IgxDropDirective)
-- [IgxDefaultDropStrategy](mcp:get_api_reference?platform=angular&component=IgxDefaultDropStrategy)
-- [IgxAppendDropStrategy](mcp:get_api_reference?platform=angular&component=IgxAppendDropStrategy)
-- [IgxPrependDropStrategy](mcp:get_api_reference?platform=angular&component=IgxPrependDropStrategy)
-- [IgxInsertDropStrategy](mcp:get_api_reference?platform=angular&component=IgxInsertDropStrategy)
+- [`IgxDragDirective`](mcp:get_api_reference?platform=angular&component=IgxDragDirective)
+- [`IgxDropDirective`](mcp:get_api_reference?platform=angular&component=IgxDropDirective)
+- [`IgxDefaultDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxDefaultDropStrategy)
+- [`IgxAppendDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxAppendDropStrategy)
+- [`IgxPrependDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxPrependDropStrategy)
+- [`IgxInsertDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxInsertDropStrategy)
 
 ## References
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

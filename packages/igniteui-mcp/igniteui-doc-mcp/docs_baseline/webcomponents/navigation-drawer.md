@@ -1,19 +1,20 @@
 ---
-title: Web Components NavDrawer | Infragistics
-_description: Infragistics' Web Components NavDrawer provides side navigation that can be expanded or collapsed within the content
-_keywords: Web Components navbar, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components NavDrawer | Infragistics"
+description: Infragistics' Web Components NavDrawer provides side navigation that can be expanded or collapsed within the content
+keywords: "Web Components navbar, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["NavDrawer"]
+llms:
+  description: "The Ignite UI for Web Components Navigation Drawer provides side navigation that can be expanded or collapsed within the content."
 _tocName: Navigation Drawer
 ---
-
 # Web Components Navigation Drawer Overview
 
 The Ignite UI for Web Components Navigation Drawer provides side navigation that can be expanded or collapsed within the content. A mini version provides quick access to navigation even when closed. Its content is completely customizable while also providing default menu item styling.
 
 ## Web Components Navigation Drawer Example
 
-This sample demonstrates how to create [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) component.
+This sample demonstrates how to create [`IgcNavDrawer`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) component.
 
 ```css
 #button-wrapper{
@@ -37,7 +38,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent), you need to register it as follows:
+Before using the [`IgcNavDrawer`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavDrawerComponent } from 'igniteui-webcomponents';
@@ -49,7 +50,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ## Adding Navigation Drawer Items
 
-The simplest way to start using the [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) is as follows:
+The simplest way to start using the [`IgcNavDrawer`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) is as follows:
 
 ```html
 <igc-nav-drawer open="true">
@@ -85,9 +86,9 @@ igc-icon-button::part(icon) {
 
 ## Navbar Integration
 
-While any content can be provided in the drawer, the [`IgcNavDrawerItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent) is available to apply out-of-the-box styling to the items.
+While any content can be provided in the drawer, the [`IgcNavDrawerItem`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent) is available to apply out-of-the-box styling to the items.
 
-To enhance our component a bit, we can use it in conjunction with the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
+To enhance our component a bit, we can use it in conjunction with the [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
 
 ```html
 <igc-navbar>
@@ -110,7 +111,7 @@ To enhance our component a bit, we can use it in conjunction with the [`IgcNavba
 </igc-nav-drawer>
 ```
 
-Let's also add some radio buttons to display all `position` values. This way whenever one gets selected, we will change the position of the drawer.
+Let's also add some radio buttons to display all [`position`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent&member=position) values. This way whenever one gets selected, we will change the position of the drawer.
 
 ```ts
 // ...
@@ -193,7 +194,7 @@ And here's the result:
 
 ## Styling
 
-The [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
+The [`IgcNavDrawer`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
 
 ```scss
 igc-nav-drawer::part(base) {
@@ -256,15 +257,14 @@ igc-icon-button::part(icon) {
 
 ## API References
 
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcNavDrawerHeaderItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerHeaderItemComponent)
-- [`IgcNavDrawerItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent)
-- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent)
-- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
-- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
-- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)<br />
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)<br />
+[`IgcNavDrawerHeaderItem`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerHeaderItemComponent)<br />
+[`IgcNavDrawerItem`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent)<br />
+[`IgcNavDrawer`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent)<br />
+[`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)<br />
+[`IgcRadioGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)<br />
+[`IgcRadio`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)<br />
 
 ## Additional Resources
 

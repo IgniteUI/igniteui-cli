@@ -1,22 +1,22 @@
 ---
-title: Web Components Tree Grid Paging - Ignite UI for Web Components
-_description: Configure Web Components pagination and create custom pages in the Web Components table by Ignite UI, get data for the requested pages with variety of events.
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-_keywords: Paging, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/paging
+title: "Web Components Tree Grid Paging - Ignite UI for Web Components"
+description: Configure Web Components pagination and create custom pages in the Web Components table by Ignite UI, get data for the requested pages with variety of events.
+keywords: Paging, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/paging"
+llms:
+  description: "The Ignite UI for Web Components Pagination feature in Web Components Tree Grid is used to split a large set of data into a sequence of pages that have similar content."
+_componentKey: TreeGrid
 _tocName: Paging
 _premium: true
 ---
-
 # Web Components Tree Grid Pagination Overview
 
-The Ignite UI for Web Components Pagination feature in Web Components Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Tree Grid supports template for custom pages.
+The Ignite UI for Web Components Pagination feature in Web Components Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Tree Grid supports template for custom pages.
 
 ## Web Components Tree Grid Pagination Example
 
-The following example represents [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) pages via "Go to last page" and "Go to first page" buttons.
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -71,10 +71,10 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 ## Usage
 
-The [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) component is used along with the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent) component is used along with the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 ```html
-<igc-tree-grid id="grid" className="gridSize">
+<igc-tree-grid id="grid" class="gridSize">
     <igc-paginator id="paginator" per-page="10">
     </igc-paginator>
 </igc-tree-grid>
@@ -91,8 +91,6 @@ constructor() {
     paginator.selectOptions = selectOptions;
 }
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Paginator Component Demo
 
@@ -138,18 +136,10 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
     }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- * [Paginator](../paginator.md) -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -159,8 +149,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

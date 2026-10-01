@@ -1,12 +1,13 @@
 ---
-title: React MaskInput | Infragistics
-_description: Infragistics' React MaskInput allows the user to control input and format the visible value based on configurable mask rules
-_keywords: React input, Ignite UI for React, Infragistics
-_license: MIT
+title: "React MaskInput | Infragistics"
+description: Infragistics' React MaskInput allows the user to control input and format the visible value based on configurable mask rules
+keywords: "React input, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["MaskInput"]
+llms:
+  description: "The Ignite UI for React Mask Input is an input field that allows the developer to control user input and format the visible value, based on configurable rules."
 _tocName: Mask Input
 ---
-
 ## React Mask Input Overview
 
 The Ignite UI for React Mask Input is an input field that allows the developer to control user input and format the visible value, based on configurable rules. It provides different input options and ease in use and configuration.
@@ -79,14 +80,13 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ### Mask Rules
-
 The table bellow shows the supported built-in mask rules:
 
 | Mask Character | Description |
 | :--- | :--- |
-| 0 | Digit character \[0-9]. Entry is required. |
-| 9 | Digit character \[0-9]. Entry is optional. |
-| # | Digit character \[0-9], plus (+), or minus (-) sign. Entry is required. |
+| 0 | Digit character [0-9]. Entry is required. |
+| 9 | Digit character [0-9]. Entry is optional. |
+| # | Digit character [0-9], plus (+), or minus (-) sign. Entry is required. |
 | L | Letter character. Entry is required. |
 | ? | Letter character. Entry is optional. |
 | A | Alphanumeric (letter or digit) character. Entry is required. |
@@ -95,11 +95,11 @@ The table bellow shows the supported built-in mask rules:
 | C | Any keyboard character. Entry is optional. |
 | \ | Escapes a mask flag and turns it into a literal. |
 
-These flags also participate in the component validation - i.e., the input becomes invalid if some but not all required positions are filled (no positions filled/empty value is still a responsibility of `required`). This applies to both stand-alone inputs and when included in a form.
+These flags also participate in the component validation - i.e., the input becomes invalid if some but not all required positions are filled (no positions filled/empty value is still a responsibility of [`required`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=required)). This applies to both stand-alone inputs and when included in a form.
 
 ### Applying Mask
 
-Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`mask`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=mask) property of the input.
+Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`Mask`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=mask) property of the input.
 
 In the example below, we will apply a mask for a phone number with an extension code.
 
@@ -155,7 +155,7 @@ root.render(<MaskInputApplyingMask/>);
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=prompt) property:
 
 ```tsx
 <IgrMaskInput mask="(####) 00-00-00 Ext. 9999" prompt="-"></IgrMaskInput>
@@ -165,7 +165,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`placeholder`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`Placeholder`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```tsx
 <IgrMaskInput mask="00/00/0000" placeholder="dd/MM/yyyy"></IgrMaskInput>
@@ -173,7 +173,7 @@ Developers can also take advantage of the [`placeholder`](mcp:get_api_reference?
 
 ### Value Modes
 
-The [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput) exposes a [`valueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`valueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) is set to `raw`. Try it for yourself in the example below:
+The [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput) exposes a [`ValueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`ValueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) is set to `raw`. Try it for yourself in the example below:
 
 ```css
 /* shared styles are loaded from: */
@@ -282,14 +282,11 @@ igc-mask-input::part(input)::placeholder {
 - Undo/redo behavior is currently unsupported.
 
 ## API References
-
-- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
-- [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+[`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

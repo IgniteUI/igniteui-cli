@@ -1,21 +1,22 @@
 ---
 title: React Chart Data Tooltip | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for React chart with the data tooltip layer!
-_keywords: React charts, chart legend, legend, legend types, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+description: Use Infragistics Ignite UI for React chart with the data tooltip layer!
+keywords: React charts, chart legend, legend, legend types, Ignite UI for React, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for React, the DataToolTip displays values and titles of series as well as legend badges of series in a tooltip."
 _tocName: Chart Data Tooltip
 _premium: true
 ---
-
 # React Chart Data Tooltip
 
-In Ignite UI for React, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgrDataLegend`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html), and [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) components.
+In Ignite UI for React, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the `IgrDataLegend` for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` components.
 
 ## React Data Tooltip Properties
 
-All properties of [`IgrDataToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html) are prefixed with **DataToolTip** and exposed on API of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) components. However, you will need to create an instance of [`IgrDataToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html) and add it to series collection of [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
+All properties of `IgrDataToolTipLayer` are prefixed with **DataToolTip** and exposed on API of `IgrCategoryChart` and `IgrFinancialChart` components. However, you will need to create an instance of `IgrDataToolTipLayer` and add it to series collection of `IgrDataChart` component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
 
 ## React Data Tooltip Elements
 
@@ -25,11 +26,11 @@ The **DataToolTip** displays content using a set of three types of rows and four
 
 The rows of the **DataToolTip** include the header row, series row(s), and the summary row.
 
-The header row displays the axis label of the point that is hovered, and can be changed using the [`dataToolTipHeaderText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipHeaderText) property.
+The header row displays the axis label of the point that is hovered, and can be changed using the `DataToolTipHeaderText` property.
 
 The series row can actually be a set of rows corresponding to each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol and unit, if specified.
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`dataToolTipSummaryTitleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipSummaryTitleText) property of the legend. Also, you can use the [`dataToolTipSummaryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the `DataToolTipSummaryTitleText` property of the legend. Also, you can use the `DataToolTipSummaryType` property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
 
 The following example demonstrates the data tooltip with a summary applied:
 
@@ -141,15 +142,15 @@ root.render(<Sample/>);
 
 ### React Data Tooltip Columns
 
-The columns of the [`IgrDataToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`dataToolTipIncludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipExcludedColumns) collections of the chart.
+The columns of the `IgrDataToolTipLayer` include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the `DataToolTipIncludedColumns` or `DataToolTipExcludedColumns` collections of the chart.
 
-The title column displays legend badges and series titles, which come from the [`chartTitle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#chartTitle) property of the different [`IgrSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html) plotted in the chart.
+The title column displays legend badges and series titles, which come from the `Title` property of the different `Series` plotted in the chart.
 
-The label column displays the name or abbreviation of the different property paths in the [`dataToolTipIncludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipExcludedColumns) collections of the tooltip.
+The label column displays the name or abbreviation of the different property paths in the `DataToolTipIncludedColumns` or `DataToolTipExcludedColumns` collections of the tooltip.
 
-The value column displays series values as abbreviated text which can be formatted using the [`dataToolTipValueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`dataToolTipValueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays series values as abbreviated text which can be formatted using the `DataToolTipValueFormatAbbreviation` property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the `DataToolTipValueFormatMinFractions` and `DataToolTipValueFormatMaxFractions` for minimum and maximum digits, respectively.
 
-The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`dataToolTipUnitsText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
+The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the `DataToolTipUnitsText` for all columns or using the following properties on each series in the chart:
 
 - Category Series (e.g. ColumnSeries)
   - ValueMemberAsLegendUnit="K"
@@ -169,7 +170,7 @@ The units column displays an abbreviation symbol and/or unit text, which can be 
 
 For the above-listed properties, there are corresponding properties ending with **MemberAsLegendLabel** to determine the text in the label columns mentioned previously.
 
-The columns included in the [`dataToolTipIncludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipIncludedColumns) and [`dataToolTipExcludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
+The columns included in the `DataToolTipIncludedColumns` and `DataToolTipExcludedColumns` collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
 
 The following example demonstrates a data tooltip with the added columns of Open, High, Low, Close, and Change:
 
@@ -356,8 +357,8 @@ root.render(<Sample/>);
 
 ## React Data Tooltip Grouping for Data Chart
 
-[`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html#dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html#groupRowVisible) property to true. [`groupingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html#groupingMode) should be set to "Grouped" and [`labelDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html#labelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
+`DataLegendGroup` can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the `GroupRowVisible` property to true. `GroupingMode` should be set to "Grouped" and `LabelDisplayMode` should be set to "Visible" on the Data Tooltip Layer.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -521,7 +522,7 @@ root.render(<Sample/>);
 
 ## React Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
-You can set [`dataToolTipGroupingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`dataToolTipGroupedPositionModeX`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupedPositionModeX) and [`dataToolTipGroupedPositionModeY`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
+You can set `DataToolTipGroupingMode` property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the `DataToolTipGroupedPositionModeX` and `DataToolTipGroupedPositionModeY` properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
 
 The following example demonstrates a data tooltip positioned to the top-right of the chart:
 
@@ -686,7 +687,7 @@ root.render(<Sample/>);
 
 ## React Data Tooltip Value Formatting
 
-The **DataToolTip** provides automatic abbreviation of large numbers using its [`dataToolTipValueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`dataToolTipValueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The **DataToolTip** provides automatic abbreviation of large numbers using its `DataToolTipValueFormatAbbreviation` property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the `DataToolTipValueFormatMinFractions` and `DataToolTipValueFormatMaxFractions`. This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 
 The following example demonstrates a **DataToolTip** with the minimum and maximum fractions set:
 
@@ -799,7 +800,7 @@ root.render(<Sample/>);
 
 ## React Data Tooltip Value Mode
 
-You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`dataToolTipValueFormatMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`dataToolTipValueFormatCulture`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`dataToolTipValueFormatCulture`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatCulture) set to "en-GB":
+You can change the default decimal display of values within the **DataToolTip** to be currency by changing the `DataToolTipValueFormatMode` property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its `DataToolTipValueFormatCulture` property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the `DataToolTipValueFormatCulture` set to "en-GB":
 
 ```typescript
 //begin async data
@@ -986,15 +987,13 @@ root.render(<Sample/>);
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`layoutMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html#layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the `LayoutMode` property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
-<img src="../../../images/general/layout_mode.png" alt="Layout Mode" />
-
 ## React Data Tooltip Styling
 
-The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`dataToolTipTitleTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipTitleTextColor), [`dataToolTipLabelTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipLabelTextColor), [`dataToolTipValueTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueTextColor), and [`dataToolTipUnitsTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipUnitsTextColor) properties.
+The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the `DataToolTipTitleTextColor`, `DataToolTipLabelTextColor`, `DataToolTipValueTextColor`, and `DataToolTipUnitsTextColor` properties.
 
 The following example demonstrates usage of the styling properties mentioned above:
 
@@ -2080,14 +2079,14 @@ root.render(<Sample/>);
 Several properties are exposed including grouping portions of the tooltip.
 
 - `GroupTextMargin`
-- [`groupTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html#groupTextColor)
+- `GroupTextColor`
 - `GroupTextFontSize`
 - `GroupTextFontFamily`
 - `GroupTextFontStyle`
 - `GroupTextFontStretch`
 - `GroupTextFontWeight`
 - `HeaderTextMargin`
-- [`headerTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatalegend.html#headerTextColor)
+- `HeaderTextColor`
 - `HeaderTextFontSize`
 - `HeaderTextFontFamily`
 - `HeaderTextFontStyle`
@@ -2095,25 +2094,7 @@ Several properties are exposed including grouping portions of the tooltip.
 - `HeaderTextFontWeight`
 
 ## API References
-
-- [`dataToolTipExcludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipExcludedColumns)
-- [`dataToolTipGroupedPositionModeX`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupedPositionModeX)
-- [`dataToolTipGroupedPositionModeY`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupedPositionModeY)
-- [`dataToolTipGroupingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipGroupingMode)
-- [`dataToolTipHeaderText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipHeaderText)
-- [`dataToolTipIncludedColumns`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipIncludedColumns)
-- [`dataToolTipLabelTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipLabelTextColor)
-- [`IgrDataToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html)
-- [`dataToolTipSummaryTitleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipSummaryTitleText)
-- [`dataToolTipSummaryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipSummaryType)
-- [`dataToolTipTitleTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipTitleTextColor)
-- [`dataToolTipUnitsTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipUnitsTextColor)
-- [`dataToolTipUnitsText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipUnitsText)
-- [`dataToolTipValueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatAbbreviation)
-- [`dataToolTipValueFormatCulture`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatCulture)
-- [`dataToolTipValueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMaxFractions)
-- [`dataToolTipValueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMaxFractions)
-- [`dataToolTipValueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMinFractions)
-- [`dataToolTipValueFormatMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueFormatMode)
-- [`dataToolTipValueTextColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#dataToolTipValueTextColor)
-- `MemberAsLegendLabel`
+`IgrDataToolTipLayer`
+`IgrCategoryChart`
+`IgrFinancialChart`
+`IgrDataChart`

@@ -1,21 +1,22 @@
 ---
 title: ComboBox Features - MIT license 
-_description: Combo control exposes several of features including data and value binding, custom values, filtering, grouping, etc.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Features, Angular Combo Features, Angular Combo Data Binding, Angular Combo Value Binding, Angular Combo Data Filtering, Angular Combo Grouping, Angular Combo Custom Values
-_license: MIT
+description: Combo control exposes several of features including data and value binding, custom values, filtering, grouping, etc.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Features, Angular Combo Features, Angular Combo Data Binding, Angular Combo Value Binding, Angular Combo Data Filtering, Angular Combo Grouping, Angular Combo Custom Values
+license: MIT
+llms:
+  description: "The Ignite UI for Angular ComboBox control exposes several features including data and value binding, custom values, filtering, grouping, etc."
 _tocName: Features
 ---
-
 # ComboBox Features
 
-<p class="highlight">
+<div class="highlight">
+
 The Ignite UI for Angular ComboBox control exposes several features including data and value binding, custom values, filtering, grouping, etc.
-</p>
+</div>
 
 ## Angular ComboBox Features Example
 
 The following demo demonstrates some of the combobox features that are enabled/disabled at runtime:
-
 
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -71,13 +72,13 @@ export class ComboFeaturesComponent implements OnInit{
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Usage
 
 ### First Steps
 
-To get started with the combobox component, first you need to import the `IgxComboModule` in your **app.module.ts** file. Our sample also uses the [igx-switch](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent) component to toggle combobox properties' values, so we will need the `IgxSwitchModule` as well:
+To get started with the combobox component, first you need to import the `IgxComboModule` in your **app.module.ts** file. Our sample also uses the [`igx-switch`](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent) component to toggle combobox properties' values, so we will need the `IgxSwitchModule` as well:
 
 ```typescript
 import { IgxComboModule } from 'igniteui-angular/combo';
@@ -99,6 +100,7 @@ export class AppModule {}
 
 ```html
 <div class="combo-container">
+
     <igx-combo #combo [data]="lData" displayKey="field" valueKey="field"
         [allowCustomValues]="customValues"
         [disableFiltering]="disableFiltering"
@@ -107,6 +109,7 @@ export class AppModule {}
     </igx-combo>
 </div>
 <div class="switch-container">
+
     <igx-switch [(ngModel)]="customValues">Allow Custom Values</igx-switch>
     <igx-switch (change)="enableGroups($event)">Enable Grouping</igx-switch>
     <igx-switch [(ngModel)]="disabled">Disable Combo</igx-switch>
@@ -117,7 +120,7 @@ export class AppModule {}
 
 ### Component Definition
 
-Note that grouping is enabled/disabled by setting the [groupKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=groupKey) property to a corresponding data source entity or setting it to an empty string.
+Note that grouping is enabled/disabled by setting the [`groupKey`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=groupKey) property to a corresponding data source entity or setting it to an empty string.
 
 ```typescript
     @ViewChild('combo', { read: IgxComboComponent }) public combo: IgxComboComponent;
@@ -136,7 +139,7 @@ Note that grouping is enabled/disabled by setting the [groupKey](mcp:get_api_ref
 
 ### Data Binding
 
-The following code snippet illustrates a basic usage of the [igx-combo](mcp:get_api_reference?platform=angular&component=IgxComboComponent) bound to a local data source. The [valueKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) specifies which property of the data entries will be stored for the combobox's selection and the [displayKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey) specifies which property will be used for the combobox text:
+The following code snippet illustrates a basic usage of the [`igx-combo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) bound to a local data source. The [`valueKey`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) specifies which property of the data entries will be stored for the combobox's selection and the [`displayKey`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey) specifies which property will be used for the combobox text:
 
 ```html
 <igx-combo [data]="lData" valueKey="ProductID" displayKey="ProductName"></igx-combo>
@@ -154,14 +157,14 @@ export class ComboDemo implements OnInit {
 }
 ```
 
-> [!Note]
-> If the `displayKey` property is omitted then the `valueKey` entity will be used instead.
+**Note:** 
+If the `displayKey` property is omitted then the `valueKey` entity will be used instead.
 
-Follow the [ComboBox Remote Binding topic](combo-remote.md) for more details about binding the combobox component with remote data.
+Follow the [ComboBox Remote Binding topic](/combo-remote) for more details about binding the combobox component with remote data.
 
 ### Custom Overlay Settings
 
-The combobox component allows users to change the way a list of items is shown. This can be done by defining [Custom OverlaySettings](mcp:get_api_reference?platform=angular&component=OverlaySettings) and passing them to the [ComboBox's OverlaySettings](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=overlaySettings) input:
+The combobox component allows users to change the way a list of items is shown. This can be done by defining [`Custom OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) and passing them to the [`ComboBox's OverlaySettings`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=overlaySettings) input:
 
 ```typescript
 export class CustomOverlayCombo {
@@ -182,8 +185,7 @@ export class CustomOverlayCombo {
 <igx-combo [data]="items" [overlaySettings]="customSettings"></igx-combo>
 ```
 
-If everything is set up correctly, the combobox's list will display centered, using the [GlobalPositionStrategy](overlay-position.md#global):
-
+If everything is set up correctly, the combobox's list will display centered, using the [GlobalPositionStrategy](/overlay-position#global):
 
 ```typescript
 import { Component } from '@angular/core';
@@ -225,43 +227,42 @@ export class ComboOverlayComponent {
 }
 ```
 
+<hr/>
 
-<div class="divider--half"></div>
-
-> [!Note]
-> The combobox component uses the [AutoPositionStrategy](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy) as a default position strategy.
+**Note:** 
+The combobox component uses the [`IgxAutoPositionStrategy`](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy) as a default position strategy.
 
 ### Filtering
 
-By default, filtering in the combobox is enabled. It can be disabled by setting the [disableFiltering](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=disableFiltering) property to true.
+By default, filtering in the combobox is enabled. It can be disabled by setting the [`disableFiltering`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=disableFiltering) property to true.
 
-Filtering options can be further enhanced by enabling the search case sensitivity. To display the case-sensitive icon in the search input, set the [showSearchCaseIcon](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=showSearchCaseIcon) property to true:
+Filtering options can be further enhanced by enabling the search case sensitivity. To display the case-sensitive icon in the search input, set the [`showSearchCaseIcon`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=showSearchCaseIcon) property to true:
 
 ```html
 <igx-combo [disableFiltering]="true" [showSearchCaseIcon]="true"></igx-combo>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Custom Values
 
-The [allowCustomValues](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=allowCustomValues) property controls whether custom values can be added to the collection. If it is enabled, a missing item could be included using the UI of the combobox.
+The [`allowCustomValues`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=allowCustomValues) property controls whether custom values can be added to the collection. If it is enabled, a missing item could be included using the UI of the combobox.
 
 ```html
 <igx-combo [allowCustomValues]="true"></igx-combo>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Search Input Focus
 
-The combobox's [autoFocusSearch](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=autoFocusSearch)  property controls if the search input should receive focus when a combobox's dropdown list is opened. By default, the property is set to `true`. When set to `false`, the focus goes to the combobox's items container. For mobile devices, this can be used to prevent the software keyboard from popping up when opening the combobox's dropdown list.
+The combobox's [`autoFocusSearch`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=autoFocusSearch)  property controls if the search input should receive focus when a combobox's dropdown list is opened. By default, the property is set to `true`. When set to `false`, the focus goes to the combobox's items container. For mobile devices, this can be used to prevent the software keyboard from popping up when opening the combobox's dropdown list.
 
 ```html
 <igx-combo [autoFocusSearch]="false"></igx-combo>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Disable ComboBox
 
@@ -271,7 +272,7 @@ You can disable a combobox using the following code:
 <igx-combo [disabled]="true"></igx-combo>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Grouping
 
@@ -298,29 +299,24 @@ export class ComboDemo {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
-- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-
+<hr/>
+- [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
+- `IgxComboComponent Styles`
 Additional components and/or directives with relative APIs that were used:
-
-- [IgxSwitchComponent](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent)
-
+- [`IgxSwitch`](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [ComboBox Component](combo.md)
-- [ComboBox Remote Binding](combo-remote.md)
-- [ComboBox Templates](combo-templates.md)
-- [Template Driven Forms Integration](input-group.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
-- [Single Select ComboBox](simple-combo.md)
+- [ComboBox Component](/combo)
+- [ComboBox Remote Binding](/combo-remote)
+- [ComboBox Templates](/combo-templates)
+- [Template Driven Forms Integration](/input-group)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
+- [Single Select ComboBox](/simple-combo)
 
 Our community is active and always welcoming to new ideas.
 

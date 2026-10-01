@@ -1,13 +1,14 @@
 ---
-title: Blazor Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics
-_description: Learn about shape files format to use with Infragistics' Blazor map. Check out Ignite UI for Blazor map tutorials!
-_keywords: Blazor map, shape files, Ignite UI for Blazor, Infragistics, shape editing
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeriesBase", "Series"]
+title: "Blazor Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics"
+description: Learn about shape files format to use with Infragistics' Blazor map. Check out Ignite UI for Blazor map tutorials!
+keywords: "Blazor map, shape files, Ignite UI for Blazor, Infragistics, shape editing"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeriesBase", "Series"]
+llms:
+  description: "Before plotting geo-spatial data in the control, one should get familiar with the following resources which provide general information about maps and geo-spatial data."
 _tocName: Shape Files Reference
 _premium: true
 ---
-
 # Blazor Shape Files Reference
 
 ## Purpose
@@ -90,13 +91,10 @@ The following list provides resources for obtaining shape files. Also, samples f
 
 The following topics provide additional information related to this topic.
 
-- [Binding Shape Files](geo-map-binding-shp-file.md)
+- [Binding Shape Files](./geo-map-binding-shp-file.md)
 
 ## API References
-
-- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeriesBase&member=DataSource)
-- [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeriesBase&member=ShapeMemberPath)
-- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)
+[`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+[`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord)

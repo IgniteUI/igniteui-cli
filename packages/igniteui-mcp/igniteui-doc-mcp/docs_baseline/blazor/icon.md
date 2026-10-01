@@ -1,12 +1,13 @@
 ---
-title: Blazor Icon Component | Ignite UI for Blazor
-_description: See how you can easily get started with Blazor Icon Component. Choose icons and select from different styling options to customize them further.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Icon components, Blazor Icon controls
-_license: MIT
+title: "Blazor Icon Component | Ignite UI for Blazor"
+description: See how you can easily get started with Blazor Icon Component. Choose icons and select from different styling options to customize them further.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Icon components, Blazor Icon controls"
+license: MIT
 mentionedTypes: ["Icon"]
+llms:
+  description: "The Blazor Icon component allows you to easily display font or choose from a large set of predefined SVG icons, but it also gives you the ability to create custom font icons for your project."
 _tocName: Icon
 ---
-
 # Blazor Icon Overview
 
 The Blazor Icon component allows you to easily display font or choose from a large set of predefined SVG icons, but it also gives you the ability to create custom font icons for your project. Benefiting from a number of attributes, you can define or change the size of the icon in use or apply different styles to it.
@@ -42,19 +43,17 @@ The Blazor Icon component allows you to easily display font or choose from a lar
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Before using the [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbIconModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -66,7 +65,7 @@ The [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) doesn't
 
 To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) element that allow you to add icons to an icon collection on your page.
 
-The [`RegisterIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon&member=RegisterIcon) method allows you to register an SVG image as an icon from an external file:
+The [`RegisterIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon&member=registerIcon) method allows you to register an SVG image as an icon from an external file:
 
 ```razor
 <IgbIcon @ref="@IconRef" />
@@ -90,10 +89,10 @@ The method above will add an icon named `search` to a cached collection named `m
 In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) element:
 
 ```razor
-IgbIcon IconName="search" Collection="material" />
+<IgbIcon IconName="search" Collection="material" />
 ```
 
-The second method for registering icons is by passing an SVG string to the [`RegisterIconFromText`](mcp:get_api_reference?platform=blazor&component=IgbIcon&member=RegisterIconFromText) method:
+The second method for registering icons is by passing an SVG string to the [`RegisterIconFromText`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=registerIconFromText) method:
 
 ```razor
 <IgbIcon @ref="@IconRef" />
@@ -116,7 +115,6 @@ The second method for registering icons is by passing an SVG string to the [`Reg
 Then you'd use it in the same way as described in the component sample above.
 
 ### Size
-
 The icon component supports three icon sizes - `small`, `medium`(default), and `large`. In order to change the size of the icon, you can utilize the `--ig-size` CSS variable as follows:
 
 ```css
@@ -171,7 +169,7 @@ igc-icon {
 Some icons need to look a little different when used in Right-to-Left(RTL) mode. For that reason we provide a `mirrored` attribute that, when set, flips the icon horizontally.
 
 ```razor
-IgbIcon IconName="search" Collection="material" Mirrored="true" />
+<IgbIcon IconName="search" Collection="material" Mirrored="true" />
 ```
 
 ## Styling
@@ -217,11 +215,7 @@ igc-icon {
 ```
 
 ## API References
-
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`RegisterIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon&member=RegisterIcon)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

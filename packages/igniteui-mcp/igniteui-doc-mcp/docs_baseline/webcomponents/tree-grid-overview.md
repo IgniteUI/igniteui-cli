@@ -1,13 +1,15 @@
 ---
-title: Web Components Tree Grid Component - Ignite UI for Web Components by Infragistics
-_description: The Ignite UI for Web Components Tree Grid is used to display and manipulate hierarchical or flat data with ease. Quickly bind your data with very little coding. Try it for FREE
-_keywords: Web Components tree grid, igniteui for Web Components, infragistics
-_license: commercial
+title: "Web Components Tree Grid Component - Ignite UI for Web Components by Infragistics"
+description: The Ignite UI for Web Components Tree Grid is used to display and manipulate hierarchical or flat data with ease. Quickly bind your data with very little coding. Try it for FREE
+keywords: "Web Components tree grid, igniteui for Web Components, infragistics"
+license: commercial
 mentionedTypes: ["GridBaseDirective", "TreeGrid", "Column"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Web Components Tree Grid is a UI component that combines the functionality of a data grid (table) with a tree view, allowing hierarchical data to be easily displayed in a tabular format."
 _tocName: Tree Grid
+_premium: true
 ---
-
 # Web Components Tree Grid Overview and Configuration
 
 The Web Components Tree Grid is a UI component that combines the functionality of a data grid (table) with a tree view, allowing hierarchical data to be easily displayed in a tabular format. Unlike a regular grid, a tree grid enables rows to expand and collapse, revealing child rows nested under parent rows, making it useful for representing structured data such as file explorers, organizational charts, project tasks, or product categories.
@@ -107,12 +109,12 @@ Or to link it:
 <link rel='stylesheet' href='node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css'>
 ```
 
-For more details on how to customize the appearance of the tree grid, you may have a look at the [styling](overview.md#web-components-tree-grid-styling-configuration) section.
+For more details on how to customize the appearance of the tree grid, you may have a look at the [styling](./overview.md#web-components-tree-grid-styling-configuration) section.
 
 ## Usage
 
 The tree grid shares a lot of features with the grid, but it also adds the ability to display its data hierarchically.
-In order to achieve this, the tree grid provides us with a couple of ways to define the relations among our data objects - by using a [child collection](overview.md#child-collection) for every data object or by using [primary and foreign keys](overview.md#primary-and-foreign-keys) for every data object.
+In order to achieve this, the tree grid provides us with a couple of ways to define the relations among our data objects - by using a [child collection](./overview.md#child-collection) for every data object or by using [primary and foreign keys](./overview.md#primary-and-foreign-keys) for every data object.
 
 ### Tree Cells
 
@@ -121,12 +123,12 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 - `GridCell` - Ordinary cell that contains a value.
 - `TreeGridCell` - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the `level` property of its inner `treeRow`.
 
-> [!Note]
-> Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
+**Note:** 
+Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
 
 ### Initial Expansion Depth
 
-Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
+Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`ExpansionDepth`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
 
 ### Child Collection
 
@@ -163,7 +165,7 @@ const EMPLOYEE_DATA = [
 ]
 ```
 
-Now let's start by importing our [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=data) collection and binding it to our tree grid.
+Now let's start by importing our [`Data`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=data) collection and binding it to our tree grid.
 
 ```html
 <igc-tree-grid auto-generate="false" id="treeGrid" name="treeGrid">
@@ -181,10 +183,10 @@ Now let's start by importing our [`data`](mcp:get_api_reference?platform=webcomp
     }
 ```
 
-In order for the tree grid to build the hierarchy, we will have to set its [`childDataKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
+In order for the tree grid to build the hierarchy, we will have to set its [`ChildDataKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
 In addition, we can disable the automatic column generation and define them manually by matching them to the actual properties of our data objects. (The **Employees** collection will be automatically used for the hierarchy, so there is no need to include it in the columns' definitions.)
 
-We can now enable the row selection and paging features of the tree grid by using the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) and add the [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) element.
+We can now enable the row selection and paging features of the tree grid by using the [`RowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) and add the [`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent) element.
 We can also enable the summaries, the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 ```html
@@ -196,7 +198,7 @@ We can also enable the summaries, the filtering, sorting, editing, moving and re
 </igc-tree-grid>
 ```
 
-Finally, we can enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html), [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html), [`IgcGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinning.html) and [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) respectively.
+Finally, we can enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgcGridToolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarComponent), [`IgcGridToolbarHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent), [`IgcGridToolbarPinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarPinningComponent) and [`IgcGridToolbarExporter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarExporterComponent) respectively.
 
 ```html
 <igc-tree-grid auto-generate="false" id="treeGrid" name="treeGrid" child-data-key="Employees" row-selection="multiple" allow-filtering="true" moving="true">
@@ -218,7 +220,6 @@ Finally, we can enable the toolbar of our tree grid, along with the column hidin
 You can see the result of the code from above at the beginning of this article in the [Tree Grid Example](./overview.md#example) section.
 
 ### Primary and Foreign keys
-
 When we are using the **primary and foreign keys** option, every data object contains a primary key and a foreign key. The primary key is the unique identifier of the current data object and the foreign key is the unique identifier of its parent. In this case the `data` property of our tree grid that contains the original data source will be a flat collection.
 
 ```typescript
@@ -236,9 +237,9 @@ const data = [
 ];
 ```
 
-In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey). The ParentID contains the ID of the parent node and could be set as a [`foreignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
+In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`PrimaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey). The ParentID contains the ID of the parent node and could be set as a [`ForeignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
 
-The parent-child relation is configured using the tree grid's [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey) and [`foreignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey) properties.
+The parent-child relation is configured using the tree grid's [`PrimaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey) and [`ForeignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey) properties.
 
 Here is the template of the component which demonstrates how to configure the tree grid to display the data defined in the above flat collection:
 
@@ -304,18 +305,18 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 The indentation of the tree grid cell persists across other tree grid features like filtering, sorting and paging.
 
 - When `Sorting` is applied on a column, the data rows get sorted by levels. This means that the root level rows will be sorted independently from their respective children. Their respective children collections will each be sorted independently as well and so on.
-- The first column (the one that has a [`visibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0) is always the tree column.
-- The column that ends up with a [`visibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
+- The first column (the one that has a [`VisibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0) is always the tree column.
+- The column that ends up with a [`VisibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
 ## Web Components Tree Grid Styling Configuration
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```ts
-<igc-tree-grid class="tree-grid">
+<igc-tree-grid class="tree-grid"></igc-tree-grid>
 ```
 
 Then set the related CSS properties for that class:
@@ -397,10 +398,10 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ## API References
 
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html)
-- [`IgcTreeGridRecord`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridRecord)
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
+[`IgcGridToolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarComponent)<br />
+[`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent)<br />
 
 ## Additional Resources
 

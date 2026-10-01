@@ -1,21 +1,22 @@
 ---
-title: Blazor Chart Data Legend | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Blazor chart with the data legend!
-_keywords: Blazor charts, chart legend, legend, legend types, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["XamCategoryChart", "XamDataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode" ]
+title: "Blazor Chart Data Legend | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for Blazor chart with the data legend!
+keywords: "Blazor charts, chart legend, legend, legend types, Ignite UI for Blazor, Infragistics"
+license: commercial
+mentionedTypes: ["CategoryChart", "DataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode" ]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for Blazor, the DataLegend is highly-customizable version of the Legend, that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values."
 _tocName: Chart Data Legend
 _premium: true
 ---
-
 # Blazor Data Legend
 
-In Ignite UI for Blazor, the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) is highly-customizable version of the [`Legend`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=Legend), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
+In Ignite UI for Blazor, the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) is highly-customizable version of the [`Legend`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=Legend), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
 
 ## Blazor Data Legend Rows
 
-The rows of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`HeaderText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderText) property.
+The rows of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`HeaderText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerText) property.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -110,19 +111,19 @@ public class HighestGrossingMovies
 
 ### Header Row
 
-The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`HeaderFormatDate`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderFormatDate) and [`HeaderFormatTime`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderFormatTime) properties to format date and time in the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) if the x-axis shows dates. For other types of series, the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) does not render the header row.
+The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`HeaderFormatDate`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerFormatDate) and [`HeaderFormatTime`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerFormatTime) properties to format date and time in the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) if the x-axis shows dates. For other types of series, the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) does not render the header row.
 
 ### Series Row
 
-The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`IncludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedSeries) or [`ExcludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ExcludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
+The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`IncludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=includedSeries) or [`ExcludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=excludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
 
 ### Summary Row
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`SummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=SummaryTitleText) property of the legend. Also, you can use the [`SummaryType`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=SummaryType) property to customize whether you display the `Total`, `Min`, `Max`, or `Average` of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`SummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=summaryTitleText) property of the legend. Also, you can use the [`SummaryType`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=summaryType) property to customize whether you display the [`Total`](mcp:get_api_reference?platform=blazor&component=DataLegendSummaryType&member=Total), [`Min`](mcp:get_api_reference?platform=blazor&component=DataLegendSummaryType&member=Min), [`Max`](mcp:get_api_reference?platform=blazor&component=DataLegendSummaryType&member=Max), or [`Average`](mcp:get_api_reference?platform=blazor&component=DataLegendSummaryType&member=Average) of series values in the summary row.
 
 ## Blazor Data Legend Columns
 
-The columns of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) using the [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedColumns) or [`ExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ExcludedColumns) properties.
+The columns of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) using the [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=includedColumns) or [`ExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=excludedColumns) properties.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -299,7 +300,7 @@ The columns of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&compo
     //end async data
 ```
 
-Setting values on the [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedColumns) and [`ExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ExcludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
+Setting values on the [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=includedColumns) and [`ExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
 |  Type of Series  | Column Names |
 | -----------------|-------------- |
@@ -315,19 +316,19 @@ Where the **TypicalPrice** and percentage **Change** of OHLC prices are automati
 
 ### Title Column
 
-The title column displays legend badges and series titles, which come from the `Title` property of the different [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartTitle) property of the different [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) plotted in the chart.
 
 ### Label Column
 
-The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=LabelDisplayMode) property.
+The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=labelDisplayMode) property.
 
 ### Value Column
 
-The value column displays values of series as abbreviated text which can be formatted using the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays values of series as abbreviated text which can be formatted using the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`Shared`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Shared). Alternatively, a user can select other abbreviations such as [`Independent`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Independent), [`Kilo`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Kilo), [`Million`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Million), etc. Precision of abbreviated values is controlled using the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatMaxFractions) for minimum and maximum digits, respectively.
 
 ### Unit Column
 
-The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatAbbreviation) property, e.g. "M" for the `Million` abbreviation.
+The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatAbbreviation) property, e.g. "M" for the [`Million`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Million) abbreviation.
 
 ### Customizing Columns
 
@@ -335,25 +336,23 @@ You can customize text displayed in the **Label** and **Unit** columns using  pr
 
 |  Type of Series | Series Properties |
 | ------|---- |
-| Category Series | ValueMemberAsLegendLabel="$" <br> ValueMemberAsLegendUnit="M" |
-| Radial Series | ValueMemberAsLegendLabel="Distance:" <br> ValueMemberAsLegendUnit="KM" |
-| Polar Series | RadiusMemberAsLegendLabel="Radius:" <br> RadiusMemberAsLegendUnit="KM" <br> AngleMemberAsLegendLabel="Angle:" <br> AngleMemberAsLegendUnit="°" |
-| Range Series | HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" |
-| Financial Series | OpenMemberAsLegendLabel="O:" <br> OpenMemberAsLegendUnit="K" <br> HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" <br> CloseMemberAsLegendLabel="C:" <br> CloseMemberAsLegendUnit="K" <br> |
+| Category Series | ValueMemberAsLegendLabel="$" <br /> ValueMemberAsLegendUnit="M" |
+| Radial Series | ValueMemberAsLegendLabel="Distance:" <br /> ValueMemberAsLegendUnit="KM" |
+| Polar Series | RadiusMemberAsLegendLabel="Radius:" <br /> RadiusMemberAsLegendUnit="KM" <br /> AngleMemberAsLegendLabel="Angle:" <br /> AngleMemberAsLegendUnit="°" |
+| Range Series | HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" |
+| Financial Series | OpenMemberAsLegendLabel="O:" <br /> OpenMemberAsLegendUnit="K" <br /> HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" <br /> CloseMemberAsLegendLabel="C:" <br /> CloseMemberAsLegendUnit="K" <br /> |
 
 Also, you can use the `UnitText` property on the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) to change text displayed in all Unit columns.
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=LayoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
-<img src="../../../images/general/layout_mode.png" alt="Layout Mode" />
-
 ## Blazor Data Legend Styling
 
-The [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`TitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=TitleTextColor), [`LabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=LabelTextColor), [`ValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueTextColor), and [`UnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=UnitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
+The [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`TitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=titleTextColor), [`LabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=labelTextColor), [`ValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueTextColor), and [`UnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=unitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -588,7 +587,7 @@ public class StockItem {
 
 ## Blazor Data Legend Value Formatting
 
-The [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) provides automatic abbreviation of large numbers using its [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) provides automatic abbreviation of large numbers using its [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 The following example demonstrates how to use those properties:
 
 ```razor
@@ -688,7 +687,7 @@ public class HighestGrossingMovies
 
 ## Blazor Data Legend Value Mode
 
-You have the ability to change the default decimal display of values within the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) to a currency by changing the [`ValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`ValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatCulture) property a culture tag. For example, the following example data legend with the [`ValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
+You have the ability to change the default decimal display of values within the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) to a currency by changing the [`ValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`ValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatCulture) property a culture tag. For example, the following example data legend with the [`ValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -873,8 +872,8 @@ You have the ability to change the default decimal display of values within the 
 
 ## Blazor Data Legend Grouping
 
-[`DataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=GroupRowVisible) property to true.
+[`DataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupRowVisible) property to true.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1018,30 +1017,30 @@ public class OlympicMedalsTopCountriesWithTotals
 
 Several properties are exposed including grouping portions of the legend.
 
-- `GroupRowMargin`
-- `GroupTextMargin`
-- [`GroupTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=GroupTextColor)
-- `GroupTextFontSize`
-- `GroupTextFontFamily`
-- `GroupTextFontStyle`
-- `GroupTextFontStretch`
-- `GroupTextFontWeight`
-- `HeaderTextMargin`
-- [`HeaderTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderTextColor)
-- `HeaderTextFontSize`
-- `HeaderTextFontFamily`
-- `HeaderTextFontStyle`
-- `HeaderTextFontStretch`
-- `HeaderTextFontWeight`
+- [`GroupRowMargin`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupRowMargin)
+- [`GroupTextMargin`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextMargin)
+- [`GroupTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextColor)
+- [`GroupTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontSize)
+- [`GroupTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontFamily)
+- [`GroupTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontStyle)
+- [`GroupTextFontStretch`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontStretch)
+- [`GroupTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontWeight)
+- [`HeaderTextMargin`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextMargin)
+- [`HeaderTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextColor)
+- [`HeaderTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontSize)
+- [`HeaderTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontFamily)
+- [`HeaderTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontStyle)
+- [`HeaderTextFontStretch`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontStretch)
+- [`HeaderTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontWeight)
 
 The [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
 
-- `StyleGroupRow`: This event fires for each group to style text displayed in group rows.
-- `StyleHeaderRow`: This event fires when rendering the header row.
-- `StyleSeriesRow`: This event fires once for each series row, which allows conditional styling of the values of the series.
-- `StyleSeriesColumn`: This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
-- `StyleSummaryRow`: This event fires once when rendering the summary row.
-- `StyleSummaryColumn`: This event fires once when rendering the summary column.
+- [`StyleGroupRow`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleGroupRow): This event fires for each group to style text displayed in group rows.
+- [`StyleHeaderRow`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleHeaderRow): This event fires when rendering the header row.
+- [`StyleSeriesRow`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleSeriesRow): This event fires once for each series row, which allows conditional styling of the values of the series.
+- [`StyleSeriesColumn`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleSeriesColumn): This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
+- [`StyleSummaryRow`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleSummaryRow): This event fires once when rendering the summary row.
+- [`StyleSummaryColumn`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=styleSummaryColumn): This event fires once when rendering the summary column.
 
 Some of the events exposes a [`IgbDataLegendStylingRowEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbDataLegendStylingRowEventArgs) parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `StyleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
 
@@ -1180,31 +1179,4 @@ public class OlympicMedalsTopCountriesWithTotals
 ```
 
 ## API References
-
-- [`ExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ExcludedColumns)
-- [`ExcludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ExcludedSeries)
-- [`HeaderFormatDate`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderFormatDate)
-- [`HeaderFormatTime`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderFormatTime)
-- [`HeaderText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=HeaderText)
-- [`IncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedColumns)
-- [`IncludedSeries`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=IncludedSeries)
-- [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=LabelDisplayMode)
-- [`LabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegendStylingColumnEventArgs&member=LabelTextColor)
-- `StyleHeaderRow`:
-- `StyleSeriesColumn`:
-- `StyleSeriesRow`
-- `StyleSeriesRow`:
-- `StyleSummaryColumn`:
-- `StyleSummaryRow`:
-- [`SummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=SummaryTitleText)
-- [`SummaryType`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=SummaryType)
-- [`TitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=TitleTextColor)
-- `UnitText`
-- [`UnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegendStylingColumnEventArgs&member=UnitsTextColor)
-- [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatAbbreviation)
-- [`ValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatCulture)
-- [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMaxFractions)
-- [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMaxFractions)
-- [`ValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMinFractions)
-- [`ValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=ValueFormatMode)
-- [`ValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegendStylingColumnEventArgs&member=ValueTextColor)
+[`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend)

@@ -1,20 +1,18 @@
 ---
-title: Blazor Date Picker Component - Ignite UI for Blazor
-_description: Infragistics' Blazor Date Picker allows the user to select a date from a calendar and set it in an input element.
-_keywords: Blazor Date Picker, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Date Picker Component - Ignite UI for Blazor"
+description: Infragistics' Blazor Date Picker allows the user to select a date from a calendar and set it in an input element.
+keywords: "Blazor Date Picker, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["DatePicker"]
+llms:
+  description: "The Ignite UI for Blazor Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up."
 _tocName: Date Picker
 ---
-
 # Blazor Date Picker Component Overview
 
 The Ignite UI for Blazor Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up. Lightweight and simple to use, the Date Picker lets users navigate to a desired date with several view options – month, year, and decade. It also supports common validation properties such as minimum and maximum date constraints and required fields.
 
 The Ignite UI for Blazor Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The Blazor Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
-
-> [!NOTE]
-> The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) is a brand new component from Ignite UI for Blazor version . The old [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## Blazor Date Picker Example
 
@@ -40,13 +38,13 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 
 To get started with the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component, first we need to register its module as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDatePickerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/\_Host.cshtml file in a Blazor Server project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/_Host.cshtml file in a Blazor Server project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -82,11 +80,14 @@ The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePic
         this.SelectedDate = DateTime.Today;
     }
 }
+
 ```
 
 ### Projecting components
 
-With prefix and suffix slots we can add different content before and after the main content of the Input.
+The are `prefix` and `suffix` slots available, which allow you to add different content before and after the main content of the Input. When slotting content, we recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots.
+
+There is also a `helper-text` slot exposed, which provides a hint placed below the Input. We recommend using a `<span>` element, when slotting content in the `helper-text` slot.
 
 ```razor
 <IgbDatePicker @ref="DatePicker">
@@ -104,7 +105,7 @@ The above snippet will add an additional icon at the end of the input, right aft
 
 #### Customizing the toggle and clear icons
 
-The calendar and clear icon could be templated by using the `calendar` and `clear` slots:
+The calendar and clear icons can be customized using the `calendar` and `clear` slots. We recommend using a `<span>` element when adding symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `calendar` and `clear` slots.
 
 ```razor
 <IgbDatePicker>
@@ -115,7 +116,7 @@ The calendar and clear icon could be templated by using the `calendar` and `clea
 
 #### Custom action buttons
 
-The picker's action buttons can be templated using the `actions` slot:
+The picker's action buttons can be templated using the `actions` slot. For the best result, we recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```razor
 <IgbDatePicker>
@@ -168,11 +169,11 @@ The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePic
 
 ### Display and input format
 
-[`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=InputFormat) and [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=DisplayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=InputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
+[`IgbDatePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=inputFormat) and [`IgbDatePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`IgbDatePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
 
 A good thing to note is that the Date Picker Component will always add a leading zero on the `date` and `month` portions if they were provided in a format that does not have it, e.g. `d/M/yy` becomes `dd/MM/yy`. This applies only during editing.
 
-[`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=DisplayFormat) is used to format the picker's input when it is not focused. If no [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=DisplayFormat) is provided, the picker will use the [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=InputFormat) as its [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=DisplayFormat).
+[`IgbDatePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=displayFormat) is used to format the picker's input when it is not focused. If no [`IgbDatePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=displayFormat) is provided, the picker will use the [`IgbDatePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=inputFormat) as its [`IgbDatePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=displayFormat).
 
 More information about these can be found in the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) format section.
 
@@ -194,7 +195,7 @@ More information about these can be found in the [`IgbDateTimeInput`](mcp:get_ap
 
 ### Increment and decrement
 
-The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) exposes [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=StepUp) and [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=StepDown) methods. Both of which come from the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
+The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) exposes [`IgbDatePicker.stepUp`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepUp) and [`IgbDatePicker.stepDown`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepDown) methods. Both of which come from the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) and can be used for incrementing and decrementing a specific [`IgbDatePart`](mcp:get_api_reference?platform=blazor&component=DatePart) of the currently set date.
 
 ```razor
 <IgbDatePicker @ref="DatePicker">
@@ -215,7 +216,7 @@ The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePic
 
 ### In Forms
 
-The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) could be used in a form element, the component's [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=Min) and [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=Max) properties act as form validators.
+The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) could be used in a form element, the component's [`IgbDatePicker.min`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=min) and [`IgbDatePicker.max`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=max) properties act as form validators.
 
 In forms, we can handle the `Change` event of the component and update the value of the label.
 
@@ -302,11 +303,11 @@ In forms, we can handle the `Change` event of the component and update the value
 
 ### Calendar Specific settings
 
-The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`VisibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=VisibleMonths) which allows more than one calendar to be displayed when the picker expands, [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=WeekStart) which determines the starting day of the week, [`ShowWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=ShowWeekNumbers) which shows the number for each week in the year and more.
+The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`IgbDatePicker.visibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`IgbFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=blazor&component=IgbFieldPipeArgs&member=weekStart) which determines the starting day of the week, [`IgbDatePicker.showWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) can be controlled through its [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=Locale) input.
+The localization of the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) can be controlled through its [`IgbDatePicker.locale`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=locale) input.
 
 Here is how a [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) with Japanese locale definition would look like:
 
@@ -316,7 +317,7 @@ Here is how a [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=
 
 ## Styling
 
-The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component derives from the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) and [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
+The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component derives from the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) and [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](./calendar.md#styling) for reference.
 
 ```css
 igc-date-picker::part(header) {
@@ -368,10 +369,9 @@ igc-date-picker::part(year-inner selected) {
 
 ## API References
 
-- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
-- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
-- [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)<br />
+[`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)<br />
+[`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)<br />
 
 ## Additional Resources
 

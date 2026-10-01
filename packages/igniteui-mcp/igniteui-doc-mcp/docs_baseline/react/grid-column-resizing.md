@@ -1,16 +1,15 @@
 ---
-title: React Grid Column Resizing - Ignite UI for React
-_description: Start using React Grid Column Resizing in order to change the grid column width in an instant. React drag resizing has never been so easy. Try for free!
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-resizing
+title: "React Grid Column Resizing - Ignite UI for React"
+description: Start using React Grid Column Resizing in order to change the grid column width in an instant. React drag resizing has never been so easy. Try for free!
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-resizing"
+llms:
+  description: "The Ignite UI for React Column Resizing feature in React Grid allows users to easily adjust the width of the columns of the IgrGrid."
+_componentKey: Grid
 _tocName: Column Resizing
 _premium: true
 ---
-
 # React  Grid Column Resizing Overview
 
 The Ignite UI for React Column Resizing feature in React Grid allows users to easily adjust the width of the columns of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). By default, they will see a temporary resize indicator while the drag resizing operation is in effect. There are several resizing options available - Resizing Columns in Pixels/Percentages, Restrict Column Resizing, Auto-Size Columns on Double Click, and Auto-Size Columns on Initialization.
@@ -177,15 +176,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-**Column resizing** is also enabled per-column level, meaning that the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can have a mix of resizable and non-resizable columns. This is done via the [`resizable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=resizable) input of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
+**Column resizing** is also enabled per-column level, meaning that the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can have a mix of resizable and non-resizable columns. This is done via the [`IgrColumn.resizable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=resizable) input of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
 
 ```tsx
 <IgrColumn field="ID" resizable={true} width="100px"></IgrColumn>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-You can subscribe to the `ColumnResized` event of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) object, are exposed through the event arguments.
+You can subscribe to the [`IgrGrid.onColumnResized`](mcp:get_api_reference?platform=react&component=IgrGrid&member=onColumnResized) event of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) object, are exposed through the event arguments.
 
 ```tsx
 const onResize = (event: IgrColumnResizeEventArgs) => {
@@ -199,8 +196,6 @@ const onResize = (event: IgrColumnResizeEventArgs) => {
     <IgrColumn field="CompanyName" width="100px" resizable={true}></IgrColumn>
 </IgrGrid>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ## Resizing Columns in Pixels/Percentages
 
@@ -216,10 +211,8 @@ This means that the following configuration is possible:
 </IgrGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-> [!Note]
-> There is a slight difference in the way resizing works for columns set in pixels and percentages.
+**Note:** 
+There is a slight difference in the way resizing works for columns set in pixels and percentages.
 
 **Pixels**
 
@@ -231,14 +224,12 @@ When resizing columns with width in percentages, the horizontal amount of the mo
 
 ## Restrict Column Resizing
 
-You can also configure the minimum and maximum allowable column widths. This is done via the [`minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) inputs of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth).
+You can also configure the minimum and maximum allowable column widths. This is done via the [`IgrColumn.minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`IgrColumnState.maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=maxWidth) inputs of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`IgrColumn.minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`IgrColumnState.maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=maxWidth).
 
 ```tsx
 <IgrColumn field="ID" width="100px" resizable={true}
             minWidth="60px" maxWidth="230px"></IgrColumn>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Mixing the minimum and maximum column width value types (pixels or percentages) is allowed. If the values set for minimum and maximum are set to percentages, the respective column size will be limited to those exact sizes similar to pixels.
 
@@ -249,8 +240,6 @@ This means the following configurations are possible:
             minWidth="60px" maxWidth="230px"></IgrColumn>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 or
 
 ```tsx
@@ -258,27 +247,23 @@ or
             minWidth="5%" maxWidth="15%"></IgrColumn>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## Auto-Size Columns on Double Click
 
-Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) is set on that column and the new width exceeds that [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) value. In this case the column will be sized according to preset [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) value.
+Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`IgrColumnState.maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=maxWidth) is set on that column and the new width exceeds that [`IgrColumnState.maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=maxWidth) value. In this case the column will be sized according to preset [`IgrColumnState.maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=maxWidth) value.
 
-You can also auto-size a column dynamically using the exposed [`autosize`](mcp:get_api_reference?platform=react&component=IgrColumn&member=autosize) method on [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
+You can also auto-size a column dynamically using the exposed [`IgrColumn.autosize`](mcp:get_api_reference?platform=react&component=IgrColumn&member=autosize) method on [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
 
 ```tsx
 const column = grid.getColumnByName('ID');
 column.autosize();
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## Auto-Size Columns on Initialization
 
-Each column can be set to auto-size on initialization by setting [`width`](mcp:get_api_reference?platform=react&component=IgrColumn&member=width) to 'auto':
+Each column can be set to auto-size on initialization by setting [`IgrGrid.width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) to 'auto':
 
 ```tsx
-<IgrColumn width='auto'>
+<IgrColumn width="auto"></IgrColumn>
 ```
 
 When the column is first initialized in the view it resolves its width to the size of the longest visible cell or header. Note that cells that are outside of the visible rows are not included.
@@ -441,7 +426,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change the color of the resize handle, you need to set a class for the grid first:
 
 ```tsx
@@ -599,10 +584,8 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 - [Virtualization and Performance](virtualization.md)

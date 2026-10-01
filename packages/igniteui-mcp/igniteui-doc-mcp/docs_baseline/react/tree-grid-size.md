@@ -1,20 +1,18 @@
 ---
-title: React Tree Grid Size - Ignite UI for React
-_description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for React.
-_keywords:  material size, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "React Tree Grid Size - Ignite UI for React"
+description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for React.
+keywords:  material size, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for React Size feature in React Tree Grid allows users to control the spacing and layout of data within the IgrTreeGrid."
+_componentKey: TreeGrid
 _tocName: Size
 _premium: true
 ---
-
 # React Tree Grid Size
 
-The Ignite UI for React Size feature in React Tree Grid allows users to control the spacing and layout of data within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for React Size feature in React Tree Grid allows users to control the spacing and layout of data within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -272,14 +270,14 @@ As you can see in the demo above, the [`IgrTreeGrid`](mcp:get_api_reference?plat
 <IgrTreeGrid className="gridSize"></IgrTreeGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component. When you switch between different size options the height of each [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component. When you switch between different size options the height of each [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgrTreeGrid.width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `56px`;
+- **large** - this is the default [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgrTreeGrid.width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgrTreeGrid.width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgrTreeGrid.width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
 
@@ -301,8 +299,6 @@ Let's now continue with our sample and see in action how the `--ig-size` is appl
     </IgrPropertyEditorPropertyDescription>
 </IgrPropertyEditorPanel>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 Now we can add the markup.
 
@@ -332,13 +328,7 @@ Now we can add the markup.
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 private propertyEditor: IgrPropertyEditorPanel
@@ -377,25 +367,38 @@ public webGridSetGridSize(sender: any, args: IgrPropertyEditorPropertyDescriptio
     var grid = document.getElementById("grid");
     grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
 }
+
 ```
 
-Another option that [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides for you, in order to be able to change the height of the rows in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), is the property [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight). So let's see in action how this property affects the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) layout along with the `--ig-size`.
+Another option that [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides for you, in order to be able to change the height of the rows in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), is the property [`IgrTreeGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight). So let's see in action how this property affects the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgrTreeGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Tree Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight) property to the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid):
+We can now extend our sample and add [`IgrTreeGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowHeight) property to the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid):
 
-```tsx
-<IgrTreeGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrTreeGrid>
-```
+ ```tsx
+ <IgrTreeGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrTreeGrid>
+ ```
 
 ## API References
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+## Additional Resources
 
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [Virtualization and Performance](virtualization.md)
+- [Editing](editing.md)
+- [Paging](paging.md)
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
+
+- [Searching](search.md)
 
 Our community is active and always welcoming to new ideas.
 

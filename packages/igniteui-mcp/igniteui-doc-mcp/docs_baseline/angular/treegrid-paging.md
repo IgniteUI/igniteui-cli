@@ -1,16 +1,22 @@
 ---
 title: Angular Grid Paging | Angular Pagination Table | Infragistics
-_description: Configure Angular pagination and create custom pages in the Angular table by Ignite UI, get data for the requested pages with variety of angular events.
-_keywords: angular pagination, igniteui for angular, infragistics
-_license: commercial
+description: Configure Angular pagination and create custom pages in the Angular table by Ignite UI, get data for the requested pages with variety of angular events.
+keywords: angular pagination, igniteui for angular, infragistics
+license: commercial
 _canonicalLink: grid/paging
+llms:
+  description: "Pagination is used to split a large set of data into a sequence of pages that have similar content."
 _tocName: Paging
 _premium: true
 ---
 # Angular Tree Grid Pagination
+
 Pagination is used to split a large set of data into a sequence of pages that have similar content. Angular table pagination improves user experience and data interaction. Tree Grid pagination is configurable via a separate component projected in the grid tree by defining a `igx-paginator` tag, similar to adding of a column. As in any Angular Table, the pagination in the Tree Grid supports template for custom pages.
+
 ## Angular Pagination Example
+
 The following example represents Tree Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Tree Grid pages via "Go to last page" and "Go to first page" buttons.
+
 ```typescript
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -108,14 +114,18 @@ $progressBar-sample-theme: progress-linear-theme(
     width: 100%;
 }
 ```
-Adding a [`igx-paginator`](../paginator.md) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
+
+Adding a [`igx-paginator`](/paginator) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
+
 ```html
 <igx-tree-grid #treeGrid [data]="data" [height]="'500px'" [width]="'100%'">
     <igx-paginator [perPage]="10">
     </igx-paginator>
 </igx-tree-grid>
 ```
+
 Example:
+
 ```html
 <igx-paginator #paginator [totalRecords]="20">
     <igx-paginator-content>
@@ -133,8 +143,11 @@ Example:
     </igx-paginator-content>
 </igx-paginator>
 ```
+
 ## Usage
+
 The `igx-paginator` component is used along with the `igx-tree-grid` component in the example below, but you can use it with any other component in case paging functionality is needed.
+
 ```html
 <igx-tree-grid #treeGrid [data]="data">
     <igx-paginator #paginator [(page)]="treeGrid.page" [totalRecords]="treeGrid.length" [(perPage)]="10"
@@ -142,7 +155,9 @@ The `igx-paginator` component is used along with the `igx-tree-grid` component i
     </igx-paginator>
 </igx-tree-grid>
 ```
+
 ### Paginator Component Demo
+
 ```typescript
 import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
@@ -273,63 +288,45 @@ igx-switch {
     margin-left: 15px;
 }
 ```
-<div class="divider--half"></div>
+
 ## Remote Paging
-Remote paging can be achieved by declaring a service, responsible for data fetching and a component, which will be responsible for the Grid construction and data subscription. For more detailed information, check the [`Tree Grid Remote Data Operations`](remote-data-operations.md#remote-paging) topic.
+
+Remote paging can be achieved by declaring a service, responsible for data fetching and a component, which will be responsible for the Grid construction and data subscription.
+
+For more detailed information, check the [`Tree Grid Remote Data Operations`](/treegrid/remote-data-operations#remote-paging) topic.
+
 ## Styling
-To get started with styling the paginator, we need to import the `index` file, where all the theme functions and component mixins live:
+
+To get started with styling the paginator, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
+
 ```scss
 @use "igniteui-angular/theming" as *;
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
-Following the simplest approach, we create a new theme that extends the [`paginator-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme) and accepts the `$text-color`, `$background-color` and the `$border-color` parameters.
+
+Following the simplest approach, we create a new theme that extends the `paginator-theme` and accepts the `$foreground`, `$background`, `$border-color` and `$accent-color` parameters.
+
 ```scss
-$dark-paginator: paginator-theme(
-  $text-color: #d0ab23;,
-  $background-color: #231c2c,
-  $border-color: #d0ab23;
+$paginator-theme: paginator-theme(
+  $foreground: #ff570f,
+  $background: #130425FF,
+  $border-color: #ff570f,
+  $accent-color: #ff570f,
 );
 ```
-As seen, the `paginator-theme` only controls colors for the paging container, but does not affect the buttons in the pager UI. To style those buttons, let's create a new icon button theme:
-```scss
-$dark-button: flat-icon-button-theme(
-  $foreground: #d0ab23,
-  $hover-foreground: #231c2c,
-  $hover-background: #d0ab23,
-  $focus-foreground: #231c2c,
-  $focus-background: #d0ab23,
-  $disabled-foreground: #9b7829
-);
-```
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.
-The last step is to **include** the component mixins, each with its respective theme:
-```scss
-:host {
-    @include tokens($dark-paginator);
 
-    .igx-grid-paginator__pager {
-        @include tokens($dark-button);
-    }
+After that we can **include** the newly created theme.
+
+```scss
+igx-paginator {
+  @include tokens($paginator-theme);
 }
 ```
->[!NOTE]
->We include the created **icon-button-theme** within `.igx-paginator__pager`, so that only the paginator buttons would be styled. Otherwise other icon buttons in the grid would be affected too.
->[!NOTE]
->If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep` in order to style the components which are inside the paging container, like the button:
-```scss
-:host {
-  @include tokens($dark-paginator);
 
-  igx-paginator {
-    ::ng-deep {
-      @include tokens($dark-button);
-    }
-  }
-}
-```
 ### Demo
+
 ```typescript
 import { Component, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
@@ -422,23 +419,26 @@ igx-paginator {
     @include tokens($paginator-theme);
 }
 ```
+
 ## API References
-- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxGridPaginator Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme)
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- `IgxTreeGridComponent Styles`
+- `IgxGridPaginator Styles`
 ## Additional Resources
-<div class="divider--half"></div>
-- [Tree Grid overview](tree-grid.md)
-- [Paginator](../paginator.md)
-- [Virtualization and Performance](virtualization.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-<div class="divider--half"></div>
+
+- [Tree Grid overview](/treegrid/tree-grid)
+- [Paginator](/paginator)
+
+- [Virtualization and Performance](/treegrid/virtualization)
+- [Filtering](/treegrid/filtering)
+- [Sorting](/treegrid/sorting)
+- [Summaries](/treegrid/summaries)
+- [Column Moving](/treegrid/column-moving)
+- [Column Pinning](/treegrid/column-pinning)
+- [Column Resizing](/treegrid/column-resizing)
+- [Selection](/treegrid/selection)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

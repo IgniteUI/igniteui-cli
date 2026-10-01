@@ -1,20 +1,20 @@
 ---
-title: React Grid Group By | Group by multiple fields | Infragistics
-_description: Configure group by that allows visualizing of data records in React Material table, visualize the grouped data in separate and convenient column group.
-_keywords: React, Grid, Ignite UI for React, group by, Infragistics
-_license: commercial
+title: "React Grid Group By | Group by multiple fields | Infragistics"
+description: Configure group by that allows visualizing of data records in React Material table, visualize the grouped data in separate and convenient column group.
+keywords: "React, Grid, Ignite UI for React, group by, Infragistics"
+license: commercial
 mentionedTypes: ["Grid", "RowDirective", "GroupByRowSelectorTemplateDetails"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for React Group By behavior in React IgrGrid creates grouped data rows based on the column values."
 _tocName: Group By
 _premium: true
 ---
-
 # React Grid Group By
 
-The Ignite UI for React Group By behavior in React IgrGrid creates grouped data rows based on the column values. The Group By in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+The Ignite UI for React Group By behavior in React IgrGrid creates grouped data rows based on the column values. The Group By in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`RowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`RowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## React Grid Group By Example
-
 This example presents the grouping capabilities of a large amount of data. Dragging the column headers to the top (grouping area) allows users to see the data for the selected column in a hierarchical structure. They can do group by in multiple fields by dragging more column headers to the top. These grouping options come in handy when you have tables with numerous rows and columns where users want to present the data in a much faster and visually acceptable way.
 
 ```typescript
@@ -258,7 +258,7 @@ root.render(<Sample/>);
 
 ## Initial Grouping State
 
-It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions) property of the grid.
+It is possible to define initial grouping of the grid by assigning an array of expressions to the [`GroupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions) property of the grid.
 
 ```typescript
 const expressions = [
@@ -281,7 +281,7 @@ Grouping expressions implement the `ISortingExpression` interface.
 
 ### Grouping API
 
-Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's `Groupable` property to `true`.
+Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's [`Groupable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=groupable) property to `true`.
 
 ```tsx
 <IgrGrid
@@ -295,7 +295,7 @@ Grouping is available through the UI and through a robust API exposed by the gri
 </IgrGrid>
 ```
 
-During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`groupBy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupBy) method with either a single or an array of expressions.
+During runtime the expressions are gettable and settable from the [`groupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`GroupBy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupBy) method with either a single or an array of expressions.
 
 ```typescript
 gridRef.current.groupBy([{ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true }]);
@@ -303,9 +303,9 @@ gridRef.current.groupBy([{ fieldName: 'ProductName', dir: SortingDirection.Desc,
 
 ### Expand/Collapse API
 
-In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component [`groupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) which is a collection of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgrGroupByKey`](mcp:get_api_reference?platform=react&component=IgrGroupByKey).
+In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component [`GroupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) which is a collection of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgrGroupByKey`](mcp:get_api_reference?platform=react&component=IgrGroupByKey).
 
-As with [`groupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions), setting a list of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState) directly to the [`groupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) exposes a method [`toggleGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=toggleGroup) that toggles a group by the group record instance or via the [`expanded`](mcp:get_api_reference?platform=react&component=IgrRowDirective&member=expanded) property of the row.
+As with [`GroupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions), setting a list of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState) directly to the [`GroupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) exposes a method [`ToggleGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=toggleGroup) that toggles a group by the group record instance or via the [`Expanded`](mcp:get_api_reference?platform=react&component=IgrRowDirective&member=expanded) property of the row.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
@@ -317,20 +317,20 @@ const groupRow = gridRef.current.getRowByIndex(0);
 groupRow.expanded = false;
 ```
 
-Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupsExpanded) property.
+Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`GroupsExpanded`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupsExpanded) property.
 
 ### Select/Deselect All Rows in a Group API
 
-Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) and [`deselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) API methods.
+Selecting/Deselecting all rows in a group is available through the [`SelectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) and [`DeselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) API methods.
 
-The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select all rows within a group using the group record instance [`SelectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
 gridRef.current.selectRowsInGroup(groupRow);
 ```
 
-If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) method.
+If you need to deselect all rows within a group programmatically, you can use the [`DeselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) method.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
@@ -356,9 +356,9 @@ const template = (ctx: IgrGroupByRowTemplateContext) => {
 
 ### Group Row Selector Templates
 
-As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`groupByRowSelectorTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
+As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`GroupByRowSelectorTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
 
-The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) property shows how many of the group records are currently selected while [`totalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) shows how many records belong to the group.
+The [`SelectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) property shows how many of the group records are currently selected while [`TotalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) shows how many records belong to the group.
 
 ```tsx
 const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
@@ -368,7 +368,7 @@ const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
 }
 ```
 
-The [`groupRow`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=groupRow) property returns a reference to the group row.
+The [`GroupRow`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=groupRow) property returns a reference to the group row.
 
 ```tsx
 const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
@@ -379,7 +379,7 @@ const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
 }
 ```
 
-The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) and [`totalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
+The [`SelectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) and [`TotalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
 
 ## React Grid Group By With Paging
 
@@ -569,7 +569,7 @@ root.render(<Sample/>);
 
 ## Group By With Summaries
 
-Integration between Group By and Summaries is described in the [Summaries](summaries.md#summaries-with-group-by) topic.
+Integration between Group By and Summaries is described in the [Summaries](./summaries.md#summaries-with-group-by) topic.
 
 ## Keyboard Navigation
 
@@ -894,7 +894,7 @@ root.render(<Sample />);
 ```
 
 The sample defines custom sorting for the different date conditions.
-Each custom strategy defines the `GroupingComparer` method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
+Each custom strategy defines the [`GroupingComparer`](mcp:get_api_reference?platform=react&component=IgrGroupingExpression&member=groupingComparer)[`GroupingComparer`](mcp:get_api_reference?platform=react&component=IgrGroupingExpression&member=groupingComparer) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
 ```typescript
 const groupByMode = "Month";
@@ -907,7 +907,7 @@ function getParsedDate(date: any) {
 }
 ```
 
-A `GroupingComparer` function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
+A [`GroupingComparer`](mcp:get_api_reference?platform=react&component=IgrGroupingExpression&member=groupingComparer)[`GroupingComparer`](mcp:get_api_reference?platform=react&component=IgrGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
 
 ```typescript
 grid.groupingExpressions = [
@@ -930,7 +930,7 @@ grid.groupingExpressions = [
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -1221,25 +1221,20 @@ root.render(<Sample/>);
 |Maximum amount of grouped columns is 10. | If more than 10 columns are grouped an error is thrown.
 
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrGroupByRecord`](mcp:get_api_reference?platform=react&component=IgrGroupByRecord)
-- `ISortingExpression`
-- [`column`](mcp:get_api_reference?platform=react&component=IgrGroupByRecord&member=column)
-- `IGroupByExpandState`
-- [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
 ## Additional Resources
 
 - [Grid overview](../data-grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Column Moving](column-moving.md)
-- [Summaries](summaries.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
+- [Virtualization and Performance](./virtualization.md)
+- [Paging](./paging.md)
+- [Filtering](./filtering.md)
+- [Sorting](./sorting.md)
+- [Column Moving](./column-moving.md)
+- [Summaries](./summaries.md)
+- [Column Resizing](./column-resizing.md)
+- [Selection](./selection.md)
 
 Our community is active and always welcoming to new ideas.
 

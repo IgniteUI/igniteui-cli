@@ -1,13 +1,14 @@
 ---
-title: Angular Spreadsheet | Clipboard Operations | Infragistics
-_description: Use clipboard operations such as copy, cut and paste within Infragistics' Angular spreadsheet control. View Infragistics Ignite UI for Angular spreadsheet demos today!
-_keywords: Spreadsheet, clipboard operations, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Spreadsheet | Clipboard Operations | Infragistics"
+description: Use clipboard operations such as copy, cut and paste within Infragistics' Angular spreadsheet control. View Infragistics Ignite UI for Angular spreadsheet demos today!
+keywords: Spreadsheet, clipboard operations, Ignite UI for Angular, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction", "SpreadsheetCommandType", "Command"]
+llms:
+  description: "Explains how to copy, cut, and paste cells in the Angular Spreadsheet by using its clipboard commands and API."
 _tocName: Clipboard
 _premium: true
 ---
-
 # Angular Working with Clipboard
 
 This topic explains how to perform clipboard operations on the Ignite UI for Angular spreadsheet component.
@@ -102,24 +103,18 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
-Before making use of the clipboard you will want to import the `SpreadsheetAction` enumeration:
-
-<!-- Angular -->
+Before making use of the clipboard you will want to import the `IgxSpreadsheetAction` enumeration:
 
 ```ts
 import { IgxSpreadsheetComponent } from 'igniteui-angular-spreadsheet';
 import { SpreadsheetAction } from 'igniteui-angular-spreadsheet';
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
-The following code snippet shows how you can execute commands related to the clipboard in the Angular [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html) control:
+The following code snippet shows how you can execute commands related to the clipboard in the Angular `IgxSpreadsheet` control:
 
 ```ts
 public cut(): void {
@@ -137,5 +132,5 @@ public paste(): void {
 
 ## API References
 
-- `SpreadsheetAction`
-- [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html)
+`IgxSpreadsheetAction`<br />
+`IgxSpreadsheet`<br />

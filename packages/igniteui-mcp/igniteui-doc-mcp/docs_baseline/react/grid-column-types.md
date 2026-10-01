@@ -1,21 +1,18 @@
 ---
-title: React Grid Column Data Types - Ignite UI for React
-_description: Handle cell and editing templates in React by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
-_keywords: Column Data Type , React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-types
+title: "React Grid Column Data Types - Ignite UI for React"
+description: Handle cell and editing templates in React by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
+keywords: Column Data Type , React, Grid, IgrGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/column-types"
+llms:
+  description: "The React Grid provides a default handling of number, string, date, boolean, currency and percent column data types, based on which the appearance of the default and editing templates will be present."
+_componentKey: Grid
 _tocName: Column Types
 _premium: true
 ---
-
 # React Grid Column Types Overview
 
 The React Grid provides a default handling of **number**, **string**, **date**, **boolean**, **currency** and **percent** column data types, based on which the appearance of the default and editing templates will be present.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ## React Grid Column Types Example
 
@@ -323,21 +320,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## React Grid Default Template
 
-If you want to enable a data type-specific template, you should set the column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
+If you want to enable a data type-specific template, you should set the column [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
 
-The following sections describe the default templates for each [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
+The following sections describe the default templates for each [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
 
 ### String
 
-This column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is not changing the appearance or format of the cell value.
+This column [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is not changing the appearance or format of the cell value.
 
 ### Number
 
-If the [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`locale`](mcp:get_api_reference?platform=react&component=IgrGrid&member=locale) settings, as well as when [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=locale) settings, as well as when [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
@@ -352,7 +347,7 @@ const formatOptions : IgrColumnPipeArgs = {
 
 ### DateTime, Date and Time
 
-The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](mcp:get_api_reference?platform=react&component=IgrGrid&member=locale) format or [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
+The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=locale) format or [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
 
 - **format** - The default value for formatting the date is `'mediumDate'`. Other available options are `'short'`, `'long'`, `'shortDate'`, `'fullDate'`, `'longTime'`, `'fullTime'` and etc.
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
@@ -364,6 +359,7 @@ const formatOptions : IgrColumnPipeArgs = {
 };
 
 <IgrColumn pipeArgs={formatOptions} dataType="date"></IgrColumn>
+
 ```
 
 Available timezones:
@@ -381,7 +377,7 @@ Available timezones:
 | Hawaii Standard Time      |‘UTC-10’                   |
 | India Standard Time       |‘UTC+4’                    |
 
-The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
+The `IgrGrid` accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
@@ -397,15 +393,13 @@ const timeFormats = [
 #### Cell Editing
 
 When it comes to cell editing based on the column type a different editor will appear:
-
-- `DateTime` - `DateTimeEditor` will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
+- `DateTime` - [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)  will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
 - `Date` - [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) will be used.
-- `Time` - `TimePicker` will be used.
+- `Time` - [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) will be used.
 
 #### Filtering
 
 The same editors listed above will be used when it comes to Quick Filtering/Excel-style Filtering. These are the following filtering operands that each type exposes:
-
 - `DateTime` and `Date` - Equals, Does Not Equal, Before, After, Today, Yesterday, This Month, Last Month, Next Month, This Year, Last Year, Next Year, Empty, Not Empty, Null, Not Null;
 - `Time` - At, Not At, Before, After, At or Before, At or After, Empty, Not Empty, Null, Not Null;
 
@@ -435,7 +429,7 @@ Default template is using the value coming from the data as an image source to a
 <IgrColumn field="Image" dataType="image"></IgrColumn>
 ```
 
-When [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When `AutoGenerate` is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 
 ### Currency
 
@@ -443,7 +437,7 @@ When [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&mem
 
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
 
-By using the [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
+By using the [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```tsx
 const formatOptions : IgrColumnPipeArgs = {
@@ -457,15 +451,11 @@ const formatOptions : IgrColumnPipeArgs = {
 | Parameter                 | Description                                                |
 |---------------------------| -------------------------|
 | digitsInfo                | Represents Decimal representation of currency value        |
-| display\-                | Displays the value by narrow or wide symbol                |
+| display*                  | Displays the value by narrow or wide symbol                |
 
-\*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
-
-<!-- ComponentStart: Grid -->
+*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
 
 Upon editing of cell's value the **currency symbol** will be visible as suffix or prefix. More about that could be found in the official [Cell editing topic](cell-editing.md#react-grid-cell-editing-and-edit-templates-example).
-
-<!-- ComponentEnd: Grid -->
 
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
@@ -490,8 +480,8 @@ const formatOptions : IgrColumnPipeArgs = {
 <IgrColumn pipeArgs={formatOptions} dataType="percent"></IgrColumn>
 ```
 
-> [!Note]
-> When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
+**Note:** 
+When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template
 
@@ -507,7 +497,7 @@ Custom template and column formatter definition will always take precedence over
 const editCellTemplate = (ctx: IgrCellTemplateContext) => {
     return (
         <>
-            <input></input>
+            <input />
         </>
     );
 }
@@ -530,14 +520,8 @@ const formatCurrency = (value: number) => {
 ```
 
 ## API References
-
-- `Cell`
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`locale`](mcp:get_api_reference?platform=react&component=IgrGrid&member=locale)
-- [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 - For custom templates you can see [cell editing topic](cell-editing.md#cell-editing-templates)

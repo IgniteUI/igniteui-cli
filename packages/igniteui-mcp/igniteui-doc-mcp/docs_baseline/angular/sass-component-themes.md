@@ -1,41 +1,39 @@
 ---
 title: Component Themes
-_description: The Ignite UI for Angular Theming component is developed in SASS with a low-difficulty API that offers restyling of one component, multiple components, or the entire suite.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Component, Angular Theming
+description: The Ignite UI for Angular Theming component is developed in SASS with a low-difficulty API that offers restyling of one component, multiple components, or the entire suite.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Component, Angular Theming
+llms:
+  description: "Component themes allow you to change the styles of specific component instances by overriding the globally defined theme."
 _tocName: Component Themes
 ---
-
 # Component Themes
 
-<p class="highlight">Component themes allow you to change the styles of specific component instances by overriding the globally defined theme.</p>
+<div class="highlight">
+Component themes allow you to change the styles of specific component instances by overriding the globally defined theme.
+</div>
 
 ## Overview
 
-<div class="divider--half"></div>
+<hr/>
 
-Before we dig deep into how you can create component-level themes, let's take a few moments to talk about how Ignite UI for Angular approaches component theming. Because we want to be able to support older browsers, like IE11, we have two completely different approaches for theming components.
+Ignite UI for Angular component themes use CSS custom properties. Each component ships its structural CSS in its own bundle, while Sass theme functions and the `tokens()` mixin generate the design-token values consumed by those styles. This keeps component CSS tree-shakable and lets applications override themes at runtime without regenerating structural rules.
 
-- The first approach is to style component instances using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables). By using CSS variables we gain the ability to create component themes without replicating their styles over and over again. Also, this approach allows us to modify the value of the CSS variables at runtime.
-- The second approach is to create a new set of CSS rules that overwrite any previously declared CSS rules for a specific component. This approach is pretty straight-forward, and it is the only way we can provide sensible theming support for older browser, albeit it is not ideal as it adds a lot of additional CSS rules to the generated CSS theme.
-
-We'll take a look at how these approaches work in practice, and how to use one instead of the other when generating component-level themes.
-
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Creating Themes
 
-<div class="divider--half"></div>
+<hr/>
 
-There are several parts to a component theme:
+A component theme has two parts:
 
-- **The component theme function** - A Sass function that normalizes the passed arguments and produces a theme to be consumed by a component mixin.
-- **The Tokens mixin** - A Sass mixin that consumes a component theme that generates CSS variable tokens from an Ignite UI component theme.
-- **The component mixin** - A Sass mixin that consumes a component theme and produces _CSS rules_ used to style a particular component.
+- **The component theme function** — normalizes the supplied values and returns a theme map.
+- **The `tokens()` mixin** — consumes that map and emits CSS custom properties in global or scoped mode.
 
+The old per-component wrapper mixins no longer exist as of Ignite UI for Angular 22.1.0. Use `tokens()` for every component theme.
 
 ### The tokens mixin
 
-Using the `tokens` mixin is the preferred way to customize your components. It generates CSS custom properties (`design tokens`) from an Ignite UI component theme in either global or scoped mode.
+The mode determines whether `tokens()` emits universal overrides or the complete local variables consumed by a component's structural stylesheet.
 
 **Global mode (default)** — emits universal `--ig-{component}-{property}` tokens. Local var() references are rewritten to their global equivalents so derived values (e.g., `adaptive-contrast`) resolve correctly at any scope. Sizable expressions are skipped, you have to pass concrete values instead.
 
@@ -50,7 +48,7 @@ Using the `tokens` mixin is the preferred way to customize your components. It g
 }
 ```
 
-**Scoped mode** — emits component-scoped variables `--{property}` with a fallback chain: configured prefix `(--igx-*) -> universal (--ig-*) -> schema default`. When called from the stylesheet root, the theme's selector is used to create the rule. When called inside a selector, both the current selector and the component selector receive the variables.
+**Scoped mode** — emits component-local variables (`--{property}`) with a fallback chain from the configured prefix (`--igx-*`) to universal tokens (`--ig-*`) and finally the schema default. When called from the stylesheet root, the theme map's selector is used. When called inside another selector, declarations are emitted for the current selector and the component selector.
 
 ```scss
 // Input (from root):
@@ -76,8 +74,7 @@ igx-avatar {
 }
 ```
 
-Say you want to create a new global avatar theme that has a different background color to the one we set in the avatar's default theme. As mentioned in the [**overview section**](#overview) there are 2 general approaches to creating a component theme.
-There are even more ways you can organize and scope your component themes. The most straightforward way to do that is in the same file you defined your [**global theme**](./global-themes.md).
+Use the default global mode for universal overrides that should apply application-wide or be inherited by multiple component instances. The component must remain included in the global [`theme()`](/themes/sass/global-themes) output so its local declarations can consume the universal tokens.
 
 Defining an avatar theme:
 
@@ -87,42 +84,39 @@ $avatar-purple-theme: avatar-theme(
   $background: purple,
 );
 
-// Pass the theme to the `tokens` mixin
-:root {
-  @include tokens($avatar-purple-theme);
-}
+// Pass the theme to tokens() in its default global mode.
+@include tokens($avatar-purple-theme);
 ```
 
-The above code produces CSS variables for the `igx-avatar` component. These new CSS variables overwrite the default avatar rules.
-Similarly, if you were to include `tokens` mixin later down in the global `scss` file, the mixin will again overwrite any previously defined themes.
+The code emits universal `--ig-avatar-*` overrides at `:root`. If another global `tokens()` call for the avatar appears later, normal cascade order makes the later values win.
 
 For instance:
 
 ```scss
 // ...
-:root {
-  @include tokens($avatar-purple-theme);
-}
+@include tokens($avatar-purple-theme);
 
 // Later
 $avatar-royalblue-theme: avatar-theme(
   $background: royalblue,
 );
 
-:root {
-  @include tokens($avatar-royalblue-theme);
-}
+@include tokens($avatar-royalblue-theme);
 ```
 
 In the above code, the de facto global theme is now the `$avatar-royalblue-theme` as it overwrites any previously included `tokens` mixins.
 
-This brings us to our next point.
+Use `$mode: 'scoped'` only when the theme must emit component-local declarations that are not already supplied by the global theme. Typical cases include components excluded from `theme()`, component-local sizing expressions, theme maps whose multiple selectors need local declarations, and themes that establish a different schema or light/dark variant. Pass that variant's `$schema` to the component theme function.
 
-<div class="divider"></div>
+Do not select scoped mode merely because `tokens()` is nested in a selector or replaces a `css-vars()` call. If the component remains in the global `theme()` output, default global mode usually provides the intended override through the universal-token fallback chain. Use scoped mode only after determining that the customization depends on declarations the default mode does not emit.
+
+Detached overlays do not inherit token overrides from the component that opened them. Emit the override globally or move the outlet beneath the themed container. Use scoped mode only if the overlay customization also requires component-local declarations that the global theme does not provide. See [Overlay Styling](/overlay-styling).
+
+<igc-divider></igc-divider>
 
 ## Scoping Themes
 
-<div class="divider--half"></div>
+<hr/>
 
 As we saw in the previous example, when adding multiple themes targeting the same component at the same level, the last theme mixin takes precedence. This is due to the way the CSS cascade works. If you want to have two or more themes targeting the same type of component, you will have to scope them to a selector. For instance we can create multiple `igx-avatar` themes and scope them to specific CSS selectors we can later use in our component markup.
 
@@ -142,19 +136,38 @@ In a component template:
 
 ```html
 <div class="avatar-royalblue">
+
   <igx-avatar initials="AZ"></igx-avatar>
 </div>
 
 <div class="avatar-purple">
+
   <igx-avatar icon="home"></igx-avatar>
 </div>
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
+
+## Cascade Layers
+
+<hr/>
+
+Structural styles, design-system overrides, and derived/contextual tokens are split across component bundles and the global preset. Ignite UI declares them in the following [cascade layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) order: `ig.reset` → `ig.base` → `ig.material`/`ig.bootstrap`/`ig.fluent`/`ig.indigo` → `ig.derived`. A later layer wins over an earlier one regardless of bundle load order.
+
+Wrap a third-party reset or normalize stylesheet in `ig.reset` so it cannot override component or typography styles:
+
+```scss
+@layer ig.reset {
+  @import "minireset.css";
+}
+```
+
+**Warning:** 
+Unlayered application rules take precedence over Ignite UI's layered rules. Keep ordinary application overrides unlayered unless you intentionally want them to participate in the Ignite UI layer order.
 
 ## View Encapsulation
 
-<div class="divider--half"></div>
+<hr/>
 
 So far we've explored ways to create themes that are globally scoped, and are included in a single Sass file. However, this is not always desirable, and in some instances you will want the Sass file to be bound to a specific component. In those cases we have to take View Encapsulation, and specifically how it is emulated in Angular, into consideration.
 
@@ -199,7 +212,9 @@ $avatar-royalblue-theme: avatar-theme(
 }
 ```
 
-When using CSS variables, we don't have to use the `::ng-deep` pseudo-selector. With the code above we've created CSS variables for the `igx-avatar`, which will always have `royalblue` as its background color. The theme for our custom avatar will not 'leak' into other `igx-avatar` component instances, thus staying encapsulated within our custom `app-avatar` component.
+The universal avatar tokens are declared on this host and inherited by its avatar. Angular's generated encapsulation attributes can still prevent selectors emitted by more complex component themes from matching nested or internal elements. If a local theme does not take effect, use `::ng-deep` around that include or move it to a global stylesheet. The theme remains limited to this `app-avatar` subtree unless it is emitted globally.
+
+Shadow DOM boundaries and detached overlay outlets require the theme to be emitted where the target can inherit from it or where its selectors can match.
 
 The above instance could also be achieved without using any Sass. All we need to do is to set the value of `--ig-avatar-background` CSS variable to the desired color:
 
@@ -210,22 +225,20 @@ The above instance could also be achieved without using any Sass. All we need to
 }
 ```
 
-<div class="divider-half"></div>
-
 ## API Overview
 
-<div class="divider--half"></div>
+<hr/>
 
-- [Global Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme)
-- [Avatar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
+- `Global Theme`
+- `Avatar Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Learn how to configure a global theme:
 
-- [Global Themes](./global-themes.md)
+- [Global Themes](/themes/sass/global-themes)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,19 +1,18 @@
 ---
-title: React Grid Column Pinning - Ignite UI for React
-_description: Want to use the Pinning feature of the Ignite UI for React when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-pinning
+title: "React Grid Column Pinning - Ignite UI for React"
+description: Want to use the Pinning feature of the Ignite UI for React when you develop your next app? Easily lock column or change column order with rich API.
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-pinning"
+llms:
+  description: "The Ignite UI for React Column Pinning feature in React Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the IgrGrid."
+_componentKey: Grid
 _tocName: Column Pinning
 _premium: true
 ---
-
 # React Grid Column Pinning
 
-The Ignite UI for React Column Pinning feature in React Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). There’s an integrated UI for Column Pinning, accessible via the React Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for React Column Pinning feature in React Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the `IgrGrid`. There’s an integrated UI for Column Pinning, accessible via the React Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## React Grid Column Pinning Example
 
@@ -145,7 +144,7 @@ root.render(<Sample/>);
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html#pinned) property of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). Pinned columns are rendered on the left side of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body.
+Column pinning is controlled through the [`IgrColumn.pinned`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pinned) property of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). Pinned columns are rendered on the left side of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body.
 
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={false}>
@@ -155,29 +154,19 @@ Column pinning is controlled through the [`pinned`](https://www.infragistics.com
 </IgrGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-You may also use the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s [`pinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=unpinColumn) methods of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to pin or unpin columns by their field name:
-
-<!-- ComponentStart: Grid -->
+You may also use the [`IgrGrid.pinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinColumn) or [`IgrGrid.unpinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=unpinColumn) methods of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to pin or unpin columns by their field name:
 
 ```typescript
 gridRef.current.pinColumn('AthleteNumber');
 gridRef.current.unpinColumn('Name');
 ```
 
-<!-- ComponentEnd: Grid -->
-
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-<!-- Angular, React, WebComponents -->
-
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- end: Angular, React, WebComponents, React -->
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`IgrGrid.columnPin`](mcp:get_api_reference?platform=react&component=IgrGrid&member=columnPin) event and changing the [`insertAtIndex`](mcp:get_api_reference?platform=react&component=IgrPinColumnEventArgs) property of the event arguments to the desired position index.
 
 ```typescript
-const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
+const columnPinning = (event: IgrPinColumnCancellableEventArgs) => {
     if (event.detail.column.field === 'Name') {
         event.detail.insertAtIndex = 0;
     }
@@ -186,7 +175,7 @@ const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`IgrColumn.pinningPosition`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pinningPosition) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```typescript
@@ -424,7 +413,6 @@ root.render(<Sample/>);
 ```
 
 ### Column Pinning on Both Sides
-
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 
 ```typescript
@@ -639,7 +627,7 @@ Let's say that instead of a toolbar you would like to define pin icons in the co
 This can be done by creating a header template for the columns with a custom icon.
 
 ```tsx
-<IgrGrid autoGenerate={false} data={CustomersData} ref={grid}>
+<IgrGrid autoGenerate={false} data={customersData} ref={grid}>
     <IgrColumn field="ID" hidden={true}></IgrColumn>
 
     <IgrColumn field="CompanyName" header="Company" width="300px"
@@ -670,6 +658,8 @@ const toggleColumnPin = (ctx: IgrColumnTemplateContext) => {
   );
 }
 ```
+
+On click of the custom icon the pin state of the related column can be changed using the column's API methods.
 
 ### Demo
 
@@ -855,11 +845,9 @@ root.render(<Sample/>);
 
 - Setting column widths in percentage (%) explicitly makes the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set an `ID` for the grid first:
 
 ```tsx
@@ -1027,16 +1015,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- end: WebComponents, Blazor -->
-
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -1046,8 +1028,6 @@ root.render(<Sample/>);
 - [Column Moving](column-moving.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 Our community is active and always welcoming to new ideas.
 

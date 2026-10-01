@@ -1,27 +1,27 @@
 ---
 title: Angular Grid Selection-Based Data Aggregation- Ignite UI for Angular
-_description: Learn how to aggregate selected data in a grid with Ignite UI. Get instant content aggregations in the virtualized data and rich API for your next project.
-_keywords: Data aggregation, selection, ignite ui for angular, infragistics
-_license: commercial
+description: Learn how to aggregate selected data in a grid with Ignite UI. Get instant content aggregations in the virtualized data and rich API for your next project.
+keywords: Data aggregation, selection, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "With the sample, illustrated beyond, you may see how multiple selection is being used, alongside with custom summary functions, to display aggregates based on the selected values in the grid footer."
 _tocName: Selection-based Aggregates
 _premium: true
 ---
-
 # Angular Grid Selection-Based Data Aggregation
 
 With the sample, illustrated beyond, you may see how multiple selection is being used, alongside with custom summary functions, to display aggregates based on the selected values in the grid footer.
 
 ## Topic Overview
 
-To achieve the selection-based aggregates functionality, you can use our [`Grid Selection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/components/grid/selection.html) feature, together with the [`Grid Summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/components/grid/summaries.html).
-The Summaries are allowing for customization of the basic Summary feature functionality through extending one of the base classes, [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand), [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand) or [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand), depending on the column data type and your needs.  
+To achieve the selection-based aggregates functionality, you can use our [Grid Selection](/grid/selection) feature, together with the [Grid Summaries](/grid/summaries).
+The Summaries are allowing for customization of the basic Summary feature functionality through extending one of the base classes, [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand), [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand) or [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand), depending on the column data type and your needs.
 
 ## Selection
 
-To start working with the data in the selected grid range, you will have to subscribe to events that are notifying of changes in the grid selection. That can be done by subscribing to the [`selected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selected) event and to the [`rangeSelected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rangeSelected) event. You need to bind to both of them because the Selection feature differentiates between selecting a single cell and selecting a range of cells.
+To start working with the data in the selected grid range, you will have to subscribe to events that are notifying of changes in the grid selection. That can be done by subscribing to the [`IgxGrid.selected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selected) event and to the [`IgxGrid.rangeSelected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rangeSelected) event. You need to bind to both of them because the Selection feature differentiates between selecting a single cell and selecting a range of cells.
 
-In the events subscription logic, you can extract the selected data using the grid's [`getSelectedData`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=getSelectedData) function and pass the selected data to the custom summary operand.
-
+In the events subscription logic, you can extract the selected data using the grid's [`IgxGrid.getSelectedData`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=getSelectedData) function and pass the selected data to the custom summary operand.
 
 ## Summary
 
@@ -34,18 +34,16 @@ const boolData = data.filter(rec => typeof rec === "boolean");
 const dates = data.filter(rec => isDate(rec));
 ```
 
-> [!NOTE]
-> Bear in mind, that `isDate` is a custom function.
+**Note:** 
+Bear in mind, that `isDate` is a custom function.
 
 After having the data types grouped accordingly, you can proceed to the aggregation itself. For that reason, you could use the already exposed methods of the `IgxNumberSummaryOperand` and `IgxDateSummaryOperand`.
-After that, you'd have to put the aggregated data in the same array, which would be returned to the template.  
+After that, you'd have to put the aggregated data in the same array, which would be returned to the template.
 For the visualization of the data, you might want to use the `<igx-grid-footer>`, which in a combination with the `custom-summaries` class will give the natural look of the Summary.
-
 
 ### Demo
 
 Change the selection to see summaries of the currently selected range.
-
 
 ```typescript
 import { formatDate } from '@angular/common';
@@ -232,27 +230,21 @@ div.igx-grid__tfoot {
 .summaries-data-wrapper span:first-child { margin-right: 16px }
 ```
 
-
 ## API References
-
-- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
+- [`IgxGridComponent API`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxGridCell API`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- `IgxGridComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Grid overview](/grid/grid)
+- [`Selection Service`](mcp:get_api_reference?platform=angular&component=IgxGridSelectionService)
+- [Row Selection](/grid/row-selection)
+- [Cell Selection](/grid/cell-selection)
+- [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand)
+- [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand)
+- [Summaries](/grid/summaries)
+- [Paging](/grid/paging)
 
-- [Grid overview](grid.md)
-- [Selection Service](mcp:get_api_reference?platform=angular&component=IgxGridSelectionService)
-- [Row Selection](row-selection.md)
-- [Cell Selection](cell-selection.md)
-- [IgxNumberSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand)
-- [IgxDateSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand)
-- [Summaries](summaries.md)
-- [Paging](paging.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

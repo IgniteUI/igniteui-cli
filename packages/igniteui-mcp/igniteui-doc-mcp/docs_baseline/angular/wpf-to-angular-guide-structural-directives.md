@@ -1,13 +1,15 @@
 ---
 title: Angular Structural Directives | ngIf, ngswitch | WPF to Angular Guide | Infragistics
-_description: Learn how to use structural directives in Angular 9 like ngIf, ngswitch & ngFor to add and remove elements to your view in your Angular application
-_keywords: angular structural directives, ignite ui for angular, infragistics
+description: Learn how to use structural directives in Angular 9 like ngIf, ngswitch & ngFor to add and remove elements to your view in your Angular application
+keywords: angular structural directives, ignite ui for angular, infragistics
+llms:
+  description: "When it comes to control the appearance of the visual tree elements’ appearance in WPF, the most common way is to use binding and visibility converter, which requires some extra logic and static resources."
 _tocName: Structural Directives in Angular
 ---
-
 # Angular Structural Directives
 
-> [!Video https://www.youtube.com/embed/vQe7R78Od8k]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/vQe7R78Od8k">
+</iframe>
 
 When it comes to control the appearance of the visual tree elements’ appearance in WPF, the most common way is to use binding and visibility converter, which requires some extra logic and static resources. Angular also has a similar technique, which changes the appearance or behavior of a DOM element - the Angular directives. One of the Angular `directives` type is the `structural directives` – they change the DOM layout by adding or removing DOM elements.
 
@@ -166,7 +168,7 @@ That's how easy it is to add and remove elements to your view in your angular ap
 - [Desktop to Web: Structural Directives in Angular](https://www.youtube.com/watch?v=vQe7R78Od8k&t)
 - [Angular Structural Directives](https://angular.io/guide/structural-directives)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

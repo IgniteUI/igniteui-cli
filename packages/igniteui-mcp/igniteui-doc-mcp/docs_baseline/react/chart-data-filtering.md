@@ -1,14 +1,15 @@
 ---
-title: React Chart Data Filtering | Data Visualization | Infragistics
-_description: Infragistics' React Chart Data Filtering
-_keywords: React Charts, Filtering, Infragistics
-_license: commercial
+title: "React Chart Data Filtering | Data Visualization | Infragistics"
+description: Infragistics' React Chart Data Filtering
+keywords: "React Charts, Filtering, Infragistics"
+license: commercial
 mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "Data Filtering allows you to query large data in order to analyze and plot small subset of data entries via filter expressions, all without having to manually modify the datasource bound to the chart."
 _tocName: Chart Data Filtering
 _premium: true
 ---
-
 # React Chart Data Filtering
 
 Data Filtering allows you to query large data in order to analyze and plot small subset of data entries via filter expressions, all without having to manually modify the datasource bound to the chart.
@@ -21,7 +22,7 @@ A complete list of valid expressions and keywords to form a query string can be 
 
 ## React Chart Data Filter Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#initialFilter) property, to update the chart visual and thus filtering out the other decades out.
+The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the `InitialFilter` property, to update the chart visual and thus filtering out the other decades out.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -195,9 +196,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
-The [`initialFilter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#initialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
+The `InitialFilter` property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
 
 eg. To show all countries that start with the letter B:
 
@@ -216,10 +215,4 @@ You can find more information about related chart features in these topics:
 - [Chart Tooltips](chart-tooltips.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
-- [`isTransitionInEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#isTransitionInEnabled)
-- [`transitionInDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#transitionInDuration)
-- [`transitionInMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#transitionInMode)
+`IgrCategoryChart`

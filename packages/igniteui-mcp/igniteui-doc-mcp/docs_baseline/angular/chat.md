@@ -1,12 +1,13 @@
 ---
 title: Angular Chat | Ignite UI | Infragistics
-_description: With the Ignite UI for Angular Chat component, you can build interactive messaging experiences with support for messages, attachments, suggestions, typing indicators, and custom templates.  
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Chat components, Angular Chat controls
-_license: MIT
+description: With the Ignite UI for Angular Chat component, you can build interactive messaging experiences with support for messages, attachments, suggestions, typing indicators, and custom templates.  
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Chat components, Angular Chat controls
+license: MIT
 mentionedTypes: ["Chat"]  
+llms:
+  description: "The Chat component provides a complete solution for building conversational interfaces in your applications."
 _tocName: Chat
 ---
-
 # Angular Chat Overview
 
 The Chat component provides a complete solution for building conversational interfaces in your applications. Whether you are creating a customer support tool, a collaborative workspace, or a chatbot assistant, the Chat component gives you the building blocks you need: sending and receiving text messages, uploading file attachments, displaying quick reply suggestions, showing typing indicators when the other participant is writing a response.
@@ -126,9 +127,9 @@ To get started, install Ignite UI for Angular package as well as the Ignite UI f
 npm install igniteui-angular igniteui-webcomponents
 ```
 
-[`IgxChatComponent`](mcp:get_api_reference?platform=angular&component=IgxChatComponent) provides Angular bindings (events, templates, DI, change detection, pipes), while the visual chat UI is rendered by the Web Component. Installing both ensures the chat behaves natively in Angular while leveraging the full Web Component UI.
+[`IgxChat`](mcp:get_api_reference?platform=angular&component=IgxChatComponent) provides Angular bindings (events, templates, DI, change detection, pipes), while the visual chat UI is rendered by the Web Component. Installing both ensures the chat behaves natively in Angular while leveraging the full Web Component UI.
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 Once installed, you can import the component in your project:
 
@@ -182,14 +183,28 @@ This approach makes it easy to plug the Chat into your own data source, such as 
 ### Inputs
 The Chat component exposes several key properties that let you control its state and configuration:
 
-| Name           | Description                                                                                                                                                                                                   |
-| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `messages`     | Array of messages (`IgcChatMessage[]`) displayed in the chat. You can bind to this to control which messages are shown.                                                                                       |
-| `draftMessage` | The current unsent message, represented as an object containing `text` and optional `attachments`. This is useful for saving or restoring message drafts.                                                     |
-| `options`      | Chat configuration ([`IgxChatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchatoptions.html)) such as current user ID, input placeholders, accepted file types, quick reply suggestions and typing behavior. |
-| `templates`    | Custom Angular templates ([`IgxChatTemplates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchattemplates.html)) for message content, input, attachments, and other parts of the chat UI.                             |
+| Name              | Description                                                                                                                                                          |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `messages`        | Bidirectional array of messages (`IgcChatMessage[]`) displayed in the chat. The Chat updates the supplied collection when the user sends a message.                     |
+| `draftMessage`    | The current unsent message, represented as an object containing `text` and optional `attachments`. This is useful for saving or restoring message drafts.            |
+| `options`         | Chat configuration ([`IgxChatOptions`](mcp:get_api_reference?platform=angular&component=IgxChatOptions)) such as current user ID, input placeholders, accepted file types, quick reply suggestions and typing behavior. |
+| `templates` | Custom Angular templates ([`IgxChatTemplates`](mcp:get_api_reference?platform=angular&component=IgxChatTemplates)) for message content, input, attachments, and other parts of the chat UI.                                   |
 
 These properties make it straightforward to synchronize the Chat’s UI with your application’s state and backend.
+
+#### Bidirectional Messages Collection
+
+The `messages` collection is bidirectional: the application provides the messages to display, and the Chat updates the original collection as the conversation continues. After the user sends a message, code holding a reference to the collection can access the newly created message. This is an in-place update to the collection rather than Angular two-way binding with `[(messages)]`.
+
+The `messageCreated` event is a notification for persistence or other side effects. Do not append the created message to the collection again.
+
+If the original collection must remain unchanged, pass the Chat a shallow copy:
+
+```ts
+public messages = [...this.originalMessages];
+```
+
+Existing message objects are still shared. Create a new instance of each message when building the copied collection if those objects must also remain independent.
 
 ### Attachments
 Modern conversations are rarely limited to text alone. The Chat component includes built-in support for file attachments, allowing users to share images, documents, and other files.
@@ -197,7 +212,7 @@ By default, the input area includes an attachment button. You can control which 
 
 ```ts
 public options: IgxChatOptions = {
-  acceptedFiles="image/*,.pdf",
+  acceptedFiles: "image/*,.pdf",
 };
 ```
 
@@ -260,8 +275,10 @@ This level of granularity means you can tweak just one part (for example, how at
 </igx-chat>
 <ng-template #messageContent let-message igxChatMessageContext>
   <div class="custom-message">
+
     <strong>{{ message.sender }}:</strong> {{ message.text }}
-  </div>
+  
+</div>
 </ng-template>
 ```
 
@@ -280,9 +297,11 @@ By default, the chat input is a text area. You can override it to provide a more
 
 <ng-template #customInput let-input igxChatInputContext>
   <div class="custom-input">
+
     <textarea [(ngModel)]="input.value"></textarea>
     <button (click)="speechToText()">🎤</button>
-  </div>
+  
+</div>
 </ng-template>
 ```
 
@@ -529,7 +548,7 @@ igx-chat {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
@@ -645,9 +664,9 @@ We highly recommend using the standard Web Component styling approaches before r
 
 ### Chat theme
 
-Apart from the **CSS parts** and **slots**, the Chat component also has a [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme) function exposed by our theming engine.
+Apart from the **CSS parts** and **slots**, the Chat component also has a `chat-theme` function exposed by our theming engine.
 
-In order to style the Chat component using the theme function, first we need to import the theming module, where all the theme functions and component mixins live:
+In order to style the Chat component using the theme function, first we need to import the theming module, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -656,7 +675,7 @@ In order to style the Chat component using the theme function, first we need to 
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Then, we create a new theme that extends the [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme) and provide the `$header-background`, `$sent-message-background` and `$received-message-background` parameters. Based on these parameter values, the `$header-color`, `$sent-message-color` and `$received-message-color` are automatically set to black or white, depending on which provides better contrast with the background.
+Then, we create a new theme that extends the `chat-theme` and provide the `$header-background`, `$sent-message-background` and `$received-message-background` parameters. Based on these parameter values, the `$header-color`, `$sent-message-color` and `$received-message-color` are automatically set to black or white, depending on which provides better contrast with the background.
 
 ```scss
 $custom-chat-theme: chat-theme(
@@ -806,14 +825,13 @@ $custom-chat-theme: chat-theme(
 
 ## API Reference
 
-- [`IgxChatComponent`](mcp:get_api_reference?platform=angular&component=IgxChatComponent)
-- [`IgxChatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchatoptions.html)
-- [`IgxChatTemplates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchattemplates.html)
+- [`IgxChat`](mcp:get_api_reference?platform=angular&component=IgxChatComponent)
+- [`IgxChatOptions`](mcp:get_api_reference?platform=angular&component=IgxChatOptions)
+- [`IgxChatTemplates`](mcp:get_api_reference?platform=angular&component=IgxChatTemplates)
 - [`IgxChatMessageContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatMessageContextDirective)
 - [`IgxChatInputContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatInputContextDirective)
 - [`IgxChatAttachmentContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatAttachmentContextDirective)
-- [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme)
-- [`Styling & Themes`](./themes/index.md)
+- [`Styling & Themes`](/themes)
 
 ## Additional Resources
 Our community is active and always welcoming to new ideas.

@@ -1,13 +1,14 @@
 ---
-title: React Grid Lite Theming | Ignite UI for React | MIT license
-_description: Styling the Grid Lite in Ignite UI for React happens easily and quickly. See demos and examples! Try our open-source components and build your next app.
-_keywords: styling, theming, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "React Grid Lite Theming | Ignite UI for React | MIT license"
+description: Styling the Grid Lite in Ignite UI for React happens easily and quickly. See demos and examples! Try our open-source components and build your next app.
+keywords: styling, theming, React, , Ignite UI for React, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and Indigo."
 _tocName: Theming
 ---
-
 # Styles and Themes
 
 The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and Indigo. The grid and its UI components have the themes baked in, but the component requires a global stylesheet for palettes, typography and other global configurations to work.
@@ -17,6 +18,10 @@ The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and 
 Depending on your project type, setup and build configuration the method of how to include one of the files below will vary. If you are using a framework/build tool refer to its documentation on how to add external styles to your output bundle.
 
 As a rule of thumb, you can always copy the `themes` folder to your assets directory and link the theme from there in your index.html.
+
+```html
+<link rel="stylesheet" href="./assets/themes/light/bootstrap.css">
+```
 
 | Theme     | Variant | Path                                                           |
 | --------- | ------- | -------------------------------------------------------------- |
@@ -323,7 +328,7 @@ root.render(<Sample/>);
 
 Aside from the default themes shipped with the Grid Lite package, you can further customize the look and feel of your data grid by using an alternate set of CSS custom properties.
 
-Refer to the [theming topic](../grids/theming-grid.md) for more details.
+Refer to the [theming topic](../grids/grid/theming-grid.md) for more details.
 
 ```css
 .grid-sample {
@@ -607,17 +612,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Sample />);
 ```
 
-<!-- TODO ## API References
-
-- `{ComponentName}`
-- `Column`
--->
-
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
+- [Column Configuration](./column-configuration.md)
+- [Filtering](./filtering.md)
+- [Sorting](./sorting.md)
 
 Our community is active and always welcoming to new ideas.
 

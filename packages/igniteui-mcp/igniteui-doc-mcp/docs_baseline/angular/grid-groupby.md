@@ -1,20 +1,20 @@
 ---
 title: Angular Grid Group By | Group by multiple fields | Infragistics
-_description: Configure angular group by that allows visualizing of data records in Angular table, visualize the grouped data in separate and convenient column group.
-_keywords: angular group by, igniteui for angular, infragistics
-_license: commercial
+description: Configure angular group by that allows visualizing of data records in Angular table, visualize the grouped data in separate and convenient column group.
+keywords: angular group by, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "A Group By behavior in an Ignite UI for Angular Table or UI Grid creates grouped data rows based on the column values."
 _tocName: Group By
 _premium: true
 ---
-
 # Angular Grid Group By
 
-A Group By behavior in an Ignite UI for Angular Table or UI Grid creates grouped data rows based on the column values. The Group By in [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+A Group By behavior in an Ignite UI for Angular Table or UI Grid creates grouped data rows based on the column values. The Group By in [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`IgxGrid.rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`IgxGrid.rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## Angular Grid Group By Example
 
 This example presents the grouping capabilities of a large amount of data. Dragging the column headers to the top (grouping area) allows users to see the data for the selected column in a hierarchical structure. They can do group by in multiple fields by dragging more column headers to the top. These grouping options come in handy when you have tables with numerous rows and columns where users want to present the data in a much faster and visually acceptable way.
-
 
 ```typescript
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
@@ -153,10 +153,9 @@ export class GridGroupBySampleComponent {
 }
 ```
 
-
 ## Initial Grouping State
 
-It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property of the grid.
+It is possible to define initial grouping of the grid by assigning an array of expressions to the [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property of the grid.
 
 ```typescript
 public ngOnInit() {
@@ -167,13 +166,13 @@ public ngOnInit() {
 }
 ```
 
-Grouping expressions implement the [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression) interface.
+Grouping expressions implement the [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression) interface.
 
 ## Group By API
 
 ### Grouping API
 
-Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's [`groupable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=groupable) property to `true`.
+Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's [`IgxColumn.groupable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=groupable) property to `true`.
 
 ```html
 <igx-grid [data]="data">
@@ -190,18 +189,18 @@ public ngOnInit() {
 }
 ```
 
-During runtime the expressions are gettable and settable from the [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`groupBy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupby) method with either a single or an array of [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression).
+During runtime the expressions are gettable and settable from the [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`IgxGrid.groupby`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupby) method with either a single or an array of [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression).
 
 ```typescript
 grid.groupBy({ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true });
 ```
 
->[!NOTE]
-> Up until now, grouping/sorting worked in conjunction with each other. In 13.2 version, a new behavior which decouples grouping from sorting is introduced. For example - clearing the grouping will not clear sorting expressions in the grid or vice versa. Still, if a column is both sorted and grouped, grouped expressions take precedence.
+**Note:** 
+Up until now, grouping/sorting worked in conjunction with each other. In 13.2 version, a new behavior which decouples grouping from sorting is introduced. For example - clearing the grouping will not clear sorting expressions in the grid or vice versa. Still, if a column is both sorted and grouped, grouped expressions take precedence.
 
 ### Expand/Collapse API
 
-In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) component [`groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState). A group row is uniquely identified based on the field name it is created for and the value it represents for each level of grouping. This means that the signature of an expansion state interface is the following:
+In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) component [`IgxGrid.groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState). A group row is uniquely identified based on the field name it is created for and the value it represents for each level of grouping. This means that the signature of an expansion state interface is the following:
 
 ```typescript
 export interface IGroupByKey {
@@ -215,7 +214,7 @@ export interface IGroupByExpandState {
 }
 ```
 
-As with [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions), setting a list of [`IGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState) directly to the [`groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState) will change the expansion accordingly. Additionally [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) exposes a method that toggles a group by the group record instance.
+As with [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions), setting a list of [`IgxIGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState) directly to the [`IgxGrid.groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) exposes a method that toggles a group by the group record instance.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -224,13 +223,13 @@ As with [`groupingExpressions`](mcp:get_api_reference?platform=angular&component
     groupRow.expanded = false;
 ```
 
-Groups can be created expanded (_**default**_) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupsExpanded) property.
+Groups can be created expanded (_**default**_) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`IgxGrid.groupsExpanded`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupsExpanded) property.
 
 ### Select/Deselect all rows in a group API
 
-Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) and [`deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) API methods.
+Selecting/Deselecting all rows in a group is available through the [`IgxGrid.selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) and [`IgxGrid.deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) API methods.
 
-The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select all rows within a group using the group record instance [`IgxGrid.selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -238,7 +237,7 @@ The code snippet below can be used to select all rows within a group using the g
     grid.selectRowsInGroup(groupRow);
 ```
 
-If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) method.
+If you need to deselect all rows within a group programmatically, you can use the [`IgxGrid.deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) method.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -311,7 +310,6 @@ Group rows participate in the paging process along with data rows. They count to
 Groups that span multiple pages are split between them. The group row is visible only on the page it starts on and is not repeated on subsequent pages. Summary information for group rows is calculated based on the whole group and is unaffected by Paging.
 
 ### Angular group by with paging example
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -426,10 +424,9 @@ export class GridGroupByPagingSampleComponent {
 }
 ```
 
-
 ## Group By with Summaries
 
-Integration between Group By and Summaries is described in the [Summaries](summaries.md#summaries-with-group-by) topic.
+Integration between Group By and Summaries is described in the [Summaries](/grid/summaries#summaries-with-group-by) topic.
 
 ## Keyboard Navigation
 
@@ -440,7 +437,7 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>ALT</kbd> + <kbd>LEFT</kbd> - Collapses the group
   - <kbd>SPACE</kbd> - selects all rows in the group, if <kbd>rowSelection</kbd> property is set to multiple
 
-- For group [`igxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) components in the group by area (focus should be on the chip)
+- For group [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) components in the group by area (focus should be on the chip)
   - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - moves the focused chip left, changing the grouping order, if possible
   - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - moves the focused chip right, changing the grouping order, if possible
   - <kbd>SPACE</kbd> - changes the sorting direction
@@ -451,13 +448,12 @@ The grouping UI supports the following keyboard interactions:
 
 igxGrid allows defining custom grouping per column or per grouping expression, which provides grouping based on a custom condition. This is useful when you need to group by complex objects or for other application specific scenarios.
 
-> [!NOTE]
-> In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy). After the data is sorted the custom groups can be determined by specifying a [`groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) for the column or for the specific grouping expression.
+**Note:** 
+In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`IgxDefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy). After the data is sorted the custom groups can be determined by specifying a [`IgxIGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) for the column or for the specific grouping expression.
 
 The sample below demonstrates custom grouping by `Date`, where the date values are sorted and grouped by Day, Week, Month or Year based on user-selected grouping mode.
 
 ### Angular custom group by example
-
 
 ```typescript
 /* eslint-disable max-len */
@@ -692,9 +688,8 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 }
 ```
 
-
 The sample defines custom sorting strategies for the different date conditions.
-Each custom strategy extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) and defines the [`compareValues`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy&member=compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
+Each custom strategy extends the base [`IgxDefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) and defines the [`IgxDefaultSortingStrategy.compareValues`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy&member=compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
 ```typescript
 class BaseSortingStrategy extends DefaultSortingStrategy {
@@ -752,7 +747,7 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 }
 ```
 
-A [`groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
+A [`IgxIGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
 
 ```typescript
  groupingComparer: (a, b) => {
@@ -784,7 +779,7 @@ public sortByGroup() {
 
 ## Styling
 
-The igxGrid allows styling through the [`Ignite UI for Angular Theme Library`](../themes/sass/component-themes.md). The grid's [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) exposes a wide variety of properties, which allow the customization of all the features of the grid.
+The igxGrid allows styling through the [`Ignite UI for Angular Theme Library`](/themes/sass/component-themes). The grid's `grid-theme` exposes a wide variety of properties, which allow the customization of all the features of the grid.
 
 In the below steps, we are going through the steps of customizing the grid's Group By styling.
 
@@ -801,7 +796,7 @@ To begin the customization of the Group By feature, you need to import the `inde
 
 ### Defining custom theme
 
-Next, create a new theme, that extends the [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) and accepts the parameters, required to customize the Group By as desired. You also need to extend the [`chip-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme), because it's used in the Group By feature.
+Next, create a new theme, that extends the `grid-theme` and accepts the parameters, required to customize the Group By as desired. You also need to extend the `chip-theme`, because it's used in the Group By feature.
 
 ```scss
 
@@ -831,7 +826,7 @@ $custom-chips-theme: chip-theme(
 
 ### Defining a custom color palette
 
-In the approach that we described above, the color values were hardcoded. Alternatively, you can achieve greater flexibility, using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions.
+In the approach that we described above, the color values were hardcoded. Alternatively, you can achieve greater flexibility, using the `palette` and `color` functions.
 `palette` generates a color palette, based on provided primary, secondary and surface colors.  
 
 ```scss
@@ -871,8 +866,8 @@ $custom-chips-theme: chip-theme(
 
 ### Defining custom schemas
 
-You can go even further and build flexible structure that has all the benefits of a [**schema**](../themes/sass/schemas.md). The **schema** is the recipe of a theme.
-Extend one of the two predefined schemas, that are provided for every component. In our case, we would use [`light-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas#variable-light-material-schema).
+You can go even further and build flexible structure that has all the benefits of a [**schema**](/themes/sass/schemas). The **schema** is the recipe of a theme.
+Extend one of the two predefined schemas, that are provided for every component. In our case, we would use `light-grid`.
 
 ```scss
 $custom-grid-schema: extend(
@@ -891,7 +886,7 @@ $custom-grid-schema: extend(
 );
 ```
 
-In order for the custom schema to be applied, either ([`light`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas#variable-light-material-schema) or [`dark`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas#variable-dark-material-schema)) globals has to be extended. The whole process is actually supplying a component with a custom schema and adding it to the respective component theme afterwards.
+In order for the custom schema to be applied, either (`light` or `dark`) globals has to be extended. The whole process is actually supplying a component with a custom schema and adding it to the respective component theme afterwards.
 
 ```scss
 $my-custom-schema: extend(
@@ -924,10 +919,7 @@ In order for the custom theme to affect only specific component, you can move al
 
 This way, due to Angular's [ViewEncapsulation](https://angular.io/api/core/Component#encapsulation), your styles will be applied only to your custom component.
 
- >[!NOTE]
- >If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to penetrate this encapsulation using `::ng-deep` in order to style the components which are inside the grid.
-
-In our example, we need to use `::ng-deep` for our chip theme:
+Depending on where the grouped chips are rendered, Emulated View Encapsulation may prevent their token declarations from matching. If the chip theme does not take effect, use `::ng-deep` for that nested theme or move it to a global stylesheet:
 
 ```scss
 :host {
@@ -940,7 +932,6 @@ In our example, we need to use `::ng-deep` for our chip theme:
 ```
 
 ### Demo
-
 
 ```typescript
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
@@ -1125,8 +1116,8 @@ $custom-chips-theme: chip-theme(
 }
 ```
 
->[!NOTE]
->The sample will not be affected by the selected global theme from `Change Theme`.
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
 
 ## Known Limitations
 
@@ -1135,31 +1126,26 @@ $custom-chips-theme: chip-theme(
 | Maximum amount of grouped columns is 10. | If more than 10 columns are grouped an error is thrown. |
 
 ## API References
-
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGroupByRow](mcp:get_api_reference?platform=angular&component=IgxGroupByRow)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [ISortingExpression](mcp:get_api_reference?platform=angular&component=ISortingExpression)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IGroupByExpandState](mcp:get_api_reference?platform=angular&component=IGroupByExpandState)
-- [IgxChipComponent](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
-- [IgxChipComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme)
-
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxGroupByRow`](mcp:get_api_reference?platform=angular&component=IgxGroupByRow)
+- `IgxGridComponent Styles`
+- [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression)
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxIGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState)
+- [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
+- `IgxChipComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Grid overview](/grid/grid)
+- [Virtualization and Performance](/grid/virtualization)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Column Moving](/grid/column-moving)
+- [Summaries](/grid/summaries)
+- [Column Resizing](/grid/column-resizing)
+- [Selection](/grid/selection)
 
-- [Grid overview](grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Column Moving](column-moving.md)
-- [Summaries](summaries.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Shape Polygon Series | Infragistics
-_description: Use Infragistics Web Components map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for Web Components map's series!
-_keywords: Web Components map, shape polygon series, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Web Components Map | Data Visualization Tools | Shape Polygon Series | Infragistics"
+description: Use Infragistics Web Components map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for Web Components map's series!
+keywords: "Web Components map, shape polygon series, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In Web Components map component, you can use the GeographicShapeSeries to display geo-spatial data using shape polygons in a geographic context."
 _tocName: Geographic Polygon Map
 _premium: true
 ---
-
 # Web Components Geographic Polygon Map
 
-In Web Components map component, you can use the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
+In Web Components map component, you can use the `IgcGeographicShapeSeries` to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
 
 ## Web Components Geographic Polygon Map Example
 
@@ -19,17 +20,13 @@ In Web Components map component, you can use the [`IgcGeographicShapeSeriesCompo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) works a lot like the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) except that geo-spatial data is rendered with polygons instead of polylines.
+The `IgcGeographicShapeSeries` works a lot like the `IgcGeographicPolylineSeries` except that geo-spatial data is rendered with polygons instead of polylines.
 
 ## Data Requirements
-
-Similar to other types of geographic series in the map control, the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriesbasecomponent.html#shapeMemberPath) property. The [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) uses points of this mapped data column to plot polygons in the map control.
+Similar to other types of geographic series in the map control, the `IgcGeographicShapeSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicShapeSeries` uses points of this mapped data column to plot polygons in the map control.
 
 ## Code Snippet
-
-The following code demonstrates how to bind the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) to shapes of countries in the world loaded from a shape file using the [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html).
+The following code demonstrates how to bind the `IgcGeographicShapeSeries` to shapes of countries in the world loaded from a shape file using the `IgcShapefileRecord`.
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -98,9 +95,6 @@ createSeries(shapeData: any[], shapeBrush: string, shapeTitle: string)
 ```
 
 ## API References
-
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriesbasecomponent.html#shapeMemberPath)
-- [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html)
+`IgcGeographicPolylineSeries`
+`IgcGeographicShapeSeries`
+`IgcShapefileRecord`

@@ -1,13 +1,14 @@
 ---
-title: Blazor Circular Progress | Circular Progress | Infragistics
-_description: Circular Progress Indicator component allows developers to display progress in a circle with endless customization options.
-_keywords: Blazor Circular Progress, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Circular Progress | Circular Progress | Infragistics"
+description: Circular Progress Indicator component allows developers to display progress in a circle with endless customization options.
+keywords: "Blazor Circular Progress, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["CircularProgress", "CircularGradient"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Blazor Circular Progress Indicator component provides a visual indicator of an application’s process as it changes."
 _tocName: Circular Progress
 ---
-
 # Blazor Circular Progress Overview
 
 The Ignite UI for Blazor Circular Progress Indicator component provides a visual indicator of an application’s process as it changes. The circular indicator updates its appearance as its state changes.
@@ -34,19 +35,17 @@ The Ignite UI for Blazor Circular Progress Indicator component provides a visual
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Before using the [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbCircularProgressModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -60,7 +59,7 @@ The simplest way to start using the [`IgbCircularProgress`](mcp:get_api_referenc
 
 ### Progress Types
 
-You can set the type of your indicator, using the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=Variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```razor
 <IgbCircularProgress Value=100 Variant=@ProgressBaseVariant.Success  />
@@ -68,7 +67,7 @@ You can set the type of your indicator, using the [`Variant`](mcp:get_api_refere
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=Indeterminate) property. Also, you can hide the default label of the Ignite UI for Blazor [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) by setting the [`HideLabel`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=HideLabel) property and customize the progress indicator default label via the exposed [`LabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=LabelFormat) property.
+If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=indeterminate) property. Also, you can hide the default label of the Ignite UI for Blazor [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) by setting the [`HideLabel`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=hideLabel) property and customize the progress indicator default label via the exposed [`LabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=labelFormat) property.
 
 ```razor
 <IgbCircularProgress Value=100 Indeterminate=true/>
@@ -96,11 +95,9 @@ The following sample demonstrates the above configuration:
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Animation Duration
 
-You can use the [`AnimationDuration`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=AnimationDuration) property on the [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) component to specify how long the animation cycle should take in milliseconds.
+You can use the [`AnimationDuration`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress&member=animationDuration) property on the [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) component to specify how long the animation cycle should take in milliseconds.
 
 ```razor
 <IgbCircularProgress AnimationDuration=5000 Indeterminate=true />
@@ -108,7 +105,7 @@ You can use the [`AnimationDuration`](mcp:get_api_reference?platform=blazor&comp
 
 ### Gradient Progress
 
-Customizing the progress bar in order to use a color gradient instead of a solid color could be done via the exposed `gradient` slot and [`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient) which defines the gradient stops.
+The progress bar can be customized to use a color gradient instead of a solid color by using the `gradient` slot and the [`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient) component, which defines the gradient stops.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -183,8 +180,9 @@ Customizing the progress bar in order to use a color gradient instead of a solid
 }
 ```
 
-> [!Note]
-> For each [`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient) defined as gradient slot of Ignite UI for Blazor [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
+**Note:** 
+For each [`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient) defined as `gradient` slot of Ignite UI for Blazor [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
+
 
 ```razor
 <IgbCircularProgress>
@@ -194,27 +192,25 @@ Customizing the progress bar in order to use a color gradient instead of a solid
 </IgbCircularProgress>
 ```
 
-<div class="divider--half"></div>
-
 ## Styling
 
 The [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
-| `svg`               | The progress SVG element.                |
+| `svg`               | The progress SVG element.                 |
 | `gradient_start`     | The progress linear-gradient start color. |
-| `gradient_end`       | The progress linear-gradient end color.  |
-| `track`              | The progress ring's track area.          |
-| `fill`               | The progress indicator area.             |
-| `label`              | The progress label.                      |
-| `value`              | The progress label value.                |
-| `indeterminate`      | The progress indeterminate state.        |
-| `primary`            | The progress indicator primary state.    |
-| `danger`             | The progress indicator error state.      |
-| `warning`            | The progress indicator warning state.    |
-| `info`               | The progress indicator info state.       |
-| `success`            | The progress indicator success state.    |
+| `gradient_end`       | The progress linear-gradient end color.   |
+| `track`              | The progress ring's track area.           |
+| `fill`               | The progress indicator area.              |
+| `label`              | The progress label.                       |
+| `value`              | The progress label value.                 |
+| `indeterminate`      | The progress indeterminate state.         |
+| `primary`            | The progress indicator primary state.     |
+| `danger`             | The progress indicator error state.       |
+| `warning`            | The progress indicator warning state.     |
+| `info`               | The progress indicator info state.        |
+| `success`            | The progress indicator success state.     |
 
 Using this CSS parts we have almost full control over the Circular Progress styling.
 
@@ -266,13 +262,9 @@ igc-circular-progress::part(track) {
 ```
 
 ## API References
-
-- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
-- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
-- [`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient)
-- [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+[`IgbCircularGradient`](mcp:get_api_reference?platform=blazor&component=IgbCircularGradient)
+[`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

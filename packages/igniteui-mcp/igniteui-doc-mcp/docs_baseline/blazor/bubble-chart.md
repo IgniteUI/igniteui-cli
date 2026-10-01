@@ -1,20 +1,19 @@
 ---
 title: Blazor Bubble Chart | Data Visualization | Infragistics
-_description: Infragistics' Blazor Bubble Chart
-_keywords: Blazor Charts, Bubble Chart, Infragistics
-_license: commercial
-mentionedTypes: ["Series", "BubbleSeries", "ScatterSeries", "MarkerType"]
+description: Infragistics' Blazor Bubble Chart
+keywords: Blazor Charts, Bubble Chart, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Bubble Chart is a type of Scatter Chart that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates."
 _tocName: Bubble Chart
 _premium: true
 ---
-
 # Blazor Bubble Chart
-
 The Ignite UI for Blazor Bubble Chart is a type of [Scatter Chart](scatter-chart.md) that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates. These coordinates of the data point are determined by two numeric data columns. The Bubble Chart draws attention to uneven intervals or clusters of data. This chart is often used to plot scientific data, and can highlight the deviation of collected data from predicted results. The Bubble Chart has many of the characteristics of the [Scatter Marker Chart](scatter-chart.md#blazor-scatter-marker-chart) but with the option to have various radius scale sizes.
 
 ## Blazor Bubble Chart Example
-
 You can create Ignite UI for Blazor Bubble Chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries) and two numeric axes, as shown in the example below.
 
 ```razor
@@ -250,11 +249,8 @@ public class CountryStatsEurope
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Bubble Chart with Single Series
-
-You can bind your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property of [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries) and map data columns using its [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=XMemberPath), [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=YMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusMemberPath) properties, as shown in the example below:
+You can bind your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=dataSource) property of [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries) and map data columns using its [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=xMemberPath), [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=yMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=radiusMemberPath) properties, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -420,11 +416,8 @@ public class WorldStats
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Bubble Chart with Multiple Series
-
-In Blazor Bubble Chart, binding multiple data sources works by setting each new data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property of a additional [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries), as shown in the example below:
+In Blazor Bubble Chart, binding multiple data sources works by setting each new data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=dataSource) property of a additional [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -659,11 +652,8 @@ public class CountryStatsEurope
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Bubble Chart Styling
-
-In Blazor Bubble Chart, you can customize shape of bubble markers using [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerType) property, their size with [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusScale) property, and their appearance using [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerBrush), [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerOutline), [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerThickness) properties. In addition, you can also color bubble markers based on a data column using [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillMemberPath) and [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillScale) properties. In this example, usage of above properties is demonstrated.
+In Blazor Bubble Chart, you can customize shape of bubble markers using [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=markerType) property, their size with [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=radiusScale) property, and their appearance using [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=markerBrush), [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=markerOutline), [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=fillMemberPath) and [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=fillScale) properties. In this example, usage of above properties is demonstrated.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -834,28 +824,12 @@ public class WorldStats
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 - [Scatter Chart](scatter-chart.md)
 - [Shape Chart](shape-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
-- [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries)
-- [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource)
-- [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillMemberPath)
-- [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillScale)
-- [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerType)
-- [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerBrush)
-- [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerOutline)
-- [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerThickness)
-- [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusScale)
-- [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusMemberPath)
-- [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=XMemberPath)
-- [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=YMemberPath)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+[`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries)
+[`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)
