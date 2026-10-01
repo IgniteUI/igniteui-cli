@@ -126,6 +126,8 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
         'geographic-map-features': 'geo-map',
+        // grids/theming-grid moved under grids/grid/ in igniteui-documentation
+        'theming-grid': 'grid-theming-grid',
     },
     angular: {
         // Combo Box
@@ -185,6 +187,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'range-slider': 'slider',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
+        'theming-grid': 'grid-theming-grid',
     },
     blazor: {
         // Combo Box
@@ -209,6 +212,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'range-slider': 'slider',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
+        'theming-grid': 'grid-theming-grid',
     },
 };
 
