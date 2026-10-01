@@ -1,15 +1,17 @@
 ---
 title: Two-Way Data Binding in Angular with ngModel | WPF to Angular Guide | Infragistics
-_description: Learn how two-way data binding in Angular is used to display information to the end user and allows them to make changes to the underlying data using the UI. 
-_keywords: two-way data binding in Angular, ignite ui for angular, infragistics
+description: Learn how two-way data binding in Angular is used to display information to the end user and allows them to make changes to the underlying data using the UI. 
+keywords: two-way data binding in Angular, ignite ui for angular, infragistics
+llms:
+  description: "The two-way data binding in Angular enables data to flow from the component to the view and the other way round."
 _tocName: Two-Way Binding
 ---
-
 # What is two-way data binding in Angular
 
 The two-way data binding in Angular enables data to flow from the component to the view and the other way round. It is used to display information to the end-user and allows them to make changes to the underlying data using the UI. This makes a two-way connection between the view (the template) and the component class that we already mentioned. The process is similar to the two-way binding in WPF.  
 
-> [!Video https://www.youtube.com/embed/MrjTTDEj7cA]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/MrjTTDEj7cA">
+</iframe>
 
 ## How does data binding work in Angular?
 
@@ -19,7 +21,7 @@ The two-way data binding in Angular is used to display information to the end us
 A one-way binding is taking the state from our component class and displaying it in our view. Let's look at this code:
 
 ```html
-<input #myTitle (keyup)="keyup(myTitle.value)">
+<input #myTitle (keyup)="keyup(myTitle.value)"/>
 <h2>{{ text }}</h2>
 ```
 
@@ -34,7 +36,7 @@ keyup(value) {
 ...
 ```
 
-Here we are simply using `interpolation` to bind the text property to the HTML. This will display the value of the text property in the UI. The `input` element handles the user interaction and updates the underlying `text` property through the UI by using the [event binding](angular-events.md). Essentially, the input does the opposite of the one-way binding, it takes the information from the UI and updates the property in the component class. The method which is hooked up to the input's keyup event updates the text property each time the event occurs. Once the text property value is changed by the event method, that change is reflected in the UI by the one-way binding using `interpolation` of the h2 element. So if the user types something into the input element, that will immediately update the h2 text - this behavior is basically a simulation of a two-way binding. The same can also be achieved in WPF by using a one-way binding and a keyup event handler, but the two-way binding is way more convenient to use.
+Here we are simply using `interpolation` to bind the text property to the HTML. This will display the value of the text property in the UI. The `input` element handles the user interaction and updates the underlying `text` property through the UI by using the [event binding](/general/wpf-to-angular-guide/angular-events). Essentially, the input does the opposite of the one-way binding, it takes the information from the UI and updates the property in the component class. The method which is hooked up to the input's keyup event updates the text property each time the event occurs. Once the text property value is changed by the event method, that change is reflected in the UI by the one-way binding using `interpolation` of the h2 element. So if the user types something into the input element, that will immediately update the h2 text - this behavior is basically a simulation of a two-way binding. The same can also be achieved in WPF by using a one-way binding and a keyup event handler, but the two-way binding is way more convenient to use.
 
 ## How to implement two-way data binding in Angular
 
@@ -43,7 +45,7 @@ Fortunately, we can implement the logic of the sample from above in a much easie
 The direction of a two-way binding is not just **component class to UI**, but **UI to component class** as well. To achieve this, we are going to use a [directive](https://angular.io/api/core/Directive) called [`ngModel`](https://angular.io/api/forms/NgModel). Let's update the sample from above with the `ngModel` directive. The syntax for that is - an open bracket followed by an open parenthesis, and of course the corresponding closing parenthesis and bracket. This is called a **banana in the box**, so let's see it in action!
 
 ```html
-<input [(ngModel)]="text">
+<input [(ngModel)]="text"/>
 <h2>{{ text }}</h2>
 ```
 
@@ -74,19 +76,18 @@ If we run the sample, the initial input's value would be equal to **default valu
 Another equivalent way to achieve this is:
 
 ```html
-<input [ngModel]="text" (ngModelChange)="text = $event">
+<input [ngModel]="text" (ngModelChange)="text = $event"/>
 ```
 
 This is actually similar to the first sample, which used a property binding and an event binding.
 
-
 ## Additional Resources
 
 - [Desktop to Web: Desktop to Web: Angular Two-Way Binding with ngModel](https://www.youtube.com/watch?v=MrjTTDEj7cA&list=PLG8rj6Rr0BU-AqcJMuwggKy0GMIkjkt3j)
-- [One-way binding in Angular](one-way-binding.md)
+- [One-way binding in Angular](/general/wpf-to-angular-guide/one-way-binding)
 - [Angular NgModel](https://angular.io/api/forms/NgModel)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

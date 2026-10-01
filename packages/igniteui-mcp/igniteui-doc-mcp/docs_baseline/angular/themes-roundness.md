@@ -1,10 +1,11 @@
 ---
 title: Roundness
-_description: Ignite UI for Angular allow you to change the shape of components by changing their border-radius.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+description: Ignite UI for Angular allow you to change the shape of components by changing their border-radius.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+llms:
+  description: "Ignite UI for Angular allows you to customize the shape of components by adjusting their roundness using a value between 0 and 1."
 _tocName: Roundness
 ---
-
 # Roundness
 
 Ignite UI for Angular allows you to customize the shape of components by adjusting their roundness using a value between 0 and 1.
@@ -15,8 +16,8 @@ Many Ignite UI components have predefined minimum and maximum border-radius valu
 
 When you set `--ig-radius-factor` to 0, the component uses its minimum border-radius and will appear more block-like with sharp corners. When set to 1, the component uses its maximum predefined border-radius and will appear rounded.
 
-Here is a list of the components that have predefined minimum and maximum border-radius values and can be modified using the `--ig-radius-factor` variable: <br>
-• [Action Strip](../action-strip.md) • [Button](../button.md) • [Button Group](../button-group.md) • [Calendar](../calendar.md) • [Card](../card.md) • [Carousel](../carousel.md) • [Checkbox](../checkbox.md) • [Chip](../chip.md) • [Combo](../combo.md) • [Date Picker](../date-picker.md) • [Date Range Picker](../date-range-picker.md) • [Grid](../grid/grid.md) • [Input Group](../input-group.md) • [Linear Progress](../linear-progress.md) • [List](../list.md) • [Month Picker](../month-picker.md) • [Navigation Drawer](../navdrawer.md) • [Radio](../radio-button.md) • [Ripple](../ripple.md) • [Snackbar](../snackbar.md) • [Switch](../switch.md) • [Toast](../toast.md)
+Here is a list of the components that have predefined minimum and maximum border-radius values and can be modified using the `--ig-radius-factor` variable: <br/>
+• [Action Strip](/action-strip) • [Button](inputs/button) • [Button Group](/inputs/button-group) • [Calendar](/calendar) • [Card](/card) • [Carousel](/layouts/carousel) • [Checkbox](/checkbox) • [Chip](/chip) • [Combo](/combo) • [Date Picker](/date-picker) • [Date Range Picker](/date-range-picker) • [Grid](/grid/grid) • [Input Group](/input-group) • [Linear Progress](/linear-progress) • [List](/list) • [Month Picker](/month-picker) • [Navigation Drawer](/navdrawer) • [Radio](/radio-button) • [Ripple](/ripple) • [Snackbar](/snackbar) • [Switch](inputs/switch) • [Toast](/toast)
 
 ## Usage
 
@@ -28,7 +29,7 @@ igx-chip {
 }
 ```
 
-This will apply the minimum predefined border-radius, resulting in the [Chip](../chip.md) component having straight corners.
+This will apply the minimum predefined border-radius, resulting in the [Chip](/chip) component having straight corners.
 
 ```css
 igx-chip {
@@ -36,7 +37,7 @@ igx-chip {
 }
 ```
 
-And by setting the value to 1, the maximum predefined border-radius is applied, resulting in rounded corners for the [Chip](../chip.md) component.
+And by setting the value to 1, the maximum predefined border-radius is applied, resulting in rounded corners for the [Chip](/chip) component.
 
 If you want the border-radius to be somewhere between the defined minimum and maximum values, you can set the `--ig-radius-factor` variable to a decimal value between 0 and 1.
 For example, setting it to `0.5` will apply a border-radius that is 50% of the component's maximum allowed value.
@@ -122,7 +123,7 @@ export class RoundnessComponent {}
 
 Related topics:
 
-- [Roundness with Sass](./sass/roundness.md)
+- [Roundness with Sass](/themes/sass/roundness)
 
 Our community is active and always welcoming to new ideas.
 

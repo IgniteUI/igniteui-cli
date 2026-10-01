@@ -1,14 +1,17 @@
 ---
 title: Angular Icon Service – Ignite UI for Angular | Infragistics | MIT license
-_description: Developers can unify and use various icon and font sets interchangeably with custom colors and more with Ignite UI for Angular Icon Service. 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Icon components, Angular Icon controls, Angular Icon service
-_license: MIT
+description: Developers can unify and use various icon and font sets interchangeably with custom colors and more with Ignite UI for Angular Icon Service. 
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Icon components, Angular Icon controls, Angular Icon service
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Icon Service allows developers to add new icons from various sources to their UIs."
 _tocName: Icon Service
 ---
-
 # Angular Icon Service Overview
 
-<p class="highlight">The Ignite UI for Angular Icon Service allows developers to add new icons from various sources to their UIs.</p>
+<div class="highlight">
+The Ignite UI for Angular Icon Service allows developers to add new icons from various sources to their UIs.
+</div>
 
 ## Introduction
 
@@ -19,7 +22,6 @@ The icon service can be imported directly from the Ignite UI for Angular package
 ```ts
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxIconService } from 'igniteui-angular/core';
-
 
 @Component({
     selector: 'app-root',
@@ -173,8 +175,9 @@ Having registered the two font families above, we can now consume their icons in
 <igx-icon family="fa-solid" name="car"></igx-icon>
 ```
 
-> [!NOTE]
-> To render icons from the default `material` family with `igx-icon`, add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+**Note:** 
+To render icons from the default `material` family with `igx-icon`, add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 You might have noticed that for the `material` family we use the ligature `name` as name, while in the case of the `fa-solid` family we specify the `className` for name, which is `fa-car` but drop the `fa-` prefix as it has been specified when we registered the icon family in the previous step.
 
@@ -338,12 +341,12 @@ This will set the expand and collapse icons to the `arrow_downward` and `arrow_u
 
 Here's a breakdown of all icons as used by each component:
 
-<style>
+<style dangerouslySetInnerHTML={{__html: `
 .table-responsive tbody tr td:first-of-type {
     width: 25%;
     min-width: fit-content;
 }
-</style>
+`}} />
 
 ### Action Strip
 
@@ -469,7 +472,6 @@ Here's a breakdown of all icons as used by each component:
 | **delete**   | Used by the button to delete filter entries.             |
 | **filter_*** | Used for various filtering operands.                     |
 
-
 ### Select
 
 | Icon               | Description                                                   |
@@ -483,7 +485,6 @@ Here's a breakdown of all icons as used by each component:
 | :------- | :---------------------------------------------------------- |
 | **prev** | Used by the button used for navigating to the previous tab. |
 | **next** | Used by the button used for navigating to the next tab.     |
-
 
 ### Time Picker
 
@@ -543,14 +544,11 @@ addSvgIconFromText(name: string, iconText: string, family: string, stripMeta = f
 ```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxIconService](mcp:get_api_reference?platform=angular&component=IgxIconService)
-
+<hr/>
+- [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

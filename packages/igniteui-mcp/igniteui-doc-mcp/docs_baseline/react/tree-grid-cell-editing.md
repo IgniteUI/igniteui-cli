@@ -1,16 +1,15 @@
 ---
-title: React Tree Grid Cell Editing - Ignite UI for React
-_description: The Tree Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "React Tree Grid Cell Editing - Ignite UI for React"
+description: The Tree Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for React Cell Editing in React Tree Grid provides a great data manipulation capability of the content of individual cells within the React Tree Grid component and comes with powerful API for React CRUD operations."
+_componentKey: TreeGrid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # React Tree Grid Cell Editing
 
 The Ignite UI for React Cell Editing in React Tree Grid provides a great data manipulation capability of the content of individual cells within the React Tree Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -172,33 +171,28 @@ root.render(<Sample/>);
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
 - on single click to another cell - when you click on another cell in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
 You can also modify the cell value through the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) API but only if primary key is defined:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```typescript
 public updateCell() {
@@ -206,11 +200,7 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-Another way to update cell is directly through `Update` method of `Cell`:
-
-<!-- ComponentStart: TreeGrid -->
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=react&component=IgrCellType&member=update) method of `Cell`:
 
 ```typescript
 public updateCell() {
@@ -220,8 +210,6 @@ public updateCell() {
     cell.update(9999);
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Cell Editing Templates
 
@@ -467,16 +455,14 @@ root.render(<Sample/>);
 
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component exposes the [`addRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) method which will add the provided data to the data source itself.
-
-<!-- ComponentStart: TreeGrid -->
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component exposes the [`AddRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) method which will add the provided data to the data source itself.
 
 ```typescript
 public addNewChildRow() {
@@ -488,50 +474,21 @@ public addNewChildRow() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Updating data in the Tree Grid
 
-Updating data in the Tree Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
-
-<!-- ComponentStart: TreeGrid -->
-
-```typescript
-// Updating the whole row
-this.treeGrid.updateRow(newData, this.selectedCell.cellID.rowID);
-
-// Just a particular cell through the Tree Grid API
-this.treeGrid.updateCell(newData, this.selectedCell.cellID.rowID, this.selectedCell.column.field);
-
-// Directly using the cell `update` method
-this.selectedCell.update(newData);
-
-// Directly using the row `update` method
-const row = this.treeGrid.getRowByKey(rowID);
-row.update(newData);
-```
-
-<!-- ComponentEnd: TreeGrid -->
+Updating data in the Tree Grid is achieved through [`IgrTreeGrid.updateRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateRow) and [`IgrTreeGrid.updateCell`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) is defined.
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=deleteRow) method will remove the specified row only if a [`IgrTreeGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) is defined.
 
-<!-- ComponentStart: TreeGrid -->
-
-```typescript
-// Delete row through Tree Grid API
-this.treeGrid.deleteRow(this.selectedCell.cellID.rowID);
-// Delete row through row object
-const row = this.treeGrid.getRowByIndex(rowIndex);
-row.delete();
-```
+These can be wired to user interactions, not necessarily related to the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) for example, a button click:
 
 ### Cell Validation on Edit Event
 
 Using the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s editing events, we can alter how the user interacts with the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgrTreeGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
@@ -540,9 +497,7 @@ The first thing we need to do is bind to the grid's event:
 </IgrTreeGrid>
 ```
 
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- ComponentStart: TreeGrid -->
+The [`IgrTreeGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 ```tsx
 public webTreeGridCellEdit(args: IgrGridEditEventArgs): void {
@@ -560,13 +515,8 @@ public webTreeGridCellEdit(args: IgrGridEditEventArgs): void {
         }
     }
 }
+
 ```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- Blazor -->
-
-<!-- ComponentEnd: TreeGrid -->
 
 The result of the above validation being applied to our [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) can be seen in the below demo:
 
@@ -719,7 +669,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -735,8 +685,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Styling Example
 
@@ -889,8 +837,7 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 ## Additional Resources

@@ -1,21 +1,22 @@
 ---
-title: Angular Radial Gauge Chart | Data Visualization Tools | Infragistics
-_description: Use Infragistics' Angular radial gauge control to create engaging data visualizations and dashboards and show off KPIs with rich style and interactivity. Learn about the Ignite UI for Angular radial gauge configurable elements!
-_keywords: Radial Gauge, Ignite UI for Angular, Infragistics, animation, labels, needle, scales, ranges, tick marks
-_license: commercial
-mentionedTypes: ["XamRadialGauge", "XamRadialGaugeRange"]
+title: "Angular Radial Gauge Chart | Data Visualization Tools | Infragistics"
+description: Use Infragistics' Angular radial gauge control to create engaging data visualizations and dashboards and show off KPIs with rich style and interactivity. Learn about the Ignite UI for Angular radial gauge configurable elements!
+keywords: Radial Gauge, Ignite UI for Angular, Infragistics, animation, labels, needle, scales, ranges, tick marks
+license: commercial
+mentionedTypes: ["RadialGauge", "RadialGaugeRange"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The Angular radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale."
 _tocName: Radial Gauge
 _premium: true
 ---
-
 # Angular Radial Gauge Overview
 
-The Angular radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)  also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=transitionDuration) property.
+The Angular radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The [`IgxRadialGauge`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=transitionDuration) property.
 
 ## Angular Radial Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) can transform it to completely different radial gauge.
+The following sample demonstrates how setting multiple properties on the same [`IgxRadialGauge`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) can transform it to completely different radial gauge.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -426,8 +427,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 When installing the gauge component, the core package must also be installed.
@@ -439,7 +438,7 @@ npm install --save igniteui-angular-gauges
 
 ## Component Modules
 
-The [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) requires the following modules:
+The [`IgxRadialGauge`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) requires the following modules:
 
 ```ts
 // app.module.ts
@@ -454,8 +453,6 @@ import { IgxRadialGaugeModule } from 'igniteui-angular-gauges';
 })
 export class AppModule {}
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -482,15 +479,13 @@ The following code demonstrates how create a radial gauge containing a needle an
 </igx-radial-gauge>
 ```
 
-<div class="divider--half"></div>
-
 ## Backing
 
 The radial gauge component comes with a backing shape drawn behind the scale that acts as a background for the radial gauge.
 
 The backing element represents background and border of the radial gauge component. It is always the first element rendered and all the rest of elements such as needle, labels, and tick marks are overlay on top of it.
 
-The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the [`scaleStartAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartAngle) and [`scaleEndAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndAngle) properties. This can be set by setting the [`backingShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=backingShape) property.
+The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the [`ScaleStartAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndAngle) properties. This can be set by setting the [`BackingShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=backingShape) property.
 
 ```html
 <igx-radial-gauge
@@ -590,7 +585,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Scale
 
-The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) values. Together with backing, it defines overall shape of gauge. The [`scaleStartAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartAngle) and [`scaleEndAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndAngle) properties define bounds of arc of the scale. While, the [`scaleSweepDirection`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`scaleBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleBrush), [`scaleStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartExtent), and [`scaleEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndExtent) properties.
+The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`MinimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) values. Together with backing, it defines overall shape of gauge. The [`ScaleStartAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndAngle) properties define bounds of arc of the scale. While, the [`ScaleSweepDirection`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`ScaleBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleBrush), [`ScaleStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartExtent), and [`ScaleEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndExtent) properties.
 
 ```html
 <igx-radial-gauge
@@ -679,9 +674,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Labels and Titles
 
-The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. You can position labels by setting the [`labelExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=labelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`fontBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=fontBrush) and [`font`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=font).
+The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`MinimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. You can position labels by setting the [`LabelExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=labelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`FontBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=fontBrush) and [`Font`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=font).
 
-Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as [`titleExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleExtent), [`titleAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleAngle), `SubtitleFontSize`, [`highlightLabelBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelBrush).
+Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as [`TitleExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleExtent), [`TitleAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleAngle), `SubtitleFontSize`, [`HighlightLabelBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelBrush).
 
 ```html
 <igx-radial-gauge
@@ -769,9 +764,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Title & Subtitle
 
-[`titleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleText) and [`subtitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`titleDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleDisplaysValue) and [`subtitleDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleDisplaysValue), when set to true, will let display the needle's value and override [`titleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleText) and [`subtitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
+[`TitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleText) and [`SubtitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`TitleDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleDisplaysValue) and [`SubtitleDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleDisplaysValue), when set to true, will let display the needle's value and override [`TitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleText) and [`SubtitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
 
-If the highlight needle is shown, as explained below, then custom text can be shown via  [`highlightLabelText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelText), otherwise [`highlightLabelDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelDisplaysValue) can be enabled and display it's value.
+If the highlight needle is shown, as explained below, then custom text can be shown via  [`HighlightLabelText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelText), otherwise [`HighlightLabelDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelDisplaysValue) can be enabled and display it's value.
 
 ```html
 <igx-radial-gauge
@@ -782,7 +777,7 @@ If the highlight needle is shown, as explained below, then custom text can be sh
 
 ## Optical Scaling
 
-The radial gauge's labels and titles can change it's scaling. To enable this, first set [`opticalScalingEnabled`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingEnabled) to true. Then you can set [`opticalScalingSize`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingSize) which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
+The radial gauge's labels and titles can change it's scaling. To enable this, first set [`OpticalScalingEnabled`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingEnabled) to true. Then you can set [`OpticalScalingSize`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingSize) which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -883,7 +878,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Tick Marks
 
-Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`interval`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=interval) between the [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. Use the [`minorTickCount`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`tickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickStartExtent), [`tickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickEndExtent), [`minorTickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickStartExtent), and [`minorTickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickEndExtent) properties.
+Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`Interval`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=interval) between the [`MinimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. Use the [`MinorTickCount`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`TickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickStartExtent), [`TickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickEndExtent), [`MinorTickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickStartExtent), and [`MinorTickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickEndExtent) properties.
 
 ```html
 <igx-radial-gauge
@@ -983,7 +978,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Ranges
 
-A range highlights a set of continuous values bound by a specified [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as [`brush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent&member=brush) and [`outline`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent&member=outline). Alternatively, you can set [`rangeBrushes`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=rangeBrushes) and [`rangeOutlines`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=rangeOutlines) properties to a list of colors for the ranges.
+A range highlights a set of continuous values bound by a specified [`MinimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as [`Brush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent&member=brush) and [`Outline`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent&member=outline). Alternatively, you can set [`RangeBrushes`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=rangeBrushes) and [`RangeOutlines`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=rangeOutlines) properties to a list of colors for the ranges.
 
 ```html
 <igx-radial-gauge
@@ -1089,9 +1084,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Radial gauge needles are visual elements used to signify a gauge set value. Needles are available in one of the several predefined shapes. The needle can have a pivot shape, which is placed in the center of the gauge. The pivot shape also takes one of the predefined shapes. Pivot shapes that include an overlay or an underlay can have a separate pivot brush applied to the shape.
 
-The supported needle shapes and caps are set using the [`needleShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=needleShape) and [`needlePivotShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=needlePivotShape) properties.
+The supported needle shapes and caps are set using the [`NeedleShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=needleShape) and [`NeedlePivotShape`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=needlePivotShape) properties.
 
-You can enable an interactive mode of the gauge (using [`isNeedleDraggingEnabled`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=isNeedleDraggingEnabled) property) and the end-user will be able to change value by dragging the needle between values of [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties.
+You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=isNeedleDraggingEnabled) property) and the end-user will be able to change value by dragging the needle between values of [`MinimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties.
 
 ```html
 <igx-radial-gauge
@@ -1197,7 +1192,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Needle
 
-The radial gauge can be modified to show a second needle. This will make the main needle's [`value`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValue).
+The radial gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValue).
 
 ```html
 <igx-radial-gauge #radialGauge
@@ -1361,15 +1356,11 @@ For your convenience, all above code snippets are combined into one code block b
 ```
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)
-- [`IgxRadialGaugeRangeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent)
-
+[`IgxRadialGauge`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)
+[`IgxRadialGaugeRange`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeRangeComponent)
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:
 
-- [Bullet Graph](bullet-graph.md)
-- [Linear Gauge](linear-gauge.md)
+- [Bullet Graph](./bullet-graph.md)
+- [Linear Gauge](./linear-gauge.md)

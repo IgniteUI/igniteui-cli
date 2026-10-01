@@ -1,23 +1,24 @@
 ---
 title: React Shape Chart | Data Visualization | Infragistics
-_description: Infragistics' React Shape Chart
-_keywords: React Charts, Shape Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "ScatterPolygonSeries", "ScatterPolylineSeries", "Series", "GeographicShapeSeriesBase"]
+description: Infragistics' React Shape Chart
+keywords: React Charts, Shape Chart, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system."
 _tocName: Shape Chart
 _premium: true
 ---
-
 # React Shape Charts
 
 The Ignite UI for React Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system. They are often used highlight regions in scientific data or they can be used to plot diagrams, blueprints, or even floor plan of buildings.
 
 ## React Scatter Polygon Chart
 
-The React Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using [`IgrScatterPolygonSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html) in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
+The React Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using `IgrScatterPolygonSeries` in the `IgrDataChart` control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterPolygonSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterPolygonSeries`, as shown in the example below:
 
 ```tsx
 import React from 'react';
@@ -170,13 +171,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterPolygonSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Scatter Polyline Chart
 
-The React Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using [`IgrScatterPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolylineseries.html) in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
+The React Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using `IgrScatterPolylineSeries` in the `IgrDataChart` control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrScatterPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolylineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrScatterPolylineSeries`, as shown in the example below:
 
 ```tsx
 import React from 'react';
@@ -328,26 +327,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterPolylineSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Line Chart](line-chart.md)
-- [Scatter Chart](scatter-chart.md)
+- [Area Chart](./area-chart.md)
+- [Line Chart](./line-chart.md)
+- [Scatter Chart](./scatter-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
-- [`IgrScatterPolygonSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html)
-- [`IgrScatterPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolylineseries.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html#shapeMemberPath)
-- [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html)
-- [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html)
-- `YAxisName`
-- `XAxisName`
+`IgrDataChart`
+`IgrScatterPolygonSeries`
+`IgrScatterPolylineSeries`
+`IgrNumericXAxis`
+`IgrNumericYAxis`

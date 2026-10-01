@@ -1,12 +1,13 @@
 ---
-title: React Dialog | Infragistics
-_description: With Ignite UI for React Dialog component, developers can easily integrate a dialog window centered on top of app content.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Dialog components
-_license: MIT
+title: "React Dialog | Infragistics"
+description: With Ignite UI for React Dialog component, developers can easily integrate a dialog window centered on top of app content.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Dialog components"
+license: MIT
 mentionedTypes: ["Dialog"]
+llms:
+  description: "The Ignite UI for React Dialog component is used to display some information or prompt the user for an action or confirmation."
 _tocName: Dialog
 ---
-
 # React Dialog Overview
 
 The Ignite UI for React Dialog component is used to display some information or prompt the user for an action or confirmation. It is shown in a modal window, which means that the user is not allowed to interact with the main app until a certain action is performed that closes the dialog.
@@ -78,8 +79,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogOverview/>);
 ```
 
-<div class="divider--half"></div>
-
 ### Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -97,7 +96,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the dialog component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrDialog&member=show) method and call it on a button click.
+The simplest way to display the dialog component is to use its [`Show`](mcp:get_api_reference?platform=react&component=IgrDialog&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" clicked={this.onDialogShow}>
@@ -120,17 +119,17 @@ public onDialogShow() {
 }
 ```
 
-The Dialog component provides an [`open`](mcp:get_api_reference?platform=react&component=IgrDialog&member=open) property, which gives you the ability to configure its state as per your application scenario.
+The [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog) component provides an [`Open`](mcp:get_api_reference?platform=react&component=IgrDialog&member=open) property, which gives you the ability to configure its state as per your application scenario.
 
-Use the [`title`](mcp:get_api_reference?platform=react&component=IgrDialog&member=title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
+Use the [`Title`](mcp:get_api_reference?platform=react&component=IgrDialog&member=title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
 
-Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`hideDefaultAction`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hideDefaultAction) property to **true**. The default value is **false**.
+Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`HideDefaultAction`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hideDefaultAction) property to **true**. The default value is **false**.
 
 ### Closing
 
-By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`keepOpenOnEscape`](mcp:get_api_reference?platform=react&component=IgrDialog&member=keepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
+By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`KeepOpenOnEscape`](mcp:get_api_reference?platform=react&component=IgrDialog&member=keepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
 
-Use the [`closeOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDialog&member=closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
+Use the [`CloseOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrOverlaySettings&member=closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
 
 ```css
 /* shared styles are loaded from: */
@@ -392,19 +391,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogStyling/>);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`keepOpenOnEscape`](mcp:get_api_reference?platform=react&component=IgrDialog&member=keepOpenOnEscape)
-- [`closeOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDialog&member=closeOnOutsideClick)
-- [`hide`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hide)
-- [`hideDefaultAction`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hideDefaultAction)
-- [`open`](mcp:get_api_reference?platform=react&component=IgrDialog&member=open)
-- [`title`](mcp:get_api_reference?platform=react&component=IgrDialog&member=title)
-- [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

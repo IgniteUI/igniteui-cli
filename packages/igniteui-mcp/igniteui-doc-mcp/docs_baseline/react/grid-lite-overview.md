@@ -1,13 +1,14 @@
 ---
 title: Free React Data Grid Lite (Open Source) - Ignite UI Grid Lite | MIT license
-_description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
-_keywords: overview, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
+keywords: overview, React, , Ignite UI for React, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Ignite UI for React Grid Lite is a lightweight, high-performance React data grid that’s free to use, open-source, and built for modern React applications."
 _tocName: Grid Lite
 ---
-
 # Free & Open-Source React Data Grid (Grid Lite)
 
 The Ignite UI for React Grid Lite is a lightweight, high-performance React data grid that’s free to use, open-source, and built for modern React applications.
@@ -21,19 +22,16 @@ Our free, open-source React Grid Lite comes with the following column-based feat
 ## Installation and Setup
 
 ### Installation
-
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
 
 ```cmd
-npm install igniteui-react
-npm install igniteui-grid-lite
+npm install igniteui-react --save
 ```
 
 Or using yarn:
 
 ```cmd
 yarn add igniteui-react
-yarn add igniteui-grid-lite
 ```
 
 ### Using the Grid Lite in your React code
@@ -44,9 +42,7 @@ In the file where you want to use Grid Lite, first we need to import it:
 import { IgrGridLite } from 'igniteui-react/grid-lite';
 ```
 
-<!-- End: React -->
-
-Add the `<GridLite>` component to your markup:
+Add the `<IgrGridLite>` component to your markup:
 
 ```tsx
 return (
@@ -59,7 +55,6 @@ return (
 ```
 
 ## Grid Lite in Action
-
 ```typescript
 export type UserSimple = {
   id: string;

@@ -1,16 +1,15 @@
 ---
-title: React Hierarchical Grid Exporting - Ignite UI for React
-_description: With Ignite UI for React Hierarchical Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
-_keywords: React, Hierarchical Grid, Hierarchical Grid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/export-excel
+title: "React Hierarchical Grid Exporting - Ignite UI for React"
+description: With Ignite UI for React Hierarchical Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
+keywords: "React, Hierarchical Grid, Hierarchical Grid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/export-excel"
+llms:
+  description: "The Ignite UI for React Hierarchical Grid provides data export functionality through the Grid Toolbar Exporter component."
+_componentKey: HierarchicalGrid
 _tocName: Exporting
 _premium: true
 ---
-
 # React Hierarchical Grid Exporting
 
 The Ignite UI for React Hierarchical Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) inside the grid's toolbar. By default, all export formats are enabled.
@@ -211,15 +210,19 @@ root.render(<Sample/>);
 
 ## Export Multi Column Headers Grid
 
-You can export [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
+You can export [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` [`IgrExporterOptionsBase.ignoreMultiColumnHeaders`](mcp:get_api_reference?platform=react&component=IgrExporterOptionsBase&member=ignoreMultiColumnHeaders) to `true`.
 
-> [!Note]
-> The exported [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
+**Note:** 
+The exported `IgrHierarchicalGrid` will not be formatted as a table, since Excel tables do not support multiple column headers.
 
-> [!Note]
-> [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
->
-> - `exportExcel`, `exportCsv`, `exportPdf`
+**Note:** 
+The exported [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
+
+**Note:** 
+[`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+- `export-excel`, `export-csv`, `export-pdf`
+- `exportExcel`, `exportCsv`, `exportPdf`
+- [`ExportExcel`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter&member=exportExcel), `ExportCsv`, `ExportPdf`
 
 ```css
 /* shared styles are loaded from: */
@@ -530,12 +533,11 @@ root.render(<Sample/>);
 
 ## Export Grid with Frozen Column Headers
 
-By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` `FreezeHeaders` to `true`.
+By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` [`IgrExporterOptionsBase.freezeHeaders`](mcp:get_api_reference?platform=react&component=IgrExporterOptionsBase&member=freezeHeaders) to `true`.
 
-> [!Note]
-> PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
+**Note:** 
+PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 function exportEventFreezeHeaders(args: IgrExporterEventArgs) {
@@ -549,11 +551,7 @@ function exportEventFreezeHeaders(args: IgrExporterEventArgs) {
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ## Known Limitations
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 |Limitation|Description|
 |--- |--- |
@@ -562,12 +560,8 @@ function exportEventFreezeHeaders(args: IgrExporterEventArgs) {
 |Exporting pinned columns|In the exported Excel file, the pinned columns will not be frozen but will be displayed in the same order as they appear in the grid.|
 |Wide PDF layouts|Very wide grids can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.|
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

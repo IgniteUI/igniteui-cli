@@ -1,12 +1,13 @@
 ---
-title: Blazor MaskInput | Infragistics
-_description: Infragistics' Blazor MaskInput allows the user to control input and format the visible value based on configurable mask rules
-_keywords: Blazor input, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor MaskInput | Infragistics"
+description: Infragistics' Blazor MaskInput allows the user to control input and format the visible value based on configurable mask rules
+keywords: "Blazor input, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["MaskInput"]
+llms:
+  description: "The Ignite UI for Blazor Mask Input is an input field that allows the developer to control user input and format the visible value, based on configurable rules."
 _tocName: Mask Input
 ---
-
 ## Blazor Mask Input Overview
 
 The Ignite UI for Blazor Mask Input is an input field that allows the developer to control user input and format the visible value, based on configurable rules. It provides different input options and ease in use and configuration.
@@ -43,13 +44,13 @@ The Ignite UI for Blazor Mask Input is an input field that allows the developer 
 
 Before using the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbMaskInputModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -58,14 +59,13 @@ You will also need to link an additional CSS file to apply the styling to the [`
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ### Mask Rules
-
 The table bellow shows the supported built-in mask rules:
 
 | Mask Character | Description |
 | :--- | :--- |
-| 0 | Digit character \[0-9]. Entry is required. |
-| 9 | Digit character \[0-9]. Entry is optional. |
-| # | Digit character \[0-9], plus (+), or minus (-) sign. Entry is required. |
+| 0 | Digit character [0-9]. Entry is required. |
+| 9 | Digit character [0-9]. Entry is optional. |
+| # | Digit character [0-9], plus (+), or minus (-) sign. Entry is required. |
 | L | Letter character. Entry is required. |
 | ? | Letter character. Entry is optional. |
 | A | Alphanumeric (letter or digit) character. Entry is required. |
@@ -74,11 +74,11 @@ The table bellow shows the supported built-in mask rules:
 | C | Any keyboard character. Entry is optional. |
 | \ | Escapes a mask flag and turns it into a literal. |
 
-These flags also participate in the component validation - i.e., the input becomes invalid if some but not all required positions are filled (no positions filled/empty value is still a responsibility of `required`). This applies to both stand-alone inputs and when included in a form.
+These flags also participate in the component validation - i.e., the input becomes invalid if some but not all required positions are filled (no positions filled/empty value is still a responsibility of [`required`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=required)). This applies to both stand-alone inputs and when included in a form.
 
 ### Applying Mask
 
-Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`Mask`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Mask) property of the input.
+Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`Mask`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=mask) property of the input.
 
 In the example below, we will apply a mask for a phone number with an extension code.
 
@@ -118,7 +118,7 @@ After that you should see the following in your browser:
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=prompt) property:
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="(####) 00-00-00 Ext. 9999" Prompt="-"></IgbMaskInput>
@@ -128,7 +128,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="00/00/0000" Placeholder="dd/MM/yyyy"></IgbMaskInput>
@@ -136,7 +136,7 @@ Developers can also take advantage of the [`Placeholder`](mcp:get_api_reference?
 
 ### Value Modes
 
-The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) exposes a [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=ValueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=ValueMode) is set to `raw`. Try it for yourself in the example below:
+The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) exposes a [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=valueMode) is set to `raw`. Try it for yourself in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -260,14 +260,11 @@ igc-mask-input::part(input)::placeholder {
 - Undo/redo behavior is currently unsupported.
 
 ## API References
-
-- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
-- [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput)
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
-- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+[`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput)
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+[`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
+[`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

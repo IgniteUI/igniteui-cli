@@ -1,14 +1,15 @@
 ---
-title: Blazor Chart Performance | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Performance
-_keywords: Blazor Charts, Performance, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "XamDataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
+title: "Blazor Chart Performance | Data Visualization | Infragistics"
+description: Infragistics' Blazor Chart Performance
+keywords: "Blazor Charts, Performance, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "Blazor charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds."
 _tocName: Chart Performance
 _premium: true
 ---
-
 # Blazor Chart Performance
 
 Blazor charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds. However, there are several chart features that affect performance of the chart and they should be considered when optimizing performance in your application. This topic will guide you to make Blazor charts work as fast as possible in your application.
@@ -148,8 +149,6 @@ In High-Frequency scenario, the Blazor Charts can render data items that are upd
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Chart with High-Volume
 
 In High-Volume scenario, the Blazor Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) in High-Volume scenario.
@@ -243,8 +242,6 @@ In High-Volume scenario, the Blazor Charts can render 1 million of data points w
 }
 ```
 
-<div class="divider--half"></div>
-
 ## General Performance Guidelines
 
 This section lists guidelines and chart features that add to the overhead and processing updates in the Blazor charts.
@@ -259,9 +256,9 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
-```razor
+```csharp
 this.CategoryChart.DataSource = FlattenDataSource.Create();
 this.FinancialChart.DataSource = FlattenDataSource.Create();
 
@@ -308,7 +305,7 @@ public static class MultiDataSources
 
 ### Data Filtering
 
-Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=IncludedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ExcludedProperties) to filter only those data columns that you actually want to render. For example,
+Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=includedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=excludedProperties) to filter only those data columns that you actually want to render. For example,
 
 ```razor
 this.Chart.IncludedProperties = new string[] { "Year", "USA", "RUS" };
@@ -319,23 +316,23 @@ this.Chart.ExcludedProperties = new string[] { "CHN",  "FRN", "GER" };
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property of Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property of Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
 | Chart Group     | Chart Type |
 | ----------------|--------------------------------- |
-| Pie Charts       | - [Pie Chart](../types/pie-chart.md) <br> - [Donut Chart](../types/donut-chart.md) <br> - [Radial Pie Chart](../types/radial-chart.md#blazor-radial-pie-chart) |
-| Line Charts      | - [Category Line Chart](../types/line-chart.md#blazor-line-chart-example) <br> - [Category Spline Chart](../types/spline-chart.md#blazor-spline-chart-example) <br> - [Step Line Chart](../types/step-chart.md#blazor-step-line-chart) <br> - [Radial Line Chart](../types/radial-chart.md#blazor-radial-line-chart) <br> - [Polar Line Chart](../types/polar-chart.md#blazor-polar-line-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#blazor-scatter-line-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#blazor-scatter-polyline-chart) (\*)  <br> - [Scatter Contour Chart](../types/scatter-chart.md#blazor-scatter-contour-chart) <br> - [Stacked Line Chart](../types/stacked-chart.md#blazor-stacked-line-chart) <br> - [Stacked 100% Line Chart](../types/stacked-chart.md#blazor-stacked-100-line-chart) <br> |
-| Area Charts      | - [Category Area Chart](../types/area-chart.md#blazor-area-chart-example) <br> - [Step Area Chart](../types/step-chart.md#blazor-step-area-chart) <br> - [Range Area Chart](../types/area-chart.md#blazor-range-area-chart) <br> - [Radial Area Chart](../types/radial-chart.md#blazor-radial-area-chart) <br> - [Polar Area Chart](../types/polar-chart.md#blazor-polar-area-chart) <br> - [Scatter Polygon Chart](../types/shape-chart.md#blazor-scatter-polygon-chart) (\*) <br> - [Scatter Area Chart](../types/scatter-chart.md#blazor-scatter-area-chart) <br> - [Stacked Area Chart](../types/stacked-chart.md#blazor-stacked-area-chart) <br> - [Stacked 100% Area Chart](../types/stacked-chart.md#blazor-stacked-100-area-chart) <br> |
-| Column Charts    | - [Column Chart](../types/column-chart.md#blazor-column-chart-example) <br> - [Bar Chart](../types/bar-chart.md#blazor-bar-chart-example) <br> - [Waterfall Chart](../types/column-chart.md#blazor-waterfall-chart) <br> - [Range Column Chart](../types/column-chart.md#blazor-range-column-chart) <br> - [Range Bar Chart](../types/bar-chart.md#blazor-range-bar-chart) <br> - [Radial Column Chart](../types/radial-chart.md#blazor-radial-column-chart) <br> - [Stacked Column Chart](../types/stacked-chart.md#blazor-stacked-column-chart) <br> - [Stacked Bar Chart](../types/stacked-chart.md#blazor-stacked-bar-chart) <br> - [Stacked 100% Column Chart](../types/stacked-chart.md#blazor-stacked-100-column-chart) <br> - [Stacked 100% Bar Chart](../types/stacked-chart.md#blazor-stacked-100-bar-chart) |
-| Spline Charts    | - [Category Spline Chart](../types/spline-chart.md#blazor-spline-chart-example) <br> - [Polar Spline Chart](../types/polar-chart.md#blazor-polar-spline-chart) <br> - [Scatter Spline Chart](../types/scatter-chart.md#blazor-scatter-spline-chart) <br> - [Stacked Spline Chart](../types/stacked-chart.md#blazor-stacked-spline-chart) <br> - [Stacked 100% Spline Chart](../types/stacked-chart.md#blazor-stacked-100-spline-chart) <br> |
-| Point Charts     | - [Category Point Chart](../types/point-chart.md) <br> - [Scatter HD Chart](../types/scatter-chart.md#blazor-scatter-high-density-chart)  <br> - [Scatter Marker Chart](../types/scatter-chart.md#blazor-scatter-marker-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Polar Marker Chart](../types/polar-chart.md#blazor-polar-marker-chart) <br> |
-| Financial Charts | - [Stock Chart in Line Mode](../types/stock-chart.md) <br> - [Stock Chart in Column Mode](../types/stock-chart.md) <br> - [Stock Chart in Bar Mode](../types/stock-chart.md) <br> - [Stock Chart in Candle Mode](../types/stock-chart.md) <br> - [Stock Chart with Overlays](../types/stock-chart.md) <br> - [Stock Chart with Zoom Pane](../types/stock-chart.md) <br> - [Stock Chart with Volume Pane](../types/stock-chart.md#volume-pane) <br> - [Stock Chart with Indicator Pane](../types/stock-chart.md#indicator-pane) <br> |
-| Scatter Charts   | - [Scatter HD Chart](../types/scatter-chart.md#blazor-scatter-high-density-chart) <br> - [Scatter Marker Chart](../types/scatter-chart.md#blazor-scatter-marker-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#blazor-scatter-line-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Scatter Spline Chart](../types/scatter-chart.md#blazor-scatter-spline-chart) <br> - [Scatter Area Chart](../types/scatter-chart.md#blazor-scatter-area-chart) <br> - [Scatter Contour Chart](../types/scatter-chart.md#blazor-scatter-contour-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#blazor-scatter-polyline-chart) (\*) <br> - [Scatter Polygon Chart](../types/shape-chart.md#blazor-scatter-polygon-chart) (\*) <br> |
-| Radial Charts    | - [Radial Line Chart](../types/radial-chart.md#blazor-radial-line-chart) <br> - [Radial Area Chart](../types/radial-chart.md#blazor-radial-area-chart) <br> - [Radial Pie Chart](../types/radial-chart.md#blazor-radial-pie-chart) <br> - [Radial Column Chart](../types/radial-chart.md#blazor-radial-column-chart) <br> |
-| Polar Charts     | - [Polar Marker Chart](../types/polar-chart.md#blazor-polar-marker-chart) <br> - [Polar Line Chart](../types/polar-chart.md#blazor-polar-line-chart) <br> - [Polar Area Chart](../types/polar-chart.md#blazor-polar-area-chart) <br> - [Polar Spline Chart](../types/polar-chart.md#blazor-polar-spline-chart) <br> - [Polar Spline Area Chart](../types/polar-chart.md#blazor-polar-spline-area-chart) <br> |
-| Stacked Charts   | - [Stacked Line Chart](../types/stacked-chart.md#blazor-stacked-line-chart) <br> - [Stacked Area Chart](../types/stacked-chart.md#blazor-stacked-area-chart) <br> - [Stacked Column Chart](../types/stacked-chart.md#blazor-stacked-column-chart) <br> - [Stacked Bar Chart](../types/stacked-chart.md#blazor-stacked-bar-chart) <br> - [Stacked Spline Chart](../types/stacked-chart.md#blazor-stacked-spline-chart) <br> - [Stacked 100% Line Chart](../types/stacked-chart.md#blazor-stacked-100-line-chart) <br> - [Stacked 100% Area Chart](../types/stacked-chart.md#blazor-stacked-100-area-chart) <br> - [Stacked 100% Column Chart](../types/stacked-chart.md#blazor-stacked-100-column-chart) <br> - [Stacked 100% Bar Chart](../types/stacked-chart.md#blazor-stacked-100-bar-chart) <br> - [Stacked 100% Spline Chart](../types/stacked-chart.md#blazor-stacked-100-spline-chart) <br> |
+| Pie Charts       | - [Pie Chart](../types/pie-chart.md) <br /> - [Donut Chart](../types/donut-chart.md) <br /> - [Radial Pie Chart](../types/radial-chart.md#blazor-radial-pie-chart) |
+| Line Charts      | - [Category Line Chart](../types/line-chart.md#blazor-line-chart-example) <br /> - [Category Spline Chart](../types/spline-chart.md#blazor-spline-chart-example) <br /> - [Step Line Chart](../types/step-chart.md#blazor-step-line-chart) <br /> - [Radial Line Chart](../types/radial-chart.md#blazor-radial-line-chart) <br /> - [Polar Line Chart](../types/polar-chart.md#blazor-polar-line-chart) <br /> - [Scatter Line Chart](../types/scatter-chart.md#blazor-scatter-line-chart) <br /> - [Scatter Polyline Chart](../types/shape-chart.md#blazor-scatter-polyline-chart) (\*)  <br /> - [Scatter Contour Chart](../types/scatter-chart.md#blazor-scatter-contour-chart) <br /> - [Stacked Line Chart](../types/stacked-chart.md#blazor-stacked-line-chart) <br /> - [Stacked 100% Line Chart](../types/stacked-chart.md#blazor-stacked-100-line-chart) <br /> |
+| Area Charts      | - [Category Area Chart](../types/area-chart.md#blazor-area-chart-example) <br /> - [Step Area Chart](../types/step-chart.md#blazor-step-area-chart) <br /> - [Range Area Chart](../types/area-chart.md#blazor-range-area-chart) <br /> - [Radial Area Chart](../types/radial-chart.md#blazor-radial-area-chart) <br /> - [Polar Area Chart](../types/polar-chart.md#blazor-polar-area-chart) <br /> - [Scatter Polygon Chart](../types/shape-chart.md#blazor-scatter-polygon-chart) (\*) <br /> - [Scatter Area Chart](../types/scatter-chart.md#blazor-scatter-area-chart) <br /> - [Stacked Area Chart](../types/stacked-chart.md#blazor-stacked-area-chart) <br /> - [Stacked 100% Area Chart](../types/stacked-chart.md#blazor-stacked-100-area-chart) <br /> |
+| Column Charts    | - [Column Chart](../types/column-chart.md#blazor-column-chart-example) <br /> - [Bar Chart](../types/bar-chart.md#blazor-bar-chart-example) <br /> - [Waterfall Chart](../types/column-chart.md#blazor-waterfall-chart) <br /> - [Range Column Chart](../types/column-chart.md#blazor-range-column-chart) <br /> - [Range Bar Chart](../types/bar-chart.md#blazor-range-bar-chart) <br /> - [Radial Column Chart](../types/radial-chart.md#blazor-radial-column-chart) <br /> - [Stacked Column Chart](../types/stacked-chart.md#blazor-stacked-column-chart) <br /> - [Stacked Bar Chart](../types/stacked-chart.md#blazor-stacked-bar-chart) <br /> - [Stacked 100% Column Chart](../types/stacked-chart.md#blazor-stacked-100-column-chart) <br /> - [Stacked 100% Bar Chart](../types/stacked-chart.md#blazor-stacked-100-bar-chart) |
+| Spline Charts    | - [Category Spline Chart](../types/spline-chart.md#blazor-spline-chart-example) <br /> - [Polar Spline Chart](../types/polar-chart.md#blazor-polar-spline-chart) <br /> - [Scatter Spline Chart](../types/scatter-chart.md#blazor-scatter-spline-chart) <br /> - [Stacked Spline Chart](../types/stacked-chart.md#blazor-stacked-spline-chart) <br /> - [Stacked 100% Spline Chart](../types/stacked-chart.md#blazor-stacked-100-spline-chart) <br /> |
+| Point Charts     | - [Category Point Chart](../types/point-chart.md) <br /> - [Scatter HD Chart](../types/scatter-chart.md#blazor-scatter-high-density-chart)  <br /> - [Scatter Marker Chart](../types/scatter-chart.md#blazor-scatter-marker-chart) <br /> - [Scatter Bubble Chart](../types/bubble-chart.md) <br /> - [Polar Marker Chart](../types/polar-chart.md#blazor-polar-marker-chart) <br /> |
+| Financial Charts | - [Stock Chart in Line Mode](../types/stock-chart.md) <br /> - [Stock Chart in Column Mode](../types/stock-chart.md) <br /> - [Stock Chart in Bar Mode](../types/stock-chart.md) <br /> - [Stock Chart in Candle Mode](../types/stock-chart.md) <br /> - [Stock Chart with Overlays](../types/stock-chart.md) <br /> - [Stock Chart with Zoom Pane](../types/stock-chart.md) <br /> - [Stock Chart with Volume Pane](../types/stock-chart.md#volume-pane) <br /> - [Stock Chart with Indicator Pane](../types/stock-chart.md#indicator-pane) <br /> |
+| Scatter Charts   | - [Scatter HD Chart](../types/scatter-chart.md#blazor-scatter-high-density-chart) <br /> - [Scatter Marker Chart](../types/scatter-chart.md#blazor-scatter-marker-chart) <br /> - [Scatter Line Chart](../types/scatter-chart.md#blazor-scatter-line-chart) <br /> - [Scatter Bubble Chart](../types/bubble-chart.md) <br /> - [Scatter Spline Chart](../types/scatter-chart.md#blazor-scatter-spline-chart) <br /> - [Scatter Area Chart](../types/scatter-chart.md#blazor-scatter-area-chart) <br /> - [Scatter Contour Chart](../types/scatter-chart.md#blazor-scatter-contour-chart) <br /> - [Scatter Polyline Chart](../types/shape-chart.md#blazor-scatter-polyline-chart) (\*) <br /> - [Scatter Polygon Chart](../types/shape-chart.md#blazor-scatter-polygon-chart) (\*) <br /> |
+| Radial Charts    | - [Radial Line Chart](../types/radial-chart.md#blazor-radial-line-chart) <br /> - [Radial Area Chart](../types/radial-chart.md#blazor-radial-area-chart) <br /> - [Radial Pie Chart](../types/radial-chart.md#blazor-radial-pie-chart) <br /> - [Radial Column Chart](../types/radial-chart.md#blazor-radial-column-chart) <br /> |
+| Polar Charts     | - [Polar Marker Chart](../types/polar-chart.md#blazor-polar-marker-chart) <br /> - [Polar Line Chart](../types/polar-chart.md#blazor-polar-line-chart) <br /> - [Polar Area Chart](../types/polar-chart.md#blazor-polar-area-chart) <br /> - [Polar Spline Chart](../types/polar-chart.md#blazor-polar-spline-chart) <br /> - [Polar Spline Area Chart](../types/polar-chart.md#blazor-polar-spline-area-chart) <br /> |
+| Stacked Charts   | - [Stacked Line Chart](../types/stacked-chart.md#blazor-stacked-line-chart) <br /> - [Stacked Area Chart](../types/stacked-chart.md#blazor-stacked-area-chart) <br /> - [Stacked Column Chart](../types/stacked-chart.md#blazor-stacked-column-chart) <br /> - [Stacked Bar Chart](../types/stacked-chart.md#blazor-stacked-bar-chart) <br /> - [Stacked Spline Chart](../types/stacked-chart.md#blazor-stacked-spline-chart) <br /> - [Stacked 100% Line Chart](../types/stacked-chart.md#blazor-stacked-100-line-chart) <br /> - [Stacked 100% Area Chart](../types/stacked-chart.md#blazor-stacked-100-area-chart) <br /> - [Stacked 100% Column Chart](../types/stacked-chart.md#blazor-stacked-100-column-chart) <br /> - [Stacked 100% Bar Chart](../types/stacked-chart.md#blazor-stacked-100-bar-chart) <br /> - [Stacked 100% Spline Chart](../types/stacked-chart.md#blazor-stacked-100-spline-chart) <br /> |
 
 \* Note that the [Scatter Polygon Chart](../types/shape-chart.md) and [Scatter Polyline Chart](../types/shape-chart.md) have better performance than rest of charts if you have a lot of data sources bound to the chart. For more info, see [Series Collection](#series-collection) section. Otherwise, other chart types are faster.
 
@@ -372,7 +369,7 @@ this.LineSeries.MarkerType = MarkerType.None;
 
 ### Chart Resolution
 
-Setting the [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the Blazor charts.
 
@@ -397,8 +394,8 @@ Enabling [Chart Trendlines](chart-trendlines.md) will slightly decrease performa
 
 Usage of x-axis with DateTime support is not recommended if spaces between data points, based on the amount of time span between them, are not important. Instead, ordinal/category axis should be used because it is more efficient in the way it coalesces data. Also, ordinal/category axis doesn’t perform any sorting on the data like the time-based x-axis does.
 
-> [!Note]
-> The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) already uses ordinal/category axis so there is no need to change its properties.
+**Note:** 
+The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) already uses ordinal/category axis so there is no need to change its properties.
 
 This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls.
 
@@ -412,10 +409,10 @@ This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChar
 
 ### Axis Intervals
 
-By default, Blazor charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, Blazor charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
-> [!Note]
-> We do not recommend setting axis minor interval as it will decrease chart performance.
+**Note:** 
+We do not recommend setting axis minor interval as it will decrease chart performance.
 
 This code snippet shows how to set axis major interval in the Blazor charts.
 
@@ -432,7 +429,7 @@ This code snippet shows how to set axis major interval in the Blazor charts.
 
 ### Axis Scale
 
-Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -459,7 +456,7 @@ This code snippet shows how to hide axis labels in the Blazor charts.
 
 ### Axis Labels Abbreviation
 
-Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitle) to a string that represents factor used used to abbreviate your data values.
+Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitle) to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the Blazor charts.
 
@@ -498,25 +495,25 @@ For example, changing these properties on the [`IgbCategoryChart`](mcp:get_api_r
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInterval)<br>  [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisInterval)<br>  [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMinorInterval) |
-| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickStroke) <br>  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickStrokeThickness)<br>  [`XAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickLength)<br>  | [`YAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickStroke) <br>  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickStrokeThickness)<br>  [`YAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickLength)<br> |
-| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMajorStroke)<br>  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMajorStrokeThickness)<br>   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMajorStroke)<br>  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMajorStrokeThickness)<br> |
-| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorStroke)<br>  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorStrokeThickness)<br>   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorStroke)<br>  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorStrokeThickness)<br> |
-| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStroke)<br>  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStrokeThickness)<br>   | [`YAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStroke)<br>  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStrokeThickness)<br> |
-| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTitle)<br>  [`XAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTitleAngle)<br>    | [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitle)<br>  [`YAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitleAngle)<br> |
-| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStrip)<br>   | [`YAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStrip)<br> |
+| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisInterval)<br />  [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval)<br />  [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorInterval) |
+| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickStroke) <br />  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickStrokeThickness)<br />  [`XAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickLength)<br />  | [`YAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickStroke) <br />  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickStrokeThickness)<br />  [`YAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickLength)<br /> |
+| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMajorStroke)<br />  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMajorStrokeThickness)<br />   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMajorStroke)<br />  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMajorStrokeThickness)<br /> |
+| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorStroke)<br />  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorStrokeThickness)<br />   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorStroke)<br />  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorStrokeThickness)<br /> |
+| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStroke)<br />  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStrokeThickness)<br />   | [`YAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStroke)<br />  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStrokeThickness)<br /> |
+| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTitle)<br />  [`XAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTitleAngle)<br />    | [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitle)<br />  [`YAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitleAngle)<br /> |
+| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStrip)<br />   | [`YAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStrip)<br /> |
 
 Or changing properties of an [`IgbAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
 | All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | `TickStroke` , `TickStrokeThickness`, `TickLength` |
-| Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness` |
-| Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness` |
-| Axis Main Line       | `Stroke`, `StrokeThickness` |
-| Axis Titles          | [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ChartTitle), `TitleAngle` |
-| Axis Strips          | `Strip` |
+| Axis Tickmarks       | [`TickStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickStroke) , [`TickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickStrokeThickness), [`TickLength`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickLength) |
+| Axis Major Gridlines | [`MajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=majorStroke), [`MajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=majorStrokeThickness) |
+| Axis Minor Gridlines | [`MinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=minorStroke), [`MinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=minorStrokeThickness) |
+| Axis Main Line       | [`Stroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=stroke), [`StrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=strokeThickness) |
+| Axis Titles          | [`Title`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=chartTitle), `TitleAngle` |
+| Axis Strips          | [`Strip`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=strip) |
 
 ## Performance in Financial Chart
 
@@ -524,24 +521,24 @@ In addition to above performance guidelines, the Blazor [`IgbFinancialChart`](mc
 
 ### Y-Axis Mode
 
-Setting the [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `PercentChange` mode.
+Setting the [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=yAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using [`PercentChange`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries&member=percentChange) mode.
 
 ### Chart Panes
 
-Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=OverlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=indicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=overlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=zoomSliderType) option to [`None`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=VolumeType) property can have the following impact on chart performance:
+Setting the [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=volumeType) property can have the following impact on chart performance:
 
-- `None` - is the least expensive since it does not display the volume pane.
-- `Line` - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
-- `Area` - is more expensive to render than the `Line` volume type.
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) - is more expensive to render than the `Area` volume type and it is recommended when rendering volume data of 1-3 stocks.
+- [`None`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=None) - is the least expensive since it does not display the volume pane.
+- [`Line`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Line) - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
+- [`Area`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Area) - is more expensive to render than the [`Line`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Line) volume type.
+- [`Column`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Column) - is more expensive to render than the [`Area`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Area) volume type and it is recommended when rendering volume data of 1-3 stocks.
 
 ## Performance in Data Chart
 
@@ -593,20 +590,6 @@ You can find more information about related chart types in these topics:
 - [Chart Trendlines](chart-trendlines.md)
 
 ## API References
-
-The following table lists API members mentioned in above sections:
-
-- [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Resolution)
-- [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes)
-- [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=OverlayTypes)
-- [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=VolumeType)
-- [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType)
-- [`XAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMode)
-- [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMode)
-- [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInterval)
-- [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval)
-- [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorInterval)
-- [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorInterval)
-- [`XAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelVisibility)
-- [`YAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelVisibility)
-- [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisIsLogarithmic)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)

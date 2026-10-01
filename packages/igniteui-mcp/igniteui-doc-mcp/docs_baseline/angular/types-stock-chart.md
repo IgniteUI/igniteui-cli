@@ -1,21 +1,22 @@
 ---
-title: Angular Stock/Financial Charts | Ignite UI for Angular
-_description: The Ignite UI for Angular Stock Chart is a composite visualization that renders stock ticker data, or price data in an interactive time-series display. Try for FREE.
-_keywords: Angular Charts, Stock Chart, Financial Chart, Candlestick Chart, OHLC Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series", "FinancialChartType"]
+title: "Angular Stock/Financial Charts | Ignite UI for Angular"
+description: The Ignite UI for Angular Stock Chart is a composite visualization that renders stock ticker data, or price data in an interactive time-series display. Try for FREE.
+keywords: "Angular Charts, Stock Chart, Financial Chart, Candlestick Chart, OHLC Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Stock Chart, sometimes referred to as Angular Financial Chart or Candlestick Chart, is a composite visualization that renders stock ticker data, or price data in an interactive time-series display."
 _tocName: Financial / Stock Chart
 _premium: true
 ---
-
 # Angular Stock Chart
 
 The Ignite UI for Angular Stock Chart, sometimes referred to as Angular Financial Chart or Candlestick Chart, is a composite visualization that renders stock ticker data, or price data in an interactive time-series display. Stock Chart shows stock prices for a ticker over time in a Time Series X-Axis. Also, this chart shows information for a company’s ticker data like Open Price, High Price, Low Price and Close Price (OHLC) for configurable period of time. The Stock Chart offers multiple ways in which the data can be visualized and interpreted, including display modes for price and volume and a host of Stock indicators.
 
 ## Angular Stock Chart Example
 
-You can create Stock Chart using the [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) control by binding your data and optionally setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.financialcharttype.html#Line) value, as shown in the example below.
+You can create Stock Chart using the `IgxFinancialChart` control by binding your data and optionally setting `ChartType` property to `Line` value, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -26,7 +27,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxFinancialChartModule, IgxLegendModule } from "igniteui-angular-charts";
-import { FinancialDataService } from "./FinancialDataService";
 
 
 @NgModule({
@@ -43,34 +43,33 @@ import { FinancialDataService } from "./FinancialDataService";
     IgxFinancialChartModule,
     IgxLegendModule
 ],
-  providers: [FinancialDataService],
+  providers: [],
 schemas: []
 })
 export class AppModule {}
 ```
 ```typescript
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { FinancialDataService } from "./FinancialDataService";
+import { FinancialDataService, StockSeries } from "./FinancialDataService";
 
 @Component({
     standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ FinancialDataService ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
 export class AppComponent {
-    public data: any;
-    constructor(private dataService: FinancialDataService) {
-        this.data = [ this.dataService.getGoog(), this.dataService.getMsft() ];
+    public data: StockSeries[];
+    constructor(dataService: FinancialDataService) {
+        this.data = dataService.getMultiple();
     }
 }
 ```
 ```html
 <div class="container vertical">
     <div class="options vertical" >
-        <label id="legendTitle">Stock Changes: Microsoft vs Google </label>
+        <label id="legendTitle">Stock Changes: Microsoft vs Google (Sep 2021 - Sep 2026)</label>
     </div>
 
     <igx-financial-chart height="100%" width="100%"
@@ -87,8 +86,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
-<div class="divider--half"></div>
 
 ## Stock Chart Recommendations
 
@@ -140,7 +137,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxFinancialChartModule, IgxLegendModule } from "igniteui-angular-charts";
-import { FinancialDataService } from "./FinancialDataService";
 
 
 @NgModule({
@@ -157,34 +153,33 @@ import { FinancialDataService } from "./FinancialDataService";
     IgxFinancialChartModule,
     IgxLegendModule
 ],
-  providers: [FinancialDataService],
+  providers: [],
 schemas: []
 })
 export class AppModule {}
 ```
 ```typescript
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { FinancialDataService } from "./FinancialDataService";
+import { FinancialDataService, StockSeries } from "./FinancialDataService";
 
 @Component({
     standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ FinancialDataService ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
 export class AppComponent {
-    public data: any;
-    constructor(private dataService: FinancialDataService) {
-        this.data = [ this.dataService.getGoog(), this.dataService.getMsft() ];
+    public data: StockSeries[];
+    constructor(dataService: FinancialDataService) {
+        this.data = dataService.getMultiple();
     }
 }
 ```
 ```html
 <div class="container vertical">
     <div class="options vertical" >
-        <label id="legendTitle">Stock Changes: Microsoft vs Google </label>
+        <label id="legendTitle">Stock Changes: Microsoft vs Google (Sep 2021 - Sep 2026)</label>
     </div>
 
     <igx-financial-chart height="100%" width="100%"
@@ -202,11 +197,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stock Chart
 
-In this example the Stock Chart is representing the S\&P 500 over the course of a year; useful for investors and conducting technical analysis and forecasting future pricing/reports.
+In this example the Stock Chart is representing the S&P 500 over the course of a year; useful for investors and conducting technical analysis and forecasting future pricing/reports.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -288,8 +281,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stock Chart Styling
 
 If you need a Stock Chart with more features such as composite other series, you can configure the thickness, outlines, brushes, negative outlines, negative brushes as demonstrated below. In this example, the stock chart is comparing revenue between Amazon, Microsoft and Tesla.
@@ -369,11 +360,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Chart Annotations
 
-The Crosshair Annotation Layer provides crossing lines that meet at the actual value of every targeted series. Crosshair types include: Horizontal, Vertical, and Both. The Crosshairs can also be configured to snap to data points by setting the [`crosshairsSnapToData`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#crosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
+The Crosshair Annotation Layer provides crossing lines that meet at the actual value of every targeted series. Crosshair types include: Horizontal, Vertical, and Both. The Crosshairs can also be configured to snap to data points by setting the `CrosshairsSnapToData` property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
 
 The Final Value Layer provides a quick view along the axis of the ending value displayed in a series.
 
@@ -565,8 +554,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Chart Panes
 
 The following panes are available:
@@ -577,27 +564,23 @@ The following panes are available:
 - Zoom Pane - Controls the zoom of all the panes and it is always rendered at bottom of the chart.
 
 ### Indicator Pane
-
 Financial Indicators are often used by traders to measure changes and to show trends in stock prices. These indicators are usually displayed below the price pane because they do not share the same Y-Axis scale.
 
 By default the indicator panes are not displayed. The toolbar allows the end user to select which indicator to display at run time.
-In order to display an indicator pane initially, the [`indicatorTypes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#indicatorTypes) property must be set to a least one type of indicator, as demonstrated in the following code:
+In order to display an indicator pane initially, the `IndicatorTypes` property must be set to a least one type of indicator, as demonstrated in the following code:
 
 ### Volume Pane
-
-The volume pane represents the number of shares traded during a given period. Low volume would indicate little interest, while high volume would indicate high interest with a lot of trades. This can be displayed using column, line or area chart types. The toolbar allows the end user to display the volume pane by selecting a chart type to render the data at runtime. In order the display the pane, a volume type must be set, as demonstrated in the following code:
+The volume pane represents the number of shares traded during a given period. Low volume would indicate little interest, while high volume would indicate high interest with a lot of trades.  This can be displayed using column, line or area chart types. The toolbar allows the end user to display the volume pane by selecting a chart type to render the data at runtime. In order the display the pane, a volume type must be set, as demonstrated in the following code:
 
 ### Price Pane
-
-This pane displays stock prices and shows the stock's high, low, open and close prices over time. In addition it can display trend lines and overlays. Your end user can choose different chart types from the toolbar. By default, the chart type is set to [`Auto`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.financialcharttype.html#Auto). You can override the default setting, as demonstrated in the following code:
+This pane displays stock prices and shows the stock's high, low, open and close prices over time. In addition it can display trend lines and overlays. Your end user can choose different chart types from the toolbar. By default, the chart type is set to `Auto`. You can override the default setting, as demonstrated in the following code:
 
 Note that is recommended to use line chart type if plotting multiple data sources or if plotting data source with a lot of data points.
 
 ### Zoom Pane
+This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the `ZoomSliderType` to `none` as demonstrated in the following code:
 
-This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#zoomSliderType) to `none` as demonstrated in the following code:
-
-Note that you should set the [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#zoomSliderType) option to the same value as the [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
+Note that you should set the `ZoomSliderType` option to the same value as the `ChartType` option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
 
 In this example, the stock chart is plotting revenue for United States.
 
@@ -688,8 +671,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -701,12 +682,4 @@ You can find more information about related chart features in these topics:
 - [Chart Performance](../features/chart-performance.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType)
-- [`crosshairsSnapToData`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#crosshairsSnapToData)
-- `ItemsSource`
-- [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html)
-- [`indicatorTypes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#indicatorTypes)
-- [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#zoomSliderType)
+`IgxFinancialChart`

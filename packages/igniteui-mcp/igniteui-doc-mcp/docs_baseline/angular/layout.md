@@ -1,20 +1,20 @@
 ---
 title: Angular Layout Manager Directives - MIT license 
-_description: Only Ignite UI for Angular Layout Manager directive provides various styles of responsive and fluid user interfaces.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Layout Manager component, Angular Layout Manager controls
-_license: MIT
+description: Only Ignite UI for Angular Layout Manager directive provides various styles of responsive and fluid user interfaces.
+llms:
+  description: "The Ignite UI for Angular Layout Directives allow developers to specify a layout direction for any children of the container it is applied to."
 _tocName: Layout Manager
 ---
-
 # Angular Layout Manager Directives Overview
 
-<p class="highlight">The Ignite UI for Angular Layout Directives allow developers to specify a layout direction for any children of the container it is applied to. Layout can flow vertically or horizontally, with controls for wrapping, justification, and alignment.</p>
-<div class="divider"></div>
+<div class="highlight">
+The Ignite UI for Angular Layout Directives allow developers to specify a layout direction for any children of the container it is applied to. Layout can flow vertically or horizontally, with controls for wrapping, justification, and alignment.
+</div>
+<igc-divider></igc-divider>
 
 ## Angular Layout Manager Example
 
-<div class="divider--half"></div>
-
+<hr/>
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -83,14 +83,13 @@ export class LayoutSampleComponent { }
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ## Usage
 
-Use the [**igxLayout**](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive on a container element to specify the layout direction for its children:
+Use the [`**igxLayout**`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive on a container element to specify the layout direction for its children:
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Horizontally with Row direction
 
@@ -165,8 +164,7 @@ igx-buttongroup {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Vertically with Column direction
 
@@ -241,18 +239,16 @@ igx-buttongroup {
 }
 ```
 
+<hr/>
 
-<div class="divider--half"></div>
+**Note:** 
+Reverse order using [`igxLayoutReverse`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=reverse)`="true"`.
 
->[!NOTE]
-> Reverse order using [`igxLayoutReverse`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=reverse)`="true"`.
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Customize the order of the elements
 
 Customize the order of the element by using `igxFlexOrder`.
-
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -302,8 +298,7 @@ igx-buttongroup {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Change element spacing
 
@@ -378,8 +373,7 @@ igx-buttongroup {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Position elements along the main axis
 
@@ -465,12 +459,11 @@ igx-buttongroup {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Position elements along the cross axis
 
-Use [`igxLayoutItemAlign`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=itemalign)`="flex-start | center | flex-end"` to specify the elements position along the cross axis according to your preferences.
+Use [`itemAlign`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=itemalign)`="flex-start | center | flex-end"` to specify the elements position along the cross axis according to your preferences.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -556,8 +549,7 @@ igx-buttongroup {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### You can also wrap elements
 
@@ -609,20 +601,18 @@ export class LayoutWrapComponent {
 }
 ```
 
->[!NOTE]
-> The [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive affects the flow directions for that
+**Note:** 
+The [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive affects the flow directions for that
+
 container's **immediate** children.
-<div class="divider--half"></div>
+<hr/>
 
 ## Nesting
 
 Use the [`igxFlex`](mcp:get_api_reference?platform=angular&component=IgxFlexDirective) directive for elements inside an [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) parent to control specific flexbox properties.
-<div class="divider--half"></div>
-
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxLayoutDirective](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective)
-- [IgxFlexDirective](mcp:get_api_reference?platform=angular&component=IgxFlexDirective)
+<hr/>
+- [`IgxLayoutDirective`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective)
+- [`IgxFlexDirective`](mcp:get_api_reference?platform=angular&component=IgxFlexDirective)

@@ -1,13 +1,14 @@
 ---
-title: Web Components Expansion Panel | Expansion Panel | Infragistics
-_description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
-_keywords: Web Components Expansion Panel, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Expansion Panel | Expansion Panel | Infragistics"
+description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
+keywords: "Web Components Expansion Panel, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["Infragistics.Controls.Layouts.Implementation.ExpansionPanel"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Web Components Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded."
 _tocName: Expansion Panel
 ---
-
 # Web Components Expansion Panel Overview
 
 The Ignite UI for Web Components Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded. The expansion panel can be toggled using mouse click, or keyboard interactions.
@@ -20,8 +21,6 @@ igc-expansion-panel{
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -30,7 +29,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent), you need to register it as follows:
+Before using the [`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent), you need to register it as follows:
 
 ```ts
 import {defineComponents, IgcExpansionPanelComponent} from 'igniteui-webcomponents';
@@ -40,18 +39,16 @@ defineComponents(IgcExpansionPanelComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) is as follows:
+The simplest way to start using the [`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) is as follows:
 
 ```html
-<igc-expansion-panel>
-    <div slot="title">Golden Retriever</div>
-    <div slot="subTitle">Medium-large gun dog</div>
-    <div>
-        <p>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
-        and upland game birds, during hunting and shooting parties.[3] The name "retriever" refers to the breed's ability
-        to retrieve shot game undamaged due to their soft mouth. Golden retrievers have an instinctive love of water, and
-        are easy to train to basic or advanced obedience standards.</p>
-    </div>
+<igc-expansion-panel indicator-position="end">
+  <span slot="title">Golden Retriever</span>
+  <span slot="subtitle">Medium-large gun dog</span>
+  <p>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
+  and upland game birds, during hunting and shooting parties.[3] The name "retriever" refers to the breed's ability
+  to retrieve shot game undamaged due to their soft mouth. Golden retrievers have an instinctive love of water, and
+  are easy to train to basic or advanced obedience standards.</p>
 </igc-expansion-panel>
 ```
 
@@ -59,10 +56,10 @@ The simplest way to start using the [`IgcExpansionPanelComponent`](mcp:get_api_r
 
 The Expansion Panel component raises the following events:
 
-- igcClosed - Raised when the expansion panel is collapsed
-- igcOpened - Raised when the expansion panel is expanded
-- igcClosing - Raised when the expansion panel starts collapsing
-- igcOpening - Raised when the expansion panel starts expanding
+- **igcClosed** - Raised when the expansion panel is collapsed
+- **igcOpened** - Raised when the expansion panel is expanded
+- **igcClosing** - Raised when the expansion panel starts collapsing
+- **igcOpening** - Raised when the expansion panel starts expanding
 
 The following sample demonstrates how we can add some logic to our component to make it show/hide the `subtitle` depending on the current state of the panel.
 
@@ -84,17 +81,14 @@ span#fired-event {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Component Customization
+The [`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
+The [`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) allows for easy customization of the header through the exposed `title`, `subTitle` and `indicator` slots.
 
-The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
-Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
-
-The next code sample demonstrates how to configure the component's button to go on the **right**side.
+The next code sample demonstrates how to configure the component's button to go on the **right** side.
 
 ```css
 igc-expansion-panel {
@@ -120,7 +114,19 @@ img {
 }
 ```
 
-<div class="divider--half"></div>
+### Recommended Elements for Slots
+
+When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
+The `indicator` slot is intended for icon-like content. We recommend using the [`<igc-icon>`](../layouts/icon.md) component for this purpose. Alternatively, if you don't want to use an icon for the indicator, a `<span>` element can be used to display text, symbols, or emojis.
+
+```html
+<igc-expansion-panel>
+  <span slot="title">Golden Retriever</span>
+  <span slot="subtitle">Medium-large gun dog</span>
+  <igc-icon slot="indicator" name="arrow_forward"></igc-icon>
+</igc-expansion-panel>
+```
 
 ## Keyboard Navigation
 
@@ -134,7 +140,7 @@ The Ignite UI for Web Components Expansion Panel keyboard navigation is complian
 
 ## Styling
 
-The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) component exposes several CSS parts, giving you full control over its style:
+The [`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -221,13 +227,10 @@ igc-expansion-panel {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcExpansionPanel`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

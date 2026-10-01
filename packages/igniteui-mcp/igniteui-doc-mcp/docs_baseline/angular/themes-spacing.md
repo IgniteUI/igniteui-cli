@@ -1,10 +1,11 @@
 ---
 title: Spacing | Ignite UI for Angular 
-_description: The Ignite UI for Angular provides a way of adjusting paddings and margins with ease on application or component level. 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Native Angular Controls, Native Angular Components Library, spacing, padding, margin
+description: The Ignite UI for Angular provides a way of adjusting paddings and margins with ease on application or component level. 
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Native Angular Controls, Native Angular Components Library, spacing, padding, margin
+llms:
+  description: "Spacing configuration can significantly improve the visual representation of large amounts of data."
 _tocName: Spacing
 ---
-
 # Spacing
 
 Spacing configuration can significantly improve the visual representation of large amounts of data. In Ignite UI for Angular, we provide a pre-defined set of options for adjusting paddings and margins.
@@ -123,19 +124,15 @@ The spacing system uses multipliers to scale base values:
 This cascading approach ensures consistent spacing relationships while giving you fine-grained control through CSS custom properties alone.
 
 ## API References
-
-- [Utilities - Pad](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad)
-- [Utilities - Pad Inline](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad-inline)
-- [Utilities - Pad Block](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad-block)
-
+- `Utilities - Pad`
+- `Utilities - Pad Inline`
+- `Utilities - Pad Block`
 ### Sizing Functions and Mixins
-
-- [Themes - Sizable Mixin](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-sizable)
-- [Themes - Sizable Function](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-sizable)
-
+- `Themes - Sizable Mixin`
+- `Themes - Sizable Function`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

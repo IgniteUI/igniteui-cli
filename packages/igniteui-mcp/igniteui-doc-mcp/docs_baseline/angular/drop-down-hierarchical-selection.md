@@ -1,26 +1,27 @@
 ---
 title: Multi-select Hierarchical Drop Down- Ignite UI for Angular - MIT license 
-_description: Learn how to create a multi-select tree-style hierarchical drop-down with Ignite UI.
-_keywords: Multi-select drop-down, hierarchical selection, ignite ui for angular, infragistics
-_license: MIT
+description: Learn how to create a multi-select tree-style hierarchical drop-down with Ignite UI.
+keywords: Multi-select drop-down, hierarchical selection, ignite ui for angular, infragistics
+license: MIT
+llms:
+  description: "For the drop-down list we will use the DropDown as well as the ToggleActionDirective to open/close the drop-down."
 _tocName: Multi-select Hierarchical Drop Down
 ---
-
 # Multi-select Hierarchical Drop Down
 
 The following samples demonstrate how to create a multi-select hierarchical drop-down that allows the user to select single or multiple options from a tree-style hierarchical drop-down list.
 
 ## Topic Overview
 
-For the drop-down list we will use the [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as well as the [IgxToggleActionDirective](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) to open/close the drop-down.
+For the drop-down list we will use the [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as well as the [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) to open/close the drop-down.
 
-To visualize the hierarchical data in the drop-down, you can use either the [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent) or the [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent).
+To visualize the hierarchical data in the drop-down, you can use either the [`IgxTree`](mcp:get_api_reference?platform=angular&component=IgxTree) or the [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent).
 
-The [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) is used to display the selected items.
+The [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) is used to display the selected items.
 
 ## Selection
 
-To display selected nodes/rows from the list use the [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) by handling the events that notify of selection changes and populate the `selectedNodes` / `selectedRows` array. This can be done by subscribing to the IgxTreeComponent's [`nodeSelection`](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=nodeSelection) event and to the IgxTreeGridComponent's [`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelectionChanging) event.
+To display selected nodes/rows from the list use the [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) by handling the events that notify of selection changes and populate the `selectedNodes` / `selectedRows` array. This can be done by subscribing to the IgxTreeComponent's [`nodeSelection`](mcp:get_api_reference?platform=angular&component=IgxTree&member=nodeSelection) event and to the IgxTreeGridComponent's [`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelectionChanging) event.
 
 To remove the chip from the DOM and deselect the item from the tree/grid, you have to handle the IgxChipComponent's [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event.
 
@@ -250,28 +251,26 @@ button {
 }
 ```
 
->[!NOTE]
->To display the Dropdown component opened initially, it is recommended to set the open method as a callback of the requestAnimationFrame method. This will ensure that the DOM tree is repainted and all elements are correctly positioned.
+**Note:** 
+To display the Dropdown component opened initially, it is recommended to set the open method as a callback of the requestAnimationFrame method. This will ensure that the DOM tree is repainted and all elements are correctly positioned.
 
 ## API References
-
-- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
-- [IgxChipComponent](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
-- [IgxChipsAreaComponent](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent)
-- [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent)
-- [IgxTreeNodeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent)
-- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-
+- [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
+- [`IgxChipsArea`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent)
+- [`IgxTree`](mcp:get_api_reference?platform=angular&component=IgxTree)
+- [`IgxTreeNode`](mcp:get_api_reference?platform=angular&component=IgxTreeNode)
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [Drop Down overview](drop-down.md)
-- [Chip overview](chip.md)
-- [Tree overview](tree.md)
-- [Tree Grid overview](treegrid/tree-grid.md)
+- [Drop Down overview](/drop-down)
+- [Chip overview](/chip)
+- [Tree overview](/tree)
+- [Tree Grid overview](/treegrid/tree-grid)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

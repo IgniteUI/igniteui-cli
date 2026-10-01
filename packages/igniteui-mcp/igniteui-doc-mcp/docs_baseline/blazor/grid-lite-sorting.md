@@ -1,16 +1,17 @@
 ---
-title: Blazor Grid Lite Sorting  | Ignite UI for Blazor | MIT license
-_description: Try Grid Lite with sort operations, sort customization, and remote sorting for Blazor Grid Lite. See demos and examples and build your next app.
-_keywords: sorting, Blazor, {ComponentKeywords}, Ignite UI for Blazor, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Blazor Grid Lite Sorting  | Ignite UI for Blazor | MIT license"
+description: Try Grid Lite with sort operations, sort customization, and remote sorting for Blazor Grid Lite. See demos and examples and build your next app.
+keywords: sorting, Blazor, , Ignite UI for Blazor, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite supports sorting operations on its data source."
 _tocName: Sorting
 ---
-
 # Sort operations
 
-The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `Sortable` property of the column.
+The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=sortable) property of the column.
 
 ```razor
 <IgbGridLite Data="@data">
@@ -62,18 +63,17 @@ You can also control whether the sort operations for string columns should be ca
 
 ## Single and multi-sorting
 
-The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions) property of the grid. The [`Mode`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions&member=Mode) property accepts `GridLiteSortingMode.Single` or `GridLiteSortingMode.Multiple` as values.
+The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions) property of the grid. The [`Mode`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions&member=mode) property accepts [`GridLiteSortingMode.Single`](mcp:get_api_reference?platform=blazor&component=GridLiteSortingMode&member=Single) or [`GridLiteSortingMode.Multiple`](mcp:get_api_reference?platform=blazor&component=GridLiteSortingMode&member=Multiple) as values.
 
 ```razor
 // Enable single-column sorting
 grid.SortingOptions = new IgbGridLiteSortingOptions { Mode = GridLiteSortingMode.Single };
 ```
 
-> [!NOTE]
-> The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
+**Note:** 
+The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-state sorting
-
 The Grid Lite supports tri-state sorting and it is always enabled. End-users will cycle through the following direction states when clicking on sortable column headers:
 
 ```
@@ -143,7 +143,30 @@ The following sample shows the grid [`IgbSortingOptions`](mcp:get_api_reference?
 
 ## Sort Model
 
-The building block for sort operations in the Grid Lite is the `GridLiteSortingExpression` which has the following properties:
+The building block for sort operations in the Grid Lite is the [`IgbGridLiteSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteSortingExpression) which has the following properties:
+
+```typescript
+type SortingExpression<T> = {
+  /**
+   * The `key` of the target column for the sort operation.
+   */
+  key: keyof T;
+  /**
+   * The sort direction for the operation.
+   */
+  direction: 'ascending' | 'descending' | 'none';
+  /**
+   * Should the operation be case sensitive. Applies to the default string type.
+   * If not explicitly passed, it will use the value from the target column sort configuration if applicable.
+   */
+  caseSensitive?: boolean;
+  /**
+   * Specifies a custom comparer function for the operation.
+   * Will use the value from the target column sort configuration if applicable.
+   */
+  comparer?: SortComparer<T, T[keyof T]>;
+};
+```
 
 ```razor
 public class IgbGridLiteSortingExpression
@@ -308,17 +331,17 @@ In the following sample, when you try to sort the **Name** and **Rating** column
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgbGridLite<TItem>`](mcp:get_api_reference?platform=blazor&component=IgbGridLite%3CTItem%3E)<br />
+[`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn)<br />
+[`IgbGridLiteSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteSortingExpression)<br />
+[`IgbGridLiteSortingMode`](mcp:get_api_reference?platform=blazor&component=GridLiteSortingMode)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Filtering](filtering.md)
+- [Column Configuration](./column-configuration.md)
+- [Filtering](./filtering.md)
 
 Our community is active and always welcoming to new ideas.
 

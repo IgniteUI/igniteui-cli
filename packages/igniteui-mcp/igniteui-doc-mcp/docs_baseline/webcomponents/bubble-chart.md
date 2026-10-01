@@ -1,21 +1,20 @@
 ---
 title: Web Components Bubble Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Bubble Chart
-_keywords: Web Components Charts, Bubble Chart, Infragistics
-_license: commercial
-mentionedTypes: ["Series", "BubbleSeries", "ScatterSeries", "MarkerType"]
+description: Infragistics' Web Components Bubble Chart
+keywords: Web Components Charts, Bubble Chart, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Bubble Chart is a type of Scatter Chart that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates."
 _tocName: Bubble Chart
 _premium: true
 ---
-
 # Web Components Bubble Chart
-
 The Ignite UI for Web Components Bubble Chart is a type of [Scatter Chart](scatter-chart.md) that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates. These coordinates of the data point are determined by two numeric data columns. The Bubble Chart draws attention to uneven intervals or clusters of data. This chart is often used to plot scientific data, and can highlight the deviation of collected data from predicted results. The Bubble Chart has many of the characteristics of the [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart) but with the option to have various radius scale sizes.
 
 ## Web Components Bubble Chart Example
-
-You can create Ignite UI for Web Components Bubble Chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and two numeric axes, as shown in the example below.
+You can create Ignite UI for Web Components Bubble Chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the [`IgcBubbleSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and two numeric axes, as shown in the example below.
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -79,12 +78,9 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Bubble Chart with Single Series
-
-You can bind your data to `ItemsSource` property of [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and map data columns using its [`xMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=xMemberPath), [`yMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=yMemberPath), [`radiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusMemberPath) properties, as shown in the example below:
+You can bind your data to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=dataSource) property of [`IgcBubbleSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and map data columns using its [`XMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=xMemberPath), [`YMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=yMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusMemberPath) properties, as shown in the example below:
 
 ```typescript
 export class WorldStatsItem {
@@ -136,11 +132,8 @@ export class WorldStats extends Array<WorldStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Bubble Chart with Multiple Series
-
-In Web Components Bubble Chart, binding multiple data sources works by setting each new data source to `ItemsSource` property of a additional [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent), as shown in the example below:
+In Web Components Bubble Chart, binding multiple data sources works by setting each new data source to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=dataSource) property of a additional [`IgcBubbleSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent), as shown in the example below:
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -205,11 +198,8 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Bubble Chart Styling
-
-In Web Components Bubble Chart, you can customize shape of bubble markers using [`markerType`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerType) property, their size with [`radiusScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusScale) property, and their appearance using [`markerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerBrush), [`markerOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerOutline), [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`fillMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillMemberPath) and [`fillScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillScale) properties. In this example, usage of above properties is demonstrated.
+In Web Components Bubble Chart, you can customize shape of bubble markers using [`MarkerType`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerType) property, their size with [`RadiusScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusScale) property, and their appearance using [`MarkerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerBrush), [`MarkerOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerOutline), [`MarkerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`FillMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillMemberPath) and [`FillScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillScale) properties. In this example, usage of above properties is demonstrated.
 
 ```typescript
 export class WorldStatsItem {
@@ -260,8 +250,6 @@ export class WorldStats extends Array<WorldStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Additional Resources
 
@@ -269,20 +257,6 @@ export class WorldStats extends Array<WorldStatsItem> {
 - [Shape Chart](shape-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent)
-- [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent)
-- `ItemsSource`
-- [`fillMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillMemberPath)
-- [`fillScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillScale)
-- [`markerType`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerType)
-- [`markerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerBrush)
-- [`markerOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerOutline)
-- [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerThickness)
-- [`radiusScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusScale)
-- [`radiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusMemberPath)
-- [`xMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=xMemberPath)
-- [`yMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=yMemberPath)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcBubbleSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent)
+[`IgcScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent)

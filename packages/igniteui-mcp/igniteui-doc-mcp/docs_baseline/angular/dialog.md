@@ -1,14 +1,17 @@
 ---
 title: Angular Dialog Window Component - MIT license 
-_description: Whether building informative dialogs or data manipulation windows, Ignite UI for Angular Dialog Window component can manage information shown in real-time for fast capability.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Dialog Window component, Angular Dialog Window control, Angular Dialog Component
-_license: MIT
+description: Whether building informative dialogs or data manipulation windows, Ignite UI for Angular Dialog Window component can manage information shown in real-time for fast capability.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Dialog Window component, Angular Dialog Window control, Angular Dialog Component
+license: MIT
+llms:
+  description: "Use the Ignite UI for Angular Dialog Window component to display messages or present forms for users to fill out."
 _tocName: Dialog Window
 ---
-
 # Angular Dialog Window Component Overview
 
-<p class="highlight">Use the Ignite UI for Angular Dialog Window component to display messages or present forms for users to fill out. The component opens a dialog window centered on top of app content. You can also provide a standard alert message that users can cancel.</p>
+<div class="highlight">
+Use the Ignite UI for Angular Dialog Window component to display messages or present forms for users to fill out. The component opens a dialog window centered on top of app content. You can also provide a standard alert message that users can cancel.
+</div>
 
 ## Angular Dialog Window Example
 
@@ -42,7 +45,7 @@ export class DialogSample1Component { }
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Dialog Window
 
@@ -52,7 +55,7 @@ To get started with the Ignite UI for Angular Dialog Window component, first you
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxDialogModule` in your **app.module.ts** file.
 
@@ -101,9 +104,12 @@ import { IgxRippleDirective } from 'igniteui-angular/directives';
 export class HomeComponent {}
 ```
 
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 Now that you have the Ignite UI for Angular Dialog Window module or directives imported, you can start using the `igx-dialog` component.
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Using the Angular Dialog Window
 
@@ -113,7 +119,7 @@ To create an alert dialog, in the template of our email component, we add the fo
 [`leftButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonLabel) and handle [`leftButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonSelect) event:
 
 ```html
-<!--email.component.html-->
+{/*email.component.html*/}
 <button igxButton="contained" igxRipple="white" (click)="alert.open()">Show Alert Dialog</button>
 
 <igx-dialog #alert
@@ -126,7 +132,7 @@ To create an alert dialog, in the template of our email component, we add the fo
 
 If everything's done right, you should see the demo sample shown above in your browser.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Standard Dialog
 
@@ -134,7 +140,7 @@ To create a standard dialog, in the template of our file manager component, we a
 [`leftButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonLabel), [`rightButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=rightButtonLabel), and handle [`leftButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonSelect) and [`rightButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=rightButtonSelect) events:
 
 ```html
-<!--file-manager.component.html-->
+{/*file-manager.component.html*/}
 <button igxButton="contained" igxRipple="white" (click)="dialog.open()">Show Confirmation Dialog</button>
 
 <igx-dialog #dialog title="Confirmation"
@@ -145,7 +151,6 @@ To create a standard dialog, in the template of our file manager component, we a
     message="Are you sure you want to delete the Microsoft_Annual_Report_2015.pdf and Microsoft_Annual_Report_2015.pdf files?">
 </igx-dialog>
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -185,23 +190,27 @@ export class DialogSample2Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Custom Dialog
 
 To create a custom dialog, in the template of our sign-in component, we add the following code. The dialog title area can be customized using the `igxDialogTitle` directive or the `igx-dialog-title` selector. The actions area can be customized using the `igxDialogActions` directive or the `igx-dialog-actions` selector.
-We add two input groups consisting of a label and and input decorated with the [**igxLabel**](input-group.md) and [**igxInput**](input-group.md) directives.
+We add two input groups consisting of a label and and input decorated with the [**igxLabel**](/input-group) and [**igxInput**](/input-group) directives.
 
 ```html
-<!--sign-in.component.html-->
+{/*sign-in.component.html*/}
 <button igxButton="contained" igxRipple="white" (click)="alert.open()">Show Custom Dialog</button>
 
 <igx-dialog #form [closeOnOutsideSelect]="true">
     <igx-dialog-title>
         <div class="dialog-container">
+
             <igx-icon>vpn_key</igx-icon>
-            <div class="dialog-title">Sign In</div>
-        </div>
+            <div class="dialog-title">
+Sign In
+</div>
+        
+</div>
     </igx-dialog-title>
 
     <form class="signInForm">
@@ -224,13 +233,10 @@ We add two input groups consisting of a label and and input decorated with the [
     <div igxDialogActions>
         <button igxButton (click)="form.close()">CANCEL</button>
         <button igxButton (click)="form.close()">SIGN IN</button>
-    </div>
+    
+</div>
 </igx-dialog>
 ```
-
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -310,13 +316,13 @@ export class DialogSample3Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Position and Animation Settings
 
 There are two ways to change the position at which the `igx-dialog` will be shown:
 
-- Using [`open`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=open) method and pass a valid [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). Example:
+- Using [`open`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=open) method and pass a valid [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). Example:
 
 ```typescript
 import { PositionSettings, OverlaySettings, GlobalPositionStrategy, NoOpScrollStrategy, HorizontalAlignment, VerticalAlignment } from 'igniteui-angular/core';
@@ -343,7 +349,7 @@ export class HomeComponent {
 }
 ```
 
-- Using the `positionSettings` `@Input`. Example:
+- Using the [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=positionSettings) `@Input`. Example:
 
 ```html
 <igx-dialog #alert title="Notification" [positionSettings]="positionSettings" >
@@ -370,8 +376,9 @@ export class HomeComponent {
 }
 ```
 
-> [!Note]
-> The same approach should be used for the animation settings, use the `openAnimation` and `closeAnimation` properties to define animation params like duration.
+**Note:** 
+The same approach should be used for the animation settings, use the `openAnimation` and `closeAnimation` properties to define animation params like duration.
+
 `params` object example:
 
 ```typescript
@@ -396,36 +403,13 @@ By default when the dialog is opened the Tab key focus is trapped within it, i.e
 
 Changing the `$background` property automatically updates the following dependent properties:
 
-<table class="collapsible-table">
-    <thead>
-        <tr>
-        <th>Primary Property</th>
-        <th>Dependent Property</th>
-        <th>Description</th>
-        </tr>
-    </thead>
-    <tbody class="group">
-        <tr class="primary">
-        <td>
-            <details><summary><strong>$background</strong></summary></details>
-        </td>
-        <td>$title-color</td>
-        <td>The dialog title text color.</td>
-        </tr>
-        <tr class="dependent">
-        <td></td>
-        <td>$message-color</td>
-        <td>The dialog message text color.</td>
-        </tr>
-        <tr class="dependent">
-        <td></td>
-        <td>$border-color</td>
-        <td>The border color used for dialog component.</td>
-        </tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$background** | $title-color | The dialog title text color. |
+|  | $message-color | The dialog message text color. |
+|  | $border-color | The border color used for dialog component. |
 
-To get started with styling the dialog window, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the dialog window, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -434,7 +418,7 @@ To get started with styling the dialog window, we need to import the `index` fil
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`dialog-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-dialog-theme) and accepts parameters that style the dialog. By providing the `$background`, the theme automatically selects suitable contrast colors for the foreground properties. However, you can still manually define them if desired.
+Following the simplest approach, we create a new theme that extends the `dialog-theme` and accepts parameters that style the dialog. By providing the `$background`, the theme automatically selects suitable contrast colors for the foreground properties. However, you can still manually define them if desired.
 
 ```scss
 $my-dialog-theme: dialog-theme(
@@ -444,8 +428,9 @@ $my-dialog-theme: dialog-theme(
 );
 ```
 
-> [!NOTE]
-> In order to style any additional components that are used as part of the dialog window's content (such as the [`IgxButton`](button.md)), an additional theme should be created that is specific to the respective component and is placed under the dialog window's scope only (so it does not affect the rest of the application).
+**Note:** 
+In order to style any additional components that are used as part of the dialog window's content (such as the [`IgxButton`](./inputs/button.md)), an additional theme should be created that is specific to the respective component and is placed under the dialog window's scope only (so it does not affect the rest of the application).
+
 
 ```scss
 $custom-button: contained-button-theme(
@@ -454,22 +439,22 @@ $custom-button: contained-button-theme(
 );
 ```
 
-Since the dialog window uses the [`IgxOverlayService`](overlay.md), in order for our custom theme to reach down the dialog window that we want to style, we will provide a specific outlet where the dialog window will be placed in the DOM when it is visible.
+Since the dialog window uses the [`IgxOverlayService`](/overlay), in order for our custom theme to reach down the dialog window that we want to style, we will provide a specific outlet where the dialog window will be placed in the DOM when it is visible.
 
 ```html
 <div igxOverlayOutlet>
   <igx-dialog #dialog1>
-      <!-- .... -->
+      {/* .... */}
   </igx-dialog>
 </div>
 ```
 
-> [!NOTE]
-> In order to learn more about the various options for providing themes to elements that are shown by using the [`IgxOverlayService`](overlay.md), you can take a look at the [Overlay styling topic](overlay-styling.md).
+**Note:** 
+In order to learn more about the various options for providing themes to elements that are shown by using the [`IgxOverlayService`](/overlay), you can take a look at the [Overlay styling topic](/overlay-styling).
 
 ### Including Themes
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 The last step is to **include** the component theme in our application.
 
@@ -479,8 +464,9 @@ The last step is to **include** the component theme in our application.
 }
 ```
 
->[!NOTE]
->If the component is using an [`Emulated`](themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep` to apply the styles.
+**Note:** 
+In some component templates, Emulated View Encapsulation can still prevent the generated token declarations from reaching nested Ignite UI elements. If the theme does not take effect, use `::ng-deep` as shown below or move the theme to a global stylesheet.
+
 
 ```scss
 :host {
@@ -578,26 +564,23 @@ $custom-button: contained-button-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxDialogComponent](mcp:get_api_reference?platform=angular&component=IgxDialogComponent)
-- [IgxDialogComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-dialog-theme)
-- [IgxOverlay](mcp:get_api_reference?platform=angular&component=OverlaySettings)
-- [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-
+<hr/>
+- [`IgxDialog`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent)
+- `IgxDialogComponent Styles`
+- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- `IgxOverlay Styles`
 ## Theming Dependencies
 
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
+- `IgxButton Theme`
+- `IgxRipple Theme`
+- `IgxOverlay Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

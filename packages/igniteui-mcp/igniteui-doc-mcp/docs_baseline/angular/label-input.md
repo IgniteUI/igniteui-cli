@@ -1,11 +1,12 @@
 ---
 title: Angular Label and Input Directives - MIT license 
-_description: With Ignite UI for Angular Label and Input directives, developers can decorate and style single-line or multi-line input elements, add additional CSS styles and integrate with other controls.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Label component, Angular Label control, Angular Input component, Angular Input control, Input component, Input control, Label component, Label control, Angular Input directive, Angular Label directive, Angular Forms, Angular Reactive Forms, Angular Form Validation
-_license: MIT
+description: With Ignite UI for Angular Label and Input directives, developers can decorate and style single-line or multi-line input elements, add additional CSS styles and integrate with other controls.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular Label component, Angular Label control, Angular Input component, Angular Input control, Input component, Input control, Label component, Label control, Angular Input directive, Angular Label directive, Angular Forms, Angular Reactive Forms, Angular Form Validation
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Input and Label directives are used to decorate and style single-line or multi-line input elements in an igx-input-group component."
 _tocName: Label & Input
 ---
-
 # Angular Label & Input Directives Overview
 
 The Ignite UI for Angular Input and Label directives are used to decorate and style single-line or multi-line input elements in an `igx-input-group` component.
@@ -42,7 +43,7 @@ export class InputGroupSample1Component extends BaseInputGroupSampleComponent { 
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Label & Input
 
@@ -52,7 +53,7 @@ To get started with the Ignite UI for Angular Label and Input directives, first 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxInputGroupModule` in your **app.module.ts** file.
 
@@ -62,7 +63,6 @@ The next step is to import the `IgxInputGroupModule` in your **app.module.ts** f
 import { FormsModule } from '@angular/forms';
 import { IgxInputGroupModule } from 'igniteui-angular/input-group';
 // import { IgxInputGroupModule } from '@infragistics/igniteui-angular'; for licensed package
-
 
 @NgModule({
     ...
@@ -158,7 +158,7 @@ export class InputGroupSample2Component extends BaseInputGroupSampleComponent { 
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Data Binding
 
@@ -182,7 +182,7 @@ in our markup:
 
 ### Focus & Text Selection
 
-You can add logic to force `focus` on input elements using the [`igxFocus`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive.
+You can add logic to force `focus` on input elements using the [`IgxFocusDirective`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive.
 
 ```html
 <igx-input-group>
@@ -191,10 +191,10 @@ You can add logic to force `focus` on input elements using the [`igxFocus`](mcp:
 </igx-input-group>
 ```
 
-> [!NOTE]
-> To use the [`igxFocus`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive, you have to import the [`IgxFocusModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfocusmodule.html).
+**Note:** 
+To use the [`IgxFocusDirective`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive, you have to import the [`IgxFocusDirective`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective).
 
-If you want the text in an input element, marked with `igxInput`, to be selected on focus, you have to enable the [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive.
+If you want the text in an input element, marked with `igxInput`, to be selected on focus, you have to enable the [`IgxTextSelectionDirective`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive.
 
 ```html
 <igx-input-group>
@@ -208,8 +208,8 @@ If you want the text in an input element, marked with `igxInput`, to be selected
 </igx-input-group>
 ```
 
-> [!NOTE]
-> To use the [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive, you have to import the [`IgxTextSelectionModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectionmodule.html).
+**Note:** 
+To use the [`IgxTextSelectionDirective`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive, you have to import the [`IgxTextSelectionDirective`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective).
 
 ```typescript
 import { Component } from '@angular/core';
@@ -257,27 +257,24 @@ export class InputTextSelectionComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Input Group
 
-The Ignite UI for Angular Input Group component helps developers to create easy-to-use and aesthetic forms. For further information, you can read the [Input Group documentation](input-group.md).
+The Ignite UI for Angular Input Group component helps developers to create easy-to-use and aesthetic forms. For further information, you can read the [Input Group documentation](/input-group).
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxLabelDirective](mcp:get_api_reference?platform=angular&component=IgxLabelDirective)
-- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-
+<hr/>
+- [`IgxLabelDirective`](mcp:get_api_reference?platform=angular&component=IgxLabelDirective)
+- [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Related topics:
 
-- [Input Group](input-group.md)
+- [Input Group](/input-group)
 
 Our community is active and always welcoming to new ideas.
 

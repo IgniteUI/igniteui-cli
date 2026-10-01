@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Shape Polygon Series | Infragistics
-_description: Use Infragistics Angular map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for Angular map's series!
-_keywords: Angular map, shape polygon series, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Angular Map | Data Visualization Tools | Shape Polygon Series | Infragistics"
+description: Use Infragistics Angular map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for Angular map's series!
+keywords: "Angular map, shape polygon series, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In Angular map component, you can use the GeographicShapeSeries to display geo-spatial data using shape polygons in a geographic context."
 _tocName: Geographic Polygon Map
 _premium: true
 ---
-
 # Angular Geographic Polygon Map
 
-In Angular map component, you can use the [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
+In Angular map component, you can use the `IgxGeographicShapeSeries` to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
 
 ## Angular Geographic Polygon Map Example
 
@@ -169,22 +170,16 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
-The [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) works a lot like the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) except that geo-spatial data is rendered with polygons instead of polylines.
+The `IgxGeographicShapeSeries` works a lot like the `IgxGeographicPolylineSeries` except that geo-spatial data is rendered with polygons instead of polylines.
 
 ## Data Requirements
-
-Similar to other types of geographic series in the map control, the [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriesbasecomponent.html#shapeMemberPath) property. The [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) uses points of this mapped data column to plot polygons in the map control.
+Similar to other types of geographic series in the map control, the `IgxGeographicShapeSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicShapeSeries` uses points of this mapped data column to plot polygons in the map control.
 
 ## Code Snippet
-
-The following code demonstrates how to bind the [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) to shapes of countries in the world loaded from a shape file using the [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource).
-
-<!-- Angular -->
+The following code demonstrates how to bind the `IgxGeographicShapeSeries` to shapes of countries in the world loaded from a shape file using the [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord).
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -300,9 +295,6 @@ export class MapTypeShapePolygonSeriesComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html)
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriesbasecomponent.html#shapeMemberPath)
-- [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource)
+`IgxGeographicPolylineSeries`
+`IgxGeographicShapeSeries`
+[`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord)

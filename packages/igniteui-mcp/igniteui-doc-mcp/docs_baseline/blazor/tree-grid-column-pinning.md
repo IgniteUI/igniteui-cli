@@ -1,19 +1,18 @@
 ---
-title: Blazor Tree Grid Column Pinning - Ignite UI for Blazor
-_description: Want to use the Pinning feature of the Ignite UI for Blazor when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-pinning
+title: "Blazor Tree Grid Column Pinning - Ignite UI for Blazor"
+description: Want to use the Pinning feature of the Ignite UI for Blazor when you develop your next app? Easily lock column or change column order with rich API.
+keywords: "Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-pinning"
+llms:
+  description: "The Ignite UI for Blazor Column Pinning feature in Blazor Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the IgbTreeGrid."
+_componentKey: TreeGrid
 _tocName: Column Pinning
 _premium: true
 ---
-
 # Blazor Tree Grid Column Pinning
 
-The Ignite UI for Blazor Column Pinning feature in Blazor Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). There’s an integrated UI for Column Pinning, accessible via the Blazor Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Blazor Column Pinning feature in Blazor Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the `IgbTreeGrid`. There’s an integrated UI for Column Pinning, accessible via the Blazor Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Blazor Tree Grid Column Pinning Example
 
@@ -136,23 +135,33 @@ public class EmployeesFlatData
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`Pinned`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Pinned) property of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). Pinned columns are rendered on the left side of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) body.
+Column pinning is controlled through the [`IgbColumn.pinned`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pinned) property of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). Pinned columns are rendered on the left side of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) body.
 
-<!-- ComponentEnd: TreeGrid -->
-
-You may also use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s [`PinColumn`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PinColumn) or [`UnpinColumn`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=UnpinColumn) methods of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) to pin or unpin columns by their field name:
-
-<!-- ComponentEnd: TreeGrid -->
+You may also use the [`IgbTreeGrid.pinColumn`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=pinColumn) or [`IgbTreeGrid.unpinColumn`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=unpinColumn) methods of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) to pin or unpin columns by their field name:
 
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-<!-- Angular, React, WebComponents -->
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPinScript` event and providing a JavaScript function for changing the [`IgbPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=blazor&component=IgbPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
+```razor
+<IgbTreeGrid Data=data AutoGenerate=true ColumnPinScript="onColumnPin"/>
+```
+
+```javascript
+//In JavaScript
+function onColumnPin(e) {
+    if (e.detail.column.field == "Country") {
+        e.detail.insertAtIndex = 0;
+    }
+}
+
+igRegisterScript("onColumnPin", onColumnPin, false);
+
+```
 
 ## Pinning Position
 
-You can change the column pinning position via the [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`IgbColumn.pinningPosition`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pinningPosition) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```razor
@@ -163,6 +172,7 @@ When set to End the columns are rendered at the end of the grid, after the unpin
         Columns = ColumnPinningPosition.End
     };
 }
+
 ```
 
 ### Demo
@@ -335,7 +345,6 @@ public class EmployeesFlatDetails
 ```
 
 ### Column Pinning on Both Sides
-
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 
 ```razor
@@ -587,13 +596,14 @@ This can be done by creating a header template for the columns with a custom ico
     <IgbColumn Field="OnPTO" DataType="Boolean"
     HeaderTemplateScript="WebTreeGridPinHeaderTemplate" Name="column6" @ref="column6"></IgbColumn>
 </IgbTreeGrid>
+```
 
+```javascript
 // In JavaScript
-
 igRegisterScript("WebTreeGridPinHeaderTemplate", (ctx) => {
     var html = window.igTemplating.html;
     window.toggleColumnPin = function toggleColumnPin(field) {
-        var grid = document.getElementsByTagName("igc-tree-grid")[0];
+        var grid = document.getElementsByTagName["igc-tree-grid"](0);
         var col = grid.getColumnByName(field);
         col.pinned = !col.pinned;
         grid.markForCheck();
@@ -604,6 +614,8 @@ igRegisterScript("WebTreeGridPinHeaderTemplate", (ctx) => {
 </div>`;
 }, false);
 ```
+
+On click of the custom icon the pin state of the related column can be changed using the column's API methods.
 
 ### Demo
 
@@ -746,11 +758,9 @@ public class EmployeesFlatData
 
 - Setting column widths in percentage (%) explicitly makes the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set an `ID` for the grid first:
 
 ```razor
@@ -905,13 +915,9 @@ public class EmployeesFlatData
 }
 ```
 
-<!-- end: WebComponents, Blazor -->
-
 ## API References
-
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

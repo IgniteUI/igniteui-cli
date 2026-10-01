@@ -1,14 +1,15 @@
 ---
-title: Web Components Map | Data Visualization Tools | Binding CSV Data | Infragistics
-_description: Learn how to use Infragistics' Web Components map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, plot data, Ignite UI for Web Components, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicHighDensityScatterSeries"]
+title: "Web Components Map | Data Visualization Tools | Binding CSV Data | Infragistics"
+description: Learn how to use Infragistics' Web Components map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, plot data, Ignite UI for Web Components, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicHighDensityScatterSeries"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Web Components map component, you can plot geographic data loaded from various file types."
 _tocName: Binding CSV File
 _premium: true
 ---
-
 # Web Components Binding CSV Files with Geographic Locations
 
 With the Ignite UI for Web Components map component, you can plot geographic data loaded from various file types. For example, you can load geographic locations from a comma separated values (CSV) file.
@@ -20,21 +21,17 @@ With the Ignite UI for Web Components map component, you can plot geographic dat
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from CSV file:
 
-```ts
+```csv
 City,Lat,Lon,State,Code,County,Density,Population
 New York,40.7856,-74.0093,New Jersey,NJ,Hudson,21057,54227
 Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) in the map component to an array of objects created from loaded CSV file with geographic locations.
+The following code loads and binds `IgcGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded CSV file with geographic locations.
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -96,11 +93,4 @@ onDataLoaded(csvData: string) {
 ```
 
 ## API References
-
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#longitudeMemberPath)
-- [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMaximumColor)
-- [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#heatMinimumColor)
-- [`pointExtent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#pointExtent)
+`IgcGeographicHighDensityScatterSeries`

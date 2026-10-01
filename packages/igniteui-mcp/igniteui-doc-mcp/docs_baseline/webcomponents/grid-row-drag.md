@@ -1,19 +1,18 @@
 ---
-title: Web Components Grid Row Dragging - Ignite UI for Web Components
-_description: Row dragging in Web Components Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-drag
+title: "Web Components Grid Row Dragging - Ignite UI for Web Components"
+description: Row dragging in Web Components Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-drag"
+llms:
+  description: "The Ignite UI for Web Components Row Dragging feature in Web Components Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse."
+_componentKey: Grid
 _tocName: Row Dragging
 _premium: true
 ---
-
 # Row Dragging in Web Components Grid
 
-The Ignite UI for Web Components Row Dragging feature in Web Components Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component and is configurable via the [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) input.
+The Ignite UI for Web Components Row Dragging feature in Web Components Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component and is configurable via the [`IgcGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) input.
 
 ## Web Components Grid Row Drag Example
 
@@ -92,50 +91,98 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), all you need to do is set the grid's [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), all you need to do is set the grid's [`IgcGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's [`IgcGrid.rowDragStart`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDragStart) event to fire. Releasing the click at any time will cause [`IgcGrid.rowDragEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDragEnd) event to fire.
 
 ```html
 <igc-grid row-draggable="true">
 </igc-grid>
 ```
 
-### Templating the Drag Icon
+### Drop Areas
 
-The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
+First we need to register the `DragDropModule`:
+
+```typescript
+import { IgcDragDropModule } from 'igniteui-webcomponents';
+// ...
+ModuleManager.register(
+    IgcDragDropModule
+);
+```
+
+In this case, our drop-area will be a whole second grid where we'll drop the rows.
 
 ```html
-<igc-grid row-draggable="true" id="grid">
+<igc-grid id="targetGrid" auto-generate="false" primary-key="ID">
 </igc-grid>
 ```
 
 ```ts
 constructor() {
-    var grid = this.grid = document.getElementById('grid') as IgcHierarchicalGridComponent;
-    grid.dragIndicatorIconTemplate = this.dragIndicatorIconTemplate;
+    var targetGrid = this.targetGrid = document.getElementById('targetGrid') as IgcGridComponent;
+
+    this._bind = () => {
+        targetGrid.data = this.data;
+        targetGrid.emptyGridTemplate = this.dragHereTemplate;
+        targetGrid.enter = this.onEnterAllowed;
+        targetGrid.leave = this.onLeaveAllowed;
+        targetGrid.dropped = this.onDropAllowed;
+    }
+    this._bind();
 }
 
-public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
-    return html`<igc-icon name="drag_handle" collection="material"></igc-icon>`;
+public dragHereTemplate = (ctx: IgcGridEmptyTemplateContext) => {
+    return html`Drop a row to add it to the grid`;
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```typescript
+export class IgcGridRowDragComponent {
+    constructor() {
+        var sourceGrid = this.sourceGrid = document.getElementById('sourceGrid') as IgcGridComponent;
+        var targetGrid = this.targetGrid = document.getElementById('targetGrid') as IgcGridComponent;
+    }
 
-<!-- ComponentEnd: TreeGrid -->
+    public onDropAllowed(args) {
+        this.targetGrid.addRow(args.dragData.data);
+        this.sourceGrid.deleteRow(args.dragData.key);
+    }
+}
+```
 
-<!-- ComponentEnd: Grid -->
+```ts
+constructor() {
+    var grid = this.grid = document.getElementById('grid') as IgcGridComponent;
+
+    this._bind = () => {
+        grid.rowDragGhost = this.rowDragGhostTemplate;
+    }
+    this._bind();
+}
+
+public rowDragGhostTemplate = (ctx: IgcGridRowDragGhostContext) => {
+    return html`<igc-icon fontSet="material">arrow_right_alt</igc-icon>`;
+}
+
+```
+
+### Templating the Drag Icon
+
+The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
+
+Once our drop handlers are properly configured, we're good to go!
+
+The result of the configuration can be seem below:
+
+#### Example Demo
+
+
 
 ## Application Demo
-
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
 
 ### Row Reordering Demo
 
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
-
-<!-- ComponentStart: Grid -->
 
 ```html
 <igc-grid id="grid" row-draggable="true" primary-key="ID">
@@ -149,30 +196,22 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Make sure that there is a [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-> [!Note]
-> Make sure that there is a [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
-
-Once [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
-
-<!-- ComponentStart: Grid -->
+Once [`IgcGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=data) array
-
-<!-- ComponentEnd: Grid -->
+- Once you've found the **target** row, swap the records' places in the `Data` array
 
 Below, you can see this implemented:
-
-<!-- ComponentStart: Grid -->
 
 ```typescript
 public webGridReorderRowHandler(args: CustomEvent<IgcRowDragEndEventArgs>): void {
     const ghostElement = args.detail.dragDirective.ghostElement;
     const dragElementPos = ghostElement.getBoundingClientRect();
-    const grid = document.getElementsByTagName("igc-grid")[0] as any;
+    const grid = document.getElementsByTagName["igc-grid"](0) as any;
     const rows = Array.prototype.slice.call(document.getElementsByTagName("igx-grid-row"));
     const currRowIndex = this.getCurrentRowIndex(rows,
     { x: dragElementPos.x, y: dragElementPos.y });
@@ -193,17 +232,12 @@ public getCurrentRowIndex(rowList: any[], cursorPosition) {
     }
     return -1;
 }
-```
 
-<!-- ComponentEnd: Grid -->
+```
 
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 
-<!-- ComponentStart: Grid -->
-
 Holding onto the drag icon will allow you to move a row anywhere in the grid:
-
-<!-- ComponentEnd: Grid -->
 
 ```typescript
 export class CustomersDataItem {
@@ -245,23 +279,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
-
 ## Limitations
 
-Currently, there are no known limitations for the [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable).
+Currently, there are no known limitations for the [`IgcGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable).
 
 ## API References
-
-- [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowDraggable)
-- `RowDragStart`
-- `RowDragEnd`
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 ## Additional Resources
-
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

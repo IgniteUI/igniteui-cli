@@ -1,14 +1,17 @@
 ---
 title: Theming with Sass
-_description: The Ignite UI for Angular Theming is built with Sass and exposes a rich set of API functions and mixins that make restyling components or the entire application easier.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Component, Angular Theming
+description: The Ignite UI for Angular Theming is built with Sass and exposes a rich set of API functions and mixins that make restyling components or the entire application easier.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Component, Angular Theming
+llms:
+  description: "Ignite UI for Angular doesn't shy away from exposing its Sass theming API so you can take full control of the styling in your application."
 _tocName: Overview
 ---
-
 # Theming with Sass
 
-<div class="highlight">Ignite UI for Angular doesn't shy away from exposing its Sass theming API so you can take full control of the styling in your application. The API we expose is, to a large extent, the exact same API we use internally to build every single theme we bundle with the product. It's abstract and allows for theming granularity on different levels - from a single component the entire application suite.</div>
-<div class="divider"></div>
+<div class="highlight">
+Ignite UI for Angular doesn't shy away from exposing its Sass theming API so you can take full control of the styling in your application. The API we expose is, to a large extent, the exact same API we use internally to build every single theme we bundle with the product. It's abstract and allows for theming granularity on different levels - from a single component the entire application suite.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -20,8 +23,8 @@ Since we want to ensure specific aspects of our design system remain unscathed, 
 
 We will explain every single concept in detail and the related APIs so that you can feel truly in control of our theming engine.
 
-> [!NOTE]
-> Although the [**Sass**](https://sass-lang.com) theming library is powerful, most people will only need to modify a few CSS variables to customize the default theme. We encourage you to read through the CSS variables documentation first. You should only need to use Sass if you wanted to modify the produced theme on a deeper level. A good example would be when you need to create several different reusable theme variants for the same component, or to tree-shake the produced CSS to only include styles for the components you use in your app.
+**Note:** 
+Although the [**Sass**](https://sass-lang.com) theming library is powerful, most people will only need to modify a few CSS variables to customize the default theme. We encourage you to read through the CSS variables documentation first. You should only need to use Sass if you wanted to modify the produced theme on a deeper level. A good example would be when you need to create several different reusable theme variants for the same component, or to tree-shake the produced CSS to only include styles for the components you use in your app.
 
 ## Palettes
 
@@ -53,24 +56,24 @@ Finally, we have component themes. Palettes, Schemas, Elevations, Roundness, and
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Learn the concepts:
 
-- [Configuration](./configuration.md)
-- [Palettes](./palettes.md)
-- [Typography](./typography.md)
-- [Elevations](./elevations.md)
-- [Schemas](./schemas.md)
-- [Animations](./animations.md)
+- [Configuration](/themes/sass/configuration)
+- [Palettes](/themes/sass/palettes)
+- [Typography](/themes/sass/typography)
+- [Elevations](/themes/sass/elevations)
+- [Schemas](/themes/sass/schemas)
+- [Animations](/themes/sass/animations)
 
 Learn how to create application-wide themes:
 
-- [Application Themes](./global-themes.md)
+- [Application Themes](/themes/sass/global-themes)
 
 Learn how to create component-specific themes:
 
-- [Component Themes](./component-themes.md)
+- [Component Themes](/themes/sass/component-themes)
 
 Our community is active and always welcoming to new ideas.
 

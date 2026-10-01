@@ -1,16 +1,15 @@
 ---
 title:  Row actions in Blazor Hierarchical Grid - Infragistics
-_description: The HierarchicalGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
-_keywords: Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-actions
+description: The IgbHierarchicalGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
+keywords: "Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-actions"
+llms:
+  description: "The Ignite UI for Blazor Row Actions feature in Blazor Hierarchical Grid enables developers to use an ActionStrip and utilize CRUD for row/cell components and row pinning."
+_componentKey: HierarchicalGrid
 _tocName: Row Actions
 _premium: true
 ---
-
 # Row Actions in Blazor Hierarchical Grid
 
 The Ignite UI for Blazor Row Actions feature in Blazor Hierarchical Grid enables developers to use an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) – editing and pinning.
@@ -19,13 +18,25 @@ The Ignite UI for Blazor Row Actions feature in Blazor Hierarchical Grid enables
 
 The predefined actions UI components are:
 
-- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) - includes functionality and UI specifically designed for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowEditable) option and row deletion of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
+- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) - includes functionality and UI specifically designed for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`IgbHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowEditable) option and row deletion of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 - [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions) - includes functionality and UI specifically designed for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
 They are added inside the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) and this is all needed to have an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) providing default interactions.
 
-<!-- ComponentStart: HierarchicalGrid -->
+```razor
+<IgbGrid Data=northwindEmployees RowEditable="True" PrimaryKey="ID">
+    @foreach (var c in columns)
+    {
+        <IgbColumn Field="@c.Field">
+        </IgbColumn>
+    }
+    <IgbActionStrip @ref=actionstrip>
+        <IgbGridPinningActions></IgbGridPinningActions>
+        <IgbGridEditingActions></IgbGridEditingActions>
+    </IgbActionStrip>
+</IgbGrid>
+```
 
 ```razor
 <IgbHierarchicalGrid Data=northwindEmployees RowEditable="True" PrimaryKey="ID">
@@ -41,16 +52,12 @@ They are added inside the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-> [!Note]
-> When `ActionStripComponent` is a child component of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), hovering a row will automatically show the UI.
+**Note:** 
+When `IgbActionStripComponent` is a child component of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <div class="grid__wrapper">
@@ -66,8 +73,6 @@ These components expose templates giving flexibility for customization. For inst
     </IgbHierarchicalGrid>
 </div>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -356,11 +361,6 @@ public class SingersData
 ```
 
 ## API References
-
-- [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions)
-- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions)
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
-- [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions)
+[`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions)

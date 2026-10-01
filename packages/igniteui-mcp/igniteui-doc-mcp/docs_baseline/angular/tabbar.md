@@ -1,22 +1,24 @@
 ---
 title: Angular Bottom Navigation Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Display tabs for any occasion and implement a completely tabbed user interface. These UI controls manage every aspect of your tabs’ appearance and behavior.
-_keywords: Angular Bottom Nav component, Angular Bottom Navigation control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: Display tabs for any occasion and implement a completely tabbed user interface. These UI controls manage every aspect of your tabs’ appearance and behavior.
+keywords: Angular Bottom Nav component, Angular Bottom Navigation control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Bottom Navigation component enables the user to navigate among a number of content panels displayed in a single view."
 _tocName: Bottom Navigation
 ---
-
 # Angular Bottom Navigation Component Overview
 
-<p class="highlight">The Ignite UI for Angular Bottom Navigation component enables the user to navigate among a number of content panels displayed in a single view. The navigation through the panels is accomplished with the tab buttons located at bottom of your application.</p>
+<div class="highlight">
+The Ignite UI for Angular Bottom Navigation component enables the user to navigate among a number of content panels displayed in a single view. The navigation through the panels is accomplished with the tab buttons located at bottom of your application.
+</div>
 
-> [!NOTE]
-> `igx-tab-bar` selector is deprecated. You could use [`igx-bottom-nav`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent) instead. `IgxTabBarComponent` class is renamed to [`IgxBottomNavComponent`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent). `IgxTabBarModule` is renamed to `IgxBottomNavModule`.
+**Note:** 
+`igx-tab-bar` selector is deprecated. You could use [`igx-bottom-nav`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent) instead. `IgxTabBarComponent` class is renamed to [`IgxBottomNav`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent). `IgxTabBarModule` is renamed to `IgxBottomNavModule`.
 
 ## Angular Bottom Navigation Example
 
-<div class="divider--half"></div>
-
+<hr/>
 
 ```typescript
 import { Component } from '@angular/core';
@@ -63,8 +65,7 @@ igx-bottom-nav-content {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Bottom Navigation
 
@@ -74,7 +75,7 @@ To get started with the Ignite UI for Angular Bottom Navigation component, first
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The next step is to import the `IgxBottomNavModule` in your **app.module.ts** file.
 
@@ -140,8 +141,9 @@ Now that you have the Ignite UI for Angular Bottom Navigation module or directiv
 
 Our component's template includes the Bottom Navigation and three items. Each item wraps an `igx-bottom-nav-header` and an `igx-bottom-nav-content` component which represent respectively the header and the container of the data. Headers usually consist of an icon and an optional text label. The Bottom Navigation control is compatible with the Material Design [**Icons**](https://material.io/icons/) so to adopt them in your application simply add the Material+Icons import in your 'styles.css' file in the main application folder.
 
-> [!NOTE]
-> If you haven't used the `igx-icon` in your application so far, please make sure to import the `IgxIconModule` in the **app.module.ts** before proceeding.
+**Note:** 
+If you haven't used the `igx-icon` in your application so far, please make sure to import the `IgxIconModule` in the **app.module.ts** before proceeding.
+
 
 ```css
 // styles.css
@@ -176,7 +178,7 @@ Our component's template includes the Bottom Navigation and three items. Each it
 
 If all went well, you should see the demo sample in your browser.
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Customizing Bottom Navigation
 
@@ -220,7 +222,8 @@ Next, update the component's template markup as follows:
             <div class="item" *ngFor="let song of songsList">
                 <span class="item-line1">{{song.title}}</span><br/>
                 <span class="item-line2">{{song.artist}}</span>
-            </div>
+            
+</div>
         </igx-bottom-nav-content>
     </igx-bottom-nav-item>
     <igx-bottom-nav-item>
@@ -232,7 +235,8 @@ Next, update the component's template markup as follows:
             <div class="item" *ngFor="let movie of moviesList">
                 <span class="item-line1">{{movie.title}}</span><br/>
                 <span class="item-line2">{{movie.genre}}</span>
-            </div>
+            
+</div>
         </igx-bottom-nav-content>
     </igx-bottom-nav-item>
     <igx-bottom-nav-item>
@@ -244,7 +248,8 @@ Next, update the component's template markup as follows:
             <div class="item" *ngFor="let book of booksList">
                 <span class="item-line1">{{book.title}}</span><br/>
                 <span class="item-line2">{{book.author}}</span>
-            </div>
+            
+</div>
         </igx-bottom-nav-content>
     </igx-bottom-nav-item>
 </igx-bottom-nav>
@@ -381,8 +386,7 @@ igx-bottom-nav-content {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 If having labels and icons in the headers is not enough, you can simply add your custom content between the header tags.
 Here is an example:
@@ -394,8 +398,9 @@ Here is an example:
             <igx-icon igxBottomNavHeaderIcon>video_library</igx-icon>
             <span igxBottomNavHeaderLabel>Movies</span>
             <div>
-                <!-- your custom tab header content goes here -->
-            </div>
+                {/* your custom tab header content goes here */}
+            
+</div>
         </igx-bottom-nav-header>
         <igx-bottom-nav-content>
             <h1>Tab content</h1>
@@ -404,7 +409,7 @@ Here is an example:
 </igx-bottom-nav>
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Integration With Router Outlet Container
 
@@ -479,7 +484,7 @@ Now that we have all navigation routes setup, we need to declare the BottomNavig
 Also, make sure to add a router-outlet for rendering the view components' output.
 
 ```html
-<!-- bottomnav-routing.component.html -->
+{/* bottomnav-routing.component.html */}
 <router-outlet></router-outlet>
 
 <igx-bottom-nav #tabs1>
@@ -516,7 +521,6 @@ Also, make sure to add a router-outlet for rendering the view components' output
 The above code creates a BottomNavigation component with three tab items. All tab items are having the `RouterLinkActive` directive applied which tracks whether the linked route is currently active. Please, note, that the `RouterLink` directive is applied on the header element itself, not on the tab item. If any of these links becomes active, the corresponding tab item will have its `selected` property set because of the binding to the `RouterLinkActive` directive's `isActive` property. This way the selected tab item will always stay synchronized with the current browser's address.
 
 The approach described above is used by the following sample to demonstrate routing using the BottomNavigation component:
-
 
 ```typescript
 import { Component, OnInit, inject } from '@angular/core';
@@ -609,7 +613,6 @@ export class TabbarSample3Component implements OnInit {
 }
 ```
 
-
 ## Styles
 
 ### Bottom Nav Theme Property Map
@@ -668,7 +671,7 @@ When you modify a primary property, all related dependent properties are automat
     </tbody>
 </table>
 
-To get started with styling the tabs, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the tabs, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -677,7 +680,7 @@ To get started with styling the tabs, we need to import the `index` file, where 
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`bottom-nav-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-bottom-nav-theme) and accepts various parameters that allow us to style the tab groups.
+Following the simplest approach, we create a new theme that extends the `bottom-nav-theme` and accepts various parameters that allow us to style the tab groups.
 
 ```scss
 $dark-bottom-nav: bottom-nav-theme(
@@ -686,13 +689,13 @@ $dark-bottom-nav: bottom-nav-theme(
 );
 ```
 
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
+**Note:** 
+Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
-If we take a look at the [`bottom-nav-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-bottom-nav-theme), we will notice that there are even more parameters available to us in order to style our bottom navigation component!
+If we take a look at the `bottom-nav-theme`, we will notice that there are even more parameters available to us in order to style our bottom navigation component!
 
-> [!NOTE]
-> In order to style any additional components that are used as part of an item's content, an additional theme should be created that is specific to the respective component.
+**Note:** 
+In order to style any additional components that are used as part of an item's content, an additional theme should be created that is specific to the respective component.
 
 The last step is to **include** the component theme in our application.
 
@@ -703,7 +706,6 @@ The last step is to **include** the component theme in our application.
 ```
 
 ### Demo
-
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
@@ -804,7 +806,7 @@ $dark-bottom-nav: bottom-nav-theme(
 
 ### Styling with Tailwind
 
-You can style the bottom navigation using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the bottom navigation using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
 
 Along with the Tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -822,7 +824,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [IgxBottomNav Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-bottom-nav-theme). The syntax is as follows:
+You can find the full list of properties in the `IgxBottomNav Theme`. The syntax is as follows:
 
 ```html
 <igx-bottom-nav
@@ -834,33 +836,113 @@ You can find the full list of properties in the [IgxBottomNav Theme](https://www
 </igx-bottom-nav>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your bottom nav should look like this:
 
-<div class="sample-container loading" style="height:340px">
-    <iframe id="tabbar-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/layouts/tabbar-tailwind-style' style="height: 350px; width: 300px; border: 1px solid #D4D4D4;" seamless class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from "@angular/core";
+import { IgxBottomNavComponent, IgxBottomNavContentComponent, IgxBottomNavHeaderComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavItemComponent } from 'igniteui-angular/bottom-nav';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 
-<div class="divider--half"></div>
+
+@Component({
+    selector: "app-tabbar-tailwind-style",
+    styleUrls: ["./tabbar-tailwind-style.component.scss"],
+    templateUrl: "./tabbar-tailwind-style.component.html",
+    imports: [IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavContentComponent]
+})
+export class TabbarTailwindStyleComponent {
+    public songsList = [
+        { title: "Havana", artist: "Camila Cabello" },
+        { title: "Meant To Be", artist: "Bebe Rexha & Florida Georgia Line" },
+        { title: "New Rules", artist: "Dua Lipa" },
+        { title: "Wolves", artist: "Selena Gomez & Marshmello" }
+        ];
+
+    public moviesList = [
+    { title: "Logan", genre: "Action, Drama, Sci-Fi" },
+    { title: "Wonder Woman", genre: "Action, Adventure, Fantasy" },
+    { title: "Guardians of the Galaxy Vol. 2", genre: "Action, Adventure, Sci-Fi" },
+    { title: "Star Wars: The Last Jedi", genre: "Action, Adventure, Fantasy" }
+    ];
+
+    public booksList = [
+    { title: "Wonder", author: "R. J. Palacio" },
+    { title: "Milk and Honey", author: "Rupi Kaur" },
+    { title: "Giraffes Can't Dance", author: "Jeff Kinne" },
+    { title: "The Getaway", author: "Selena Gomez & Marshmello" }
+    ];
+
+    constructor() { }
+}
+```
+```html
+<igx-bottom-nav class="!light-bottom-nav ![--background:#011627] ![--icon-selected-color:#FF8040] ![--label-selected-color:#FF8040]">
+  <igx-bottom-nav-item>
+    <igx-bottom-nav-header>
+      <igx-icon igxBottomNavHeaderIcon>library_music</igx-icon>
+      <span igxBottomNavHeaderLabel>Songs</span>
+    </igx-bottom-nav-header>
+    <igx-bottom-nav-content>
+      @for (song of songsList; track song) {
+        <div class="item">
+          <span class="item-line1">{{song.title}}</span><br/>
+          <span class="item-line2">{{song.artist}}</span>
+        </div>
+      }
+    </igx-bottom-nav-content>
+  </igx-bottom-nav-item>
+  <igx-bottom-nav-item>
+    <igx-bottom-nav-header>
+      <igx-icon igxBottomNavHeaderIcon>video_library</igx-icon>
+      <span igxBottomNavHeaderLabel>Movies</span>
+    </igx-bottom-nav-header>
+    <igx-bottom-nav-content>
+      @for (movie of moviesList; track movie) {
+        <div class="item">
+          <span class="item-line1">{{movie.title}}</span><br/>
+          <span class="item-line2">{{movie.genre}}</span>
+        </div>
+      }
+    </igx-bottom-nav-content>
+  </igx-bottom-nav-item>
+  <igx-bottom-nav-item>
+    <igx-bottom-nav-header>
+      <igx-icon igxBottomNavHeaderIcon>library_books</igx-icon>
+      <span igxBottomNavHeaderLabel>Books</span>
+    </igx-bottom-nav-header>
+    <igx-bottom-nav-content>
+      @for (book of booksList; track book) {
+        <div class="item">
+          <span class="item-line1">{{book.title}}</span><br/>
+          <span class="item-line2">{{book.author}}</span>
+        </div>
+      }
+    </igx-bottom-nav-content>
+  </igx-bottom-nav-item>
+</igx-bottom-nav>
+```
+```scss
+@use "layout.scss";
+```
+
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxBottomNavComponent](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent)
-- [IgxBottomNavComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-bottom-nav-theme)
-- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-
+<hr/>
+- [`IgxBottomNav`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent)
+- `IgxBottomNavComponent Styles`
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 ## Theming Dependencies
 
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
+- `IgxIcon Theme`
+- `IgxRipple Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

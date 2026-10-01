@@ -1,16 +1,17 @@
 ---
 title: Web Components Map | Data Visualization Tools | Map Navigation | Infragistics
-_description: Navigate Infragistics' Web Components map by panning right and left and zooming horizontally and vertically using mouse or touch. Learn about Ignite UI for Web Components map's navigation capabilities!
-_keywords: Web Components map, navigation, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+description: Navigate Infragistics' Web Components map by panning right and left and zooming horizontally and vertically using mouse or touch. Learn about Ignite UI for Web Components map's navigation capabilities!
+keywords: Web Components map, navigation, Ignite UI for Web Components, Infragistics
+license: commercial
+
+llms:
+  description: "Navigation in the GeographicMap control is enabled by default and it allows zooming and panning of the map content."
 _tocName: Navigating Map Content
 _premium: true
 ---
-
 # Web Components Navigating Map Content
 
-Navigation in the [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) control is enabled by default and it allows zooming and panning of the map content. However, this behavior can be changed using the [`zoomable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#zoomable) property. It is important to know that the map allows only synchronized zooming - scaling the map content with preserved aspect ratio. As result, it is not possible to scale the map content vertically without scaling it also horizontally and vice versa.
+Navigation in the `IgcGeographicMap` control is enabled by default and it allows zooming and panning of the map content. However, this behavior can be changed using the `Zoomable` property. It is important to know that the map allows only synchronized zooming - scaling the map content with preserved aspect ratio. As result, it is not possible to scale the map content vertically without scaling it also horizontally and vice versa.
 
 ## Web Components Navigating Map Content Example
 
@@ -130,12 +131,9 @@ export class MapUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Geographic Coordinates
 
 You navigate map content within geographic region bound by these coordinates:
-
 - horizontally from 180°E (negative) to 180°W (positive) longitudes
 - vertically from 85°S (negative) to 85°N (positive) latitudes
 
@@ -144,30 +142,24 @@ This code snippet shows how navigate the map using geographic coordinates:
 ## Window Coordinates
 
 Also, you can navigate map content within window rectangle bound by these relative coordinates:
-
 - horizontally from 0.0 to 1.0 values
 - vertically from 0.0 to 1.0 values
 
 This code snippet shows how navigate the map using relative window coordinates:
 
 ## Properties
-
-The following table summarizes properties that can be used in navigation of the [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) control:
+The following table summarizes properties that can be used in navigation of the `IgcGeographicMap` control:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|[`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowRect)| Rect | Sets new position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values will zoom out the entire map content in the navigation window. |
-|[`windowScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowScale)| number | Sets new size of the navigation window in of the map control. It is equivalent smallest value of Width or Height stored in the [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowRect) property |
-|[`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowPositionHorizontal)| number | Sets new horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowRect) property. |
-|[`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowPositionVertical)| number | Sets new vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowRect) property. |
-|[`actualWindowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowRect)| Rect | Indicates current position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values displays the entire map content in the navigation window. |
-|[`actualWindowScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowScale)| number | Indicates current size of the navigation window in of the map control. It is equivalent to smallest value of Width or Height stored in the [`actualWindowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowRect) property |
-|[`actualWindowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowPositionHorizontal)| number | Indicates current horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`actualWindowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowRect) property. |
-|[`actualWindowPositionVertical`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowPositionVertical)| number | Indicates vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`actualWindowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowRect) property. |
+|`WindowRect`| Rect | Sets new position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values will zoom out the entire map content in the navigation window. |
+|`WindowScale`| number | Sets new size of the navigation window in of the map control. It is equivalent smallest value of Width or Height stored in the `WindowRect` property |
+|[`WindowPositionHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=windowPositionHorizontal)| number | Sets new horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the `WindowRect` property. |
+|[`WindowPositionVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=windowPositionVertical)| number | Sets new vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the `WindowRect` property. |
+|[`ActualWindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowRect)| Rect | Indicates current position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values displays the entire map content in the navigation window.  |
+|`ActualWindowScale`| number | Indicates current size of the navigation window in of the map control. It is equivalent to smallest value of Width or Height stored in the [`ActualWindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowRect) property |
+|[`ActualWindowPositionHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowPositionHorizontal)| number | Indicates current horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`ActualWindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowRect) property. |
+|[`ActualWindowPositionVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowPositionVertical)| number | Indicates vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`ActualWindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=actualWindowRect) property. |
 
 ## API References
-
-- [`actualWindowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#actualWindowRect)
-- [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#windowRect)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
-- [`zoomable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#zoomable)
+`IgcGeographicMap`

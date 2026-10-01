@@ -1,14 +1,12 @@
 ---
 title: Getting Started with Ignite UI for Angular Schematics | Ignite UI for Angular | Infragistics
-_description: Install the Ignite UI for Angular Schematics collection and use it to scaffold Angular projects, add component views, and run a development server within the native Angular CLI workflow.
-_keywords: ignite ui for angular, angular schematics, angular cli, scaffolding, getting started, infragistics
+description: Install the Ignite UI for Angular Schematics collection and use it to scaffold Angular projects, add component views, and run a development server within the native Angular CLI workflow.
+keywords: ignite ui for angular, angular schematics, angular cli, scaffolding, getting started, infragistics
 last_updated: "2026-04-21"
-_license: MIT
+llms:
+  description: "The Ignite UI for Angular Schematics collection is a set of Angular CLI schematics for scaffolding Angular projects and component views pre-configured for Ignite UI for Angular."
 _tocName: Getting Started with Ignite UI for Angular Schematics
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Getting Started with Ignite UI for Angular Schematics
 
 The Ignite UI for Angular Schematics collection is a set of Angular CLI schematics for scaffolding Angular projects and component views pre-configured for Ignite UI for Angular. It integrates into the native Angular CLI workflow - use it with `ng new` for project creation and `ng g` for component scaffolding, without installing a separate global tool. The collection is distributed as the `@igniteui/angular-schematics` package and is added automatically when you run `ng add igniteui-angular` on an existing Angular project.
@@ -49,7 +47,7 @@ The guided wizard is the recommended starting point for new projects. Activate i
 ng new --collection="@igniteui/angular-schematics"
 ```
 
-For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md).
+For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](./step-by-step-guide-using-angular-schematics.md).
 
 ### Create a project directly
 
@@ -65,13 +63,20 @@ By default, the project uses standalone components. To use NgModule-based bootst
 ng new newAngularProject --collection="@igniteui/angular-schematics" --type=igx-ts-legacy
 ```
 
-The project is created in a directory named after the project. The following project templates are available:
+The project is created in a directory named after the project. The following base project templates are available:
 
 | Template ID   | Description                                                                                                                                       |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| empty         | Project structure with routing and a home page                                                                                                    |
-| side-nav      | Project structure with a side navigation drawer                                                                                                   |
-| side-nav-auth | Side navigation project extended with a user authentication module. See [Angular Authentication Project Template](auth-template.md) for details.  |
+| empty         | Project structure with routing and a home page. Authentication is not available for this template.                                                |
+| side-nav      | Project structure with a side navigation drawer. Supports authentication as an add-on (see below).                                                |
+| side-nav-mini | Project structure with a compact side navigation drawer. Supports authentication as an add-on (see below).                                        |
+
+When using the interactive wizard, selecting `side-nav` or `side-nav-mini` triggers an additional prompt asking whether to add authentication. The following template IDs are generated and can also be used directly with `ng new` for non-interactive creation - they are not shown in the wizard's template list:
+
+| Template ID        | Description                                                                                                                                           |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| side-nav-auth      | Side navigation extended with a user authentication module. See [Angular Authentication Project Template](./auth-template.md) for details.                 |
+| side-nav-mini-auth | Side navigation mini extended with a user authentication module. See [Angular Authentication Project Template](./auth-template.md) for details.            |
 
 The following arguments are available when creating a project:
 
@@ -137,13 +142,13 @@ The following arguments are available when creating a project:
 
 ## Add a Component Template
 
-To add an [available Ignite UI for Angular template](component-templates.md) to an existing project, use `ng generate` with the Ignite UI for Angular collection and the `component` schematic, providing the template ID and a name for the new component:
+To add an [available Ignite UI for Angular template](./component-templates.md) to an existing project, use `ng generate` with the Ignite UI for Angular collection and the `component` schematic, providing the template ID and a name for the new component:
 
 ```cmd
 ng g @igniteui/angular-schematics:component grid newGrid
 ```
 
-Template addition is supported in projects created with the Angular Schematics, Ignite UI CLI, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md#add-component-views).
+Template addition is supported in projects created with the Angular Schematics, Ignite UI CLI, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](./step-by-step-guide-using-angular-schematics.md#add-component-views).
 
 The following arguments are available when adding a template:
 
@@ -301,8 +306,8 @@ The schematic writes (or merges into) the config file for your chosen coding ass
 
 Skill files are Angular-specific guides copied into each agent's skills directory. They are sourced from your installed Ignite UI package and kept in sync each time you run the schematic - existing files are only updated if their content has changed.
 
-> [!NOTE]
-> If you run `ai-config` before installing packages (e.g. with `--skip-install`), the schematic falls back to built-in templates. Re-run the command after installing to pick up the skill files from your installed version.
+**Note:** 
+If you run `ai-config` before installing packages (e.g. with `--skip-install`), the schematic falls back to built-in templates. Re-run the command after installing to pick up the skill files from your installed version.
 
 ### Using the Ignite UI CLI Instead
 
@@ -312,7 +317,7 @@ If you have the Ignite UI CLI installed globally, the equivalent command is:
 ig ai-config
 ```
 
-> [!NOTE]
-> The `ig ai-config` command configures only the two Ignite UI entries, `igniteui-cli` and `igniteui-theming`, and does not register `angular-cli`. Use `ng generate @igniteui/angular-schematics:ai-config` to get all three servers configured in a single step.
+**Note:** 
+The `ig ai-config` command configures only the two Ignite UI entries, `igniteui-cli` and `igniteui-theming`, and does not register `angular-cli`. Use `ng generate @igniteui/angular-schematics:ai-config` to get all three servers configured in a single step.
 
 For full setup instructions across all AI clients and Agent Skills wiring, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).

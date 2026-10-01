@@ -1,12 +1,13 @@
 ---
-title: Blazor Checkbox Component | Ignite UI for Blazor
-_description: Learn how to use the Blazor Checkbox Component to add checkboxes and enable checked, unchecked or indeterminate state for end-users.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Checkbox components, Blazor Checkbox controls
-_license: MIT
+title: "Blazor Checkbox Component | Ignite UI for Blazor"
+description: Learn how to use the Blazor Checkbox Component to add checkboxes and enable checked, unchecked or indeterminate state for end-users.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Checkbox components, Blazor Checkbox controls"
+license: MIT
 mentionedTypes: ["Checkbox", "Form"]
+llms:
+  description: "The Blazor Checkbox is a component that lets you add checkboxes to your Blazor apps."
 _tocName: Checkbox
 ---
-
 # Blazor Checkbox Overview
 
 The Blazor Checkbox is a component that lets you add checkboxes to your Blazor apps. It behaves as a standard HTML checkbox, enabling users to select basic checked and unchecked states or an additional indeterminate state. You also get full control over the styling of the Blazor checkbox component and ability to use it with forms.
@@ -26,27 +27,23 @@ The Blazor Checkbox is a component that lets you add checkboxes to your Blazor a
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 At its core, the [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 Before using the [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbCheckboxModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<div class="divider--half"></div>
 
 The simplest way to start using the [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) is as follows:
 
@@ -54,8 +51,8 @@ The simplest way to start using the [`IgbCheckbox`](mcp:get_api_reference?platfo
 <IgbCheckbox />
 ```
 
-> [!WARNING]
-> The [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning:** 
+The [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -67,7 +64,7 @@ To provide a meaningful label for the checkbox, simply place some text between t
 <IgbCheckbox>Label</IgbCheckbox>
 ```
 
-You can specify if the label should be positioned before or after the checkbox toggle by setting the `label-position` attribute of the checkbox. Allowed values are `before` and `after` (default):
+You can specify if the label should be positioned before or after the checkbox toggle by setting the [`LabelPosition`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=labelPosition) attribute of the checkbox. Allowed values are `before` and `after` (default):
 
 ```razor
 <IgbCheckbox LabelPosition="@ToggleLabelPosition.Before">Label</IgbCheckbox>
@@ -109,7 +106,7 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 
 ### Checked
 
-You can use the [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```razor
 <IgbCheckbox Checked="true" />
@@ -130,7 +127,7 @@ You can use the [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbC
 
 ### Indeterminate
 
-You can use the [`Indeterminate`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
+You can use the [`Indeterminate`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
 
 ```razor
 <IgbCheckbox Indeterminate="true" />
@@ -152,7 +149,7 @@ You can use the [`Indeterminate`](mcp:get_api_reference?platform=blazor&componen
 
 ### Required
 
-You can use the [`Required`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Required) property to mark the checkbox as required.
+You can use the [`Required`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=required) property to mark the checkbox as required.
 
 ```razor
 <IgbCheckbox Required="true" />
@@ -160,7 +157,7 @@ You can use the [`Required`](mcp:get_api_reference?platform=blazor&component=Igb
 
 ### Invalid
 
-You can use the [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Invalid) attribute to mark the checkbox as invalid.
+You can use the [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=invalid) attribute to mark the checkbox as invalid.
 
 ```razor
 <IgbCheckbox Invalid="true" />
@@ -168,7 +165,7 @@ You can use the [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbC
 
 ### Disabled
 
-You can use the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Disabled) attribute to disable the checkbox.
+You can use the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=disabled) attribute to disable the checkbox.
 
 ```razor
 <IgbCheckbox Disabled="true" />
@@ -189,7 +186,7 @@ You can use the [`Disabled`](mcp:get_api_reference?platform=blazor&component=Igb
 
 ### Forms
 
-You can use the `Name` and [`Value`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Value) attributes when using the checkbox with `Form`.
+You can use the [`Name`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=name) and [`Value`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=value) attributes when using the checkbox with `Form`.
 
 ```razor
 <IgbCheckbox Name="wifi" Value="enabled" />
@@ -232,12 +229,7 @@ igc-checkbox::part(control checked)::after {
 ```
 
 ## API References
-
-- [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox)
-- [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Checked)
-- [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Disabled)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

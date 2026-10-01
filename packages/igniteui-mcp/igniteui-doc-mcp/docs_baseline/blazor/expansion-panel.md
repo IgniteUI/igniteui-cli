@@ -1,13 +1,14 @@
 ---
-title: Blazor Expansion Panel | Expansion Panel | Infragistics
-_description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
-_keywords: Blazor Expansion Panel, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Expansion Panel | Expansion Panel | Infragistics"
+description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
+keywords: "Blazor Expansion Panel, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["Infragistics.Controls.Layouts.Implementation.ExpansionPanel"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Blazor Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded."
 _tocName: Expansion Panel
 ---
-
 # Blazor Expansion Panel Overview
 
 The Ignite UI for Blazor Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded. The expansion panel can be toggled using mouse click, or keyboard interactions.
@@ -32,8 +33,6 @@ The Ignite UI for Blazor Expansion Panel is a lightweight accordion component wh
 </div>
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 The simplest way to start using the [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) is as follows:
@@ -42,7 +41,14 @@ The simplest way to start using the [`IgbExpansionPanel`](mcp:get_api_reference?
 
 The Expansion Panel component raises the following events:
 
+- **Closed** - Raised when the expansion panel is collapsed
+- **Opened** - Raised when the expansion panel is expanded
+- **Closing** - Raised when the expansion panel starts collapsing
+- **Opening** - Raised when the expansion panel starts expanding
+
 The following sample demonstrates how we can add some logic to our component to make it show/hide the `subtitle` depending on the current state of the panel.
+
+We can do this by binding to the `Opened` and `Closed` events:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -109,17 +115,14 @@ The following sample demonstrates how we can add some logic to our component to 
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Component Customization
-
 The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) allows for easy customization of the header through the exposed `title`, `subTitle` and `indicator` slots.
 
-Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel&member=IndicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
+Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
-The next code sample demonstrates how to configure the component's button to go on the **right**side.
+The next code sample demonstrates how to configure the component's button to go on the **right** side.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -180,7 +183,19 @@ The next code sample demonstrates how to configure the component's button to go 
 }
 ```
 
-<div class="divider--half"></div>
+### Recommended Elements for Slots
+
+When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
+The `indicator` slot is intended for icon-like content. We recommend using the [`<igc-icon>`](../layouts/icon.md) component for this purpose. Alternatively, if you don't want to use an icon for the indicator, a `<span>` element can be used to display text, symbols, or emojis.
+
+```razor
+<IgbExpansionPanel>
+  <span slot="title">Golden Retriever</span>
+  <span slot="subtitle">Medium-large gun dog</span>
+  <IgbIcon slot="indicator" IconName="arrow_forward" Collection="material"></IgbIcon>
+</IgbExpansionPanel>
+```
 
 ## Keyboard Navigation
 
@@ -297,13 +312,10 @@ igc-expansion-panel::part(subtitle) {
 </div>
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

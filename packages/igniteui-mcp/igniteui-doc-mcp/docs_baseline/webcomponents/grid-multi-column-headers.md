@@ -1,19 +1,18 @@
 ---
-title: Web Components Grid Multi-Column Headers - Ignite UI for Web Components
-_description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for Web Components grid and combine them into multi headers.
-_keywords: Multi-Column Headers, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/multi-column-headers
+title: "Web Components Grid Multi-Column Headers - Ignite UI for Web Components"
+description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for Web Components grid and combine them into multi headers.
+keywords: Multi-Column Headers, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/multi-column-headers"
+llms:
+  description: "The Ignite UI for Web Components Multi-Column Headers feature in Web Components Grid allows you to group columns by placing them under a common multi-header."
+_componentKey: Grid
 _tocName: Multi-Column Headers
 _premium: true
 ---
-
 # Web Components Grid Multi-Column Headers Overview
 
-The Ignite UI for Web Components Multi-Column Headers feature in Web Components Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
+The Ignite UI for Web Components Multi-Column Headers feature in Web Components Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
 
 ## Web Components Grid Multi-Column Headers Example
 
@@ -57,7 +56,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) component with [`header`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgcColumnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent) component with [`Header`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=header) title information passed.
 
 ```html
 <igc-grid allow-filtering="true">
@@ -69,9 +68,7 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`IgcColumnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent) leads to the desired result.
 
 ```html
 <igc-grid height="600px" allow-filtering="true">
@@ -85,14 +82,12 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
+Every [`IgcColumnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+**Note:** 
+When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
+Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
+When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
-Every [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
-
-> [!Note]
-> When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
-> Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
-> When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
 ```html
 <igc-grid height="600px" allow-filtering="true">
@@ -105,11 +100,9 @@ Every [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=Igc
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Multi-Column Header Template
 
-Each of the column groups of the grid can be templated separately. The following code snippet demonstrates how to use the [`headerTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=headerTemplate) of a column group:
+Each of the column groups of the grid can be templated separately. The following code snippet demonstrates how to use the [`HeaderTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent&member=headerTemplate) of a column group:
 
 ```html
 <igc-column-group id="addressInfo" header="Address Information">
@@ -129,7 +122,7 @@ public columnGroupHeaderTemplate = (ctx: IgcColumnTemplateContext) => {
 }
 ```
 
-If you want to re-use a single template for several column groups, you could set the [`headerTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=headerTemplate) property of the column group like this:
+If you want to re-use a single template for several column groups, you could set the [`HeaderTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent&member=headerTemplate) property of the column group like this:
 
 ```html
 <igc-column-group id="generalInfo" header="General Information">
@@ -153,8 +146,9 @@ public columnGroupHeaderTemplate = (ctx: IgcColumnTemplateContext) => {
 }
 ```
 
-> [!Note]
-> If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+**Note:** 
+If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+
 
 ```ts
 public columnHeaderTemplate = (ctx: IgcColumnTemplateContext) => {
@@ -208,7 +202,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -278,13 +272,10 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcColumnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Grid Overview](../data-grid.md)
 - [Virtualization and Performance](virtualization.md)
@@ -295,8 +286,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
 - [Group by](groupby.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

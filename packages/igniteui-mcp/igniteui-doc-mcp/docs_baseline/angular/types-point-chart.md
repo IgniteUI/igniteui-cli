@@ -1,21 +1,20 @@
 ---
-title: Angular Point Chart | Data Visualization | Infragistics
-_description: Infragistics' Angular Point Chart
-_keywords: Angular Charts, Point Chart, Infragistics
-_license: commercial
+title: "Angular Point Chart | Data Visualization | Infragistics"
+description: Infragistics' Angular Point Chart
+keywords: "Angular Charts, Point Chart, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Point Chart renders a collection of points."
 _tocName: Point Chart
 _premium: true
 ---
-
 # Angular Point Chart
-
 The Ignite UI for Angular Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Angular Point Chart Example
-
-You can create the Angular Point Chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to **Point** enum, as shown in the example below.
+You can create the Angular Point Chart in the `IgxCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Point** enum, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -121,10 +120,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Point Chart with Single Series
-
 In the following example, the Angular Point Chart plots a single data source by automatically selecting numeric data column for y-axis and non-numeric data column for x-axis.
 
 ```typescript
@@ -221,11 +217,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Point Chart with Multiple Series
-
-Since the Angular Point Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
+Since the Angular Point Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -331,10 +324,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Point Chart Styling
-
 Once the Angular Point Chart is set up, we may want to make some further styling customizations such as change the markers and its outlines, brushes and thickness.
 
 ```typescript
@@ -445,11 +435,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Point Charts
-
-You can create more advanced types of Angular Point Charts using the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control instead of [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by following these topics:
+You can create more advanced types of Angular Point Charts using the `IgxDataChart` control instead of `IgxCategoryChart` control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#angular-scatter-marker-chart)
@@ -464,13 +451,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
-- [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType)
-- [`markerTypes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#markerTypes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#markerOutlines)
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#markerBrushes)
-- [`markerThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#markerThickness)
+`IgxCategoryChart`
+`IgxDataChart`

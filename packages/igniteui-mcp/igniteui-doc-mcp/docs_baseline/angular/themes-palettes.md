@@ -1,14 +1,17 @@
 ---
 title: Palettes
-_description:
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+llms:
+  description: "Ignite UI for Angular exposes CSS variables that allow you to update the colors in your application in a consistent way."
 _tocName: Palettes
 ---
-
 # Palettes
 
-<p class="highlight">Ignite UI for Angular exposes CSS variables that allow you to update the colors in your application in a consistent way.</p>
-<div class="divider"></div>
+<div class="highlight">
+Ignite UI for Angular exposes CSS variables that allow you to update the colors in your application in a consistent way.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -39,14 +42,14 @@ The `primary`, `secondary`, and `gray` colors follow the [2014 Material Design C
     </tr>
 </table>
 
-<div class="divider--half"></div>
+<hr/>
 
 As the table above shows, the `gray` color doesn't include the `A100`, `A200`, `A400`, and `A700` variants, while the `primary` and `secondary` colors contain all 14 color variants. We include 5 additional colors that are not part of the 2014 Material Design Color Palette - `info`, `success`, `warn`, `error` and `surface`.
 
 On top of the aforementioned colors, we also include **Level AA** [WCAG](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) compliant `contrast` colors for each color variant. This means that you can safely use the corresponding `contrast` color variants as foreground colors for the base color variant.
 
-> [!NOTE]
-> Contrast colors are CSS relative colors and are runtime calculated, based on the corresponding shade color (primary, secondary, etc.).
+**Note:** 
+Contrast colors are CSS relative colors and are runtime calculated, based on the corresponding shade color (primary, secondary, etc.).
 
 Here's an excerpt of the `primary` variable color as declared in the Light Material Palette:
 
@@ -54,17 +57,17 @@ Here's an excerpt of the `primary` variable color as declared in the Light Mater
 :root {
   //...
   --ig-primary-500: #09f;
-  --ig-primary-500-contrast: hsl(from color(from var(--ig-primary-500) var(--y-contrast)) h 0 l);
+  --ig-primary-500-contrast: hsla(from color(from var(--ig-primary-500) var(--y-contrast)) h 0 l / 1);
   --ig-primary-600: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.89));
-  --ig-primary-600-contrast: hsl(from color(from var(--ig-primary-600) var(--y-contrast)) h 0 l);
+  --ig-primary-600-contrast: hsla(from color(from var(--ig-primary-600) var(--y-contrast)) h 0 l / 1);
   --ig-primary-700: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.81));
   //...
   --ig-secondary-400: hsl(from var(--ig-secondary-500) h calc(s * 0.875) calc(l * 1.08));
-  --ig-secondary-400-contrast: hsl(from color(from var(--ig-secondary-400) var(--y-contrast)) h 0 l);
+  --ig-secondary-400-contrast: hsla(from color(from var(--ig-secondary-400) var(--y-contrast)) h 0 l / 1);
   --ig-secondary-500: #df1b74;
-  --ig-secondary-500-contrast: hsl(from color(from var(--ig-secondary-500) var(--y-contrast)) h 0 l);
+  --ig-secondary-500-contrast: hsla(from color(from var(--ig-secondary-500) var(--y-contrast)) h 0 l / 1);
   --ig-secondary-600: hsl(from var(--ig-secondary-500) h calc(s * 1.26) calc(l * 0.89));
-  --ig-secondary-600-contrast: hsl(from color(from var(--ig-secondary-600) var(--y-contrast)) h 0 l);
+  --ig-secondary-600-contrast: hsla(from color(from var(--ig-secondary-600) var(--y-contrast)) h 0 l / 1);
   //...
   --ig-wcag-a: 0.31;
   --ig-wcag-aa: 0.185;
@@ -79,8 +82,9 @@ All primary color variants come from a single base variable: `--ig-primary-500`.
 
  The contrast colors are CSS runtime generated, based on the the provided color's luminance and the chosen contrast-level to calculate the best contrast color for it. If we change the main color variant(`500`), the contrast colors will also be updated.
 
- > [!NOTE]
- > You could specify the contrast-level globally by using the `palette` mixin, or if you'd like to set it specifically in the scope of your element, you could use the `adaptive-contrast` mixin. They both accept one of the predefined values: `a`, `aa` or `aaa`.
+ **Note:** 
+ You could specify the contrast-level globally by using the `palette` mixin, or if you'd like to set it specifically in the scope of your element, you could use the `adaptive-contrast` mixin. They both accept one of the predefined values: `a`, `aa` or `aaa`.
+ 
 
  ```scss
   @include palette($palette, $contrast-level: 'aaa');
@@ -146,8 +150,8 @@ igx-avatar {
 
 ## Dark vs. Light
 
->[!WARNING]
-> The colors that have the biggest impact on foreground and background colors are `gray` and `surface`. These two colors will be displayed against one another in most cases. For that reason the `surface` color should always contrast the `gray`.
+**Warning:** 
+The colors that have the biggest impact on foreground and background colors are `gray` and `surface`. These two colors will be displayed against one another in most cases. For that reason the `surface` color should always contrast the `gray`.
 
 Palettes in Ignite UI for Angular dictate whether a theme is going to be light or dark. The two colors that have the biggest impact on that are `gray` and `surface`. See, the `gray` color variants in all themes are based on either a very light color shade, like `#fff`, or a very dark one like `#222`. Light themes have `gray` variants based on dark shades of gray, while dark themes are the opposite - all `gray` variants are a shade of white. These `gray` colors will be displayed against another color, usually the `surface` color. The `surface` color should always be on the opposite end of the `gray` in the gray scale to ensure themes look good.
 
@@ -201,7 +205,7 @@ They can be changed as the other color variants, all we need to do it to set the
 
 Related topics:
 
-- [Palettes with Sass](./sass/palettes.md)
+- [Palettes with Sass](/themes/sass/palettes)
 
 Our community is active and always welcoming to new ideas.
 

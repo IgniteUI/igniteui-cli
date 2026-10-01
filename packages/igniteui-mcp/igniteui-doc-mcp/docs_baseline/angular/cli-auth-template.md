@@ -1,43 +1,65 @@
 ---
 title: Authentication Project Template | Ignite UI for Angular | Infragistics
-_description: Check out the Ignite UI for Angular Authentication Project Template guide.
-_keywords: igniteui for angular | angular schematics | templates | infragistics 
+description: Check out the Ignite UI for Angular Authentication Project Template guide.
+keywords: igniteui for angular | angular schematics | templates | infragistics 
+llms:
+  description: "When creating an Ignite UI for Angular project with Angular Schematics or Ignite UI CLI, authentication is available as an add-on option when you select a supported navigation template."
 _tocName: Authentication Project Template
 ---
-
 # Authentication Project Template
 
-There are multiple versions of a project (called project templates) to choose from when using either the [`new` command with Ignite UI CLI](getting-started-with-cli.md#create-a-new-project), [with Ignite UI for Angular Schematics](getting-started-with-angular-schematics.md#create-a-new-project) or the [Step by step mode using Ignite UI CLI](step-by-step-guide-using-cli.md) or [Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md).
-
-When creating Ignite UI for Angular project with Angular Schematics or Ignite UI CLI you can select a template with an basic implementation of a client-side authentication module that require as little additional setup as possible to jump-start apps with user management.
+When creating an Ignite UI for Angular project with Angular Schematics or Ignite UI CLI, authentication is available as an add-on option when you select a supported navigation template. It provides a basic implementation of a client-side authentication module that requires as little additional setup as possible to jump-start apps with user management.
 
 ## Create Authentication Project
 
-You can select an authentication project either when going through the Step by step experience after selection 'Ignite UI for Angular' project type:
+### Interactive wizard
 
-<img class="responsive-img" src="../../../images/general/cli-igx-side-auth.png" alt="Step by step experience" />
+Authentication is offered as an extra step in the interactive wizard after selecting a navigation template. The flow is:
 
-Or through the new command:
+1. Choose a project template: **Empty Project**, **Side Navigation**, or **Side Navigation Mini**.
+2. If **Side Navigation** or **Side Navigation Mini** is selected, the wizard prompts: _"Would you like to add authentication to this project?"_
+3. If **Empty Project** is selected, the authentication prompt is not shown.
+
+Answering yes generates one of two authenticated variants:
+
+- **Side Navigation + Authentication** - a side navigation shell extended with the authentication module
+- **Side Navigation Mini + Authentication** - a compact side navigation shell extended with the authentication module
+
+For a full walkthrough of the wizard steps, see [Step-by-Step Guide Using Ignite UI CLI](./step-by-step-guide-using-cli.md) or [Step-by-Step Guide Using Ignite UI for Angular Schematics](./step-by-step-guide-using-angular-schematics.md).
+
+### Direct command (advanced)
+
+The authentication template IDs can also be passed directly to `ig new` or `ng new` for non-interactive project creation. These IDs are not shown in the interactive wizard because authentication is presented as a follow-up option there.
+
+**Side Navigation + Authentication - Ignite UI CLI:**
 
 ```bash
 ig new "Auth Project" --framework=angular --type=igx-ts --template=side-nav-auth
 ```
 
-If you are using the Schematics collection run:
+**Side Navigation + Authentication - Angular Schematics:**
 
 ```bash
 ng new "Auth Project" --collection="@igniteui/angular-schematics" --template=side-nav-auth
 ```
 
+**Side Navigation Mini + Authentication - Ignite UI CLI:**
+
+```bash
+ig new "Auth Project" --framework=angular --type=igx-ts --template=side-nav-mini-auth
+```
+
+**Side Navigation Mini + Authentication - Angular Schematics:**
+
+```bash
+ng new "Auth Project" --collection="@igniteui/angular-schematics" --template=side-nav-mini-auth
+```
+
 ## Description
 
-This template builds upon the Side Navigation default and adds a profile page and a login section to the app's nav bar that will display a login button or an avatar of the logged in user:
-
-<img class="responsive-img" src="../../../images/general/igx-side-auth-login-bar.png" alt="Login bar" />
+Both the Side Navigation + Authentication and Side Navigation Mini + Authentication variants build upon their respective navigation base and add a profile page and a login section to the app's nav bar that will display a login button or an avatar of the logged in user:
 
 The login bar also integrates dialogs to sign in or up:
-
-<img class="responsive-img" src="../../../images/general/igx-side-auth-login-dialogs.png" alt="Login dialogs" />
 
 The project also supports various [external authentication providers](#add-a-third-party-social-provider).
 
@@ -60,10 +82,9 @@ The project is setup for a single page app with REST API services, so the `Authe
 - `/register` - register with user details
 - `/extlogin` - passes along user info from external source
 
-All endpoints are expected to return an JSON Wen Token(JWT)
- or an error state with message.
+All endpoints are expected to return a JSON Web Token (JWT) or an error state with message.
 
-> **Note:** For demonstration purposes the project has a `services/fake-backend.service.ts` that intercepts requests . The `BackendProvider` in `authentication.module.ts` should **not** be used in production. Both the provider and the file should be removed when development starts.
+> **Note:** For demonstration purposes the project has a `services/fake-backend.service.ts` that intercepts requests. The `BackendProvider` in `authentication.module.ts` should **not** be used in production. Both the provider and the file should be removed when development starts.
 
 As with any authentication model, using JWT-s requires security considerations. Particularly, the tokens received from the REST API are stored on the client. For seamless app reloads during development, the user data is stored in the browser local storage, which is potentially vulnerable to XSS attacks.
 
@@ -71,10 +92,14 @@ As with any authentication model, using JWT-s requires security considerations. 
 
 As usual, always evaluate security aspects and adjust accordingly, the project structure provided is merely a starting point.
 
-
 ## Add a third-party (social) provider
 
-Your project's main module `src/app/app.module.ts` should be generated with the external authentication service injected and commented out initialization similar to:
+The external authentication service is initialized in your project's app entry point. The exact location depends on the bootstrapping type selected during project creation:
+
+- **Standalone projects** (default) — initialization is in `src/app/app.config.ts` via a provider function.
+- **NgModule projects** (`igx-ts-legacy`) — initialization is in `src/app/app.module.ts` via the `AppModule` constructor.
+
+In both cases the pattern is the same: the social provider calls are commented out and ready to be enabled. For example, in an NgModule project:
 
 ```ts
 // in app.module.ts
@@ -87,7 +112,7 @@ export class AppModule {
 }
 ```
 
-To enable user login with a specific third-party provider all that is required is to un-comment the specific line and replace the `` with your app's client ID.
+To enable user login with a specific third-party provider all that is required is to un-comment the specific line and replace the `<CLIENT_ID>` with your app's client ID.
 If you need to obtain one, for example for Google Account sign in, follow the provider-specific guide at:
 
 - [Obtain credentials](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
@@ -111,8 +136,6 @@ export class AppModule {
 
 This will automatically enable the respective button in the login dialog:
 
-<img class="responsive-img" src="../../../images/general/igx-side-auth-login-google.png" alt="Google login button" />
-
 You can do the same with [Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) following this guide:
 
 https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-register-an-app
@@ -121,10 +144,7 @@ And for Facebook:
 
 https://developers.facebook.com/docs/apps/#register
 
-
 As you enable providers, all buttons will become active:
-
-<img class="responsive-img" src="../../../images/general/igx-side-auth-login-social.png" alt="Social login options" />
 
 ### Provider details
 

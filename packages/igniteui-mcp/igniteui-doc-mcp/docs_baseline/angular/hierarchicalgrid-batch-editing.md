@@ -1,19 +1,25 @@
 ---
 title: Batch Editing and Transactions in Angular Hierarchical Grid Grid - Infragistics
-_description: Perform data manipulation without affecting the underlying data with Hierarchical Grid Batch Editing and Angular CRUD, using Angular Data Grid. See demos & examples!
-_keywords: angular crud, ignite ui for angular, infragistics
-_license: commercial
+description: Perform data manipulation without affecting the underlying data with Hierarchical Grid Batch Editing and Angular CRUD, using Angular Data Grid. See demos & examples!
+keywords: angular crud, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "The Batch Editing feature of the IgxHierarchicalGrid is based on the TransactionService."
 _tocName: Batch Editing
 _premium: true
 ---
 # Angular Hierarchical Grid Batch Editing and Transactions
-@@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
-The Batch Editing feature of the IgxHierarchicalGrid is based on the [`TransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
-}
-In order to use the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionServiceFactory`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory).
+
+The Batch Editing feature of the IgxHierarchicalGrid is based on the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
+
+In order to use the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService).
+
 Below is a detailed example of how is Batch Editing enabled for the Hierarchical Grid component.
+
 ## Angular Hierarchical Grid Batch Editing and Transactions Example
+
 The following sample demonstrates a scenario, where the hierarchicalGrid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
+
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -312,15 +318,20 @@ h4 {
     padding: 16px;
 }
 ```
-<div class="divider--half"></div>
-> [!NOTE]
-> Transaction state consists of all the updated, added and deleted rows, and their last states.
+
+**Note:** 
+Transaction state consists of all the updated, added and deleted rows, and their last states.
+
 ## Usage
+
 To get started import the `IgxHierarchicalGridModule` in the **app.module.ts** file:
+
 ```typescript
 // app.module.ts
+
 ...
 import { IgxHierarchicalGridModule } from 'igniteui-angular';
+
 @NgModule({
     ...
     imports: [..., IgxHierarchicalGridModule],
@@ -328,14 +339,19 @@ import { IgxHierarchicalGridModule } from 'igniteui-angular';
 })
 export class AppModule {}
 ```
+
 Then, all you need to do is enable `batchEditing` from your Hierarchical Grid:
+
 ```html
 <igx-hierarchical-grid [data]="data" [batchEditing]="true">
   ...
 </igx-hierarchical-grid>
 ```
-This will ensure a proper instance of `Transaction` service is provided for the igx-hierarchical-grid. The proper `TransactionService` is provided through a `TransactionFactory`. You can learn more about this internal implementation in the [transactions topic](../transaction-classes.md#transaction-factory).
+
+This will ensure a proper instance of `Transaction` service is provided for the igx-hierarchical-grid. The proper `TransactionService` is provided through a `TransactionFactory`. You can learn more about this internal implementation in the [transactions topic](/transaction-classes#transaction-factory).
+
 After batch editing is enabled, define a `IgxHierarchicalGrid` with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) set to true and bind:
+
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [batchEditing]="true" [data]="data" [primaryKey]="'Artist'"
     [height]="'580px'" [width]="'100%'" [rowEditable]="true" >
@@ -357,8 +373,11 @@ After batch editing is enabled, define a `IgxHierarchicalGrid` with bound data s
     </div>
 </div>
 ...
+
 ```
-The following code demonstrates the usage of the [`transactions`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) API - undo, redo, commit.
+
+The following code demonstrates the usage of the [`IgxGridComponent.transactions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=transactions) API - undo, redo, commit.
+
 ```typescript
 ...
 export class HierarchicalGridBatchEditingSampleComponent {
@@ -383,19 +402,28 @@ export class HierarchicalGridBatchEditingSampleComponent {
     }
 }
 ```
-> [!NOTE]
-> The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Hierarchical Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=endEdit) in the respective method.
-> [!NOTE]
-> Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) property will modify `Hierarchical Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
+
+**Note:** 
+The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Hierarchical Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=endEdit) in the respective method.
+
+**Note:** 
+Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) property will modify `Hierarchical Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
+
 ## API References
-- [igxHierarchicalTransactionServiceFactory](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory)
+
+- [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService)
+
 ## Additional Resources
-- [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)
-- [Hierarchical Grid Overview](hierarchical-grid.md)
-- [Hierarchical Grid Editing](editing.md)
-- [Hierarchical Grid Row Editing](row-editing.md)
-- [Hierarchical Grid Row Adding](row-adding.md)
-<div class="divider--half"></div>
+
+- [Build CRUD operations with igxGrid](/general/how-to/how-to-perform-crud)
+- [Hierarchical Grid Overview](/hierarchicalgrid/hierarchical-grid)
+
+- [Hierarchical Grid Editing](/hierarchicalgrid/editing)
+
+- [Hierarchical Grid Row Editing](/hierarchicalgrid/row-editing)
+- [Hierarchical Grid Row Adding](/hierarchicalgrid/row-adding)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

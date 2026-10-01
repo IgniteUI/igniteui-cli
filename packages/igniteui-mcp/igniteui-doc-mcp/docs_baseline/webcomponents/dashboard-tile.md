@@ -1,16 +1,17 @@
 ---
-title: Web Components Dashboard Tile Component | Ignite UI for Web Components
-_description: See how you can easily get started with Web Components Dashboard Tile Component.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Dashboard components, Web Components Dashboard Tile controls
-_license: commercial
-mentionedTypes: ["Toolbar", "CategoryChart", "XamDataChart", "XamRadialGauge", "XamLinearGauge", "XamGeographicMap"]
+title: "Web Components Dashboard Tile Component | Ignite UI for Web Components"
+description: See how you can easily get started with Web Components Dashboard Tile Component.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Dashboard components, Web Components Dashboard Tile controls"
+license: commercial
+mentionedTypes: ["Toolbar", "CategoryChart", "DataChart", "RadialGauge", "LinearGauge", "GeographicMap"]
+llms:
+  description: "The Web Components Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display."
 _tocName: Charting in Dashboards
 _premium: true
 ---
+# Web Components Dashboard Tile 
 
-# Web Components Dashboard Tile <label class="badge badge--preview">PREVIEW</label>
-
-The Web Components Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) that let you alter the visualization that is presented in a variety of ways.
+The Web Components Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded `IgcToolbar` that let you alter the visualization that is presented in a variety of ways.
 
 A wide variety of visualizations may be selected for display depending on the shape of the provided data including, but not limited to: Category Charts, Radial and Polar Charts, Scatter Charts, Geographic Maps, Radial and Linear Gauges, Financial Charts and Stacked Charts.
 
@@ -877,20 +878,18 @@ ModuleManager.register(
 
 ## Usage
 
-Depending on what you bind the Dashboard Tile's `DataSource` property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for Web Components toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
+Depending on what you bind the Dashboard Tile's `IgcDataSource` property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for Web Components toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
 
-- [IgcCategoryChart](charts/chart-overview.md)
-- [IgcDataChart](charts/chart-overview.md)
-- [IgcDataPieChart](charts/types/data-pie-chart.md)
-- [IgcGeographicMap](geo-map.md)
-- [IgcLinear Gauge](linear-gauge.md)
-- [IgcRadialGauge](radial-gauge.md)
+- [IgcCategoryChart](./charts/chart-overview.md)
+- [IgcDataChart](./charts/chart-overview.md)
+- [IgcDataPieChart](./charts/types/data-pie-chart.md)
+- [IgcGeographicMap](./geo-map.md)
+- [IgcLinear Gauge](./linear-gauge.md)
+- [IgcRadialGauge](./radial-gauge.md)
 
-The data visualization that is chosen by default is mainly dependent on the schema and the count of the `DataSource` that you have bound. For example, if you bind a single numeric value, you will get a [`IgcRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `XamDataPieChart`. If you bind an `DataSource` that has more value paths, you will receive a [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `ShapeDataSource` or data the appears to contain geographic points to receive a [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html).
+The data visualization that is chosen by default is mainly dependent on the schema and the count of the `IgcDataSource` that you have bound. For example, if you bind a single numeric value, you will get a `IgcRadialGauge`, but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a [`IgcDataPieChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataPieChartComponent). If you bind an `IgcDataSource` that has more value paths, you will receive a [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `IgcShapeDataSource` or data the appears to contain geographic points to receive a `IgcGeographicMap`.
 
-You are not locked into a single visualization when you bind the `DataSource`, and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
-
-<!-- TODO SAMPLE -->
+You are not locked into a single visualization when you bind the `IgcDataSource`, and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
 
 ```typescript
 export class DashboardGaugeDataSourceItem {
@@ -919,16 +918,14 @@ export class DashboardGaugeDataSource extends Array<DashboardGaugeDataSourceItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The visualization or properties of the visualization are also configurable using the [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) at the top of the control. This [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
-
-<img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
+The visualization or properties of the visualization are also configurable using the `IgcToolbar` at the top of the control. This `IgcToolbar` has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 From left to right:
 
-- The first tool will show a data grid with the `DataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
+- The first tool will show a data grid with the `IgcDataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
 - The second tool allows you to configure the settings of the current data visualization.
 - The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `VisualizationType` property, mentioned above.
-- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`includedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=includedProperties) or [`excludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=excludedProperties) collection on the control.
+- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`IncludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=includedProperties) or [`ExcludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=excludedProperties) collection on the control.
 
 This demo demonstrates dashboard tile integration with the Web Components Pie Chart. The toolbar options at the top right provides access to styling and changing the data visualization.
 
@@ -1003,13 +1000,13 @@ export class WorldCities extends Array<WorldCitiesItem> {
 
 ## API References
 
-- [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html)
-- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- [`IgcDataPieChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataPieChartComponent)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
-- [`IgcLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html)
-- [`IgcRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html)
+`IgcToolbar`<br />
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcDataPieChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataPieChartComponent)<br />
+`IgcGeographicMap`<br />
+`IgcLinearGauge`<br />
+`IgcRadialGauge`<br />
 
 ## Additional Resources
 

@@ -1,15 +1,16 @@
 ---
-title: React Chart Features | Data Visualization | Infragistics
-_description: Infragistics' React Chart Features
-_keywords: React Charts, Features, Infragistics
-_license: commercial
-mentionedTypes: ["FinancialChart", "CategoryChart", "XamDataChart"]
+title: "React Chart Features | Data Visualization | Infragistics"
+description: Infragistics' React Chart Features
+keywords: "React Charts, Features, Infragistics"
+license: commercial
+mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
+llms:
+  description: "The Ignite UI for React Charts allow you to display many different features to portray the full data story to be told with your chart."
 _tocName: Chart Features
 ---
-
 # React Chart Features
 
-The Ignite UI for React Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs - allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
+The Ignite UI for React Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs — allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
 
 The React Charts offer the following chart features:
 
@@ -164,8 +165,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Annotations
 
 These additional layers are on top of the chart which are mouse / touch dependent. Used individually or combined, they provide powerful interactions that help to highlight certain values within the chart. You can learn more about this feature in the [Chart Annotations](features/chart-annotations.md) topic.
@@ -301,8 +300,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnnotations/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Animations
 
 Animate your chart as it loads a new data source by enabling animations. These are customizable by setting different types of animations and the speed at which those animations take place. You can learn more about this feature in the [Chart Animations](features/chart-animations.md) topic.
@@ -434,11 +431,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnimations/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Highlighting
 
-Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This features is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
+Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This feature is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
 
 ```tsx
 import React from 'react';
@@ -624,8 +619,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartColumnChartWithHighlighting/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Markers
 
 Identify data points quickly, even if the value falls between major gridlines with the use of markers on the chart series. These are fully customizable in style, color, and shape. You can learn more about this feature in the [Chart Markers](features/chart-markers.md) topic.
@@ -791,8 +784,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Navigation
 
@@ -1078,8 +1069,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartNavigation/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Overlays
 
 Overlays allows you to annotate important values and thresholds by plotting horizontal or vertical lines in charts. You can learn more about this feature in the [Chart Overlays](features/chart-overlays.md) topic.
@@ -1186,8 +1175,6 @@ export default class DataChartValueOverlay extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartValueOverlay/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Performance
 
@@ -1339,8 +1326,6 @@ export default class CategoryChartHighVolume extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighVolume/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Tooltips
 
@@ -1501,8 +1486,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Trendlines
 
@@ -1701,10 +1684,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartTrendlines/>);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
-- [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html)
+`IgrFinancialChart`
+`IgrCategoryChart`
+`IgrDataChart`

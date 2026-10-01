@@ -1,12 +1,13 @@
 ---
-title: Web Components Toast Notifications | Ignite UI for Web Components
-_description: With Ignite UI for Web Components Toast component, developers can easily integrate a brief, single-line message within mobile and desktop applications. Try it Now
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Toast components
-_license: MIT
+title: "Web Components Toast Notifications | Ignite UI for Web Components"
+description: With Ignite UI for Web Components Toast component, developers can easily integrate a brief, single-line message within mobile and desktop applications. Try it Now
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Toast components"
+license: MIT
 mentionedTypes: ["Toast"]
+llms:
+  description: "The Web Components Toast is a super lightweight and small pop-up component that is used for displaying a message content, notifying end-users about the status of a changed record."
 _tocName: Toast
 ---
-
 # Web Components Toast Overview
 
 The Web Components Toast is a super lightweight and small pop-up component that is used for displaying a message content, notifying end-users about the status of a changed record. You can easily position and show Web Components toast notifications at the bottom or at any other specified area of the screen. Or you can also dismiss them in a simple and easy way.
@@ -22,8 +23,6 @@ Take a look at the simple Ignite UI for Web Components Toast example below. The 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ### How To Use Ignite UI for Web Components Toast Notification
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -32,7 +31,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the Web Components [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent), you need to register it as follows:
+Before using the Web Components [`IgcToast`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcToastComponent } from 'igniteui-webcomponents';
@@ -42,7 +41,7 @@ defineComponents(IgcToastComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the toast component is to use its [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`Show`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=show) method and call it on a button click.
 
 ```html
 <igc-button onclick="toast.show()" variant="contained">Show Toast</igc-button>
@@ -53,9 +52,9 @@ The simplest way to display the toast component is to use its [`show`](mcp:get_a
 
 ### Properties
 
-Use the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```html
 <igc-button onclick="toast.toggle()" variant="contained">Toggle Toast</igc-button>
@@ -79,7 +78,7 @@ By default, the toast component is hidden automatically after a period specified
 
 ## Styling
 
-You can style the Web Components [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) notifications directly using its tag selector:
+You can style the Web Components [`IgcToast`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) notifications directly using its tag selector:
 
 ```css
 igc-toast {
@@ -99,17 +98,8 @@ igc-toast {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
-- [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime)
-- [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=keepOpen)
-- [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=show)
-- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcToast`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

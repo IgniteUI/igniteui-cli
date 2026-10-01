@@ -1,16 +1,19 @@
 ---
 title: Angular Checkbox Component – Ignite UI for Angular - MIT license 
-_description: Ignite UI for Angular Checkbox component is a selection control that allows users to make a binary choice for a certain condition. Try it Now
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Checkbox components, Angular Checkbox controls
-_license: MIT
+description: Ignite UI for Angular Checkbox component is a selection control that allows users to make a binary choice for a certain condition. Try it Now
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Checkbox components, Angular Checkbox controls
+license: MIT
+llms:
+  description: "Angular Checkbox is an extension of the standard HTML input type checkbox, providing similar functionality, only enhanced with things like animations and Material Design styling."
 _tocName: Checkbox
 ---
-
 # Angular Checkbox Component Overview
 
-<p class="highlight">Angular Checkbox is an extension of the standard HTML input type checkbox, providing similar functionality, only enhanced with things like animations and Material Design styling. It enables users to choose one or several predefined options, mostly in forms and surveys.
+<div class="highlight">
+Angular Checkbox is an extension of the standard HTML input type checkbox, providing similar functionality, only enhanced with things like animations and Material Design styling. It enables users to choose one or several predefined options, mostly in forms and surveys.
 
-The Ignite UI for Angular Checkbox component is a selection control that allows users to make a binary choice for a certain condition. It behaves similarly to the native browser checkbox. Some of the features it offers are styling options, themes, checked, unchecked, and indeterminate states, and others.</p>
+The Ignite UI for Angular Checkbox component is a selection control that allows users to make a binary choice for a certain condition. It behaves similarly to the native browser checkbox. Some of the features it offers are styling options, themes, checked, unchecked, and indeterminate states, and others.
+</div>
 
 ## Angular Checkbox Example
 
@@ -40,7 +43,7 @@ export class CheckboxSample1Component { }
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Checkbox
 
@@ -50,7 +53,7 @@ To get started with the Ignite UI for Angular Checkbox component, first you need
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxCheckboxModule` in the **app.module.ts** file:
 
@@ -126,7 +129,7 @@ export class HomeComponent {
 Enhance the component template by adding a checkbox for each task and then setting the corresponding property bindings:
 
 ```html
-<!--tasks.component.html-->
+{/*tasks.component.html*/}
 <igx-checkbox *ngFor="let task of tasks" [checked]="task.done">
     {{ task.description }}
 </igx-checkbox>
@@ -193,7 +196,7 @@ You can position the label using the checkbox's [`labelPosition`](mcp:get_api_re
 <igx-checkbox labelPosition="before"></igx-checkbox>
 ```
 
-If the `labelPosition` is not set, the label will be positioned after the checkbox.
+If the [`labelPosition`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=labelPosition) is not set, the label will be positioned after the checkbox.
 
 ### Indeterminate Checkbox in Angular
 
@@ -206,7 +209,7 @@ In addition to the checked and unchecked states, there is a third state a checkb
 We can create an app that has a list of tasks that need to be done and one master checkbox in Angular that's going to be checked only if all the tasks are completed. Let's update the previous sample. Starting with the template:
 
 ```html
-<!-- app.component.html -->
+{/* app.component.html */}
 <igx-checkbox
     [readonly]="true"
     [(ngModel)]="masterCheckbox.checked"
@@ -355,100 +358,29 @@ igx-checkbox.tasks {
 }
 ```
 
-
 ## Styling
 
 ### Checkbox Theme Property Map
 
 When you modify a primary property, all related dependent properties are updated automatically:
 
-<table class="collapsible-table">
-    <thead>
-        <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody class="group">
-        <tr class="primary">
-            <td>
-                <details><summary><strong>$empty-color</strong></summary>
-                </details>
-            </td>
-            <td>$empty-color-hover</td>
-            <td>The unchecked border color on hover.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$focus-outline-color (indigo variant only)</td>
-            <td>The focus outline color for indigo variant.</td>
-        </tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-            <td>
-                <details><summary><strong>$fill-color</strong></summary>
-                </details>
-            </td>
-            <td>$fill-color-hover</td>
-            <td>The checked border and fill colors on hover.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$tick-color</td>
-            <td>The checked mark color.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$focus-border-color</td>
-            <td>The focus border color.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$disabled-indeterminate-color</td>
-            <td>The disabled border and fill colors in indeterminate state.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$focus-outline-color (bootstrap variant only)</td>
-            <td>The focus outline color for bootstrap variant.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$focus-outline-color-focused (indigo variant only)</td>
-            <td>The focus outline color for focused state in indigo variant.</td>
-        </tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-            <td>
-                <details><summary><strong>$error-color</strong></summary>
-                </details>
-            </td>
-            <td>$error-color-hover</td>
-            <td>The border and fill colors in invalid state on hover.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$focus-outline-color-error</td>
-            <td>The focus outline color in error state.</td>
-        </tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-            <td>
-                <strong>$label-color</strong>
-            </td>
-            <td>$label-color-hover</td>
-            <td>The text color for the label on hover.</td>
-        </tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$empty-color** | $empty-color-hover | The unchecked border color on hover. |
+|  | $focus-outline-color (indigo variant only) | The focus outline color for indigo variant. |
+| **$fill-color** | $fill-color-hover | The checked border and fill colors on hover. |
+|  | $tick-color | The checked mark color. |
+|  | $focus-border-color | The focus border color. |
+|  | $disabled-indeterminate-color | The disabled border and fill colors in indeterminate state. |
+|  | $focus-outline-color (bootstrap variant only) | The focus outline color for bootstrap variant. |
+|  | $focus-outline-color-focused (indigo variant only) | The focus outline color for focused state in indigo variant. |
+| **$error-color** | $error-color-hover | The border and fill colors in invalid state on hover. |
+|  | $focus-outline-color-error | The focus outline color in error state. |
+| **$label-color** | $label-color-hover | The text color for the label on hover. |
 
 > **Note:** The actual results may vary depending on the theme variant.
 
-To get started with styling the checkbox, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the checkbox, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -457,7 +389,7 @@ To get started with styling the checkbox, we need to import the `index` file, wh
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Then, we create a new theme that extends the [`checkbox-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme) and setting parameters to style the checkbox elements. By specifying the `$empty-color` and `$fill-color`, the theme automatically calculates appropriate state colors and contrast foregrounds. You can still override any other parameter with custom values as needed.
+Then, we create a new theme that extends the `checkbox-theme` and setting parameters to style the checkbox elements. By specifying the `$empty-color` and `$fill-color`, the theme automatically calculates appropriate state colors and contrast foregrounds. You can still override any other parameter with custom values as needed.
 
 ```scss
 // in styles.scss
@@ -542,7 +474,7 @@ export class CheckboxStylingComponent {
 
 ### Styling with Tailwind
 
-You can style the `checkbox` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the `checkbox` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -560,7 +492,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [checkbox-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme). The syntax is as follows:
+You can find the full list of properties in the `checkbox-theme`. The syntax is as follows:
 
 ```html
 <igx-checkbox
@@ -572,32 +504,43 @@ class="!light-checkbox
 </igx-checkbox>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your checkbox should look like this:
 
-<div class="sample-container loading" style="height:50px">
-    <iframe id="checkbox-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/data-entries/checkbox-tailwind-styling' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 
-<div class="divider--half"></div>
+@Component({
+    selector: 'app-checkbox-tailwind-styling',
+    styleUrls: ['./checkbox-tailwind-styling.component.scss'],
+    templateUrl: './checkbox-tailwind-styling.component.html',
+    imports: [IgxCheckboxComponent]
+})
+export class CheckboxTailwindStylingComponent { }
+```
+```html
+<igx-checkbox class="!light-checkbox ![--empty-color:#7B9E89] ![--fill-color:#7B9E89]" [checked]="true">
+    Styled checkbox
+</igx-checkbox>
+```
+
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxCheckboxComponent](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
-- [IgxCheckboxComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme)
-- [LabelPosition](mcp:get_api_reference?platform=angular&component=LabelPosition)
-
+<hr/>
+- [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
+- `IgxCheckboxComponent Styles`
+- [`IgxLabelPosition`](mcp:get_api_reference?platform=angular&component=LabelPosition)
 ## Theming Dependencies
 
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-riple-theme)
+- `IgxRipple Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

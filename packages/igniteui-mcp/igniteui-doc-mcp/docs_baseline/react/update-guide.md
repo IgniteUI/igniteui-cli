@@ -1,11 +1,12 @@
 ---
 title: Update Guide | Ignite UI for React | Infragistics
-_description: Check out this article on updating how to update to a newer version of the Ignite UI for React library.
-_keywords: ignite ui for react, update, npm package, material components
+description: Check out this article on updating how to update to a newer version of the Ignite UI for React library.
+keywords: ignite ui for react, update, npm package, material components
 mentionedTypes: ["Input", "Button"]
+llms:
+  description: "In the Ignite UI for React versioning the first number always matches the major version of React the code supports and the second is dedicated for major version releases."
 _tocName: Update guide
 ---
-
 # Update Guide
 
 In the Ignite UI for React versioning the first number always matches the major version of React the code supports and the second is dedicated for major version releases. Breaking changes may be introduced between major releases. A comprehensive list of changes for each release of Ignite UI for React can be found in the product [CHANGELOG](./general-changelog-dv-react.md).
@@ -57,9 +58,9 @@ Becomes:
     const handlePinning = (event: CustomEvent<IgrPinColumnCancellableEventArgsDetail>) => {}
 ```
 
-- Components no longer have the non-functional `name` property by default. The `name` property only remains in **igniteui-react** components, mostly form inputs such as [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) and [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), where it has native functionality.
-- Ignite UI for React components no longer require a `key` property, unless it is necessary according to React\`s [documentation](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)
-- The `DataGrid` is no longer part of **igniteui-react-grids** package. It has been moved to **igniteui-react-data-grids**, making **igniteui-react-grids** more lightweight.
+- Components no longer have the non-functional `name` property by default. The `name` property only remains in **igniteui-react** components, mostly form inputs such as [IgrInput](./inputs/input.md) and [IgrCombo](./inputs/combo/overview.md), where it has native functionality.
+- Ignite UI for React components no longer require a `key` property, unless it is necessary according to React`s [documentation](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- The [IgrDataGrid](./grids/data-grid.md) is no longer part of **igniteui-react-grids** package. It has been moved to **igniteui-react-data-grids**, making **igniteui-react-grids** more lightweight.
 - There were several types that were exposed as classes in version **18.9.0** which is no longer the case. Those are now exported as types and can be used like this:
 
 ```tsx
@@ -78,7 +79,7 @@ const pivotConfiguration: IgrPivotConfiguration = {
 
 - [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
   - **Breaking Changes**
-  - `clicked` event is removed. Use native `onClick` instead.
+  - `clicked` event is removed. Use native [`onClick`](mcp:get_api_reference?platform=react&component=IgrButton&member=click) instead.
 - [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
   - **Breaking Changes**
-  - `inputOccurred` event is renamed to `onInput`
+  - `inputOccurred` event is renamed to [`onInput`](mcp:get_api_reference?platform=react&component=IgrInput&member=onInput)

@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid Advanced Filtering - Ignite UI for Blazor
-_description: Learn how to configure advanced filter of data with the Blazor Hierarchical Grid. The grid advanced filtering is more convenient and engaging than ever.
-_keywords: Advanced Filtering, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/advanced-filtering
+title: "Blazor Hierarchical Grid Advanced Filtering - Ignite UI for Blazor"
+description: Learn how to configure advanced filter of data with the Blazor Hierarchical Grid. The grid advanced filtering is more convenient and engaging than ever.
+keywords: Advanced Filtering, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/advanced-filtering"
+llms:
+  description: "The Ignite UI for Blazor Advanced Filtering in Blazor Hierarchical Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the IgbHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Advanced Filtering
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Advanced Filtering
 
 The Ignite UI for Blazor Advanced Filtering in Blazor Hierarchical Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
@@ -301,7 +300,7 @@ public class SingersData
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
 
-In order to add a filtering condition, you have to select any of the [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) columns, an operand based on the column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
+In order to add a filtering condition, you have to select any of the [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) columns, an operand based on the column [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
 
 If you select more than one filtering condition chip, a context menu appears with options to create a group or delete the filters. If you choose to create a group with the selected conditions, the newly created group will appear where the topmost selected condition was placed.
 
@@ -311,11 +310,7 @@ In order to filter the data once you are ready with creating the filtering condi
 
 ## Usage
 
-To enable the advanced filtering, the [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowAdvancedFiltering) input property should be set to **true**.
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+To enable the advanced filtering, the [`IgbHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowAdvancedFiltering) input property should be set to **true**.
 
 ```razor
 <IgbHierarchicalGrid Data=data AutoGenerate="true" AllowAdvancedFiltering="true">
@@ -323,18 +318,16 @@ To enable the advanced filtering, the [`AllowAdvancedFiltering`](mcp:get_api_ref
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+The advanced filtering generates a [`IgbHierarchicalGrid.filteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=filteringExpressionsTree) which is stored in the [`IgbHierarchicalGrid.advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=advancedFilteringExpressionsTree) input property. You could use the [`IgbHierarchicalGrid.advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
-The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilteringExpressionsTree) which is stored in the [`AdvancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AdvancedFilteringExpressionsTree) input property. You could use the [`AdvancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AdvancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
+In case you don't want to show the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) toolbar, you could use the [`IgbHierarchicalGrid.openAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=openAdvancedFilteringDialog) and [`IgbHierarchicalGrid.closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
-In case you don't want to show the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) toolbar, you could use the [`OpenAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=OpenAdvancedFilteringDialog) and [`CloseAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=CloseAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
-
-> [!Note]
-> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the intersection between the results of the two filters.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -638,10 +631,8 @@ public class SingersData
 ```
 
 ## API References
-
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

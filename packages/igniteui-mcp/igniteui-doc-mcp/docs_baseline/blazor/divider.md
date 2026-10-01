@@ -1,12 +1,13 @@
 ---
-title: Blazor Divider | Layout Controls | Infragistics
-_description: Use Infragistics' Blazor divider component to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, Web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor DIvider components, Blazor Divider controls
-_license: MIT
+title: "Blazor Divider | Layout Controls | Infragistics"
+description: Use Infragistics' Blazor divider component to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, Web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor DIvider components, Blazor Divider controls"
+license: MIT
 mentionedTypes: ["Divider"]
+llms:
+  description: "The Ignite UI for Blazor Divider allows the content author to easily create a horizontal/vertical rule as a break between content to better organize information on a page."
 _tocName: Divider
 ---
-
 # Blazor Divider
 
 The Ignite UI for Blazor Divider allows the content author to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
@@ -24,19 +25,17 @@ The Ignite UI for Blazor Divider allows the content author to easily create a ho
 </div>
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 Before using the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDividerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -51,10 +50,9 @@ The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) i
 ```
 
 ## Usage
-
 ### Vertical Divider
 
-If the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
+If the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```razor
 <IgbDivider vertical></IgbDivider>
@@ -99,10 +97,10 @@ If the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbDivider&m
 
 ### Type
 
-The `Type` attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
+The [`Type`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
 
 ```razor
-<IgbDivider Type="dashed"></igrDivider>
+<IgbDivider Type="dashed"></IgbDivider>
 ```
 
 ```razor
@@ -118,7 +116,7 @@ The `Type` attribute determines whether to render a `solid` or a `dashed` divide
 
 ### Inset Divider
 
-The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) can be set in on both sides. To `inset` the divider, set the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Middle) attribute is false.
+The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) can be set in on both sides. To `inset` the divider, set the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=middle) attribute is false.
 
 ```css
 /* DividerStyles.css */
@@ -130,9 +128,9 @@ The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) c
 
 ```razor
 // Both side
-<IgbDivider Middle="True" class="withInset"</igrDivider>
+<IgbDivider Middle="True" class="withInset"></IgbDivider>
 // Left side only
-<IgbDivider class="withInset"</igrDivider>
+<IgbDivider class="withInset"></IgbDivider>
 ```
 
 ```razor
@@ -216,21 +214,14 @@ The following sample illustrates how the [`IgbDivider`](mcp:get_api_reference?pl
 ```
 
 ## CSS Variables
-
 ### Inset
-
 The `--inset` css variable shrinks the divider by the given amount from the start. If middle is set it will shrink from both sides.
 
 ### Color
-
 The `--color` css variable sets the color of the divider.
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider)
-
+[`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

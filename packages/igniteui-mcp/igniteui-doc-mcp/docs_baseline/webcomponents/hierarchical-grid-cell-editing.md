@@ -1,16 +1,15 @@
 ---
-title: Web Components Hierarchical Grid Cell Editing - Ignite UI for Web Components
-_description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "Web Components Hierarchical Grid Cell Editing - Ignite UI for Web Components"
+description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for Web Components Cell Editing in Web Components Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the Web Components Hierarchical Grid component and comes with powerful API for React CRUD operations."
+_componentKey: HierarchicalGrid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Cell Editing
 
 The Ignite UI for Web Components Cell Editing in Web Components Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the Web Components Hierarchical Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -34,33 +33,28 @@ In addition, you can define your own custom templates for update-data actions an
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API but only if primary key is defined:
-
-<!-- ComponentStart: HierarchicalGrid -->
+You can also modify the cell value through the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API but only if primary key is defined:
 
 ```typescript
 public updateCell() {
@@ -68,11 +62,7 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-Another way to update cell is directly through `Update` method of `Cell`:
-
-<!-- ComponentStart: HierarchicalGrid -->
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType&member=update) method of `Cell`:
 
 ```typescript
 public updateCell() {
@@ -83,15 +73,11 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```html
 <igc-column
@@ -133,8 +119,6 @@ public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 Working sample of the above can be found here for further reference:
 
 ```css
@@ -144,16 +128,14 @@ Working sample of the above can be found here for further reference:
 
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides a straightforward API for basic CRUD operations.
+The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component exposes the `AddRow` method which will add the provided data to the data source itself.
-
-<!-- ComponentStart: HierarchicalGrid -->
+The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component exposes the [`AddRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=addRow) method which will add the provided data to the data source itself.
 
 ```typescript
 public addRow() {
@@ -164,13 +146,9 @@ public addRow() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Updating data in the Hierarchical Grid
 
-Updating data in the Hierarchical Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
-
-<!-- ComponentStart: HierarchicalGrid -->
+Updating data in the Hierarchical Grid is achieved through [`IgcHierarchicalGrid.updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=updateRow) and [`IgcHierarchicalGrid.updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ```typescript
 // Updating the whole row
@@ -187,13 +165,9 @@ const row = this.hierarchicalGrid.getRowByKey(rowID);
 row.update(newData);
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Deleting data from the Hierarchical Grid
 
-Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) is defined.
-
-<!-- ComponentStart: HierarchicalGrid -->
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=deleteRow) method will remove the specified row only if a [`IgcHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) is defined.
 
 ```typescript
 // Delete row through Grid API
@@ -203,15 +177,19 @@ const row = this.hierarchicalGrid.getRowByIndex(rowIndex);
 row.delete();
 ```
 
+These can be wired to user interactions, not necessarily related to the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) for example, a button click:
+
 ### Cell Validation on Edit Event
 
-Using the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s editing events, we can alter how the user interacts with the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+Using the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s editing events, we can alter how the user interacts with the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgcHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- ComponentStart: HierarchicalGrid -->
+```razor
+<igc-hierarchical-grid CellEditScript="HandleCellEdit" />
+```
 
 ```ts
 constructor() {
@@ -221,21 +199,9 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- Blazor -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+The [`IgcHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```typescript
  public webGridEditingEventsCellEdit(args: CustomEvent<IgcGridEditEventArgs>): void {
@@ -249,9 +215,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-The result of the above validation being applied to our [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) can be seen in the below demo:
+The result of the above validation being applied to our [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) can be seen in the below demo:
 
 ```css
 /* shared styles are loaded from: */
@@ -264,10 +228,8 @@ The result of the above validation being applied to our [`IgcHierarchicalGridCom
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```html
 <igc-hierarchical-grid class="hierarchicalGrid"></igc-hierarchical-grid>
@@ -282,8 +244,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ### Styling Example
 
@@ -303,8 +263,7 @@ Then set the related CSS properties for that class:
 ```
 
 ## API References
-
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
 ## Additional Resources

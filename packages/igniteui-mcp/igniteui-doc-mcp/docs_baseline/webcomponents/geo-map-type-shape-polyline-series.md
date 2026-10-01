@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Shape Polyline Series | Infragistics
-_description: Use Infragistics Web Components map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Web Components map's series!
-_keywords: Web Components map, Ignite UI for Web Components, shape polyline series, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Web Components Map | Data Visualization Tools | Shape Polyline Series | Infragistics"
+description: Use Infragistics Web Components map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Web Components map's series!
+keywords: "Web Components map, Ignite UI for Web Components, shape polyline series, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In Web Components map component, you can use the GeographicPolylineSeries to display geo-spatial data using polylines in a geographic context."
 _tocName: Geographic Polyline Map
 _premium: true
 ---
-
 # Web Components Geographic Polyline Map
 
-In Web Components map component, you can use the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) to display geo-spatial data using polylines in a geographic context. This type of geographic series is often used to render roads or connections between geographic locations such as cities or airports.
+In Web Components map component, you can use the `IgcGeographicPolylineSeries` to display geo-spatial data using polylines in a geographic context. This type of geographic series is often used to render roads or connections between geographic locations such as cities or airports.
 
 ## Web Components Geographic Polyline Map Example
 
@@ -19,17 +20,13 @@ In Web Components map component, you can use the [`IgcGeographicPolylineSeriesCo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) works a lot like the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) except that geo-spatial data is rendered with polylines instead of polygons.
+The `IgcGeographicPolylineSeries` works a lot like the `IgcGeographicShapeSeries` except that geo-spatial data is rendered with polylines instead of polygons.
 
 ## Data Requirements
-
-Similarly to other types of geographic series in the control, the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriesbasecomponent.html#shapeMemberPath) property. The [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) uses points of this mapped data column to plot polygons in the control.
+Similarly to other types of geographic series in the control, the `IgcGeographicPolylineSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicPolylineSeries` uses points of this mapped data column to plot polygons in the control.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) to locations of cities loaded from a shape file using the [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html).
+The following code shows how to bind the `IgcGeographicPolylineSeries` to locations of cities loaded from a shape file using the `IgcShapefileRecord`.
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -97,8 +94,6 @@ public addSeriesWith(shapeData: any[], shapeBrush: string) {
 ```
 
 ## API References
-
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html)
+`IgcGeographicPolylineSeries`
+`IgcGeographicShapeSeries`
+`IgcShapefileRecord`

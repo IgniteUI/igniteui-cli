@@ -1,14 +1,15 @@
 ---
-title: Web Components Map | Data Visualization Tools | Binding JSON Files | Infragistics
-_description: Learn how to use Infragistics' Web Components map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, JSON files, Ignite UI for Web Components, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Web Components Map | Data Visualization Tools | Binding JSON Files | Infragistics"
+description: Learn how to use Infragistics' Web Components map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, JSON files, Ignite UI for Web Components, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Web Components map, you can plot geographic data loaded from various file types."
 _tocName: Binding JSON File
 _premium: true
 ---
-
 # Web Components Binding JSON Files with Geographic Locations
 
 With the Ignite UI for Web Components map, you can plot geographic data loaded from various file types. For example, you can load geographic locations from JavaScript Object Notation (JSON) file.
@@ -20,10 +21,7 @@ With the Ignite UI for Web Components map, you can plot geographic data loaded f
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from JSON file:
 
 ```json
@@ -36,8 +34,7 @@ Here is an example of data from JSON file:
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) in the map component to an array of objects created from loaded JSON file with geographic locations:
+The following code loads and binds `IgcGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded JSON file with geographic locations:
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -83,10 +80,9 @@ onDataLoaded(jsonData: any[]) {
 ```
 
 ## API References
-
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
-- `GeographicMap`
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#longitudeMemberPath)
+`IgcGeographicHighDensityScatterSeries`
+`IgcGeographicSymbolSeries`
+`IgcGeographicMap`
+`DataSource`
+`LatitudeMemberPath`
+`LongitudeMemberPath`

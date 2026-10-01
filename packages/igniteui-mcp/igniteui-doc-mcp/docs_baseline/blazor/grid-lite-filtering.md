@@ -1,16 +1,17 @@
 ---
-title: Blazor Grid Lite Filtering | Ignite UI for Blazor | MIT license
-_description: Filter operations, filter customization, and remote filtering for Grid Lite. Create apps with our open-source Blazor Grid Lite. Try it now.
-_keywords: filtering, Blazor, {ComponentKeywords}, Ignite UI for Blazor, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Blazor Grid Lite Filtering | Ignite UI for Blazor | MIT license"
+description: Filter operations, filter customization, and remote filtering for Grid Lite. Create apps with our open-source Blazor Grid Lite. Try it now.
+keywords: filtering, Blazor, , Ignite UI for Blazor, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite supports filtering operations on its data source."
 _tocName: Filtering
 ---
-
 # Blazor Grid Lite Filter Operations
 
-The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `Filterable` property of the column.
+The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) property of the column.
 
 ```razor
 <IgbGridLite Data="@data">
@@ -65,7 +66,40 @@ You can also control whether the filter operations for string columns should be 
 
 ## Filter Model
 
-The building blocks for filter operations in the grid is the `GridLiteFilterExpression` which has the following structure:
+The building blocks for filter operations in the grid is the [`IgbGridLiteFilterExpression`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteFilterExpression) which has the following structure:
+
+```typescript
+export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
+  /**
+   * The target column for the filter operation.
+   */
+  key: K;
+  /**
+   * The filter function which will be executed against the data records.
+   */
+  condition: FilterOperation<T[K]> | OperandKeys<T[K]>;
+
+  /**
+   * The filtering value used in the filter condition function.
+   *
+   * @remarks
+   * Optional for unary conditions.
+   */
+  searchTerm?: T[K];
+  /**
+   * Dictates how this expression should resolve in the filter operation in relation to
+   * other expressions.
+   */
+  criteria?: FilterCriteria;
+  /**
+   * Whether the sort operation should be case sensitive.
+   *
+   * @remarks
+   * If not provided, the value is resolved based on the column filter configuration (if any).
+   */
+  caseSensitive?: boolean;
+}
+```
 
 ```razor
 public class IgbGridLiteFilterExpression
@@ -242,17 +276,16 @@ After the grid applies the new filter state, a `Filtered` event is raised. It co
 }
 ```
 
-<!-- TODO ## API References
 ## API References
 
-- `{ComponentName}`
-- `Column`
--->
+[`IgbGridLite<TItem>`](mcp:get_api_reference?platform=blazor&component=IgbGridLite%3CTItem%3E)<br />
+[`IgbGridLiteColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteColumn)<br />
+[`IgbGridLiteFilterExpression`](mcp:get_api_reference?platform=blazor&component=IgbGridLiteFilterExpression)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
 
 Our community is active and always welcoming to new ideas.
 

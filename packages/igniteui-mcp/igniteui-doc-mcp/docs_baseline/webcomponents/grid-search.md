@@ -1,22 +1,21 @@
 ---
-title: Web Components Grid Search Filter - Ignite UI for Web Components
-_description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Web Components Grid. See demos & examples!
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Search Filter - Ignite UI for Web Components"
+description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Web Components Grid. See demos & examples!
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+llms:
+  description: "The Ignite UI for Web Components Search Filter feature in Web Components Grid enables the process of finding values in the collection of data."
+_componentKey: Grid
 _tocName: Search
 _premium: true
 ---
-
 # Web Components Grid Search Filter
 
-The Ignite UI for Web Components Search Filter feature in Web Components Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Web Components Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+The Ignite UI for Web Components Search Filter feature in Web Components Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Web Components Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Web Components Search Example
 
-The following example represents [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
+The following example represents [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
 
 ```typescript
 export class MarketRecord {
@@ -81,8 +80,6 @@ export class MarketData extends Array<MarketRecord>
 
 Let's start by creating our grid and binding it to our data. We will also add some custom styles for the components we will be using!
 
-<!-- ComponentStart: Grid -->
-
 ```css
 .gridSize {
     --ig-size: var(--ig-size-small);
@@ -100,11 +97,7 @@ Let's start by creating our grid and binding it to our data. We will also add so
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-Great, and now let's prepare for the search API of our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
-
-<!-- ComponentStart: Grid -->
+Great, and now let's prepare for the search API of our [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
 
 ```typescript
     private grid: IgcGridComponent;
@@ -118,23 +111,22 @@ Great, and now let's prepare for the search API of our [`IgcGridComponent`](mcp:
 
     private caseSensitiveChip: IgcChipComponent;
     private exactMatchChip: IgcChipComponent;
-```
 
-<!-- ComponentEnd: Grid -->
+```
 
 ### Web Components Search Box Input
 
-Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
+Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s `FindNext` and `FindPrev` methods to highlight all the occurrences of the [`IgcGrid.findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and scroll to the next/previous one (depending on which method we have invoked).
 
-Both the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods have three arguments:
+Both the `FindNext` and the `FindPrev` methods have three arguments:
 
 - `Text`: **string** (the text we are searching for)
-- (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
-- (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
+- (optional) [`IgcSearchInfo.caseSensitive`](mcp:get_api_reference?platform=webcomponents&component=IgcSearchInfo&member=caseSensitive): **boolean** (should the search be case sensitive or not, default value is false)
+- (optional) [`IgcSearchInfo.exactMatch`](mcp:get_api_reference?platform=webcomponents&component=IgcSearchInfo&member=exactMatch): **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the [`IgcGrid.findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
-The methods from above return a **number** value (the number of times the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) contains the given string).
+The methods from above return a **number** value (the number of times the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) contains the given string).
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -153,11 +145,9 @@ public nextSearch(){
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ### Add Search Buttons
 
-In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods inside the buttons' respective click event handlers.
+In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the `FindNext` and the `FindPrev` methods inside the buttons' respective click event handlers.
 
 ```html
 <igc-icon-button id="prevIconBtn" variant="flat" name="prev" collection="material" ></igc-icon-button>
@@ -182,7 +172,11 @@ public nextSearch() {
 
 ### Add Keyboard Search
 
-We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods depending on which key the user has pressed.
+We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the `FindNext`/`FindPrev` methods depending on which key the user has pressed.
+
+```html
+<input id="searchBox" name="searchBox"/>
+```
 
 ```typescript
 constructor() {
@@ -205,9 +199,17 @@ public onSearchKeydown(evt: KeyboardEvent) {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ### Case Sensitive and Exact Match
+
+Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use simple checkbox inputs and bind to its `change` event where we can use the checkbox `checked` state.
+
+```html
+<span>Case sensitive</span>
+<input id="case" type="checkbox">
+
+<span>Exact match</span>
+<input id="exact" type="checkbox">
+```
 
 ```typescript
 constructor() {
@@ -228,7 +230,7 @@ public updateSearch() {
 
 ### Persistence
 
-What if we would like to filter and sort our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s `PerPage` property.
+What if we would like to filter and sort our [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the [`IgcGrid.findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s `PerPage` property.
 
 ### Adding icons
 
@@ -241,8 +243,6 @@ defineComponents(IgcInputComponent, IgcChipComponent, IgcIconComponent, IgcIconB
 ```
 
 Finally, let's update our template with the new components!
-
-<!-- ComponentStart: Grid -->
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -270,11 +270,12 @@ constructor() {
     registerIconFromText("clear", clearIconText, "material");
     registerIconFromText("search", searchIconText, "material");
 }
+
 ```
 
 On the right in our input group, let's create three separate containers with the following purposes:
 
-- For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
+- For displaying a couple of chips that toggle the [`IgcSearchInfo.caseSensitive`](mcp:get_api_reference?platform=webcomponents&component=IgcSearchInfo&member=caseSensitive) and the [`IgcSearchInfo.exactMatch`](mcp:get_api_reference?platform=webcomponents&component=IgcSearchInfo&member=exactMatch) properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
 
 ```html
 <div slot="suffix">
@@ -282,8 +283,6 @@ On the right in our input group, let's create three separate containers with the
     <igc-chip selectable="true" id="exactMatchChip">Exact Match</igc-chip>
 </div>
 ```
-
-<!-- ComponentStart: Grid -->
 
 ```ts
 constructor() {
@@ -298,7 +297,7 @@ public updateSearch() {
 }
 ```
 
-- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods.
+- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the `FindNext`/`FindPrev` methods.
 
 ```html
 <div slot="suffix">
@@ -316,8 +315,6 @@ constructor() {
 }
 ```
 
-<!-- ComponentStart: Grid -->
-
 ```ts
 public nextSearch() {
     this.grid.findNext(this.searchBox.value, this.caseSensitiveChip.selected, this.exactMatchChip.selected);
@@ -326,36 +323,20 @@ public nextSearch() {
 public prevSearch() {
     this.grid.findPrev(this.searchBox.value, this.caseSensitiveChip.selected, this.exactMatchChip.selected);
 }
+
 ```
 
 ## Known Limitations
 
 |Limitation|Description|
 |--- |--- |
-|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`searchable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=searchable) property on the column to false.|
+|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`Searchable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=searchable) property on the column to false.|
 |Remote Virtualization| The search will not work properly when using remote virtualization|
 |Cells with cut off text| When the text in the cell is too large to fit and the text we are looking for is cut off by the ellipsis, we will still scroll to the cell and include it in the match count, but nothing will be highlighted |
 
 ## API References
-
-In this article we implemented our own search bar for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Web Components components like icons, chips and inputs. The search API is listed below.
-
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) methods:
-
-- [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)
-- [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev)
-- [`clearSearch`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearSearch)
-- [`refreshSearch`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=refreshSearch)
-
-[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
-
-- [`searchable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=searchable)
-
-Additional components with relative APIs that were used:
-
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 - [Virtualization and Performance](virtualization.md)

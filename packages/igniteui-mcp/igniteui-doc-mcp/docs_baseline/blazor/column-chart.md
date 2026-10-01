@@ -1,21 +1,22 @@
 ---
-title: Blazor Column Chart | Data Visualization | Infragistics
-_description: Infragistics' Blazor Column Chart
-_keywords: Blazor Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
+title: "Blazor Column Chart | Data Visualization | Infragistics"
+description: Infragistics' Blazor Column Chart
+keywords: "Blazor Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights."
 _tocName: Column Chart
 _premium: true
 ---
-
 # Blazor Column Chart
 
-The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
+The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
 
 ## Blazor Column Chart Example
 
-You can create Blazor Column Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) to **Column** enum, as shown in the example below:
+You can create Blazor Column Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) to **Column** enum, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -109,8 +110,6 @@ public class HighestGrossingMovies
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Column Charts Recommendations
 
 ### Column Charts Use Cases
@@ -141,7 +140,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -218,11 +217,9 @@ public class TemperatureAverageData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -315,8 +312,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Column Chart Styling
 
@@ -420,8 +415,6 @@ public class EnergyRenewableConsumption
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Advanced Types of Column Charts
 
@@ -551,8 +544,6 @@ public class CompanyIncomeData
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Stacked Column Chart
 
@@ -732,8 +723,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Column Chart
 
 The Stacked 100% Column Chart is identical to the [Stacked Column Chart](stacked-chart.md#blazor-stacked-column-chart) in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100 Column Chart presents the data in terms of percent of the sum of all values in a data point.
@@ -888,13 +877,11 @@ public class OnlineTrafficByDevice
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Range Column Chart
 
 The Blazor Range Column Chart belongs to a group of range charts and is rendered using vertical rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the bottom like the traditional [Category Column Chart](column-chart.md#blazor-column-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items. Range values are represented on the Y-Axis and categories are displayed on the X-Axis.
 
-The Range Column Chart is identical to the [Range Area Chart](area-chart.md)(area-chart.md#blazor-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
+The Range Column Chart is identical to the [Range Area Chart](area-chart.md#blazor-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
 
 You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries), as shown in the example below:
 
@@ -1037,8 +1024,6 @@ public class TemperatureRangeData
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Radial Column Chart
 
@@ -1186,8 +1171,6 @@ public class FootballPlayerStats
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1198,14 +1181,23 @@ You can find more information about related chart types in these topics:
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = **Column** |
+| Column              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = **Column** |
 | Radial Column       | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries) |
 | Range Column        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries) |
 | Stacked Column      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries) |
 | Stacked 100% Column | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStacked100ColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100ColumnSeries) |
 | Waterfall           | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbWaterfallSeries`](mcp:get_api_reference?platform=blazor&component=IgbWaterfallSeries) |
+
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)<br />
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)<br />
+[`IgbWaterfallSeries`](mcp:get_api_reference?platform=blazor&component=IgbWaterfallSeries)<br />
+[`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)<br />
+[`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)<br />
+[`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries)<br />
+[`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries)<br />
+[`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries)<br />
+[`IgbStacked100ColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100ColumnSeries)<br />

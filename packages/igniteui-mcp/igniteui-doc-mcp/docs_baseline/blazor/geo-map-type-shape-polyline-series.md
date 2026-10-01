@@ -1,13 +1,14 @@
 ---
-title: Blazor Map | Data Visualization Tools | Shape Polyline Series | Infragistics
-_description: Use Infragistics Blazor map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Blazor map's series!
-_keywords: Blazor map, Ignite UI for Blazor, shape polyline series, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Blazor Map | Data Visualization Tools | Shape Polyline Series | Infragistics"
+description: Use Infragistics Blazor map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Blazor map's series!
+keywords: "Blazor map, Ignite UI for Blazor, shape polyline series, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In Blazor map component, you can use the GeographicPolylineSeries to display geo-spatial data using polylines in a geographic context."
 _tocName: Geographic Polyline Map
 _premium: true
 ---
-
 # Blazor Geographic Polyline Map
 
 In Blazor map component, you can use the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to display geo-spatial data using polylines in a geographic context. This type of geographic series is often used to render roads or connections between geographic locations such as cities or airports.
@@ -54,20 +55,17 @@ In Blazor map component, you can use the [`IgbGeographicPolylineSeries`](mcp:get
 }
 ```
 
-<div class="divider--half"></div>
-
 The [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) works a lot like the [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries) except that geo-spatial data is rendered with polylines instead of polygons.
 
 ## Data Requirements
-
-Similarly to other types of geographic series in the control, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeriesBase&member=ShapeMemberPath) property. The [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) uses points of this mapped data column to plot polygons in the control.
+Similarly to other types of geographic series in the control, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicPolylineSeries` uses points of this mapped data column to plot polygons in the control.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to locations of cities loaded from a shape file using the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource).
+The following code shows how to bind the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to locations of cities loaded from a shape file using the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord).
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicPolylineSeries Outline="Red" ShapefileDataSource="DataSource" />
@@ -89,8 +87,6 @@ The following code shows how to bind the [`IgbGeographicPolylineSeries`](mcp:get
 ```
 
 ## API References
-
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource)
-- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+[`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord)

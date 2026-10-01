@@ -1,16 +1,15 @@
 ---
-title: Web Components Tree Grid Column Hiding - Ignite UI for Web Components
-_description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
-_keywords: Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-hiding
+title: "Web Components Tree Grid Column Hiding - Ignite UI for Web Components"
+description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
+keywords: "Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-hiding"
+llms:
+  description: "Ignite UI for Web Components IgcTreeGrid provides a ColumnActionsComponent with a ColumnHidingDirective which allows users to perform column hiding directly through the user interface or by using the Web Components component."
+_componentKey: TreeGrid
 _tocName: Column Hiding
 _premium: true
 ---
-
 # Web Components Tree Grid Column Hiding
 
 The Ignite UI for Web Components has a built-in column hiding UI, which can be used through the Web Components Tree Grid toolbar to change the visible state of the columns. Developers have the flexibility to define the Column Hiding UI anywhere within the page as needed. The Web Components Tree Grid Column Hiding feature is especially useful when one wants to decrease the size of the grid and to eliminate the need for tabbing through redundant fields.
@@ -62,7 +61,7 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 
 ## Tree Grid Setup
 
-Let's start by creating our [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) and binding it to our data. We will also enable both filtering and sorting for the columns.
+Let's start by creating our [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) and binding it to our data. We will also enable both filtering and sorting for the columns.
 
 ```html
 <igc-tree-grid id="treeGrid" auto-generate="false" width="100%" height="560px" allow-filtering="true">
@@ -80,67 +79,20 @@ Let's start by creating our [`IgcTreeGridComponent`](mcp:get_api_reference?platf
 </igc-tree-grid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an [`IgcDropdown`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
-For this purpose all we have to do is set both the [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) and the [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html) inside of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+For this purpose all we have to do is set both the [`IgcGridToolbarActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarActionsComponent) and the [`IgcGridToolbarHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent) inside of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
-<!-- Web Components -->
+The [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-<!-- ComponentStart: TreeGrid -->
-
-```html
-<igc-tree-grid>
-    <igc-grid-toolbar>
-        <igc-grid-toolbar-actions>
-            <igc-grid-toolbar-hiding></igc-grid-toolbar-hiding>
-        </igc-grid-toolbar-actions>
-    </igc-grid-toolbar>
-</igc-tree-grid>
-```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
-
-By using the [`title`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=title) and `Prompt` properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
-
-<!-- Web Components -->
-
-<!-- ComponentStart: TreeGrid -->
-
-```html
-<igc-tree-grid id="treeGrid">
-    <igc-grid-toolbar>
-        <igc-grid-toolbar-actions>
-            <igc-grid-toolbar-hiding id="hidingAction" title="Column Hiding" prompt="Type here to search"></igc-grid-toolbar-hiding>
-        </igc-grid-toolbar-actions>
-    </igc-grid-toolbar>
-</igc-tree-grid>
-```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
+By using the [`Title`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent&member=title) and [`Prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent&member=prompt) properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
 
 You can see the result of the code from above at the beginning of this article in the Web Components Column Hiding Example section.
 
 ### Disable hiding of a column
-
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disableHiding) property to true.
 
 ```html
 <igc-tree-grid>
@@ -149,24 +101,16 @@ We can easily prevent the user from being able to hide columns through the colum
 </igc-tree-grid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Styling
 
-The grid could be further customized by setting some of the available [CSS variables](../theming-grid.md).
+The grid could be further customized by setting some of the available [CSS variables](../grid/theming-grid.md).
 In order to achieve that, we will use a class that we will first assign to the grid:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```html
 <igc-tree-grid id="treeGrid"></igc-tree-grid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 Then set the related CSS variables for the related components. We will apply the styles also only on the `igx-column-actions`, so the rest of the grid is unaffected:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```css
 .tree-grid {
@@ -199,8 +143,6 @@ Then set the related CSS variables for the related components. We will apply the
     --ig-button-disabled-foreground: #ffcd0f;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -275,31 +217,12 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 ```
 
 ## API References
-
-In this article we learned how to use the built-in column hiding UI in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
-
-- `ColumnActionsComponent`
-
-Additional components with relative APIs that were used:
-
-[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
-
-- [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding)
-
-[`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) properties:
-
-- `showProgress`
-
-[`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) methods:
-
-- [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html)
-- [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html)
-- [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
-
-[`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) events:
-
-- `ColumnVisibilityChanged`
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcGridToolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarComponent)
+[`IgcGridToolbarHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent)
+[`IgcGridToolbarActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarActionsComponent)
+[`IgcGridToolbarTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarTitleComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

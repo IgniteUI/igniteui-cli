@@ -1,15 +1,14 @@
 ---
-title: React Grid Multi Row Layout - Ignite UI for React
-_description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for React Data Grid. Check out examples and demos!
-_keywords: Multi-Row Layout, React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
+title: "React Grid Multi Row Layout - Ignite UI for React"
+description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for React Data Grid. Check out examples and demos!
+keywords: Multi-Row Layout, React, Grid, IgrGrid, Ignite UI for React, Infragistics
+license: commercial
+llms:
+  description: "The Multi-row Layout in the Ignite UI for React extends the rendering capabilities of the React Grid."
+_componentKey: Grid
 _tocName: Multi-Row Layout
 _premium: true
 ---
-
 # React Grid Multi-row Layout
 
 The Multi-row Layout in the Ignite UI for React extends the rendering capabilities of the React Grid. The feature allows splitting a single data record into multiple visible rows.
@@ -266,14 +265,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The declaration of Multi-row Layout is achieved through [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component. Each [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component should be considered as a block, containing one or multiple [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout) component. Each [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout) component should be considered as a block, containing one or multiple [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
 The [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) component exposes four [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties to determine the location and span of each cell:
-
-- [`colStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colStart) - column index from which the field is starting. This property is **mandatory**.
-- [`rowStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`colEnd`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`rowEnd`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+- [`IgrColumnState.colStart`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`IgrColumn.rowStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`IgrColumnState.colEnd`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`IgrColumn.rowEnd`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```tsx
 <IgrColumnLayout>
@@ -299,18 +297,16 @@ The [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) comp
 
 The result of the above configuration can be seen on the screenshot below:
 
-<img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
-
-> [!Note]
-> [`rowStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowStart) and [`colStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colStart) properties must be set for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) into a [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout). The [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+**Note:** 
+[`IgrGrid.rowStart`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStart) and [`IgrGrid.colStart`](mcp:get_api_reference?platform=react&component=IgrGrid&member=colStart) properties must be set for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) into a [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout). The [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
-Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) component.
+Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`IgrColumnLayout`](mcp:get_api_reference?platform=react&component=IgrColumnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) component.
 
-- Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
+- Filtering - only Excel Style Filtering is supported. Setting [`IgrGrid.filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) explicitly to [`FilterMode.quickFilter`](mcp:get_api_reference?platform=react&component=FilterMode&member=quickFilter) has no effect.
 - Paging - works on records, not visual rows.
-- Group By - `HideGroupedColumns` option has no effect in Multi-row Layout. The grouped columns are always visible.
+- Group By - [`IgrGrid.hideGroupedColumns`](mcp:get_api_reference?platform=react&component=IgrGrid&member=hideGroupedColumns) option has no effect in Multi-row Layout. The grouped columns are always visible.
 
 The following features are currently **not** supported:
 
@@ -334,17 +330,17 @@ The following features are currently **not** supported:
 - <kbd>CTRL</kbd> + <kbd>↑</kbd> or <kbd>CTRL</kbd> + <kbd>Down</kbd> - Navigate and apply focus on the same column on the first or on the last row.
 - <kbd>CTRL</kbd> + <kbd>HOME</kbd> or <kbd>CTRL</kbd> + <kbd>END</kbd> - Navigate to the first row and focus first cell or navigate to the last row and focus the last cell.
 
-> [!Note]
-> Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
+**Note:** 
+Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
 
-> [!Note]
-> Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
+**Note:** 
+Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
 
 ### Custom Keyboard Navigation
 
 The grid allows customizing the default navigation behavior when a certain key is pressed. Actions like **going to the next cell** or **cell below** could be handled easily with the powerful keyboard navigation API:
 
-- `GridKeydown` is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
+- [`IgrGrid.gridKeydown`](mcp:get_api_reference?platform=react&component=IgrGrid&member=gridKeydown) is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
 - `NavigateTo` - this method allows you to navigate to a position based on provided `RowIndex` and `VisibleColumnIndex`
 
 The demo below adds additional navigation down/up via the <kbd>ENTER</kbd> and <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> keys, similar to the behavior observed in Excel.
@@ -578,7 +574,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -819,22 +815,15 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
 - [Sorting](sorting.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

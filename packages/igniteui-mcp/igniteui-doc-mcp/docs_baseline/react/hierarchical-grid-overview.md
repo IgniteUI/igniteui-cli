@@ -1,13 +1,15 @@
 ---
-title: React Hierarchical Grid | Fastest React Hierarchical Table | Infragistics
-_description: The Ignite UI for React Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
-_keywords: React hierarchical grid, igniteui for React, infragistics
-_license: commercial
+title: "React Hierarchical Grid | Fastest React Hierarchical Table | Infragistics"
+description: The Ignite UI for React Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
+keywords: "React hierarchical grid, igniteui for React, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGridBaseDirective"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for React Hierarchical Data Grid is used to display and manipulate hierarchical tabular data."
 _tocName: Hierarchical Grid
+_premium: true
 ---
-
 # Hierarchical Data Grid Overview and Configuration
 
 The Ignite UI for React Hierarchical Data Grid is used to display and manipulate hierarchical tabular data. Quickly bind your data with very little code or use a variety of events to customize different behaviors. This component provides a rich set of features like data selection, excel style filtering, sorting, paging, templating, column moving, column pinning, export to Excel and CSV, and more. The Hierarchical Grid builds upon the Flat Grid Component and extends its functionality by allowing the users to expand or collapse the rows of the parent grid, revealing corresponding child grids, when more detailed information is needed.
@@ -212,7 +214,7 @@ The corresponding styles should also be referenced. You can choose light or dark
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 ```
 
-For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](overview.md#styling) section.
+For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](./overview.md#Styling) section.
 
 ## Using the React Hierarchical Data Grid
 
@@ -224,37 +226,6 @@ The Hierarchical Grid supports two ways of binding to data:
 ### Using hierarchical data
 
 If the application loads the whole hierarchical data as an array of objects referencing children arrays of objects, then the Hierarchical Grid can be configured to read it and bind to it automatically. Here is an example of a properly structured hierarchical data source:
-
-```ts
-export const singers = [{
-    "Artist": "Naomí Yepes",
-    "Photo": "assets/images/hgrid/naomi.png",
-    "Debut": "2011",
-    "Grammy Nominations": 6,
-    "Grammy Awards": 0,
-    "Tours": [{
-        "Tour": "Faithful Tour",
-        "Started on": "Sep-12",
-        "Location": "Worldwide",
-        "Headliner": "NO",
-        "Toured by": "Naomí Yepes"
-    }],
-    "Albums": [{
-        "Album": "Dream Driven",
-        "Launch Date": new Date("August 25, 2014"),
-        "Billboard Review": "81",
-        "US Billboard 200": "1",
-        "Artist": "Naomí Yepes",
-        "Songs": [{
-            "No.": "1",
-            "Title": "Intro",
-            "Released": "*",
-            "Genre": "*",
-            "Album": "Dream Driven"
-        }]
-    }]
-}];
-```
 
 Each **IgrRowIsland** should specify the key of the property that holds the children data.
 
@@ -269,8 +240,8 @@ Each **IgrRowIsland** should specify the key of the property that holds the chil
 </IgrHierarchicalGrid>
 ```
 
-> [!NOTE]
-> Note that instead of `data` the user configures only the `childDataKey` that the IgrHierarchicalGrid needs to read to set the data automatically.
+**Note:** 
+Note that instead of `data` the user configures only the `childDataKey` that the IgrHierarchicalGrid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
 
@@ -355,22 +326,22 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```tsx
 <IgrHierarchicalGrid data={data} primaryKey="ID" hasChildrenKey="hasChildren">
 </IgrHierarchicalGrid>
 ```
 
-Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=showExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -392,7 +363,7 @@ The grid features could be enabled and configured through the IgrRowIsland marku
             <IgrColumn field="ProductName"></IgrColumn>
         </IgrColumnGroup>
         <IgrPaginator perPage={5}></IgrPaginator>
-    <IgrRowIsland>
+    </IgrRowIsland>
     <IgrPaginator></IgrPaginator>
 </IgrHierarchicalGrid>
 ```
@@ -420,17 +391,8 @@ The Selection and Navigation features work globally for the whole Hierarchical G
 
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
-<img class="responsive-img" src="../../../images/unfold_less_icon_screenshot.jpg" srcset="../../images/unfold_less_icon_screenshoto@2x.jpg 2x" alt="unfold_less_icon_screenshot" />
-
-<!-- TODO: uncomment when sizing topic is ready -->
-
-<!-- ## Sizing
-
-See the [Hierarchical Grid Sizing](sizing.md) topic. -->
-
 ## Styling
-
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```tsx
 <IgrHierarchicalGrid className="grid"></IgrHierarchicalGrid>
@@ -446,7 +408,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 ```
 
 ### Demo
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -647,28 +608,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- `Cell`
-
-<!-- TODO: uncomment when all of the topics are ready -->
-
-<!-- ## Additional Resources
-
-- [Grid Sizing](sizing.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md) -->
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
-- [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)<br />
+[`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)<br />
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
+[`IgrCellType`](mcp:get_api_reference?platform=react&component=IgrCellType)<br />

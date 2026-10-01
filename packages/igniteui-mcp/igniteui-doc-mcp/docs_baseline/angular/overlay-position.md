@@ -1,16 +1,16 @@
 ---
 title: Angular Overlay Service - Positioning Strategies - MIT license 
-_description: Explanation and example about the Overlay Service's IPositionStrategy interface and the classes that implement it.
-_license: MIT
+description: Explanation and example about the Overlay Service's IPositionStrategy interface and the classes that implement it.
+license: MIT
+llms:
+  description: "Position strategies determine where the content is displayed in the provided IgxOverlayService."
 _tocName: Positioning Strategies
 ---
-
 # Positioning Strategies
 
 Position strategies determine where the content is displayed in the provided `IgxOverlayService`. By default, the content is positioned in the middle of the screen.
 
 ## Angular Positioning Strategies Example
-
 
 ```typescript
 import { Component, OnDestroy, ViewContainerRef, inject } from '@angular/core';
@@ -64,7 +64,7 @@ export class OverlaySampleMain1Component implements OnDestroy {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Strategies Overview
 
@@ -72,13 +72,13 @@ There are five positioning strategies:
 
 ### Global
 
-Positions the content, based on the directions passed in through [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). These are Left/Center/Right for [`horizontalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=horizontalDirection) and Top/Middle/Bottom for [`verticalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=verticalDirection). Defaults are:
+Positions the content, based on the directions passed in through [`IgxPositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). These are Left/Center/Right for [`IgxPositionSettings.horizontalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=horizontalDirection) and Top/Middle/Bottom for [`IgxPositionSettings.verticalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=verticalDirection). Defaults are:
 
 | horizontalDirection        | verticalDirection        |
 | :------------------------- | :----------------------- |
 | HorizontalAlignment.Center | VerticalAlignment.Middle |
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ### Container
 
@@ -88,17 +88,17 @@ Positions the content as `GlobalPositionStrategy`. Instead of position related t
 | :------------------------- | :----------------------- |
 | HorizontalAlignment.Center | VerticalAlignment.Middle |
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ### Connected
 
-Positions the element based on the start point from [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) and directions passed in through [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). It is possible to either pass a start point (type [`Point`](mcp:get_api_reference?platform=angular&component=Point)) or an `HTMLElement` as a positioning base. Defaults are:
+Positions the element based on the start point from [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) and directions passed in through [`IgxPositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). It is possible to either pass a start point (type [`IgxPoint`](mcp:get_api_reference?platform=angular&component=Point)) or an `HTMLElement` as a positioning base. Defaults are:
 
 | target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       |
 | :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- |
 | new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ### Auto
 
@@ -108,22 +108,23 @@ Positions the element the same way as the **Connected** positioning strategy. It
 | :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- |
 | new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ### Elastic
 
-Positions the element like the **Connected** positioning strategy and re-sizes the element to fit inside the view port (re-calculating width and/or height) in case the element is partially out of view. [`minSize`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=minSize) can be passed in [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings) to prevent resizing if it would put the element's dimensions below a certain threshold. Defaults are:
+Positions the element like the **Connected** positioning strategy and re-sizes the element to fit inside the view port (re-calculating width and/or height) in case the element is partially out of view. [`IgxPositionSettings.minSize`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=minSize) can be passed in [`IgxPositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings) to prevent resizing if it would put the element's dimensions below a certain threshold. Defaults are:
 
-| target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       | minSize                 |
-| :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- | :---------------------- |
-| new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom | { width: 0, height: 0 } |
+| target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       | minSize               |
+|:----------------|:--------------------------|:-------------------------|:-------------------------|:-------------------------|:----------------------|
+| new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |`{ width: 0, height: 0 }`|
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
-> [!NOTE]
-> It won't try to resize the element if the strategy is using  HorizontalDirection = Center / VerticalDirection = Middle.
-> [!NOTE]
-> The overlay element **will be** resized, but the positioning strategy **does not** handle `overflow`. For example, if the element needs to have `overflow-y` when resized, incorporate the appropriate style to provide that.
+**Note:** 
+It won't try to resize the element if the strategy is using  HorizontalDirection = Center / VerticalDirection = Middle.
+
+**Note:** 
+The overlay element **will be** resized, but the positioning strategy **does not** handle `overflow`. For example, if the element needs to have `overflow-y` when resized, incorporate the appropriate style to provide that.
 
 ## Usage
 
@@ -145,7 +146,7 @@ import {
 
 ```
 
-Then specify the positioning strategy to be used by the overlay. The position strategy is passed in as a property in the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter when the [`overlay.attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method is called. In the example below we are changing the default `GlobalPositionStrategy` with `ConnectedPositionStrategy`:
+Then specify the positioning strategy to be used by the overlay. The position strategy is passed in as a property in the [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter when the [`overlay.attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method is called. In the example below we are changing the default `GlobalPositionStrategy` with `ConnectedPositionStrategy`:
 
 ```typescript
 // Initialize and use overlay settings
@@ -158,8 +159,7 @@ const overlaySettings: OverlaySettings = {
 this._overlayId = this.overlayService.attach(MyDynamicCardComponent, this.viewContainerRef, overlaySettings); 
 ```
 
-<div class="divider"></div>
-
+<igc-divider></igc-divider>
 
 ```typescript
 import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
@@ -224,7 +224,7 @@ export class OverlayPositionSample1Component implements OnDestroy {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Positioning Settings
 
@@ -319,11 +319,11 @@ export class OverlayPositionSample2Component implements OnDestroy {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Changing Strategies
 
-You can also change the positioning strategy, used by the overlay, by overriding the [`positionStrategy`](mcp:get_api_reference?platform=angular&component=IPositionStrategy) property of the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object that is passed to the overlay:
+You can also change the positioning strategy, used by the overlay, by overriding the [`IgxIPositionStrategy`](mcp:get_api_reference?platform=angular&component=IPositionStrategy) property of the [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object that is passed to the overlay:
 
 ```typescript
 const myPositionStrategy = new AutoPositionStrategy();
@@ -390,7 +390,7 @@ export class OverlayPositionSample3Component implements OnDestroy {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Changing Settings
 
@@ -431,13 +431,11 @@ overlay.setOffset(this._overlayId, deltaX, deltaY, OffsetMode.Set);
 ```
 
 ## API References
-
-- [IPositionStrategy](mcp:get_api_reference?platform=angular&component=IPositionStrategy)
-
+- [`IgxIPositionStrategy`](mcp:get_api_reference?platform=angular&component=IPositionStrategy)
 ## Additional Resources
 
-- [Overlay Main Topic](overlay.md)
-- [Scroll Strategies](overlay-scroll.md)
-- [Styling Topic](overlay-styling.md)
-- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
-- [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
+- [Overlay Main Topic](/overlay)
+- [Scroll Strategies](/overlay-scroll)
+- [Styling Topic](/overlay-styling)
+- [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
+- `IgxOverlay Styles`

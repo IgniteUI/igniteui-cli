@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics
-_description: Use Infragistics Angular map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Angular map's series!
-_keywords: Angular map, scatter symbol series, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series"]
+title: "Angular Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics"
+description: Use Infragistics Angular map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Angular map's series!
+keywords: "Angular map, scatter symbol series, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
+llms:
+  description: "In Angular map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
 _tocName: Geographic Symbol Map
 _premium: true
 ---
-
 # Angular Geographic Symbol Map
 
-In Angular map component, you can use the [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
+In Angular map component, you can use the `IgxGeographicSymbolSeries` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
 
 ## Angular Geographic Symbol Map Example
 
@@ -117,20 +118,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Requirements
-
-Similarly to other types of geographic series in the map component, the [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#latitudeMemberPath) and [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#longitudeMemberPath) properties. The [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the `IgxGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) to locations of cities loaded from a shape file using the [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource).
-
-<!-- Angular -->
+The following code shows how to bind the `IgxGeographicSymbolSeries` to locations of cities loaded from a shape file using the [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord).
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -205,9 +200,5 @@ export class MapTypeScatterSymbolSeriesComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#longitudeMemberPath)
-- [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource)
+`IgxGeographicSymbolSeries`
+[`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord)

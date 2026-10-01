@@ -1,19 +1,18 @@
 ---
-title: Blazor Hierarchical Grid Row Dragging - Ignite UI for Blazor
-_description: Row dragging in Blazor Hierarchical Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
-_keywords: Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-drag
+title: "Blazor Hierarchical Grid Row Dragging - Ignite UI for Blazor"
+description: Row dragging in Blazor Hierarchical Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
+keywords: "Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-drag"
+llms:
+  description: "The Ignite UI for Blazor Row Dragging feature in Blazor Hierarchical Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse."
+_componentKey: HierarchicalGrid
 _tocName: Row Dragging
 _premium: true
 ---
-
 # Row Dragging in Blazor Hierarchical Grid
 
-The Ignite UI for Blazor Row Dragging feature in Blazor Hierarchical Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component and is configurable via the [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowDraggable) input.
+The Ignite UI for Blazor Row Dragging feature in Blazor Hierarchical Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component and is configurable via the [`IgbHierarchicalGrid.rowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDraggable) input.
 
 ## Blazor Hierarchical Grid Row Drag Example
 
@@ -935,7 +934,7 @@ public class SingersNestedData : List<SingersNestedItem>
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), all you need to do is set the grid's [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), all you need to do is set the grid's [`IgbHierarchicalGrid.rowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's [`IgbHierarchicalGrid.rowDragStart`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDragStart) event to fire. Releasing the click at any time will cause [`IgbHierarchicalGrid.rowDragEnd`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDragEnd) event to fire.
 
 ```razor
 <IgbHierarchicalGrid RowDraggable="true">
@@ -944,9 +943,7 @@ In order to enable row-dragging for your [`IgbHierarchicalGrid`](mcp:get_api_ref
 
 ### Templating the Drag Icon
 
-The drag handle icon can be templated using the grid's [`DragIndicatorIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=DragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
-
-<!-- ComponentStart: HierarchicalGrid -->
+The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
 ```razor
 <IgbHierarchicalGrid Data="CustomersData" PrimaryKey="ID" RowDraggable="true" DragIndicatorIconTemplate="dragIndicatorIconTemplate" @ref="grid">
@@ -960,13 +957,9 @@ private RenderFragment<IgbGridEmptyTemplateContext> dragIndicatorIconTemplate = 
 };
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+#### Example Demo
 
-<!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
 
 ## Application Demo
 
@@ -976,12 +969,14 @@ With the help of the grid's row drag events you can create a grid that allows yo
 
 ```razor
 <IgbHierarchicalGrid Data="CustomersData" PrimaryKey="ID" RowDraggable="true" RowDragEndScript="WebHierarchicalGridReorderRowHandler"></IgbHierarchicalGrid>
+```
 
+```javascript
 // In JavaScript
 igRegisterScript("WebHierarchicalGridReorderRowHandler", (args) => {
     const ghostElement = args.detail.dragDirective.ghostElement;
     const dragElementPos = ghostElement.getBoundingClientRect();
-    const grid = document.getElementsByTagName("igc-hierarchical-grid")[0];
+    const grid = document.getElementsByTagName["igc-hierarchical-grid"](0);
     const rows = Array.prototype.slice.call(document.getElementsByTagName("igx-hierarchical-grid-row"));
     const currRowIndex = this.getCurrentRowIndex(rows,
     { x: dragElementPos.x, y: dragElementPos.y });
@@ -1002,35 +997,32 @@ function getCurrentRowIndex(rowList, cursorPosition) {
     }
     return -1;
 }
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+**Note:** 
+Make sure that there is a [`IgbHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-> [!Note]
-> Make sure that there is a [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PrimaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
-
-Once [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
-
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
+Once [`IgbHierarchicalGrid.rowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 - Is the row expanded? If so, collapse it.
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`Data`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=Data) array
+- Once you've found the **target** row, swap the records' places in the `Data` array
 - Was the row initially selected? If so, mark it as selected.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 Below, you can see this implemented:
 
 ```razor
-<IgbHierarchicalGrid Data="SingersData" PrimaryKey="ID" RowDraggable="true" RowDragEndScript="WebGridReorderRowHandler"></IgbHierarchicalGrid >
+<IgbHierarchicalGrid Data="SingersData" PrimaryKey="ID" RowDraggable="true" RowDragEndScript="WebGridReorderRowHandler"></IgbHierarchicalGrid>
+```
 
-//In JavaScript
+```javascript
+//in JavaScript
 igRegisterScript("WebGridReorderRowHandler", (args) => {
     const ghostElement = args.detail.dragDirective.ghostElement;
     const dragElementPos = ghostElement.getBoundingClientRect();
-    const grid = document.getElementsByTagName("igc-hierarchical-grid")[0];
+    const grid = document.getElementsByTagName["igc-hierarchical-grid"](0);
     const rows = Array.prototype.slice.call(document.getElementsByTagName("igx-hierarchical-grid-row"));
     const currRowIndex = this.getCurrentRowIndex(rows,
     { x: dragElementPos.x, y: dragElementPos.y });
@@ -1051,17 +1043,12 @@ function getCurrentRowIndex(rowList, cursorPosition) {
     }
     return -1;
 }
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 Notice that we also have row selection enabled and we preserve the selection when dropping the dragged row.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1329,17 +1316,11 @@ public class SingersData
 
 ## Limitations
 
-Currently, there are no known limitations for the [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowDraggable).
+Currently, there are no known limitations for the [`IgbHierarchicalGrid.rowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowDraggable).
 
 ## API References
-
-- [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowDraggable)
-- `RowDragStart`
-- `RowDragEnd`
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 ## Additional Resources
-
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

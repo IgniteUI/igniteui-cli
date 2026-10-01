@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics
-_description: Use Infragistics Web Components map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Web Components map's series!
-_keywords: Web Components map, scatter symbol series, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series"]
+title: "Web Components Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics"
+description: Use Infragistics Web Components map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Web Components map's series!
+keywords: "Web Components map, scatter symbol series, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
+llms:
+  description: "In Web Components map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
 _tocName: Geographic Symbol Map
 _premium: true
 ---
-
 # Web Components Geographic Symbol Map
 
-In Web Components map component, you can use the [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
+In Web Components map component, you can use the `IgcGeographicSymbolSeries` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
 
 ## Web Components Geographic Symbol Map Example
 
@@ -660,15 +661,11 @@ export class WorldLocations {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Requirements
-
-Similarly to other types of geographic series in the map component, the [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#latitudeMemberPath) and [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#longitudeMemberPath) properties. The [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the `IgcGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) to locations of cities loaded from a shape file using the [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html).
+The following code shows how to bind the `IgcGeographicSymbolSeries` to locations of cities loaded from a shape file using the `IgcShapefileRecord`.
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -701,9 +698,5 @@ addSeriesWith(locations: any[], brush: string)
 ```
 
 ## API References
-
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#longitudeMemberPath)
-- [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html)
+`IgcGeographicSymbolSeries`
+`IgcShapefileRecord`

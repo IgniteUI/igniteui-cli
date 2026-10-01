@@ -1,14 +1,17 @@
 ---
 title: Angular Slider |  Ignite UI for Angular | Infragistics | MIT license
-_description: Learn how to configure a selection in a given range by using the thumb track with Angular Slider part of Ignite UI for Angular. Choose between singe and range slider types
-_keywords: angular slider, angular slider component, angular range slider component, angular range input component, angular ui components, igniteui for angular, infragistics
-_license: MIT
+description: Learn how to configure a selection in a given range by using the thumb track with Angular Slider part of Ignite UI for Angular. Choose between singe and range slider types
+keywords: angular slider, angular slider component, angular range slider component, angular range input component, angular ui components, igniteui for angular, infragistics
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Slider is a form component which allows selection in a given range by moving a thumb along a track."
 _tocName: Slider
 ---
-
 # Angular Slider Component Overview
 
-<p class="highlight">The Ignite UI for Angular Slider is a form component which allows selection in a given range by moving a thumb along a track. The track can be defined as continuous or stepped and the slider can be configured so users can choose between single value and range (lower and upper value) slider types.</p>
+<div class="highlight">
+The Ignite UI for Angular Slider is a form component which allows selection in a given range by moving a thumb along a track. The track can be defined as continuous or stepped and the slider can be configured so users can choose between single value and range (lower and upper value) slider types.
+</div>
 
 ## Angular Slider Example
 
@@ -88,7 +91,7 @@ export class SliderSample1Component {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Slider
 
@@ -98,23 +101,19 @@ To get started with the Ignite UI for Angular Slider component, first you need t
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](../general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxSliderModule` in your **app.module.ts** file.
-
->[!WARNING]
->**This component can utilize the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) **optionally**. It can be imported in the root module of the application in order for touch interactions to work as expected.**.
 
 ```typescript
 // app.module.ts
 
-import { HammerModule } from '@angular/platform-browser';
 import { IgxSliderModule } from 'igniteui-angular/slider';
 // import { IgxSliderModule } from '@infragistics/igniteui-angular'; for licensed package
 
 @NgModule({
     ...
-    imports: [..., IgxSliderModule, HammerModule],
+    imports: [..., IgxSliderModule],
     ...
 })
 export class AppModule {}
@@ -142,24 +141,6 @@ export class HomeComponent {
 }
 ```
 
-When using standalone components, [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) should be imported in the `app.config` file.
-
-```typescript
-//app.config.ts
-
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { HammerModule } from '@angular/platform-browser';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    importProvidersFrom(HammerModule),
-    provideRouter(appRoutes)
-  ],
-};
-```
-
 Now that you have the Ignite UI for Angular Slider module or directives imported, you can start using the `igx-slider` component.
 
 ## Using the Angular Slider
@@ -173,7 +154,7 @@ In the following example, we define a discrete slider that displays values from 
 We also bind the slider [`value`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=value) to a property in our component called "completion", using Angular [`ngModel`](https://angular.io/guide/built-in-directives#ngModel), to allow two way binding with an input component.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-slider [minValue]="0" [maxValue]="100" [step]="10" [(ngModel)]="task.completion"></igx-slider>
 <igx-input-group type="border">
@@ -205,7 +186,6 @@ export class SampleComponent {
 ```
 
 We should now see two-way data binding between our two components.
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -261,16 +241,16 @@ export class SliderSample3Component {
 }
 ```
 
-
 ### Continuous Slider
 
 First, specify the slider type by setting the [`continuous`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=continuous) input to true. Next, define the minimum and maximum values using [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue).  
 
-> [!NOTE]
-> Continuous slider doesn't have step indicators over the track and visible thumb labels during interaction.
+**Note:** 
+Continuous slider doesn't have step indicators over the track and visible thumb labels during interaction.
+
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-slider 
     id="slider" 
@@ -292,7 +272,6 @@ public volume = 20;
 ```
 
 If the sample is configured properly, dragging the slider thumb should update the label below and the slider value should be limited between the specified minimum and maximum values:
-
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -331,13 +310,12 @@ export class SliderSample2Component implements OnInit {
 }
 ```
 
-
 ### Range Slider
 
-First, set the slider [`type`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=type) to [`RANGE`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/slidertype.html#range). Next, we bind the slider value to an object with properties for `lower` and `upper` values.
+First, set the slider [`type`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=type) to `Range`. Next, we bind the slider value to an object with properties for `lower` and `upper` values.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-slider 
     [type]="sliderType.RANGE" 
@@ -381,7 +359,6 @@ export class SampleComponent {
   constructor() { }
 }
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -437,14 +414,14 @@ export class SliderSample4Component {
 }
 ```
 
->[!NOTE]
-> When using a slider of type RANGE, binding to `ngModel` will work only in the direction of updating the model from the slider. In order to use two-way binding for both values, you can take advantage of the `lowerValue` and `upperValue` bindings.
+**Note:** 
+When using a slider of type RANGE, binding to `ngModel` will work only in the direction of updating the model from the slider. In order to use two-way binding for both values, you can take advantage of the `lowerValue` and `upperValue` bindings.
 
 In some cases, values near to the minimum and maximum are not appropriate. You can further provide a useful range to limit the user choice along with setting [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue).
 This can be done by setting [`lowerBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerBound) and [`upperBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperBound). Now, the user will not be able to move the thumb in the range of 0 to 100 and in the range of 900 to 1000.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-slider 
     [type]="sliderType.RANGE" 
@@ -456,7 +433,6 @@ This can be done by setting [`lowerBound`](mcp:get_api_reference?platform=angula
     [upperBound]="900">
 </igx-slider>
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -498,23 +474,22 @@ export class SliderSample5Component {
 }
 ```
 
-
 ### Labels mode
 
 We've seen only numbers in the thumbs so far, although there is another approach that you could use in order to present information - by using an array of primitive values.
->[!NOTE]
-> Your array of primitive values should contains at least two values, otherwise `labelsView` won't be enabled.
+**Note:** 
+Your array of primitive values should contains at least two values, otherwise `labelsView` won't be enabled.
 
-Once we have the definition that corresponds to the preceding rule, we are ready to give it to the `labels` **input** property, which would handle our data by spreading it equally over the `track`. Now, label values represent every primitive value we've defined in our collection. They could be accessed at any time through the API by requesting either [lowerLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) or [upperLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel).
+Once we have the definition that corresponds to the preceding rule, we are ready to give it to the `labels` **input** property, which would handle our data by spreading it equally over the `track`. Now, label values represent every primitive value we've defined in our collection. They could be accessed at any time through the API by requesting either [`lowerLabel`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) or [`upperLabel`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel).
 
->[!NOTE]
-> Please take into account the fact that when [`labelsView`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=labelsView) is enabled, your control over the [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue), [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`step`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=step) inputs will be taken.
+**Note:** 
+Please take into account the fact that when [`labelsView`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=labelsView) is enabled, your control over the [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue), [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`step`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=step) inputs will be taken.
 
 Another important factor is the way that the `slider` handles the update process when `labelsView` is enabled.
 It simply operates with the `index(es)` of the collection, which respectively means that the `value`, `lowerBound` and `upperBound` **properties** control the `track` by following/setting them (`index(es)`).
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 <igx-slider #slider3 [type]="sliderType" [labels]="labels" [lowerBound]="1" [upperBound]="5">
     <ng-template igxSliderThumbFrom let-value let-labels="labels">
         <span class="ellipsis">{{ labels[value.lower] }}</span>
@@ -530,7 +505,6 @@ It simply operates with the `index(es)` of the collection, which respectively me
 public sliderType: SliderType = SliderType.RANGE;
 public labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -567,13 +541,12 @@ export class SliderSample6Component {
 }
 ```
 
-
 As we see from the sample above, setting `boundaries` is still a valid operation. Addressing [`lowerBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerbound) and [`upperBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperbound), limits the range you can slide through.
 
 ### Labels templating
 
-During the showcase above, we've intentionally shown how we can provide our custom `label` template, by using both  [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) directives. Intuitively we can assume that [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) corresponds to the  [lowerLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) to the [upperLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel). <br>
-The [context](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=context) here gives us implicitly a reference to the `value` **input** property and explicitly a reference to the `labels` **input** if `labelsView` is enabled.
+During the showcase above, we've intentionally shown how we can provide our custom `label` template, by using both  [`IgxThumbFromTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxThumbFromTemplateDirective) and [`IgxThumbToTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxThumbToTemplateDirective) directives. Intuitively we can assume that [`IgxThumbFromTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxThumbFromTemplateDirective) corresponds to the  [`lowerLabel`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) and [`IgxThumbToTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxThumbToTemplateDirective) to the [`upperLabel`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel). <br/>
+The [`context`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=context) here gives us implicitly a reference to the `value` **input** property and explicitly a reference to the `labels` **input** if `labelsView` is enabled.
 
 ```html
   <ng-template igxSliderThumbFrom let-value let-labels="labels">
@@ -595,7 +568,7 @@ Use [`primaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderC
 Use [`SecondaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTicks) to set the number of secondary ticks.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-slider 
     id="slider" 
@@ -613,7 +586,6 @@ Use [`SecondaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSlide
 // Change slider type initial value
 public type = SliderType.RANGE;
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -640,7 +612,6 @@ export class SliderDiscreteTicksBottomComponent {
 }
 ```
 
-
 ### Labels orientation and visibility
 
 In the following sample we disable all **secondary labels** by setting [`secondaryTickLabels`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTickLabels) to **false**.  
@@ -659,9 +630,8 @@ In the following sample we disable all **secondary labels** by setting [`seconda
 </igx-slider>
 ```
 
-We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation&member=range) to [`BottomToTop`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation)
+We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation) to [`IgxTickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation)
 
-```
 ```typescript
 ... 
 {
@@ -670,7 +640,6 @@ We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:ge
 }
 ...
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -716,13 +685,13 @@ export class PriceRange {}
 }
 ```
 
-
 ### Ticks position
 
 Let’s move on and see how to change the position of the **ticks**.
 
 ```html
 <div class="slider-container">
+
     <igx-slider
         [maxValue]="20"
         [showTicks]="true"
@@ -741,7 +710,6 @@ This mirrors the visualization of the **ticks** and displays them above and belo
   // The available options are: Top, Bottom and Mirror
   public ticksOrientation = TicksOrientation.Mirror;
 ```
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -776,9 +744,6 @@ export class SliderSecondaryTicksMirrorComponent {
 }
 ```
 
-
-> [!NOTE]
->
 ### Orientation
 
 > When the [`ticksOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation) is set to **Top** or **Mirror** and there are visible **tick labels** the **thumb label** is hidden intentionally. This prevents a bad user experience and overlapping between the two labels.
@@ -799,7 +764,6 @@ This example show how the tick labels and the thumb label works together.
   public type: SliderType = SliderType.RANGE;
   public labels = ["04:00", "08:00", "12:00", "16:00", "20:00", "00:00"];
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -831,12 +795,11 @@ export class SliderTimeframeComponent {
 }
 ```
 
-
 Here, the [`primaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=primaryTicks) input has not been set, because it won’t be reflected in any way. The **length** of the collection takes precedence over it. This does not mean that [`secondaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTicks) cannot be set. All **secondary ticks** will be empty (without any **labels**).
 
 ### Template labels
 
-Lastly, we will see how we can provide a custom template for the **tick labels** and what the [`template context`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtickscomponent.html#context) provides.
+Lastly, we will see how we can provide a custom template for the **tick labels** and what the `IgxTicksComponent` template context provides.
 
 ```html
 <igx-slider
@@ -851,8 +814,8 @@ Lastly, we will see how we can provide a custom template for the **tick labels**
 
 Applying [`IgxTickLabelTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxTickLabelTemplateDirective) to the `ng-template` assigns the template over all **tick labels**.
 
-> [!NOTE]
-> The [`context`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtickscomponent.html#context) executes per each tick.
+**Note:** 
+The context executes per each tick.
 
 Which means that it provides a reference to:
 
@@ -872,7 +835,6 @@ Which means that it provides a reference to:
 ```
 
 In the **tickLabel** callback above, we are rounding the **value** of every **primary** tick.
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -920,179 +882,90 @@ export class TickLabelsTemplateComponent {
 When you modify a primary property, all related dependent properties are automatically updated to reflect the change:
 
 <div class="theme-switcher-wrapper">
-  <input type="radio" name="theme" id="material" checked>
+
+  <input type="radio" name="theme" id="material" checked/>
   <label for="material" class="switch-label">Material</label>
-  <input type="radio" name="theme" id="fluent">
+  <input type="radio" name="theme" id="fluent"/>
   <label for="fluent" class="switch-label">Fluent</label>
-  <input type="radio" name="theme" id="bootstrap">
+  <input type="radio" name="theme" id="bootstrap"/>
   <label for="bootstrap" class="switch-label">Bootstrap</label>
-  <input type="radio" name="theme" id="indigo">
+  <input type="radio" name="theme" id="indigo"/>
   <label for="indigo" class="switch-label">Indigo</label>
 
   <div class="tables">
-    <!-- Material Theme Table -->
+
+    
     <div class="theme-table material">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$track-color</strong></summary></details></td>
-            <td>$thumb-color</td>
-            <td>The color of the thumb.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$base-track-color</td><td>The base background color of the track.</td></tr>
-          <tr class="dependent"><td></td><td>$track-hover-color</td><td>The color of the track on hover.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-fill-track-color</td><td>The base fill track color when disabled.</td></tr>
-          <tr class="dependent"><td></td><td>$label-background-color</td><td>The background color of the bubble label.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$thumb-color</strong></summary></details></td>
-            <td>$track-color</td>
-            <td>The color of the track</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$disabled-thumb-color</td><td>The thumb color when it is disabled.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$base-track-color</strong></summary></details></td>
-            <td>$base-track-hover-color</td>
-            <td>The base track color on hover.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$track-step-color</td><td>The color of the track steps.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-base-track-color</td><td>The base track color when disabled.</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$track-color** | $thumb-color | The color of the thumb. |
+|  | $base-track-color | The base background color of the track. |
+|  | $track-hover-color | The color of the track on hover. |
+|  | $disabled-fill-track-color | The base fill track color when disabled. |
+|  | $label-background-color | The background color of the bubble label. |
+| **$thumb-color** | $track-color | The color of the track |
+|  | $disabled-thumb-color | The thumb color when it is disabled. |
+| **$base-track-color** | $base-track-hover-color | The base track color on hover. |
+|  | $track-step-color | The color of the track steps. |
+|  | $disabled-base-track-color | The base track color when disabled. |
+
+</div>
     <div class="theme-table fluent">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$thumb-border-color</strong></summary></details></td>
-            <td>$track-color</td>
-            <td>The color of the track</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$thumb-border-hover-color</td><td>The thumb border color when hovered.</td></tr>
-          <tr class="dependent"><td></td><td>$thumb-focus-color</td><td>The focus color of the thumb.</td></tr>
-          <tr class="dependent"><td></td><td>$thumb-disabled-border-color</td><td>The thumb border color when disabled.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$track-color</strong></summary></details></td>
-            <td>$thumb-border-color</td>
-            <td>The thumb border color</td>
-          </tr>
-           <tr class="dependent"><td></td><td>$track-hover-color</td><td>The color of the track on hover.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-fill-track-color</td><td>The base fill track color when disabled.</td></tr>
-          <tr class="dependent"><td></td><td>$label-background-color</td><td>The background color of the bubble label.</td></tr>
-          <tr class="dependent"><td></td><td>$label-text-color</td><td>The text color of the bubble label.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$base-track-color</strong></summary></details></td>
-            <td>$base-track-hover-color</td>
-            <td>The base track color on hover.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$track-step-color</td><td>The color of the track steps.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-base-track-color</td><td>The base track color when disabled.</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$thumb-border-color** | $track-color | The color of the track |
+|  | $thumb-border-hover-color | The thumb border color when hovered. |
+|  | $thumb-focus-color | The focus color of the thumb. |
+|  | $thumb-disabled-border-color | The thumb border color when disabled. |
+| **$track-color** | $thumb-border-color | The thumb border color |
+|  | $track-hover-color | The color of the track on hover. |
+|  | $disabled-fill-track-color | The base fill track color when disabled. |
+|  | $label-background-color | The background color of the bubble label. |
+|  | $label-text-color | The text color of the bubble label. |
+| **$base-track-color** | $base-track-hover-color | The base track color on hover. |
+|  | $track-step-color | The color of the track steps. |
+|  | $disabled-base-track-color | The base track color when disabled. |
+
+</div>
     <div class="theme-table bootstrap">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$thumb-color</strong></summary></details></td>
-            <td>$thumb-border-color</td>
-            <td>The thumb border color.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$thumb-focus-color</td><td>The focus color of the thumb.</td></tr>
-          <tr class="dependent"><td></td><td>$track-color</td><td>The color of the track.</td></tr>
-          <tr class="dependent"><td></td><td>$label-background-color</td><td>The background color of the bubble label.</td></tr>
-          <tr class="dependent"><td></td><td>$label-text-color</td><td>The text color of the bubble label.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-thumb-color</td><td>The thumb color when it is disabled.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$track-color</strong></summary></details></td>
-            <td>$track-hover-color</td>
-            <td>The color of the track on hover.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$disabled-fill-track-color</td><td>The fill track color when disabled.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$base-track-color</strong></summary></details></td>
-            <td>$base-track-hover-color</td>
-            <td>The base track color on hover.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$track-step-color</td><td>The color of the track steps.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-base-track-color</td><td>The base track color when disabled.</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$thumb-color** | $thumb-border-color | The thumb border color. |
+|  | $thumb-focus-color | The focus color of the thumb. |
+|  | $track-color | The color of the track. |
+|  | $label-background-color | The background color of the bubble label. |
+|  | $label-text-color | The text color of the bubble label. |
+|  | $disabled-thumb-color | The thumb color when it is disabled. |
+| **$track-color** | $track-hover-color | The color of the track on hover. |
+|  | $disabled-fill-track-color | The fill track color when disabled. |
+| **$base-track-color** | $base-track-hover-color | The base track color on hover. |
+|  | $track-step-color | The color of the track steps. |
+|  | $disabled-base-track-color | The base track color when disabled. |
+
+</div>
     <div class="theme-table indigo">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$thumb-border-color</strong></summary></details></td>
-            <td>$track-color</td>
-            <td>The color of the track.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$thumb-border-hover-color</td><td>The thumb border color when hovered.</td></tr>
-          <tr class="dependent"><td></td><td>$thumb-focus-color</td><td>The focus color of the thumb.</td></tr>
-          <tr class="dependent"><td></td><td>$thumb-disabled-border-color</td><td>The thumb border color when disabled.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$track-color</strong></summary></details></td>
-            <td>$thumb-border-color</td>
-            <td>The thumb border color.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$track-hover-color</td><td>The color of the track on hover.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-fill-track-color</td><td>The base fill track color when disabled.</td></tr>
-          <tr class="dependent"><td></td><td>$label-background-color</td><td>The background color of the bubble label.</td></tr>
-          <tr class="dependent"><td></td><td>$label-text-color</td><td>The text color of the bubble label.</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$base-track-color</strong></summary></details></td>
-            <td>$base-track-hover-color</td>
-            <td>The base track color on hover.</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$track-step-color</td><td>The color of the track steps.</td></tr>
-          <tr class="dependent"><td></td><td>$disabled-base-track-color</td><td>The base track color when disabled.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$thumb-border-color** | $track-color | The color of the track. |
+|  | $thumb-border-hover-color | The thumb border color when hovered. |
+|  | $thumb-focus-color | The focus color of the thumb. |
+|  | $thumb-disabled-border-color | The thumb border color when disabled. |
+| **$track-color** | $thumb-border-color | The thumb border color. |
+|  | $track-hover-color | The color of the track on hover. |
+|  | $disabled-fill-track-color | The base fill track color when disabled. |
+|  | $label-background-color | The background color of the bubble label. |
+|  | $label-text-color | The text color of the bubble label. |
+| **$base-track-color** | $base-track-hover-color | The base track color on hover. |
+|  | $track-step-color | The color of the track steps. |
+|  | $disabled-base-track-color | The base track color when disabled. |
+
+</div>
+  
+</div>
 </div>
 
 To customize the Slider, you first need to import the `index` file, where all styling functions and mixins are located.
@@ -1191,7 +1064,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [IgxSlider Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-slider-theme). The syntax is as follows:
+You can find the full list of properties in the `IgxSlider Theme`. The syntax is as follows:
 
 ```html
 <igx-slider
@@ -1200,29 +1073,54 @@ class="!light-slider ![--thumb-color:#7B9E89]"
 </igx-slider>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your slider should look like this:
 
-<div class="sample-container loading" style="height:100px">
-    <iframe id="slider-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/interactions/slider-tailwind-styling-sample/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component, ViewChild } from '@angular/core';
+import { IgxSliderComponent, TicksOrientation } from 'igniteui-angular/slider';
+
+@Component({
+    selector: 'slider-tailwind-styling',
+    styleUrls: ['./slider-tailwind-styling.component.scss'],
+    templateUrl: './slider-tailwind-styling.component.html',
+    imports: [IgxSliderComponent]
+})
+export class SliderTailwindStylingComponent {
+    @ViewChild(IgxSliderComponent, { static: true })
+    public slider: IgxSliderComponent;
+    public ticksOrientation = TicksOrientation.Mirror;
+}
+```
+```html
+<div class="container">
+    <igx-slider
+        class="!light-slider ![--thumb-color:#7B9E89]"
+        [step]="10"
+        [maxValue]="100"
+        [primaryTicks]="3"
+        [secondaryTicks]="4"
+        [ticksOrientation]="ticksOrientation">
+    </igx-slider>
 </div>
+```
+```scss
+.container {
+  padding: 18px;
+}
+```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxSliderComponent](mcp:get_api_reference?platform=angular&component=IgxSliderComponent)
-- [IgxSliderComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-slider-theme)
-- [SliderType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/variables/IgxSliderType-1.html)
-- [IRangeSliderValue](mcp:get_api_reference?platform=angular&component=IRangeSliderValue)
-- [TicksOrientation](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation)
-- [TickLabelsOrientation](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=tickLabelsOrientation)
-
-<div class="divider--half"></div>
-
+<hr/>
+- [`IgxSlider`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent)
+- `IgxSliderComponent Styles`
+- `SliderType`
+- [`IgxIRangeSliderValue`](mcp:get_api_reference?platform=angular&component=IRangeSliderValue)
+- [`TicksOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation)
+- [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=tickLabelsOrientation)
+<hr/>
 Our community is active and always welcoming to new ideas.
-
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
