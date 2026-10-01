@@ -120,16 +120,33 @@ function userPrompt(group: GroupInput): string {
   return lines.join("\n");
 }
 
+const MAX_ATTEMPTS = 3;
+
+/**
+ * The model occasionally returns an empty message (one group per framework in a
+ * full CI run). A group without a summary fails the release gate in build:db,
+ * long after the compression it depends on has been paid for, so retry here
+ * with a larger budget and report why each attempt came back empty.
+ */
 async function generate(client: OpenAI, model: string, group: GroupInput): Promise<string> {
-  const response = await client.chat.completions.create({
-    model,
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: userPrompt(group) },
-    ],
-    max_completion_tokens: 2000,
-  });
-  return (response.choices[0].message.content ?? "").trim().replace(/\s+/g, " ");
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const response = await client.chat.completions.create({
+      model,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: userPrompt(group) },
+      ],
+      max_completion_tokens: 4000 * attempt,
+    });
+    const choice = response.choices[0];
+    const summary = (choice?.message.content ?? "").trim().replace(/\s+/g, " ");
+    if (summary) return summary;
+    console.warn(
+      `  [warn] empty summary for "${group.groupKey}" (attempt ${attempt}/${MAX_ATTEMPTS}, ` +
+      `finish_reason=${choice?.finish_reason ?? "none"}, completion_tokens=${response.usage?.completion_tokens ?? "?"})`
+    );
+  }
+  return "";
 }
 
 async function run(framework: string, model: string, force: boolean, apiBase?: string) {

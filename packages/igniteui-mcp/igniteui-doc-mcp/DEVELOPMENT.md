@@ -229,7 +229,7 @@ npx tsx scripts/export-docs.ts --framework angular [--lang en] [--skip-generate]
 | `--lang` | Language code | `en` |
 | `--skip-generate` | Reuse the docs repo's existing generated output | off |
 
-Pages that moved folders in igniteui-documentation keep their old flat names through `ANGULAR_LEGACY_NAMES` so `get_doc` names and baselines stay stable.
+Angular pages under `inputs/` and `layouts/` keep their bare file name (`layouts/accordion.mdx` → `accordion.md`), because the docs team keeps moving top-level pages there; `ANGULAR_DOCFX_PREFIXED` lists the pages that already had a prefixed name in igniteui-docfx. This keeps `get_doc` names and baselines stable across moves.
 
 ### inject-angular-docs.ts
 

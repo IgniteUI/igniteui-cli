@@ -38,21 +38,23 @@ const ANGULAR_GRID_DIRS: Record<string, string> = {
 };
 
 /**
- * Pages that moved folders in igniteui-documentation. Mapped back to the names
- * they had in igniteui-docfx so get_doc names, aliases and baselines stay stable.
+ * igniteui-documentation keeps moving top-level Angular pages into inputs/ and
+ * layouts/ (accordion, avatar, badge, button, …). Pages there keep their bare
+ * name so get_doc names, aliases and baselines survive each move. Pages that
+ * already lived in one of these folders in igniteui-docfx keep the prefixed name
+ * they had there.
  */
-const ANGULAR_LEGACY_NAMES: Record<string, string> = {
-  "inputs/badge.md": "badge.md",
-  "inputs/button-group.md": "button-group.md",
-  "layouts/avatar.md": "avatar.md",
-};
+const ANGULAR_BARE_NAME_DIRS = new Set(["inputs", "layouts"]);
+const ANGULAR_DOCFX_PREFIXED = new Set(["inputs/color-editor.md"]);
 
 /** grid/editing.md → grid-editing.md; other nested paths take their parent dir as prefix. */
 function flattenAngular(href: string): string {
-  if (ANGULAR_LEGACY_NAMES[href]) return ANGULAR_LEGACY_NAMES[href];
   const parts = href.split("/");
   if (parts.length === 1) return parts[0];
   const fileName = parts[parts.length - 1];
+  if (parts.length === 2 && ANGULAR_BARE_NAME_DIRS.has(parts[0]) && !ANGULAR_DOCFX_PREFIXED.has(href)) {
+    return fileName;
+  }
   const gridPrefix = ANGULAR_GRID_DIRS[parts[0]];
   if (gridPrefix) return `${gridPrefix}-${fileName}`;
   return `${parts[parts.length - 2]}-${fileName}`;

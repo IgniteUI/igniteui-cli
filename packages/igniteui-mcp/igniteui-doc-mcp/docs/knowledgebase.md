@@ -433,7 +433,7 @@ The model listed the **sample application's own classes** while the document bod
 
 **Rule: the Angular sync step dirties the submodule.** `sync-generated.mjs` copies xplat-generated pages into `docs/angular/src/content`, overwriting tracked files and adding untracked ones. Most of the Angular catalogue (charts, excel, shared inputs/layouts) only exists after this step. The exporter restores what it touched so `switch-submodules.sh` can still pull.
 
-**Rule: keep flat names stable.** Pages that moved folders (`inputs/badge`, `inputs/button-group`, `layouts/avatar`) map back to their old names via `ANGULAR_LEGACY_NAMES`; `pivotgrid/` maps to `pivotGrid-`; xplat `grids/theming-grid` became `grids/grid/theming-grid` and is covered by a `theming-grid` alias. A rename otherwise shows up as delete + add and breaks aliases.
+**Rule: keep flat names stable.** The docs team keeps moving top-level Angular pages into `inputs/` and `layouts/` (badge, button-group and avatar on master; accordion, button, carousel and switch on vnext a week later), so pages there keep their bare file name instead of a `inputs-`/`layouts-` prefix. An explicit list of moved pages broke on the next move. Pages already prefixed in docfx (`inputs-color-editor`) are listed in `ANGULAR_DOCFX_PREFIXED`; `pivotgrid/` maps to `pivotGrid-`; xplat `grids/theming-grid` became `grids/grid/theming-grid` and is covered by a `theming-grid` alias. A rename otherwise shows up as delete + add and breaks aliases.
 
 **Rule: the first run after the switch is a full recompress.** Converted text differs from the old gulp/docfx output in nearly every file, so the diff step reports every doc as changed.
 
