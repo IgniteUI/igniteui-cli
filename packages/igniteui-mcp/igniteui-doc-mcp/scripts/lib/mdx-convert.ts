@@ -390,8 +390,8 @@ export function convertMdx(content: string, opts: ConvertOptions): string {
     let t = text.replace(/\{\/\*[\s\S]*?\*\/\}/g, "");
     t = convertSegment(t, components, opts);
     t = t.replace(/\\([{}<>])/g, "$1");
-    return t;
+    return t.replace(/\n{3,}/g, "\n\n");
   });
 
-  return frontmatter + converted.replace(/\n{3,}/g, "\n\n").replace(/^\n+/, "");
+  return frontmatter + converted.replace(/^\n+/, "");
 }

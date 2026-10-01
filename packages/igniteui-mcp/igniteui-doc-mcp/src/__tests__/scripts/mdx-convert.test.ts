@@ -167,6 +167,11 @@ describe("convertMdx", () => {
     expect(out).toContain("**Q: Why?**");
   });
 
+  it("collapses blank lines left by removed components but not inside code fences", () => {
+    const input = 'a\n\n<Badge variant="new" />\n\n\nb\n\n```py\nx = 1\n\n\n\ny = 2\n```';
+    expect(convertMdx(input, options)).toBe("a\n\nb\n\n```py\nx = 1\n\n\n\ny = 2\n```");
+  });
+
   it("leaves capitalised tags that are not MDX components alone", () => {
     expect(convertMdx("Use <Grid> in WPF.", options)).toBe("Use <Grid> in WPF.");
   });
