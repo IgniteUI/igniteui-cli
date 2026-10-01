@@ -354,7 +354,7 @@ export class Util {
 			// if this happens - stderr will end with "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
 			// npm may be involved in this as it works just fine with any other node process
-			if (error.stderr && error.stderr.toString().endsWith() === "^C") {
+			if (error.stderr && error.stderr.toString().endsWith("^C")) {
 				return process.exit();
 			}
 
@@ -586,17 +586,6 @@ export class Util {
 		const text: string = name.slice(0, baseLength);
 		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
 		return `${text} ${number + 1}`;
-	}
-
-	private static propertyByPath(object: any, propPath: string) {
-		if (!propPath) {
-			return object;
-		}
-		const pathParts = propPath.split(".");
-		const currentProp = pathParts.shift();
-		if (currentProp in object) {
-			return this.propertyByPath(object[currentProp], pathParts.join("."));
-		}
 	}
 
 	private static validateTemplate(

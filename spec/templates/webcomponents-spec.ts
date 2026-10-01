@@ -1,6 +1,9 @@
 import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
 import path from "path";
 import * as fs from "fs";
+import { BaseIgcProject } from "../../packages/cli/templates/webcomponents/igc-ts/projects/_base";
+import { BaseWithHomeIgcProject } from "../../packages/cli/templates/webcomponents/igc-ts/projects/_base_with_home";
+import { EmptyPageTemplate } from "../../packages/cli/templates/webcomponents/igc-ts/projects/empty";
 
 const templatesLocation = "../../packages/cli/templates/webcomponents";
 describe("Web Components templates", () => {
@@ -36,6 +39,48 @@ describe("Web Components templates", () => {
 					.toBeTruthy();
 			}
 		}
+	});
+
+	describe("base projects", () => {
+		it("base project generates its config", () => {
+			const project = new BaseIgcProject();
+
+			expect(project.generateConfig("My App", "default")).toEqual({
+				name: "My App",
+				theme: "default",
+				cliVersion: Util.version(),
+				CustomTheme: "",
+				dashName: "my-app",
+				DefaultTheme: "",
+				dot: ".",
+				path: "My App",
+				projectTemplate: "base",
+				yamlDefaultBranch: "<%=yaml-default-branch%>"
+			});
+		});
+
+		it("derived projects use their own id and the main branch", () => {
+			const config = new EmptyPageTemplate().generateConfig("app", "default");
+
+			expect(config.projectTemplate).toBe("empty");
+			expect(config.yamlDefaultBranch).toBe("main");
+		});
+
+		it("derived projects extend the base template paths", () => {
+			const basePaths = new BaseIgcProject().templatePaths;
+			const withHomePaths = new BaseWithHomeIgcProject().templatePaths;
+
+			expect(withHomePaths.slice(0, basePaths.length)).toEqual(basePaths);
+			expect(new EmptyPageTemplate().templatePaths.slice(0, withHomePaths.length)).toEqual(withHomePaths);
+		});
+
+		it("base project has no extra configuration", () => {
+			const project = new BaseIgcProject();
+
+			expect(project.getExtraConfiguration()).toEqual([]);
+			expect(() => project.setExtraConfiguration([])).not.toThrow();
+			expect(() => project.installModules()).toThrowError("Method not implemented.");
+		});
 	});
 
 	describe("ai-config template file presence", () => {

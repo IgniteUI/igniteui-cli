@@ -15,14 +15,7 @@ function getDependencyVersion(pkg: string, tree: Tree): string {
 		const sourceText = tree.read(targetFile)!.toString();
 		const json = JSON.parse(sourceText);
 
-		let targetDep: any;
-		if (json.dependencies[pkg]) {
-			targetDep = json.dependencies[pkg];
-		} else if (json.devDependencies[pkg]) {
-			targetDep = json.devDependencies[pkg];
-		} else {
-			targetDep = json.peerDependencies[pkg];
-		}
+		const targetDep = json.dependencies?.[pkg] || json.devDependencies?.[pkg] || json.peerDependencies?.[pkg];
 		if (!targetDep) {
 			throw new DependencyNotFoundException();
 		}
