@@ -89,6 +89,20 @@ describe('TypeScriptExpressionCollector', () => {
     it('does not treat a shorthand property as equal to a property assignment', () => {
       expect(unique(`{ Foo }, { Foo: 1 }`)).toEqual(['{ Foo }', '{ Foo: 1 }']);
     });
+
+    it('compares spread members by their expression', () => {
+      expect(unique(`{ ...foo }, { ...bar }, { ...foo }`)).toEqual(['{ ...foo }', '{ ...bar }']);
+    });
+
+    it('does not treat a shorthand property as equal to a method with the same name', () => {
+      expect(unique(`{ Foo }, { Foo() {} }`)).toEqual(['{ Foo }', '{ Foo() {} }']);
+    });
+
+    it('keeps objects with unsupported members such as methods and accessors', () => {
+      expect(unique(`{ foo() {} }, { foo() {} }`)).toEqual(['{ foo() {} }', '{ foo() {} }']);
+      expect(unique(`{ get foo() { return 1; } }, { get foo() { return 1; } }`))
+        .toEqual(['{ get foo() { return 1; } }', '{ get foo() { return 1; } }']);
+    });
   });
 
   describe('array literals', () => {

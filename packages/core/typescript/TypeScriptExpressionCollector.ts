@@ -99,20 +99,33 @@ export class TypeScriptExpressionCollector {
         return false;
       }
 
-      // compare prop values
-      if (ts.isPropertyAssignment(prop1) !== ts.isPropertyAssignment(prop2)) {
-        return false;
-      }
-      if (
-        ts.isPropertyAssignment(prop1) &&
-        ts.isPropertyAssignment(prop2) &&
-        !this.compareExpressions(prop1.initializer, prop2.initializer)
-      ) {
+      if (!this.compareObjectMembers(prop1, prop2)) {
         return false;
       }
     }
 
     return true;
+  }
+
+  /**
+   * Compares the values of two object literal members with matching names.
+   * Unsupported members (methods, accessors) are never equal, same as unsupported expressions.
+   */
+  private compareObjectMembers(
+    prop1: ts.ObjectLiteralElementLike,
+    prop2: ts.ObjectLiteralElementLike
+  ): boolean {
+    if (ts.isPropertyAssignment(prop1) && ts.isPropertyAssignment(prop2)) {
+      return this.compareExpressions(prop1.initializer, prop2.initializer);
+    }
+    if (ts.isShorthandPropertyAssignment(prop1) && ts.isShorthandPropertyAssignment(prop2)) {
+      // the value is the identifier itself, so matching names are enough
+      return true;
+    }
+    if (ts.isSpreadAssignment(prop1) && ts.isSpreadAssignment(prop2)) {
+      return this.compareExpressions(prop1.expression, prop2.expression);
+    }
+    return false;
   }
 
   /**
