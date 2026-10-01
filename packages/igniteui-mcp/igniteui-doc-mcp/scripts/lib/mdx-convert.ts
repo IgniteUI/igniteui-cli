@@ -32,6 +32,8 @@ export interface ApiResolver {
 export interface ConvertOptions {
   platform: DocsPlatform;
   replacements: Replacement[];
+  /** `{environment:key}` values, e.g. the `production` block of Angular's environment.json. */
+  environment?: Record<string, string>;
   api?: ApiResolver;
   stats?: ConvertStats;
 }
@@ -66,7 +68,7 @@ export function sortReplacements(list: Array<{ name?: string; value?: string }>)
     .sort((a, b) => b.name.length - a.name.length);
 }
 
-export function resolveTokens(content: string, replacements: Replacement[]): string {
+export function resolveTokens(content: string, replacements: Replacement[], environment: Record<string, string> = {}): string {
   let result = content;
 
   const compKey = result.match(/^---[\s\S]*?^_componentKey:\s*(\w+)/m)?.[1];
@@ -84,7 +86,7 @@ export function resolveTokens(content: string, replacements: Replacement[]): str
   // Demo base URLs are deliberately left in place: <code-view iframe-src> keeps
   // them as {environment:*} placeholders for inject-angular-docs.ts.
   result = result.replace(/\{environment:([^}]+)\}/g, (m, key: string) =>
-    /DemosBaseUrl$|DemoBaseUrl$|^demosBaseUrl$/.test(key) ? m : (LEGACY_ENV[key] ?? "")
+    /DemosBaseUrl$|DemoBaseUrl$|^demosBaseUrl$/.test(key) ? m : (environment[key] ?? LEGACY_ENV[key] ?? "")
   );
   result = result.replace(/\{([A-Za-z][A-Za-z0-9]*(?:[-][A-Za-z0-9._]+)+)\}/g, (_m, inner) => inner);
   result = result.replace(/\{([A-Z][A-Za-z0-9]*[A-Z][A-Za-z0-9]*)\}/g, "");
@@ -379,7 +381,7 @@ export function extractImports(body: string): { body: string; components: Set<st
 const ALWAYS_COMPONENTS = ["Sample", "ApiLink", "ApiRef", "DocsAside", "Image", "Badge", "Faq", "FaqItem", "Anatomy"];
 
 export function convertMdx(content: string, opts: ConvertOptions): string {
-  const resolved = resolveTokens(content.replace(/\r\n/g, "\n"), opts.replacements);
+  const resolved = resolveTokens(content.replace(/\r\n/g, "\n"), opts.replacements, opts.environment);
 
   const fm = /^---\n[\s\S]*?\n---\n?/.exec(resolved);
   const frontmatter = fm ? fm[0] : "";

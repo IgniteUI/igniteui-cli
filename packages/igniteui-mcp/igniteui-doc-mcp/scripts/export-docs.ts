@@ -152,6 +152,17 @@ function contentDir(cfg: FrameworkConfig, lang: string): string {
     : join(XPLAT, "generated", cfg.platform, lang, "components");
 }
 
+/**
+ * Angular pages still carry docfx-era `{environment:dvApiBaseUrl}`-style URLs; the
+ * Angular site resolves them from its environment.json. The xplat site has no such
+ * file and only knows the built-in map in mdx-convert.ts.
+ */
+function readEnvironment(cfg: FrameworkConfig, lang: string): Record<string, string> {
+  if (cfg.platform !== "Angular") return {};
+  const envPath = join(ANGULAR, "src", "content", lang, "environment.json");
+  return existsSync(envPath) ? JSON.parse(readFileSync(envPath, "utf-8")).production ?? {} : {};
+}
+
 function stripImages(content: string): string {
   return content.replace(/!\[[^\]]*\]\([^)]*\)/g, "");
 }
@@ -192,6 +203,7 @@ function main() {
     const options: ConvertOptions = {
       platform: cfg.platform,
       replacements,
+      environment: readEnvironment(cfg, lang),
       api: { platform: framework, prefix: cfg.prefix, index: buildCanonicalIndex(framework) },
       stats,
     };

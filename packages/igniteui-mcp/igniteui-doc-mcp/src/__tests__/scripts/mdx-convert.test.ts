@@ -47,6 +47,13 @@ describe("resolveTokens", () => {
     expect(resolveTokens(input, replacements)).toContain('The Ignite UI for React Data Grid uses <ApiLink type="Grid" />');
   });
 
+  it("resolves environment keys from the supplied map before the built-in one", () => {
+    const input = "[x]({environment:dvApiBaseUrl}/products/a.html) {environment:sassApiUrl}";
+    expect(resolveTokens(input, [], { dvApiBaseUrl: "https://www.infragistics.com", sassApiUrl: "https://sass" })).toBe(
+      "[x](https://www.infragistics.com/products/a.html) https://sass"
+    );
+  });
+
   it("drops unknown PascalCase tokens and keeps demo base URL placeholders", () => {
     const input = "{PackageAngularComponents} {environment:angularApiUrl} {environment:dvDemosBaseUrl}";
     expect(resolveTokens(input, replacements)).toBe(
