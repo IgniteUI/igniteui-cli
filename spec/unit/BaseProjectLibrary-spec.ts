@@ -383,4 +383,106 @@ describe("Unit - Base project library ", () => {
 		expect(library.hasTemplate("combo")).toBeTruthy();
 		expect(library.hasTemplate("customControlCustom")).toBeTruthy();
 	});
+
+	describe("with registered templates", () => {
+		let library: BaseProjectLibrary;
+
+		const createTemplate = (id: string, components: string[], group: string, overrides: Partial<Template> = {}) => ({
+			id,
+			name: id + "Name",
+			components,
+			controlGroup: group,
+			listInComponentTemplates: true,
+			listInCustomTemplates: false,
+			...overrides
+		} as Template);
+
+		beforeEach(() => {
+			// no template folders on disk, everything comes from registerTemplate
+			spyOn(Util, "getDirectoryNames").and.returnValue([]);
+			library = new BaseProjectLibrary(__dirname);
+		});
+
+		it("ignores an empty template", () => {
+			library.registerTemplate(undefined);
+
+			expect(library.templates).toEqual([]);
+			expect(library.components).toEqual([]);
+		});
+
+		it("creates components for new component names in the template group", () => {
+			const template = createTemplate("grid", ["Grid"], "Grids");
+
+			library.registerTemplate(template);
+
+			expect(library.components).toEqual([
+				{ name: "Grid", description: "", group: "Grids", groupPriority: 0, templates: [template] }
+			]);
+			expect(library.hasTemplate("grid")).toBeTrue();
+		});
+
+		it("adds templates to existing components", () => {
+			const first = createTemplate("grid", ["Grid"], "Grids");
+			const second = createTemplate("grid-editing", ["Grid", "Editor"], "Grids");
+
+			library.registerTemplate(first);
+			library.registerTemplate(second);
+
+			expect(library.components.length).toBe(2);
+			expect(library.getComponentByName("Grid").templates).toEqual([first, second]);
+			expect(library.getComponentByName("Editor").templates).toEqual([second]);
+		});
+
+		it("does not list templates in components when listInComponentTemplates is false", () => {
+			const template = createTemplate("hidden", ["Grid"], "Grids", { listInComponentTemplates: false });
+
+			library.registerTemplate(template);
+
+			expect(library.getComponentByName("Grid").templates).toEqual([]);
+		});
+
+		it("lists custom templates when listInCustomTemplates is true", () => {
+			const template = createTemplate("custom", [], "Custom", { listInComponentTemplates: false, listInCustomTemplates: true });
+
+			library.registerTemplate(template);
+
+			expect(library.getCustomTemplates()).toEqual([template]);
+			expect(library.getCustomTemplateNames()).toEqual(["customName"]);
+			expect(library.getCustomTemplateByName("customName")).toBe(template);
+			expect(library.hasTemplate("custom")).toBeTrue();
+		});
+
+		it("gets component groups with descriptions in description order, for used groups only", () => {
+			library.groupDescriptions.set("Charts", "Chart components");
+			library.groupDescriptions.set("Unused", "Not used by any component");
+			library.groupDescriptions.set("Grids", "");
+			library.registerTemplate(createTemplate("grid", ["Grid"], "Grids"));
+			library.registerTemplate(createTemplate("chart", ["Chart"], "Charts"));
+			library.registerTemplate(createTemplate("map", ["Map"], "Maps"));
+
+			expect(library.getComponentGroups()).toEqual([
+				{ name: "Charts", description: "Chart components" },
+				{ name: "Grids", description: "" }
+			]);
+		});
+
+		it("gets component names by group sorted by priority", () => {
+			library.registerTemplate(createTemplate("a", ["Low", "High"], "Group"));
+			library.registerTemplate(createTemplate("b", ["Other"], "OtherGroup"));
+			library.getComponentByName("High").groupPriority = 10;
+
+			expect(library.getComponentNamesByGroup("Group")).toEqual(["High", "Low"]);
+			expect(library.getComponentNamesByGroup("Missing")).toEqual([]);
+		});
+
+		it("returns null for an unknown project", () => {
+			expect(library.hasProject("missing")).toBeFalse();
+			expect(library.getProject("missing")).toBeNull();
+			expect(library.projects).toEqual([]);
+		});
+
+		it("resolves the generate template folder from the root path", () => {
+			expect(library.generateTemplateFolderPath).toBe(path.join(__dirname, "generate"));
+		});
+	});
 });

@@ -43,11 +43,33 @@ export class TypeScriptExpressionCollector {
     ) {
       return this.compareArrayLiterals(expr1, expr2);
     } else if (ts.isLiteralExpression(expr1) && ts.isLiteralExpression(expr2)) {
-      return expr1.text === expr2.text;
+      return expr1.kind === expr2.kind && expr1.text === expr2.text;
     } else if (ts.isIdentifier(expr1) && ts.isIdentifier(expr2)) {
       return expr1.text === expr2.text;
+    } else if (this.isKeywordLiteral(expr1) && this.isKeywordLiteral(expr2)) {
+      return expr1.kind === expr2.kind;
     }
     return false;
+  }
+
+  /**
+   * Checks if an expression is a `true`, `false` or `null` keyword.
+   */
+  private isKeywordLiteral(expr: ts.Expression): boolean {
+    return expr.kind === ts.SyntaxKind.TrueKeyword ||
+      expr.kind === ts.SyntaxKind.FalseKeyword ||
+      expr.kind === ts.SyntaxKind.NullKeyword;
+  }
+
+  /**
+   * Gets the text of a property name that is an identifier, string or numeric literal.
+   */
+  private getPropertyName(prop: ts.ObjectLiteralElementLike): string | undefined {
+    const name = prop.name;
+    if (name && (ts.isIdentifier(name) || ts.isStringLiteral(name) || ts.isNumericLiteral(name))) {
+      return name.text;
+    }
+    return undefined;
   }
 
   /**
@@ -64,48 +86,53 @@ export class TypeScriptExpressionCollector {
     const namesComparer = (
       a: ts.ObjectLiteralElementLike,
       b: ts.ObjectLiteralElementLike
-    ) =>
-      ts.isIdentifier(a.name) &&
-      ts.isIdentifier(b.name) &&
-      a.name.text.localeCompare(b.name.text);
-    const sortedProps1 = obj1.properties.slice().sort(namesComparer);
-    const sortedProps2 = obj2.properties.slice().sort(namesComparer);
+    ) => (this.getPropertyName(a) ?? "").localeCompare(this.getPropertyName(b) ?? "");
+    // spread order is significant (later members override earlier ones), so only sort without spreads
+    const hasSpread = [...obj1.properties, ...obj2.properties].some(p => ts.isSpreadAssignment(p));
+    const sortedProps1 = hasSpread ? obj1.properties.slice() : obj1.properties.slice().sort(namesComparer);
+    const sortedProps2 = hasSpread ? obj2.properties.slice() : obj2.properties.slice().sort(namesComparer);
 
     for (let i = 0; i < sortedProps1.length; i++) {
       const prop1 = sortedProps1[i];
       const prop2 = sortedProps2[i];
 
       // compare prop names
-      if (
-        ts.isIdentifier(prop1.name) &&
-        ts.isIdentifier(prop2.name) &&
-        prop1.name.text !== prop2.name.text
-      ) {
+      const name = this.getPropertyName(prop1);
+      if (name !== this.getPropertyName(prop2)) {
+        return false;
+      }
+      // unsupported names (e.g. computed `[key]`) are never equal, spreads are compared by expression
+      if (name === undefined && !(ts.isSpreadAssignment(prop1) && ts.isSpreadAssignment(prop2))) {
         return false;
       }
 
-      // compare prop values, only consider literal expressions and identifiers for the moment (alt: use lodash?)
-      if (
-        ts.isPropertyAssignment(prop1) &&
-        ts.isPropertyAssignment(prop2) &&
-        (!ts.isLiteralExpression(prop1.initializer) ||
-          !ts.isLiteralExpression(prop2.initializer))
-      ) {
-        return false;
-      }
-
-      if (
-        ts.isPropertyAssignment(prop1) &&
-        ts.isPropertyAssignment(prop2) &&
-        ts.isIdentifier(prop1.initializer) &&
-        ts.isIdentifier(prop2.initializer) &&
-        prop1.initializer.text !== prop2.initializer.text
-      ) {
+      if (!this.compareObjectMembers(prop1, prop2)) {
         return false;
       }
     }
 
     return true;
+  }
+
+  /**
+   * Compares the values of two object literal members with matching names.
+   * Unsupported members (methods, accessors) are never equal, same as unsupported expressions.
+   */
+  private compareObjectMembers(
+    prop1: ts.ObjectLiteralElementLike,
+    prop2: ts.ObjectLiteralElementLike
+  ): boolean {
+    if (ts.isPropertyAssignment(prop1) && ts.isPropertyAssignment(prop2)) {
+      return this.compareExpressions(prop1.initializer, prop2.initializer);
+    }
+    if (ts.isShorthandPropertyAssignment(prop1) && ts.isShorthandPropertyAssignment(prop2)) {
+      // the value is the identifier itself, so matching names are enough
+      return true;
+    }
+    if (ts.isSpreadAssignment(prop1) && ts.isSpreadAssignment(prop2)) {
+      return this.compareExpressions(prop1.expression, prop2.expression);
+    }
+    return false;
   }
 
   /**
@@ -120,21 +147,7 @@ export class TypeScriptExpressionCollector {
     }
 
     for (let i = 0; i < arr1.elements.length; i++) {
-      const elem1 = arr1.elements[i];
-      const elem2 = arr2.elements[i];
-      if (
-        ts.isObjectLiteralExpression(elem1) &&
-        ts.isObjectLiteralExpression(elem2)
-      ) {
-        return this.compareObjectLiterals(elem1, elem2);
-      } else if (
-        ts.isLiteralExpression(elem1) &&
-        ts.isLiteralExpression(elem2)
-      ) {
-        if (elem1.text !== elem2.text) {
-          return false;
-        }
-      } else {
+      if (!this.compareExpressions(arr1.elements[i], arr2.elements[i])) {
         return false;
       }
     }
