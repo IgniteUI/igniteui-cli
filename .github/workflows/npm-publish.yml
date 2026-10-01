@@ -74,7 +74,11 @@ jobs:
       - name: Read server version
         run: |
           VERSION=$(jq -r '.packages[] | select(.identifier == "@igniteui/mcp-server") | .version' server.json)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          if [[ "$VERSION" == *-* ]]; then
+            echo "::error::Refusing to publish prerelease @igniteui/mcp-server@${VERSION} to the MCP Registry"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           echo "$VERSION"
 
       # The registry validates the package against npm, and a just-published
