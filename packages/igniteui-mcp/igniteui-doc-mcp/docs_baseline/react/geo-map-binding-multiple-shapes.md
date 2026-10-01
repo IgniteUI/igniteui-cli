@@ -1,17 +1,18 @@
 ---
-title: React Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics
-_description: Use Infragistics' React to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for React map tutorials!
-_keywords: React map, shape files, Ignite UI for React, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "React Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics"
+description: Use Infragistics' React to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for React map tutorials!
+keywords: "React map, shape files, Ignite UI for React, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "In the Ignite UI for React map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data."
 _tocName: Binding Multiple Shapes
 _premium: true
 ---
-
 # React Binding and Overlaying Multiple Shape Files
 
-In the Ignite UI for React map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. For example, [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) for plotting geographic locations of ports, the [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) for plotting routes between ports, and the [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) for plotting shapes of countries.
+In the Ignite UI for React map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. For example, `IgrGeographicSymbolSeries` for plotting geographic locations of ports, the `IgrGeographicPolylineSeries` for plotting routes between ports, and the `IgrGeographicShapeSeries` for plotting shapes of countries.
 
 ## React Binding and Overlaying Multiple Shape Files Example
 
@@ -505,13 +506,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingMultipleShapes/>);
 ```
 
-<div class="divider--half"></div>
+This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the `IgrShapefileRecord` class. Refer to the [Binding Shape Files](./geo-map-binding-shp-file.md) topic for more information about `IgrShapefileRecord` object.
 
-This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) object.
-
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) – displays locations of major cities
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) – displays routes between major ports
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) – displays shapes of countries of the world
+- `IgrGeographicSymbolSeries` – displays locations of major cities
+- `IgrGeographicPolylineSeries` – displays routes between major ports
+- `IgrGeographicShapeSeries` – displays shapes of countries of the world
 
 You can use geographic series in above or other combinations to plot desired data.
 
@@ -572,7 +571,7 @@ public render() {
 
 ## Loading Shapefiles
 
-Next, in constructor of your page, add a [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) for each shapefile that you want to display in the geographic map component.
+Next, in constructor of your page, add a `IgrShapefileRecord` for each shapefile that you want to display in the geographic map component.
 
 ```ts
 const sdsPolygons = new IgrShapeDataSource();
@@ -594,7 +593,7 @@ sdsLocations.dataBind();
 
 ## Processing Polygons
 
-Process shapes data loaded in [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) with of countries of the world and assign it to [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) object.
+Process shapes data loaded in `IgrShapefileRecord` with of countries of the world and assign it to `IgrGeographicShapeSeries` object.
 
 ```ts
 import { IgrGeographicShapeSeries } from 'igniteui-react-maps';
@@ -623,7 +622,7 @@ public onPolygonsLoaded(sds: IgrShapeDataSource, e: any) {
 
 ## Processing Polyline
 
-Process shapes data loaded in [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) with communication routes between major cities and assign it to [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) object.
+Process shapes data loaded in `IgrShapefileRecord` with communication routes between major cities and assign it to `IgrGeographicPolylineSeries` object.
 
 ```ts
 import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
@@ -654,7 +653,7 @@ public onPolylinesLoaded(sds: IgrShapeDataSource, e: any) {
 
 ## Processing Points
 
-Process shapes data loaded in [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) with locations of major cities and assign it to [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) object.
+Process shapes data loaded in `IgrShapefileRecord` with locations of major cities and assign it to `IgrGeographicSymbolSeries` object.
 
 ```ts
 import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
@@ -698,7 +697,7 @@ this.geoMap.backgroundContent = {};
 
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
-```ts
+```tsx
 import * as React from "react";
 import "../styles.css";
 import "./GeoMapStyles.css";
@@ -865,8 +864,7 @@ export default class MapBindingMultipleShapes extends React.Component<any,any> {
 ```
 
 ## API References
-
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html)
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html)
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html)
-- [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html)
+`IgrGeographicPolylineSeries`
+`IgrGeographicShapeSeries`
+`IgrGeographicSymbolSeries`
+`IgrShapefileRecord`

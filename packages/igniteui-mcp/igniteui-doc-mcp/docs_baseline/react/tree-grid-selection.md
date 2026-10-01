@@ -1,15 +1,14 @@
 ---
-title: React Tree Grid Selection - Ignite UI for React
-_description: See how easy it is to select data in Ignite UI for React grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "React Tree Grid Selection - Ignite UI for React"
+description: See how easy it is to select data in Ignite UI for React grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for React Select feature in React Tree Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: TreeGrid
 _tocName: Selection
 ---
-
 # React Tree Grid Selection Overview
 
 With the Ignite UI for React Select feature in React Tree Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for React Select feature in React Tree Grid you can easily in
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) property, you can specify:
+With the [`IgrTreeGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -195,37 +194,29 @@ root.render(<Sample/>);
 
 ### React Tree Grid Row Selection
 
-Property [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) enables you to specify the following options:
+Property [`IgrTreeGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 - `Single` - Selection of only one row within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 - `MultipleCascade` - This is a mode for cascading selection, resulting in the selection of all children in the tree below the record that the user selects with user interaction. In this mode a parent's selection state entirely depends on the selection state of its children.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### React Tree Grid Cell Selection
 
-Property [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellSelection) enables you to specify the following options:
+Property [`IgrTreeGrid.cellSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 - `Single` - Selection of only one cell within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) would be available.
 - `Multiple` - Currently, this is the default state of the selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Cell selection topic](cell-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### React Tree Grid Column Selection
 
-The [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) property enables you to specify the following options for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgrColumn.selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) property enables you to specify the following options for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -233,15 +224,11 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgrTreeGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -249,9 +236,7 @@ When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&compone
 - Row Pinning
 
 ## API References
-
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

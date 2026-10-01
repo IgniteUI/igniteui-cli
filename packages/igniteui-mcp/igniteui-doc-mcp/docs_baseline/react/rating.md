@@ -1,12 +1,13 @@
 ---
-title: React Rating
-_description: With Ignite UI for React Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Rating components, React Rating controls
-_license: MIT
+title: "React Rating"
+description: With Ignite UI for React Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Rating components, React Rating controls"
+license: MIT
 mentionedTypes: ["Rating"]
+llms:
+  description: "The Ignite UI for React Rating component allows users to view and provide feedback."
 _tocName: Rating
 ---
-
 # React Rating Overview
 
 The Ignite UI for React Rating component allows users to view and provide feedback.
@@ -159,24 +160,24 @@ The Ignite UI for React Rating component has a single selection mode that allows
 ```tsx
 <IgrRating single={true}>
   <IgrRatingSymbol>
-      <div>😣</div>
-      <div slot="empty">😣</div>
+      <span>😣</span>
+      <span slot="empty">😣</span>
   </IgrRatingSymbol>
   <IgrRatingSymbol>
-      <div>😣</div>
-      <div slot="empty">😣</div>
+      <span>😣</span>
+      <span slot="empty">😣</span>
   </IgrRatingSymbol>
   <IgrRatingSymbol>
-      <div>😣</div>
-      <div slot="empty">😣</div>
+      <span>😣</span>
+      <span slot="empty">😣</span>
   </IgrRatingSymbol>
   <IgrRatingSymbol>
-      <div>😣</div>
-      <div slot="empty">😣</div>
+      <span>😣</span>
+      <span slot="empty">😣</span>
   </IgrRatingSymbol>
   <IgrRatingSymbol>
-      <div>😣</div>
-      <div slot="empty">😣</div>
+      <span>😣</span>
+      <span slot="empty">😣</span>
   </IgrRatingSymbol>
 </IgrRating>
 ```
@@ -237,12 +238,12 @@ root.render(<RatingSingleSelection/>);
 
 ## Empty & Selected
 
-The Ignite UI for React Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
+The Ignite UI for React Rating component allows users to use different icons or elements for the 'selected' and 'empty' states of each rating symbol. It is mandatory to provide two icons for each symbol, even if they are the same. One is used for the 'selected' state, which is defined by not specifying any slot, and the other is used for the 'empty' state, which you can define using the `empty` slot. For instance:
 
 ```tsx
 <IgrRatingSymbol>
-    <div><IgrIcon name='bandage' collection="material"></IgrIcon></div>
-    <div slot='empty'><IgrIcon name='bacteria' collection="material"></IgrIcon></div>
+    <IgrIcon name='bandage' collection="material"></IgrIcon>
+    <IgrIcon name='bacteria' collection="material" slot='empty'></IgrIcon>
 </IgrRatingSymbol>
 ```
 
@@ -303,19 +304,35 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingEmptyAndSelected/>);
 ```
 
+As shown above, the best practice is to use icons for the rating symbols. We recommend using an [`igc-icon`](../layouts/icon.md) component for the 'empty' and 'selected' icons. However, if you prefer to use symbols or emojis instead of icons, we recommend using a `<span>` element for them, like so:
+
+```tsx
+<IgrRating>
+  <IgrRatingSymbol>
+    <span>😣</span>
+    <span slot="empty">😣</span>
+  </IgrRatingSymbol>
+  <IgrRatingSymbol>
+    <span>😔</span>
+    <span slot="empty">😔</span>
+  </IgrRatingSymbol>
+  ...
+</IgrRating>
+```
+
 ## Configuration
 
 ### Single
 
-Turns on the [`single`](mcp:get_api_reference?platform=react&component=IgrRating&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`Single`](mcp:get_api_reference?platform=react&component=IgrRating&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`value`](mcp:get_api_reference?platform=react&component=IgrRating&member=value) attribute sets the current value of the component.
+The [`Value`](mcp:get_api_reference?platform=react&component=IgrRating&member=value) attribute sets the current value of the component.
 
 ### Label
 
-The [`label`](mcp:get_api_reference?platform=react&component=IgrRating&member=label) attribute allows setting the label value of the rating component.
+The [`Label`](mcp:get_api_reference?platform=react&component=IgrRating&member=label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -323,11 +340,11 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`max`](mcp:get_api_reference?platform=react&component=IgrRating&member=max) attribute sets the maximum allowed value of the rating component.
+The [`Max`](mcp:get_api_reference?platform=react&component=IgrRating&member=max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`step`](mcp:get_api_reference?platform=react&component=IgrRating&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`Step`](mcp:get_api_reference?platform=react&component=IgrRating&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
@@ -335,21 +352,21 @@ The `hoverPreview` attribute makes the component show the possible outcome of us
 
 ### Read-Only
 
-The [`readOnly`](mcp:get_api_reference?platform=react&component=IgrRating&member=readOnly) attribute allows the users to set the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`ReadOnly`](mcp:get_api_reference?platform=react&component=IgrRating&member=readOnly) attribute allows the users to set the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`disabled`](mcp:get_api_reference?platform=react&component=IgrRating&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`Disabled`](mcp:get_api_reference?platform=react&component=IgrRating&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`stepUp`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepUp`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`stepDown`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepDown`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
@@ -444,10 +461,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingStyling/>);
 ```
 
-## API Reference
+## API References
 
-- [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)<br />
+[`IgrRatingSymbol`](mcp:get_api_reference?platform=react&component=IgrRatingSymbol)<br />
 
 ## Additional Resources
 

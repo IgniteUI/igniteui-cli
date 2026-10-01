@@ -1,26 +1,26 @@
 ---
-title: React Pivot Grid Features | Pivot Tables | Infragistics
-_description: Create fast, responsive React Pivot Grid and tables with Ignite UI for React and perform complex data analysis via pivot data.
-_keywords: React, Pivot Grid, material pivot table, Ignite UI for React, grid features, pivot features
-_license: commercial
+title: "React Pivot Grid Features | Pivot Tables | Infragistics"
+description: Create fast, responsive React Pivot Grid and tables with Ignite UI for React and perform complex data analysis via pivot data.
+keywords: "React, Pivot Grid, material pivot table, Ignite UI for React, grid features, pivot features"
+license: commercial
 mentionedTypes: ["Infragistics.Controls.Grid"]
 namespace: Infragistics.Controls
+llms:
+  description: "The pivot and flat grid components inherit from a common base and thus share some functionality and features."
 _tocName: Features
 _premium: true
 ---
-
 # React Pivot Grid Features
 
 The pivot and flat grid components inherit from a common base and thus share some functionality and features.
 
-> [!Note]
-> Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid). These include:
->
-> - CRUD operations
-> - Grouping
-> - Row/Column Pinning
-> - Summaries
-> - Paging
+**Note:** 
+Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid). These include:
+- CRUD operations
+- Grouping
+- Row/Column Pinning
+- Summaries
+- Paging
 
 The Pivot Grid component has additional features and functionalities related to its dimensions as described below.
 
@@ -238,9 +238,9 @@ const dimension: IgrPivotDimension = {
 ## Dimensions Resizing
 
 Row dimensions can be resized similarly to column resizing - via a resizing indicator that can be found on the right edge of the cells.
-They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`autoSizeRowDimension`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=autoSizeRowDimension).
+They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`AutoSizeRowDimension`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=autoSizeRowDimension).
 
-A different size can also be set initially with the [`width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) property available in the dimension definition:
+A different size can also be set initially with the [`Width`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=width) property available in the dimension definition:
 
 ```tsx
 const igrPivotDimension2: IgrPivotDimension = {
@@ -262,8 +262,7 @@ The Pivot Grid supports single selection which is enabled just like in the base 
 In case there are multiple row or column dimensions which would create groups that span multiple rows/columns, selection is applied to all cells that belong to the selected group.
 
 ## Super Compact Mode
-
-The [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) component provides a [`superCompactMode`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=superCompactMode) input. It is suitable for cases that require a lot of cells to be present on the screen at once. If enabled the option ignores the `--ig-size` CSS variable for the Pivot Grid. Enabling [`superCompactMode`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=superCompactMode) also sets the `--ig-size` to `small` for each child component(like [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)) that does not have the `SuperCompactMode` option.
+The [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) component provides a [`SuperCompactMode`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=superCompactMode) input. It is suitable for cases that require a lot of cells to be present on the screen at once. If enabled the option ignores the `--ig-size` CSS variable for the Pivot Grid. Enabling [`SuperCompactMode`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=superCompactMode) also sets the `--ig-size` to `small` for each child component(like [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)) that does not have the [`SuperCompactMode`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=superCompactMode) option.
 
 ```tsx
 <IgrPivotGrid data={pivotData} pivotConfiguration={pivotConfiguration} superCompactMode={true}>
@@ -278,24 +277,21 @@ When a `column` dimension defines a hierarchy, the Pivot Grid will render additi
 
 ### Keyboard Navigation
 
-Keyboard navigation in [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) works similarly to the one in [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). The Pivot Grid is split into three areas - `rows`, `columns`, `values`. The areas for `rows` and `columns` are considered headers for the purposes of navigation while the area for `values` is the body.
+Keyboard navigation in `IgrPivotGrid` works similarly to the one in `IgrGrid`. The Pivot Grid is split into three areas - `rows`, `columns`, `values`. The areas for `rows` and `columns` are considered headers for the purposes of navigation while the area for `values` is the body.
 The keyboard arrows allow navigating the active element within the current area only.
 
 ### Dimensions Drag & Drop
-
 The dimensions are represented by chips, which can be dragged & dropped.
 All chips can change their order within their area by drag & drop.
 The chips from `rows`, `column`, `filter`(dimension chips) can be moved from any of those areas to any other and at any place.
 Chips from these areas can not be moved to the `values` area and chips from the `values` area can not be moved to any of the dimension areas.
 
-> [!Note]
-> The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
+**Note:** 
+The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
 
 ## API References
-
-- [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
-- [`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector)
-
+[`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
+[`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

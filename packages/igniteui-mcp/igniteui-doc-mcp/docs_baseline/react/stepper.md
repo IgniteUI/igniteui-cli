@@ -1,12 +1,13 @@
 ---
-title: React Stepper Component - Ignite UI for React
-_description: React Stepper component is used to visualize content as a process and to show its progress by dividing the content into logical steps. Try it for FREE.
-_keywords: React Stepper, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Stepper Component - Ignite UI for React"
+description: "React Stepper component is used to visualize content as a process and to show its progress by dividing the content into logical steps. Try it for FREE."
+keywords: "React Stepper, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Stepper"]
+llms:
+  description: "The React Stepper Component provides a wizard-like workflow and is used for showing progress through numbered steps."
 _tocName: Stepper
 ---
-
 # React Stepper Overview
 
 The React Stepper Component provides a wizard-like workflow and is used for showing progress through numbered steps. It enables developers to divide a lengthy content into a sequence of logical steps, helping end-users more easily navigate the entire process. The React Stepper is displayed as a vertical or a horizontal line. The React Stepper has multiple features like step validation, styling, orientation and keyboard navigation.
@@ -312,8 +313,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<LinearStepper />);
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with React Stepper
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -332,49 +331,39 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 Now you can start with a basic configuration of the React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) and its steps.
 
 ## How To Use React Stepper
-
-The [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) is the representation of every step that belongs to the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). Steps provide [`invalid`](mcp:get_api_reference?platform=react&component=IgrStep&member=invalid), [`active`](mcp:get_api_reference?platform=react&component=IgrStep&member=active), [`optional`](mcp:get_api_reference?platform=react&component=IgrStep&member=optional), [`disabled`](mcp:get_api_reference?platform=react&component=IgrStep&member=disabled) and [`complete`](mcp:get_api_reference?platform=react&component=IgrStep&member=complete) properties, which give you the ability to configure the step states according to your business requirement.
+The [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) is the representation of every step that belongs to the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). Steps provide [`Step.Invalid`](mcp:get_api_reference?platform=react&component=IgrStep&member=Invalid), [`Step.Active`](mcp:get_api_reference?platform=react&component=IgrStep&member=Active), [`Step.Optional`](mcp:get_api_reference?platform=react&component=IgrStep&member=Optional), [`Step.Disabled`](mcp:get_api_reference?platform=react&component=IgrStep&member=Disabled) and [`Step.Complete`](mcp:get_api_reference?platform=react&component=IgrStep&member=Complete) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring React Stepper
 
-Steps can be declared using one of the following approaches.
-
-- Iterating through a data set
-
-```tsx
-<IgrStepper>
-    {this.StepsData.map(item =>
-        <IgrStep key={item.title} disabled={item.disabled}>
-            <p slot="title">{item.title}</p>
-        </IgrStep>
-    }
-</IgrStepper>
-```
-
-- Creating static steps
+Steps can be declared the following way:
 
 ```tsx
 <IgrStepper>
     <IgrStep>
-       <p slot="title">Step 1</p>
+       <span slot="title">Step 1</span>
     </IgrStep>
      <IgrStep>
-       <p slot="title">Step 2</p>
+       <span slot="title">Step 2</span>
     </IgrStep>
 </IgrStepper>
 ```
 
-For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
+For each step the user has the ability to configure the indicator, title and subtitle using the `indicator`, `title`, and `subtitle` slots.
 
-> [!Note]
-> The `Default` [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) slot renders the content of the step.
+For the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
+For the `indicator` slot, we also recommend using a `<span>` element for symbol or emoji indicators, and an [`<igc-icon>`](../layouts/icon.md) component for icon indicators.
+
+**Note:** 
+The `default` [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) slot renders the content of the step.
+
 
 ```tsx
 <IgrStepper>
     <IgrStep>
         <IgrIcon slot="indicator" name="home" collection="material" />
-        <p slot="title">Home</p>
-        <p slot="subtitle">Home Sub Title</p>
+        <span slot="title">Home</span>
+        <span slot="subtitle">Home Sub Title</span>
         <div>
             Step Content
             ...
@@ -383,22 +372,20 @@ For each step the user has the ability to configure indicator, title and subtitl
 </IgrStepper>
 ```
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 500px" src="../../images/stepper/stepper-step.png" alt="stepper-step"/>
 
 ### Orientation in React Stepper
 
-You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
+You can customize the stepper orientation through the exposed [`Orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property. It could be set to **horizontal** or **vertical**.
 
 **Horizontal Stepper Orientation**
 
-**horizontal**is the default value for the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) orientation property.
-When the React stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) [`contentTop`](mcp:get_api_reference?platform=react&component=IgrStepper&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+**horizontal** is the default value for the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) orientation property.
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../../images/stepper/stepper-contentTop.png" alt="stepper-contentTop" />
+When the React stepper is horizontally orientated you have the opportunity to determine whether the steps' content would be displayed above or below the steps' headers. This could be achieved by setting the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) [`ContentTop`](mcp:get_api_reference?platform=react&component=IgrStepper&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps' content would be displayed above the steps' headers.
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property to **vertical**.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`Orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property to **vertical**.
 
 The sample below demonstrates how stepper orientation and titles position could be changed runtime.
 
@@ -514,8 +501,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StepperOrientationSample />);
 ```
 
-<div class="divider--half"></div>
-
 ### Step States
 
 React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) supports five steps states and each of them apply different styles by default:
@@ -528,15 +513,15 @@ React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) 
 
 ### Linear React Stepper
 
-The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=react&component=IgrStepper&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper).
+The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) gives you the opportunity to set its steps flow using the [`Linear`](mcp:get_api_reference?platform=react&component=IgrStepper&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper).
 
 ```tsx
 <IgrStepper linear={true}>
     <IgrStep>
-       <p slot="title">Step 1</p>
+        <span slot="title">Step 1</span>
     </IgrStep>
      <IgrStep>
-       <p slot="title">Step 2</p>
+        <span slot="title">Step 2</span>
     </IgrStep>
 </IgrStepper>
 ```
@@ -545,27 +530,25 @@ When the linear property is set to **true**, the stepper will require the curren
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
-> [!Note]
-> Optional steps validity is not taken into account in order to move forward.
+**Note:** 
+Optional steps validity is not taken into account in order to move forward.
 
 ### Step Interactions
 
 [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) provides the following API methods for step interactions:
-
 - **navigateTo** – activates the step by given index.
 - **next** - activates the next non-disabled step.
 - **prev** – activates the previous non-disabled step.
 - **reset** – resets the stepper to its initial state.
 
-> [!Note]
-> The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step\`s content. This should be done manually.
+**Note:** 
+The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step`s content. This should be done manually.
 
 ### Customizing the Steps
 
 The Ignite UI for React Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`stepType`](mcp:get_api_reference?platform=react&component=IgrStepper&member=stepType) property of the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). It takes the following values:
-
+This could be achieved through the [`StepType`](mcp:get_api_reference?platform=react&component=IgrStepper&member=stepType) property of the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). It takes the following values:
 - Full **(default value)**
 - Indicator
 - Title
@@ -575,8 +558,7 @@ This could be achieved through the [`stepType`](mcp:get_api_reference?platform=r
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=react&component=IgrStepper&member=titlePosition) property. It takes the following values:
-
+The user can configure the title position using the [`TitlePosition`](mcp:get_api_reference?platform=react&component=IgrStepper&member=titlePosition) property. It takes the following values:
 - undefined **(default value)**
 - end
 - start
@@ -587,8 +569,8 @@ When the React [`IgrStepper`](mcp:get_api_reference?platform=react&component=Igr
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
-> [!Note]
-> **titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
+**Note:** 
+**titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
 
 **indicator**
 
@@ -602,8 +584,8 @@ If you want to display only titles for the steps, set the stepType option to **t
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
-> [!Note]
-> This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
+**Note:** 
+This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
 
 The sample below demonstrates all exposed step types and how they could be changed:
 
@@ -666,19 +648,166 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StepperStepTypes />);
 ```
 
-<div class="divider--half"></div>
+### Dynamic Step Height
+
+When the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) is horizontally oriented, the content area height is determined by the step with the most content. All other steps share this fixed height, which may result in visible empty space in steps with less content.
+
+To override the fixed height and have the content area adapt to the active step's content, set the **--body-grid-rows** CSS variable to **0fr** (the default is **1fr**):
+
+```css
+igc-stepper {
+  --body-grid-rows: 0fr;
+}
+```
+
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-stepper {
+  background: var(--ig-gray-100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--ig-gray-400);
+  margin-block-start: 0.75rem;
+}
+
+igc-step::part(content) {
+  @media (width < 756px) {
+    overflow: scroll;
+  }
+}
+
+header {
+  border: 1px solid var(--ig-gray-400);
+  border-radius: 0.375rem;
+  background: var(--ig-gray-100);
+  padding: 0.5rem;
+  font-size: 1.375rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 195px;
+  justify-content: center;
+}
+
+igc-switch {
+  --border-radius-track: 0px;
+  --thumb-size: 1rem;
+  --border-radius-thumb: 2px;
+  --size: 2.5rem;
+  --thumb-off-color: var(--ig-primary-500);
+  --thumb-on-color: var(--ig-primary-500);
+  --track-on-color: white;
+  --track-on-hover-color: white;
+  --thumb-off-hover-color: var(--ig-primary-500);
+  --border-on-color: var(--ig-gray-400);
+  --border-on-hover-color: var(--ig-gray-500);
+
+  margin-inline: 0.5rem;
+}
+
+igc-switch::part(control) {
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+output {
+  font-size: 1.125rem;
+}
+
+li {
+  font-size: 1rem;
+  padding-block: 0.5rem;
+}
+
+.container {
+  padding: 1rem;
+}
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { IgrStepper, IgrStep, IgrSwitch } from 'igniteui-react';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import './index.css';
+
+export default function StepHeight() {
+  const stepperRef = React.useRef<IgrStepper>(null);
+  const [rows, setRows] = React.useState('1fr');
+
+  const onSwitchChange = (e: any) => {
+    const newRows = e.detail.checked ? '0fr' : '1fr';
+    stepperRef.current.style.setProperty('--body-grid-rows', newRows);
+    setRows(newRows);
+  };
+
+  return (
+    <div className="container sample">
+      <header>
+          <label>1fr</label>
+          <IgrSwitch onChange={onSwitchChange}></IgrSwitch>
+          <label>0fr</label>
+          <output>--body-grid-rows: <span>{rows}</span></output>
+      </header>
+      <IgrStepper ref={stepperRef} contentTop={true}>
+        <IgrStep>
+          <span slot="title">Personal Info</span>
+          <h2>Personal Info</h2>
+          <ul>
+            <li>Please enter your personal information.</li>
+          </ul>
+        </IgrStep>
+        <IgrStep>
+          <span slot="title">Delivery address</span>
+          <h2>Delivery address</h2>
+          <ul>
+            <li>Enter your shipping address for delivery.</li>
+            <li>
+              If you need to change your address, please contact our support
+              team.
+            </li>
+            <li>
+              If you will not be at the address during the delivery time, please
+              provide an alternative address.
+            </li>
+          </ul>
+        </IgrStep>
+        <IgrStep>
+          <span slot="title">Billing address</span>
+          <h2>Billing address</h2>
+          <ul>
+            <li>Please enter your billing address.</li>
+          </ul>
+        </IgrStep>
+        <IgrStep invalid={true}>
+          <span slot="title">Confirmation</span>
+          <h2>Confirmation</h2>
+          <ul>
+            <li>Please review your order details and confirm your purchase.</li>
+          </ul>
+        </IgrStep>
+      </IgrStepper>
+    </div>
+  );
+}
+
+// rendering above class to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<StepHeight />);
+```
 
 ### Stepper Animations
 
 The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=horizontalAnimation) input.
+When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`HorizontalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=horizontalAnimation) input.
 
-In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
+In a vertically orientated layout, the animation type could be defined using the [`VerticalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to both animation type inputs disables stepper animations.
 
-The [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
+The [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [`AnimationDuration`](mcp:get_api_reference?platform=react&component=IgrStepper&member=animationDuration) property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
 
 ```css
 /* shared styles are loaded from: */
@@ -907,8 +1036,6 @@ export default function StepperAnimations() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<StepperAnimations />);
 ```
-
-<div class="divider--half"></div>
 
 ## Keyboard Navigation
 
@@ -1264,15 +1391,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<StepperStyling />);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper)
-- [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep)
-- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper)<br />
+[`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep)<br />
+[`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)<br />
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)<br />
 
 ## Additional Resources
 

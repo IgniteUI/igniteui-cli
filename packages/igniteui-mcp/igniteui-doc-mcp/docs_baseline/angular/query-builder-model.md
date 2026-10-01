@@ -1,18 +1,19 @@
 ---
 title: Using the Query Builder Model
-_description: Angular Query Builder provides a serializable/deserializable JSON format model, making it easy to build SQL queries. Try it now.
-_keywords: Angular Query Builder component, Angular Query Builder control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: commercial
+description: Angular Query Builder provides a serializable/deserializable JSON format model, making it easy to build SQL queries. Try it now.
+keywords: Angular Query Builder component, Angular Query Builder control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: commercial
+llms:
+  description: "Angular Query Builder provides a serializable/deserializable JSON format model, making it easy to build SQL queries."
 _tocName: Using Query Builder Model
 ---
-
 # Using the Query Builder Model
 
 Angular Query Builder provides a serializable/deserializable JSON format model, making it easy to build SQL queries.
 
 ## Overview
 
-This Angular Query Builder example demonstrates how the [`IgxQueryBuilderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) expression tree could be used to request data from an endpoint [Northwind WebAPI](https://data-northwind.indigo.design/swagger/index.html) and set it as an [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) data source.
+This Angular Query Builder example demonstrates how the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) expression tree could be used to request data from an endpoint [Northwind WebAPI](https://data-northwind.indigo.design/swagger/index.html) and set it as an [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) data source.
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
@@ -134,14 +135,14 @@ export class QueryBuilderRequestSampleComponent implements OnInit, AfterViewInit
 
 ## Query Builder Model
 
-In order to set an expression tree to the [`IgxQueryBuilderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent), you need to define a[`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree). Each [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) should have filtering logic that represents how a data record should resolve against the tree and depending on the use case, you could pass a field name, entity name, and an array of return fields. If all fields in a certain entity should be returned, the `returnFields` property could be set to ['*']:
+In order to set an expression tree to the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent), you need to define a[`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree). Each [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) should have filtering logic that represents how a data record should resolve against the tree and depending on the use case, you could pass a field name, entity name, and an array of return fields. If all fields in a certain entity should be returned, the `returnFields` property could be set to ['*']:
 
 ```ts
 const tree = new FilteringExpressionsTree(FilteringLogic.And, undefined, 'Entity A', ['*']);
 ```
 
-Once the root [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) is created, adding conditions, groups or subqueries, could be done by setting its `filteringOperands` property to an array of [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) (single expression or a group) or [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) (subquery).
-Each [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) should have a `fieldName` that is the name of the column where the filtering expression is placed, and either a `condition` of type [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) or a `conditionName`. If required, you could also set a `searchVal`, `searchTree` of type [`IExpressionTree`](mcp:get_api_reference?platform=angular&component=IExpressionTree), and `ignoreCase` properties.
+Once the root [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) is created, adding conditions, groups or subqueries, could be done by setting its `filteringOperands` property to an array of [`IgxIFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) (single expression or a group) or [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) (subquery).
+Each [`IgxIFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) should have a `fieldName` that is the name of the column where the filtering expression is placed, and either a `condition` of type [`IgxIFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) or a `conditionName`. If required, you could also set a `searchVal`, `searchTree` of type [`IgxIExpressionTree`](mcp:get_api_reference?platform=angular&component=IExpressionTree), and `ignoreCase` properties.
 
 - Defining a simple **expression**:
 
@@ -193,10 +194,10 @@ JSON.stringify(tree, null, 2);
 
 ## Using Sub-Queries
 
-In the context of the [`IgxQueryBuilderComponent`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) the _IN / NOT-IN_ operators are used with the newly exposed subquery functionality in the _WHERE_ clause.
+In the context of the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) the _IN / NOT-IN_ operators are used with the newly exposed subquery functionality in the _WHERE_ clause.
 
-> [!Note]
-> A subquery is a query nested inside another query used to retrieve data that will be used as a condition for the outer query.
+**Note:** 
+A subquery is a query nested inside another query used to retrieve data that will be used as a condition for the outer query.
 
 Selecting the _IN / NOT-IN_ operator in a `FilteringExpression` would create a subquery. After choosing an entity and a column to return, it checks if the value in the specified column in the outer query matches or not any of the values returned by the subquery.
 
@@ -607,15 +608,12 @@ igx-grid {
 ```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxQueryBuilderComponent API](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent)
-- [IgxQueryBuilderComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-query-builder-theme)
-
+<hr/>
+- [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent)
+- `IgxQueryBuilderComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,15 +1,14 @@
 ---
-title: Web Components Grid Excel Style Filtering - Ignite UI for Web Components
-_description: Learn how to configure Excel filtering in Web Components Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Excel Style Filtering - Ignite UI for Web Components"
+description: Learn how to configure Excel filtering in Web Components Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, Web Components, Ignite UI for Web Components, Infragistics
+license: commercial
+llms:
+  description: "The Web Components Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI."
+_componentKey: Grid
 _tocName: Excel Style Filtering
 _premium: true
 ---
-
 # Excel Filtering in Web Components Grid
 
 The Web Components Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI. It simplifies the process of working with large datasets. The main idea is to help them filter the data that is most relevant, while eliminating irrelevant entries.
@@ -23,7 +22,7 @@ The Web Components Grid exposes an Excel-style filtering feature that provides a
 
 ## Usage
 
-To turn on the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) should be set to **true** and the [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component's Excel-style filtering, two inputs should be set. The [`IgcGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) should be set to **true** and the [`IgcGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```html
 <igc-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
@@ -44,26 +43,24 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable), [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected), [`disablePinning`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`IgcColumn.sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable), [`IgcColumn.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected), [`IgcColumnState.disablePinning`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disablePinning), [`IgcColumnState.disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disableHiding).
 
 ```html
 <igc-grid id="grid1" auto-generate="false" height="650px" width="100%" moving="true" allow-filtering="true" filter-mode="ExcelStyleFilter">
-    <igc-column field="ProductName" header="Product Name" sortable="true" data-type="String">
+    <igc-column field="ProductName" header="Product Name" sortable="true" data-type="string">
     </igc-column>
-    <igc-column field="QuantityPerUnit" header="Quantity Per Unit" sortable="false" disable-pinning="true" disable-hiding="true" data-type="String">
+    <igc-column field="QuantityPerUnit" header="Quantity Per Unit" sortable="false" disable-pinning="true" disable-hiding="true" data-type="string">
     </igc-column>
-    <igc-column field="UnitPrice" header="Unit Price" disable-pinning="true" disable-hiding="true" sortable="true" data-type="Number">
+    <igc-column field="UnitPrice" header="Unit Price" disable-pinning="true" disable-hiding="true" sortable="true" data-type="number">
     </igc-column>
-    <igc-column field="OrderDate" header="Order Date" sortable="false"  data-type="Date">
+    <igc-column field="OrderDate" header="Order Date" sortable="false"  data-type="date">
     </igc-column>
-    <igc-column field="Discontinued" header="Discontinued" sortable="true" data-type="Boolean">
+    <igc-column field="Discontinued" header="Discontinued" sortable="true" data-type="boolean">
     </igc-column>
 </igc-grid>
 ```
 
-In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable).
-
-<!-- ComponentEnd: Grid -->
+In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`IgcColumn.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable).
 
 ```css
 /* shared styles are loaded from: */
@@ -72,9 +69,9 @@ In the sample below **Product Name** and **Discontinued** columns have all four 
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`IgcGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`IgcGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate):
 
 ```ts
 constructor() {
@@ -85,15 +82,10 @@ constructor() {
 public webGridFilterAltIconTemplate = (ctx: IgcCellTemplateContext) => {
     return html`<img height="15px" width="15px" src="http://static.infragistics.com/xplatform/images/grid/propeller-logo.svg" title="Continued" alt="Continued" />`
 }
+
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- ```razor
-Add razor snipets
-``` -->
-
-<!-- ```html
+```html
 <igc-grid id="grid1" auto-generate="false" height="650px" width="100%" allow-filtering="true" filter-mode="ExcelStyleFilter">
 
     <igc-grid-excel-style-filtering min-height="380px" max-height="500px">
@@ -113,9 +105,7 @@ Add razor snipets
     </igc-grid-excel-style-filtering>
 
 </igc-grid>
-``` -->
-
-<!-- ComponentEnd: Grid -->
+```
 
 ```css
 /* shared styles are loaded from: */
@@ -124,7 +114,7 @@ Add razor snipets
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -171,13 +161,9 @@ Then set the related CSS properties to this class:
 ```
 
 ## API References
-
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -187,8 +173,6 @@ Then set the related CSS properties to this class:
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

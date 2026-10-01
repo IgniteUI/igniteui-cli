@@ -1,23 +1,20 @@
 ---
-title: Blazor Tree Grid Cell Merging - Ignite UI for Blazor
-_description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for Blazor for Blazor Tree Grid. Check out examples and demos!
-_keywords: cell merging, Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: {CanonicalLinkToGridCellMerging}
+title: "Blazor Tree Grid Cell Merging - Ignite UI for Blazor"
+description: Merge adjacent cells with equal values in the Ignite UI for Blazor Tree Grid using the Cell Merging feature. Learn configuration, merging modes, and see live examples!
+keywords: cell merging, Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: ""
+llms:
+  description: "The Ignite UI for Blazor Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell."
+_componentKey: TreeGrid
 _tocName: Cell Merging
 _premium: true
 ---
-
 # Blazor Tree Grid Cell Merging
 
 The Ignite UI for Blazor Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell. Merging is applied vertically within a column and helps improve readability by reducing duplicate values.
 
 ## Blazor Tree Grid Cell Merging Example
-
-<!-- ComponentStart: TreeGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -125,19 +122,15 @@ public class EmployeesFlatDetails
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Enabling and Using Cell Merging
 
 Cell merging in the grid is controlled at two levels:
-
 - Grid-level merge mode – determines when merging is applied.
 - Column-level merge toggle – determines which columns can merge cells.
 
 ### Grid Merge Mode
 
-The grid exposes a `cellMergeMode` property that accepts values from the `GridCellMergeMode` enum:
-
+The grid exposes a [`IgbTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellMergeMode) property that accepts values from the [`IgbGridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode) enum:
 - `always` - Merges any adjacent cells that meet the merging condition, regardless of sort state.
 - `onSort` - Merges adjacent cells only when the column is sorted **(default value)**.
 
@@ -149,11 +142,11 @@ The grid exposes a `cellMergeMode` property that accepts values from the `GridCe
 @code {
     private GridCellMergeMode CellMergeMode = GridCellMergeMode.Always;
 }
+
 ```
 
 ### Column Merge Toggle
-
-At the column level, merging can be enabled or disabled with the `merge` property.
+At the column level, merging can be enabled or disabled with the [`merge`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=merge) property.
 
 ```razor
 <IgbColumn Field="OrderID" Merge="true"></IgbColumn>
@@ -161,7 +154,6 @@ At the column level, merging can be enabled or disabled with the `merge` propert
 ```
 
 In the above example:
-
 - The **OrderID** column will merge adjacent duplicate values.
 - The **ShipperName** column will render normally without merging.
 
@@ -177,12 +169,12 @@ In the above example:
 @code {
     private GridCellMergeMode CellMergeMode = GridCellMergeMode.OnSort;
 }
+
 ```
 
 Here, the grid is set to merge only when columns are sorted, and both Category and Product columns are configured for merging.
 
 ## Feature Integration
-
 Due to the specific behavior of merged cells it has to be noted how exactly it ties together with some of the other features of the grid:
 
 - **Excel export**: merged cells remain merged when exported to Excel.
@@ -192,13 +184,15 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 - **Row selection**: if selected rows intersect merged cells, all related merged cells should be marked as part of the selection.
 - **Navigation/Activation**: when a cell is active, all merged cells in the same row become single cells, i.e. their merge sequence is broken. This also includes activation via keyboard navigation.
 
-> [!NOTE]
-> If a merged cell is clicked, the closest cell from the merge sequence will become active.
+**Note:** 
+If a merged cell is clicked, the closest cell from the merge sequence will become active.
 
 ## API References
-
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`CellMergeMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellMergeMode)
+[`IgbGridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode)
+[`IgbGridMergeStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGridMergeStrategy)
+[`IgbDefaultMergeStrategy`](mcp:get_api_reference?platform=blazor&component=IgbDefaultMergeStrategy)
 ## Additional Resources
 
 - [Filtering](filtering.md)

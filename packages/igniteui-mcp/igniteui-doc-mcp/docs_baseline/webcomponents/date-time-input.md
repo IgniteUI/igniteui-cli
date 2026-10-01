@@ -1,12 +1,13 @@
 ---
-title: Web Components DateTimeInput | Infragistics
-_description: Infragistics' Web Components DateTimeInput allows the user to edit date and time in an input element
-_keywords: Web Components input, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components DateTimeInput | Infragistics"
+description: Infragistics' Web Components DateTimeInput allows the user to edit date and time in an input element
+keywords: "Web Components input, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["DateTimeInput"]
+llms:
+  description: "The Ignite UI for Web Components Date Time Input allows the user to set and edit the date and time in a chosen input element."
 _tocName: Date Time Input
 ---
-
 # Web Components Date Time Input Overview
 
 The Ignite UI for Web Components Date Time Input allows the user to set and edit the date and time in a chosen input element. The user can edit both date and time portions using an editable masked input. Additionally, one can specify a desired display and input format, as well as min and max values to utilize validation.
@@ -24,7 +25,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcDateTimeInput } from 'igniteui-webcomponents';
@@ -36,8 +37,7 @@ defineComponents(IgcDateTimeInput);
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ### Value binding
-
-The easiest way to set the value of the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component is by passing a Date object to the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property:
+The easiest way to set the value of the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component is by passing a Date object to the [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property:
 
 ```typescript
 const input = document.querySelector('igc-date-time-input') as IgcDateTimeInputComponent;
@@ -46,27 +46,24 @@ const date = new Date();
 input.value = date;
 ```
 
-The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
 
 The string can be a full `ISO` string, in the format `YYYY-MM-DDTHH:mm:ss.sssZ` or it could be separated into date-only and time-only portions.
 
 #### Date-only
-
-If a date-only string is bound to the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
+If a date-only string is bound to the [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
 
 #### Time-only
-
 Time-only strings are normally not defined in the `ECMA` specification, however to allow the directive to be integrated in scenarios which require time-only solutions, it supports the 24 hour format - `HH:mm:ss`. The 12 hour format is not supported.
 
 #### Full ISO string
-
 If a full `ISO` string is bound, the directive will parse it only if all elements required by [Date.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format) are provided.
 
 All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete date-only, time-only, or full `ISO` strings will be parsed as `InvalidDate`.
 
 ### Keyboard Navigation
 
-The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -82,13 +79,12 @@ The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&c
 
 ## Setting formats
 
-The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) supports different display and input formats.
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) supports different display and input formats.
 
-It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=displayFormat) is provided, the component will use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) as such.
+It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`DisplayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=displayFormat) is provided, the component will use the [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) as such.
 
 ### Input Format
-
-The table bellow shows formats that are supported by the component's [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat):
+The table bellow shows formats that are supported by the component's [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat):
 
 |Format|Description|
 |-------|----------|
@@ -106,7 +102,7 @@ The table bellow shows formats that are supported by the component's [`inputForm
 | `mm` | Minutes with an explicitly set leading zero. |
 | `tt` | AM/PM section for 12-hour format. |
 
-To set a specific input format, pass it as a string to the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
+To set a specific input format, pass it as a string to the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent). This will set both the expected user input format and the `mask`. Additionally, the [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
 
 ```html
 <igc-date-time-input input-format="dd-MM-yy" display-format="medium"/>
@@ -120,7 +116,6 @@ If all went well, you should see the following in your browser:
 ```
 
 ### Display format
-
 The date time input exposes predefined formats for displaying date/time in various manners. All of the examples below are given in en-US locale.
 
 | Option | Example |
@@ -138,7 +133,8 @@ The date time input exposes predefined formats for displaying date/time in vario
 | `longTime` | 12:00:00 AM GMT+3 |
 | `fullTime` | 12:00:00 AM Eastern European Summer Time |
 
-Furthermore, users can construct a displayFormat string using the supported symbols described in the following table. <br>
+Furthermore, users can construct a displayFormat string using the supported symbols described in the following table.
+<br />
 
 | Type | Format | Description | Example |
 |:---|-------:|:-----------|:--------|
@@ -167,12 +163,12 @@ Furthermore, users can construct a displayFormat string using the supported symb
 |   | `tttt` | Long | noon |
 |   | `ttttt` | Narrow | n |
 
-> [!Note]
-> Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
+**Note:** 
+Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
 
 ## Min/max value
 
-You can specify [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=max) properties to restrict input and control the validity of the component. Just like the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property, they can be of type `string`.
+You can specify [`Min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=min) and [`Max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=max) properties to restrict input and control the validity of the component. Just like the [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property, they can be of type `string`.
 
 ```ts
 const input = document.querySelector('igc-date-time-input') as IgcDateTimeInputComponent;
@@ -193,11 +189,11 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 ## Step up/down
 
-The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) exposes public [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) exposes public [`StepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods. They increment or decrement a specific [`IgcDatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
+In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
-Additionally, [`spinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`spinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta).
+Additionally, [`SpinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`StepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`SpinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta).
 
 ```ts
 const input = document.getElementById('dateTimeInput') as IgcDateTimeInputComponent;
@@ -220,7 +216,7 @@ Try it in the example below:
 
 ## Styling
 
-The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -276,13 +272,10 @@ igc-date-time-input {
 ```
 
 ## API References
-
-- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
-- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+[`IgcMaskInput`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent)
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+[`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

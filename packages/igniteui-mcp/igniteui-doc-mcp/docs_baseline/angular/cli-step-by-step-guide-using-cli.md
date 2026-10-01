@@ -1,16 +1,15 @@
 ---
 title: Step-by-Step Guide Using Ignite UI CLI | Ignite UI for Angular | Infragistics
-_description: Walk through the Ignite UI CLI interactive wizard to create a new Angular project, choose a template and theme, and add Ignite UI for Angular component views.
-_keywords: ignite ui cli, ignite ui for angular, angular scaffolding, step-by-step, infragistics
+description: Walk through the Ignite UI CLI interactive wizard to create a new Angular project, choose a template and theme, and add Ignite UI for Angular component views.
+keywords: ignite ui cli, ignite ui for angular, angular scaffolding, step-by-step, infragistics
 last_updated: "2025-04-08"
+llms:
+  description: "The Ignite UI CLI step-by-step mode is an interactive wizard that guides you through project creation, template selection, theming, and component view addition for Ignite UI CLI-based Angular projects."
 _tocName: Step by Step guide using Ignite UI CLI
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Step-by-Step Guide Using Ignite UI CLI
 
-The Ignite UI CLI step-by-step mode is an interactive wizard that guides you through project creation, template selection, theming, and component view addition for [Ignite UI CLI](getting-started-with-cli.md)-based Angular projects. It covers the same operations as the non-interactive `ig new` and `ig add` commands but prompts you at each step rather than requiring all arguments upfront.
+The Ignite UI CLI step-by-step mode is an interactive wizard that guides you through project creation, template selection, theming, and component view addition for [Ignite UI CLI](./getting-started-with-cli.md)-based Angular projects. It covers the same operations as the non-interactive `ig new` and `ig add` commands but prompts you at each step rather than requiring all arguments upfront.
 
 The step-by-step mode does not support scripted or non-interactive use - for that, use the direct `ig new` and `ig add` commands with explicit arguments. The wizard relies on `Inquirer.js`; see [supported terminals](https://github.com/SBoudrias/Inquirer.js#support-os-terminals) for compatibility.
 
@@ -27,9 +26,9 @@ ig new
 ```
 
 <div style="display:inline-block;">
-    <a style="background: url(../../../images/general/buildCLIapp.gif); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;"
+    <a style={`background: url(${buildCLIappGif.src}); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;`}
        href="https://youtu.be/QK_NsdtdA70" target="_blank">
-        <img src="../../../images/general/play.svg" alt="Play video: Building Your First Ignite UI CLI App" style="vertical-align: middle;" />
+        
     </a>
     <p style="text-align:center;">Building Your First Ignite UI CLI App</p>
 </div>
@@ -38,23 +37,15 @@ ig new
 
 First you will be prompted to enter a name for your application:
 
-
-
 After selecting `Angular` as a framework, you will be prompted to choose the type of the project to be generated:
 
-<img class="responsive-img" src="../../../images/general/ig-step-by-step-project-type-cli.png" alt="Step by step project type selection" />
+Then you will be guided to choose one of the available project templates. Three base templates are available: **Empty Project**, **Side Navigation**, and **Side Navigation Mini**. Navigate through the available options using the arrow keys and press ENTER to confirm the selection:
 
-Then you will be guided to choose one of the available project templates. You can create an empty project, a project with side navigation, or an [authentication project](auth-template.md) with a basic authentication module. Navigate through the available options using the arrow keys and press ENTER to confirm the selection:
+If you select **Side Navigation** or **Side Navigation Mini**, the wizard will prompt you with an additional step asking whether to add an [authentication module](./auth-template.md) to the project. Answering yes generates the corresponding auth variant (`side-nav-auth` or `side-nav-mini-auth`). If you select **Empty Project**, the authentication prompt is skipped.
 
-
-
-The next step is to choose a theme for your application. Selecting the default option includes a pre-compiled CSS file (`igniteui-angular.css`) with the default Ignite UI for Angular theme in your project's `angular.json`. The custom option generates a color palette and theme configuration using the [Theming API](../../themes.md) in `app/styles.scss`.
-
-
+The next step is to choose a theme for your application. Selecting the default option includes a pre-compiled CSS file (`igniteui-angular.css`) with the default Ignite UI for Angular theme in your project's `angular.json`. The custom option generates a color palette and theme configuration using the [Theming API](../../themes/sass/index.md) in `app/styles.scss`.
 
 After completing the above steps, the application structure is generated. The wizard then prompts you to [configure AI coding assistants](#configure-ai-assistants). Once AI configuration is complete, a Git repository is initialized, the project is committed, and you are asked whether to complete the process or add a new view to your application:
-
-
 
 ## Add view
 
@@ -64,17 +55,11 @@ The Ignite UI CLI supports multiple component templates and scenario templates t
 ig add
 ```
 
-You will be provided with a [list of the available templates](component-templates.md#component-templates), grouped by category.
-
-
+You will be provided with a [list of the available templates](./component-templates.md#component-templates), grouped by category.
 
 Use the arrow keys to navigate through the options and ENTER to select. For some templates, such as `Custom Grid`, you will be provided with a list of optional features that can be toggled with the SPACE key:
 
-
-
-If you choose to add a scenario to your application, you will also get a list of the available [scenario templates](component-templates.md#scenario-templates):
-
-<img class="responsive-img" src="../../../images/general/ig-step-by-step-scenario-templates.png" alt="Step by step scenario template selection" />
+If you choose to add a scenario to your application, you will also get a list of the available [scenario templates](./component-templates.md#scenario-templates):
 
 After adding a template, you will be asked whether to add more views or complete the process. On completion, any remaining package dependencies are installed and the application is served and opened in your default browser.
 
@@ -92,8 +77,6 @@ After choosing your framework, project type, template, and theme, the wizard pro
 
 You will be prompted to select which coding assistants to configure MCP servers for. Use the SPACE key to toggle selections and ENTER to confirm:
 
-
-
 - **Generic** (Claude Code, VS Code, and others) - writes `.mcp.json`
 - **VS Code** (GitHub Copilot) - writes `.vscode/mcp.json`
 - **Cursor** - writes `.cursor/mcp.json`
@@ -107,8 +90,6 @@ The default selection is **Generic**. Selecting **None** skips MCP server config
 
 Next, you will be prompted to select which AI agents to configure skill files and instructions for:
 
-
-
 - **Generic** - `.agents/skills/` and `AGENTS.md`
 - **Claude** - `.claude/skills/` and `.claude/CLAUDE.md`
 - **Copilot** - `.github/skills/` and `.github/copilot-instructions.md`
@@ -121,5 +102,6 @@ Next, you will be prompted to select which AI agents to configure skill files an
 
 The default selections are **Generic** and **Claude**. Selecting **None** skips agent configuration entirely.
 
-> [!NOTE]
-> To skip AI configuration prompts entirely during non-interactive project creation, pass `--assistants none --agents none` to `ig new`. To re-run AI configuration later, use `ig ai-config` from the project root.
+**Note:** 
+To skip AI configuration prompts entirely during non-interactive project creation, pass `--assistants none --agents none` to `ig new`. To re-run AI configuration later, use `ig ai-config` from the project root.
+

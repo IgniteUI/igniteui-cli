@@ -1,13 +1,14 @@
 ---
-title: Blazor Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics
-_description: Use Infragistics Blazor map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Blazor map's series!
-_keywords: Blazor map, scatter symbol series, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series"]
+title: "Blazor Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics"
+description: Use Infragistics Blazor map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for Blazor map's series!
+keywords: "Blazor map, scatter symbol series, Ignite UI for Blazor, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
+llms:
+  description: "In Blazor map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
 _tocName: Geographic Symbol Map
 _premium: true
 ---
-
 # Blazor Geographic Symbol Map
 
 In Blazor map component, you can use the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
@@ -50,18 +51,15 @@ In Blazor map component, you can use the [`IgbGeographicSymbolSeries`](mcp:get_a
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Data Requirements
-
-Similarly to other types of geographic series in the map component, the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath) and [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath) properties. The [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=latitudeMemberPath) and [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=longitudeMemberPath) properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) to locations of cities loaded from a shape file using the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource).
+The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) to locations of cities loaded from a shape file using the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord).
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicSymbolSeries DataSource="Cities"
@@ -92,9 +90,5 @@ The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_a
 ```
 
 ## API References
-
-- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource)
-- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
-- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
-- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)
+[`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
+[`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord)

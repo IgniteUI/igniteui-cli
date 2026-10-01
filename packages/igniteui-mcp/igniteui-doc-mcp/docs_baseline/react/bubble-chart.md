@@ -1,21 +1,20 @@
 ---
 title: React Bubble Chart | Data Visualization | Infragistics
-_description: Infragistics' React Bubble Chart
-_keywords: React Charts, Bubble Chart, Infragistics
-_license: commercial
-mentionedTypes: ["Series", "BubbleSeries", "ScatterSeries", "MarkerType"]
+description: Infragistics' React Bubble Chart
+keywords: React Charts, Bubble Chart, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Bubble Chart is a type of Scatter Chart that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates."
 _tocName: Bubble Chart
 _premium: true
 ---
-
 # React Bubble Chart
-
 The Ignite UI for React Bubble Chart is a type of [Scatter Chart](scatter-chart.md) that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates. These coordinates of the data point are determined by two numeric data columns. The Bubble Chart draws attention to uneven intervals or clusters of data. This chart is often used to plot scientific data, and can highlight the deviation of collected data from predicted results. The Bubble Chart has many of the characteristics of the [Scatter Marker Chart](scatter-chart.md#react-scatter-marker-chart) but with the option to have various radius scale sizes.
 
 ## React Bubble Chart Example
-
-You can create Ignite UI for React Bubble Chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control using the [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html) and two numeric axes, as shown in the example below.
+You can create Ignite UI for React Bubble Chart in `IgrDataChart` control using the `IgrBubbleSeries` and two numeric axes, as shown in the example below.
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -260,11 +259,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Bubble Chart with Single Series
-
-You can bind your data to `ItemsSource` property of [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html) and map data columns using its [`xMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#xMemberPath), [`yMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#yMemberPath), [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusMemberPath) properties, as shown in the example below:
+You can bind your data to `DataSource` property of `IgrBubbleSeries` and map data columns using its `XMemberPath`, `YMemberPath`, `RadiusMemberPath` properties, as shown in the example below:
 
 ```typescript
 export class WorldStatsItem {
@@ -446,11 +442,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Bubble Chart with Multiple Series
-
-In React Bubble Chart, binding multiple data sources works by setting each new data source to `ItemsSource` property of a additional [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html), as shown in the example below:
+In React Bubble Chart, binding multiple data sources works by setting each new data source to `DataSource` property of a additional `IgrBubbleSeries`, as shown in the example below:
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -695,11 +688,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Bubble Chart Styling
-
-In React Bubble Chart, you can customize shape of bubble markers using [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerType) property, their size with [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusScale) property, and their appearance using [`markerBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerBrush), [`markerOutline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerOutline), [`markerThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`fillMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#fillMemberPath) and [`fillScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#fillScale) properties. In this example, usage of above properties is demonstrated.
+In React Bubble Chart, you can customize shape of bubble markers using `MarkerType` property, their size with `RadiusScale` property, and their appearance using `MarkerBrush`, `MarkerOutline`, `MarkerThickness` properties. In addition, you can also color bubble markers based on a data column using `FillMemberPath` and `FillScale` properties. In this example, usage of above properties is demonstrated.
 
 ```typescript
 export class WorldStatsItem {
@@ -887,28 +877,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 - [Scatter Chart](scatter-chart.md)
 - [Shape Chart](shape-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
-- [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html)
-- [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html)
-- `ItemsSource`
-- [`fillMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#fillMemberPath)
-- [`fillScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#fillScale)
-- [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerType)
-- [`markerBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerBrush)
-- [`markerOutline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerOutline)
-- [`markerThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#markerThickness)
-- [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusScale)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusMemberPath)
-- [`xMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#xMemberPath)
-- [`yMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#yMemberPath)
+`IgrDataChart`
+`IgrBubbleSeries`
+`IgrScatterSeries`

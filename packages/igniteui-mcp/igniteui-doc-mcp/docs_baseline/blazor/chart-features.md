@@ -1,15 +1,16 @@
 ---
-title: Blazor Chart Features | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Features
-_keywords: Blazor Charts, Features, Infragistics
-_license: commercial
-mentionedTypes: ["FinancialChart", "CategoryChart", "XamDataChart"]
+title: "Blazor Chart Features | Data Visualization | Infragistics"
+description: Infragistics' Blazor Chart Features
+keywords: "Blazor Charts, Features, Infragistics"
+license: commercial
+mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
+llms:
+  description: "The Ignite UI for Blazor Charts allow you to display many different features to portray the full data story to be told with your chart."
 _tocName: Chart Features
 ---
-
 # Blazor Chart Features
 
-The Ignite UI for Blazor Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs - allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
+The Ignite UI for Blazor Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs — allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
 
 The Blazor Charts offer the following chart features:
 
@@ -96,8 +97,6 @@ Modify or customize all aspects of both the X-Axis and Y-Axis using the differen
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Annotations
 
@@ -218,8 +217,6 @@ These additional layers are on top of the chart which are mouse / touch dependen
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Animations
 
 Animate your chart as it loads a new data source by enabling animations. These are customizable by setting different types of animations and the speed at which those animations take place. You can learn more about this feature in the [Chart Animations](features/chart-animations.md) topic.
@@ -333,11 +330,9 @@ Animate your chart as it loads a new data source by enabling animations. These a
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Highlighting
 
-Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This features is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
+Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This feature is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -475,8 +470,6 @@ Bring focus to visuals such as lines, columns, or markers by highlighting them a
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Markers
 
 Identify data points quickly, even if the value falls between major gridlines with the use of markers on the chart series. These are fully customizable in style, color, and shape. You can learn more about this feature in the [Chart Markers](features/chart-markers.md) topic.
@@ -607,8 +600,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Navigation
 
@@ -787,8 +778,6 @@ You can navigate the chart by zooming and panning with the mouse, keyboard, and 
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Overlays
 
 Overlays allows you to annotate important values and thresholds by plotting horizontal or vertical lines in charts. You can learn more about this feature in the [Chart Overlays](features/chart-overlays.md) topic.
@@ -849,8 +838,6 @@ Overlays allows you to annotate important values and thresholds by plotting hori
 
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Performance
 
@@ -944,8 +931,6 @@ Blazor charts are optimized for high performance of rendering millions of data p
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Tooltips
 
@@ -1065,8 +1050,6 @@ public class HighestGrossingMovies
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Trendlines
 
 Use trendlines to identify a trend or find patterns in your data. There are many different trendlines supported by the Blazor chart, such as CubicFit and LinearFit. You can learn more about this feature in the [Chart Trendlines](features/chart-trendlines.md) topic.
@@ -1133,10 +1116,7 @@ Use trendlines to identify a trend or find patterns in your data. There are many
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
-- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
-- [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+[`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)

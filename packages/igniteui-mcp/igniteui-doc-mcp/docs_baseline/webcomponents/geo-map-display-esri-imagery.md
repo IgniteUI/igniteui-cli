@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Displaying ESRI Imagery |  Infragistics
-_description: Use Infragistics' Web Components to display imagery from ESRI maps. View Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, ESRI, Ignite UI for Web Components, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Web Components Map | Data Visualization Tools | Displaying ESRI Imagery |  Infragistics"
+description: Use Infragistics' Web Components to display imagery from ESRI maps. View Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, ESRI, Ignite UI for Web Components, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
-
 # Web Components Displaying Imagery from Esri Maps
 
-The [`IgcArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcarcgisonlinemapimagery.html) is a free geographic imagery mapping service created by <a href="https://www.esri.com/" target="_blank">Esri</a> company. It provides over 40 styles of geographic imagery tiles of the world and some thematic tiles for the USA. This geographic imagery service can be accessed directly on <a href="https://services.arcgisonline.com/ArcGIS/rest/services" target="_blank">www.arcgisonline.com</a> web site.
+The `IgcArcGISOnlineMapImagery` is a free geographic imagery mapping service created by <a href="https://www.esri.com/" target="_blank">Esri</a> company. It provides over 40 styles of geographic imagery tiles of the world and some thematic tiles for the USA. This geographic imagery service can be accessed directly on <a href="https://services.arcgisonline.com/ArcGIS/rest/services" target="_blank">www.arcgisonline.com</a> web site.
 
 ## Web Components Displaying Imagery from Esri Maps Example
 
@@ -211,11 +212,8 @@ export class MapUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Code Snippet
-
-The following code snippet shows how to display Web Components geographic imagery tiles from Esri imagery servers in [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) using [`IgcArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcarcgisonlinemapimagery.html) class.
+The following code snippet shows how to display Web Components geographic imagery tiles from Esri imagery servers in `IgcGeographicMap` using `IgcArcGISOnlineMapImagery` class.
 
 ```ts
 import { IgcGeographicMap } from 'igniteui-webcomponents-maps';
@@ -229,8 +227,7 @@ geoMap.backgroundContent = tileSource;
 ```
 
 ## Esri Utility
-
-Alternatively, you can use the [EsriUtility](geo-map-resources-esri.md) which defines all styles provided by Esri imagery servers.
+Alternatively, you can use the [EsriUtility](./geo-map-resources-esri.md) which defines all styles provided by Esri imagery servers.
 
 ```ts
 import { IgcGeographicMap } from 'igniteui-webcomponents-maps';
@@ -245,6 +242,5 @@ geoMap.backgroundContent = tileSource;
 ```
 
 ## API References
-
-- [`IgcArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcarcgisonlinemapimagery.html)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcArcGISOnlineMapImagery`
+`IgcGeographicMap`

@@ -1,12 +1,13 @@
 ---
-title: Blazor Map | Data Visualization Tools | Map Overview | Infragistics
-_description: Use Infragistics' Blazor JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Blazor map demos!
-_keywords: Blazor map, geographic map, imagery tiles, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Blazor Map | Data Visualization Tools | Map Overview | Infragistics"
+description: Use Infragistics' Blazor JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Blazor map demos!
+keywords: "Blazor map, geographic map, imagery tiles, Ignite UI for Blazor, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "The Ignite UI for Blazor map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
 _tocName: Geographic Map Features
 ---
-
 # Blazor Map Overview
 
 The Ignite UI for Blazor map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps.
@@ -61,8 +62,6 @@ The following sample demonstrates how display data in [`IgbGeographicMap`](mcp:g
 }
 ```
 
-<div class="divider--half"></div>
-
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
 The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) can be added for plotting geographic locations such as cities and the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) for plotting connections (e.g. roads) between these geographic locations.
@@ -79,7 +78,7 @@ For more details please visit:
 
 The [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(
@@ -87,8 +86,6 @@ builder.Services.AddIgniteUIBlazor(
     typeof(IgbDataChartInteractivityModule)
 );
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -98,33 +95,26 @@ Now that the map module is imported, next step is to create geographic map. The 
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true" />
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related Blazor map features in these topics:
 
-- [Geographic Map Navigation](geo-map-navigation.md)
+- [Geographic Map Navigation](./geo-map-navigation.md)
 
-<!-- - [Geographic Map Imagery](geo-map-display-imagery-types.md) -->
-
-- [Using Scatter Symbol Series](geo-map-type-scatter-symbol-series.md)
-- [Using Scatter Proportional Series](geo-map-type-scatter-bubble-series.md)
-- [Using Scatter Contour Series](geo-map-type-scatter-contour-series.md)
-- [Using Scatter Density Series](geo-map-type-scatter-density-series.md)
-- [Using Scatter Area Series](geo-map-type-scatter-area-series.md)
-- [Using Shape Polygon Series](geo-map-type-shape-polygon-series.md)
-- [Using Shape Polyline Series](geo-map-type-shape-polyline-series.md)
+- [Using Scatter Symbol Series](./geo-map-type-scatter-symbol-series.md)
+- [Using Scatter Proportional Series](./geo-map-type-scatter-bubble-series.md)
+- [Using Scatter Contour Series](./geo-map-type-scatter-contour-series.md)
+- [Using Scatter Density Series](./geo-map-type-scatter-density-series.md)
+- [Using Scatter Area Series](./geo-map-type-scatter-area-series.md)
+- [Using Shape Polygon Series](./geo-map-type-shape-polygon-series.md)
+- [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
-- [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries)
-- [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
-- [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries)
-- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
-- [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries)
+[`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+[`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries)
+[`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+[`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries)
+[`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
+[`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries)

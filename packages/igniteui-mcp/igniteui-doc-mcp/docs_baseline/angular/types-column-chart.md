@@ -1,21 +1,22 @@
 ---
-title: Angular Column Chart | Data Visualization | Infragistics
-_description: Infragistics' Angular Column Chart
-_keywords: Angular Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
+title: "Angular Column Chart | Data Visualization | Infragistics"
+description: Infragistics' Angular Column Chart
+keywords: "Angular Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights."
 _tocName: Column Chart
 _premium: true
 ---
-
 # Angular Column Chart
 
-The Ignite UI for Angular Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
+The Ignite UI for Angular Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
 
 ## Angular Column Chart Example
 
-You can create Angular Column Chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) to **Column** enum, as shown in the example below:
+You can create Angular Column Chart in the `IgxCategoryChart` control by binding your data and setting `CategoryChart.ChartType` to **Column** enum, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -122,8 +123,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Column Charts Recommendations
 
 ### Column Charts Use Cases
@@ -154,7 +153,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to **Column** value, as shown in the example below:
+You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to **Column** value, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -251,11 +250,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to **Column** value, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -362,13 +359,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Column Chart Styling
 
 The Angular Column Chart has many options for styling and modification of the visual appearance.
 
-You can create this type of chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data, as shown in the example below:
+You can create this type of chart in the `IgxCategoryChart` control by binding your data, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -477,17 +472,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Column Charts
 
-The following sections explain more advanced types of Angular Column Charts that can be created using the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control instead of [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control with simplified API.
+The following sections explain more advanced types of Angular Column Charts that can be created using the `IgxDataChart` control instead of `IgxCategoryChart` control with simplified API.
 
 ## Angular Waterfall Chart
 
 The Waterfall Chart belongs to a group of category charts and it is rendered using a collection of vertical columns that show the difference between consecutive data points. The columns are color coded for distinguishing between positive and negative changes in value. The Waterfall Chart is similar in appearance to the [Range Column Chart](column-chart.md#angular-range-column-chart), but it requires only one numeric data column rather than two columns for each data point.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxWaterfallSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxwaterfallseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxWaterfallSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -624,13 +617,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked Column Chart
 
 The Stacked Column Chart is similar to the [Category Column Chart](column-chart.md#angular-column-chart-example) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the [Stacked Bar Chart](stacked-chart.md#angular-stacked-bar-chart) but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedbarseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedBarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -810,13 +801,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked 100% Column Chart
 
 The Stacked 100% Column Chart is identical to the [Stacked Column Chart](stacked-chart.md#angular-stacked-column-chart) in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100 Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxStacked100BarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100barseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100BarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -977,15 +966,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Range Column Chart
 
 The Angular Range Column Chart belongs to a group of range charts and is rendered using vertical rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the bottom like the traditional [Category Column Chart](column-chart.md#angular-column-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items. Range values are represented on the Y-Axis and categories are displayed on the X-Axis.
 
-The Range Column Chart is identical to the [Range Area Chart](area-chart.md)(area-chart.md#angular-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
+The Range Column Chart is identical to the [Range Area Chart](area-chart.md#angular-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxRangeColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxrangecolumnseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxRangeColumnSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1136,13 +1123,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Radial Column Chart
 
 The Radial Column Chart belongs to a group of [Radial Chart](radial-chart.md), and is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Category Column Chart](column-chart.md#angular-column-chart-example), but wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxRadialColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxradialcolumnseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxRadialColumnSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1296,8 +1281,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1308,14 +1291,23 @@ You can find more information about related chart types in these topics:
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)    | [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) = **Column** |
-| Radial Column       | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)     | [`IgxRadialColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxradialcolumnseriescomponent.html) |
-| Range Column        | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)     | [`IgxRangeColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxrangecolumnseriescomponent.html) |
-| Stacked Column      | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)     | [`IgxStackedColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedcolumnseriescomponent.html) |
-| Stacked 100% Column | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)     | [`IgxStacked100ColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100columnseriescomponent.html) |
-| Waterfall           | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)     | [`IgxWaterfallSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxwaterfallseriescomponent.html) |
+| Column              | `IgxCategoryChart`    | `CategoryChart.ChartType` = **Column** |
+| Radial Column       | `IgxDataChart`     | `IgxRadialColumnSeries` |
+| Range Column        | `IgxDataChart`     | `IgxRangeColumnSeries` |
+| Stacked Column      | `IgxDataChart`     | `IgxStackedColumnSeries` |
+| Stacked 100% Column | `IgxDataChart`     | `IgxStacked100ColumnSeries` |
+| Waterfall           | `IgxDataChart`     | `IgxWaterfallSeries` |
+
+`IgxCategoryChart`<br />
+`IgxDataChart`<br />
+`IgxWaterfallSeries`<br />
+`IgxStackedBarSeries`<br />
+`IgxStacked100BarSeries`<br />
+`IgxRangeColumnSeries`<br />
+`IgxRadialColumnSeries`<br />
+`IgxStackedColumnSeries`<br />
+`IgxStacked100ColumnSeries`<br />

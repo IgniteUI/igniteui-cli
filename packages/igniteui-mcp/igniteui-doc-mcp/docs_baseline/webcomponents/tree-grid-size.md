@@ -1,20 +1,18 @@
 ---
-title: Web Components Tree Grid Size - Ignite UI for Web Components
-_description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for Web Components.
-_keywords:  material size, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "Web Components Tree Grid Size - Ignite UI for Web Components"
+description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for Web Components.
+keywords:  material size, Web Components, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for Web Components Size feature in Web Components Tree Grid allows users to control the spacing and layout of data within the IgcTreeGrid."
+_componentKey: TreeGrid
 _tocName: Size
 _premium: true
 ---
-
 # Web Components Tree Grid Size
 
-The Ignite UI for Web Components Size feature in Web Components Tree Grid allows users to control the spacing and layout of data within the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for Web Components Size feature in Web Components Tree Grid allows users to control the spacing and layout of data within the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -66,7 +64,7 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 
 ## Usage
 
-As you can see in the demo above, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
+As you can see in the demo above, the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
 
 ```css
 .gridSize {
@@ -79,14 +77,14 @@ As you can see in the demo above, the [`IgcTreeGridComponent`](mcp:get_api_refer
 </igc-tree-grid>
 ```
 
-And now let's see in details how each option reflects on the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component. When you switch between different size options the height of each [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component. When you switch between different size options the height of each [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgcTreeGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `56px`;
+- **large** - this is the default [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgcTreeGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgcTreeGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgcTreeGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
 
@@ -110,57 +108,49 @@ Let's now continue with our sample and see in action how the `--ig-size` is appl
 </div>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 Now we can add the markup.
 
 ```html
 <igc-tree-grid id="grid" primary-key="ID" foreign-key="ParentID" width="100%"
     height="550px" allow-filtering="true">
-    <igc-column field="Name" data-type="String" sortable="true" has-summary="true" width="200px"></igc-column>
+    <igc-column field="Name" data-type="string" sortable="true" has-summary="true" width="200px"></igc-column>
     <igc-column-group pinned="false" header="General Information">
-        <igc-column field="HireDate" data-type="Date" sortable="true" has-summary="true">
+        <igc-column field="HireDate" data-type="date" sortable="true" has-summary="true">
         </igc-column>
         <igc-column-group header="Person Details">
-            <igc-column field="ID" data-type="Number" filterable="false"></igc-column>
-            <igc-column field="Title" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="Age" data-type="Number" sortable="true" has-summary="true" filterable="false"></igc-column>
+            <igc-column field="ID" data-type="number" filterable="false"></igc-column>
+            <igc-column field="Title" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Age" data-type="number" sortable="true" has-summary="true" filterable="false"></igc-column>
         </igc-column-group>
     </igc-column-group>
     <igc-column-group header="Address Information">
         <igc-column-group header="Location">
-            <igc-column field="Country" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="City" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="Address" data-type="String" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Country" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="City" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Address" data-type="string" sortable="true" has-summary="true"></igc-column>
         </igc-column-group>
         <igc-column-group header="Contact Information">
-            <igc-column field="Phone" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="Fax" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="PostalCode" data-type="String" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Phone" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Fax" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="PostalCode" data-type="string" sortable="true" has-summary="true"></igc-column>
         </igc-column-group>
     </igc-column-group>
     <igc-column-group header="Address Information">
         <igc-column-group header="Location">
-            <igc-column field="Country" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="City" data-type="String" sortable="true" has-summary="true"></igc-column>
-            <igc-column field="Address" data-type="String" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Country" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="City" data-type="string" sortable="true" has-summary="true"></igc-column>
+            <igc-column field="Address" data-type="string" sortable="true" has-summary="true"></igc-column>
         </igc-column-group>
         <igc-column-group header="Contact Information">
-            <igc-column field="Phone" data-type="String" sortable="true" resizable="true"></igc-column>
-            <igc-column field="Fax" data-type="String" sortable="true" resizable="true"></igc-column>
-            <igc-column field="PostalCode" data-type="String" sortable="true" resizable="true"></igc-column>
+            <igc-column field="Phone" data-type="string" sortable="true" resizable="true"></igc-column>
+            <igc-column field="Fax" data-type="string" sortable="true" resizable="true"></igc-column>
+            <igc-column field="PostalCode" data-type="string" sortable="true" resizable="true"></igc-column>
         </igc-column-group>
     </igc-column-group>
 </igc-tree-grid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```ts
 constructor() {
@@ -192,24 +182,36 @@ public webGridSetGridSize(sender: any, args: IgcPropertyEditorPropertyDescriptio
 }
 ```
 
-Another option that [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides for you, in order to be able to change the height of the rows in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), is the property [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight). So let's see in action how this property affects the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) layout along with the `--ig-size`.
+Another option that [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides for you, in order to be able to change the height of the rows in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), is the property [`IgcTreeGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight). So let's see in action how this property affects the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgcTreeGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Tree Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight) property to the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent):
+We can now extend our sample and add [`IgcTreeGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowHeight) property to the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent):
 
-```html
-<igc-tree-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">
-</igc-tree-grid>
-```
+ ```html
+ <igc-tree-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">
+ </igc-tree-grid>
+ ```
 
 ## API References
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+## Additional Resources
 
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [Virtualization and Performance](virtualization.md)
+- [Editing](editing.md)
+- [Paging](paging.md)
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
+
+- [Searching](search.md)
 
 Our community is active and always welcoming to new ideas.
 

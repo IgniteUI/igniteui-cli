@@ -1,29 +1,24 @@
 ---
-title: Blazor Grid Column Selection - Ignite UI for Blazor
-_description: Learn how to configure column selection with Ignite UI for Blazor Grid. This makes grid interactions much easier and faster than ever.
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics, column selection
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-selection
+title: "Blazor Grid Column Selection - Ignite UI for Blazor"
+description: Learn how to configure column selection with Ignite UI for Blazor Grid. This makes grid interactions much easier and faster than ever.
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics, column selection"
+license: commercial
+_canonicalLink: "grids/grid/column-selection"
+llms:
+  description: "The Blazor Grid Column Selection feature in Ignite UI for Blazor offers a simplified and Excel-like way to select and highlight an entire column with a single click."
+_componentKey: Grid
 _tocName: Column Selection
 _premium: true
 ---
-
 # Blazor Grid Column Selection Overview
 
-The Blazor Grid Column Selection feature in Ignite UI for Blazor offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`ColumnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ColumnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The Blazor Grid Column Selection feature in Ignite UI for Blazor offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`IgbGrid.columnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## Blazor Grid Column Selection Example
 
-The sample below demonstrates the three types of [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
+The sample below demonstrates the three types of `IgbGrid`'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
 
-<!-- ComponentStart: Grid -->
-
-\*_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
-
-<!-- ComponentEnd: Grid -->
+*_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -164,20 +159,16 @@ public class CustomersData
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`ColumnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ColumnSelection) input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`IgbGrid.columnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnSelection) input, which takes [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
 
 ## Interactions
 
-The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
+The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
-> [!Note]
-> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) input. The `ColumnGroupComponent` is [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected) if all of its [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) descendants are [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected).
+**Note:** 
+The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`IgbGrid.selectable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectable) input. The `IgbColumnGroupComponent` is [`IgbGrid.selectable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`IgbGrid.selected`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selected) if all of its [`IgbGrid.selectable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectable) descendants are [`IgbGrid.selected`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selected).
 
-<!-- ComponentStart: Grid -->
-
-\*Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
-
-<!-- ComponentEnd: Grid -->
+*Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -317,26 +308,25 @@ public class CustomersData
 
 ## Keyboard Combinations
 
-> [!Note]
-> The keyboard combinations are available only when the grid [`ColumnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ColumnSelection) input is set to `multiple`.
+**Note:** 
+The keyboard combinations are available only when the grid [`IgbGrid.columnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
-
 - Multi-column selection - holding <kbd>CTRL</kbd> + <kbd>click</kbd> on every **selectable** header cell.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>click</kbd> selects all **selectable** columns in between.
 
 ## API Manipulations
 
-The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected) by setting the corresponding **setter**.
+The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected) by setting the corresponding **setter**.
 
-> [!Note]
-> The above statement also applies to the `ColumnGroupComponent`, except that when the [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected) property is changed it changes the state of its descendants.
+**Note:** 
+The above statement also applies to the `IgbColumnGroupComponent`, except that when the [`IgbGrid.selected`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a `class` for the grid first:
 
 ```razor
@@ -466,39 +456,9 @@ public class CustomersData
 ```
 
 ## API References
-
-The column selection UI has a few more APIs to explore, which are listed below.
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
-
-[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) properties:
-
-- [`ColumnSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ColumnSelection)
-- [`SelectedColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectedColumns)
-- [`SelectColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectColumns)
-- [`DeselectColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=DeselectColumns)
-- [`SelectAllColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectAllColumns)
-- [`DeselectAllColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=DeselectAllColumns)
-
-[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) properties:
-
-- [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable)
-- [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected)
-
-[`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) properties:
-
-- [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable)
-- [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected)
-
-[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) events:
-
-- `OnColumnsSelectionChange`
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Selection](selection.md)
 - [Cell Selection](cell-selection.md)
@@ -510,8 +470,6 @@ The column selection UI has a few more APIs to explore, which are listed below.
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

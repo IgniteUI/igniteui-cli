@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Filtering | Ignite UI for Angular | MIT license
-_description: Filter operations, filter customization, and remote filtering for Angular Grid Lite. Create apps with our open-source Angular Grid Lite. Try it now.
-_keywords: filtering, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Filter operations, filter customization, and remote filtering for Angular Grid Lite. Create apps with our open-source Angular Grid Lite. Try it now.
+keywords: filtering, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "The Grid Lite supports filtering operations on its data source."
 _tocName: Filtering Overview
 ---
-
 # Angular Grid Lite Filter Operations
 
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `filterable` property of the column configuration object.
@@ -100,7 +101,7 @@ igx-grid-lite {
 
 ## Filter Model
 
-The building blocks for filter operations in the grid is the **`FilterExpression`** which has the following structure:
+The building blocks for filter operations in the grid is the [`IgxGridLiteFilteringExpression`](mcp:get_api_reference?platform=angular&component=IgxGridLiteFilteringExpression) which has the following structure:
 
 ```typescript
 export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
@@ -137,7 +138,7 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 ## Filter API
 
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the **`GridLite.filter()`**/**`GridLite.clearFilter()`** methods or through the **`Grid.Lite.filterExpressions`** property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the [`filter()`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=filter)/[`clearFilter()`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=clearFilter) methods or through the [`IgxGridLite.filterExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=filterExpressions) property.
 
 The **`filter()`** method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
@@ -149,7 +150,7 @@ grid.filter({ key: 'firstName', condition: 'contains', searchTerm: 'George' });
 // Multiple
 grid.filter([
   { key: 'firstName', condition: 'startsWith', searchTerm: 'a' },
-  { key: 'firstName', condition: 'startsWith' searchTerm: 'g', criteria: 'or' },
+  { key: 'firstName', condition: 'startsWith', searchTerm: 'g', criteria: 'or' },
 ]);
 ```
 
@@ -165,7 +166,7 @@ grid.clearFilter();
 
 ## Initial Filter State
 
-The **`filterExpressions`** property is very similar in behavior to the **`filter()`** method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
+The [`filterExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=filterExpressions) property is very similar in behavior to the **`filter()`** method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
 
 For example here is a Lit-based sample:
 
@@ -198,7 +199,7 @@ When a filter operation is performed through the UI, the component emits a custo
 After the grid applies the new filter state, a **`filtered`** event is emitted. It contains the filter state for the column which was the target of the operation and it is not cancellable.
 
 ```html
-<igx-grid-lite (filtering)="onFiltering($event)" (filtered)="onFiltered($event)">
+<igx-grid-lite (filtering)="onFiltering($event)" (filtered)="onFiltered($event)"></igx-grid-lite>
 ```
 
 ```typescript
@@ -347,7 +348,7 @@ igx-grid-lite {
 In cases where filtering must be done remotely or you want to save the current state/data to a server somewhere,
 the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the **`dataPipelineConfiguration`** property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a **`DataPipelineParams`** object.
+Using the [`dataPipelineConfiguration`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=dataPipelineConfiguration) property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a **`DataPipelineParams`** object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -519,17 +520,15 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
 ## API References
 
-* `{ComponentName}`
-* `Column`
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Sorting](/grid-lite/sorting)
 
 Our community is active and always welcoming to new ideas.
 

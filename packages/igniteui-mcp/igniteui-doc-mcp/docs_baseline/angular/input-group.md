@@ -1,11 +1,12 @@
 ---
 title: Angular Input Group Component | Ignite UI for Angular | MIT license
-_description: The Input Group component in Ignite UI for Angular allows for easy-to-use and aesthetic forms, simplicity with inputting data, and provides mitigation for handling validation and errors.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Native Angular Components, Angular Label component, Angular Label control, Angular Input component, Angular Input control, Input component, Input control, Label component, Label control, Angular Input Group component, Angular Input Group control, Angular Input directive, Angular Label directive, Angular Forms, Angular Reactive Forms, Angular Form Validation
-_license: MIT
+description: The Input Group component in Ignite UI for Angular allows for easy-to-use and aesthetic forms, simplicity with inputting data, and provides mitigation for handling validation and errors.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Native Angular Components, Angular Label component, Angular Label control, Angular Input component, Angular Input control, Input component, Input control, Label component, Label control, Angular Input Group component, Angular Input Group control, Angular Input directive, Angular Label directive, Angular Forms, Angular Reactive Forms, Angular Form Validation
+license: MIT
+llms:
+  description: "The IgxInputGroupComponent allows the user to enhance input elements like input, select, textarea, etc."
 _tocName: Input Group
 ---
-
 # Angular Input Group Component Overview
 
 The `IgxInputGroupComponent` allows the user to enhance input elements like input, select, textarea, etc. This can be achieved by adding custom content like text, icons, buttons, custom validation, floating label, etc., on either side of them, as a prefix, suffix, or hint.
@@ -42,7 +43,7 @@ export class InputGroupSample1Component extends BaseInputGroupSampleComponent { 
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Input Group
 
@@ -52,7 +53,7 @@ To get started with the Ignite UI for Angular Input Group component, first you n
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxInputGroupModule` in your **app.module.ts** file.
 
@@ -64,7 +65,6 @@ Note that the `IgxInputGroupComponent` also depends on the Angular **FormsModule
 import { FormsModule } from '@angular/forms';
 import { IgxInputGroupModule } from 'igniteui-angular/input-group';
 // import { IgxInputGroupModule } from '@infragistics/igniteui-angular'; for licensed package
-
 
 @NgModule({
     ...
@@ -104,19 +104,19 @@ export class HomeComponent {
 }
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Input Group module or directives imported, you can start using the `igx-input-group` component.
 
-> [!NOTE]
-> To use any of the directives `igxInput`, `igxLabel`, `igx-prefix`, `igx-suffix` or `igx-hint`, you have to wrap them in an `<igx-input-group>` container.
+**Note:** 
+To use any of the directives `igxInput`, `igxLabel`, `igx-prefix`, `igx-suffix` or `igx-hint`, you have to wrap them in an `<igx-input-group>` container.
 
 ## Using the Angular Input Group
 
 ### Label & Input
 
-You can read about the [`igxLabel`](mcp:get_api_reference?platform=angular&component=IgxLabelDirective) and [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective) directives as well as their validation, data binding and API in the [Label & Input documentation](label-input.md).
+You can read about the [`igxLabel`](mcp:get_api_reference?platform=angular&component=IgxLabelDirective) and [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective) directives as well as their validation, data binding and API in the [Label & Input documentation](/label-input).
 
 ### Prefix & Suffix
 
@@ -164,7 +164,7 @@ export class InputGroupSample3Component extends BaseInputGroupSampleComponent { 
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Hints
 
@@ -219,7 +219,7 @@ export class InputGroupSample4Component extends BaseInputGroupSampleComponent { 
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Input Types & Input Group Type Token
 
@@ -227,19 +227,19 @@ The input group styles can be altered by using the [`type`](mcp:get_api_referenc
 An example of setting a specific type declaratively:
 
 ```html
-<igx-input-group type="border">
+<igx-input-group type="border"></igx-input-group>
 ```
 
-Using the [IGX_input-group_TYPE](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igx_input-group_type) injection token allows to specify a type on an application level for all input-group instances. It provides an easy way to style all related components at once.
-To set the type, use the [IGX_input-group_TYPE](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igx_input-group_type) injection token to create a DI provider.
+Using the [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token allows to specify a type on an application level for all input-group instances. It provides an easy way to style all related components at once.
+To set the type, use the [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token to create a DI provider.
 
 ```typescript
-providers: [{provide: IGX_input-group_TYPE, useValue: 'box' }]
+providers: [{provide: IGX_INPUT_GROUP_TYPE, useValue: 'box' }]
 ```
 
->[!NOTE]
->The [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property has precedence over a [IGX_INPUT_GROUP_TYPE](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igx_input_group_type), thus a token value can be overridden on a component level if the type property is set explicitly.
->Most of the `igniteui-angular` form controls use input-group component internally, or allow for a custom template. Setting a global token will affect these components as well.
+**Note:** 
+The [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property has precedence over a [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE), thus a token value can be overridden on a component level if the type property is set explicitly.
+Most of the `igniteui-angular` form controls use input-group component internally, or allow for a custom template. Setting a global token will affect these components as well.
 
 Ignite UI for Angular also provides styling for the input of `type="file"` and it supports all the input group types and themes, just add this to your template:
 
@@ -1157,301 +1157,169 @@ form > * {
 When you modify a primary property, all related dependent properties are updated automatically:
 
 <div class="theme-switcher-wrapper">
-  <!-- Theme Switcher Radios and Labels -->
-  <input type="radio" name="theme" id="material" checked>
+
+  
+  <input type="radio" name="theme" id="material" checked/>
   <label for="material" class="switch-label">Material</label>
-  <input type="radio" name="theme" id="fluent">
+  <input type="radio" name="theme" id="fluent"/>
   <label for="fluent" class="switch-label">Fluent</label>
-  <input type="radio" name="theme" id="bootstrap">
+  <input type="radio" name="theme" id="bootstrap"/>
   <label for="bootstrap" class="switch-label">Bootstrap</label>
-  <input type="radio" name="theme" id="indigo">
+  <input type="radio" name="theme" id="indigo"/>
   <label for="indigo" class="switch-label">Indigo</label>
 
   <div class="tables">
-    <!-- Material Theme Table -->
-    <div class="theme-table material">
-        <table class="collapsible-table">
-            <thead>
-                <tr>
-                    <th>Primary Property</th>
-                    <th>Dependent Property</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$box-background</strong></summary></details></td>
-                    <td>$box-background-hover</td>
-                    <td>Hover background for the input box</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$box-background-focus</td><td>Focus background for the input box</td></tr>
-                <tr class="dependent"><td></td><td>$box-disabled-background</td><td>Disabled state background</td></tr>
-                <tr class="dependent"><td></td><td>$placeholder-color</td><td>Placeholder text color</td></tr>
-                <tr class="dependent"><td></td><td>$hover-placeholder-color</td><td>Hover color for placeholder text</td></tr>
-                <tr class="dependent"><td></td><td>$idle-text-color</td><td>Default text color</td></tr>
-                <tr class="dependent"><td></td><td>$filled-text-color</td><td>Text color when input is filled</td></tr>
-                <tr class="dependent"><td></td><td>$filled-text-hover-color</td><td>The input text color in the filled state on hover</td></tr>
-                <tr class="dependent"><td></td><td>$focused-text-color</td><td>Text color when input is focused</td></tr>
-                <tr class="dependent"><td></td><td>$idle-secondary-color</td><td>Secondary text color when idle</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Text color for prefix inside the input box</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Text color for filled prefix</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color--focused</td><td>Text color for focused prefix</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Text color for suffix inside the input box</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Text color for filled suffix</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color--focused</td><td>Text color for focused suffix</td></tr>
-                <tr class="dependent"><td></td><td>$disabled-placeholder-color</td><td>Placeholder color when input is disabled</td></tr>
-                <tr class="dependent"><td></td><td>$disabled-text-color</td><td>Text color when input is disabled</td></tr>
-            </tbody>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$idle-bottom-line-color</strong></summary></details></td>
-                    <td>$hover-bottom-line-color</td>
-                    <td>Hover color for the bottom line under the input</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$focused-bottom-line-color</td><td>Focused color for the bottom line</td></tr>
-                <tr class="dependent"><td></td><td>$focused-secondary-color</td><td>The label color in the focused state</td></tr>
-                <tr class="dependent"><td></td><td>$border-color</td><td>The border color for input groups of type border</td></tr>
-                <tr class="dependent"><td></td><td>$focused-border-color</td><td>The focused input border color for input groups of type border</td></tr>
-            </tbody>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$border-color</strong></summary></details></td>
-                    <td>$hover-border-color</td>
-                    <td>Hover color for the input border</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$focused-border-color</td><td>Border color when input is focused</td></tr>
-                <tr class="dependent"><td></td><td>$focused-secondary-color</td><td>The label color in the focused state</td></tr>
-            </tbody>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$input-prefix-background</strong></summary></details></td>
-                    <td>$input-prefix-color</td><td>Text color for prefix inside the input box</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$input-prefix-background--filled</td>
-                    <td>The background color of an input prefix in the filled state</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-background--focused</td><td>The background color of an input prefix in the focused state</td></tr>
-            </tbody>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$input-suffix-background</strong></summary></details></td>
-                    <td>$input-suffix-color</td><td>Text color for suffix inside the input box</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$input-suffix-background--filled</td>
-                    <td>The background color of an input suffix in the filled state</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-background--focused</td><td>The background color of an input suffix in the focused state</td></tr>
-            </tbody>
-            <tbody class="group">
-                <tr class="primary">
-                    <td><details><summary><strong>$search-background</strong></summary></details></td>
-                    <td>$placeholder-color</td>
-                    <td>Placeholder text color inside the search input</td>
-                </tr>
-                <tr class="dependent"><td></td><td>$hover-placeholder-color</td><td>Hover color for placeholder text</td></tr>
-                <tr class="dependent"><td></td><td>$idle-text-color</td><td>Text color for the search input</td></tr>
-                <tr class="dependent"><td></td><td>$idle-secondary-color</td><td>Secondary text color when idle</td></tr>
-                <tr class="dependent"><td></td><td>$filled-text-color</td><td>Text color when search input is filled</td></tr>
-                <tr class="dependent"><td></td><td>$filled-text-hover-color</td><td>Hover text color when search input is filled</td></tr>
-                <tr class="dependent"><td></td><td>$focused-text-color</td><td>Text color when search input is focused</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Prefix color inside search</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Suffix color inside search</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Prefix color when input is filled</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Suffix color when input is filled</td></tr>
-                <tr class="dependent"><td></td><td>$input-prefix-color--focused</td><td>Prefix color when input is focused</td></tr>
-                <tr class="dependent"><td></td><td>$input-suffix-color--focused</td><td>Suffix color when input is focused</td></tr>
-                <tr class="dependent"><td></td><td>$search-disabled-background</td><td>Background when search input is disabled</td></tr>
-                <tr class="dependent"><td></td><td>$disabled-placeholder-color</td><td>Placeholder color when disabled</td></tr>
-                <tr class="dependent"><td></td><td>$disabled-text-color</td><td>Text color when disabled</td></tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- Fluent Theme Table -->
-    <div class="theme-table fluent">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$border-color</strong></summary></details></td>
-                <td>$hover-border-color</td>
-                <td>Hover color for the input border</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$focused-border-color</td><td>Border color when input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$focused-secondary-color</td><td>The label color in the focused state</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$input-prefix-background</strong></summary></details></td>
-            <td>$input-suffix-background</td>
-            <td>The background color of an input suffix in the idle state</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Text color for prefix inside the input box</td></tr>
-          <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Text color for filled prefix</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$input-suffix-background</strong></summary></details></td>
-            <td>$input-prefix-background</td>
-            <td>The background color of an input prefix in the idle state</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Text color for suffix inside the input box</td></tr>
-          <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Text color for filled suffix</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$search-background</strong></summary></details></td>
-                <td>$placeholder-color</td>
-                <td>Placeholder text color inside the search input</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$hover-placeholder-color</td><td>Hover color for placeholder text</td></tr>
-            <tr class="dependent"><td></td><td>$idle-secondary-color</td><td>Secondary text color when idle</td></tr>
-            <tr class="dependent"><td></td><td>$idle-text-color</td><td>Text color for the search input</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-color</td><td>Text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-hover-color</td><td>Hover text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$focused-text-color</td><td>Text color when search input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Prefix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Suffix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Prefix color when input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Suffix color when input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color--focused</td><td>Prefix color when input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color--focused</td><td>Suffix color when input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$search-disabled-background</td><td>Background when search input is disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-placeholder-color</td><td>Placeholder color when disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-text-color</td><td>Text color when disabled</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Bootstrap Theme Table -->
-    <div class="theme-table bootstrap">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$border-color</strong></summary></details></td>
-                <td>$focused-border-color</td>
-                <td>Border color when input is focused</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$focused-secondary-color</td><td>The label color in the focused state</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$input-prefix-background</strong></summary></details></td>
-            <td>$input-suffix-background</td>
-            <td>The background color of an input suffix in the idle state</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Text color for prefix inside the input box</td></tr>
-          <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Text color for filled prefix</td></tr>
-        </tbody>
-        <tbody class="group">
-          <tr class="primary">
-            <td><details><summary><strong>$input-suffix-background</strong></summary></details></td>
-            <td>$input-prefix-background</td>
-            <td>The background color of an input prefix in the idle state</td>
-          </tr>
-          <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Text color for suffix inside the input box</td></tr>
-          <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Text color for filled suffix</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$search-background</strong></summary></details></td>
-                <td>$placeholder-color</td>
-                <td>Placeholder text color inside the search input</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$hover-placeholder-color</td><td>Hover color for placeholder text</td></tr>
-            <tr class="dependent"><td></td><td>$idle-secondary-color</td><td>Secondary text color when idle</td></tr>
-            <tr class="dependent"><td></td><td>$idle-text-color</td><td>Text color for the search input</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-color</td><td>Text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-hover-color</td><td>Hover text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$focused-text-color</td><td>Text color when search input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Prefix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Suffix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color--filled</td><td>Prefix color when input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color--filled</td><td>Suffix color when input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color--focused</td><td>Prefix color when input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color--focused</td><td>Suffix color when input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$search-disabled-background</td><td>Background when search input is disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-placeholder-color</td><td>Placeholder color when disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-text-color</td><td>Text color when disabled</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Indigo Theme Table -->
-    <div class="theme-table indigo">
-      <table class="collapsible-table">
-        <thead>
-          <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$idle-bottom-line-color</strong></summary></details></td>
-                <td>$hover-bottom-line-color</td>
-                <td>Hover color for the bottom line under the input</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$focused-bottom-line-color</td><td>Focused color for the bottom line</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$border-color</strong></summary></details></td>
-                <td>$hover-border-color</td>
-                <td>Hover color for the input border</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$focused-border-color</td><td>Border color when input is focused</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$input-prefix-background</strong></summary></details></td>
-                <td>$input-prefix-color</td><td>Text color for prefix inside the input box</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$input-prefix-background--filled</td>
-                <td>The background color of an input prefix in the filled state</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-background--focused</td><td>The background color of an input prefix in the focused state</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$input-suffix-background</strong></summary></details></td>
-                <td>$input-suffix-color</td><td>Text color for suffix inside the input box</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$input-suffix-background--filled</td>
-                <td>The background color of an input suffix in the filled state</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-background--focused</td><td>The background color of an input suffix in the focused state</td></tr>
-        </tbody>
-        <tbody class="group">
-            <tr class="primary">
-                <td><details><summary><strong>$search-background</strong></summary></details></td>
-                <td>$placeholder-color</td>
-                <td>Placeholder text color inside the search input</td>
-            </tr>
-            <tr class="dependent"><td></td><td>$hover-placeholder-color</td><td>Hover color for placeholder text</td></tr>
-            <tr class="dependent"><td></td><td>$box-background-hover</td><td>Hover background for search input</td></tr>
-            <tr class="dependent"><td></td><td>$idle-text-color</td><td>Text color for the search input</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-color</td><td>Text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$filled-text-hover-color</td><td>Hover text color when search input is filled</td></tr>
-            <tr class="dependent"><td></td><td>$focused-text-color</td><td>Text color when search input is focused</td></tr>
-            <tr class="dependent"><td></td><td>$input-prefix-color</td><td>Prefix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$input-suffix-color</td><td>Suffix color inside search</td></tr>
-            <tr class="dependent"><td></td><td>$search-disabled-background</td><td>Background when search input is disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-placeholder-color</td><td>Placeholder color when disabled</td></tr>
-            <tr class="dependent"><td></td><td>$disabled-text-color</td><td>Text color when disabled</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
+    
+    <div class="theme-table material">
+
+        | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$box-background** | $box-background-hover | Hover background for the input box |
+|  | $box-background-focus | Focus background for the input box |
+|  | $box-disabled-background | Disabled state background |
+|  | $placeholder-color | Placeholder text color |
+|  | $hover-placeholder-color | Hover color for placeholder text |
+|  | $idle-text-color | Default text color |
+|  | $filled-text-color | Text color when input is filled |
+|  | $filled-text-hover-color | The input text color in the filled state on hover |
+|  | $focused-text-color | Text color when input is focused |
+|  | $idle-secondary-color | Secondary text color when idle |
+|  | $input-prefix-color | Text color for prefix inside the input box |
+|  | $input-prefix-color--filled | Text color for filled prefix |
+|  | $input-prefix-color--focused | Text color for focused prefix |
+|  | $input-suffix-color | Text color for suffix inside the input box |
+|  | $input-suffix-color--filled | Text color for filled suffix |
+|  | $input-suffix-color--focused | Text color for focused suffix |
+|  | $disabled-placeholder-color | Placeholder color when input is disabled |
+|  | $disabled-text-color | Text color when input is disabled |
+| **$idle-bottom-line-color** | $hover-bottom-line-color | Hover color for the bottom line under the input |
+|  | $focused-bottom-line-color | Focused color for the bottom line |
+|  | $focused-secondary-color | The label color in the focused state |
+|  | $border-color | The border color for input groups of type border |
+|  | $focused-border-color | The focused input border color for input groups of type border |
+| **$border-color**| $hover-border-color | Hover color for the input border |
+|  | $focused-border-color | Border color when input is focused |
+|  | $focused-secondary-color | The label color in the focused state |
+| **$input-prefix-background** | $input-prefix-color | Text color for prefix inside the input box |
+|  | $input-prefix-background--filled | The background color of an input prefix in the filled state |
+|  | $input-prefix-background--focused | The background color of an input prefix in the focused state |
+| **$input-suffix-background**| $input-suffix-color | Text color for suffix inside the input box |
+|  | $input-suffix-background--filled | The background color of an input suffix in the filled state |
+|  | $input-suffix-background--focused | The background color of an input suffix in the focused state |
+| **$search-background** | $placeholder-color | Placeholder text color inside the search input |
+|  | $hover-placeholder-color | Hover color for placeholder text |
+|  | $idle-text-color | Text color for the search input |
+|  | $idle-secondary-color | Secondary text color when idle |
+|  | $filled-text-color | Text color when search input is filled |
+|  | $filled-text-hover-color | Hover text color when search input is filled |
+|  | $focused-text-color | Text color when search input is focused |
+|  | $input-prefix-color | Prefix color inside search |
+|  | $input-suffix-color | Suffix color inside search |
+|  | $input-prefix-color--filled | Prefix color when input is filled |
+|  | $input-suffix-color--filled | Suffix color when input is filled |
+|  | $input-prefix-color--focused | Prefix color when input is focused |
+|  | $input-suffix-color--focused | Suffix color when input is focused |
+|  | $search-disabled-background | Background when search input is disabled |
+|  | $disabled-placeholder-color | Placeholder color when disabled |
+|  | $disabled-text-color | Text color when disabled |
+
+</div>
+    
+    <div class="theme-table fluent">
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$border-color** | $hover-border-color | Hover color for the input border |
+|  | $focused-border-color | Border color when input is focused |
+|  | $focused-secondary-color | The label color in the focused state |
+|**$input-prefix-background** | $input-suffix-background | The background color of an input suffix in the idle state |
+|  | $input-prefix-color | Text color for prefix inside the input box |
+|  | $input-prefix-color--filled | Text color for filled prefix |
+| **$input-suffix-background** | $input-prefix-background | The background color of an input prefix in the idle state |
+|  | $input-suffix-color | Text color for suffix inside the input box |
+|  | $input-suffix-color--filled | Text color for filled suffix |
+|**$search-background** | $placeholder-color | Placeholder text color inside the search input |
+|  | $hover-placeholder-color | Hover color for placeholder text |
+|  | $idle-secondary-color | Secondary text color when idle |
+|  | $idle-text-color | Text color for the search input |
+|  | $filled-text-color | Text color when search input is filled |
+|  | $filled-text-hover-color | Hover text color when search input is filled |
+|  | $focused-text-color | Text color when search input is focused |
+|  | $input-prefix-color | Prefix color inside search |
+|  | $input-suffix-color | Suffix color inside search |
+|  | $input-prefix-color--filled | Prefix color when input is filled |
+|  | $input-suffix-color--filled | Suffix color when input is filled |
+|  | $input-prefix-color--focused | Prefix color when input is focused |
+|  | $input-suffix-color--focused | Suffix color when input is focused |
+|  | $search-disabled-background | Background when search input is disabled |
+|  | $disabled-placeholder-color | Placeholder color when disabled |
+|  | $disabled-text-color | Text color when disabled |
+
+</div>
+    
+    <div class="theme-table bootstrap">
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$border-color** | $focused-border-color | Border color when input is focused |
+|  | $focused-secondary-color | The label color in the focused state |
+| **$input-prefix-background** | $input-suffix-background | The background color of an input suffix in the idle state |
+|  | $input-prefix-color | Text color for prefix inside the input box |
+|  | $input-prefix-color--filled | Text color for filled prefix |
+| **$input-suffix-background**| $input-prefix-background | The background color of an input prefix in the idle state |
+|  | $input-suffix-color | Text color for suffix inside the input box |
+|  | $input-suffix-color--filled | Text color for filled suffix |
+| **$search-background** | $placeholder-color | Placeholder text color inside the search input |
+|  | $hover-placeholder-color | Hover color for placeholder text |
+|  | $idle-secondary-color | Secondary text color when idle |
+|  | $idle-text-color | Text color for the search input |
+|  | $filled-text-color | Text color when search input is filled |
+|  | $filled-text-hover-color | Hover text color when search input is filled |
+|  | $focused-text-color | Text color when search input is focused |
+|  | $input-prefix-color | Prefix color inside search |
+|  | $input-suffix-color | Suffix color inside search |
+|  | $input-prefix-color--filled | Prefix color when input is filled |
+|  | $input-suffix-color--filled | Suffix color when input is filled |
+|  | $input-prefix-color--focused | Prefix color when input is focused |
+|  | $input-suffix-color--focused | Suffix color when input is focused |
+|  | $search-disabled-background | Background when search input is disabled |
+|  | $disabled-placeholder-color | Placeholder color when disabled |
+|  | $disabled-text-color | Text color when disabled |
+
+</div>
+    
+    <div class="theme-table indigo">
+
+      | Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$idle-bottom-line-color** | $hover-bottom-line-color | Hover color for the bottom line under the input |
+|  | $focused-bottom-line-color | Focused color for the bottom line |
+| **$border-color** | $hover-border-color | Hover color for the input border |
+|  | $focused-border-color | Border color when input is focused |
+| **$input-prefix-background** | $input-prefix-color | Text color for prefix inside the input box |
+|  | $input-prefix-background--filled | The background color of an input prefix in the filled state |
+|  | $input-prefix-background--focused | The background color of an input prefix in the focused state |
+|**$input-suffix-background** | $input-suffix-color | Text color for suffix inside the input box |
+|  | $input-suffix-background--filled | The background color of an input suffix in the filled state |
+|  | $input-suffix-background--focused | The background color of an input suffix in the focused state |
+| **$search-background** | $placeholder-color | Placeholder text color inside the search input |
+|  | $hover-placeholder-color | Hover color for placeholder text |
+|  | $box-background-hover | Hover background for search input |
+|  | $idle-text-color | Text color for the search input |
+|  | $filled-text-color | Text color when search input is filled |
+|  | $filled-text-hover-color | Hover text color when search input is filled |
+|  | $focused-text-color | Text color when search input is focused |
+|  | $input-prefix-color | Prefix color inside search |
+|  | $input-suffix-color | Suffix color inside search |
+|  | $search-disabled-background | Background when search input is disabled |
+|  | $disabled-placeholder-color | Placeholder color when disabled |
+|  | $disabled-text-color | Text color when disabled |
+
+</div>
+  
+</div>
+</div>
 
 The first thing we need to do, in order to get started with the input group styling, is to include the `index` file in our style file:
 
@@ -1462,7 +1330,7 @@ The first thing we need to do, in order to get started with the input group styl
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-To customize the appearance of input groups, you can create a new theme by extending the [`input-group-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme). This approach allows you to override only the parameters you want to change, while the rest are automatically handled by the base theme.
+To customize the appearance of input groups, you can create a new theme by extending the `input-group-theme`. This approach allows you to override only the parameters you want to change, while the rest are automatically handled by the base theme.
 
 Even by specifying just a few core parameters—like colors for the border or background—you'll get a fully styled input group with consistent state-based styles (hover, focus, etc.) applied for you.
 
@@ -1544,21 +1412,23 @@ export class InputGroupStyleComponent { }
 }
 ```
 
->[!NOTE]
->The sample uses the [Indigo Light](themes/sass/schemas.md#predefined-schemas) schema.
->[!NOTE]
->If your page includes multiple types of input groups — such as `box`, `border`, `line`, or `search` — it's best to scope your theme variables to the specific input group type.
-<br>For example:<br>
+**Note:** 
+The sample uses the [Indigo Light](/themes/sass/schemas#predefined-schemas) schema.
+
+**Note:** 
+If your page includes multiple types of input groups — such as `box`, `border`, `line`, or `search` — it's best to scope your theme variables to the specific input group type.
+
+<br/>For example:<br/>
 Use `.igx-input-group--box` when styling box-style inputs.
 Use `.igx-input-group--search` when targeting search inputs.
 This helps prevent style conflicts between different input types.
 For instance, setting a dark `$box-background` globally could cause the borders of border or line inputs to become invisible (usually appearing white).
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the input group using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the input group using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -1576,7 +1446,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [input-group-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme). The syntax is as follows:
+You can find the full list of properties in the `input-group-theme`. The syntax is as follows:
 
 ```html
 <article class="sample-column">
@@ -1600,38 +1470,85 @@ You can find the full list of properties in the [input-group-theme](https://www.
 </article>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your inputs should look like this:
 
-<div class="sample-container loading" style="height:350px">
-    <iframe id="input-group-tailwind-style-iframe" data-src='{environment:demosBaseUrl}/data-entries/input-group-tailwind-style' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-input-group-tailwind-style',
+    templateUrl: 'input-group-tailwind-styling.component.html',
+    styleUrls: ['input-group-tailwind-styling.component.scss'],
+    imports: [IgxInputGroupComponent, IgxPrefixDirective, IgxLabelDirective, IgxInputDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective]
+})
+export class InputGroupTailwindStyleComponent { }
+```
+```html
+<article class="sample-column">
+    <igx-input-group class="!light-input-group ![--box-background:#A3C7B2] ![--focused-secondary-color:#3A5444]" type="box">
+        <igx-prefix>+359</igx-prefix>
+        <label igxLabel for="phone">Phone</label>
+        <input type="tel" igxInput name="phone" />
+        <igx-suffix>
+            <igx-icon>phone</igx-icon>
+        </igx-suffix>
+        <igx-hint position="start">Ex.: +359 888 123 456</igx-hint>
+    </igx-input-group>
+
+    <igx-input-group class="!light-input-group ![--border-color:#7B9E89]" type="border">
+        <igx-prefix>+359</igx-prefix>
+        <label igxLabel for="phone">Phone</label>
+        <input type="tel" igxInput name="phone" />
+        <igx-suffix>
+            <igx-icon>phone</igx-icon>
+        </igx-suffix>
+        <igx-hint position="start">Ex.: +359 888 123 456</igx-hint>
+    </igx-input-group>
+
+    <igx-input-group class="!light-input-group ![--search-background:#A3C7B2] ![--focused-secondary-color:#3A5444]" type="search">
+        <igx-prefix>+359</igx-prefix>
+        <label igxLabel for="phone">Search</label>
+        <input type="tel" igxInput name="phone" />
+        <igx-suffix>
+            <igx-icon>phone</igx-icon>
+        </igx-suffix>
+        <igx-hint position="start">Ex.: +359 888 123 456</igx-hint>
+    </igx-input-group>
+</article>
+```
+```scss
+@use "layout.scss";
+
+.sample-column {
+    gap: 1rem;
+}
+```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
-- [IgxHintDirective](mcp:get_api_reference?platform=angular&component=IgxHintDirective)
-- [IgxInputGroup Types](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#IgxInputGroupType)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-- [IgxInputGroupComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-
+<hr/>
+- [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [`IgxHintDirective`](mcp:get_api_reference?platform=angular&component=IgxHintDirective)
+- IgxInputGroup Types
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- `IgxInputGroupComponent Styles`
 ## Theming Dependencies
 
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
+- `IgxButton Theme`
+- `IgxIcon Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Related topics:
 
-- [Label & Input](label-input.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
+- [Label & Input](/label-input)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
 
 Our community is active and always welcoming to new ideas.
 

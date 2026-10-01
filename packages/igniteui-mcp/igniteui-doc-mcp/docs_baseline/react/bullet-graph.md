@@ -1,14 +1,15 @@
 ---
-title: React Bullet Graph | Data Visualization Tools | Infragistics
-_description: Infragistics' React bullet graph control allows you to create dashboards displaying ranges or comparing multiple measurements. View our data visualization tools!
-_keywords: React Bullet Graph, animation, labels, needle, scales, ranges, tick marks, Infragistics
-_license: commercial
-mentionedTypes: ["XamBulletGraph"]
+title: "React Bullet Graph | Data Visualization Tools | Infragistics"
+description: Infragistics' React bullet graph control allows you to create dashboards displaying ranges or comparing multiple measurements. View our data visualization tools!
+keywords: "React Bullet Graph, animation, labels, needle, scales, ranges, tick marks, Infragistics"
+license: commercial
+mentionedTypes: ["BulletGraph"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The React bullet graph component allows for a linear and concise view of measures compared against a scale."
 _tocName: Bullet Graph
 _premium: true
 ---
-
 # React Bullet Graph Overview
 
 The React bullet graph component allows for a linear and concise view of measures compared against a scale.
@@ -17,7 +18,7 @@ The Ignite UI for React bullet graph component provides you with the ability to 
 
 ## React Bullet Graph Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgrBulletGraph`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html) can transform it to completely different bullet graph.
+The following sample demonstrates how setting multiple properties on the same `IgrBulletGraph` can transform it to completely different bullet graph.
 
 ```tsx
 import React from 'react';
@@ -322,13 +323,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphAnimation/>);
 ```
 
-<div class="divider--half"></div>
-
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#transitionDuration) property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Dependencies
-
 When installing the gauge package, the core package must also be installed.
 
 ```cmd
@@ -338,15 +336,13 @@ npm install --save igniteui-react-gauges
 
 ## Component Modules
 
-The [`IgrBulletGraph`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html) requires the following modules:
+The `IgrBulletGraph` requires the following modules:
 
 ```ts
 import { IgrBulletGraphModule } from 'igniteui-react-gauges';
 
 IgrBulletGraphModule.register();
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -362,19 +358,16 @@ The following code walks through creating a bullet graph component, and configur
         <IgrLinearGraphRange startValue={0}
                                 endValue={15}
                                 brush="#828181"/>
-        <IgrLinearGraphRange StartValue={15}
+        <IgrLinearGraphRange startValue={15}
                                 endValue={30}
                                 brush="#AAAAAA"/>
-        <IgrLinearGraphRange StartValue={30}
-                                bndValue={55}
+        <IgrLinearGraphRange startValue={30}
+                                endValue={55}
                                 brush="#D0D0D0"/>
  </IgrBulletGraph>
 ```
 
-<div class="divider--half"></div>
-
 ## Comparative Measures
-
 The bullet graph can show two measures: performance value and target value.
 
 Performance value is the primary measure displayed by the component and it is visualized as a bar that stretches along the length of the whole graph. The target value is a measure which the performance value compares against. It is displayed as a small block that runs perpendicular to the orientation of the performance bar.
@@ -449,7 +442,7 @@ root.render(<BulletGraphMeasures/>);
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value) appear with a lower opacity. A good example is if [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value) is 50 and  [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValue) to something lower than [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value).
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the `Value` appear with a lower opacity. A good example is if `Value` is 50 and  `HighlightValue` is set to 25. This would represent a performance of 50% regardless of what the value of `TargetValue` is set to. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue` to something lower than `Value`.
 
 ```tsx
 <IgrBulletGraph
@@ -507,7 +500,6 @@ root.render(<BulletGraphHighlightNeedle/>);
 ```
 
 ## Comparative Ranges
-
 The ranges are visual elements that highlight a specified range of values on a scale. Their purpose is to visually communicate the qualitative state of the performance bar measure, illustrating at the same time the degree to which it resides within that state.
 
 ```tsx
@@ -578,9 +570,7 @@ root.render(<BulletGraphRanges/>);
 ```
 
 ## Tick Marks
-
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the bullet graph.
-
 - Major tick marks – The major tick marks are used as primary delimiters on the scale. The frequency they appear at, their extents and style can be controlled by setting their corresponding properties.
 - Minor tick marks – The minor tick marks represent helper tick marks, which might be used to additionally improve the readability of the scale and can be customized in a way similar to the major ones.
 
@@ -645,7 +635,6 @@ root.render(<BulletGraphTickmarks/>);
 ```
 
 ## Labels
-
 The labels indicate the measures on the scale.
 
 ```tsx
@@ -697,7 +686,6 @@ root.render(<BulletGraphLabels/>);
 ```
 
 ## Backing
-
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
 
 ```tsx
@@ -747,8 +735,7 @@ root.render(<BulletGraphBackground/>);
 ```
 
 ## Scale
-
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`isScaleInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```tsx
 <IgrBulletGraph
@@ -799,7 +786,6 @@ root.render(<BulletGraphScale/>);
 ```
 
 ## Summary
-
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the bullet graph with all features and visuals enabled.
 
 ```tsx
@@ -872,12 +858,8 @@ For your convenience, all above code snippets are combined into one code block b
 ```
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrBulletGraph`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html)
-- [`IgrLinearGraphRange`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargraphrange.html)
-
+`IgrBulletGraph`
+`IgrLinearGraphRange`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:

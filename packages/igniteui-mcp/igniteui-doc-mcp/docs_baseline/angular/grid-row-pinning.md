@@ -1,14 +1,19 @@
 ---
 title: Row Pinning in Angular Data Grid - Ignite UI for Angular
-_description: Use the Angular Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
-_keywords: lock row, ignite ui for angular, infragistics
-_license: commercial
+description: Use the Angular Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
+keywords: lock row, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "One or multiple rows can be pinned to the top or bottom of the Angular UI Grid."
 _tocName: Row Pinning
 _premium: true
 ---
 # Angular Grid Row Pinning
+
 One or multiple rows can be pinned to the top or bottom of the Angular UI Grid. **Row Pinning** in Ignite UI for Angular allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the Grid vertically. The Material UI Grid has a built-in row pinning UI, which is enabled by initializing an `igxActionStrip` component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
+
 ## Angular Grid Row Pinning Example
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -84,8 +89,11 @@ export class GridRowPinningSampleComponent implements OnInit {
     margin-top: 24px;
 }
 ```
+
 ## Row Pinning UI
+
 The built-in row pinning UI is enabled by adding an `igxActionStrip` component with the `GridPinningActions` component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
+
 ```html
 <igx-grid [data]="data" [autoGenerate]="false">
     <igx-column *ngFor="let c of columns" [field]="c.field" [header]="c.field">
@@ -97,41 +105,59 @@ The built-in row pinning UI is enabled by adding an `igxActionStrip` component w
     </igx-action-strip>
 </igx-grid>
 ```
+
 ## Row Pinning API
-Row pinning is controlled through the `pinned` input of the [`row`](mcp:get_api_reference?platform=angular&component=RowType). Pinned rows are rendered at the top of the Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Grid body.
+
+Row pinning is controlled through the `pinned` input of the [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType). Pinned rows are rendered at the top of the Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Grid body.
+
 ```typescript
 this.grid.getRowByIndex(0).pinned = true;
 ```
-You may also use the Grid's [`pinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=unpinRow) methods of the [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) to pin or unpin records by their ID:
+
+You may also use the Grid's [`pinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=unpinRow) methods of the [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) to pin or unpin records by their ID:
+
 ```typescript
 this.grid.pinRow('ALFKI');
 this.grid.unpinRow('ALFKI');
 ```
+
 Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowPinning) event and changing the [`insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinRowEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowPinning) event and changing the [`IgxIPinRowEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinRowEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+
 ```html
 <igx-grid #grid1 [data]="data" [autoGenerate]="true" (rowPinning)="rowPinning($event)">
 </igx-grid>
 ```
+
 ```typescript
 public rowPinning(event) {
     event.insertAtIndex = 0;
 }
 ```
+
 ## Pinning Position
+
 You can change the row pinning position via the [`pinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
+
 ```html
 <igx-grid [data]="data" [autoGenerate]="true" [pinning]="pinningConfig"></igx-grid>
 ```
+
 ```typescript
 public pinningConfig: IPinningConfig = { rows: RowPinningPosition.Bottom };
 ```
+
 ## Custom Row Pinning UI
+
 You can define your custom UI and change the pin state of the rows via the related API.
+
 ### Via extra column with icon
+
 Let's say that instead of an action strip you would like to show a pin icon in every row allowing the end-user to click and change a particular row's pin state.
 This can be done by adding an extra column with a cell template containing the custom icon.
+
 ```html
 <igx-grid [data]="data" [primaryKey]="'ID'" [autoGenerate]="false">
     <igx-column width="70px">
@@ -145,7 +171,9 @@ This can be done by adding an extra column with a cell template containing the c
     </igx-column>
 </igx-grid>
 ```
+
 On click of the custom icon the pin state of the related row can be changed using the row's API methods.
+
 ```typescript
 public togglePinning(row: IgxGridRow, event) {
     event.preventDefault();
@@ -156,7 +184,9 @@ public togglePinning(row: IgxGridRow, event) {
     }
 }
 ```
+
 #### Demo
+
 ```typescript
 import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
@@ -260,16 +290,22 @@ export class GridRowPinningExtraColumnSampleComponent implements AfterViewInit {
     margin-top: 24px;
 }
 ```
+
 ### Via row drag
+
 Let's say that you want to be able to directly drag and drop a row between the pinned and unpinned rows to change its pin state.
 This can be achieved by enabling the row drag feature and pinning/unpinning the rows via the API on drop.
+
 First, the grid should be marked as a drop area using the `igxDrop` directive and the row drag functionality should be enabled via the `rowDraggable` option.
+
 ```html
 <igx-grid [data]="data" [autoGenerate]="true" [rowDraggable]="true"
     [primaryKey]="'ID'" igxDrop (dropped)="onDropAllowed($event)">
 </igx-grid>
 ```
+
 Then the `dropped` event can be used to handle the reorder and pin/unpin logic.
+
 ```typescript
 public onDropAllowed(args) {
     const event = args.originalEvent;
@@ -298,8 +334,11 @@ public onDropAllowed(args) {
     }
 }
 ```
+
 This would allow reordering the rows and moving them between the pinned and unpinned row collections.
+
 #### Demo
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
@@ -441,7 +480,9 @@ export class GridPinningDragSampleComponent implements OnInit {
     height: 100%;
 }
 ```
+
 ## Row Pinning Limitations
+
 - Only records that exist in the data source can be pinned.
 - The row pinning state is not exported to excel. The grid is exported as if no row pinning is applied.
 - Because of how pinned rows are stored internally so that they may appear both in the pinned and unpinned areas of the grid, row pinning is not supported when records in the grid are fetched from a remote endpoint on demand (remote virtualization).
@@ -452,35 +493,49 @@ export class GridPinningDragSampleComponent implements OnInit {
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-<div class="divider--half"></div>
+
 ## Styling
-The IgxGrid allows styling through the [`Ignite UI for Angular Theme Library`](../themes/sass/component-themes.md). The Grid's [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) exposes a wide variety of properties, which allow the customization of all the features of the Grid.
+
+The IgxGrid allows styling through the [`Ignite UI for Angular Theme Library`](/themes/sass/component-themes). The Grid's `grid-theme` exposes a wide variety of properties, which allow the customization of all the features of the Grid.
+
 Below, we are going through the steps of customizing the Grid's row pinning styling.
+
 ### Importing the Styling Library
+
 To begin the customization of the row pinning feature, you need to import the `index` file, where all styling functions and mixins are located.
+
 ```scss
 @use "igniteui-angular/theming" as *;
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
+
 ### Defining a Theme
-Next, create a new theme, that extends the [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) and accepts the parameters, required to customize the row pinning feature as desired.
+
+Next, create a new theme, that extends the `grid-theme` and accepts the parameters, required to customize the row pinning feature as desired.
+
 ```scss
-$custom-grid-theme: grid-theme(
+$custom-theme: grid-theme(
   $pinned-border-width: 5px,
   $pinned-border-style: double,
   $pinned-border-color: #ffcd0f,
   $cell-active-border-color: #ffcd0f
 );
 ```
+
 ### Using CSS variables
+
 The last step is to pass the custom grid theme:
+
 ```scss
 :host {
-  @include tokens($custom-grid-theme);
+  @include tokens($custom-theme);
 }
 ```
+
 ### Demo
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -548,27 +603,30 @@ $custom-theme: grid-theme(
   @include tokens($custom-theme);
 }
 ```
->[!NOTE]
->The sample will not be affected by the selected global theme from `Change Theme`.
+
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
+
 ## API References
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
-- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
-- [IgxHierarchicalGridRow](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
-- [RowType](mcp:get_api_reference?platform=angular&component=RowType)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [`IgxTreeGridRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [`IgxHierarchicalGridRow`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
+- [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType)
+- `IgxGridComponent Styles`
 ## Additional Resources
-<div class="divider--half"></div>
-- [Grid overview](grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-<div class="divider--half"></div>
+
+- [Grid overview](/grid/grid)
+- [Virtualization and Performance](/grid/virtualization)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Summaries](/grid/summaries)
+- [Column Moving](/grid/column-moving)
+- [Column Resizing](/grid/column-resizing)
+- [Selection](/grid/selection)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

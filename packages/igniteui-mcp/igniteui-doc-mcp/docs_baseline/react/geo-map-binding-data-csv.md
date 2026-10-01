@@ -1,14 +1,15 @@
 ---
-title: React Map | Data Visualization Tools | Binding CSV Data | Infragistics
-_description: Learn how to use Infragistics' React map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for React map demos!
-_keywords: React map, plot data, Ignite UI for React, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicHighDensityScatterSeries"]
+title: "React Map | Data Visualization Tools | Binding CSV Data | Infragistics"
+description: Learn how to use Infragistics' React map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for React map demos!
+keywords: "React map, plot data, Ignite UI for React, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicHighDensityScatterSeries"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for React map component, you can plot geographic data loaded from various file types."
 _tocName: Binding CSV File
 _premium: true
 ---
-
 # React Binding CSV Files with Geographic Locations
 
 With the Ignite UI for React map component, you can plot geographic data loaded from various file types. For example, you can load geographic locations from a comma separated values (CSV) file.
@@ -376,21 +377,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingDataCSV/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from CSV file:
 
-```ts
+```csv
 City,Lat,Lon,State,Code,County,Density,Population
 New York,40.7856,-74.0093,New Jersey,NJ,Hudson,21057,54227
 Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html) in the map component to an array of objects created from loaded CSV file with geographic locations.
+The following code loads and binds `IgrGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded CSV file with geographic locations.
 
 ```ts
 import { IgrGeographicHighDensityScatterSeries } from 'igniteui-react-maps';
@@ -441,11 +438,4 @@ public onDataLoaded(csvData: string) {
 ```
 
 ## API References
-
-- [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html)
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html#longitudeMemberPath)
-- [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html#heatMaximumColor)
-- [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html#heatMinimumColor)
-- [`pointExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html#pointExtent)
+`IgrGeographicHighDensityScatterSeries`

@@ -1,16 +1,17 @@
 ---
-title: Web Components Spreadsheet | Conditional Formatting | Infragistics
-_description: Use Infragistics' Web Components spreadsheet control to conditionally format the cells of a worksheet. Check out Ignite UI for Web Components spreadsheet demos!
-_keywords: Spreadsheet, conditional formatting, Ignite UI for Web Components, Infragistics, Worksheet
-_license: commercial
+title: "Web Components Spreadsheet | Conditional Formatting | Infragistics"
+description: Use Infragistics' Web Components spreadsheet control to conditionally format the cells of a worksheet. Check out Ignite UI for Web Components spreadsheet demos!
+keywords: Spreadsheet, conditional formatting, Ignite UI for Web Components, Infragistics, Worksheet
+license: commercial
 mentionedTypes: ["Spreadsheet", "ConditionalFormatCollection", "WorksheetCell", "Worksheet", "IWorksheetCellFormat"]
+llms:
+  description: "The Web Components Spreadsheet component allows you to conditionally format the cells of a worksheet."
 _tocName: Conditional Formatting
 _premium: true
 ---
-
 # Web Components Spreadsheet Conditional Formatting
 
-The Web Components Spreadsheet component allows you to conditionally format the cells of a worksheet. This allows you to highlight different pieces of your data based on a condition.
+The Web Components `IgcSpreadsheet` component allows you to conditionally format the cells of a worksheet. This allows you to highlight different pieces of your data based on a condition.
 
 ## Web Components Spreadsheet Conditional Formatting Example
 
@@ -128,43 +129,39 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Conditional Formatting Overview
 
-You can configure the conditional formatting of a particular worksheet by using the many `Add` methods exposed on the [`conditionalFormats`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#conditionalFormats) collection of that worksheet. The first parameter of these `Add` methods is the string region of the worksheet that you would like to apply the conditional format to.
+You can configure the conditional formatting of a particular worksheet by using the many `Add` methods exposed on the `ConditionalFormats` collection of that worksheet. The first parameter of these `Add` methods is the string region of the worksheet that you would like to apply the conditional format to.
 
-Many of the conditional formats that you can add to your worksheet have a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property that determines the way that the cells should look when the condition in that conditional format holds true. For example, you can use the properties attached to this [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property such as [`fill`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#fill) and [`font`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#font) to determine the background and font settings of your cells, respectively.
+Many of the conditional formats that you can add to your worksheet have a `CellFormat` property that determines the way that the cells should look when the condition in that conditional format holds true. For example, you can use the properties attached to this `CellFormat` property such as `Fill` and `Font` to determine the background and font settings of your cells, respectively.
 
-When a conditional format is created and a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) applied, there is a subset of properties that are currently supported by the worksheet cell. The properties that are currently honored off of the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) are [`fill`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#fill), `Border` properties, [`formatString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#formatString), and some [`font`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#font) properties such as strikethrough, underline, italic, bold, and color. Many of these can be seen from the code snippet below.
+When a conditional format is created and a `CellFormat` applied, there is a subset of properties that are currently supported by the worksheet cell. The properties that are currently honored off of the `CellFormat` are `Fill`, `Border` properties, `FormatString`, and some `Font` properties such as strikethrough, underline, italic, bold, and color. Many of these can be seen from the code snippet below.
 
-There are a few conditional formats that do not have a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property, as their visualization on the cells behaves differently. These conditional formats are the [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html), [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html), and [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.iconsetconditionalformat.html).
+There are a few conditional formats that do not have a `CellFormat` property, as their visualization on the cells behaves differently. These conditional formats are the `IgcDataBarConditionalFormat`, `IgcColorScaleConditionalFormat`, and `IgcIconSetConditionalFormat`.
 
 When loading a pre-existing workbook from Excel, the formats will be preserved when that workbook is loaded. The same is true for when you save the workbook out to an Excel file.
 
-The following lists the supported conditional formats in the Web Components [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control:
+The following lists the supported conditional formats in the Web Components `IgcSpreadsheet` control:
 
-- [`AverageConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.averageconditionalformat.html): Added using the [`addAverageCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addAverageCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is above or below the average or standard deviation for the associated range.
-- [`BlanksConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.blanksconditionalformat.html): Added using the [`addBlanksCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addBlanksCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is not set.
-- [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html): Added using the [`addColorScaleCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addColorScaleCondition) method, this conditional format exposes properties which control the coloring of a worksheet cell based on the cell’s value as relative to minimum, midpoint, and maximum threshold values.
-- [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html): Added using the [`addDataBarCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDataBarCondition) method, this conditional format exposes properties which display data bars in a worksheet cell based on the cell’s value as relative to the associated range of values.
-- [`DateTimeConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.datetimeconditionalformat.html): Added using the [`addDateTimeCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDateTimeCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s date value falls within a given range of time.
-- [`DuplicateConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.duplicateconditionalformat.html): Added using the [`addDuplicateCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDuplicateCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is unique or duplicated across the associated range.
-- [`ErrorsConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.errorsconditionalformat.html): Added using the [`addErrorsCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addErrorsCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is valid.
-- [`FormulaConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.formulaconditionalformat.html): Added using the [`addFormulaCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addFormulaCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value meets the criteria defined by a formula.
-- [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.iconsetconditionalformat.html): Added using the [`addIconSetCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addIconSetCondition) method, this conditional format exposes properties which display icons in a worksheet cell based on the cell’s value as relative to threshold values.
-- [`NoBlanksConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.noblanksconditionalformat.html): Added using the [`addNoBlanksCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addNoBlanksCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is set.
-- [`NoErrorsConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.noerrorsconditionalformat.html): Added using the [`addNoErrorsCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addNoErrorsCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is valid.
-- [`OperatorConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.operatorconditionalformat.html): Added using the [`addOperatorCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addOperatorCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value meets the criteria defined by a logical operator.
-- [`RankConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.rankconditionalformat.html): Added using the [`addRankCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addRankCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is within the top of bottom rank of values across the associated range.
-- [`TextOperatorConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.textoperatorconditionalformat.html): Added using the [`addTextCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addTextCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s text value meets the criteria defined by a string and a [`FormatConditionTextOperator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_excel.formatconditiontextoperator.html) value as placed in the [`addTextCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addTextCondition) method’s parameters.
-- [`UniqueConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.uniqueconditionalformat.html): Added using the [`addUniqueCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addUniqueCondition) method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is unique across the associated range.
+- `IgcAverageConditionalFormat`: Added using the `AddAverageCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is above or below the average or standard deviation for the associated range.
+- `IgcBlanksConditionalFormat`: Added using the `AddBlanksCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is not set.
+- `IgcColorScaleConditionalFormat`: Added using the `AddColorScaleCondition` method, this conditional format exposes properties which control the coloring of a worksheet cell based on the cell’s value as relative to minimum, midpoint, and maximum threshold values.
+- `IgcDataBarConditionalFormat`: Added using the `AddDataBarCondition` method, this conditional format exposes properties which display data bars in a worksheet cell based on the cell’s value as relative to the associated range of values.
+- `IgcDateTimeConditionalFormat`: Added using the `AddDateTimeCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s date value falls within a given range of time.
+- `IgcDuplicateConditionalFormat`: Added using the `AddDuplicateCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is unique or duplicated across the associated range.
+- `IgcErrorsConditionalFormat`: Added using the `AddErrorsCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is valid.
+- `IgcFormulaConditionalFormat`: Added using the `AddFormulaCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value meets the criteria defined by a formula.
+- `IgcIconSetConditionalFormat`: Added using the `AddIconSetCondition` method, this conditional format exposes properties which display icons in a worksheet cell based on the cell’s value as relative to threshold values.
+- `IgcNoBlanksConditionalFormat`: Added using the `AddNoBlanksCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is set.
+- `IgcNoErrorsConditionalFormat`: Added using the `AddNoErrorsCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value is valid.
+- `IgcOperatorConditionalFormat`: Added using the `AddOperatorCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether the cell’s value meets the criteria defined by a logical operator.
+- `IgcRankConditionalFormat`: Added using the `AddRankCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is within the top of bottom rank of values across the associated range.
+- `IgcTextOperatorConditionalFormat`: Added using the `AddTextCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s text value meets the criteria defined by a string and a `IgcFormatConditionTextOperator` value as placed in the `AddTextCondition` method’s parameters.
+- `IgcUniqueConditionalFormat`: Added using the `AddUniqueCondition` method, this conditional format exposes properties which control the visual attributes of a worksheet cell based on whether a cell’s value is unique across the associated range.
 
 ## Dependencies
 
-In order to add conditional formatting to the [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control, you will need to import the following dependencies:
-
-<!-- WebComponents -->
+In order to add conditional formatting to the `IgcSpreadsheet` control, you will need to import the following dependencies:
 
 ```ts
 import { CellFill } from "igniteui-webcomponents-excel";
@@ -181,7 +178,7 @@ import { WorkbookColorInfo } from 'igniteui-webcomponents-excel';
 
 ## Code Snippet
 
-The following code snippet demonstrates how to add each of the conditional formats to a spreadsheet in the [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control:
+The following code snippet demonstrates how to add each of the conditional formats to a spreadsheet in the `IgcSpreadsheet` control:
 
 ```ts
 let sheet = this.spreadsheet.activeWorksheet;
@@ -247,39 +244,20 @@ uniqueFormat.cellFormat.font.colorInfo = new WorkbookColorInfo(blue);
 
 ## API References
 
-- [`addAverageCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addAverageCondition)
-- [`addBlanksCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addBlanksCondition)
-- [`addColorScaleCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addColorScaleCondition)
-- [`addDataBarCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDataBarCondition)
-- [`addDateTimeCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDateTimeCondition)
-- [`addDuplicateCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addDuplicateCondition)
-- [`addErrorsCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addErrorsCondition)
-- [`addFormulaCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addFormulaCondition)
-- [`addIconSetCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addIconSetCondition)
-- [`addNoBlanksCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addNoBlanksCondition)
-- [`addNoErrorsCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addNoErrorsCondition)
-- [`addOperatorCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addOperatorCondition)
-- [`addRankCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addRankCondition)
-- [`addTextCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addTextCondition)
-- [`addUniqueCondition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.conditionalformatcollection.html#addUniqueCondition)
-- [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat)
-- [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html)
-- [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html):
-- [`conditionalFormats`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#conditionalFormats)
-- [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html)
-- [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html):
-- [`DateTimeConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.datetimeconditionalformat.html):
-- [`DuplicateConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.duplicateconditionalformat.html):
-- [`ErrorsConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.errorsconditionalformat.html):
-- [`FormatConditionTextOperator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_excel.formatconditiontextoperator.html)
-- [`formatString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#formatString)
-- [`FormulaConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.formulaconditionalformat.html):
-- [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.iconsetconditionalformat.html)
-- [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.iconsetconditionalformat.html):
-- [`NoBlanksConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.noblanksconditionalformat.html):
-- [`NoErrorsConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.noerrorsconditionalformat.html):
-- [`OperatorConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.operatorconditionalformat.html):
-- [`RankConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.rankconditionalformat.html):
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
-- [`TextOperatorConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.textoperatorconditionalformat.html):
-- [`UniqueConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.uniqueconditionalformat.html):
+`IgcAverageConditionalFormat`<br />
+`IgcBlanksConditionalFormat`<br />
+`IgcColorScaleConditionalFormat`<br />
+`IgcDataBarConditionalFormat`<br />
+`IgcDateTimeConditionalFormat`<br />
+`IgcDuplicateConditionalFormat`<br />
+`IgcErrorsConditionalFormat`<br />
+`IgcFormulaConditionalFormat`<br />
+`IgcIconSetConditionalFormat`<br />
+`IgcNoBlanksConditionalFormat`<br />
+`IgcNoErrorsConditionalFormat`<br />
+`IgcOperatorConditionalFormat`<br />
+`IgcRankConditionalFormat`<br />
+`IgcTextOperatorConditionalFormat`<br />
+`IgcUniqueConditionalFormat`<br />
+`IgcFormatConditionTextOperator`<br />
+`IgcSpreadsheet`<br />

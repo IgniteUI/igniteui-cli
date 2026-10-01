@@ -1,21 +1,22 @@
 ---
-title: Blazor Chart Tooltips | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Tooltips
-_keywords: Blazor Charts, Tooltips, Infragistics
-_license: commercial
+title: "Blazor Chart Tooltips | Data Visualization | Infragistics"
+description: Infragistics' Blazor Chart Tooltips
+keywords: "Blazor Charts, Tooltips, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Blazor charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
 _tocName: Chart Tooltips
 _premium: true
 ---
-
 # Blazor Chart Tooltips
 
 In Blazor charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls.
 
 ## Blazor Chart Tooltip Types
 
-Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -131,18 +132,14 @@ public class HighestGrossingMovies
 }
 ```
 
-<div class="divider--half"></div>
-
-The [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property is configurable and can be set to one of the following options:
+The [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=toolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| `Default`  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
-| `Data` Tooltip | Display the data tooltips for all series in the chart. |
-| `Item`  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
-| `Category` Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
-
-<div class="divider--half"></div>
+| [`Default`](mcp:get_api_reference?platform=blazor&component=ToolTipType&member=Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
+| [`Data`](mcp:get_api_reference?platform=blazor&component=ToolTipType&member=Data) Tooltip | Display the data tooltips for all series in the chart.  |
+| [`Item`](mcp:get_api_reference?platform=blazor&component=ToolTipType&member=Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
+| [`Category`](mcp:get_api_reference?platform=blazor&component=ToolTipType&member=Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
 
 ## Blazor Chart Tooltip Template
 
@@ -192,8 +189,6 @@ This example shows how to create custom tooltips for all series in Blazor [`IgbC
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Custom Tooltips in Data Chart
 
 This example shows how to create custom tooltips for each series in Blazor Data Chart control.
@@ -239,8 +234,6 @@ This example shows how to create custom tooltips for each series in Blazor Data 
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -249,14 +242,7 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](chart-markers.md)
 
 ## API References
-
-The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components share the following API properties:
-
-- [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType)
-
-In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component, you can use the following API components and properties:
-
-- [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer)
-- [`IgbItemToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbItemToolTipLayer)
-- [`IgbCategoryToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbCategoryToolTipLayer)
-- `ShowDefaultToolTip`
+[`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)

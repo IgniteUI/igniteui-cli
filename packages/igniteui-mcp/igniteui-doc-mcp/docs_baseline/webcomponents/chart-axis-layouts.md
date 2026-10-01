@@ -1,25 +1,26 @@
 ---
-title: Web Components Axis Layouts | Data Visualization | Infragistics
-_description: Infragistics' Web Components Axis Layouts
-_keywords: Web Components Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics
-_license: commercial
-mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "XamDataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+title: "Web Components Axis Layouts | Data Visualization | Infragistics"
+description: Infragistics' Web Components Axis Layouts
+keywords: "Web Components Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics"
+license: commercial
+mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+llms:
+  description: "All Ignite UI for Web Components charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart."
 _tocName: Axis Layouts
 _premium: true
 ---
-
 # Web Components Axis Layouts
 
 All Ignite UI for Web Components charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart. These features are demonstrated in the examples given below.
 
-> [!Note]
-> the following examples can be applied to [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) as well as [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) controls.
+**Note:** 
+the following examples can be applied to [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) as well as [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) controls.
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The [`xAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelLocation) property of the Web Components charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`yAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation) property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The [`XAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelLocation) property of the Web Components charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`YAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation) property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`yAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`YAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -54,19 +55,13 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ## Axis Orientation Example
-
-TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
-e.g. https://www.infragistics.com/help/wpf/datachart-axis-orientation
- -->
-
 ## Axis Advanced Scenarios
 
-For more advanced axis layout scenarios, you can use Web Components Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
+For more advanced axis layout scenarios, you can use Web Components Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
 
 ### Axis Sharing Example
 
-You can share and add multiple axes in the same plot area of the Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). It a common scenario to use share [`IgcTimeXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTimeXAxisComponent) and add multiple [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
+You can share and add multiple axes in the same plot area of the Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). It a common scenario to use share [`IgcTimeXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcTimeXAxisComponent) and add multiple [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
 
 The following example depicts a stock price and trade volume chart with a [Stock Chart](../types/stock-chart.md) and a [Column Chart](../types/column-chart.md) plotted. In this case, the Y-Axis on the left is used by the [Column Chart](../types/column-chart.md) and the Y-Axis on the right is used by the [Stock Chart](../types/stock-chart.md), while the X-Axis is shared between the two.
 
@@ -133,11 +128,9 @@ export class SharedAxisFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ### Axis Crossing Example
 
-In addition to placing axes outside plot area, the Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`crossingAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingAxis) and [`crossingValue`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
+In addition to placing axes outside plot area, the Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`CrossingAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingAxis) and [`CrossingValue`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
 
 The following example shows a Sin and Cos wave represented by a [Scatter Spline Chart](../types/scatter-chart.md) with the X and Y axes crossing each other at the (0, 0) origin point.
 
@@ -145,8 +138,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Additional Resources
 
@@ -160,25 +151,16 @@ You can find more information about related chart features in these topics:
 The following is a list of API members mentioned in the above sections:
 d in the above sections:
 
-| [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)                                         | [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)                 |
+| [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)                                         | [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)                 |
 | ------------------------------------------------------ | ------------------------------- |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ [`crossingAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingAxis)             | None                            |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ [`crossingValue`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingValue)            | None                            |
-| `Axes` ➔ [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) ➔ [`isInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=isInverted)               | [`xAxisInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisInverted)                 |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ [`isInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=isInverted)               | [`yAxisInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisInverted)                 |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ `LabelLocation`            | [`yAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation)            |
-| `Axes` ➔ [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) ➔ `LabelLocation`            | [`xAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelLocation)            |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ `LabelHorizontalAlignment` | [`yAxisLabelHorizontalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelHorizontalAlignment) |
-| `Axes` ➔ [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) ➔ `LabelVerticalAlignment`   | [`xAxisLabelVerticalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelVerticalAlignment)   |
-| `Axes` ➔ [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) ➔ `LabelVisibility`          | [`yAxisLabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelVisibility)          |
-| `Axes` ➔ [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) ➔ `LabelVisibility`          | [`xAxisLabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelVisibility)          |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`CrossingAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingAxis)             | None                            |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`CrossingValue`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=crossingValue)            | None                            |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) -> [`IsInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=isInverted)               | [`XAxisInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisInverted)                 |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`IsInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=isInverted)               | [`YAxisInverted`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisInverted)                 |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`LabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=labelLocation)            | [`YAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelLocation)            |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) -> [`LabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=labelLocation)            | [`XAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelLocation)            |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`LabelHorizontalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=labelHorizontalAlignment) | [`YAxisLabelHorizontalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelHorizontalAlignment) |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) -> [`LabelVerticalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=labelVerticalAlignment)   | [`XAxisLabelVerticalAlignment`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelVerticalAlignment)   |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent) -> [`LabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent&member=labelVisibility)          | [`YAxisLabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisLabelVisibility)          |
+| [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) -> [`IgcNumericXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) -> [`LabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent&member=labelVisibility)          | [`XAxisLabelVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisLabelVisibility)          |
 
-<!-- TODO correct links in Transformer -->
-
-<!--
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.location`            | `YAxisLabelLocation`            |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.location`            | `XAxisLabelLocation`            |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.horizontalAlignment` | `YAxisLabelHorizontalAlignment` |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.verticalAlignment`   | `XAxisLabelVerticalAlignment`   |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.visibility`          | `YAxisLabelVisibility`          |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.visibility`          | `XAxisLabelVisibility`          | -->

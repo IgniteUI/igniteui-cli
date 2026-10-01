@@ -1,14 +1,15 @@
 ---
 title: React Axis Options | Data Visualization | Infragistics
-_description: Infragistics' React Axis Options
-_keywords: React Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis"]
+description: Infragistics' React Axis Options
+keywords: React Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In all Ignite UI for React charts, the axes provide properties for visual configurations such as titles, labels, and ranges."
 _tocName: Axis Options
 _premium: true
 ---
-
 # React Axis Options
 
 In all Ignite UI for React charts, the axes provide properties for visual configurations such as titles, labels, and ranges. These features are demonstrated in the examples provided below.
@@ -138,8 +139,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Axis Labels Example
 
@@ -336,21 +335,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Axis Labels Management & Formatting
 
 The axes of the chart have the ability to perform an enhanced calculation regarding the amount of space available to the labels of the owning axis. This enhanced calculation allows the axis to optimize the amount of space given to it in order to display more labels for the given axis.
 
-This enhanced calculation is something that you need to opt-in to, which you can do by setting the [`useEnhancedIntervalManagement`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#useEnhancedIntervalManagement) property to true. Then, if you prefer to display as many labels as can fit in the dimensions of the axis without manually setting the [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#interval) property of the axis, you can set the [`enhancedIntervalPreferMoreCategoryLabels`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#enhancedIntervalPreferMoreCategoryLabels) property on the axis to true.
+This enhanced calculation is something that you need to opt-in to, which you can do by setting the `UseEnhancedIntervalManagement` property to true. Then, if you prefer to display as many labels as can fit in the dimensions of the axis without manually setting the `XAxisInterval` property of the axis, you can set the `EnhancedIntervalPreferMoreCategoryLabels` property on the axis to true.
 
-The chart also has the ability to consider auto-rotation of the labels if they will not fit in the allotted space as well as the ability to apply an automatic margin to the plot area to ensure the labels can fit. This is something that can be opted into initially by first setting the [`autoMarginAndAngleUpdateMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#autoMarginAndAngleUpdateMode) property on the chart to either `SizeChanging` or `SizeChangingAndZoom`. This will tell the chart when to re-evaluate the auto margin and angle applied to the labels, if desired.
+The chart also has the ability to consider auto-rotation of the labels if they will not fit in the allotted space as well as the ability to apply an automatic margin to the plot area to ensure the labels can fit. This is something that can be opted into initially by first setting the `AutoMarginAndAngleUpdateMode` property on the chart to either `SizeChanging` or `SizeChangingAndZoom`. This will tell the chart when to re-evaluate the auto margin and angle applied to the labels, if desired.
 
-After setting the [`autoMarginAndAngleUpdateMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#autoMarginAndAngleUpdateMode), you can set the [`shouldAutoExpandMarginForInitialLabels`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#shouldAutoExpandMarginForInitialLabels) property to true to opt into the automatic margin or set the [`shouldConsiderAutoRotationForInitialLabels`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#shouldConsiderAutoRotationForInitialLabels) property to true for the auto-rotation. You can also further customize the automatic margin that is applied by setting the [`autoExpandMarginExtraPadding`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#autoExpandMarginExtraPadding) and [`autoExpandMarginMaximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#autoExpandMarginMaximumValue) to provide extra space or a maximum possible margin, respectively.
+After setting the `AutoMarginAndAngleUpdateMode`, you can set the `ShouldAutoExpandMarginForInitialLabels` property to true to opt into the automatic margin or set the `ShouldConsiderAutoRotationForInitialLabels` property to true for the auto-rotation. You can also further customize the automatic margin that is applied by setting the `AutoExpandMarginExtraPadding` and `AutoExpandMarginMaximumValue` to provide extra space or a maximum possible margin, respectively.
 
-Custom label formats such as [`IgrNumberFormatSpecifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrnumberformatspecifier.html) and [`IgrDateTimeFormatSpecifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrdatetimeformatspecifier.html) can be added to each axis via the `XAxisLabelFormatSpecifier` and `YAxisLabelFormatSpecifier` collections. Commonly used for applying Intl.NumberFormat and Intl.DateTimeFormat language sensitive number, date and time formatting. In order for a custom format to be applied to the labels, the [`yAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelFormat) or [`xAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelFormat) need to be set to data item's property name on the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), eg. `{Date}`. For the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) the number is the context because it uses a numeric axis, therefore this needs to be set to `{0}`.
+Custom label formats such as `IgrNumberFormatSpecifier` and `IgrDateTimeFormatSpecifier` can be added to each axis via the `XAxisLabelFormatSpecifiers` and `YAxisLabelFormatSpecifiers` collections. Commonly used for applying Intl.NumberFormat and Intl.DateTimeFormat language sensitive number, date and time formatting. In order for a custom format to be applied to the labels, the `YAxisLabelFormat` or `XAxisLabelFormat` need to be set to data item's property name on the `IgrCategoryChart`, eg. `{Date}`. For the `IgrFinancialChart` the number is the context because it uses a numeric axis, therefore this needs to be set to `{0}`.
 
-The following example formats the yAxis with a [`IgrNumberFormatSpecifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrnumberformatspecifier.html) to represent $USD prices for top box office movies in the United States.
+The following example formats the yAxis with a `IgrNumberFormatSpecifier` to represent $USD prices for top box office movies in the United States.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -537,13 +534,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Axis Range Example
 
-In the React charts, you can define a range minimum and range maximum value of a numeric or time axis. The range minimum is the lowest value of the axis and the range maximum is the highest value of the axis. These are set by setting the [`yAxisMinimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMinimumValue) and [`yAxisMaximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMaximumValue) options.
+In the React charts, you can define a range minimum and range maximum value of a numeric or time axis. The range minimum is the lowest value of the axis and the range maximum is the highest value of the axis. These are set by setting the `YAxisMinimumValue` and `YAxisMaximumValue` options.
 
-By default, charts will calculate the minimum and maximum values for the numeric and time axis range based on the lowest and highest corresponding value points in your data, but this automatic calculation may not be appropriate for your set of data points in all cases. For example, if your data has a minimum value of 850, you may want to set the [`yAxisMinimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMinimumValue) to 800 so that there will be a space value of 50 between the axis minimum and the lowest value of data points. The same idea can be applied to the axis minimum value and the highest value of data points using the [`yAxisMaximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMaximumValue) property.
+By default, charts will calculate the minimum and maximum values for the numeric and time axis range based on the lowest and highest corresponding value points in your data, but this automatic calculation may not be appropriate for your set of data points in all cases. For example, if your data has a minimum value of 850, you may want to set the `YAxisMinimumValue` to 800 so that there will be a space value of 50 between the axis minimum and the lowest value of data points. The same idea can be applied to the axis minimum value and the highest value of data points using the `YAxisMaximumValue` property.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -735,15 +730,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Axis Modes & Scale
 
-In the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) and [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) controls, you can choose if your data is plotted on logarithmic scale along the y-axis when the [`yAxisIsLogarithmic`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisIsLogarithmic) property is set to true or on linear scale when this property is set to false (default value). With the [`yAxisLogarithmBase`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLogarithmBase) property, you can change base of logarithmic scale from default value of 10 to other integer value.
+In the `IgrFinancialChart` and `IgrCategoryChart` controls, you can choose if your data is plotted on logarithmic scale along the y-axis when the `YAxisIsLogarithmic` property is set to true or on linear scale when this property is set to false (default value). With the `YAxisLogarithmBase` property, you can change base of logarithmic scale from default value of 10 to other integer value.
 
-The [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) and control allows you to choose how your data is represented along the y-axis using [`yAxisMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#yAxisMode) property that provides [`Numeric`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartyaxismode.html#Numeric) and [`PercentChange`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartyaxismode.html#PercentChange) modes. The [`Numeric`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartyaxismode.html#Numeric) mode will plot data with the exact values while the [`PercentChange`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartyaxismode.html#PercentChange) mode will display the data as percentage change relative to the first data point provided. The default value is [`Numeric`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartyaxismode.html#Numeric) mode.
+The `IgrFinancialChart` and control allows you to choose how your data is represented along the y-axis using `YAxisMode` property that provides `Numeric` and `PercentChange` modes. The `Numeric` mode will plot data with the exact values while the `PercentChange` mode will display the data as percentage change relative to the first data point provided. The default value is `Numeric` mode.
 
-In addition to [`yAxisMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#yAxisMode) property, the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) control has [`xAxisMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#xAxisMode) property that provides [`Time`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartxaxismode.html#Time) and [`Ordinal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartxaxismode.html#Ordinal) modes for the x-axis. The [`Time`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartxaxismode.html#Time) mode will render space along the x-axis for gaps in data (e.g. no stock trading on weekends or holidays). The [`Ordinal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartxaxismode.html#Ordinal) mode will collapse date areas where data does not exist. The default value is [`Ordinal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialchartxaxismode.html#Ordinal) mode.
+In addition to `YAxisMode` property, the `IgrFinancialChart` control has `XAxisMode` property that provides `Time` and `Ordinal` modes for the x-axis. The `Time` mode will render space along the x-axis for gaps in data (e.g. no stock trading on weekends or holidays). The `Ordinal` mode will collapse date areas where data does not exist. The default value is `Ordinal` mode.
 
 ```typescript
 export class StocksUtility {
@@ -989,17 +982,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartAxisTypes/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Axis Gap Example
 
-The [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisGap) property of the React charts, determines the amount of space between columns or bars of plotted series. This property accepts a numeric value between 0.0 and 1.0. The value represents a relative width of the gap out of the available number of pixels between the series. Setting this property to 0 would mean there is no gap rendered between the series, and setting it 1 would render the maximum available gap.
+The `XAxisGap` property of the React charts, determines the amount of space between columns or bars of plotted series. This property accepts a numeric value between 0.0 and 1.0. The value represents a relative width of the gap out of the available number of pixels between the series. Setting this property to 0 would mean there is no gap rendered between the series, and setting it 1 would render the maximum available gap.
 
-The [`xAxisMaximumGap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisMaximumGap) property of the React charts, determines the maximum gap value to allow. This default is set to 1.0 but can be changed depending on what you set [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisGap) to.
+The `XAxisMaximumGap` property of the React charts, determines the maximum gap value to allow. This default is set to 1.0 but can be changed depending on what you set `XAxisGap` to.
 
-The [`xAxisMinimumGapSize`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisMinimumGapSize) property of the React charts, determines the minimum amount of pixels to use for the gap between the categories, if possible.
+The `XAxisMinimumGapSize` property of the React charts, determines the minimum amount of pixels to use for the gap between the categories, if possible.
 
-The following example shows the average maximum temperature in Celsius in New York City's Central Park represented by a [Column Chart](../types/column-chart.md) with an [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisGap) initially set to 1, and so there will be a full category's width between the columns. There is a slider that allows you to configure the gap in this example so that you can see what the different values do.
+The following example shows the average maximum temperature in Celsius in New York City's Central Park represented by a [Column Chart](../types/column-chart.md) with an `XAxisGap` initially set to 1, and so there will be a full category's width between the columns. There is a slider that allows you to configure the gap in this example so that you can see what the different values do.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -1161,13 +1152,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Axis Overlap Example
 
-The [`xAxisOverlap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisOverlap) property of the React charts, allows setting the overlap of the rendered columns or bars of plotted series. This property accepts a numeric value between -1.0 and 1.0. The value represents a relative overlap out of the available number of pixels dedicated to each series. Setting this property to a negative value (down to -1.0) results in the categories being pushed away from each other, producing a gap between themselves. Conversely, setting this property to a positive value (up to 1.0) results in the categories overlapping each other. A value of 1 directs the chart to render the categories on top of each other.
+The `XAxisOverlap` property of the React charts, allows setting the overlap of the rendered columns or bars of plotted series. This property accepts a numeric value between -1.0 and 1.0. The value represents a relative overlap out of the available number of pixels dedicated to each series. Setting this property to a negative value (down to -1.0) results in the categories being pushed away from each other, producing a gap between themselves. Conversely, setting this property to a positive value (up to 1.0) results in the categories overlapping each other. A value of 1 directs the chart to render the categories on top of each other.
 
-The following example shows a comparison of the highest grossing worldwide film franchises compared by the total world box office revenue of the franchise and the highest grossing movie in the series, represented by a [Column Chart](../types/column-chart.md) with an [`xAxisOverlap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisOverlap) initially set to 1, and so the columns will completely overlap each other. There is a slider that allows you to configure the overlap in this example so that you can see what the different values do.
+The following example shows a comparison of the highest grossing worldwide film franchises compared by the total world box office revenue of the franchise and the highest grossing movie in the series, represented by a [Column Chart](../types/column-chart.md) with an `XAxisOverlap` initially set to 1, and so the columns will completely overlap each other. There is a slider that allows you to configure the overlap in this example so that you can see what the different values do.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -1327,8 +1316,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -1340,19 +1327,19 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)                                         | [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html)       | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)        |
+| `IgrDataChart`                                         | `IgrFinancialChart`       | `IgrCategoryChart`        |
 | ------------------------------------------------------ | ---------------------- | ---------------------- |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#maximumValue)             | [`yAxisMaximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMaximumValue)    | [`yAxisMaximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMaximumValue)    |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#minimumValue)             | [`yAxisMinimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMinimumValue)    | [`yAxisMinimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisMinimumValue)    |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`isLogarithmic`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#isLogarithmic)            | [`yAxisIsLogarithmic`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisIsLogarithmic)   | [`yAxisIsLogarithmic`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisIsLogarithmic)   |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`logarithmBase`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#logarithmBase)            | [`yAxisLogarithmBase`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLogarithmBase)   | [`yAxisLogarithmBase`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLogarithmBase)   |
-| `Axes` ➔ [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) ➔ [`gap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html#gap)                     | None                   | [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisGap)             |
-| `Axes` ➔ [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) ➔ [`overlap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html#overlap)                 | None                   | [`xAxisOverlap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisOverlap)         |
-| `Axes` ➔ [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html)                                  | [`xAxisMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#xAxisMode)            | None                   |
-| `Axes` ➔ [`IgrPercentChangeYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpercentchangeyaxis.html)                         | [`yAxisMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#yAxisMode)            | None                   |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `labelSettings.angle`      | [`yAxisLabelAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelAngle)      | [`yAxisLabelAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelAngle)      |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `labelSettings.angle`      | [`xAxisLabelAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelAngle)      | [`xAxisLabelAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelAngle)      |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `labelSettings.textColor`  | `YAxisLabelForeground` | `YAxisLabelForeground` |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `labelSettings.textColor`  | `XAxisLabelForeground` | `XAxisLabelForeground` |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `labelSettings.visibility` | [`yAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelVisibility) | [`yAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelVisibility) |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `labelSettings.visibility` | [`xAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelVisibility) | [`xAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelVisibility) |
+| `Axes` -> `IgrNumericYAxis` -> `MaximumValue`             | `YAxisMaximumValue`    | `YAxisMaximumValue`    |
+| `Axes` -> `IgrNumericYAxis` -> `MinimumValue`             | `YAxisMinimumValue`    | `YAxisMinimumValue`    |
+| `Axes` -> `IgrNumericYAxis` -> `IsLogarithmic`            | `YAxisIsLogarithmic`   | `YAxisIsLogarithmic`   |
+| `Axes` -> `IgrNumericYAxis` -> `LogarithmBase`            | `YAxisLogarithmBase`   | `YAxisLogarithmBase`   |
+| `Axes` -> `IgrCategoryXAxis` -> `Gap`                     | None                   | `XAxisGap`             |
+| `Axes` -> `IgrCategoryXAxis` -> `Overlap`                 | None                   | `XAxisOverlap`         |
+| `Axes` -> `IgrTimeXAxis`                                  | `XAxisMode`            | None                   |
+| `Axes` -> `IgrPercentChangeYAxis`                         | `YAxisMode`            | None                   |
+| `Axes` -> `IgrNumericYAxis` -> `labelSettings.angle`      | `YAxisLabelAngle`      | `YAxisLabelAngle`      |
+| `Axes` -> `IgrNumericXAxis` -> `labelSettings.angle`      | `XAxisLabelAngle`      | `XAxisLabelAngle`      |
+| `Axes` -> `IgrNumericYAxis` -> `labelSettings.textColor`  | `YAxisLabelForeground` | `YAxisLabelForeground` |
+| `Axes` -> `IgrNumericXAxis` -> `labelSettings.textColor`  | `XAxisLabelForeground` | `XAxisLabelForeground` |
+| `Axes` -> `IgrNumericYAxis` -> `labelSettings.visibility` | `YAxisLabelVisibility` | `YAxisLabelVisibility` |
+| `Axes` -> `IgrNumericXAxis` -> `labelSettings.visibility` | `XAxisLabelVisibility` | `XAxisLabelVisibility` |

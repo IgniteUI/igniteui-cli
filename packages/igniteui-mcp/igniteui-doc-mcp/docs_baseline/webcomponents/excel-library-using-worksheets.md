@@ -1,16 +1,17 @@
 ---
-title: Web Components Excel Library| Using Worksheets | Infragistics
-_description: Use Infragistics' Web Components excel library to input data by working with the worksheet's row and cells and setting their corresponding values. Easily transfer data from Ignite UI for Web Components excel to your application!
-_keywords: Excel library, worksheet, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Excel Library| Using Worksheets | Infragistics"
+description: Use Infragistics' Web Components excel library to input data by working with the worksheet's row and cells and setting their corresponding values. Easily transfer data from Ignite UI for Web Components excel to your application!
+keywords: Excel library, worksheet, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "DisplayOptions", "WorksheetFilterSettings", "IWorksheetCellFormat"]
+llms:
+  description: "The Infragistics Web Components Excel Engine's Worksheet is where your data is kept."
 _tocName: Using Worksheets
 _premium: true
 ---
-
 # Web Components Using Worksheets
 
-The Infragistics Web Components Excel Engine's [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) is where your data is kept. You can input data by working with the Worksheet's rows and cells and setting their corresponding values. The [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) allows you to filter, sort, and customize the formats of the cells, as shown below.
+The Infragistics Web Components Excel Engine's `IgcWorksheet` is where your data is kept. You can input data by working with the Worksheet's rows and cells and setting their corresponding values. The `IgcWorksheet` allows you to filter, sort, and customize the formats of the cells, as shown below.
 
 ## Web Components Using Worksheets Example
 
@@ -128,8 +129,6 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 The following code shows the imports needed to use the code-snippets below:
 
 ```ts
@@ -148,10 +147,9 @@ import { WorkbookColorInfo } from "igniteui-webcomponents-excel";
 ```
 
 ## Configuring the Gridlines
-
 The gridlines are used to visually separate the cells in the worksheet. You may show or hide the gridlines and also change their color.
 
-You can show or hide the gridlines using the [`showGridlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#showGridlines) property of the [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions) of the worksheet. The following code demonstrates how you can hide the gridlines in your worksheet:
+You can show or hide the gridlines using the `ShowGridlines` property of the `IgcDisplayOptions` of the worksheet. The following code demonstrates how you can hide the gridlines in your worksheet:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -160,7 +158,7 @@ var worksheet = workbook.worksheets().add("Sheet1");
 worksheet.displayOptions.showGridlines = false;
 ```
 
-You can configure the gridlines' color using the [`gridlineColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#gridlineColor) property of the [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions) of the worksheet. The following code demonstrates how you can change the gridlines in your worksheet to be red:
+You can configure the gridlines' color using the `GridlineColor` property of the `IgcDisplayOptions` of the worksheet. The following code demonstrates how you can change the gridlines in your worksheet to be red:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -170,10 +168,9 @@ worksheet.displayOptions.gridlineColor = "Red";
 ```
 
 ## Configuring the Headers
-
 The column and row headers are used to visually identify columns and rows. They are also used to visually highlight the currently selected cell or cell region.
 
-You can show or hide the column and row headers using the [`showRowAndColumnHeaders`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#showRowAndColumnHeaders) property of the [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions) of the worksheet. The following code demonstrates how you can hide the row and column headers:
+You can show or hide the column and row headers using the `ShowRowAndColumnHeaders` property of the `IgcDisplayOptions` of the worksheet. The following code demonstrates how you can hide the row and column headers:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -183,8 +180,7 @@ worksheet.displayOptions.showRowAndColumnHeaders = false;
 ```
 
 ## Configuring Editing of the Worksheet
-
-By default, the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) objects that you save will be editable. You can disable editing of a worksheet by protecting it using the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`protect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#protect) method. This method has a lot of nullable `bool` arguments that determine which pieces are protected, and one of these options is to allow editing of objects, which if set to **false** will prevent editing of the worksheet.
+By default, the `IgcWorksheet` objects that you save will be editable. You can disable editing of a worksheet by protecting it using the `IgcWorksheet` object's `Protect` method. This method has a lot of nullable `bool` arguments that determine which pieces are protected, and one of these options is to allow editing of objects, which if set to **false** will prevent editing of the worksheet.
 
 The following code demonstrates how to disable editing in your worksheet:
 
@@ -195,9 +191,9 @@ var worksheet = workbook.worksheets().add("Sheet1");
 worksheet.protect();
 ```
 
-You can also use the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`protect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#protect) method to protect a worksheet against structural changes.
+You can also use the `IgcWorksheet` object's `Protect` method to protect a worksheet against structural changes.
 
-When protection is set, you can set the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) object's [`locked`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#locked) property on individual cells, rows, merged cell regions, or columns to override the worksheet object's protection on those objects. For example, if you need all cells of a worksheet to be read-only except for the cells of one column, you can protect the worksheet and then set the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) object's [`locked`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#locked) property to **false** on a specific [`WorksheetColumn`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcolumn.html) object. This will allow your users to edit cells within the column while disabling editing of the other cells in the worksheet.
+When protection is set, you can set the `IgcIWorksheetCellFormat` object's `Locked` property on individual cells, rows, merged cell regions, or columns to override the worksheet object's protection on those objects. For example, if you need all cells of a worksheet to be read-only except for the cells of one column, you can protect the worksheet and then set the `IgcIWorksheetCellFormat` object's `Locked` property to **false** on a specific `IgcWorksheetColumn` object. This will allow your users to edit cells within the column while disabling editing of the other cells in the worksheet.
 
 The following code demonstrates how you can do this:
 
@@ -210,25 +206,24 @@ worksheet.columns(0).cellFormat.locked = false;
 ```
 
 ## Filtering Worksheet Regions
+Filtering is done by setting a filter condition on a worksheet's `IgcWorksheetFilterSettings` which can be retrieved from the `IgcWorksheet` object's `FilterSettings` property. Filter conditions are only reapplied when they're added, removed, modified, or when the `ReapplyFilters` method is called on the worksheet. They are not constantly evaluated as data within the region changes.
 
-Filtering is done by setting a filter condition on a worksheet's [`WorksheetFilterSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html) which can be retrieved from the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`filterSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#filterSettings) property. Filter conditions are only reapplied when they're added, removed, modified, or when the [`reapplyFilters`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#reapplyFilters) method is called on the worksheet. They are not constantly evaluated as data within the region changes.
-
-You can specify the region to apply the filter by using the [`setRegion`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#setRegion) method on the [`WorksheetFilterSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html) object.
+You can specify the region to apply the filter by using the `SetRegion` method on the `IgcWorksheetFilterSettings` object.
 
 Below is a list of methods and their descriptions that you can use to add a filter to a worksheet:
 
 | Method        | Description |
 | --------------|-------------|
-|[`applyAverageFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyAverageFilter)|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
-|[`applyDatePeriodFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyDatePeriodFilter)|Represents a filter which can filter dates in a Month, or quarter of any year.|
-|[`applyFillFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyFillFilter)|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
+|`ApplyAverageFilter`|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
+|`ApplyDatePeriodFilter`|Represents a filter which can filter dates in a Month, or quarter of any year.|
+|`ApplyFillFilter`|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
 |`ApplyFixedValuesFilter`|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
-|[`applyFontColorFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyFontColorFilter)|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
-|[`applyIconFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyIconFilter)|Represents a filter which can filter cells based on their conditional formatting icon.|
-|[`applyRelativeDateRangeFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyRelativeDateRangeFilter)|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
-|[`applyTopOrBottomFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyTopOrBottomFilter)|Represents a filter which can filter in cells in the upper or lower portion of the sorted values.|
-|[`applyYearToDateFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyYearToDateFilter)|Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.|
-|[`applyCustomFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html#applyCustomFilter)|Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.|
+|`ApplyFontColorFilter`|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
+|`ApplyIconFilter`|Represents a filter which can filter cells based on their conditional formatting icon.|
+|`ApplyRelativeDateRangeFilter`|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
+|`ApplyTopOrBottomFilter`|Represents a filter which can filter in cells in the upper or lower portion of the sorted values.|
+|`ApplyYearToDateFilter`|Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.|
+|`ApplyCustomFilter`|Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.|
 
 You can use the following code snippet as an example to add a filter to a worksheet region:
 
@@ -241,10 +236,9 @@ worksheet.filterSettings.applyAverageFilter(0, AverageFilterType.AboveAverage);
 ```
 
 ## Freezing and Splitting Panes
-
 You can freeze rows at the top of your worksheet or columns at the left using the freezing panes features. Frozen rows and columns remain visible at all times while the user is scrolling. The frozen rows and columns are separated from the rest of the worksheet by a single, solid line, which cannot be removed.
 
-In order to enable pane freezing, you need to set the [`panesAreFrozen`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#panesAreFrozen) property of the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions) to **true**. You can then specify the rows or columns to freeze by using the `FrozenRows` and `FrozenColumns` properties of the display options [`frozenPaneSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#frozenPaneSettings), respectively.
+In order to enable pane freezing, you need to set the `PanesAreFrozen` property of the `IgcWorksheet` object's `IgcDisplayOptions` to **true**. You can then specify the rows or columns to freeze by using the `FrozenRows` and `FrozenColumns` properties of the display options `FrozenPaneSettings`, respectively.
 
 You can also specify the first row in the bottom pane or first column in the right pane using the `FirstRowInBottomPane` and `FirstColumnInRightPane` properties, respectively.
 
@@ -264,8 +258,7 @@ worksheet.displayOptions.frozenPaneSettings.firstRowInBottomPane = 6;
 ```
 
 ## Setting the Worksheet Zoom Level
-
-You can change the zoom level for each worksheet independently using the `MagnificationInNormalView` property on the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions). This property takes a value between 10 and 400 and represents the percentage of zoom that you wish to apply.
+You can change the zoom level for each worksheet independently using the `MagnificationInNormalView` property on the `IgcWorksheet` object's `IgcDisplayOptions`. This property takes a value between 10 and 400 and represents the percentage of zoom that you wish to apply.
 
 The following code demonstrates how you can do this:
 
@@ -280,9 +273,9 @@ worksheet.displayOptions.magnificationInNormalView = 300;
 
 Sorting is done by setting a sorting condition on a worksheet level object on either columns or rows. You can sort columns or rows in ascending or descending order.
 
-This is done by specifying a region and sort type to the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object's [`WorksheetSortSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetsortsettings.html) that can be retrieved using the [`sortSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#sortSettings) property of the sheet.
+This is done by specifying a region and sort type to the `IgcWorksheet` object's `IgcWorksheetSortSettings` that can be retrieved using the `SortSettings` property of the sheet.
 
-The sort conditions in a sheet are only reapplied when sort conditions are added, removed, modified, or when the [`reapplySortConditions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetsortsettings.html#reapplySortConditions) method is called on the worksheet. Columns or rows will be sorted within the region. "Rows" is the default sort type.
+The sort conditions in a sheet are only reapplied when sort conditions are added, removed, modified, or when the `ReapplySortConditions` method is called on the worksheet. Columns or rows will be sorted within the region. "Rows" is the default sort type.
 
 The following code snippet demonstrates how to apply a sort to a region of cells in a worksheet:
 
@@ -294,8 +287,7 @@ worksheet.sortSettings.sortConditions().addItem(new RelativeIndex(0), new Ordere
 ```
 
 ## Worksheet Protection
-
-You can protect a worksheet by calling the [`protect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#protect) method on the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object. This method exposes many nullable `bool` parameters that allow you to restrict or allow the following user operations:
+You can protect a worksheet by calling the `Protect` method on the `IgcWorksheet` object. This method exposes many nullable `bool` parameters that allow you to restrict or allow the following user operations:
 
 - Editing of cells.
 - Editing of objects such as shapes, comments, charts, or other controls.
@@ -308,7 +300,7 @@ You can protect a worksheet by calling the [`protect`](https://www.infragistics.
 - Sorting of data.
 - Usage of pivot tables.
 
-You can remove worksheet protection by calling the [`unprotect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#unprotect) method on the [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object.
+You can remove worksheet protection by calling the `Unprotect` method on the `IgcWorksheet` object.
 
 The following code snippet shows how to enable protection of all of the above-listed user operations:
 
@@ -321,13 +313,13 @@ worksheet.protect();
 
 ## Worksheet Conditional Formatting
 
-You can configure the conditional formatting of a [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet) object by using the many "Add" methods exposed on the [`conditionalFormats`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#conditionalFormats) collection of that worksheet. The first parameter of these "Add" methods is the `string` region of the worksheet that you would like to apply the conditional format to.
+You can configure the conditional formatting of a `IgcWorksheet` object by using the many "Add" methods exposed on the `ConditionalFormats` collection of that worksheet. The first parameter of these "Add" methods is the `string` region of the worksheet that you would like to apply the conditional format to.
 
-Many of the conditional formats that you can add to your worksheet have a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property that determines the way that the [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html) elements should look when the condition in that conditional format holds true. For example, you can use the properties attached to this [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property such as [`fill`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#fill) and [`font`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworksheetcellformat.html#font) to determine the background and font settings of your cells under a particular conditional format, respectively.
+Many of the conditional formats that you can add to your worksheet have a `IgcIWorksheetCellFormat` property that determines the way that the `IgcWorksheetCell` elements should look when the condition in that conditional format holds true. For example, you can use the properties attached to this `IgcIWorksheetCellFormat` property such as `Fill` and `Font` to determine the background and font settings of your cells under a particular conditional format, respectively.
 
-There are a few conditional formats that do not have a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat) property, as their visualization on the worksheet cell behaves differently. These conditional formats are the [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html), [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html), and [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.iconsetconditionalformat.html).
+There are a few conditional formats that do not have a `IgcIWorksheetCellFormat` property, as their visualization on the worksheet cell behaves differently. These conditional formats are the `IgcDataBarConditionalFormat`, `IgcColorScaleConditionalFormat`, and `IgcIconSetConditionalFormat`.
 
-When loading a pre-existing [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook) from Excel, the formats will be preserved when that [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook) is loaded. The same is true for when you save the [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook) out to an Excel file.
+When loading a pre-existing `IgcWorkbook` from Excel, the formats will be preserved when that `IgcWorkbook` is loaded. The same is true for when you save the `IgcWorkbook` out to an Excel file.
 
 The following code example demonstrates usage of conditional formats on a worksheet:
 
@@ -343,19 +335,13 @@ format.cellFormat.font.colorInfo = new WorkbookColorInfo(color);
 ```
 
 ## API References
-
-- [`cellFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#cellFormat)
-- [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.colorscaleconditionalformat.html)
-- [`conditionalFormats`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#conditionalFormats)
-- [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.databarconditionalformat.html)
-- [`displayOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#displayOptions)
-- [`filterSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#filterSettings)
-- [`showGridlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#showGridlines)
-- [`showRowAndColumnHeaders`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.displayoptions.html#showRowAndColumnHeaders)
-- [`sortSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#sortSettings)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook)
-- [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html)
-- [`WorksheetColumn`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcolumn.html)
-- [`WorksheetFilterSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetfiltersettings.html)
-- [`WorksheetSortSettings`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetsortsettings.html)
-- [`worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetcell.html#worksheet)
+`IgcIWorksheetCellFormat`
+`IgcColorScaleConditionalFormat`
+`IgcDataBarConditionalFormat`
+`IgcDisplayOptions`
+`IgcWorkbook`
+`IgcWorksheetCell`
+`IgcWorksheetColumn`
+`IgcWorksheetFilterSettings`
+`IgcWorksheetSortSettings`
+`IgcWorksheet`

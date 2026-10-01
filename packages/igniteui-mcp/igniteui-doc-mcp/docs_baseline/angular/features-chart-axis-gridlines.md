@@ -1,20 +1,21 @@
 ---
-title: Angular Axis Gridlines | Data Visualization | Infragistics
-_description: Infragistics' Angular Axis Gridlines
-_keywords: Angular Axis, Gridlines, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DomainChart", "XamDataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase" ]
+title: "Angular Axis Gridlines | Data Visualization | Infragistics"
+description: Infragistics' Angular Axis Gridlines
+keywords: "Angular Axis, Gridlines, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase" ]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "All Ignite UI for Angular charts include built-in capability to modify appearance of axis lines as well as frequency of major/minor gridlines and tickmarks that are rendered on the X-Axis and Y-Axis."
 _tocName: Axis Gridlines
 _premium: true
 ---
-
 # Angular Axis Gridlines
 
 All Ignite UI for Angular charts include built-in capability to modify appearance of axis lines as well as frequency of major/minor gridlines and tickmarks that are rendered on the X-Axis and Y-Axis.
 
-> [!Note]
-> the following examples can be applied to [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) as well as [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) controls.
+**Note:** 
+the following examples can be applied to `IgxCategoryChart` as well as `IgxFinancialChart` controls.
 
 Axis major gridlines are long lines that extend horizontally along the Y-Axis or vertically along the X-Axis from locations of axis labels, and they render through the plot area of the chart. Axis minor gridlines are lines that render between axis major gridlines.
 
@@ -236,26 +237,24 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Axis Gridlines Properties
 
 Setting the axis interval property specifies how often major gridlines and axis labels are rendered on an axis. Similarly, the axis minor interval property specifies how frequent minor gridlines are rendered on an axis.
 
-In order to display minor gridlines that correspond to minor interval, you need to set [`xAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorStroke) and [`xAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorStrokeThickness) properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
+In order to display minor gridlines that correspond to minor interval, you need to set `XAxisMinorStroke` and `XAxisMinorStrokeThickness` properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
 
 You can customize how the gridlines are displayed in your Angular chart by setting the following properties:
 
 | Axis Visuals           | Type    | Property Names                                               | Description |
 | -----------------------|---------|--------------------------------------------------------------|---------------- |
-| Major Stroke Color     | string  | [`xAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMajorStroke) <br> [`yAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMajorStroke)                   | These properties set the color of axis major gridlines. |
-| Minor Stroke Color     | string  | [`xAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorStroke) <br> [`yAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMinorStroke)                   | These properties set the color of axis minor gridlines. |
-| Major Stroke Thickness | number  | [`xAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMajorStrokeThickness) <br> [`yAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMajorStrokeThickness) | These properties set the thickness in pixels of the axis major gridlines. |
-| Minor Stroke Thickness | number  | [`xAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorStrokeThickness) <br> [`yAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMinorStrokeThickness) | These properties set the thickness in pixels of the axis minor gridlines. |
-| Major Interval         | number  | [`xAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisInterval) <br> [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisInterval)                         | These properties set interval between axis major gridlines and labels. |
-| Minor Interval         | number  | [`xAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorInterval) <br> [`yAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisMinorInterval)               | These properties set interval between axis minor gridlines, if used. |
-| Axis Line Stroke Color | string  | [`xAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisStroke) <br> [`yAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisStroke)                   | These properties set the color of an axis line. |
-| Axis Stroke Thickness  | number  | [`xAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisStrokeThickness) <br> [`yAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisStrokeThickness) | These properties set the thickness in pixels of an axis line. |
+| Major Stroke Color     | string  | `XAxisMajorStroke` <br /> `YAxisMajorStroke`                   | These properties set the color of axis major gridlines. |
+| Minor Stroke Color     | string  | `XAxisMinorStroke` <br /> `YAxisMinorStroke`                   | These properties set the color of axis minor gridlines. |
+| Major Stroke Thickness | number  | `XAxisMajorStrokeThickness` <br /> `YAxisMajorStrokeThickness` | These properties set the thickness in pixels of the axis major gridlines. |
+| Minor Stroke Thickness | number  | `XAxisMinorStrokeThickness` <br /> `YAxisMinorStrokeThickness` | These properties set the thickness in pixels of the axis minor gridlines. |
+| Major Interval         | number  | `XAxisInterval` <br /> `YAxisInterval`                         | These properties set interval between axis major gridlines and labels. |
+| Minor Interval         | number  | `XAxisMinorInterval` <br /> `YAxisMinorInterval`               | These properties set interval between axis minor gridlines, if used. |
+| Axis Line Stroke Color | string  | `XAxisStroke` <br /> `YAxisStroke`                   | These properties set the color of an axis line. |
+| Axis Stroke Thickness  | number  | `XAxisStrokeThickness` <br /> `YAxisStrokeThickness` | These properties set the thickness in pixels of an axis line. |
 
 Regarding the Major and Minor Interval in the table above, it is important to note that the major interval for axis labels will also be set by this value, displaying one label at the point on the axis associated with the interval. The minor interval gridlines are always rendered between the major gridlines, and as such, the minor interval properties should always be set to something much smaller (usually 2-5 times smaller) than the value of the major Interval properties.
 
@@ -479,9 +478,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The axes of the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) also have the ability to place a dash array on the major and minor gridlines by utilizing the [`majorStrokeDashArray`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#majorStrokeDashArray) and [`minorStrokeDashArray`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#minorStrokeDashArray) properties, respectively. The actual axis line can be dashed as well by setting the [`strokeDashArray`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#strokeDashArray) property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
+The axes of the `IgxDataChart` also have the ability to place a dash array on the major and minor gridlines by utilizing the `MajorStrokeDashArray` and `MinorStrokeDashArray` properties, respectively. The actual axis line can be dashed as well by setting the `StrokeDashArray` property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
 
-The following example demonstrates a [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) with the above dash array properties set:
+The following example demonstrates a `IgxDataChart` with the above dash array properties set:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -652,13 +651,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Axis Tickmarks Example
 
-Axis tick marks are enabled by setting the [`xAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickLength) and [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickLength) properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
+Axis tick marks are enabled by setting the `XAxisTickLength` and `YAxisTickLength` properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
 
-Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickLength) property is set to 5, axis labels will be shifted left by that amount.
+Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the `YAxisTickLength` property is set to 5, axis labels will be shifted left by that amount.
 
 The following example demonstrates how to customize the tickmarks by setting the properties above:
 
@@ -814,17 +811,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Axis Tickmarks Properties
 
 You can customize how the axis tickmarks are displayed in our Angular chats by setting the following properties:
 
 | Axis Visuals           | Type    | Property Names                                             | Description |
 | -----------------------|---------|------------------------------------------------------------|------------------------- |
-| Tick Stroke Color      | string  | [`xAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickStroke) <br> [`yAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickStroke)                   | These properties set the color of the tickmarks. |
-| Tick Stroke Thickness  | number  | [`xAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickStrokeThickness) <br> [`yAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickStrokeThickness) | These properties set the thickness of the axis tick marks. |
-| Tick Stroke Length     | number  | [`xAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickLength) <br> [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickLength)                   | These properties set the length of the axis tick marks. |
+| Tick Stroke Color      | string  | `XAxisTickStroke` <br /> `YAxisTickStroke`                   | These properties set the color of the tickmarks. |
+| Tick Stroke Thickness  | number  | `XAxisTickStrokeThickness` <br /> `YAxisTickStrokeThickness` | These properties set the thickness of the axis tick marks. |
+| Tick Stroke Length     | number  | `XAxisTickLength` <br /> `YAxisTickLength`                   | These properties set the length of the axis tick marks. |
 
 ## Additional Resources
 
@@ -837,25 +832,25 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)                                     | [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) or [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) |
+| `IgxDataChart`                                     | `IgxCategoryChart` or `IgxFinancialChart` |
 | -------------------------------------------------- | ----------------------------------- |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`interval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#interval)             | [`xAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisInterval) (Major Interval) |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`interval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#interval)             | [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisInterval) (Major Interval) |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`minorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#minorInterval)        | [`xAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorInterval)    |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`minorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#minorInterval)        | [`yAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMinorInterval)    |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`majorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#majorStroke)          | [`xAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMajorStroke)    |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`majorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#majorStroke)          | [`yAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMajorStroke)    |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`majorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#majorStrokeThickness) | [`xAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMajorStrokeThickness) |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`majorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#majorStrokeThickness) | [`yAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMajorStrokeThickness) |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`minorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#minorStrokeThickness) | [`xAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorStrokeThickness) |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`minorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#minorStrokeThickness) | [`yAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisMinorStrokeThickness) |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`strokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#strokeThickness)      | [`xAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisStrokeThickness)   |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`strokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#strokeThickness)      | [`yAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisStrokeThickness)   |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`stroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#stroke)               | [`xAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisStroke) (Axis Line Color) |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`stroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#stroke)               | [`yAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisStroke) (Axis Line Color) |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`tickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#tickLength)           | [`xAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickLength)    |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`tickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#tickLength)           | [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickLength)    |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`tickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#tickStroke)           | [`xAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisTickStroke)    |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`tickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#tickStroke)           | [`yAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisTickStroke)    |
-| `Axes` ➔ [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html) ➔ [`strip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#strip)                | [`xAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisStrip) (Space between Major Gridlines) |
-| `Axes` ➔ [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html) ➔ [`strip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html#strip)                | [`yAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisStrip) (Space between Major Gridlines) |
+| `Axes` -> `IgxNumericXAxis` -> `Interval`             | `XAxisInterval` (Major Interval) |
+| `Axes` -> `IgxNumericYAxis` -> `Interval`             | `YAxisInterval` (Major Interval) |
+| `Axes` -> `IgxNumericXAxis` -> `MinorInterval`        | `XAxisMinorInterval`    |
+| `Axes` -> `IgxNumericYAxis` -> `MinorInterval`        | `YAxisMinorInterval`    |
+| `Axes` -> `IgxNumericXAxis` -> `MajorStroke`          | `XAxisMajorStroke`    |
+| `Axes` -> `IgxNumericYAxis` -> `MajorStroke`          | `YAxisMajorStroke`    |
+| `Axes` -> `IgxNumericXAxis` -> `MajorStrokeThickness` | `XAxisMajorStrokeThickness` |
+| `Axes` -> `IgxNumericYAxis` -> `MajorStrokeThickness` | `YAxisMajorStrokeThickness` |
+| `Axes` -> `IgxNumericXAxis` -> `MinorStrokeThickness` | `XAxisMinorStrokeThickness` |
+| `Axes` -> `IgxNumericYAxis` -> `MinorStrokeThickness` | `YAxisMinorStrokeThickness` |
+| `Axes` -> `IgxNumericXAxis` -> `StrokeThickness`      | `XAxisStrokeThickness`   |
+| `Axes` -> `IgxNumericYAxis` -> `StrokeThickness`      | `YAxisStrokeThickness`   |
+| `Axes` -> `IgxNumericXAxis` -> `Stroke`               | `XAxisStroke` (Axis Line Color) |
+| `Axes` -> `IgxNumericYAxis` -> `Stroke`               | `YAxisStroke` (Axis Line Color) |
+| `Axes` -> `IgxNumericXAxis` -> `TickLength`           | `XAxisTickLength`    |
+| `Axes` -> `IgxNumericYAxis` -> `TickLength`           | `YAxisTickLength`    |
+| `Axes` -> `IgxNumericXAxis` -> `TickStroke`           | `XAxisTickStroke`    |
+| `Axes` -> `IgxNumericYAxis` -> `TickStroke`           | `YAxisTickStroke`    |
+| `Axes` -> `IgxNumericXAxis` -> `Strip`                | `XAxisStrip` (Space between Major Gridlines) |
+| `Axes` -> `IgxNumericYAxis` -> `Strip`                | `YAxisStrip` (Space between Major Gridlines) |

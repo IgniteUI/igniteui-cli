@@ -1,19 +1,18 @@
 ---
-title: Blazor Grid for Ignite UI for Blazor for
-_description: Use Blazor Grid for essential UI operations. Hosts different UI controls for the Grid’s features - column hiding, pinning, excel exporting, etc.
-_keywords: Blazor, Grid, Grid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["GridToolbar"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid", "GridToolbarActions"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/toolbar
+title: "Blazor Grid for Ignite UI for Blazor for"
+description: Use Blazor Grid for essential UI operations. Hosts different UI controls for the Grid’s features - column hiding, pinning, excel exporting, etc.
+keywords: "Blazor, Grid, Grid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/toolbar"
+llms:
+  description: "The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blazor Grid."
+_componentKey: Grid
 _tocName: Toolbar
 _premium: true
 ---
-
 # Blazor Grid Toolbar
 
-The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blazor Grid. The Blazor toolbar is located at the top of the Blazor component, i.e., the [`Grid`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=Grid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Blazor Grid includes:
+The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blazor Grid. The Blazor toolbar is located at the top of the Blazor component, i.e., the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Blazor Grid includes:
 
 - Column Hiding
 - Column Pinning
@@ -21,8 +20,6 @@ The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blaz
 - Advanced Filtering
 
 The toolbar and the predefined UI components support Blazor events and expose API for developers.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ## Blazor Toolbar Grid Example
 
@@ -153,9 +150,7 @@ public class AthletesData
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-The predefined [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) and [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle) UI components are added inside the [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
+The predefined [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) and [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle) UI components are added inside the [`IgbGrid.toolbar`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=toolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
 ```razor
 <IgbGrid>
@@ -174,10 +169,8 @@ The predefined [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&c
 </IgbGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-> [!Note]
-> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+**Note:** 
+As seen in the code snippet above, the predefined [`Actions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions&member=actions) UI components are wrapped in the [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
 
@@ -187,8 +180,6 @@ Of course, each of these UIs can be added independently of each other, or may no
     </IgbGridToolbar>
 </IgbGrid>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
 
@@ -201,8 +192,6 @@ As shown above, it can be configured to provide default components for controlli
 These features can be enabled independently from each other by following a pattern similar to the card component of the Ignite UI for Blazor suite.
 
 Listed below are the main features of the toolbar with example code for each of them.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -331,15 +320,11 @@ public class AthletesData
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ### Title
 
 Setting a title for the toolbar in your grid is achieved by using the [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle).
 
 Users can provide anything from simple text to more involved templates.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <IgbGridToolbar>
@@ -347,15 +332,11 @@ Users can provide anything from simple text to more involved templates.
 </IgbGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Actions
 
 The [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <IgbGridToolbar>
@@ -365,15 +346,11 @@ toolbar interaction components.
 </IgbGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Column Pinning
 
 The [`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <IgbGridToolbar>
@@ -383,14 +360,10 @@ The component is setup to work out of the box with the parent grid containing th
 </IgbGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Column Hiding
 
 The [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <IgbGridToolbar>
@@ -400,13 +373,9 @@ title, the placeholder for the component input and the height of the dropdown it
 </IgbGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <IgbGridToolbar>
@@ -415,8 +384,6 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
     </IgbGridToolbarActions>
 </IgbGridToolbar>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### Data Exporting
 
@@ -428,8 +395,6 @@ These range from changing the display text, to enabling/disabling options in the
 
 Here is a snippet showing some of the options which can be customized through the Blazor template:
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 ```razor
 <IgbGridToolbar>
     <IgbGridToolbarActions>
@@ -438,14 +403,12 @@ Here is a snippet showing some of the options which can be customized through th
 </IgbGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> [!Note]
-> By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
-> You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
-> You can also cancel the export process by setting the cancel field of the event args to true.
+**Note:** 
+By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
+You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
+You can also cancel the export process by setting the cancel field of the event args to true.
 
 The following code snippet demonstrates subscribing to the toolbar exporting event and configuring the exporter options:
 
@@ -453,7 +416,7 @@ The following code snippet demonstrates subscribing to the toolbar exporting eve
 <IgbGridToolbarExporter ExportStartedScript="WebGridToolbarExporting"></IgbGridToolbarExporter>
 ```
 
-```razor
+```javascript
 // In Javascript
 igRegisterScript("WebGridToolbarExporting", (evt) => {
         const args = evt.detail;
@@ -464,8 +427,6 @@ igRegisterScript("WebGridToolbarExporting", (evt) => {
         });
 }, false);
 ```
-
-<!-- ComponentEnd: Grid -->
 
 The following sample demonstrates how to customize the exported files:
 
@@ -591,11 +552,9 @@ public class AthletesData
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
 
-Moreover, users can set the toolbar [`ShowProgress`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=ShowProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
+Moreover, users can set the toolbar [`ShowProgress`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
 
 The sample belows uses has significant amount of data, in order to increase the time needed for data export so the progressbar can be seen. Additionally it has another button that simulates a long running operation in the grid:
-
-<!-- NOTE this sample is differed -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -746,8 +705,6 @@ If the actions part of the toolbar component is not sufficient for a particular 
 
 Here is a sample snippet:
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 ```razor
 <IgbGrid>
     <IgbGridToolbar>
@@ -761,8 +718,6 @@ Here is a sample snippet:
     </IgbGridToolbar>
 </IgbGrid>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 
@@ -934,7 +889,7 @@ public class PlayersData // AthletesData
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -1082,20 +1037,13 @@ public class AthletesData
 ```
 
 ## API References
-
-The Grid Toolbar service has a few more APIs to explore, which are listed below.
-
-- [`IgbGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarAdvancedFiltering)
-- [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
-- [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter)
-- [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding)
-- [`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning)
-- [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle)
-
-[`Grid`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=Grid) Events:
-
-- `ToolbarExporting`
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
+[`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle)
+[`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter)
+[`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning)
+[`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding)
+[`IgbGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarAdvancedFiltering)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

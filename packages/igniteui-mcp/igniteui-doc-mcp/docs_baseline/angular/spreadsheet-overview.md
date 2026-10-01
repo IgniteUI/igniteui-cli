@@ -1,15 +1,17 @@
 ---
-title: Angular Spreadsheet Component – Ignite UI for Angular
-_description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for Angular Spreadsheet. Manage tabular data the way you want!
-_keywords: Excel Spreadsheet, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Spreadsheet Component – Ignite UI for Angular"
+description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for Angular Spreadsheet. Manage tabular data the way you want!
+keywords: Excel Spreadsheet, Ignite UI for Angular, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "The Angular Spreadsheet (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more."
 _tocName: Spreadsheet
+_premium: true
 ---
-
 # Angular Spreadsheet Overview
 
-The Angular Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html) is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
+The Angular Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The `IgxSpreadsheet` is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
 
 ## Angular Spreadsheet Example
 
@@ -109,8 +111,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Functionality
 
 - Features
@@ -155,7 +155,7 @@ npm install --save igniteui-angular-spreadsheet
 
 ## Component Modules
 
-The [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html) requires the following modules:
+The `IgxSpreadsheet` requires the following modules:
 
 ```ts
 import { IgxExcelModule } from 'igniteui-angular-excel';
@@ -172,8 +172,6 @@ import { IgxSpreadsheetModule } from 'igniteui-angular-spreadsheet';
 export class AppModule {}
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Now that the Angular spreadsheet module is imported, next is the basic configuration of the spreadsheet.
@@ -183,9 +181,9 @@ Now that the Angular spreadsheet module is imported, next is the basic configura
 </igx-spreadsheet>
 ```
 
-> [!Note]
->
-> In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html#workbook).
+**Note:** 
+
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
 
 The following demonstrates how to load a workbook into the Angular spreadsheet
 
@@ -208,5 +206,5 @@ ngOnInit() {
 
 ## API References
 
-- [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html#workbook)
+`IgxSpreadsheet`<br />
+`IgxWorkbook`<br />

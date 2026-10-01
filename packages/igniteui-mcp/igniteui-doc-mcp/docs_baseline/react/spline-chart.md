@@ -1,20 +1,21 @@
 ---
-title: React Spline Chart | Data Visualization | Infragistics
-_description: Infragistics' React Spline Chart
-_keywords: React Charts, Spline Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "SplineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "Series", "CategoryChartType"]
+title: "React Spline Chart | Data Visualization | Infragistics"
+description: Infragistics' React Spline Chart
+keywords: "React Charts, Spline Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "SplineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "Series", "CategoryChartType"]
+llms:
+  description: "The Ignite UI for React Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline."
 _tocName: Spline Chart
 _premium: true
 ---
-
 # React Spline Chart
 
-The Ignite UI for React Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline. Values are represented on the y-axis and categories are displayed on the x-axis. Spline Chart emphasizes the amount of change over a period of time or compares multiple items as well as the relationship of parts to a whole by displaying the total of the plotted values. Spline Chart is identical to [Line Chart](line-chart.md) in all aspects except that line connecting data points has spline interpolation and smoothing for improved presentation of data.
+The Ignite UI for React Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline. Values are represented on the y-axis and categories are displayed on the x-axis. Spline Chart emphasizes the amount of change over a period of time or compares multiple items as well as the relationship of parts to a whole by displaying the total of the plotted values. Spline Chart is identical to [Line Chart](./line-chart.md) in all aspects except that line connecting data points has spline interpolation and smoothing for improved presentation of data.
 
 ## React Spline Chart Example
 
-The following example shows how to create React Spline Chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Spline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Spline) enum.
+The following example shows how to create React Spline Chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline` enum.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -131,13 +132,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Spline Chart with Single Series
 
 The Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period for Europe, as shown in the example below.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Spline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Spline), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -242,13 +241,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Spline Chart with Multiple Series
 
 Since the Spline Chart allows you to combine multiple series and compare or see how they change over time. All we need to do is bind to a data source containing the data for China and the USA, and the chart will automatically update to fit the additional data.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Spline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Spline), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -365,13 +362,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Spline Chart Styling
 
 If you need a Spline Chart with more features such as composite other series, you can configure the markers, marker brushes, marker outlines, series brushes and series outlines as demonstrated below.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Spline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Spline), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -492,17 +487,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Spline Charts
 
-The following sections explain more advanced types of React Spline Charts that can be created using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control instead of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control with simplified API.
+The following sections explain more advanced types of React Spline Charts that can be created using the `IgrDataChart` control instead of `IgrCategoryChart` control with simplified API.
 
 ## React Stacked Spline Chart
 
 The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions, as we have shown in the example below.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedSplineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -682,13 +675,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Spline Chart
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100SplineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -863,17 +854,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Line Chart](spline-chart.md)
-- [Polar Chart](polar-chart.md)
-- [Radial Chart](radial-chart.md)
-- [Stacked Chart](stacked-chart.md)
+- [Area Chart](./area-chart.md)
+- [Line Chart](./spline-chart.md)
+- [Polar Chart](./polar-chart.md)
+- [Radial Chart](./radial-chart.md)
+- [Stacked Chart](./stacked-chart.md)
 
 ## API References
 
@@ -881,6 +870,11 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members |
 | --------------------|--------------------|-------------------------- |
-| Spline              | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) | [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) = [`Spline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Spline) |
-| Stacked Spline      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html) |
-| Stacked 100% Spline | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html) |
+| Spline              | `IgrCategoryChart` | `CategoryChart.ChartType` = `Spline` |
+| Stacked Spline      | `IgrDataChart`     | `IgrStackedSplineSeries` |
+| Stacked 100% Spline | `IgrDataChart`     | `IgrStacked100SplineSeries` |
+
+`IgrCategoryChart`<br />
+`IgrDataChart`<br />
+`IgrStackedSplineSeries`<br />
+`IgrStacked100SplineSeries`<br />

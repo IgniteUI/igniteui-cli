@@ -1,18 +1,19 @@
 ---
 title: Elevations (Shadows)
-_description:
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+llms:
+  description: "Elevations are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation."
 _tocName: Elevations
 ---
-
 # Elevations
 
-<p class="highlight">
+<div class="highlight">
 
 Elevations are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation. The implementation of the Elevations in Ignite UI for Angular is modeled after the [Elevations in Material Design](https://material.io/design/environment/elevation.html#elevation-in-material-design).
 
-</p>
-<div class="divider"></div>
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -91,7 +92,7 @@ Elevations can be created and consumed in a more powerful way using Sass as well
 
 Related topics:
 
-- [Elevations with Sass](./sass/elevations.md)
+- [Elevations with Sass](/themes/sass/elevations)
 
 Our community is active and always welcoming to new ideas.
 

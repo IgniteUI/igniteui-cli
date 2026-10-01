@@ -1,19 +1,16 @@
 ---
 title: Angular Theming MCP | Infragistics
-_description: Use the Ignite UI Theming MCP server to generate Ignite UI for Angular palettes, themes, typography, and design token overrides through your AI assistant.
-_keywords: Ignite UI for Angular controls, Angular widgets, web widgets, UI widgets, Components Suite, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations
-_license: MIT
-mentionedTypes: []
+description: Use the Ignite UI Theming MCP server to generate Ignite UI for Angular palettes, themes, typography, and design token overrides through your AI assistant.
+keywords: Ignite UI for Angular controls, Angular widgets, web widgets, UI widgets, Components Suite, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations
+llms:
+  description: "The Ignite UI Theming MCP is a Model Context Protocol (MCP) server that enables AI assistants to generate production-ready theming code for Ignite UI applications."
 _tocName: Theming MCP
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Ignite UI Theming MCP
 
 <p class="highlight">The Ignite UI Theming MCP is a <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a> (MCP) server that enables AI assistants to generate production-ready theming code for Ignite UI applications. MCP is an open standard that lets AI assistants call specialized tools provided by external servers. Connect the Ignite UI Theming MCP to your editor or desktop AI client and describe the theme, palette, or component overrides you want generated.</p>
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -59,8 +56,8 @@ The canonical launch command is:
 npx -y igniteui-theming igniteui-theming-mcp
 ```
 
-> [!NOTE]
-> The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
+**Note:** 
+The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
 
 ### How version resolution works
 
@@ -87,8 +84,8 @@ GitHub Copilot in VS Code supports MCP servers through a workspace-level configu
 
 Once saved, open the GitHub Copilot chat panel, switch to **Agent** mode, and the Ignite UI Theming tools will be available.
 
-> [!NOTE]
-> MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
+**Note:** 
+MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
 
 ### Cursor
 
@@ -107,8 +104,8 @@ Cursor supports project-scoped MCP configuration. Create or edit `.cursor/mcp.js
 
 The server will be picked up automatically when you open a new Cursor chat session.
 
-> [!NOTE]
-> You can also configure MCP servers globally via **Settings → MCP** in Cursor.
+**Note:** 
+You can also configure MCP servers globally via **Settings → MCP** in Cursor.
 
 ### Claude Desktop
 
@@ -178,8 +175,8 @@ JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 5. Click **OK** and restart the AI Assistant.
 
-> [!NOTE]
-> MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
+**Note:** 
+MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
 
 ### Other MCP Clients
 
@@ -230,8 +227,8 @@ globs: ["**/*.scss", "**/styles/**"]
 - For dark mode, only the palette changes. Component overrides stay the same.
 ```
 
-> [!NOTE]
-> Both files are committed to source control, so every team member gets the same AI behavior without manual setup. Adapt the brand colors, design system, and file paths to match your project.
+**Note:** 
+Both files are committed to source control, so every team member gets the same AI behavior without manual setup. Adapt the brand colors, design system, and file paths to match your project.
 
 ## Available Tools
 
@@ -242,6 +239,9 @@ To see the current full list of tools and their parameters at any time, ask your
 > _"What tools does the Ignite UI Theming MCP provide?"_
 
 Here is a brief overview of each tool:
+
+**Note:** 
+When it generates a palette, the server checks the contrast ratio between your surface and gray colors against WCAG thresholds and warns you when the pairing falls short. See [Accessibility](../themes/accessibility.md) for the contrast behavior built into the theming engine itself.
 
 | Tool | Description |
 |------|-------------|
@@ -259,11 +259,11 @@ Here is a brief overview of each tool:
 | `get_color` | Returns a CSS variable reference for a palette color, e.g. `var(--ig-primary-500)`. Supports optional contrast and opacity parameters. |
 | `read_resource` | Reads built-in reference resources organized into four categories: platform configs (6), palette/typography/elevation presets (5), color guidance (7), and layout/spacing docs (8). |
 
-> [!NOTE]
-> For compound components (e.g., `combo`, `select`, `grid`), `get_component_design_tokens` returns a list of related child themes instead of a flat token list. For example, querying `grid` may return child themes such as `grid`, `grid-toolbar`, `grid-filtering`, and `paginator`. The AI will generate a separate `create_component_theme` call for each child theme using the appropriate scoped selector.
+**Note:** 
+For compound components (e.g., `combo`, `select`, `grid`), `get_component_design_tokens` returns a list of related child themes instead of a flat token list. For example, querying `grid` may return child themes such as `grid`, `grid-toolbar`, `grid-filtering`, and `paginator`. The AI will generate a separate `create_component_theme` call for each child theme using the appropriate scoped selector.
 
-> [!NOTE]
-> If your project uses the licensed `@infragistics/igniteui-angular` package, tell the AI so it can set the `licensed` parameter on palette, theme, and component tools. This adjusts the generated import paths accordingly.
+**Note:** 
+If your project uses the licensed `@infragistics/igniteui-angular` package, tell the AI so it can set the `licensed` parameter on palette, theme, and component tools. This adjusts the generated import paths accordingly.
 
 ## Common Workflows
 
@@ -350,17 +350,7 @@ Also confirm that `core()` is called before any other theming mixin in your `sty
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [MAKER Framework](./maker-framework.md)
 
-<!-- Ideally these should be included once documentation is combined
-- [Theming Overview](../themes/index.md)
-- [Palettes](../themes/palettes.md)
-- [Typography](../themes/typography.md)
-- [Elevations](../themes/elevations.md)
-- [Spacing](../themes/spacing.md)
-- [Roundness](../themes/roundness.md)
-- [Theming with Sass](../themes/sass/index.md)
--->
-
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

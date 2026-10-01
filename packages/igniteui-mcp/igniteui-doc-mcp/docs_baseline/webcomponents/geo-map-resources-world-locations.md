@@ -1,13 +1,14 @@
 ---
-title: Web Components Map | World Locations | Data Source | Infragistics
-_description: Use Infragistics' Web Components JavaScript map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, map data, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Web Components Map | World Locations | Data Source | Infragistics"
+description: Use Infragistics' Web Components JavaScript map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, map data, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of data utility for generating geographic locations of cities and capitals of countries."
 _tocName: World Locations
 _premium: true
 ---
-
 # Web Components World Locations
 
 The resource topic provides implementation of data utility for generating geographic locations of cities and capitals of countries.
@@ -658,5 +659,4 @@ export default class WorldLocations {
 ```
 
 ## API References
-
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcGeographicMap`

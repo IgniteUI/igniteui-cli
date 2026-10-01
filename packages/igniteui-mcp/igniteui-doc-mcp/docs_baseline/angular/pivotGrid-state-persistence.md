@@ -1,16 +1,22 @@
 ---
 title: Angular Pivot Grid State Persistence - Ignite UI for Angular
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Angular. Learn how to restore configuration, explore usage, and see demos!
-_keywords: state persistence, ignite ui for angular, infragistics
-_license: commercial
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Angular. Learn how to restore configuration, explore usage, and see demos!
+keywords: state persistence, ignite ui for angular, infragistics
+license: commercial
 _canonicalLink: grid/state-persistence
+llms:
+  description: "The igxGridState directive allows developers to easily save and restore the grid state."
 _tocName: State Persistence
 _premium: true
 ---
 # Angular Pivot Grid State Persistence
-Тhe igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive is applied on the grid, it exposes the [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) methods that developers can use to achieve state persistence in any scenario.
+
+The igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive is applied on the grid, it exposes the [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) methods that developers can use to achieve state persistence in any scenario.
+
 ## Supported Features
-[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive supports saving and restoring the state of the following features:
+
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive supports saving and restoring the state of the following features:
+
 - `Sorting`
 - `Filtering`
 - `Cell Selection`
@@ -18,66 +24,90 @@ _premium: true
 - `Column Selection`
 - `Expansion`
 - `Pivot Configuration`
-  - Pivot Configuration properties defined by the [`IPivotConfiguration`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration) interface.
-  - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](state-persistence.md#restoring-pivot-configuration) section.
-  - Pivot Row and Column strategies are also restored using application level code, see [Restoring Pivot Strategies](state-persistence.md#restoring-pivot-strategies) section.
->[!NOTE]
-> The `Row Selection`  feature requires the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) property to be set, so it can be stored/restored correctly.
+  - Pivot Configuration properties defined by the [`IgxIPivotConfiguration`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration) interface.
+  - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](/pivotgrid/state-persistence#restoring-pivot-configuration) section.
+  - Pivot Row and Column strategies are also restored using application level code, see [Restoring Pivot Strategies](/pivotgrid/state-persistence#restoring-pivot-strategies) section.
+
+**Note:** 
+The `Row Selection` feature requires the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) property to be set, so it can be stored/restored correctly.
+
 ## Usage
-[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
+
+[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
 The developer may choose to get only the state for a certain feature/features, by passing in the feature name, or an array with feature names as a second argument.
+
 ```typescript
 // get all features` state in a serialized JSON string
 const gridState = state.getState();
+
 // get an `IGridState` object, containing all features original state objects, as returned by the grid public API
 const gridState: IGridState = state.getState(false);
+
 // get the sorting and filtering expressions
 const sortingFilteringStates: IGridState = state.getState(false, ['sorting', 'filtering']);
 ```
-[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+
+[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+
 ```typescript
 state.setState(gridState);
 state.setState(sortingFilteringStates)
 ```
-`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+
+`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IgxIGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+
 ```typescript
 public options =  { cellSelection: false; sorting: false; }
 ```
+
 ```html
 <igx-pivot-grid [igxGridState]="options"></igx-pivot-grid>
 ```
+
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `sessionStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
+
 ```typescript
 // app.component.ts
 @ViewChild(IgxGridStateDirective, { static: true })
 public state!: IgxGridStateDirective;
+
 public ngOnInit() {
     this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
         this.saveGridState();
     });
 }
+
 public ngAfterViewInit() {
     this.restoreGridState();
 }
+
 public saveGridState() {
     const state = this.state.getState() as string;
     window.sessionStorage.setItem('grid1-state', state);
 }
+
 public restoreGridState() {
     const state = window.sessionStorage.getItem('grid1-state');
     this.state.setState(state);
 }
 ```
+
 ## Restoring Pivot Configuration
-[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist pivot dimension functions, value formatters, etc. by default (see [`limitations`](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The `IgxPivotGrid` exposes two events which can be used to set back any custom functions you have in the configuration: [`dimensionInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=dimensionInit) and [`valueInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=valueInit). Let's show how to do this:
+
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist pivot dimension functions, value formatters, etc. by default (see [`limitations`](/pivotgrid/state-persistence#limitations)). Restoring any of these can be achieved with code on application level. The `IgxPivotGrid` exposes two events which can be used to set back any custom functions you have in the configuration: [`dimensionInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=dimensionInit) and [`valueInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=valueInit). Let's show how to do this:
+
 - Assign event handlers for the `dimensionInit` and `valueInit` events:
+
 ```html
 <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfig" [igxGridState]="options"
     (valueInit)='onValueInit($event)' (dimensionInit)='onDimensionInit($event)'>
 </igx-pivot-grid>
 ```
+
 > The [`dimensionInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=dimensionInit) and [`valueInit`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=valueInit) events are emitted for each value and dimension defined in the [`pivotConfiguration`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=pivotConfiguration) property.
+
 - In the `valueInit` event handler set all custom aggregators, formatters and styles:
+
 ```typescript
 public onValueInit(value: IPivotValue) {
     // Needed only for custom aggregators, formatter or styles.
@@ -103,7 +133,9 @@ public onValueInit(value: IPivotValue) {
     }
 }
 ```
+
 - In the `dimensionInit` event handler set all custom `memberFunction` implementations:
+
 ```typescript
 public onDimensionInit(dim: IPivotDimension) {
     switch (dim.memberName) {
@@ -122,7 +154,7 @@ public onDimensionInit(dim: IPivotDimension) {
     }
 }
 ```
-## Demo
+
 ```typescript
 import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren, inject } from "@angular/core";
 import { NavigationStart, Router, RouterLink } from "@angular/router";
@@ -508,18 +540,25 @@ igx-pivot-grid {
     margin-right: 10px;
 }
 ```
+
 ## Restoring Pivot Strategies
-[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist neither remote pivot operations nor custom dimension strategies (For further information see [Pivot Grid Remote Operations](pivot-grid-custom.md) sample) by default (see [`limitations`](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The `IgxGridState` exposes an event called [`stateParsed`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=stateParsed) which can be used to additionally modify the grid state before it gets applied. Let's show how to do this:
-> [`stateParsed`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective) is only emitted when we are using [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) with string argument.
+
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist neither remote pivot operations nor custom dimension strategies (For further information see [Pivot Grid Remote Operations](/pivotgrid/pivot-grid-custom) sample) by default (see [`limitations`](/pivotgrid/state-persistence#limitations)). Restoring any of these can be achieved with code on application level. The `IgxGridState` exposes an event called [`stateParsed`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=stateParsed) which can be used to additionally modify the grid state before it gets applied. Let's show how to do this:
+
+> [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) is only emitted when we are using [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) with string argument.
+
 - Set custom sorting strategy and custom pivot column and row dimension strategies:
+
 ```html
 <igx-pivot-grid #grid [data]="data" [pivotConfiguration]="pivotConfigHierarchy" [defaultExpandState]='true'
     [igxGridState]="options" [sortStrategy]="customStrategy" [pivotUI]='{ showConfiguration: false }' [superCompactMode]="true" [height]="'500px'">
 </igx-pivot-grid>
 ```
+
 ```typescript
 @ViewChild(IgxGridStateDirective, { static: true })
 public state!: IgxGridStateDirective;
+
 public customStrategy = NoopSortingStrategy.instance();
 public options: IGridStateOptions = {...};
 public pivotConfigHierarchy: IPivotConfiguration = {
@@ -531,7 +570,9 @@ public pivotConfigHierarchy: IPivotConfiguration = {
     filters: [...]
 };
 ```
+
 - Restoring the state from the `sessionStorage` and applying the custom strategies looks like the following:
+
 ```typescript
 public restoreState() {
     const state = window.sessionStorage.getItem('grid-state');
@@ -543,6 +584,7 @@ public restoreState() {
     this.state.setState(state as string);
 }
 ```
+
 ```typescript
 import { AfterViewInit, Component, ViewChild, inject } from "@angular/core";
 import { IGridState, IGridStateOptions, IPivotConfiguration, IgxGridStateDirective, IgxPivotNumericAggregate, NoopPivotDimensionsStrategy } from 'igniteui-angular/grids/core';
@@ -695,16 +737,20 @@ export class PivotGridNoopPersistenceSampleComponent implements AfterViewInit {
     }
 }
 ```
+
 ## Limitations
-- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive will ignore the pivot dimension [`memberFunction`](mcp:get_api_reference?platform=angular&component=IPivotDimension&member=memberFunction), pivot values [`member`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=member), [`formatter`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=formatter), custom [`aggregate`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=aggregate) functions,
- [`styles`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=styles) and pivot configuration strategies: [`columnStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=columnStrategy) and [`rowStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=rowStrategy).
-<div class="divider--half"></div>
+
+- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive will ignore the pivot dimension [`IgxIPivotDimension.memberFunction`](mcp:get_api_reference?platform=angular&component=IPivotDimension&member=memberFunction), pivot values [`IgxIPivotValue.member`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=member), [`IgxIPivotValue.formatter`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=formatter), custom [`IgxIPivotValue.aggregate`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=aggregate) functions,
+ [`IgxIPivotValue.styles`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=styles) and pivot configuration strategies: [`IgxIPivotConfiguration.columnStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=columnStrategy) and [`IgxIPivotConfiguration.rowStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=rowStrategy).
+
 ## API References
-- [IgxPivotGridComponent](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
-- [IgxGridStateDirective](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective)
+
+- [`IgxPivotGrid`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
+- [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective)
+
 ## Additional Resources
-<div class="divider--half"></div>
-- [Pivot Grid Overview](pivot-grid.md)
-- [Pivot Grid Remote Operations](pivot-grid-custom.md)
-- [Pivot Grid Features](pivot-grid-features.md)
+
+- [Pivot Grid Overview](/pivotgrid/pivot-grid)
+- [Pivot Grid Remote Operations](/pivotgrid/pivot-grid-custom)
+- [Pivot Grid Features](/pivotgrid/pivot-grid-features)
 

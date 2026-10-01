@@ -1,10 +1,11 @@
 ---
 title: Code Splitting and Multiple Entry Points | Ignite UI for Angular | Infragistics
-_description: Learn how to optimize your Angular application bundle size using Ignite UI for Angular's multiple entry points for better tree-shaking and code splitting.
-_keywords: ignite ui for angular, code splitting, entry points, tree-shaking, lazy loading, bundle optimization
+description: Learn how to optimize your Angular application bundle size using Ignite UI for Angular's multiple entry points for better tree-shaking and code splitting.
+keywords: ignite ui for angular, code splitting, entry points, tree-shaking, lazy loading, bundle optimization
+llms:
+  description: "Starting with version 21.0.0, Ignite UI for Angular supports multiple entry points, enabling better tree-shaking, code splitting, and lazy loading of components."
 _tocName: Multiple Entry Points
 ---
-
 # Code Splitting and Multiple Entry Points
 
 Starting with version 21.0.0, Ignite UI for Angular supports multiple entry points, enabling better tree-shaking, code splitting, and lazy loading of components. This architectural improvement allows you to import only the components and utilities you need, significantly reducing your application's bundle size.
@@ -311,15 +312,13 @@ ng update igniteui-angular --migrate-only --from=20.1.0 --to=21.0.0
 ## Additional Resources
 
 - [Angular Package Format - Entry Points and Code Splitting](https://angular.io/guide/angular-package-format#entrypoints-and-code-splitting)
-- [Ignite UI for Angular Update Guide](update-guide.md)
+- [Ignite UI for Angular Update Guide](/general/update-guide)
 - [Ignite UI for Angular CHANGELOG](https://github.com/IgniteUI/igniteui-angular/blob/master/CHANGELOG.md)
 - [Ignite UI for Angular GitHub Repository](https://github.com/IgniteUI/igniteui-angular)
 
 ## API References
-
 For detailed information about specific components and their APIs, refer to the component documentation:
-
-- [Grid](../grid/grid.md)
-- [Tree Grid](../treegrid/tree-grid.md)
-- [Hierarchical Grid](../hierarchicalgrid/hierarchical-grid.md)
-- [Pivot Grid](../pivotGrid/pivot-grid.md)
+- [Grid](/grid/grid)
+- [Tree Grid](/treegrid/tree-grid)
+- [Hierarchical Grid](/hierarchicalgrid/hierarchical-grid)
+- [Pivot Grid](/pivotgrid/pivot-grid)

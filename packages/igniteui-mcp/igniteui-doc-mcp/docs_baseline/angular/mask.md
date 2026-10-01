@@ -1,11 +1,12 @@
 ---
 title: Angular Mask Directive Component | Ignite UI for Angular | MIT license
-_description: With the Mask Directive in Ignite UI for Angular, the developer can control user input and format the visible value based on configurable mask rules, providing different input options and ease in use and configuration.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular mask directive, Mask, Directive, Mask Editor, Angular Mask Editor
-_license: MIT
+description: With the Mask Directive in Ignite UI for Angular, the developer can control user input and format the visible value based on configurable mask rules, providing different input options and ease in use and configuration.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Angular mask directive, Mask, Directive, Mask Editor, Angular Mask Editor
+license: MIT
+llms:
+  description: "By applying the igxMask directive on a text input field, the developer can control user input and format the visible value, based on configurable mask rules."
 _tocName: Mask
 ---
-
 # Angular Mask Directive Overview
 
 By applying the [`igxMask`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective) directive on a **text input field**, the developer can control user input and format the visible value, based on configurable mask rules. It provides different input options and ease in use and configuration.
@@ -40,7 +41,7 @@ export class MaskSample2Component {
 </igx-input-group>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Mask
 
@@ -50,12 +51,13 @@ To get started with the Ignite UI for Angular Mask directive, first you need to 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxMaskModule` and `IgxInputGroupModule` in your **app.module.ts** file.
 
->[!NOTE]
->[`igxMask`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective) directive is used on an input of type **text**.
+**Note:** 
+[`igxMask`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective) directive is used on an input of type **text**.
+
 
 ```typescript
 // app.module.ts
@@ -99,8 +101,9 @@ import { IgxMaskDirective, IGX_INPUT_GROUP_DIRECTIVES } from 'igniteui-angular/i
 export class HomeComponent {}
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Mask module or directive imported, you can start using the `igxMask` directive.
 
@@ -108,7 +111,7 @@ Now that you have the Ignite UI for Angular Mask module or directive imported, y
 
 ### Supported Built-in Mask Rules
 
-<div class="divider--half"></div>
+<hr/>
 
 | Mask Character | Description                                         |
 | :------------- | :-------------------------------------------------- |
@@ -127,7 +130,7 @@ Now that you have the Ignite UI for Angular Mask module or directive imported, y
 In the following example, we apply a phone number with an extension mask to an input.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-input-group>
     <igx-prefix>
@@ -140,15 +143,15 @@ In the following example, we apply a phone number with an extension mask to an i
 
 If configured properly, you should see the demo sample in your browser.
 
->[!NOTE]
-> The `IgxMaskDirective` supports IME input and updates the mask when composition ends.
+**Note:** 
+The `IgxMaskDirective` supports IME input and updates the mask when composition ends.
 
 ### Bind to Formatted/Raw Value
 
 Use the [`includeLiterals`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=includeLiterals) input to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`includeLiterals`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=includeLiterals) is set to _false_ and the raw value is used.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-switch [(ngModel)]="includeLiterals" (change)="clear()">
     Include Literals
@@ -182,7 +185,6 @@ public clear() {
     }
 }
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -237,13 +239,12 @@ export class MaskSample3Component {
 }
 ```
 
-
 ### Validate Masked Values
 
 In addition to setting a mask to an input, you can validate the entered value as well. The following example implements masks, validation and notification for invalid data using the Mask directive and Snack Bar component.
 
 ```html
-<!--sample.component.html-->
+{/*sample.component.html*/}
 
 <igx-input-group>
     <label igxLabel for="birthday">Birthday</label>
@@ -272,7 +273,6 @@ private notify(snackbar, message, input) {
     snackbar.show();
 }
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -321,11 +321,11 @@ igx-snackbar {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Text Selection
 
-You can force the component to select all of the input text on focus using [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective). Find more info on `igxTextSelection` at [Label & Input](label-input.md#focus--text-selection).
+You can force the component to select all of the input text on focus using [`IgxTextSelectionDirective`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective). Find more info on `igxTextSelection` at [Label & Input](/label-input#focus--text-selection).
 
 Import the `IgxTextSelectionModule` in your **app.module.ts** file:
 
@@ -352,8 +352,8 @@ Then add this to the template:
 
 You can see how this works in the previous sample.
 
->[!NOTE]
->In order for the component to work properly, it is crucial to set `igxTextSelection` after the `igxMask` directive. The reason for this is both directives operate on the input `focus` event so text selection should happen after the mask is set.
+**Note:** 
+In order for the component to work properly, it is crucial to set `igxTextSelection` after the `igxMask` directive. The reason for this is both directives operate on the input `focus` event so text selection should happen after the mask is set.
 
 ### Apply additional formatting on focus and blur
 
@@ -410,7 +410,6 @@ public inputFormat = new InputFormatPipe();
 ```
 
 As a result, a '%' sign should be appended to the value on blur (i.e. when the user clicks outside the input) and will be removed once the input gets focus!
-
 
 ```typescript
 import { Component, Pipe, PipeTransform } from '@angular/core';
@@ -471,7 +470,6 @@ export class InputFormatPipe implements PipeTransform {
 </igx-input-group>
 ```
 
-
 ### Adding a placeholder
 
 The user can also take advantage of the [`placeholder`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=placeholder) input property, which serves the purpose of the native input placeholder attribute. If no value is provided for the [`placeholder`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=placeholder), the value set for the mask is used.
@@ -490,7 +488,6 @@ value = null;
     [placeholder]="'dd/mm/yyyy'"/>
 </igx-input-group>
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -519,19 +516,15 @@ export class MaskSample5Component {
 </igx-input-group>
 ```
 
-
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-- [IgxMaskDirective](mcp:get_api_reference?platform=angular&component=IgxMaskDirective)
-- [IgxSnackbarComponent](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
-
+<hr/>
+- [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- [`IgxMaskDirective`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective)
+- [`IgxSnackbar`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

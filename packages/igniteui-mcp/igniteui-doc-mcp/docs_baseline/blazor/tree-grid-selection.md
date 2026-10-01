@@ -1,15 +1,14 @@
 ---
-title: Blazor Tree Grid Selection - Ignite UI for Blazor
-_description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "Blazor Tree Grid Selection - Ignite UI for Blazor"
+description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for Blazor Select feature in Blazor Tree Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: TreeGrid
 _tocName: Selection
 ---
-
 # Blazor Tree Grid Selection Overview
 
 With the Ignite UI for Blazor Select feature in Blazor Tree Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for Blazor Select feature in Blazor Tree Grid you can easily 
 - Cell selection
 - Column selection
 
-With the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowSelection) property, you can specify:
+With the [`IgbTreeGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -164,37 +163,29 @@ public class EmployeesFlatData
 
 ### Blazor Tree Grid Row Selection
 
-Property [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowSelection) enables you to specify the following options:
+Property [`IgbTreeGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
 - `Single` - Selection of only one row within the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 - `MultipleCascade` - This is a mode for cascading selection, resulting in the selection of all children in the tree below the record that the user selects with user interaction. In this mode a parent's selection state entirely depends on the selection state of its children.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### Blazor Tree Grid Cell Selection
 
-Property [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=CellSelection) enables you to specify the following options:
+Property [`IgbTreeGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
 - `Single` - Selection of only one cell within the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) would be available.
 - `Multiple` - Currently, this is the default state of the selection in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Cell selection topic](cell-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### Blazor Tree Grid Column Selection
 
-The [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -202,15 +193,11 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ## Known Issues and Limitations
 
-When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgbTreeGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -218,9 +205,7 @@ When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&compon
 - Row Pinning
 
 ## API References
-
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

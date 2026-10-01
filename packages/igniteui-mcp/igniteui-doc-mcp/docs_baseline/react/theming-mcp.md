@@ -1,19 +1,18 @@
 ---
-title: React Theming MCP | Infragistics
-_description: Use the Ignite UI Theming MCP server to generate Ignite UI for React palettes, themes, typography, and design token overrides through your AI assistant.
-_keywords: Ignite UI for React controls, React widgets, web widgets, UI widgets, Components Suite, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations
-_license: MIT
+title: "React Theming MCP | Infragistics"
+description: "Use the Ignite UI Theming MCP server to generate Ignite UI for React palettes, themes, typography, and design token overrides through your AI assistant."
+keywords: "Ignite UI for React controls, React widgets, web widgets, UI widgets, Components Suite, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations"
+license: MIT
 mentionedTypes: []
+llms:
+  description: "The Ignite UI Theming MCP is a Model Context Protocol (MCP) server that enables AI assistants to generate production-ready theming code for Ignite UI applications."
 _tocName: Theming MCP
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Ignite UI Theming MCP
 
 <p class="highlight">The Ignite UI Theming MCP is a <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a> (MCP) server that enables AI assistants to generate production-ready theming code for Ignite UI applications. MCP is an open standard that lets AI assistants call specialized tools provided by external servers. Connect the Ignite UI Theming MCP to your editor or desktop AI client and describe the theme, palette, or component overrides you want generated.</p>
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -33,7 +32,7 @@ For a concrete combined workflow after setup, see [Build an App End-to-End with 
 
 > _"What design tokens are available for the button component? Customize it with my brand purple #8b5cf6."_
 
-> _"My brand guidelines specify exact hex values for every primary shade - create a custom palette with those explicit values."_
+> _"My brand guidelines specify exact hex values for every primary shade — create a custom palette with those explicit values."_
 
 > _"Make the calendar component use smaller spacing."_
 
@@ -41,9 +40,11 @@ For a concrete combined workflow after setup, see [Build an App End-to-End with 
 
 Before configuring the MCP server, make sure you have:
 
-- **Node.js** (v18 or later) installed. This provides the `npx` command used to launch the server.
+- **Node.js** (v18 or later) installed — this provides the `npx` command used to launch the server.
+
 - A project with an **Ignite UI package** listed as a dependency in `package.json`.
-- An **AI client with MCP support** - for example, VS Code with GitHub Copilot, Cursor, Claude Desktop, Claude Code, or a JetBrains IDE with the AI Assistant plugin.
+
+- An **AI client with MCP support** — for example, VS Code with GitHub Copilot, Cursor, Claude Desktop, Claude Code, or a JetBrains IDE with the AI Assistant plugin.
 
 If you do not have Ignite UI Theming installed yet, run:
 
@@ -61,8 +62,8 @@ The canonical launch command is:
 npx -y igniteui-theming igniteui-theming-mcp
 ```
 
-> [!NOTE]
-> The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
+**Note:** 
+The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
 
 ### VS Code
 
@@ -81,8 +82,8 @@ GitHub Copilot in VS Code supports MCP servers through a workspace-level configu
 
 Once saved, open the GitHub Copilot chat panel, switch to **Agent** mode, and the Ignite UI Theming tools will be available.
 
-> [!NOTE]
-> MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
+**Note:** 
+MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
 
 ### Cursor
 
@@ -101,8 +102,8 @@ Cursor supports project-scoped MCP configuration. Create or edit `.cursor/mcp.js
 
 The server will be picked up automatically when you open a new Cursor chat session.
 
-> [!NOTE]
-> You can also configure MCP servers globally via **Settings → MCP** in Cursor.
+**Note:** 
+You can also configure MCP servers globally via **Settings → MCP** in Cursor.
 
 ### Claude Desktop
 
@@ -152,11 +153,8 @@ Use the `/mcp` command inside Claude Code to verify the server is connected.
 JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 1. Open **Settings** (or **Preferences** on macOS).
-
 2. Navigate to **Tools → AI Assistant → Model Context Protocol (MCP)**.
-
 3. Click **+ Add** and choose **As JSON** or use the form fields.
-
 4. Enter the following configuration:
 
     ```json
@@ -172,8 +170,8 @@ JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 5. Click **OK** and restart the AI Assistant.
 
-> [!NOTE]
-> MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
+**Note:** 
+MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
 
 ### Other MCP Clients
 
@@ -187,7 +185,7 @@ npx -y igniteui-theming igniteui-theming-mcp
 
 This section is optional. It is aimed at teams that want to fine-tune _how_ the AI generates theming code to match their existing codebase conventions.
 
-Editors like VS Code and Cursor let you provide project-level instruction files that shape how the AI behaves. The MCP server already teaches the AI _which tools to call and in what order_. You do not need to repeat that. Instead, use these instruction files to encode your **project's design decisions, code conventions, and file organization** so the AI produces code that fits your codebase on the first try.
+Editors like VS Code and Cursor let you provide project-level instruction files that shape how the AI behaves. The MCP server already teaches the AI _which tools to call and in what order_ — you do not need to repeat that. Instead, use these instruction files to encode your **project's design decisions, code conventions, and file organization** so the AI produces code that fits your codebase on the first try.
 
 ### VS Code (`.github/copilot-instructions.md`)
 
@@ -195,12 +193,12 @@ Editors like VS Code and Cursor let you provide project-level instruction files 
 ## Theming Conventions
 
 ### Sass Code Style
-- Use `@use` / `@forward` - never `@import`.
+- Use `@use` / `@forward` — never `@import`.
 - Extract repeated color values into Sass variables (e.g., `$brand-hover: #a78bfa`).
 - Prefer setting primary design tokens over overriding many dependent tokens.
   For example, setting `$foreground` on a flat button automatically derives
   `$hover-background`, `$focus-background`, and `$active-background`.
-- Keep component overrides scoped - use the component's default selector
+- Keep component overrides scoped — use the component's default selector
   (e.g., `.igx-button--flat`) unless a narrower scope is needed.
 ```
 
@@ -215,21 +213,21 @@ globs: ["**/*.scss", "**/styles/**"]
 ## Project Theming Rules
 
 ### Code conventions
-- `@use` / `@forward` only - no `@import`.
+- `@use` / `@forward` only — no `@import`.
 - Extract shared colors into variables; do not repeat hex literals.
-- Prefer primary tokens - let dependent tokens derive automatically.
+- Prefer primary tokens — let dependent tokens derive automatically.
 - One component override per file. Name the file after the component.
 - Comment every override with the design rationale.
-- Never hard-code gray shades for text - use palette grays so dark mode works.
+- Never hard-code gray shades for text — use palette grays so dark mode works.
 - For dark mode, only the palette changes. Component overrides stay the same.
 ```
 
-> [!NOTE]
-> Both files are committed to source control, so every team member gets the same AI behavior without manual setup. Adapt the brand colors, design system, and file paths to match your project.
+**Note:** 
+Both files are committed to source control, so every team member gets the same AI behavior without manual setup. Adapt the brand colors, design system, and file paths to match your project.
 
 ## Available Tools
 
-The MCP server exposes a set of tools that the AI uses automatically based on your prompts. You never need to call them directly. Just describe what you want.
+The MCP server exposes a set of tools that the AI uses automatically based on your prompts. You never need to call them directly — just describe what you want.
 
 To see the current full list of tools and their parameters at any time, ask your AI assistant:
 
@@ -237,24 +235,27 @@ To see the current full list of tools and their parameters at any time, ask your
 
 Here is a brief overview of each tool:
 
+**Note:** 
+When it generates a palette, the server checks the contrast ratio between your surface and gray colors against WCAG thresholds and warns you when the pairing falls short. See [Accessibility](../themes/accessibility.md) for the contrast behavior built into the theming engine itself.
+
 | Tool | Description |
 |------|-------------|
 | `detect_platform` | Identifies the project framework and selects the correct import paths and selectors. For Angular, React, and Web Components projects, reads `package.json`. For Blazor projects, which do not have a `package.json`, returns `generic` - tell the AI explicitly: _"Use the Blazor platform."_ |
-| `create_palette` | Generates a color palette with automatic shade variants (50-900, A100-A700) from your base brand colors. Accepts an `output` parameter (`sass` or `css`) and a `designSystem` to select the schema. |
-| `create_custom_palette` | Fine-grained palette creation. Specify exact hex values for every shade when automatic generation is not suitable. |
+| `create_palette` | Generates a color palette with automatic shade variants (50–900, A100–A700) from your base brand colors. Accepts an `output` parameter (`sass` or `css`) and a `designSystem` to select the schema. |
+| `create_custom_palette` | Fine-grained palette creation — specify exact hex values for every shade when automatic generation is not suitable. |
 | `create_typography` | Sets up a font family and type scale for a given design system. |
-| `create_elevations` | Configures box-shadow elevation levels (0-24) for Material or Indigo design systems. |
+| `create_elevations` | Configures box-shadow elevation levels (0–24) for Material or Indigo design systems. |
 | `create_theme` | One-shot complete theme: palette + typography + elevations, ready to include in your `styles.scss`. Accepts a `designSystem` (`material`, `bootstrap`, `fluent`, or `indigo`) and `variant` (`light` or `dark`). |
 | `set_size` | Sets `--ig-size` globally or for a specific component (`small`, `medium`, or `large`). |
 | `set_spacing` | Sets `--ig-spacing` (and optionally inline/block overrides) globally or per component. |
 | `set_roundness` | Sets `--ig-radius-factor` (0 = square, 1 = fully round) globally or per component. |
-| `get_component_design_tokens` | Returns all available design tokens for a component. Always call this before `create_component_theme`. |
+| `get_component_design_tokens` | Returns all available design tokens for a component — always call this before `create_component_theme`. |
 | `create_component_theme` | Generates Sass or CSS to customize a component's tokens (colors, borders, etc.). Accepts a `variant` (`light` or `dark`) to select the correct schema. |
 | `get_color` | Returns a CSS variable reference for a palette color, e.g. `var(--ig-primary-500)`. Supports optional contrast and opacity parameters. |
 | `read_resource` | Reads built-in reference resources organized into four categories: platform configs (6), palette/typography/elevation presets (5), color guidance (7), and layout/spacing docs (8). |
 
-> [!NOTE]
-> For compound components (e.g., `combo`, `select`, `grid`), `get_component_design_tokens` returns a list of related child themes instead of a flat token list. For example, querying `grid` may return child themes such as `grid`, `grid-toolbar`, `grid-filtering`, and `paginator`. The AI will generate a separate `create_component_theme` call for each child theme using the appropriate scoped selector.
+**Note:** 
+For compound components (e.g., `combo`, `select`, `grid`), `get_component_design_tokens` returns a list of related child themes instead of a flat token list. For example, querying `grid` may return child themes such as `grid`, `grid-toolbar`, `grid-filtering`, and `paginator`. The AI will generate a separate `create_component_theme` call for each child theme using the appropriate scoped selector.
 
 ## Common Workflows
 
@@ -304,7 +305,7 @@ The AI will call `get_component_design_tokens` first to discover valid token nam
 
 ### Layout Adjustments
 
-> _"The calendar feels bloated - reduce its spacing, and make all components slightly smaller."_
+> _"The calendar feels bloated — reduce its spacing, and make all components slightly smaller."_
 
 The AI will call `set_spacing` scoped to the calendar component and `set_size` at the `:root` level.
 
@@ -327,22 +328,11 @@ For light themes use a light surface (e.g., `#fafafa`). For dark themes use a da
 ## Additional Resources
 
 - [Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP](../general-how-to-mcp-e2e.md)
+
 - [AI-Assisted Development with Ignite UI](./ai-assisted-development-overview.md)
 - [Ignite UI for React Skills](./skills.md)
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [MAKER Framework](./maker-framework.md)
-
-<!-- Ideally these should be included once documentation is combined
-- [Theming Overview](../themes/index.md)
-- [Palettes](../themes/palettes.md)
-- [Typography](../themes/typography.md)
-- [Elevations](../themes/elevations.md)
-- [Spacing](../themes/spacing.md)
-- [Roundness](../themes/roundness.md)
-- [Theming with Sass](../themes/sass/index.md)
--->
-
-<div class="divider--half"></div>
 
 Our community is active and always welcoming to new ideas.
 

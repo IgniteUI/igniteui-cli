@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid Cell Selection - Ignite UI for Blazor
-_description: Check how easy it is to use cell data selection using variety of events, rich API or mouse interactions. The Hierarchical Grid supports 3 modes for cell selection. Try it now!
-_keywords: data select, igniteui for Blazor, infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-selection
+title: "Blazor Hierarchical Grid Cell Selection - Ignite UI for Blazor"
+description: Check how easy it is to use cell data selection using variety of events, rich API or mouse interactions. The Hierarchical Grid supports 3 modes for cell selection. Try it now!
+keywords: data select, igniteui for Blazor, infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-selection"
+llms:
+  description: "The Ignite UI for Blazor Cell Selection in Blazor Hierarchical Grid enables rich data select capabilities and offers powerful API in the IgbHierarchicalGrid component."
+_componentKey: HierarchicalGrid
 _tocName: Cell Selection
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Cell Selection
 
 The Ignite UI for Blazor Cell Selection in Blazor Hierarchical Grid enables rich data select capabilities and offers powerful API in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component. The Blazor Hierarchical Grid supports three selection modes:
@@ -19,11 +18,7 @@ The Ignite UI for Blazor Cell Selection in Blazor Hierarchical Grid enables rich
 - Hierarchical Grid Single Selection
 - Hierarchical Grid None Selection
 
-<!-- ComponentStart: HierarchicalGrid -->
-
 In the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) you can specify the cell selection mode on grid level. So for example in the parent grid multi-cell selection can be enabled, but in child grids cell selection mode can be single or disabled.
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 Let's dive deeper into each of these options.
 
@@ -274,14 +269,9 @@ public class SingersData
 
 ### Hierarchical Grid Multiple-Cell Selection
 
-<!-- ComponentStart: HierarchicalGrid -->
-
 This is the default cell selection mode in both parent and child grids. Please keep in mind that you can make cell selection one grid at a time, and you can not make cross grid range selection or to have a selected cells in multiple grids. Each key combination related to range selection and mouse drag functionality can be used only in the same grid.
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 How to select cells:
-
 - By **Mouse drag** - Rectangular data selection of cells would be performed.
 - By <kbd>CTRL</kbd> key press + **Mouse drag** - Multiple range selections would be performed. Any other existing cell selection will be persisted.
 - Instant multi-cell selection by using <kbd>SHIFT</kbd> key. Select single cell and select another single cell by holding the <kbd>SHIFT</kbd> key. Cell range between the two cells will be selected. Keep in mind that if another second cell is selected while holding <kbd>SHIFT</kbd> key the cell selection range will be updated based on the first selected cell position (starting point).
@@ -292,13 +282,13 @@ How to select cells:
 
 ### Hierarchical Grid Single Selection
 
-When you set the [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=CellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`IgbHierarchicalGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
-> When single cell is selected [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
+> When single cell is selected [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells [`IgbHierarchicalGrid.rangeSelected`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rangeSelected) event is emitted.
 
 ### Hierarchical Grid None Selection
 
-If you want to disable cell selection you can just set [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=CellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`IgbHierarchicalGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -318,8 +308,8 @@ If you want to disable cell selection you can just set [`CellSelection`](mcp:get
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>HOME</kbd> to select all cells from the focused cell till the first-most cell in the grid
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>END</kbd> to select all cells from the focused cell till the last-most cell in the grid
 
-> [!Note]
-> Continuous scroll is possible only within Grid's body.
+**Note:** 
+Continuous scroll is possible only within Grid's body.
 
 ## Api Usage
 
@@ -327,11 +317,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`SelectRange`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+[`IgbHierarchicalGrid.selectRange`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 ```razor
 <IgbHierarchicalGrid @ref=grid  CellSelection="GridSelectionMode.Multiple" AutoGenerate=true></<IgbHierarchicalGrid>
@@ -350,13 +336,12 @@ Below are the methods that you can use in order to select ranges, clear selectio
         this.grid.SelectRange(new IgbGridSelectionRange[] {});
     }
 }
-```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+```
 
 ### Clear cell selection
 
-[`ClearCellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=ClearCellSelection) will clear the current cell selection.
+[`IgbHierarchicalGrid.clearCellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=clearCellSelection) will clear the current cell selection.
 
 ```razor
 @code {
@@ -369,7 +354,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Get Selected Data
 
-[`GetSelectedData`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
+[`IgbHierarchicalGrid.getSelectedData`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=getSelectedData) will return array of the selected data in Dictionary format. Examples below:
 
 ```razor
 <IgbHierarchicalGrid @ref=grid  CellSelection="GridSelectionMode.Multiple" AutoGenerate=true></<IgbHierarchicalGrid>
@@ -388,19 +373,17 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 The multi-cell selection is index based (DOM elements selection).
 
-- `Sorting` - When sorting is performed selection will not be cleared. It will leave currently selected cells the same while sorting ascending or descending.
-- `Paging` - On paging selected cells will be cleared. Selection wont be persisted across pages.
-- `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
-- `Resizing` - On column resizing selected cells will not be cleared.
-- `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=Pinning) - Selected cell will not be cleared. Same as hiding
-- `GroupBy` - On column grouping selected cells will not be cleared.
-
-<!-- ComponentEnd: Grid, TreeGrid -->
+- [`Sorting`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortingExpressions) - When sorting is performed selection will not be cleared. It will leave currently selected cells the same while sorting ascending or descending.
+- [`Paging`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=pagingMode) - On paging selected cells will be cleared. Selection wont be persisted across pages.
+- [`Filtering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=allowFiltering) - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
+- [`Resizing`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=resizable) - On column resizing selected cells will not be cleared.
+- [`Hiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=hidden) - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
+- [`IgbHierarchicalGrid.pinning`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=pinning) - Selected cell will not be cleared. Same as hiding
+- [`GroupBy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=groupingExpressions) - On column grouping selected cells will not be cleared.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -417,8 +400,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #0062a3;
 }
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ### Demo
 
@@ -718,12 +699,8 @@ public class SingersData
 ```
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 - [Selection](selection.md)
 - [Row Selection](row-selection.md)
@@ -734,8 +711,6 @@ public class SingersData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

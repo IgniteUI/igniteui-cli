@@ -1,41 +1,40 @@
 ---
-title: Blazor Tree Grid Conditional Cell Styling - Ignite UI for Blazor
-_description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Blazor Tree Grid to make cells stand out.
-_keywords: conditional styling, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/conditional-cell-styling
+title: "Blazor Tree Grid Conditional Cell Styling - Ignite UI for Blazor"
+description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Blazor Tree Grid to make cells stand out.
+keywords: conditional styling, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/conditional-cell-styling"
+llms:
+  description: "The Ignite UI for Blazor Conditional Styling feature in Blazor Tree Grid allows custom styling on a row or cell level."
+_componentKey: TreeGrid
 _tocName: Conditional Styling
 _premium: true
 ---
-
 # Blazor Tree Grid Conditional Styling
 
-The Ignite UI for Blazor Conditional Styling feature in Blazor Tree Grid allows custom styling on a row or cell level. The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for Blazor Conditional Styling feature in Blazor Tree Grid allows custom styling on a row or cell level.  The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Tree Grid Conditional Row Styling
 
 The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowClasses) input on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component;
-- By setting [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowStyles) input on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component;
+- By setting [`IgbTreeGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowClasses) input on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component;
+- By setting [`IgbTreeGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowStyles) input on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) rows by setting the [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowClasses) input and define custom rules.
+You can conditionally style the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) rows by setting the [`IgbTreeGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowClasses) input and define custom rules.
 
 ```razor
 <IgbTreeGrid AutoGenerate="true" Id="grid" Data="CustomersData" Name="grid" RowClassesScript="RowClassesHandler" @ref="grid">
 </IgbTreeGrid>
 ```
 
-The [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgbTreeGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
-```razor
+```javascript
 igRegisterScript("RowClassesHandler", () => {
     return {
         activeRow: (row) => row.index % 2 === 0
@@ -153,9 +152,9 @@ public class EmployeesFlatData
 
 ### Using Row Styles
 
-The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) control exposes the [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) control exposes the [`IgbTreeGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`IgbTreeGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowStyles) and [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowClasses) is:
+> The callback signature for both [`IgbTreeGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowStyles) and [`IgbTreeGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowClasses) is:
 
 ```razor
 (row) => boolean
@@ -163,9 +162,7 @@ The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 Let's define our styles:
 
-<!-- ComponentStart: TreeGrid -->
-
-```razor
+```javascript
 igRegisterScript("WebTreeGridRowStylesHandler", () => {
     return {
         'background': (row) => row.data['Title'] === 'CEO' ? '#6c757d' :
@@ -185,8 +182,6 @@ igRegisterScript("WebTreeGridRowStylesHandler", () => {
 <IgbTreeGrid AutoGenerate="true" PrimaryKey="ID" ForeignKey="ParentID" Data="Data" RowStylesScript="WebTreeGridRowStylesHandler">
 </IgbTreeGrid>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -309,26 +304,19 @@ public class EmployeesFlatDetails
 
 The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
-
-You can conditionally style the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input and define custom rules.
-
-<!-- ComponentStart: TreeGrid -->
+You can conditionally style the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) input and define custom rules.
 
 ```razor
 <IgbColumn Field="UnitPrice" Header="Unit Price" DataType="GridColumnDataType.Currency" CellClassesScript="UnitPriceCellClassesHandler">
 </IgbColumn>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
+The [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
-The [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- ComponentStart: TreeGrid -->
-
-```razor
+```javascript
 igRegisterScript("UnitPriceCellClassesHandler", () => {
     return {
         downPrice: (rowData, columnKey) => rowData[columnKey] <= 5,
@@ -346,8 +334,6 @@ igRegisterScript("UnitPriceCellClassesHandler", () => {
     color: green !important;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -478,7 +464,7 @@ public class OrdersTreeData
 }
 ```
 
-- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`IgbColumn.cellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles)` which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -488,13 +474,11 @@ public class OrdersTreeData
 
 ### Using Cell Styles
 
-Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
-<!-- ComponentStart: TreeGrid -->
-
-```razor
+```javascript
 igRegisterScript("WebTreeGridCellStylesHandler", () => {
     return {
         background: (rowData, columnKey, cellValue, rowIndex) => rowIndex % 2 === 0 ? "#EFF4FD" : null,
@@ -513,8 +497,6 @@ igRegisterScript("WebTreeGridCellStylesHandler", () => {
 <IgbColumn CellStylesScript="WebTreeGridCellStylesHandler">
 </IgbColumn>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -638,12 +620,10 @@ public class OrdersTreeData
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
-
 ## API References
 
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
 
 ## Additional Resources
 

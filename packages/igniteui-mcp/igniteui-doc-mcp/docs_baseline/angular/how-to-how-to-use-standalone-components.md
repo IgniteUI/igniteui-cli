@@ -1,10 +1,11 @@
 ---
 title: How to Use Standalone Components - Angular | Ignite UI for Angular
-_description: How to use Ignite UI for Angular components as standalone components, and as dependencies in your other standalone components.
-_keywords: Ignite UI for Angular, Standalone Components, Angular 16, Angular Modules
+description: How to use Ignite UI for Angular components as standalone components, and as dependencies in your other standalone components.
+keywords: Ignite UI for Angular, Standalone Components, Angular 16, Angular Modules
+llms:
+  description: "Angular 14 introduced the concept of standalone components which allows for a simplified way of building applications by reducing the need for using NgModules."
 _tocName: Use Standalone Components
 ---
-
 # Using Standalone Components with Ignite UI for Angular
 
 Angular 14 introduced the concept of [standalone components](https://angular.io/guide/standalone-components) which allows for a simplified way of building applications by reducing the need for using `NgModules`. Standalone components were in developer preview until Angular 15. To support this new paradigm, all Ignite UI for Angular components are now exported as `standalone` with version `16.0.0`. As of Angular 19 all components are standalone by default. All the existing `NgModules` are still exported by the library for backward compatibility. However, they no longer declare any of the Ignite UI for Angular components. Instead they import and export the `standalone` components.
@@ -102,8 +103,8 @@ The `IGX_GRID_DIRECTIVES` shown in the previous examples is a utility directive 
 Related topics:
 
 - [Standalone Components](https://angular.io/guide/standalone-components)
-- [Getting started with Ignite UI for Angular](../getting-started.md)
-- [Server-side Rendering with Angular](../ssr-rendering.md)
+- [Getting started with Ignite UI for Angular](/general/getting-started)
+- [Server-side Rendering with Angular](/general/ssr-rendering)
 
 Our community is active and always welcoming to new ideas.
 

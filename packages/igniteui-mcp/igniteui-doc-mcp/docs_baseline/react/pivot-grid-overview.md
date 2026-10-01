@@ -1,13 +1,15 @@
 ---
-title: React Pivot Grid Component - Ignite UI for React by Infragistics
-_description: Create fast, responsive React pivot grids and tables with Ignite UI for React. Perform complex analysis and apply data sorting, grouping, or filtering.
-_keywords: React pivot grid, React material pivot table, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Pivot Grid Component - Ignite UI for React by Infragistics"
+description: Create fast, responsive React pivot grids and tables with Ignite UI for React. Perform complex analysis and apply data sorting, grouping, or filtering.
+keywords: "React pivot grid, React material pivot table, Ignite UI for React, Infragistics"
+license: commercial
 mentionedTypes: ["PivotGrid", "PivotDimension", "PivotValue"]
 namespace: Infragistics.Controls
+llms:
+  description: "The React Pivot Grid is used for summing up and representing voluminous multidimensional data in a cross-tabular format."
 _tocName: Pivot Grid
+_premium: true
 ---
-
 # React Pivot Grid Overview
 
 The React Pivot Grid is used for summing up and representing voluminous multidimensional data in a cross-tabular format. The data summery can be easily and quickly sorted, grouped, or filtered. Such data can include sums, averages, and other statistics. End-users are enabled to modify the pivot table layout through drag-and-drop operations, according to their needs.
@@ -160,7 +162,7 @@ export const SALES_DATA_NEW =
 
 ## Getting Started With React Pivot Grid
 
-The React IgrPivotGrid can be configured via the [`pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) property.
+The React IgrPivotGrid can be configured via the [`PivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) property.
 
 ```tsx
 <IgrPivotGrid data={pivotData} pivotConfiguration={pivotConfiguration}>
@@ -173,66 +175,64 @@ A filter can also be defined via the **filters** configuration property. It can 
 
 ### Dimensions Configuration
 
-Each basic dimension configuration requires a [`memberName`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=memberName) that matches a field from the provided **data**.
+Each basic dimension configuration requires a [`MemberName`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=memberName) that matches a field from the provided **data**.
 
 Multiple sibling dimensions can be defined, which creates a more complex nested group in the related row or column dimension area.
 
 The dimensions can be reordered or moved from one area to another via their corresponding chips using drag & drop.
 
-A dimension can also describe an expandable hierarchy via the [`childLevel`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=childLevel) property, for example:
+A dimension can also describe an expandable hierarchy via the [`ChildLevel`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=childLevel) property, for example:
 
 ```tsx
 const dimension: IgrPivotDimension = {
-    memberName: "AllProducts",
-    enabled: true,
-    childLevel: {
-        memberName: "ProductCategory",
-        enabled: true
-    }
+  memberName: "AllProducts",
+  enabled: true,
+  childLevel: {
+    memberName: "ProductCategory",
+    enabled: true
+  }
 };
-
 ```
 
-In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=defaultExpandState) property of the Pivot Grid.
+In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`DefaultExpandState`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=defaultExpandState) property of the Pivot Grid.
 
 ### Predefined Dimensions
 
-As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration:
+As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration.
 
-- [`IgrPivotDateDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDateDimension)
-    Can be used for date fields. Describes the following hierarchy by default:
-  - All Periods
-  - Years
-  - Quarters
-  - Months
-  - Full Date
+[`IgrPivotDateDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDateDimension) can be used for date fields. Describes the following hierarchy by default:
+
+- All Periods
+- Years
+- Quarters
+- Months
+- Full Date
 
 It can be set for rows or columns, for example:
 
 ```ts
-
 const pivotConfiguration: IgrPivotConfiguration = {
-    columns: [
-        new IgrPivotDateDimension({
-            enabled: true,
-            memberName: "Date",
-        })
-    ]
+  columns: [
+    new IgrPivotDateDimension({
+      enabled: true,
+      memberName: "Date",
+    })
+  ]
 };
 ```
 
 It also allows for further customization via the second option parameter in order to enable or disable a particular part of the hierarchy, for example:
 
 ```tsx
- new IgrPivotDateDimension({
-    enabled: true,
-    memberName: "Date",
+new IgrPivotDateDimension({
+  enabled: true,
+  memberName: "Date",
 }, {
-    total: true,
-    years: true,
-    months: true,
-    fullDate: true,
-    quarters: false
+  total: true,
+  years: true,
+  months: true,
+  fullDate: true,
+  quarters: false
 });
 ```
 
@@ -241,61 +241,61 @@ It also allows for further customization via the second option parameter in orde
 A value configuration requires a **member** that matches a field from the provided **data**, or it can define a custom **aggregator** function for more complex custom scenarios. Out of the box, there are 4 predefined aggregations that can be used depending on the data type of the data field:
 
 - `PivotNumericAggregate` - for numeric fields.
-    Contains the following aggregation functions: `SUM`, `AVG`, `MIN`, `MAX`, `COUNT`.
+  Contains the following aggregation functions: `SUM`, `AVG`, `MIN`, `MAX`, `COUNT`.
 - `PivotDateAggregate` - for date fields.
-    Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
+  Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
 - `PivotTimeAggregate` - for time fields.
-    Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
+  Contains the following aggregation functions: `LATEST`, `EARLIEST`, `COUNT`.
 - `PivotAggregate` - for any other data types. This is the base aggregation.
-    Contains the following aggregation functions: `COUNT`.
+  Contains the following aggregation functions: `COUNT`.
 
-The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=aggregateList) property, for example:
+The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`AggregateList`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=aggregateList) property, for example:
 
 ```typescript
 const totalSale = (members: any, data: any) => data.reduce((accumulator:any, value: any) => accumulator + value.UnitPrice * value.UnitsSold, 0);
 
 const totalMin = (members: any, data: any) => {
-    return data.map((x:any) => x.UnitPrice * x.UnitsSold).reduce((a:number, b:number) => Math.min(a, b));
+  return data.map((x:any) => x.UnitPrice * x.UnitsSold).reduce((a:number, b:number) => Math.min(a, b));
 };
 
 const totalMax = (members: any, data: any) => {
-    return data.map((x:any) => x.UnitPrice * x.UnitsSold).reduce((a:number, b:number) => Math.max(a,b));
+  return data.map((x:any) => x.UnitPrice * x.UnitsSold).reduce((a:number, b:number) => Math.max(a,b));
 };
 
 const pivotConfiguration: IgrPivotConfiguration = {
-      values: [
-            {
-                enabled: true,
-                member: "AmountofSale",
-                displayName: "Amount of Sale",
-                aggregate: {
-                    aggregatorName: "SUM",
-                    key: "SUM",
-                    label: "Sum of Sale",
-                },
-                aggregateList: [{
-                    key: 'SUM',
-                    aggregator: totalSale,
-                    label: 'Sum of Sale'
-                }, {
-                    key: 'MIN',
-                    aggregator: totalMin,
-                    label: 'Minimum of Sale'
-                }, {
-                    key: 'MAX',
-                    aggregator: totalMax,
-                    label: 'Maximum of Sale'
-                }]
-            }
-      ]
+  values: [
+    {
+      enabled: true,
+      member: "AmountofSale",
+      displayName: "Amount of Sale",
+      aggregate: {
+          aggregatorName: "SUM",
+          key: "SUM",
+          label: "Sum of Sale",
+      },
+      aggregateList: [{
+          key: 'SUM',
+          aggregator: totalSale,
+          label: 'Sum of Sale'
+      }, {
+          key: 'MIN',
+          aggregator: totalMin,
+          label: 'Minimum of Sale'
+      }, {
+          key: 'MAX',
+          aggregator: totalMax,
+          label: 'Maximum of Sale'
+      }]
+    }
+  ]
 };
 ```
 
-The pivot value also provides a [`displayName`](mcp:get_api_reference?platform=react&component=IgrPivotDateDimension&member=displayName) property. It can be used to display a custom name for this value in the column header.
+The pivot value also provides a [`DisplayName`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=displayName) property. It can be used to display a custom name for this value in the column header.
 
 ### Enable Property
 
-[`pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) is the interface that describes the current state of the [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
+[`PivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) is the interface that describes the current state of the [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
 The `Enable` property controls if a given [`IgrPivotDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDimension) or [`IgrPivotValue`](mcp:get_api_reference?platform=react&component=IgrPivotValue) is active and takes part in the pivot view rendered by the Pivot Grid.
 
 ### Full Configuration Code
@@ -304,61 +304,46 @@ Let's take a look at a basic pivot configuration:
 
 ```tsx
 const pivotConfiguration1: IgrPivotConfiguration = {
-    columns: [
-        new IgrPivotDateDimension({
-            enabled: true,
-            memberName: "Date",
-        })
-    ],
-    rows: [
-        {
-            enabled: true,
-            memberName: "SellerCity"
-        },
-        {
-            enabled: true,
-            memberName: "ProductName"
-        }
-    ],
-    filters: [
-        {
-            enabled: true,
-            memberName: "SellerName"
-        }
-    ],
-    values: [
-        {
-            member: "ProductUnitPrice",
-            displayName: "Amount of Sale",
-            dataType: "currency",
-            enabled: true,
-            aggregate: {
-                    aggregatorName: "SUM",
-                    key: "SUM",
-                    label: "Sum of Sale",
-                }
-        }
-    ]
+  columns: [
+    new IgrPivotDateDimension({
+      enabled: true,
+      memberName: "Date",
+    })
+  ],
+  rows: [
+    {
+      enabled: true,
+      memberName: "SellerCity"
+    },
+    {
+      enabled: true,
+      memberName: "ProductName"
+    }
+  ],
+  filters: [
+    {
+      enabled: true,
+      memberName: "SellerName"
+    }
+  ],
+  values: [
+    {
+      member: "ProductUnitPrice",
+      displayName: "Amount of Sale",
+      dataType: "currency",
+      enabled: true,
+      aggregate: {
+        aggregatorName: "SUM",
+        key: "SUM",
+        label: "Sum of Sale",
+      }
+    }
+  ]
 };
 ```
 
 This configuration defines 1 row, 1 column and 1 aggregation that sums the values of each dimension groups.
 The members match fields available in the provided data source:
-
-```typescript
-public data = [
-[
-    {
-        ProductName: `Clothing`,
-        ProductUnitPrice: 12.8,
-        SellerName: `Stanley Brooker`,
-        SellerCity: `Seattle`,
-        Date: `2007-01-01T00:00:00`,
-        Value: 94.4,
-        NumberOfUnits: 282
-    },
-];
-```
 
 ### Full Configuration Example
 
@@ -560,8 +545,7 @@ root.render(<Sample/>);
 ```
 
 ### Auto generate configuration
-
-The [`autoGenerateConfig`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
+The [`AutoGenerateConfig`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
 
 - Numeric Fields:
   - Created as [`IgrPivotValue`](mcp:get_api_reference?platform=react&component=IgrPivotValue) using `PivotNumericAggregate.sum` aggregator.
@@ -586,20 +570,19 @@ A more detailed view of how they are used can be seen bellow in example data, wh
 
 ```json
 [
-    {
-        ProductCategory: 'All', AllProducts: 'All Products', All: 1000, 'All-Bulgaria': 774, 'All-USA': 829, 'All-Uruguay': 524,
-        AllProducts_records: [
-            { ProductCategory: 'Clothing', 'All-Bulgaria': 774, 'All-USA': 296, 'All-Uruguay': 456 },
-            { ProductCategory: 'Bikes', 'All-Uruguay': 68 },
-            { ProductCategory: 'Accessories', 'All-USA': 293 },
-            { ProductCategory: 'Components', 'All-USA': 240 }
-        ]
-    }
+  {
+    ProductCategory: 'All', AllProducts: 'All Products', All: 1000, 'All-Bulgaria': 774, 'All-USA': 829, 'All-Uruguay': 524,
+    AllProducts_records: [
+      { ProductCategory: 'Clothing', 'All-Bulgaria': 774, 'All-USA': 296, 'All-Uruguay': 456 },
+      { ProductCategory: 'Bikes', 'All-Uruguay': 68 },
+      { ProductCategory: 'Accessories', 'All-USA': 293 },
+      { ProductCategory: 'Components', 'All-USA': 240 }
+    ]
+  }
 ];
 ```
 
-All of these are stored in the **pivotKeys** property which is part of the [`pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) and can be used to change the default pivot keys.
-
+All of these are stored in the **pivotKeys** property which is part of the [`PivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) and can be used to change the default pivot keys.
 - **children** - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
 - **records** - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the **pivotKeys**.
 - **aggregations** - Field that stores aggregation values. It's applied while creating the hierarchies and also it should not be changed for common scenarios.
@@ -609,43 +592,190 @@ All of these are stored in the **pivotKeys** property which is part of the [`piv
 
 The default values are:
 
-```typescript
-{
-    aggregations: 'aggregations',
-    records: 'records',
-    children: 'children',
-    level: 'level',
-    rowDimensionSeparator: '_',
-    columnDimensionSeparator: '-'
-};
+**Note:** 
+If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
+
+## Styling
+
+The React Pivot Grid shares the same [CSS properties](../grid/theming-grid.md) as the base Grid. To style it, simply set the desired property values and scope them to the Pivot Grid component.
+
+```css
+igc-pivot-grid {
+  --header-background: #3b3a3a;
+  --header-text-color: #ffcd0f;
+  --content-background: #494949;
+  --content-text-color: #ffcd0f;
+  --row-odd-background: #494949;
+  --row-even-background: #494949;
+  --row-hover-background: #3b3a3a;
+  --row-hover-text-color: #ffcd0f;
+}
 ```
 
-> [!Note]
-> If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
+```typescript
+export class PivotSalesDataItem {
+  public constructor(init: Partial<PivotSalesDataItem>) {
+    Object.assign(this, init);
+  }
+
+  public Country: string;
+  public Product: string;
+  public UnitsSold: number;
+  public ManufacturingPrice: number;
+  public SalePrice: number;
+  public GrossSales: number;
+  public Discounts: number;
+  public Sales: number;
+  public COGS: number;
+  public Profit: number;
+  public Date: string;
+  public MonthName: string;
+  public Year: number;
+}
+
+export class PivotSalesData extends Array<PivotSalesDataItem> {
+  public constructor(items: Array<PivotSalesDataItem> | number = -1) {
+    if (Array.isArray(items)) {
+      super(...items);
+    } else {
+      const newItems = [
+        new PivotSalesDataItem({ Country: `UK`, Product: `Vermont`, UnitsSold: 501, ManufacturingPrice: 15, SalePrice: 23, GrossSales: 26440, Discounts: null, Sales: 26440, COGS: 16185, Profit: 11255, Date: `01/01/2020`, MonthName: `January`, Year: 2020 }),
+        new PivotSalesDataItem({ Country: `Japan`, Product: `Kensington`, UnitsSold: 1372, ManufacturingPrice: 3, SalePrice: 20, GrossSales: 27440, Discounts: null, Sales: 27440, COGS: 16185, Profit: 11255, Date: `01/01/2020`, MonthName: `January`, Year: 2020 }),
+        new PivotSalesDataItem({ Country: `India`, Product: `Kensington`, UnitsSold: 2762, ManufacturingPrice: 3, SalePrice: 20, GrossSales: 55240, Discounts: null, Sales: 55240, COGS: 13210, Profit: 42030, Date: `01/01/2020`, MonthName: `January`, Year: 2020 }),
+          // ... 121 more items
+      ];
+      super(...newItems.slice(0));
+    }
+  }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-pivot-grid {
+  --header-background: #3b3a3a;
+  --header-text-color: #ffcd0f;
+  --content-background: #494949;
+  --content-text-color: #ffcd0f;
+  --row-odd-background: #494949;
+  --row-even-background: #494949;
+  --row-hover-background: #3b3a3a;
+  --row-hover-text-color: #ffcd0f;
+}
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { IgrPivotGridModule } from 'igniteui-react-grids';
+import {
+  IgrPivotGrid,
+  IgrPivotConfiguration,
+  IgrPivotDimension,
+  IgrPivotValue,
+  IgrPivotAggregator,
+} from 'igniteui-react-grids';
+import { PivotSalesData } from './PivotSalesData';
+import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
+import './index.css';
+
+const mods: any[] = [IgrPivotGridModule];
+mods.forEach((m) => m.register());
+
+export default class Sample extends React.Component<any, any> {
+  private grid: IgrPivotGrid;
+  private gridRef(r: IgrPivotGrid) {
+    this.grid = r;
+    this.setState({});
+  }
+  private _pivotConfiguration1: IgrPivotConfiguration | null = null;
+  public get pivotConfiguration1(): IgrPivotConfiguration {
+    if (this._pivotConfiguration1 == null) {
+      var pivotConfiguration1: IgrPivotConfiguration =
+        {} as IgrPivotConfiguration;
+
+      var igrPivotDimension1: IgrPivotDimension = {} as IgrPivotDimension;
+      igrPivotDimension1.memberName = 'Country';
+      igrPivotDimension1.enabled = true;
+
+      pivotConfiguration1.columns = [igrPivotDimension1];
+      var igrPivotDimension2: IgrPivotDimension = {} as IgrPivotDimension;
+      igrPivotDimension2.memberName = 'Product';
+      igrPivotDimension2.enabled = true;
+
+      pivotConfiguration1.rows = [igrPivotDimension2];
+      var igrPivotValue1: IgrPivotValue = {} as IgrPivotValue;
+      igrPivotValue1.member = 'Sales';
+      igrPivotValue1.enabled = true;
+      var igrPivotAggregator1: IgrPivotAggregator = {} as IgrPivotAggregator;
+      igrPivotAggregator1.key = 'MAX';
+      igrPivotAggregator1.aggregator = this.pivotSalesDataAggregateMaxSales;
+
+      igrPivotValue1.aggregate = igrPivotAggregator1;
+
+      pivotConfiguration1.values = [igrPivotValue1];
+
+      this._pivotConfiguration1 = pivotConfiguration1;
+    }
+    return this._pivotConfiguration1;
+  }
+
+  constructor(props: any) {
+    super(props);
+
+    this.gridRef = this.gridRef.bind(this);
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div className="container sample ig-typography">
+        <div className="container fill">
+          <IgrPivotGrid
+            data={this.pivotSalesData}
+            ref={this.gridRef}
+            pivotConfiguration={this.pivotConfiguration1}
+          ></IgrPivotGrid>
+        </div>
+      </div>
+    );
+  }
+
+  private _pivotSalesData: PivotSalesData = null;
+  public get pivotSalesData(): PivotSalesData {
+    if (this._pivotSalesData == null) {
+      this._pivotSalesData = new PivotSalesData();
+    }
+    return this._pivotSalesData;
+  }
+
+  public pivotSalesDataAggregateMaxSales(members: any[], data: any[]): any[] {
+    if (!data) {
+      return [];
+    }
+    return data.map((x) => x.Sales).reduce((a, b) => Math.max(a, b));
+  }
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Sample />);
+```
 
 ## Known Issues and Limitations
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
-| Setting duplicate [`memberName`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=memberName) or [`member`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting duplicate [`MemberName`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=memberName) or [`Member`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 
 ## API References
 
-- [`pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration)
-- [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
-- [`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector)
-- [`IgrPivotDateDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDateDimension)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
-<!-- ## Additional Resources -->
-
-<!-- TODO write these topics: -->
-
-<!-- * [React Pivot Grid Features](features.md) -->
-
-<!-- * [React Pivot Grid Custom Aggregations](remote-operations.md) -->
+[`IgrPivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration)<br />
+[`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)<br />
+[`IgrPivotDataSelector`](mcp:get_api_reference?platform=react&component=IgrPivotDataSelector)<br />
+[`IgrPivotDateDimensionOptions`](mcp:get_api_reference?platform=react&component=IgrPivotDateDimensionOptions)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
 
 ## Additional Resources
 

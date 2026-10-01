@@ -1,15 +1,15 @@
 ---
-title: React Tree Grid Paging - Ignite UI for React
-_description: Configure React pagination and create custom pages in the React table by Ignite UI, get data for the requested pages with variety of events.
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-_keywords: Paging, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/paging
+title: "React Tree Grid Paging - Ignite UI for React"
+description: Configure React pagination and create custom pages in the React table by Ignite UI, get data for the requested pages with variety of events.
+keywords: Paging, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/paging"
+llms:
+  description: "The Ignite UI for React Pagination feature in React Tree Grid is used to split a large set of data into a sequence of pages that have similar content."
+_componentKey: TreeGrid
 _tocName: Paging
 _premium: true
 ---
-
 # React Tree Grid Pagination Overview
 
 The Ignite UI for React Pagination feature in React Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)  tag, similar to adding of a column. As in any React table, the pagination in the React Tree Grid supports template for custom pages.
@@ -193,9 +193,8 @@ const selectOptions = [5, 15, 20, 50];
     <IgrPaginator perPage={10} page={1} selectOptions={selectOptions}>
     </IgrPaginator>
 </IgrTreeGrid>
-```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
+```
 
 ### Paginator Component Demo
 
@@ -405,29 +404,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- * [Paginator](../paginator.md) -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
 - [Sorting](sorting.md)
 - [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
+
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,13 +1,15 @@
 ---
 title: Transform Data with Angular Pipes | WPF to Angular Guide | Infragistics
-_description: Learn how Angular pipes can transform data from one value to another like wpf converters. Angular provides predefined pipes for common data transformations.
-_keywords: transform data with angular pipes, ignite ui for angular, infragistics
+description: Learn how Angular pipes can transform data from one value to another like wpf converters. Angular provides predefined pipes for common data transformations.
+keywords: transform data with angular pipes, ignite ui for angular, infragistics
+llms:
+  description: "You can use the Angular pipes to transform data from one value to another."
 _tocName: Transforming Data with Angular Pipes
 ---
-
 # Transform Data with Angular Pipes
 
-> [!Video https://www.youtube.com/embed/Gmz5kio50FE]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/Gmz5kio50FE">
+</iframe>
 
 You can use the Angular pipes to transform data from one value to another. This technic is similar to WPF converters.
 
@@ -83,10 +85,11 @@ export class ReplacePipe implements PipeTransform {
 <span>{{ name | replace:" ":"-" }}</span>
 ```
 
-> [!NOTE]
-> Note that in order to be able to use the pipe in the component's html template, you have to add it to the module declarations.
-> [!NOTE]
-> An important difference between the Angular pipe and the WPF converter is that the Angular pipe works only for one-way binding unlike the WPF converter which has [ConvertBack](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter.convertback?view=netframework-4.8) method.
+**Note:** 
+Note that in order to be able to use the pipe in the component's html template, you have to add it to the module declarations.
+
+**Note:** 
+An important difference between the Angular pipe and the WPF converter is that the Angular pipe works only for one-way binding unlike the WPF converter which has [ConvertBack](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter.convertback?view=netframework-4.8) method.
 
 ## Additional Resources
 
@@ -94,7 +97,7 @@ export class ReplacePipe implements PipeTransform {
 - [Angular Pipes](https://angular.io/guide/pipes)
 - [List of Predefined Angular Pipes](https://angular.io/api?type=pipe)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,33 +1,32 @@
 ---
-title: Web Components Hierarchical Grid Column Data Types - Ignite UI for Web Components
-_description: Handle cell and editing templates in Web Components by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
-_keywords: Column Data Type , Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-types
+title: "Web Components Hierarchical Grid Column Data Types - Ignite UI for Web Components"
+description: Handle cell and editing templates in Web Components by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
+keywords: Column Data Type , Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/column-types"
+llms:
+  description: "The Web Components Hierarchical Grid provides a default handling of number, string, date, boolean, currency and percent column data types, based on which the appearance of the default and editing templates will be present."
+_componentKey: HierarchicalGrid
 _tocName: Column Types
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Column Types Overview
 
 The Web Components Hierarchical Grid provides a default handling of **number**, **string**, **date**, **boolean**, **currency** and **percent** column data types, based on which the appearance of the default and editing templates will be present.
 
 ## Web Components Hierarchical Grid Default Template
 
-If you want to enable a data type-specific template, you should set the column [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType).
+If you want to enable a data type-specific template, you should set the column [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType).
 
-The following sections describe the default templates for each [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType).
+The following sections describe the default templates for each [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType).
 
 ### String
 
-This column [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) is not changing the appearance or format of the cell value.
+This column [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) is not changing the appearance or format of the cell value.
 
 ### Number
 
-If the [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=locale) settings, as well as when [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=locale) settings, as well as when [`IgcColumn.pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
@@ -48,11 +47,12 @@ constructor() {
     var column = document.getElementById('column') as IgcColumnComponent;
     column.pipeArgs = this.formatOptions;
 }
+
 ```
 
 ### DateTime, Date and Time
 
-The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=locale) format or [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
+The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=locale) format or [`IgcColumn.pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
 
 - **format** - The default value for formatting the date is `'mediumDate'`. Other available options are `'short'`, `'long'`, `'shortDate'`, `'fullDate'`, `'longTime'`, `'fullTime'` and etc.
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
@@ -91,7 +91,7 @@ Available timezones:
 | Hawaii Standard Time      |‘UTC-10’                   |
 | India Standard Time       |‘UTC+4’                    |
 
-The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
+The `IgcHierarchicalGrid` accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
@@ -108,15 +108,13 @@ public timeFormats = [
 #### Cell Editing
 
 When it comes to cell editing based on the column type a different editor will appear:
-
-- `DateTime` - `DateTimeEditor` will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
-- `Date` - [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) will be used.
-- `Time` - `TimePicker` will be used.
+- `DateTime` - [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)  will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
+- `Date` - [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) will be used.
+- `Time` - [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) will be used.
 
 #### Filtering
 
 The same editors listed above will be used when it comes to Quick Filtering/Excel-style Filtering. These are the following filtering operands that each type exposes:
-
 - `DateTime` and `Date` - Equals, Does Not Equal, Before, After, Today, Yesterday, This Month, Last Month, Next Month, This Year, Last Year, Next Year, Empty, Not Empty, Null, Not Null;
 - `Time` - At, Not At, Before, After, At or Before, At or After, Empty, Not Empty, Null, Not Null;
 
@@ -132,7 +130,7 @@ The available Summary operands will be **Count**, **Earliest** (date/time) and *
 
 ### Boolean
 
-The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component.
+The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component.
 
 ```html
 <igc-column data-type="boolean">
@@ -148,7 +146,7 @@ Default template is using the value coming from the data as an image source to a
 </igc-column>
 ```
 
-When [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=autoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When `AutoGenerate` is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 
 ### Currency
 
@@ -156,7 +154,7 @@ When [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=Igc
 
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
 
-By using the [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
+By using the [`IgcColumn.pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```html
 <igc-column id="column" field="UnitsInStock" data-type="currency">
@@ -175,14 +173,15 @@ constructor() {
     var column = document.getElementById('column') as IgcColumnComponent;
     column.pipeArgs = this.formatOptions;
 }
+
 ```
 
 | Parameter                 | Description                                                |
 |---------------------------| -------------------------|
 | digitsInfo                | Represents Decimal representation of currency value        |
-| display\-                | Displays the value by narrow or wide symbol                |
+| display*                  | Displays the value by narrow or wide symbol                |
 
-\*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
+*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
 
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
@@ -215,10 +214,11 @@ constructor() {
     var column = document.getElementById('column') as IgcColumnComponent;
     column.pipeArgs = this.formatPercentOptions;
 }
+
 ```
 
-> [!Note]
-> When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
+**Note:** 
+When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template
 
@@ -244,8 +244,9 @@ constructor() {
 }
 
 public editCellTemplate = (ctx: IgcCellTemplateContext) => {
-    return html`<input></input>`;
+    return html`<input>`;
 }
+
 ```
 
 ### Column Formatter
@@ -266,17 +267,12 @@ constructor() {
 public formatCurrency(value: number) {
     return `$ ${value.toFixed(0)}`;
 }
+
 ```
 
 ## API References
-
-- `Cell`
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs)
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=locale)
-- [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 - For custom templates you can see [cell editing topic](cell-editing.md#cell-editing-templates)

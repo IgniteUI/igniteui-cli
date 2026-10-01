@@ -1,13 +1,14 @@
 ---
-title: Web Components Grid Lite Sorting  | Ignite UI for Web Components | MIT license
-_description: Try Grid Lite with sort operations, sort customization, and remote sorting for Web Components Grid Lite. See demos and examples and build your next app.
-_keywords: sorting, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Web Components Grid Lite Sorting  | Ignite UI for Web Components | MIT license"
+description: Try Grid Lite with sort operations, sort customization, and remote sorting for Web Components Grid Lite. See demos and examples and build your next app.
+keywords: sorting, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite supports sorting operations on its data source."
 _tocName: Sorting
 ---
-
 # Sort operations
 
 The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `sortable` property of the column.
@@ -197,11 +198,10 @@ The Grid Lite supports both single and multi-column sorting. Multi-column is ena
 grid.sortingOptions = { mode: 'single' };
 ```
 
-> [!NOTE]
-> The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
+**Note:** 
+The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-state sorting
-
 The Grid Lite supports tri-state sorting and it is always enabled. End-users will cycle through the following direction states when clicking on sortable column headers:
 
 ```
@@ -636,7 +636,7 @@ igc-grid-lite {
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a `DataPipelineParams` object.
+Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a [`IgcDataPipelineParams`](mcp:get_api_reference?platform=webcomponents&component=DataPipelineParams) object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -658,8 +658,6 @@ export type DataPipelineParams<T extends object> = {
 ```typescript
 grid.dataPipelineConfiguration = { sort: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
-
-<!-- End: React, WebComponents -->
 
 The custom callback can be async as the grid will wait for it until it resolves.
 
@@ -840,17 +838,16 @@ igc-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
+[`IgcGridLiteSortingOptions`](mcp:get_api_reference?platform=webcomponents&component=GridLiteSortingOptions)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Filtering](filtering.md)
+- [Column Configuration](./column-configuration.md)
+- [Filtering](./filtering.md)
 
 Our community is active and always welcoming to new ideas.
 

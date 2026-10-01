@@ -1,14 +1,15 @@
 ---
-title: React Hierarchical Grid | Fastest React Hierarchical Table | Infragistics
-_description: The Ignite UI for React Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: React hierarchical grid, igniteui for React, infragistics
-_license: commercial
+title: "React Hierarchical Grid | Fastest React Hierarchical Table | Infragistics"
+description: The Ignite UI for React Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: "React hierarchical grid, igniteui for React, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGrid", "RowIsland"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for React HierarchicalGrid allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible."
 _tocName: Load on Demand
 _premium: true
 ---
-
 # Hierarchical Grid Load On Demand
 
 The Ignite UI for React [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
@@ -162,8 +163,6 @@ As you can see `buildUrl()` will be the method that will generate our url based 
 
 Next we will define how we should build our URL for the GET request. This is where we will be able to get the data for our main grid but also for any child grid inside it. We will use the `Customers` data from  this [topic](https://data-northwind.indigo.design/swagger/index.html) for our root level and use `Orders` and `Details` for the lower levels. The model will differ per application but we will use the following one:
 
-<img class="responsive-img" src="../../../images/hgrid-database.jpg" alt="hgrid-database" />
-
 What we first need is the `key` of our table to determine from where to get the data for the desired grid, the primary key of the parent row and its unique ID.
 
 We will define all this in the `dataState` object. An example:
@@ -187,7 +186,7 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
@@ -213,7 +212,7 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
@@ -223,7 +222,7 @@ Next we will setup our hierarchical grid and connect it to our remote service pr
 
 ### Template defining
 
-First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
+First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`PrimaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
 
 ```tsx
 <IgrHierarchicalGrid ref={hierarchicalGrid} primaryKey="customerId" height="600px">
@@ -336,7 +335,7 @@ With this, the setup of our application is almost done. This last step aims to i
 
 ### Setup of loading indication
 
-The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) can display a loading indicator by setting the [`isLoading`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
+The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) can display a loading indicator by setting the [`IsLoading`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
 
 In this case the final version of our configuration would look like this:
 
@@ -376,13 +375,11 @@ function gridCreated(event: IgrGridCreatedEventArgs, _parentKey: string) {
 ```
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)
 ## Additional Resources
 
-- [Hierarchical Grid Component](overview.md)
+- [Hierarchical Grid Component](./overview.md)
 
 Our community is active and always welcoming to new ideas.
 

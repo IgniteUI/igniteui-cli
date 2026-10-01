@@ -1,23 +1,22 @@
 ---
-title: Web Components Tree Grid Column Pinning - Ignite UI for Web Components
-_description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-pinning
+title: "Web Components Tree Grid Column Pinning - Ignite UI for Web Components"
+description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
+keywords: "Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-pinning"
+llms:
+  description: "The Ignite UI for Web Components Column Pinning feature in Web Components Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the IgcTreeGrid."
+_componentKey: TreeGrid
 _tocName: Column Pinning
 _premium: true
 ---
-
 # Web Components Tree Grid Column Pinning
 
-The Ignite UI for Web Components Column Pinning feature in Web Components Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). There’s an integrated UI for Column Pinning, accessible via the Web Components Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Web Components Column Pinning feature in Web Components Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the `IgcTreeGrid`. There’s an integrated UI for Column Pinning, accessible via the Web Components Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Web Components Tree Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -58,7 +57,7 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinned) property of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) body.
+Column pinning is controlled through the [`IgcColumn.pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinned) property of the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) body.
 
 ```html
 <igc-tree-grid id="treeGrid" primary-key="ID" foreign-key="ParentID" auto-generate="false">
@@ -68,26 +67,16 @@ Column pinning is controlled through the [`pinned`](mcp:get_api_reference?platfo
 </igc-tree-grid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-You may also use the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s [`pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=unpinColumn) methods of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) to pin or unpin columns by their field name:
-
-<!-- ComponentStart: TreeGrid -->
+You may also use the [`IgcTreeGrid.pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=pinColumn) or [`IgcTreeGrid.unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=unpinColumn) methods of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) to pin or unpin columns by their field name:
 
 ```typescript
 this.treeGrid.pinColumn('Title');
 this.treeGrid.unpinColumn('Name');
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-<!-- Angular, React, WebComponents -->
-
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- end: Angular, React, WebComponents, React -->
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`IgcTreeGrid.columnPin`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=columnPin) event and changing the [`IgcPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
 ```html
 <igc-tree-grid id="dataGrid" auto-generate="true"></igc-tree-grid>
@@ -111,7 +100,7 @@ public columnPinning(event) {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`IgcColumn.pinningPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinningPosition) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```html
@@ -169,7 +158,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 ```
 
 ### Column Pinning on Both Sides
-
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 
 ```typescript
@@ -225,17 +213,17 @@ This can be done by creating a header template for the columns with a custom ico
 
 ```html
 <igc-tree-grid id="treeGrid" primary-key="ID" foreign-key="ParentID" auto-generate="false" width="100%" height="620px">
-    <igc-column id="Name" field="Name" data-type="String" width="250px"></igc-column>
-    <igc-column id="Title" field="Title" data-type="String" width="300px"></igc-column>
-    <igc-column id="ID" field="ID" data-type="Number" width="200px"></igc-column>
-    <igc-column id="HireDate" field="HireDate" header="Hire Date" data-type="Date" width="200px"></igc-column>
-    <igc-column id="Age" field="Age" data-type="Number" width="200px"></igc-column>
-    <igc-column id="Address" field="Address" data-type="String" width="200px"></igc-column>
-    <igc-column id="City" field="City" data-type="String" width="200px"></igc-column>
-    <igc-column id="Country" field="Country" data-type="String" width="200px"></igc-column>
+    <igc-column id="Name" field="Name" data-type="string" width="250px"></igc-column>
+    <igc-column id="Title" field="Title" data-type="string" width="300px"></igc-column>
+    <igc-column id="ID" field="ID" data-type="number" width="200px"></igc-column>
+    <igc-column id="HireDate" field="HireDate" header="Hire Date" data-type="date" width="200px"></igc-column>
+    <igc-column id="Age" field="Age" data-type="number" width="200px"></igc-column>
+    <igc-column id="Address" field="Address" data-type="string" width="200px"></igc-column>
+    <igc-column id="City" field="City" data-type="string" width="200px"></igc-column>
+    <igc-column id="Country" field="Country" data-type="string" width="200px"></igc-column>
     <igc-column id="Fax" field="Fax" data-type="string" width="200px"></igc-column>
-    <igc-column id="PostalCode" field="PostalCode" header="Postal Code" data-type="String" width="200px"></igc-column>
-    <igc-column id="Phone" field="Phone" data-type="String" width="200px"></igc-column>
+    <igc-column id="PostalCode" field="PostalCode" header="Postal Code" data-type="string" width="200px"></igc-column>
+    <igc-column id="Phone" field="Phone" data-type="string" width="200px"></igc-column>
 </igc-tree-grid>
 ```
 
@@ -272,13 +260,11 @@ public pinHeaderTemplate = (ctx: IgcCellTemplateContext) => {
     return html`
         <div class="title-inner">
             <span style="float:left">${ctx.cell.column.header}</span>
-            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igx-icon>
+            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igc-icon>
         </div>
     `;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 On click of the custom icon the pin state of the related column can be changed using the column's API methods.
 
@@ -329,13 +315,11 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
-
-<!-- WebComponents, Blazor, React -->
+- Setting column widths in percentage (%) explicitly makes the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set an `ID` for the grid first:
 
 ```html
@@ -399,13 +383,9 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 }
 ```
 
-<!-- end: WebComponents, Blazor -->
-
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

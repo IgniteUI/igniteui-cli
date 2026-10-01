@@ -1,19 +1,18 @@
 ---
-title: Web Components Text Area | Data Visualization Tools | Infragistics
-_description: Infragistics' Web Components Text Area is a component where the user can enter a sizable amount of free-form text.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, Web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Input, Web Components Textarea components, Web Components Textarea controls
+title: "Web Components Text Area | Data Visualization Tools | Infragistics"
+description: Infragistics' Web Components Text Area is a component where the user can enter a sizable amount of free-form text.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, Web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Input, Web Components Textarea components, Web Components Textarea controls"
 mentionedTypes: ["Input", "Icon", "Textarea", "Toast"]
-_license: MIT
+license: MIT
+llms:
+  description: "The Ignite UI for Web Components Text Area represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizable amount of free-form text, for example a comment on a review or feedback form."
 _tocName: Text Area
 ---
-
 # Web Components Text Area Overview
 
 The Ignite UI for Web Components Text Area represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizable amount of free-form text, for example a comment on a review or feedback form.
 
 ## Web Components Text Area Example
-
-<div class="divider--half"></div>
 
 ```css
 /* shared styles are loaded from: */
@@ -22,7 +21,7 @@ The Ignite UI for Web Components Text Area represents a multi-line plain-text ed
 
 ## Dependencies
 
-To get started we need to import the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
+To get started we need to import the [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
 
 ```ts
 import { defineComponents, IgcTextareaComponent } from 'igniteui-webcomponents';
@@ -33,7 +32,7 @@ defineComponents(IgcTextareaComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-After we import the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component we are ready to start using it, so let's add our first Text Area.
+After we import the [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component we are ready to start using it, so let's add our first Text Area.
 
 ```html
 <igc-textarea rows="5" label="Tell us your story:">It was a dark and stormy night...</igc-textarea>
@@ -41,7 +40,14 @@ After we import the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webc
 
 ## Prefix, Suffix &  Helper Text
 
-With `prefix` and `suffix` slots we can add different content before and after the main content of the Text Area. The `helper-text` slot provides a hint placed below the Text Area. In the following sample we will create a new Text Area field with a text prefix, an icon suffix and a helper text as a hint:
+With `prefix` and `suffix` slots we can add different content before and after the main content of the Text Area. The `helper-text` slot provides a hint placed below the Text Area. When slotting content, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component for icons. In the following sample, we will create a new Text Area field with an icon prefix and helper text as a hint:
+
+```html
+<igc-textarea label="Your feedback">
+    <igc-icon name="feedback" slot="prefix"></igc-icon>
+    <span slot="helper-text">Give us a short description of what you liked/disliked</span>
+</igc-textarea>
+```
 
 ```css
 /* shared styles are loaded from: */
@@ -50,7 +56,7 @@ With `prefix` and `suffix` slots we can add different content before and after t
 
 ## Text Area Resizing
 
-There are three different resize options of the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
+There are three different resize options of the [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
 
 ```css
 /* shared styles are loaded from: */
@@ -63,11 +69,11 @@ There are three different resize options of the [`IgcTextareaComponent`](mcp:get
 }
 ```
 
-The full list of attributes of the text area can be found in [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) API.
+The full list of attributes of the text area can be found in [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) API.
 
 ## Form Integration
 
-The sample below shows how a [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) could be integrated into a form.
+The sample below shows how a [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) could be integrated into a form.
 
 ```css
 /* shared styles are loaded from: */
@@ -79,7 +85,7 @@ The sample below shows how a [`IgcTextareaComponent`](mcp:get_api_reference?plat
 
 ## Styling
 
-The [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -130,14 +136,13 @@ igc-textarea::part(suffix) {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
 
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent)
-- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+[`IgcTextarea`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent)
+[`IgcToast`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
 
 ## Additional Resources
 

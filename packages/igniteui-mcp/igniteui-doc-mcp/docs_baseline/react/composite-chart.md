@@ -1,21 +1,22 @@
 ---
-title: React Composite Chart | Combo Chart| Data Visualization | Infragistics
-_description: Infragistics' React Composite Chart
-_keywords: React Charts, Composite Chart, Combo Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "Series"]
+title: "React Composite Chart | Combo Chart| Data Visualization | Infragistics"
+description: Infragistics' React Composite Chart
+keywords: "React Charts, Composite Chart, Combo Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area."
 _tocName: Composite Chart
 _premium: true
 ---
-
 # React Composite / Combo Chart
 
 The Ignite UI for React Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area. It is very useful when presenting two data series that have a very different scale and might be expressed in different units. The most common example is dollars on one axis and percentage on the other axis.
 
 ## React Composite / Combo Example
 
-The following example demonstrates how to create Composite Chart using [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html) and [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control.
+The following example demonstrates how to create Composite Chart using `IgrColumnSeries` and `IgrLineSeries` in the `IgrDataChart` control.
 
 ```tsx
 import React from 'react';
@@ -173,22 +174,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartCompositeChart/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 - [Bar Chart](bar-chart.md)
 - [Column Chart](column-chart.md)
-
-<!-- - [Gantt Chart](gantt-chart.md) -->
-
 - [Line Chart](line-chart.md)
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
 
-- [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html)
-- [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html)
-- [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html)
-- [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
+`IgrDataChart`<br />
+`IgrColumnSeries`<br />
+`IgrLineSeries`<br />
+`IgrCategoryXAxis`<br />
+`IgrNumericYAxis`<br />

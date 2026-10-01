@@ -1,13 +1,14 @@
 ---
-title: Web Components Grid Lite Data Binding - Ignite UI for Web Components | MIT license
-_description: Data binding for Grid Lite. Create apps with our open-source Web Components Grid Lite. It’s lightweight and packed with essential features. Try now.
-_keywords: data binding, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Web Components Grid Lite Data Binding - Ignite UI for Web Components | MIT license"
+description: Data binding for Grid Lite. Create apps with our open-source Web Components Grid Lite. It’s lightweight and packed with essential features. Try now.
+keywords: data binding, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite accepts an array of plain objects as a data source."
 _tocName: Data Binding
 ---
-
 # Web Components Grid Lite Data Binding
 
 The Grid Lite accepts an array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
@@ -40,9 +41,10 @@ grid.autoGenerate = true;
 grid.data = [];
 ```
 
-> [!NOTE]
-> The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
-> Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
+**Note:** 
+The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
+
+Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.
@@ -219,19 +221,17 @@ igc-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

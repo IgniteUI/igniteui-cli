@@ -1,19 +1,20 @@
 ---
 title: Angular Autocomplete Component – Ignite UI for Angular - MIT license 
-_description: The Angular Autocomplete directive offers a way to enhance a text input by showing a panel of suggested options provided by the developer. Try it now.
-_keywords: Angular Autocomplete component, Angular Autocomplete directive, Angular Autocomplete control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: The Angular Autocomplete directive offers a way to enhance a text input by showing a panel of suggested options provided by the developer. Try it now.
+keywords: Angular Autocomplete component, Angular Autocomplete directive, Angular Autocomplete control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "Angular Autocomplete is a search box directive that enables users to easily find, filter and select an item from a list of suggestions while they type."
 _tocName: Autocomplete
 ---
-
 # Angular Autocomplete Directive Overview
 
 Angular Autocomplete is a search box directive that enables users to easily find, filter and select an item from a list of suggestions while they type. Feature-rich, it supports seamless data binding, filtering, grouping, UI customization options, and other built-in functionalities so developers can create intuitive autocomplete search experience.
 
-<p class="highlight">
+<div class="highlight">
 
 The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) directive provides a way to enhance a text input by showing an [`igxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) with suggested options, provided by the developer. The suggestions will show once you start typing in the text input or use the `Arrow Up`/`Arrow Down` keys.
-</p>
+</div>
 
 ## Angular Autocomplete Example
 
@@ -75,7 +76,7 @@ export class AutocompletePipeStartsWith implements PipeTransform {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Autocomplete
 
@@ -85,9 +86,9 @@ To get started with the Ignite UI for Angular for [Angular Components](https://w
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
-The next step is to import the **IgxAutocompleteModule** and **IgxDropDownModule** in our **app.module**. If [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) is applied on an [igxInput](mcp:get_api_reference?platform=angular&component=IgxInputDirective), the **igxInputGroupModule** is also required:
+The next step is to import the **IgxAutocompleteModule** and **IgxDropDownModule** in our **app.module**. If [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) is applied on an [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective), the **igxInputGroupModule** is also required:
 
 ```typescript
 // app.module.ts
@@ -185,8 +186,8 @@ export class AutocompletePipeStartsWith implements PipeTransform {
 }
 ```
 
->[!NOTE]
->The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) uses the [`igxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as a provider for the available options, which means that all capabilities of the dropdown component can be used in the autocomplete.
+**Note:** 
+The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) uses the [`igxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as a provider for the available options, which means that all capabilities of the dropdown component can be used in the autocomplete.
 
 ### Disable Angular Autocomplete
 
@@ -263,11 +264,10 @@ export class AutocompleteComponent {
 }
 ```
 
->[!NOTE]
->The default positioning strategy is `AutoPositionStrategy` and the dropdown is opened according to the available space.
+**Note:** 
+The default positioning strategy is `AutoPositionStrategy` and the dropdown is opened according to the available space.
 
 If everything went right, you should see this in your browser:
-
 
 ```typescript
 import { Component, Pipe, PipeTransform } from '@angular/core';
@@ -365,12 +365,11 @@ export class AutocompletePipeStartsWith2 implements PipeTransform {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ## Keyboard Navigation
 
-<div class="divider--half"></div>
+<hr/>
 
 - <kbd>⬆</kbd> / <kbd>⬇</kbd> or typing in the input will open the dropdown, if it's closed.
 - <kbd>⬇</kbd> - will move to the next dropdown item.
@@ -378,8 +377,8 @@ export class AutocompletePipeStartsWith2 implements PipeTransform {
 - <kbd>ENTER</kbd> will confirm the already selected item and will close the dropdown.
 - <kbd>ESC</kbd> will close the dropdown.
 
->[!NOTE]
->When the Angular autocomplete opens, then the first item on the list is automatically selected. The same is valid when the list is filtered.
+**Note:** 
+When the Angular autocomplete opens, then the first item on the list is automatically selected. The same is valid when the list is filtered.
 
 You can also see how our [WYSIWYG App Builder™](https://www.infragistics.com/products/appbuilder) streamlines the entire design-to-code story by 80% using real Angular components.
 
@@ -401,36 +400,34 @@ The `drop-down` component, used as provider for suggestions, will expose the fol
 - role="option" - applied on the `igx-drop-down-item` component container
 - aria-disabled="true"/"false" applied on `igx-drop-down-item`, `igx-drop-down-item-group` component containers when they are disabled.
 
-
 ## Styling
 
 Every component has its own theme.
 
-To get the `igxAutocomplete` styled, you have to style its containing components. In our case, these are the [input-group-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme) and the [drop-down-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme).
+To get the `igxAutocomplete` styled, you have to style its containing components. In our case, these are the `input-group-theme` and the `drop-down-theme`.
 
-Take a look at the [`igxInputGroup`](input-group.md#styling) and the [`igxDropdown`](drop-down.md#styling) styling sections to get a better understanding of how to style those two components.
+Take a look at the [`igxInputGroup`](/input-group#styling) and the [`igxDropdown`](/drop-down#styling) styling sections to get a better understanding of how to style those two components.
 
 ## API Reference
 
-<div class="divider--half"></div>
+<hr/>
 
-- [IgxAutocompleteDirective](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective)
-- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-
+- [`IgxAutocompleteDirective`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective)
+- [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 
 ## Theming Dependencies
 
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxInputGroup Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
+- `IgxDropDown Theme`
+- `IgxInputGroup Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [IgxDropDown](drop-down.md)
-- [IgxInputGroup](input-group.md)
-- [Template Driven Forms Integration](input-group.md)
+- [IgxDropDown](/drop-down)
+- [IgxInputGroup](/input-group)
+- [Template Driven Forms Integration](/input-group)
 
 Our community is active and always welcoming to new ideas.
 

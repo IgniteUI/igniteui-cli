@@ -1,12 +1,13 @@
 ---
 title: Card Component
-_description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
-_keywords: Ignite UI for React, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls
-_license: MIT
+description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
+keywords: "Ignite UI for React, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls"
+license: MIT
 mentionedTypes: ["Card", "CardActions", "CardContent", "CardHeader", "CardMedia", "Avatar", "Button", "Icon", "IconButton", "Ripple"]
+llms:
+  description: "The Ignite UI for React Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information."
 _tocName: Card
 ---
-
 # React Card Overview
 
 The Ignite UI for React Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information. Cards can be used to create a multimedia dashboard.
@@ -100,8 +101,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CardOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Cards allow you to easily display content composed of different types of objects or similar objects whose size and supported actions can vary.
@@ -130,11 +129,11 @@ Then, to represent the demo card template, we can add the following code:
 ```tsx
 <IgrCard>
     <IgrCardMedia>
-        <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50"></img>
+        <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50" />
     </IgrCardMedia>
     <IgrCardHeader>
-        <h3 slot="title">New York City</h3>
-        <h5 slot="subtitle">City in New York</h5>
+        <span slot="title">New York City</span>
+        <span slot="subtitle">City in New York</span>
     </IgrCardHeader>
     <IgrCardContent>
         <p>New York City comprises 5 boroughs sitting where the
@@ -159,7 +158,7 @@ Then, to represent the demo card template, we can add the following code:
 </IgrCard>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, to _tag_ an element as a header title, we need to place it between the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) tags and set its slot name to `title`. Conversely, to define a subtitle, we need to set the slot name to `subtitle`. When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. A `<span>` provides a neutral container that inherits the component’s styles cleanly.
 
 Any image or video we want to show in the card, we wrap inside the [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) tags. The [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
@@ -169,24 +168,21 @@ Finally, the [`IgrCardActions`](mcp:get_api_reference?platform=react&component=I
 
 ### Media, Thumbs, and Avatars
 
-If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
+If you want to display an image or icon in the card header next to the title and subtitle, assign the element's slot attribute to `thumbnail`. For the best results, we recommend using an [`igc-avatar`](../layouts/avatar.md) component for the `thumbnail` slot, as it integrates seamlessly with the card header's layout and styling.
 
 Taking the card above as an example, we can edit the contents of the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) and add an avatar with `slot="thumbnail"`:
 
 ```tsx
 <IgrCardHeader>
-    <div slot="thumbnail">
-        <IgrAvatar src="path/to/image" initials="TS" />
-    </div>
-    <h3 slot="title">Title</h3>
-    <h5 slot="subtitle">Subtitle</h5>
+    <IgrAvatar slot="thumbnail" src="path/to/image" initials="TS" />
+    <span slot="title">Title</span>
+    <span slot="subtitle">Subtitle</span>
 </IgrCardHeader>
 ```
 
 The above example will show the avatar alongside the title and subtitle in the card header.
 
 ### Outlined cards
-
 The card has an `outlined` attribute which, if set, removes any shadows from the card, replacing them with a thin border to separate the card from the background.
 
 ### Horizontal Layout
@@ -200,9 +196,9 @@ Here's an example of an outlined horizontal card:
     <div className="card-horizontal">
         <div>
             <IgrCardHeader>
-                <img src="https://static.infragistics.com/xplatform/images/music/rozes.jpg" slot="thumbnail"></img>
-                <h5 slot="title">Rozes</h5>
-                <h5 slot="subtitle">Under the Grave (2016)</h5>
+                <img src="https://static.infragistics.com/xplatform/images/music/rozes.jpg" slot="thumbnail" />
+                <span slot="title">Rozes</span>
+                <span slot="subtitle">Under the Grave (2016)</span>
             </IgrCardHeader>
             <IgrCardContent>
                 <p>As I have always said: I write what’s real and what’s true,
@@ -323,8 +319,8 @@ Below is an example showing how you can create a semi-horizontal card, where we 
         <div>
             <IgrCardHeader>
                 <IgrAvatar src="https://static.infragistics.com/xplatform/images/music/singer_with_mic.jpg" slot="thumbnail" />
-                <h5 slot="title">HERE</h5>
-                <h5 slot="subtitle">by Mellow D</h5>
+                <span slot="title">HERE</span>
+                <span slot="subtitle">by Mellow D</span>
             </IgrCardHeader>
             <IgrCardContent>
                 <p>Far far away, behind the word mountains,
@@ -337,7 +333,7 @@ Below is an example showing how you can create a semi-horizontal card, where we 
         </div>
 
         <IgrCardMedia className='card-media'>
-            <img src="https://static.infragistics.com/xplatform/images/music/singer_female.jpg"></img>
+            <img src="https://static.infragistics.com/xplatform/images/music/singer_female.jpg" />
         </IgrCardMedia>
     </div>
 </IgrCard>
@@ -445,12 +441,11 @@ root.render(<CardSemiHorizontal />);
 ### Card Actions
 
 The card actions area allows additional configuration to what we have already mentioned.
-
-You can reverse the order of the text button and the icon buttons by switching their slot names.
+The area is intended to hold actionable items, like buttons. There are two slots available that can be used to position content: `start` and `end`. We can assign these slots to any element placed inside the [`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions), and it will be positioned accordingly, either at the `start` or the `end` of the area. These slots can be used with any type of content, but we highly recommend sticking to actionable elements, or wrappers of actionable elements, as shown in the example below:
 
 ```tsx
 <IgrCardActions>
-    <IgrButton>
+    <IgrButton slot="end">
         <span>Read more</span>
         <IgrRipple />
     </IgrButton>
@@ -464,8 +459,6 @@ You can reverse the order of the text button and the icon buttons by switching t
     </div>
 </IgrCardActions>
 ```
-
-Now the icon buttons will appear before the text button.
 
 You can also add more content in-between by simply omitting the slot property and let the elements go to the default slot.
 
@@ -596,23 +589,21 @@ root.render(<CardStyling />);
 ```
 
 ### Summary
-
 In this article we covered a lot of ground with the card component. We created a simple card and added some images to make it a bit more appealing. We used some additional React inside our card, like avatars, buttons and icons, to enrich the experience and add some functionality. And finally, we changed the card's appearance by changing the major colors of the building blocks.
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
 
-- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions)
-- [`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent)
-- [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader)
-- [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia)
-- [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)
-- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)<br />
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)<br />
+[`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions)<br />
+[`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent)<br />
+[`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader)<br />
+[`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia)<br />
+[`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)<br />
+[`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)<br />
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)<br />
 
 ## Additional Resources
 

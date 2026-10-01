@@ -1,12 +1,13 @@
 ---
-title: Blazor Calendar Component - Ignite UI for Blazor
-_description: With Blazor Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
-_keywords: Blazor Calendar, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Calendar Component - Ignite UI for Blazor"
+description: With Blazor Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
+keywords: "Blazor Calendar, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["Calendar", "DateRangeType", "DateRangeDescriptor"]
+llms:
+  description: "The Ignite UI for Blazor Calendar component is lightweight and easy to configure."
 _tocName: Calendar
 ---
-
 # Blazor Calendar Overview
 
 The Ignite UI for Blazor Calendar component is lightweight and easy to configure. It is used for showing dates and weekdays. It is also the best way for providing monthly or yearly views to end-users. The Ignite UI for Blazor Calendar control lets you restrict the minimum and maximum date ranges that people can navigate through.
@@ -16,8 +17,6 @@ The Ignite UI for Ignite UI for Blazor Calendar provides an easy and intuitive w
 ## Blazor Calendar Example
 
 The following Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component example shows a basic calendar with a single day selection mode. See how it works or inspect the code behind.
-
-<div class="divider--half"></div>
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -38,13 +37,13 @@ The following Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&compo
 
 Before using the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbCalendarModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -60,7 +59,7 @@ The simplest way to start using the Ignite UI for Blazor [`IgbCalendar`](mcp:get
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) is using single selection mode but you can change it by setting the [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=Selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) is using single selection mode but you can change it by setting the [`IgbCalendar.selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=selection) property as shown in this example.
 
 ```razor
 <IgbCalendar Selection="@CalendarSelection.Multiple" />
@@ -83,7 +82,7 @@ Users can choose from three different selection modes - single selection, multip
 
 ### Range Selection
 
-Following the same approach, we can switch [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=Selection) to range mode:
+Following the same approach, we can switch [`IgbCalendar.selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=selection) to range mode:
 
 ```razor
 <IgbCalendar Selection="@CalendarSelection.Range" />
@@ -106,24 +105,26 @@ Following the same approach, we can switch [`Selection`](mcp:get_api_reference?p
 
 ### Active View and Date
 
-The Ignite UI for Blazor Calendar component allows you to switch between three different views: days, months and years. The [`ActiveView`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveDate) property. The [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveDate) property also reflects the changes of the currently visible date made by the end user.
+The Ignite UI for Blazor Calendar component allows you to switch between three different views: days, months and years. The [`IgbCalendar.activeView`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`IgbCalendar.activeDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=activeDate) property. The [`IgbCalendar.activeDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=activeDate) property also reflects the changes of the currently visible date made by the end user.
 
 ### Header Options
 
-By default, the Ignite UI for Blazor Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=HeaderOrientation) property.
+By default, the Ignite UI for Blazor Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the [`IgbCalendar.hasHeader`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=hasHeader) property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`IgbCalendar.headerOrientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=headerOrientation) property.
 
-> [!Note]
-> Please note that the Ignite UI for Blazor Calendar header is not rendered when the [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=Selection) is set to multiple.
+**Note:** 
+Please note that the Ignite UI for Blazor Calendar header is not rendered when the [`IgbCalendar.selection`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=selection) is set to multiple.
 
-> [!Note]
-> Please note that the Ignite UI for Blazor Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=HeaderOrientation) property corresponds to the `header-orientation` attribute.
+**Note:** 
+Please note that the Ignite UI for Blazor Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=headerOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for Blazor Calendar component exposes a `title` slot which allows you to customize the title of the header.
 
+When slotting content into the `title` slot, we recommend using a `<span>` element rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
 ```razor
- <IgbCalendar HeaderOrientation="@CalendarHeaderOrientation.Vertical" HasHeader="true">
+<IgbCalendar HeaderOrientation="@CalendarHeaderOrientation.Vertical" HasHeader="true">
     <span slot="title">Trip dates</span>
- </IgbCalendar>
+</IgbCalendar>
 ```
 
 The following sample demonstrates the above configuration:
@@ -147,18 +148,28 @@ The following sample demonstrates the above configuration:
 
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=DisabledDates) property. The [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=DisabledDates) property is an array of [`IgbDateRangeDescriptor`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor) objects. Each descriptor has a `Type` and optionally a [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`IgbCalendar.disabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=disabledDates) property. The [`IgbCalendar.disabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=disabledDates) property is an array of [`IgbDateRangeDescriptor`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor) objects. Each descriptor has a `IgbType` and optionally a [`DateRange`](mcp:get_api_reference?platform=blazor&component=SparklineGroup&member=dateRange) which is an array of `Date` objects.
 
-These are the available options for the `Type` property:
+These are the available options for the `IgbType` property:
 
-- `After` - disables the dates after the first date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange)
-- `Before` - disables the dates before the first date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange)
-- `Between` - disables the dates between the first and the second date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange)
-- `Specific` - disables the dates specified in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange) array
+- `After` - disables the dates after the first date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=SparklineGroup&member=dateRange)
+- `Before` - disables the dates before the first date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=SparklineGroup&member=dateRange)
+- `Between` - disables the dates between the first and the second date in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=SparklineGroup&member=dateRange)
+- `Specific` - disables the dates specified in the [`DateRange`](mcp:get_api_reference?platform=blazor&component=SparklineGroup&member=dateRange) array
 - `Weekdays` - disables all weekdays
 - `Weekends` - disables all weekends
 
 Let's create a sample that is disabling the dates between the 3rd and the 8th of the current month:
+
+```ts
+const today = new Date(Date.now());
+const range = [
+    new Date(today.getFullYear(), today.getMonth(), 3),
+    new Date(today.getFullYear(), today.getMonth(), 8)
+];
+
+this.calendar.disabledDates = [{ type: DateRangeType.Between, dateRange: range }];
+```
 
 ```razor
     <IgbCalendar DisabledDates="@DisabledDateDescriptor" />
@@ -212,9 +223,19 @@ These configurations should have the following result:
 
 ### Special dates
 
-The [`SpecialDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=SpecialDates) property is using almost the same configuration principles as the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=DisabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`IgbCalendar.specialDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=specialDates) property is using almost the same configuration principles as the [`IgbCalendar.disabledDates`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
 Let's add some special dates to our Calendar. In order to do this, we will create a [`IgbDateRangeDescriptor`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor) and pass the dates between the 3rd and the 8th of the current month:
+
+```ts
+const today = new Date();
+const range = [
+    new Date(today.getFullYear(), today.getMonth(), 3),
+    new Date(today.getFullYear(), today.getMonth(), 8)
+];
+
+this.calendar.specialDates = [{ type: DateRangeType.Between, dateRange: range }];
+```
 
 ```razor
 <IgbCalendar SpecialDates="@CalendarSpecialDates"/>
@@ -235,7 +256,6 @@ Let's add some special dates to our Calendar. In order to do this, we will creat
         this.CalendarSpecialDates = new IgbDateRangeDescriptor[] { specialDates };
     }
 }
-
 ```
 
 The following demo illustrates a Calendar with a vacation request option:
@@ -270,7 +290,7 @@ The following demo illustrates a Calendar with a vacation request option:
 
 ### Week numbers
 
-You can use the [`ShowWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ShowWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`IgbCalendar.showWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```razor
 <IgbCalendar ShowWeekNumbers="true" />
@@ -295,9 +315,9 @@ The following demo illustrates a Calendar with enabled week numbers:
 
 ### Multiple Months
 
-Using the [`VisibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=VisibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=Orientation) property. By default, the [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=Orientation) property is set to `horizontal`.
+Using the [`IgbCalendar.visibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=visibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`IgbCalendar.orientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=orientation) property. By default, the [`IgbCalendar.orientation`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=orientation) property is set to `horizontal`.
 
-The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=HideOutsideDays) property to **true** or using its corresponding boolean attribute [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=HideOutsideDays).
+The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`IgbCalendar.hideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=hideOutsideDays) property to **true** or using its corresponding boolean attribute [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=hideOutsideDays).
 
 ```razor
 <IgbCalendar VisibleMonths="2" HideOutsideDays="true" />
@@ -352,7 +372,7 @@ You could control the size and spacing of the calendar inner elements using the 
 
 ### Events
 
-The Calendar component emits the `Change` event when the selected dates are changed by the end user. You can subscribe to the event like this:
+The Calendar component emits the [`IgbCalendar.change`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=change) event when the selected dates are changed by the end user. You can subscribe to the event like this:
 
 ```razor
 <IgbCalendar Change="@OnCalendarChange" />
@@ -391,11 +411,11 @@ When a **day** inside the `days` view is focused, use:
 
 When a **month** inside the `months` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveDate) to the currently focused month and switch to `days` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgbCalendar.activeDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=activeDate) to the currently focused month and switch to `days` view.
 
 When an **year** inside the `years` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveDate) to the currently focused year and switch to `months` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgbCalendar.activeDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=activeDate) to the currently focused year and switch to `months` view.
 
 When the **previous** or the **next** buttons (in the subheader) are focused, use:
 
@@ -435,7 +455,7 @@ The [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
 | `week-number-inner` | Week number inner element. |
 | `date` | Date element. |
 | `date-inner` | Date inner element. |
-| `first` | The first selected date element. |
+| `Igbfirst` | The first selected date element. |
 | `last` | The last selected date element. |
 | `inactive` | Inactive date element. |
 | `hidden` | Hidden date element. |
@@ -536,14 +556,10 @@ The following sample demonstrates the above CSS configuration:
 
 ## API References
 
-- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
-- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
-- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
-- [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveDate)
-- [`ActiveView`](mcp:get_api_reference?platform=blazor&component=IgbCalendar&member=ActiveView)
-- [`IgbDateRangeDescriptor`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor)
-- [`DateRange`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor&member=DateRange)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)<br />
+[`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)<br />
+[`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)<br />
+[`IgbDateRangeDescriptor`](mcp:get_api_reference?platform=blazor&component=IgbDateRangeDescriptor)
 
 ## Additional Resources
 

@@ -1,41 +1,40 @@
 ---
-title: Blazor Grid Conditional Cell Styling - Ignite UI for Blazor
-_description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Blazor Grid to make cells stand out.
-_keywords: conditional styling, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/conditional-cell-styling
+title: "Blazor Grid Conditional Cell Styling - Ignite UI for Blazor"
+description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Blazor Grid to make cells stand out.
+keywords: conditional styling, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/conditional-cell-styling"
+llms:
+  description: "The Ignite UI for Blazor Conditional Styling feature in Blazor Grid allows custom styling on a row or cell level."
+_componentKey: Grid
 _tocName: Conditional Styling
 _premium: true
 ---
-
 # Blazor Grid Conditional Styling
 
-The Ignite UI for Blazor Conditional Styling feature in Blazor Grid allows custom styling on a row or cell level. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for Blazor Conditional Styling feature in Blazor Grid allows custom styling on a row or cell level.  The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Grid Conditional Row Styling
 
 The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
-- By setting [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
+- By setting [`IgbGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowClasses) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
+- By setting [`IgbGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowStyles) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) rows by setting the [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input and define custom rules.
+You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) rows by setting the [`IgbGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowClasses) input and define custom rules.
 
 ```razor
 <IgbGrid AutoGenerate="true" Id="grid" Data="CustomersData" Name="grid" RowClassesScript="RowClassesHandler" @ref="grid">
 </IgbGrid>
 ```
 
-The [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgbGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
-```razor
+```javascript
 igRegisterScript("RowClassesHandler", () => {
     return {
         activeRow: (row) => row.index % 2 === 0
@@ -171,9 +170,9 @@ public class NwindData
 
 ### Using Row Styles
 
-The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) control exposes the [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) control exposes the [`IgbGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`IgbGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) and [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) is:
+> The callback signature for both [`IgbGrid.rowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowStyles) and [`IgbGrid.rowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowClasses) is:
 
 ```razor
 (row) => boolean
@@ -181,7 +180,7 @@ The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) control
 
 Let's define our styles:
 
-```razor
+```javascript
 igRegisterScript("WebGridRowStylesHandler", () => {
     return {
         'background': (row) => (+row.data['Change'] < 0 && +row.data['AnnualChange'] < 0) ? '#FF000088' : '#00000000',
@@ -195,8 +194,6 @@ igRegisterScript("WebGridRowStylesHandler", () => {
 <IgbGrid AutoGenerate="true" Id="grid" Data="CustomersData" Name="grid" RowStylesScript="WebGridRowStylesHandler" @ref="grid">
 </IgbGrid>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -420,21 +417,18 @@ public class FinancialDataAll
 
 The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
-
-You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input and define custom rules.
+You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) input and define custom rules.
 
 ```razor
 <IgbColumn Field="BeatsPerMinute" CellClassesScript="CellClassesHandler">
 ```
 
-<!-- ComponentEnd: Grid -->
+The [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
-The [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-```razor
+```javascript
 igRegisterScript("CellClassesHandler", () => {
     return {
         downFont: (rowData, columnKey, cellValue, rowIndex) => rowData[columnKey] <= 95,
@@ -452,8 +446,6 @@ igRegisterScript("CellClassesHandler", () => {
     color: red !important;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -586,7 +578,7 @@ public class AthletesData
 }
 ```
 
-- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`IgbColumn.cellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles)` which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -596,13 +588,11 @@ public class AthletesData
 
 ### Using Cell Styles
 
-Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
-<!-- ComponentStart: Grid -->
-
-```razor
+```javascript
 igRegisterScript("WebGridCellStylesHandler", () => {
     return {
         background: (rowData, columnKey, cellValue, rowIndex) => rowIndex % 2 === 0 ? "#EFF4FD" : null,
@@ -623,8 +613,6 @@ igRegisterScript("WebGridCellStylesHandler", () => {
 <IgbColumn CellStylesScript="WebGridCellStylesHandler">
 </IgbColumn>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -751,16 +739,12 @@ public class AthletesData
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
-
 ## API References
 
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Editing](editing.md)
@@ -774,13 +758,8 @@ public class AthletesData
 - [Column Hiding](column-hiding.md)
 - [Selection](selection.md)
 - [Searching](search.md)
-
-<!-- * [Toolbar](toolbar.md) -->
-
 - [Multi-column Headers](multi-column-headers.md)
 - [Size](size.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

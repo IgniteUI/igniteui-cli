@@ -1,21 +1,23 @@
 ---
 title: Angular Drop Down Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Use Ignite UI for Angular Virtualized Drop Down to display a very large list of items which supports a single item selection.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Drop Down components, Angular Drop Down controls, Angular Control Large Item List, Angular Control Singe Selection
-_license: MIT
+description: Use Ignite UI for Angular Virtualized Drop Down to display a very large list of items which supports a single item selection.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Drop Down components, Angular Drop Down controls, Angular Control Large Item List, Angular Control Singe Selection
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Drop Down component can host the Virtual Scroll component in order to display a very large list of items for its selection."
 _tocName: Virtual Drop Down
 ---
-
 # Virtual Drop Down
 
-The Ignite UI for Angular Drop Down component can fully integrate with the [`IgxForOf`](for-of.md) directive in order to display a very large list of items for its selection.
+The Ignite UI for Angular Drop Down component can host the [Virtual Scroll](./layouts/virtual-scroll.md) component in order to display a very large list of items for its selection. Only the items in the drop-down's viewport are rendered, while selection and keyboard navigation work over the whole list.
 
 ## Angular Virtual Drop Down Example
 
 ```typescript
 import { Component } from '@angular/core';
-import { IgxButtonDirective, IgxForOfDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
+import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
+import { IgxVirtualItemDirective, IgxVirtualScrollComponent } from 'igniteui-angular/virtual-scroll';
 
 // tslint:disable:object-literal-sort-keys
 // tslint:disable-next-line:interface-name
@@ -30,12 +32,11 @@ interface DataItem {
     selector: 'app-drop-down-virtual',
     templateUrl: './drop-down-virtual.component.html',
     styleUrls: ['./drop-down-virtual.component.scss'],
-    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxForOfDirective, IgxDropDownItemComponent]
+    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxVirtualScrollComponent, IgxVirtualItemDirective, IgxDropDownItemComponent]
 })
 export class DropDownVirtualComponent {
   public items: DataItem[];
-  public itemHeight = 48;
-  public itemsMaxHeight = 240;
+  public itemHeight = 40;
 
   constructor() {
     const itemsCollection: DataItem[] = [];
@@ -63,21 +64,20 @@ export class DropDownVirtualComponent {
 ```html
 <button class="button" igxButton="contained" [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown">Item Series</button>
 <igx-drop-down #dropdown>
-    <div class="drop-down-virtual-wrapper">
-        <igx-drop-down-item
-            *igxFor="let item of items; index as index; scrollOrientation: 'vertical'; containerSize: itemsMaxHeight; itemSize: itemHeight;"
-            [value]="item" [isHeader]="item.header" role="option" [disabled]="item.disabled"
-            [index]="index">
-            {{ item.name }}
-        </igx-drop-down-item>
-    </div>
+    <igx-virtual-scroll class="drop-down-virtual-wrapper" [data]="items" [estimatedItemSize]="itemHeight">
+        <ng-template igxVirtualItem let-item let-index="index">
+            <igx-drop-down-item [value]="item" [isHeader]="item.header" [disabled]="item.disabled" [index]="index">
+                {{ item.name }}
+            </igx-drop-down-item>
+        </ng-template>
+    </igx-virtual-scroll>
 </igx-drop-down>
 <div class="selection">Selected Model: <span>{{ dropdown.selectedItem?.value.name }}</span></div>
 ```
 ```scss
+// The virtual scroll host is the scroll container, so it needs a fixed height.
 .drop-down-virtual-wrapper {
-    overflow: hidden;
-    max-height: 240px;
+    height: 240px;
     width: 180px;
 }
 
@@ -102,84 +102,80 @@ export class DropDownVirtualComponent {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 ### First Steps
 
-In order to configure the drop-down to display a list of virtual items, you need to fulfill some prerequisites.
-First, we need to import the `IgxForOfModule` in the module of the component that will declare our drop-down.
+Import the drop-down together with the `IgxVirtualScroll` and the `IgxVirtualItemDirective`, which marks the template of a list item:
 
 ```typescript
-// app.module.ts
-import { IgxForOfModule } from 'igniteui-angular/directives';
-// import { IgxForOfModule } from '@infragistics/igniteui-angular'; for licensed package
+// drop-down-virtual.component.ts
+import { Component } from '@angular/core';
+import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
+import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
+import { IgxVirtualItemDirective, IgxVirtualScrollComponent } from 'igniteui-angular/virtual-scroll';
+// import { IgxVirtualItemDirective, IgxVirtualScrollComponent } from '@infragistics/igniteui-angular'; for licensed package
 
-@NgModule({
+@Component({
+    selector: 'app-drop-down-virtual',
+    templateUrl: './drop-down-virtual.component.html',
+    styleUrls: ['./drop-down-virtual.component.scss'],
     imports: [
-        ...
-        IgxForOfModule
+        IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective,
+        IgxDropDownComponent, IgxDropDownItemComponent,
+        IgxVirtualScrollComponent, IgxVirtualItemDirective
     ]
 })
-export class AppModule {}
+export class DropDownVirtualComponent { }
 ```
 
 ### Template Configuration
 
-Next, we need to create the drop-down component's template, looping through the data using [`*igxFor`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective) instead of `*ngFor`. The `*igxFor` directive needs some additional configuration in order to properly display all of the items:
+Next, place an `igx-virtual-scroll` inside the drop-down and render each item with an `ng-template` marked with `igxVirtualItem`. The drop-down detects the projected virtual scroll and uses it for scrolling, keyboard navigation, and selection:
 
 ```html
 <!-- drop-down-virtual.component.html -->
-<button igxButton [igxToggleAction]="dropdown"
-        [igxDropDownItemNavigation]="dropdown">
-        Item Series
+<button igxButton [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown">
+    Item Series
 </button>
 <igx-drop-down #dropdown>
-    <div class="drop-down-virtual-wrapper" style="height: {{ itemsMaxHeight }}px;">
-        <igx-drop-down-item
-            *igxFor="let item of items; index as index;
-                     scrollOrientation: 'vertical';
-                     containerSize: itemsMaxHeight;
-                     itemSize: itemHeight;"
-            [value]="item" [isHeader]="item.header"
-            role="option" [disabled]="item.disabled"
-            [index]="index">
-            {{ item.name }}
-        </igx-drop-down-item>
-    </div>
+    <igx-virtual-scroll class="drop-down-virtual-wrapper" [data]="items" [estimatedItemSize]="itemHeight">
+        <ng-template igxVirtualItem let-item let-index="index">
+            <igx-drop-down-item [value]="item" [isHeader]="item.header" [disabled]="item.disabled" [index]="index">
+                {{ item.name }}
+            </igx-drop-down-item>
+        </ng-template>
+    </igx-virtual-scroll>
 </igx-drop-down>
 <div>Selected Model: <span>{{ dropdown.selectedItem?.value.name }}</span></div>
 ```
 
-The additional parameters passed to the `*igxFor` directive are:
+The inputs of `igx-virtual-scroll` used here are:
 
-- `index` - captures the index of the current item in the data set
-- `scrollOrientation` - should always be `'vertical'`
-- `containerSize` - the size of the virtualized container (in `px`). This needs to be enforced on the wrapping `<div>` as well
-- `itemSize` - the size of the items that will be displayed (in `px`)
+- `data` - the whole list of items. It is compared by reference, so assign a new array to change it.
+- `estimatedItemSize` - the height of an item (in `px`) before it is rendered and measured. Set it to the real height of the drop-down items, so that the scrollbar and keyboard navigation are accurate from the start.
 
 In order to assure uniqueness of the items, pass `item` inside of the [`value`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=value) input and `index` inside of the [`index`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=index) input of the `igx-drop-down-item`.
 To preserve selection while scrolling, the drop-down item needs to have a reference to the data items it is bound to.
 
-> [!NOTE]
-> For the drop-down to work with a virtualized list of items, [`value`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=value) and [`index`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=index) inputs **must** be passed to all items.
-> [!NOTE]
-> It is strongly advised for each item to have an unique value passed to the `[value]` input. Otherwise, it might lead to unexpected results (incorrect selection).
-> [!NOTE]
-> When the drop-down uses virtualized items, the type of [`dropdown.selectedItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selecteditem) becomes `{ value: any, index: number }`, where `value` is a reference to the data item passed inside of the `[value]` input and `index` is the item's index in the data set
+**Note:** 
+For the drop-down to work with a virtualized list of items, [`value`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=value) and [`index`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=index) inputs **must** be passed to all items.
 
+**Note:** 
+It is strongly advised for each item to have an unique value passed to the `[value]` input. Otherwise, it might lead to unexpected results (incorrect selection).
+
+**Note:** 
+When the drop-down uses virtualized items, the type of [`dropdown.selectedItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selecteditem) becomes `{ value: any, index: number }`, where `value` is a reference to the data item passed inside of the `[value]` input and `index` is the item's index in the data set
 
 ### Component Definition
 
-Inside of the component's constructor, we'll declare a moderately large list of items (containing both headers and disabled items), which will be displayed in the drop-down. We will also need to declare `itemHeight` and `itemsMaxHeight`:
+Inside of the component, declare a moderately large list of items (containing both headers and disabled items), which will be displayed in the drop-down, and the height of an item:
 
 ```typescript
-// drop-drop-virtual.component.ts
+// drop-down-virtual.component.ts
 export class DropDownVirtualComponent {
   public items: DataItem[];
-  public itemHeight = 48;
-  public itemsMaxHeight = 320;
+  public itemHeight = 40;
 
   constructor() {
     const itemsCollection: DataItem[] = [];
@@ -207,224 +203,202 @@ export class DropDownVirtualComponent {
 
 ### Styles
 
-The last part of the configuration is to set `overflow: hidden` to the wrapping div in order to prevent the appearance of two scroll bars (one from the `igxFor` and one from the container itself):
+The `igx-virtual-scroll` element is the scroll container of the list, so it needs a fixed height. No wrapping element or `overflow` rule is needed:
 
 ```scss
-// drop-drop-virtual.component.scss
+// drop-down-virtual.component.scss
 .drop-down-virtual-wrapper {
-  overflow: hidden;
+    height: 240px;
+    width: 180px;
 }
 ```
 
 ## Remote Data
 
-The `igx-drop-down` supports loading chunks of remote data using the `*igxFor` structural directive. The configuration is similar to the one with local items, the main difference being how data chunks are loaded.
+The `igx-drop-down` also supports loading pages of remote data. Bind the virtual scroll's `dataWindow` input to the loaded page, and load the next page from the range that the `stateChange` output reports. The list is as long as the whole remote collection, so the scrollbar spans every item, while only the loaded page is in memory.
 
 ### Template
 
-The drop-down template does not need to change much compared to the previous example - we still need to specify a wrapping div, style it accordingly and write out the complete configuration for the `*igxFor`. Since we'll be getting our data from a remote source, we need to specify that our data will be an observable and pass it through Angular's `async` pipe:
+The template differs from the previous example only in the data binding: `dataWindow` takes the place of `data`, and `stateChange` requests the pages. The `index` template variable is the index of the item in the whole remote collection:
 
 ```html
 <igx-drop-down #remoteDropDown>
-    <div class="drop-down-virtual-wrapper">
-        <igx-drop-down-item
-            *igxFor="let item of rData | async; index as index;
-                     scrollOrientation: 'vertical';
-                     containerSize: itemsMaxHeight;
-                     itemSize: itemHeight;"
-            [value]="item.ProductName" role="option"
-            [disabled]="item.disabled" [index]="index">
-            {{ item.ProductName }}
-        </igx-drop-down-item>
-    </div>
+    <igx-virtual-scroll
+        class="drop-down-virtual-wrapper"
+        [dataWindow]="page()"
+        [estimatedItemSize]="itemHeight"
+        (stateChange)="onStateChange($event)">
+        <ng-template igxVirtualItem let-item let-index="index">
+            <igx-drop-down-item [value]="item.ProductName" [index]="index">
+                {{ item.ProductName }}
+            </igx-drop-down-item>
+        </ng-template>
+    </igx-virtual-scroll>
 </igx-drop-down>
 ```
 
-### Handling chunk load
+### Loading pages
 
-As you can see, the template is almost identical to the one in the previous example. In this remote data scenario, the code behind will do most of the heavy lifting.
-
-First, we need to define a remote service for fetching data:
+First, define a remote service that returns a page of the collection together with the total number of records:
 
 ```typescript
 // remote.service.ts
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { IForOfState } from 'igniteui-angular/directives';
-// import { IForOfState } from '@infragistics/igniteui-angular'; for licensed package
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RemoteService {
-    public remoteData: Observable<any[]>;
-    private _remoteData: BehaviorSubject<any[]>;
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-        this._remoteData = new BehaviorSubject([]);
-        this.remoteData = this._remoteData.asObservable();
+    // Assuming that the API service is RESTful and can take the following:
+    // skip: start index of the data that we fetch
+    // count: number of records we fetch
+    public getPage(skip: number, count: number): Observable<{ value: any[]; '@odata.count': number }> {
+        return this.http.get<{ value: any[]; '@odata.count': number }>(
+            `https://dummy.db/dummyEndpoint?$skip=${skip}&$top=${count}&$count=true`
+        );
     }
-
-    public getData(data?: IForOfState, cb?: (any) => void): any {
-        // Assuming that the API service is RESTful and can take the following:
-        // skip: start index of the data that we fecth
-        // count: number of records we fetch
-    this.http.get(`https://dummy.db/dummyEndpoint?skip=${data.startIndex}&count=${data.chunkSize}`).subscribe((data) => {
-        // emit the values through the _remoteData subject
-        this._remoteData.next(data);
-    })
 }
 ```
 
-The service exposes an `Observable` under `remoteData`. We will inject our service and bind to that property in our remote drop-down component:
+In the component, keep the loaded page in a signal of type `VirtualDataWindow`. Load the first page on initialization, and a new one whenever `stateChange` reports a range that the loaded page does not cover. Cancel the previous request, so a slow response cannot replace a newer page:
 
 ```typescript
-// remote-drop-down.component.ts
+// drop-down-remote.component.ts
+import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { VirtualDataWindow, VirtualScrollState } from 'igniteui-angular/virtual-scroll';
+import { Subscription } from 'rxjs';
+
+/** Extra records requested on each side of the range the viewport wants. */
+const BUFFER = 10;
+
 @Component({
     providers: [RemoteService],
     selector: 'app-drop-down-remote',
     templateUrl: './drop-down-remote.component.html',
-    styleUrls: ['./drop-down-remote.component.scss']
+    styleUrls: ['./drop-down-remote.component.scss'],
+    imports: [/* the same imports as in the local example */]
 })
 export class DropDownRemoteComponent implements OnInit, OnDestroy {
-    @ViewChild(IgxForOfDirective, { read: IgxForOfDirective })
-    public remoteForDir: IgxForOfDirective<any>;
-    @ViewChild('remoteDropDown', { read: IgxDropDownComponent })
-    public remoteDropDown: IgxDropDownComponent;
-    public itemHeight = 48;
-    public itemsMaxHeight = 480;
-    public prevRequest: Subscription;
-    public rData: any;
-
-    private destroy$ = new Subject();
-    constructor(private remoteService: RemoteService) { }
-
-    public ngAfterViewInit() {
-        const initialState = { startIndex: 0, chunkSize: Math.ceil(this.itemsMaxHeight / this.itemHeight) }
-        this.remoteService.getData(initialState, (data) => {
-            this.remoteForDir.totalItemCount = data['@odata.count'];
-        });
-        // Subscribe to igxForOf.chunkPreload and load new data from service
-        this.remoteForDir.chunkPreload.pipe(takeUntil(this.destroy$)).subscribe((data) => {
-            this.dataLoading(data);
-        });
-    }
-
-    public dataLoading(evt) {
-        if (this.prevRequest) {
-            this.prevRequest.unsubscribe();
-        }
-        this.prevRequest = this.remoteService.getData(
-            evt,
-            (data) => {
-                this.remoteForDir.totalItemCount = data['@odata.count'];
-            });
-    }
+    private remoteService = inject(RemoteService);
+    public itemHeight = 40;
+    public readonly page = signal<VirtualDataWindow<any>>({ items: [], startIndex: 0, totalCount: 0 });
+    private pending?: Subscription;
 
     public ngOnInit() {
-        this.rData = this.remoteService.remoteData;
+        this.loadPage(0, 2 * BUFFER);
+    }
+
+    public onStateChange(state: VirtualScrollState) {
+        const page = this.page();
+        if (state.startIndex >= page.startIndex && state.endIndex < page.startIndex + page.items.length) {
+            return; // The loaded page already covers the range.
+        }
+        const startIndex = Math.max(0, state.startIndex - BUFFER);
+        this.loadPage(startIndex, state.endIndex - startIndex + 1 + BUFFER);
     }
 
     public ngOnDestroy() {
-        this.destroy$.next();
-        this.destroy$.complete();
+        this.pending?.unsubscribe();
+    }
+
+    private loadPage(startIndex: number, count: number) {
+        this.pending?.unsubscribe();
+        this.pending = this.remoteService.getPage(startIndex, count).subscribe(data => {
+            this.page.set({ items: data.value, startIndex, totalCount: data['@odata.count'] });
+        });
     }
 }
 ```
 
-Inside of the `ngAfterViewInit` hook, we call to get data for the initial state and subscribe to the `igxForOf` directive's [`chunkPreload`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=chunkPreload) emitter. This subscription will be responsible for fetching data every time the loaded chunk changes. We use `pipe(takeUntil(this.destroy$))` so we can easily unsubscribe from the emitter on component destroy.
+When the drop-down navigates to an item that is not loaded yet, for example with the `End` key, the virtual scroll scrolls to it, `stateChange` reports the new range, and the page that contains the item is loaded.
 
 ### Remote Virtualization - Demo
 
 The result of the above configuration is a drop-down that dynamically loads the data it should display, depending on the scrollbar's state:
 
-
 ```typescript
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, AfterViewInit, inject } from '@angular/core';
-// tslint:disable-next-line:max-line-length
-import { IForOfState, IgxButtonDirective, IgxForOfDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
+import { Component, OnDestroy, OnInit, ViewChild, inject, signal } from '@angular/core';
+import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { IgxVirtualItemDirective, IgxVirtualScrollComponent, VirtualDataWindow, VirtualScrollState } from 'igniteui-angular/virtual-scroll';
+import { Subscription } from 'rxjs';
 import { RemoteNWindService } from '../../../services/remoteNwind.service';
-import { AsyncPipe } from '@angular/common';
 
-// tslint:disable:object-literal-sort-keys
+/** Extra records requested on each side of the range the viewport wants. */
+const BUFFER = 10;
+
 @Component({
     providers: [RemoteNWindService],
     selector: 'app-drop-down-remote',
     templateUrl: './drop-down-remote.component.html',
     styleUrls: ['./drop-down-remote.component.scss'],
-    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxForOfDirective, IgxDropDownItemComponent, IgxToastComponent, AsyncPipe]
+    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxVirtualScrollComponent, IgxVirtualItemDirective, IgxDropDownItemComponent, IgxToastComponent]
 })
-export class DropDownRemoteComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DropDownRemoteComponent implements OnInit, OnDestroy {
     private remoteService = inject(RemoteNWindService);
-    cdr = inject(ChangeDetectorRef);
 
     @ViewChild('loadingToast', { read: IgxToastComponent, static: true })
     public loadingToast: IgxToastComponent;
-    @ViewChild(IgxForOfDirective, { read: IgxForOfDirective, static: true })
-    public remoteForDir: IgxForOfDirective<any>;
     @ViewChild('remoteDropDown', { read: IgxDropDownComponent, static: true })
     public remoteDropDown: IgxDropDownComponent;
-    public itemHeight = 48;
-    public itemsMaxHeight = 320;
-    public prevRequest: Subscription;
-    public rData: any;
-    private destroy$ = new Subject<void>();
+    public itemHeight = 40;
 
-    public ngAfterViewInit() {
-        const initialState: IForOfState = {
-            startIndex: 0, chunkSize: Math.floor(this.itemsMaxHeight / this.itemHeight) + 1
-        };
-        this.remoteService.getData(initialState, null, (data) => {
-            this.remoteForDir.totalItemCount = data['@odata.count'];
-        });
-        this.remoteForDir.chunkPreload.pipe(takeUntil(this.destroy$)).subscribe((data) => {
-            this.dataLoading(data);
-        });
-    }
+    /** The loaded page; the list is as long as `totalCount`, so the scrollbar spans every product. */
+    public readonly page = signal<VirtualDataWindow<any>>({ items: [], startIndex: 0, totalCount: 0 });
 
-    public dataLoading(evt) {
-        if (this.prevRequest) {
-            this.prevRequest.unsubscribe();
-        }
-        this.loadingToast.positionSettings.verticalDirection = VerticalAlignment.Middle;
-        this.loadingToast.autoHide = false;
-        this.loadingToast.open('Loading Remote Data...');
-        this.cdr.detectChanges();
-        this.prevRequest = this.remoteService.getData(
-            evt,
-            null,
-            (data) => {
-                this.remoteForDir.totalItemCount = data['@odata.count'];
-                this.loadingToast.close();
-                this.cdr.detectChanges();
-            });
-    }
+    private pending: Subscription;
 
     public ngOnInit() {
-        this.rData = this.remoteService.remoteData;
+        this.loadPage(0, 2 * BUFFER);
+    }
+
+    /** `stateChange` reports the range the viewport wants; load a page when the loaded one does not cover it. */
+    public onStateChange(state: VirtualScrollState) {
+        const page = this.page();
+        if (state.startIndex >= page.startIndex && state.endIndex < page.startIndex + page.items.length) {
+            return;
+        }
+
+        const startIndex = Math.max(0, state.startIndex - BUFFER);
+        this.loadPage(startIndex, state.endIndex - startIndex + 1 + BUFFER);
     }
 
     public ngOnDestroy() {
-        this.destroy$.next();
-        this.destroy$.complete();
+        this.pending?.unsubscribe();
+    }
+
+    private loadPage(startIndex: number, count: number) {
+        // Cancel the previous request, so a slow response cannot replace a newer page.
+        this.pending?.unsubscribe();
+        this.loadingToast.positionSettings.verticalDirection = VerticalAlignment.Middle;
+        this.loadingToast.autoHide = false;
+        this.loadingToast.open('Loading Remote Data...');
+
+        this.pending = this.remoteService.getData({ startIndex, chunkSize: count }, null, (data) => {
+            this.page.set({ items: data.value, startIndex, totalCount: data['@odata.count'] });
+            this.loadingToast.close();
+        });
     }
 }
 ```
 ```html
 <button class="button" igxButton="contained" [igxToggleAction]="remoteDropDown" [igxDropDownItemNavigation]="remoteDropDown">Products</button>
 <igx-drop-down #remoteDropDown>
-    <div class="drop-down-virtual-wrapper">
-        <igx-drop-down-item
-            *igxFor="let item of rData | async; index as index; scrollOrientation: 'vertical'; containerSize: itemsMaxHeight; itemSize: itemHeight;"
-            [value]="item.ProductName" role="option" [disabled]="item.disabled" [index]="index"
-            (onChunkPreload)="dataLoading($event)">
-            {{ item.ProductName }}
-        </igx-drop-down-item>
-    </div>
+    <igx-virtual-scroll
+        class="drop-down-virtual-wrapper"
+        [dataWindow]="page()"
+        [estimatedItemSize]="itemHeight"
+        (stateChange)="onStateChange($event)">
+        <ng-template igxVirtualItem let-item let-index="index">
+            <igx-drop-down-item [value]="item.ProductName" [disabled]="item.disabled" [index]="index">
+                {{ item.ProductName }}
+            </igx-drop-down-item>
+        </ng-template>
+    </igx-virtual-scroll>
 </igx-drop-down>
 <div class="selection">Selected Product:
     <span>{{ remoteDropDown.selectedItem?.value }}</span>
@@ -432,8 +406,8 @@ export class DropDownRemoteComponent implements OnInit, OnDestroy, AfterViewInit
 <igx-toast #loadingToast></igx-toast>
 ```
 ```scss
+// The virtual scroll host is the scroll container, so it needs a fixed height.
 .drop-down-virtual-wrapper {
-    overflow-y: hidden;
     width: 260px;
     height: 320px;
 }
@@ -458,22 +432,20 @@ export class DropDownRemoteComponent implements OnInit, OnDestroy, AfterViewInit
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Notes and Limitations
 
-Using the drop-down with a virtualized list of items enforces some limitations. Please, be aware of the following when trying to set up a drop-down list using `*igxFor`:
+Using the drop-down with a virtualized list of items enforces some limitations. Please, be aware of the following when trying to set up a drop-down list with `igx-virtual-scroll`:
 
-- The drop-down items that are being looped need to be passed in a wrapping element (e.g. `<div>`) which has the following css: `overflow: hidden` and `height` equal to `containerSize` in `px`
+- The `igx-virtual-scroll` element must have a fixed `height`, because it is the scroll container of the list.
 - `<igx-drop-down-item-group>` cannot be used for grouping items when the list is virtualized. Use the `isHeader` property instead
 - The `items` accessor will return only the list of non-header drop-down items that are currently in the virtualized view.
 - [`dropdown.selectedItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectedItem) is of type `{ value: any, index: number }`
-- The object emitted by [`selection`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selection) changes to `const emittedEvent: { newSelection: { value: any, index: number }, oldSelection: { value: any, index: number }, cancel: boolean, }`
+- The object emitted by [`selectionChanging`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectionChanging) changes to `const emittedEvent: { newSelection: { value: any, index: number }, oldSelection: { value: any, index: number }, cancel: boolean, }`
 - `dropdown.setSelectedItem` should be called with the **item's index in the data set**
 - setting the drop-down item's `[selected]` input will **not** mark the item in the drop-down selection
 
+The drop-down also works with a projected [`*igxFor`](./for-of.md) directive, as in earlier versions. The directive is deprecated in favor of the Virtual Scroll, so use `igx-virtual-scroll` for new drop-downs.
+
 ## API References
-
-- [IgxForOfDirective](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
-- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
-
+- `IgxVirtualScroll`
+- [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)

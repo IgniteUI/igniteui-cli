@@ -1,14 +1,15 @@
 ---
-title: Blazor Composite Chart | Combo Chart| Data Visualization | Infragistics
-_description: Infragistics' Blazor Composite Chart
-_keywords: Blazor Charts, Composite Chart, Combo Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "Series"]
+title: "Blazor Composite Chart | Combo Chart| Data Visualization | Infragistics"
+description: Infragistics' Blazor Composite Chart
+keywords: "Blazor Charts, Composite Chart, Combo Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area."
 _tocName: Composite Chart
 _premium: true
 ---
-
 # Blazor Composite / Combo Chart
 
 The Ignite UI for Blazor Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area. It is very useful when presenting two data series that have a very different scale and might be expressed in different units. The most common example is dollars on one axis and percentage on the other axis.
@@ -108,22 +109,17 @@ The following example demonstrates how to create Composite Chart using [`IgbColu
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 - [Bar Chart](bar-chart.md)
 - [Column Chart](column-chart.md)
-
-<!-- - [Gantt Chart](gantt-chart.md) -->
-
 - [Line Chart](line-chart.md)
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
 
-- [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis)
-- [`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries)
-- [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)
-- [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)
-- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)<br />
+[`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries)<br />
+[`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)<br />
+[`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis)<br />
+[`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)<br />

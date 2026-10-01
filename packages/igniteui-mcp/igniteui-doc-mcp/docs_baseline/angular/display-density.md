@@ -1,10 +1,11 @@
 ---
 title: Size | Ignite UI for Angular 
-_description: The Ignite UI for Angular provides a way of setting size property on application or component level. 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Native Angular Controls, Native Angular Components Library, size
+description: The Ignite UI for Angular provides a way of setting size property on application or component level. 
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Native Angular Controls, Native Angular Components Library, size
+llms:
+  description: "Size configuration can significantly improve the visual representation of large amounts of data."
 _tocName: Size
 ---
-
 # Size
 
 Size configuration can significantly improve the visual representation of large amounts of data. In Ignite UI for Angular, we provide a pre-defined set of options:
@@ -106,10 +107,10 @@ export class DisplayDensityComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
-> [!NOTE]
-> To start using Ignite UI for Angular components in your own projects, make sure you have configured all necessary dependencies and have performed the proper setup of your project. You can learn how to do this in the [**installation**](https://www.infragistics.com/products/ignite-ui-angular/getting-started#installation) topic.
+**Note:** 
+To start using Ignite UI for Angular components in your own projects, make sure you have configured all necessary dependencies and have performed the proper setup of your project. You can learn how to do this in the [**installation**](https://www.infragistics.com/products/ignite-ui-angular/getting-started#installation) topic.
 
 ## Usage
 
@@ -213,21 +214,16 @@ The `sizable(10px, 20px, 30px)` function generates a CSS expression that automat
 This mathematical approach using `clamp()`, `min()`, `max()`, and `calc()` functions allows components to automatically switch between size values based on the current `--ig-size` setting.
 
 ## API References
-
-<div class="divider"></div>
-
-- [Themes - Sizable Mixin](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-sizable)
-- [Themes - Sizable Function](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-sizable)
-
+<igc-divider></igc-divider>
+- `Themes - Sizable Mixin`
+- `Themes - Sizable Function`
 ### Sizing and Spacing Functions
-
-- [Utilities - Pad](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad)
-- [Utilities - Pad Inline](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad-inline)
-- [Utilities - Pad Block](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#function-pad-block)
-
+- `Utilities - Pad`
+- `Utilities - Pad Inline`
+- `Utilities - Pad Block`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

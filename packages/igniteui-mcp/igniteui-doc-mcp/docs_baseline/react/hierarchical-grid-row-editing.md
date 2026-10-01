@@ -1,23 +1,22 @@
 ---
-title: React Hierarchical Grid Editing Rows - Ignite UI for React
-_description: Want to enable row editing in React Hierarchical Grid? Need a powerful API for CRUD operations? Try our Ignite UI for React Hierarchical Grid rows editing component!
-_keywords: React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-editing
+title: "React Hierarchical Grid Editing Rows - Ignite UI for React"
+description: Want to enable row editing in React Hierarchical Grid? Need a powerful API for CRUD operations? Try our Ignite UI for React Hierarchical Grid rows editing component!
+keywords: "React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-editing"
+llms:
+  description: "The Ignite UI for React Row Editing feature in React Hierarchical Grid allows editing data directly within the IgrHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Row Editing
 _premium: true
 ---
-
 # React Hierarchical Grid Row Editing
 
-The Ignite UI for React Row Editing feature in React Hierarchical Grid allows editing data directly within the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for React Row Editing feature in React Hierarchical Grid allows editing data directly within the `IgrHierarchicalGrid`. On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## React Hierarchical Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the `IgrHierarchicalGrid`. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```css
 /* shared styles are loaded from: */
@@ -186,14 +185,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-> [!Note]
-> When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
+**Note:** 
+When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
 
-Define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) with bound data source and [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) set to true:
-
-<!-- ComponentStart: HierarchicalGrid -->
+Define a `IgrHierarchicalGrid` with bound data source and [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) set to true:
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={singersData} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" rowEditable={true}>
@@ -227,16 +224,14 @@ Define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=
 
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+**Note:** 
+Setting primary key is mandatory for row editing operations.
 
-> [!Note]
-> Setting primary key is mandatory for row editing operations.
+**Note:** 
+Enabling editing for individual columns is not necessary. Using the [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property in the `IgrHierarchicalGrid`, all rows, with defined `Field` property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`IgrHierarchicalGrid.editable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=editable) input of that column to `false`.
 
-> [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), all rows, with defined [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) input of that column to `false`.
-
-> [!Note]
-> The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+**Note:** 
+The `IgrHierarchicalGrid` utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -256,13 +251,13 @@ Define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), the cell will also stay in edit mode.
+- If row is in edit mode and `IgrHierarchicalGrid` is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When `IgrHierarchicalGrid` is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the `IgrHierarchicalGrid`, the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when `IgrHierarchicalGrid` is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -284,10 +279,6 @@ Define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=
 
 Customizing the text of the row editing overlay is possible using via templating.
 
-The `RowChangesCount` property is exposed and it holds the count of the changed cells.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 ```tsx
 const rowEditTextTemplate = (ctx: IgrGridRowEditTextTemplateContext) =>{
     return (
@@ -298,13 +289,9 @@ const rowEditTextTemplate = (ctx: IgrGridRowEditTextTemplateContext) =>{
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Customizing Buttons
 
 Customizing the buttons of the row editing overlay also possible via templating.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 const rowEditActionsTemplate =(ctx: IgrGridRowEditActionsTemplateContext) => {
@@ -318,11 +305,9 @@ const rowEditActionsTemplate =(ctx: IgrGridRowEditActionsTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -337,8 +322,6 @@ Then set the related CSS properties for that class:
     --ig-banner-banner-message-color: #423589;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -512,28 +495,15 @@ root.render(<Sample/>);
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgrHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=endEdit)
-- [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field)
-- [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable)
-- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey)
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

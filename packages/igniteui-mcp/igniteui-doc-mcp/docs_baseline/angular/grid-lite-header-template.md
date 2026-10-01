@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Header Template | Ignite UI for Angular | MIT license
-_description: Configure and customize custom Grid Lite column header renderers. See demos and examples! Build applications with open-source Angular Grid Lite. Try it now.
-_keywords: header template, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Configure and customize custom Grid Lite column header renderers. See demos and examples! Build applications with open-source Angular Grid Lite. Try it now.
+keywords: header template, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "Similar to the cell templates, column headers can also be customized to better fit the desired use case."
 _tocName: Header Template
 ---
-
 # Customizing the Column Header
 
 Similar to the cell templates, column headers can also be customized to better fit the desired use case. You can pass a text label through the `header` property, or provide a full-blown custom template.
@@ -20,8 +21,8 @@ By default the column uses the `field` property for label text. To customize the
 <igx-grid-lite-column field="price" header="Price per item"></igx-grid-lite-column>
 ```
 
->[!NOTE]
->When a header template is provided, `header` is ignored.
+**Note:** 
+When a header template is provided, `header` is ignored.
 
 ## Customization via Header Template
 
@@ -43,12 +44,12 @@ import { IgxGridLiteComponent, IgxGridLiteColumnComponent, IgxGridLiteCellTempla
 
 ```html
 <igx-grid-lite-column field="rating" dataType="number">
-    <!-- igxGridLiteHeader directive for templating the header -->
+    {/* igxGridLiteHeader directive for templating the header */}
     <ng-template igxGridLiteHeader let-value>
         <h3>⭐ Rating ⭐</h3>
     </ng-template>
 
-    <!-- igxGridLiteCell directive for templating the cell -->
+    {/* igxGridLiteCell directive for templating the cell */}
     <ng-template igxGridLiteCell let-value>
         <igc-rating [value]="value" readonly step="0.01" min="0" max="5">
         </igc-rating>
@@ -124,18 +125,17 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
-
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
+- [`IgxGridLiteHeaderTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridLiteHeaderTemplateDirective)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Cell Template](cell-template.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Cell Template](/grid-lite/cell-template)
+- [Theming & Styling](/grid-lite/theming)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,13 +1,14 @@
 ---
-title: React Map | World Utility | Data Source | Infragistics
-_description: Use Infragistics' React JavaScript map data utility to generate geographic data. View Ignite UI for React map demos!
-_keywords: React map, map data, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "React Map | World Utility | Data Source | Infragistics"
+description: Use Infragistics' React JavaScript map data utility to generate geographic data. View Ignite UI for React map demos!
+keywords: "React map, map data, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of utility that helps with generating React geographic data."
 _tocName: World Utility
 _premium: true
 ---
-
 # React World Utility
 
 The resource topic provides implementation of utility that helps with generating React geographic data.
@@ -196,5 +197,4 @@ export default class WorldUtils {
 ```
 
 ## API References
-
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrGeographicMap`

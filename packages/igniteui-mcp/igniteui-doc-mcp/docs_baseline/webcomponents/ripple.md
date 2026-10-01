@@ -1,12 +1,13 @@
 ---
-title: Web Components Ripple
-_description: With Ignite UI for Web Components Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Ripple components, Web Components Ripple controls
-_license: MIT
+title: "Web Components Ripple"
+description: With Ignite UI for Web Components Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Ripple components, Web Components Ripple controls"
+license: MIT
 mentionedTypes: ["Ripple", "Button"]
+llms:
+  description: "The Ignite UI for Web Components Ripple component creates an animation in response to a touch or a mouse click."
 _tocName: Ripple
 ---
-
 # Web Components Ripple Overview
 
 The Ignite UI for Web Components Ripple component creates an animation in response to a touch or a mouse click.
@@ -26,7 +27,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent), you need to register it as follows:
+Before using the [`IgcRipple`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcRippleComponent } from "igniteui-webcomponents";
@@ -37,7 +38,7 @@ defineComponents(IgcRippleComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) is as follows:
+The simplest way to start using the [`IgcRipple`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) is as follows:
 
 ```html
 <igc-button>
@@ -46,7 +47,7 @@ The simplest way to start using the [`IgcRippleComponent`](mcp:get_api_reference
 </igc-button>
 ```
 
-You can add the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) component to any web element as long as its CSS `position` property is set to any other value than `static`;
+You can add the [`IgcRipple`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) component to any web element as long as its CSS `position` property is set to any other value than `static`;
 
 ## Examples
 
@@ -72,9 +73,8 @@ igc-ripple {
 
 ## API References
 
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)<br />
+[`IgcRipple`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent)<br />
 
 ## Additional Resources
 

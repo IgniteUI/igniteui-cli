@@ -1,18 +1,17 @@
 ---
-title: Web Components Tree Grid Filtering - Ignite UI for Web Components
-_description: Start using angular filter to return specific data with Web Components Tree Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "Web Components Tree Grid Filtering - Ignite UI for Web Components"
+description: Start using angular filter to return specific data with Web Components Tree Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: TreeGrid
 _tocName: Filtering
 ---
-
 # Web Components Tree Grid Filtering
 
-The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
+The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
 
 - Quick filtering
 - [Excel Style Filtering](excel-style-filtering.md)
@@ -20,7 +19,7 @@ The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feat
 
 ## Web Components Tree Grid Filtering Example
 
-The sample below demonstrates [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s **Quick Filter** user experience.
+The sample below demonstrates [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s **Quick Filter** user experience.
 
 ```typescript
 export class OrdersDataItem {
@@ -62,25 +61,21 @@ export class OrdersData extends Array<OrdersDataItem> {
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes the following properties - [`IgcTreeGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering), [`IgcTreeGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering), [`IgcTreeGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) and [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
 
-Property [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) enables you to specify the following options:
-
+Property [`IgcTreeGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgcTreeGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) enables you to specify the following options:
-
+Property [`IgcTreeGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
-
+Property [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -91,17 +86,15 @@ Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=I
 </igc-tree-grid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgcTreeGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) input property to **true**
 
 ```html
 <igc-tree-grid  data="data" auto-generate="true" allow-advanced-filtering="true">
 </igc-tree-grid>
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -111,11 +104,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpression&member=ignoreCase) and the initial [`Condition`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand&member=condition) properties.
 
-The filtering feature is enabled for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
-
-<!-- ComponentStart: Grid, TreeGrid -->
+The filtering feature is enabled for the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component by setting the [`IgcTreeGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) input to **true**. The default [`IgcTreeGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
 
 ```html
 <igc-tree-grid auto-generate="false" allow-filtering="true">
@@ -125,12 +116,12 @@ The filtering feature is enabled for the [`IgcTreeGridComponent`](mcp:get_api_re
 </igc-tree-grid>
 ```
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
-You can filter any column or a combination of columns through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API. The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes several methods for this task - [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filter), [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterGlobal) and [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clearFilter).
+You can filter any column or a combination of columns through the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API. The [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes several methods for this task - `IgcFilter`, `FilterGlobal` and `ClearFilter`.
 
-- [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filter) - filter a single column or a combination of columns.
+- `IgcFilter` - filter a single column or a combination of columns.
 
 There are five filtering operand classes exposed:
 
@@ -149,8 +140,12 @@ this.grid.filter('ProductName', 'myproduct', IgcStringFilteringOperand.instance(
 
 The only required parameters are the column field key and the filtering term. Both the condition and the case sensitivity will be inferred from the column properties if not provided. In the case of multiple filtering, the method accepts an array of filtering expressions.
 
-> [!Note]
-> The filtering operation **DOES NOT** change the underlying data source of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the `IgcTreeGrid`.
+
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+
 
 ```typescript
 // Multi column filtering
@@ -179,7 +174,7 @@ gridFilteringExpressionsTree.filteringOperands.push(priceFilteringExpressionsTre
 this.grid.filteringExpressionsTree = gridFilteringExpressionsTree;
 ```
 
-- [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterGlobal) - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
+- `FilterGlobal` - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
 
 ```typescript
 // Filter all cells for a value which contains `myproduct`
@@ -187,7 +182,7 @@ this.grid.filteringLogic = FilteringLogic.Or;
 this.grid.filterGlobal('myproduct', IgcStringFilteringOperand.instance().condition('contains'), false);
 ```
 
-- [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
+- `ClearFilter` - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 
 ```typescript
 // Remove the filtering state from the ProductName column
@@ -199,7 +194,7 @@ this.grid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), set the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), set the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) property to an array of [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor() {
@@ -226,7 +221,7 @@ constructor() {
 
 ### Filtering logic
 
-The [`filteringLogic`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringLogic) property of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) controls how filtering multiple columns will resolve in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). You can change it at any time through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API, or through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) input property.
+The [`IgcFilteringLogic`](mcp:get_api_reference?platform=webcomponents&component=FilteringLogic) property of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) controls how filtering multiple columns will resolve in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). You can change it at any time through the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API, or through the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) input property.
 
 ```typescript
 import { FilteringLogic } from "igniteui-webcomponents-grids/grids";
@@ -307,8 +302,6 @@ export class BooleanFilteringOperand extends IgcBooleanFilteringOperand {
 }
 ```
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ```html
 <!-- grid-custom-filtering.component.html -->
 
@@ -326,8 +319,6 @@ constructor() {
     discontinued.filters = this.booleanFilteringOperand;
 }
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ```typescript
 export class OrdersDataItem {
@@ -396,7 +387,7 @@ export class OrdersData extends Array<OrdersDataItem> {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -463,14 +454,12 @@ export class OrdersData extends Array<OrdersDataItem> {
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

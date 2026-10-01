@@ -1,23 +1,22 @@
 ---
-title: Web Components Grid Column Pinning - Ignite UI for Web Components
-_description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-pinning
+title: "Web Components Grid Column Pinning - Ignite UI for Web Components"
+description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-pinning"
+llms:
+  description: "The Ignite UI for Web Components Column Pinning feature in Web Components Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the IgcGrid."
+_componentKey: Grid
 _tocName: Column Pinning
 _premium: true
 ---
-
 # Web Components Grid Column Pinning
 
-The Ignite UI for Web Components Column Pinning feature in Web Components Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). There’s an integrated UI for Column Pinning, accessible via the Web Components Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Web Components Column Pinning feature in Web Components Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the `IgcGrid`. There’s an integrated UI for Column Pinning, accessible via the Web Components Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Web Components Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```css
 /* shared styles are loaded from: */
@@ -26,7 +25,7 @@ This example demonstrates how you can pin a column or multiple columns to the le
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html#pinned) property of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body.
+Column pinning is controlled through the [`IgcColumn.pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinned) property of the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body.
 
 ```html
 <igc-grid id="grid1" width="700px" auto-generate="false">
@@ -45,26 +44,16 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-You may also use the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=unpinColumn) methods of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to pin or unpin columns by their field name:
-
-<!-- ComponentStart: Grid -->
+You may also use the [`IgcGrid.pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinColumn) or [`IgcGrid.unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=unpinColumn) methods of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to pin or unpin columns by their field name:
 
 ```typescript
 this.grid.pinColumn('AthleteNumber');
 this.grid.unpinColumn('Name');
 ```
 
-<!-- ComponentEnd: Grid -->
-
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-<!-- Angular, React, WebComponents -->
-
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- end: Angular, React, WebComponents, React -->
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`IgcGrid.columnPin`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnPin) event and changing the [`IgcPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
 ```html
 <igc-grid id="dataGrid" auto-generate="true"></igc-grid>
@@ -88,7 +77,7 @@ public columnPinning(event) {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`IgcColumn.pinningPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinningPosition) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```html
@@ -152,7 +141,6 @@ export class AthletesDataExtended extends Array<AthletesDataExtendedItem> {
 ```
 
 ### Column Pinning on Both Sides
-
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 
 ```typescript
@@ -238,17 +226,17 @@ This can be done by creating a header template for the columns with a custom ico
 
 ```html
 <igc-grid id="grid1" width="100%" height="500px" auto-generate="false">
-    <igc-column id="Name" field="Name" data-type="String" width="250px"></igc-column>
-    <igc-column id="Title" field="Title" data-type="String" width="300px"></igc-column>
-    <igc-column id="ID" field="ID" data-type="Number" width="200px"></igc-column>
-    <igc-column id="HireDate" field="HireDate" header="Hire Date" data-type="Date" width="200px"></igc-column>
-    <igc-column id="Age" field="Age" data-type="Number" width="200px"></igc-column>
-    <igc-column id="Address" field="Address" data-type="String" width="200px"></igc-column>
-    <igc-column id="City" field="City" data-type="String" width="200px"></igc-column>
-    <igc-column id="Country" field="Country" data-type="String" width="200px"></igc-column>
-    <igc-column id="Fax" field="Fax" data-type="String" width="200px"></igc-column>
-    <igc-column id="PostalCode" field="PostalCode" header="Postal Code" data-type="String" width="200px"></igc-column>
-    <igc-column id="Phone" field="Phone" data-type="String" width="200px"></igc-column>
+    <igc-column id="Name" field="Name" data-type="string" width="250px"></igc-column>
+    <igc-column id="Title" field="Title" data-type="string" width="300px"></igc-column>
+    <igc-column id="ID" field="ID" data-type="number" width="200px"></igc-column>
+    <igc-column id="HireDate" field="HireDate" header="Hire Date" data-type="date" width="200px"></igc-column>
+    <igc-column id="Age" field="Age" data-type="number" width="200px"></igc-column>
+    <igc-column id="Address" field="Address" data-type="string" width="200px"></igc-column>
+    <igc-column id="City" field="City" data-type="string" width="200px"></igc-column>
+    <igc-column id="Country" field="Country" data-type="string" width="200px"></igc-column>
+    <igc-column id="Fax" field="Fax" data-type="string" width="200px"></igc-column>
+    <igc-column id="PostalCode" field="PostalCode" header="Postal Code" data-type="string" width="200px"></igc-column>
+    <igc-column id="Phone" field="Phone" data-type="string" width="200px"></igc-column>
 </igc-grid>
 ```
 
@@ -285,13 +273,11 @@ public pinHeaderTemplate = (ctx: IgcCellTemplateContext) => {
     return html`
         <div class="title-inner">
             <span style="float:left">${ctx.cell.column.header}</span>
-            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igx-icon>
+            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igc-icon>
         </div>
     `;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 On click of the custom icon the pin state of the related column can be changed using the column's API methods.
 
@@ -345,13 +331,11 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
-
-<!-- WebComponents, Blazor, React -->
+- Setting column widths in percentage (%) explicitly makes the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set an `ID` for the grid first:
 
 ```html
@@ -418,16 +402,10 @@ export class CustomersData extends Array<CustomersDataItem> {
 }
 ```
 
-<!-- end: WebComponents, Blazor -->
-
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -437,8 +415,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 - [Column Moving](column-moving.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 Our community is active and always welcoming to new ideas.
 

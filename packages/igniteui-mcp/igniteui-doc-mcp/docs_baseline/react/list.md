@@ -1,12 +1,13 @@
 ---
-title: React List Component | Infragistics
-_description: Infragistics' React List component helps you with presenting a group of items. Learn how Ignite UI for React can help you better display your data!
-_keywords: React List, Item List, overview, Ignite UI for React, data binding, Infragistics
-_license: MIT
+title: "React List Component | Infragistics"
+description: Infragistics' React List component helps you with presenting a group of items. Learn how Ignite UI for React can help you better display your data!
+keywords: "React List, Item List, overview, Ignite UI for React, data binding, Infragistics"
+license: MIT
 mentionedTypes: ["List", "ListHeader", "ListItem", "Avatar", "Button", "RadioGroup", "Radio"]
+llms:
+  description: "The Ignite UI for React List element is extremely useful when presenting a group of items."
 _tocName: List
 ---
-
 # React List Overview
 
 The Ignite UI for React List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
@@ -112,8 +113,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListOverview/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 At its core the list web component allows you to easily display a vertical list of items.
@@ -141,18 +140,18 @@ Now, we can add the following code to get a simple list of items:
 
 ```tsx
 <IgrList>
-    <IgrListHeader>
-        <span>Header</span>
-    </IgrListHeader>
-    <IgrListItem>
-        <h2 slot="title">Item 1</h2>
-    </IgrListItem>
-    <IgrListItem>
-        <h2 slot="title">Item 2</h2>
-    </IgrListItem>
-    <IgrListItem>
-        <h2 slot="title">Item 3</h2>
-    </IgrListItem>
+  <IgrListHeader>
+    <span>Header</span>
+  </IgrListHeader>
+  <IgrListItem>
+    <span slot="title">Item 1</span>
+  </IgrListItem>
+  <IgrListItem>
+    <span slot="title">Item 2</span>
+  </IgrListItem>
+  <IgrListItem>
+    <span slot="title">Item 3</span>
+  </IgrListItem>
 </IgrList>
 ```
 
@@ -202,21 +201,21 @@ Let's up our game a bit and enhance our list items. Say we want to create a list
 
 ```tsx
 <IgrList>
-    <IgrListHeader>
-        <span>Contacts</span>
-    </IgrListHeader>
-    <IgrListItem>
-        <h2 slot="title">Terrance Orta</h2>
-        <span slot="subtitle">770-504-2217</span>
-    </IgrListItem>
-    <IgrListItem>
-        <h2 slot="title">Richard Mahoney</h2>
-        <span slot="subtitle">423-676-2869</span>
-    </IgrListItem>
-    <IgrListItem>
-        <h2 slot="title">Donna Price</h2>
-        <span slot="subtitle">859-496-2817</span>
-    </IgrListItem>
+  <IgrListHeader>
+    <span>Contacts</span>
+  </IgrListHeader>
+  <IgrListItem>
+    <span slot="title">Terrance Orta</span>
+    <span slot="subtitle">770-504-2217</span>
+  </IgrListItem>
+  <IgrListItem>
+    <span slot="title">Richard Mahoney</span>
+    <span slot="subtitle">423-676-2869</span>
+  </IgrListItem>
+  <IgrListItem>
+    <span slot="title">Donna Price</span>
+    <span slot="subtitle">859-496-2817</span>
+  </IgrListItem>
 </IgrList>
 ```
 
@@ -271,60 +270,42 @@ We can use some of our other components in conjunction with the [`IgrList`](mcp:
 
 ```tsx
 <IgrList>
-    <IgrListHeader>
-        <span>Contacts</span>
-    </IgrListHeader>
-    <IgrListItem>
-        <div slot="start">
-            <IgrAvatar src="https://static.infragistics.com/xplatform/images/avatars/8.jpg" shape="circle" />
-        </div>
-        <h2 slot="title">Terrance Orta</h2>
-        <span slot="subtitle">770-504-2217</span>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Text</span>
-            </IgrButton>
-        </div>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Call</span>
-            </IgrButton>
-        </div>
-    </IgrListItem>
-    <IgrListItem>
-        <div slot="start">
-            <IgrAvatar src="https://static.infragistics.com/xplatform/images/avatars/17.jpg" shape="circle" />
-        </div>
-        <h2 slot="title">Richard Mahoney</h2>
-        <span slot="subtitle">423-676-2869</span>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Text</span>
-            </IgrButton>
-        </div>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Call</span>
-            </IgrButton>
-        </div>
-    </IgrListItem>
-    <IgrListItem>
-        <div slot="start">
-            <IgrAvatar src="https://static.infragistics.com/xplatform/images/avatars/9.jpg" shape="circle" />
-        </div>
-        <h2 slot="title">Donna Price</h2>
-        <span slot="subtitle">859-496-2817</span>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Text</span>
-            </IgrButton>
-        </div>
-        <div slot="end">
-            <IgrButton variant="outlined">
-                <span>Call</span>
-            </IgrButton>
-        </div>
-    </IgrListItem>
+  <IgrListHeader>
+    <span>Contacts</span>
+  </IgrListHeader>
+  <IgrListItem>
+    <IgrAvatar slot="start" src="https://static.infragistics.com/xplatform/images/avatars/8.jpg" shape="circle" />
+    <span slot="title">Terrance Orta</span>
+    <span slot="subtitle">770-504-2217</span>
+    <IgrButton slot="end" variant="outlined">
+      Text
+    </IgrButton>
+    <IgrButton slot="end" variant="outlined">
+      Call
+    </IgrButton>
+  </IgrListItem>
+  <IgrListItem>
+    <IgrAvatar slot="start" src="https://static.infragistics.com/xplatform/images/avatars/17.jpg" shape="circle" />
+    <span slot="title">Richard Mahoney</span>
+    <span slot="subtitle">423-676-2869</span>
+    <IgrButton slot="end" variant="outlined">
+      Text
+    </IgrButton>
+    <IgrButton slot="end" variant="outlined">
+      Call
+    </IgrButton>
+  </IgrListItem>
+  <IgrListItem>
+    <IgrAvatar slot="start" src="https://static.infragistics.com/xplatform/images/avatars/9.jpg" shape="circle" />
+    <span slot="title">Donna Price</span>
+    <span slot="subtitle">859-496-2817</span>
+    <IgrButton slot="end" variant="outlined">
+      Text
+    </IgrButton>
+    <IgrButton slot="end" variant="outlined">
+      Call
+    </IgrButton>
+  </IgrListItem>
 </IgrList>
 ```
 
@@ -336,23 +317,23 @@ Let's also allow the user to change the size of the list using the `--ig-size` C
 
 ```tsx
 <IgrRadioGroup alignment="horizontal" style={{marginBottom: '10px'}}>
-    <IgrRadio name="size" value="small" labelPosition="after" checked={this.state.listSize === "small" } onChange={this.onRadioChange}>
-        <span>Small</span>
-    </IgrRadio>
-    <IgrRadio name="size" value="medium" labelPosition="after" checked={this.state.listSize === "medium" } onChange={this.onRadioChange}>
-        <span>Medium</span>
-    </IgrRadio>
-    <IgrRadio name="size" value="large" labelPosition="after" checked={ this.state.listSize === "large" } onChange={this.onRadioChange}>
-        <span>Large</span>
-    </IgrRadio>
+  <IgrRadio name="size" value="small" labelPosition="after" checked={this.state.listSize === "small" } onChange={this.onRadioChange}>
+    Small
+  </IgrRadio>
+  <IgrRadio name="size" value="medium" labelPosition="after" checked={this.state.listSize === "medium" } onChange={this.onRadioChange}>
+    Medium
+  </IgrRadio>
+  <IgrRadio name="size" value="large" labelPosition="after" checked={ this.state.listSize === "large" } onChange={this.onRadioChange}>
+    Large
+  </IgrRadio>
 </IgrRadioGroup>
 
 <IgrList size={this.state.listSize} />
 
 public onRadioChange(e: any) {
-    if (e.detail.checked == true) {
-        this.setState({ listSize: e.detail.value });
-    }
+  if (e.detail.checked == true) {
+    this.setState({ listSize: e.detail.value });
+  }
 }
 ```
 
@@ -453,6 +434,24 @@ export default class ListOverview extends React.Component<any, any> {
 // rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListOverview/>);
+```
+
+### Recommended Elements for Slots
+
+When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` provides a neutral container that inherits the component's styles cleanly.
+
+To achieve the best results, we recommend using the [`<igc-avatar>`](../layouts/avatar.md) component for the `start` slot, which is intended for media content. For the `end` slot, which is intended to be used for actions, we recommend using components such as [`<igc-button>`](../inputs/button.md), [`<igc-switch>`](../inputs/switch.md), [`<igc-checkbox>`](../inputs/checkbox.md), etc., depending on the type of content you want to display. However, for those two slots, you can also use plain HTML elements, such as `<img>` for the `start` slot and `<button>` or another interactive element for the `end` slot, as long as they are appropriate for the content you want to display.
+
+```tsx
+<IgrList>
+  <IgrListHeader>Title</IgrListHeader>
+  <IgrListItem>
+    <IgrAvatar slot="start" src="https://randomuser.me/api/portraits/men/27.jpg"/>
+    <span slot="title">Terrance Orta</span>
+    <span slot="subtitle">770-504-2217</span>
+    <IgrButton slot="end" variant="outlined">Call</IgrButton>
+  </IgrListItem>
+</IgrList>
 ```
 
 ## Styling
@@ -571,18 +570,15 @@ root.render(<ListStyling/>);
 
 In this article we covered a lot of ground with the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for React components, like the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) and [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton). Finally, we changed the component's appearance through the exposed CSS parts.
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`IgrListHeader`](mcp:get_api_reference?platform=react&component=IgrListHeader)
-- [`IgrListItem`](mcp:get_api_reference?platform=react&component=IgrListItem)
-- [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)<br />
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)<br />
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)<br />
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)<br />
+[`IgrListHeader`](mcp:get_api_reference?platform=react&component=IgrListHeader)<br />
+[`IgrListItem`](mcp:get_api_reference?platform=react&component=IgrListItem)<br />
+[`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)<br />
 
 ## Additional Resources
 

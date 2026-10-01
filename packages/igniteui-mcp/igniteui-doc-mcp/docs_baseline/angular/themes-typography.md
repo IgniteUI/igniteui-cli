@@ -1,16 +1,18 @@
 ---
 title: Typography
-_description:
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
 _extraFont: https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700
+llms:
+  description: "The typography in Ignite UI for Angular is modeled after the Material Type System."
 _tocName: Typography
 ---
-
 # Typography
 
-<p class="highlight">
+<div class="highlight">
+
 The typography in Ignite UI for Angular is modeled after the [Material Type System](https://material.io/design/typography/the-type-system.html#). It's non-intrusive and optional, allowing you to modify the type styles using CSS only.
-</p>
+</div>
 
 ## Overview
 
@@ -34,14 +36,14 @@ Here's a list of all 13 category styles as defined for the Material Theme in Ign
 | **caption**        | Titillium Web   | 400             | .75 rem       | none               | .025 rem           | 1 rem           | `ig-typography__caption`    | `--ig-caption-*`    |
 | **overline**       | Titillium Web   | 400             | .625 rem      | uppercase          | .09375 rem         | 1 rem           | `ig-typography__overline`   | `--ig-overline-*`   |
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 Each theme defines its own type scale. This means each one of the themes we ship - Material, Fluent, Bootstrap, and Indigo will have its own type scale. They all share the same _scale categories_, but can have different font family, weight, size, text transform, letter spacing, and line height.
 
 ## Usage
 >
-> [!IMPORTANT]
-> By default we don't apply any typography styles. To use our typography in your application you have to set the `ig-typography` CSS class on a top-level element. All of its children will then use our typography styles.
+**Note:** 
+By default we don't apply any typography styles. To use our typography in your application you have to set the `ig-typography` CSS class on a top-level element. All of its children will then use our typography styles.
 
 We have selected [Titillium Web](https://fonts.google.com/selection?selection.family=Titillium+Web:300,400,600,700) to be the default font for the Material Theme in Ignite UI for Angular. To use it you have to host it yourself, or include it from Google Fonts:
 
@@ -55,7 +57,7 @@ We have selected [Titillium Web](https://fonts.google.com/selection?selection.fa
 Enable the typography styles by setting the `ig-typography` class on the body element.
 
 ```html
-<!-- index.html -->
+{/* index.html */}
 <body class="ig-typography">
   <app-root></app-root>
 </body>
@@ -84,13 +86,13 @@ Let's say we want to change the text of the button in the Material Theme to alwa
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Additional Resources
 
-- [Typography with Sass](./sass/typography.md)
+- [Typography with Sass](/themes/sass/typography)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,21 +1,22 @@
 ---
-title: Web Components Radial Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Radial Chart
-_keywords: Web Components Charts, Radial Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "RadialLineSeries", "Series"]
+title: "Web Components Radial Chart | Data Visualization | Infragistics"
+description: Infragistics' Web Components Radial Chart
+keywords: "Web Components Charts, Radial Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "RadialLineSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Radial Chart takes data and render it as collection of data points wrapped around a circle (rather than stretching along a horizontal line)."
 _tocName: Radial Chart
 _premium: true
 ---
-
 # Web Components Radial Chart
 
 The Ignite UI for Web Components Radial Chart takes data and render it as collection of data points wrapped around a circle (rather than stretching along a horizontal line). Radial Chart is also mapping a list of categories from the minimum to the maximum of the extent of the chart, and support the category grouping mechanisms.
 
 ## Web Components Radial Area Chart
 
-The Web Components Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent), as shown in the example below.
+The Web Components Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -48,12 +49,10 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Radial Column Chart
 
-The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent), as shown in the example below:
+The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent), as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -86,12 +85,10 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Radial Line Chart
 
-The Web Components Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent), as shown in the example below:
+The Web Components Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -124,12 +121,10 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Radial Pie Chart
 
-The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialPieSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent), as shown in the example below:
+The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialPieSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent), as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -162,12 +157,10 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Radial Chart Styling
 
-Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
+Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -201,13 +194,9 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Radial Chart Settings
 
-In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the `LabelMode` property for the [`IgcCategoryAngleAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent).
-
-<div class="divider--half"></div>
+In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the [`LabelMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent&member=labelMode) property for the [`IgcCategoryAngleAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent).
 
 ## Additional Resources
 
@@ -221,16 +210,10 @@ You can find more information about related chart types in these topics:
 
 ## API References
 
-The following table lists API members mentioned in the above sections:
-
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- [`IgcRadialAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent)
-- [`IgcRadialColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent)
-- [`IgcRadialLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent)
-- [`IgcRadialPieSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent)
-- `ItemsSource`
-- `AngleAxisName`
-- `ValueAxisName`
-- [`valueMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent&member=valueMemberPath)
-- [`IgcCategoryAngleAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent)
-- [`IgcNumericRadiusAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericRadiusAxisComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcRadialAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent)<br />
+[`IgcRadialColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent)<br />
+[`IgcRadialLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent)<br />
+[`IgcRadialPieSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent)<br />
+[`IgcCategoryAngleAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent)<br />
+[`IgcNumericRadiusAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericRadiusAxisComponent)<br />

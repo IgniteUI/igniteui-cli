@@ -1,13 +1,14 @@
 ---
-title: React Map | World Locations | Data Source | Infragistics
-_description: Use Infragistics' React JavaScript map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for React map demos!
-_keywords: React map, map data, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "React Map | World Locations | Data Source | Infragistics"
+description: Use Infragistics' React JavaScript map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for React map demos!
+keywords: "React map, map data, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of data utility for generating geographic locations of cities and capitals of countries."
 _tocName: World Locations
 _premium: true
 ---
-
 # React World Locations
 
 The resource topic provides implementation of data utility for generating geographic locations of cities and capitals of countries.
@@ -658,5 +659,4 @@ export default class WorldLocations {
 ```
 
 ## API References
-
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrGeographicMap`

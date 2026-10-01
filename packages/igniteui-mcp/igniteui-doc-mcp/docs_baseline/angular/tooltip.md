@@ -1,11 +1,12 @@
 ---
 title: Angular Tooltip Component | Ignite UI for Angular | MIT license
-_description: The Ignite UI for Angular Tooltip and Tooltip Target directives feature the ability to create a tooltip and attach it to an element.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Tooltip directives, Angular Tooltip controls, Angular Tooltip, tooltip, tooltip target
-_license: MIT
+description: The Ignite UI for Angular Tooltip and Tooltip Target directives feature the ability to create a tooltip and attach it to an element.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Tooltip directives, Angular Tooltip controls, Angular Tooltip, tooltip, tooltip target
+license: MIT
+llms:
+  description: "The igxTooltip and the igxTooltipTarget directives provide us with the ability to create a fully customizable tooltip and attach it to any element on our page."
 _tocName: Tooltip
 ---
-
 # Angular Tooltip Directive Overview
 
 The [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) and the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directives provide us with the ability to create a fully customizable tooltip and attach it to any element on our page.
@@ -40,7 +41,7 @@ export class TooltipSimpleComponent { }
 </div>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Tooltip
 
@@ -50,7 +51,7 @@ To get started with the Ignite UI for Angular Tooltip directive, first you need 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxTooltipModule` in your **app.module.ts** file.
 
@@ -90,7 +91,8 @@ import { IgxAvatarComponent } from 'igniteui-angular/avatar';
     >
     </igx-avatar>
 
-    <div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+    <div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
   `,
   styleUrls: ['home.component.scss'],
   standalone: true,
@@ -100,11 +102,12 @@ import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 export class HomeComponent {}
 ```
 
+
 Now that you have the Ignite UI for Angular Tooltip module or directives imported, you can start using the `igxTooltip` directive.
 
 ## Using the Angular Tooltip
 
-Let's say we want to create a simple text tooltip like the one above. In our case, we're using our awesome [`IgxAvatar`](avatar.md) as the element, so we start by importing the `IgxAvatarModule` first.
+Let's say we want to create a simple text tooltip like the one above. In our case, we're using our awesome [`IgxAvatar`](layouts/avatar.md) as the element, so we start by importing the `IgxAvatarModule` first.
 
 ```typescript
 // app.module.ts
@@ -128,7 +131,7 @@ The avatar will be our target and all we have to do is set the [`igxTooltipTarge
 - The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive is exported with the name **tooltipTarget**.
 
 ```html
-<!--simpleTooltip.component.html-->
+{/*simpleTooltip.component.html*/}
 
 <igx-avatar
   class="avatar"
@@ -148,9 +151,10 @@ Now let's create the tooltip element itself! Since we want a simple text tooltip
 - The [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) directive is exported with the name **tooltip**.
 
 ```html
-<!--simpleTooltip.component.html-->
+{/*simpleTooltip.component.html*/}
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 ### Attach tooltip to target
@@ -158,7 +162,7 @@ Now let's create the tooltip element itself! Since we want a simple text tooltip
 Now that we have both our target and tooltip defined, all that's left for us to do is assign the tooltip's reference to the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) selector of the target.
 
 ```html
-<!--simpleTooltip.component.html-->
+{/*simpleTooltip.component.html*/}
 
 <igx-avatar
   class="avatar"
@@ -169,7 +173,8 @@ Now that we have both our target and tooltip defined, all that's left for us to 
   shape="circle">
 </igx-avatar>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 If everything went well, you should see the sample shown in the [Tooltip Demo](#angular-tooltip-example) section.
@@ -178,7 +183,7 @@ If everything went well, you should see the sample shown in the [Tooltip Demo](#
 
 The [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) content can be more than just simple text. Since the tooltip itself is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
-Let's expand on the use of the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) and use it to provide more details for a specific location on a map! We'll use a simple div to represent our map, the [`IgxAvatar`](avatar.md) for a logo in our tooltip and the [`IgxIcon`](icon.md) for the location icon on our map. For this purpose, we will get their respective modules.
+Let's expand on the use of the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) and use it to provide more details for a specific location on a map! We'll use a simple div to represent our map, the [`IgxAvatar`](layouts/avatar.md) for a logo in our tooltip and the [`IgxIcon`](/icon) for the location icon on our map. For this purpose, we will get their respective modules.
 
 ```typescript
 // app.module.ts
@@ -239,9 +244,10 @@ We will also use the following styles for our application:
 Let's start by creating our map. We need a simple div that has for a background an image with a map. Also, we will add an icon that will indicate the position of our location! Since we want to provide more details for this location, our icon will obviously be the tooltip target.
 
 ```html
-<!--richTooltip.component.html-->
+{/*richTooltip.component.html*/}
 
 <div class="map">
+
   <igx-icon
     class="location"
     [style.color]="'blue'"
@@ -252,16 +258,18 @@ Let's start by creating our map. We need a simple div that has for a background 
 </div>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now for the tooltip! For its content, we will create a container that will be populated with some text information elements and an avatar. Then we will simply attach the tooltip to the target and include some nice CSS styling!
 
 ```html
-<!--richTooltip.component.html-->
+{/*richTooltip.component.html*/}
 
 <div class="wrapper">
+
   <div class="map">
+
     <igx-icon
       class="location"
       [style.color]="'blue'"
@@ -271,6 +279,7 @@ Now for the tooltip! For its content, we will create a container that will be po
 
     <div class="locationTooltip" #locationTooltip="tooltip" igxTooltip>
       <div class="locationTooltipContent">
+
         <igx-avatar
           class="logo"
           src="assets/images/card/avatars/igLogo.png"
@@ -278,12 +287,18 @@ Now for the tooltip! For its content, we will create a container that will be po
           shape="square">
         </igx-avatar>
         <div>
-          <div>Infragistics Inc. HQ</div>
-          <div>2 Commerce Dr, Cranbury, NJ 08512, USA</div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div>Infragistics Inc. HQ
+</div>
+          <div>2 Commerce Dr, Cranbury, NJ 08512, USA
+</div>
+        
+</div>
+      
+</div>
+    
+</div>
+  
+</div>
 </div>
 ```
 
@@ -355,12 +370,12 @@ export class TooltipRichComponent { }
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Advanced Example
 
 The tooltip integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent), [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent), [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent), [`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent), [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective), [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) and [`IgxCategoryChart`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) components.
+In the following example, you can see how we create descriptive tooltips by using the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent), [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent), [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent), [`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent), [`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective), [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) and [`IgxCategoryChart`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) components.
 
 ```typescript
 import { Component, inject } from "@angular/core";
@@ -1040,18 +1055,18 @@ p {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Show/Hide delay settings
 
-What if we want to control the amount of time that should pass before showing and hiding the tooltip? For this purpose we can use the [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showdelay) and the [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidedelay) properties of the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive. Both properties are of type **number** and take time in milliseconds.
+What if we want to control the amount of time that should pass before showing and hiding the tooltip? For this purpose we can use the [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showDelay) and the [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hideDelay) properties of the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive. Both properties are of type **number** and take time in milliseconds.
 
-> [!NOTE]
-> The built-in UI interaction behavior of the [`IgxTooltipTargetDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) works by taking [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showdelay) and [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidedelay) property values into account. Showing and hiding the tooltip through the API or the API of the [`IgxTooltipDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) does NOT take the [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showdelay) and [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidedelay) property values into account. If necessary, such logic would have to be implemented manually according to the application's specifics.
+**Note:** 
+The built-in UI interaction behavior of the [`IgxTooltipTargetDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) works by taking [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hideDelay) property values into account. Showing and hiding the tooltip through the API or the API of the [`IgxTooltipDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) does NOT take the [`showDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hideDelay) property values into account. If necessary, such logic would have to be implemented manually according to the application's specifics.
 
 ### Triggers
 
-By default, the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) is triggered only while hovering over the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective). However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showtriggers) and [`hideTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidetriggers) properties, which allow you to control when the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) in different scenarios.
+By default, the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) is triggered only while hovering over the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective). However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidetriggers) properties, which allow you to control when the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) in different scenarios.
 
 ```typescript
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
@@ -1205,12 +1220,12 @@ export class TooltipTriggersComponent { }
 }
 ```
 
-> [!NOTE]
-> Setting [`showTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showtriggers) and [`hideTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidetriggers) only has effect when interacting with the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective), not the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) itself. Default event triggers for the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) are `pointerenter` and `pointerleave`.
+**Note:** 
+Setting [`showTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidetriggers) only has effect when interacting with the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective), not the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) itself. Default event triggers for the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) are `pointerenter` and `pointerleave`.
 
 ### Overlay configuration
 
-Both the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) and [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directives use the [`IgxOverlayService`](overlay.md) to open and close the respective tooltip element.
+Both the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) and [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directives use the [`IgxOverlayService`](/overlay) to open and close the respective tooltip element.
 
 The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive exposes a [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=positionsettings) property, which can be used to customize the animations of our tooltip, its position in the UI and a lot more! If this property is not set, then default position settings will be used.
 
@@ -1221,7 +1236,8 @@ To further customize the tooltip, use the [`overlaySettings`](mcp:get_api_refere
   info
 </igx-icon>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 ```ts
@@ -1240,8 +1256,8 @@ public overlaySettings: OverlaySettings = {
 };
 ```
 
-> [!NOTE]
-> Any property that is set through the [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=positionsettings) or [`overlaySettings`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=overlaysettings) will override the same property from the default settings and will have a direct impact on the tooltip.
+**Note:** 
+Any property that is set through the [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=positionsettings) or [`overlaySettings`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=overlaysettings) will override the same property from the default settings and will have a direct impact on the tooltip.
 
 ### Additional Properties
 
@@ -1254,7 +1270,8 @@ You can make the tooltip "sticky" using the [`sticky`](mcp:get_api_reference?pla
   info
 </igx-icon>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 To customize the default close button, use the [`closeButtonTemplate`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=closetemplate) property.
@@ -1269,11 +1286,12 @@ To customize the default close button, use the [`closeButtonTemplate`](mcp:get_a
   <igx-icon>cancel</igx-icon>
 </ng-template>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
-> [!NOTE]
-> Any custom content added via the `closeButtonTemplate` is rendered only when the tooltip is in sticky mode.
+**Note:** 
+Any custom content added via the `closeButtonTemplate` is rendered only when the tooltip is in sticky mode.
 
 Additionally, you can add an arrow indicator to the tooltip by using the [`hasArrow`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hasarrow) property.
 
@@ -1282,7 +1300,8 @@ Additionally, you can add an arrow indicator to the tooltip by using the [`hasAr
   info
 </igx-icon>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 The arrow element is positioned based on the provided position settings. If the directions and starting points do not correspond to any of the [predefined position values](#predefined-position-values), the arrow is positioned in the top middle side of the tooltip (default tooltip position `bottom`).
@@ -1303,7 +1322,6 @@ The arrow element is positioned based on the provided position settings. If the 
 | left         | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Middle | VerticalAlignment.Middle |
 | left-start   | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Bottom | VerticalAlignment.Top    |
 | left-end     | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Top    | VerticalAlignment.Bottom |
-
 
 In the following example, you can see a demonstration of all position options and the arrow positioning behavior in action:
 
@@ -1453,7 +1471,7 @@ igx-icon {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 #### Customizing the arrow's position
 
@@ -1491,12 +1509,13 @@ public overlaySettings: OverlaySettings = {
   info
 </igx-icon>
 
-<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+<div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 ```
 
 ## Styling
 
-To get started with styling the tooltip, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the tooltip, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -1505,7 +1524,7 @@ To get started with styling the tooltip, we need to import the `index` file, whe
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`tooltip-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-tooltip-theme) and provide the `$text-color`, `$background` and the `$border-radius` parameters.
+Following the simplest approach, we create a new theme that extends the `tooltip-theme` and provide the `$text-color`, `$background` and the `$border-radius` parameters.
 
 ```scss
 $dark-tooltip: tooltip-theme(
@@ -1515,10 +1534,10 @@ $dark-tooltip: tooltip-theme(
 );
 ```
 
-> [!NOTE]
-> In order to style any additional components that are used as part of the tooltip's content (such as [`IgxButton`](button.md), [`IgxSwitch`](switch.md), etc.), an additional theme should be created that is specific to the respective component and placed under the tooltip's scope only (so it does not affect the rest of the application).
+**Note:** 
+In order to style any additional components that are used as part of the tooltip's content (such as [`IgxButton`](./inputs/button.md), [`IgxSwitch`](./inputs/switch.md), etc.), an additional theme should be created that is specific to the respective component and placed under the tooltip's scope only (so it does not affect the rest of the application).
 
-Since the tooltip uses the [`IgxOverlayService`](overlay.md), in order for our custom theme to reach down the tooltip that we want to style, we will provide a specific outlet where the tooltip will be placed in the DOM when it is visible.
+Since the tooltip uses the [`IgxOverlayService`](/overlay), in order for our custom theme to reach down the tooltip that we want to style, we will provide a specific outlet where the tooltip will be placed in the DOM when it is visible.
 
 ```html
 <igx-avatar
@@ -1529,7 +1548,8 @@ Since the tooltip uses the [`IgxOverlayService`](overlay.md), in order for our c
 </igx-avatar>
 
 <div #outlet="overlay-outlet" igxOverlayOutlet>
-  <div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
+  <div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James
+</div>
 </div>
 ```
 
@@ -1587,7 +1607,7 @@ $dark-tooltip: tooltip-theme(
 
 ### Styling with Tailwind
 
-You can style the tooltip using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the tooltip using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the Tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -1605,7 +1625,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. You can then override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [IgxTooltip Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-tooltip-theme). The syntax is as follows:
+You can find the full list of properties in the `IgxTooltip Theme`. The syntax is as follows:
 
 ```html
 <div
@@ -1616,16 +1636,39 @@ You can find the full list of properties in the [IgxTooltip Theme](https://www.i
 </div>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your tooltip should look like this:
 
-<div class="sample-container loading" style="height:100px">
-    <iframe id="tooltip-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/interactions/tooltip-tailwind-style/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
+import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
 
-<div class="divider--half"></div>
+@Component({
+    selector: 'app-tooltip-tailwind-style',
+    styleUrls: ['./tooltip-tailwind-style.component.scss'],
+    templateUrl: './tooltip-tailwind-style.component.html',
+    imports: [IgxAvatarComponent, IgxTooltipTargetDirective, IgxOverlayOutletDirective, IgxTooltipDirective]
+})
+export class TooltipTailwindStyleComponent { }
+```
+```html
+<igx-avatar class="avatar" #target="tooltipTarget" [igxTooltipTarget]="tooltipRef"
+    src="assets/images/avatar/10.jpg" size="medium" shape="circle"
+    [igxToggleOutlet]="outlet">
+</igx-avatar>
+
+<div #outlet="overlay-outlet" igxOverlayOutlet>
+    <div class="!light-tooltip ![--background:#90B69F]" #tooltipRef="tooltip" igxTooltip>
+        Her name is Madelyn James
+    </div>
+</div>
+```
+
+<hr/>
 
 ## Accessibility
 
@@ -1647,34 +1690,25 @@ Extra care should be taken in the following scenarios:
 
 | Limitation                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Custom position strategy with arrow | The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive uses the [`TooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy) to position the tooltip and arrow element. If a custom [`positionStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positionstrategy) is used and [`hasArrow`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy). Otherwise, the arrow will not be displayed. |
-
+| Custom position strategy with arrow | The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive uses the [`IgxTooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy) to position the tooltip and arrow element. If a custom [`IgxOverlaySettings.positionstrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positionstrategy) is used and [`hasArrow`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hasarrow) is set to `true`, the custom strategy should extend the [`IgxTooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy). Otherwise, the arrow will not be displayed.|
 
 ## API References
-
 In this article we learned how to create, configure and style awesome tooltips for the elements on our page! We also used some additional Ignite UI for Angular components like icons and avatars to improve on the design of our application! The respective APIs are listed below:
-
-- [IgxTooltipDirective](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective)
-- [IgxTooltipTargetDirective](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective)
-
+- [`IgxTooltipDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective)
+- [`IgxTooltipTargetDirective`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective)
 Additional components and/or directives that were used:
-
-- [IgxAvatarComponent](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
-- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- [IgxToggleDirective](mcp:get_api_reference?platform=angular&component=IgxToggleDirective)
-- [IgxToggleActionDirective](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective)
-
+- [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [`IgxToggleDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective)
+- [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective)
 Styles:
-
-- [IgxTooltipDirective Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-tooltip-theme)
-- [IgxAvatarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
-- [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-
-<div class="divider"></div>
-
+- `IgxTooltipDirective Styles`
+- `IgxAvatarComponent Styles`
+- `IgxIconComponent Styles`
+<igc-divider></igc-divider>
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,16 +1,19 @@
 ---
 title: Angular Radio and Radio Group – Ignite UI for Angular | Infragistics | MIT license
-_description: With Ignite UI for Angular Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
-_keywords: Angular Radio Group component, Angular Radio Group control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: With Ignite UI for Angular Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
+keywords: Angular Radio Group component, Angular Radio Group control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Radio Button component allows the user to select a single option from an available set of options that are listed side by side."
 _tocName: Radio & Radio Group
 ---
-
 # Angular Radio & Radio Group Component Overview
 
 ## Radio Button
 
-<p class="highlight">The Ignite UI for Angular Radio Button component allows the user to select a single option from an available set of options that are listed side by side.</p>
+<div class="highlight">
+The Ignite UI for Angular Radio Button component allows the user to select a single option from an available set of options that are listed side by side.
+</div>
 
 ## Angular Radio & Radio Group Example
 
@@ -45,7 +48,7 @@ igx-radio + igx-radio {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Radio Button
 
@@ -55,7 +58,7 @@ To get started with the Ignite UI for Angular Radio Button component, first you 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxRadioModule` in the **app.module.ts** file.
 
@@ -125,9 +128,36 @@ The `labelPosition` property can be used to change the default position of the l
 <igx-radio [(ngModel)]="selected" value="option2" labelPosition="before">Option 2</igx-radio>
 ```
 
-<div class="sample-container loading" style="height: 120px">
-    <iframe id="radio-sample-3-iframe" data-src='{environment:demosBaseUrl}/data-entries/radio-sample-3' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxRadioComponent } from 'igniteui-angular/radio';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+    selector: 'app-radio-sample-3',
+    styleUrls: ['./radio-sample-3.component.scss'],
+    templateUrl: './radio-sample-3.component.html',
+    imports: [IgxRadioComponent, FormsModule]
+})
+export class RadioSample3Component {
+    public selected: string;
+}
+```
+```html
+<igx-radio [(ngModel)]="selected" value="option1" labelPosition="before">Option 1</igx-radio>
+<igx-radio [(ngModel)]="selected" value="option2" labelPosition="before">Option 2</igx-radio>
+```
+```scss
+:host {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 16px;
+}
+
+igx-radio + igx-radio {
+    margin-top: 16px;
+}
+```
 
 ### Properties
 
@@ -155,12 +185,13 @@ public selectedColor: string = this.colors[3].hex;
 ```
 
 ```html
-<!--radiogroup.component.html-->
+{/*radiogroup.component.html*/}
 <igx-radio *ngFor="let color of colors" name="color" [value]="color.hex" [(ngModel)]="selectedColor">
   {{color.name}}
 </igx-radio>
 
-<div [style.background-color]="selectedColor">...</div>
+<div [style.background-color]="selectedColor">...
+</div>
 ```
 
 Pay attention that if you don't use the `NgModel` directive in a two-way data binding, you must import the `FormsModule` and add it to the NgModule's imports list.
@@ -251,51 +282,20 @@ h5 {
 
 When you modify a primary property, all related dependent properties are automatically updated to reflect the change:
 
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$empty-color</strong></summary></details></td>
-      <td>$hover-color</td>
-      <td>Border and dot colors on hover</td>
-    </tr>
-    <tr class="dependent"><td></td><td>$focus-outline-color (indigo)</td><td>Focus outline color (Indigo theme)</td></tr>
-  </tbody>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$fill-color</strong></summary></details></td>
-      <td>$fill-color-hover</td>
-      <td>Checked dot color on hover</td>
-    </tr>
-    <tr class="dependent"><td></td><td>$fill-hover-border-color (non-bootstrap)</td><td>Checked border color on hover</td></tr>
-    <tr class="dependent"><td></td><td>$focus-border-color (bootstrap)</td><td>Focus border color</td></tr>
-    <tr class="dependent"><td></td><td>$focus-outline-color (bootstrap)</td><td>Focus outlined color</td></tr>
-    <tr class="dependent"><td></td><td>$focus-outline-color-filled (indigo)</td><td>Focus outline color when radio is filled</td></tr>
-  </tbody>
-  <tbody class="group">
-    <tr class="primary">
-      <td><strong>$label-color</strong></td>
-      <td>$label-color-hover</td>
-      <td>Label text color on hover</td>
-    </tr>
-  </tbody>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$error-color</strong></summary></details></td>
-      <td>$error-color-hover</td>
-      <td>Label, border, and dot color in invalid state on hover</td>
-    </tr>
-    <tr class="dependent"><td></td><td>$focus-outline-color-error</td><td>Focus outline color in invalid state</td></tr>
-  </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$empty-color** | $hover-color | Border and dot colors on hover |
+|  | $focus-outline-color (indigo) | Focus outline color (Indigo theme) |
+| **$fill-color** | $fill-color-hover | Checked dot color on hover |
+|  | $fill-hover-border-color (non-bootstrap) | Checked border color on hover |
+|  | $focus-border-color (bootstrap) | Focus border color |
+|  | $focus-outline-color (bootstrap) | Focus outlined color |
+|  | $focus-outline-color-filled (indigo) | Focus outline color when radio is filled |
+| **$label-color** | $label-color-hover | Label text color on hover |
+| **$error-color** | $error-color-hover | Label, border, and dot color in invalid state on hover |
+|  | $focus-outline-color-error | Focus outline color in invalid state |
 
-To get started with styling the radio buttons, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the radio buttons, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -304,7 +304,7 @@ To get started with styling the radio buttons, we need to import the `index` fil
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`radio-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme). By providing just two key parameters — `$empty-color` and `$fill-color` — you can generate a fully styled radio button. These values serve as the foundation for the theme, by providing them it will automatically compute all the required foreground and background colors for various states (e.g., hover, selected, disabled).
+Following the simplest approach, we create a new theme that extends the `radio-theme`. By providing just two key parameters — `$empty-color` and `$fill-color` — you can generate a fully styled radio button. These values serve as the foundation for the theme, by providing them it will automatically compute all the required foreground and background colors for various states (e.g., hover, selected, disabled).
 
 ```scss
 $custom-radio-theme: radio-theme(
@@ -368,14 +368,14 @@ $custom-radio-theme: radio-theme(
 }
 ```
 
-> [!NOTE]
-> The sample uses the [Fluent Light](themes/sass/schemas.md#predefined-schemas) schema.
+**Note:** 
+The sample uses the [Fluent Light](/themes/sass/schemas#predefined-schemas) schema.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the `radio button` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the `radio button` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -393,8 +393,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [radio-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme). The syntax is as follows:
-
+You can find the full list of properties in the `radio-theme`. The syntax is as follows:
 
 ```html
 <igx-radio
@@ -405,18 +404,52 @@ class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]"
 </igx-radio>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your radio button should look like this:
 
-<div class="sample-container loading" style="height:300px">
-    <iframe id="radio-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/data-entries/radio-tailwind-styling-sample' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component } from '@angular/core';
+import { IgxRadioComponent } from 'igniteui-angular/radio';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+    selector: 'app-radio-tailwind-styling',
+    styleUrls: ['./radio-tailwind-styling-sample.component.scss'],
+    templateUrl: './radio-tailwind-styling-sample.component.html',
+    imports: [IgxRadioComponent, FormsModule]
+})
+export class RadioTailwindStylingSampleComponent {
+    public selected: string;
+}
+```
+```html
+<div class="radio-wrapper">
+  <igx-radio class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]" [(ngModel)]="selected" value="option1">New York</igx-radio>
+  <igx-radio class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]" [(ngModel)]="selected" value="option2">London</igx-radio>
+  <igx-radio class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]" [(ngModel)]="selected" value="option3">Sofia</igx-radio>
+  <igx-radio class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]" [(ngModel)]="selected" value="option4">Tokyo</igx-radio>
+  <igx-radio class="!light-radio ![--empty-color:#576E60] ![--fill-color:#7B9E89]" [(ngModel)]="selected" value="option5" [disabled] = "true">Singapore</igx-radio>
 </div>
+```
+```scss
+igx-radio + igx-radio {
+  margin-top: 16px;
+}
+
+.radio-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 16px;
+}
+```
 
 ## Radio Group
 
-<p class="highlight">The Ignite UI for Angular Radio Group directive provides a grouping container that allows better control over the child radio components and supports template-driven and reactive forms. </p>
+<div class="highlight">
+The Ignite UI for Angular Radio Group directive provides a grouping container that allows better control over the child radio components and supports template-driven and reactive forms.
+</div>
 
 ### Demo
 
@@ -532,7 +565,7 @@ igx-radio {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Usage
 
@@ -556,7 +589,7 @@ To get started, create an [`igxRadioGroup`](mcp:get_api_reference?platform=angul
 Note that, setting a [`name`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective&member=name) property for the radio group is **mandatory**.
 
 ```html
-<!--radio-group.component.html-->
+{/*radio-group.component.html*/}
 <igx-radio-group name="fruitsRadioGroup">
   <igx-radio *ngFor="let fruit of fruits" value="{{fruit}}">
     {{fruit}}
@@ -582,7 +615,7 @@ public alignment = RadioGroupAlignment.vertical;
 ```
 
 ```html
-<!-- sample.component.html -->
+{/* sample.component.html */}
 <igx-radio-group [alignment]="alignment">
   <igx-radio [(ngModel)]="selected" value="London">London</igx-radio>
   <igx-radio [(ngModel)]="selected" value="New York">New York</igx-radio>
@@ -623,23 +656,20 @@ igx-radio {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxRadioGroupDirective](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective)
-- [IgxRadioComponent](mcp:get_api_reference?platform=angular&component=IgxRadioComponent)
-- [IgxRadioComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme)
-
+<hr/>
+- [`IgxRadioGroupDirective`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective)
+- [`IgxRadio`](mcp:get_api_reference?platform=angular&component=IgxRadioComponent)
+- `IgxRadioComponent Styles`
 ## Theming Dependencies
 
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
+- `IgxRipple Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

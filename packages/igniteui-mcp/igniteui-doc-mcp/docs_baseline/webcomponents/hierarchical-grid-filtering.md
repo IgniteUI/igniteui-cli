@@ -1,18 +1,17 @@
 ---
-title: Web Components Hierarchical Grid Filtering - Ignite UI for Web Components
-_description: Start using angular filter to return specific data with Web Components Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "Web Components Hierarchical Grid Filtering - Ignite UI for Web Components"
+description: Start using angular filter to return specific data with Web Components Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for Web Components Filtering in Web Components Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: HierarchicalGrid
 _tocName: Filtering
 ---
-
 # Web Components Hierarchical Grid Filtering
 
-The Ignite UI for Web Components Filtering in Web Components Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
+The Ignite UI for Web Components Filtering in Web Components Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
 
 - Quick filtering
 - [Excel Style Filtering](excel-style-filtering.md)
@@ -20,7 +19,7 @@ The Ignite UI for Web Components Filtering in Web Components Hierarchical Grid i
 
 ## Web Components Hierarchical Grid Filtering Example
 
-The sample below demonstrates [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s **Quick Filter** user experience.
+The sample below demonstrates [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s **Quick Filter** user experience.
 
 ```css
 /* shared styles are loaded from: */
@@ -29,25 +28,21 @@ The sample below demonstrates [`IgcHierarchicalGridComponent`](mcp:get_api_refer
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) exposes the following properties - [`IgcHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering), [`IgcHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering), [`IgcHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) and [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
 
-Property [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) enables you to specify the following options:
-
+Property [`IgcHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgcHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) enables you to specify the following options:
-
+Property [`IgcHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
-
+Property [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -58,17 +53,15 @@ Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=I
 </igc-hierarchical-grid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgcHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowAdvancedFiltering) input property to **true**
 
 ```html
 <igc-hierarchical-grid  data="data" auto-generate="true" allow-advanced-filtering="true">
 </igc-hierarchical-grid>
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -78,9 +71,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpression&member=ignoreCase) and the initial [`Condition`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand&member=condition) properties.
 
-The filtering feature is enabled for the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
+The filtering feature is enabled for the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component by setting the [`IgcHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) input to **true**. The default [`IgcHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
 
 ```html
 <igc-hierarchical-grid auto-generate="false" allow-filtering="true">
@@ -89,12 +82,12 @@ The filtering feature is enabled for the [`IgcHierarchicalGridComponent`](mcp:ge
 </igc-hierarchical-grid>
 ```
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
-You can filter any column or a combination of columns through the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API. The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) exposes several methods for this task - [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filter), [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterGlobal) and [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=clearFilter).
+You can filter any column or a combination of columns through the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API. The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) exposes several methods for this task - `IgcFilter`, `FilterGlobal` and `ClearFilter`.
 
-- [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filter) - filter a single column or a combination of columns.
+- `IgcFilter` - filter a single column or a combination of columns.
 
 There are five filtering operand classes exposed:
 
@@ -113,8 +106,12 @@ this.grid.filter('ProductName', 'myproduct', IgcStringFilteringOperand.instance(
 
 The only required parameters are the column field key and the filtering term. Both the condition and the case sensitivity will be inferred from the column properties if not provided. In the case of multiple filtering, the method accepts an array of filtering expressions.
 
-> [!Note]
-> The filtering operation **DOES NOT** change the underlying data source of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the `IgcHierarchicalGrid`.
+
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+
 
 ```typescript
 // Multi column filtering
@@ -143,7 +140,7 @@ gridFilteringExpressionsTree.filteringOperands.push(priceFilteringExpressionsTre
 this.grid.filteringExpressionsTree = gridFilteringExpressionsTree;
 ```
 
-- [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterGlobal) - clears all existing filters and applies the new filtering condition to all Hierarchical Grid's columns.
+- `FilterGlobal` - clears all existing filters and applies the new filtering condition to all Hierarchical Grid's columns.
 
 ```typescript
 // Filter all cells for a value which contains `myproduct`
@@ -151,7 +148,7 @@ this.grid.filteringLogic = FilteringLogic.Or;
 this.grid.filterGlobal('myproduct', IgcStringFilteringOperand.instance().condition('contains'), false);
 ```
 
-- [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
+- `ClearFilter` - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 
 ```typescript
 // Remove the filtering state from the ProductName column
@@ -163,7 +160,7 @@ this.grid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), set the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), set the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) property to an array of [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor() {
@@ -190,7 +187,7 @@ constructor() {
 
 ### Filtering logic
 
-The [`filteringLogic`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filteringLogic) property of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) controls how filtering multiple columns will resolve in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). You can change it at any time through the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API, or through the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) input property.
+The [`IgcFilteringLogic`](mcp:get_api_reference?platform=webcomponents&component=FilteringLogic) property of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) controls how filtering multiple columns will resolve in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). You can change it at any time through the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) API, or through the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) input property.
 
 ```typescript
 import { FilteringLogic } from "igniteui-webcomponents-grids/grids";
@@ -289,8 +286,6 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -298,7 +293,7 @@ constructor() {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -340,14 +335,12 @@ Then set the related CSS properties for that class:
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

@@ -1,22 +1,23 @@
 ---
-title: React Chart Data Selection | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for React chart with the data selection!
-_keywords: React charts, chart data, selection, data selection, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Chart Data Selection | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for React chart with the data selection!
+keywords: "React charts, chart data, selection, data selection, Ignite UI for React, Infragistics"
+license: commercial
 _language: en
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React selection feature in React Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart."
 _tocName: Chart Data Selection
 _premium: true
 ---
-
 # React Chart Selection
 
-The Ignite UI for React selection feature in React {ComponentTitle} allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
+The Ignite UI for React selection feature in React Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
 
 ## Configuring Selection
 
-The default behavior [`selectionMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the `{ComponentName}`:
+The default behavior `SelectionMode` turned off and requires opting into one of the following options. There are several selection modes available in the `IgrDataChart`:
 
 - **Auto**
 - **None**
@@ -32,10 +33,10 @@ The default behavior [`selectionMode`](https://www.infragistics.com/products/ign
 - **ThickOutline**
 
 `Brighten` will fade the selected item while `FadeOthers` will cause the opposite effect occur.
-`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`selectionBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectionBrush) setting.
+`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any `SelectionBrush` setting.
 `SelectionColorOutline` and `SelectionColorThickOutline` will draw a border around the series.
 
-In conjunction, a [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
+In conjunction, a `SelectionBehavior` is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
 
 - **Auto**
 - **PerDataItemMultiSelect**
@@ -157,7 +158,7 @@ root.render(<Sample/>);
 
 ## Configuring Multiple Selection
 
-Other selection modes offer various methods of selection. For example using [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
+Other selection modes offer various methods of selection. For example using `SelectionBehavior` with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
 `PerSeriesAndDataItemGlobalSingleSelect` allows single series selection across all categories at a time.
 
 ```typescript
@@ -331,11 +332,11 @@ root.render(<Sample/>);
 
 ## Configuring Outline Selection
 
-When [`focusBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#focusBrush) is applied, selected series will appear with a border when the [`selectionMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectionMode) property is set to one of the focus options.
+When `FocusBrush` is applied, selected series will appear with a border when the `SelectionMode` property is set to one of the focus options.
 
 ## Radial Series Selection
 
-This example demonstrates another series type via the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) where each radial series can be selected with different colors.
+This example demonstrates another series type via the `IgrDataChart` where each radial series can be selected with different colors.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -492,14 +493,13 @@ root.render(<Sample/>);
 ```
 
 ## Programmatic Selection
+Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the `IgrCategoryChart`. The `Matcher` property of the `IgrChartSelection` object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
 
-Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html). The `Matcher` property of the [`IgrChartSelection`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrchartselection.html) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
-
-The matcher is ideal for using in charts, such as the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) when you do not have access to the actual series, like the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`selectedSeriesItems`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#selectedSeriesItems) collection using a matcher with the following properties set
+The matcher is ideal for using in charts, such as the `IgrCategoryChart` when you do not have access to the actual series, like the `IgrDataChart`. In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the `SelectedSeriesItems` collection using a matcher with the following properties set
 
 For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to select the series bound to Solar values, you can add a ChartSelection object to the SelectedSeriesItems collection using a matcher with the following properties set.
 
-```typescript
+ ```typescript
 export class EnergyRenewableConsumptionItem {
     public constructor(init: Partial<EnergyRenewableConsumptionItem>) {
         Object.assign(this, init);
@@ -674,6 +674,6 @@ root.render(<Sample/>);
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) Properties                    | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) Properties |
+| `IgrCategoryChart` Properties                    | `IgrDataChart` Properties |
 | ----------------------------------------------|---------------------------|
 |                                               |                           |
