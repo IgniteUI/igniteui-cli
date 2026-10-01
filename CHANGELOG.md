@@ -1,18 +1,25 @@
+# 15.8.1 (2026-10-01)
+
+## What's Changed
+* **feat(mcp):** The documentation pipeline now builds Angular, React, Web Components, and Blazor docs from the unified `igniteui-documentation` repository, replacing the archived `igniteui-docfx` and `igniteui-xplat-docs` sources. A single MDX exporter replaces the four per-framework export scripts and preserves code fences, Angular environment URLs, stable doc names, and unprefixed API symbol names. [#1827](https://github.com/IgniteUI/igniteui-cli/pull/1827)
+* **chore(mcp):** Rebuilt the bundled documentation database from the new documentation source. [#1829](https://github.com/IgniteUI/igniteui-cli/pull/1829)
+* **fix(cd):** The MCP Registry publish now runs as a separate job that waits for the new `@igniteui/mcp-server` version to appear on npm and retries the publish, fixing failed registry publishes right after an npm release. Added a manual trigger to publish an existing release tag to the MCP Registry, and prerelease versions are always rejected. [#1824](https://github.com/IgniteUI/igniteui-cli/pull/1824)
+* **fix(cli):** Interrupting a package install with Ctrl+C now exits with code 130, and the TypeScript expression collector compares `true`/`false`/`null` literals and string or numeric property names correctly. Added unit test coverage across core utilities, the package manager, and the TypeScript expression collector. [#1826](https://github.com/IgniteUI/igniteui-cli/pull/1826)
+* **docs(mcp):** Expanded the MCP server README with installation instructions from the MCP Gallery for VS Code and Visual Studio, `resolve_import` guidance, and clarified `list_components` filter behavior. [#1825](https://github.com/IgniteUI/igniteui-cli/pull/1825)
+
 # 15.8.0 (2026-09-30)
 
 ## What's Changed
-* chore(changelog): update templates for Angular, Web Components, and R… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1806
-* build(deps): bump immutable from 3.8.2 to 3.8.4 in the npm_and_
-* fix(mcp): add search fallback to get_doc and generic-stripped lookup to get_api_reference by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1808
-* chore(mcp): update default doc compression model to gpt-6-luna by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1817
-* feat(mcp): add resolve_import tool for exact symbol import paths by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1821
-* build(deps): update igniteui-webcomponents to version 7.4.1 in projec… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1814
-* update react packages and add missing templates by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1820
-* feat(breadcrumb): add IgcBreadcrumb  component template with tests by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1815
-* chore(templates): update component groups for better categorization by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1809
-* chore(cli): update angular version to 22.2.0 by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1813
-* fix(schematic): fix ai-config schematic call in newProject function t… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1816
-
+* **feat(mcp):** Added a `resolve_import` tool that returns the exact import statements for one or more symbols, grouped by module, across Angular, React, Web Components, and Blazor. This prevents "has no exported member" and "cannot find module" errors caused by guessed Ignite UI import paths. [#1821](https://github.com/IgniteUI/igniteui-cli/pull/1821)
+* **fix(mcp):** `get_doc` now falls back to search when a name doesn't resolve directly, and `get_api_reference` supports case-insensitive and generic-stripped symbol lookups with fuzzier component matching. [#1808](https://github.com/IgniteUI/igniteui-cli/pull/1808)
+* **chore(angular):** Updated scaffolded Angular projects to Angular and Ignite UI for Angular `~22.2.0`. [#1813](https://github.com/IgniteUI/igniteui-cli/pull/1813)
+* **feat(react):** Added React `igr-ts` templates for Breadcrumbs, Color Picker (default and with alpha channel), QR Code, and Virtual Scroll. Updated scaffolded projects to `igniteui-react` and `igniteui-react-grids` `~19.9.0`, and chart and gauge templates to `igniteui-react-charts` and `igniteui-react-gauges` `~19.6.0`. [#1820](https://github.com/IgniteUI/igniteui-cli/pull/1820)
+* **feat(webcomponents):** Added a Web Components Breadcrumb template. [#1815](https://github.com/IgniteUI/igniteui-cli/pull/1815)
+* **chore(webcomponents):** Updated scaffolded Web Components projects to `igniteui-webcomponents` `~7.4.1`. [#1814](https://github.com/IgniteUI/igniteui-cli/pull/1814)
+* **chore(templates):** Reorganized component groups for clearer categorization in Angular, React, and Web Components. [#1809](https://github.com/IgniteUI/igniteui-cli/pull/1809)
+* **fix(schematics):** AI configuration now runs before package install and interactive setup in `ng new`, so the "Next Steps" prompt no longer appears too early. [#1816](https://github.com/IgniteUI/igniteui-cli/pull/1816)
+* **chore(mcp):** Switched the default documentation compression model to `gpt-6-luna`. [#1817](https://github.com/IgniteUI/igniteui-cli/pull/1817)
+* **build(deps):** Updated workspace dependencies, including `@hono/node-server` 2.1.1, `hono` 4.13.8, `axios` 1.20.0, `js-yaml` 4.3.2, `minimatch` 10.2.3, `lodash` 4.18.1, and `immutable` 3.8.4. [#1802](https://github.com/IgniteUI/igniteui-cli/pull/1802), [#1805](https://github.com/IgniteUI/igniteui-cli/pull/1805), [#1807](https://github.com/IgniteUI/igniteui-cli/pull/1807)
 
 # 15.7.0 (2026-09-15)
 
