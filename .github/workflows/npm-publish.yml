@@ -2,6 +2,13 @@ name: Npm.js publish
 on:
   release:
     types: [created]
+  # Manual re-run of the MCP Registry step only, e.g. for a release whose
+  # registry publish failed (npm publish cannot be repeated for the same version).
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to register with the MCP Registry (e.g. 15.8.0)"
+        required: true
 
 permissions:
   id-token: write
@@ -9,6 +16,7 @@ permissions:
 
 jobs:
   build:
+    if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -45,17 +53,61 @@ jobs:
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
-      # MCP publishing (works for all package types)
-      # Skipped for prereleases — the MCP registry has no dist-tag equivalent,
-      # so publishing an alpha/beta/rc would make it the current version.
+
+  # Separate job so a failed registry publish can be retried with "Re-run failed jobs"
+  # without repeating the npm publish.
+  # Skipped for prereleases — the MCP registry has no dist-tag equivalent,
+  # so publishing an alpha/beta/rc would make it the current version.
+  mcp-registry:
+    needs: build
+    if: ${{ !cancelled() && (github.event_name == 'workflow_dispatch' || (needs.build.result == 'success' && !github.event.release.prerelease)) }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Read server version
+        run: |
+          VERSION=$(jq -r '.packages[] | select(.identifier == "@igniteui/mcp-server") | .version' server.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "$VERSION"
+
+      # The registry validates the package against npm, and a just-published
+      # version can take several minutes to become visible there.
+      - name: Wait for npm package
+        run: |
+          URL="https://registry.npmjs.org/@igniteui%2Fmcp-server/${VERSION}"
+          for i in $(seq 1 40); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            if [ "$STATUS" = "200" ]; then
+              echo "@igniteui/mcp-server@${VERSION} is available on npm"
+              exit 0
+            fi
+            echo "Attempt $i: npm returned $STATUS, retrying in 15s..."
+            sleep 15
+          done
+          echo "::error::@igniteui/mcp-server@${VERSION} did not appear on npm within 10 minutes"
+          exit 1
+
       - name: Download MCP Publisher
-        if: ${{ !github.event.release.prerelease }}
         run: |
           curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar -xz -f - mcp-publisher
           chmod +x mcp-publisher
+
       - name: Publish to MCP Registry
-        if: ${{ !github.event.release.prerelease }}
-        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
         run: |
-          "$GITHUB_WORKSPACE/mcp-publisher" login github-oidc
-          "$GITHUB_WORKSPACE/mcp-publisher" publish
+          ./mcp-publisher login github-oidc
+          # The registry may hit a different npm cache node than the check above, so retry.
+          for i in $(seq 1 5); do
+            if ./mcp-publisher publish; then
+              exit 0
+            fi
+            echo "Attempt $i failed, retrying in 60s..."
+            sleep 60
+          done
+          exit 1
