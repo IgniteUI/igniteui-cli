@@ -1,20 +1,18 @@
 ---
-title: React Grid Size - Ignite UI for React
-_description: Learn how to apply different size capabilities to the Grid component. You can use a set of compact view options in the Ignite UI for React.
-_keywords:  material size, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "React Grid Size - Ignite UI for React"
+description: Learn how to apply different size capabilities to the Grid component. You can use a set of compact view options in the Ignite UI for React.
+keywords:  material size, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for React Size feature in React Grid allows users to control the spacing and layout of data within the IgrGrid."
+_componentKey: Grid
 _tocName: Size
 _premium: true
 ---
-
 # React Grid Size
 
-The Ignite UI for React Size feature in React Grid allows users to control the spacing and layout of data within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for React Size feature in React Grid allows users to control the spacing and layout of data within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -322,14 +320,14 @@ As you can see in the demo above, the [`IgrGrid`](mcp:get_api_reference?platform
 <IgrGrid className="gridSize"></IgrGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component. When you switch between different size options the height of each [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component. When you switch between different size options the height of each [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgrGrid.width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `56px`;
+- **large** - this is the default [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgrGrid.width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgrGrid.width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgrGrid.width`](mcp:get_api_reference?platform=react&component=IgrGrid&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
 
@@ -376,13 +374,7 @@ Now we can add the markup.
 </IgrGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 private propertyEditor: IgrPropertyEditorPanel
@@ -421,28 +413,25 @@ public webGridSetGridSize(sender: any, args: IgrPropertyEditorPropertyDescriptio
     var grid = document.getElementById("grid");
     grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
 }
+
 ```
 
-Another option that [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) provides for you, in order to be able to change the height of the rows in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), is the property [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight). So let's see in action how this property affects the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) layout along with the `--ig-size`.
+Another option that [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) provides for you, in order to be able to change the height of the rows in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), is the property [`IgrGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight). So let's see in action how this property affects the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgrGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight) property to the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid):
+We can now extend our sample and add [`IgrGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowHeight) property to the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid):
 
-```tsx
-<IgrGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrGrid>
-```
+ ```tsx
+ <IgrGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrGrid>
+ ```
 
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
-<!-- ComponentStart: Grid -->
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 - [Virtualization and Performance](virtualization.md)
@@ -454,9 +443,8 @@ We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platfor
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-- [Searching](search.md)
 
-<!-- ComponentEnd: Grid -->
+- [Searching](search.md)
 
 Our community is active and always welcoming to new ideas.
 

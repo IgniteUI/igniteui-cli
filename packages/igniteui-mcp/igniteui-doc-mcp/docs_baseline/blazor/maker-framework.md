@@ -1,19 +1,14 @@
 ---
-title: MAKER Framework | Ignite UI AI Orchestration
-_description: The MAKER Framework is a multi-agent AI orchestration MCP server from Infragistics that decomposes complex tasks into validated step plans using consensus-based voting across OpenAI, Anthropic, and Google AI providers.
-_keywords: Blazor, Ignite UI for Blazor, Infragistics, MAKER, multi-agent, AI orchestration, MCP, Model Context Protocol, consensus voting, plan and execute, task decomposition
-_language: en
-_license: MIT
-_canonicalLink: "{environment:dvUrl}/components/ai/maker-framework"
-namespace: Infragistics.Controls
+title: "MAKER Framework | Ignite UI AI Orchestration"
+description: "The MAKER Framework is a multi-agent AI orchestration MCP server from Infragistics that decomposes complex tasks into validated step plans using consensus-based voting across OpenAI, Anthropic, and Google AI providers."
+keywords: "Blazor, Ignite UI for Blazor, Infragistics, MAKER, multi-agent, AI orchestration, MCP, Model Context Protocol, consensus voting, plan and execute, task decomposition"
+license: MIT
+_canonicalLink: "/components/ai/maker-framework"
 mentionedTypes: []
+llms:
+  description: "The MAKER Framework (@igniteui/maker-mcp) is a multi-agent AI orchestration MCP server from Infragistics that decomposes complex tasks into validated, executable step plans using a consensus-based voting algorithm across multiple AI agents."
 _tocName: Maker Framework
 ---
-
-<!-- cspell:words MAKER batchSize -->
-
-<!-- schema: Article, HowTo -->
-
 # MAKER Framework
 
 The MAKER Framework (`@igniteui/maker-mcp`) is a multi-agent AI orchestration MCP server from Infragistics that decomposes complex tasks into validated, executable step plans using a consensus-based voting algorithm across multiple AI agents. MAKER stands for Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging. The framework is based on the research paper _Solving a million-step LLM task with zero errors_ by Cognizant AI Lab. It runs as an MCP server via `npx` from the `@igniteui` GitHub Packages registry and connects to any MCP-compatible AI client through STDIO transport. Once connected, the AI assistant can invoke three tools - `plan`, `execute`, and `plan_and_execute` - to run long-horizon tasks with automatic error detection and correction.
@@ -39,6 +34,10 @@ npm config set @igniteui:registry https://npm.pkg.github.com
 ```
 
 Then open `~/.npmrc` (Windows: `%USERPROFILE%\.npmrc`) and add your GitHub Personal Access Token with `read:packages` scope:
+
+```ini
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
+```
 
 After the registry is configured, the MCP server runs via `npx` without a separate global install. The native binary (~50 MB) is downloaded and cached on first run. Subsequent starts are instant.
 
@@ -69,9 +68,8 @@ Switch Copilot Chat to Agent mode and confirm that `plan`, `execute`, and `plan_
 ### Claude Desktop
 
 1. Open your Claude Desktop configuration file:
-  - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-  - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-
+    - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 2. Add the `maker` entry to the `mcpServers` block:
 
     ```json
@@ -165,7 +163,7 @@ Each MCP tool call accepts `batchSize` and `k` parameters in natural language. S
 
 | Parameter   | Default | Description                                                                                                            |
 | ----------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `batchSize` | `3`     | Steps proposed or executed per voting round. Lower values give more control; higher values improve throughput.        |
+| `batchSize` | `3`     | Steps proposed or executed per voting round. Lower values give more control; higher values improve throughput.         |
 | `k`         | `10`    | Consensus margin threshold. Higher values require stronger agreement across voting agents before a result is accepted. |
 
 Lower `k` (3-5) for faster, exploratory tasks. Raise `k` (15-20) for critical tasks where correctness is more important than token cost.
@@ -223,7 +221,7 @@ The native binary is distributed for four platforms. The correct binary is selec
 
 ARM Linux is not currently packaged. To request additional platform support, open an issue at [github.com/IgniteUI/MAKER](https://github.com/IgniteUI/MAKER).
 
-The binary cache location can be overridden with the `MAKER_MCP_CACHE` environment variable. The default cache paths are `%LOCALAPPDATA%\maker-mcp\{version}\{rid}\` on Windows and `~/.cache/maker-mcp/{version}/{rid}/` on macOS and Linux.
+The binary cache location can be overridden with the `MAKER_MCP_CACHE` environment variable. The default cache paths are `%LOCALAPPDATA%\maker-mcp{version}{rid}\` on Windows and `~/.cache/maker-mcp/{version}/{rid}/` on macOS and Linux.
 
 ## Additional Resources
 
@@ -231,8 +229,6 @@ The binary cache location can be overridden with the `MAKER_MCP_CACHE` environme
 - [Agent Skills](./skills.md)
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)
-
-<div class="divider--half"></div>
 
 Our community is active and always welcoming to new ideas.
 

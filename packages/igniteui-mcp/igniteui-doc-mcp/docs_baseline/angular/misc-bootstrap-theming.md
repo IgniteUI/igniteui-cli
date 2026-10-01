@@ -1,16 +1,18 @@
 ---
 title: Bootstrap Theming
-_description: 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, theming, bootstrap
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, theming, bootstrap
+llms:
+  description: "The Ignite UI for Angular theming engine provides an opportunity to be used in conjunction with other component libraries such as the popular NG Bootstrap based on Bootstrap’s markup and CSS."
 _tocName: Bootstrap Theming
 ---
-
 # Bootstrap Theming
 
-<p class="highlight">
+<div class="highlight">
 
-The Ignite UI for Angular theming engine provides an opportunity to be used in conjunction with other component libraries such as the popular [`NG Bootstrap`](https://ng-bootstrap.github.io/) based on Bootstrap’s markup and CSS.</p>
-<div class="divider--half"></div>
+The Ignite UI for Angular theming engine provides an opportunity to be used in conjunction with other component libraries such as the popular [`NG Bootstrap`](https://ng-bootstrap.github.io/) based on Bootstrap’s markup and CSS.
+</div>
+<hr/>
 
 ## Overview
 
@@ -559,7 +561,7 @@ $dark-secondary: color($custom-dark-palette, "secondary");
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Basic Usage
 
@@ -574,7 +576,7 @@ ng add @ng-bootstrap/ng-bootstrap
 Once installed, you have to import the NG Bootstrap main module into your _app.module.ts_ file:
 
 ```ts
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import  from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -611,29 +613,21 @@ import { IgxAvatarModule } from 'igniteui-angular/avatar';
 )}
 ```
 
-Follow our [`Getting Started`](../../general/getting-started.md) topic for a complete introduction about using Ignite UI for Angular in existing projects. Further information on how to import and use each of our components along with guided examples can be found in the component's documentation.
+Follow our [`Getting Started`](/general/getting-started) topic for a complete introduction about using Ignite UI for Angular in existing projects. Further information on how to import and use each of our components along with guided examples can be found in the component's documentation.
 
 ## Components
 
 Let's see how our demo sample is done. It is a mixture of Ignite UI and NG Bootstrap components, styled to fit nicely in one application. The navigation in our example is created using the bootstrap [`navbar`](https://getbootstrap.com/docs/4.0/components/navbar/) together with [`igx-buttons`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) and [`igx-avatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent). The [`dropdown`](https://ng-bootstrap.github.io/#/components/dropdown/examples) under the Campaigns button is also taken from the bootstrap library. Below the nav, we are using the [`igx-card`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) component to display some statistics. Within the cards, we have placed multiple items - [`igx-avatars`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent) and [`igx-icons`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) as well as bootstrap [`buttons`](https://getbootstrap.com/docs/4.0/components/buttons/) and [`ngb-ratings`](https://ng-bootstrap.github.io/#/components/rating/examples).
 
-<img src="../../../images/igx-cards.png" alt="Ignite UI for Angular Cards" width="100%">
-
 Clicking on the `More` buttons, you will see the [`igx-dialog`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent):
-
-<img src="../../../images/igx-dialog.png" alt="Ignite UI for Angular Dialog" width="100%">
 
 Next, we have added an [`ngb-accordion`](https://ng-bootstrap.github.io/#/components/accordion/examples) showing information about credit cards. Inside its content, there is an [`igx-list`](mcp:get_api_reference?platform=angular&component=IgxListComponent) and `igx-button`.
 
-<img src="../../../images/ngb-accordion.png" alt="NG Bootstrap Accordion" width="100%">
-
 Finally, we inserted an Ignite UI for Angular `icon button` in the top right corner, that changes the theme of the whole app:  
-
-<img src="../../../images/dark-variant.png" alt="Dark Variant Theme" width="100%">
 
 ## Styling
 
-To get started with styling components using the Ignite UI theming engine, create an scss file named of your choice that would be the base file for your global theme. We will call this file `_variables.scss`. Next, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling components using the Ignite UI theming engine, create an scss file named of your choice that would be the base file for your global theme. We will call this file `_variables.scss`. Next, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 // _variables.scss
@@ -660,7 +654,7 @@ $theme-colors: (
 );
 ```
 
-Ignite UI for Angular's [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) function generates a color palette map including `primary`, `secondary`, `gray`, `info`, `success`, `warn`, and `error` colors and their color variants. Our predefined bootstrap palette in turn consists of seven colors:
+Ignite UI for Angular's `palette` function generates a color palette map including `primary`, `secondary`, `gray`, `info`, `success`, `warn`, and `error` colors and their color variants. Our predefined bootstrap palette in turn consists of seven colors:
 
 ```scss
 $bootstrap-palette: palette(
@@ -676,7 +670,7 @@ $bootstrap-palette: palette(
 
 As you can see most of the colors in the Bootstrap palette overlap with the colors defined in the Bootstrap palette of Ignite UI for Angular. Hence, we can simply map the Bootstrap theme colors to our light or dark bootstrap palette colors.
 
-First, we are going to define Sass variables that extract values from the [`$light-bootstrap-palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#variable-light-bootstrap-palette):
+First, we are going to define Sass variables that extract values from the `$light-bootstrap-palette`:
 
 ```scss
 // Colors from the Ignite UI light bootstrap color palette
@@ -704,8 +698,8 @@ $dark-primary: color($custom-dark-palette, "primary");
 $dark-secondary: color($custom-dark-palette, "secondary");
 ```
 
->[!NOTE]
->Visit our [`palettes with Sass`](../sass/palettes.md) section to discover more about the palettes provided by Ignite UI for Angular and learn how to create a new one.
+**Note:** 
+Visit our [`palettes with Sass`](/themes/sass/palettes) section to discover more about the palettes provided by Ignite UI for Angular and learn how to create a new one.
 
 ### Themes
 
@@ -713,7 +707,7 @@ In order to switch between `light` and `dark` mode, we are adding a custom class
 
 #### Light mode
 
-Ignite UI for Angular comes with predefined themes inspired by the [Bootstrap 4](https://getbootstrap.com/) library. To use them, first, you have to include our `core` mixin and then our built-in theme mixin - [bootstrap-light-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-bootstrap-light-theme). We will also make use of our predefined bootstrap palette - [$light-bootstrap-palette](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#variable-light-bootstrap-palette).
+Ignite UI for Angular comes with predefined themes inspired by the [Bootstrap 4](https://getbootstrap.com/) library. To use them, first, you have to include our `core` mixin and then our built-in theme mixin - `bootstrap-light-theme`. We will also make use of our predefined bootstrap palette - `$light-bootstrap-palette`.
 
 The background color for our application needs to be set explicitly on the host element. In our sample, we want to use the `surface` color of the passed palette.
 
@@ -791,12 +785,13 @@ All components in Ignite UI for Angular use colors from the passed palette, ther
 
             // Overriding ngb-accordion colors with colors from the custom dark palette
             .accordion {
-                .card-header {
+                .accordion-header,
+                .accordion-button {
                     background-color: color($custom-dark-palette, 'gray', 200);
                     color: color($custom-dark-palette, 'gray', 900);
                 }
 
-                .card {
+                .accordion-item {
                     background-color: color($custom-dark-palette, 'surface');
                     border-color: color($custom-dark-palette, 'gray', 300);
                 }
@@ -840,9 +835,8 @@ Lastly, we need to import the Bootstrap library - _always import it at the end!_
 
 Once we are done with modifying the `$theme-colors` map, the bootstrap components will already use the colors from the igx `$light-bootstrap-palette` for the light mode, and `$custom-dark-palette` for the dark one.
 
->[!WARNING]
->Be sure to place the above code inside the `::ng-deep` selector to `penetrate` the [`Emulated`](../sass/component-themes.md#view-encapsulation) ViewEncapsulation.
-
+**Warning:** 
+Be sure to place the above code inside the `::ng-deep` selector to `penetrate` the [`Emulated`](/themes/sass/component-themes#view-encapsulation) ViewEncapsulation.
 
 ### Generate class
 
@@ -872,7 +866,7 @@ Then, add a CSS class to your navbar component following the pattern "bg - color
 
 ### Typography
 
-Ignite UI for Angular exposes four default type scales for each of its themes, which can be used inside the [`typography`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/typography#mixin-typography) mixin to define the global typography styles of an application. In our example, we are going to apply the bootstrap predefined `typeface` and `type-scale` but you can create custom ones if you wish.
+Ignite UI for Angular exposes four default type scales for each of its themes, which can be used inside the `typography` mixin to define the global typography styles of an application. In our example, we are going to apply the bootstrap predefined `typeface` and `type-scale` but you can create custom ones if you wish.
 
 ```scss
 :host {
@@ -882,29 +876,27 @@ Ignite UI for Angular exposes four default type scales for each of its themes, w
 
 ## API References
 
-<div class="divider--half"></div>
+- `Light Bootstrap Palette`
+- `Dark Bootstrap Palette`
+- `Light Bootstrap Theme`
+- `Dark Bootstrap Theme`
+- `Palette Function`
+- `Typography Mixin`
 
-- [Light Bootstrap Palette](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#variable-light-bootstrap-palette)
-- [Dark Bootstrap Palette](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#variable-dark-bootstrap-palette)
-- [Light Bootstrap Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-bootstrap-light-theme)
-- [Dark Bootstrap Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-bootstrap-dark-theme)
-- [Palette Function](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette)
-- [Typography Mixin](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/typography#mixin-typography)
+## Related topics
 
-Related topics:
-
-- [Palettes](../sass/palettes.md)
-- [Component Themes](../sass/component-themes.md)
-- [Typography](../sass/typography.md)
-- [Avatar Component](../../avatar.md)
-- [Button Component](../../button.md)
-- [Dialog Component](../../dialog.md)
-- [Icon Component](../../icon.md)
-- [List Component](../../list.md)
+- [Palettes](/themes/sass/palettes)
+- [Component Themes](/themes/sass/component-themes)
+- [Typography](/themes/sass/typography)
+- [Avatar Component](../../layouts/avatar.md)
+- [Button Component](inputs/button)
+- [Dialog Component](/dialog)
+- [Icon Component](/icon)
+- [List Component](/list)
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

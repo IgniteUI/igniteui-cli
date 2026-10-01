@@ -1,13 +1,14 @@
 ---
-title: Web Components Spreadsheet | Data Validation | Infragistics
-_description: Use Infragistics' Web Components spreadsheet control to setup built-in data validation rules. View Ignite UI for Web Components spreadsheet demos!
-_keywords: Excel Spreadsheet, data validation, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Spreadsheet | Data Validation | Infragistics"
+description: Use Infragistics' Web Components spreadsheet control to setup built-in data validation rules. View Ignite UI for Web Components spreadsheet demos!
+keywords: Excel Spreadsheet, data validation, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "When setting up the data validation rules you will need to import the rules you want to use."
 _tocName: Data Validation
 _premium: true
 ---
-
 # Web Components Data Validation
 
 This topic explains how to configure and set the built-in data validation rules.
@@ -19,13 +20,9 @@ This topic explains how to configure and set the built-in data validation rules.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 When setting up the data validation rules you will need to import the rules you want to use.
-
-<!-- WebComponents -->
 
 ```ts
 import { AnyValueDataValidationRule } from 'igniteui-webcomponents-excel';
@@ -37,8 +34,6 @@ import { OneConstraintDataValidationRule } from 'igniteui-webcomponents-excel';
 import { TwoConstraintDataValidationOperator } from 'igniteui-webcomponents-excel';
 import { TwoConstraintDataValidationRule } from 'igniteui-webcomponents-excel';
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -117,5 +112,4 @@ this.spreadsheet.workbook.worksheets(0).rows(7).cells(0).value = "Check Out Date
 ```
 
 ## API References
-
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
+`IgcSpreadsheet`

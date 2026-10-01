@@ -1,21 +1,20 @@
 ---
-title: React Point Chart | Data Visualization | Infragistics
-_description: Infragistics' React Point Chart
-_keywords: React Charts, Point Chart, Infragistics
-_license: commercial
+title: "React Point Chart | Data Visualization | Infragistics"
+description: Infragistics' React Point Chart
+keywords: "React Charts, Point Chart, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Point Chart renders a collection of points."
 _tocName: Point Chart
 _premium: true
 ---
-
 # React Point Chart
-
 The Ignite UI for React Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## React Point Chart Example
-
-You can create the React Point Chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to **Point** enum, as shown in the example below.
+You can create the React Point Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Point** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -134,10 +133,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Point Chart with Single Series
-
 In the following example, the React Point Chart plots a single data source by automatically selecting numeric data column for y-axis and non-numeric data column for x-axis.
 
 ```typescript
@@ -243,11 +239,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Point Chart with Multiple Series
-
-Since the React Point Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
+Since the React Point Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -366,10 +359,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Point Chart Styling
-
 Once the React Point Chart is set up, we may want to make some further styling customizations such as change the markers and its outlines, brushes and thickness.
 
 ```typescript
@@ -493,11 +483,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Point Charts
-
-You can create more advanced types of React Point Charts using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control instead of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by following these topics:
+You can create more advanced types of React Point Charts using the `IgrDataChart` control instead of `IgrCategoryChart` control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#react-scatter-marker-chart)
@@ -512,13 +499,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType)
-- [`markerTypes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerTypes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerOutlines)
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerBrushes)
-- [`markerThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerThickness)
+`IgrCategoryChart`
+`IgrDataChart`

@@ -1,17 +1,19 @@
 ---
 title: Angular Toggle Component | Ignite UI for Angular | MIT license 
-_description: The Ignite UI for Angular Toggle directive allows the users to open, to interact with, to apply animations, and to close a toggle container. 
-_keywords: Angular Toggle directive, Angular Toggle control, Angular Toggle Component, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Native Angular Components
-_license: MIT
+description: The Ignite UI for Angular Toggle directive allows the users to open, to interact with, to apply animations, and to close a toggle container. 
+keywords: Angular Toggle directive, Angular Toggle control, Angular Toggle Component, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Native Angular Components
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Toggle directive allows the users to make a container in the DOM toggleable through user interaction."
 _tocName: Toggle
 ---
-
 # Angular Toggle Directive Overview
 
-<p class="highlight">The Ignite UI for Angular Toggle directive allows the users to make a container in the DOM toggleable through user interaction.</p>
+<div class="highlight">
+The Ignite UI for Angular Toggle directive allows the users to make a container in the DOM toggleable through user interaction.
+</div>
 
 ## Angular Toggle Example
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -53,7 +55,6 @@ export class ToggleSample1Component {
 }
 ```
 
-
 ## Getting Started with Ignite UI for Angular Toggle
 
 To get started with the Ignite UI for Angular Toggle directive, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
@@ -62,7 +63,7 @@ To get started with the Ignite UI for Angular Toggle directive, first you need t
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxToggleModule` in your **app.module.ts** file.
 
@@ -98,7 +99,8 @@ import { IgxToggleDirective, IgxButtonDirective } from 'igniteui-angular/directi
         <section class="toggle-section">
             <img src="assets/images/toggle/nature.jpg" alt="Nature" />
         </section>
-    </div>
+    
+</div>
     `,
     styleUrls: ['home.component.scss'],
     standalone: true,
@@ -113,7 +115,7 @@ Now that you have the Ignite UI for Angular Toggle module or directive imported,
 
 ### Display Toggle
 
-In order to show and hide the toggle content, use its [open](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=open) and [close](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=close) methods:
+In order to show and hide the toggle content, use its [`open`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=open) and [`close`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=close) methods:
 
 ```typescript
 import { IgxToggleDirective } from 'igniteui-angular/directives'
@@ -136,7 +138,7 @@ export class Class {
 Then in the template of our component, we can apply the directive on the element we want to be toggleable:
 
 ```html
-<!--template.component.html-->
+{/*template.component.html*/}
 <button class="toggle-button" igxButton="contained" (click)="toggleContent()">Toggle</button>
 <div class="toggle-content" igxToggle>
     <section class="toggle-section">
@@ -153,8 +155,9 @@ In the next sample, we'll use a different positioning strategy so that the conte
 
 The `igxToggle` directive uses the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService) provider. The `open`, `close` and `toggle` methods accept optional overlay settings that control how the content is displayed. If omitted, the default overlay settings are used as seen in the previous sample.
 
->[!NOTE]
-> By default, the [`closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`closeOnEscape`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
+**Note:** 
+By default, the [`IgxOverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`IgxOverlaySettings.closeOnEscape`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
+
 
 ```typescript
 // template.component.ts
@@ -181,7 +184,6 @@ The `igxToggle` directive uses the [`IgxOverlayService`](mcp:get_api_reference?p
 ```
 
 This is how our toggle should look like now:
-
 
 ```typescript
 import { Component, ElementRef, ViewChild } from '@angular/core';
@@ -228,18 +230,18 @@ export class ToggleComponent {
 </div>
 ```
 
-
 ### Automatic Toggle Actions
 
 In order to avoid using the `open` and `close` methods, we can use a directive, which has an `onClick` handler, and changes the state of the toggle we are referring to automatically.
 
 If we would like to take advantage of this functionality, we will have to use the `IgxToggleActionDirective` from the `IgxToggleModule` and assign the `IgxToggleDirective` to it.
 
->[!NOTE]
-> The [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) should be declared on the element we are planing to use like a trigger (toggle).
+**Note:** 
+The [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) should be declared on the element we are planing to use like a trigger (toggle).
+
 
 ```html
-<!--template.component.html-->
+{/*template.component.html*/}
 <button class="toggle-button"  igxButton="contained" [igxToggleAction]="toggleRef">Toggle</button>
 <div class="toggle-content" igxToggle #toggleRef="toggle">
     <section class="toggle-section">
@@ -249,7 +251,6 @@ If we would like to take advantage of this functionality, we will have to use th
 ```
 
 After these changes the toggle should work exactly in the same way.
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -274,16 +275,15 @@ export class ToggleSample2Component { }
 </div>
 ```
 
-
->[!NOTE]
-> By default `IgxToggleActionDirective` excludes its host element from the [`closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target).
+**Note:** 
+By default `IgxToggleActionDirective` excludes its host element from the [`IgxOverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`IgxOverlaySettings.target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target).
 
 ### Automatic Toggle Service Provider
 
-There is a convenient way to keep the state of the `igxToggle` directive and command it via the [`igxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) provider. We just need to set an identifier for our `igxToggle` element, which will be used to register the toggle with the service. If we would like to control its state automatically, we have to pass this identifier to the `igxToggleActionDirective`.
+There is a convenient way to keep the state of the `igxToggle` directive and command it via the [`IgxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) provider. We just need to set an identifier for our `igxToggle` element, which will be used to register the toggle with the service. If we would like to control its state automatically, we have to pass this identifier to the `igxToggleActionDirective`.
 
 ```html
-<!--template.component.html-->
+{/*template.component.html*/}
 <button igxToggleAction="toggleId" class="toggle-button" igxButton="contained">Toggle</button>
 <div igxToggle id="toggleId" class="toggle-content">
     <section class="toggle-section">
@@ -293,7 +293,6 @@ There is a convenient way to keep the state of the `igxToggle` directive and com
 ```
 
 If all went well, it will look like this:
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -317,7 +316,6 @@ export class ToggleSample3Component { }
     </div>
 </div>
 ```
-
 
 ### Offsetting the Toggle Container
 
@@ -374,28 +372,21 @@ export class ToggleSample4Component {
 </div>
 ```
 
-
 ## API References
-
-<div class="divider"></div>
-
-- [IgxToggleDirective](mcp:get_api_reference?platform=angular&component=IgxToggleDirective)
-- [IgxToggleActionDirective](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective)
-
+<igc-divider></igc-divider>
+- [`IgxToggleDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective)
+- [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective)
 Additional components and/or directives with relative APIs that were used:
-
-- [IgxOverlayOutletDirective](mcp:get_api_reference?platform=angular&component=IgxOverlayOutletDirective)
-- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
-- [igxNavigationService](mcp:get_api_reference?platform=angular&component=IgxNavigationService)
-
+- [`IgxOverlayOutletDirective`](mcp:get_api_reference?platform=angular&component=IgxOverlayOutletDirective)
+- [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
+- [`IgxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService)
 ## Theming Dependencies
 
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-
+- `IgxOverlay Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

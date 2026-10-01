@@ -1,16 +1,19 @@
 ---
 title: Angular Time Picker Component | Ignite UI for Angular | MIT license
-_description: The Ignite UI for Angular Time Picker component allows the user to select time from a dialog with spinners which is then mirrored in the input field. Try it now
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Time Picker component, Angular Time Picker control, Time Picker, Angular Time Picker
-_license: MIT
+description: The Ignite UI for Angular Time Picker component allows the user to select time from a dialog with spinners which is then mirrored in the input field. Try it now
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Time Picker component, Angular Time Picker control, Time Picker, Angular Time Picker
+license: MIT
+llms:
+  description: "The time picker component allows users to input or select time portions of a Date object from a dropdown or dialog with spinners, which is then mirrored in the input field."
 _tocName: Time Picker
 ---
-
 # Angular Time Picker Overview
 
-<p class="highlight">The time picker component allows users to input or select time portions of a `Date` object from a dropdown or dialog with spinners, which is then mirrored in the input field. In dropdown mode, which is the default one, the input field is editable and users can also edit selected time.</p>
+<div class="highlight">
+The time picker component allows users to input or select time portions of a `Date` object from a dropdown or dialog with spinners, which is then mirrored in the input field. In dropdown mode, which is the default one, the input field is editable and users can also edit selected time.
+</div>
 
-<div class="divider--half"></div>
+<hr/>
 
 <p>The time picker component has different built-in templates for displaying a clock button, as well as features like validation, custom time formatting, and more.</p>
 
@@ -54,7 +57,7 @@ igx-time-picker {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Time Picker
 
@@ -64,25 +67,25 @@ To get started with the Ignite UI for Angular Time Picker component, first you n
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxTimePickerModule` in your **app.module.ts** file.
 
->[!NOTE]
->The IgxTimePicker is also dependent on both the **BrowserAnimationsModule** and **optionally** the **HammerModule** for touch interactions. They need to be added to the AppModule as well.
+**Note:** 
+The IgxTimePicker is also dependent on the **BrowserAnimationsModule**. It needs to be added to the AppModule as well.
+
 
 ```typescript
 // app.module.ts
 
 ...
-import { HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxTimePickerModule } from 'igniteui-angular/time-picker';
 // import { IgxTimePickerModule } from '@infragistics/igniteui-angular'; for licensed package
 
 @NgModule({
     ...
-    imports: [..., BrowserAnimationsModule, HammerModule, IgxTimePickerModule],
+    imports: [..., BrowserAnimationsModule, IgxTimePickerModule],
     ...
 })
 export class AppModule {}
@@ -119,13 +122,13 @@ Now that you have the Ignite UI for Angular Time Picker module or directives imp
 To add the time picker in a template, use the following code:
 
 ```html
-<!--meeting.component.html-->
+{/*meeting.component.html*/}
 <igx-time-picker></igx-time-picker>
 ```
 
 The output should be the same as the one in the demo.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Binding
 
@@ -171,9 +174,9 @@ export class SampleFormComponent {
 
 ### Projecting components
 
-The time picker component allows projecting child components - the same as in the [`IgxInputGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent): [`igxLabel`](label-input.md), [`IgxHint`](input-group.md#hints), [`igxPrefix`](input-group.md#prefix--suffix), [`igxSuffix`](input-group.md#prefix--suffix), excluding [`IgxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective). More detailed information about this can be found in the [Label & Input](label-input.md) topic.
+The time picker component allows projecting child components - the same as in the [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent): [`igxLabel`](/label-input), [`IgxHint`](/input-group#hints), [`igxPrefix`](/input-group#prefix--suffix), [`igxSuffix`](/input-group#prefix--suffix), excluding [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective). More detailed information about this can be found in the [Label & Input](/label-input) topic.
 
-In the default configuration, a dropdown/dialog toggle icon is shown as a prefix. It can be changed or redefined using the [`IgxPickerToggleComponent`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) component. It can be decorated with either [`igxPrefix`](input-group.md#prefix--suffix) or [`igxSuffix`](input-group.md#prefix--suffix), which will define its position - at the start of the input or at the end respectively.
+In the default configuration, a dropdown/dialog toggle icon is shown as a prefix. It can be changed or redefined using the [`IgxPickerToggle`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) component. It can be decorated with either [`igxPrefix`](/input-group#prefix--suffix) or [`igxSuffix`](/input-group#prefix--suffix), which will define its position - at the start of the input or at the end respectively.
 
 In the following example we have added a custom label and hint and changed the default toggle icon position to be displayed as a suffix:
 
@@ -187,8 +190,9 @@ In the following example we have added a custom label and hint and changed the d
 </igx-time-picker>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 
 ```typescript
 public date: Date = new Date();
@@ -232,20 +236,22 @@ igx-time-picker {
 
 ## Custom action buttons
 
-The [`IgxTimePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent) supports action button customization. To achieve that, wrap the buttons in `ng-template` marked with the [`igxPickerActions`](mcp:get_api_reference?platform=angular&component=IgxPickerActionsDirective) directive selector.
+The [`IgxTimePicker`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent) supports action button customization. To achieve that, wrap the buttons in `ng-template` marked with the [`IgxPickerActionsDirective`](mcp:get_api_reference?platform=angular&component=IgxPickerActionsDirective) directive selector.
 
 In the example below, custom action buttons are added for 'CANCEL', 'DONE' and 'NOW' actions.
 
 ```html
-<!-- sample.component.html -->
+{/* sample.component.html */}
 
 <igx-time-picker #picker format="hh:mm" mode="dropdown">
     <ng-template igxTimePickerActions>
         <div class="container action-buttons">
+
             <button igxButton="flat" (click)="picker.cancelButtonClick()">cancel</button>
             <button igxButton="flat" (click)="picker.okButtonClick()">done</button>
             <button igxButton="flat" (click)="selectNow(picker)">now</button>
-        </div>
+        
+</div>
     </ng-template>
 </igx-time-picker>
 ```
@@ -323,11 +329,11 @@ $actions-height: 52px;
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Customizing the toggle and clear icons
 
-The [`IgxTimePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent) can be configured with [`IgxPickerToggleComponent`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) and [`IgxPickerClearComponent`](mcp:get_api_reference?platform=angular&component=IgxPickerClearComponent), these can be used to change the toggle and clear icons without having to add your own click handlers.
+The [`IgxTimePicker`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent) can be configured with [`IgxPickerToggle`](mcp:get_api_reference?platform=angular&component=IgxPickerToggleComponent) and [`IgxPickerClear`](mcp:get_api_reference?platform=angular&component=IgxPickerClearComponent), these can be used to change the toggle and clear icons without having to add your own click handlers.
 
 ```html
  <igx-time-picker>
@@ -353,7 +359,7 @@ The [`IgxTimePickerComponent`](mcp:get_api_reference?platform=angular&component=
 
 ### Dialog Mode
 
-The default time picker mode is editable dropdown mode. To change the time picker mode to read-only dialog mode, set the [`mode`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=mode) input to [`dialog`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#pickerinteractionmode):
+The default time picker mode is editable dropdown mode. To change the time picker mode to read-only dialog mode, set the [`mode`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=mode) input to [`IgxPickerInteractionMode`](mcp:get_api_reference?platform=angular&component=PickerInteractionMode):
 
 ```typescript
 // timePickerDropdown.component.ts
@@ -365,14 +371,14 @@ public mode = PickerInteractionMode.Dialog;
 ```
 
 ```html
-<!--timePickerDropdown.component.html-->
+{/*timePickerDropdown.component.html*/}
 <igx-time-picker [mode]="mode"></igx-time-picker>
 ```
 
 or just change the [`mode`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=mode) in the time picker like this:
 
 ```html
-<!--timePickerDropdown.component.html-->
+{/*timePickerDropdown.component.html*/}
 <igx-time-picker mode="dialog"></igx-time-picker>
 ```
 
@@ -402,7 +408,7 @@ igx-time-picker {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 When the [`minValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=maxValue) are set the dialog displays the time within that range only. See the [Min max value](#min-max-value) example below, for more details.
 
@@ -423,27 +429,28 @@ Alternatively, if the [`inputFormat`](mcp:get_api_reference?platform=angular&com
 </igx-time-picker>
 ```
 
->[!NOTE]
-> The `IgxTimePicker` now supports IME input. When composition ends, the control converts the wide-character numbers to ASCII characters.
+**Note:** 
+The `IgxTimePicker` now supports IME input. When composition ends, the control converts the wide-character numbers to ASCII characters.
 
 ### Increment and decrement
 
 The time picker exposes public [`increment`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=decrement) methods, which accept two optional parameters: the `DatePart` to be modified and the `delta` by which it will be changed. If not specified the `DatePart` defaults to `Hours` and the `delta` defaults to [`itemsDelta`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=itemsDelta).
 
-You can find a sample that illustrates the use of both methods at [Date Time Editor Directive](date-time-editor.md#increment-decrement).
+You can find a sample that illustrates the use of both methods at [Date Time Editor Directive](/date-time-editor#increment-decrement).
 
 ### Forms and Validation
 
 The time picker component supports all directives from the core FormsModule [NgModel](https://angular.io/api/forms/NgModel) and [ReactiveFormsModule](https://angular.io/api/forms/ReactiveFormsModule) (FormControl, FormGroup, etc.). This also includes the [Forms Validators](https://angular.io/api/forms/Validators) functions. In addition, the component's [min and max values](#min-max-value) also act as form validators.
 
-The [Reactive Forms Integration](angular-reactive-form-validation.md) sample demonstrates how to use the igxTimePicker in Reactive Forms.
+The [Reactive Forms Integration](/angular-reactive-form-validation) sample demonstrates how to use the igxTimePicker in Reactive Forms.
 
 #### Min max value
 
 You can specify [`minValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=maxValue) to restrict the user input, in which case the dropdown/dialog will display the time within that range only. In dropdown mode however, it is still possible for the user to type in an invalid time. You can handle the [`validationFailed`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=validationFailed) event in order to notify the user if that happens.
 
->[!NOTE]
->The min/max values should be a Date object or a time-only string in the `ISO 8601` format:
+**Note:** 
+The min/max values should be a Date object or a time-only string in the `ISO 8601` format:
+
 
 ```typescript
 // app.module.ts
@@ -493,8 +500,8 @@ public onValidationFailed() {
 
 The dropdown displays values within the min/max range (09:15:30 AM~06:15:30 PM) based on the items delta. A toast is added to show a message when an invalid time has been typed in.
 
- >[!NOTE]
->The displayed values for each time portion in the dropdown/dialog are calculated based on the items delta always starting from zero. If the [`minValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=maxValue) does not match the items delta, the displayed values will start/end from the next/last possible value that matches the threshold.
+**Note:** 
+The displayed values for each time portion in the dropdown/dialog are calculated based on the items delta always starting from zero. If the [`minValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=maxValue) does not match the items delta, the displayed values will start/end from the next/last possible value that matches the threshold.
 
 And there we have it:
 
@@ -543,11 +550,11 @@ igx-time-picker {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 #### Using date and time picker together
 
-In some cases when the [`IgxDatePicker`](date-picker.md) and the IgxTimePicker are used together, we might need them to be bound to one and the same Date object value.
+In some cases when the [`IgxDatePicker`](/date-picker) and the IgxTimePicker are used together, we might need them to be bound to one and the same Date object value.
 
 To achieve that in template driven forms, use the `ngModel` to bind both components to the same Date object.
 
@@ -609,7 +616,7 @@ export class DateTimePickerTDFSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 In reactive forms, we can handle the [`valueChange`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=valueChange) event of each component and update the value of the other.
 
@@ -692,11 +699,11 @@ export class DateTimePickerRFSampleComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Styling
 
-To get started with styling the time picker, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the time picker, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -705,7 +712,7 @@ To get started with styling the time picker, we need to import the `index` file,
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`time-picker-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-dialog-theme) and accepts parameters that style the time picker.
+Following the simplest approach, we create a new theme that extends the `time-picker-theme` and accepts parameters that style the time picker.
 
 ```scss
 $my-time-picker-theme: time-picker-theme(
@@ -717,12 +724,12 @@ $my-time-picker-theme: time-picker-theme(
 );
 ```
 
->[!NOTE]
->In order to style any additional components that are used as part of the time picker window's content (such as the [`IgxButton`](button.md)), an additional theme should be created that is specific to the respective component and is placed under the dialog window's scope only (so it does not affect the rest of the application).
+**Note:** 
+In order to style any additional components that are used as part of the time picker window's content (such as the [`IgxButton`](./inputs/button.md)), an additional theme should be created that is specific to the respective component and is placed under the dialog window's scope only (so it does not affect the rest of the application).
 
-Since the time picker window uses the [`IgxOverlayService`](overlay.md), in order for our custom theme to reach down the time picker window that we want to style, we will provide a specific outlet where the dialog window will be placed in the DOM when it is visible.
+Since the time picker window uses the [`IgxOverlayService`](/overlay), in order for our custom theme to reach down the time picker window that we want to style, we will provide a specific outlet where the dialog window will be placed in the DOM when it is visible.
 
-The items in our time picker **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the `document` body. Changing this is done by making use of the [`outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
+The items in our time picker **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the `document` body. Changing this is done by making use of the [`IgxOverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
 
 Here, we can pass a reference to the element where we'd like our container to be:
 
@@ -730,6 +737,7 @@ Here, we can pass a reference to the element where we'd like our container to be
 <igx-time-picker #picker [overlaySettings]="{ outlet: element }">
 </igx-time-picker>
 ```
+
 
 ```typescript
 export class TimepickerStylingComponent {
@@ -740,8 +748,9 @@ export class TimepickerStylingComponent {
 
 Now, the time picker's items are properly rendered **inside** of our component's host, which means that our custom theme will take effect:
 
->[!NOTE]
->In order to learn more about the various options for providing themes to elements that are shown by using the [`IgxOverlayService`](overlay.md), you can take a look at the [Overlay styling topic](overlay-styling.md).
+**Note:** 
+In order to learn more about the various options for providing themes to elements that are shown by using the [`IgxOverlayService`](/overlay), you can take a look at the [Overlay styling topic](/overlay-styling).
+
 
 ```scss
 :host {
@@ -749,8 +758,9 @@ Now, the time picker's items are properly rendered **inside** of our component's
 }
 ```
 
->[!WARNING]
->If the component is using an [`Emulated`](themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`
+**Note:** 
+In some component templates, Emulated View Encapsulation can still prevent the generated token declarations from reaching nested Ignite UI elements. If the theme does not take effect, use `::ng-deep` as shown below or move the theme to a global stylesheet.
+
 
 ```scss
 :host {
@@ -813,35 +823,31 @@ $dark-button: flat-button-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-- [IgxTimePickerComponent](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent)
-- [IgxTimePickerComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-time-picker-theme)
-- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
-- [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-
+<hr/>
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [`IgxInputDirective`](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- [`IgxTimePicker`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent)
+- `IgxTimePickerComponent Styles`
+- [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
+- `IgxOverlay Styles`
 ## Theming Dependencies
 
-- [IgxInputGroup Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
+- `IgxInputGroup Theme`
+- `IgxIcon Theme`
+- `IgxButton Theme`
+- `IgxOverlay Theme`
 
 ## Additional Resources
 
-- [Date Time Editor](date-time-editor.md)
-- [Label & Input](label-input.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
+- [Date Time Editor](/date-time-editor)
+- [Label & Input](/label-input)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
 
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
-

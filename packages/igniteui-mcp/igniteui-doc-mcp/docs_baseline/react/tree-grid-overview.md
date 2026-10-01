@@ -1,13 +1,15 @@
 ---
-title: React Tree Grid Component - Ignite UI for React by Infragistics
-_description: The Ignite UI for React Tree Grid is used to display and manipulate hierarchical or flat data with ease. Quickly bind your data with very little coding. Try it for FREE
-_keywords: React tree grid, igniteui for React, infragistics
-_license: commercial
+title: "React Tree Grid Component - Ignite UI for React by Infragistics"
+description: The Ignite UI for React Tree Grid is used to display and manipulate hierarchical or flat data with ease. Quickly bind your data with very little coding. Try it for FREE
+keywords: "React tree grid, igniteui for React, infragistics"
+license: commercial
 mentionedTypes: ["GridBaseDirective", "TreeGrid", "Column"]
 namespace: Infragistics.Controls
+llms:
+  description: "The React Tree Grid is a UI component that combines the functionality of a data grid (table) with a tree view, allowing hierarchical data to be easily displayed in a tabular format."
 _tocName: Tree Grid
+_premium: true
 ---
-
 # React Tree Grid Overview and Configuration
 
 The React Tree Grid is a UI component that combines the functionality of a data grid (table) with a tree view, allowing hierarchical data to be easily displayed in a tabular format. Unlike a regular grid, a tree grid enables rows to expand and collapse, revealing child rows nested under parent rows, making it useful for representing structured data such as file explorers, organizational charts, project tasks, or product categories.
@@ -222,7 +224,7 @@ npm install --save igniteui-react-grids
 ## Usage
 
 The tree grid shares a lot of features with the grid, but it also adds the ability to display its data hierarchically.
-In order to achieve this, the tree grid provides us with a couple of ways to define the relations among our data objects - by using a [child collection](overview.md#child-collection) for every data object or by using [primary and foreign keys](overview.md#primary-and-foreign-keys) for every data object.
+In order to achieve this, the tree grid provides us with a couple of ways to define the relations among our data objects - by using a [child collection](./overview.md#child-collection) for every data object or by using [primary and foreign keys](./overview.md#primary-and-foreign-keys) for every data object.
 
 ### Tree Cells
 
@@ -231,12 +233,12 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 - `GridCell` - Ordinary cell that contains a value.
 - `TreeGridCell` - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the `level` property of its inner `treeRow`.
 
-> [!Note]
-> Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
+**Note:** 
+Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
 
 ### Initial Expansion Depth
 
-Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
+Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`ExpansionDepth`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
 
 ### Child Collection
 
@@ -244,41 +246,12 @@ When we are using the child collection option, every data object contains a chil
 
 For this sample, let's use the following collection structure:
 
-```typescript
-const EMPLOYEE_DATA = [
-    {
-        Name: "Johnathan Winchester",
-        ID: 1,
-        HireDate: new Date(2008, 3, 20),
-        Age: 55,
-        Employees: [
-            {
-                Name: "Michael Burke",
-                ID: 3,
-                HireDate: new Date(2011, 6, 3),
-                Age: 43,
-                Employees: []
-            },
-            {
-                Name: "Thomas Anderson"
-                ID: 2,
-                HireDate: new Date(2009, 6, 19),
-                Age: 29,
-                Employees: []
-            },
-            // ...
-        ]
-    },
-    // ...
-]
-```
+Now let's start by importing our [`Data`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=data) collection and binding it to our tree grid.
 
-Now let's start by importing our [`data`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=data) collection and binding it to our tree grid.
-
-In order for the tree grid to build the hierarchy, we will have to set its [`childDataKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
+In order for the tree grid to build the hierarchy, we will have to set its [`ChildDataKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
 In addition, we can disable the automatic column generation and define them manually by matching them to the actual properties of our data objects. (The **Employees** collection will be automatically used for the hierarchy, so there is no need to include it in the columns' definitions.)
 
-We can now enable the row selection and paging features of the tree grid by using the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) and add the [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator) element.
+We can now enable the row selection and paging features of the tree grid by using the [`RowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) and add the [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator) element.
 We can also enable the summaries, the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 Finally, we can enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar), [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding), [`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning) and [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) respectively.
@@ -286,27 +259,11 @@ Finally, we can enable the toolbar of our tree grid, along with the column hidin
 You can see the result of the code from above at the beginning of this article in the [Tree Grid Example](./overview.md#example) section.
 
 ### Primary and Foreign keys
-
 When we are using the **primary and foreign keys** option, every data object contains a primary key and a foreign key. The primary key is the unique identifier of the current data object and the foreign key is the unique identifier of its parent. In this case the `data` property of our tree grid that contains the original data source will be a flat collection.
 
-```typescript
-const data = [
-    { ID: 1, ParentID: -1, Name: "Casey Houston", JobTitle: "Vice President", Age: 32 },
-    { ID: 2, ParentID: 1, Name: "Gilberto Todd", JobTitle: "Director", Age: 41 },
-    { ID: 3, ParentID: 2, Name: "Tanya Bennett", JobTitle: "Director", Age: 29 },
-    { ID: 4, ParentID: 2, Name: "Jack Simon", JobTitle: "Software Developer", Age: 33 },
-    { ID: 5, ParentID: 8, Name: "Celia Martinez", JobTitle: "Senior Software Developer", Age: 44 },
-    { ID: 6, ParentID: -1, Name: "Erma Walsh", JobTitle: "CEO", Age: 52 },
-    { ID: 7, ParentID: 2, Name: "Debra Morton", JobTitle: "Associate Software Developer", Age: 35 },
-    { ID: 8, ParentID: 10, Name: "Erika Wells", JobTitle: "Software Development Team Lead", Age: 50 },
-    { ID: 9, ParentID: 8, Name: "Leslie Hansen", JobTitle: "Associate Software Developer", Age: 28 },
-    { ID: 10, ParentID: -1, Name: "Eduardo Ramirez", JobTitle: "Development Manager", Age: 53 }
-];
-```
+In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`PrimaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey). The ParentID contains the ID of the parent node and could be set as a [`ForeignKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
 
-In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey). The ParentID contains the ID of the parent node and could be set as a [`foreignKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
-
-The parent-child relation is configured using the tree grid's [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey) and [`foreignKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=foreignKey) properties.
+The parent-child relation is configured using the tree grid's [`PrimaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey) and [`ForeignKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=foreignKey) properties.
 
 Here is the template of the component which demonstrates how to configure the tree grid to display the data defined in the above flat collection:
 
@@ -443,17 +400,17 @@ root.render(<Sample/>);
 The indentation of the tree grid cell persists across other tree grid features like filtering, sorting and paging.
 
 - When `Sorting` is applied on a column, the data rows get sorted by levels. This means that the root level rows will be sorted independently from their respective children. Their respective children collections will each be sorted independently as well and so on.
-- The first column (the one that has a [`visibleIndex`](mcp:get_api_reference?platform=react&component=IgrColumn&member=visibleIndex) of 0) is always the tree column.
-- The column that ends up with a [`visibleIndex`](mcp:get_api_reference?platform=react&component=IgrColumn&member=visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
+- The first column (the one that has a [`VisibleIndex`](mcp:get_api_reference?platform=react&component=IgrColumn&member=visibleIndex) of 0) is always the tree column.
+- The column that ends up with a [`VisibleIndex`](mcp:get_api_reference?platform=react&component=IgrColumn&member=visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
 ## API References
 
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
-- [`IgrTreeGridRecord`](mcp:get_api_reference?platform=react&component=IgrTreeGridRecord)
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)<br />
+[`IgrGridRowComponent`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent)<br />
 
 ## Additional Resources
 

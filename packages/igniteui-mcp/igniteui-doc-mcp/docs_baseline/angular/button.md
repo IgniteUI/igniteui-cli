@@ -1,1985 +1,1091 @@
 ---
-title: Angular Button Component – Ignite UI for Angular - MIT license
-_description: Enhance standard buttons with built-in text, images and more features using Ignite UI for Angular Button component. Try it now.
-_keywords: Angular Button component, Angular Button control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Angular UI Components,
-_license: MIT
+title: "Button Component"
+description: Get started with the Angular Button Component. Select button variants, configure sizes, define styling, and gain flexibility through the Angular Button OnClick event.
+keywords: "Angular, UI controls, web widgets, UI widgets, Angular Button Components, Infragistics"
+mentionedTypes: ["Button", "ButtonBase"]
+license: MIT
+last_updated: 2026-08-13
+relatedComponents: ["IconButton"]
+llms:
+  description: "The Angular Button Component lets you enable clickable elements that trigger actions in your Angular app."
 _tocName: Button
 ---
+# Button Component
 
-# Angular Button Overview
+The Angular Button component lets you enable clickable elements that trigger actions in your Angular app. You get full control over button variants, styling, and sizes. The Button component also lets you handle clicks, toggle the button, and disable it when needed.
 
-Angular Button directive is used for creating and adding actionable buttons to a web page/application. There are different Angular Button types that are easy to customize and include several built-in features. By default, Angular Material uses native `<button>` and `<a>` elements to deliver an accessible experience.
-
-The Ignite UI for Angular Button directive is intended to turn any button, span, div, or anchor element into a fully functional button. You can use the following Angular Button types - Flat Button, Contained Button, Outlined Button, and Floating Action Button. With customizable colors, options to create themes and change the Angular Button Style and enabling users to choose the button size and more.
-
-## Angular Button Example
-
-We have created the Angular Button example below to show you how different button types can appear and look like when they are styled with a border or when a transparent background is applied.
-
-<div class="divider--half"></div>
+## Live Demo
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
 
 @Component({
-    selector: 'app-buttons-sample-1',
-    styleUrls: ['./buttons-sample-1.component.scss'],
-    templateUrl: './buttons-sample-1.component.html',
-    imports: [IgxButtonDirective, IgxRippleDirective]
+    selector: 'app-button-overview',
+    styleUrls: ['./button-overview.component.scss'],
+    templateUrl: './button-overview.component.html',
+    imports: [IgxAvatarComponent, IgxButtonDirective, IgxInputGroupComponent, IgxInputDirective]
 })
-export class ButtonsSample1Component { }
+export class ButtonOverviewComponent { }
 ```
 ```html
-<div class="wrapper">
-    <div class="button-sample">
-        <button igxButton="flat" igxRipple>Flat</button>
-    </div>
-    <div class="button-sample">
-        <button igxButton="contained" igxRipple>Contained</button>
-    </div>
-    <div class="button-sample">
-        <button igxButton="outlined" igxRipple>Outlined</button>
+<div class="form">
+    <igx-avatar shape="circle" src="https://dl.infragistics.com/x/img/avatars/14.jpg" alt="profile picture"></igx-avatar>
+    <div class="fields">
+        <igx-input-group>
+            <input igxInput type="text" placeholder="First Name" />
+        </igx-input-group>
+        <igx-input-group>
+            <input igxInput type="text" placeholder="Last Name" />
+        </igx-input-group>
+        <div class="actions">
+            <button igxButton="flat">Cancel</button>
+            <button igxButton="contained">Save</button>
+        </div>
     </div>
 </div>
 ```
 ```scss
-.wrapper {
+.form {
     display: flex;
-    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2.5rem;
 }
 
-.button-sample {
+.form igx-avatar {
+    --ig-size: var(--ig-size-large);
+}
+
+.fields {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    flex: 1 0 30%;
-    margin: 16px 0;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 260px;
+    width: 100%;
+}
+
+:host ::ng-deep .fields .igx-input-group__bundle {
+    background-color: var(--ig-gray-50);
+}
+
+:host ::ng-deep .fields igx-input-group,
+:host ::ng-deep .fields igx-input-group .igx-input-group__input {
+    --ig-size: var(--ig-size-medium);
+}
+
+:host ::ng-deep .fields .igx-input-group__input {
+    margin: 0;
+}
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 ```
 
-<div class="divider--half"></div>
+## Anatomy
 
-## Getting Started with Ignite UI for Angular Button
+The Angular Button renders its label and optional prefix and suffix content in the component shadow DOM.
 
-To get started with the Ignite UI for Angular Button directive, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
+**Button anatomy:** The Button component renders an actionable control with optional prefix and suffix content.
+
+<style>{`
+    .button-anatomy {
+        --igd-anatomy-padding: 64px;
+    }
+
+    .button-anatomy .igd-anatomy__image {
+        max-width: 100%;
+    }
+
+    .button-anatomy-legend {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 48px;
+        margin-bottom: 24px;
+    }
+
+    .button-anatomy-legend div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .button-anatomy-legend strong {
+        margin-bottom: 12px;
+    }
+
+    .button-anatomy-legend span {
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .button-anatomy-legend {
+            grid-template-columns: 1fr 1fr;
+            row-gap: 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .button-anatomy-legend {
+            grid-template-columns: 1fr;
+        }
+    }
+`}</style>
+
+<div class="button-anatomy-legend ig-typography__body-2">
+    <div>
+        <strong>A - Contained Button</strong>
+        <span>1. Icon (optional)</span>
+        <span>2. Label</span>
+        <span>3. Container</span>
+    </div>
+    <div>
+        <strong>B - Outlined Button</strong>
+        <span>4. Icon (optional)</span>
+        <span>5. Label</span>
+        <span>6. Container</span>
+    </div>
+    <div>
+        <strong>C - Flat Button</strong>
+        <span>7. Icon (optional)</span>
+        <span>8. Label</span>
+    </div>
+    <div>
+        <strong>D - Fab Icon Button</strong>
+        <span>9. Icon</span>
+        <span>10. Container</span>
+    </div>
+</div>
+
+The Button renders its content inside the `base` CSS part. Use the default slot for the label and the `prefix` and `suffix` slots for optional content before and after the label.
+
+```text
+<igc-button>
+├── ::part(base)
+├── prefix slot
+├── default slot content
+└── suffix slot
+</igc-button>
+```
+
+## Getting Started
+
+To use the Angular Button, follow the [Ignite UI for Angular Getting Started](../general/getting-started.md) topic for the basic project setup, then register the component for your target platform.
+
+For Angular using the **igniteui-angular** package, install the package:
 
 ```cmd
-ng add igniteui-angular
+npm install igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+Then import `IgxButtonDirective` and add it to the component `imports` collection.
 
-The next step is to import the `IgxButtonModule` in your **app.module.ts** file.
-
-```typescript
-// app.module.ts
-import { IgxButtonModule } from 'igniteui-angular/directives';
-// import { IgxButtonModule } from '@infragistics/igniteui-angular'; for licensed package
-@NgModule({
-    imports: [
-        ...
-        IgxButtonModule,
-        ...
-    ]
-})
-export class AppModule {}
-```
-
-Alternatively, as of `16.0.0` you can import the `IgxButtonDirective` as a standalone dependency.
-
-```typescript
-// home.component.ts
-
-...
+```ts
+import { Component } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
-// import { IgxButtonDirective } from '@infragistics/igniteui-angular'; for licensed package
 
 @Component({
-    selector: 'app-home',
-    template: '<button igxButton="flat">Flat</button>',
-    styleUrls: ['home.component.scss'],
-    standalone: true,
-    imports: [IgxButtonDirective]
+    selector: 'app-button',
+    imports: [IgxButtonDirective],
+    template: '<button igxButton>Save changes</button>'
 })
-export class HomeComponent {}
+export class ButtonComponent {}
 ```
 
-Now that you have the Ignite UI for Angular Button module or directive imported, you can start using the `igxButton` directive on elements.
-
-## Angular Button Types
-
-### Flat Button
-
-Use the [`igxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) directive to add a simple flat button in your component template. Note that if you do not choose a type, by default it will be set to `flat`.
+The simplest way to start using the [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) is as follows:
 
 ```html
-<button igxButton="flat">Flat</button>
+<button igxButton></button>
 ```
 
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-2"></iframe>
-</div>
+## Usage
 
-### Contained Button
+Use the Angular Button to trigger an action, submit form data, or navigate to another page. Choose the appropriate button type and variant for the action, then add optional content such as icons when needed.
 
-All you have to do to create a contained button is to change the value of the `igxButton` property:
+The Button content is placed in its default slot. Add the action label as the button content so that the purpose of the action is clear to all users.
 
 ```html
-<button igxButton="contained">Contained</button>
+<button igxButton>Save changes</button>
 ```
 
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-5">
-</iframe></div>
+With `prefix` and `suffix` slots of the [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) component, we can add different content before and after the main content of the button.
 
-### Outlined Button
-
-Analogically, we can switch to outlined type:
+We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) component when adding icons to the `prefix` and `suffix` slots.
 
 ```html
-<button igxButton="outlined">Outlined</button>
-```
-
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-8">
-</iframe></div>
-
-### Icon Button
-
-As of version `17.1.0` the IgniteUI for Angular exposes a new `igxIconButton` directive intended to turn icons into fully functional buttons. You can read more about the [_Icon Button here_](icon-button.md).
-
-```html
-<button igxIconButton="flat">
-  <igx-icon fontSet="material">favorite</igx-icon>
+<button igxButton="contained">
+    <span igxButtonIcon="prefix">download</span>
+    Download
+    <span igxButtonIcon="suffix">arrow_forward</span>
 </button>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+### Type
 
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-7">
-</iframe></div>
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`Href`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`Href`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=href) attribute will allow you to also set the [`Rel`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=rel), [`Target`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=target) and [`Download`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`DisplayType`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective&member=type) by setting the property to any of the following values:
 
-### Floating Action Button
+- `Submit` - when we want to submit the form data
+- `reset` - when we want to reset form data to its initial values
+- `button` - when we want to add button with a custom functionality anywhere on a webpage
 
-We can create a floating action button and use an icon to display:
+### Variants
 
-```html
-<button igxButton="fab">
-  <igx-icon fontSet="material">edit</igx-icon>
-</button>
-```
+Five types of Buttons are supported: `contained` button for prominent primary actions, `outlined` button for secondary actions, `flat` button for subtle actions, `floating action` button (Fab) for prominent main actions, and `icon` button for actions represented by an icon. Icon Buttons can also use any of the other four variants.
 
-To create an extended FAB, you can add any element prior to the `igx-icon`:
+#### Contained Button
 
-```html
-<button class="btn" igxButton="fab">
-  <span>like</span>
-  <igx-icon fontSet="material">favorite</igx-icon>
-</button>
-```
-
-> [!NOTE]
-> To get the extended FAB text styled properly, use `<span>` or `<div>` tags.
-
-<div class="sample-container loading" style="height: 100px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-6">
-</iframe></div>
-
-## Examples
-
-### Angular Disable Button
-
-The `disabled` property can be used to make a button unclickable:
-
-```html
-<button igxButton="contained" [disabled]="'true'">Disabled</button>
-```
-
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-disabled-sample">
-</iframe></div>
-
-### Ripple
-
-The [`igxRipple`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) directive adds a ripple effect to your buttons or other specified elements. You can easily change the default ripple color, position and duration, using its properties:
-
-```html
-<button igxButton="contained" igxRipple="white" [igxRippleCentered]="true" [igxRippleDuration]="2000">
-  Ripple
-</button>
-```
-
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-3">
-</iframe></div>
-
-### Span
-
-We can also use the `igxButton` directive to turn elements like `span` and `div` into Ignite UI for Angular styled buttons. The default colors can be customized via the `igxButtonColor` and the `igxButtonBackground` properties:
-
-```html
-<span igxButton="contained" igxButtonColor="white" igxButtonBackground="#72da67" igxRipple="white">
-  Span
-</span>
-```
-
-<div class="sample-container loading" style="height: 70px">
-    <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-4">
-</iframe></div>
-
-## Size
-
-We can allow the user to choose the size of the `igxButton` by using the `--ig-size` custom CSS property. To do this, first we have to import the `IgxButtonGroupModule`, and then use the [`igxButtonGroup`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent) component to display size values. This way whenever one gets selected, we will update the **--ig-size** CSS property.
-
-```typescript
-// app.module.ts
-...
-import { IgxButtonGroupModule } from 'igniteui-angular/button-group';
-// import { IgxButtonGroupModule } from '@infragistics/igniteui-angular'; for licensed package
-@NgModule({
-    imports: [
-        ...
-        IgxButtonGroupModule
-        ...
-    ]
-})
-```
-
-```html
-<!--buttons-density.component.html-->
-<igx-buttongroup [values]="sizes" (selected)="selectSize($event)"></igx-buttongroup>
-...
-<button igxButton="flat">Flat</button>
-```
-
-```typescript
-// buttons-density.component.ts
-public size = "large";
-public sizes;
-public ngOnInit() {
-    this.sizes = [
-        { label: 'large', selected: this.size === 'large', togglable: true },
-        { label: 'medium', selected: this.size === 'medium', togglable: true },
-        { label: 'small', selected: this.size === 'small', togglable: true }
-    ];
-}
-
-public selectSize(event: any) {
-    this.size = this.sizes[event.index].label;
-}
-
-
-@HostBinding('style.--ig-size')
-protected get sizeStyle() {
-    return `var(--ig-size-${this.size})`;
-}
-```
-
-If all went well, you should see something like the following in the browser:
-
-```typescript
-import { Component, HostBinding, OnInit } from '@angular/core';
-import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
-@Component({
-    selector: 'app-buttons-display-density',
-    styleUrls: ['./buttons-display-density.component.scss'],
-    templateUrl: './buttons-display-density.component.html',
-    imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
-})
-export class ButtonsDisplayDensityComponent implements OnInit {
-    public size = 'large';
-    public sizes;
-
-    public ngOnInit(): void {
-        this.sizes = [
-            { label: 'large', selected: this.size === 'large', togglable: true },
-            { label: 'medium', selected: this.size === 'medium', togglable: true },
-            { label: 'small', selected: this.size === 'small', togglable: true }
-        ];
-    }
-
-    @HostBinding('style.--ig-size')
-    protected get sizeStyle() {
-        return `var(--ig-size-${this.size})`;
-    }
-
-    public selectSize(event) {
-        this.size = this.sizes[event.index].label;
-    }
-}
-```
-```html
-<article class="sample-column">
-    <div class="density-chooser">
-        <igx-buttongroup [values]="sizes" (selected)="selectSize($event)"></igx-buttongroup>
-    </div>
-    <div class="button-sample">
-        <div class="button-sample">
-            <button igxButton="flat" igxRipple>Flat</button>
-        </div>
-        <div class="button-sample">
-            <button igxButton="contained" igxRipple>Contained</button>
-        </div>
-        <div class="button-sample">
-            <button igxButton="outlined" igxRipple>Outlined</button>
-        </div>
-        <div class="button-sample">
-            <button igxButton="fab" igxRipple>
-                <igx-icon family="material">edit</igx-icon>
-            </button>
-        </div>
-        <div class="button-sample">
-            <button igxButton="fab" igxRipple>
-                <span>Like</span>
-                <igx-icon family="material">favorite</igx-icon>
-            </button>
-        </div>
-    </div>
-</article>
-```
-```scss
-.buttons-sample {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.button-sample {
-    display: flex;
-    flex: 1 0 20%;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.density-chooser {
-    margin-bottom: 24px;
-}
-```
-
-<div class="divider--half"></div>
-
-## Styling
-
-### Button Theme Property Map
-
-When you modify a primary property, all related dependent properties are updated automatically:
-
-<div class="theme-switcher-wrapper">
-<input type="radio" name="theme" id="material" checked>
-<label for="material" class="switch-label">Material</label>
-<input type="radio" name="theme" id="fluent">
-<label for="fluent" class="switch-label">Fluent</label>
-<input type="radio" name="theme" id="bootstrap">
-<label for="bootstrap" class="switch-label">Bootstrap</label>
-<input type="radio" name="theme" id="indigo">
-<label for="indigo" class="switch-label">Indigo</label>
-<div class="tables">
-  <div class="theme-table material">
-    <h3>Material Theme</h3>
-    <h4>Flat Button</h4>
-    <table class="collapsible-table">
-      <thead>
-        <tr>
-          <th>Primary Property</th>
-          <th>Dependent Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody class="group">
-        <tr class="primary">
-          <td><details><summary><strong>$foreground</strong></summary></details></td>
-          <td>$hover-background</td>
-          <td>Background color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-background</td>
-          <td>Background color for focused button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-background</td>
-          <td>Background color for button on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-background</td>
-          <td>Background color for active button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-foreground</td>
-          <td>Foreground color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color-hover</td>
-          <td>Icon color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-foreground</td>
-          <td>Foreground color for focused button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-foreground</td>
-          <td>Foreground color for button on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-foreground</td>
-          <td>Foreground color for active button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-background</td>
-          <td>Background when focus is visible</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-foreground</td>
-          <td>Foreground when focus is visible</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4>Contained Button</h4>
-    <table class="collapsible-table">
-      <thead>
-        <tr>
-          <th>Primary Property</th>
-          <th>Dependent Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody class="group">
-        <tr class="primary">
-          <td><details><summary><strong>$background</strong></summary></details></td>
-          <td>$foreground</td>
-          <td>Foreground based on background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color</td>
-          <td>Icon color based on background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-background</td>
-          <td>Hover background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-foreground</td>
-          <td>Foreground on hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color-hover</td>
-          <td>Icon color on hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-background</td>
-          <td>Focus background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-foreground</td>
-          <td>Foreground on focus</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-background</td>
-          <td>Focus + hover background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-foreground</td>
-          <td>Foreground on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-background</td>
-          <td>Active background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-foreground</td>
-          <td>Active foreground color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-background</td>
-          <td>Background when focus is visible</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-foreground</td>
-          <td>Foreground when focus is visible</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4>Outlined Button</h4>
-    <table class="collapsible-table">
-      <thead>
-        <tr>
-          <th>Primary Property</th>
-          <th>Dependent Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody class="group">
-        <tr class="primary">
-          <td><details><summary><strong>$foreground</strong></summary></details></td>
-          <td>$hover-background</td>
-          <td>Background color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-background</td>
-          <td>Background color for focused button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-background</td>
-          <td>Background color for button on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-background</td>
-          <td>Background color for active button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-foreground</td>
-          <td>Foreground color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color-hover</td>
-          <td>Icon color for hovered button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-foreground</td>
-          <td>Foreground color for focused button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-foreground</td>
-          <td>Foreground color for button on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-foreground</td>
-          <td>Foreground color for active button</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-background</td>
-          <td>Background when focus is visible</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-foreground</td>
-          <td>Foreground when focus is visible</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$border-color</td>
-          <td>The border color for outlined buttons.</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-border-color</td>
-          <td>The border color for hovered outlined buttons.</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-border-color</td>
-          <td>The border color for focused outlined buttons.</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-border-color</td>
-          <td>The border color for outlined buttons when focus is visible.</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-border-color</td>
-          <td>The border color for active outlined buttons.</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4>FAB Button</h4>
-    <table class="collapsible-table">
-      <thead>
-        <tr>
-          <th>Primary Property</th>
-          <th>Dependent Property</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody class="group">
-        <tr class="primary">
-          <td><details><summary><strong>$background</strong></summary></details></td>
-          <td>$foreground</td>
-          <td>Foreground based on background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color</td>
-          <td>Icon color based on background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-background</td>
-          <td>Hover background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$hover-foreground</td>
-          <td>Foreground on hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$icon-color-hover</td>
-          <td>Icon color on hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-background</td>
-          <td>Focus background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-foreground</td>
-          <td>Foreground on focus</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-background</td>
-          <td>Active background color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$active-foreground</td>
-          <td>Active foreground color</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-background</td>
-          <td>Focus + hover background</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-hover-foreground</td>
-          <td>Foreground on focus + hover</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-background</td>
-          <td>Background when focus is visible</td>
-        </tr>
-        <tr class="dependent">
-          <td></td>
-          <td>$focus-visible-foreground</td>
-          <td>Foreground when focus is visible</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-<div class="theme-table fluent">
-<h3>Fluent Theme</h3>
-<h4>Flat Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$foreground</strong></summary></details></td>
-      <td>$hover-background</td>
-      <td>Background color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Background color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Background color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Background color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Foreground color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Border color when focus is visible</td>
-    </tr>
-  </tbody>
-</table>
-<h4>Contained Button</h4>
-<table class="collapsible-table">
-<thead><tr><th>Primary Property</th><th>Dependent Property</th><th>Description</th></tr></thead>
-<tbody class="group">
-<tr class="primary"><td><details><summary><strong>$background</strong></summary></details></td><td>$foreground</td><td>Foreground based on background</td></tr>
-<tr class="dependent"><td></td><td>$icon-color</td><td>Icon color based on background</td></tr>
-<tr class="dependent"><td></td><td>$hover-background</td><td>Hover background color</td></tr>
-<tr class="dependent"><td></td><td>$focus-background</td><td>Focus background color</td></tr>
-<tr class="dependent"><td></td><td>$active-background</td><td>Active background color</td></tr>
-<tr class="dependent"><td></td><td>$hover-foreground</td><td>Foreground on hover</td></tr>
-<tr class="dependent"><td></td><td>$icon-color-hover</td><td>Icon color on hover</td></tr>
-<tr class="dependent"><td></td><td>$focus-foreground</td><td>Foreground on focus</td></tr>
-<tr class="dependent"><td></td><td>$active-foreground</td><td>Active foreground color</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-background</td><td>Focus + hover background</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-foreground</td><td>Foreground on focus + hover</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-background</td><td>Background when focus is visible</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-foreground</td><td>Foreground when focus is visible</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-border-color</td><td>Border color when focus is visible</td></tr>
-</tbody>
-</table>
-<h4>Outlined Button</h4>
-<table class="collapsible-table">
-<thead><tr><th>Primary Property</th><th>Dependent Property</th><th>Description</th></tr></thead>
-<tbody class="group">
-<tr class="primary"><td><details><summary><strong>$foreground</strong></summary></details></td><td>$hover-background</td><td>Background color for hovered outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-background</td><td>Background color for focused outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-background</td><td>Background color for outlined button on focus + hover.</td></tr>
-<tr class="dependent"><td></td><td>$active-background</td><td>Background color for active outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$hover-foreground</td><td>Foreground color for hovered outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$icon-color-hover</td><td>Icon color for hovered outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-foreground</td><td>Foreground color for focused outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-foreground</td><td>Foreground color for outlined button on focus + hover.</td></tr>
-<tr class="dependent"><td></td><td>$active-foreground</td><td>Foreground color for active outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-foreground</td><td>Foreground color for outlined button when focus is visible.</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-border-color</td><td>Border color for outlined button when focus is visible.</td></tr>
-<tr class="dependent"><td></td><td>$border-color</td><td>Border color for outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$hover-border-color</td><td>Border color for hovered outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$focus-border-color</td><td>Border color for focused outlined button.</td></tr>
-<tr class="dependent"><td></td><td>$active-border-color</td><td>Border color for active outlined button.</td></tr>
-</tbody>
-</table>
-<h4>FAB Button</h4>
-<table class="collapsible-table">
-<thead><tr><th>Primary Property</th><th>Dependent Property</th><th>Description</th></tr></thead>
-<tbody class="group">
-<tr class="primary"><td><details><summary><strong>$background</strong></summary></details></td><td>$foreground</td><td>Foreground based on background</td></tr>
-<tr class="dependent"><td></td><td>$icon-color</td><td>Icon color based on background</td></tr>
-<tr class="dependent"><td></td><td>$hover-background</td><td>Hover background color</td></tr>
-<tr class="dependent"><td></td><td>$hover-foreground</td><td>Foreground on hover</td></tr>
-<tr class="dependent"><td></td><td>$icon-color-hover</td><td>Icon color on hover</td></tr>
-<tr class="dependent"><td></td><td>$active-background</td><td>Active background color</td></tr>
-<tr class="dependent"><td></td><td>$active-foreground</td><td>Active foreground color</td></tr>
-<tr class="dependent"><td></td><td>$focus-background</td><td>Focus background color</td></tr>
-<tr class="dependent"><td></td><td>$focus-foreground</td><td>Foreground on focus</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-background</td><td>Focus + hover background</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-foreground</td><td>Foreground on focus + hover</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-background</td><td>Background when focus is visible</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-foreground</td><td>Foreground when focus is visible</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-border-color</td><td>Border color when focus is visible</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="theme-table bootstrap">
-<h3>Bootstrap Theme</h3>
-<h4>Flat Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$foreground</strong></summary></details></td>
-      <td>$hover-foreground</td>
-      <td>Foreground color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Foreground color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Border color when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Foreground color for disabled button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Icon color for disabled button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-  </tbody>
-</table>
-<h4>Contained Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$background</strong></summary></details></td>
-      <td>$foreground</td>
-      <td>Foreground based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color</td>
-      <td>Icon color based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-background</td>
-      <td>Hover background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Focus background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Active background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground on focus</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Focus + hover background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Active foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-background</td>
-      <td>Disabled background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Disabled foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Disabled icon color</td>
-    </tr>
-  </tbody>
-</table>
-<h4>Outlined Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$foreground</strong></summary></details></td>
-      <td>$hover-background</td>
-      <td>Background color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Background color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Background color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Background color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Foreground color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Border color when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Foreground color for disabled button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Icon color for disabled button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-border-color</td>
-      <td>Border color for disabled button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-border-color</td>
-      <td>Hover border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-border-color</td>
-      <td>Focus border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Focus-visible border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-border-color</td>
-      <td>Active border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-  </tbody>
-</table>
-<h4>FAB Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$background</strong></summary></details></td>
-      <td>$foreground</td>
-      <td>Foreground based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color</td>
-      <td>Icon color based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-background</td>
-      <td>Hover background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Focus background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Active background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-background</td>
-      <td>Disabled background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground on focus</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Focus + hover background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Active foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Disabled foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Disabled icon color</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<div class="theme-table indigo">
-<h3>Indigo Theme</h3>
-<h4>Flat Button</h4>
-<table class="collapsible-table"><thead><tr><th>Primary Property</th><th>Dependent Property</th><th>Description</th></tr></thead><tbody class="group">
-<tr class="primary"><td><details><summary><strong>$foreground</strong></summary></details></td><td>$hover-background</td><td>Background color for hovered button</td></tr>
-<tr class="dependent"><td></td><td>$focus-background</td><td>Background color for focused button</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-background</td><td>Background color for button on focus + hover</td></tr>
-<tr class="dependent"><td></td><td>$active-background</td><td>Background color for active button</td></tr>
-<tr class="dependent"><td></td><td>$hover-foreground</td><td>Foreground color for hovered button</td></tr>
-<tr class="dependent"><td></td><td>$icon-color-hover</td><td>Icon color for hovered button</td></tr>
-<tr class="dependent"><td></td><td>$focus-foreground</td><td>Foreground color for focused button</td></tr>
-<tr class="dependent"><td></td><td>$focus-hover-foreground</td><td>Foreground color for button on focus + hover</td></tr>
-<tr class="dependent"><td></td><td>$active-foreground</td><td>Foreground color for active button</td></tr>
-<tr class="dependent"><td></td><td>$focus-visible-foreground</td><td>Foreground when focus is visible</td></tr>
-<tr class="dependent"><td></td><td>$disabled-foreground</td><td>Disabled foreground color</td></tr>
-<tr class="dependent"><td></td><td>$disabled-icon-color</td><td>Disabled icon color</td></tr>
-<tr class="dependent"><td></td><td>$shadow-color</td><td>Shadow color</td></tr>
-</tbody>
-</table>
-<h4>Contained Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$background</strong></summary></details></td>
-      <td>$foreground</td>
-      <td>Foreground based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color</td>
-      <td>Icon color based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-background</td>
-      <td>Hover background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Focus background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Active background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground on focus</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Focus + hover background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Active foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-background</td>
-      <td>Disabled background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Disabled foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Disabled icon color</td>
-    </tr>
-  </tbody>
-</table>
-<h4>Outlined Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$foreground</strong></summary></details></td>
-      <td>$hover-background</td>
-      <td>Background color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Background color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Background color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Background color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color for hovered button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground color for focused button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground color for button on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Foreground color for active button</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Border color when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$border-color</td>
-      <td>Border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-border-color</td>
-      <td>Hover border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-border-color</td>
-      <td>Focus border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-border-color</td>
-      <td>Focus-visible border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-border-color</td>
-      <td>Active border color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-  </tbody>
-</table>
-<h4>FAB Button</h4>
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><details><summary><strong>$background</strong></summary></details></td>
-      <td>$foreground</td>
-      <td>Foreground based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color</td>
-      <td>Icon color based on background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-background</td>
-      <td>Hover background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-background</td>
-      <td>Focus background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-background</td>
-      <td>Active background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-background</td>
-      <td>Disabled background color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$hover-foreground</td>
-      <td>Foreground on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$icon-color-hover</td>
-      <td>Icon color on hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-foreground</td>
-      <td>Foreground on focus</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-background</td>
-      <td>Focus + hover background</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-hover-foreground</td>
-      <td>Foreground on focus + hover</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-background</td>
-      <td>Background when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$focus-visible-foreground</td>
-      <td>Foreground when focus is visible</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$active-foreground</td>
-      <td>Active foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$shadow-color</td>
-      <td>Shadow color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-foreground</td>
-      <td>Disabled foreground color</td>
-    </tr>
-    <tr class="dependent">
-      <td></td>
-      <td>$disabled-icon-color</td>
-      <td>Disabled icon color</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-
-> **Note:** The resulting dependent properties may vary slightly depending on the selected theme (Material, Fluent, Bootstrap, Indigo).
-
-To style the button you can use our type-specific theme functions: [`flat-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-flat-button-theme), [`outlined-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-outlined-button-theme), [`contained-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-contained-button-theme), and [`fab-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-fab-button-theme).
-
-Each of them will target only the buttons of that specific type.
-
-To get started, first import the themes module, which includes all theme functions and component mixins:
-
-```scss
-@use "igniteui-angular/theming" as *;
-
-// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-```
-
-Next, create a new theme that extends the type-specific theme function for the type of button you are styling. In this example, we will use the [`contained-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-contained-button-theme) function and pass values to the `$foreground` and the `$background` parameters, along with their respective hover and active parameters.
-
-Given the following markup:
-
-```html
-<div class="my-contained-btn">
-  <button igxButton="contained">Contained button</button>
-</div>
-```
-
-You can create the following theme:
-
-```scss
-$custom-contained-theme: contained-button-theme(
-    $background: #f9f0ff,
-    $foreground: #722ed1,
-    $hover-background: #efdbff,
-    $hover-foreground: #9254de,
-    $active-foreground: #531dab,
-    $active-background: #dfc2fa,
-);
-```
-
-Take a look at the [`contained-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-contained-button-theme) section for a complete list of available parameters for styling the contained-type buttons.
-
-Finally, **include** the custom theme in your application:
-
-```scss
-.my-contained-btn {
-  @include tokens($custom-contained-theme);
-}
-```
-
-With the type-specific theme functions, styling buttons is much easier.
-
-For [`contained-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-contained-button-theme) and [`fab-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-fab-button-theme) functions, you only need to provide a color value to the `$background` parameter. All other button state and text colors (if they are not provided) will then be automatically generated and applied based on that value.
-
-The text color is determined by the newly added [`adaptive-contrast`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/color#function-adaptive-contrast) function, which calculates whether black or white provides better contrast against the supplied background color.
-
-For [`flat-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-flat-button-theme) and [`outlined-button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-outlined-button-theme) functions, the button state colors are also automatically generated and applied, but they are derived from the supplied `$foreground` parameter instead of `$background`.
-
-In the sample below, you can see how using the button component with customized CSS variables allows you to create a design that visually resembles the button used in the [`Ant`](https://ant.design/components/button?theme=light#button-demo-color-variant) design system.
+Use the [`Variant`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) attribute to add a simple contained button in your component template. Note that if you do not set variant, by default it will be set to contained.
 
 ```typescript
 import { Component } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
-import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
-    selector: 'app-buttons-style',
-    styleUrls: ['./buttons-style.component.scss'],
-    templateUrl: './buttons-style.component.html',
-    imports: [IgxButtonDirective],
-    providers: [{provide: THEME_TOKEN, useFactory: () => new ThemeToken('bootstrap')}]
+    selector: 'app-button-contained',
+    styleUrls: ['./button-contained.component.scss'],
+    templateUrl: './button-contained.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
 })
-export class ButtonsStyleComponent {
-    range = Array(6);
+export class ButtonContainedComponent { }
+```
+```html
+<div class="button-sample">
+    <button igxButton="contained">
+        <igx-icon family="material">notifications</igx-icon>
+        Contained
+        <igx-icon family="material">notifications</igx-icon>
+    </button>
+</div>
+```
+```scss
+.button-sample {
+    display: flex;
+    padding: 2.5rem;
+}
+
+.button-sample button {
+    width: 46%;
+    margin: auto;
+}
+```
+
+#### Outlined Button
+
+All you have to do to create an `outlined` button is to change the value of the [`Variant`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) property:
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-outlined',
+    styleUrls: ['./button-outlined.component.scss'],
+    templateUrl: './button-outlined.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonOutlinedComponent { }
+```
+```html
+<div class="button-sample">
+    <button igxButton="outlined">
+        <igx-icon family="material">notifications</igx-icon>
+        Outlined
+        <igx-icon family="material">notifications</igx-icon>
+    </button>
+</div>
+```
+```scss
+.button-sample {
+    display: flex;
+    padding: 2.5rem;
+}
+
+.button-sample button {
+    width: 46%;
+    margin: auto;
+}
+```
+
+#### Flat Button
+
+Analogically, we can switch to `flat` variant.
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-flat',
+    styleUrls: ['./button-flat.component.scss'],
+    templateUrl: './button-flat.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonFlatComponent { }
+```
+```html
+<div class="button-sample">
+    <button igxButton="flat">
+        <igx-icon family="material">notifications</igx-icon>
+        Flat
+        <igx-icon family="material">notifications</igx-icon>
+    </button>
+</div>
+```
+```scss
+.button-sample {
+    display: flex;
+    padding: 2.5rem;
+}
+
+.button-sample button {
+    width: 46%;
+    margin: auto;
+}
+```
+
+#### Floating Action Button
+
+We can create a floating action button by setting the [`Variant`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) property to `fab`:
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-fab',
+    styleUrls: ['./button-fab.component.scss'],
+    templateUrl: './button-fab.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonFabComponent { }
+```
+```html
+<div class="button-sample">
+    <button igxButton="fab">
+        <igx-icon family="material">add</igx-icon>
+        Floating Action
+        <igx-icon family="material">add</igx-icon>
+    </button>
+</div>
+```
+```scss
+.button-sample {
+    display: flex;
+    padding: 2rem;
+}
+
+.button-sample button {
+    width: 45%;
+    margin: auto;
+}
+```
+
+### States
+
+You may also insert each Button in a disabled state because they all support both Enabled and Disabled variants. In Figma, you can switch between the two using a boolean property in the properties panel. In code, use the `disabled` property or attribute when an action is not currently available.
+
+```html
+<button igxButton="contained" [disabled]="true">Disabled</button>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-states',
+    styleUrls: ['./button-states.component.scss'],
+    templateUrl: './button-states.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonStatesComponent { }
+```
+```html
+<div class="button-container">
+    <div class="button-item">
+        <button igxButton="contained" [disabled]="true">
+            <igx-icon family="material">notifications</igx-icon>
+            Contained
+            <igx-icon family="material">notifications</igx-icon>
+        </button>
+    </div>
+    <div class="button-item">
+        <button igxButton="outlined" [disabled]="true">
+            <igx-icon family="material">notifications</igx-icon>
+            Outlined
+            <igx-icon family="material">notifications</igx-icon>
+        </button>
+    </div>
+    <div class="button-item">
+        <button igxButton="flat" [disabled]="true">
+            <igx-icon family="material">notifications</igx-icon>
+            Flat
+            <igx-icon family="material">notifications</igx-icon>
+        </button>
+    </div>
+    <div class="button-item">
+        <button igxButton="fab" [disabled]="true">
+            <igx-icon family="material">add</igx-icon>
+            Floating Action
+            <igx-icon family="material">add</igx-icon>
+        </button>
+    </div>
+</div>
+```
+```scss
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+```
+
+### Interaction States
+
+In Figma the Enabled buttons support **Idle**, **Hover**, **Focused** and **Focused & Hover** states which can be switched between by changing the `State` property. In code, these interaction states are provided by the platform Button component and should preserve a visible focus indicator for keyboard users.
+
+```html
+<button igxButton="contained" igxRipple="white" [igxRippleCentered]="true" [igxRippleDuration]="2000">
+    Ripple
+</button>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-interaction-states',
+    styleUrls: ['./button-interaction-states.component.scss'],
+    templateUrl: './button-interaction-states.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonInteractionStatesComponent {
+    public states = [
+        { label: 'Idle', value: 'idle' },
+        { label: 'Hover', value: 'state-hover' },
+        { label: 'Focused', value: 'state-focused' },
+        { label: 'Focused & Hover', value: 'state-focused-hover' }
+    ];
 }
 ```
 ```html
-@for (item of range; let i = $index; track i) {
-  <div [class]="'buttons-sample-' + (i + 1)">
-    <div class="button-sample">
-      <button igxButton="contained">Solid</button>
-    </div>
-    <div class="button-sample">
-      <button igxButton="outlined">Outlined</button>
-    </div>
-    <div class="button-sample dashed">
-      <button igxButton="outlined">Dashed</button>
-    </div>
-    <div class="button-sample filled">
-      <button igxButton="flat">Filled</button>
-    </div>
-    <div class="button-sample text">
-      <button igxButton="flat">Text</button>
-    </div>
-    <div class="button-sample link">
-      <button igxButton="flat">Link</button>
-    </div>
-  </div>
+<div class="button-container">
+    @for (state of states; track state.value) {
+        <div class="button-item">
+            <span class="button-label">{{ state.label }}</span>
+            <button igxButton="contained" [class]="state.value">
+                <igx-icon family="material">notifications</igx-icon>
+                Contained
+                <igx-icon family="material">notifications</igx-icon>
+            </button>
+        </div>
+    }
+</div>
+```
+```scss
+@use "igniteui-angular/theming" as *;
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
 }
+
+.button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    --hover-background: var(--ig-contained-button-hover-background);
+    --hover-foreground: var(--ig-contained-button-hover-foreground);
+    --focus-background: var(--ig-contained-button-focus-background);
+    --focus-foreground: var(--ig-contained-button-focus-foreground);
+    --focus-hover-background: var(--ig-contained-button-focus-hover-background);
+    --focus-hover-foreground: var(--ig-contained-button-focus-hover-foreground);
+}
+
+.button-label {
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+
+.button-item button.state-hover {
+    background: var(--hover-background);
+    color: var(--hover-foreground);
+}
+
+.button-item button.state-focused {
+    background: var(--focus-background);
+    color: var(--focus-foreground);
+}
+
+.button-item button.state-focused-hover {
+    background: var(--focus-hover-background);
+    color: var(--focus-hover-foreground);
+}
+```
+
+### Layout Template
+
+Contained, Outlined, Flat, and Floating Action Buttons support flexible icon and label templates. In Figma, to show or hide the icons, you can use the `Left Icon` and `Right Icon` boolean properties. If you want to have an Icon Button, you can set the `Content` property to `Icon`.
+
+```html
+<span igxButton="outlined" igxButtonColor="white" igxButtonBackground="#72da67" igxRipple="white">
+    Span button
+</span>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-layout',
+    styleUrls: ['./button-layout.component.scss'],
+    templateUrl: './button-layout.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonLayoutComponent {
+}
+```
+```html
+<div class="button-container">
+    <div class="button-item"><button igxButton="outlined"><igx-icon family="material">add</igx-icon>Add</button></div>
+    <div class="button-item"><button igxButton="outlined">Buy Now</button></div>
+    <div class="button-item"><button igxButton="outlined">Add<igx-icon family="material">add</igx-icon></button></div>
+    <div class="button-item"><button igxButton="outlined"><igx-icon family="material">add</igx-icon>Floating Action</button></div>
+    <div class="button-item"><button igxButton="outlined"><igx-icon family="material">add</igx-icon></button></div>
+    <div class="button-item"><button igxButton="outlined">Floating Action</button></div>
+    </div>
+```
+```scss
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2.5rem;
+}
+
+.button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.button-container button {
+    --ig-font-family: 'Titillium Web', sans-serif;
+    --ig-button-text-transform: uppercase;
+
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+```
+
+### Size
+
+Users can change the size of the [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) using the `--ig-size` CSS variable.
+
+```css
+.button-size-small {
+    --ig-size: var(--ig-size-small);
+}
+```
+
+The result of implementing the above code should look like the following:
+
+```typescript
+import { Component } from '@angular/core';
+import { TitleCasePipe } from '@angular/common';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-size',
+    styleUrls: ['./button-size.component.scss'],
+    templateUrl: './button-size.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent, TitleCasePipe]
+})
+export class ButtonSizeComponent {
+    public sizes = ['large', 'medium', 'small'];
+    public variants = ['contained', 'outlined', 'flat'] as const;
+}
+```
+```html
+<div class="size-grid">
+    <div class="size-header"><span></span><span>Contained</span><span>Outlined</span><span>Flat</span><span>Fab</span></div>
+    @for (size of sizes; track size) {
+        <div class="size-row">
+            <span class="size-label" [class]="'size-' + size">{{ size | titlecase }}</span>
+            @for (variant of variants; track variant) {
+                <button [igxButton]="variant" [class]="'size-' + size">
+                    <igx-icon family="material">notifications</igx-icon>
+                    {{ variant | titlecase }}
+                    <igx-icon family="material">notifications</igx-icon>
+                </button>
+            }
+            <button igxButton="fab" [class]="'size-' + size">
+                <igx-icon family="material">add</igx-icon>
+                Floating Action
+                <igx-icon family="material">add</igx-icon>
+            </button>
+        </div>
+    }
+</div>
+```
+```scss
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.size-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.size-row {
+    display: grid;
+    grid-template-columns: 70px repeat(4, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    width: 100%;
+}
+
+.size-header {
+    display: grid;
+    grid-template-columns: 70px repeat(4, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    column-gap: 1rem;
+    width: 100%;
+    color: var(--ig-gray-600);
+    font: 13px/20px "Aktiv Grotesk", sans-serif;
+    letter-spacing: .3px;
+}
+
+.size-label {
+    justify-self: start;
+    color: var(--ig-gray-600);
+    font: 400 13px/20px "Aktiv Grotesk", sans-serif;
+    letter-spacing: .3px;
+}
+
+.size-row button {
+    width: auto;
+    transform: scale(.9);
+}
+
+.size-small {
+    --ig-size: var(--ig-size-small) !important;
+}
+
+.size-medium {
+    --ig-size: var(--ig-size-medium) !important;
+}
+
+.size-large {
+    --ig-size: var(--ig-size-large) !important;
+}
+```
+
+### Download
+
+Setting the [`Download`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) Button attribute will prompt the user to save the linked URL instead of navigating to it.
+
+```html
+<button
+    igxButton="contained"
+    href=""
+    download="url"
+    target="_blank">
+    Download
+</button>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+
+@Component({
+    selector: 'app-button-download',
+    styleUrls: ['./button-download.component.scss'],
+    templateUrl: './button-download.component.html',
+    imports: [IgxButtonDirective]
+})
+export class ButtonDownloadComponent { }
+```
+```html
+<div class="button-sample">
+    <a igxButton="contained" href="" download="url" target="_blank">Download</a>
+</div>
+```
+```scss
+.button-sample {
+    display: flex;
+    padding: 2.5rem;
+}
+
+.button-sample a {
+    width: 46%;
+    margin: auto;
+}
+```
+
+### Do/Don't
+
+**When to use:** Use Button for actions that change state, submit data, or trigger an application command.
+
+**When not to use:** Use [Icon Button](./icon-button.md) when the action is represented only by an icon and does not require a text label.
+
+<div class="table-responsive">
+    <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
+        <thead>
+            <tr>
+                <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Do</th>
+                <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Don't</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+                <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+## Properties
+
+The Angular Button exposes platform-specific properties for controlling its content, appearance, and behavior.
+
+The Angular Button is provided as a directive and exposes the following properties. Use the API reference for the complete type definitions.
+
+| name | type | default | description |
+| --- | --- | --- | --- |
+| [`variant`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) | string | `flat` | Sets the Button visual variant. |
+| [`type`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) | string | `button` | Sets the native button type. |
+
+## Styling
+
+Customize the Button with theme settings, CSS variables, or CSS parts to match the visual language of your application.
+
+### Sass Theming
+
+Use the standard Ignite UI for Angular theme workflow to customize the Button consistently with the rest of the application.
+
+### CSS Variables
+
+Use the generated CSS variables on the Button element to override the theme values for a specific instance. The variant-specific theme functions derive related interaction-state values from the primary theme parameters.
+
+| Primary property | Dependent property | Description |
+| --- | --- | --- |
+| `$background` | `$hover-background`, `$focus-background`, `$active-background` | Button background colors for the interaction states. |
+| `$foreground` | `$hover-foreground`, `$focus-foreground`, `$active-foreground` | Button text colors for the interaction states. |
+| `$border-color` | `$hover-border-color`, `$focus-border-color`, `$active-border-color` | Button border colors for the interaction states. |
+| `$shadow-color` | `$resting-shadow`, `$hover-shadow`, `$focus-shadow`, `$active-shadow` | Button shadow colors and elevations. |
+| `$disabled-background` | `$disabled-foreground`, `$disabled-icon-color`, `$disabled-border-color` | Button colors when it is disabled. |
+
+### Style Parts
+
+The [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) exposes three CSS parts which we can use for styling:
+
+|Name|Description|
+|--|--|
+| `base` | The native button element of the igc-button component. |
+| `prefix` | The prefix container of the igc-button component. |
+| `suffix` | The suffix container of the igc-button component. |
+
+The `base` CSS part allows us to style the wrapped element (`<button>` or `<a>`).
+
+```css
+igc-button::part(base) {
+  background-color: var(--ig-primary-500);
+  color: var(--ig-primary-500-contrast);
+  padding: 18px;
+}
+```
+
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-button-styling',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./button-styling.component.scss'],
+    templateUrl: './button-styling.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonStylingComponent { }
+```
+```html
+<div class="button-grid">
+    <div class="button-row">
+        <button igxButton="contained" class="confirm-button">Confirm</button>
+        <button igxButton="outlined" class="send-button">
+            <igx-icon family="material">send</igx-icon>
+            Send
+        </button>
+        <button igxButton="flat" class="cancel-button">Cancel</button>
+        <button igxButton="fab" class="add-button">
+            Add
+            <igx-icon family="material">add</igx-icon>
+        </button>
+    </div>
+</div>
 ```
 ```scss
 @use "layout.scss";
-@use "igniteui-angular/theming" as *;
-@use "sass:map";
 
 // CSS variables approach
 
-$list: (
-    "sample-1": (
-        "primary": #000,
-        "secondary": rgba(0, 0, 0, 0.75),
-        "active": rgba(0, 0, 0, 0.95),
-        "focus": #fff,
-        "hover": #4096ff,
-        "foreground": rgba(0, 0, 0, 0.88),
-        "border": #d9d9d9,
-        "active-foreground": #0958d9,
-        "flat-foreground": #69b1ff,
-        "flat-background": rgba(0, 0, 0, 0.04),
-        "flat-active": rgba(0, 0, 0, 0.15),
-        "flat-hover": rgba(0, 0, 0, 0.06),
-    ),
-    "sample-2": (
-        "primary": #1677ff,
-        "secondary": #4096ff,
-        "active": #0958d9,
-        "focus": #fff,
-        "flat-background": #e6f4ff,
-        "flat-hover": #bae0ff,
-        "flat-active": #91caff,
-    ),
-    "sample-3": (
-        "primary": #ff4d4f,
-        "secondary": #ff7875,
-        "active": #d9363e,
-        "focus": #fff,
-        "flat-background": #fff2f0,
-        "flat-hover": #ffdfdc,
-        "flat-active": #ffccc7,
-    ),
-    "sample-4": (
-        "primary": #eb2f96,
-        "secondary": #f759ab,
-        "active": #c41d7f,
-        "focus": #fff,
-        "flat-background": #fff0f6,
-        "flat-hover": #ffd6e7,
-        "flat-active": #ffadd2,
-    ),
-    "sample-5": (
-        "primary": #722ed1,
-        "secondary": #9254de,
-        "active": #531dab,
-        "focus": #fff,
-        "flat-background": #f9f0ff,
-        "flat-hover": #efdbff,
-        "flat-active": #d3adf7,
-    ),
-    "sample-6": (
-        "primary": #13c2c2,
-        "secondary": #36cfc9,
-        "active": #08979c,
-        "focus": #fff,
-        "flat-background": #e6fffb,
-        "flat-hover": #b5f5ec,
-        "flat-active": #b5f5ec,
-    ),
-);
-
-@each $variant, $style in $list {
-    .buttons-#{$variant} [igxbutton="contained"] {
-        --background: #{map-get($style, "primary")};
-        --hover-background: #{map-get($style, "secondary")};
-        --active-background: #{map-get($style, "active")};
-        --focus-visible-background: #{map-get($style, "primary")};
-        --focus-visible-foreground: #{map-get($style, "focus")};
-        --focus-hover-background: #{map-get($style, "secondary")};
-        --focus-hover-foreground: #{map-get($style, "focus")};
-        --focus-background: #{map-get($style, "active")};
-    }
-
-    @if $variant == "sample-1" {
-        .buttons-#{$variant} [igxbutton="outlined"] {
-            --foreground: #{map-get($style, "foreground")};
-            --border-color: #{map-get($style, "border")};
-            --hover-foreground: #{map-get($style, "hover")};
-            --hover-border-color: #{map-get($style, "hover")};
-            --active-foreground: #{map-get($style, "active-foreground")};
-            --active-border-color: #{map-get($style, "active-foreground")};
-            --focus-hover-background: #{map-get($style, "focus")};
-            --focus-hover-foreground: #{map-get($style, "hover")};
-            --focus-background: #{map-get($style, "focus")};
-            --focus-foreground: #{map-get($style, "active-foreground")};
-            --focus-visible-border-color: #{map-get($style, "border")};
-        }
-
-        .buttons-#{$variant} [igxbutton="flat"] {
-            --foreground: #{map-get($style, "foreground")};
-            --active-foreground: #{map-get($style, "foreground")};
-        }
-
-        .buttons-#{$variant} .filled [igxbutton="flat"] {
-            --background: #{map-get($style, "flat-background")};
-            --hover-background: #{map-get($style, "flat-hover")};
-            --focus-visible-background: #{map-get($style, "flat-background")};
-        }
-
-        .buttons-#{$variant} .filled [igxbutton="flat"],
-        .buttons-#{$variant} .text [igxbutton="flat"] {
-            --hover-foreground: #{map-get($style, "foreground")};
-            --focus-hover-background: #{map-get($style, "flat-hover")};
-            --focus-background: #{map-get($style, "flat-active")};
-            --focus-foreground: #{map-get($style, "foreground")};
-            --focus-hover-foreground: #{map-get($style, "foreground")};
-            --active-background: #{map-get($style, "flat-active")};
-        }
-
-        .buttons-#{$variant} .text [igxbutton="flat"] {
-            --hover-background: #{map-get($style, "flat-background")};
-        }
-
-        .buttons-#{$variant} .link [igxbutton="flat"] {
-            --hover-foreground: #{map-get($style, "flat-foreground")};
-            --active-foreground: #{map-get($style, "active-foreground")};
-        }
-    }
-
-    @else {
-        .buttons-#{$variant} [igxbutton="outlined"] {
-            --foreground: #{map-get($style, "primary")};
-            --border-color: #{map-get($style, "primary")};
-            --hover-foreground: #{map-get($style, "secondary")};
-            --hover-border-color: #{map-get($style, "secondary")};
-            --active-foreground: #{map-get($style, "active")};
-            --active-border-color: #{map-get($style, "active")};
-            --focus-hover-background: #{map-get($style, "focus")};
-            --focus-hover-foreground: #{map-get($style, "secondary")};
-            --focus-background: #{map-get($style, "focus")};
-            --focus-foreground: #{map-get($style, "active")};
-            --focus-visible-border-color: #{map-get($style, "primary")};
-        }
-
-        .buttons-#{$variant} .filled [igxbutton="flat"] {
-            --background: #{map-get($style, "flat-background")};
-            --hover-background: #{map-get($style, "flat-hover")};
-            --hover-foreground: #{map-get($style, "primary")};
-            --active-foreground: #{map-get($style, "primary")};
-            --focus-visible-background: #{map-get($style, "flat-background")};
-            --focus-hover-foreground: #{map-get($style, "primary")};
-            --focus-foreground: #{map-get($style, "primary")};
-        }
-
-        .buttons-#{$variant} .filled [igxbutton="flat"],
-        .buttons-#{$variant} .text [igxbutton="flat"] {
-            --active-background: #{map-get($style, "flat-active")};
-        }
-
-        .buttons-#{$variant} .text [igxbutton="flat"],
-        .buttons-#{$variant} .link [igxbutton="flat"] {
-            --hover-foreground: #{map-get($style, "secondary")};
-            --active-foreground: #{map-get($style, "active")};
-            --focus-hover-foreground: #{map-get($style, "secondary")};
-            --focus-foreground: #{map-get($style, "active")};
-        }
-
-        .buttons-#{$variant} [igxbutton="flat"] {
-            --foreground: #{map-get($style, "primary")};
-            --focus-hover-background: #{map-get($style, "flat-hover")};
-            --focus-background: #{map-get($style, "flat-active")};
-        }
-
-        .buttons-#{$variant} .text [igxbutton="flat"] {
-            --hover-background: #{map-get($style, "flat-background")};
-        }
-    }
-
-    .buttons-#{$variant} [igxbutton="flat"],
-    .buttons-#{$variant} [igxbutton="outlined"] {
-        --focus-visible-foreground: #{map-get($style, "primary")};
-    }
-
-    .buttons-#{$variant} [igxbutton="outlined"],
-    .buttons-#{$variant} .text [igxbutton="flat"],
-    .buttons-#{$variant} .link [igxbutton="flat"] {
-        --focus-visible-background: transparent;
-    }
-}
-
-.button-sample [igxbutton="contained"] {
+.confirm-button {
+    --background: #1275c4;
     --foreground: #fff;
+    --hover-background: #1275c4;
     --hover-foreground: #fff;
-    --active-foreground: #fff;
+    &:hover { --hover-background: #0b4f8a; }
 }
 
-.button-sample [igxbutton="outlined"] {
+.send-button {
     --background: transparent;
-    --hover-background: transparent;
-    --active-background: transparent;
+    --border-color: #8a2be2;
+    --foreground: #8a2be2;
+    --hover-border-color: #8a2be2;
+    --hover-foreground: #8a2be2;
+    --icon-color: #8a2be2;
+    --icon-color-hover: #8a2be2;
+    &:hover { --hover-background: #8a2be2; --hover-border-color: #6a1bb1; --hover-foreground: #fff; --icon-color-hover: #fff; }
 }
 
-// Sass theme approach
+.cancel-button {
+    --foreground: #1275c4;
+    --hover-foreground: #1275c4;
+    &:hover { --hover-background: #dbeeff; --hover-foreground: #063b68; }
+}
 
-// $custom-contained-theme: contained-button-theme(
-//     $background: #f9f0ff,
-//     $foreground: #722ed1,
-//     $hover-background: #efdbff,
-//     $hover-foreground: #9254de,
-//     $active-foreground: #531dab,
-//     $active-background: #dfc2fa,
-//     $focus-visible-background: #d3adf7
-// );
-
-// $custom-outlined-theme: outlined-button-theme(
-//     $background: #fff2f0,
-//     $foreground: #ff4d4f,
-//     $border-color: #ff4d4f,
-//     $hover-background: #ffdfdc,
-//     $hover-foreground: #ff7875,
-//     $hover-border-color: #ff7875,
-//     $focus-visible-background: #ffccc7,
-//     $focus-visible-foreground: #d9363e,
-//     $focus-border-color: #d9363e
-// );
-
-// $custom-flat-theme: flat-button-theme(
-//     $background: #e6fffb,
-//     $foreground: #13c2c2,
-//     $hover-background: #b5f5ec,
-//     $hover-foreground: #36cfc9,
-//     $active-foreground: #08979c,
-//     $focus-visible-background: #b5f5ec,
-//     $focus-visible-foreground: #08979c
-// );
-
-// .button-sample {
-//     @include tokens($custom-contained-theme);
-//     @include tokens($custom-outlined-theme);
-// }
-
-// .button-sample.filled {
-//     @include tokens($custom-flat-theme);
-// }
+.add-button {
+    --background: #4caf50;
+    --foreground: #000;
+    --hover-background: #4caf50;
+    --hover-foreground: #000;
+    --icon-color: #000;
+    --icon-color-hover: #000;
+    --border-radius: 999px;
+    &:hover { --hover-background: #257a2b; --hover-foreground: #fff; --icon-color-hover: #fff; }
+}
 ```
-
-> [!NOTE]
-> The sample uses the [Bootstrap Light](themes/sass/schemas.md#predefined-schemas) schema.
 
 ### Styling with Tailwind
 
-You can style the `button` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the Button using custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
-Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
+Along with the Tailwind import in your global stylesheet, include the utility file:
 
 ```scss
 @import "tailwindcss";
-...
 @use 'igniteui-theming/tailwind/utilities/material.css';
 ```
 
-The utility file includes both `light` and `dark` theme variants.
-
-- Use `light-*` classes for the light theme.
-- Use `dark-*` classes for the dark theme.
-- Append the component name after the prefix. Because the button has types, the classes are used like so, e.g., `light-contained-button`, `light-flat-button` `dark-outlined-button`, `dark-fab-button`, etc.
-
-Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
-
-You can find the full list of properties in the [button-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme) which reflect differently in the different variants, the primary property for the `flat` and `outlined` buttons is `$foreground` and for the `contained` and `fab` buttons is `$background`. The syntax is as follows:
+Use the variant-specific classes such as `light-flat-button`, `light-contained-button`, `light-outlined-button`, and `light-fab-button`:
 
 ```html
-<div class="buttons-sample">
-  <div class="button-sample">
-    <button
-    igxButton="flat"
-    class="!light-flat-button ![--foreground:#7B9E89]">
-      Flat Button
-    </button>
-  </div>
-  <div class="button-sample">
-    <button
-    igxButton="contained"
-    class="!light-contained-button ![--background:#7B9E89]">
-      Contained Button
-    </button>
-  </div>
-  <div class="button-sample">
-    <button
-    igxButton="outlined"
-    class="!light-outlined-button ![--foreground:#7B9E89]">
-      Outlined Button
-    </button>
-  </div>
-  <div class="button-sample">
-    <button
-    igxButton="fab"
-    class="!light-fab-button ![--background:#7B9E89]">
-      Fab Button
-    </button>
-  </div>
-</div>
+<button igxButton="contained" class="!light-contained-button ![--background:#7B9E89]">
+    Contained Button
+</button>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+The exclamation mark (`!`) ensures that the utility class takes precedence over the Button's default theme.
 
-At the end your buttons should look like this:
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 
-<div class="sample-container loading" style="height:100px">
-    <iframe id="buttons-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/data-entries/buttons-tailwind-style' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
-
-### Custom sizing
-
-You can change the button height either by using the `--size` variable, targeting the `button` directly:
-
-```scss
-button {
-  --size: 50px;
-}
+@Component({
+    selector: 'app-button-tailwind-styling',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./button-tailwind-styling.component.scss'],
+    templateUrl: './button-tailwind-styling.component.html',
+    imports: [IgxButtonDirective, IgxIconComponent]
+})
+export class ButtonTailwindStylingComponent { }
 ```
-
-Or you can use the universal `--ig-button-size` variable to target all instances:
-
 ```html
-<div class="my-app">
-  <button igxButton="contained"></button>
+<div class="button-grid flex flex-col items-center justify-center h-full gap-6 p-4">
+  <div class="button-row grid grid-cols-4 items-center justify-items-center gap-12">
+    <button igxButton="contained" class="confirm-button">Confirm</button>
+    <button igxButton="outlined" class="send-button">
+      <igx-icon family="material">send</igx-icon>
+      Send
+    </button>
+    <button igxButton="flat" class="cancel-button">Cancel</button>
+    <button igxButton="fab" class="add-button">
+      Add
+      <igx-icon family="material">add</igx-icon>
+    </button>
+  </div>
 </div>
 ```
-
 ```scss
-.my-app {
-  --ig-button-size: 50px;
-}
+@use "layout.scss";
+
+.confirm-button { --hover-background: #3730a3; --hover-foreground: #fff; }
+.send-button { --hover-background: #db2777; --hover-border-color: #be185d; --hover-foreground: #fff; --icon-color-hover: #fff; }
+.cancel-button { --hover-background: #fef3c7; --hover-foreground: #78350f; }
+.add-button { --hover-background: #0f766e; --hover-foreground: #fff; --icon-color-hover: #fff; }
 ```
 
-You can also use one of the predefined sizes, assigning it to the `--ig-size` variable. The available values for `--ig-size` are `--ig-size-small`, `--ig-size-medium`, and `--ig-size-large`:
+## Accessibility
 
-```scss
-button {
-  --ig-size: var(--ig-size-large);
-}
-```
+The Angular Button is an interactive control for actions and, when `href` is set, navigation.
+Use the native button behavior for commands and preserve the link behavior for navigation.
 
-Learn more about it in the [Size](display-density.md) article.
+### Keyboard Interaction
 
-<div class="divider--half"></div>
+The Button uses the keyboard behavior of its rendered native control. A disabled Button is not
+interactive, and a Button with `href` is rendered as a link instead of a command button.
+
+| Key | Action |
+| -- | -- |
+| Tab / Shift+Tab | Moves focus to or away from the Button when it is keyboard-focusable. |
+| Enter / Space | Activates a focused command Button. Enter activates a Button used as a link. |
+
+### Screen Readers / ARIA
+
+The Button renders a native `button` for command actions and an `a` element when `href` is set.
+The native element supplies the appropriate role and keyboard semantics.
+
+- The Button uses the native `button` or `a` element, so assistive technology receives the
+    corresponding native role and keyboard semantics.
+- Provide an `aria-label` or another accessible naming mechanism for an icon-only Button.
+- A disabled Button is not keyboard interactive.
+- Click event handlers perform application actions; add an accessible name and state separately
+    when the action is not conveyed by the visible content or native attributes.
+
+### Accessibility Compliance
+
+This topic does not make a product-level WCAG, Section 508, or EN 301 549 conformance claim. Verify the rendered Button and its surrounding application against the accessibility requirements that apply to the target project.
+
+| Criterion | How the component supports the requirement |
+| -- | -- |
+| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard) | The native command button supports keyboard activation, and a Button with `href` uses native link activation. |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value) | The rendered native element supplies the role and state semantics. The visible Button content supplies the accessible name when it is meaningful. |
+| [2.4.4 Link Purpose](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context) | When `href` is set, the Button becomes a navigation link; provide a name that identifies its destination or purpose. |
+
+Your responsibilities:
+
+- Give every Button a meaningful accessible name, especially icon-only Buttons.
+- Use a command Button for actions and `href` for navigation; do not emulate one with the other.
+- Do not rely on color, hover, or focus styling alone to communicate the action or state.
+- Preserve sufficient contrast and a visible focus indicator when customizing the Button theme.
+
+## Troubleshooting
+
+Use this section to check boundaries and common decisions before treating Button as a command, navigation link, or form control.
+
+### Why does the Button behave like a link?
+
+When `href` is set, the Button is used for navigation rather than for a command action. Remove `href` when the control should trigger application logic instead of navigating to a URL.
+
+### Why is the Button not keyboard-focusable?
+
+Check whether the Button is disabled or whether the surrounding application changes its focus behavior. Use a focusable Button for actions that must be available through keyboard navigation.
+
+### Known Limitations
+
+The Button has the following platform-independent boundaries:
+
+- Use a text label or another accessible naming mechanism for every action; an unlabeled icon-only Button does not communicate its purpose by itself.
+- Setting `href` changes the Button from an action control to a navigation control. Use [Icon Button](./icon-button.md) for icon-only actions and verify its accessible name separately.
+- The Button's visual appearance does not determine whether the surrounding application action is available or valid; application logic must provide that state and feedback.
 
 ## API References
 
-<div class="divider--half"></div>
+The Angular Button API reference lists the complete verified API surface for the target platform.
 
-- [IgxButtonDirective](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
-- [IgxButton Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxRippleDirective](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
-- [IgxIconButtonDirective](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective)
-- [IgxButtonGroupComponent](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent)
+[`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
+
+## Dependencies
+
+The Angular Button requires the corresponding Angular package and theme stylesheet. The sizing example also uses the [`IgxRadio`](mcp:get_api_reference?platform=angular&component=IgxRadioComponent) and [`IgxRadioGroup`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective) components.
 
 ## Additional Resources
 
-<div class="divider--half"></div>
-
-Our community is active and always welcoming to new ideas.
+The following resources provide additional Angular Button guidance and project support.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+
+## Related Components
+
+The Angular Button is commonly used with related components when an action needs a specialized presentation.
+
+- [Icon Button](./icon-button.md) is intended for icon-only actions.
+
+## FAQ
+
+    **Q: Which component should I use for an icon-only action?**
+
+        Use the [Icon Button](./icon-button.md) component and provide an accessible name for the action.
+    
+    **Q: How do I disable a Button?**
+
+        Set the verified `disabled` property to make the Button unavailable and prevent it from being activated.
+    
+    **Q: How do I change the Button size?**
+
+        Use the platform's supported sizing options or the `--ig-size` CSS variable to customize the Button density.
+    
+

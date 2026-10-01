@@ -1,16 +1,15 @@
 ---
 title:  Row actions in Blazor Grid - Infragistics
-_description: The IgbGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-actions
+description: The IgbGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-actions"
+llms:
+  description: "The Ignite UI for Blazor Row Actions feature in Blazor Grid enables developers to use an ActionStrip and utilize CRUD for row/cell components and row pinning."
+_componentKey: Grid
 _tocName: Row Actions
 _premium: true
 ---
-
 # Row Actions in Blazor Grid
 
 The Ignite UI for Blazor Row Actions feature in Blazor Grid enables developers to use an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) – editing and pinning.
@@ -19,7 +18,7 @@ The Ignite UI for Blazor Row Actions feature in Blazor Grid enables developers t
 
 The predefined actions UI components are:
 
-- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) - includes functionality and UI specifically designed for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowEditable) option and row deletion of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
+- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) - includes functionality and UI specifically designed for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`IgbGrid.rowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowEditable) option and row deletion of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 - [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions) - includes functionality and UI specifically designed for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
@@ -39,14 +38,12 @@ They are added inside the [`IgbGrid`](mcp:get_api_reference?platform=blazor&comp
 </IgbGrid>
 ```
 
-> [!Note]
-> When `ActionStripComponent` is a child component of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), hovering a row will automatically show the UI.
+**Note:** 
+When `IgbActionStripComponent` is a child component of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <div class="grid__wrapper">
@@ -62,8 +59,6 @@ These components expose templates giving flexibility for customization. For inst
     </IgbGrid>
 </div>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -216,11 +211,6 @@ public class NwindData
 ```
 
 ## API References
-
-- [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions)
-- [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions)
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
-- [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions)
+[`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions)

@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Theming | Ignite UI for Angular | MIT license
-_description: Styling the Grid Lite in Ignite UI for Angular happens easily and quickly. See demos and examples! Try our open-source components and build your next app.
-_keywords: styling, theming, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Styling the Grid Lite in Ignite UI for Angular happens easily and quickly. See demos and examples! Try our open-source components and build your next app.
+keywords: styling, theming, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and Indigo."
 _tocName: Styling & Theming
 ---
-
 # Styles and Themes
 
 The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and Indigo. The grid and its UI components have the themes baked in, but the component requires a global stylesheet for palettes, typography and other global configurations to work.
@@ -19,7 +20,7 @@ Depending on your project type, setup and build configuration the method of how 
 As a rule of thumb, you can always copy the `themes` folder to your assets directory and link the theme from there in your index.html.
 
 ```html
-<link rel="stylesheet" href="./assets/themes/light/bootstrap.css"
+<link rel="stylesheet" href="./assets/themes/light/bootstrap.css">
 ```
 
 | Theme     | Variant | Path                                                           |
@@ -32,16 +33,6 @@ As a rule of thumb, you can always copy the `themes` folder to your assets direc
 | Fluent    | Dark    | node_modules/igniteui-webcomponents/themes/dark/fluent.css     |
 | Indigo    | Light   | node_modules/igniteui-webcomponents/themes/light/indigo.css    |
 | Indigo    | Dark    | node_modules/igniteui-webcomponents/themes/dark/indigo.css     |
-
-<!--
-In the sample below, you can preview all the default base themes.
-
-<code-view style="height:510px"
-           data-demos-base-url="{environment:demosBaseUrl}"
-           iframe-src="{environment:demosBaseUrl}/grid-lite/styling-config-themes/" alt="Angular Grid Lite Styling Config Themes">
-</code-view>
-
--->
 
 ## Creating Custom Themes
 
@@ -191,17 +182,16 @@ $my_dark_palette: palette(
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Filtering](/grid-lite/filtering)
+- [Sorting](/grid-lite/sorting)
 
 Our community is active and always welcoming to new ideas.
 

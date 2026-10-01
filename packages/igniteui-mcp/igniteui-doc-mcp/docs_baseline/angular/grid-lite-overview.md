@@ -1,13 +1,14 @@
 ---
 title: Free Angular Data Grid (Open Source) - Ignite UI Grid Lite | MIT license
-_description: Create apps with our open-source Angular Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
-_keywords: overview, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Create apps with our open-source Angular Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
+keywords: overview, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Angular Grid Lite is a lightweight, high-performance Angular data grid that’s free to use, open-source, and built for modern Angular applications."
 _tocName: Grid Lite
 ---
-
 # Free & Open-Source Angular Data Grid (Grid Lite)
 
 The Ignite UI for Angular Grid Lite is a lightweight, high-performance Angular data grid that’s free to use, open-source, and built for modern Angular applications.
@@ -16,7 +17,7 @@ This free Angular data grid is open-source JavaScript data grid built as a Web C
 
 ## What You Get with our Free Angular Data Grid
 
-Our free, open-source Angular Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](../themes.md).
+Our free, open-source Angular Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](/themes).
 
 Angular <a href="https://custom-elements-everywhere.com/#angular" target="_blank">supports</a> custom elements, so you can use Grid Lite with ease.
 
@@ -238,7 +239,7 @@ igc-rating {
 ```
 
 ## Installation and Setup
-To use Grid Lite in your application you can import it directly from `igniteui-angular` through this entry point `igniteui-angular/grids/lite`. But you also need to install the `igniteui-grid-lite` package that powers the UI. IgxGridLiteComponent provides Angular bindings (events, templates, DI, change detection, pipes), while the visual grid lite UI is rendered by `igniteui-grid-lite`. Installing both ensures the grid lite behaves natively in Angular while leveraging the full `igniteui-grid-lite` UI.
+To use Grid Lite in your application you can import it directly from `igniteui-angular` through this entry point `igniteui-angular/grids/lite`. But you also need to install the `igniteui-grid-lite` package that powers the UI. [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent) provides Angular bindings (events, templates, DI, change detection, pipes), while the visual grid lite UI is rendered by `igniteui-grid-lite`. Installing both ensures the grid lite behaves natively in Angular while leveraging the full `igniteui-grid-lite` UI.
 
 ```shell
 npm install igniteui-grid-lite
@@ -260,9 +261,10 @@ import { IgxGridLiteComponent, IgxGridLiteColumnComponent } from 'igniteui-angul
       <igx-grid-lite [data]="products">
         <igx-grid-lite-column field="id" header="ID" dataType="number"></igx-grid-lite-column>
         <igx-grid-lite-column field="name" header="Name"></igx-grid-lite-column>
-        <!-- Additional columns -->
+        {/* Additional columns */}
       </igx-grid-lite>
-    </div>
+    
+</div>
   `
 })
 export class AppComponent {

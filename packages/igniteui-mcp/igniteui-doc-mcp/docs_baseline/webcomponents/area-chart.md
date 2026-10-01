@@ -1,21 +1,22 @@
 ---
-title: Web Components Area Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Area Chart
-_keywords: Web Components Charts, Area Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "CategoryChartType"]
+title: "Web Components Area Chart | Data Visualization | Infragistics"
+description: Infragistics' Web Components Area Chart
+keywords: "Web Components Charts, Area Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in."
 _tocName: Area Chart
 _premium: true
 ---
-
 # Web Components Area Chart
 
-The Ignite UI for Web Components Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
+The Ignite UI for Web Components Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
 
 ## Web Components Area Chart Example
 
-You can create Web Components Category Area Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to `ItemsSource` property and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Area** enum, as shown in the example below.
+You can create Web Components Category Area Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Area** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -49,8 +50,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Area Chart Recommendations
 
@@ -86,7 +85,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## Web Components Area Chart with Single Series
 
-Web Components Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Area`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Area) value, as shown in the example below.
+Web Components Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Area`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Area) value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -120,12 +119,10 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `ItemsSource` property of the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property of the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -159,12 +156,10 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Area Chart Styling
 
-Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
+Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -198,16 +193,14 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Advanced Types of Area Charts
 
-The following sections explain more advanced types of Web Components Area Charts that can be created using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
+The following sections explain more advanced types of Web Components Area Charts that can be created using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
 
 ## Web Components Step Area Chart
 
-The Web Components Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea) value, as shown in the example below.
+The Web Components Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea) value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -242,13 +235,11 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The following sections explain more advanced types of Web Components Area Charts that can be created using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
+The following sections explain more advanced types of Web Components Area Charts that can be created using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
 
 ## Web Components Range Area Chart
 
-The Web Components Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRangeAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeAreaSeriesComponent), as shown in the example below.
+The Web Components Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRangeAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class TemperatureRangeDataItem {
@@ -284,11 +275,9 @@ export class TemperatureRangeData extends Array<TemperatureRangeDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Stacked Area Chart
 
-The Web Components Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStackedAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent), as shown in the example below.
+The Web Components Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStackedAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -325,12 +314,10 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Stacked 100% Area Chart
 
-The Web Components Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent), as shown in the example below.
+The Web Components Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStacked100AreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -367,12 +354,10 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Stacked Spline Area Chart
 
-The Web Components Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent), as shown in the example below.
+The Web Components Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStackedSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -409,12 +394,10 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Stacked 100% Spline Area Chart
 
-The Web Components Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent), as shown in the example below.
+The Web Components Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcStacked100SplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -452,11 +435,9 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Radial Area Chart
 
-The Web Components Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent), as shown in the example below.
+The Web Components Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcRadialAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -490,11 +471,9 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Polar Area Chart
 
-The Web Components Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent), as shown in the example below.
+The Web Components Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcPolarAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class BoatSailingDataItem {
@@ -527,12 +506,10 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Polar Spline Area Chart
 
-The Web Components Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcPolarSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent), as shown in the example below.
+The Web Components Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to [`IgcPolarSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class BoatSailingDataItem {
@@ -565,8 +542,6 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Additional Resources
 
@@ -585,13 +560,26 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) | [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`Area`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Area)  |
-| Step Area                | [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) | [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea)  |
-| Range Area               | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcRangeAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeAreaSeriesComponent)  |
-| Radial Area              | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcRadialAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent)  |
-| Polar Area               | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent)  |
-| Polar Spline Area        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcPolarSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent)  |
-| Stacked Area             | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStackedAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent)  |
-| Stacked Spline Area      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent)  |
-| Stacked 100% Area        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent)  |
-| Stacked 100% Spline Area | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent)  |
+| Area                     | [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`Area`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Area)  |
+| Step Area                | [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea)  |
+| Range Area               | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcRangeAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeAreaSeriesComponent)  |
+| Radial Area              | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcRadialAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent)  |
+| Polar Area               | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcPolarAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent)  |
+| Polar Spline Area        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcPolarSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent)  |
+| Stacked Area             | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStackedAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent)  |
+| Stacked Spline Area      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStackedSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent)  |
+| Stacked 100% Area        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStacked100AreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent)  |
+| Stacked 100% Spline Area | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)  | [`IgcStacked100SplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent)  |
+
+## API References
+
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcRangeAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeAreaSeriesComponent)<br />
+[`IgcRadialAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialAreaSeriesComponent)<br />
+[`IgcPolarAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent)<br />
+[`IgcPolarSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent)<br />
+[`IgcStackedAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent)<br />
+[`IgcStackedSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent)<br />
+[`IgcStacked100AreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent)<br />
+[`IgcStacked100SplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent)<br />

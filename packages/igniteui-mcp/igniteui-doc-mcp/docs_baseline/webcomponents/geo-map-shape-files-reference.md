@@ -1,13 +1,14 @@
 ---
-title: Web Components Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics
-_description: Learn about shape files format to use with Infragistics' Web Components map. Check out Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, shape files, Ignite UI for Web Components, Infragistics, shape editing
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeriesBase", "Series"]
+title: "Web Components Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics"
+description: Learn about shape files format to use with Infragistics' Web Components map. Check out Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, shape files, Ignite UI for Web Components, Infragistics, shape editing"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeriesBase", "Series"]
+llms:
+  description: "Before plotting geo-spatial data in the control, one should get familiar with the following resources which provide general information about maps and geo-spatial data."
 _tocName: Shape Files Reference
 _premium: true
 ---
-
 # Web Components Shape Files Reference
 
 ## Purpose
@@ -36,7 +37,7 @@ Before plotting geo-spatial data in the control, one should get familiar with th
 
 ## Shape Files Format
 
-The Web Components [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
+The Web Components `IgcGeographicMap` control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
 
 The following table provides basic information and purpose for each type of shape files.
 
@@ -70,7 +71,7 @@ The following list provides resource tools for editing shape files.
 
 ## Shape Files Data Sources
 
-The following list provides resources for obtaining shape files. Also, samples for the [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) control are good source of shape files. These shape files are included in the installer for the Samples Browser.
+The following list provides resources for obtaining shape files. Also, samples for the `IgcGeographicMap` control are good source of shape files. These shape files are included in the installer for the Samples Browser.
 
 - [ESRI - World Map Data](http://www.esri.com/data/download/basemap/index.html)
 - [ESRI - Census 2010 Tiger/Line® - Shape Files](http://www.census.gov/geo/www/tiger/tgrshp2010/tgrshp2010.html)
@@ -90,13 +91,10 @@ The following list provides resources for obtaining shape files. Also, samples f
 
 The following topics provide additional information related to this topic.
 
-- [Binding Shape Files](geo-map-binding-shp-file.md)
+- [Binding Shape Files](./geo-map-binding-shp-file.md)
 
 ## API References
-
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriesbasecomponent.html#shapeMemberPath)
-- [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html)
+`IgcGeographicMap`
+`IgcGeographicPolylineSeries`
+`IgcGeographicShapeSeries`
+`IgcShapefileRecord`

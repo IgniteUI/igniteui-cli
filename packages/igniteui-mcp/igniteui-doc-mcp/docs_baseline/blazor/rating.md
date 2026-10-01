@@ -1,12 +1,13 @@
 ---
-title: Blazor Rating
-_description: With Ignite UI for Blazor Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Rating components, Blazor Rating controls
-_license: MIT
+title: "Blazor Rating"
+description: With Ignite UI for Blazor Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Rating components, Blazor Rating controls"
+license: MIT
 mentionedTypes: ["Rating"]
+llms:
+  description: "The Ignite UI for Blazor Rating component allows users to view and provide feedback."
 _tocName: Rating
 ---
-
 # Blazor Rating Overview
 
 The Ignite UI for Blazor Rating component allows users to view and provide feedback.
@@ -23,13 +24,13 @@ The Ignite UI for Blazor Rating component allows users to view and provide feedb
 
 Before using the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbRatingModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -49,11 +50,11 @@ The [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) com
 
 ```razor
 <IgbRating>
-  <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>💙</span> <span slot="empty">💙</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>💙</span> <span slot="empty">💙</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>💙</span> <span slot="empty">💙</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>💙</span> <span slot="empty">💙</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>💙</span> <span slot="empty">💙</span> </IgbRatingSymbol>
 </IgbRating>
 ```
 
@@ -110,11 +111,11 @@ The Ignite UI for Blazor Rating component has a single selection mode that allow
 
 ```razor
 <IgbRating>
-  <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
-  <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>😣</span> <span slot="empty">😣</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>😣</span> <span slot="empty">😣</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>😣</span> <span slot="empty">😣</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>😣</span> <span slot="empty">😣</span> </IgbRatingSymbol>
+  <IgbRatingSymbol> <span>😣</span> <span slot="empty">😣</span> </IgbRatingSymbol>
 </IgbRating>
 ```
 
@@ -153,7 +154,7 @@ The Ignite UI for Blazor Rating component has a single selection mode that allow
 
 ## Empty & Selected
 
-The Ignite UI for Blazor Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
+The Ignite UI for Blazor Rating component allows users to use different icons or elements for the 'selected' and 'empty' states of each rating symbol. It is mandatory to provide two icons for each symbol, even if they are the same. One is used for the 'selected' state, which is defined by not specifying any slot, and the other is used for the 'empty' state, which you can define using the `empty` slot. For instance:
 
 ```razor
 <IgbRatingSymbol>
@@ -207,19 +208,35 @@ The Ignite UI for Blazor Rating component allows users to use different icons/el
 }
 ```
 
+As shown above, the best practice is to use icons for the rating symbols. We recommend using an [`igc-icon`](../layouts/icon.md) component for the 'empty' and 'selected' icons. However, if you prefer to use symbols or emojis instead of icons, we recommend using a `<span>` element for them, like so:
+
+```razor
+<IgbRating>
+  <IgbRatingSymbol>
+    <span>😣</span>
+    <span slot="empty">😣</span>
+  </IgbRatingSymbol>
+  <IgbRatingSymbol>
+    <span>😔</span>
+    <span slot="empty">😔</span>
+  </IgbRatingSymbol>
+  ...
+</IgbRating>
+```
+
 ## Configuration
 
 ### Single
 
-Turns on the [`Single`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`Single`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Value) attribute sets the current value of the component.
+The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=value) attribute sets the current value of the component.
 
 ### Label
 
-The [`Label`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Label) attribute allows setting the label value of the rating component.
+The [`Label`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -227,33 +244,33 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`Max`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Max) attribute sets the maximum allowed value of the rating component.
+The [`Max`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`Step`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`Step`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
-The [`HoverPreview`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=HoverPreview) attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
+The [`HoverPreview`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=hoverPreview) attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
 
 ### Read-Only
 
-The [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=ReadOnly) attribute allows the users to set the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=readOnly) attribute allows the users to set the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=StepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=StepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
@@ -307,10 +324,10 @@ igc-rating::part(empty) {
 @code { }
 ```
 
-## API Reference
+## API References
 
-- [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating)<br />
+[`IgbRatingSymbol`](mcp:get_api_reference?platform=blazor&component=IgbRatingSymbol)<br />
 
 ## Additional Resources
 

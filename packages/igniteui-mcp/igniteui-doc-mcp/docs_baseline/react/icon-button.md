@@ -1,15 +1,16 @@
 ---
-title: React Icon Button Component
-_description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for React Icon Button component.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Icon Button components, React Icon Button controls
-_license: MIT
+title: "React Icon Button Component"
+description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for React Icon Button component.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Icon Button components, React Icon Button controls"
+license: MIT
 mentionedTypes: ["IconButton", "ButtonBase", "Button", "Icon"]
+llms:
+  description: "The Ignite UI for React Icon Button component allows developers to use registered icons as buttons in their application."
 _tocName: Icon Button
 ---
-
 # React Icon Button Overview
 
-The Ignite UI for React Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](button.md) component as well.
+The Ignite UI for React Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](./button.md) component as well.
 
 ## React Icon Button Example
 
@@ -82,7 +83,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconButtonSize/>);
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
@@ -109,7 +110,7 @@ The simplest way to start using the [`IgrIconButton`](mcp:get_api_reference?plat
 
 ### Variant
 
-Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the `variant` attribute of the icon button.
+Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the [`variant`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=variant) attribute of the icon button.
 
 ```css
 /* shared styles are loaded from: */
@@ -254,7 +255,7 @@ root.render(<IconButtonSize/>);
 
 ### Type
 
-The icon button component will change its internal structure from `<button>` to an `<a>` type element when the `href` attribute is set. In that case the icon button can be thought of as a regular link. Setting the `href` attribute will allow you to also set the `rel`, `target`, and `download` attributes of the icon button.
+The icon button component will change its internal structure from `<button>` to an `<a>` type element when the [`href`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=href) attribute is set. In that case the icon button can be thought of as a regular link. Setting the [`href`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=href) attribute will allow you to also set the [`rel`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=rel), [`target`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=target), and [`download`](mcp:get_api_reference?platform=react&component=IgrIconButton&member=download) attributes of the icon button.
 
 ```tsx
 <IgrIconButton name="thumb-up" collection="material" href="https://duckduckgo.com" target="_blank">
@@ -339,13 +340,9 @@ root.render(<IconButtonStyling/>);
 ```
 
 ## API References
-
-- [`IgrButtonBase`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html)
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+[`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

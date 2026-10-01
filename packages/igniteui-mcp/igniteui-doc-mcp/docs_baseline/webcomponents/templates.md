@@ -1,12 +1,13 @@
 ---
-title: Web Components ComboBox Component Templates – Ignite UI for Web Components
-_description: Ignite UI for Web Components ComboBox component templates
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components ComboBox Component Templates
-_license: MIT
+title: "Web Components ComboBox Component Templates – Ignite UI for Web Components"
+description: "Ignite UI for Web Components ComboBox component templates"
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components ComboBox Component Templates"
+license: MIT
 mentionedTypes: ["Combo"]
+llms:
+  description: "The Ignite UI for Web Components ComboBox component allows defining custom templates for different areas such as items, group headers, empty list, and icons."
 _tocName: Templates
 ---
-
 # Web Components ComboBox Templates
 
 The Ignite UI for Web Components ComboBox component allows defining custom templates for different areas such as items, group headers, empty list, and icons.
@@ -31,7 +32,7 @@ igc-combo::part(empty) {
 
 ### Item Template
 
-The [`itemTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
+The [`ItemTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
 
 ```ts
 import { ComboItemTemplate } from 'igniteui-webcomponents';
@@ -47,7 +48,7 @@ combo.itemTempate = itemTemplate;
 
 ### Group Header Template
 
-The [`groupHeaderTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
+The [`GroupHeaderTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
 
 ```ts
 import { ComboItemTemplate } from 'igniteui-webcomponents';
@@ -61,7 +62,7 @@ combo.groupHeaderTemplate = groupHeaderTemplate;
 
 ## Slots
 
-Other than custom templates, the Ignite UI for Web Components ComboBox component exposes several slots that allow users to pass custom content to different combo parts.
+Other than custom templates, the Ignite UI for Web Components ComboBox component exposes several slots that allow users to pass custom content to different parts of the component. For all ComboBox slots, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../../layouts/icon.md) component when adding icons. For the `header` and `footer` slots, you can also use more semantic elements such as `<header>` and `<footer>`.
 
 ### Header Slot
 
@@ -69,7 +70,7 @@ To render a custom header above the list of options pass content to the `header`
 
 ```html
 <igc-combo>
-  <div slot="header">Custom header content</div>
+  <span slot="header">Custom header content</span>
 </igc-combo>
 ```
 
@@ -79,7 +80,7 @@ To render a custom footer below the list of options pass content to the `footer`
 
 ```html
 <igc-combo>
-  <div slot="footer">Custom footer content</div>
+  <span slot="footer">Custom footer content</span>
 </igc-combo>
 ```
 
@@ -89,7 +90,7 @@ To render a custom content when the filtering operation returns no result, use t
 
 ```html
 <igc-combo>
-  <div slot="empty">¯\_(ツ)_/¯</div>
+  <span slot="empty">¯\_(ツ)_/¯</span>
 </igc-combo>
 ```
 
@@ -113,9 +114,9 @@ The clear icon can be changed via the `clear-icon` slot:
 </igc-combo>
 ```
 
-## API Reference
+## API References
 
-- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
+[`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
 
 ## Additional Resources
 

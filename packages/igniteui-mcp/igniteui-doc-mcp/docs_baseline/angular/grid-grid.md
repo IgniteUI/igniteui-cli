@@ -1,13 +1,14 @@
 ---
 title: Angular Data Grid | Build Fast Angular Tables | Infragistics
-_description: Create super fast, responsive Angular data grids and tables with Ignite UI for Angular. Supports  editing, filtering, data binding and many more. Try it now!
-_keywords: angular data grid, angular grid component, angular data grid component, angular table component, angular data table component, angular table, angular UI components, ignite ui for angular
-_license: commercial
+description: Create super fast, responsive Angular data grids and tables with Ignite UI for Angular. Supports  editing, filtering, data binding and many more. Try it now!
+keywords: angular data grid, angular grid component, angular data grid component, angular table component, angular data table component, angular table, angular UI components, ignite ui for angular
+license: commercial
+llms:
+  description: "The Angular Data Grid is a component for displaying data in a tabular format."
 _tocName: Data Grid
+_premium: true
 ---
-
-<style>
-.sample-content {
+<style dangerouslySetInnerHTML={{__html: `.sample-content {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -30,8 +31,7 @@ _tocName: Data Grid
 
 .tabbar-wrapper > p {
     padding-right: 20px
-}
-</style>
+}`}} />
 
 # Angular Data Grid Component Overview
 
@@ -45,12 +45,7 @@ _tocName: Data Grid
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <div class="tab-content">
-                <img class="b-lazy responsive-img"
-                    src="../../images/general/landing-grid-page.png"
-                    data-src="../../images/general/landing-grid-page.png"
-                    data-srcset="../../images/general/landing-grid-page.png 480w, ../../images/general/landing-grid-page.png 768w, ../../images/general/landing-grid-page.png 1100w"
-                    alt="Angular Data Grid"
-                    title="Angular Data Grid">
+                
                 </div>
         </div>
     </article>
@@ -58,9 +53,8 @@ _tocName: Data Grid
 
 ## Angular Data Grid Example
 
-Boston Marathon 2021 – In this angular grid example, you can see how users can do both basic and excel-style filtering, live-data sorting, as well as using of grid summaries and cell templating that includes our [Sparkline](../charts/types/sparkline-chart.md) component,
-[Circular Progress Indicator](../circular-progress.md) component, and [Icons](../icon.md). The demo also includes  custom paging and per page usage part of the [Angular Pagination](paging.md).
-
+Boston Marathon 2021 – In this angular grid example, you can see how users can do both basic and excel-style filtering, live-data sorting, as well as using of grid summaries and cell templating that includes our [Sparkline](/charts/types/sparkline-chart) component,
+[Circular Progress Indicator](/circular-progress) component, and [Icons](/icon). The demo also includes  custom paging and per page usage part of the [Angular Pagination](/grid/paging).
 
 ```typescript
 import { Component, HostListener, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit, DOCUMENT, inject, ChangeDetectorRef } from '@angular/core';
@@ -816,12 +810,7 @@ igx-avatar {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Ignite UI for Angular Data Grid
-
->[!NOTE]
->**This component can utilize the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) **optionally**. It can be imported in the root module of the application in order for touch interactions to work as expected.**.
 
 To get started with the Ignite UI for Angular Data Grid component, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
 
@@ -829,7 +818,7 @@ To get started with the Ignite UI for Angular Data Grid component, first you nee
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](../general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxGridModule` in your **app.module.ts** file.
 
@@ -880,16 +869,16 @@ Now that you have the Ignite UI for Angular Grid module or directives imported, 
 
 The **data** property binds the grid, in this case to local array of objects.
 
-The [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property tells the `igx-grid` to auto generate the grid's [`IgxColumnComponent`s](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Developers can also explicitly [define the columns](#angular-grid-column-configuration) and the mapping to the data source fields.
+The [`IgxGrid.autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property tells the `igx-grid` to auto generate the grid's [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Developers can also explicitly [define the columns](#angular-grid-column-configuration) and the mapping to the data source fields.
 
 ## Angular Bootstrap Grid Definition
 
 <p>Ignite UI for Angular includes a powerful bootstrap grid like flex-based layout system. Any modern application today is expected to follow a responsive web design approach, meaning it can gracefully adjust layout of HTML elements based on the device size, or from simply resizing the browser. An Angular bootstrap grid layout was the most used approach in the past, but a flex-based layout system like CSS grid has become more popular, as it works in any browser. The Ignite UI for Angular Layout Directive allows vertical and horizontal flow, including content / text wrapping, justification, and alignment. The Ignite UI for Angular grid supports a responsive layout using CSS, giving you the ultimate flexibility in how the grid behaves on resize. </p>
 
 ## Angular Grid Styling Configuration
->
-> [!NOTE]
-> The [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
+
+**Note:** 
+The [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
 In [**Angular**](https://angular.io/) most of the styles are prefixed implicitly thanks to the [Autoprefixer](https://www.npmjs.com/package/autoprefixer) plugin.
 
@@ -912,15 +901,15 @@ To facilitate your work, apply the comment in the `src/styles.scss` file.
 
 <p>Each operation for Angular grid editing includes Batch operations, meaning the API gives you the option to group edits into a single server call, or you can perform grid edit / update operations as they occur with grid interactions. Along with a great developer experience as an editable Angular grid with CRUD operations, the Angular grid includes Excel-like keyboard navigation. Common default grid navigation is included, plus the option to override any navigation option to meet the needs of your customers. An editable grid in Angular with a great navigation scheme is critical to any modern line of business application, with the Ignite UI grid we make it easy.</p>
 
-Following this topic you will learn more about [cell template](grid.md#cell-template) and [cell editing template](grid.md#cell-editing-template) and editing.
+Following this topic you will learn more about [cell template](/grid/grid#cell-template) and [cell editing template](/grid/grid#cell-editing-template) and editing.
 
 ## Angular Grid Column Configuration
 
-[`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) is used to define the grid's [`columns`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columns) collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
+[`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) is used to define the grid's [`IgxGrid.columns`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columns) collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`IgxGrid.autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```html
 <igx-grid #grid1 [data]="data | async" [autoGenerate]="false" (columnInit)="initColumns($event)"
@@ -937,9 +926,10 @@ Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=angular&component
 </igx-grid>
 ```
 
+
 Each of the columns of the grid can be templated separately. The column expects `ng-template` Angular grid module directives.
 
-It also expose [`additionalTemplateContext`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=additionalTemplateContext) input that can be used for custom properties and any type of data context that you want to pass to the column itself:
+It also expose [`IgxColumn.additionalTemplateContext`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=additionalTemplateContext) input that can be used for custom properties and any type of data context that you want to pass to the column itself:
 
 ```html
 <igx-column [additionalTemplateContext]="contextObject">
@@ -967,8 +957,9 @@ public contextObject = { firstProperty: 'testValue', secondProperty: 'testValue1
 ...
 ```
 
->[!NOTE]
->Whenever a header template is used along with grouping/moving functionality the _column header area_ becomes **draggable** and you cannot access the custom elements part of the header template until you mark them as **not draggable**. Example below.
+**Note:** 
+Whenever a header template is used along with grouping/moving functionality the _column header area_ becomes **draggable** and you cannot access the custom elements part of the header template until you mark them as **not draggable**. Example below.
+
 
 ```html
 <igx-column #col field="ProductName" header="Product Name"
@@ -981,8 +972,8 @@ public contextObject = { firstProperty: 'testValue', secondProperty: 'testValue1
 </igx-column>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 As you can see, we are adding **draggable** attribute set to _false_.
 
@@ -1000,7 +991,7 @@ As you can see, we are adding **draggable** attribute set to _false_.
 ...
 ```
 
-In the snippet above we "take" a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) instance itself as shown below:
+In the snippet above we "take" a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`IgxCellType`](mcp:get_api_reference?platform=angular&component=CellType) instance itself as shown below:
 
 ```html
 <igx-grid #grid [data]="data">
@@ -1016,22 +1007,22 @@ In the snippet above we "take" a reference to the implicitly provided cell value
             <input type="checkbox" [ngModel]="cell.value" (ngModelChange)="cell.update($event)" />
         </ng-template>
     </igx-column>
-<igx-grid>
+</igx-grid>
 ```
 
-When changing data through the **cell template** using `ngModel`, you need to call the appropriate API methods to make sure the value is correctly updated in the Angular grid's underlying data collection. In the snippet above, the `ngModelChange` call passes through the grid's [editing API](cell-editing.md#editing-through-api) and goes through the grid's editing pipeline, properly triggering [transactions](batch-editing.md)(if applicable) and handling of [summaries](summaries.md), [selection](selection.md), etc. However, this `ngModelChange` will fire every time the value of the cell changes, not just when the user is done editing, resulting in a lot more API calls.
+When changing data through the **cell template** using `ngModel`, you need to call the appropriate API methods to make sure the value is correctly updated in the Angular grid's underlying data collection. In the snippet above, the `ngModelChange` call passes through the grid's [editing API](/grid/cell-editing#editing-through-api) and goes through the grid's editing pipeline, properly triggering [transactions](/grid/batch-editing)(if applicable) and handling of [summaries](/grid/summaries), [selection](/grid/selection), etc. However, this `ngModelChange` will fire every time the value of the cell changes, not just when the user is done editing, resulting in a lot more API calls.
 
-> [!NOTE]
-> The grid exposes a default handling for number, string, date and boolean column types. For example, the column will display `check` or `close` icon, instead of true/false by default, for boolean column type.
+**Note:** 
+The grid exposes a default handling for number, string, date and boolean column types. For example, the column will display `check` or `close` icon, instead of true/false by default, for boolean column type.
 
 If the data in a cell is bound with `[(ngModel)]` and the value change is not handled, the new value will **not** be properly updated in the Angular grid's underlying data source. When dealing with cell editing with a custom template, it is strongly advised to use the cell's **cell editing template**.
 
-When properly implemented, the cell editing template also ensures that the cell's `editValue` will correctly pass through the grid [editing event cycle](editing.md#event-arguments-and-sequence).
+When properly implemented, the cell editing template also ensures that the cell's `editValue` will correctly pass through the grid [editing event cycle](/grid/editing#event-arguments-and-sequence).
 
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) property of the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) to `true`.
+to set the [`IgxColumn.editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) property of the [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) to `true`.
 
 ```html
 <igx-column dataType="number" editable="true" field="Price">
@@ -1044,11 +1035,11 @@ to set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColu
 </igx-column>
 ```
 
-Make sure to check the API for the [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) in order to get accustomed with the provided properties you can use in your templates.
+Make sure to check the API for the [`IgxCellType`](mcp:get_api_reference?platform=angular&component=CellType) in order to get accustomed with the provided properties you can use in your templates.
 
 ### Column Template API
 
-Each of the column templates can be changed programmatically at any point through the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
+Each of the column templates can be changed programmatically at any point through the [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
 
 ```html
 <igx-grid>
@@ -1056,12 +1047,12 @@ Each of the column templates can be changed programmatically at any point throug
 </igx-grid>
 
 <ng-template #normalView let-value>
-    <div class="user-details">{{ val }}</div>
+    <div class="user-details">{{ value }}</div>
     <user-details-component></user-details-component>
 </ng-template>
 
 <ng-template #smallView let-value>
-    <div class="user-details-small">{{ val }}</div>
+    <div class="user-details-small">{{ value }}</div>
 </ng-template>
 ```
 
@@ -1080,11 +1071,10 @@ const column = this.grid.getColumnByName("User");
 column.bodyTemplate = this.smallView;
 ```
 
-Column properties can also be set in code in the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event which is emitted when the columns are initialized in the grid.
+Column properties can also be set in code in the [`IgxGrid.columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event which is emitted when the columns are initialized in the grid.
 
 ```typescript
 public initColumns(column: IgxGridColumn) {
-    const column: IgxColumnComponent = column;
     if (column.field === 'ProductName') {
         column.sortable = true;
         column.editable = true;
@@ -1096,7 +1086,7 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 ### Custom Display Format
 
-All values for a date, numeric, currency and percent column are transformed through the Angular [`DatePipe`](https://angular.io/api/common/DatePipe), [`DecimalPipe`](https://angular.io/api/common/DecimalPipe), [`CurrencyPipe`](https://angular.io/api/common/CurrencyPipe) and [`PercentPipe`](https://angular.io/api/common/PercentPipe) accordingly. This does not modify the original value, just the value that is displayed in the column. So please keep in mind that all data operations and manipulations are done based on the values in your data source. By default, values will be displayed according to the grid [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) (if not specified, it fallbacks to the application locale, which defaults to `'en-US'`).
+All values for a date, numeric, currency and percent column are transformed through the Angular [`DatePipe`](https://angular.io/api/common/DatePipe), [`DecimalPipe`](https://angular.io/api/common/DecimalPipe), [`CurrencyPipe`](https://angular.io/api/common/CurrencyPipe) and [`PercentPipe`](https://angular.io/api/common/PercentPipe) accordingly. This does not modify the original value, just the value that is displayed in the column. So please keep in mind that all data operations and manipulations are done based on the values in your data source. By default, values will be displayed according to the grid [`IgxGrid.locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) (if not specified, it fallbacks to the application locale, which defaults to `'en-US'`).
 
 See [Setting up the locale of your app](https://angular.io/guide/i18n#setting-up-the-locale-of-your-app) for more details.
 
@@ -1106,7 +1096,7 @@ Also, there are optional parameters for formatting:
 - `timezone` - the timezone offset for dates. By default uses the end-user's local system timezone
 - `digitsInfo` - decimal representation objects. Default to `'1.0-3'`
 
-To allow customizing the display format by these parameters, the [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if `pipeArgs` is set. Example:
+To allow customizing the display format by these parameters, the [`IgxColumn.pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if `pipeArgs` is set. Example:
 
 ```typescript
 const pipeArgs: IColumnPipeArgs = {
@@ -1123,51 +1113,41 @@ const pipeArgs: IColumnPipeArgs = {
 
 The `OrderDate` column will respect only the `format` and `timezone` properties, while the `UnitPrice` will only respect the `digitsInfo`. For further details, please check the official Angular documentation at [Localizing your app](https://angular.io/guide/i18n).
 
-All available column data types could be found in the official [Column types topic](column-types.md#default-template).
+All available column data types could be found in the official [Column types topic](/grid/column-types#default-template).
 
 ## Angular Grid Data Structure
 
-The [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent) handles **flat data** and nested **POJOs(Plain old Java objects)**. The data structure specific for rendering is in the form:
+The [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) handles **flat data** and nested **POJOs(Plain old Java objects)**. The data structure specific for rendering is in the form:
 
 ```typescript
 const OBJECT_ARRAY = [{
         ObjectKey1: value1,
         ObjectKey2: value2,
-        .
-        .
-        .
+        // ...
         ObjectKeyN: valueN
     },
-    .
-    .
-    .
+    // ...
   }];
 
 const POJO = [{
         ObjectKey1: value1,
         ObjectKey2: value2,
-        .
-        .
-        .
+        // ...
         ObjectKeyN: {
           ObjectKeyN1: value1,
           ObjectKeyN2: value2,
-          .
-          .
-          .
+          // ...
           ObjectKeyNM: valueNM,
         }
     },
-    .
-    .
-    .
+    // ...
   }];
 
 ```
 
->[!WARNING]
->**The key values must not contain arrays**.
->If you use [autoGenerate](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) columns **the data keys must be identical.**
+**Warning:** 
+**The key values must not contain arrays**.
+If you use [`IgxGrid.autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) columns **the data keys must be identical.**
 
 ## Angular Grid Data Binding
 
@@ -1293,11 +1273,11 @@ and in the template of the component:
     </igx-grid>
 ```
 
-**Note**: The grid [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`IgxGrid.autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`IgxGrid.autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 
-The [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent) supports binding to complex objects (including nesting deeper than one level) through a "path" of properties in the data record.
+The [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) supports binding to complex objects (including nesting deeper than one level) through a "path" of properties in the data record.
 
 Take a look at the following data model:
 
@@ -1332,9 +1312,8 @@ the default functionality that you would expect from the grid.
 That is all sorting and filtering operations work out of the box without any additional
 configuration. Same goes for grouping and editing operations with or without transactions as well as the ability to template the cells of the bound column.
 
->[!WARNING]
->The grids **do not** support this kind of binding for `primary key`, `foreign key` and `child key` properties where applicable.
-
+**Warning:** 
+The grids **do not** support this kind of binding for `primary key`, `foreign key` and `child key` properties where applicable.
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -1386,8 +1365,6 @@ export class GridNestedDataBindAminoacidComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
-
 An alternative way to bind complex data, or to visualize composite data (from more than one column) in the **IgxGrid** is to use a custom body template for the column. Generally, one can:
     - use the `value` of the cell, that contains the nested data
     - use the `cell` object in the template, from which to access the `row.data`, therefore retrieve any value from it, i.e `cell.row.data[field]` and `cell.row.data[field][nestedField]`
@@ -1400,7 +1377,7 @@ and interpolate it those in the template.
         <div>
             <div>
                 {{ cell.value }}
-                {{ cell.row.data['name'] }}  
+                {{ cell.row.data['name'] }}
                 {{ cell.row.data['weight']['molecular'] }}
             </div>
         </div>
@@ -1485,7 +1462,6 @@ The custom template for the column, that will render the nested data:
 
 And the result from this configuration is:
 
-
 ```typescript
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import {EMPLOYEE_DATA} from '../../data/nested-employee-data';
@@ -1516,13 +1492,11 @@ export class GridNestedDataBindComponent implements OnInit{
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Working with Flat data
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](mcp:get_api_reference?platform=angular&component=IgxGridRow&member=data) property of the [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`IgxGridRow.data`](mcp:get_api_reference?platform=angular&component=IgxGridRow&member=data) property of the [`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow).
 
-Since the Angular grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The [`data`](mcp:get_api_reference?platform=angular&component=IgxGridRow&member=data) property provides you this opportunity.
+Since the Angular grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The [`IgxGridRow.data`](mcp:get_api_reference?platform=angular&component=IgxGridRow&member=data) property provides you this opportunity.
 
 Below is the data that we are going to use:
 
@@ -1592,7 +1566,6 @@ Keep in mind that with the above defined template you will not be able to make e
 ```
 
 And the result is:
-
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -1744,25 +1717,23 @@ export class GridCompositeDataComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Keyboard Navigation
 
 Grid's keyboard navigation provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 Check out these resources for more information:
 
-- [Grid Keyboard Navigation](../grid/keyboard-navigation.md)
-- [TreeGrid Keyboard Navigation](../treegrid/keyboard-navigation.md)
-- [Hierarchical Grid Keyboard Navigation](../hierarchicalgrid/keyboard-navigation.md)
+- [Grid Keyboard Navigation](/grid/keyboard-navigation)
+- [TreeGrid Keyboard Navigation](/treegrid/keyboard-navigation)
+- [Hierarchical Grid Keyboard Navigation](/hierarchicalgrid/keyboard-navigation)
 - [Blog post](https://www.infragistics.com/community/blogs/b/engineering/posts/grid-keyboard-navigation-accessibility) - Improving Usability, Accessibility and ARIA Compliance with Grid keyboard navigation
 
 ## State Persistence
 
-Achieving a state persistence framework is easier than ever by using the new built-in [`IgxGridState`](state-persistence.md) directive.
+Achieving a state persistence framework is easier than ever by using the new built-in [`IgxGridState`](/grid/state-persistence) directive.
 
 ## Sizing
 
-See the [Grid Sizing](sizing.md) topic.
+See the [Grid Sizing](/grid/sizing) topic.
 
 ## Performance (Experimental)
 
@@ -1774,10 +1745,11 @@ platformBrowserDynamic()
   .catch(err => console.error(err));
 ```
 
->[!NOTE]
-> This is still in experimental feature for the `IgxGridComponent`. This means that there might be some unexpected behaviors in the Grid. In case of encountering any such behavior, please contact us on our [Github](https://github.com/IgniteUI/igniteui-angular/discussions) page.
->[!NOTE]
-> Enabling it can affects other parts of an Angular application that the `IgxGridComponent` is not related to.
+**Note:** 
+This is still in experimental feature for the `IgxGridComponent`. This means that there might be some unexpected behaviors in the Grid. In case of encountering any such behavior, please contact us on our [Github](https://github.com/IgniteUI/igniteui-angular/discussions) page.
+
+**Note:** 
+Enabling it can affects other parts of an Angular application that the `IgxGridComponent` is not related to.
 
 ## Known Limitations
 
@@ -1785,63 +1757,120 @@ platformBrowserDynamic()
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Column widths set in `percentage` and `px`                                                                                                                                           | Currently we do not support mixing of column widths with `%` and `px`.                                                                                                                                                                                                                                    |
 | When trying to filter a column of type `number`                                                                                                                                      | If a value different than `number` is entered into the filtering input, `NaN` is returned due to an incorrect cast.                                                                                                                                                                                       |
-| Grid [`width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width) does not depend on the column widths                                                                 | The [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) of all columns does not determine the spanning of the grid itself. It is determined by the parent container dimensions or the defined grid's [`width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width). |
-| Grid nested in parent container                                                                                                                                                      | When grid's [`width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width) is not set and it is placed in a parent container with defined dimensions, the grid spans to this container.                                                                                                       |
+|Grid [`IgxGrid.width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width) does not depend on the column widths | The [`IgxColumn.width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) of all columns does not determine the spanning of the grid itself. It is determined by the parent container dimensions or the defined grid's [`IgxGrid.width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width).|
+|Grid nested in parent container | When grid's [`IgxGrid.width`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=width) is not set and it is placed in a parent container with defined dimensions, the grid spans to this container.|
 | Grid `OnPush` ChangeDetectionStrategy                                                                                                                                                | The grid operates with `ChangeDetectionStrategy.OnPush` so whenever some customization appears make sure that the grid is notified about the changes that happens.                                                                                                                                        |
 | Columns have a minimum allowed column width. Depending on the value of [`--ig-size`] CSS variable, they are as follows: <br/>"small": 56px <br/> "medium": 64px <br/> "large ": 80px | If width less than the minimum allowed is set it will not affect the rendered elements. They will render with the minimum allowed width for the corresponding [`--ig-size`]. This may lead to an unexpected behavior with horizontal virtualization and is therefore not supported.                       |
 | Row height is not affected by the height of cells that are not currently rendered in view.                                                                                           | Because of virtualization a column with a custom template (that changes the cell height) that is not in the view will not affect the row height. The row height will be affected only while the related column is scrolled in the view.                                                                   |
 
-> [!NOTE]
-> `igxGrid` uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for `igxGrid`. For more details see [igxForOf Known Issues](../for-of.md#known-limitations) section.
+**Note:** 
+`igxGrid` uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for `igxGrid`. For more details see [igxForOf Known Issues](/for-of#known-limitations) section.
 
-<div class="divider--half"></div>
+## Theming
+
+The easiest and recommended way to style the `igxGrid` is to use the `grid-theme` and provide just the three main colors: `background`, `foreground`, and `accent-color`.
+
+These are the core theme properties. When you set them, all grid parts and internal components derive their colors from those values, resulting in a consistent appearance throughout the entire grid. Nested components such as buttons, icons, inputs, dropdowns, checkboxes, scrollbars, chips, and other helper components also derive their styling tokens from the main `grid-theme` for a unified look.
+
+```scss
+$custom-grid: grid-theme(
+  $background: #292826,
+  $foreground: #eeece1,
+  $accent-color: #ffcd0f,
+);
+
+igx-grid {
+  @include tokens($custom-grid);
+}
+```
+
+There are also additional parameters in the `grid-theme` that you can use if you want more specific customizations.
+
+### Additional Themes
+
+If you want more control over nested components, the grid also provides additional themes. Use them when you want a specific nested component to have a different style from the rest of the grid theme.
+
+Available standalone themes include:
+
+- `excel-filtering-theme` for the Excel-style filtering component
+- `grid-toolbar-theme` for the grid toolbar component
+- `paginator-theme` for the paginator component
+- `column-actions-theme` for the column actions component
+- `query-builder-theme` for the advanced filtering dialog
+
+```scss
+$excel-filtering-theme: excel-filtering-theme(
+  $background: #3c6eda,
+  $foreground: #f5f5f5,
+  $accent-color: #8e11fb
+);
+
+$query-builder-theme: query-builder-theme(
+  $background: #f59906,
+  $foreground: #050505,
+  $accent-color: #443209
+);
+
+igx-grid-excel-style-filtering,
+.igx-excel-filter__secondary {
+  @include tokens($excel-filtering-theme);
+}
+
+igx-advanced-filtering-dialog {
+  @include tokens($query-builder-theme);
+}
+```
+
+By providing only the three main colors, all parts of the component are styled consistently. These themes also expose additional parameters if you need more detailed customization.
+
+### Nested Component Themes
+
+If you want to target only smaller nested components within the grid, such as buttons, icons, inputs, or chips, you can apply their standalone themes directly. Make sure your selector scope is specific enough so the provided theme affects only the intended element.
+
+Some of the component themes are:
+
+- `IgxIcon Theme`
+- `IgxInputGroup Theme`
+- `IgxChip Theme`
+- `IgxRipple Theme`
+- `IgxButton Theme`
+- `IgxOverlay Theme`
+- `IgxDropDown Theme`
+- `IgxCalendar Theme`
+- `IgxSnackBar Theme`
+- `IgxBadge Theme`
 
 ## API References
 
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
-- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-
-## Theming Dependencies
-
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxInputGroup Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-- [IgxChip Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme)
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxCalendar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
-- [IgxSnackBar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-snackbar-theme)
-- [IgxBadge Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 
 ## Tutorial video
 
 Learn more about creating an Angular data grid in our short tutorial video:
 
-> [!Video https://www.youtube.com/embed/Xv_fQVQ8fmM]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/Xv_fQVQ8fmM">
+</iframe>
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Grid Sizing](/grid/sizing)
+- [Virtualization and Performance](/grid/virtualization)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Summaries](/grid/summaries)
+- [Column Moving](/grid/column-moving)
+- [Column Pinning](/grid/column-pinning)
+- [Column Resizing](/grid/column-resizing)
+- [Selection](/grid/selection)
+- [Column Data Types](/grid/column-types#default-template)
+- [Build CRUD operations with igxGrid](/general/how-to/how-to-perform-crud)
+- [Ignite UI for Angular Skills](/ai/skills) — Agent Skills for grids, data operations, and theming
 
-- [Grid Sizing](sizing.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-- [Column Data Types](column-types.md#default-template)
-- [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)
-- [Ignite UI for Angular Skills](../ai/skills.md) — Agent Skills for grids, data operations, and theming
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

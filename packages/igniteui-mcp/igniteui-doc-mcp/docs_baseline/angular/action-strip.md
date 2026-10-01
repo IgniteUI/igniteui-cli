@@ -1,16 +1,18 @@
 ---
 title: Angular Action Strip Component – Ignite UI for Angular | Infragistics | MIT license 
-_description: The Action Strip represents a template area for one or more actions. The Action Strip requires to be inside a relative container, as it is going to overlay it.
-_keywords: Angular Action Strip component, Angular Action Strip directive, Angular Action Strip control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Angular UI Components
-_license: MIT
+description: The Action Strip represents a template area for one or more actions. The Action Strip requires to be inside a relative container, as it is going to overlay it.
+keywords: Angular Action Strip component, Angular Action Strip directive, Angular Action Strip control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Angular UI Components
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Action Strip component provides an overlay area containing one or more actions allowing additional UI and functionality to be shown on top of a specific target container upon user interaction e.g. hover."
 _tocName: Action Strip
 ---
-
 # Angular Action Strip Directive Overview
 
-<p class="highlight">
+<div class="highlight">
+
 The Ignite UI for Angular Action Strip component provides an overlay area containing one or more actions allowing additional UI and functionality to be shown on top of a specific target container upon user interaction e.g. hover. The container should be positioned relatively as the Action Strip attempts to overlay it and is itself positioned absolutely. Despite overlapped by an Action Strip, the main interactions and user access to the target container remain available.
-</p>
+</div>
 
 ## Angular Action Strip Example
 
@@ -137,7 +139,7 @@ $custom-strip: action-strip-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Action Strip
 
@@ -147,7 +149,7 @@ To get started with the Ignite UI for Angular Action Strip component, first you 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxActionStripModule` in your **app.module.ts** file.
 
@@ -196,8 +198,9 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
 export class HomeComponent {}
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Action Strip module or directives imported, you can start with a basic configuration of the `igx-action-strip` component.
 
@@ -219,7 +222,7 @@ By default, the Action Strip will not be visible, but this can be configured via
 
 ### Menu look and feel
 
-For scenarios where more than three action items will be shown, it is best to use [`IgxActionStripMenuItem`](mcp:get_api_reference?platform=angular&component=IgxActionStripMenuItemDirective) directive. Any item within the Action Strip marked with the `*igxActionStripMenuItem` structural directive will be shown in a dropdown, revealed upon toggling the more button i.e. the three dots representing the last action.
+For scenarios where more than three action items will be shown, it is best to use [`IgxActionStripMenuItemDirective`](mcp:get_api_reference?platform=angular&component=IgxActionStripMenuItemDirective) directive. Any item within the Action Strip marked with the `*igxActionStripMenuItem` structural directive will be shown in a dropdown, revealed upon toggling the more button i.e. the three dots representing the last action.
 
 ```html
 <div style="position:relative; width:100px; height:100px;">
@@ -366,16 +369,16 @@ The same Action Strip instance can be used in multiple places in the document as
 The Action Strip can change its parent container, which is possible by changing the [`context`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent&member=context).
 The best way to do so is via the [`show`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent&member=show) API method and passing the `context` as an argument. The `context` should be an instance of a component and should have an accessible `element` property of the `ElementRef` type.
 
-> [!NOTE]
-> The `show` API method uses [Angular Renderer2](https://angular.io/api/core/Renderer2) to append the Action Strip to that `element`.
+**Note:** 
+The `show` API method uses [Angular Renderer2](https://angular.io/api/core/Renderer2) to append the Action Strip to that `element`.
 
 ## Usage in Grids
 
 The Action Strip provides additional functionality and UI for the IgxGrid.
 This can be utilized via grid action components and we are providing two default ones:
 
-- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI related to grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the value of the `rowEditable` option of the grid and whether deleting rows is allowed.
-- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI related to grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI related to grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the value of the `rowEditable` option of the grid and whether deleting rows is allowed.
+- [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI related to grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
 ```html
 <igx-grid [data]="data" [rowEditable]="true" [primaryKey]="'ID'">
@@ -388,10 +391,11 @@ This can be utilized via grid action components and we are providing two default
 </igx-grid>
 ```
 
-> [!NOTE]
-> These components inherit [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
-> [!NOTE]
-> When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
+**Note:** 
+These components inherit [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
+
+**Note:** 
+When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -474,8 +478,8 @@ export class GridActionStripSampleComponent {
 }
 ```
 
-> [!NOTE]
-> More information about how to use ActionStrip in the grid component could be found in the [Grid Row Actions documentation](/components/grid/row-actions.html).
+**Note:** 
+More information about how to use ActionStrip in the grid component could be found in the [Grid Row Actions documentation](./grid/row-actions.md).
 
 ## Styling
 
@@ -586,31 +590,31 @@ $custom-strip: action-strip-theme(
 
 For more detailed information regarding the Action Strip API, refer to the following links:
 
-- [`IgxActionStripComponent API`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
+- [`IgxActionStrip`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
 
 The following built-in CSS styles helped us achieve this Action Strip layout:
 
-- [`IgxActionStripComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-action-strip-theme)
+- `IgxActionStripComponent Styles`
 
 Additional components and/or directives that can be used within the Action Strip:
 
 - [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
-- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
-- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
-- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
+- [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Theming Dependencies
 
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxRipple Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
+- `IgxButton Theme`
+- `IgxRipple Theme`
+- `IgxDropDown Theme`
+- `IgxIcon Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

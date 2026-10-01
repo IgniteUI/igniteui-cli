@@ -1,12 +1,13 @@
 ---
 title: Radio and Radio Group
-_description: With Ignite UI for Blazor Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Radio Button components, Blazor Radio Button controls, Blazor Radio Group component, Blazor Radio Group control
-_license: MIT
+description: With Ignite UI for Blazor Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Radio Button components, Blazor Radio Button controls, Blazor Radio Group component, Blazor Radio Group control"
+license: MIT
 mentionedTypes: ["Radio", "RadioGroup", "Form"]
+llms:
+  description: "The Ignite UI for Blazor Radio component allows the user to select a single option from an available set of options that are listed side by side."
 _tocName: Radio & Radio Group
 ---
-
 # Blazor Radio & Radio Group
 
 The Ignite UI for Blazor Radio component allows the user to select a single option from an available set of options that are listed side by side.
@@ -34,13 +35,11 @@ The Ignite UI for Blazor Radio component allows the user to select a single opti
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Usage
 
 Before using the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) and the [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup), you need to register them as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(
@@ -49,7 +48,7 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) and the [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) components. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) and the [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) components. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -66,8 +65,9 @@ The simplest way to start using the [`IgbRadio`](mcp:get_api_reference?platform=
 </IgbRadioGroup>
 ```
 
-> [!WARNING]
-> The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning: Warning**
+
+The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -79,7 +79,7 @@ To provide a meaningful label for the [`IgbRadio`](mcp:get_api_reference?platfor
 <IgbRadio>Apple</IgbRadio>
 ```
 
-You can specify if the label should be positioned before or after the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) button by setting the [`LabelPosition`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=labelPosition) attribute. Allowed values are `before` and `after`(default):
 
 ```razor
 <IgbRadio LabelPosition="@RadioLabelPosition.Before">Apple</IgbRadio>
@@ -113,7 +113,7 @@ The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) can a
 
 ### Checked
 
-You can use the `checked` attribute to toggle on the radio.
+You can use the [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=checked) attribute to toggle on the radio.
 
 ```razor
 <IgbRadioGroup>
@@ -147,7 +147,7 @@ You can use the `checked` attribute to toggle on the radio.
 
 ### Invalid
 
-You can use the `invalid` attribute to mark the radio as invalid.
+You can use the [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=invalid) attribute to mark the radio as invalid.
 
 ```razor
 <IgbRadio Invalid="true" />
@@ -168,7 +168,7 @@ You can use the `invalid` attribute to mark the radio as invalid.
 
 ### Disabled
 
-You can use the `disabled` attribute to disable the radio.
+You can use the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=disabled) attribute to disable the radio.
 
 ```razor
 <IgbRadioGroup>
@@ -202,7 +202,7 @@ You can use the `disabled` attribute to disable the radio.
 
 ### Group Alignment
 
-The [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
+The [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the [`alignment`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup&member=alignment) attribute. Allowed values are `vertical`(default) and `horizontal`.
 
 ```razor
 <IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
@@ -233,7 +233,7 @@ The [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGr
 
 ### Forms
 
-You can use the `name` and `value` attributes when using the radio with `Form`.
+You can use the [`Name`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=name) and [`Value`](mcp:get_api_reference?platform=blazor&component=IgbRadio&member=value) attributes when using the radio with `Form`.
 
 ```razor
 <IgbRadioGroup>
@@ -298,13 +298,10 @@ igc-radio::part(label) {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
-- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)<br />
+[`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)<br />
 
 ## Additional Resources
 

@@ -1,40 +1,37 @@
 ---
-title: Web Components Hierarchical Grid Editing Rows - Ignite UI for Web Components
-_description: Want to enable row editing in Web Components Hierarchical Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Web Components Hierarchical Grid rows editing component!
-_keywords: Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-editing
+title: "Web Components Hierarchical Grid Editing Rows - Ignite UI for Web Components"
+description: Want to enable row editing in Web Components Hierarchical Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Web Components Hierarchical Grid rows editing component!
+keywords: "Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-editing"
+llms:
+  description: "The Ignite UI for Web Components Row Editing feature in Web Components Hierarchical Grid allows editing data directly within the IgcHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Row Editing
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Row Editing
 
-The Ignite UI for Web Components Row Editing feature in Web Components Hierarchical Grid allows editing data directly within the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for Web Components Row Editing feature in Web Components Hierarchical Grid allows editing data directly within the `IgcHierarchicalGrid`. On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## Web Components Hierarchical Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the `IgcHierarchicalGrid`. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-> [!Note]
-> When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
+**Note:** 
+When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
 
-Define a [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) with bound data source and [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) set to true:
-
-<!-- ComponentStart: HierarchicalGrid -->
+Define a `IgcHierarchicalGrid` with bound data source and [`IgcHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) set to true:
 
 ```html
-<igc-hierarchical-grid auto-generate="false" name="hierarchicalGrid" id="hierarchicalGrid" id="hierarchicalGrid" primary-key="ID" row-editable="true">
+<igc-hierarchical-grid auto-generate="false" name="hierarchicalGrid" id="hierarchicalGrid" primary-key="ID" row-editable="true">
     <igc-column field="Artist" header="Artist" data-type="string"> </igc-column>
     <igc-column field="Photo" header="Photo" data-type="image" editable="false"> </igc-column>
     <igc-column field="Debut" header="Debut" data-type="number"> </igc-column>
@@ -70,16 +67,14 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+**Note:** 
+Setting primary key is mandatory for row editing operations.
 
-> [!Note]
-> Setting primary key is mandatory for row editing operations.
+**Note:** 
+Enabling editing for individual columns is not necessary. Using the [`IgcHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) property in the `IgcHierarchicalGrid`, all rows, with defined `Field` property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`IgcHierarchicalGrid.editable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=editable) input of that column to `false`.
 
-> [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) property in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), all rows, with defined [`field`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) input of that column to `false`.
-
-> [!Note]
-> The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+**Note:** 
+The `IgcHierarchicalGrid` utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -99,13 +94,13 @@ constructor() {
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), the cell will also stay in edit mode.
+- If row is in edit mode and `IgcHierarchicalGrid` is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When `IgcHierarchicalGrid` is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the `IgcHierarchicalGrid`, the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when `IgcHierarchicalGrid` is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -126,8 +121,6 @@ constructor() {
 ### Customizing Text
 
 Customizing the text of the row editing overlay is possible using via templating.
-
-The `RowChangesCount` property is exposed and it holds the count of the changed cells.
 
 ```ts
 public rowEditTextTemplate = (ctx: IgcGridRowEditTextTemplateContext) => {
@@ -151,7 +144,7 @@ public rowEditActionsTemplate = (ctx: IgcGridRowEditActionsTemplateContext) => {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -167,8 +160,6 @@ Then set the related CSS properties for that class:
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Demo
 
 ```css
@@ -183,28 +174,15 @@ Then set the related CSS properties for that class:
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgcHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- [`endEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=endEdit)
-- [`field`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=field)
-- [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable)
-- [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey)
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

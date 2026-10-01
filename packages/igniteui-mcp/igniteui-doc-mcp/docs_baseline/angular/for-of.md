@@ -1,17 +1,23 @@
 ---
 title: Angular Virtual For Directive - MIT license  
-_description: Ignite UI for Angular now exposes a virtual igxFor directive similar to ngFor, which virtualizes DOM object rendering by visualizing only the visible chunks of the data in the DOM.
-_keywords: Angular Virtual ForOf Directive, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Virtualization, Performance, Virtual directive, Angular Virtual For
-_license: MIT
+description: Ignite UI for Angular now exposes a virtual igxFor directive similar to ngFor, which virtualizes DOM object rendering by visualizing only the visible chunks of the data in the DOM.
+keywords: Angular Virtual ForOf Directive, Native Angular Components Suite, Angular UI Components, Native Angular Components Library, Virtualization, Performance, Virtual directive, Angular Virtual For
+license: MIT
+llms:
+  description: "The Ignite UI for Angular igxForOf directive is a deprecated alternative to ngForOf for templating large amounts of data; the Virtual Scroll component replaces it."
 _tocName: Virtual For Directive
 ---
-
 # Angular Virtual ForOf Directive Overview
 
-<p class="highlight">The Ignite UI for Angular igxForOf directive is an alternative to ngForOf for templating large amounts of data. It uses virtualization behind the scenes to optimize DOM rendering and memory consumption.</p>
+**Warning: Deprecated**
+
+The `igxForOf` directive is deprecated in favor of the [Virtual Scroll](./layouts/virtual-scroll.md) component. Existing lists keep working, but use the Virtual Scroll for new lists that virtualize a single axis: it measures items at runtime, so items can have different sizes, and it creates its own scroll container. To migrate an existing list, see [How do I replace an igxForOf list with the Virtual Scroll?](./layouts/virtual-scroll.md#how-do-i-replace-an-igxforof-list-with-the-virtual-scroll).
+
+<div class="highlight">
+The Ignite UI for Angular igxForOf directive is an alternative to ngForOf for templating large amounts of data. It uses virtualization behind the scenes to optimize DOM rendering and memory consumption.
+</div>
 
 ## Angular Virtual For Directive Example
-
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -155,7 +161,7 @@ igx-icon {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Getting Started with Ignite UI for Angular Virtual ForOf Directive
 
@@ -165,7 +171,7 @@ To get started with the Ignite UI for Angular [`igxFor`](mcp:get_api_reference?p
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxForOfModule` in your **app.module.ts** file.
 
@@ -240,10 +246,13 @@ Virtualization works similarly to Paging by slicing the data into smaller chucks
                      containerSize: '500px'; 
                      itemSize: '50px'">
             <div class="contact">
+
                 <span class="name">{{item.name}}</span>
-            </div>
+            
+</div>
         </igx-list-item>
-    </div>
+    
+</div>
 </igx-list>
 ```
 
@@ -260,13 +269,15 @@ _**Note:**_ It is strongly advised that the parent container of the [`igxForOf`]
                      containerSize: '880px'; 
                      itemSize: '220px'">
             <div class="contact">
+
                 <span class="name">{{item.name}}</span>
-            </div>
+            
+</div>
         </igx-list-item>
-    </div>
+    
+</div>
 </igx-list>
 ```
-
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -431,7 +442,7 @@ export class Person {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Horizontal and vertical virtualization
 
@@ -462,7 +473,7 @@ export class Person {
 
 The `igxFor` directive is used to virtualize data in both vertical and horizontal directions inside the `igxGrid`.
 
-Follow the [Grid Virtualization](grid/virtualization.md) topic for more detailed information and demos.
+Follow the [Grid Virtualization](/grid/virtualization) topic for more detailed information and demos.
 
 ### igxFor bound to remote service
 
@@ -477,7 +488,8 @@ The [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirect
         [igxForItemSize]='"50px"'
         [igxForRemote]='true'
         let-rowIndex="index" #virtDirRemote>
-        <div style='height:50px;'>{{item.ProductID}} : {{item.ProductName}}</div>
+        <div style='height:50px;'>{{item.ProductID}} : {{item.ProductName}}
+</div>
     </ng-template>
 </div>
 ```
@@ -505,7 +517,7 @@ public ngAfterViewInit() {
 }
 ```
 
-When requesting data you can take advantage of the [`IgxForOfState`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state) interface, which provides the [`startIndex`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.startindex) and [`chunkSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.chunkSize) properties. Note that initially the chunkSize will be 0, so you have to specify the size of the first loaded chunk (the best value is the initial [`igxForContainerSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxforcontainersize) divided by the [`igxForItemSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForItemSize)).
+When requesting data you can take advantage of the [`IgxForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState) interface, which provides the [`startIndex`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.startindex) and [`chunkSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.chunkSize) properties. Note that initially the chunkSize will be 0, so you have to specify the size of the first loaded chunk (the best value is the initial [`igxForContainerSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxforcontainersize) divided by the [`igxForItemSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForItemSize)).
 
 ```typescript
 public getData(data?: IForOfState, cb?: (any) => void): any {
@@ -571,14 +583,12 @@ The `igxFor` directive includes the following helper properties in its context: 
 | `scrollTo` method does not work correctly when the content size of the rendered templates changes post initialization | When the elements inside the template have a size, that changes runtime after initialization (for example as a result of content projection, remote request resolution etc.), then the `scrollTo` method will not be able to scroll to the correct index. The method will scroll to the position of the index before the runtime size change occurs, hence the location will not be correct after the size is changed later. A possible workaround is to use templates that do not change their size based on their content if the content is loaded later. |
 
 ## API References
-
-- [IgxForOfDirective](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxListComponent](mcp:get_api_reference?platform=angular&component=IgxListComponent)
-
+- [`IgxForOfDirective`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 * [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 * [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

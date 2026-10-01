@@ -1,17 +1,18 @@
 ---
-title: Web Components Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics
-_description: Use Infragistics' Web Components to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, shape files, Ignite UI for Web Components, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Web Components Map | Data Visualization Tools | Binding Multiple Data Shapes | Infragistics"
+description: Use Infragistics' Web Components to add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. View Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, shape files, Ignite UI for Web Components, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data."
 _tocName: Binding Multiple Shapes
 _premium: true
 ---
-
 # Web Components Binding and Overlaying Multiple Shape Files
 
-In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. For example, [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) for plotting geographic locations of ports, the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) for plotting routes between ports, and the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) for plotting shapes of countries.
+In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data. For example, `IgcGeographicSymbolSeries` for plotting geographic locations of ports, the `IgcGeographicPolylineSeries` for plotting routes between ports, and the `IgcGeographicShapeSeries` for plotting shapes of countries.
 
 ## Web Components Binding and Overlaying Multiple Shape Files Example
 
@@ -20,13 +21,11 @@ In the Ignite UI for Web Components map, you can add multiple geographic series 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
+This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the `IgcShapefileRecord` class. Refer to the [Binding Shape Files](./geo-map-binding-shp-file.md) topic for more information about `IgcShapefileRecord` object.
 
-This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) object.
-
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) – displays locations of major cities
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) – displays routes between major ports
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) – displays shapes of countries of the world
+- `IgcGeographicSymbolSeries` – displays locations of major cities
+- `IgcGeographicPolylineSeries` – displays routes between major ports
+- `IgcGeographicShapeSeries` – displays shapes of countries of the world
 
 You can use geographic series in above or other combinations to plot desired data.
 
@@ -82,7 +81,7 @@ Next, we need to create a map with a few Geographic Series that will later load 
 
 ## Loading Shapefiles
 
-Next, in constructor of your page, add a [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) for each shapefile that you want to display in the geographic map component.
+Next, in constructor of your page, add a `IgcShapefileRecord` for each shapefile that you want to display in the geographic map component.
 
 ```ts
 const sdsPolygons = new IgcShapeDataSource();
@@ -104,7 +103,7 @@ sdsLocations.dataBind();
 
 ## Processing Polygons
 
-Process shapes data loaded in [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) with of countries of the world and assign it to [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) object.
+Process shapes data loaded in `IgcShapefileRecord` with of countries of the world and assign it to `IgcGeographicShapeSeries` object.
 
 ```ts
 import { IgcGeographicShapeSeriesComponent } from 'igniteui-webcomponents-maps';
@@ -133,7 +132,7 @@ public onPolygonsLoaded(sds: IgcShapeDataSource, e: any) {
 
 ## Processing Polyline
 
-Process shapes data loaded in [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) with communication routes between major cities and assign it to [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) object.
+Process shapes data loaded in `IgcShapefileRecord` with communication routes between major cities and assign it to `IgcGeographicPolylineSeries` object.
 
 ```ts
 import { IgcGeographicPolylineSeriesComponent } from 'igniteui-webcomponents-maps';
@@ -166,7 +165,7 @@ public onPolylinesLoaded(sds: IgcShapeDataSource, e: any) {
 
 ## Processing Points
 
-Process shapes data loaded in [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) with locations of major cities and assign it to [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) object.
+Process shapes data loaded in `IgcShapefileRecord` with locations of major cities and assign it to `IgcGeographicSymbolSeries` object.
 
 ```ts
 import { IgcGeographicSymbolSeriesComponent } from 'igniteui-webcomponents-maps';
@@ -379,8 +378,7 @@ export class MapBindingMultipleShapes extends SampleBase {
 ```
 
 ## API References
-
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
-- [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html)
+`IgcGeographicPolylineSeries`
+`IgcGeographicShapeSeries`
+`IgcGeographicSymbolSeries`
+`IgcShapefileRecord`

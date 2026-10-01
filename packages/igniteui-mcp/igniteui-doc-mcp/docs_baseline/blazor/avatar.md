@@ -1,76 +1,126 @@
 ---
-title: Blazor Avatar | Layout Controls | Infragistics
-_description: Use Infragistics' Blazor avatar component to display an image, icon, or initials.
-_keywords: avatar, layout, Ignite UI for Blazor, Infragistics
-_license: MIT
-mentionedTypes: ["Avatar"]
+title: "Blazor Avatar Component | Layouts | Infragistics"
+description: "Use the Blazor Avatar component to represent users, entities, or objects with images, initials, icons, or custom content."
+keywords: "Blazor Avatar, avatar component, profile image, initials, Ignite UI for Blazor, Infragistics"
+last_updated: "2026-07-29"
+license: MIT
+mentionedTypes: ["Avatar", "Badge", "Icon"]
+relatedComponents: ["Badge"]
+llms:
+  description: "The Ignite UI for Blazor Avatar topic shows how to render user, entity, or object identity with images, initials, icons, custom content, shape, size, styling, and accessibility guidance."
 _tocName: Avatar
 ---
+# Avatar Component
 
-# Blazor Avatar
+The Ignite UI for Blazor Avatar represents a user, entity, or object with an image, initials, or custom content.
 
-The Ignite UI for Blazor Avatar helps to display initials, images, or icons in your application.
+Use the avatar to provide a compact visual identity in lists, cards, profile menus, and activity feeds.
 
-## Blazor Icon Avatar Example
-
-
-
-<div class="divider--half"></div>
-
-## Usage
-
-Before using the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar), you need to register it as follows:
+## Live Demo
 
 ```razor
-// in Program.cs file
+@using IgniteUI.Blazor.Controls
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule));
+
+<div class="sample avatar-overview-sample">
+    <IgbAvatar
+        class="profile-avatar"
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+        Alt="A profile photo of a man." />
+
+    <IgbAvatar
+        class="profile-avatar profile-status"
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-06.png"
+        Alt="A profile photo of a woman." />
+    <IgbBadge
+        class="status-badge"
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+
+    <span class="avatar-stack" aria-label="Project members">
+        <IgbAvatar
+            class="profile-avatar"
+            Shape="@AvatarShape.Circle"
+            Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-07.png"
+            Alt="A profile photo of an animated kid." />
+        <IgbAvatar
+            class="profile-avatar"
+            Shape="@AvatarShape.Circle"
+            Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-03.png"
+            Alt="A profile photo of a man." />
+        <IgbAvatar
+            class="profile-avatar"
+            Shape="@AvatarShape.Circle"
+            Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-08.png"
+            Alt="A profile photo of an abstract flat cat." />
+        <IgbAvatar
+            class="profile-avatar"
+            Shape="@AvatarShape.Circle"
+            Initials="+3"
+            Alt="Three additional project members." />
+    </span>
+</div>
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+## Anatomy
+
+The avatar is a single host element that applies image semantics and renders one of the supported content patterns.
+
+**Blazor Avatar anatomy anatomy:** The avatar anatomy labels the image, icon, and initials containers.
+
+<style>{`
+  .avatar-anatomy {
+    --igd-anatomy-padding: 64px 32px;
+  }
+
+  .avatar-anatomy .igd-anatomy__image {
+    max-width: 520px;
+  }
+`}</style>
+
+<span class="ig-typography__body-2" style="display: block; margin-bottom: 24px;"><strong>1. Image container:</strong> Displays image content type.<br />
+<strong>2. Icon container:</strong> Displays icon content type.<br />
+<strong>3. Initials container:</strong> Displays text content type.</span>
+
+```text
+igc-avatar[role="img"]           // host - exposes the avatar
+└─ div[part="base"]              // avatar wrapper
+   ├─ span[part="initials"]      // rendered when `initials` is set
+   ├─ slot                       // rendered when `initials` is not set
+   └─ img[part="image"]          // rendered while `src` is set and loads
+```
+
+## Getting Started
+
+Register the avatar module in `Program.cs` and add the theme stylesheet to your host page. If you have not set up Ignite UI for Blazor yet, complete the shared [Getting Started](../general-getting-started.md) topic first.
+
+```csharp
+builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule));
+```
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
+## Usage
 
-The [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) is as simple as:
+Render an avatar with an image source, initials, or custom content in the default slot.
 
-```razor
-<IgbAvatar />
-```
+### Variants
 
-The avatar has several attributes that allow rendering different content based on the context. The most basic way to display content in the boundaries of the avatar is to provide content between the opening and closing tags.
+Set only the content source you intend to show. The avatar renders [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=initials) when they are set, otherwise it renders default slot content, and it also renders an image element while [`Src`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=src) is set and loads successfully.
 
 ```razor
+<IgbAvatar Initials="AZ" />
+
+<IgbAvatar
+  Src="https://static.infragistics.com/xplatform/images/people/GUY01.png"
+  Alt="A photo of Ana Zane" />
+
 <IgbAvatar>
-  <IgbIcon Name="home" />
-</IgbAvatar>
-```
-
-### Initials
-
-If the [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
-
-```razor
-<!-- Initials("AZ") will be displayed instead of the icon. -->
-
-<IgbAvatar Initials="AZ">
-  <IgbIcon Name="home" />
-</IgbAvatar>
-```
-
-
-
-### Image
-
-The avatar can also display an image when the [`Src`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Src) attribute is assigned a valid URL to a static asset. In that case the [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Initials) value will be ignored and children elements will not be rendered.
-
-```razor
-<IgbAvatar Initials="AZ"
-           Src="https://static.infragistics.com/xplatform/images/people/GUY01.png"
-           Alt="A photo of a man.">
   <IgbIcon Name="home" />
 </IgbAvatar>
 ```
@@ -78,19 +128,78 @@ The avatar can also display an image when the [`Src`](mcp:get_api_reference?plat
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="avatar-variants-sample">
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+    <span>Image</span>
 
-<div class="container vertical">
-    <IgbAvatar Alt="A photo of a man." Src="https://dl.infragistics.com/x/img/people/men/01.png" />
+    <IgbAvatar Shape="@AvatarShape.Circle">
+        <IgbIcon @ref="MailIconRef" IconName="mail" Collection="material" />
+    </IgbAvatar>
+    <IgbBadge
+        Outlined="true"
+        Shape="@BadgeShape.Rounded"
+        Variant="@StyleVariant.Info">
+        2
+    </IgbBadge>
+    <span>Icon</span>
+
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Initials="AZ"
+        Alt="Avatar with AZ initials." />
+    <IgbBadge
+        Outlined="true"
+        Shape="@BadgeShape.Rounded"
+        Variant="@StyleVariant.Success">
+        <IgbIcon @ref="CheckIconRef" IconName="check" Collection="material" />
+    </IgbBadge>
+    <span>Initials</span>
 </div>
 
 @code {
+    private const string MailIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z\"/></svg>";
 
+    private const string CheckIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"m9 16.17-4.17-4.17-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z\"/></svg>";
+
+    public IgbIcon MailIconRef { get; set; }
+    public IgbIcon CheckIconRef { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (MailIconRef != null)
+            {
+                await MailIconRef.EnsureReady();
+                await MailIconRef.RegisterIconFromTextAsync("mail", MailIcon, "material");
+            }
+
+            if (CheckIconRef != null)
+            {
+                await CheckIconRef.EnsureReady();
+                await CheckIconRef.RegisterIconFromTextAsync("check", CheckIcon, "material");
+            }
+        }
+    }
 }
 ```
 
 ### Shape
 
-The avatar supports three shapes - `circle`, `rounded`, and `square`. The default shape of the avatar is `square` and it can be changed via the `shape` attribute.
+Set [`Shape`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=shape) to `square`, `rounded`, or `circle`.
+
+```razor
+<IgbAvatar Initials="AZ" Shape="@AvatarShape.Circle" />
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -162,7 +271,7 @@ The avatar supports three shapes - `circle`, `rounded`, and `square`. The defaul
 
 ### Size
 
-Apart from the shape, the size of the avatar can also be changed by utilizing the `--ig-size` CSS variable. The supported sizes are `small` (default), `medium`, and `large`. The following code snippet shows how to use a different component size:
+Set `--ig-size` to one of the shared size tokens when you need a preset avatar size.
 
 ```css
 igc-avatar {
@@ -206,25 +315,41 @@ igc-avatar {
 </div>
 ```
 
-### Styling
+### Do/Don't
 
-The [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) component exposes several CSS parts, giving you full control over its style:
+**When to use:** Use the avatar when a UI needs a small representation of a person, organization, object, or account, such as a profile image, initials, or an icon. Keep a consistent avatar strategy within the same UI region so repeated identities are easy to scan.
 
-|Name|Description|
-|--|--|
-| `base` | The base wrapper of the avatar. |
-| `initials` | The initials wrapper of the avatar. |
-| `image` | The image wrapper of the avatar. |
-| `icon` | The icon wrapper of the avatar. |
+**When not to use:** Use the [Badge](../inputs/badge.md) component when you need to show a count, status, or notification indicator instead of representing an entity. Badges can also decorate avatars when both identity and status need to appear together.
 
-```css
-igc-avatar::part(base) {
-  --size: 60px;
-  color: var(--ig-success-500-contrast);
-  background: var(--ig-success-500);;
-  border-radius: 20px;
-}
-```
+<div class="table-responsive">
+<table class="table" style="width: 100%; max-width: 720px; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin: 0 auto 24px;">
+<thead>
+<tr>
+<th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Do</th>
+<th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+<td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Properties
+
+The avatar exposes a small set of inputs for its content and shape.
+
+| Name | Type | Default | Description |
+| -- | -- | -- | -- |
+| [`Alt`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=alt) | `string` | n/a | Sets alternative text for the image avatar. |
+| [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=initials) | `string` | n/a | Sets text initials rendered when no image is displayed. |
+| [`Shape`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=shape) | `"square" \| "rounded" \| "circle"` | `"square"` | Sets the avatar shape. |
+| [`Src`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=src) | `string` | n/a | Sets the image source URL. |
+
+## Styling
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -425,14 +550,209 @@ igc-avatar::part(base) {
 }
 ```
 
-<div class="divider--half"></div>
+The avatar appearance is controlled through theme variables and platform-specific styling hooks.
+
+Use the avatar CSS variables for token-level changes and CSS parts when you need to target the rendered wrapper, image, icon, or initials.
+
+| Variable | What it changes |
+| -- | -- |
+| `--ig-avatar-background` | Avatar background color. |
+| `--ig-avatar-color` | Text and initials color. |
+| `--ig-avatar-icon-color` | Slotted icon color. |
+| `--ig-avatar-border-radius` | Border radius used by rounded avatars. |
+| `--ig-avatar-size` | Avatar width and height. |
+| `--ig-size` | Shared component size token used to derive preset avatar sizes. |
+
+| CSS Part | Description |
+| -- | -- |
+| `base` | The avatar wrapper. |
+| `icon` | The icon wrapper. |
+| `initials` | The initials wrapper. |
+| `image` | The image element. |
+
+### Sass Theming
+
+Use the `avatar-theme` function when your application customizes Ignite UI themes through Sass.
+
+```scss
+@use "igniteui-theming/sass/themes" as *;
+
+$custom-avatar-theme: avatar-theme(
+  $background: #72da67,
+  $border-radius: 16px,
+  $size: 3rem
+);
+
+:root {
+  @include tokens($custom-avatar-theme);
+}
+```
+
+### CSS Variables
+
+Set component CSS variables directly when you need local styling without a Sass build step.
+
+```css
+igc-avatar {
+  --ig-avatar-background: var(--ig-success-500);
+  --ig-avatar-color: var(--ig-success-500-contrast);
+  --ig-avatar-border-radius: 20px;
+}
+
+igc-avatar::part(base) {
+  border: 2px solid var(--ig-success-700);
+}
+```
+
+### Styling with Tailwind
+
+Use Tailwind utility classes with the Ignite UI for Blazor Avatar when you need utility-first layout styling together with Ignite UI component tokens.
+
+```css
+@tailwind utilities;
+
+.sample {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 21.5rem);
+    gap: 2.5rem;
+    place-content: center;
+    height: 100vh;
+}
+
+igc-card:nth-of-type(2) {
+    align-self: center;
+}
+
+igc-card-header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+igc-card-header::part(header) {
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    flex: 1 1 auto;
+    justify-content: center;
+}
+
+igc-card-header [slot="thumbnail"] {
+    margin-inline-end: 1rem;
+}
+
+.card-sample-custom-subtitle {
+    display: block;
+    color: var(--ig-gray-700);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin: 0 1rem 0.5rem;
+}
+
+.stats-title {
+    color: var(--ig-gray-900);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+.stats-subtitle {
+    color: var(--ig-gray-500);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+```
+
+## Accessibility
+
+The avatar is a non-interactive identity visual with accessible image semantics.
+
+### Keyboard Interaction
+
+The avatar does not receive focus and has no keyboard interaction.
+
+| Key | Action |
+| -- | -- |
+| n/a | The avatar is not keyboard interactive. |
+
+### Screen Readers / ARIA
+
+The avatar initializes with image semantics and a default accessible label of `avatar`.
+
+- Set `alt` when a `src` image represents a specific person, entity, or object.
+- Add an explicit `aria-label` when projected custom content needs a different accessible name.
+- Treat decorative avatars as redundant when adjacent text already identifies the same entity.
+
+### Accessibility Compliance
+
+Infragistics documents Ignite UI for Blazor accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic.
+
+| Criterion | How the component complies |
+| -- | -- |
+| [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) | The avatar has an accessible label, and image avatars can receive specific alternative text through `alt`. |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value) | The component initializes with image semantics and exposes content-related ARIA information. |
+
+Your responsibilities:
+
+- Keep sufficient contrast between the avatar background and text or icon color when overriding styles.
+- Avoid duplicating the same identity announcement when adjacent text already names the person or entity.
+
+- Provide a descriptive label or `alt` text when the avatar conveys identity.
+
+## Troubleshooting
+
+Use this section to check boundaries and common decisions before treating Avatar as an interactive or status component.
+
+### Known Limitations
+
+The avatar is a visual identity primitive and does not add interaction, status, or notification behavior by itself.
+
+- Use an interactive container, such as a button or list item, when the represented entity must be clickable.
+- Use a badge with the avatar when you need to show status, counts, or notification indicators.
 
 ## API References
 
-- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
-- [`Styling & Themes`](../themes/overview.md)
+Use these API references for the complete avatar API surface.
+
+[`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+[`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge)
+
+## Dependencies
+
+Slotted icons require the [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) component to be registered or imported.
+
+The avatar also uses the shared theme stylesheet for its default appearance.
 
 ## Additional Resources
 
+Use these resources for support and related Ignite UI documentation.
+
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
 - [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
+
+## Related Components
+
+Use these related components when identity needs to be combined with status, actions, or richer layout.
+
+- [Badge](../inputs/badge.md) - Use Badge to show counts, status, or notification indicators. Badge can decorate Avatar when the UI needs both identity and status.
+
+## FAQ
+
+  **Q: When should I use Avatar instead of Badge?**
+
+    Use Avatar when the UI needs to represent a person, account, organization, or object. Use Badge when the UI needs to show a count, status, or notification indicator.
+  
+
+  **Q: Does Avatar add keyboard interaction?**
+
+    No. Avatar is non-interactive and does not receive focus by itself. Put it inside an interactive component when the represented entity needs an action.
+  
+
+  **Q: How should I label image avatars for screen readers?**
+
+    Provide meaningful alternative text when the avatar image identifies a specific entity. Avoid repeating the same identity when adjacent text already names that entity.
+  
+

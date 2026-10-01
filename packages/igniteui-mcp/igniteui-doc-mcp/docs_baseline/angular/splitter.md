@@ -1,11 +1,12 @@
 ---
 title: Angular Splitter Component | Split Panes |  Ignite UI for Angular | Infragistics | MIT license
-_description: Use the Angular Splitter component to create a simple split layout splitting the view horizontally or vertically into multiple collapsible split panes.
-_keywords: angular splitter, angular splitter component, angular split view component, angular ui components, igniteui for angular, infragistics
-_license: MIT
+description: Use the Angular Splitter component to create a simple split layout splitting the view horizontally or vertically into multiple collapsible split panes.
+keywords: angular splitter, angular splitter component, angular split view component, angular ui components, igniteui for angular, infragistics
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Splitter component provides the ability to create layouts, split into multiple vertically or horizontally arranged panes that may be resized, expanded and collapsed."
 _tocName: Splitter
 ---
-
 # Angular Splitter Component Overview
 
 The Ignite UI for Angular Splitter component provides the ability to create layouts, split into multiple vertically or horizontally arranged panes that may be resized, expanded and collapsed. These interactions are performed through UI exposed in the splitter bars between the panes. A simple Splitter layout is demonstrated in the demo below.
@@ -46,8 +47,7 @@ p {
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Splitter
 
@@ -57,7 +57,7 @@ To get started with the Ignite UI for Angular Splitter component, first you need
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxSplitterModule` in your **app.module.ts** file.
 
@@ -110,7 +110,7 @@ Now that you have the Ignite UI for Angular Splitter module or directives import
 **igxSplitter** is initialized with the **igx-splitter** tag. Multiple splitter panes can be defined under a single **igx-splitter** component. The content of the pane is templatable and will be rendered in its own resizable container.
 
 ```html
-<!-- splitter.component.html -->
+{/* splitter.component.html */}
 <igx-splitter>
     <igx-splitter-pane>
         ...
@@ -320,7 +320,6 @@ p {
 }
 ```
 
-
 ## Keyboard navigation
 
 Keyboard navigation is available by default in the splitter component. When you focus a splitter bar and press one of the following key combinations, the described behavior is performed.
@@ -361,7 +360,7 @@ When you modify a primary property, all related dependent properties are automat
     </tbody>
 </table>
 
-To get started with styling the **igxSplitter** component, you need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the **igxSplitter** component, you need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -370,7 +369,7 @@ To get started with styling the **igxSplitter** component, you need to import th
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-You can change the default styles of the splitter by creating a new theme that extends the [`splitter-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-splitter-theme). By providing just the base parameters, the theme will automatically generate all necessary styles for the interaction states.
+You can change the default styles of the splitter by creating a new theme that extends the `splitter-theme`. By providing just the base parameters, the theme will automatically generate all necessary styles for the interaction states.
 
 ```scss
 // In splitter-styling-sample.component.scss
@@ -396,7 +395,6 @@ The next step is to pass the custom splitter theme:
 ### Demo
 
 This is the final result from applying your new theme.
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -444,7 +442,7 @@ $splitter-theme: splitter-theme(
 
 ### Styling with Tailwind
 
-You can style the splitter using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the splitter using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -462,7 +460,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [splitter-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-splitter-theme). The syntax is as follows:
+You can find the full list of properties in the `splitter-theme`. The syntax is as follows:
 
 ```html
 <igx-splitter
@@ -471,8 +469,8 @@ You can find the full list of properties in the [splitter-theme](https://www.inf
 </igx-splitter>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 ### Custom sizing
 
@@ -488,6 +486,7 @@ Or you can use the universal `--ig-splitter-size` variable to target all instanc
 
 ```html
 <div class="my-app">
+
   <igx-splitter></igx-splitter>
 </div>
 ```
@@ -499,20 +498,16 @@ Or you can use the universal `--ig-splitter-size` variable to target all instanc
 ```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxSplitterComponent](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent)
-- [IgxSplitterPaneComponent](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent)
-- [SplitterType](mcp:get_api_reference?platform=angular&component=SplitterType)
-- [IgxSplitterComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-splitter-theme)
-
-<div class="divider--half"></div>
-
+<hr/>
+- [`IgxSplitter`](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent)
+- [`IgxSplitterPane`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent)
+- [`IgxSplitterType`](mcp:get_api_reference?platform=angular&component=SplitterType)
+- `IgxSplitterComponent Styles`
+<hr/>
 ## Theming Dependencies
 
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxIcon Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
+- `IgxDropDown Theme`
+- `IgxIcon Styles`
 
 Our community is active and always welcoming to new ideas.
 

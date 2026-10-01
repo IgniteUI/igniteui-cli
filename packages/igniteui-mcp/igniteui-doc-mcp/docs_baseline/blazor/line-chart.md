@@ -1,21 +1,22 @@
 ---
-title: Blazor Line Chart and Graph | Ignite UI for Blazor
-_description: The Blazor Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
-_keywords: Blazor Charts, Line Chart, Line Graph, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
+title: "Blazor Line Chart and Graph | Ignite UI for Blazor"
+description: The Blazor Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
+keywords: "Blazor Charts, Line Chart, Line Graph, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time."
 _tocName: Line Chart
 _premium: true
 ---
-
 # Blazor Line Chart
 
-The Ignite UI for Blazor Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time. It’s often used to show trends and perform comparative analysis. The Y-Axis (labels on left side) show a numeric value, while the X-Axis (bottom labels) show a time-series or comparison category. You can include one or more data sets to compare, which would render as multiple lines in the chart.
+The Ignite UI for Blazor Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time. It's often used to show trends and perform comparative analysis. The Y-Axis (labels on left side) show a numeric value, while the X-Axis (bottom labels) show a time-series or comparison category. You can include one or more data sets to compare, which would render as multiple lines in the chart.
 
 ## Blazor Line Chart Example
 
-You can create the Blazor Line Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line` enum, as shown in the example below.
+You can create the Blazor Line Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line) enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -109,8 +110,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Line Chart Recommendations
 
 ### Are Blazor Line Charts right for your project?
@@ -160,7 +159,7 @@ There are several common use cases for choosing a Line Chart:
 
 The Blazor Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period, as we have shown in the example below.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -237,13 +236,11 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Line Chart with Multiple Series
 
-Since the Blazor Line Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
+Since the Blazor Line Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -337,15 +334,13 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Line Chart with Live Data
 
 The Blazor Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds as demonstrated in the following demo.
 
 In this example, we are streaming live data into the Blazor Line Chart at an interval of your choosing. You can set the data points from 5,000 to 1 million and update the chart to optimize the scale based on the device you are rendering the chart on.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line), as shown in the example below:
 
 ```razor
 @using System.Collections.ObjectModel
@@ -474,13 +469,11 @@ You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_refere
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Styling Line Chart
 
 Once our chart is set up, we may want to make some further styling customizations such as change the line colors, change the legend font family, and/or increase the size of the axis labels to make it easier to read.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -577,9 +570,9 @@ public class CountryRenewableElectricity
 }
 ```
 
-You can also create a dashed line within the [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries) by using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) and setting the [`DashArray`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=DashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
+You can also create a dashed line within the [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries) by using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) and setting the [`DashArray`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries&member=dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
-The following example demonstrates usage of the [`DashArray`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=DashArray) in a [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries) in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart):
+The following example demonstrates usage of the [`DashArray`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries&member=dashArray) in a [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries) in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -724,8 +717,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Advanced Types of Line Charts
 
@@ -909,8 +900,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Line Chart
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
@@ -1087,8 +1076,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Radial Line Chart
 
 The Radial Line Chart belongs to a group of radial charts and has a shape of an unfilled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Line Chart, but wraps the data points around a circular axis rather than stretching them horizontally.
@@ -1236,8 +1223,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Polar Line Chart
 
@@ -1390,8 +1375,6 @@ public class BoatSailingData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1409,8 +1392,16 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type        | Control Name       | API Members |
 | ------------------|--------------------|----------------------- |
-| Line              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = `Line` |
+| Line              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = [`Line`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries&member=line) |
 | Polar Line        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbPolarLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries) |
 | Radial Line       | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRadialLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries) |
 | Stacked Line      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStackedLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedLineSeries) |
 | Stacked 100% Line | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStacked100LineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100LineSeries) |
+
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)<br />
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)<br />
+[`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)<br />
+[`IgbPolarLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries)<br />
+[`IgbRadialLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries)<br />
+[`IgbStackedLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedLineSeries)<br />
+[`IgbStacked100LineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100LineSeries)<br />

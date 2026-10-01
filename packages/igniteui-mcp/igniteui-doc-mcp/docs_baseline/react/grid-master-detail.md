@@ -1,13 +1,14 @@
 ---
-title: React Master-Detail Grid - Infragistics
-_description: Define expandable detail view template for data in rows with Ignite UI React Grid. Useful for displaying master-detail style data in a hierarchical structure.
-_keywords: React, {ComponentKeywords}, Ignite UI for React, master detail, Infragistics
-_license: commercial
+title: "React Master-Detail Grid - Infragistics"
+description: Define expandable detail view template for data in rows with Ignite UI React Grid. Useful for displaying master-detail style data in a hierarchical structure.
+keywords: "React, , Ignite UI for React, master detail, Infragistics"
+license: commercial
 mentionedTypes: ["Infragistics.Controls.Grid"]
+llms:
+  description: "The Grid component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content."
 _tocName: Master-Detail
 _premium: true
 ---
-
 # React Master-Detail Grid
 
 The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
@@ -169,13 +170,13 @@ root.render(<Sample/>);
 
 To configure the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to display in master-detail mode you need to specify a template for the grid:
 
-```ts
-<IgrGrid detailTemplate={masterDetailTemplate} autoGenerate="false" data={nwindData}>
+```tsx
+<IgrGrid detailTemplate={masterDetailTemplate} autoGenerate={false} data={nwindData}></IgrGrid>
 ```
 
 Context of the template is the master record data, so that values from the master record can be displayed in the detail template. For example:
 
-```ts
+```tsx
 const masterDetailTemplate = (args: IgrGridMasterDetailContext) => {
     const data = args.implicit;
     return (
@@ -191,12 +192,11 @@ const masterDetailTemplate = (args: IgrGridMasterDetailContext) => {
 ## API
 
 Additional API methods for controlling the expansion states are also exposed:
-
-- [`expandAll`](mcp:get_api_reference?platform=react&component=IgrGrid&member=expandAll)
-- [`collapseAll`](mcp:get_api_reference?platform=react&component=IgrGrid&member=collapseAll)
-- [`toggleRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=toggleRow)
-- [`expandRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=expandRow)
-- [`collapseRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=collapseRow)
+- [`ExpandAll`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=expandAll)
+- [`CollapseAll`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=collapseAll)
+- [`ToggleRow`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=toggleRow)
+- [`ExpandRow`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=expandRow)
+- [`CollapseRow`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -205,7 +205,7 @@ Additional API methods for controlling the expansion states are also exposed:
   - <kbd>🡑</kbd> - navigates one row up, focusing a cell from the previous row.
   - <kbd>🡓</kbd> - navigates one row down, focusing a cell from the next row.
   - <kbd>TAB</kbd> - Allows focus to move to the next focusable element inside the template if there are focusable elements, otherwise moves to the next grid row.
-  - <kbd>SHIFT</kbd> + <kbd><kbd>TAB</kbd> - moves the focus to the previous row.
+  - <kbd>SHIFT</kbd> + <kbd>TAB</kbd> - moves the focus to the previous row.
 
 - When focus is on a data row with expander:
   - <kbd>ALT</kbd> + <kbd>🡒</kbd> or <kbd>ALT</kbd> + <kbd>🡓</kbd> - expands the row.
@@ -221,6 +221,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- `HierarchicalGridRow`
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
+[`IgrGridRowComponent`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent)<br />

@@ -1,16 +1,15 @@
 ---
-title: Web Components Grid Cell Editing - Ignite UI for Web Components
-_description: The Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "Web Components Grid Cell Editing - Ignite UI for Web Components"
+description: The Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for Web Components Cell Editing in Web Components Grid provides a great data manipulation capability of the content of individual cells within the Web Components Grid component and comes with powerful API for React CRUD operations."
+_componentKey: Grid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # Web Components Grid Cell Editing
 
 The Ignite UI for Web Components Cell Editing in Web Components Grid provides a great data manipulation capability of the content of individual cells within the Web Components Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -34,33 +33,28 @@ In addition, you can define your own custom templates for update-data actions an
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API but only if primary key is defined:
-
-<!-- ComponentStart: Grid -->
+You can also modify the cell value through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API but only if primary key is defined:
 
 ```typescript
 public updateCell() {
@@ -68,11 +62,7 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-Another way to update cell is directly through [`update`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html#update) method of `Cell`:
-
-<!-- ComponentStart: Grid -->
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType&member=update) method of `Cell`:
 
 ```typescript
 public updateCell() {
@@ -83,15 +73,11 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- ComponentStart: Grid -->
 
 ```html
 <igc-column
@@ -117,6 +103,7 @@ constructor() {
     column3.inlineEditorTemplate = this.webGridCellEditCellTemplate;
 }
 
+
 public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
     let cellValues: any = [];
     let uniqueValues: any = [];
@@ -135,8 +122,6 @@ public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
     `;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 Working sample of the above can be found here for further reference:
 
@@ -174,13 +159,11 @@ export class RoleplayDataStats extends Array<RoleplayDataStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ComponentStart: Grid -->
-
 ### Grid Excel Style Editing
 
 Using Excel Style Editing allows the user to navigate trough the cells just as he would using the Excel, and ever so quickly edit them.
 
-Implementing this custom functionality can be done by utilizing the events of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
+Implementing this custom functionality can be done by utilizing the events of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
 
 - Constant edit mode
 
@@ -202,6 +185,7 @@ public keydownHandler(event) {
         }
     }
 }
+
 ```
 
 - <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd> navigation
@@ -222,6 +206,7 @@ if (key == 13) {
         this.cdr.detectChanges();
     });
 }
+
 ```
 
 Key parts of finding the next eligible index would be:
@@ -323,20 +308,16 @@ Main benefits of the above approach include:
 - Constant edit mode: typing while a cell is selected will immediately enter edit mode with the value typed, replacing the existing one
 - Any non-data rows are skipped when navigating with <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd>. This allows users to quickly cycle through their values.
 
-<!-- ComponentEnd: Grid -->
-
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a straightforward API for basic CRUD operations.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component exposes the [`addRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=addRow) method which will add the provided data to the data source itself.
-
-<!-- ComponentStart: Grid -->
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component exposes the [`AddRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=addRow) method which will add the provided data to the data source itself.
 
 ```typescript
 // Adding a new record
@@ -345,13 +326,9 @@ const record = this.getNewRecord();
 this.grid.addRow(record);
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ### Updating data in the Grid
 
-Updating data in the Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
-
-<!-- ComponentStart: Grid -->
+Updating data in the Grid is achieved through [`IgcGrid.updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=updateRow) and [`IgcGrid.updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ```typescript
 // Updating the whole row
@@ -366,15 +343,12 @@ this.selectedCell.update(newData);
 // Directly using the row `update` method
 const row = this.grid.getRowByKey(rowID);
 row.update(newData);
-```
 
-<!-- ComponentEnd: Grid -->
+```
 
 ### Deleting data from the Grid
 
-Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) is defined.
-
-<!-- ComponentStart: Grid -->
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=deleteRow) method will remove the specified row only if a [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) is defined.
 
 ```typescript
 // Delete row through Grid API
@@ -384,15 +358,19 @@ const row = this.grid.getRowByIndex(rowIndex);
 row.delete();
 ```
 
+These can be wired to user interactions, not necessarily related to the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) for example, a button click:
+
 ### Cell Validation on Edit Event
 
-Using the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s editing events, we can alter how the user interacts with the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+Using the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s editing events, we can alter how the user interacts with the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgcGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- ComponentStart: Grid -->
+```razor
+<igc-grid CellEditScript="HandleCellEdit" />
+```
 
 ```typescript
 constructor() {
@@ -402,11 +380,7 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- ComponentStart: Grid -->
+The [`IgcGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 ```typescript
 public webGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
@@ -427,13 +401,7 @@ public webGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
 
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
 
-<!-- ComponentEnd: Grid -->
-
-<!-- Blazor -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-The result of the above validation being applied to our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can be seen in the below demo:
+The result of the above validation being applied to our [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can be seen in the below demo:
 
 ```css
 /* shared styles are loaded from: */
@@ -442,10 +410,8 @@ The result of the above validation being applied to our [`IgcGridComponent`](mcp
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- ComponentStart: Grid -->
 
 ```html
 <igc-grid class="grid"></igc-grid>
@@ -460,8 +426,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Styling Example
 
@@ -481,13 +445,10 @@ Then set the related CSS properties for that class:
 ```
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -498,5 +459,3 @@ Then set the related CSS properties for that class:
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
 - [Searching](search.md)
-
-<!-- ComponentEnd: Grid -->

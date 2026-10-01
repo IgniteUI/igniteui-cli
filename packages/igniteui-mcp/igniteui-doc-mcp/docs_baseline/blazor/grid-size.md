@@ -1,20 +1,18 @@
 ---
-title: Blazor Grid Size - Ignite UI for Blazor
-_description: Learn how to apply different size capabilities to the Grid component. You can use a set of compact view options in the Ignite UI for Blazor.
-_keywords:  material size, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "Blazor Grid Size - Ignite UI for Blazor"
+description: Learn how to apply different size capabilities to the Grid component. You can use a set of compact view options in the Ignite UI for Blazor.
+keywords:  material size, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for Blazor Size feature in Blazor Grid allows users to control the spacing and layout of data within the IgbGrid."
+_componentKey: Grid
 _tocName: Size
 _premium: true
 ---
-
 # Blazor Grid Size
 
-The Ignite UI for Blazor Size feature in Blazor Grid allows users to control the spacing and layout of data within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for Blazor Size feature in Blazor Grid allows users to control the spacing and layout of data within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -297,18 +295,16 @@ As you can see in the demo above, the [`IgbGrid`](mcp:get_api_reference?platform
 </IgbGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component. When you switch between different size options the height of each [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component. When you switch between different size options the height of each [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgbGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `56px`;
+- **large** - this is the default [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgbGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgbGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgbGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
-
-<!-- ComponentStart: Grid -->
 
 ```razor
 <div class="options vertical">
@@ -366,58 +362,47 @@ Now we can add the markup.
 </div>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-```razor
-@code {
-    // In JavaScript
+```javascript
+// In JavaScript
     igRegisterScript("WebGridSetGridSize", (sender, evtArgs) => {
         var newVal = evtArgs.newValue.toLowerCase();
         var grid = document.getElementById("grid");
         grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
     }, false);
-}
 ```
 
-Another option that [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides for you, in order to be able to change the height of the rows in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), is the property [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight). So let's see in action how this property affects the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) layout along with the `--ig-size`.
+Another option that [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides for you, in order to be able to change the height of the rows in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), is the property [`IgbGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowHeight). So let's see in action how this property affects the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgbGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Grid**, as it has been described above.
 
-We can now extend our sample and add [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight) property to the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid):
+We can now extend our sample and add [`IgbGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowHeight) property to the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid):
 
-```razor
-<IgbGrid
-   @ref="grid"
-   Id="grid"
-   Class="gridSize"
-   Width="100%"
-   Height="100%"
-   AutoGenerate="true"
-   Data="northwindEmployees"
-   RowHeight="rowHeight">
+ ```razor
+ <IgbGrid
+    @ref="grid"
+    Id="grid"
+    Class="gridSize"
+    Width="100%"
+    Height="100%"
+    AutoGenerate="true"
+    Data="northwindEmployees"
+    RowHeight="rowHeight">
 </IgbGrid>
 
 @code {
-   private string rowHeight = "80px";
+    private string rowHeight = "80px";
 }
-```
+
+ ```
 
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
-<!-- ComponentStart: Grid -->
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 - [Virtualization and Performance](virtualization.md)
@@ -429,9 +414,8 @@ We can now extend our sample and add [`RowHeight`](mcp:get_api_reference?platfor
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-- [Searching](search.md)
 
-<!-- ComponentEnd: Grid -->
+- [Searching](search.md)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,21 +1,22 @@
 ---
-title: React Linear Gauge | Data Visualization Tools | Infragistics
-_description: Use Infragistics' React linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for React linear gauge configurable elements!
-_keywords: linear gauge, Ignite UI for React, Infragistics, animation, labels, needle, scales, ranges, tick marks
-_license: commercial
-mentionedTypes: ["XamLinearGauge"]
+title: "React Linear Gauge | Data Visualization Tools | Infragistics"
+description: Use Infragistics' React linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for React linear gauge configurable elements!
+keywords: linear gauge, Ignite UI for React, Infragistics, animation, labels, needle, scales, ranges, tick marks
+license: commercial
+mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The Ignite UI for React linear gauge component allows for visualizing data in the form of a linear gauge."
 _tocName: Linear Gauge
 _premium: true
 ---
-
 # React Linear Gauge Overview
 
-The Ignite UI for React linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgrLinearGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for React linear gauge component allows for visualizing data in the form of a linear gauge. The `IgrLinearGauge` provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## React Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgrLinearGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html) can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same `IgrLinearGauge` can transform it to completely different linear gauge.
 
 ```tsx
 import React from 'react';
@@ -329,8 +330,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeAnimation/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 When installing the React gauge component, the core package must also be installed.
@@ -342,15 +341,13 @@ npm install --save igniteui-react-gauges
 
 ## Component Modules
 
-The [`IgrLinearGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html) requires the following modules:
+The `IgrLinearGauge` requires the following modules:
 
 ```ts
 import { IgrLinearGaugeModule } from 'igniteui-react-gauges';
 
 IgrLinearGaugeModule.register();
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -373,8 +370,6 @@ The following code demonstrates how create a linear gauge containing a needle an
                             brush="green"/>
  </IgrLinearGauge>
 ```
-
-<div class="divider--half"></div>
 
 ## Needle
 
@@ -448,7 +443,7 @@ root.render(<LinearGaugeNeedle/>);
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#highlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's `Value` appear with a lower opacity. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue`.
 
 ```tsx
 <IgrLinearGauge
@@ -747,7 +742,7 @@ root.render(<LinearGaugeBacking/>);
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`isScaleInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```tsx
 <IgrLinearGauge
@@ -876,18 +871,12 @@ For your convenience, all above code snippets are combined into one code block b
 </IgrLinearGauge>
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrLinearGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html)
-- [`IgrLinearGraphRange`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargraphrange.html)
-
+`IgrLinearGauge`
+`IgrLinearGraphRange`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:
 
-- [Bullet Graph](bullet-graph.md)
-- [Radial Gauge](radial-gauge.md)
+- [Bullet Graph](./bullet-graph.md)
+- [Radial Gauge](./radial-gauge.md)

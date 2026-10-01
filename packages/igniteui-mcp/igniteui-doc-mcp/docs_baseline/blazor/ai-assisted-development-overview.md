@@ -1,18 +1,15 @@
 ---
-title: AI-Assisted Development with Ignite UI - Ignite UI for Blazor
-_description: Configure Agent Skills, the Ignite UI MCP server, and the Theming MCP server in your Angular, React, Blazor, or Web Components project with a single command - npx igniteui-cli@latest ai-config. Grounds GitHub Copilot, Cursor, Claude Desktop, Claude Code, and JetBrains AI Assistant in correct Ignite UI APIs.
-_keywords: Blazor, Ignite UI for Blazor, Infragistics, MCP, Model Context Protocol, Ignite UI MCP server, Ignite UI Theming MCP, Agent Skills, AI, agent, Copilot, Cursor, Claude Code, ai-config
-_language: en
-_license: MIT
-_canonicalLink: "{environment:dvUrl}/components/ai-assisted-development-overview"
+title: "AI-Assisted Development with Ignite UI - Ignite UI for Blazor"
+description: "Configure Agent Skills, the Ignite UI MCP server, and the Theming MCP server in your Angular, React, Blazor, or Web Components project with a single command - npx igniteui-cli@latest ai-config. Grounds GitHub Copilot, Cursor, Claude Desktop, Claude Code, and JetBrains AI Assistant in correct Ignite UI APIs."
+keywords: "Blazor, Ignite UI for Blazor, Infragistics, MCP, Model Context Protocol, Ignite UI MCP server, Ignite UI Theming MCP, Agent Skills, AI, agent, Copilot, Cursor, Claude Code, ai-config"
+license: MIT
+_canonicalLink: "/components/ai-assisted-development-overview"
 last_updated: "2026-05-03"
-namespace: Infragistics.Controls
 mentionedTypes: []
+llms:
+  description: "Ignite UI for Blazor provides a complete AI toolchain - Agent Skills, the Ignite UI CLI MCP server, the Ignite UI Theming MCP server and the MAKER MCP server - that grounds AI coding assistants in correct component APIs, import paths, and design tokens."
 _tocName: Agent Workflow
 ---
-
-<!-- schema: Article, HowTo -->
-
 # AI-Assisted Development with Ignite UI
 
 Ignite UI for Blazor provides a complete AI toolchain - Agent Skills, the Ignite UI CLI MCP server, the Ignite UI Theming MCP server and the MAKER MCP server - that grounds AI coding assistants in correct component APIs, import paths, and design tokens. Agent Skills are developer-owned instruction packages that define how AI agents use Ignite UI in a specific project. The CLI MCP server (`igniteui-cli`) exposes Ignite UI CLI scaffolding, component management, and documentation tools to the active AI agent session via the Model Context Protocol. The Theming MCP server (`igniteui-theming`) exposes the Ignite UI Theming Engine as queryable agent context. The MAKER MCP (`@igniteui/maker-mcp`) is a multi-agent AI orchestration MCP server from Infragistics that decomposes complex tasks into validated, executable step plans using a consensus-based voting algorithm across multiple AI agents. Skills, CLI MCP and Theming MCP - all three are configured by a single command: `npx igniteui-cli ai-config`
@@ -37,11 +34,12 @@ Run this command from the root of your existing Angular, React, Blazor, or Web C
 npx igniteui-cli ai-config
 ```
 
-> [!IMPORTANT]
-> Without a version pin, `npx` may pull an older CLI version that does not recognize the `ai-config` subcommand and will instead launch an interactive project-creation prompt, scaffolding a new project inside your existing one. Make sure that you have installed CLI version 16.x.
+**Warning: Important**
 
-> [!NOTE]
-> For Blazor, `ai-config` detects your project by looking for a `.csproj` or `.sln` file. The `IgniteUI.Blazor` NuGet package does not need to be installed.
+Without a version pin, `npx` may pull an older CLI version that does not recognize the `ai-config` subcommand and will instead launch an interactive project-creation prompt, scaffolding a new project inside your existing one. Make sure that you have installed CLI version 16.x.
+
+**Note:** 
+For Blazor, `ai-config` detects your project by looking for a `.csproj` or `.sln` file. The `IgniteUI.Blazor` NuGet package does not need to be installed.
 
 If `ai-config` cannot detect the framework from your project files, it prompts you to select one - so the command works even from a project where no Ignite UI package is installed yet.
 
@@ -51,16 +49,16 @@ After the command finishes, start the MCP servers in your AI client. The servers
 
 If Ignite UI is **not** installed in the project:
 
-> [!NOTE]
-> Ignite UI MCP servers configured for your selected clients
+**Note:** 
+Ignite UI MCP servers configured for your selected clients
 
 The MCP servers are ready to use. Skills will be added automatically the next time you run `ai-config` after installing Ignite UI.
 
 If Ignite UI **is** installed in the project:
 
-> [!NOTE]
-> Ignite UI MCP servers configured for your selected clients
-> Agent Skills copied to your selected agents' skills directories
+**Note:** 
+Ignite UI MCP servers configured for your selected clients<br />
+Agent Skills copied to your selected agents' skills directories
 
 Both the MCP servers and Skills are configured.
 
@@ -155,7 +153,7 @@ The CLI MCP server and Theming MCP server work with any editor or AI client that
 | Claude Desktop (macOS)      | `~/Library/Application Support/Claude/claude_desktop_config.json` |
 | Claude Desktop (Windows)    | `%APPDATA%\Claude\claude_desktop_config.json`                     |
 | Claude Code                 | `.mcp.json` or the Claude Code MCP CLI command                    |
-| JetBrains AI Assistant      | **Tools → AI Assistant → Model Context Protocol (MCP)*-         |
+| JetBrains AI Assistant      | **Tools → AI Assistant → Model Context Protocol (MCP)**           |
 
 Agent Skills are compatible with GitHub Copilot via `.github/copilot-instructions.md`, Cursor via `.cursorrules` or `.cursor/rules/`, Windsurf via `.windsurfrules`, and JetBrains AI Assistant via project-level prompt settings.
 
@@ -175,8 +173,8 @@ If you have the Ignite UI CLI installed globally, use the shorter form:
 ig ai-config
 ```
 
-> [!NOTE]
-> For Blazor, `ai-config` detects your project via `.csproj` or `.sln`. If no project file is found, the command prompts you to select a framework.
+**Note:** 
+For Blazor, `ai-config` detects your project via `.csproj` or `.sln`. If no project file is found, the command prompts you to select a framework.
 
 ### Step 1 - Load Agent Skills
 
@@ -257,8 +255,6 @@ For configuration details and theming workflows, see [Theming MCP](theming-mcp.m
 - [Agent Skills](./skills.md)
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)
-
-<div class="divider--half"></div>
 
 Our community is active and always welcoming to new ideas.
 

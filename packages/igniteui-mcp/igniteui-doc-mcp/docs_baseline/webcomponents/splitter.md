@@ -1,12 +1,13 @@
 ---
-title: Web Components Splitter Component | Layout Controls | Infragistics
-_description: Use the Ignite UI for Web Components Splitter component to create two resizable panes with horizontal or vertical layouts, collapse and expand behavior, keyboard support, and nested split views.
-_keywords: splitter, split panes, resizable panes, web components splitter, Web Components splitter, Ignite UI for Web Components
-_license: MIT
+title: "Web Components Splitter Component | Layout Controls | Infragistics"
+description: "Use the Ignite UI for Web Components Splitter component to create two resizable panes with horizontal or vertical layouts, collapse and expand behavior, keyboard support, and nested split views."
+keywords: "splitter, split panes, resizable panes, web components splitter, Web Components splitter, Ignite UI for Web Components"
+license: MIT
 mentionedTypes: ["Splitter", "SplitterResizeEventArgs"]
+llms:
+  description: "The Ignite UI for Web Components Splitter provides a resizable split-pane layout that divides content into two areas: start and end."
 _tocName: Splitter
 ---
-
 # Web Components Splitter Overview
 
 The Ignite UI for Web Components Splitter provides a resizable split-pane layout that divides content into two areas: `start` and `end`. Users can drag the splitter bar, use keyboard shortcuts, or collapse and expand panes with built-in controls. You can also nest splitters to build complex dashboard-style layouts.
@@ -35,8 +36,6 @@ p {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Web Components Splitter
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -45,7 +44,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcSplitterComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent), you need to register it as follows:
+Before using the [`IgcSplitter`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcSplitterComponent } from 'igniteui-webcomponents';
@@ -66,9 +65,11 @@ Use the `start` and `end` slots to place pane content:
 </igc-splitter>
 ```
 
+We recommend using a `<div>` or other semantic elements such as `<section>` or `<article>` for the `start` and `end` slots of the Splitter component.
+
 ### Orientation
 
-Set the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=orientation) property to control pane direction:
+Set the [`Orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=orientation) property to control pane direction:
 
 - `horizontal` (default): start and end panes are rendered left and right.
 - `vertical`: start and end panes are rendered top and bottom.
@@ -84,9 +85,9 @@ Set the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=I
 
 Use size properties to set initial and constrained pane sizes:
 
-- [`startSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startSize), [`endSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endSize)
-- [`startMinSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startMinSize), [`endMinSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endMinSize)
-- [`startMaxSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startMaxSize), [`endMaxSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endMaxSize)
+- [`StartSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startSize), [`EndSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endSize)
+- [`StartMinSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startMinSize), [`EndMinSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endMinSize)
+- [`StartMaxSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=startMaxSize), [`EndMaxSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=endMaxSize)
 
 Values accept CSS length values such as `px` and `%`.
 
@@ -107,10 +108,10 @@ Values accept CSS length values such as `px` and `%`.
 
 Use these properties to control interactions:
 
-- [`disableResize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=disableResize): disables pane resizing.
-- [`disableCollapse`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=disableCollapse): disables pane collapsing.
-- [`hideDragHandle`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=hideDragHandle): hides the drag handle.
-- [`hideCollapseButtons`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=hideCollapseButtons): hides collapse and expand buttons.
+- [`DisableResize`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=disableResize): disables pane resizing.
+- [`DisableCollapse`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=disableCollapse): disables pane collapsing.
+- [`HideDragHandle`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=hideDragHandle): hides the drag handle.
+- [`HideCollapseButtons`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent&member=hideCollapseButtons): hides collapse and expand buttons.
 
 You can also collapse or expand panes programmatically:
 
@@ -170,7 +171,7 @@ When the splitter bar is focused:
 
 ## Styling
 
-The [`IgcSplitterComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent) component exposes CSS parts for styling:
+The [`IgcSplitter`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent) component exposes CSS parts for styling:
 
 | Name | Description |
 | ---- | ----------- |
@@ -225,10 +226,8 @@ p {
 ```
 
 ## API References
-
-- [`IgcSplitterComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent)
+API references: [`IgcSplitter`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitterComponent)
 - [`Styling & Themes`](../themes/overview.md)
-
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

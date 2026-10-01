@@ -1,25 +1,22 @@
 ---
-title: Web Components Grid Cascading combos - Ignite UI for Web Components
-_description: Perform updating via cascading combos in Grid, using Web Components Grid. See demos & examples!
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Grid Cascading combos - Ignite UI for Web Components"
+description: Perform updating via cascading combos in Grid, using Web Components Grid. See demos & examples!
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
 _language: en
-sharedComponents: ["Grid"]
-mentionedTypes: ["Column", "Combo"]
-namespace: Infragistics.Controls
+llms:
+  description: "The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components."
+_componentKey: Grid
 _tocName: Cascading Combos
 _premium: true
 ---
-
 # Web Components Grid with Cascading Combos
 
-The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), the users will receive only the data that is relevant to their selection within the next Web Components Combobox component.
+The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), the users will receive only the data that is relevant to their selection within the next Web Components Combobox component.
 
-## Angular Grid with Cascading Combos Sample Overview
+## Web Components Grid with Cascading Combos Sample Overview
 
-The sample below demonstrates how [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) works with nested Cascading [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) components.
-
-<!-- ComponentStart: Grid -->
+The sample below demonstrates how [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) works with nested Cascading [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) components.
 
 ```typescript
 export class WorldCitiesAbove500KItem {
@@ -55,15 +52,13 @@ export class WorldCitiesAbove500K extends Array<WorldCitiesAbove500KItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Setup
 
-In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property is set to `true`.
+In order enable column editing, make sure [`IgcColumn.editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property is set to `true`.
 
-Once the column editing is enabled, you can start by adding your [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=singleSelect) property.
+Once the column editing is enabled, you can start by adding your [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent). Please note that here in order to have only one single selection available, you will need to use set the [`IgcCombo.singleSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=singleSelect) property.
 
-To get started with the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), first you need to import it:
+To get started with the [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), first you need to import it:
 
 ```ts
 import { IgcComboComponent, defineAllComponents } from 'igniteui-webcomponents';
@@ -80,9 +75,9 @@ public webGridCountryDropDownTemplate: IgcRenderFunction<IgcCellTemplateContext>
 }
 ```
 
-- [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey), the  combo will use the specified [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) (if any).
+- [`IgcCombo.displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`IgcCombo.displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey), the  combo will use the specified [`IgcCombo.valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) (if any).
 
-In order to handle the selection change, we need the `onChange` event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+In order to handle the selection change, we need the change event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
 ```ts
  public countries = [...this.worldCitiesAbove500K].filter(x => this.countryNames.indexOf(x.Country) !== -1).filter((value, index, array) => array.findIndex(x => x.Country === value.Country) === index);
@@ -115,9 +110,10 @@ public bindEventsCountryCombo(rowId: any, cell: any) {
             };
         });
     }
+
 ```
 
-And lastly, adding the [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent), which is required while loading the list of data.
+And lastly, adding the [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent), which is required while loading the list of data.
 The `id` is necessary to set the value of `id` attribute.
 
 ```ts
@@ -126,7 +122,7 @@ The `id` is necessary to set the value of `id` attribute.
         const comboId = "region_" + id;
         const progressId = "progress_region_" + id;
         return html`<div style="display:flex; flex-direction: column;"><igc-combo placeholder="Choose Region..." disabled value-key="Region" display-key="Region" id="${comboId}" single-select></igc-combo>
-        <igc-linear-progress style="display:none;" indeterminate id="${progressId}"></<igc-linear-progress><div>`;
+        <igc-linear-progress style="display:none;" indeterminate id="${progressId}"></igc-linear-progress></div>`;
     }
 ```
 
@@ -136,8 +132,8 @@ The `id` is necessary to set the value of `id` attribute.
 |--- |--- |
 | Combo drop-down list may hide behind other UI elements. | Due to the stacking order of elements in the grid the combo drop-down may hide behind other elements like header, footers etc. |
 
-## Web Components Grid API Members
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
-- [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent)
+## API References
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
+[`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent)

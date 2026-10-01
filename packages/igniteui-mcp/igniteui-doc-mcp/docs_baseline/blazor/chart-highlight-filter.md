@@ -1,14 +1,15 @@
 ---
-title: Blazor Chart Highlight Filter | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Highlight Filter
-_keywords: Blazor Charts, Highlighting, Filtering, Infragistics
-_license: commercial
-mentionedTypes: ["CategoryChart", "XamDataChart", "Series", "HighlightedValuesDisplayMode"]
+title: "Blazor Chart Highlight Filter | Data Visualization | Infragistics"
+description: Infragistics' Blazor Chart Highlight Filter
+keywords: "Blazor Charts, Highlighting, Filtering, Infragistics"
+license: commercial
+mentionedTypes: ["CategoryChart", "DataChart", "Series", "HighlightedValuesDisplayMode"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Chart components support a data highlighting overlay that can enhance the visualization of the series plotted in those charts by allowing you to view a subset of the data plotted."
 _tocName: Chart Highlight Filter
 _premium: true
 ---
-
 # Blazor Chart Highlight Filter
 
 The Ignite UI for Blazor Chart components support a data highlighting overlay that can enhance the visualization of the series plotted in those charts by allowing you to view a subset of the data plotted. When enabled, this will highlight a subset of data while showing the total set with a reduced opacity in the case of column and area series types, and a dashed line in the case of line series types. This can help you to visualize things like target values versus actual values with your data set. This feature is demonstrated in the following example:
@@ -196,21 +197,21 @@ public class CountryRenewableElectricityFiltered
 }
 ```
 
-Note that data highlighting feature is supported by the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) and [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
+Note that data highlighting feature is supported by the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) and [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
 
 ## Using Highlight Filter with DataChart
 
-In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), much of the highlight filter API happens on the series themselves, mainly by setting the [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource) property to a collection representing a subset of the data you want to highlight. The count of the items in the [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource) needs to match the count of the data bound to the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series that you are looking to highlight, and in the case of category series, it will use the `ValueMemberPath` that you have defined as the highlight path by default. The sample at the top of this page uses the [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) to show the overlay.
+In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), much of the highlight filter API happens on the series themselves, mainly by setting the [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource) property to a collection representing a subset of the data you want to highlight. The count of the items in the [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource) needs to match the count of the data bound to the [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series that you are looking to highlight, and in the case of category series, it will use the `ValueMemberPath` that you have defined as the highlight path by default. The sample at the top of this page uses the [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) to show the overlay.
 
-In the case that the schema does not match between the [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource) and the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series, you can configure this using the `HighlightedValueMemberPath` property on the series. Additionally, if you would like to use the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the `HighlightedValueMemberPath` property to that path and not providing a [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource).
+In the case that the schema does not match between the [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource) and the [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series, you can configure this using the `HighlightedValueMemberPath` property on the series. Additionally, if you would like to use the [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the `HighlightedValueMemberPath` property to that path and not providing a [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource).
 
-The reduced opacity of the column and area series types is configurable by setting the [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesFadeOpacity) property on the series. You can also set the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedValuesDisplayMode) property to `Hidden` if you do not wish to see the overlay at all.
+The reduced opacity of the column and area series types is configurable by setting the [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesFadeOpacity) property on the series. You can also set the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesDisplayMode) property to `Hidden` if you do not wish to see the overlay at all.
 
-The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedTitleSuffix). This will append the value that you provide to the end of the [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartTitle) of the series.
+The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedTitleSuffix). This will append the value that you provide to the end of the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartTitle) of the series.
 
-If the `DataLegend` or [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) is used then the highlighted series will appear grouped. This can be managed by setting the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesDataLegendGroup) property on the series to categorize them appropriately.
+If the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) or [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) is used then the highlighted series will appear grouped. This can be managed by setting the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesDataLegendGroup) property on the series to categorize them appropriately.
 
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesDataLegendGroup):
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesDataLegendGroup):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -362,7 +363,7 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesDataLegendGroup):
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`HighlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesDataLegendGroup):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -506,7 +507,7 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-The following example demonstrates the usage of the data highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the `HighlightedValueMemberPath`:
+The following example demonstrates the usage of the data highlighting overlay feature within the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries&member=highlightedValueMemberPath):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -639,13 +640,9 @@ public class OlympicMedalsTopCountriesWithTotals
 
 ## Using Highlight Filter in CategoryChart
 
-The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) highlight filter happens on the chart by setting the [`InitialHighlightFilter`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialHighlightFilter) property. Since the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) takes all of the properties on your underlying data item into account by default, you will need to define the [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
+The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) highlight filter happens on the chart by setting the [`InitialHighlightFilter`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialHighlightFilter) property. Since the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) takes all of the properties on your underlying data item into account by default, you will need to define the [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
 
-<!-- Unsure of this part. Need to review -->
-
-<!-- ????? The `InitialHighlightFilter` is done using OData filter query syntax. The syntax for this is an abbreviation of the filter operator. For example, if you wanted to have an InitialHighlightFilter of "Month not equals January" it would be represented as "Month ne 'January'"-->
-
-Similar to the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedValuesDisplayMode) property is also exposed on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart). In the case that you do not want to see the overlay, you can set this property to `Hidden`.
+Similar to the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), the [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesDisplayMode) property is also exposed on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart). In the case that you do not want to see the overlay, you can set this property to `Hidden`.
 
 The following example demonstrates the usage of the data highlighting overlay feature within the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control:
 
@@ -758,10 +755,6 @@ public class SalesData
 }
 ```
 
-<!-- TODO add new section that talks about how this feature also applies to Range, Financial series and the HighlightedValueMemberPath property corresponds to:
-HighlightedHighMemberPath and HighlightedLowMemberPath in Range Series
-HighlightedHighMemberPath, HighlightedLowMemberPath, HighlightedOpenMemberPath, HighlightedCloseMemberPath in Financial Series-->
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -776,11 +769,11 @@ The following is a list of API members mentioned in the above sections:
 
 | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) Properties                    | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) Properties |
 | ----------------------------------------------|---------------------------|
-| [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedDataSource)        | [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedDataSource)  |
-| [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedTitleSuffix)        | [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedTitleSuffix)  |
-| `CategoryChart.HighlightedValueMemberPath`    | `Series.HighlightedValueMemberPath`     |
-| [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedValuesDisplayMode)  | [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesDisplayMode)   |
-| [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesFadeOpacity)  | [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesFadeOpacity)   |
-| [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightedValuesDisplayMode)  | [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=HighlightedValuesDisplayMode)   |
-| [`InitialHighlightFilter`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialHighlightFilter)        |  |
-| [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialGroups)                 |  |
+| [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedDataSource)        | [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedDataSource)  |
+| [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedTitleSuffix)        | [`HighlightedTitleSuffix`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedTitleSuffix)  |
+| [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValueMemberPath)    | [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries&member=highlightedValueMemberPath)     |
+| [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesDisplayMode)  | [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesDisplayMode)   |
+| [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesFadeOpacity)  | [`HighlightedValuesFadeOpacity`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesFadeOpacity)   |
+| [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightedValuesDisplayMode)  | [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=highlightedValuesDisplayMode)   |
+| [`InitialHighlightFilter`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialHighlightFilter)        |  |
+| [`InitialGroups`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialGroups)                 |  |

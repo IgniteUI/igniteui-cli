@@ -1,17 +1,18 @@
 ---
 title: Web Components Chart Overlays | Data Visualization Tools | Value Overlay | Infragistics
-_description: Use Infragistics Ignite UI for Web Components chart control's value overlay feature to place horizontal or vertical lines at a single numeric value. Learn about our Ignite UI for Web Components graph types!
-_keywords: Web Components charts, data chart, value overlay, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "ValueOverlay", "CategoryChart", "FinancialChart"]
+description: Use Infragistics Ignite UI for Web Components chart control's value overlay feature to place horizontal or vertical lines at a single numeric value. Learn about our Ignite UI for Web Components graph types!
+keywords: Web Components charts, data chart, value overlay, Ignite UI for Web Components, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Web Components DataChart allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the ValueOverlay."
 _tocName: Chart Overlays
 _premium: true
 ---
-
 # Web Components Chart Overlays
 
-The Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent). This can help you to visualize data such as the mean or median of a particular series.
+The Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the [`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent). This can help you to visualize data such as the mean or median of a particular series.
 
 ## Web Components Value Overlay Example
 
@@ -22,29 +23,27 @@ The following example depicts a [Column Chart](../types/column-chart.md) with a 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Value Overlay Properties
 
-Unlike other series types that use a `ItemsSource` for data binding, the value overlay uses a `ValueMemberPath` property to bind a single numeric value. In addition, the value overlay requires you to define a single [`axis`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
+Unlike other series types that use a [`ItemsSource`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=dataSource) for data binding, the value overlay uses a [`ValueMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=valueMemberPath) property to bind a single numeric value. In addition, the value overlay requires you to define a single [`Axis`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
 
-When using a numeric X or Y axis, the `ValueMemberPath` property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the `ValueMemberPath` should reflect the index of the category at which you want the value overlay to appear.
+When using a numeric X or Y axis, the [`ValueMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=valueMemberPath) property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the [`ValueMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=valueMemberPath) should reflect the index of the category at which you want the value overlay to appear.
 
 When using the value overlay with a numeric angle axis, it will appear as a line from the center of the chart and when using a numeric radius axis, it will appear as a circle.
 
-[`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent) appearance properties are inherited from [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) and so [`brush`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=brush) and [`thickness`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=thickness) for example are available and work the same way they do with other types of series.
+[`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent) appearance properties are inherited from [`Series`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Series) and so [`Brush`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=brush) and [`Thickness`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=thickness) for example are available and work the same way they do with other types of series.
 
-It is also possible to show an axis annotation on a [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent) to show the value of the overlay on the owning axis. In order to show this, you can set the [`isAxisAnnotationEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=isAxisAnnotationEnabled) property to true.
+It is also possible to show an axis annotation on a [`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent) to show the value of the overlay on the owning axis. In order to show this, you can set the [`IsAxisAnnotationEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=isAxisAnnotationEnabled) property to true.
 
 ## Web Components Value Layer
 
 The Web Components charting components also expose the ability to use value lines to call out different focal points of your data, such as minimum, maximum, and average values.
 
-Applying the [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components is done by setting the [`valueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) property on the chart. This property takes a collection of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumeration. You can mix and match multiple value layers in the same chart by adding multiple [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumerations to the [`valueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) collection of the chart.
+Applying the [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components is done by setting the [`ValueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) property on the chart. This property takes a collection of the [`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumeration. You can mix and match multiple value layers in the same chart by adding multiple [`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumerations to the [`ValueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) collection of the chart.
 
-In the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), this is done by adding a [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to the [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) collection of the chart and then setting the `ValueMode` property to one of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumerations. Each of these enumerations and what they mean is listed below:
+In the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), this is done by adding a [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to the [`Series`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Series) collection of the chart and then setting the [`ValueMode`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) property to one of the [`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumerations. Each of these enumerations and what they mean is listed below:
 
-- [`Auto`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Auto): The default value mode of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumeration.
+- [`Auto`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Auto): The default value mode of the [`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) enumeration.
 - [`Average`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Average): Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
 - [`GlobalAverage`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=GlobalAverage): Applies a single value line to call out the average of all of the series values in the chart.
 - [`GlobalMaximum`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=GlobalMaximum): Applies a single value line to call out the absolute maximum value of all of the series values in the chart.
@@ -52,9 +51,9 @@ In the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&co
 - [`Maximum`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Maximum): Applies potentially multiple value lines to call out the maximum value of each series plotted in the chart.
 - [`Minimum`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Minimum): Applies potentially multiple value lines to call out the minimum value of each series plotted in the chart.
 
-If you want to prevent any particular series from being taken into account when using the [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) element, you can set the [`targetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent&member=targetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) elements within a single [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) as you want.
+If you want to prevent any particular series from being taken into account when using the [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) element, you can set the [`TargetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent&member=targetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) elements within a single [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) as you want.
 
-The following sample demonstrates usage of the different [`valueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent):
+The following sample demonstrates usage of the different [`ValueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines) in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent):
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -89,17 +88,15 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Financial Overlays
 
 You can also plot built-in financial overlays and indicators in Web Components [Stock Chart](../types/stock-chart.md).
 
-## Chart Overlay Text <label class="badge badge--preview">PREVIEW</label>
+## Chart Overlay Text 
 
-The Web Components [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent), and all Data Annotation Layers can render custom overlay text inside plot area of the XamDataChart component. You can use this overlay text to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis in relationship to the layers.
+The Web Components [`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent), and all Data Annotation Layers can render custom overlay text inside plot area of the DataChart component. You can use this overlay text to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis in relationship to the layers.
 
-For example, you can use [`IgcDataAnnotationSliceLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataAnnotationSliceLayerComponent), [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), and [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to show overlay text.
+For example, you can use [`IgcDataAnnotationSliceLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataAnnotationSliceLayerComponent), [`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), and [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to show overlay text.
 
 ```typescript
 export class AnnotationSliceMultiOverlayDataItem {
@@ -163,9 +160,7 @@ export class StockTesla extends Array<StockTeslaItem> {
 ### Styling Overlay Text
 
 This code example shows how to style and customize Overlay Text on
-the [`IgcDataAnnotationSliceLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataAnnotationSliceLayerComponent), [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), and [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent).
-
-<div class="divider--half"></div>
+the [`IgcDataAnnotationSliceLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataAnnotationSliceLayerComponent), [`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent), and [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent).
 
 ```html
 <igc-data-annotation-slice-layer
@@ -197,24 +192,9 @@ You can find more information about related chart types in these topics:
 - [Stock Chart](../types/stock-chart.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- `ItemsSource`
-- [`IgcValueOverlayComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent)
-- [`axis`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=axis)
-- [`brush`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=brush)
-- `IsAxisAnnotationsEnabled`
-- [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent)
-- [`thickness`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=thickness)
-- [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent)
-- [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode)
-- [`valueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=valueLines)
-- [`overlayText`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=overlayText)
-- `TargetAxis`
-- `OverlayTextMemberPath`
-- [`overlayTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=overlayTextColor)
-- [`overlayTextBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=overlayTextBackground)
-- [`overlayTextBorderColor`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=overlayTextBorderColor)
-- [`overlayTextLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent&member=overlayTextLocation)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcValueOverlay`](mcp:get_api_reference?platform=webcomponents&component=IgcValueOverlayComponent)
+[`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent)
+[`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)

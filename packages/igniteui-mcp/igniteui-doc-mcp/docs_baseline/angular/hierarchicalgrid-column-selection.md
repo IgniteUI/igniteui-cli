@@ -1,18 +1,24 @@
 ---
 title: Angular Hierarchical Grid Column Selection - Ignite UI for Angular
-_description: Learn how to configure column selection with Ignite UI for Angular Hierarchical grid. This makes grid interactions much easier and faster than ever.
-_keywords: column selection, igniteui for angular, infragistics
-_license: commercial
+description: Learn how to configure column selection with Ignite UI for Angular Hierarchical grid. This makes grid interactions much easier and faster than ever.
+keywords: column selection, igniteui for angular, infragistics
+license: commercial
 _canonicalLink: grid/column-selection
+llms:
+  description: "The Column selection feature provides an easy way to select an entire column with a single click."
 _tocName: Column Selection
 _premium: true
 ---
 # Angular Hierarchical Grid Column Selection
-The Column selection feature provides an easy way to select an entire column with a single click. It emphasizes the importance of a particular column by focusing the header cell(s) and everything below. The feature comes with a rich [`API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest) that allows for manipulation of the selection state, data extraction from the selected fractions and data analysis operations and visualizations.
+
+The Column selection feature provides an easy way to select an entire column with a single click. It emphasizes the importance of a particular column by focusing the header cell(s) and everything below. The feature comes with a rich `API` that allows for manipulation of the selection state, data extraction from the selected fractions and data analysis operations and visualizations.
+
 ## Angular Column Selection Example
-<div class="divider--half"></div>
+
 The sample below demonstrates the three types of Hierarchical Grid's **column selection** behavior. Use the _column selection_ dropdown below to enable each of the available selection modes.
+
 *_Photo_ and _Debut_ are with disabled column selection.
+
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { GridSelectionMode, IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
@@ -113,14 +119,20 @@ export class HierarchicalGridColumnSelectionComponent implements OnInit, AfterVi
     }
 }
 ```
-<div class="divider--half"></div>
+
 ## Basic usage
-The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection) input, which takes [GridSelectionMode](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#gridselectionmode) values.
+
+The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection) input, which takes [`IgxGridSelectionMode`](mcp:get_api_reference?platform=angular&component=GridSelectionMode) values.
+
 ## Interactions
+
 The default selection mode is `none`. If set to `single` or `multiple` all of the presented columns will be [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
-> [!NOTE]
-> [`Multi-column Headers`](multi-column-headers.md) don't reflect on the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) input. The [`IgxColumnGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) is [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) if all of its `selectable` descendants are [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected).
+
+**Note:** 
+[`Multi-column Headers`](/hierarchicalgrid/multi-column-headers) don't reflect on the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) input. The [`IgxColumnGroup`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) is [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) if all of its `selectable` descendants are [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected).
+
 *Under _Location_ Column Group only column _City_ is selectable.
+
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -214,52 +226,78 @@ export class HierarchicalGridColumnGroupSelectionComponent implements OnInit, Af
     padding: 16px;
 }
 ```
-<div class="divider--half"></div>
+
 ## Keyboard combinations
-> [!NOTE]
-> The keyboard combinations are available only when the grid [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnselection) input is set to `multiple`.
+
+**Note:** 
+The keyboard combinations are available only when the grid [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnselection) input is set to `multiple`.
+
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
+
 - Multi-column selection - holding <kbd>ctrl</kbd> + <kbd>click</kbd> on every **selectable** header cell.
 - Range column selection - holding <kbd>shift</kbd> + <kbd>click</kbd> selects all **selectable** columns in between.
+
 ## API manipulations
+
 The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected) by setting the corresponding **setter**.
-> [!NOTE]
-> The above statement also applies to the [`IgxColumnGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent), except that when the [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) property is changed it changes the state of its descendants.
+
+**Note:** 
+The above statement also applies to the [`IgxColumnGroup`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent), except that when the [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) property is changed it changes the state of its descendants.
+
 More information regarding the API manipulations could be found in the [`API References`](#api-references) section.
+
 ## Styling
-Before diving into the styling options, the core module and all component mixins need to be imported.
+
+Before diving into the styling options, the theming module needs to be imported.
+
 ```scss
 @use "igniteui-angular/theming" as *;
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
->[!NOTE]
->Please note that [`row selection`](row-selection.md) and [`column selection`](column-selection.md) can't be manipulated independently. They depend on the same `variables`.
+
+**Note:** 
+Please note that [`row selection`](/hierarchicalgrid/row-selection) and [`column selection`](/hierarchicalgrid/column-selection) can't be manipulated independently. They depend on the same `variables`.
+
 With that being said, let's move on and change the **selection** and **hover** styles.<br/>
 Following the simplest approach, let's define our custom **theme**.
+
 ```scss
+$background: #011627;
+$accent: #ecaa53;
+
 $custom-grid-theme: grid-theme(
-  $row-selected-background: #011627,
-  $row-selected-text-color: #ecaa53,
-  $row-selected-hover-background: #011627,
-  $header-selected-text-color: #ecaa53,
-  $header-selected-background: #011627
+  $row-selected-background: $background,
+  $row-selected-text-color: $accent,
+  $row-selected-hover-background: hsl(from $background h s 10%),
+  $row-selected-hover-text-color: $accent,
+  $header-selected-text-color: $accent,
+  $header-selected-background: $background,
 );
 ```
-The [`grid-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme) accepts several parameters but those are the five responsible for changing the appearance of all selected columns:
+
+The `grid-theme` accepts several parameters but those are the five responsible for changing the appearance of all selected columns:
+
 - **$row-selected-background** - sets the background of the selected fraction.
 - **$row-selected-text-color** - sets the text color of the selected fraction
-- **$row-selected-hover-background** - sets the color of the hovered cell or bunch of cells.
+- **$row-selected-hover-background** - sets the color of the hovered cell or group of cells.
+- **$row-selected-hover-text-color** - sets the text color of the hovered cell or group of cells.
 - **$header-selected-text-color** - sets the text color of the selected column header
 - **$header-selected-background** - sets the background color of the selected column header.
+
 ### Using CSS Variables
-The last step is to include the custom `igx-grid` theme.
+
+The last step is to **include** the custom grid theme.
+
 ```scss
 :host {
   @include tokens($custom-grid-theme)
 }
 ```
+
 ### Demo
+
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -349,44 +387,57 @@ $custom-grid-theme: grid-theme(
   @include tokens($custom-grid-theme);
 }
 ```
->[!NOTE]
->The sample will not be affected by the selected global theme from `Change Theme`.
-<div class="divider--half"></div>
+
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
+
 ## <a name="api-references"></a>API References
-<div class="divider--half"></div>
+
 The column selection UI has a few more APIs to explore, which are listed below.
-- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IgxColumnGroupComponent](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent)
-- [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-[`IgxHierarchicalGridComponent`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) properties:
-- [columnSelection](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection)
-- [selectedColumns](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectedColumns)
-- [selectColumns](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectColumns)
-- [deselectColumns](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=deselectColumns)
-- [selectAllColumns](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectAllColumns)
-- [deselectAllColumns](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=deselectAllColumns)
-[`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) properties:
-- [selectable](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable)
-- [selected](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected)
-[`IgxColumnGrpupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) properties:
-- [selectable](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selectable)
-- [selected](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected)
-[`IgxHierarchicalGridComponent`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) events:
-- [onColumnsSelectionChange](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=onColumnsSelectionChange)
+
+- [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxColumnGroup`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent)
+- `IgxHierarchicalGridComponent Styles`
+
+[`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) properties:
+
+- [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection)
+- [`selectedColumns`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectedColumns)
+- [`selectColumns`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectColumns)
+- [`deselectColumns`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=deselectColumns)
+- [`selectAllColumns`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectAllColumns)
+- [`deselectAllColumns`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=deselectAllColumns)
+
+[`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) properties:
+
+- [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected)
+
+[`IgxColumnGroup`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) properties:
+
+- [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected)
+
+[`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) events:
+
+- [`columnSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelectionChanging)
+
 ## Additional Resources
-- [Hierarchical Grid overview](hierarchical-grid.md)
-- [Selection](selection.md)
-- [Cell selection](cell-selection.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Virtualization and Performance](virtualization.md)
-<div class="divider--half"></div>
+
+- [Hierarchical Grid overview](/hierarchicalgrid/hierarchical-grid)
+- [Selection](/hierarchicalgrid/selection)
+- [Cell selection](/hierarchicalgrid/cell-selection)
+- [Paging](/hierarchicalgrid/paging)
+- [Filtering](/hierarchicalgrid/filtering)
+- [Sorting](/hierarchicalgrid/sorting)
+- [Summaries](/hierarchicalgrid/summaries)
+- [Column Moving](/hierarchicalgrid/column-moving)
+- [Column Pinning](/hierarchicalgrid/column-pinning)
+- [Column Resizing](/hierarchicalgrid/column-resizing)
+- [Virtualization and Performance](/hierarchicalgrid/virtualization)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

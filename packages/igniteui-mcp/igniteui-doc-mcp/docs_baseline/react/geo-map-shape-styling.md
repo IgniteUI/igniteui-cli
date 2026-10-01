@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics
-_description: Learn how to apply custom styling to Infragistics' React map's shape series. Check out Ignite UI for React map tutorials!
-_keywords: React map, custom styling, Ignite UI for React, Infragistics, conditional formatting, shape styling
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeries", "Series"]
+title: "React Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics"
+description: Learn how to apply custom styling to Infragistics' React map's shape series. Check out Ignite UI for React map tutorials!
+keywords: "React map, custom styling, Ignite UI for React, Infragistics, conditional formatting, shape styling"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeries", "Series"]
+llms:
+  description: "Explains how to apply data-driven conditional styling to geographic shape series in the Ignite UI for React Map."
 _tocName: Shape Styling
 _premium: true
 ---
-
 # React Shape Styling on Geographic Shape Series
 
-This topic explains how to apply custom styling to the [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) in the React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html).
+This topic explains how to apply custom styling to the `IgrGeographicShapeSeries` in the React `IgrGeographicMap`.
 
 ## React Shape Styling on Geographic Shape Series Example
 
@@ -696,8 +697,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapShapeStyling/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Required Imports
 
 Shape styling requires that you import the following classes:
@@ -709,8 +708,7 @@ import { IgrShapeDataSource } from 'igniteui-react-core';
 import { IgrShapefileRecord } from 'igniteui-react-core';
 ```
 
-Note that the following code examples are using the [Shape Styling Utility](geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
-
+Note that the following code examples are using the [Shape Styling Utility](./geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
 - [Shape Comparison Styling](#shape-comparison-styling)
 - [Shape Random Styling](#shape-random-styling)
 - [Shape Range Styling](#shape-range-styling)
@@ -845,6 +843,5 @@ public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs)
 ```
 
 ## API References
-
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html)
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrGeographicShapeSeries`
+`IgrGeographicMap`

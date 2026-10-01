@@ -1,13 +1,14 @@
 ---
-title: React Circular Progress | Circular Progress | Infragistics
-_description: Circular Progress Indicator component allows developers to display progress in a circle with endless customization options.
-_keywords: React Circular Progress, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Circular Progress | Circular Progress | Infragistics"
+description: Circular Progress Indicator component allows developers to display progress in a circle with endless customization options.
+keywords: "React Circular Progress, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["CircularProgress", "CircularGradient"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for React Circular Progress Indicator component provides a visual indicator of an application’s process as it changes."
 _tocName: Circular Progress
 ---
-
 # React Circular Progress Overview
 
 The Ignite UI for React Circular Progress Indicator component provides a visual indicator of an application’s process as it changes. The circular indicator updates its appearance as its state changes.
@@ -54,8 +55,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SimpleCircularProgressIndicator/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -80,7 +79,7 @@ The simplest way to start using the [`IgrCircularProgress`](mcp:get_api_referenc
 
 ### Progress Types
 
-You can set the type of your indicator, using the [`variant`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using the [`Variant`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```tsx
 <IgrCircularProgress value="100" variant="success"></IgrCircularProgress>
@@ -88,7 +87,7 @@ You can set the type of your indicator, using the [`variant`](mcp:get_api_refere
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) by setting the [`hideLabel`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=hideLabel) property and customize the progress indicator default label via the exposed [`labelFormat`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=labelFormat) property.
+If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) by setting the [`HideLabel`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=hideLabel) property and customize the progress indicator default label via the exposed [`LabelFormat`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=labelFormat) property.
 
 ```tsx
 <IgrCircularProgress value="100" indeterminate="true"></IgrCircularProgress>
@@ -129,11 +128,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IndeterminateCircularProgress/>);
 ```
 
-<div class="divider--half"></div>
-
 ### Animation Duration
 
-You can use the [`animationDuration`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=animationDuration) property on the [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) component to specify how long the animation cycle should take in milliseconds.
+You can use the [`AnimationDuration`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=animationDuration) property on the [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) component to specify how long the animation cycle should take in milliseconds.
 
 ```tsx
 <IgrCircularProgress animationDuration="5000" indeterminate="true"></IgrCircularProgress>
@@ -141,7 +138,7 @@ You can use the [`animationDuration`](mcp:get_api_reference?platform=react&compo
 
 ### Gradient Progress
 
-Customizing the progress bar in order to use a color gradient instead of a solid color could be done via the exposed `gradient` slot and [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) which defines the gradient stops.
+The progress bar can be customized to use a color gradient instead of a solid color by using the `gradient` slot and the [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) component, which defines the gradient stops.
 
 ```css
 igc-circular-progress {
@@ -239,8 +236,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DynamicCircularProgress/>);
 ```
 
-> [!Note]
-> For each [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
+**Note:** 
+For each [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) defined as `gradient` slot of Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
+
 
 ```tsx
 <IgrCircularProgress >
@@ -253,27 +251,25 @@ root.render(<DynamicCircularProgress/>);
 </IgrCircularProgress>
 ```
 
-<div class="divider--half"></div>
-
 ## Styling
 
 The [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
-| `svg`               | The progress SVG element.                |
+| `svg`               | The progress SVG element.                 |
 | `gradient_start`     | The progress linear-gradient start color. |
-| `gradient_end`       | The progress linear-gradient end color.  |
-| `track`              | The progress ring's track area.          |
-| `fill`               | The progress indicator area.             |
-| `label`              | The progress label.                      |
-| `value`              | The progress label value.                |
-| `indeterminate`      | The progress indeterminate state.        |
-| `primary`            | The progress indicator primary state.    |
-| `danger`             | The progress indicator error state.      |
-| `warning`            | The progress indicator warning state.    |
-| `info`               | The progress indicator info state.       |
-| `success`            | The progress indicator success state.    |
+| `gradient_end`       | The progress linear-gradient end color.   |
+| `track`              | The progress ring's track area.           |
+| `fill`               | The progress indicator area.              |
+| `label`              | The progress label.                       |
+| `value`              | The progress label value.                 |
+| `indeterminate`      | The progress indeterminate state.         |
+| `primary`            | The progress indicator primary state.     |
+| `danger`             | The progress indicator error state.       |
+| `warning`            | The progress indicator warning state.     |
+| `info`               | The progress indicator info state.        |
+| `success`            | The progress indicator success state.     |
 
 Using this CSS parts we have almost full control over the Circular Progress styling.
 
@@ -346,13 +342,9 @@ root.render(<StylingCircularProgressIndicator/>);
 ```
 
 ## API References
-
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
-- [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient)
-- [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+[`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient)
+[`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

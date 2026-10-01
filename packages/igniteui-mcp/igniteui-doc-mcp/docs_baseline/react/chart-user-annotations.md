@@ -1,18 +1,19 @@
 ---
-title: React Chart User Annotations | Data Visualization | Infragistics
-_description: Infragistics' React Chart User Annotations
-_keywords: React Charts, User Annotations, Infragistics
+title: "React Chart User Annotations | Data Visualization | Infragistics"
+description: Infragistics' React Chart User Annotations
+keywords: "React Charts, User Annotations, Infragistics"
 mentionedTypes: ["DataChart", "UserAnnotationLayer", "UserStripAnnotation", "UserSliceAnnotation", "UserPointAnnotation", "Toolbar", "UserAnnotationInformation", "SeriesViewer"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for React, you can annotate the DataChart with slice, strip, and point annotations at runtime using the user annotations feature."
 _tocName: Chart User Annotations
 _premium: true
 ---
+# React Chart User Annotation Layer 
 
-# React Chart User Annotation Layer <label class="badge badge--preview">PREVIEW</label>
+In Ignite UI for React, you can annotate the `IgrDataChart` with slice, strip, and point annotations at runtime using the user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-In Ignite UI for React, you can annotate the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) with slice, strip, and point annotations at runtime using the user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
-
-This is directly integrated with the available tools of the [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html). The following topic explains, with examples, how you can utilize the [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) to add user annotations to the plot area of the chart, as well as how to do add these user annotations programmatically.
+This is directly integrated with the available tools of the `IgrToolbar`. The following topic explains, with examples, how you can utilize the `IgrToolbar` to add user annotations to the plot area of the chart, as well as how to do add these user annotations programmatically.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -302,51 +303,45 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-> [!Note]
-> This feature is designed to support X and Y axes and does not currently support radial or angular axes.
+**Note:** 
+This feature is designed to support X and Y axes and does not currently support radial or angular axes.
 
 ## Using the User Annotations with the Toolbar
 
-The [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) exposes an Annotations menu item with two tools with the labels of "Annotate Chart" and "Delete Note." In order for this menu item to appear, you first need to set the [`isUserAnnotationsEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#isUserAnnotationsEnabled) property on the corresponding chart to `true`.
+The `IgrToolbar` exposes an Annotations menu item with two tools with the labels of "Annotate Chart" and "Delete Note." In order for this menu item to appear, you first need to set the `IsUserAnnotationsEnabled` property on the corresponding chart to `true`.
 
-The "Annotate Chart" option that appears after opening allows you to annotate the plot area of the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). This can be done by adding slice, strip, or point annotations. You can add a slice annotation by clicking on a label on the X or Y axis. You can add a strip annotation by clicking and dragging in the plot area. Also, you can add a point annotation by clicking on a point in a series plotted in the chart.
-
-<img class="responsive-img" src="../../../images/charts/data-chart-user-annotation-create.gif"
-alt="React user-annotation-create"/>
+The "Annotate Chart" option that appears after opening allows you to annotate the plot area of the `IgrDataChart`. This can be done by adding slice, strip, or point annotations. You can add a slice annotation by clicking on a label on the X or Y axis. You can add a strip annotation by clicking and dragging in the plot area. Also, you can add a point annotation by clicking on a point in a series plotted in the chart.
 
 You can delete the annotations that you have previously added by selecting the "Delete Note" menu item and then clicking on the axis annotation for the slice or strip user annotations, or by clicking the corresponding data point for the point user annotation.
 
-<img class="responsive-img" src="../../../images/charts/data-chart-user-annotation-delete.gif"
-alt="React user-annotation-delete"/>
+When adding one of these user annotations via the `IgrToolbar`, the `IgrDataChart` will raise an event named `UserAnnotationInformationRequested` where you can provide more information for the user annotations. This event's arguments have a property named `AnnotationInfo` that will return a `IgrUserAnnotationInformation` object that allows the configuration of multiple different aspects of the annotation to be added.
 
-When adding one of these user annotations via the `XamToolbar`, the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) will raise an event named `UserAnnotationInformationRequested` where you can provide more information for the user annotations. This event's arguments have a property named `AnnotationInfo` that will return a [`IgrUserAnnotationInformation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html) object that allows the configuration of multiple different aspects of the annotation to be added.
-
-The table below details the different configurable properties on [`IgrUserAnnotationInformation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html):
+The table below details the different configurable properties on `IgrUserAnnotationInformation`:
 
 | Property | Type | Description |
 |------------|---------|-------------|
-|[`annotationData`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#annotationData)|`string`|This property allows additional information for the user annotation. This property is designed to be utilized with the `UserAnnotationToolTipContentUpdating` event to show additional information in the annotation's tooltip.|
-|[`annotationId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#annotationId)|`string`|This read-only property returns the unique string ID of the user annotation.|
-|[`badgeColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#badgeColor)|`string`|This property gets or sets the color to use for the badge in the user annotation.|
-|[`badgeImageUri`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#badgeImageUri)|`string`|This property gets or sets a path to an image to use for the badge in the user annotation.|
-|[`dialogSuggestedXLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#dialogSuggestedXLocation)|`double`|This property gets a recommended X location to show a dialog based on the location that the user annotation was added.|
-|[`dialogSuggestedYLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#dialogSuggestedYLocation)|`double`|This property gets a recommended Y location to show a dialog based on the location that the user annotation was added.|
-|[`label`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#label)|`string`|This property gets or sets the label to be shown in the user annotation.|
-|[`mainColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#mainColor)|`string`|This property gets or sets the color to be used to fill the background of the user annotation.|
+|`AnnotationData`|`string`|This property allows additional information for the user annotation. This property is designed to be utilized with the `UserAnnotationToolTipContentUpdating` event to show additional information in the annotation's tooltip.|
+|`AnnotationId`|`string`|This read-only property returns the unique string ID of the user annotation.|
+|`BadgeColor`|`string`|This property gets or sets the color to use for the badge in the user annotation.|
+|`BadgeImageUri`|`string`|This property gets or sets a path to an image to use for the badge in the user annotation.|
+|`DialogSuggestedXLocation`|`double`|This property gets a recommended X location to show a dialog based on the location that the user annotation was added.|
+|`DialogSuggestedYLocation`|`double`|This property gets a recommended Y location to show a dialog based on the location that the user annotation was added.|
+|`Label`|`string`|This property gets or sets the label to be shown in the user annotation.|
+|`MainColor`|`string`|This property gets or sets the color to be used to fill the background of the user annotation.|
 
-After you have made the changes to the annotation through the `UserAnnotationInformationRequested` event, you should invoke the [`finishAnnotationFlow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html#finishAnnotationFlow) method on the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) to finish creating the annotation and commit the changes to it. Alternatively, you can also cancel the annotation's creation by calling [`cancelAnnotationFlow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html#cancelAnnotationFlow) and passing the [`annotationId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#annotationId) of the annotation, which can be obtained from the `AnnotationInfo` parameter of the `UserAnnotationInformationRequested` event's arguments, as mentioned above. This will remove the annotation from the plot area.
+After you have made the changes to the annotation through the `UserAnnotationInformationRequested` event, you should invoke the `FinishAnnotationFlow` method on the `IgrDataChart` to finish creating the annotation and commit the changes to it. Alternatively, you can also cancel the annotation's creation by calling `CancelAnnotationFlow` and passing the `AnnotationId` of the annotation, which can be obtained from the `AnnotationInfo` parameter of the `UserAnnotationInformationRequested` event's arguments, as mentioned above. This will remove the annotation from the plot area.
 
 ## Using the User Annotations Programmatically
 
-When using the [`IgrUserAnnotationLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html) programmatically, you can invoke two different methods on the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) to put the chart into a mode where you can add or remove a user annotation. These methods are named [`startCreatingAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#startCreatingAnnotation) and [`startDeletingAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#startDeletingAnnotation), respectively.
+When using the `IgrUserAnnotationLayer` programmatically, you can invoke two different methods on the `IgrDataChart` to put the chart into a mode where you can add or remove a user annotation. These methods are named `StartCreatingAnnotation` and `StartDeletingAnnotation`, respectively.
 
-After invoking [`startCreatingAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#startCreatingAnnotation), you can add a slice annotation by clicking on a label on the X or Y axis, add a strip annotation by clicking and dragging in the plot area and releasing the mouse button, or add a point annotation by clicking on a data point on a series plotted in the chart.
+After invoking `StartCreatingAnnotation`, you can add a slice annotation by clicking on a label on the X or Y axis, add a strip annotation by clicking and dragging in the plot area and releasing the mouse button, or add a point annotation by clicking on a data point on a series plotted in the chart.
 
-Adding one of these user annotations will raise an event named `UserAnnotationInformationRequested`, where you can provide more information for the user annotation. This event's arguments have a property named `AnnotationInfo` that will return a [`IgrUserAnnotationInformation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html) object that allows the configuration of multiple different aspects of the annotation to be added.
+Adding one of these user annotations will raise an event named `UserAnnotationInformationRequested`, where you can provide more information for the user annotation. This event's arguments have a property named `AnnotationInfo` that will return a `IgrUserAnnotationInformation` object that allows the configuration of multiple different aspects of the annotation to be added.
 
-After you have made the changes to the annotation through the `UserAnnotationInformationRequested` event, you should invoke the [`finishAnnotationFlow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html#finishAnnotationFlow) method on the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) to finish creating the annotation and commit the changes to it. Alternatively, you can also cancel the annotation's creation by calling [`cancelAnnotationFlow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html#cancelAnnotationFlow) and passing the [`annotationId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html#annotationId) of the annotation, which can be obtained from the `AnnotationInfo` parameter of the `UserAnnotationInformationRequested` event's arguments, as mentioned above. This will remove the annotation from the plot area.
+After you have made the changes to the annotation through the `UserAnnotationInformationRequested` event, you should invoke the `FinishAnnotationFlow` method on the `IgrDataChart` to finish creating the annotation and commit the changes to it. Alternatively, you can also cancel the annotation's creation by calling `CancelAnnotationFlow` and passing the `AnnotationId` of the annotation, which can be obtained from the `AnnotationInfo` parameter of the `UserAnnotationInformationRequested` event's arguments, as mentioned above. This will remove the annotation from the plot area.
 
-Once the user annotation has been added to the chart, it will appear in the [`IgrSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html) collection as a [`IgrUserAnnotationLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html). The [`IgrUserAnnotationLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html) has an [`annotations`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationlayer.html#annotations) collection that can store [`IgrUserSliceAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrusersliceannotation.html), [`IgrUserStripAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserstripannotation.html) and [`IgrUserPointAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserpointannotation.html) elements depending on the type of annotations added to the plot area.
+Once the user annotation has been added to the chart, it will appear in the `Series` collection as a `IgrUserAnnotationLayer`. The `IgrUserAnnotationLayer` has an `Annotations` collection that can store `IgrUserSliceAnnotation`, `IgrUserStripAnnotation` and `IgrUserPointAnnotation` elements depending on the type of annotations added to the plot area.
 
 ## User Annotation ToolTip
 
@@ -354,24 +349,15 @@ Each of the user annotations can show a tooltip on mouse hover to add even more 
 
 The chart exposes a `UserAnnotationToolTipContentUpdating` event that you can handle to update the content of the tooltip for the user annotation as the tooltip is shown. The event arguments of this event exposes two properties: `Content` and `AnnotationInfo`.
 
-The tooltip is designed to work in tandem with the `UserAnnotationInformationRequested` event so that you can provide more detail to the user annotation via that event's [`annotationData`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserstripannotation.html#annotationData) property. The `AnnotationInfo` property on the event arguments of the `UserAnnotationToolTipContentUpdating` event will be the same instance as the `AnnotationInfo` property in the `UserAnnotationInformationRequested` that you can modify in that event. This allows you to utilize the information provided to the user annotation on its creation and provide even more information within the tooltip.
+The tooltip is designed to work in tandem with the `UserAnnotationInformationRequested` event so that you can provide more detail to the user annotation via that event's `AnnotationInfo.AnnotationData` property. The `AnnotationInfo` property on the event arguments of the `UserAnnotationToolTipContentUpdating` event will be the same instance as the `AnnotationInfo` property in the `UserAnnotationInformationRequested` that you can modify in that event. This allows you to utilize the information provided to the user annotation on its creation and provide even more information within the tooltip.
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).[`isUserAnnotationsEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#isUserAnnotationsEnabled)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).`SeriesViewer.UserAnnotationInformationRequested`
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).`SeriesViewer.userAnnotationToolTipContentUpdating`
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).[`cancelAnnotationFlow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#cancelAnnotationFlow)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).[`startCreatingAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#startCreatingAnnotation)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).[`startDeletingAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#startDeletingAnnotation)
-- [`IgrUserAnnotationInformation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserannotationinformation.html)
-- [`IgrUserSliceAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrusersliceannotation.html)
-- [`IgrUserStripAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserstripannotation.html)
-- [`IgrUserPointAnnotation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igruserpointannotation.html)
-- [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html)
-
+`IgrDataChart`
+`IgrUserAnnotationLayer`
+`IgrUserAnnotationInformation`
+`IgrUserSliceAnnotation`
+`IgrUserStripAnnotation`
+`IgrUserPointAnnotation`
 ## Additional Resources
 
 You can find more information about related chart features in these topics:

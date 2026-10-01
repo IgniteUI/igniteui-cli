@@ -1,16 +1,15 @@
 ---
-title: Blazor Tree Grid Row Pinning in - Ignite UI for Blazor
-_description: Use the Blazor Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
-_keywords: Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-pinning
+title: "Blazor Tree Grid Row Pinning in - Ignite UI for Blazor"
+description: Use the Blazor Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
+keywords: "Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-pinning"
+llms:
+  description: "The Ignite UI for Blazor Row Pinning feature in Blazor Tree Grid allows you to pin one or multiple rows to the top or bottom of grid."
+_componentKey: TreeGrid
 _tocName: Row Pinning
 _premium: true
 ---
-
 # Blazor Tree Grid Row Pinning
 
 The Ignite UI for Blazor Row Pinning feature in Blazor Tree Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) vertically. The Blazor Tree Grid has a built-in row pinning UI, which is enabled by initializing an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component in the context of Tree Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
@@ -174,8 +173,6 @@ public class EmployeesNestedTreeData
 
 The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with the [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
-
 ```razor
     <IgbTreeGrid Width="100%"  
              Height="100%"
@@ -200,30 +197,24 @@ The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](mcp:get_a
     </IgbTreeGrid>
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
 ## Row Pinning API
 
-Row pinning is controlled through the [`Pinned`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) body.
+Row pinning is controlled through the [`IgbRowDirective.pinned`](mcp:get_api_reference?platform=blazor&component=IgbRowDirective&member=pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) body.
 
-```razor
+```csharp
 this.Grid.PinRowAsync("ALFKI", 0);
 ```
 
-You may also use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s [`PinRow`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PinRow) or [`UnpinRow`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=UnpinRow) methods of the to pin or unpin records by their ID:
+You may also use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s [`PinRow`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=pinRow) or [`UnpinRow`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=unpinRow) methods of the to pin or unpin records by their ID:
 
-```razor
+```csharp
 this.Grid.PinRowAsync("ALFKI", 0);
 this.Grid.UnpinRowAsync("ALFKI");
 ```
 
-Note that the row ID is the primary key value, defined by the [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PrimaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`IgbTreeGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`IgbTreeGrid.rowPinning`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowPinning) event and changing the [`IgbPinRowEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbPinRowEventArgs) property of the event arguments to the desired position index.
 
 ```razor
 <IgbTreeGrid Width="100%"
@@ -236,19 +227,19 @@ A row is pinned below the last pinned row. Changing the order of the pinned rows
 </IgbTreeGrid>
 ```
 
-```razor
+```javascript
 // In JavaScript
-
 function rowPinningHandler(event) {
     event.detail.insertAtIndex = 0;
 }
 
 igRegisterScript("rowPinningHandler", rowPinningHandler, false);
+
 ```
 
 ## Pinning Position
 
-You can change the row pinning position via the [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`IgbTreeGrid.pinning`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 ```razor
@@ -274,8 +265,6 @@ When set to Bottom pinned rows are rendered at the bottom of the grid, after the
     }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ## Custom Row Pinning UI
 
 You can define your custom UI and change the pin state of the rows via the related API.
@@ -285,11 +274,12 @@ You can define your custom UI and change the pin state of the rows via the relat
 Let's say that instead of an action strip you would like to show a pin icon in every row allowing the end-user to click and change a particular row's pin state.
 This can be done by adding an extra column with a cell template containing the custom icon.
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ```razor
 <IgbColumn Width="70px" BodyTemplateScript="WebGridRowPinCellTemplate"/>
 
+```
+
+```javascript
 // In Javascript
 
 igRegisterScript("WebGridRowPinCellTemplate", (ctx) => {
@@ -305,11 +295,7 @@ igRegisterScript("WebGridRowPinCellTemplate", (ctx) => {
 }, false);
 ```
 
-<!-- end: Angular -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
+On click of the custom icon the pin state of the related row can be changed using the row's API methods.
 
 #### Demo
 
@@ -441,7 +427,7 @@ public class EmployeesNestedTreeData
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -584,9 +570,11 @@ public class EmployeesNestedTreeData
 
 ## API References
 
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-- `TreeGridRow`
-- [`IgbRowType`](mcp:get_api_reference?platform=blazor&component=IgbRowType)
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)<br />
+
+  [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)
+<br />
+[`IgbRowType`](mcp:get_api_reference?platform=blazor&component=IgbRowType)<br />
 
 ## Additional Resources
 

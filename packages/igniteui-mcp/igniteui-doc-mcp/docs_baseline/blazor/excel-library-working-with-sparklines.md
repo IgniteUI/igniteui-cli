@@ -1,13 +1,14 @@
 ---
-title: Blazor Excel Library| Working with Sparklines | Infragistics
-_description: Use sparkline charts in Infragistics' Blazor excel library to visual data trends across a region of cells in your worksheet. View Ignite UI for Blazor excel engine tutorials!
-_keywords: Excel library, sparkline chart, Ignite UI for Blazor, Infragistics
-_license: commercial
+title: "Blazor Excel Library| Working with Sparklines | Infragistics"
+description: Use sparkline charts in Infragistics' Blazor excel library to visual data trends across a region of cells in your worksheet. View Ignite UI for Blazor excel engine tutorials!
+keywords: Excel library, sparkline chart, Ignite UI for Blazor, Infragistics
+license: commercial
 mentionedTypes: ["Workbook"]
+llms:
+  description: "The Infragistics Blazor Excel Library has support for adding sparklines to an Excel Worksheet."
 _tocName: Working with Sparklines
 _premium: true
 ---
-
 # Blazor Working with Sparklines
 
 The Infragistics Blazor Excel Library has support for adding sparklines to an Excel Worksheet. These can be used to show simple visual representations of data trends across a region of cells of data in your worksheet. For example, if you wanted to see your Excel data across a particular cell region visualized as a simple column or line sparkline chart, this feature can help you to achieve that.
@@ -354,10 +355,7 @@ namespace Infragistics.Samples
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Supported Sparklines
-
 The following is a list of the supported predefined sparkline types.
 
 - Line
@@ -365,6 +363,15 @@ The following is a list of the supported predefined sparkline types.
 - Stacked (Win/Loss)
 
 The following code demonstrates how to programmatically add Sparklines to a Worksheet via the sparklineGroups collection:
+
+```ts
+var workbook: Workbook;
+var sheet1 = workbook.worksheets().add("Sparklines");
+var sheet2 = workbook.worksheets().add("Data");
+sheet1.sparklineGroups().add(SparklineType.Line, "Sparklines!A1:A1", "Data!A2:A11");
+sheet1.sparklineGroups().add(SparklineType.Column, "Sparklines!B1:B1", "Data!A2:A11");
+workbook.save(workbook, "Sparklines.xlsx");
+```
 
 ```razor
 var workbook = new Workbook();
@@ -376,5 +383,4 @@ sheet1.SparklineGroups.Add(SparklineType.Column, "Sparklines!B1:B1", "Data!A2:A1
 ```
 
 ## API References
-
-- `Workbook`
+[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)

@@ -1,12 +1,13 @@
 ---
-title: Blazor Select Component – Ignite UI for Blazor
-_description: Ignite UI for Blazor Select component
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Select components, Blazor Select controls
-_license: MIT
+title: "Blazor Select Component – Ignite UI for Blazor"
+description: "Ignite UI for Blazor Select component"
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Select components, Blazor Select controls"
+license: MIT
 mentionedTypes: ["Select"]
+llms:
+  description: "The Ignite UI for Blazor Select component allows a single selection from a list of items, placed in a dropdown."
 _tocName: Select
 ---
-
 # Blazor Select
 
 The Ignite UI for Blazor Select component allows a single selection from a list of items, placed in a dropdown. This form control offers a quick items list navigation, including selection, based on a single or multiple characters match.
@@ -28,26 +29,24 @@ The Ignite UI for Blazor Select component allows a single selection from a list 
 @code { }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
-Before using the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component, you need to register it together with its additional components:
+Before using the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component, you need to register it together with its additional components:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbSelectModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-> [!Note]
-> Please note that the select header and group components are not mandatory unless you want to use them.
+**Note:** 
+Please note that the select header and group components are not mandatory unless you want to use them.
 
 To start using the component add the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) along with a list of [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem)'s to choose from:
 
@@ -62,11 +61,21 @@ To start using the component add the [`IgbSelect`](mcp:get_api_reference?platfor
 
 ### Select
 
-The [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component can be used inside a `Form` component, thus it exposes a `Name` property to be registered with. It also has a [`Label`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Label), and [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Placeholder) properties. The [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Outlined) property is used for styling purposes only when it comes to the Material theme. Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. The component size can be changed using the `--ig-size` CSS variable.
+The [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component can be used inside a `Form` component, thus it exposes a [`Name`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=name) property to be registered with.
+
+It also has a [`Label`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=label), and [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=placeholder) properties. The [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=outlined) property is used for styling purposes only when it comes to the Material theme.
+
+Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. When slotting content, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component for icons.
+
+The component size can be changed using the `--ig-size` CSS variable.
 
 ### Item
 
-The [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) component allows the users to declaratively specify a list of options to be used by the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) control. Each item provides a [`Value`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Value) property that represents the data it carries upon selection. The [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) has a default slot which allows you to specify the text content of the item. This text content will be used as value in case the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Value) property is not present on the [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem). You could also provide custom content to be rendered before or after the [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) content using the `prefix` and `suffix` slots. You could predefine a selected item by setting the `Selected` property. You could also disable some or all items via the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Disabled) property.
+The [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) component allows the users to declaratively specify a list of options used by the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) control. Each item provides a [`Value`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem&member=value) property that represents the data it carries upon selection. The [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) has a default slot that allows you to specify the text content of the item. This text content will be used as the value when the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem&member=value) property is not present on the [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem).
+
+You could also provide custom content to be rendered before or after the [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem) content using the `prefix` and `suffix` slots. As with the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component, we recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots.
+
+You can predefine a selected item by setting the [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem&member=selected) property. You can also disable some or all items via the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem&member=disabled) property.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -133,10 +142,10 @@ You can use the [`IgbSelectHeader`](mcp:get_api_reference?platform=blazor&compon
 
 ### Group
 
-Multiple [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem)s can be placed between the opening and closing brackets of an [`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup) component so that users can visually group them together. The [`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup) can be labelled via its `label` slot and disabled via its [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup&member=Disabled) property.
+Multiple [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem)s can be placed between the opening and closing brackets of an [`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup) component so that users can visually group them together. The [`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup) can be labelled via its `label` slot and disabled via its [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup&member=disabled) property. We recommend using a `<span>` element for the `label` slot.
 
-> [!Note]
-> Keep in mind that if a select group is disabled, you cannot enable separate items of it.
+**Note:** 
+Keep in mind that if a select group is disabled, you cannot enable separate items of it.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -235,23 +244,20 @@ Multiple [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSe
 <IgbSelect>
     <IgbSelectGroup>
         <span slot="label">Europe</span>
-
         <IgbSelectItem>
-          <IgbIcon @ref="IconRef" slot="prefix" name="place" collection="material"></IgbIcon>
-          Germany
-          <span slot="suffix">DE</span>
+            <IgbIcon @ref="IconRef" slot="prefix" name="place" collection="material"></IgbIcon>
+            Germany
+            <span slot="suffix">DE</span>
         </IgbSelectItem>
-
         <IgbSelectItem>
-          <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
-          France
-          <span slot="suffix">FR</span>
+            <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
+            France
+            <span slot="suffix">FR</span>
         </IgbSelectItem>
-
         <IgbSelectItem>
-          <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
-          Spain
-          <span slot="suffix">ES</span>
+            <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
+            Spain
+            <span slot="suffix">ES</span>
         </IgbSelectItem>
     </IgbSelectGroup>
 </IgbSelect>
@@ -259,7 +265,7 @@ Multiple [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSe
 
 ## Validation
 
-In addition, the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) supports most of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties, such as [`Required`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Required), [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=Disabled), [`Autofocus`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Autofocus), etc. The component also exposes a method bound to its validation:
+In addition, the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) supports most of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties, such as [`Required`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=required), [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=disabled), [`Autofocus`](mcp:get_api_reference?platform=blazor&component=IgbSelect&member=autofocus), etc. The component also exposes a method bound to its validation:
 
 - `reportValidity` - checks for validity and focuses the component if invalid.
 
@@ -267,8 +273,8 @@ In addition, the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=I
 
 When the select is focused and the list of options is **not visible**:
 
-- Open the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
-- Close the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab) keys.
+- Open the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
+- Close the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab) keys.
 - Using the <kbd>←</kbd> <kbd>→</kbd> keys will select the previous item in the list.
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will select the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will select the first or last item in the list.
@@ -281,16 +287,15 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will activate the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
-> [!Note]
-> The [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) component supports only **single** selection of items.
+**Note:** 
+The [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component supports only **single** selection of items.
 
-## API Reference
+## API References
 
-- [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect)
-- [`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem)
-- [`IgbSelectHeader`](mcp:get_api_reference?platform=blazor&component=IgbSelectHeader)
-- [`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect)
+[`IgbSelectItem`](mcp:get_api_reference?platform=blazor&component=IgbSelectItem)
+[`IgbSelectHeader`](mcp:get_api_reference?platform=blazor&component=IgbSelectHeader)
+[`IgbSelectGroup`](mcp:get_api_reference?platform=blazor&component=IgbSelectGroup)
 
 ## Additional Resources
 

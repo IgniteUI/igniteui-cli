@@ -1,16 +1,17 @@
 ---
-title: Web Components Master-Detail Grid - Infragistics
-_description: Define expandable detail view template for data in rows with Ignite UI Web Components Grid. Useful for displaying master-detail style data in a hierarchical structure.
-_keywords: Web Components, {ComponentKeywords}, Ignite UI for Web Components, master detail, Infragistics
-_license: commercial
+title: "Web Components Master-Detail Grid - Infragistics"
+description: Define expandable detail view template for data in rows with Ignite UI Web Components Grid. Useful for displaying master-detail style data in a hierarchical structure.
+keywords: "Web Components, , Ignite UI for Web Components, master detail, Infragistics"
+license: commercial
 mentionedTypes: ["Infragistics.Controls.Grid"]
+llms:
+  description: "The Grid component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content."
 _tocName: Master-Detail
 _premium: true
 ---
-
 # Web Components Master-Detail Grid
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
 
 This mode is useful when you need to display master-detail style data in a hierarchical structure.
 
@@ -58,7 +59,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Configuration
 
-To configure the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to display in master-detail mode you need to specify a template for the grid:
+To configure the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to display in master-detail mode you need to specify a template for the grid:
 
 ```ts
 constructor() {
@@ -87,12 +88,11 @@ Context of the template is the master record data, so that values from the maste
 ## API
 
 Additional API methods for controlling the expansion states are also exposed:
-
-- [`expandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=expandAll)
-- [`collapseAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=collapseAll)
-- [`toggleRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toggleRow)
-- [`expandRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=expandRow)
-- [`collapseRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=collapseRow)
+- [`ExpandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=expandAll)
+- [`CollapseAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=collapseAll)
+- [`ToggleRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=toggleRow)
+- [`ExpandRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=expandRow)
+- [`CollapseRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -101,7 +101,7 @@ Additional API methods for controlling the expansion states are also exposed:
   - <kbd>🡑</kbd> - navigates one row up, focusing a cell from the previous row.
   - <kbd>🡓</kbd> - navigates one row down, focusing a cell from the next row.
   - <kbd>TAB</kbd> - Allows focus to move to the next focusable element inside the template if there are focusable elements, otherwise moves to the next grid row.
-  - <kbd>SHIFT</kbd> + <kbd><kbd>TAB</kbd> - moves the focus to the previous row.
+  - <kbd>SHIFT</kbd> + <kbd>TAB</kbd> - moves the focus to the previous row.
 
 - When focus is on a data row with expander:
   - <kbd>ALT</kbd> + <kbd>🡒</kbd> or <kbd>ALT</kbd> + <kbd>🡓</kbd> - expands the row.
@@ -117,6 +117,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- `HierarchicalGridRow`
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
+[`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent)<br />

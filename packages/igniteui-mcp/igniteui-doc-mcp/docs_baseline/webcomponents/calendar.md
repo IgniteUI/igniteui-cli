@@ -1,12 +1,13 @@
 ---
-title: Web Components Calendar Component - Ignite UI for Web Components
-_description: With Web Components Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
-_keywords: Web Components Calendar, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Calendar Component - Ignite UI for Web Components"
+description: With Web Components Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
+keywords: "Web Components Calendar, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["Calendar", "DateRangeType", "DateRangeDescriptor"]
+llms:
+  description: "The Ignite UI for Web Components Calendar component is lightweight and easy to configure."
 _tocName: Calendar
 ---
-
 # Web Components Calendar Overview
 
 The Ignite UI for Web Components Calendar component is lightweight and easy to configure. It is used for showing dates and weekdays. It is also the best way for providing monthly or yearly views to end-users. The Ignite UI for Web Components Calendar control lets you restrict the minimum and maximum date ranges that people can navigate through.
@@ -15,9 +16,7 @@ The Ignite UI for Ignite UI for Web Components Calendar provides an easy and int
 
 ## Web Components Calendar Example
 
-The following Web Components [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component example shows a basic calendar with a single day selection mode. See how it works or inspect the code behind.
-
-<div class="divider--half"></div>
+The following Web Components [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component example shows a basic calendar with a single day selection mode. See how it works or inspect the code behind.
 
 ```css
 /* shared styles are loaded from: */
@@ -32,7 +31,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent), you need to register it as follows:
+Before using the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcCalendarComponent } from 'igniteui-webcomponents';
@@ -42,7 +41,7 @@ defineComponents(IgcCalendarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the Ignite UI for Web Components [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) is as follows:
+The simplest way to start using the Ignite UI for Web Components [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) is as follows:
 
 ```html
 <igc-calendar></igc-calendar>
@@ -50,7 +49,7 @@ The simplest way to start using the Ignite UI for Web Components [`IgcCalendarCo
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Web Components [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) is using single selection mode but you can change it by setting the [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Web Components [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) is using single selection mode but you can change it by setting the [`IgcCalendar.selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) property as shown in this example.
 
 ```html
 <igc-calendar selection="multiple"></igc-calendar>
@@ -63,7 +62,7 @@ Users can choose from three different selection modes - single selection, multip
 
 ### Range Selection
 
-Following the same approach, we can switch [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) to range mode:
+Following the same approach, we can switch [`IgcCalendar.selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) to range mode:
 
 ```html
 <!-- Range selection mode -->
@@ -77,19 +76,21 @@ Following the same approach, we can switch [`selection`](mcp:get_api_reference?p
 
 ### Active View and Date
 
-The Ignite UI for Web Components Calendar component allows you to switch between three different views: days, months and years. The [`activeView`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) property. The [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) property also reflects the changes of the currently visible date made by the end user.
+The Ignite UI for Web Components Calendar component allows you to switch between three different views: days, months and years. The [`IgcCalendar.activeView`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`IgcCalendar.activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) property. The [`IgcCalendar.activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) property also reflects the changes of the currently visible date made by the end user.
 
 ### Header Options
 
-By default, the Ignite UI for Web Components Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=headerOrientation) property.
+By default, the Ignite UI for Web Components Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the [`IgcCalendar.hasHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=hasHeader) property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`IgcCalendar.headerOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=headerOrientation) property.
 
-> [!Note]
-> Please note that the Ignite UI for Web Components Calendar header is not rendered when the [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) is set to multiple.
+**Note:** 
+Please note that the Ignite UI for Web Components Calendar header is not rendered when the [`IgcCalendar.selection`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=selection) is set to multiple.
 
-> [!Note]
-> Please note that the Ignite UI for Web Components Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=headerOrientation) property corresponds to the `header-orientation` attribute.
+**Note:** 
+Please note that the Ignite UI for Web Components Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=headerOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for Web Components Calendar component exposes a `title` slot which allows you to customize the title of the header.
+
+When slotting content into the `title` slot, we recommend using a `<span>` element rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
 
 ```html
 <igc-calendar selection="range" header-orientation="vertical">
@@ -106,9 +107,9 @@ The following sample demonstrates the above configuration:
 
 ### Localization and Formatting
 
-Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for Web Components [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) those are controlled and customized through the following properties - [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=locale), [`formatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=formatOptions), [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=weekStart).
+Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for Web Components [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) those are controlled and customized through the following properties - [`IgcCalendar.locale`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=locale), `IgcIWorksheetCellFormat.formatOptions`, [`IgcFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcFieldPipeArgs&member=weekStart).
 
-Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=locale) property to a value, based on the user's location choice:
+Let's go ahead and try those along with other customizations. First thing we need to set is the [`IgcFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcFieldPipeArgs&member=weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the `IgcIWorksheetCellFormat.formatOptions` property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`IgcCalendar.locale`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=locale) property to a value, based on the user's location choice:
 
 ```html
 <igc-radio-group alignment="horizontal">
@@ -152,14 +153,14 @@ If everything went well, we should now have a Calendar with customized display, 
 
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates) property. The [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`IgcCalendar.disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates) property. The [`IgcCalendar.disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates) property is an array of `IgcDateRangeDescriptor` objects. Each descriptor has a `IgcType` and optionally a `DateRange` which is an array of `Date` objects.
 
-These are the available options for the `Type` property:
+These are the available options for the `IgcType` property:
 
-- `After` - disables the dates after the first date in the [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange)
-- `Before` - disables the dates before the first date in the [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange)
-- `Between` - disables the dates between the first and the second date in the [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange)
-- `Specific` - disables the dates specified in the [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange) array
+- `After` - disables the dates after the first date in the `DateRange`
+- `Before` - disables the dates before the first date in the `DateRange`
+- `Between` - disables the dates between the first and the second date in the `DateRange`
+- `Specific` - disables the dates specified in the `DateRange` array
 - `Weekdays` - disables all weekdays
 - `Weekends` - disables all weekends
 
@@ -184,9 +185,9 @@ These configurations should have the following result:
 
 ### Special dates
 
-The [`specialDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=specialDates) property is using almost the same configuration principles as the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`IgcCalendar.specialDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=specialDates) property is using almost the same configuration principles as the [`IgcCalendar.disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
-Let's add some special dates to our Calendar. In order to do this, we will create a [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) and pass the dates between the 3rd and the 8th of the current month:
+Let's add some special dates to our Calendar. In order to do this, we will create a `IgcDateRangeDescriptor` and pass the dates between the 3rd and the 8th of the current month:
 
 ```ts
 const today = new Date();
@@ -207,7 +208,7 @@ The following demo illustrates a Calendar with a vacation request option:
 
 ### Week numbers
 
-You can use the [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`IgcCalendar.showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```html
 <igc-calendar show-week-numbers></igc-calendar>
@@ -222,9 +223,9 @@ The following demo illustrates a Calendar with enabled week numbers:
 
 ### Multiple Months
 
-Using the [`visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=visibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=orientation) property. By default, the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=orientation) property is set to `horizontal`.
+Using the [`IgcCalendar.visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=visibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`IgcCalendar.orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=orientation) property. By default, the [`IgcCalendar.orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=orientation) property is set to `horizontal`.
 
-The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`hideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=hideOutsideDays) property to **true** or using its corresponding boolean attribute [`hideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=hideOutsideDays).
+The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`IgcCalendar.hideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=hideOutsideDays) property to **true** or using its corresponding boolean attribute [`HideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=hideOutsideDays).
 
 ```html
 <igc-calendar visible-months="2" hide-outside-days></igc-calendar>
@@ -248,7 +249,7 @@ You could control the size and spacing of the calendar inner elements using the 
 
 ### Events
 
-The Calendar component emits the `Change` event when the selected dates are changed by the end user. You can subscribe to the event like this:
+The Calendar component emits the [`IgcCalendar.change`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=change) event when the selected dates are changed by the end user. You can subscribe to the event like this:
 
 ```ts
 this.calendar.addEventListener('igcChange', ev => console.log(ev.detail));
@@ -256,7 +257,7 @@ this.calendar.addEventListener('igcChange', ev => console.log(ev.detail));
 
 ## Keyboard navigation
 
-If you traverse the page using the <kbd>TAB</kbd> key you should keep in mind that based on [W3 accessability recommendations](https://www.w3.org/TR/wai-aria-practices/#layoutGrid) the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) introduces the following tab stops:
+If you traverse the page using the <kbd>TAB</kbd> key you should keep in mind that based on [W3 accessability recommendations](https://www.w3.org/TR/wai-aria-practices/#layoutGrid) the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) introduces the following tab stops:
 
 - Month selection button
 - Year selection button
@@ -264,7 +265,7 @@ If you traverse the page using the <kbd>TAB</kbd> key you should keep in mind th
 - Next button
 - Active date element
 
-When a **day/month/year** in the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component is focused, use:
+When a **day/month/year** in the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component is focused, use:
 
 - <kbd>PAGE UP</kbd> key to move to the previous month/year/years page.
 - <kbd>PAGE DOWN</kbd> key to move to the next month/year/years page.
@@ -280,11 +281,11 @@ When a **day** inside the `days` view is focused, use:
 
 When a **month** inside the `months` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) to the currently focused month and switch to `days` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgcCalendar.activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) to the currently focused month and switch to `days` view.
 
 When an **year** inside the `years` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) to the currently focused year and switch to `months` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgcCalendar.activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate) to the currently focused year and switch to `months` view.
 
 When the **previous** or the **next** buttons (in the subheader) are focused, use:
 
@@ -300,7 +301,7 @@ When the **year** button (in the subheader) is focused, use:
 
 ## Styling
 
-The [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -324,7 +325,7 @@ The [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&compon
 | `week-number-inner` | Week number inner element. |
 | `date` | Date element. |
 | `date-inner` | Date inner element. |
-| `first` | The first selected date element. |
+| `Igcfirst` | The first selected date element. |
 | `last` | The last selected date element. |
 | `inactive` | Inactive date element. |
 | `hidden` | Hidden date element. |
@@ -341,7 +342,7 @@ The [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&compon
 | `selected` | Indicates selected state. Applies to date, month and year elements. |
 | `current` | Indicates current state. Applies to date, month and year elements. |
 
-Using these CSS parts we can customize thе appearance of the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component like this:
 
 ```css
 igc-calendar::part(date-inner selected),
@@ -415,14 +416,10 @@ igc-calendar::part(navigation-button):focus {
 
 ## API References
 
-- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
-- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
-- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
-- [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeDate)
-- [`activeView`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent&member=activeView)
-- [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html)
-- [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)<br />
+[`IgcRadio`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)<br />
+[`IgcRadioGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)<br />
+`IgcDateRangeDescriptor`
 
 ## Additional Resources
 

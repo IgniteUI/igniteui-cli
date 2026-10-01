@@ -1,13 +1,14 @@
 ---
-title: Blazor Map | Data Visualization Tools | Displaying ESRI Imagery |  Infragistics
-_description: Use Infragistics' Blazor to display imagery from ESRI maps. View Ignite UI for Blazor map tutorials!
-_keywords: Blazor map, ESRI, Ignite UI for Blazor, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Blazor Map | Data Visualization Tools | Displaying ESRI Imagery |  Infragistics"
+description: Use Infragistics' Blazor to display imagery from ESRI maps. View Ignite UI for Blazor map tutorials!
+keywords: "Blazor map, ESRI, Ignite UI for Blazor, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
-
 # Blazor Displaying Imagery from Esri Maps
 
 The [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery) is a free geographic imagery mapping service created by <a href="https://www.esri.com/" target="_blank">Esri</a> company. It provides over 40 styles of geographic imagery tiles of the world and some thematic tiles for the USA. This geographic imagery service can be accessed directly on <a href="https://services.arcgisonline.com/ArcGIS/rest/services" target="_blank">www.arcgisonline.com</a> web site.
@@ -57,14 +58,12 @@ The [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&componen
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Code Snippet
-
 The following code snippet shows how to display Blazor geographic imagery tiles from Esri imagery servers in [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) using [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery) class.
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%"
     Zoomable="true"
@@ -82,11 +81,11 @@ protected override void OnInitialized()
 ```
 
 ## Esri Utility
-
-Alternatively, you can use the [EsriUtility](geo-map-resources-esri.md) which defines all styles provided by Esri imagery servers.
+Alternatively, you can use the [EsriUtility](./geo-map-resources-esri.md) which defines all styles provided by Esri imagery servers.
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%"
     Zoomable="true"
@@ -104,6 +103,5 @@ protected override void OnInitialized()
 ```
 
 ## API References
-
-- [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery)
-- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+[`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery)
+[`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)

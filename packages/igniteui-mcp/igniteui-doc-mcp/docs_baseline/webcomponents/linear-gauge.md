@@ -1,28 +1,27 @@
 ---
-title: Web Components Linear Gauge | Data Visualization Tools | Infragistics
-_description: Use Infragistics' Web Components linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for Web Components linear gauge configurable elements!
-_keywords: linear gauge, Ignite UI for Web Components, Infragistics, animation, labels, needle, scales, ranges, tick marks
-_license: commercial
-mentionedTypes: ["XamLinearGauge"]
+title: "Web Components Linear Gauge | Data Visualization Tools | Infragistics"
+description: Use Infragistics' Web Components linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for Web Components linear gauge configurable elements!
+keywords: linear gauge, Ignite UI for Web Components, Infragistics, animation, labels, needle, scales, ranges, tick marks
+license: commercial
+mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge."
 _tocName: Linear Gauge
 _premium: true
 ---
-
 # Web Components Linear Gauge Overview
 
-The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgcLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge. The `IgcLinearGauge` provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Web Components Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgcLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html) can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same `IgcLinearGauge` can transform it to completely different linear gauge.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Dependencies
 
@@ -35,7 +34,7 @@ npm install --save igniteui-webcomponents-gauges
 
 ## Component Modules
 
-The [`IgcLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html) requires the following modules:
+The `IgcLinearGauge` requires the following modules:
 
 ```ts
 import { IgcLinearGaugeModule } from 'igniteui-webcomponents-gauges';
@@ -44,8 +43,6 @@ ModuleManager.register(
     IgcLinearGaugeModule
     );
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -73,8 +70,6 @@ The following code demonstrates how create a linear gauge containing a needle an
     </igc-linear-graph-range>
 </igc-linear-gauge>
 ```
-
-<div class="divider--half"></div>
 
 ## Needle
 
@@ -111,7 +106,7 @@ This is the primary measure displayed by the linear gauge component and is visua
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#highlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's `Value` appear with a lower opacity. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue`.
 
 ```html
 <igc-linear-gauge
@@ -247,7 +242,7 @@ The backing element represents background and border of the linear gauge compone
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`isScaleInverted`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
 <igc-linear-gauge
@@ -347,18 +342,12 @@ For your convenience, all above code snippets are combined into one code block b
 </igc-linear-gauge>
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgcLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html)
-- [`IgcLinearGraphRangeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargraphrangecomponent.html)
-
+`IgcLinearGauge`
+`IgcLinearGraphRange`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:
 
-- [Bullet Graph](bullet-graph.md)
-- [Radial Gauge](radial-gauge.md)
+- [Bullet Graph](./bullet-graph.md)
+- [Radial Gauge](./radial-gauge.md)

@@ -1,12 +1,13 @@
 ---
-title: Blazor NavDrawer | Infragistics
-_description: Infragistics' Blazor NavDrawer provides side navigation that can be expanded or collapsed within the content
-_keywords: Blazor navbar, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor NavDrawer | Infragistics"
+description: Infragistics' Blazor NavDrawer provides side navigation that can be expanded or collapsed within the content
+keywords: "Blazor navbar, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["NavDrawer"]
+llms:
+  description: "The Ignite UI for Blazor Navigation Drawer provides side navigation that can be expanded or collapsed within the content."
 _tocName: Navigation Drawer
 ---
-
 # Blazor Navigation Drawer Overview
 
 The Ignite UI for Blazor Navigation Drawer provides side navigation that can be expanded or collapsed within the content. A mini version provides quick access to navigation even when closed. Its content is completely customizable while also providing default menu item styling.
@@ -106,7 +107,7 @@ This sample demonstrates how to create [`IgbNavDrawer`](mcp:get_api_reference?pl
 
 Before using the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(
@@ -115,7 +116,7 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -259,7 +260,7 @@ To enhance our component a bit, we can use it in conjunction with the [`IgbNavba
 </IgbNavDrawer>
 ```
 
-Let's also add some radio buttons to display all `position` values. This way whenever one gets selected, we will change the position of the drawer.
+Let's also add some radio buttons to display all [`position`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer&member=position) values. This way whenever one gets selected, we will change the position of the drawer.
 
 ```razor
 <IgbRadioGroup id="radio-group" Alignment="ContentOrientation.Horizontal">
@@ -731,15 +732,14 @@ igc-nav-drawer-header-item {
 
 ## API References
 
-- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbNavDrawerHeaderItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerHeaderItem)
-- [`IgbNavDrawerItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerItem)
-- [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer)
-- [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar)
-- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
-- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)<br />
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)<br />
+[`IgbNavDrawerHeaderItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerHeaderItem)<br />
+[`IgbNavDrawerItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerItem)<br />
+[`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer)<br />
+[`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar)<br />
+[`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)<br />
+[`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)<br />
 
 ## Additional Resources
 

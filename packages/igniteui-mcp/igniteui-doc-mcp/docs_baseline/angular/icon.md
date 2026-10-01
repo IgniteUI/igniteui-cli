@@ -1,14 +1,17 @@
 ---
 title: Angular Icon Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Developers can unify and use various icon and font sets interchangeably with custom colors and more with Ignite UI for Angular Icon component.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Icon components, Angular Icon controls
-_license: MIT
+description: Developers can unify and use various icon and font sets interchangeably with custom colors and more with Ignite UI for Angular Icon component.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Icon components, Angular Icon controls
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Icon component unifies icon/font families so developers can use them interchangeably and add material icons to markup."
 _tocName: Icon
 ---
-
 # Angular Icon Component Overview
 
-<p class="highlight">The Ignite UI for Angular Icon component unifies icon/font families so developers can use them interchangeably and add material icons to markup.</p>
+<div class="highlight">
+The Ignite UI for Angular Icon component unifies icon/font families so developers can use them interchangeably and add material icons to markup.
+</div>
 
 ## Angular Icon Example
 
@@ -64,7 +67,7 @@ export class IconSample1Component { }
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Icon
 
@@ -74,7 +77,7 @@ To get started with the Ignite UI for Angular Icon component, first you need to 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxIconModule` in your **app.module.ts** file.
 
@@ -126,9 +129,26 @@ Use `style.color` CSS property to change its default color:
 <igx-icon [style.color]="#e41c77">home</igx-icon>
 ```
 
-<div class="sample-container loading" style="height: 40px">
-    <iframe id="icon-sample-3-iframe" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-display/icon-sample-3" class="lazyload">
-</iframe></div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-icon-sample-3',
+    styleUrls: ['./icon-sample-3.component.scss'],
+    templateUrl: './icon-sample-3.component.html',
+    imports: [IgxIconComponent]
+})
+export class IconSample3Component { }
+```
+```html
+<igx-icon [style.color]="'#e41c77'">home</igx-icon>
+```
+```scss
+.igx-icon {
+    margin: 8px;
+}
+```
 
 ### Inactive Icon
 
@@ -138,9 +158,26 @@ If you want to disable an icon, you can use the [`active`](mcp:get_api_reference
 <igx-icon [active]="false">volume_off</igx-icon>
 ```
 
-<div class="sample-container loading" style="height: 40px">
-    <iframe id="icon-sample-4-iframe" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-display/icon-sample-4" class="lazyload">
-</iframe></div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-icon-sample-4',
+    styleUrls: ['./icon-sample-4.component.scss'],
+    templateUrl: './icon-sample-4.component.html',
+    imports: [IgxIconComponent]
+})
+export class IconSample4Component { }
+```
+```html
+<igx-icon [active]="false">volume_off</igx-icon>
+```
+```scss
+.igx-icon {
+    margin: 8px;
+}
+```
 
 ### Content Projection
 
@@ -150,9 +187,26 @@ You can set icons with content projection:
 <igx-icon>bluetooth</igx-icon>
 ```
 
-<div class="sample-container loading" style="height: 40px">
-    <iframe id="icon-sample-5-iframe" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-display/icon-sample-5" class="lazyload">
-</iframe></div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-icon-sample-5',
+    styleUrls: ['./icon-sample-5.component.scss'],
+    templateUrl: './icon-sample-5.component.html',
+    imports: [IgxIconComponent]
+})
+export class IconSample5Component { }
+```
+```html
+<igx-icon>bluetooth</igx-icon>
+```
+```scss
+.igx-icon {
+    margin: 8px;
+}
+```
 
 ### Icon Size
 
@@ -164,9 +218,47 @@ You can customize the icons using CSS. To change an icon size use the `--size` C
 }
 ```
 
-<div class="sample-container loading" style="height: 80px">
-    <iframe id="icon-sample-2-iframe" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-display/icon-sample-2" class="lazyload">
-</iframe></div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-icon-sample-2',
+    styleUrls: ['./icon-sample-2.component.scss'],
+    templateUrl: './icon-sample-2.component.html',
+    imports: [IgxIconComponent]
+})
+export class IconSample2Component { }
+```
+```html
+<div class="wrapper">
+    <div class="icon-sample">
+        <igx-icon>phone_iphone</igx-icon>
+    </div>
+    <div class="icon-sample">
+        <igx-icon class="custom-size">phone_iphone</igx-icon>
+    </div>
+</div>
+```
+```scss
+.custom-size {
+    --size: 56px;
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 16px 8px;
+}
+
+.icon-sample {
+    display: flex;
+    flex: 1 0 20%;
+    height: 44px;
+    align-items: center;
+    max-width: 80px;
+}
+```
 
 ## SVG Icons
 
@@ -357,10 +449,10 @@ To learn more about Material Symbols styles please visit their [`official docume
 
 ## Server-side Rendering Note
 
-> [!NOTE]
-> In case you have implemented server side rendering logic in your application using Angular Universal and have used the `IgxIconService` to register icons, this may cause the following exception:
-> <br/><br/> > `XMLHttpRequest is not defined. Could not fetch SVG from url.` > <br/><br/>
-> In order to avoid this, execute the listed steps:
+**Note:** 
+In case you have implemented server side rendering logic in your application using Angular Universal and have used the `IgxIconService` to register icons, this may cause the following exception:
+<br/><br/> > `XMLHttpRequest is not defined. Could not fetch SVG from url.` > <br/><br/>
+In order to avoid this, execute the listed steps:
 
 <ol>
 <li>
@@ -383,7 +475,7 @@ On the top of your `server.ts` file, add:
 
 ## Styling
 
-To get started with styling the icons, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the icons, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -392,7 +484,7 @@ To get started with styling the icons, we need to import the `index` file, where
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`icon-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme) and accepts the parameters, required to customize the icon as desired.
+Following the simplest approach, we create a new theme that extends the `icon-theme` and accepts the parameters, required to customize the icon as desired.
 
 ```scss
 $custom-icon-theme: icon-theme(
@@ -458,7 +550,7 @@ $custom-icon-theme: icon-theme(
 
 ### SVG Limitations
 
-It’s important to note that when using custom SVG icons, the [`icon-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme) can apply and overwrite colors only on the `<svg>` element itself. If the SVG contains child elements such as `<path>`, `<rect>`, `<circle>`, `<g>`, etc., with hardcoded color values, those colors cannot be overridden by the theme.
+It’s important to note that when using custom SVG icons, the `icon-theme` can apply and overwrite colors only on the `<svg>` element itself. If the SVG contains child elements such as `<path>`, `<rect>`, `<circle>`, `<g>`, etc., with hardcoded color values, those colors cannot be overridden by the theme.
 
 For example:
 
@@ -476,16 +568,16 @@ In this case, the icon will always use the `#050d42` color defined in the `<path
 </svg>
 ```
 
-Here, the fill color is applied to the `<svg>` element, so it can be overridden with custom color provided via [`icon-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme).
+Here, the fill color is applied to the `<svg>` element, so it can be overridden with custom color provided via `icon-theme`.
 
-We recommend not using hardcoded colors on SVG child elements so the icon can be styled entirely using the [`icon-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme). However, if you still want to apply hardcoded colors to child elements, you can also use the Ignite UI color variables.
+We recommend not using hardcoded colors on SVG child elements so the icon can be styled entirely using the `icon-theme`. However, if you still want to apply hardcoded colors to child elements, you can also use the Ignite UI color variables.
 
 ```html
 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <!-- This element uses the theme color from the igx-icon component -->
+  {/* This element uses the theme color from the igx-icon component */}
   <path d="M12 2L15 8H9L12 2Z" />
 
-  <!-- This element uses an accent color from Ignite UI palette -->
+  {/* This element uses an accent color from Ignite UI palette */}
   <circle cx="12" cy="17" r="4" fill="var(--ig-primary-500)" />
 </svg>
 ```
@@ -504,6 +596,7 @@ Or you can use the universal `--ig-icon-size` variable to target all instances:
 
 ```html
 <div class="my-app">
+
   <igx-icon></igx-icon>
 </div>
 ```
@@ -522,11 +615,11 @@ igx-icon {
 }
 ```
 
-Learn more about it in the [Size](display-density.md) article.
+Learn more about it in the [Size](/display-density) article.
 
 ### Styling with Tailwind
 
-You can style the `icon` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the `icon` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -544,31 +637,40 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [icon-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme). The syntax is as follows:
+You can find the full list of properties in the `icon-theme`. The syntax is as follows:
 
 ```html
 <igx-icon class="!light-icon ![--color:#7B9E89] ![--size:48px]">person</igx-icon>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your icon should look like this:
 
-<div class="sample-container loading" style="height:60px">
-    <iframe id="icon-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/data-display/icon-tailwind-styling' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+@Component({
+    selector: 'app-icon-tailwind-styling-sample',
+    styleUrls: ['./icon-tailwind-styling-sample.component.scss'],
+    templateUrl: './icon-tailwind-styling-sample.component.html',
+    imports: [IgxIconComponent]
+})
+export class IconTailwindStylingSampleComponent { }
+```
+```html
+<igx-icon class="!light-icon ![--color:#7B9E89] ![--size:48px]">person</igx-icon>
+```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-
+<hr/>
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- `IgxIconComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,19 +1,20 @@
 ---
-title: Web Components ZoomSlider | Data Visualization Tools | Navigation | Zooming | DataChart | Data Binding | Infragistics
-_description: Use Infragistics' Web Components zoom slider control to easily display a subset of data with two handles representing minimum and maximum values. Improve your data visualization with Ignite UI for Web Components zoom slider!
-_keywords: zoom slider, Ignite UI for Web Components, Infragistics, data chart
-_license: commercial
-mentionedTypes: ["ZoomSlider", "XamDataChart"]
+title: "Web Components ZoomSlider | Data Visualization Tools | Navigation | Zooming | DataChart | Data Binding | Infragistics"
+description: Use Infragistics' Web Components zoom slider control to easily display a subset of data with two handles representing minimum and maximum values. Improve your data visualization with Ignite UI for Web Components zoom slider!
+keywords: zoom slider, Ignite UI for Web Components, Infragistics, data chart
+license: commercial
+mentionedTypes: ["ZoomSlider", "DataChart"]
+llms:
+  description: "The Web Components ZoomSlider control provides zooming functionality to range-enabled controls."
 _tocName: Zoom Slider
 ---
-
 # Web Components Zoom Slider Overview
 
 The Web Components ZoomSlider control provides zooming functionality to range-enabled controls. The ZoomSlider features a horizontal scroll bar, a thumbnail of the whole range, and a resizable zoom-range window. The ZoomSlider cannot work as a standalone control and it acts as an enhancement for range-based controls like the DataChart or CategoryChart.
 
 ## Web Components Zoom Slider Example
 
-The following sample demonstrates how to use [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) to navigate content in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
+The following sample demonstrates how to use [`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) to navigate content in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
 
 ```typescript
 export class SampleScatterStats {
@@ -408,8 +409,6 @@ class Country {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 | Feature Name        | Description |
@@ -432,7 +431,7 @@ npm install --save igniteui-webcomponents-charts
 
 ## Component Modules
 
-The [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) requires the following modules:
+The [`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) requires the following modules:
 
 ```ts
 import { IgcZoomSliderModule } from 'igniteui-webcomponents-charts';
@@ -453,15 +452,10 @@ The following code demonstrates how to setup the ZoomSlider.
   </igc-zoom-slider>
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
-You can find more information about charts in [Chart Features](charts/chart-features.md) topic.
+You can find more information about charts in [Chart Features](./charts/chart-features.md) topic.
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent)
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

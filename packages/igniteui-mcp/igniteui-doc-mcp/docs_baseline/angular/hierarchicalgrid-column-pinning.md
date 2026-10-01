@@ -1,15 +1,20 @@
 ---
 title: Angular Hierarchical Grid Column Pinning - Ignite UI for Angular
-_description: Want to use the Pinning feature of the Ignite UI for Angular when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: lock column, ignite ui for angular, infragistics
-_license: commercial
+description: Want to use the Pinning feature of the Ignite UI for Angular when you develop your next app? Easily lock column or change column order with rich API.
+keywords: lock column, ignite ui for angular, infragistics
+license: commercial
 _canonicalLink: grid/column-pinning
+llms:
+  description: "A column or multiple columns can be pinned to the left or right side of the Angular UI Grid."
 _tocName: Column Pinning
 _premium: true
 ---
 # Angular Hierarchical Grid Column Pinning
+
 A column or multiple columns can be pinned to the left or right side of the Angular UI Grid. **Column Pinning** in Ignite UI for Angular allows the end users to lock column in a particular column order, this will allow them to see it while horizontally scrolling the Hierarchical Grid. The Material UI Grid has a built-in column pinning UI, which can be used through the Hierarchical Grid's toolbar to change the pin state of the columns. In addition, you can define a custom UI and change the pin state of the columns via the Column Pinning API.
+
 ## Angular Hierarchical Grid Column Pinning  Example
+
 ```typescript
 import { Component, OnInit, inject } from '@angular/core';
 import { CUSTOMERS } from '../../data/hierarchical-data';
@@ -100,8 +105,11 @@ export class HGridToolbarPinningComponent implements OnInit {
     height: 100%;
 }
 ```
+
 ## Column Pinning API
+
 Column pinning is controlled through the `pinned` input of the [`igx-column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent). Pinned columns are rendered on the left side of the Hierarchical Grid by default and stay fixed through horizontal scrolling of the unpinned columns in the Hierarchical Grid body.
+
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false"
         [height]="'600px'" [width]="'800px'" #hierarchicalGrid>
@@ -109,19 +117,25 @@ Column pinning is controlled through the `pinned` input of the [`igx-column`](mc
     <igx-column [field]="Debut" [width]="200px"></igx-column>
 </igx-hierarchical-grid>
 ```
-You may also use the Hierarchical Grid's [`pinColumn`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=unpinColumn) methods of the [`IgxHierarchicalGridComponent`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) to pin or unpin columns by their field name:
+
+You may also use the Hierarchical Grid's [`pinColumn`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=unpinColumn) methods of the [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) to pin or unpin columns by their field name:
+
 ```typescript
 this.hierarchicalGrid.pinColumn('Artist');
 this.hierarchicalGrid.unpinColumn('Debut');
 ```
+
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnPin) event and changing the [`insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnPin) event and changing the [`IgxIPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false"
         [height]="'600px'" [width]="'800px'" 
         (columnPin)="columnPinning($event)" #hierarchicalGrid>
 </igx-hierarchical-grid> 
 ```
+
 ```typescript
 public columnPinning(event) {
     if (event.column.field === 'Artist') {
@@ -129,16 +143,22 @@ public columnPinning(event) {
     }
 }
 ```
+
 ## Pinning Position
+
 You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
+
 ```html
 <igx-hierarchical-grid #grid1 [data]="data" [autoGenerate]="true" [pinning]="pinningConfig"></igx-hierarchical-grid>
 ```
+
 ```typescript
 public pinningConfig: IPinningConfig = { columns: ColumnPinningPosition.End };
 ```
+
 ### Demo
+
 ```typescript
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
@@ -314,8 +334,10 @@ img.country-flag {
     height: 20px;
 }
 ```
+
 ### Column Pinning on Both Sides
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
+
 ```typescript
 import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { ColumnPinningPosition, ColumnType } from 'igniteui-angular/core';
@@ -554,10 +576,14 @@ img.country-flag {
     height: 20px;
 }
 ```
+
 ## Custom Column Pinning UI
+
 You can define your custom UI and change the pin state of the columns via the related API.
+
 Let's say that instead of a toolbar you would like to define pin icons in the column headers that the end user can click to change the particular column's pin state.
 This can be done by creating a header template for the column with a custom icon.
+
 ```html
 <ng-template igxHeader let-column #pinTemplate>
     <div class="title-inner">
@@ -584,13 +610,17 @@ This can be done by creating a header template for the column with a custom icon
     </igx-row-island>
 </igx-hierarchical-grid>
 ```
+
 On click of the custom icon the pin state of the related column can be changed using the column's API methods.
+
 ```typescript
 public toggleColumn(col: ColumnType) {
     col.pinned ? col.unpin() : col.pin();
 }
 ```
+
 ### Demo
+
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
@@ -717,24 +747,27 @@ export class HGridPinningSampleComponent implements AfterViewInit {
     }
 }
 ```
+
 ## Pinning Limitations
+
 - Setting column widths in percentage (%) explicitly makes the Hierarchical Grid body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the Hierarchical Grid.
-<div class="divider--half"></div>
+
 ## API References
-- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Additional Resources
-<div class="divider--half"></div>
-- [Hierarchical Grid overview](hierarchical-grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-<div class="divider--half"></div>
+
+- [Hierarchical Grid overview](/hierarchicalgrid/hierarchical-grid)
+- [Virtualization and Performance](/hierarchicalgrid/virtualization)
+- [Paging](/hierarchicalgrid/paging)
+- [Filtering](/hierarchicalgrid/filtering)
+- [Sorting](/hierarchicalgrid/sorting)
+- [Summaries](/hierarchicalgrid/summaries)
+- [Column Moving](/hierarchicalgrid/column-moving)
+- [Column Resizing](/hierarchicalgrid/column-resizing)
+- [Selection](/hierarchicalgrid/selection)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

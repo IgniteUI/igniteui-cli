@@ -1,14 +1,15 @@
 ---
-title: Web Components Data Chart | Data Visualization Tools | Synchronization | Infragistics
-_description: Synchronize between multiple Infragistics' Web Components charts controls including zooming, panning and crosshair events. Learn about our Ignite UI for Web Components graph synchronization capabilities!
-_keywords: Web Components charts, data chart, synchronization, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart"]
+title: "Web Components Data Chart | Data Visualization Tools | Synchronization | Infragistics"
+description: Synchronize between multiple Infragistics' Web Components charts controls including zooming, panning and crosshair events. Learn about our Ignite UI for Web Components graph synchronization capabilities!
+keywords: "Web Components charts, data chart, synchronization, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components data chart allows for synchronization with respect to the coordination of zooming, panning, and crosshair events between multiple charts."
 _tocName: Chart Synchronization
 _premium: true
 ---
-
 # Web Components Chart Synchronization
 
 The Ignite UI for Web Components data chart allows for synchronization with respect to the coordination of zooming, panning, and crosshair events between multiple charts. This can help you to visualize the same areas of multiple charts, assuming your data sources are similar or the same with respect to the axes.
@@ -77,23 +78,13 @@ export class SampleFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Chart Synchronization Properties
 
 There are four options of chart synchronization, in that you can synchronize horizontally only, vertically only, both, or you can choose not to synchronize at all, which is the default.
 
-If you want to synchronize a set of charts, you can assign them the same name to the `SyncChannel` property and then specify whether or not to synchronize the charts horizontally and/or vertically by setting the `SynchronizeHorizontally` and `SynchronizeVertically` properties to the corresponding boolean value.
+If you want to synchronize a set of charts, you can assign them the same name to the [`SyncChannel`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=syncChannel) property and then specify whether or not to synchronize the charts horizontally and/or vertically by setting the [`SynchronizeHorizontally`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=synchronizeHorizontally) and [`SynchronizeVertically`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=synchronizeVertically) properties to the corresponding boolean value.
 
-Note that in order to synchronize either vertically and/or horizontally, you will need to set the [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled) and/or [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) property to **true**, respectively. A synchronized chart that is dependent on another chart will still zoom regardless of this property setting.
+Note that in order to synchronize either vertically and/or horizontally, you will need to set the [`IsHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled) and/or [`IsVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) property to **true**, respectively. A synchronized chart that is dependent on another chart will still zoom regardless of this property setting.
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled)
-- [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled)
-- `SyncChannel`
-- `SynchronizeHorizontally`
-- `SynchronizeVertically`
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

@@ -1,15 +1,14 @@
 ---
-title: React Grid Selection - Ignite UI for React
-_description: See how easy it is to select data in Ignite UI for React grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "React Grid Selection - Ignite UI for React"
+description: See how easy it is to select data in Ignite UI for React grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for React Select feature in React Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: Grid
 _tocName: Selection
 ---
-
 # React Grid Selection Overview
 
 With the Ignite UI for React Select feature in React Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for React Select feature in React Grid you can easily interac
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property, you can specify:
+With the [`IgrGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -157,15 +156,11 @@ root.render(<Sample/>);
 
 ## React Grid Selection Options
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) properties.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). In order to change/enable selection mode you can use [`IgrGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection), [`IgrGrid.cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) or [`IgrColumn.selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) properties.
 
 ### React Grid Row Selection
 
-Property [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) enables you to specify the following options:
+Property [`IgrGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 - `Single` - Selection of only one row within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) would be available.
@@ -175,21 +170,17 @@ Property [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid
 
 ### React Grid Cell Selection
 
-Property [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) enables you to specify the following options:
+Property [`IgrGrid.cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 - `Single` - Selection of only one cell within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) would be available.
 - `Multiple` - Currently, this is the default state of the selection in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Cell selection topic](cell-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### React Grid Column Selection
 
-The [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) property enables you to specify the following options for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgrColumn.selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) property enables you to specify the following options for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -197,17 +188,11 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: Grid -->
 
 ## React Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the [`IgrGrid.contextMenu`](mcp:get_api_reference?platform=react&component=IgrGrid&member=contextMenu) event you can add a custom context menu to facilitate your work with [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
@@ -657,11 +642,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgrGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -669,12 +652,8 @@ When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&compone
 - Row Pinning
 
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Row Selection](row-selection.md)
 - [Cell Selection](cell-selection.md)
@@ -684,8 +663,6 @@ When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&compone
 - [Summaries](summaries.md)
 - [Column Moving](column-moving.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,12 +1,13 @@
 ---
-title: Blazor Dock Manager | Layout Controls | Infragistics
-_description: Use Infragistics' Blazor dock manager component to manage the layout through panes, with the ability to customize it by pinning, resizing, moving and hiding panes. Check out Ignite UI for Blazor dock manager tutorials!
-_keywords: dock manager, layout, Ignite UI for Blazor, Infragistics
-_license: commercial
+title: "Blazor Dock Manager | Layout Controls | Infragistics"
+description: Use Infragistics' Blazor dock manager component to manage the layout through panes, with the ability to customize it by pinning, resizing, moving and hiding panes. Check out Ignite UI for Blazor dock manager tutorials!
+keywords: dock manager, layout, Ignite UI for Blazor, Infragistics
+license: commercial
 mentionedTypes: ["DockManager", "DocumentHost", "DockManagerLayout", "DockManagerPaneType", "ContentPane", "SplitPane", "TabGroupPane", "PinnedLocation", "PaneHeaderElement"]
+llms:
+  description: "The Infragistics Blazor Dock Manager provides a means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving, maximizing and hiding panes."
 _tocName: Dock Manager
 ---
-
 # Blazor Dock Manager Overview
 
 The Infragistics Blazor Dock Manager provides a means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving, maximizing and hiding panes.
@@ -213,18 +214,6 @@ This example shows most functionalities and docking options of the [`IgbDockMana
 
 }
 ```
-
-<div class="divider--half"></div>
-
-<!-- end: Angular, React, WebComponents -->
-
-<div class="divider--half"></div>
-
-<div class="divider--half"></div>
-
-<div class="divider--half"></div>
-
-<div class="divider--half"></div>
 
 ## Customization
 
@@ -627,7 +616,6 @@ The shortcuts are as follows:
 - <kbd>SHIFT</kbd> + <kbd>←</kbd> With multiple tabs in a tab group splits the view and docks the focused tab left
 
 ### Navigating
-
 - <kbd>CMD/CTRL</kbd> + <kbd>F6</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>→</kbd> Focuses next tab in document host
 - <kbd>CMD/CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>F6</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>←</kbd> Focuses previous tab in document host
 - <kbd>ALT</kbd> + <kbd>F6</kbd> Focuses next content pane
@@ -635,7 +623,7 @@ The shortcuts are as follows:
 
 ### Pane Navigator
 
-Тhe following keyboard shortcuts show a navigator from which you can iterate through panes and documents.
+The following keyboard shortcuts show a navigator from which you can iterate through panes and documents.
 
 - <kbd>CMD/CTRL</kbd> + <kbd>F7</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>F8</kbd>  Starts from the first document forward
 - <kbd>ALT</kbd> + <kbd>F7</kbd> or <kbd>ALT</kbd> + <kbd>F8</kbd> Starts from the first pane forward
@@ -643,10 +631,9 @@ The shortcuts are as follows:
 - <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>F7</kbd> or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>F8</kbd> Starts from the last pane backwards
 
 ### Other
-
 - <kbd>ALT</kbd> + <kbd>F3</kbd> Closes the active pane
 
-Practice all of the above mentioned actions in the sample [demo](dock-manager.md#blazor-dock-manager-example).
+Practice all of the above mentioned actions in the sample [demo](./dock-manager.md#blazor-dock-manager-example).
 
 ## Styling
 
@@ -1535,8 +1522,6 @@ igc-card-content {
 }
 ```
 
-<div class="divider--half"></div>
-
 ### CSS Parts
 
 | Part name | Description |
@@ -1591,9 +1576,9 @@ igc-card-content {
 
 ## API References
 
-- [`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)
-- [`IgbDocumentHost`](mcp:get_api_reference?platform=blazor&component=IgbDocumentHost)
-- [`IgbDockManagerLayout`](mcp:get_api_reference?platform=blazor&component=IgbDockManagerLayout)
-- [`IgbContentPane`](mcp:get_api_reference?platform=blazor&component=IgbContentPane)
-- [`IgbSplitPane`](mcp:get_api_reference?platform=blazor&component=IgbSplitPane)
-- [`IgbTabGroupPane`](mcp:get_api_reference?platform=blazor&component=IgbTabGroupPane)
+[`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)<br />
+[`IgbDocumentHost`](mcp:get_api_reference?platform=blazor&component=IgbDocumentHost)<br />
+[`IgbDockManagerLayout`](mcp:get_api_reference?platform=blazor&component=IgbDockManagerLayout)<br />
+[`IgbContentPane`](mcp:get_api_reference?platform=blazor&component=IgbContentPane)<br />
+[`IgbSplitPane`](mcp:get_api_reference?platform=blazor&component=IgbSplitPane)<br />
+[`IgbTabGroupPane`](mcp:get_api_reference?platform=blazor&component=IgbTabGroupPane)<br />

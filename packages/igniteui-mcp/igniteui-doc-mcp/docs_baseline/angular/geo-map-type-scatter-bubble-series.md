@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics
-_description: Use Infragistics Angular map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for Angular map's series!
-_keywords: Angular map, scatter proportional series, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Angular Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics"
+description: Use Infragistics Angular map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for Angular map's series!
+keywords: "Angular map, scatter proportional series, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "In Angular map component, you can use the GeographicProportionalSymbolSeries to plot bubbles or proportional markers at the geographic locations specified by the data in your application."
 _tocName: Geographic Bubble Map
 _premium: true
 ---
-
 # Angular Geographic Bubble Map
 
-In Angular map component, you can use the [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html) to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
+In Angular map component, you can use the `IgxGeographicProportionalSymbolSeries` to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
 
 ## Angular Geographic Bubble Map Example
 
@@ -159,32 +160,27 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
-The demo above shows the [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html) series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
+The demo above shows the `IgxGeographicProportionalSymbolSeries` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
 
 ## Configuration Summary
-
-Similar to other types of scatter series in the map control, the [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html) series has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath) and [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath) properties to map these data columns. The [`radiusScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusScale) and [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusMemberPath) will settings configures the radius for the bubbles.
+Similar to other types of scatter series in the map control, the `IgxGeographicProportionalSymbolSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns. The `RadiusScale` and `RadiusMemberPath` will settings configures the radius for the bubbles.
 
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `ItemsSource`|any|Gets or sets the items source |
-| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
-| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the latitude values on the assigned items |
-| [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)|string|Sets the path to use to get the radius values for the series. |
-| [`radiusScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusScale)|[`IgxSizeScaleComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html)|Gets or sets the radius scale property for the current bubble series. |
-| [`minimumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
-| [`maximumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
+| `DataSource`|any|Gets or sets the items source |
+| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `RadiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
+| `RadiusScale`|`IgxSizeScale`|Gets or sets the radius scale property for the current bubble series. |
+| `MinimumValue`|any|Configure the minimum value for calculating value sub ranges. |
+| `MaximumValue`|any|Configure the maximum value for calculating value sub ranges. |
 
 ## Code Snippet
 
-<!--Angular -->
-
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -294,9 +290,5 @@ export class MapTypeScatterBubbleSeriesComponent implements AfterViewInit {
 
 ## API References
 
-- [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)
-- [`radiusScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusScale)
+`IgxGeographicProportionalSymbolSeries`<br />
+`RadiusScale`<br />

@@ -1,11 +1,12 @@
 ---
-title: Web Components Licensing | Dock Manager | Ignite UI for Web Components | Infragistics
-_description: Learn how to use Infragistics' Ignite UI for Web Components licensed npm feed.
-_keywords: npm package license, Ignite UI for Web Components license feed,  licensing
+title: "Web Components Licensing | Dock Manager | Ignite UI for Web Components | Infragistics"
+description: Learn how to use Infragistics' Ignite UI for Web Components licensed npm feed.
+keywords: npm package license, Ignite UI for Web Components license feed,  licensing
 mentionedTypes: []
+llms:
+  description: "Ignite UI for Web Components comprises packages available under either an MIT or a commercial license."
 _tocName: Licensing
 ---
-
 # License FAQ and Installation
 
 Ignite UI for Web Components comprises packages available under either an MIT or a commercial license. This licensing model supports both commercial and permissive open-source usage, depending on the specific components, modules, and services you incorporate into your project.
@@ -13,14 +14,11 @@ Ignite UI for Web Components comprises packages available under either an MIT or
 It is crucial to understand which license applies to which part of the package. The topic [Open Source vs Premium](./general-open-source-vs-premium.md) contains details on what type of license is applied to each component and therefore if you need to buy a commercial license based on the components you are using in your projects.
 
 ## License Agreements in Ignite UI for Web Components
-
 For components under commercial license, it is important to know all the [legal terms and conditions](https://www.infragistics.com/legal/license/igultimate-la) regarding their purchase and use.
 
 > We have updated our license terms and subscription model in fourth quarter of 2025.
 
-If your trial has ended or your subscription [has expired](http://www.infragistics.com/renewal), each developer on your team using components under commercial license from Ignite UI will need to [purchase](https://www.infragistics.com/how-to-buy/product-pricing) a subscription. This will enable you to use our private npm feed hosted on <https://packages.infragistics.com/npm/js-licensed/> for development. There you will find the latest versions of the Ignite UI for Web Components packages. If you have a current subscription, you can use this private feed and you will have access to the full version of Ignite UI for Web Components.
-
-<!-- For detailed explanation of the Ignite UI license agreement and terms of use, [click here](https://www.infragistics.com/legal/license/igultimate-la).-->
+If your trial has ended or your subscription [has expired](http://www.infragistics.com/renewal), each developer on your team using components under commercial license from Ignite UI will need to [purchase](https://www.infragistics.com/how-to-buy/product-pricing) a subscription. This will enable you to use our private npm feed hosted on [packages.infragistics.com/npm/js-licensed/](https://packages.infragistics.com/npm/js-licensed/) for development. There you will find the latest versions of the Ignite UI for Web Components packages. If you have a current subscription, you can use this private feed and you will have access to the full version of Ignite UI for Web Components.
 
 Infragistics offers free, non-commercial, not-for-resale (NFR) licenses for the following:
 
@@ -30,13 +28,12 @@ Infragistics offers free, non-commercial, not-for-resale (NFR) licenses for the 
 If you qualify for a free, non-commercial, NFR license or if you have any license questions, please [contact us](https://www.infragistics.com/about-us/contact-us).
 
 ## Ignite UI for Web Components npm packages - Using the Private npm feed
-
 Npm is the most popular package manager and is also the default one for the runtime environment Node.js. It is highly adopted and is one of the fastest and easiest ways to manage the packages that you depend on in your project. For more information on how npm works, read the official [npm documentation](https://docs.npmjs.com/).
 
 Infragistics Ignite UI for Web Components is available as npm packages and you can add them as dependencies to your project in a [few easy steps](./general-getting-started.md). Choosing this approach will not require configuring npm. If you are installing a package under commercial license, you will start using the **Ignite UI for Web Components Trial version** of the product.
 
-> [!NOTE]
-> What does it mean to start using a trial version? It means that you will be using a version of our product with a **Watermark** part of your web view. It doesn’t mean that you will be using the licensed package for a certain amount of time before it expires. For example, for a month.
+**Note:** 
+What does it mean to start using a trial version? It means that you will be using a version of our product with a **Watermark** part of your web view. It doesn’t mean that you will be using the licensed package for a certain amount of time before it expires. For example, for a month.
 
 The private npm feed Infragistics provides contains licensed versions of the packages under commercial license.
 
@@ -51,7 +48,6 @@ This will allow you to seamlessly use a mix of packages from the public npm regi
 ### Now, to log in to our private feed using npm
 
 #### npm version 9+
-
 Our private feed doesn't currently support login/adduser commands with npm v9, so we recommend the following steps instead to add the required auth fields to the config:
 
 ```cmd
@@ -69,7 +65,6 @@ You can generate [Access Token](#access-token-usage) through your Infragistics p
 This approach is applicable to all prior versions of `npm`.
 
 #### npm version up to v8
-
 Run the `adduser` command and specify a user account and password:
 
 ```cmd
@@ -99,7 +94,7 @@ As a result you can either:
 
 - Do a global replace for all trial packages and change then to the licensed scoped version across all files in your project. For example, replace all `igniteui-dockmanager` references to `@infragistics/igniteui-dockmanager` The change should affect all imports where such packages are used.
 
-    **Or**
+  **Or**
 
 - Add a **paths** mapping in the project **tsconfig.json**.
 
@@ -120,7 +115,7 @@ As a result you can either:
 
 - Change the themes imports like this:
 
-```ts
+```scss
 @import '~igniteui-dockmanager/dist/collection/styles/igc.themes';
 
 // Should be changed to
@@ -138,12 +133,6 @@ The following information is on how to setup authentication to our private npm r
 
 - Generate a token from https://account.infragistics.com/access-tokens
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 600px"
-src="../images/general/generate-token.jpg"
-data-src="../images/general/generate-token.jpg"
-alt="New Token Generated"
-title="Generate new token" />
-
 > Each token is with Base64 encoding.
 
 - Add the following into your [.npmrc](https://docs.npmjs.com/configuring-npm/npmrc.html) file
@@ -155,7 +144,6 @@ title="Generate new token" />
 ```
 
 ## Azure Pipelines Configuration
-
 Update the azure-pipelines.yml with the following steps:
 
 ```cmd
@@ -169,20 +157,7 @@ steps:
 
 Add **npm registry** and **token** variables.
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 600px"
-src="../images/general/azure-ci-new-variable-2.jpg"
-data-src="../images/general/azure-ci-new-variable-2.jpg"
-alt="Set npm Registry and token variables"
-title="Set npm Registry and token variables" />
-
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 380px"
-src="../images/general/azure-ci-add-token-variable-1.jpg"
-data-src="../images/general/azure-ci-add-token-variable-1.jpg"
-alt="npm Registry and token variables"
-title="npm Registry and token variables" />
-
 ## Travis CI Configuration
-
 We will follow almost the same approach here. The only difference would be that the configuration will be set on [before_install](https://docs.travis-ci.com/user/job-lifecycle/#the-job-lifecycle)
 
 ```cmd
@@ -198,7 +173,7 @@ The best way to define an environment variable depends on what type of informati
 
 ### GitHub Actions Configuration
 
-Add the following scripts before the **npm i(ci)*- step to your [CI workflow configuration](https://help.github.com/en/actions/language-and-framework-guides/using-nodejs-with-github-actions):
+Add the following scripts before the **npm i(ci)**  step to your [CI workflow configuration](https://help.github.com/en/actions/language-and-framework-guides/using-nodejs-with-github-actions):
 
 ```cmd
 - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc

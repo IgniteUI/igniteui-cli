@@ -1,13 +1,15 @@
 ---
-title: Blazor Hierarchical Grid | Fastest Blazor Hierarchical Table | Infragistics
-_description: The Ignite UI for Blazor Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
-_keywords: Blazor hierarchical grid, igniteui for Blazor, infragistics
-_license: commercial
+title: "Blazor Hierarchical Grid | Fastest Blazor Hierarchical Table | Infragistics"
+description: The Ignite UI for Blazor Hierarchical Grid is used to display and manipulate hierarchical with ease. Quickly bind your data with very little coding. Try it for FREE
+keywords: "Blazor hierarchical grid, igniteui for Blazor, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGridBaseDirective"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Blazor Hierarchical Data Grid is used to display and manipulate hierarchical tabular data."
 _tocName: Hierarchical Grid
+_premium: true
 ---
-
 # Hierarchical Data Grid Overview and Configuration
 
 The Ignite UI for Blazor Hierarchical Data Grid is used to display and manipulate hierarchical tabular data. Quickly bind your data with very little code or use a variety of events to customize different behaviors. This component provides a rich set of features like data selection, excel style filtering, sorting, paging, templating, column moving, column pinning, export to Excel and CSV, and more. The Hierarchical Grid builds upon the Flat Grid Component and extends its functionality by allowing the users to expand or collapse the rows of the parent grid, revealing corresponding child grids, when more detailed information is needed.
@@ -304,10 +306,11 @@ Afterwards, you may start implementing the control by adding the following names
 
 ### Component Modules
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbhierarchicalGridModule));
+
 ```
 
 ## Using the Blazor Hierarchical Data Grid
@@ -321,7 +324,7 @@ The Hierarchical Grid supports two ways of binding to data:
 
 If the application loads the whole hierarchical data as an array of objects referencing children arrays of objects, then the Hierarchical Grid can be configured to read it and bind to it automatically. Here is an example of a properly structured hierarchical data source:
 
-```razor
+```csharp
 public class SingersData : List<SingersDataItem>
 {
     public SingersData()
@@ -375,8 +378,8 @@ Each **IgbRowIsland** should specify the key of the property that holds the chil
 </IgbHierarchicalGrid>
 ```
 
-> [!NOTE]
-> Note that instead of `data` the user configures only the `childDataKey` that the IgbHierarchicalGrid needs to read to set the data automatically.
+**Note:** 
+Note that instead of `data` the user configures only the `childDataKey` that the IgbHierarchicalGrid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
 
@@ -389,8 +392,9 @@ Most applications are designed to load as little data as possible initially, whi
         <IgbRowIsland ChildDataKey="Details" PrimaryKey="productId" AutoGenerate="true" GridCreatedScript="OnGridCreated"></IgbRowIsland>
     </IgbRowIsland>
 </IgbHierarchicalGrid>
+```
 
-In JavaScript
+```javascript
 igRegisterScript("OnGridRendered", () => {
     const grid = document.getElementsByTagName("igc-hierarchical-grid")[0];
     grid.isLoading = true;
@@ -441,16 +445,16 @@ function buildUrl(dataState) {
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=HasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```razor
 <IgbHierarchicalGrid Data="data" PrimaryKey="ID" HasChildrenKey="hasChildren">
 </IgbHierarchicalGrid>
 ```
 
-Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=HasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=ShowExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -472,7 +476,7 @@ The grid features could be enabled and configured through the IgbRowIsland marku
             <IgbColumn Field="ProductName"></IgbColumn>
         </IgbColumnGroup>
         <IgbPaginator PerPage="5"></IgbPaginator>
-    <IgbRowIsland>
+    </IgbRowIsland>
     <IgbPaginator></IgbPaginator>
 </IgbHierarchicalGrid>
 ```
@@ -500,17 +504,8 @@ The Selection and Navigation features work globally for the whole Hierarchical G
 
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
-<img class="responsive-img" src="../../../images/unfold_less_icon_screenshot.jpg" srcset="../../images/unfold_less_icon_screenshoto@2x.jpg 2x" alt="unfold_less_icon_screenshot" />
-
-<!-- TODO: uncomment when sizing topic is ready -->
-
-<!-- ## Sizing
-
-See the [Hierarchical Grid Sizing](sizing.md) topic. -->
-
 ## Styling
-
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```razor
  <IgbHierarchicalGrid Class="grid"></IgbHierarchicalGrid>
@@ -526,7 +521,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 ```
 
 ### Demo
-
 ```razor
 @using IgniteUI.Blazor.Controls
 
@@ -799,28 +793,8 @@ public class SingersData
 
 ## API References
 
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbRowIsland`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland)
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- `Cell`
-
-<!-- TODO: uncomment when all of the topics are ready -->
-
-<!-- ## Additional Resources
-
-- [Grid Sizing](sizing.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md) -->
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
-- [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)<br />
+[`IgbRowIsland`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland)<br />
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
+[`IgbCellType`](mcp:get_api_reference?platform=blazor&component=IgbCellType)<br />

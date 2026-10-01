@@ -1,17 +1,18 @@
 ---
-title: Blazor Linear Gauge | Data Visualization Tools | Infragistics
-_description: Use Infragistics' Blazor linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for Blazor linear gauge configurable elements!
-_keywords: linear gauge, Ignite UI for Blazor, Infragistics, animation, labels, needle, scales, ranges, tick marks
-_license: commercial
-mentionedTypes: ["XamLinearGauge"]
+title: "Blazor Linear Gauge | Data Visualization Tools | Infragistics"
+description: Use Infragistics' Blazor linear gauge control to visualize data with a simple and concise view. Learn about the Ignite UI for Blazor linear gauge configurable elements!
+keywords: linear gauge, Ignite UI for Blazor, Infragistics, animation, labels, needle, scales, ranges, tick marks
+license: commercial
+mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge."
 _tocName: Linear Gauge
 _premium: true
 ---
-
 # Blazor Linear Gauge Overview
 
-The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=TransitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Blazor Linear Gauge Example
 
@@ -372,19 +373,15 @@ The following sample demonstrates how setting multiple properties on the same [`
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Component Modules
 
 The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) requires the following modules:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbLinearGaugeModule));
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -402,14 +399,13 @@ The following code demonstrates how create a linear gauge containing a needle an
      <IgbLinearGraphRange StartValue="15"
             EndValue="30"
             Brush="yellow">
+    </IgbLinearGraphRange>
     <IgbLinearGraphRange StartValue="30"
             EndValue="55"
             Brush="green">
     </IgbLinearGraphRange>
 </IgbLinearGauge>
 ```
-
-<div class="divider--half"></div>
 
 ## Needle
 
@@ -470,7 +466,7 @@ This is the primary measure displayed by the linear gauge component and is visua
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=highlightValue).
 
 ```razor
 <IgbLinearGauge Height="80px" Width="100%"
@@ -723,7 +719,7 @@ The backing element represents background and border of the linear gauge compone
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```razor
 <IgbLinearGauge Height="80px" Width="100%"
@@ -846,18 +842,12 @@ For your convenience, all above code snippets are combined into one code block b
 </IgbLinearGauge>
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge)
-- [`IgbLinearGraphRange`](mcp:get_api_reference?platform=blazor&component=IgbLinearGraphRange)
-
+[`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge)
+[`IgbLinearGraphRange`](mcp:get_api_reference?platform=blazor&component=IgbLinearGraphRange)
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:
 
-- [Bullet Graph](bullet-graph.md)
-- [Radial Gauge](radial-gauge.md)
+- [Bullet Graph](./bullet-graph.md)
+- [Radial Gauge](./radial-gauge.md)

@@ -1,16 +1,15 @@
 ---
 title:  Row actions in React Hierarchical Grid - Infragistics
-_description: The IgrHierarchicalGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
-_keywords: React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-actions
+description: The IgrHierarchicalGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
+keywords: "React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-actions"
+llms:
+  description: "The Ignite UI for React Row Actions feature in React Hierarchical Grid enables developers to use an ActionStrip and utilize CRUD for row/cell components and row pinning."
+_componentKey: HierarchicalGrid
 _tocName: Row Actions
 _premium: true
 ---
-
 # Row Actions in React Hierarchical Grid
 
 The Ignite UI for React Row Actions feature in React Hierarchical Grid enables developers to use an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) – editing and pinning.
@@ -19,15 +18,11 @@ The Ignite UI for React Row Actions feature in React Hierarchical Grid enables d
 
 The predefined actions UI components are:
 
-- [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) - includes functionality and UI specifically designed for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) option and row deletion of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
+- [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) - includes functionality and UI specifically designed for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) option and row deletion of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
 
 - [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions) - includes functionality and UI specifically designed for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
 They are added inside the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) and this is all needed to have an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) providing default interactions.
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
 <IgrHierarchicalGrid rowEditable={true} primaryKey="ID">
@@ -40,18 +35,12 @@ They are added inside the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-> [!Note]
-> When `ActionStripComponent` is a child component of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), hovering a row will automatically show the UI.
+**Note:** 
+When `IgrActionStripComponent` is a child component of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip).
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
 <IgrHierarchicalGrid>
@@ -61,8 +50,6 @@ These components expose templates giving flexibility for customization. For inst
     </IgrActionStrip>
 </IgrHierarchicalGrid>
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ```css
 /* shared styles are loaded from: */
@@ -259,11 +246,6 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions)
-- [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions)
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
-- [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions)
+[`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions)

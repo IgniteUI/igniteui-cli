@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | ESRI Map Resources | Infragistics
-_description: Use Infragistics' Web Components to display imagery from ESRI maps. View Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, ESRI, Ignite UI for Web Components, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Web Components Map | Data Visualization Tools | ESRI Map Resources | Infragistics"
+description: Use Infragistics' Web Components to display imagery from ESRI maps. View Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, ESRI, Ignite UI for Web Components, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of an utility that helps with using ArcGISOnlineMapImagery provided by Esri Maps in GeographicMap."
 _tocName: Esri Utility
 _premium: true
 ---
-
 # Web Components Esri Utility
 
-The resource topic provides implementation of an utility that helps with using [`IgcArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcarcgisonlinemapimagery.html) provided by Esri Maps in [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html).
+The resource topic provides implementation of an utility that helps with using `IgcArcGISOnlineMapImagery` provided by Esri Maps in `IgcGeographicMap`.
 
 ## Code Snippet
 
@@ -82,6 +83,5 @@ export enum EsriStyle {
 ```
 
 ## API References
-
-- [`IgcArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcarcgisonlinemapimagery.html)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcArcGISOnlineMapImagery`
+`IgcGeographicMap`

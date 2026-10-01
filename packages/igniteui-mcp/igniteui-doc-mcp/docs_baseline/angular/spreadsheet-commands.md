@@ -1,16 +1,17 @@
 ---
-title: Angular Spreadsheet | Commands | Infragistics
-_description: Perform commands to activate different features of Infragistics' Angular spreadsheet control. Learn commands such as ZoomIn and ZoomOut with Ignite UI for Angular spreadsheet!
-_keywords: Spreadsheet, commands, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Spreadsheet | Commands | Infragistics"
+description: Perform commands to activate different features of Infragistics' Angular spreadsheet control. Learn commands such as ZoomIn and ZoomOut with Ignite UI for Angular spreadsheet!
+keywords: Spreadsheet, commands, Ignite UI for Angular, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction"]
+llms:
+  description: "The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet."
 _tocName: Commands
 _premium: true
 ---
-
 # Angular Working with Commands
 
-The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the SpreadsheetAction enum for a full list.
+The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the `IgxSpreadsheetAction` enum for a full list.
 
 ## Angular Working with Commands Example
 
@@ -96,18 +97,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
-Before making use of the commands you will want to import the `SpreadsheetAction`
+Before making use of the commands you will want to import the `IgxSpreadsheetAction`
 
 ```ts
 import { IgxSpreadsheetComponent } from 'igniteui-angular-spreadsheet';
 import { SpreadsheetAction } from 'igniteui-angular-spreadsheet';
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -130,5 +127,4 @@ public zoomOut(): void {
 
 ## API References
 
-- `ExecuteAction`
-- `SpreadsheetAction`
+`IgxSpreadsheetAction`<br />

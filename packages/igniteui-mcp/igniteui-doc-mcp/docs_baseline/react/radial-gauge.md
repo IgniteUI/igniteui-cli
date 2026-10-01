@@ -1,21 +1,22 @@
 ---
-title: React Radial Gauge Chart | Data Visualization Tools | Infragistics
-_description: Use Infragistics' React radial gauge control to create engaging data visualizations and dashboards and show off KPIs with rich style and interactivity. Learn about the Ignite UI for React radial gauge configurable elements!
-_keywords: Radial Gauge, Ignite UI for React, Infragistics, animation, labels, needle, scales, ranges, tick marks
-_license: commercial
-mentionedTypes: ["XamRadialGauge", "XamRadialGaugeRange"]
+title: "React Radial Gauge Chart | Data Visualization Tools | Infragistics"
+description: Use Infragistics' React radial gauge control to create engaging data visualizations and dashboards and show off KPIs with rich style and interactivity. Learn about the Ignite UI for React radial gauge configurable elements!
+keywords: Radial Gauge, Ignite UI for React, Infragistics, animation, labels, needle, scales, ranges, tick marks
+license: commercial
+mentionedTypes: ["RadialGauge", "RadialGaugeRange"]
 namespace: Infragistics.Controls.Gauges
+llms:
+  description: "The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale."
 _tocName: Radial Gauge
 _premium: true
 ---
-
 # React Radial Gauge Overview
 
-The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The [`IgrRadialGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html)  also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#transitionDuration) property.
+The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The `IgrRadialGauge` also has built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property.
 
 ## React Radial Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgrRadialGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html) can transform it to completely different radial gauge.
+The following sample demonstrates how setting multiple properties on the same `IgrRadialGauge` can transform it to completely different radial gauge.
 
 ```tsx
 import React from 'react';
@@ -390,8 +391,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadialGaugeAnimation/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 When installing the gauge component, the core package must also be installed.
@@ -403,15 +402,13 @@ npm install --save igniteui-react-gauges
 
 ## Component Modules
 
-The [`IgrRadialGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html) requires the following modules:
+The `IgrRadialGauge` requires the following modules:
 
 ```ts
 import { IgrRadialGaugeModule } from 'igniteui-react-gauges';
 
 IgrRadialGaugeModule.register();
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -435,15 +432,13 @@ The following code demonstrates how create a radial gauge containing a needle an
 </IgrRadialGauge>
 ```
 
-<div class="divider--half"></div>
-
 ## Backing
 
 The radial gauge component comes with a backing shape drawn behind the scale that acts as a background for the radial gauge.
 
 The backing element represents background and border of the radial gauge component. It is always the first element rendered and all the rest of elements such as needle, labels, and tick marks are overlay on top of it.
 
-The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the [`scaleStartAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleStartAngle) and [`scaleEndAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleEndAngle) properties. This can be set by setting the [`backingShape`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#backingShape) property.
+The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the `ScaleStartAngle` and `ScaleEndAngle` properties. This can be set by setting the `BackingShape` property.
 
 ```tsx
 <IgrRadialGauge
@@ -511,7 +506,7 @@ root.render(<RadialGaugeBacking/>);
 
 ## Scale
 
-The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#maximumValue) values. Together with backing, it defines overall shape of gauge. The [`scaleStartAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleStartAngle) and [`scaleEndAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleEndAngle) properties define bounds of arc of the scale. While, the [`scaleSweepDirection`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`scaleBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleBrush), [`scaleStartExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleStartExtent), and [`scaleEndExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#scaleEndExtent) properties.
+The scale is visual element that highlights full range of values in the gauge which can be created by supplying `MinimumValue` and `MaximumValue` values. Together with backing, it defines overall shape of gauge. The `ScaleStartAngle` and `ScaleEndAngle` properties define bounds of arc of the scale. While, the `ScaleSweepDirection` property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting `ScaleBrush`, `ScaleStartExtent`, and `ScaleEndExtent` properties.
 
 ```tsx
 <IgrRadialGauge
@@ -574,9 +569,9 @@ root.render(<RadialGaugeScale/>);
 
 ## Labels and Titles
 
-The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#maximumValue) properties. You can position labels by setting the [`labelExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#labelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`fontBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#fontBrush) and [`font`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#font).
+The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the `MinimumValue` and `MaximumValue` properties. You can position labels by setting the `LabelExtent` property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as `FontBrush` and `Font`.
 
-Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as [`titleExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#titleExtent), [`titleAngle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#titleAngle), `SubtitleFontSize`, [`highlightLabelBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#highlightLabelBrush).
+Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as `TitleExtent`, `TitleAngle`, `SubtitleFontSize`, `HighlightLabelBrush`.
 
 ```tsx
 <IgrRadialGauge
@@ -631,9 +626,9 @@ root.render(<RadialGaugeLabels/>);
 
 ## Title & Subtitle
 
-[`titleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#titleText) and [`subtitleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#subtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`titleDisplaysValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#titleDisplaysValue) and [`subtitleDisplaysValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#subtitleDisplaysValue), when set to true, will let display the needle's value and override [`titleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#titleText) and [`subtitleText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#subtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
+`TitleText` and `SubtitleText` properties are available and can both be used to display custom text for the needle. Alternatively, `TitleDisplaysValue` and `SubtitleDisplaysValue`, when set to true, will let display the needle's value and override `TitleText` and `SubtitleText`. So you can occupy custom text for the title but show the value via the subtitle and vice versa.
 
-If the highlight needle is shown, as explained below, then custom text can be shown via  [`highlightLabelText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#highlightLabelText), otherwise [`highlightLabelDisplaysValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#highlightLabelDisplaysValue) can be enabled and display it's value.
+If the highlight needle is shown, as explained below, then custom text can be shown via  `HighlightLabelText`, otherwise `HighlightLabelDisplaysValue` can be enabled and display it's value.
 
 ```tsx
 <IgrRadialGauge
@@ -644,7 +639,7 @@ If the highlight needle is shown, as explained below, then custom text can be sh
 
 ## Optical Scaling
 
-The radial gauge's labels and titles can change it's scaling. To enable this, first set [`opticalScalingEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#opticalScalingEnabled) to true. Then you can set [`opticalScalingSize`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#opticalScalingSize) which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
+The radial gauge's labels and titles can change it's scaling. To enable this, first set `OpticalScalingEnabled` to true. Then you can set `OpticalScalingSize` which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
 
 ```tsx
 import React from 'react';
@@ -728,7 +723,7 @@ root.render(<RadialGaugeOpticalScaling/>);
 
 ## Tick Marks
 
-Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#interval) between the [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#maximumValue) properties. Use the [`minorTickCount`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`tickStartExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#tickStartExtent), [`tickEndExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#tickEndExtent), [`minorTickStartExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minorTickStartExtent), and [`minorTickEndExtent`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minorTickEndExtent) properties.
+Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the `Interval` between the `MinimumValue` and `MaximumValue` properties. Use the `MinorTickCount` property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to `TickStartExtent`, `TickEndExtent`, `MinorTickStartExtent`, and `MinorTickEndExtent` properties.
 
 ```tsx
 <IgrRadialGauge
@@ -793,7 +788,7 @@ root.render(<RadialGaugeTickmarks/>);
 
 ## Ranges
 
-A range highlights a set of continuous values bound by a specified [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#maximumValue) properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as [`brush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgaugerange.html#brush) and [`outline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgaugerange.html#outline). Alternatively, you can set [`rangeBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#rangeBrushes) and [`rangeOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#rangeOutlines) properties to a list of colors for the ranges.
+A range highlights a set of continuous values bound by a specified `MinimumValue` and `MaximumValue` properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as `Brush` and `Outline`. Alternatively, you can set `RangeBrushes` and `RangeOutlines` properties to a list of colors for the ranges.
 
 ```tsx
 <IgrRadialGauge
@@ -864,9 +859,9 @@ root.render(<RadialGaugeRanges/>);
 
 Radial gauge needles are visual elements used to signify a gauge set value. Needles are available in one of the several predefined shapes. The needle can have a pivot shape, which is placed in the center of the gauge. The pivot shape also takes one of the predefined shapes. Pivot shapes that include an overlay or an underlay can have a separate pivot brush applied to the shape.
 
-The supported needle shapes and caps are set using the [`needleShape`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#needleShape) and [`needlePivotShape`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#needlePivotShape) properties.
+The supported needle shapes and caps are set using the `NeedleShape` and `NeedlePivotShape` properties.
 
-You can enable an interactive mode of the gauge (using [`isNeedleDraggingEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#isNeedleDraggingEnabled) property) and the end-user will be able to change value by dragging the needle between values of [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#maximumValue) properties.
+You can enable an interactive mode of the gauge (using `IsNeedleDraggingEnabled` property) and the end-user will be able to change value by dragging the needle between values of `MinimumValue` and `MaximumValue` properties.
 
 ```tsx
 <IgrRadialGauge
@@ -941,7 +936,7 @@ root.render(<RadialGaugeNeedle/>);
 
 ## Highlight Needle
 
-The radial gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html#highlightValue).
+The radial gauge can be modified to show a second needle. This will make the main needle's `Value` appear with a lower opacity. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue`.
 
 ```tsx
 <IgrRadialGauge
@@ -1071,15 +1066,11 @@ For your convenience, all above code snippets are combined into one code block b
 ```
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrRadialGauge`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgauge.html)
-- [`IgrRadialGaugeRange`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrradialgaugerange.html)
-
+`IgrRadialGauge`
+`IgrRadialGaugeRange`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:
 
-- [Bullet Graph](bullet-graph.md)
-- [Linear Gauge](linear-gauge.md)
+- [Bullet Graph](./bullet-graph.md)
+- [Linear Gauge](./linear-gauge.md)
