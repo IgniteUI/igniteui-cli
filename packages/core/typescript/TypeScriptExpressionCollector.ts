@@ -97,7 +97,12 @@ export class TypeScriptExpressionCollector {
       const prop2 = sortedProps2[i];
 
       // compare prop names
-      if (this.getPropertyName(prop1) !== this.getPropertyName(prop2)) {
+      const name = this.getPropertyName(prop1);
+      if (name !== this.getPropertyName(prop2)) {
+        return false;
+      }
+      // unsupported names (e.g. computed `[key]`) are never equal, spreads are compared by expression
+      if (name === undefined && !(ts.isSpreadAssignment(prop1) && ts.isSpreadAssignment(prop2))) {
         return false;
       }
 

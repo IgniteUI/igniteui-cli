@@ -94,6 +94,14 @@ describe('TypeScriptExpressionCollector', () => {
       expect(unique(`{ ...foo }, { ...bar }, { ...foo }`)).toEqual(['{ ...foo }', '{ ...bar }']);
     });
 
+    it('keeps objects with computed property names', () => {
+      expect(unique(`{ [firstKey]: 1 }, { [secondKey]: 1 }`)).toEqual(['{ [firstKey]: 1 }', '{ [secondKey]: 1 }']);
+    });
+
+    it('does not treat a computed property name as equal to a spread', () => {
+      expect(unique(`{ [key]: 1 }, { ...key }`)).toEqual(['{ [key]: 1 }', '{ ...key }']);
+    });
+
     it('keeps member order significant when objects contain spreads', () => {
       expect(unique(`{ ...base, path: 'home' }, { path: 'home', ...base }`))
         .toEqual([`{ ...base, path: 'home' }`, `{ path: 'home', ...base }`]);
