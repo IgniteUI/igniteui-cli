@@ -69,7 +69,8 @@ const symbolPatterns = new Map<Deprecation, RegExp>(
 
 /** The deprecation covering `symbol` (case-insensitive, generics ignored), if any. */
 export function findDeprecation(platform: Platform | undefined, symbol: string): Deprecation | undefined {
-  const name = symbol.replace(/<[^>]*>/g, '').trim().toLowerCase();
+  // Generic parameters always trail the name in C#: "IgbCombo<T>" → "IgbCombo".
+  const name = symbol.split('<')[0].trim().toLowerCase();
   return DEPRECATIONS.find(
     d => (!platform || d.platform === platform) && d.symbols.some(s => s.toLowerCase() === name)
   );
