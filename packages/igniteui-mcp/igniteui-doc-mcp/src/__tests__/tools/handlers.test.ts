@@ -511,3 +511,76 @@ describe('createResolveImportHandler', () => {
     expect(text).not.toContain('AddIgniteUIBlazor');
   });
 });
+
+describe('deprecated components', () => {
+  const blazorGrid = (symbol: string): ResolvedImport => ({ symbol, platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class' });
+
+  it('get_api_reference answers with the deprecation notice and never looks the entry up', async () => {
+    const get = vi.fn();
+    const result = await createGetApiReferenceHandler(makeLoader({ get }))({ platform: 'blazor', component: 'IgbDataGrid', section: 'all' });
+    const text = result.content[0].text as string;
+
+    expect(result.isError).toBeUndefined();
+    expect(text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(text).toContain('replaced by `IgbGrid`');
+    expect(get).not.toHaveBeenCalled();
+  });
+
+  it('get_api_reference covers related types, member lookups and case variations', async () => {
+    const handler = createGetApiReferenceHandler(makeLoader());
+    const column = await handler({ platform: 'blazor', component: 'igbtextcolumn', section: 'all' });
+    const member = await handler({ platform: 'blazor', component: 'IgbDataGrid#StartEditModeAsync', section: 'all' });
+
+    expect(column.content[0].text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(member.content[0].text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+  });
+
+  it('get_api_reference does not flag the same name on another framework', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry({ component: 'IgbDataGrid', platform: 'angular' })) });
+    const result = await createGetApiReferenceHandler(loader)({ platform: 'angular', component: 'IgbDataGrid', section: 'all' });
+    expect(result.content[0].text).not.toContain('DEPRECATED');
+  });
+
+  it('search_api prepends the notice when the query names a deprecated symbol', async () => {
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([makeEntry({ component: 'IgbGrid', platform: 'blazor', content: 'IgbGrid cell editing' })]) });
+    const result = await createSearchApiHandler(loader)({ platform: 'blazor', query: 'IgbDataGrid cell' });
+    const text = result.content[0].text as string;
+
+    expect(text.startsWith('⚠ DEPRECATED: `IgbDataGrid`')).toBe(true);
+    expect(text).toContain('**IgbGrid**');
+  });
+
+  it('search_api prepends the notice on an empty result too', async () => {
+    const result = await createSearchApiHandler(makeLoader())({ platform: 'blazor', query: 'IgbDataGrid' });
+    expect(result.content[0].text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(result.content[0].text).toContain('No results found');
+  });
+
+  it('search_api ignores deprecated names that only appear in result excerpts', async () => {
+    const entry = makeEntry({ component: 'IgbLocalDataSource', platform: 'blazor', content: 'summary: IgbDataGridSummaryResult[]' });
+    const result = await createSearchApiHandler(makeLoader({ search: vi.fn().mockReturnValue([entry]) }))({ platform: 'blazor', query: 'summary' });
+    expect(result.content[0].text).not.toContain('DEPRECATED');
+  });
+
+  it('resolve_import returns the notice instead of an import and is not an error', async () => {
+    const resolver = { resolve: vi.fn() } as unknown as ImportResolver;
+    const result = await createResolveImportHandler(resolver)({ symbols: ['IgbDataGrid', 'IgbTextColumn'], platform: 'blazor' });
+    const text = result.content[0].text as string;
+
+    expect(result.isError).toBeUndefined();
+    expect(text.match(/⚠ DEPRECATED/g)).toHaveLength(1);
+    expect(text).not.toContain('NuGet');
+    expect(resolver.resolve).not.toHaveBeenCalled();
+  });
+
+  it('resolve_import still resolves the other symbols in the same call', async () => {
+    const resolver = {
+      resolve: vi.fn((query: string): ResolveResult => ({ query, matches: [blazorGrid(query)], suggestions: [] })),
+    } as unknown as ImportResolver;
+    const text = (await createResolveImportHandler(resolver)({ symbols: ['IgbDataGrid', 'IgbGrid'] })).content[0].text as string;
+
+    expect(text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(text).toContain('- NuGet `IgniteUI.Blazor`: IgbGrid');
+    expect(resolver.resolve).toHaveBeenCalledTimes(1);
+  });
+});

@@ -326,4 +326,30 @@ describe('ApiDocLoader', () => {
       expect(err.cause).toBe(cause);
     });
   });
+
+  describe('deprecated components', () => {
+    it('does not index entries listed in the deprecation registry', () => {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue([
+        '### [IgbDataGrid](https://example.com/blazor/IgbDataGrid)',
+        'An advanced grid for displaying data.',
+        '- **CellClicked**: `Action<IgbDataGridCellEventArgs>`',
+        '',
+        '### [IgbTextColumn](https://example.com/blazor/IgbTextColumn)',
+        'A text column.',
+        '',
+        '### [IgbGrid](https://example.com/blazor/IgbGrid)',
+        'A grid.',
+        '',
+      ].join('\n'));
+      // Same fixture paths as the Angular config; only the key matters for the registry.
+      const loader = new ApiDocLoader([{ ...FIXTURE_CONFIG, key: 'blazor', displayName: 'Blazor' }]);
+      loader.load();
+
+      expect(loader.get('blazor', 'IgbDataGrid')).toBeUndefined();
+      expect(loader.get('blazor', 'IgbTextColumn')).toBeUndefined();
+      expect(loader.get('blazor', 'IgbGrid')).toBeDefined();
+      expect(loader.search({ platform: 'blazor' }).map(e => e.component)).toEqual(['IgbGrid']);
+    });
+  });
 });

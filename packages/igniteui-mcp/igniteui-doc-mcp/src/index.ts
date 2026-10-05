@@ -16,6 +16,7 @@ import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeS
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { ImportResolver } from "./lib/import-resolver.js";
 import { getPlatforms } from "./config/platforms.js";
+import { withDeprecationNotices } from "./config/deprecations.js";
 
 dotenv.config({ quiet: true });
 
@@ -174,7 +175,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       const start = performance.now();
       const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, name);
 
-      const body = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
+      const served = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
+      // Some docs (sparkline, excel-library) still show deprecated components in their samples.
+      const body = withDeprecationNotices(framework, served, [name, text]);
 
       log("get_doc", { framework, name: servedName }, body, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: body }], ...(found ? {} : { isError: true }) };
@@ -214,7 +217,8 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       }
 
       try {
-        const text = await docsProvider.searchDocs(framework, sanitized);
+        const results = await docsProvider.searchDocs(framework, sanitized);
+        const text = withDeprecationNotices(framework, results, [queryText, results]);
         log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
         return { content: [{ type: "text" as const, text }] };
       } catch (err) {

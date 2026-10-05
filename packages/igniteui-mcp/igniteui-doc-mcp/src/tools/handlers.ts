@@ -4,6 +4,7 @@ import { searchApiDocs, extractSection, extractMember } from '../lib/api-doc-sea
 import type { ImportResolver, ResolvedImport } from '../lib/import-resolver.js';
 import type { GetApiReferenceParams, ResolveImportParams, SearchApiParams } from './schemas.js';
 import { getPlatformConfig, PLATFORMS, type Platform } from '../config/platforms.js';
+import { findDeprecation, formatDeprecationNotice, withDeprecationNotices, type Deprecation } from '../config/deprecations.js';
 
 export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
@@ -27,6 +28,11 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
     // name a real member, so treat it as omitted rather than failing.
     if (member && !/[A-Za-z0-9]/.test(member)) {
       member = undefined;
+    }
+
+    const deprecation = findDeprecation(platform, component);
+    if (deprecation) {
+      return { content: [{ type: "text", text: formatDeprecationNotice(deprecation) }] };
     }
 
     // ApiDocLoader.get is exact-first, then case-insensitive and generic-stripped
@@ -97,7 +103,7 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
       return {
         content: [{
           type: "text",
-          text: `No results found for "${query}"${platformText}.`
+          text: withDeprecationNotices(platform, `No results found for "${query}"${platformText}.`, [query])
         }]
       };
     }
@@ -116,7 +122,10 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
       ? `⚠ Results span multiple frameworks (${[...frameworks].join(', ')}). Only use entries that match your target framework — never apply APIs, events, or binding syntax from one framework to another.\n\n`
       : '';
 
-    return { content: [{ type: "text", text: crossPlatformWarning + lines.join("\n\n") }] };
+    // Only the query is scanned: excerpts from live entries (data sources, event
+    // args) often reference deprecated types incidentally.
+    const text = withDeprecationNotices(platform, crossPlatformWarning + lines.join("\n\n"), [query]);
+    return { content: [{ type: "text", text }] };
   };
 }
 
@@ -199,14 +208,22 @@ function formatPlatform(platform: Platform, matches: ResolvedImport[]): string {
 export function createResolveImportHandler(resolver: ImportResolver) {
   return async (params: ResolveImportParams): Promise<CallToolResult> => {
     const { symbols, platform } = params;
-    const results = symbols.map(s => resolver.resolve(s, platform));
+    const deprecated = new Set<Deprecation>();
+    const results = symbols.flatMap(s => {
+      const deprecation = findDeprecation(platform, s);
+      if (deprecation) {
+        deprecated.add(deprecation);
+        return [];
+      }
+      return [resolver.resolve(s, platform)];
+    });
 
     const byPlatform = new Map<Platform, ResolvedImport[]>();
     for (const m of results.flatMap(r => r.matches)) {
       byPlatform.set(m.platform, [...(byPlatform.get(m.platform) ?? []), m]);
     }
 
-    const sections: string[] = [];
+    const sections: string[] = [...deprecated].map(formatDeprecationNotice);
     const ambiguous = results.filter(r => r.matches.length > 1);
     if (ambiguous.length > 0) {
       const names = ambiguous.map(r => `"${r.query}"`).join(', ');
@@ -230,7 +247,7 @@ export function createResolveImportHandler(resolver: ImportResolver) {
 
     return {
       content: [{ type: "text", text: sections.join('\n\n') }],
-      ...(byPlatform.size === 0 ? { isError: true } : {}),
+      ...(byPlatform.size === 0 && deprecated.size === 0 ? { isError: true } : {}),
     };
   };
 }
