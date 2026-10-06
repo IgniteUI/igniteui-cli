@@ -16,7 +16,7 @@ import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeS
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { ImportResolver } from "./lib/import-resolver.js";
 import { getPlatforms } from "./config/platforms.js";
-import { withDeprecationNotices } from "./config/deprecations.js";
+import { formatDeprecationInstructions, withDeprecationNotices } from "./config/deprecations.js";
 
 dotenv.config({ quiet: true });
 
@@ -62,6 +62,8 @@ const FRAMEWORK_ENUM = z
     "Ignite UI framework. Detect from user context: Angular (Igx prefix, e.g. IgxGrid) → 'angular', React (Igr prefix, e.g. IgrGrid) → 'react', Blazor (Igb prefix, e.g. IgbGrid) → 'blazor', Web Components (Igc prefix + Component suffix, e.g. IgcGridComponent) → 'webcomponents'. Also check file extensions (.razor → blazor, .tsx → react, .ts+.html → angular or webcomponents), package names (igniteui-angular, igniteui-react, igniteui-webcomponents, IgniteUI.Blazor), or ask the user if unclear."
   );
 
+const DEPRECATION_INSTRUCTIONS = formatDeprecationInstructions();
+
 const server = new McpServer(
   { name: "igniteui-mcp-server", version: "1.0.0" },
   {
@@ -76,7 +78,8 @@ const server = new McpServer(
       "LIBRARY BOUNDARY RULE: Once the target framework is identified, always pass it as the 'framework' or 'platform' parameter to every tool call. " +
       "Never apply component APIs, event names, binding syntax, prop names, or state patterns from one framework to code in another framework. " +
       "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable. " +
-      "Before writing import statements for Ignite UI symbols, call resolve_import to get the exact package and entry point.",
+      "Before writing import statements for Ignite UI symbols, call resolve_import to get the exact package and entry point." +
+      (DEPRECATION_INSTRUCTIONS ? ` ${DEPRECATION_INSTRUCTIONS}` : ""),
   }
 );
 

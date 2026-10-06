@@ -3,6 +3,7 @@ import {
   DEPRECATIONS,
   findDeprecation,
   findDeprecationsInText,
+  formatDeprecationInstructions,
   formatDeprecationNotice,
   withDeprecationNotices,
 } from '../../config/deprecations.js';
@@ -43,6 +44,16 @@ describe('deprecations', () => {
     expect(notice).toContain('replaced by `IgbGrid`');
     expect(notice).toContain('`IgbTextColumn`');
     expect(notice).not.toContain('IgbTextColumnModule');
+  });
+
+  it('rules out offering the component as a legacy alternative', () => {
+    expect(formatDeprecationNotice(dataGrid)).toContain('not even as a legacy option');
+  });
+
+  it('summarizes every deprecation for the server instructions', () => {
+    const instructions = formatDeprecationInstructions();
+    expect(instructions).toContain('never suggest IgbDataGrid (Blazor) → use IgbGrid');
+    expect(instructions).toContain('not even as a legacy option');
   });
 
   it('prepends a notice only when a scanned text mentions a deprecated symbol', () => {

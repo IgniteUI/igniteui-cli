@@ -27,7 +27,7 @@ export const DEPRECATIONS: readonly Deprecation[] = [
     component: 'IgbDataGrid',
     replacement: 'IgbGrid',
     guidance:
-      'Use `IgbGrid` with `IgbColumn` children. Look it up with get_api_reference ' +
+      'Declare its columns with `IgbColumn`. Look it up with get_api_reference ' +
       '(platform "blazor", component "IgbGrid") or search_docs (framework "blazor", e.g. "grid editing").',
     symbols: [
       'IgbDataGrid',
@@ -83,15 +83,30 @@ export function findDeprecationsInText(platform: Platform | undefined, ...texts:
   );
 }
 
+// Models fall back on what they learned in training, so the rule also has to
+// rule out offering the component as a "legacy" alternative.
+const NO_SUGGESTION_RULE =
+  'not even as a legacy option or an alternative, and not for settings that only exist on it. ' +
+  "If the user's existing code already uses it, recommend migrating.";
+
 export function formatDeprecationNotice(d: Deprecation): string {
   // Module classes are registration plumbing; naming them adds noise without steering anyone.
   const related = d.symbols.filter(s => s !== d.component && !s.endsWith('Module'));
   return (
     `⚠ DEPRECATED: \`${d.component}\` (${getPlatformConfig(d.platform).displayName}) is deprecated and has been ` +
     `replaced by \`${d.replacement}\`. It receives no new features and bug fixes are deprioritized. ` +
-    `Do not use \`${d.component}\` or its related types (${related.map(s => `\`${s}\``).join(', ')}) ` +
-    `in code or suggestions — use \`${d.replacement}\` instead. ${d.guidance}`
+    `Do not suggest \`${d.component}\` or its related types (${related.map(s => `\`${s}\``).join(', ')}) — ` +
+    `${NO_SUGGESTION_RULE} Use \`${d.replacement}\` instead. ${d.guidance}`
   );
+}
+
+/** The deprecations as a server-instructions paragraph, so clients know before any tool call. */
+export function formatDeprecationInstructions(): string {
+  if (DEPRECATIONS.length === 0) return '';
+  const items = DEPRECATIONS.map(
+    d => `${d.component} (${getPlatformConfig(d.platform).displayName}) → use ${d.replacement}`
+  );
+  return `DEPRECATED COMPONENTS: never suggest ${items.join('; ')} — ${NO_SUGGESTION_RULE}`;
 }
 
 /** Prepends to `body` a notice for every deprecation mentioned in `scanned`. */
