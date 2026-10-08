@@ -36,6 +36,10 @@ describe('deprecations', () => {
     expect(findDeprecation('blazor', 'EditModeClickAction')).toBe(dataGrid);
     expect(findDeprecation('blazor', 'DataGridSelectionMode')).toBe(dataGrid);
     expect(findDeprecation('blazor', 'IgbGridCellEditStartedEventArgs')).toBe(dataGrid);
+    // Reachable only through other old-grid types (e.g. IgbGridActiveCellChangedEventArgs).
+    expect(findDeprecation('blazor', 'IgbGridCellPosition')).toBe(dataGrid);
+    expect(findDeprecation('blazor', 'IgbGridColumnCollection')).toBe(dataGrid);
+    expect(findDeprecation('blazor', 'IgbRowSeparatorModule')).toBe(dataGrid);
     // Shared with live components — must stay visible.
     expect(findDeprecation('blazor', 'MouseButton')).toBeUndefined();
     expect(findDeprecation('blazor', 'GridSelectionMode')).toBeUndefined();
