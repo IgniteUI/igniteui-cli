@@ -583,4 +583,47 @@ describe('deprecated components', () => {
     expect(text).toContain('- NuGet `IgniteUI.Blazor`: IgbGrid');
     expect(resolver.resolve).toHaveBeenCalledTimes(1);
   });
+
+  it('get_api_reference names the requested enum that belongs to the deprecated component', async () => {
+    const result = await createGetApiReferenceHandler(makeLoader())({ platform: 'blazor', component: 'EditModeClickAction', section: 'all' });
+    expect(result.content[0].text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(result.content[0].text).toContain('Part of its API: `EditModeClickAction`.');
+  });
+
+  it('resolve_import without a platform still resolves an unprefixed name shared with React and Web Components', async () => {
+    const shared: ResolvedImport[] = [
+      { symbol: 'DataGridSelectionMode', platform: 'react', module: 'igniteui-react-data-grids' },
+      { symbol: 'DataGridSelectionMode', platform: 'webcomponents', module: 'igniteui-webcomponents-data-grids' },
+    ];
+    const resolver = {
+      resolve: vi.fn((query: string): ResolveResult => ({ query, matches: shared, suggestions: [] })),
+    } as unknown as ImportResolver;
+    const result = await createResolveImportHandler(resolver)({ symbols: ['DataGridSelectionMode'] });
+    const text = result.content[0].text as string;
+
+    expect(resolver.resolve).toHaveBeenCalledWith('DataGridSelectionMode', undefined);
+    expect(text).not.toContain('DEPRECATED');
+    expect(text).toContain(`from 'igniteui-react-data-grids'`);
+    expect(text).toContain(`from 'igniteui-webcomponents-data-grids'`);
+  });
+
+  it('resolve_import stays an error when every non-deprecated symbol is unresolved', async () => {
+    const resolver = {
+      resolve: vi.fn((query: string): ResolveResult => ({ query, matches: [], suggestions: [] })),
+    } as unknown as ImportResolver;
+    const result = await createResolveImportHandler(resolver)({ symbols: ['IgbDataGrid', 'NotARealSymbol'], platform: 'blazor' });
+    const text = result.content[0].text as string;
+
+    expect(result.isError).toBe(true);
+    expect(text).toContain('⚠ DEPRECATED: `IgbDataGrid`');
+    expect(text).toContain('`NotARealSymbol` — not found');
+  });
+
+  it('resolve_import with platform "blazor" flags the same unprefixed name', async () => {
+    const resolver = { resolve: vi.fn() } as unknown as ImportResolver;
+    const text = (await createResolveImportHandler(resolver)({ symbols: ['DataGridSelectionMode'], platform: 'blazor' })).content[0].text as string;
+
+    expect(text).toContain('Part of its API: `DataGridSelectionMode`.');
+    expect(resolver.resolve).not.toHaveBeenCalled();
+  });
 });

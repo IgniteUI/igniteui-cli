@@ -32,7 +32,7 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
 
     const deprecation = findDeprecation(platform, component);
     if (deprecation) {
-      return { content: [{ type: "text", text: formatDeprecationNotice(deprecation) }] };
+      return { content: [{ type: "text", text: formatDeprecationNotice(deprecation, [component]) }] };
     }
 
     // ApiDocLoader.get is exact-first, then case-insensitive and generic-stripped
@@ -208,11 +208,12 @@ function formatPlatform(platform: Platform, matches: ResolvedImport[]): string {
 export function createResolveImportHandler(resolver: ImportResolver) {
   return async (params: ResolveImportParams): Promise<CallToolResult> => {
     const { symbols, platform } = params;
-    const deprecated = new Set<Deprecation>();
+    // Requested symbols per deprecation, so its notice can name them.
+    const deprecated = new Map<Deprecation, string[]>();
     const results = symbols.flatMap(s => {
       const deprecation = findDeprecation(platform, s);
       if (deprecation) {
-        deprecated.add(deprecation);
+        deprecated.set(deprecation, [...(deprecated.get(deprecation) ?? []), s]);
         return [];
       }
       return [resolver.resolve(s, platform)];
@@ -223,7 +224,7 @@ export function createResolveImportHandler(resolver: ImportResolver) {
       byPlatform.set(m.platform, [...(byPlatform.get(m.platform) ?? []), m]);
     }
 
-    const sections: string[] = [...deprecated].map(formatDeprecationNotice);
+    const sections = [...deprecated].map(([d, requested]) => formatDeprecationNotice(d, requested));
     const ambiguous = results.filter(r => r.matches.length > 1);
     if (ambiguous.length > 0) {
       const names = ambiguous.map(r => `"${r.query}"`).join(', ');
@@ -247,7 +248,8 @@ export function createResolveImportHandler(resolver: ImportResolver) {
 
     return {
       content: [{ type: "text", text: sections.join('\n\n') }],
-      ...(byPlatform.size === 0 && deprecated.size === 0 ? { isError: true } : {}),
+      // Deprecated symbols are answered by their notice; the rest fail only if none resolved.
+      ...(results.length > 0 && byPlatform.size === 0 ? { isError: true } : {}),
     };
   };
 }

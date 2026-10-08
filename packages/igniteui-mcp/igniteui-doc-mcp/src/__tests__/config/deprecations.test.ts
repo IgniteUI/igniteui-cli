@@ -32,6 +32,24 @@ describe('deprecations', () => {
     expect(findDeprecation('react', 'IgbDataGrid')).toBeUndefined();
   });
 
+  it('covers the enums and event args only the deprecated component uses', () => {
+    expect(findDeprecation('blazor', 'EditModeClickAction')).toBe(dataGrid);
+    expect(findDeprecation('blazor', 'DataGridSelectionMode')).toBe(dataGrid);
+    expect(findDeprecation('blazor', 'IgbGridCellEditStartedEventArgs')).toBe(dataGrid);
+    // Shared with live components — must stay visible.
+    expect(findDeprecation('blazor', 'MouseButton')).toBeUndefined();
+    expect(findDeprecation('blazor', 'GridSelectionMode')).toBeUndefined();
+  });
+
+  it('matches unprefixed names only when the platform is known', () => {
+    // DataGridSelectionMode also ships in the React and Web Components data-grid packages.
+    expect(findDeprecation(undefined, 'DataGridSelectionMode')).toBeUndefined();
+    expect(findDeprecation('react', 'DataGridSelectionMode')).toBeUndefined();
+    expect(findDeprecation(undefined, 'IgbGridCellEditStartedEventArgs')).toBe(dataGrid);
+    expect(findDeprecationsInText(undefined, 'DataGridSelectionMode')).toEqual([]);
+    expect(findDeprecationsInText('blazor', 'DataGridSelectionMode')).toEqual([dataGrid]);
+  });
+
   it('finds whole-word mentions in free text only', () => {
     expect(findDeprecationsInText('blazor', '<IgbDataGrid Height="100%">')).toEqual([dataGrid]);
     expect(findDeprecationsInText('blazor', 'use IgbGrid and IgbColumn')).toEqual([]);
@@ -39,11 +57,16 @@ describe('deprecations', () => {
     expect(findDeprecationsInText('webcomponents', '<IgbDataGrid>')).toEqual([]);
   });
 
-  it('names the replacement and the related types but not module classes', () => {
+  it('names the replacement and steers away from the old column types', () => {
     const notice = formatDeprecationNotice(dataGrid);
     expect(notice).toContain('replaced by `IgbGrid`');
-    expect(notice).toContain('`IgbTextColumn`');
-    expect(notice).not.toContain('IgbTextColumnModule');
+    expect(notice).toContain('`IgbColumn`, not `IgbTextColumn`');
+    expect(notice).not.toContain('Part of its API');
+  });
+
+  it('names the requested symbols that belong to the component, in their canonical case', () => {
+    const notice = formatDeprecationNotice(dataGrid, ['editmodeclickaction', 'IgbDataGrid', 'IgbGrid']);
+    expect(notice).toContain('Part of its API: `EditModeClickAction`.');
   });
 
   it('rules out offering the component as a legacy alternative', () => {
