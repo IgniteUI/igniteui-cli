@@ -151,7 +151,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, filter, group, detail }) => {
       const start = performance.now();
-      const text = await docsProvider.listComponents(framework, { filter, group, detail });
+      const index = await docsProvider.listComponents(framework, { filter, group, detail });
+      // Only the filter is scanned: the index itself lists component names, deprecated ones included.
+      const text = withDeprecationNotices(framework, index, [filter ?? ""]);
       log("list_components", { framework, filter, group, detail }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }

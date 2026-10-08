@@ -173,6 +173,37 @@ export const DEPRECATIONS: readonly Deprecation[] = [
       'IgbSummaryRowRootModule',
       'IgbSummaryRowSection',
       'IgbSummaryRowSectionModule',
+      // Companion UI that only targets the old grid (TargetGrid: IgbDataGrid) and its column-options
+      // menu (bound to IgbDataGridColumn), with their modules.
+      'IgbApplyButtonClickEventArgs',
+      'IgbCancelButtonClickEventArgs',
+      'IgbColumnChooser',
+      'IgbColumnChooserModule',
+      'IgbColumnGrouping',
+      'IgbColumnGroupingModule',
+      'IgbColumnPinning',
+      'IgbColumnPinningModule',
+      'IgbGridColumnButtonOptions',
+      'IgbGridColumnButtonOptionsModule',
+      'IgbGridColumnFilterOptions',
+      'IgbGridColumnFilterOptionsModule',
+      'IgbGridColumnGroupOptions',
+      'IgbGridColumnGroupOptionsModule',
+      'IgbGridColumnHideOptions',
+      'IgbGridColumnHideOptionsModule',
+      'IgbGridColumnMoveOptions',
+      'IgbGridColumnMoveOptionsModule',
+      'IgbGridColumnOptions',
+      'IgbGridColumnOptionsBase',
+      'IgbGridColumnOptionsModule',
+      'IgbGridColumnOptionsSectionBase',
+      'IgbGridColumnOptionsSimpleSectionBase',
+      'IgbGridColumnPinOptions',
+      'IgbGridColumnPinOptionsModule',
+      'IgbGridColumnSortOptions',
+      'IgbGridColumnSortOptionsModule',
+      'IgbGridColumnSummaryOptions',
+      'IgbGridColumnSummaryOptionsModule',
     ],
   },
 ];
@@ -191,16 +222,24 @@ function normalize(symbol: string): string {
   return symbol.split('<')[0].trim().toLowerCase();
 }
 
-/** The symbols that identify `d` for a lookup on `platform`. */
-function symbolsFor(d: Deprecation, platform: Platform | undefined): readonly string[] {
-  if (platform) return d.platform === platform ? d.symbols : [];
+/**
+ * What a lookup may match: a platform matches all of its symbols, `undefined` (platform unknown)
+ * matches only prefixed names, and `'any'` matches every symbol on every platform. Use `'any'`
+ * only once no platform claims the name, e.g. resolve_import found it nowhere.
+ */
+export type PlatformScope = Platform | 'any' | undefined;
+
+/** The symbols that identify `d` for a lookup in `scope`. */
+function symbolsFor(d: Deprecation, scope: PlatformScope): readonly string[] {
+  if (scope === 'any') return d.symbols;
+  if (scope) return d.platform === scope ? d.symbols : [];
   return d.symbols.filter(s => s.startsWith(PLATFORM_PREFIXES[d.platform]));
 }
 
 /** The deprecation covering `symbol` (case-insensitive, generics ignored), if any. */
-export function findDeprecation(platform: Platform | undefined, symbol: string): Deprecation | undefined {
+export function findDeprecation(scope: PlatformScope, symbol: string): Deprecation | undefined {
   const name = normalize(symbol);
-  return DEPRECATIONS.find(d => symbolsFor(d, platform).some(s => s.toLowerCase() === name));
+  return DEPRECATIONS.find(d => symbolsFor(d, scope).some(s => s.toLowerCase() === name));
 }
 
 /** Deprecations whose symbols are mentioned anywhere in `texts`. */

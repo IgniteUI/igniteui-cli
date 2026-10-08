@@ -211,12 +211,15 @@ export function createResolveImportHandler(resolver: ImportResolver) {
     // Requested symbols per deprecation, so its notice can name them.
     const deprecated = new Map<Deprecation, string[]>();
     const results = symbols.flatMap(s => {
-      const deprecation = findDeprecation(platform, s);
+      let deprecation = findDeprecation(platform, s);
+      const result = deprecation ? undefined : resolver.resolve(s, platform);
+      // Without a platform an unprefixed name is checked only once no framework resolves it.
+      if (result && !platform && result.matches.length === 0) deprecation = findDeprecation('any', s);
       if (deprecation) {
         deprecated.set(deprecation, [...(deprecated.get(deprecation) ?? []), s]);
         return [];
       }
-      return [resolver.resolve(s, platform)];
+      return result ? [result] : [];
     });
 
     const byPlatform = new Map<Platform, ResolvedImport[]>();

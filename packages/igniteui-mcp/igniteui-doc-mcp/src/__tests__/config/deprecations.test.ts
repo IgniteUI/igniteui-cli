@@ -40,6 +40,11 @@ describe('deprecations', () => {
     expect(findDeprecation('blazor', 'IgbGridCellPosition')).toBe(dataGrid);
     expect(findDeprecation('blazor', 'IgbGridColumnCollection')).toBe(dataGrid);
     expect(findDeprecation('blazor', 'IgbRowSeparatorModule')).toBe(dataGrid);
+    // Depend on the old grid: TargetGrid is IgbDataGrid / bound to IgbDataGridColumn.
+    expect(findDeprecation('blazor', 'IgbColumnChooser')).toBe(dataGrid);
+    expect(findDeprecation('blazor', 'IgbGridColumnOptions')).toBe(dataGrid);
+    // Data sources are shared with other components (e.g. the dashboard tile).
+    expect(findDeprecation('blazor', 'IgbLocalDataSource')).toBeUndefined();
     // Shared with live components — must stay visible.
     expect(findDeprecation('blazor', 'MouseButton')).toBeUndefined();
     expect(findDeprecation('blazor', 'GridSelectionMode')).toBeUndefined();
@@ -52,6 +57,12 @@ describe('deprecations', () => {
     expect(findDeprecation(undefined, 'IgbGridCellEditStartedEventArgs')).toBe(dataGrid);
     expect(findDeprecationsInText(undefined, 'DataGridSelectionMode')).toEqual([]);
     expect(findDeprecationsInText('blazor', 'DataGridSelectionMode')).toEqual([dataGrid]);
+  });
+
+  it('matches unprefixed names on every platform with the "any" scope', () => {
+    expect(findDeprecation(undefined, 'EditModeClickAction')).toBeUndefined();
+    expect(findDeprecation('any', 'EditModeClickAction')).toBe(dataGrid);
+    expect(findDeprecation('any', 'IgbGrid')).toBeUndefined();
   });
 
   it('finds whole-word mentions in free text only', () => {

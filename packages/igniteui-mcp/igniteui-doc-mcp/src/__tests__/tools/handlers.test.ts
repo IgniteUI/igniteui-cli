@@ -619,6 +619,19 @@ describe('deprecated components', () => {
     expect(text).toContain('`NotARealSymbol` — not found');
   });
 
+  it('resolve_import without a platform flags an unprefixed name that no framework resolves', async () => {
+    const resolver = {
+      resolve: vi.fn((query: string): ResolveResult => ({ query, matches: [], suggestions: [] })),
+    } as unknown as ImportResolver;
+    const result = await createResolveImportHandler(resolver)({ symbols: ['EditModeClickAction'] });
+    const text = result.content[0].text as string;
+
+    expect(resolver.resolve).toHaveBeenCalledWith('EditModeClickAction', undefined);
+    expect(text).toContain('Part of its API: `EditModeClickAction`.');
+    expect(text).not.toContain('not found');
+    expect(result.isError).toBeUndefined();
+  });
+
   it('resolve_import with platform "blazor" flags the same unprefixed name', async () => {
     const resolver = { resolve: vi.fn() } as unknown as ImportResolver;
     const text = (await createResolveImportHandler(resolver)({ symbols: ['DataGridSelectionMode'], platform: 'blazor' })).content[0].text as string;
