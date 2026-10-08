@@ -41,7 +41,6 @@ export const DEPRECATIONS: readonly Deprecation[] = [
       'IgbDataGridFilterDialog',
       'IgbDataGridPager',
       'IgbDataGridSortIndicator',
-      'IgbDataGridSummaryResult',
       'IgbDataGridToolbar',
       'IgbDataGridAllColumnsModule',
       'IgbDataGridCoreModule',

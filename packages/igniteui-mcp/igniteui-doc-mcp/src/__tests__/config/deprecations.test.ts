@@ -43,8 +43,10 @@ describe('deprecations', () => {
     // Depend on the old grid: TargetGrid is IgbDataGrid / bound to IgbDataGridColumn.
     expect(findDeprecation('blazor', 'IgbColumnChooser')).toBe(dataGrid);
     expect(findDeprecation('blazor', 'IgbGridColumnOptions')).toBe(dataGrid);
-    // Data sources are shared with other components (e.g. the dashboard tile).
+    // Data sources are shared with other components (e.g. the dashboard tile), and so is the
+    // summary type their GetRootSummaryResults() returns, despite its name.
     expect(findDeprecation('blazor', 'IgbLocalDataSource')).toBeUndefined();
+    expect(findDeprecation('blazor', 'IgbDataGridSummaryResult')).toBeUndefined();
     // Shared with live components — must stay visible.
     expect(findDeprecation('blazor', 'MouseButton')).toBeUndefined();
     expect(findDeprecation('blazor', 'GridSelectionMode')).toBeUndefined();

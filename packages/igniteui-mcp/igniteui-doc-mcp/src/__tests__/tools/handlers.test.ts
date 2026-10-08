@@ -557,8 +557,8 @@ describe('deprecated components', () => {
   });
 
   it('search_api ignores deprecated names that only appear in result excerpts', async () => {
-    const entry = makeEntry({ component: 'IgbLocalDataSource', platform: 'blazor', content: 'summary: IgbDataGridSummaryResult[]' });
-    const result = await createSearchApiHandler(makeLoader({ search: vi.fn().mockReturnValue([entry]) }))({ platform: 'blazor', query: 'summary' });
+    const entry = makeEntry({ component: 'IgbGridCustomFilterRequestedEventArgs', platform: 'blazor', content: '- **Column**: `IgbDataGridColumn`' });
+    const result = await createSearchApiHandler(makeLoader({ search: vi.fn().mockReturnValue([entry]) }))({ platform: 'blazor', query: 'column' });
     expect(result.content[0].text).not.toContain('DEPRECATED');
   });
 
