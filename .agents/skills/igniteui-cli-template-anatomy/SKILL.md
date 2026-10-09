@@ -68,7 +68,7 @@ Copy the closest existing sibling instead of writing from scratch. Simple input/
 
 | Framework | Placeholders | Files under `files/src/app/__path__/` | Test runner in generated project |
 |---|---|---|---|
-| Angular | `<%=ClassName%>`, `<%=filePrefix%>`, `<%=igxPackage%>` | `__filePrefix__.ts`, `.html`, `.scss`, `.spec.ts` | Karma/Jasmine-style `TestBed` |
+| Angular | `<%=ClassName%>`, `<%=filePrefix%>`, `<%=igxPackage%>` | `__filePrefix__.ts`, `.html`, `.scss`, `.spec.ts` | Vitest (via `@angular/build:unit-test`) with Angular `TestBed` |
 | React | `$(ClassName)`, `$(path)` | `__filePrefix__.tsx`, `__filePrefix__.test.tsx`, `style.module.css` | Vitest + Testing Library |
 | Web Components | `$(ClassName)`, `$(path)` | `__filePrefix__.ts`, `__filePrefix__.test.ts` | Vitest |
 

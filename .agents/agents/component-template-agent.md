@@ -98,7 +98,9 @@ Do not run `npm run lint` or `npm run jasmine`. Lint ignores `packages/cli/templ
 3. In each kept project (`output/smoke-<id>-<fw>/<dir>/`), check the generated code directly:
    - `npx tsc --noEmit`, **Web Components only**: its Vite build does not type-check. Angular and React builds already do, so skip it there.
    - `npx eslint src/app/<id>`
-   - `npx vitest run src/app/<id>` for React and Web Components (needs Playwright Chromium; see the smoke-test skill if it is missing).
+   - Run the new test file (needs Playwright Chromium; see the smoke-test skill if it is missing):
+     - Angular: `npx ng test --include src/app/<id> --browsers=chromium --watch=false`. `ng build` neither runs nor type-checks `.spec.ts` files, so this is the only check of the Angular spec.
+     - React and Web Components: `npx vitest run src/app/<id>`.
 4. Delete the kept `output/smoke-<id>-*` directories when everything passes; keep them and say so when something fails.
 
 `ig add` does not add a route for Web Components templates from the command line; a missing `app-routing.ts` entry is expected.
@@ -123,7 +125,7 @@ If re-invoked with a correction note, fix the specific issue and re-run Step 5 f
 
 1. **Created**: per framework, the id, files created, the sibling used as model, packages registered.
 2. **API verification**: how each API was verified (MCP tool or `.d.ts`), with the package version.
-3. **Validation**: build result, and per framework the smoke result plus `tsc` (Web Components), `eslint` and `vitest` in the kept project. Note that lint and Jasmine are left to CI.
+3. **Validation**: build result, and per framework the smoke result plus `tsc` (Web Components), `eslint` and the test run (`ng test` for Angular, `vitest` otherwise) in the kept project. Note that lint and Jasmine are left to CI.
 4. **Stopped or skipped**: with reasons.
 5. **Proposed CHANGELOG line**, e.g.
    `* **feat(react):** Added a React \`igr-ts\` template for Tile Manager.`
@@ -135,5 +137,5 @@ If re-invoked with a correction note, fix the specific issue and re-run Step 5 f
 - [ ] The id matches the same component's id in every other framework.
 - [ ] `controlGroup` and the component `group` match an existing `groups.json` key.
 - [ ] Every API used was verified against the pinned version.
-- [ ] A test file exists, shaped like the sibling's.
+- [ ] A test file exists, shaped like the sibling's, and it was run in the kept project and passed.
 - [ ] Smoke test and the kept-project checks passed for each framework, or failures are reported with evidence.

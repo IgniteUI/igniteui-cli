@@ -48,7 +48,9 @@ npx eslint src/app/<id>
 npx vitest run src/app/<id>
 ```
 
-`vitest` (React and Web Components) runs in browser mode with Playwright Chromium. If it fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
+For **Angular**, `ng build` compiles from `tsconfig.app.json`, which excludes `*.spec.ts`, so the template's spec is neither type-checked nor run. In the kept Angular project, run it with `npx ng test --include src/app/<id> --browsers=chromium --watch=false` (the `@angular/build:unit-test` builder, which uses Vitest).
+
+`vitest` (React and Web Components) and `ng test` (Angular) run in browser mode with Playwright Chromium. If it fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
 
 `ig add` from the command line does not register a route for Web Components templates, so a missing entry in the generated `app-routing.ts` is expected, not a template defect.
 

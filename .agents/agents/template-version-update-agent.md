@@ -105,7 +105,7 @@ The smoke test is the only validation. Do not run `npm run lint` or `npm run jas
 2. Smoke test, per framework in scope, each into its **own output directory** (a run wipes its `--out` at start, so a shared directory loses the earlier run's results). Scope the run to what changed:
    - The framework's main package changed (`igniteui-angular`, `igniteui-react`, `igniteui-webcomponents`), which nearly every template pulls in: `scripts/smoke-test.sh -f <fw> --out output/smoke-<fw>` (default project + every component template).
    - Otherwise, only the templates that pull in a changed package: search the framework's variant `index.ts` files for the package name or its constant, read each match's `this.id`, and run `scripts/smoke-test.sh -f <fw> --templates <id>,<id> --out output/smoke-<fw>`. For example, an `igniteui-dockmanager` update runs `--templates dock-manager`. The default project is always scaffolded, so a pin in its `package.json` is covered too.
-   - Additionally, when any `projects/*/files/package.json` changed: `scripts/smoke-test.sh -f <fw> --all-projects --out output/smoke-<fw>-projects`. If a changed package appears only in project manifests (no template pulls it in, e.g. `@igniteui/material-icons-extended`), this run alone covers it; skip the `--templates` run.
+   - Additionally, when any `projects/*/files/package.json` changed: `scripts/smoke-test.sh -f <fw> --all-projects --out output/smoke-<fw>-projects`. `--all-projects` skips hidden projects, so for each changed manifest under a hidden project (`isHidden = true` in its `index.ts`, e.g. Angular `side-nav-auth`) also run `scripts/smoke-test.sh -f <fw> -p <project-id> --out output/smoke-<fw>-<project-id>`. If a changed package appears only in project manifests (no template pulls it in, e.g. `@igniteui/material-icons-extended`), these runs alone cover it; skip the `--templates` run.
 
 A scoped run takes about a minute; a full run takes several. Use a long timeout or background execution and wait for completion. Run them one at a time. Classify any failure with the smoke-test skill. Environment failures (network, credentials) are re-run once, then reported; they are not fixed by changing versions.
 
@@ -129,7 +129,7 @@ If you are re-invoked with a correction note, read it, fix the specific issue id
 
 1. **Updated**: table `package | old range | new range | files changed`.
 2. **Stopped**: each package not updated, with the reason (major, peer conflict, failed smoke with evidence).
-3. **Validation**: build result, and per framework the smoke command run (full or which `--templates`), the PASS/FAIL/SKIP summary and the path of its `results.tsv`. Note that lint and Jasmine are left to CI.
+3. **Validation**: build result, and per framework each smoke command run (full, which `--templates`, `--all-projects`, which `-p`), the PASS/FAIL/SKIP summary and the path of its `results.tsv`. Note that lint and Jasmine are left to CI.
 4. **Observations** (not acted on): mixed range styles, pins that bypass constants, packages that are stale but out of scope.
 5. **Proposed CHANGELOG line**, in the repository's style:
    `* **chore(<framework>):** Updated scaffolded <Framework> projects to \`<pkg>\` \`~x.y.z\`.`
