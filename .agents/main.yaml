@@ -1,0 +1,27 @@
+# Agentic Collaboration Standard (ACS) manifest.
+# Spec: https://github.com/jackby03/agentic-collaboration-standard/tree/main/spec/v1
+# Schema: https://raw.githubusercontent.com/jackby03/agentic-collaboration-standard/main/schemas/v1/manifest.schema.json
+#
+# CLAUDE.md at the repository root remains the authoritative working guide.
+# Agents and skills live only in .agents/ and are not registered with any tool;
+# see README.md for how to run them.
+
+version: "1.0"
+
+project:
+  name: "igniteui-cli"
+  description: "Ignite UI CLI: scaffolds Angular, React, Web Components, jQuery and Blazor projects from folder-based templates, ships Angular schematics and the Ignite UI MCP documentation server."
+  language: typescript
+  framework: node
+
+layers:
+  context: true       # context/project.md
+  skills: true        # skills/ (build/test, smoke test, template anatomy)
+  commands: false     # no reusable single-shot commands defined yet
+  agents: true        # agents/ (version update, component template, changelog)
+  permissions: true   # permissions/policy.yaml (documentation only; not enforced by any tool)
+
+compatible_with:
+  - claude-code
+  - github-copilot
+  - any
