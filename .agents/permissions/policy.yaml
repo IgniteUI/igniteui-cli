@@ -1,0 +1,49 @@
+# ACS Permission Policy v1.0
+# Spec: https://github.com/jackby03/agentic-collaboration-standard/blob/main/spec/v1/08-permissions.md
+#
+# Documentation only: no tool reads or enforces this file. Agents follow it as
+# instructions, together with the working rules in context/project.md, which it
+# mirrors. Change both files together.
+#
+# Evaluation order: deny rules first, then allow rules, then default deny.
+#
+# Project-template manifests (packages/**/files/package.json) are template content,
+# not repository manifests, so they are deliberately NOT denied: the
+# template-version-update-agent edits them. Only the repository's own manifests
+# and lockfiles are denied.
+#
+# output/** is denied for direct file edits only. scripts/smoke-test.sh and
+# commands run inside a kept smoke project write there by design.
+
+deny:
+  read:
+    - ".env"
+    - ".env.*"
+    - "**/.env"
+    - "**/.env.*"
+    - "secrets/**"
+    - "**/*.pem"
+    - "**/*.key"
+    - "**/*.pfx"
+    - ".npmrc"
+    - "**/.npmrc"
+  write:
+    - ".git/**"
+    - "node_modules/**"
+    - "**/node_modules/**"
+    - "output/**"
+    - "coverage/**"
+    - "package.json"
+    - "packages/*/package.json"
+    - "packages/igniteui-mcp/igniteui-doc-mcp/package.json"
+    - "packages/igniteui-mcp/igniteui-doc-mcp/server.json"
+    - "yarn.lock"
+    - "**/package-lock.json"
+    - "lerna.json"
+    - "scripts/versionScript.ts"
+
+allow:
+  read:
+    - "**"
+  write:
+    - "**"
