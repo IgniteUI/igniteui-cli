@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-smoke-test
-description: "How to run scripts/smoke-test.sh (scaffold a project with the local CLI, add templates, npm install, build) and how to judge its results and logs, including classifying failures as template defects, version-pin problems or environment noise. WHEN TO USE: verifying template or version changes end to end, reading output/smoke results, triaging a failed smoke run. WHEN NOT TO USE: compiling the CLI or running Jasmine; use igniteui-cli-build-test instead."
+description: "Smoke test (scripts/smoke-test.sh): scaffold with the local CLI, add templates, install, build; judging results, checking kept projects, triaging failures. WHEN TO USE: verifying template or version changes end to end, reading or triaging output/smoke results, editing scripts/smoke-test.sh. WHEN NOT TO USE: compiling the CLI or running Jasmine (igniteui-cli-build-test)."
 license: MIT
 ---
 
@@ -22,7 +22,7 @@ Preconditions: `npm run build` has run (the script refuses otherwise); `node` an
 
 Defaults: angular, react, webcomponents; default project template; all component templates. jQuery and Blazor are opt-in (`-f jquery`, `-f blazor`): jQuery needs ProGet credentials for 13 templates and has no build; Blazor needs the .NET SDK and has no component templates.
 
-`--all-projects` takes its list from `ig list`, so **hidden project templates** (`base`, `side-nav-auth`, `side-nav-mini-auth`) are not scaffolded. They reuse the `_base` / `_base_with_home` files, except where a hidden project has its own `files/package.json` (e.g. Angular `side-nav-auth`): to cover it, run `scripts/smoke-test.sh -f <fw> -p <project-id>`.
+`--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own `files/package.json` (e.g. Angular `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`.
 
 Runs longer than a few minutes: use a long command timeout, or run it in the background with output redirected to a file and wait until that file contains the final `Results:` line (the script prints it last). The script **wipes its `--out` directory at start**, so give each run its own directory (e.g. `--out output/smoke-react`, `--out output/smoke-react-projects`) when you need more than one run's results, and never run two at once into the same directory.
 
@@ -40,19 +40,21 @@ Runs longer than a few minutes: use a long command timeout, or run it in the bac
 | React | `tsc -b && vite build` | Yes |
 | Web Components | `vite build` | **No.** Vite strips types without checking, and an added view that no route imports is not even bundled |
 
-So for **Web Components**, a smoke PASS proves the template is added and its packages install, not that its code compiles. To verify the code, run with `--keep` and, in the kept project (`output/<out>/<dir>/`):
-
-```
-npx tsc --noEmit
-npx eslint src/app/<id>
-npx vitest run src/app/<id>
-```
-
-For **Angular**, `ng build` compiles from `tsconfig.app.json`, which excludes `*.spec.ts`, so the template's spec is neither type-checked nor run. In the kept Angular project, run it with `npx ng test --include src/app/<id> --browsers=chromium --watch=false` (the `@angular/build:unit-test` builder, which uses Vitest).
-
-`vitest` (React and Web Components) and `ng test` (Angular) run in browser mode with Playwright Chromium. If it fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
+So for **Web Components**, a smoke PASS proves the template is added and its packages install, not that its code compiles. For **Angular**, `ng build` compiles from `tsconfig.app.json`, which excludes `*.spec.ts`, so the template's spec is neither type-checked nor run. No build runs the template's test file. A **kept project** closes these gaps.
 
 `ig add` from the command line does not register a route for Web Components templates, so a missing entry in the generated `app-routing.ts` is expected, not a template defect.
+
+## Checking a Kept Project
+
+Run the smoke test with `--keep`, then in the kept project (`<out>/<dir>/`) check the template `<id>`:
+
+| Framework | Type-check | Lint | Test file |
+|---|---|---|---|
+| Angular | covered by `ng build` | `npx eslint src/app/<id>` | `npx ng test --include src/app/<id> --browsers=chromium --watch=false` (the `@angular/build:unit-test` builder, which uses Vitest) |
+| React | covered by `tsc -b` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
+| Web Components | `npx tsc --noEmit` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
+
+The test runners use browser mode with Playwright Chromium. If one fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
 
 ## Judging a Step
 

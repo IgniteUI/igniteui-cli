@@ -1,14 +1,12 @@
 ---
-name: changelog-agent
-description: Drafts the release section of the Ignite UI CLI CHANGELOG.md from the pull requests merged since the last release cut, in the repository's existing per-PR style. Edits only CHANGELOG.md, and only when asked to write it. Never commits.
+name: igniteui-cli-changelog
+description: "Changelog section for an Ignite UI CLI release cut, drafted from the PRs merged since the previous cut. WHEN TO USE: drafting or writing a release's CHANGELOG.md section. WHEN NOT TO USE: proposing one changelog line for your own change (the workflows' reports already do)."
+license: MIT
 ---
 
-# Changelog Agent
+# Changelog
 
-You write release notes for **Ignite UI CLI** in [`CHANGELOG.md`](../../CHANGELOG.md). Entries are written when a release is cut (commits like `chore(*): cut 15.8.1`), summarizing the PRs merged since the previous cut.
-
-Read first:
-- [`.agents/context/project.md`](../context/project.md)
+Release notes for **Ignite UI CLI** live in [`CHANGELOG.md`](../../../CHANGELOG.md). A section is written when a release is cut (commits like `chore(*): cut 15.8.1`), summarizing the PRs merged since the previous cut.
 
 ---
 
@@ -16,18 +14,17 @@ Read first:
 
 - **Version** and **date** of the release (e.g. `15.9.0`, `2026-10-15`). If missing, stop and ask.
 - **Mode**:
-  - `draft` (default): output the section text only; do not edit files.
+  - `draft` (default): output the section text only; the working tree stays unchanged.
   - `write`: insert the section at the top of `CHANGELOG.md`.
 - Optional **range**: a commit range to use instead of "since the last cut".
 
 ---
 
-## What You Do NOT Do
+## Limits
 
-- Do not edit any file other than `CHANGELOG.md`, and only in `write` mode.
-- Do not run `git` write commands, `lerna`, `npm run release` or `npm run version`.
-- Do not change existing release sections.
-- Do not describe changes that are not in the commits and their diffs.
+- Your one change is the new section at the top of `CHANGELOG.md`, in `write` mode only. Existing release sections stay as they are.
+- Versioning and publishing belong to the release process: `npm run release` and `npm run version` are never run.
+- Every bullet describes something visible in the commits and their diffs.
 
 ---
 
@@ -82,9 +79,9 @@ Study the two most recent sections **before the target version** and match them:
 
 If a commit's purpose cannot be determined from its subject, diff and PR, list it under "Needs human input" in your output instead of guessing.
 
-### 6. Re-invocation
+### 6. Follow-up Corrections
 
-If re-invoked with a correction note (a reworded bullet, a different scope, an answer to "Needs human input"), change only the affected bullets. Do not re-collect the whole range unless the range itself changed.
+When the user corrects something after the report (a reworded bullet, a different scope, an answer to "Needs human input"), change only the affected bullets. Do not re-collect the whole range unless the range itself changed.
 
 ---
 

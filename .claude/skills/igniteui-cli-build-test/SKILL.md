@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-build-test
-description: "Quick reference for building, linting and running the Jasmine specs of the Ignite UI CLI monorepo, including how to narrow Jasmine to one spec file and which specs guard templates and version pins. WHEN TO USE: compiling after a change, running lint, running unit or template specs. WHEN NOT TO USE: checking that a generated project installs and builds; use igniteui-cli-smoke-test instead."
+description: "Build, lint and Jasmine for the Ignite UI CLI monorepo: running one spec file, and which specs guard templates and version pins. WHEN TO USE: compiling after a change, running lint, running unit or template specs. WHEN NOT TO USE: checking that a generated project installs and builds (igniteui-cli-smoke-test)."
 license: MIT
 ---
 
@@ -9,7 +9,7 @@ license: MIT
 ## Prerequisites
 
 - Dependencies are installed with **yarn** (`yarn install`), never npm. Scripts run with **npm**.
-- Do not run `yarn install` or `yarn add` to "fix" something without being asked. It rewrites `yarn.lock`, which agents must not change.
+- Run `yarn install` or `yarn add` only when asked. Either rewrites `yarn.lock`, which agents leave untouched; a build that fails on dependencies is reported, not "fixed" by reinstalling.
 
 ## Commands
 
@@ -26,13 +26,13 @@ A run that reports **INCOMPLETE** only because some specs are pending (`xit`/`pe
 
 ## Running One Spec File
 
-`spec/jasmine-runner.ts` hard-codes `spec_files`. To narrow a run:
+Pass compiled spec files to the Jasmine CLI directly, after `npm run build`:
 
-1. Temporarily change `spec_files` to the one spec, e.g. `"spec/templates/react-spec.js"`.
-2. `npm run build && npm run jasmine`.
-3. **Restore the file** and confirm `git diff spec/jasmine-runner.ts` is empty before finishing.
+```bash
+npx jasmine spec/templates/react-spec.js
+```
 
-If restoring is at risk (long session, multiple runs), prefer the full `npm run jasmine`.
+`npm run jasmine` ignores arguments and always runs every spec; `spec/jasmine-runner.ts` stays as it is.
 
 ## Specs That Guard Templates
 
@@ -45,7 +45,15 @@ If restoring is at risk (long session, multiple runs), prefer the full `npm run 
 | `spec/unit/TemplateManager-spec.ts`, `spec/unit/list-spec.ts` | Template discovery and `ig list` output |
 | `spec/acceptance/*` | `ig new`, `ig add`, `ig generate` end to end, with package install stubbed |
 
-A failing "no internal collisions" spec means two templates would write the same file path: give the new template a distinct `__path__`/file prefix layout, do not weaken the spec.
+The **template specs** for a framework run in about 15 seconds:
+
+```bash
+npx jasmine spec/templates/angular-spec.js
+npx jasmine spec/templates/react-spec.js spec/templates/template-contracts-spec.js
+npx jasmine spec/templates/webcomponents-spec.js spec/templates/template-contracts-spec.js
+```
+
+A failing "no internal collisions" spec means two templates would write the same file path: give the new template a distinct `__path__`/file prefix layout and keep the spec as it is.
 
 ## Related Skills
 

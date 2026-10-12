@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-template-anatomy
-description: "Layout of Ignite UI CLI component templates and Ignite UI version pins for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder structure, index.ts fields, placeholder syntax, test files, groups, constants files and every place a package version is pinned. WHEN TO USE: adding or changing a component template, updating Ignite UI package versions, auditing templates across frameworks. WHEN NOT TO USE: running builds or the smoke test; use igniteui-cli-build-test or igniteui-cli-smoke-test."
+description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds or the smoke test (igniteui-cli-build-test, igniteui-cli-smoke-test)."
 license: MIT
 ---
 
@@ -18,9 +18,9 @@ Templates are discovered by **scanning folders**. There is no registry file. A c
 | React | `igr-ts` | `packages/cli/templates/react/igr-ts/` | `packages/cli/lib/templates/IgniteUIForReactTemplate.ts` | `packages/cli/templates/react/igr-ts/constants.ts` |
 | Web Components | `igc-ts` | `packages/cli/templates/webcomponents/igc-ts/` | `packages/cli/lib/templates/IgniteUIForWebComponentsTemplate.ts` | `packages/cli/templates/webcomponents/igc-ts/constants.ts` |
 
-jQuery (`packages/cli/templates/jquery/js/`) is legacy and Blazor (`packages/cli/templates/blazor/igb/`) has no component templates. Both are out of scope for template agents unless the user asks.
+jQuery (`packages/cli/templates/jquery/js/`) is legacy and Blazor (`packages/cli/templates/blazor/igb/`) has no component templates. Both are out of scope for the template workflows unless the user asks.
 
-`@igniteui/angular-templates` is a separate npm package: Angular templates must **not** import from `packages/cli/templates/`. A version Angular shares with Web Components (e.g. `igniteui-webcomponents` for wrapped components) is kept on the Angular side.
+`@igniteui/angular-templates` is a separate npm package: Angular templates import only from `packages/igx-templates/` and `@igniteui/cli-core`, never from `packages/cli/templates/`. A version Angular shares with Web Components (e.g. `igniteui-webcomponents` for wrapped components) is kept on the Angular side.
 
 ## Component Template Layout
 
@@ -62,7 +62,11 @@ Variant `index.ts` fields:
 | `packages` | npm packages added to the project on `ig add`, as `name@range`. Use constants from `constants.ts` where one exists |
 | `dependencies` | Optional extra registrations (rare) |
 
-Copy the closest existing sibling instead of writing from scratch. Simple input/display components: `rating`, `slider`, `switch`. Data-bound components: `combo`, `list`, `tree`. Charts/gauges: `pie-chart`, `financial-chart`, `radial-gauge`.
+Copy the closest existing sibling instead of writing from scratch. These **model templates** exist in all three frameworks:
+
+- simple input/display: `rating`, `slider`, `switch`
+- data-bound: `combo`, `list`, `tree`
+- charts and gauges: `category-chart`, `financial-chart`, `radial-gauge`
 
 ## Generated Files Per Framework
 
@@ -112,8 +116,10 @@ Where a component's code lives is not always obvious. Verify against the pinned 
 | Grid Lite | `igniteui-angular` (`/grid-lite` entry) + peer `igniteui-grid-lite` | `igniteui-react` (`grid-lite` subpath) + peer `igniteui-grid-lite` | `igniteui-grid-lite` |
 | Charts (category, financial, pie, doughnut) | `igniteui-angular-charts` + `-core` | `igniteui-react-charts` | `igniteui-webcomponents-charts` + `-core` |
 | Gauges (linear, radial, bullet graph) | `igniteui-angular-gauges` + `-core` | `igniteui-react-gauges` | `igniteui-webcomponents-gauges` + `-core` |
-| Geographic Map | `igniteui-angular-maps` (+ charts, core) | `igniteui-react-maps` (no constant yet) | `igniteui-webcomponents-maps` (no constant yet) |
-| Dock Manager | `igniteui-dockmanager` | `igniteui-react-dockmanager` (no constant yet) | `igniteui-dockmanager` |
+| Geographic Map | `igniteui-angular-maps` (+ charts, core) | `igniteui-react-maps` | `igniteui-webcomponents-maps` |
+| Dock Manager | `igniteui-dockmanager` | `igniteui-react-dockmanager` | `igniteui-dockmanager` |
+
+Whether a package has a constant is in the framework's `constants.ts`; check there before adding a pin.
 
 ## Peer Dependencies
 
@@ -139,9 +145,11 @@ To answer "which templates are missing or inconsistent?", list component folders
 - **Library naming difference**: ids differ because the libraries name the component differently (`navigation-drawer` vs `nav-drawer`). Not an error.
 - **Group mismatch**, **missing test**, **composite** (e.g. `form`, not one library component; informational).
 
-Hand actionable gaps to `component-template-agent`; for version drift, run `template-version-update-agent` in `dry-run` mode.
+Hand actionable gaps to the [`igniteui-cli-component-template`](../igniteui-cli-component-template/SKILL.md) workflow; for version drift, run [`igniteui-cli-template-version-update`](../igniteui-cli-template-version-update/SKILL.md) in `dry-run` mode.
 
 ## Related Skills
 
+- [`igniteui-cli-component-template`](../igniteui-cli-component-template/SKILL.md): workflow that creates a template using this layout
+- [`igniteui-cli-template-version-update`](../igniteui-cli-template-version-update/SKILL.md): workflow that updates the pins listed here
 - [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md)
 - [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md)

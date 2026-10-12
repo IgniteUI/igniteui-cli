@@ -1,16 +1,12 @@
 ---
-name: template-version-update-agent
-description: Updates the Ignite UI package versions that the CLI's Angular, React and Web Components templates scaffold into new projects. Finds every pin by search, applies patch and minor updates, verifies with a smoke test scoped to the changed packages, and stops and reports on major updates. Also runs as a read-only dry-run that reports version drift and peer conflicts. Never commits.
+name: igniteui-cli-template-version-update
+description: "Update or audit the Ignite UI versions that Angular, React and Web Components templates scaffold (ig new / ig add). WHEN TO USE: updating template version pins; asking which pins are stale or conflicting (dry-run). WHEN NOT TO USE: the CLI's own dependencies or version; adding a template (igniteui-cli-component-template)."
+license: MIT
 ---
 
-# Template Version Update Agent
+# Template Version Update
 
-You update the **Ignite UI package versions pinned in project and component templates**: what `ig new` and `ig add` write into a user's `package.json`. You do not update the CLI's own dependencies or version.
-
-Read first:
-- [`.agents/context/project.md`](../context/project.md)
-- [`igniteui-cli-template-anatomy`](../skills/igniteui-cli-template-anatomy/SKILL.md): where pins live, release trains
-- [`igniteui-cli-smoke-test`](../skills/igniteui-cli-smoke-test/SKILL.md)
+Updates the **Ignite UI package versions pinned in project and component templates**: what `ig new` and `ig add` write into a user's `package.json`. The CLI's own dependencies and version are out of scope.
 
 ---
 
@@ -19,10 +15,10 @@ Read first:
 - **Scope**: one or more of `angular`, `react`, `webcomponents`, or specific package names.
 - **Targets** (optional): explicit versions, e.g. `igniteui-webcomponents 7.5.0`. If none are given, the target for each package is its npm `latest` dist-tag.
 - **Mode**:
-  - `update` (default): Steps 1-8.
+  - `update` (default): Steps 1-7.
   - `dry-run`: a read-only drift report. Run Steps 1-3, then stop and give the dry-run report (see Final Report). Edit no files and run no builds or smoke tests. Use it for "what is out of date?" questions; `all` is a valid scope here.
 
-If the scope is missing, stop and ask for it. Do not default to "everything" in `update` mode.
+If the scope is missing, or a scope or target is ambiguous, stop and ask. In `update` mode the scope is always named explicitly; "everything" is never assumed.
 
 Scope boundaries:
 - A framework scope covers only that framework's root. With scope `webcomponents`, the `igniteui-webcomponents` pins in Angular's wrapped-component templates (`packages/igx-templates/.../chat`, `rating`) are **out of scope**; report them as observations.
@@ -30,17 +26,16 @@ Scope boundaries:
 
 ---
 
-## What You Do NOT Do
+## Limits
 
-- Do not run `git add`, `git commit`, `git push`, `git stash`, create branches or open PRs. The user reviews and commits.
-- Do not apply **major** updates (see Step 3). Stop and report them.
-- Do not change range style (`~` vs `^`). Keep the prefix each pin already has; report inconsistencies.
-- Do not move hard-coded pins into constants or otherwise refactor, unless the user asked for it.
-- Do not edit the repository's own manifests or lockfiles (root `package.json`, `packages/*/package.json`, `yarn.lock`), `lerna.json` or `scripts/versionScript.ts`.
-- Do not edit compiled `*.js` files. Edit `.ts` and `.json` sources.
-- Do not touch non-Ignite UI dependencies in project templates (Angular, React, Vite, TypeScript, etc.). If a new Ignite UI version requires them to change, that is a stop condition (Step 3).
-- Do not touch jQuery or Blazor templates unless explicitly in scope.
-- Do not write `CHANGELOG.md`. Propose a line in your report instead.
+Your changes are Ignite UI version strings, applied as patch or minor updates. Everything else is reported:
+
+- **Major** updates (see Step 3) are stop items, never applied.
+- Each pin keeps its range prefix (`~` or `^`); report inconsistent prefixes as observations.
+- Pins stay where they are: hard-coded pins stay hard-coded unless the user asked to move them into constants.
+- Non-Ignite UI dependencies in project templates (Angular, React, Vite, TypeScript, etc.) stay as they are. If a new Ignite UI version requires them to change, that is a stop item (Step 3).
+- jQuery and Blazor templates are out of scope unless explicitly named.
+- `CHANGELOG.md` is written at release time: propose a line in your report.
 
 ---
 
@@ -52,32 +47,32 @@ Run `git status --short` and keep the output. Your final report must separate yo
 
 ### 2. Build the Inventory
 
-Search for every Ignite UI pin in scope, using **both** patterns and the exclusions from the template-anatomy skill, over `packages/cli/templates` and `packages/igx-templates`.
+Search for every Ignite UI pin in scope, using **both** patterns and the exclusions from [`igniteui-cli-template-anatomy`](../igniteui-cli-template-anatomy/SKILL.md) ("Where Ignite UI Versions Are Pinned"), over `packages/cli/templates` and `packages/igx-templates`.
 
 Produce a table, one row per occurrence:
 
 | File:line | Package | Current range |
 |---|---|---|
 
-Include all three kinds of locations: `constants.ts`, `projects/*/files/package.json`, and hard-coded `this.packages = [...]` in `index.ts`. If a pin appears in a form the pattern missed (you notice one while reading), add it and mention it in the report.
+Include all three kinds of locations: `constants.ts`, `projects/*/files/package.json`, and hard-coded `this.packages = [...]` in `index.ts`. If a pin appears in a form the pattern missed (you notice one while reading), add it and mention it in the report. If a pin sits in a place you are not sure you may edit, list it as a stop item.
 
 ### 3. Resolve and Classify Targets
 
 For each distinct package:
 
 1. Determine the target: the user's explicit version, else `npm view <pkg> dist-tags.latest`.
-2. Confirm it exists: `npm view <pkg>@<target> version`.
+2. Confirm it exists: `npm view <pkg>@<target> version`. A target that does not exist is a stop item for that package.
 3. Classify current → target:
    - **patch / minor** (same major; for `0.x`, same minor): proceed.
-   - **major** (or `0.x` minor change): **stop for that package**. Do not edit any of its pins.
-   - **already current** (the existing range already resolves to the target): no change. This includes `^` pins whose range admits a newer minor (e.g. `^2.1.1` admits 2.2.1). Do not raise their minimum unless the user asks; list them under Observations as "minimum could be raised to `^<latest>`".
+   - **major** (or `0.x` minor change): **stop for that package**. Leave all of its pins unchanged.
+   - **already current** (the existing range already resolves to the target): no change. This includes `^` pins whose range admits a newer minor (e.g. `^2.1.1` admits 2.2.1). Keep their minimum unless the user asks; list them under Observations as "minimum could be raised to `^<latest>`".
 4. For packages that proceed, check peers: `npm view <pkg>@<target> peerDependencies`.
    - If a peer is a **non-Ignite UI** package (e.g. a new `igniteui-angular` needing a newer `@angular/core`) and the project templates don't satisfy it, **stop for that package** and report the required change.
    - If a peer is another **Ignite UI** package pinned in templates (e.g. `igniteui-angular` → `igniteui-grid-lite ~0.11.0`), that pin must satisfy the peer range after your update. Treat bringing it into range as part of this update, subject to the same patch/minor/major rule; if that would be a major (or `0.x` minor) change, report it as a stop item with the peer range as the reason, so a human can approve it explicitly.
 
    Do this check also for the framework's **main package even when it is not changing**: existing pins can already be out of range.
 
-Never infer one package's version from another's. Release trains are independent (see the anatomy skill).
+Look up each package's version on npm by itself. Release trains are independent (see the anatomy skill), so one package's version says nothing about another's.
 
 While classifying, also note drift within the inventory: pins that differ from the framework's constant for the same package, the same package at different ranges in different files, and mixed `~`/`^` prefixes for the same package.
 
@@ -99,37 +94,30 @@ Search again for each **old** version string of every package you changed, over 
 
 ### 6. Validate
 
-The smoke test is the only validation. Do not run `npm run lint` or `npm run jasmine`: your edits are version strings, which lint does not check, Step 5 already catches missed pins, and CI runs both on the pull request.
+Use the [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md) and [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skills for the commands below. Lint is skipped: it does not check version strings.
 
-1. `npm run build`. The smoke test runs the compiled templates, so a stale build tests the old pins. If it fails, diagnose it before going further.
-2. Smoke test, per framework in scope, each into its **own output directory** (a run wipes its `--out` at start, so a shared directory loses the earlier run's results). Scope the run to what changed:
+1. `npm run build`. The smoke test and the specs run the compiled templates, so a stale build tests the old pins. If it fails, diagnose it before going further.
+2. The template specs for each framework in scope (build-test, "Specs That Guard Templates"). For Angular and React they check every main-package pin against its constant.
+3. Smoke test, per framework in scope, each into its **own output directory** (a run wipes its `--out` at start, so a shared directory loses the earlier run's results). Scope the run to what changed:
    - The framework's main package changed (`igniteui-angular`, `igniteui-react`, `igniteui-webcomponents`), which nearly every template pulls in: `scripts/smoke-test.sh -f <fw> --out output/smoke-<fw>` (default project + every component template).
    - Otherwise, only the templates that pull in a changed package: search the framework's variant `index.ts` files for the package name or its constant, read each match's `this.id`, and run `scripts/smoke-test.sh -f <fw> --templates <id>,<id> --out output/smoke-<fw>`. For example, an `igniteui-dockmanager` update runs `--templates dock-manager`. The default project is always scaffolded, so a pin in its `package.json` is covered too.
    - Additionally, when any `projects/*/files/package.json` changed: `scripts/smoke-test.sh -f <fw> --all-projects --out output/smoke-<fw>-projects`. `--all-projects` skips hidden projects, so for each changed manifest under a hidden project (`isHidden = true` in its `index.ts`, e.g. Angular `side-nav-auth`) also run `scripts/smoke-test.sh -f <fw> -p <project-id> --out output/smoke-<fw>-<project-id>`. If a changed package appears only in project manifests (no template pulls it in, e.g. `@igniteui/material-icons-extended`), these runs alone cover it; skip the `--templates` run.
 
-A scoped run takes about a minute; a full run takes several. Use a long timeout or background execution and wait for completion. Run them one at a time. Classify any failure with the smoke-test skill. Environment failures (network, credentials) are re-run once, then reported; they are not fixed by changing versions.
+A scoped run takes about a minute; a full run takes several. Use a long timeout or background execution and wait for completion. Run them one at a time. Classify any failure with the smoke-test skill. Environment failures (network, credentials) are re-run once, then reported; versions stay as they are for those.
 
 If a failure is caused by the new version (missing export, renamed prop, peer conflict), revert **that package's** edits, keep the others, and report it as a stop item with the evidence (log path and the error line).
 
-### 7. Surfacing Problems
+### 7. Follow-up Corrections
 
-Stop and report, without guessing, when:
-- the scope or targets are ambiguous;
-- a target version does not exist on npm;
-- a major update or peer change is required;
-- a pin exists in a place you are not sure you may edit.
-
-### 8. Re-invocation
-
-If you are re-invoked with a correction note, read it, fix the specific issue identified, and re-run Steps 5 and 6 for the affected frameworks. Do not redo the whole update.
+When the user corrects something after the report, fix that issue and re-run Steps 5 and 6 for the affected frameworks only, rather than the whole update.
 
 ---
 
 ## Final Report
 
 1. **Updated**: table `package | old range | new range | files changed`.
-2. **Stopped**: each package not updated, with the reason (major, peer conflict, failed smoke with evidence).
-3. **Validation**: build result, and per framework each smoke command run (full, which `--templates`, `--all-projects`, which `-p`), the PASS/FAIL/SKIP summary and the path of its `results.tsv`. Note that lint and Jasmine are left to CI.
+2. **Stopped**: each package not updated, with the reason (major, missing version, peer conflict, unclear pin location, failed smoke with evidence).
+3. **Validation**: build result, template specs, and per framework each smoke command run (full, which `--templates`, `--all-projects`, which `-p`), the PASS/FAIL/SKIP summary and the path of its `results.tsv`.
 4. **Observations** (not acted on): mixed range styles, pins that bypass constants, packages that are stale but out of scope.
 5. **Proposed CHANGELOG line**, in the repository's style:
    `* **chore(<framework>):** Updated scaffolded <Framework> projects to \`<pkg>\` \`~x.y.z\`.`
@@ -151,4 +139,4 @@ In `dry-run` mode only the first item applies, plus: `git status --short` is unc
 - [ ] Every changed package has zero remaining occurrences of its old version in scope.
 - [ ] No major update was applied.
 - [ ] No range prefix changed.
-- [ ] Build passed; smoke results reported for every framework in scope, covering every template that pulls in a changed package.
+- [ ] Build and template specs passed; smoke results reported for every framework in scope, covering every template that pulls in a changed package.
