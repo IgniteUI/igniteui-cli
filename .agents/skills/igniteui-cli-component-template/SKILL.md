@@ -83,10 +83,10 @@ Per framework, create the component `index.ts`, a `default` variant `index.ts` a
 
 ### 5. Validate
 
-Use the [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md) and [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skills for the commands below.
+Use the [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skill for the commands below.
 
 1. `npm run build`. The smoke test and the specs run the compiled templates, so a stale build does not see your new template.
-2. The template specs for each framework in scope (build-test, "Specs That Guard Templates"): ids, file collisions, template contracts.
+2. The template specs for each framework in scope (smoke-test skill, "Specs That Guard Templates"): ids, file collisions, template contracts.
 3. Angular only: `npx eslint packages/igx-templates/igx-ts/<id>/index.ts packages/igx-templates/igx-ts/<id>/default/index.ts`. React and Web Components `index.ts` files are ignored by the repository lint config; their code is linted in the kept project.
 4. Per framework: `scripts/smoke-test.sh -f <fw> --templates <id> --keep --out output/smoke-<id>-<fw>`.
 5. In each kept project (`output/smoke-<id>-<fw>/<dir>/`), run every check in smoke-test's "Checking a Kept Project" table for that framework.

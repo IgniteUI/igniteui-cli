@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for AI coding agents working in this repository. `CLAUDE.md` imports this file.
+Guidance for AI coding agents working in this repository.
 
 ## Build, Test, Lint
 
@@ -13,9 +13,9 @@ npm run lint                    # ESLint (flat config in eslint.config.mjs)
 scripts/smoke-test.sh           # scaffold + add every template + install + build
 ```
 
-Tests are Jasmine specs under `spec/` (unit + acceptance) and within individual packages. Running one spec file and the specs that guard templates: `igniteui-cli-build-test` skill.
+Tests are Jasmine specs under `spec/` (unit + acceptance) and within individual packages.
 
-`scripts/smoke-test.sh` is the only check that a generated project actually installs and builds — the Jasmine specs stub `PackageManager.installPackages`. Run it after touching anything under `packages/cli/templates/` or `packages/igx-templates/`; running it, reading its results and editing the script: `igniteui-cli-smoke-test` skill.
+`scripts/smoke-test.sh` is the only check that a generated project actually installs and builds — the Jasmine specs stub `PackageManager.installPackages`. Run it after touching anything under `packages/cli/templates/` or `packages/igx-templates/`. Running one spec file, the specs that guard templates, running the smoke test, reading its results and editing the script: `igniteui-cli-smoke-test` skill.
 
 ### MCP Server (`packages/igniteui-mcp/igniteui-doc-mcp`)
 
