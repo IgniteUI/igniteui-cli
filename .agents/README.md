@@ -2,7 +2,7 @@
 
 AI skills for maintaining the Ignite UI CLI's **project and component templates**: what each one does, how they fit together, and how to maintain them.
 
-Each procedure is written once, as a skill in `.claude/skills/` ([Agent Skills](https://agentskills.io/specification) format), which Claude Code and VS Code Copilot both read. There are no custom agent files: you run a workflow by asking for the task, and the assistant loads the matching skill. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
+Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](https://agentskills.io/specification) format), which VS Code Copilot discovers automatically: you run a workflow by asking for the task, and Copilot loads the matching skill. Claude Code reads skills only from `.claude/skills/`, so it does not discover these; in Claude Code, name the file (see Quick Start). There are no custom agent files. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
 
 ---
 
@@ -57,9 +57,9 @@ Each workflow runs on its own and does not call the others. You chain them.
 | Make sense of a failed smoke run | "triage output/smoke" |
 | Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
 
-The assistant picks the skill from its description. To be explicit, name it: in Claude Code, `/igniteui-cli-changelog draft 15.9.0, 2026-10-15`; in any tool, "Follow `.claude/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
+Copilot picks the skill from its description. To be explicit, or in any other assistant (including Claude Code), name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
 
-**Keeping the session small.** The update and template workflows produce long build and smoke output. In Claude Code you can run one in a subagent so that output stays out of your session: "run the igniteui-cli-template-version-update skill in a subagent: update webcomponents". Otherwise start a fresh session per workflow.
+**Keeping the session small.** The update and template workflows produce long build and smoke output. In Claude Code you can run one in a subagent so that output stays out of your session: "in a subagent, follow `.agents/skills/igniteui-cli-template-version-update/SKILL.md`: update webcomponents". Otherwise start a fresh session per workflow.
 
 ---
 
@@ -68,9 +68,9 @@ The assistant picks the skill from its description. To be explicit, name it: in 
 ```text
 AGENTS.md                              ← shared conventions, incl. the rules for maintenance workflows
 CLAUDE.md                              ← @AGENTS.md, plus Claude-only notes if any
-.claude/
+.agents/
   README.md                            ← this guide
-  skills/<name>/SKILL.md               ← every procedure and reference; read by Claude Code and Copilot
+  skills/<name>/SKILL.md               ← every procedure and reference; discovered by Copilot; Claude Code reads them by path
 ```
 
 ---
@@ -93,10 +93,10 @@ Every limit on the workflows (the no-commit rule, the "Maintenance Workflows" ru
 
 Add one only for a recurring, multi-step task. If an existing reference skill plus a plain request covers it, extend that skill instead.
 
-1. Write `.claude/skills/igniteui-cli-<task>/SKILL.md`: a one-line scope, inputs, "Limits" (only limits specific to this workflow, stated as what the workflow changes and what stops it; the shared ones, including the no-commit rule, stay in `AGENTS.md`), numbered steps with each stop condition at the step where it arises, "Follow-up Corrections" when the right fix differs from simply fixing and re-validating, final report and self-validation. Point to a reference skill at the step that uses it; put it under "Read first" only when most steps need it.
+1. Write `.agents/skills/igniteui-cli-<task>/SKILL.md`: a one-line scope, inputs, "Limits" (only limits specific to this workflow, stated as what the workflow changes and what stops it; the shared ones, including the no-commit rule, stay in `AGENTS.md`), numbered steps with each stop condition at the step where it arises, "Follow-up Corrections" when the right fix differs from simply fixing and re-validating, final report and self-validation. Point to a reference skill at the step that uses it; put it under "Read first" only when most steps need it.
 2. Add it to the Skills and Quick Start tables above.
 
 ### Adding a Reference Skill
 
-1. Write `.claude/skills/<name>/SKILL.md` (`name` must match the folder: lowercase letters, digits, hyphens).
+1. Write `.agents/skills/<name>/SKILL.md` (`name` must match the folder: lowercase letters, digits, hyphens).
 2. Add it to the Skills table above.

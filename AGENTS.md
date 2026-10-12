@@ -77,7 +77,7 @@ npm run inspector               # test with MCP Inspector
 
 ## Maintenance Workflows
 
-Template maintenance procedures are skills in `.claude/skills/`, read by both Claude Code and Copilot. Before adding or changing a workflow, read the guide in `.claude/README.md`.
+Template maintenance procedures are skills in `.agents/skills/`. Before adding or changing a workflow, read the guide in `.agents/README.md`.
 
 These rules bind every run of a workflow skill, whether from the main session or a subagent. No tool enforces them.
 
