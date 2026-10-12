@@ -121,10 +121,10 @@ Rerun the script without `--apply`: every package you changed should now be `cur
 
 ### 6. Validate
 
-Use the [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md) and [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skills for the commands below. Lint is skipped: it does not check version strings.
+Use the [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skill for the commands below. Lint is skipped: it does not check version strings.
 
 1. `npm run build`. The smoke test and the specs run the compiled templates, so a stale build tests the old pins. If it fails, diagnose it before going further.
-2. The template specs for each framework in scope (build-test, "Specs That Guard Templates"). For Angular and React they check every main-package pin against its constant.
+2. The template specs for each framework in scope (smoke-test skill, "Specs That Guard Templates"). For Angular and React they check every main-package pin against its constant.
 3. Smoke test, per framework in scope, each into its **own output directory** (a run wipes its `--out` at start, so a shared directory loses the earlier run's results). Scope the run to what changed:
    - The framework's main package changed (`igniteui-angular`, `igniteui-react`, `igniteui-webcomponents`), which nearly every template pulls in: `scripts/smoke-test.sh -f <fw> --out output/smoke-<fw>` (default project + every component template).
    - Otherwise, only the templates that pull in a changed package: search the framework's variant `index.ts` files for the package name or its constant, read each match's `this.id`, and run `scripts/smoke-test.sh -f <fw> --templates <id>,<id> --out output/smoke-<fw>`. For example, an `igniteui-dockmanager` update runs `--templates dock-manager`. The default project is always scaffolded, so a pin in its `package.json` is covered too.

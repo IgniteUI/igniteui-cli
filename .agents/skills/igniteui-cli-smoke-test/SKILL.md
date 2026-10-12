@@ -1,14 +1,43 @@
 ---
 name: igniteui-cli-smoke-test
-description: "Smoke test (scripts/smoke-test.sh): scaffold with the local CLI, add templates, install, build; judging results, checking kept projects, triaging failures. WHEN TO USE: verifying template or version changes end to end, reading or triaging output/smoke results, editing scripts/smoke-test.sh. WHEN NOT TO USE: compiling the CLI or running Jasmine (igniteui-cli-build-test)."
+description: "Validating template changes: build, the Jasmine template specs (running one spec file), and the smoke test (scripts/smoke-test.sh: scaffold with the local CLI, add templates, install, build); judging results, checking kept projects, triaging failures. WHEN TO USE: verifying template or version changes, running template specs, reading or triaging output/smoke results, editing scripts/smoke-test.sh. WHEN NOT TO USE: looking up template layout or where versions are pinned (igniteui-cli-template-anatomy)."
 license: MIT
 ---
 
-# Ignite UI CLI: Template Smoke Test
+# Ignite UI CLI: Build, Template Specs, Smoke Test
 
-`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages`, so a green Jasmine run says nothing about real npm resolution or TypeScript compilation of generated code.
+`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages`, so a green Jasmine run says nothing about real npm resolution or TypeScript compilation of generated code. Run the build and the template specs first: they are fast and catch id and pin mistakes before a slow smoke run.
 
-## Running It
+## Build and Template Specs
+
+- Dependencies are installed with **yarn**, scripts run with **npm**. Run `yarn install` or `yarn add` only when asked: either rewrites `yarn.lock`, which agents leave untouched. A build that fails on dependencies is reported, not "fixed" by reinstalling.
+- `npm run build` after any `.ts` change. Jasmine and the smoke test run the **compiled** `.js`, so without a build they test stale code.
+- `npm run lint` skips `packages/cli/templates/**` and every `**/files/**` (ignored in `eslint.config.mjs`). React, Web Components and jQuery template code is therefore only linted inside a generated project (see "Checking a Kept Project").
+- `npm run jasmine` ignores arguments and always runs every spec. To run one file, pass the compiled spec to the Jasmine CLI: `npx jasmine spec/templates/react-spec.js`. Leave `spec/jasmine-runner.ts` as it is.
+- A run that reports **INCOMPLETE** only because some specs are pending (`xit`/`pending()`) still exits 0 and counts as a pass. Any failed spec is a failure.
+
+### Specs That Guard Templates
+
+| Spec | Guards |
+|---|---|
+| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates and project `package.json` equals `IGNITEUI_ANGULAR_PACKAGE` |
+| `spec/templates/react-spec.ts` | Same, for all four `IGNITEUI_REACT_*` constants |
+| `spec/templates/webcomponents-spec.ts` | Ids and collisions only. It does **not** check version pins against the constants |
+| `spec/templates/template-contracts-spec.ts` | Every jQuery, React, Web Components and Blazor project and component template: matches its framework and project type, its template paths exist, it generates a config |
+| `spec/unit/TemplateManager-spec.ts`, `spec/unit/list-spec.ts` | Template discovery and `ig list` output |
+| `spec/acceptance/*` | `ig new`, `ig add`, `ig generate` end to end, with package install stubbed |
+
+The template specs for a framework run in about 15 seconds, after `npm run build`:
+
+```bash
+npx jasmine spec/templates/angular-spec.js
+npx jasmine spec/templates/react-spec.js spec/templates/template-contracts-spec.js
+npx jasmine spec/templates/webcomponents-spec.js spec/templates/template-contracts-spec.js
+```
+
+A failing "no internal collisions" spec means two templates would write the same file path: give the new template a distinct `__path__`/file prefix layout and keep the spec as it is.
+
+## Running the Smoke Test
 
 Preconditions: `npm run build` has run (the script refuses otherwise); `node` and `npm` on PATH; network access to npm.
 
@@ -124,5 +153,4 @@ End with the PASS/FAIL/SKIP totals, whether the run as a whole is trustworthy (n
 
 ## Related Skills
 
-- [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md)
 - [`igniteui-cli-template-anatomy`](../igniteui-cli-template-anatomy/SKILL.md)

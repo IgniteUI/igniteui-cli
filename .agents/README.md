@@ -2,7 +2,7 @@
 
 AI skills for maintaining the Ignite UI CLI's **project and component templates**: what each one does, how they fit together, and how to maintain them.
 
-Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](https://agentskills.io/specification) format), which VS Code Copilot discovers automatically: you run a workflow by asking for the task, and Copilot loads the matching skill. Claude Code reads skills only from `.claude/skills/`, so it does not discover these; in Claude Code, name the file (see Quick Start). There are no custom agent files. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
+Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](https://agentskills.io/specification) format), which VS Code Copilot discovers automatically: you run a workflow by asking for the task, and Copilot loads the matching skill. There are no custom agent files. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
 
 ---
 
@@ -21,8 +21,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 | [`igniteui-cli-template-version-update`](./skills/igniteui-cli-template-version-update/SKILL.md) | Workflow | Template pins | Update Ignite UI versions that `ig new` / `ig add` scaffold (patch/minor only). In `dry-run` mode: a read-only report of version drift and peer conflicts |
 | [`igniteui-cli-component-template`](./skills/igniteui-cli-component-template/SKILL.md) | Workflow | New template folders | Add a component template for Angular, React and/or Web Components |
 | [`igniteui-cli-changelog`](./skills/igniteui-cli-changelog/SKILL.md) | Workflow | `CHANGELOG.md` | Draft or write the release section for a version cut |
-| [`igniteui-cli-build-test`](./skills/igniteui-cli-build-test/SKILL.md) | Reference | — | Build, lint, Jasmine, running one spec file, specs that guard templates |
-| [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
+| [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
 | [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
 
 The workflows triage their own smoke runs; use the smoke-test skill directly for a run you started by hand.
@@ -57,9 +56,9 @@ Each workflow runs on its own and does not call the others. You chain them.
 | Make sense of a failed smoke run | "triage output/smoke" |
 | Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
 
-Copilot picks the skill from its description. To be explicit, or in any other assistant (including Claude Code), name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
+Copilot picks the skill from its description. To be explicit, or in any other assistant, name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
 
-**Keeping the session small.** The update and template workflows produce long build and smoke output. In Claude Code you can run one in a subagent so that output stays out of your session: "in a subagent, follow `.agents/skills/igniteui-cli-template-version-update/SKILL.md`: update webcomponents". Otherwise start a fresh session per workflow.
+**Keeping the session small.** The update and template workflows produce long build and smoke output. Start a fresh session per workflow.
 
 ---
 
@@ -67,10 +66,9 @@ Copilot picks the skill from its description. To be explicit, or in any other as
 
 ```text
 AGENTS.md                              ← shared conventions, incl. the rules for maintenance workflows
-CLAUDE.md                              ← @AGENTS.md, plus Claude-only notes if any
 .agents/
   README.md                            ← this guide
-  skills/<name>/SKILL.md               ← every procedure and reference; discovered by Copilot; Claude Code reads them by path
+  skills/<name>/SKILL.md               ← every procedure and reference; discovered by Copilot
 ```
 
 ---
@@ -85,7 +83,7 @@ Every limit on the workflows (the no-commit rule, the "Maintenance Workflows" ru
 
 - Skill frontmatter carries `name`, `description` and `license`. Keep the Skills table in line with them.
 - A skill's `description` is loaded in every session and decides when the skill is picked. Lead with the term people use for the task, keep the "WHEN TO USE / WHEN NOT TO USE" form, and name each trigger once; the procedure itself belongs in the body.
-- Each fact lives in one skill. Workflows point to the reference skill (anatomy, smoke-test, build-test) at the step that needs it instead of restating it. When repository facts change (new framework root, new pin location, smoke-test flags), update that reference skill (and, for pin locations, `igniteui-cli-template-version-update/scripts/template-pins.mjs`, which encodes them).
+- Each fact lives in one skill. Workflows point to the reference skill (anatomy, smoke-test) at the step that needs it instead of restating it. When repository facts change (new framework root, new pin location, smoke-test flags), update that reference skill (and, for pin locations, `igniteui-cli-template-version-update/scripts/template-pins.mjs`, which encodes them).
 - Boundaries shared by all workflows go in the "Maintenance Workflows" section of `AGENTS.md`, which is always loaded; skills do not link it.
 - `dry-run` mode is read-only by instruction only.
 

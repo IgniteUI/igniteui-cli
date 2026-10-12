@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-template-anatomy
-description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds or the smoke test (igniteui-cli-build-test, igniteui-cli-smoke-test)."
+description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds, template specs or the smoke test (igniteui-cli-smoke-test)."
 license: MIT
 ---
 
@@ -151,5 +151,4 @@ Hand actionable gaps to the [`igniteui-cli-component-template`](../igniteui-cli-
 
 - [`igniteui-cli-component-template`](../igniteui-cli-component-template/SKILL.md): workflow that creates a template using this layout
 - [`igniteui-cli-template-version-update`](../igniteui-cli-template-version-update/SKILL.md): workflow that updates the pins listed here
-- [`igniteui-cli-build-test`](../igniteui-cli-build-test/SKILL.md)
 - [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md)
