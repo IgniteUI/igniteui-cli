@@ -101,7 +101,7 @@ Run **both** search patterns (ripgrep) over `packages/cli/templates` and `packag
 this\.packages.*@[~^]?[0-9]+\.[0-9]+
 ```
 
-The second catches pins whose package name is computed (template literals). Union the results.
+The second catches pins whose package name is computed (template literals). Union the results. `igniteui-cli-template-version-update/scripts/template-pins.mjs` implements both searches; when a pin location changes here, update that script too.
 
 Exclude: compiled `*.js`/`*.js.map`, `node_modules`, `docs_baseline`, `ai-config/files/skills/**` (synced docs), and spec mocks such as `packages/ng-schematics/**/*_spec.ts`.
 

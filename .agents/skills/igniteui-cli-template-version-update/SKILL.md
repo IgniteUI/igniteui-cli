@@ -39,6 +39,33 @@ Your changes are Ignite UI version strings, applied as patch or minor updates. E
 
 ---
 
+## Script
+
+Steps 2-5 are backed by [`scripts/template-pins.mjs`](./scripts/template-pins.mjs) (Node, uses the repo's `semver`; run `yarn install` first):
+
+```bash
+node .agents/skills/igniteui-cli-template-version-update/scripts/template-pins.mjs \
+  [--framework angular,react,webcomponents|jquery|all] [--package <name>,<name>] \
+  [--target <pkg>@<version>]... [--apply] [--json] [--all-deps]
+```
+
+- Defaults: frameworks `angular,react,webcomponents`; Ignite UI packages only; target = npm `latest`.
+- Without `--apply` it is read-only. `--apply` rewrites only `patch`/`minor` rows of Ignite UI packages, keeping each pin's prefix and the file's formatting; every other status is left alone.
+- `--all-deps` adds non-Ignite UI packages to the report as observations. They are never applied.
+- It reads the registry from `npm config get registry`.
+
+| Status | Meaning (Step 3) |
+|---|---|
+| `current` | The range already admits the target. `current*`: a `^` minimum that could be raised (Observation) |
+| `patch` / `minor` | Proceeds; `new range` shows the result |
+| `major` | Major or `0.x` minor change: stop item |
+| `peer-stop` | Would proceed, but the target's peer is not met by a template pin after the update: stop item, reason in `new range` |
+| `missing-target` | The target version is not published: stop item |
+| `no-match` | No published version satisfies the current range: broken pin, report it first |
+| `downgrade` / `error` | Target below the current minimum, or the registry lookup failed: stop item |
+
+The **Peer conflicts** section lists, per framework, every pin outside the peer range of an Ignite UI package's resolved `current` version or its update target (`after`). **Inconsistencies** lists different ranges, mixed prefixes and packages shared across frameworks.
+
 ## Steps
 
 ### 1. Record the Starting Point
@@ -47,7 +74,7 @@ Run `git status --short` and keep the output. Your final report must separate yo
 
 ### 2. Build the Inventory
 
-Search for every Ignite UI pin in scope, using **both** patterns and the exclusions from [`igniteui-cli-template-anatomy`](../igniteui-cli-template-anatomy/SKILL.md) ("Where Ignite UI Versions Are Pinned"), over `packages/cli/templates` and `packages/igx-templates`.
+Run the script for the frameworks in scope (add `--package` / `--target` from the input). It applies the search patterns and exclusions from [`igniteui-cli-template-anatomy`](../igniteui-cli-template-anatomy/SKILL.md) ("Where Ignite UI Versions Are Pinned") over `packages/cli/templates` and `packages/igx-templates`, and resolves computed names such as `` `${resolvePackage(NPM_DOCK_MANAGER)}@~2.1.1` `` through `packages/core/update/package-resolve.ts`. If something about the output looks wrong, run the anatomy searches by hand and compare.
 
 Produce a table, one row per occurrence:
 
@@ -57,6 +84,8 @@ Produce a table, one row per occurrence:
 Include all three kinds of locations: `constants.ts`, `projects/*/files/package.json`, and hard-coded `this.packages = [...]` in `index.ts`. If a pin appears in a form the pattern missed (you notice one while reading), add it and mention it in the report. If a pin sits in a place you are not sure you may edit, list it as a stop item.
 
 ### 3. Resolve and Classify Targets
+
+The script's output covers items 1-4 below (status, target, peer conflicts) and the drift notes. Review it against these rules rather than repeating the lookups; run `npm view` yourself only to confirm a surprising row.
 
 For each distinct package:
 
@@ -80,17 +109,15 @@ In `dry-run` mode, stop here.
 
 ### 4. Apply Edits
 
-For each package that proceeds, update **every** occurrence from the inventory:
+Rerun the script with the same arguments plus `--apply`. It updates every `patch`/`minor` occurrence (`constants.ts`, project `package.json` copies, hard-coded and computed `index.ts` pins) and prints each line it changed; a `FAILED` line means the pin was not found as recorded, so edit it by hand.
 
-1. `constants.ts` first.
-2. Every `projects/*/files/package.json` copy.
-3. Every hard-coded `index.ts` pin.
+An Ignite UI peer brought into range as part of the update (Step 3.4) is applied the same way: include it in `--package`, or give its version with `--target`.
 
-Keep the existing range prefix. Keep formatting (tabs in `.ts`, two spaces in template `package.json`).
+When editing by hand: keep the existing range prefix and the formatting (tabs in `.ts`, two spaces in template `package.json`).
 
 ### 5. Re-check
 
-Search again for each **old** version string of every package you changed, over the same paths. Expect zero hits for that package. Any remaining hit is a missed pin: fix it, or report it if it is outside scope.
+Rerun the script without `--apply`: every package you changed should now be `current`, with no new peer conflicts. Then search for each **old** version string of every package you changed, over the same paths. Expect zero hits for that package. Any remaining hit is a missed pin: fix it, or report it if it is outside scope.
 
 ### 6. Validate
 

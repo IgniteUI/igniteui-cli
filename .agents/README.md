@@ -85,7 +85,7 @@ Every limit on the workflows (the no-commit rule, the "Maintenance Workflows" ru
 
 - Skill frontmatter carries `name`, `description` and `license`. Keep the Skills table in line with them.
 - A skill's `description` is loaded in every session and decides when the skill is picked. Lead with the term people use for the task, keep the "WHEN TO USE / WHEN NOT TO USE" form, and name each trigger once; the procedure itself belongs in the body.
-- Each fact lives in one skill. Workflows point to the reference skill (anatomy, smoke-test, build-test) at the step that needs it instead of restating it. When repository facts change (new framework root, new pin location, smoke-test flags), update that reference skill only.
+- Each fact lives in one skill. Workflows point to the reference skill (anatomy, smoke-test, build-test) at the step that needs it instead of restating it. When repository facts change (new framework root, new pin location, smoke-test flags), update that reference skill (and, for pin locations, `igniteui-cli-template-version-update/scripts/template-pins.mjs`, which encodes them).
 - Boundaries shared by all workflows go in the "Maintenance Workflows" section of `AGENTS.md`, which is always loaded; skills do not link it.
 - `dry-run` mode is read-only by instruction only.
 
