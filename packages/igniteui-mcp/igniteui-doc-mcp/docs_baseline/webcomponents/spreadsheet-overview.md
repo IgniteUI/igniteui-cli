@@ -1,15 +1,17 @@
 ---
-title: Web Components Spreadsheet Component – Ignite UI for Web Components
-_description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for Web Components Spreadsheet. Manage tabular data the way you want!
-_keywords: Excel Spreadsheet, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Spreadsheet Component – Ignite UI for Web Components"
+description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for Web Components Spreadsheet. Manage tabular data the way you want!
+keywords: Excel Spreadsheet, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "The Web Components Spreadsheet (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more."
 _tocName: Spreadsheet
+_premium: true
 ---
-
 # Web Components Spreadsheet Overview
 
-The Web Components Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
+The Web Components Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The `IgcSpreadsheet` is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
 
 ## Web Components Spreadsheet Example
 
@@ -127,8 +129,6 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Functionality
 
 - Features
@@ -173,7 +173,7 @@ npm install --save igniteui-webcomponents-spreadsheet
 
 ## Component Modules
 
-The [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) requires the following modules:
+The `IgcSpreadsheet` requires the following modules:
 
 ```ts
 // Module Manager for registering the modules of the chart
@@ -189,8 +189,6 @@ ModuleManager.register(
 );
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Now that the Web Components spreadsheet module is imported, next is the basic configuration of the spreadsheet.
@@ -200,9 +198,9 @@ Now that the Web Components spreadsheet module is imported, next is the basic co
 </igc-spreadsheet>
 ```
 
-> [!Note]
->
-> In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#workbook).
+**Note:** 
+
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
 
 The following demonstrates how to load a workbook into the Web Components spreadsheet
 
@@ -223,5 +221,5 @@ ExcelUtility.loadFromUrl(excelFile).then((w: Workbook) => {
 
 ## API References
 
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#workbook)
+`IgcSpreadsheet`<br />
+`IgcWorkbook`<br />

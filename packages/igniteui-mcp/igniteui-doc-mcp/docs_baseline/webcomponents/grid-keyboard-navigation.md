@@ -1,22 +1,21 @@
 ---
-title: Web Components Grid Keyboard Navigation - Ignite UI for Web Components
-_description: Learn how to use Grid Keyboard Navigation with Ignite UI for Web Components. With Keyboard interaction, users can quickly navigate between cells, rows, and columns.
-_keywords: keyboard navigation, Ignite UI for Web Components, infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["GridBaseDirective"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Keyboard Navigation - Ignite UI for Web Components"
+description: Learn how to use Grid Keyboard Navigation with Ignite UI for Web Components. With Keyboard interaction, users can quickly navigate between cells, rows, and columns.
+keywords: keyboard navigation, Ignite UI for Web Components, infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for Web Components Keyboard Navigation feature in Web Components Grid provides a rich variety of keyboard interactions for the user."
+_componentKey: Grid
 _tocName: Keyboard navigation
 _premium: true
 ---
-
 # Web Components Grid Keyboard Navigation
 
-The Ignite UI for Web Components Keyboard Navigation feature in Web Components Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
+ The Ignite UI for Web Components Keyboard Navigation feature in Web Components Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
 
-The tabulations of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
+The tabulations of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
 
-Currently, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) introduces the following tab stops:
+Currently, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) introduces the following tab stops:
 
 - **GroupBy or Toolbar area** (if enabled).
 - **Grid header**.
@@ -24,18 +23,18 @@ Currently, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents
 - **Column summaries** (if enabled).
 - **Grid paginator** (if enabled).
 
-> [!Note]
-> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
-> Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
+**Note:** 
+Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
-> [!Note]
-> Exposing any **focusable** element into the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body via template may introduce **side effects** in the keyboard navigation, since the default
-> browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
+**Note:** 
+Exposing any **focusable** element into the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body via template may introduce **side effects** in the keyboard navigation, since the default
+browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
 ## Header Navigation
 
-A full **keyboard navigation** support in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
-When the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header container is focused, the following key combinations are available:
+A full **keyboard navigation** support in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
+When the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header container is focused, the following key combinations are available:
 
 ### Key Combinations
 
@@ -53,11 +52,7 @@ When the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&compo
 - <kbd>CTRL</kbd> + <kbd>↓</kbd> sorts the active column header in DSC order. If the column is already sorted in DSC, sorting state is cleared.
 - <kbd>SPACE</kbd> selects the column. If the column is already selected, selection is cleared.
 
- <!-- ComponentStart: Grid -->
-
 - <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>←</kbd> groups the column, if the column is marked as groupable.
-
- <!-- ComponentEnd: Grid -->
 
 - <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>→</kbd> ungroups the column, if the column is marked as groupable.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> collapses the column group header, if the header is not already collapsed.
@@ -65,16 +60,12 @@ When the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&compo
 
 ## Body navigation
 
-When the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body is focused, the following key combinations are available:
+When the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body is focused, the following key combinations are available:
 
 ### Key Combination
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 - <kbd>↑</kbd>- navigates one cell up.
 - <kbd>↓</kbd> navigates one cell down.
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 - <kbd>←</kbd> navigates one cell left (no wrapping between lines).
 - <kbd>→</kbd> - navigates one cell right (no wrapping between lines).
@@ -96,24 +87,14 @@ When the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&compo
 - <kbd>SPACE</kbd> - selects the row, if [Row Selection](row-selection.md) is enabled.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> -
 
- <!-- ComponentStart: Grid -->
+  over Group Row - collapses the group.
 
-over Group Row - collapses the group.
-
- <!-- ComponentEnd: Grid -->
-
-- <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - <!-- ComponentStart: Grid -->
-    over Group Row - expands the group.
-
- <!-- ComponentEnd: Grid -->
-
- <!-- ComponentStart: Grid -->
+- <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> -
+  over Group Row - expands the group.
 
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> - over Master Detail Row - collapses the details view.
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - over Master Detail Row - expands the details view.
-- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) property is set to multiple.
-
- <!-- ComponentEnd: Grid -->
+- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property is set to multiple.
 
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
 
@@ -309,15 +290,15 @@ Overriding the default behavior for a certain key or keys combination is one of 
 
 | API | Description | Arguments |
 |---------|-------------|-----------|
-| `GridKeydown` | An event that is emitted when any of key press/combinations described above is performed. Can be canceled. For any other key press/combination, use the default `onkeydown` event. | [`IgcGridKeydownEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridKeydownEventArgs) |
-| `ActiveNodeChange` | An event that is emitted when the active node is changed. You can use it to determine the Active focus position (header, tbody etc.), column index, row index or nested level. | [`IgcActiveNodeChangeEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcActiveNodeChangeEventArgs) |
-| [`navigateTo`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=navigateTo) | Navigates to a position in the grid, based on provided `Rowindex` and `VisibleColumnIndex`. It can also execute a custom logic over the target element, through a callback function that accepts param of type `{ targetType: GridKeydownTargetType, target: Object }` . Usage: <br />`grid.navigateTo(10, 3, (args) => { args.target.nativeElement.focus(); });` | `RowIndex: number, VisibleColumnIndex: number, callback: ({ targetType: GridKeydownTargetType, target: Object }`) => {} |
-| [`getNextCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getNextCell)| returns `ICellPosition` object, which defines the next cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`getNextCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getNextCell) method. The callback function accepts [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) as a param and returns a `boolean` value indication if a given criteria is met: <br />`const nextEditableCell = grid.getNextCell(0, 4, (col) => col.editable);` | `currentRowIndex: number, currentVisibleColumnIndex: number, callback: (Column) => boolean` |
-| [`getPreviousCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getPreviousCell) | returns `ICellPosition` object, which defines the previous cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`getPreviousCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getPreviousCell) method. The callback function accepts [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) as a param and returns a `boolean` value indication if a given criteria is met: <br />`const prevEditableCell = grid.getPreviousCell(0, 4, (col) => col.editable);` | `CurrentRowIndex: number, CurrentVisibleColumnIndex: number, callback: (Column) => boolean` |
+| [`IgcGrid.gridKeydown`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=gridKeydown) | An event that is emitted when any of key press/combinations described above is performed. Can be canceled. For any other key press/combination, use the default `onkeydown` event. | [`IgcGridKeydownEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridKeydownEventArgs) |
+| [`IgcGrid.activeNodeChange`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=activeNodeChange) | An event that is emitted when the active node is changed. You can use it to determine the Active focus position (header, tbody etc.), column index, row index or nested level. | [`IgcActiveNodeChangeEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcActiveNodeChangeEventArgs) |
+| [`NavigateTo`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=navigateTo) | Navigates to a position in the grid, based on provided `Rowindex` and `VisibleColumnIndex`. It can also execute a custom logic over the target element, through a callback function that accepts param of type ```{ targetType: GridKeydownTargetType, target: Object }``` . Usage: <br />```grid.navigateTo(10, 3, (args) => { args.target.nativeElement.focus(); });``` | ```RowIndex: number, VisibleColumnIndex: number, callback: ({ targetType: GridKeydownTargetType, target: Object }```) => {} |
+| [`GetNextCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getNextCell)| returns `ICellPosition` object, which defines the next cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`GetNextCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getNextCell) method. The callback function accepts [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) as a param and returns a `boolean` value indication if a given criteria is met: <br />```const nextEditableCell = grid.getNextCell(0, 4, (col) => col.editable);``` | ```currentRowIndex: number, currentVisibleColumnIndex: number, callback: (Column) => boolean``` |
+| [`GetPreviousCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getPreviousCell) | returns `ICellPosition` object, which defines the previous cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`GetPreviousCell`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=getPreviousCell) method. The callback function accepts [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) as a param and returns a `boolean` value indication if a given criteria is met: <br />```const prevEditableCell = grid.getPreviousCell(0, 4, (col) => col.editable);``` | ``` CurrentRowIndex: number, CurrentVisibleColumnIndex: number, callback: (Column) => boolean ``` |
 
 <br />
 
-Let's try the API to demonstrate how to achieve common scenarios like user input validation and custom navigation. First we need to register an event handler for the `GridKeydown` event:
+Let's try the API to demonstrate how to achieve common scenarios like user input validation and custom navigation. First we need to register an event handler for the [`IgcGrid.gridKeydown`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=gridKeydown) event:
 
 ```html
 <igc-grid id="grid1" primary-key="ProductID">
@@ -331,8 +312,6 @@ constructor() {
         grid.addEventListener("gridKeydown", this.customKeydown);
     }
 ```
-
-<!-- WebComponents -->
 
 ```typescript
 public customKeydown(args: : CustomEvent<IgcGridKeydownEventArgs>) {
@@ -350,8 +329,6 @@ public customKeydown(args: : CustomEvent<IgcGridKeydownEventArgs>) {
 }
 ```
 
-<!-- WebComponents -->
-
 Based on the event arg values we identified two cases, where to provide our own logic (see above). Now, using the methods from the API, let's perform the desired - if the user is pressing <kbd>TAB</kbd> key over a cell in edit mode, we will perform validation on the input. If the user is pressing <kbd>ENTER</kbd> key over a cell, we will move focus to cell in the next row:
 
 ```typescript
@@ -366,11 +343,10 @@ Based on the event arg values we identified two cases, where to provide our own 
         });
 ```
 
-> [!Note]
-> Please refer to the sample code for full implementation details.
+**Note:** 
+Please refer to the sample code for full implementation details.
 
 Use the demo below to try out the custom scenarios that we just implemented:
-
 - Double click or press <kbd>F2</kbd> key on a cell in a numeric column, change the value to **7** and press <kbd>TAB</kbd> key. Prompt message will be shown.
 - Select a cell and press <kbd>ENTER</kbd> key a couple of times. Every key press will move the focus to a cell in the next row, under the same column.
 
@@ -391,9 +367,9 @@ Use the demo below to try out the custom scenarios that we just implemented:
 |--- |--- |
 | Navigating inside а grid with scrollable parent container. | If the grid is positioned inside a scrollable parent container and the user navigates to a grid cell that is out of view, parent container will not be scrolled.|
 
+## API References
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -403,8 +379,6 @@ Use the demo below to try out the custom scenarios that we just implemented:
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

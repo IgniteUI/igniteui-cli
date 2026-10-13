@@ -1,16 +1,15 @@
 ---
-title: React Grid Sorting - Ignite UI for React
-_description: Get started with the React sorting feature of Ignite UI for React Grid! Configure a mix of sortable columns & change the display order of data records.
-_keywords: React sort, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/sorting
+title: "React Grid Sorting - Ignite UI for React"
+description: Get started with the React sorting feature of Ignite UI for React Grid! Configure a mix of sortable columns & change the display order of data records.
+keywords: "React sort, React, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/sorting"
+llms:
+  description: "The Ignite UI for React Data Sorting feature in React Grid is enabled on a per-column level, meaning that the IgrGrid can have a mix of sortable and non-sortable columns."
+_componentKey: Grid
 _tocName: Sorting
 _premium: true
 ---
-
 # React Grid Sorting
 
 The Ignite UI for React Data Sorting feature in React Grid is enabled on a per-column level, meaning that the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can have a mix of sortable and non-sortable columns. Performing React sort actions enables you to change the display order of the records based on specified criteria.
@@ -244,7 +243,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-This is done via the [`sortable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortable) input. With the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) sorting, you can also set the [`sortingIgnoreCase`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`IgrColumn.sortable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortable) input. With the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) sorting, you can also set the [`IgrColumnState.sortingIgnoreCase`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=sortingIgnoreCase) property to perform case sensitive sorting:
 
 ```tsx
 <IgrColumn field="ProductName" header="Product Name" dataType="string" sortable={true}></IgrColumn>
@@ -455,7 +454,7 @@ root.render(<Sample/>);
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) API using the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) [`sort`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sort) method:
+You can sort any column or a combination of columns through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) API using the [`Sort`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sort) method:
 
 ```tsx
 import { SortingDirection } from "igniteui-react-grids";
@@ -470,16 +469,13 @@ gridRef.current.sort([
     { fieldName: 'ProductName', dir: SortingDirection.Asc, ignoreCase: true },
     { fieldName: 'Price', dir: SortingDirection.Desc }
 ]);
+
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Sorting is performed using our [`IgrGridSortingStrategy`](mcp:get_api_reference?platform=react&component=IgrGridSortingStrategy) algorithm. Any [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) or `ISortingExpression` can use a custom implementation of the [`IgrGridSortingStrategy`](mcp:get_api_reference?platform=react&component=IgrGridSortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-> [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
-
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clearSort) method:
-
-<!-- ComponentStart: Grid -->
+As with the filtering behavior, you can clear the sorting state by using the [`IgrGrid.clearSort`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clearSort) method:
 
 ```tsx
 // Removes the sorting state from the ProductName column
@@ -487,19 +483,18 @@ gridRef.current.clearSort('ProductName');
 
 // Removes the sorting state from every column in the Grid
 gridRef.current.clearSort();
+
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+The [`IgrGrid.sortStrategy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortStrategy) of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is of different type compared to the [`IgrGrid.sortStrategy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortStrategy) of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn), since they work in different scopes and expose different parameters.
 
-> [!Note]
-> The [`sortStrategy`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortStrategy) of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is of different type compared to the [`sortStrategy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortStrategy) of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn), since they work in different scopes and expose different parameters.
-
-> [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
+**Note:** 
+The sorting operation **DOES NOT** change the underlying data source of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by passing an array of sorting expressions to the [`sortingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortingExpressions) property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
+It is possible to set the initial sorting state of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by passing an array of sorting expressions to the [`IgrGrid.sortingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortingExpressions) property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ```tsx
 const sortingExpressions: IgrSortingExpression[] = [
@@ -511,24 +506,17 @@ const sortingExpressions: IgrSortingExpression[] = [
     data={productSales}
     sortingExpressions={sortingExpressions}>
 </IgrGrid>
+
 ```
 
-<!-- ComponentEnd: Grid -->
-
-> [!Note]
-> If values of type `string` are used by a column of [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) `Date`, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) won't parse them to `Date` objects and using [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
-
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
+**Note:** 
+If values of type `string` are used by a column of [`IgrGrid.dataType`](mcp:get_api_reference?platform=react&component=IgrGrid&member=dataType) `Date`, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) won't parse them to `Date` objects and using [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`sortHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgrGrid.sortHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 ```tsx
 const sortHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
@@ -540,13 +528,10 @@ const sortHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 }
 
 <IgrGrid sortHeaderIconTemplate={sortHeaderIconTemplate}></IgrGrid>
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-- [`sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgrGrid.sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 ```tsx
 const sortAscendingHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
@@ -558,13 +543,10 @@ const sortAscendingHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 }
 
 <IgrGrid sortAscendingHeaderIconTemplate={sortAscendingHeaderIconTemplate}></IgrGrid>
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-- [`sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgrGrid.sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 ```tsx
 const sortDescendingHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
@@ -576,13 +558,12 @@ const sortDescendingHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => 
 }
 
 <IgrGrid sortDescendingHeaderIconTemplate={sortDescendingHeaderIconTemplate}></IgrGrid>
-```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+```
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -778,11 +759,10 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrSortingExpression`](mcp:get_api_reference?platform=react&component=IgrSortingExpression)
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)<br />
+[`IgrSortingExpression`](mcp:get_api_reference?platform=react&component=IgrSortingExpression)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -792,8 +772,6 @@ root.render(<Sample/>);
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

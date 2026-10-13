@@ -1,12 +1,13 @@
 ---
-title: React Ripple
-_description: With Ignite UI for React Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Ripple components, React Ripple controls
-_license: MIT
+title: "React Ripple"
+description: With Ignite UI for React Ripple, developers can define an area which received a ripple animation effect for a visually enticing UI enhancement.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Ripple components, React Ripple controls"
+license: MIT
 mentionedTypes: ["Ripple", "Button"]
+llms:
+  description: "The Ignite UI for React Ripple component creates an animation in response to a touch or a mouse click."
 _tocName: Ripple
 ---
-
 # React Ripple Overview
 
 The Ignite UI for React Ripple component creates an animation in response to a touch or a mouse click.
@@ -113,9 +114,8 @@ root.render(<RippleColor/>);
 
 ## API References
 
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)<br />
+[`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple)<br />
 
 ## Additional Resources
 

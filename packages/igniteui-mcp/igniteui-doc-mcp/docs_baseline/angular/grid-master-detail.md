@@ -1,12 +1,13 @@
 ---
 title: Angular Master-Detail Grid - Ignite UI for Angular
-_description: Define expandable detail view template for data in rows with Ignite UI Angular Grid. Useful for displaying master-detail style data in a hierarchical structure.
-_keywords: master detail, igniteui for angular, infragistics
-_license: commercial
+description: Define expandable detail view template for data in rows with Ignite UI Angular Grid. Useful for displaying master-detail style data in a hierarchical structure.
+keywords: master detail, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "The igxGrid component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content."
 _tocName: Master-Detail Grid
 _premium: true
 ---
-
 # Angular Master-Detail Grid
 
 The `igxGrid` component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
@@ -14,7 +15,6 @@ The `igxGrid` component supports specifying a detail template that displays addi
 This mode is useful when you need to display master-detail style data in a hierarchical structure.
 
 ## Angular Grid Master-Detail Example
-
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -257,7 +257,6 @@ h6 {
 }
 ```
 
-
 ## Configuration
 
 To configure the `igxGrid` to display in master-detail mode you need to specify a template inside the grid, marked with the `igxGridDetail` directive:
@@ -317,22 +316,17 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## Known Issues and Limitations
 
-
 | Known Limitations                                                                                                                                                  | Description                                                                                          |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
 | Tab navigation inside the custom detail template may not update the master grid scroll position in case the next focused element is outside the visible view port. | Tab navigation inside the custom detail template is left up to the browser.                          |
 | Details template will not be exported to Excel.                                                                                                                    | As the details template can contain any type of content we cannot export it to excel out of the box. |
 | The search feature will not highlight elements from the details template.                                                                                          |                                                                                                      |
 
-
-<div class="divider--half"></div>
-
 ## API References
-
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
-- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
-- [IgxHierarchicalGridRow](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
-- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [`IgxTreeGridRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [`IgxHierarchicalGridRow`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)

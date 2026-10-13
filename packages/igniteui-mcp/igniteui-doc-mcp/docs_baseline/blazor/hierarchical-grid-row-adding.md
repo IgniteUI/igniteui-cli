@@ -1,24 +1,19 @@
 ---
-title: Blazor Hierarchical Grid Row Adding - Ignite UI for Blazor
-_description: Learn how to use and customize the built-in row adding functionality with Blazor and utilize intuitive grid row adding and CRUD capabilities.
-_keywords: Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-adding
+title: "Blazor Hierarchical Grid Row Adding - Ignite UI for Blazor"
+description: Learn how to use and customize the built-in row adding functionality with Blazor and utilize intuitive grid row adding and CRUD capabilities.
+keywords: "Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-adding"
+llms:
+  description: "The Ignite UI for Blazor Row Adding feature in Blazor Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page."
+_componentKey: HierarchicalGrid
 _tocName: Row Adding
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Row Adding
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 The Ignite UI for Blazor Row Adding feature in Blazor Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page. With the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), users can manipulate data through inline row adding and a powerful API for CRUD operations.
 Add an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with editing actions enabled in the grid's template. After that hover a row and use the provided button. Finally press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Blazor Hierarchical Grid Row Adding Example
 
@@ -311,11 +306,7 @@ public class SingersData
 
 ## Row Adding Usage
 
-Then define a [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) with bound data source, [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowEditable) set to true and an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+Then define a [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) with bound data source, [`IgbHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowEditable) set to true and an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with editing actions enabled. The [`IgbHierarchicalGrid.addRow`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 ```razor
 <IgbHierarchicalGrid AutoGenerate="false" Id="hGrid" PrimaryKey="Debut" RowEditable="true">
@@ -352,22 +343,17 @@ Then define a [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&comp
         </IgbActionStrip>
     </IgbRowIsland>
 </IgbHierarchicalGrid>
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) column's input to `false`.
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`IgbColumn.editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=editable) column's input to `false`.
 
 > **Note**:
 > The [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) input controlling the visibility of the add row button may use the action strip context (which is of type [`IgbRowType`](mcp:get_api_reference?platform=blazor&component=IgbRowType) to fine tune which records the button shows for.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 The internal `BaseTransactionService` is automatically provided for [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
@@ -375,9 +361,7 @@ The internal `BaseTransactionService` is automatically provided for [`IgbHierarc
 
 [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-Using [`BeginAddRowById`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=BeginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
+Using [`IgbHierarchicalGrid.beginAddRowById`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
 ```razor
 @code {
@@ -386,7 +370,7 @@ Using [`BeginAddRowById`](mcp:get_api_reference?platform=blazor&component=IgbHie
 }
 ```
 
-The `BeginAddRowByIndex` method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
+The [`IgbHierarchicalGrid.beginAddRowByIndex`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
 
 ```razor
 @code {
@@ -394,8 +378,6 @@ The `BeginAddRowByIndex` method works similarly but requires you to specify the 
     await this.grid.BeginAddRowByIndexAsync(0);    // Spawns the add row UI as the first record
 }
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Positioning
 
@@ -414,6 +396,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 ## Keyboard Navigation
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
+
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
 - <kbd>TAB</kbd> move focus from one editable cell in the row to the next and from the right-most editable cell to the CANCEL and DONE buttons. Navigation from DONE button goes to the left-most editable cell within the currently edited row.
@@ -424,19 +407,13 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
-<!-- ComponentStart: HierarchicalGrid -->
-
 - When spawning the UI for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), any child layout currently expanded for a row that the end user clicks the add row button for is collapsed.
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ## Customizing Row Adding Overlay
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowAddTextTemplate).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+Customizing the text of the row adding overlay is possible using the [`IgbGridBaseDirective.rowAddTextTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=rowAddTextTemplate).
 
 ```razor
 <IgbHierarchicalGrid Data="data" PrimaryKey="ProductID" AutoGenerate="false" RowEditable="true" RowAddTextTemplate="addTextTemplate">
@@ -448,30 +425,19 @@ Customizing the text of the row adding overlay is possible using the [`RowAddTex
         return @<span>Adding Row</span>;
     };
 }
-```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+```
 
 ### Customizing Buttons
 
 Customizing the buttons of the row editing overlay is possible by using the `RowEditActions` template.
 
-<!--
-REQUIRES FIX!
-```ts
-this.grid.rowEditActionsTemplate = (endRowEdit: IgcGridRowEditActionsTemplateContext) => {
-    return html`
-        <button @click="${evt => endRowEdit.implicit(false, evt)}">Cancel</button>
-        <button @click="${evt => endRowEdit.implicit(true, evt)}">Apply</button>
-    `;
-}
-```
--->
-
 ```razor
 <IgbHierarchicalGrid Data="data" PrimaryKey="ProductID" AutoGenerate="false" RowEditable="true" RowEditActionsTemplateScript="rowEditActionsTemplate">
 </IgbHierarchicalGrid>
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("rowEditActionsTemplate", (endRowEdit) => {
     var html = window.igTemplating.html;
@@ -492,24 +458,11 @@ The row adding UI comprises the buttons in the [`IgbActionStrip`](mcp:get_api_re
 - [Hierarchical Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
 
-<!-- - [ActionStrip](../action-strip.md#styling) -->
-
 ## API References
-
-- [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `RowEditCancel`
-- `EndEdit`
-- [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PrimaryKey)
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 ## Additional Resources
 
 - [Hierarchical Grid Editing](editing.md)
-
-<!-- * [Hierarchical Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

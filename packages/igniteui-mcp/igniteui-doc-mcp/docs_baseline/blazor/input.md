@@ -1,19 +1,18 @@
 ---
-title: Blazor Input | Data Visualization Tools | Infragistics
-_description: Infragistics' Blazor input is a component where the user can enter data. Improve your application with Ignite UI for Blazor!
-_keywords: Blazor input, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Input | Data Visualization Tools | Infragistics"
+description: Infragistics' Blazor input is a component where the user can enter data. Improve your application with Ignite UI for Blazor!
+keywords: "Blazor input, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["Input", "Icon", "Radio"]
+llms:
+  description: "The Ignite UI for Blazor Input is a component where the user can enter data."
 _tocName: Input
 ---
-
 # Blazor Input Overview
 
 The Ignite UI for Blazor Input is a component where the user can enter data.
 
 ## Blazor Input Example
-
-<div class="divider--half"></div>
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -37,13 +36,13 @@ The Ignite UI for Blazor Input is a component where the user can enter data.
 
 To get started with the Input component, you first need to register its module.
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbInputModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -57,7 +56,7 @@ After we import the [`IgbInput`](mcp:get_api_reference?platform=blazor&component
 
 ## Prefix & Suffix
 
-With `prefix` and `suffix` slots we can add different content before and after the main content of the Input. In the following sample we will create a new Input field with a text prefix and an icon suffix:
+With `prefix` and `suffix` slots we can add different content before and after the main content of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput). We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots. In the following sample we will create a new Input field with a text prefix and an icon suffix:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -88,7 +87,7 @@ With `prefix` and `suffix` slots we can add different content before and after t
 
 ## Helper Text
 
-The `helper-text` slot provides a hint placed below the Input. Let's add some helper text to our phone Input:
+The `helper-text` slot provides a hint placed below the Input. We recommend using a `<span>` element for the helper text. Let's add it to our phone Input:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -158,7 +157,6 @@ We can allow the user to change the size of the [`IgbInput`](mcp:get_api_referen
 ```
 
 In the sample above we have demonstrated the use of the following attributes:
-
 - `required` - Used to mark the input as required
 - `disabled` - Used to disable the input
 - `readonly` - Used to mark the input as readonly
@@ -240,15 +238,12 @@ igc-input::part(suffix) {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
-- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+[`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+[`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

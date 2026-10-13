@@ -1,16 +1,15 @@
 ---
-title: React Hierarchical Grid Column Hiding - Ignite UI for React
-_description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
-_keywords: React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-hiding
+title: "React Hierarchical Grid Column Hiding - Ignite UI for React"
+description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
+keywords: "React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-hiding"
+llms:
+  description: "Ignite UI for React IgrHierarchicalGrid provides a ColumnActionsComponent with a ColumnHidingDirective which allows users to perform column hiding directly through the user interface or by using the React component."
+_componentKey: HierarchicalGrid
 _tocName: Column Hiding
 _premium: true
 ---
-
 # React Hierarchical Grid Column Hiding
 
 The Ignite UI for React has a built-in column hiding UI, which can be used through the React Hierarchical Grid toolbar to change the visible state of the columns. Developers have the flexibility to define the Column Hiding UI anywhere within the page as needed. The React Hierarchical Grid Column Hiding feature is especially useful when one wants to decrease the size of the grid and to eliminate the need for tabbing through redundant fields.
@@ -213,25 +212,11 @@ Let's start by creating our [`IgrHierarchicalGrid`](mcp:get_api_reference?platfo
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown) in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
 For this purpose all we have to do is set both the [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) and the [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding) inside of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Web Components -->
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
 <IgrHierarchicalGrid>
@@ -243,23 +228,9 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](mcp
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&member=title) and `Prompt` properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Web Components -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+By using the [`Title`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding&member=title) and [`Prompt`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding&member=prompt) properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
 
 ```tsx
 <IgrHierarchicalGrid>
@@ -271,13 +242,10 @@ By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 You can see the result of the code from above at the beginning of this article in the React Column Hiding Example section.
 
 ### Disable hiding of a column
-
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=disableHiding) property to true.
 
 ```tsx
 <IgrHierarchicalGrid>
@@ -290,22 +258,16 @@ We can easily prevent the user from being able to hide columns through the colum
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Styling
 
-The grid could be further customized by setting some of the available [CSS variables](../theming-grid.md).
+The grid could be further customized by setting some of the available [CSS variables](../grid/theming-grid.md).
 In order to achieve that, we will use a class that we will first assign to the grid:
 
 ```tsx
 <IgrHierarchicalGrid className="hierarchical-grid"></IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 Then set the related CSS variables for the related components. We will apply the styles also only on the `igx-column-actions`, so the rest of the grid is unaffected:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```css
 .hierarchical-grid {
@@ -337,9 +299,8 @@ Then set the related CSS variables for the related components. We will apply the
     --ig-button-focus-visible-foreground: black;
     --ig-button-disabled-foreground: #ffcd0f;
 }
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 ### Demo
 
@@ -549,31 +510,12 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-In this article we learned how to use the built-in column hiding UI in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
-
-- `ColumnActionsComponent`
-
-Additional components with relative APIs that were used:
-
-[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) properties:
-
-- [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding)
-
-[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) properties:
-
-- `showProgress`
-
-[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) methods:
-
-- [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
-- [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions)
-- [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
-
-[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) events:
-
-- `ColumnVisibilityChanged`
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
+[`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
+[`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions)
+[`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

@@ -1,13 +1,15 @@
 ---
 title: Create Your First Angular Application | WPF to Angular Guide | Infragistics
-_description: Learn how to create your first Angular 9 application when you migrate from WPF to Angular. Read about the prerequisites, your first project & structure.
-_keywords: create angular application, ignite ui for angular, infragistics
+description: Learn how to create your first Angular 9 application when you migrate from WPF to Angular. Read about the prerequisites, your first project & structure.
+keywords: create angular application, ignite ui for angular, infragistics
+llms:
+  description: "Learn how to start creating an Angular application when you migrate from WPF to Angular."
 _tocName: Create your first Angular app
 ---
-
 # Create an Angular application
 
-> [!Video https://www.youtube.com/embed/dhjrAPPad54]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/dhjrAPPad54">
+</iframe>
 
 Learn how to start creating an Angular application when you migrate from WPF to Angular.
 
@@ -45,9 +47,6 @@ This is going to launch a new instance of Visual Studio Code that contains your 
 ## Project structure
 
 Let's go ahead and take a look at each of these files and see how they relate to a WPF application. The best way to do that is to compare each project side by side. On the left we have our WPF app. On the right we have our Angular app.
-
-<img class="responsive-img" src="../../../images/general/WPF_project_structure.png" alt="WPF Project Structure" />
-<img class="responsive-img" src="../../../images/general/Angular_project_structure.png" alt="Angular Project Structure" />
 
 It is important to keep in mind that an Angular application is a single page application (SPA) which means there is only one page in the entire app, and that is your `index.html`. The `index.html` file could be compared to the `App.xaml` of the WPF application. They are both global and everything you put there will show up on every single page of your application. The `index.html` file contains a section `<app-root></app-root>` which is similar to the `StartupUri` of the `App.xaml` file and specifies the first page we want to show when the app launches.
 
@@ -101,14 +100,12 @@ You could find those scripts defined in the `package.json` file and modify the `
 
 Your first Angular application should look like this:
 
-<img class="responsive-img" src="../../../images/general/First_angular_app.png" alt="First Angular App" />
-
 ## Additional Resources
 
 - [Desktop to Web: Create your first Angular App](https://www.youtube.com/watch?v=dhjrAPPad54&list=PLG8rj6Rr0BU-AqcJMuwggKy0GMIkjkt3j)
 - [Angular Application Shell](https://angular.io/tutorial/toh-pt0)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

@@ -1,24 +1,35 @@
 ---
-title: React Hierarchical Grid Remote Data Operations - Ignite UI for React
-_description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for React.
-_keywords: Remote Data, Paging, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["GridBaseDirective"]
-namespace: Infragistics.Controls
+title: "React Hierarchical Grid Remote Data Operations - Ignite UI for React"
+description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for React.
+keywords: Remote Data, Paging, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for React Remote Data Operations feature in React Hierarchical Grid supports operations such as remote virtualization, remote sorting, remote filtering and others."
+_componentKey: HierarchicalGrid
 _tocName: Remote Data Operations
 _premium: true
 ---
-
 # React Hierarchical Grid Remote Data Operations
 
 By default, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) uses its own logic for performing data operations.
 
 You can perform these tasks remotely and feed the resulting data to the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) by taking advantage of certain inputs and events, which are exposed by the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
 
-## Remote Paging
+## Infinite Scroll
 
-<!-- ComponentStart: HierarchicalGrid -->
+ A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
+
+To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the [`IgrForOfState.chunkSize`](mcp:get_api_reference?platform=react&component=IgrForOfState&member=chunkSize) and [`IgrForOfState.chunkSize`](mcp:get_api_reference?platform=react&component=IgrForOfState&member=chunkSize) properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
+
+The first thing to do is fetch the first chunk of the data. Setting the [`IgrHierarchicalGrid.totalItemCount`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
+
+Additionally, you have to subscribe to the [`IgrHierarchicalGrid.dataPreLoad`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=dataPreLoad) output, so that you can provide the data needed by the grid when it tries to display a different chunk, rather than the currently loaded one. In the event handler, you have to determine whether to fetch new data or return data, that's already cached locally.
+
+### Infinite Scroll Demo
+
+
+
+## Remote Paging
 
 ```tsx
 const BASE_URL = `https://data-northwind.indigo.design/`;
@@ -55,13 +66,10 @@ export class RemoteService {
         return `${qS}`;
     }
 }
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 After declaring the service, we need to create a component, which will be responsible for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) construction and data subscription.
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
   <IgrHierarchicalGrid
@@ -92,6 +100,7 @@ After declaring the service, we need to create a component, which will be respon
             </IgrRowIsland>
           </IgrRowIsland>
         </IgrHierarchicalGrid>
+
 ```
 
 then set up the state:
@@ -134,11 +143,7 @@ next set up the method for loading the data:
   }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 and finally set up the behaviour for the RowIslands:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
   function gridCreated(event: IgrGridCreatedEventArgs, parentKey: string) {
@@ -169,6 +174,7 @@ and finally set up the behaviour for the RowIslands:
   const onOrdersGridCreatedHandler = (e: IgrGridCreatedEventArgs) => {
     gridCreated(e, "Orders")
   };
+
 ```
 
 For further reference please check the full sample bellow:
@@ -378,27 +384,18 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgrHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

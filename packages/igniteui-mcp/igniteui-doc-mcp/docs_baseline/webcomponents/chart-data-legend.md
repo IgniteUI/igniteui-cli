@@ -1,21 +1,22 @@
 ---
-title: Web Components Chart Data Legend | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Web Components chart with the data legend!
-_keywords: Web Components charts, chart legend, legend, legend types, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamCategoryChart", "XamDataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode" ]
+title: "Web Components Chart Data Legend | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for Web Components chart with the data legend!
+keywords: "Web Components charts, chart legend, legend, legend types, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["CategoryChart", "DataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode" ]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for Web Components, the DataLegend is highly-customizable version of the Legend, that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values."
 _tocName: Chart Data Legend
 _premium: true
 ---
-
 # Web Components Data Legend
 
-In Ignite UI for Web Components, the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) is highly-customizable version of the [`IgcLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLegendComponent), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
+In Ignite UI for Web Components, the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) is highly-customizable version of the [`Legend`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=Legend), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
 
 ## Web Components Data Legend Rows
 
-The rows of the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`headerText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerText) property.
+The rows of the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`HeaderText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerText) property.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -51,19 +52,19 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ### Header Row
 
-The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`headerFormatDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatDate) and [`headerFormatTime`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatTime) properties to format date and time in the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) if the x-axis shows dates. For other types of series, the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) does not render the header row.
+The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`HeaderFormatDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatDate) and [`HeaderFormatTime`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatTime) properties to format date and time in the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) if the x-axis shows dates. For other types of series, the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) does not render the header row.
 
 ### Series Row
 
-The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`includedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedSeries) or [`excludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
+The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`IncludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedSeries) or [`ExcludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
 
 ### Summary Row
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`summaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryTitleText) property of the legend. Also, you can use the [`summaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryType) property to customize whether you display the [`Total`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Total), [`Min`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Min), [`Max`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Max), or [`Average`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Average) of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`SummaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryTitleText) property of the legend. Also, you can use the [`SummaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryType) property to customize whether you display the `Total`, `Min`, `Max`, or `Average` of series values in the summary row.
 
 ## Web Components Data Legend Columns
 
-The columns of the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) using the [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) or [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties.
+The columns of the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) using the [`IncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) or [`ExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties.
 
 ```typescript
 //begin async data
@@ -179,7 +180,7 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-Setting values on the [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) and [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
+Setting values on the [`IncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) and [`ExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`IncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
 |  Type of Series  | Column Names |
 | -----------------|-------------- |
@@ -195,19 +196,19 @@ Where the **TypicalPrice** and percentage **Change** of OHLC prices are automati
 
 ### Title Column
 
-The title column displays legend badges and series titles, which come from the [`title`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=title) property of the different [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`Title`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartTitle) property of the different [`IgcSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) plotted in the chart.
 
 ### Label Column
 
-The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`labelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode) property.
+The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`LabelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode) property.
 
 ### Value Column
 
-The value column displays values of series as abbreviated text which can be formatted using the [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`Shared`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Shared). Alternatively, a user can select other abbreviations such as [`Independent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Independent), [`Kilo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Kilo), [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million), etc. Precision of abbreviated values is controlled using the [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays values of series as abbreviated text which can be formatted using the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions) for minimum and maximum digits, respectively.
 
 ### Unit Column
 
-The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property, e.g. "M" for the [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million) abbreviation.
+The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property, e.g. "M" for the `Million` abbreviation.
 
 ### Customizing Columns
 
@@ -215,25 +216,23 @@ You can customize text displayed in the **Label** and **Unit** columns using  pr
 
 |  Type of Series | Series Properties |
 | ------|---- |
-| Category Series | ValueMemberAsLegendLabel="$" <br> ValueMemberAsLegendUnit="M" |
-| Radial Series | ValueMemberAsLegendLabel="Distance:" <br> ValueMemberAsLegendUnit="KM" |
-| Polar Series | RadiusMemberAsLegendLabel="Radius:" <br> RadiusMemberAsLegendUnit="KM" <br> AngleMemberAsLegendLabel="Angle:" <br> AngleMemberAsLegendUnit="°" |
-| Range Series | HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" |
-| Financial Series | OpenMemberAsLegendLabel="O:" <br> OpenMemberAsLegendUnit="K" <br> HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" <br> CloseMemberAsLegendLabel="C:" <br> CloseMemberAsLegendUnit="K" <br> |
+| Category Series | ValueMemberAsLegendLabel="$" <br /> ValueMemberAsLegendUnit="M" |
+| Radial Series | ValueMemberAsLegendLabel="Distance:" <br /> ValueMemberAsLegendUnit="KM" |
+| Polar Series | RadiusMemberAsLegendLabel="Radius:" <br /> RadiusMemberAsLegendUnit="KM" <br /> AngleMemberAsLegendLabel="Angle:" <br /> AngleMemberAsLegendUnit="°" |
+| Range Series | HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" |
+| Financial Series | OpenMemberAsLegendLabel="O:" <br /> OpenMemberAsLegendUnit="K" <br /> HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" <br /> CloseMemberAsLegendLabel="C:" <br /> CloseMemberAsLegendUnit="K" <br /> |
 
-Also, you can use the `UnitText` property on the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to change text displayed in all Unit columns.
+Also, you can use the `UnitText` property on the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to change text displayed in all Unit columns.
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`layoutMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
-<img src="../../../images/general/layout_mode.png" alt="Layout Mode" />
-
 ## Web Components Data Legend Styling
 
-The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`titleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=titleTextColor), [`labelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelTextColor), [`valueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueTextColor), and [`unitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=unitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
+The [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`TitleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=titleTextColor), [`LabelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelTextColor), [`ValueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueTextColor), and [`UnitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=unitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
 
 ```typescript
 //begin data
@@ -1244,7 +1243,7 @@ export class StockItem {
 
 ## Web Components Data Legend Value Formatting
 
-The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides automatic abbreviation of large numbers using its [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides automatic abbreviation of large numbers using its [`ValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`ValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`ValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 The following example demonstrates how to use those properties:
 
 ```typescript
@@ -1281,7 +1280,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Data Legend Value Mode
 
-You have the ability to change the default decimal display of values within the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to a currency by changing the [`valueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) property a culture tag. For example, the following example data legend with the [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
+You have the ability to change the default decimal display of values within the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to a currency by changing the [`ValueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`ValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) property a culture tag. For example, the following example data legend with the [`ValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
 
 ```typescript
 //begin async data
@@ -1399,8 +1398,8 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 
 ## Web Components Data Legend Grouping
 
-[`dataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowVisible) property to true.
+[`DataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowVisible) property to true.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -1443,30 +1442,30 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 
 Several properties are exposed including grouping portions of the legend.
 
-- `GroupRowMargin`
-- `GroupTextMargin`
-- [`groupTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextColor)
-- `GroupTextFontSize`
-- `GroupTextFontFamily`
-- `GroupTextFontStyle`
-- `GroupTextFontStretch`
-- `GroupTextFontWeight`
-- `HeaderTextMargin`
-- [`headerTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextColor)
-- `HeaderTextFontSize`
-- `HeaderTextFontFamily`
-- `HeaderTextFontStyle`
-- `HeaderTextFontStretch`
-- `HeaderTextFontWeight`
+- [`GroupRowMargin`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowMargin)
+- [`GroupTextMargin`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextMargin)
+- [`GroupTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextColor)
+- [`GroupTextFontSize`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontSize)
+- [`GroupTextFontFamily`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontFamily)
+- [`GroupTextFontStyle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontStyle)
+- [`GroupTextFontStretch`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontStretch)
+- [`GroupTextFontWeight`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontWeight)
+- [`HeaderTextMargin`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextMargin)
+- [`HeaderTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextColor)
+- [`HeaderTextFontSize`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontSize)
+- [`HeaderTextFontFamily`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontFamily)
+- [`HeaderTextFontStyle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontStyle)
+- [`HeaderTextFontStretch`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontStretch)
+- [`HeaderTextFontWeight`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontWeight)
 
-The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
+The [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
 
-- `StyleGroupRow`: This event fires for each group to style text displayed in group rows.
-- `StyleHeaderRow`: This event fires when rendering the header row.
-- `StyleSeriesRow`: This event fires once for each series row, which allows conditional styling of the values of the series.
-- `StyleSeriesColumn`: This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
-- `StyleSummaryRow`: This event fires once when rendering the summary row.
-- `StyleSummaryColumn`: This event fires once when rendering the summary column.
+- [`StyleGroupRow`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleGroupRow): This event fires for each group to style text displayed in group rows.
+- [`StyleHeaderRow`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleHeaderRow): This event fires when rendering the header row.
+- [`StyleSeriesRow`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleSeriesRow): This event fires once for each series row, which allows conditional styling of the values of the series.
+- [`StyleSeriesColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleSeriesColumn): This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
+- [`StyleSummaryRow`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleSummaryRow): This event fires once when rendering the summary row.
+- [`StyleSummaryColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=styleSummaryColumn): This event fires once when rendering the summary column.
 
 Some of the events exposes a [`IgcDataLegendStylingRowEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingRowEventArgs) parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `StyleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
 
@@ -1510,31 +1509,4 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 ```
 
 ## API References
-
-- [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns)
-- [`excludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedSeries)
-- [`headerFormatDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatDate)
-- [`headerFormatTime`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatTime)
-- [`headerText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerText)
-- [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns)
-- [`includedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedSeries)
-- [`labelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode)
-- [`labelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=labelTextColor)
-- `StyleHeaderRow`:
-- `StyleSeriesColumn`:
-- `StyleSeriesRow`
-- `StyleSeriesRow`:
-- `StyleSummaryColumn`:
-- `StyleSummaryRow`:
-- [`summaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryTitleText)
-- [`summaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryType)
-- [`titleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=titleTextColor)
-- `UnitText`
-- [`unitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=unitsTextColor)
-- [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation)
-- [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture)
-- [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions)
-- [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions)
-- [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions)
-- [`valueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMode)
-- [`valueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=valueTextColor)
+[`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent)

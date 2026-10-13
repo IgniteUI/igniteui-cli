@@ -1,12 +1,13 @@
 ---
-title: React Icon Component | Ignite UI for React
-_description: See how you can easily get started with React Icon Component. Choose icons and select from different styling options to customize them further.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Icon components, React Icon controls
-_license: MIT
+title: "React Icon Component | Ignite UI for React"
+description: See how you can easily get started with React Icon Component. Choose icons and select from different styling options to customize them further.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Icon components, React Icon controls"
+license: MIT
 mentionedTypes: ["Icon"]
+llms:
+  description: "The React Icon component allows you to easily display font or choose from a large set of predefined SVG icons, but it also gives you the ability to create custom font icons for your project."
 _tocName: Icon
 ---
-
 # React Icon Overview
 
 The React Icon component allows you to easily display font or choose from a large set of predefined SVG icons, but it also gives you the ability to create custom font icons for your project. Benefiting from a number of attributes, you can define or change the size of the icon in use or apply different styles to it.
@@ -69,8 +70,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconSizing/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Before using the [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), you need to register it as follows:
@@ -94,7 +93,7 @@ The [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) doesn't 
 
 To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) element that allow you to add icons to an icon collection on your page.
 
-The [`registerIcon`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIcon) method allows you to register an SVG image as an icon from an external file:
+The [`RegisterIcon`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIcon) method allows you to register an SVG image as an icon from an external file:
 
 ```tsx
 constructor() {
@@ -112,7 +111,7 @@ In order to use the newly registered icon, all you have to do is to pass the nam
 <IgrIcon name="search" collection="material" />
 ```
 
-The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIconFromText) method:
+The second method for registering icons is by passing an SVG string to the `RegisterIconFromText` method:
 
 ```tsx
 const searchIcon =
@@ -128,7 +127,6 @@ constructor() {
 Then you'd use it in the same way as described in the component sample above.
 
 ### Size
-
 The icon component supports three icon sizes - `small`, `medium`(default), and `large`. In order to change the size of the icon, you can utilize the `--ig-size` CSS variable as follows:
 
 ```tsx
@@ -282,11 +280,7 @@ root.render(<IconStyling/>);
 ```
 
 ## API References
-
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`registerIcon`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIcon)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

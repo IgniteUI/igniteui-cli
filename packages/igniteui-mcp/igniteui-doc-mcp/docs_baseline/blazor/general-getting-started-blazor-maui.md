@@ -1,11 +1,12 @@
 ---
 title: Build a Blazor Hybrid App with .NET MAUI - Ignite UI for Blazor
-_description: This article provides a step-step instruction on how to create a blazor hybrid app with .Net Maui using Ignite UI for Blazor. Try it Now!
-_keywords: Ignite UI for Blazor, Infragistics, Getting Started
+description: This article provides a step-step instruction on how to create a blazor hybrid app with .Net Maui using Ignite UI for Blazor. Try it Now!
+keywords: "Ignite UI for Blazor, Infragistics, Getting Started"
 mentionedTypes: []
+llms:
+  description: "Blazor hybrid is something between Blazor Server and Blazor Web Assembly."
 _tocName: .NET MAUI Blazor App
 ---
-
 # Getting Started: Build a Blazor Hybrid App with .NET MAUI
 
 This topic provides step-by-step instructions for creating .NET MAUI Blazor applications with Ignite UI for Blazor using Visual Studio 2022.
@@ -33,11 +34,7 @@ The steps below describe how to create a new .NET MAUI Blazor project. If you wa
 
 Start Visual Studio 2022 and click **Create a new project** on the start page, select the **.NET MAUI Blazor App** template, and click **Next**.
 
-<img src="../images/general/new-blazor-project-maui.jpg" alt="new-blazor-project-maui" />
-
 Provide a project name and location, and click **Create**
-
-<img src="../images/general/new-blazor-project-configure-maui.jpg" alt="new-blazor-project-configure-maui" />
 
 ## Install Ignite UI for Blazor
 
@@ -45,19 +42,38 @@ Ignite UI for Blazor is delivered via NuGet packages. To use the Ignite UI for B
 
 In Visual Studio, open the NuGet package manager by selecting **Tools** → **NuGet Package Manager** → **Manage NuGet Packages for Solution**. Search for and install the **IgniteUI.Blazor** NuGet package.
 
-For more information on installing Ignite UI for Blazor using NuGet, read the [Installing Ignite UI for Blazor](general-installing-blazor.md) topic.
+For more information on installing Ignite UI for Blazor using NuGet, read the [Installing Ignite UI for Blazor](./general-installing-blazor.md) topic.
 
 ## Register Ignite UI for Blazor
 
 1 - Open the **MauiProgram.cs** file and register the Ignite UI for Blazor Service by calling **builder.Services.AddIgniteUIBlazor** function:
 
-2 - Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
+```cs
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        // ...
+        builder.Services.AddMauiBlazorWebView();
+#if DEBUG
+        builder.Services.AddBlazorWebViewDeveloperTools();
+#endif
+
+        //register IgniteUI for Blazor
+        builder.Services.AddIgniteUIBlazor();
+        return builder.Build();
+    }
+}
+```
+
+2 - Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 
 ```razor
 @using IgniteUI.Blazor.Controls
 ```
 
-3 - Add the Style Sheet in the **\<head>** element of the **wwwroot/index.html** file:
+3 - Add the Style Sheet in the **`<head>`** element of the **wwwroot/index.html** file:
 
 ```razor
 <head>
@@ -98,7 +114,5 @@ Add an Ignite UI for Blazor component to your razor page:
 
 Build and run the .NET MAUI Blazor app for Windows.
 
-<img src="../images/general/getting-started-blazor-card-windows.jpg" alt="getting-started-blazor-card-windows" />
-
-> [!Note]
-> For more information about building cross-platform applications with .NET MAUI, visit the [Microsoft Documentation](https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?pivots=devices-android).
+**Note:** 
+For more information about building cross-platform applications with .NET MAUI, visit the [Microsoft Documentation](https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?pivots=devices-android).

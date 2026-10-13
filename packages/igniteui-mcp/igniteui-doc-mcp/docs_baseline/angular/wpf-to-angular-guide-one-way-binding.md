@@ -1,15 +1,17 @@
 ---
 title: One-Way Data Binding in Angular | WPF to Angular Guide | Infragistics
-_description: Learn about one-way data binding in Angular & how it's used to show information to the end user while staying synchronized with changes to the underlying data.
-_keywords: one-way data binding in angular, ignite ui for angular, infragistics
+description: Learn about one-way data binding in Angular & how it's used to show information to the end user while staying synchronized with changes to the underlying data.
+keywords: one-way data binding in angular, ignite ui for angular, infragistics
+llms:
+  description: "One-way data binding in Angular (i.e. unidirectional binding) is a way to bind data from the component to the view (DOM) or vice versa - from view to the component."
 _tocName: One-Way Binding
 ---
-
 # What is one-way data binding in Angular
 
 One-way data binding in Angular (i.e. unidirectional binding) is a way to bind data from the component to the view (DOM) or vice versa - from view to the component. It is used to display information to the end-user which automatically stays synchronized with each change of the underlying data. This is similar to the one-way binding in WPF.
 
-> [!Video https://www.youtube.com/embed/fP7iVhFNTOk]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/fP7iVhFNTOk">
+</iframe>
 
 ## What is Angular data binding?
 
@@ -120,7 +122,7 @@ export class SampleComponent implements OnInit {
 We will now create a simple `input` of type text and bind the `isDisabled` property to the input's `disabled` property:
 
 ```html
-<input type="text" disabled="{{ isDisabled }}">
+<input type="text" disabled="{{ isDisabled }}"/>
 ```
 
 The expected result is that the `input` should be enabled, but it's disabled. This is because the `interpolation` returns a string, but the input's disabled property is of boolean type and it requires a boolean value.
@@ -131,21 +133,21 @@ In order for this to work correctly, Angular provides `property binding`.
 Property binding in Angular is used to bind values for target properties of HTML elements or directives. The syntax here is a bit different than that of interpolation. With property binding, the property name is wrapped into square brackets, and its value does not contain curly braces - just the name of the property that it is bound to.  
 
 ```html
-<input type="text" [disabled]="isDisabled">
+<input type="text" [disabled]="isDisabled"/>
 ```
 
 By using property binding, the input's `disabled` property is bound to a boolean result, **not** a string. The `isDisabled` value is false and running the app would display the input as enabled.
 
-> [!NOTE]
-> It is very important to remember that when a binding relies on the data type result, then a `property binding` should be used! If the binding simply relies on a string value, then `interpolation` should be used.
+**Note:** 
+It is very important to remember that when a binding relies on the data type result, then a `property binding` should be used! If the binding simply relies on a string value, then `interpolation` should be used.
 
 ## Additional Resources
 
 - [Desktop to Web: One-way data binding with Angular interpolation and property binding](https://www.youtube.com/watch?v=fP7iVhFNTOk&list=PLG8rj6Rr0BU-AqcJMuwggKy0GMIkjkt3j)
-- [Two-way binding in Angular](two-way-binding.md)
+- [Two-way binding in Angular](/general/wpf-to-angular-guide/two-way-binding)
 - [Angular Displaying Data](https://angular.io/guide/displaying-data#displaying-data)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

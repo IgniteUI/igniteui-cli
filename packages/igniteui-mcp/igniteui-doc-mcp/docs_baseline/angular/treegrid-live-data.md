@@ -1,17 +1,23 @@
 ---
 title: Live Data Updates in Angular Tree Grid - Ignite UI for Angular
-_description: Check out how the Ignite UI for Angular Tree Grid can handle thousands of updates per second, while staying responsive for user interactions.
-_keywords: angular data grid, angular grid updates, angular live data
-_license: commercial
+description: Check out how the Ignite UI for Angular Tree Grid can handle thousands of updates per second, while staying responsive for user interactions.
+keywords: angular data grid, angular grid updates, angular live data
+license: commercial
 _canonicalLink: grid/live-data
+llms:
+  description: "The Tree Grid component is able to handle thousands of updates per second, while staying responsive for user interactions."
 _tocName: Live Data / Real-Time
 _premium: true
 ---
 # Angular Tree Grid Live Data Updates
+
 The Tree Grid component is able to handle thousands of updates per second, while staying responsive for user interactions.
+
 ## Angular Live-data Update Example
+
 The sample below demonstrates the Tree Grid performance when all records are updated multiple times per second. Use the UI controls to choose the number of records loaded and the frequency of updates.
-Feed the same data into the [Line Chart](../charts/types/line-chart.md) to experience the powerful charting capabilities of Ignite UI for Angular. The `Chart` button will show `Category Prices per Region` data for the selected rows and the `Chart` column button will show the same for the current row.
+Feed the same data into the [Line Chart](/charts/types/line-chart) to experience the powerful charting capabilities of Ignite UI for Angular. The `Chart` button will show `Category Prices per Region` data for the selected rows and the `Chart` column button will show the same for the current row.
+
 ```typescript
 import { ChangeDetectorRef, Component, ElementRef, OnInit, OnDestroy, ViewChild, HostBinding, inject } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, HorizontalAlignment, IGroupingExpression, IgxOverlayOutletDirective, OverlaySettings, PositionSettings, TreeGridFilteringStrategy, VerticalAlignment } from 'igniteui-angular/core';
@@ -674,22 +680,22 @@ igx-grid {
 	max-width: none;
 }
 ```
+
 ## API References
-<div class="divider--half"></div>
-- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-- [IgxBaseTransactionService](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [`IgxTreeGridRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
+
 ## Additional Resources
-<div class="divider--half"></div>
-- [Data Grid](../grid/grid.md)
-- [Row Editing](row-editing.md)
-<div class="divider--half"></div>
+- [Data Grid](/grid/grid)
+- [Row Editing](/treegrid/row-editing)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
-
 

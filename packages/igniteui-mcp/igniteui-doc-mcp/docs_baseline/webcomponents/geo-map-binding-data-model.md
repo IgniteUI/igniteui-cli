@@ -1,17 +1,18 @@
 ---
-title: Web Components Map | Data Visualization Tools | Binding Geographic Data Models | Infragistics
-_description: Use Infragistics' Web Components JavaScript map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, binding data models, Ignite UI for Web Components, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicScatterAreaSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
+title: "Web Components Map | Data Visualization Tools | Binding Geographic Data Models | Infragistics"
+description: Use Infragistics' Web Components JavaScript map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, binding data models, Ignite UI for Web Components, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicScatterAreaSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps."
 _tocName: Binding Data Model
 _premium: true
 ---
-
 # Web Components Binding Geographic Data Models
 
-The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The `ItemsSource` property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
+The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The `DataSource` property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
 
 ## Web Components Binding Geographic Data Models Example
 
@@ -245,23 +246,20 @@ export class WorldUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 The following table summarized data structures required for each type of geographic series:
 
 | Geographic Series  | Properties   | Description   |
 |--------------|---------------| ---------------|
-| [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) | [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#longitudeMemberPath), [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#latitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
-| [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html) | [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#longitudeMemberPath), [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html#latitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
-| [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html) | [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath), [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath), [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
-| [`IgcGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html) | [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#longitudeMemberPath), [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#latitudeMemberPath), [`colorMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#colorMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-| [`IgcGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html) | [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#longitudeMemberPath), [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#latitudeMemberPath), [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html#valueMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-|[`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)|[`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html#shapeMemberPath)|Specifies the name of data column of `ItemsSource` items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
-|[`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)|[`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html#shapeMemberPath)|Specifies the name of data column of `ItemsSource` items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
+| `IgcGeographicSymbolSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
+| `IgcGeographicHighDensityScatterSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
+| `IgcGeographicProportionalSymbolSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `RadiusMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
+| `IgcGeographicScatterAreaSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `ColorMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+| `IgcGeographicContourLineSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `ValueMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+|`IgcGeographicShapeSeries`|`ShapeMemberPath`|Specifies the name of data column of `DataSource` items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
+|`IgcGeographicPolylineSeries`|`ShapeMemberPath`|Specifies the name of data column of `DataSource` items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) to plot shortest geographic path between these locations using the [WorldUtility](geo-map-resources-world-util.md)
+The following code shows how to bind the `IgcGeographicSymbolSeries` to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the `IgcGeographicPolylineSeries` to plot shortest geographic path between these locations using the [WorldUtility](./geo-map-resources-world-util.md)
 
 ```html
 <igc-geographic-map id="geoMap" width="100%" height="100%">
@@ -349,16 +347,9 @@ createPolylineSeries(flight: any)
 ```
 
 ## API References
-
-- [`colorMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#colorMemberPath)
-- [`IgcGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html)
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html)
-- [`IgcGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html)
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html#longitudeMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)
-- [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html#valueMemberPath)
+`IgcGeographicContourLineSeries`
+`IgcGeographicHighDensityScatterSeries`
+`IgcGeographicPolylineSeries`
+`IgcGeographicProportionalSymbolSeries`
+`IgcGeographicScatterAreaSeries`
+`IgcGeographicSymbolSeries`

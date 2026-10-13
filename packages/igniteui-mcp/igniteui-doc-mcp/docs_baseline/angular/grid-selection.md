@@ -1,15 +1,20 @@
 ---
 title: Angular Grid Selection - Ignite UI for Angular
-_description: See how easy it is to select data in Ignite UI for Angular grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: data select, igniteui for angular, infragistics
-_license: commercial
+description: See how easy it is to select data in Ignite UI for Angular grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: data select, igniteui for angular, infragistics
+license: commercial
+llms:
+  description: "With Ignite UI for Angular Grid you can easily select data by using variety of events, rich API or with simple mouse interactions like single select."
 _tocName: Selection
 ---
 # Angular Grid Selection
+
 With Ignite UI for Angular Grid you can easily select data by using variety of events, rich API or with simple mouse interactions like single select.
+
 ## Angular Grid Selection Example
+
 The sample below demonstrates the three types of Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
-<div class="divider--half"></div>
+
 ```typescript
 import { Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -223,34 +228,52 @@ export class GridCellSelectionComponent implements OnInit {
     margin-bottom: 0.4rem;
 }
 ```
-<div class="divider--half"></div>
+
 ## Angular Grid Selection Options
-IgniteUI for Angular Grid component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the Grid. In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) properties.
+
+IgniteUI for Angular Grid component provides three different selection modes - [Row selection](/grid/row-selection), [Cell selection](/grid/cell-selection) and [Column selection](/grid/column-selection). By default only **Multi-cell selection** mode is enabled in the Grid. In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) properties.
+
 ### Angular Row Selection
+
 Property [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) enables you to specify the following options:
+
 - none - Row selection would be disabled for the Grid
 - single - Selection of only one row within the Grid would be available
-- multiple - Multi-row selection would be available by using the `Row selectors`, with a key combination like <kbd>ctrl</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused 
-> Go to [Row selection topic](row-selection.md) for more information.
+- multiple - Multi-row selection would be available by using the `Row selectors`, with a key combination like <kbd>ctrl</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused
+
+> Go to [Row selection topic](/grid/row-selection) for more information.
+
 ### Angular Cell Selection
+
 Property [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) enables you to specify the following options:
+
 - none - Cell selection would be disabled for the Grid
 - single - Selection of only one cell within the Grid would be available.
 - multiple - Currently, this is the default state of the selection in the Grid. Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
-> Go to [Cell selection topic](cell-selection.md) for more information.
+
+> Go to [Cell selection topic](/grid/cell-selection) for more information.
+
 ### Angular Column Selection
-The [`selectable` property](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) enables you to specify the following options for each **column**:
+
+The [`` selectable` property ``](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) enables you to specify the following options for each **column**:
+
 - false - the corresponding column selection will be disabled for the Grid
 - true - the corresponding column selection will be enabled for the Grid
 - This lead to the following three variations:
 - Single selection - <kbd>mouse click</kbd> over the column cell.
 - Multi column selection - holding <kbd>ctrl</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>shift</kbd> + <kbd>mouse click</kbd> selects everything in between.
-> Go to [Column selection topic](column-selection.md) for more information.
+
+> Go to [Column selection topic](/grid/column-selection) for more information.
+
 ## Grid Context Menu
+
 Using the [`contextMenu`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=contextMenu) event you can add a custom context menu to facilitate your work with **IgxGrid**. With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
+
 Basically the main function will look like this:
+
 ```typescript
 public rightClick(eventArgs: any) {
      // Prevent the default behavior of the right click
@@ -281,30 +304,39 @@ public rightClick(eventArgs: any) {
     this.contextmenu = true;
 }
 ```
+
 The context menu will have the following functions:
+
 - Copy the selected cell's _value_
 - Copy the selected cell's _dataRow_
 - If the selected cell is within a **multi-cell selection range**, copy all the _selected data_
+
 ```typescript
 //contextmenu.component.ts
+
 public copySelectedCellData(event) {
     const selectedData = { [this.cell.column.field]: this.cell.value };
     this.copyData(JSON.stringify({ [this.cell.column.field]: this.cell.value }));
     this.onCellValueCopy.emit({ data: selectedData });
 }
+
 public copyRowData(event) {
     const selectedData = this.cell.row.data ;
     this.copyData(JSON.stringify(this.cell.row.data));
     this.onCellValueCopy.emit({ data: selectedData });
 }
+
 public copySelectedCells(event) {
     const selectedData = this.selectedCells.data;
     this.copyData(JSON.stringify(selectedData));
     this.onCellValueCopy.emit({ data: selectedData });
 }
 ```
+
 The IgxGrid will fetch the copied data and will paste it in a container element.
+
 The template we are going to use to combine the grid with the context menu:
+
 ```html
 <div class="wrapper">
     <div class="grid__wrapper" (window:click)="disableContextMenu()">
@@ -328,6 +360,7 @@ The template we are going to use to combine the grid with the context menu:
 
  Select multiple cells and press the `right mouse` button. The context menu will appear and after selecting `Copy cells data` the selected data will appear in the right empty box.
  The result is:
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
@@ -478,36 +511,43 @@ export class GridContextmenuSampleComponent implements OnInit {
     justify-content: space-evenly;
 }
 ```
-<div class="divider--half"></div>
+
 ## Known Issues and Limitations
+
 - Using the Grid with Selection enabled on IE11 requires the explicit import of the array polyfill in polyfill.ts of the angular application. IE11 is no longer supported as of version 13.0.0.
 
     ```typescript
     import 'core-js/es7/array';
     ```
+
 - When the grid has no `primaryKey` set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
   - Row Selection
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
+
 ## API References
-- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-_[IgxGridRow API](mcp:get_api_reference?platform=angular&component=IgxGridRow)
-- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+
+_[`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- `IgxGridComponent Styles`
 ## Additional Resources
-<div class="divider--half"></div>
-- [Grid overview](grid.md)
-- [Row Selection](row-selection.md)
-- [Cell Selection](cell-selection.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Virtualization and Performance](virtualization.md)
-* [Selection-based Aggregates](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/grid/selection-based-aggregates.html)
-<div class="divider--half"></div>
+
+- [Grid overview](/grid/grid)
+- [Row Selection](/grid/row-selection)
+- [Cell Selection](/grid/cell-selection)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Summaries](/grid/summaries)
+- [Column Moving](/grid/column-moving)
+- [Virtualization and Performance](/grid/virtualization)
+
+- [Selection-based Aggregates](/grid/selection-based-aggregates)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

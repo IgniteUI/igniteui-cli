@@ -1,13 +1,14 @@
 ---
-title: Angular Map | World Utility | Data Source | Infragistics
-_description: Use Infragistics' Angular JavaScript map data utility to generate geographic data. View Ignite UI for Angular map demos!
-_keywords: Angular map, map data, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Angular Map | World Utility | Data Source | Infragistics"
+description: Use Infragistics' Angular JavaScript map data utility to generate geographic data. View Ignite UI for Angular map demos!
+keywords: "Angular map, map data, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of utility that helps with generating Angular geographic data."
 _tocName: World Utility
 _premium: true
 ---
-
 # Angular World Utility
 
 The resource topic provides implementation of utility that helps with generating Angular geographic data.
@@ -196,5 +197,4 @@ export default class WorldUtils {
 ```
 
 ## API References
-
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
+`IgxGeographicMap`

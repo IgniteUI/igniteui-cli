@@ -1,20 +1,18 @@
 ---
-title: React Date Picker Component - Ignite UI for React
-_description: Infragistics' React Date Picker allows the user to select a date from a calendar and set it in an input element.
-_keywords: React Date Picker, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Date Picker Component - Ignite UI for React"
+description: Infragistics' React Date Picker allows the user to select a date from a calendar and set it in an input element.
+keywords: "React Date Picker, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["DatePicker"]
+llms:
+  description: "The Ignite UI for React Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up."
 _tocName: Date Picker
 ---
-
 # React Date Picker Component Overview
 
 The Ignite UI for React Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up. Lightweight and simple to use, the Date Picker lets users navigate to a desired date with several view options – month, year, and decade. It also supports common validation properties such as minimum and maximum date constraints and required fields.
 
 The Ignite UI for React Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The React Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
-
-> [!NOTE]
-> The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) is a brand new component from Ignite UI for React version 18.7.0. The old [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## React Date Picker Example
 
@@ -84,7 +82,9 @@ const date = new Date();
 
 ### Projecting components
 
-With prefix and suffix slots we can add different content before and after the main content of the Input.
+The are `prefix` and `suffix` slots available, which allow you to add different content before and after the main content of the Input. When slotting content, we recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots.
+
+There is also a `helper-text` slot exposed, which provides a hint placed below the Input. We recommend using a `<span>` element, when slotting content in the `helper-text` slot.
 
 ```tsx
 <IgrDatePicker>
@@ -92,7 +92,7 @@ With prefix and suffix slots we can add different content before and after the m
         slot="suffix"
         name="arrow_upward"
         collection="material"
-        class="small"
+        className="small"
         onClick={() => datePickerRef.current.stepUp(DatePart.Month)}>
     </IgrIcon>
 </IgrDatePicker>
@@ -102,18 +102,18 @@ The above snippet will add an additional icon at the end of the input, right aft
 
 #### Customizing the toggle and clear icons
 
-The calendar and clear icon could be templated by using the `calendar` and `clear` slots:
+The calendar and clear icons can be customized using the `calendar` and `clear` slots. We recommend using a `<span>` element when adding symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `calendar` and `clear` slots.
 
 ```tsx
 <IgrDatePicker>
-    <IgrIcon slot="calendar" name="calendar" collection="material" class="small"></IgrIcon>
-    <IgrIcon slot="clear" name="delete" collection="material" class="small"></IgrIcon>
+    <IgrIcon slot="calendar" name="calendar" collection="material" className="small"></IgrIcon>
+    <IgrIcon slot="clear" name="delete" collection="material" className="small"></IgrIcon>
 </IgrDatePicker>
 ```
 
 #### Custom action buttons
 
-The picker's action buttons can be templated using the `actions` slot:
+The picker's action buttons can be templated using the `actions` slot. For the best result, we recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```tsx
 <IgrDatePicker>
@@ -179,11 +179,11 @@ root.render(<App/>);
 
 ### Display and input format
 
-[`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) and [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
+[`IgrDatePicker.inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) and [`IgrDatePicker.displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`IgrDatePicker.inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
 
 A good thing to note is that the Date Picker Component will always add a leading zero on the `date` and `month` portions if they were provided in a format that does not have it, e.g. `d/M/yy` becomes `dd/MM/yy`. This applies only during editing.
 
-[`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is provided, the picker will use the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) as its [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat).
+[`IgrDatePicker.displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is used to format the picker's input when it is not focused. If no [`IgrDatePicker.displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is provided, the picker will use the [`IgrDatePicker.inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) as its [`IgrDatePicker.displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat).
 
 More information about these can be found in the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) format section.
 
@@ -214,7 +214,7 @@ root.render(<App/>);
 
 ### Increment and decrement
 
-The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) exposes [`stepUp`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepDown) methods. Both of which come from the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) exposes [`IgrDatePicker.stepUp`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepUp) and [`IgrDatePicker.stepDown`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepDown) methods. Both of which come from the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) and can be used for incrementing and decrementing a specific [`IgrDatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date.
 
 ```tsx
 <IgrDatePicker>
@@ -235,7 +235,7 @@ The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePick
 
 ### In Forms
 
-The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) could be used in a form element, the component's [`min`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=max) properties act as form validators.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) could be used in a form element, the component's [`IgrDatePicker.min`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=min) and [`IgrDatePicker.max`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=max) properties act as form validators.
 
 In forms, we can handle the `change` event of the component and update the value of the label.
 
@@ -304,11 +304,11 @@ root.render(<App />);
 
 ### Calendar Specific settings
 
-The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=showWeekNumbers) which shows the number for each week in the year and more.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`IgrDatePicker.visibleMonths`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`IgrFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=react&component=IgrFieldPipeArgs&member=weekStart) which determines the starting day of the week, [`IgrDatePicker.showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can be controlled through its [`locale`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=locale) input.
+The localization of the [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can be controlled through its [`IgrDatePicker.locale`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=locale) input.
 
 Here is how a [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) with Japanese locale definition would look like:
 
@@ -318,7 +318,7 @@ Here is how a [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=I
 
 ## Styling
 
-The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) component derives from the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) and [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) component derives from the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) and [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](./calendar.md#styling) for reference.
 
 ```css
 igc-date-picker::part(header) {
@@ -411,10 +411,9 @@ root.render(<App/>);
 
 ## API References
 
-- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
-- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
-- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)<br />
+[`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)<br />
+[`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)<br />
 
 ## Additional Resources
 

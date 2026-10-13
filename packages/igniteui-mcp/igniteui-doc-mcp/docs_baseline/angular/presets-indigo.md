@@ -1,11 +1,14 @@
 ---
+title: "Switching from Material to Indigo Theme"
+llms:
+  description: "Since version 10.1 our components include a new theme inspired by our own design language."
 _tocName: Indigo
 ---
 # Switching from Material to Indigo Theme
 
 Since version `10.1` our components include a new theme inspired by our own design language.
 
-In order to switch from `Material` to `Indigo`, you can use the [theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme) build-in mixin.
+In order to switch from `Material` to `Indigo`, you can use the `theme` build-in mixin.
 
 ## Indigo Light Theme
 
@@ -48,4 +51,4 @@ In order to switch from `Material` to `Indigo`, you can use the [theme](https://
 
 ## API Overview
 
-- [Global Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme)
+- `Global Theme`

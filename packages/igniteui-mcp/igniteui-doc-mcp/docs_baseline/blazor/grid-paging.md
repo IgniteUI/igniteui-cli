@@ -1,15 +1,15 @@
 ---
-title: Blazor Grid Paging - Ignite UI for Blazor
-_description: Configure Blazor pagination and create custom pages in the Blazor table by Ignite UI, get data for the requested pages with variety of events.
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-_keywords: Paging, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/paging
+title: "Blazor Grid Paging - Ignite UI for Blazor"
+description: Configure Blazor pagination and create custom pages in the Blazor table by Ignite UI, get data for the requested pages with variety of events.
+keywords: Paging, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/paging"
+llms:
+  description: "The Ignite UI for Blazor Pagination feature in Blazor Grid is used to split a large set of data into a sequence of pages that have similar content."
+_componentKey: Grid
 _tocName: Paging
 _premium: true
 ---
-
 # Blazor Grid Pagination Overview
 
 The Ignite UI for Blazor Pagination feature in Blazor Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Grid supports template for custom pages.
@@ -169,30 +169,22 @@ public class AthletesData
 </IgbGrid>
 ```
 
-<!-- ComponentStart: Grid -->
-
 ## Paging with Group By
 
 Group rows participate in the paging process along with data rows. They count towards the page size for each page. Collapsed rows are not included in the paging process.
 
 Integration between Paging and Group By is described in the [Group By](groupby.md#blazor-grid-group-by-with-paging) topic.
 
-<!-- ComponentEnd: Grid -->
-
 ## Usage
 
 The [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator) component is used along with the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ```razor
-<IgbGrid @ref=grid Data=Data className="gridSize">
+<IgbGrid @ref=grid Data=Data class="gridSize">
     <IgbPaginator Page="grid.Page" TotalRecords="grid.TotalRecords" PerPage="10">
     </IgbPaginator>
 </IgbGrid>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Paginator Component Demo
 
@@ -366,18 +358,10 @@ public class AthletesData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- * [Paginator](../paginator.md) -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -387,8 +371,6 @@ public class AthletesData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

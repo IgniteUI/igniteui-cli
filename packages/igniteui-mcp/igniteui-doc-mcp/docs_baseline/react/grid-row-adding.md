@@ -1,24 +1,19 @@
 ---
-title: React Grid Row Adding - Ignite UI for React
-_description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-adding
+title: "React Grid Row Adding - Ignite UI for React"
+description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-adding"
+llms:
+  description: "The Ignite UI for React Row Adding feature in React Grid enables users to input and submit new data records without navigating to a separate form or page."
+_componentKey: Grid
 _tocName: Row Adding
 _premium: true
 ---
-
 # React Grid Row Adding
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 The Ignite UI for React Row Adding feature in React Grid enables users to input and submit new data records without navigating to a separate form or page. With the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), users can manipulate data through inline row adding and a powerful API for CRUD operations.
 Add an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled in the grid's template. After that hover a row and use the provided button. Finally press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## React Grid Row Adding Example
 
@@ -141,12 +136,10 @@ root.render(<Sample/>);
 
 ## Row Adding Usage
 
-Then define a [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with bound data source, [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`addRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
-
-<!-- ComponentStart: Grid -->
+Then define a [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with bound data source, [`IgrGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`IgrGrid.addRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 ```tsx
-<IgrGrid autoGenerate={false} data={NwindData} primaryKey="ProductID" rowEditable={true}>
+<IgrGrid autoGenerate={false} data={nwindData} primaryKey="ProductID" rowEditable={true}>
     <IgrColumn field="ProductID" header="Product ID" dataType="number"></IgrColumn>
     <IgrColumn field="ReorderLevel" header="Reorder Level" dataType="number"></IgrColumn>
     <IgrColumn field="ProductName" header="Product Name" dataType="string"></IgrColumn>
@@ -158,54 +151,43 @@ Then define a [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid
         <IgrGridEditingActions addRow={true}></IgrGridEditingActions>
     </IgrActionStrip>
 </IgrGrid>
+
 ```
-
-<!-- ComponentEnd: Grid -->
-
-<!-- ComponentEnd: TreeGrid -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
 
 > **Note**:
 > The [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) input controlling the visibility of the add row button may use the action strip context (which is of type [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType) to fine tune which records the button shows for.
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-The internal `BaseTransactionService` is automatically provided for [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid). It holds pending cell changes until the row state is submitted or cancelled.
+The internal `BaseTransactionService` is automatically provided for [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
 ## Start Row Adding Programmatically
 
-[`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-Using [`beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
+Using [`IgrGrid.beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
 ```typescript
 gridRef.current.beginAddRowById('ALFKI');  // Spawns the add row UI under the row with PK 'ALFKI'
 gridRef.current.beginAddRowById(null);     // Spawns the add row UI as the first record
 ```
 
-The [`beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrGrid&member=beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
+The [`IgrGrid.beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrGrid&member=beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
 
 ```typescript
 gridRef.current.beginAddRowByIndex(10);   // Spawns the add row UI at index 10
 gridRef.current.beginAddRowByIndex(0);    // Spawns the add row UI as the first record
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
 ## Positioning
 
 - The default position of row add UI is below the row that the end user clicked the add row button for.
 
-- The [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid) scrolls to fully display the add row UI automatically.
+- The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) scrolls to fully display the add row UI automatically.
 
 - The overlay for the add row UI maintains its position during scrolling.
 
@@ -213,18 +195,19 @@ gridRef.current.beginAddRowByIndex(0);    // Spawns the add row UI as the first 
 
 The add row UI has the same behavior as the row editing one as they are designed to provide a consistent editing experience to end users. Please, refer to the [Grid Row Editing](row-editing.md) topic for more information.
 
-After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid). In a [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid) to its position if it is not in view.
+After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). In a [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to its position if it is not in view.
 
 ## Keyboard Navigation
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
+
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
 - <kbd>TAB</kbd> move focus from one editable cell in the row to the next and from the right-most editable cell to the CANCEL and DONE buttons. Navigation from DONE button goes to the left-most editable cell within the currently edited row.
 
 ## Feature Integration
 
-- Any row adding operation will stop if the data view of the [`grid`](mcp:get_api_reference?platform=react&component=IgrRowType&member=grid) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
+- Any row adding operation will stop if the data view of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
@@ -232,9 +215,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowAddTextTemplate).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+Customizing the text of the row adding overlay is possible using the [`IgrGridBaseDirective.rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowAddTextTemplate).
 
 ```tsx
 gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
@@ -246,7 +227,9 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid-->
+### Customizing Buttons
+
+Customizing the buttons of the row editing overlay is possible by using the `RowEditActions` template.
 
 ## Styling
 
@@ -255,24 +238,11 @@ The row adding UI comprises the buttons in the [`IgrActionStrip`](mcp:get_api_re
 - [Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
 
-<!-- - [ActionStrip](../action-strip.md#styling) -->
-
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `RowEditCancel`
-- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrGrid&member=endEdit)
-- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
 
 - [Grid Editing](editing.md)
-
-<!-- * [Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

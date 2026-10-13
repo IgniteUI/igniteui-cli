@@ -1,20 +1,18 @@
 ---
-title: React Hierarchical Grid Size - Ignite UI for React
-_description: Learn how to apply different size capabilities to the Hierarchical Grid component. You can use a set of compact view options in the Ignite UI for React.
-_keywords:  material size, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "React Hierarchical Grid Size - Ignite UI for React"
+description: Learn how to apply different size capabilities to the Hierarchical Grid component. You can use a set of compact view options in the Ignite UI for React.
+keywords:  material size, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for React Size feature in React Hierarchical Grid allows users to control the spacing and layout of data within the IgrHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Size
 _premium: true
 ---
-
 # React Hierarchical Grid Size
 
-The Ignite UI for React Size feature in React Hierarchical Grid allows users to control the spacing and layout of data within the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for React Size feature in React Hierarchical Grid allows users to control the spacing and layout of data within the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -254,14 +252,14 @@ As you can see in the demo above, the [`IgrHierarchicalGrid`](mcp:get_api_refere
 <IgrHierarchicalGrid className="gridSize"></IgrHierarchicalGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component. When you switch between different size options the height of each [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component. When you switch between different size options the height of each [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgrHierarchicalGrid.width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `56px`;
+- **large** - this is the default [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgrHierarchicalGrid.width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgrHierarchicalGrid.width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgrHierarchicalGrid.width`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
 
@@ -283,8 +281,6 @@ Let's now continue with our sample and see in action how the `--ig-size` is appl
     </IgrPropertyEditorPropertyDescription>
 </IgrPropertyEditorPanel>
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 Now we can add the markup.
 
@@ -327,13 +323,7 @@ Now we can add the markup.
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 private propertyEditor: IgrPropertyEditorPanel
@@ -372,25 +362,36 @@ public webGridSetGridSize(sender: any, args: IgrPropertyEditorPropertyDescriptio
     var grid = document.getElementById("grid");
     grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
 }
+
 ```
 
-Another option that [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides for you, in order to be able to change the height of the rows in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), is the property [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight). So let's see in action how this property affects the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) layout along with the `--ig-size`.
+Another option that [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides for you, in order to be able to change the height of the rows in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), is the property [`IgrHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight). So let's see in action how this property affects the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgrHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Hierarchical Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight) property to the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid):
+We can now extend our sample and add [`IgrHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowHeight) property to the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid):
 
-```tsx
-<IgrHierarchicalGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrHierarchicalGrid>
-```
+ ```tsx
+ <IgrHierarchicalGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrHierarchicalGrid>
+ ```
 
 ## API References
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+## Additional Resources
 
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [Virtualization and Performance](virtualization.md)
+- [Editing](editing.md)
+
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
 
 Our community is active and always welcoming to new ideas.
 

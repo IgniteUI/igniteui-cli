@@ -1,15 +1,21 @@
 ---
 title: Cascading combos in Angular Grid Grid - Infragistics
-_description: Grid with Cascading Combos. See the sample here.
-_keywords: angular cascading combos with grid, ignite ui for angular, infragistics
-_license: commercial
+description: Grid with Cascading Combos. See the sample here.
+keywords: angular cascading combos with grid, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "The Grid's Editing functionality provides with the opportunity to use Cascading Combos."
 _tocName: Grid with Cascading combos
 _premium: true
 ---
 # Angular Grid with Cascading Combos
-The Grid's Editing functionality provides with the opportunity to use [Cascading Combos](../simple-combo.md#cascading-scenario). By selecting the value in any preceding [Combos](../combo.md), the users will receive only the data that is relevant to their selection within the next Combo.
+
+The Grid's Editing functionality provides with the opportunity to use [Cascading Combos](/simple-combo#cascading-scenario). By selecting the value in any preceding [Combos](/combo), the users will receive only the data that is relevant to their selection within the next Combo.
+
 ## Angular Grid with Cascading Combos Sample Overview
+
 The sample below demonstrates how `Grid` works with nested `Cascading Combos`.
+
 ```typescript
 import { ChangeDetectorRef, Component, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
@@ -232,12 +238,18 @@ export class GridCascadingCombosComponent implements OnInit {
     }
 }
 ```
+
 ## Setup
+
 In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) property is set to **true**.
-Once the column editing is enabled, you can start by adding your [Single Select ComboBox](../simple-combo.md). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](../simple-combo.md) instead of modifying the igxCombo.
-To get started with the [Simple ComboBox component](../simple-combo.md#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
+
+Once the column editing is enabled, you can start by adding your [Single Select ComboBox](/simple-combo). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](/simple-combo) instead of modifying the igxCombo.
+
+To get started with the [Simple ComboBox component](/simple-combo#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
+
 ```typescript
 import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
+
 @NgModule({
     imports: [
         ...
@@ -247,8 +259,11 @@ import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
 })
 export class AppModule {}
 ```
-Then, in the template, you should bind the combos [igx-simple-combo](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) to some data.
-- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [displayKey](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=displayKey), the simple combobox will use the specified `valueKey` (if any).
+
+Then, in the template, you should bind the combos [`igx-simple-combo`](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) to some data.
+
+- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=displayKey), the simple combobox will use the specified `valueKey` (if any).
+
 ```typescript
 export class MySimpleComboComponent implements OnInit {
     public countriesData: Country[];
@@ -264,19 +279,24 @@ export class MySimpleComboComponent implements OnInit {
     }
 }
 ```
-In order to handle the selection change, we need [selectionChanging()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+
+In order to handle the selection change, we need [`selectionChanging()`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [`IgxIComboSelectionChangingEventArgs`](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+
 ```html
 <igx-combo [data]="countriesData" (selectionChanging)="countryChanging($event)"></igx-combo>
 ```
+
 ```typescript
-public countryChanging(event: IComboSelectionChangingEventArgs) {
+public countryChanging(event: IComboSelectionChangeEventArgs) {
     if (event.added.length) {
         event.newSelection = event.added;
     }
 }
 ```
+
 And lastly, adding the [Linear Progress](../linear-progress.md), which is required while loading the list of data.
 The [`id`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=id) is necessary to set the value of `id` attribute.
+
 ```html
  <igx-linear-bar 
     [id]="'region-progress-' + cell.row.data.ID" 
@@ -284,14 +304,16 @@ The [`id`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBar
     type="info" [indeterminate]="true">
 </igx-linear-bar>
 ```
+
 ## API References
-<div class="divider--half"></div>
-- [IgxSimpleComboComponent](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent)
-- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-- [IgxLinearProgressBarComponent](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
-- [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)
+- [`IgxSimpleCombo`](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent)
+- `IgxComboComponent Styles`
+- [`IgxLinearProgressBar`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
+- `IgxLinearProgressBarComponent Styles`
 ## Additional Resources
-- [Grid Editing](editing.md)
-- [Single Select ComboBox](../simple-combo.md)
-- [Cascading Combos](../simple-combo.md#cascading-scenario)
-- [Linear Progress](../linear-progress.md)
+
+- [Grid Editing](/grid/editing)
+
+- [Single Select ComboBox](/simple-combo)
+- [Cascading Combos](/simple-combo#cascading-scenario)
+- [Linear Progress](/linear-progress)

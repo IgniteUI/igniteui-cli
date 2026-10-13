@@ -1,18 +1,20 @@
 ---
 title: Angular Card Component – Ignite UI for Angular - MIT license 
-_description: With Angular Card component you can present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information. Try it now.
-_keywords: Angular Card component, Angular Card control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: With Angular Card component you can present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information. Try it now.
+keywords: Angular Card component, Angular Card control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "Angular Card represents a flexible container that has different elements like title text, descriptions, image styles, call to action buttons, links and others."
 _tocName: Card
 ---
-
 # Angular Card Component Overview
 
-<p class="highlight">
+<div class="highlight">
+
 Angular Card represents a flexible container that has different elements like title text, descriptions, image styles, call to action buttons, links and others. In order to represent a given scenario/content in the best possible way, it offers various display options, headers, footers, as well as background colors, animations, and more.  
 
 This lightweight Angular Card component is used for creating all sorts of cards, some of them can be – business cards, material flipping cards, stacked cards.
-</p>
+</div>
 
 ## Angular Card Example
 
@@ -87,7 +89,7 @@ export class CardComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Card
 
@@ -97,7 +99,7 @@ To get started with the Ignite UI for Angular Card component, first you need to 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxCardModule` inside your **app.module.ts** file.
 
@@ -115,7 +117,7 @@ import { IgxCardModule } from 'igniteui-angular/card';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxCardComponent` as a standalone dependency, or use the [`IGX_CARD_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/card/src/card/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the [`IgxCardComponent`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) as a standalone dependency, or use the [`IGX_CARD_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/card/src/card/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -169,8 +171,8 @@ import { IGX_CARD_DIRECTIVES } from 'igniteui-angular/card';
 export class HomeComponent {}
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Card module or directives imported, you can start using the `igx-card` component.
 
@@ -179,7 +181,7 @@ Now that you have the Ignite UI for Angular Card module or directives imported, 
 Then to represent the demo card template we can add the following code.
 
 ```html
-<!--card.component.html>-->
+{/*card.component.html>*/}
 
 <igx-card>
     <igx-card-media height="196px">
@@ -225,7 +227,8 @@ Taking the card above as an example, we can edit the contents of the `igx-card-h
 <igx-card-header>
     <div igxCardThumbnail>
         <igx-icon>place</igx-icon>
-    </div>
+    
+</div>
     
     <h3 igxCardHeaderTitle>Title</h3>
     <h5 igxCardHeaderSubtitle>Subtitle</h5>
@@ -273,6 +276,7 @@ Here's an example of an outlined horizontal card:
 ```html
 <igx-card type="outlined" [horizontal]="horizontal">
     <div class="h-sample-column">
+
         <igx-card-header>
             <h5 igxCardHeaderTitle>{{card.title}}</h5>
             <h5 igxCardHeaderSubtitle>{{card.subtitle}}</h5>
@@ -284,7 +288,8 @@ Here's an example of an outlined horizontal card:
         <igx-card-content>
             <p>{{card.content}}</p>
         </igx-card-content>
-    </div>
+    
+</div>
 
     <igx-divider [vertical]="horizontal"></igx-divider>
 
@@ -326,7 +331,6 @@ You can set the `vertical` attribute of he actions area explicitly, thus overrid
 ```
 
 If everything went well, our card should look like this:
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -392,7 +396,6 @@ export class CardSample2Component {
 }
 ```
 
-
 ### Alternative layouts
 
 You can get even more creative with the layout of the `igx-card`.
@@ -417,14 +420,14 @@ Below is an example showing how you can create a semi-horizontal card, where we 
                 {{button}}
             </button>
         </igx-card-actions>
-    </div>
+    
+</div>
 
     <igx-card-media width="96px">
         <img [src]="card.imageUrl">
     </igx-card-media>
 </igx-card>
 ```
-
 
 ```typescript
 import { Component } from '@angular/core';
@@ -492,7 +495,6 @@ export class CardSample3Component {
 }
 ```
 
-
 ### Angular Card Actions
 
 The Angular Card actions area allows additional configuration to what we have already mentioned.
@@ -528,40 +530,14 @@ You can justify the buttons so that they are laid out across the entire axis, no
 
 Changing the `$background` property automatically updates the following dependent properties:
 
-<table class="collapsible-table">
-    <thead>
-        <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody class="group">
-        <tr class="primary">
-            <td><strong>$background</strong></td>
-            <td>$header-text-color</td>
-            <td>The text color of the card title.</td>
-            </tr>
-            <tr>
-            <td></td>
-            <td>$subtitle-text-color</td>
-            <td>The text color of the card subtitle.</td>
-            </tr>
-            <tr>
-            <td></td>
-            <td>$content-text-color</td>
-            <td>The text color of the card content.</td>
-            </tr>
-            <tr>
-            <td></td>
-            <td>$actions-text-color</td>
-            <td>The text color of the card buttons.</td>
-            </tr>
-        </tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$background** | $header-text-color | The text color of the card title. |
+|  | $subtitle-text-color | The text color of the card subtitle. |
+|  | $content-text-color | The text color of the card content. |
+|  | $actions-text-color | The text color of the card buttons. |
 
-To get started with styling the card, we need to import the `index` file, where all the theme functions and component mixins live:
+To get started with styling the card, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -570,7 +546,7 @@ To get started with styling the card, we need to import the `index` file, where 
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`card-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-card-theme) and providing just a few styling parameters. If you only specify the `$background` parameter, the appropriate foreground colors will be automatically chosen, either black or white, based on which offers better contrast with the background.
+Following the simplest approach, we create a new theme that extends the `card-theme` and providing just a few styling parameters. If you only specify the `$background` parameter, the appropriate foreground colors will be automatically chosen, either black or white, based on which offers better contrast with the background.
 
 ```scss
 $custom-card-theme: card-theme(
@@ -590,7 +566,6 @@ Finally, **include** the custom theme in your application:
 ```
 
 In the sample below, you can see how using the card component with customized CSS variables allows you to create a design that visually resembles the card used in the [`Ant`](https://ant.design/components/card?theme=light#card-demo-meta) design system.
-
 
 ```typescript
 import { Component, inject, OnInit } from '@angular/core';
@@ -739,7 +714,7 @@ igx-divider {
 
 ### Styling with Tailwind
 
-You can style the `card` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the `card` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -757,7 +732,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [card-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-card-theme). The syntax is as follows:
+You can find the full list of properties in the `card-theme`. The syntax is as follows:
 
 ```html
 <igx-card
@@ -769,14 +744,74 @@ elevated>
 </igx-card>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your card should look like this:
 
-<div class="sample-container loading" style="height:500px">
-    <iframe id="card-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/layouts/card-tailwind-styling-sample' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component } from '@angular/core';
+import { Card } from '../card.blueprint';
+import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
+import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
+import { IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+
+
+@Component({
+    selector: 'app-card-tailwind-styling-sample',
+    templateUrl: './card-tailwind-styling-sample.component.html',
+    styleUrls: ['./card-tailwind-styling-sample.component.scss'],
+    imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxSuffixDirective, IgxIconComponent]
+})
+export class CardTailwindStylingSampleComponent {
+    public card = new Card({
+        content: `Hi! I'm Jane, photographer and filmmaker.
+        Photography is a way of feeling, of touching,
+        of loving. What you have caught on film is captured forever...
+        it remembers little things, long after you have
+        forgotten everything.`,
+        icons: ['person', 'favorite', 'share'],
+        imageUrl: 'https://images.unsplash.com/'
+        + 'photo-1541516160071-4bb0c5af65ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+        subtitle: 'Professional Photographer',
+        title: 'Jane Doe'
+    });
+}
+```
+```html
+<div class="sample-column card-wrapper">
+  <igx-card class="!light-card ![--background:#193625] ![--subtitle-text-color:#ECAA53]" elevated>
+    <igx-card-media height="180px">
+      <img [src]="card.imageUrl">
+    </igx-card-media>
+
+    <igx-card-header>
+      <h3 igxCardHeaderTitle>{{ card.title }}</h3>
+      <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
+    </igx-card-header>
+
+    <igx-card-content>
+      <p>{{ card.content }}</p>
+    </igx-card-content>
+
+    <igx-card-actions>
+      @for (icon of card.icons; track icon) {
+        <button igxIconButton="flat"
+          igxRipple
+          [igxRippleCentered]="true"
+          igxEnd>
+          <igx-icon [style.color]="'#ECAA53'">{{icon}}</igx-icon>
+        </button>
+      }
+    </igx-card-actions>
+
+  </igx-card>
 </div>
+```
+```scss
+@use "layout.scss";
+```
 
 ### Summary
 
@@ -787,36 +822,36 @@ The card component is capable of displaying more different layouts worth explori
 
 For more detailed information regarding the card's API, refer to the following links:
 
-- [`IgxCardComponent API`](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
+- [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
 
 The following built-in CSS styles helped us achieve this card layout:
 
-- [`IgxCardComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-card-theme)
+- `IgxCardComponent Styles`
 
 Additional components and/or directives that were used:
 
-- [`IgxAvatarComponent`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
-- [`IgxIconComponent`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
+- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 - [`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
-- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 
 Styles:
 
-- [`IgxAvatarComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
-- [`IgxIconComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [`IgxButtonDirective Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
+- `IgxAvatarComponent Styles`
+- `IgxIconComponent Styles`
+- `IgxButtonDirective Styles`
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Theming Dependencies
 
-- [IgxButton Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxAvatar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
-- [IgxIconTheme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
+- `IgxButton Theme`
+- `IgxAvatar Theme`
+- `IgxIconTheme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

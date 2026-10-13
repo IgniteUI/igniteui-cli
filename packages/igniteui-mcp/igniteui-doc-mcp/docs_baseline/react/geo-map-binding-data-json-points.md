@@ -1,14 +1,15 @@
 ---
-title: React Map | Data Visualization Tools | Binding JSON Files | Infragistics
-_description: Learn how to use Infragistics' React map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for React map demos!
-_keywords: React map, JSON files, Ignite UI for React, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "React Map | Data Visualization Tools | Binding JSON Files | Infragistics"
+description: Learn how to use Infragistics' React map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for React map demos!
+keywords: "React map, JSON files, Ignite UI for React, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for React map, you can plot geographic data loaded from various file types."
 _tocName: Binding JSON File
 _premium: true
 ---
-
 # React Binding JSON Files with Geographic Locations
 
 With the Ignite UI for React map, you can plot geographic data loaded from various file types. For example, you can load geographic locations from JavaScript Object Notation (JSON) file.
@@ -367,10 +368,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingDataJsonPoints/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from JSON file:
 
 ```json
@@ -383,8 +381,7 @@ Here is an example of data from JSON file:
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html) in the map component to an array of objects created from loaded JSON file with geographic locations:
+The following code loads and binds `IgrGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded JSON file with geographic locations:
 
 ```ts
 import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
@@ -428,10 +425,9 @@ public onDataLoaded(jsonData: any[]) {
 ```
 
 ## API References
-
-- [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html)
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html)
-- `GeographicMap`
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#longitudeMemberPath)
+`IgrGeographicHighDensityScatterSeries`
+`IgrGeographicSymbolSeries`
+`IgrGeographicMap`
+`DataSource`
+`LatitudeMemberPath`
+`LongitudeMemberPath`

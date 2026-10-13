@@ -101,8 +101,15 @@ describe("Schematics ng-new", () => {
 		};
 
 		const mockSession = {
+			// regression: AI config (ai-config schematic) must run before the interactive
+			// setup/action loop, otherwise "Next Steps" prints before the AI-agents prompt.
+			// The project isn't moved into its named subdirectory until after the loop runs,
+			// so the file still sits at the tree root at this point.
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
-				.and.returnValue(Promise.resolve()),
+				.and.callFake(function (this: SchematicsPromptSession) {
+					expect(this.tree.exists(".mcp.json")).toBeTruthy();
+					return Promise.resolve();
+				}),
 			getProjectLibraryByType: spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
 				.and.returnValue((Promise.resolve(mockLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")

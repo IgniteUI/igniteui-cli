@@ -1,29 +1,24 @@
 ---
-title: Web Components Grid Column Selection - Ignite UI for Web Components
-_description: Learn how to configure column selection with Ignite UI for Web Components Grid. This makes grid interactions much easier and faster than ever.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics, column selection
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-selection
+title: "Web Components Grid Column Selection - Ignite UI for Web Components"
+description: Learn how to configure column selection with Ignite UI for Web Components Grid. This makes grid interactions much easier and faster than ever.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics, column selection"
+license: commercial
+_canonicalLink: "grids/grid/column-selection"
+llms:
+  description: "The Web Components Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click."
+_componentKey: Grid
 _tocName: Column Selection
 _premium: true
 ---
-
 # Web Components Grid Column Selection Overview
 
-The Web Components Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The Web Components Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`IgcGrid.columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## Web Components Grid Column Selection Example
 
-The sample below demonstrates the three types of [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
+The sample below demonstrates the three types of `IgcGrid`'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
 
-<!-- ComponentStart: Grid -->
-
-\*_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
-
-<!-- ComponentEnd: Grid -->
+*_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
 
 ```typescript
 export class CustomersDataItem {
@@ -67,20 +62,16 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`IgcGrid.columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input, which takes [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
 
 ## Interactions
 
-The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
+The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`IgcColumn.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`IgcColumn.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
-> [!Note]
-> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) input. The `ColumnGroupComponent` is [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) if all of its [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) descendants are [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected).
+**Note:** 
+The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`IgcGrid.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectable) input. The [`IgcColumnGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent) is [`IgcGrid.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`IgcGrid.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selected) if all of its [`IgcGrid.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectable) descendants are [`IgcGrid.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selected).
 
-<!-- ComponentStart: Grid -->
-
-\*Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
-
-<!-- ComponentEnd: Grid -->
+*Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
 
 ```typescript
 export class CustomersDataItem {
@@ -124,26 +115,25 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Keyboard Combinations
 
-> [!Note]
-> The keyboard combinations are available only when the grid [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input is set to `multiple`.
+**Note:** 
+The keyboard combinations are available only when the grid [`IgcGrid.columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
-
 - Multi-column selection - holding <kbd>CTRL</kbd> + <kbd>click</kbd> on every **selectable** header cell.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>click</kbd> selects all **selectable** columns in between.
 
 ## API Manipulations
 
-The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) by setting the corresponding **setter**.
+The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`IgcColumn.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) by setting the corresponding **setter**.
 
-> [!Note]
-> The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) property is changed it changes the state of its descendants.
+**Note:** 
+The above statement also applies to the [`IgcColumnGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent), except that when the [`IgcGrid.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a `class` for the grid first:
 
 ```html
@@ -217,39 +207,9 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 ## API References
-
-The column selection UI has a few more APIs to explore, which are listed below.
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup)
-
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) properties:
-
-- [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=columnSelection)
-- [`selectedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectedColumns)
-- [`selectColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectColumns)
-- [`deselectColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=deselectColumns)
-- [`selectAllColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectAllColumns)
-- [`deselectAllColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=deselectAllColumns)
-
-[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
-
-- [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable)
-- [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected)
-
-[`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) properties:
-
-- [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable)
-- [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected)
-
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) events:
-
-- `OnColumnsSelectionChange`
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Selection](selection.md)
 - [Cell Selection](cell-selection.md)
@@ -261,8 +221,6 @@ The column selection UI has a few more APIs to explore, which are listed below.
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

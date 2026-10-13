@@ -1,20 +1,18 @@
 ---
-title: Web Components Date Picker Component - Ignite UI for Web Components
-_description: Infragistics' Web Components Date Picker allows the user to select a date from a calendar and set it in an input element.
-_keywords: Web Components Date Picker, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Date Picker Component - Ignite UI for Web Components"
+description: Infragistics' Web Components Date Picker allows the user to select a date from a calendar and set it in an input element.
+keywords: "Web Components Date Picker, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["DatePicker"]
+llms:
+  description: "The Ignite UI for Web Components Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up."
 _tocName: Date Picker
 ---
-
 # Web Components Date Picker Component Overview
 
 The Ignite UI for Web Components Date Picker is a feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up. Lightweight and simple to use, the Date Picker lets users navigate to a desired date with several view options – month, year, and decade. It also supports common validation properties such as minimum and maximum date constraints and required fields.
 
 The Ignite UI for Web Components Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The Web Components Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
-
-> [!NOTE]
-> The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) is a brand new component from Ignite UI for Web Components version 5.0.0. The old [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## Web Components Date Picker Example
 
@@ -33,7 +31,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcDatePickerComponent } from 'igniteui-webcomponents';
@@ -48,17 +46,17 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ### Display Date Picker
 
-To instantiate a [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) in its default `dropdown` state, use the following code:
+To instantiate a [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) in its default `dropdown` state, use the following code:
 
 ```html
 <igc-date-picker>
-    <p slot="helper-text">Date</p>
+    <span slot="helper-text">Date</span>
 </igc-date-picker>
 ```
 
 ### Options
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be bound to a `date` or a `string`.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be bound to a `date` or a `string`.
 
 ```typescript
 const DatePicker = document.querySelector('igc-date-picker') as IgcDatePickerComponent;
@@ -75,7 +73,9 @@ If a string is bound to the picker, it needs to be in the **ISO 8601** format:
 
 ### Projecting components
 
-With prefix and suffix slots we can add different content before and after the main content of the Input.
+The are `prefix` and `suffix` slots available, which allow you to add different content before and after the main content of the Input. When slotting content, we recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots.
+
+There is also a `helper-text` slot exposed, which provides a hint placed below the Input. We recommend using a `<span>` element, when slotting content in the `helper-text` slot.
 
 ```html
 <igc-date-picker id="DatePicker">
@@ -87,7 +87,7 @@ The above snippet will add an additional icon at the end of the input, right aft
 
 #### Customizing the toggle and clear icons
 
-The calendar and clear icon could be templated by using the `calendar` and `clear` slots:
+The calendar and clear icons can be customized using the `calendar` and `clear` slots. We recommend using a `<span>` element when adding symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `calendar` and `clear` slots.
 
 ```html
 <igc-date-picker id="DatePicker">
@@ -98,7 +98,7 @@ The calendar and clear icon could be templated by using the `calendar` and `clea
 
 #### Custom action buttons
 
-The picker's action buttons can be templated using the `actions` slot:
+The picker's action buttons can be templated using the `actions` slot. For the best result, we recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```html
 <igc-date-picker id="DatePicker">
@@ -108,7 +108,7 @@ The picker's action buttons can be templated using the `actions` slot:
 
 ### Keyboard Navigation
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -127,7 +127,7 @@ The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&comp
 
 ### Dialog Mode
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) also supports a `dialog` mode:
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) also supports a `dialog` mode:
 
 ```html
 <igc-date-picker id="DatePicker" mode="dialog">
@@ -141,13 +141,13 @@ The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&comp
 
 ### Display and input format
 
-[`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) and [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
+[`IgcDatePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) and [`IgcDatePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`IgcDatePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
 
 A good thing to note is that the Date Picker Component will always add a leading zero on the `date` and `month` portions if they were provided in a format that does not have it, e.g. `d/M/yy` becomes `dd/MM/yy`. This applies only during editing.
 
-[`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is provided, the picker will use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) as its [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat).
+[`IgcDatePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is used to format the picker's input when it is not focused. If no [`IgcDatePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is provided, the picker will use the [`IgcDatePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) as its [`IgcDatePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat).
 
-More information about these can be found in the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) format section.
+More information about these can be found in the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) format section.
 
 ```css
 /* shared styles are loaded from: */
@@ -156,7 +156,7 @@ More information about these can be found in the [`IgcDateTimeInputComponent`](m
 
 ### Increment and decrement
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) exposes [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepDown) methods. Both of which come from the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) exposes [`IgcDatePicker.stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepUp) and [`IgcDatePicker.stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepDown) methods. Both of which come from the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) and can be used for incrementing and decrementing a specific [`IgcDatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date.
 
 ```html
 <igc-date-picker id="DatePicker">
@@ -167,7 +167,7 @@ The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&comp
 
 ### In Forms
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) could be used in a form element, the component's [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=max) properties act as form validators.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) could be used in a form element, the component's [`IgcDatePicker.min`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=min) and [`IgcDatePicker.max`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=max) properties act as form validators.
 
 In forms, we can handle the `igcChange` event of the component and update the value of the label.
 
@@ -178,13 +178,13 @@ In forms, we can handle the `igcChange` event of the component and update the va
 
 ### Calendar Specific settings
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`IgcDatePicker.visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`IgcFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcFieldPipeArgs&member=weekStart) which determines the starting day of the week, [`IgcDatePicker.showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=locale) input.
+The localization of the [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be controlled through its [`IgcDatePicker.locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=locale) input.
 
-Here is how a [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) with Japanese locale definition would look like:
+Here is how a [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) with Japanese locale definition would look like:
 
 ```html
 <igc-date-picker locale="ja-JP">
@@ -193,7 +193,7 @@ Here is how a [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcompo
 
 ## Styling
 
-The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) component derives from the [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) and [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) component derives from the [`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) and [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](./calendar.md#styling) for reference.
 
 ```css
 igc-date-picker::part(header) {
@@ -265,10 +265,9 @@ igc-date-picker::part(year-inner selected) {
 
 ## API References
 
-- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
-- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
-- [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)<br />
+[`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)<br />
+[`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)<br />
 
 ## Additional Resources
 

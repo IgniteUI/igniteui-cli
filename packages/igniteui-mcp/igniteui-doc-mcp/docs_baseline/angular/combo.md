@@ -1,15 +1,15 @@
 ---
 title: Angular Combobox Component | Data binding combobox | Infragistics | MIT license
-_description: The Ignite UI for Angular ComboBox provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
-_keywords: angular combobox, angular combo component, angular combobox component, Angular UI Components, ignite ui for angular, infragistics
-_license: MIT
+description: The Ignite UI for Angular ComboBox provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
+keywords: angular combobox, angular combo component, angular combobox component, Angular UI Components, ignite ui for angular, infragistics
+license: MIT
+llms:
+  description: "The Angular ComboBox component represents a drop-down list that provides editable functionalities, allowing users to choose multiple options from a predefined list."
 _tocName: Combo
 ---
-
 # Angular ComboBox Component Overview
 
 The Angular ComboBox component represents a drop-down list that provides editable functionalities, allowing users to choose multiple options from a predefined list. The Ignite UI for Angular ComboBox Component also provides filtering capabilities, grouping and adding custom values to a dropdown list. It can be used as an alternative to the HTML select tag and has several out-of-the-box features such as data binding (local and remote), filtering, grouping, custom templates for items, header, and footer, custom values, and more.
-
 
 ## Angular ComboBox Example
 
@@ -48,19 +48,19 @@ export class ComboMainComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Angular ComboBox Features
 
 The combobox control exposes the following features:
 
-- Data Binding - local data and [remote data](combo-remote.md)
-- [Value Binding](combo-features.md#data-binding)
-- [Filtering](combo-features.md#filtering)
-- [Grouping](combo-features.md#grouping)
-- [Custom Values](combo-features.md#custom-values)
-- [Templates](combo-templates.md)
-- Integration with [Template Driven Forms](input-group.md) and [Reactive Forms](angular-reactive-form-validation.md)
+- Data Binding - local data and [remote data](/combo-remote)
+- [Value Binding](/combo-features#data-binding)
+- [Filtering](/combo-features#filtering)
+- [Grouping](/combo-features#grouping)
+- [Custom Values](/combo-features#custom-values)
+- [Templates](/combo-templates)
+- Integration with [Template Driven Forms](/input-group) and [Reactive Forms](/angular-reactive-form-validation)
 
 ## Getting Started with Ignite UI for Angular ComboBox
 
@@ -70,7 +70,7 @@ To get started with the Ignite UI for Angular ComboBox component, first you need
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxComboModule` in your **app.module.ts** file.
 
@@ -111,7 +111,7 @@ Now that you have the Ignite UI for Angular Combo module or directives imported,
 
 ## Using the Angular ComboBox Component
 
-After the initial setup, you can bind the [igx-combo](mcp:get_api_reference?platform=angular&component=IgxComboComponent) to data.
+After the initial setup, you can bind the [`igx-combo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) to data.
 
 ```typescript
 @Component({
@@ -134,7 +134,7 @@ Our combobox is now bound to the array of cities, but we still haven't told the 
 
 ### Data value and display properties
 
-Since the combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [valueKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) and [displayKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey):
+Since the combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [`valueKey`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) and [`displayKey`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey):
 
 - `valueKey` - _Optional, recommended for object arrays_ - Specifies which property of the data entries will be stored for the combobox's selection. If `valueKey` is omitted, the combobox value will use references to the data entries (i.e. the selection will be an array of entries from `igxCombo.data`).
 - `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for `displayKey`, the combobox will use the specified `valueKey` (if any).
@@ -145,8 +145,8 @@ In our case, we want the combobox to display the `name` of each city and the com
 <igx-combo [data]="cities" displayKey="name" valueKey="id"></igx-combo>
 ```
 
-> [!Note]
-> When the data source is an array of primitives (e.g. `string[]`, `number[]`), **do not** specify a `valueKey` and `displayKey`. Primitive values will be used for both value and text.
+**Note:** 
+When the data source is an array of primitives (e.g. `string[]`, `number[]`), **do not** specify a `valueKey` and `displayKey`. Primitive values will be used for both value and text.
 
 ### Two-Way Binding
 
@@ -165,7 +165,6 @@ export class MyCombo {
     public selectedCities: string[] = ['BG01', 'UK01'];
 }
 ```
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -231,7 +230,6 @@ button {
 }
 ```
 
-
 Two-way binding can also be achieved without a specified `valueKey`. For example, if `valueKey` is omitted, the bound model will look like this:
 
 ```typescript
@@ -241,7 +239,6 @@ export class MyCombo {
     public selectedCities: { name: string, id: string } [] = [this.cities[0], this.cities[1]];
 }
 ```
-
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -332,12 +329,11 @@ button {
 }
 ```
 
-
 ### Selection API
 
 The combobox component exposes API that allows getting and manipulating the current selection state of the control.
 
-One way to get the combobox's selection is via the [selection](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selection) property. It returns an array of values which correspond to the selected items, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
+One way to get the combobox's selection is via the [`selection`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selection) property. It returns an array of values which correspond to the selected items, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
 
 In our example, `selection` will return an array of the selected cities' `id`s:
 
@@ -348,7 +344,7 @@ export class MyCombo {
 }
 ```
 
-Using the selection API, you can also change the combobox's selected items without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a set of cities, using the [select()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=select) method:
+Using the selection API, you can also change the combobox's selected items without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a set of cities, using the [`select()`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=select) method:
 
 ```html
 <igx-combo [data]="cities" displayKey="name" valueKey="id"></igx-combo>
@@ -368,7 +364,7 @@ export class MyExampleCombo {
 }
 ```
 
-The combobox also fires an event every time its selection changes - [selectionChanging()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. The event can also be cancelled, preventing the selection update with the new array of items.
+The combobox also fires an event every time its selection changes - [`selectionChanging()`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [`IgxIComboSelectionChangingEventArgs`](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. The event can also be cancelled, preventing the selection update with the new array of items.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-combo` tag:
 
@@ -394,7 +390,7 @@ export class MyExampleCombo {
 }
 ```
 
-Additionally, the combobox fires a [selectionChanged](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [IComboSelectionChangedEventArgs](mcp:get_api_reference?platform=angular&component=IComboSelectionChangedEventArgs), contain information about the previous selection, the current selection and the items that were added or removed. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the value change callback is invoked.
+Additionally, the combobox fires a [`IgxCombo.selectionChanged`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [`IgxIComboSelectionChangedEventArgs`](mcp:get_api_reference?platform=angular&component=IComboSelectionChangedEventArgs), contain information about the previous selection, the current selection and the items that were added or removed. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the value change callback is invoked.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-combo` tag:
 
@@ -441,9 +437,9 @@ public singleSelection(event: IComboSelectionChangingEventArgs) {
 }
 ```
 
-> Note: It is recommended to use the [igxSimpleCombo](simple-combo.md) instead of modifying the igxCombo like it is shown above.
+> Note: It is recommended to use the [igxSimpleCombo](/simple-combo) instead of modifying the igxCombo like it is shown above.
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Keyboard Navigation
 
@@ -467,8 +463,8 @@ When combobox is opened and search input is focused:
 
 - `ArrowDown` will move focus from the search input to the first list item. If the list is empty and custom values are enabled will move it to the Add new item button.
 
-> [!NOTE]
-> Any other key stroke will be handled by the input.
+**Note:** 
+Any other key stroke will be handled by the input.
 
 When combobox is opened and list item is focused:
 
@@ -490,72 +486,25 @@ When combobox is opened, allow custom values are enabled and add item button is 
 
 - `ArrowUp` focus will be moved back to the last list item or if the list is empty, will be moved to the search input.
 
-
 ## Styling
 
 ### Combo Theme Property Map
 
 When you modify a primary property, all related dependent properties are updated automatically:
 
-<table class="collapsible-table">
-    <thead>
-        <tr>
-            <th>Primary Property</th>
-            <th>Dependent Property</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody class="group">
-        <tr class="primary">
-            <td><strong>$empty-list-background</strong></td>
-            <td>$empty-list-placeholder-color</td>
-            <td>The combo placeholder text color.</td>
-        </tr>
-        <tr class="primary">
-            <td><details><summary><strong>$toggle-button-background</strong></summary></details></td>
-            <td>$toggle-button-foreground</td>
-            <td>The combo toggle button foreground color.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$toggle-button-background-focus</td>
-            <td>The combo toggle button background color when focused.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$toggle-button-background-focus--border</td>
-            <td>The combo toggle button background color when focused (border variant).</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$toggle-button-foreground-filled</td>
-            <td>The combo toggle button foreground color when filled.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$toggle-button-background-disabled</td>
-            <td>The combo toggle button background color when disabled.</td>
-        </tr>
-        <tr class="dependent">
-            <td></td>
-            <td>$toggle-button-foreground-disabled</td>
-            <td>The combo toggle button foreground color when disabled.</td>
-        </tr>
-        <tr class="primary">
-            <td><strong>$toggle-button-background-focus</strong></td>
-            <td>$toggle-button-foreground-focus</td>
-            <td>The combo toggle button foreground color when focused.</td>
-        </tr>
-        <tr class="primary">
-            <td><strong>$clear-button-background-focus</strong></td>
-            <td>$clear-button-foreground-focus</td>
-            <td>The combo clear button foreground color when focused.</td>
-        </tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$empty-list-background** | $empty-list-placeholder-color | The combo placeholder text color. |
+| **$toggle-button-background** | $toggle-button-foreground | The combo toggle button foreground color. |
+|  | $toggle-button-background-focus | The combo toggle button background color when focused. |
+|  | $toggle-button-background-focus--border | The combo toggle button background color when focused (border variant). |
+|  | $toggle-button-foreground-filled | The combo toggle button foreground color when filled. |
+|  | $toggle-button-background-disabled | The combo toggle button background color when disabled. |
+|  | $toggle-button-foreground-disabled | The combo toggle button foreground color when disabled. |
+| **$toggle-button-background-focus** | $toggle-button-foreground-focus | The combo toggle button foreground color when focused. |
+| **$clear-button-background-focus** | $clear-button-foreground-focus | The combo clear button foreground color when focused. |
 
-
-Using the [`Ignite UI for Angular Theming`](themes/index.md), we can greatly alter the combobox appearance. First, in order for us to use the functions exposed by the theme engine, we need to import the `index` file in our style file:
+Using the [`Ignite UI for Angular Theming`](/themes), we can greatly alter the combobox appearance. First, in order for us to use the functions exposed by the theme engine, we need to import the `index` file in our style file:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -564,7 +513,7 @@ Using the [`Ignite UI for Angular Theming`](themes/index.md), we can greatly alt
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`combo-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme). By setting the `$toggle-button-background`, the theme automatically determines suitable state colors and contrast foregrounds for the button. You can also specify additional parameters, such as `$search-separator-border-color`:
+Following the simplest approach, we create a new theme that extends the `combo-theme`. By setting the `$toggle-button-background`, the theme automatically determines suitable state colors and contrast foregrounds for the button. You can also specify additional parameters, such as `$search-separator-border-color`:
 
 ```scss
 $custom-combo-theme: combo-theme(
@@ -573,7 +522,7 @@ $custom-combo-theme: combo-theme(
 );
 ```
 
-The [`IgxComboComponent`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) uses the [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) internally as an item container. It also includes the [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) and the [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent) components. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let you change the combobox styles:
+The [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) uses the [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) internally as an item container. It also includes the [`IgxInputGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) and the [`IgxCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent) components. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let you change the combobox styles:
 
 ```scss
 $custom-drop-down-theme: drop-down-theme(
@@ -597,10 +546,10 @@ The last step is to include the component's theme.
 }
 ```
 
-> [!NOTE]
-> The [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) component uses the [`IgxOverlay`](overlay.md) service to hold and display the combobox items list container. To properly scope your styles you might have to use an [`OverlaySetting.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet). For more details check the [`IgxOverlay Styling Guide`](overlay-styling.md). Also is necessary to use `::ng-deep` when we are styling the components.
-> [!Note]
-> The default `type` of the `IgxCombo` is `box` unlike the [`IgxSelect`](select.md) where it is `line`.
+**Note:** 
+The [`IgxComboComponent`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) uses the [`IgxOverlay`](/overlay) service to display its list. Depending on View Encapsulation and where the generated selectors must match, the local theme include may still require `::ng-deep`. A list attached to the default detached outlet also cannot inherit from the combo's host; configure the [`IgxOverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) beneath the themed container or emit the theme from a selector that can match the outlet. See the [`IgxOverlay Styling Guide`](/overlay-styling).
+[!Note]
+The default `type` of the `IgxCombo` is `box` unlike the [`IgxSelect`](/select) where it is `line`.
 
 ### Demo
 
@@ -676,12 +625,11 @@ $custom-checkbox-theme: checkbox-theme(
 }
 ```
 
-
-<div class="divider--half"></div>
+<hr/>
 
 ### Styling with Tailwind
 
-You can style the `combo` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the `combo` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -699,7 +647,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [combo-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme). The syntax is as follows:
+You can find the full list of properties in the `combo-theme`. The syntax is as follows:
 
 ```html
 <igx-combo
@@ -709,14 +657,62 @@ class="!light-combo
 ...></igx-combo>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your combo should look like this:
 
-<div class="sample-container loading" style="height:410px">
-    <iframe id="combo-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/lists/combo-tailwind-styling' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
+```typescript
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { IComboSelectionChangingEventArgs, IgxComboComponent } from 'igniteui-angular/combo';
+import { IgxToastComponent } from 'igniteui-angular/toast';
+import { VerticalAlignment } from 'igniteui-angular/core';
+import { getHeroWeaponsData, IHeroWeapon } from '../../../data/heroData';
+
+@Component({
+    selector: 'app-combo-tailwind-styling',
+    styleUrls: ['./combo-tailwind-styling.component.scss'],
+    templateUrl: './combo-tailwind-styling.component.html',
+    imports: [IgxComboComponent, IgxToastComponent]
+})
+export class ComboTailwindStylingComponent implements OnInit {
+    elem = inject(ElementRef);
+
+    @ViewChild('loadToast', { read: IgxToastComponent, static: true })
+    public loadToast: IgxToastComponent;
+
+    public weaponsData: IHeroWeapon[] = [];
+
+    public ngOnInit() {
+        this.weaponsData = getHeroWeaponsData();
+    }
+
+    public setWeaponsLimit(event: IComboSelectionChangingEventArgs) {
+        this.loadToast.positionSettings.verticalDirection = VerticalAlignment.Middle;
+        // this.loadToast.autoHide = true;
+
+        if (event.newValue.length > 2) {
+            event.cancel = true;
+            this.loadToast.open('Choose only two items');
+        }
+    }
+}
+```
+```html
+<div class="control-wrapper">
+    <igx-combo class="!light-combo ![--toggle-button-background:#99BAA6] ![--clear-button-foreground:#99BAA6]" [width]="'430px'" [data]="weaponsData" [displayKey]="'field'" [valueKey]="'field'" [overlaySettings]="{outlet: elem}"
+        [groupKey]="'weaponRange'" placeholder="Pick up two weapons" searchPlaceholder="Search..."
+        [itemsMaxHeight]="255" (selectionChanging)="setWeaponsLimit($event)">
+    </igx-combo>
+
+    <igx-toast #loadToast [displayTime]="1200"></igx-toast>
 </div>
+```
+```scss
+.control-wrapper {
+  padding: 8px;
+}
+```
 
 ## Known Issues
 
@@ -724,39 +720,34 @@ At the end your combo should look like this:
 - When the combobox is bound to an array of primitive data which contains `undefined` (i.e. `[ undefined, ...]`), `undefined` is not displayed in the dropdown. When it is bound to an array of complex data (i.e. objects) and the value used for `valueKey` is `undefined`, the item will be displayed in the dropdown, but cannot be selected.
 - When the combobox is bound to a remote service and there is a predefined selection, its input will remain blank until the requested data is loaded.
 
-> [!NOTE]
-> The combobox uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for the combobox. For more details see [`igxForOf Known Issues`](for-of.md#known-limitations) section.
+**Note:** 
+The combobox uses the [Virtual Scroll](./layouts/virtual-scroll.md) component internally to virtualize its list, hence all Virtual Scroll limitations are valid for the combobox. For more details see the [Virtual Scroll Known Limitations](./layouts/virtual-scroll.md#known-limitations) section.
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
-- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-
+<hr/>
+- [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
+- `IgxComboComponent Styles`
 Additional [angular components](https://www.infragistics.com/products/ignite-ui-angular) and/or directives with relative APIs that were used:
-
-- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
-- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-- [IgxCheckboxComponent](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
-
+- [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 ## Theming Dependencies
 
-- [IgxDropDown Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
-- [IgxCheckbox Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme)
-- [IgxOverlay Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
+- `IgxDropDown Theme`
+- `IgxIcon Theme`
+- `IgxCheckbox Theme`
+- `IgxOverlay Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [ComboBox Features](combo-features.md)
-- [ComboBox Remote Binding](combo-remote.md)
-- [ComboBox Templates](combo-templates.md)
-- [Template Driven Forms Integration](input-group.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
-- [Single Select ComboBox](simple-combo.md)
+- [ComboBox Features](/combo-features)
+- [ComboBox Remote Binding](/combo-remote)
+- [ComboBox Templates](/combo-templates)
+- [Template Driven Forms Integration](/input-group)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
+- [Single Select ComboBox](/simple-combo)
 
 Our community is active and always welcoming to new ideas.
 

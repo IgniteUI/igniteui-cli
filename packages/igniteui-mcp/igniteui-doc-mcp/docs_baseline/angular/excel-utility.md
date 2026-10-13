@@ -1,18 +1,17 @@
 ---
-title: Angular Excel Library | Excel Utility | Infragistics
-_description: Use Infragistics' Angular excel library to work with spreadsheet data using Microsoft Excel features. Learn how easily you can transfer data from excel to your application using Ignite UI for Angular excel library!
-_keywords: excel library, Ignite UI for Angular, Infragistics, saving files, loading files, WorkbookFormat
-_license: commercial
+title: "Angular Excel Library | Excel Utility | Infragistics"
+description: Use Infragistics' Angular excel library to work with spreadsheet data using Microsoft Excel features.  Learn how easily you can transfer data from excel to your application using Ignite UI for Angular excel library!
+keywords: excel library, Ignite UI for Angular, Infragistics, saving files, loading files, WorkbookFormat
+license: commercial
 mentionedTypes: ["Workbook", "WorkbookFormat", "WorkbookSaveOptions"]
+llms:
+  description: "Describes the ExcelUtility helper used to load, save, and convert workbook data with the Ignite UI for Angular Excel Library."
 _tocName: Excel Utility
 _premium: true
 ---
-
 # Angular Excel Utility
 
-This topic provides utility function for loading and saving Microsoft Excel files using [Excel Library](excel-library.md)
-
-<!-- Angular -->
+This topic provides utility function for loading and saving Microsoft Excel files using [Excel Library](./excel-library.md)
 
 ```ts
 import { saveAs } from "file-saver"; // npm package: "file-saver": "^1.3.8"
@@ -113,10 +112,10 @@ export class ExcelUtility {
         });
     }
 }
+
 ```
 
 ## API References
-
-- [`WorkbookFormat`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_excel.workbookformat.html)
-- [`WorkbookSaveOptions`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.workbooksaveoptions.html)
-- [`Workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.workbook.html)
+`IgxWorkbookFormat`
+`IgxWorkbookSaveOptions`
+`IgxWorkbook`

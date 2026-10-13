@@ -1,8 +1,10 @@
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { ApiDocLoader } from '../lib/api-doc-loader.js';
 import { searchApiDocs, extractSection, extractMember } from '../lib/api-doc-search.js';
-import type { GetApiReferenceParams, SearchApiParams } from './schemas.js';
-import { getPlatformConfig } from '../config/platforms.js';
+import type { ImportResolver, ResolvedImport } from '../lib/import-resolver.js';
+import type { GetApiReferenceParams, ResolveImportParams, SearchApiParams } from './schemas.js';
+import { getPlatformConfig, PLATFORMS, type Platform } from '../config/platforms.js';
+import { findDeprecation, formatDeprecationNotice, withDeprecationNotices, type Deprecation } from '../config/deprecations.js';
 
 export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
@@ -21,32 +23,33 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       }
     }
 
-    let resolvedComponent = component;
-    let entry = docLoader.get(platform, resolvedComponent);
+    // Agents that read `member` as required send placeholders like "*" or ".*"
+    // when they want the whole entry. Anything with no letters or digits cannot
+    // name a real member, so treat it as omitted rather than failing.
+    if (member && !/[A-Za-z0-9]/.test(member)) {
+      member = undefined;
+    }
+
+    const deprecation = findDeprecation(platform, component);
+    if (deprecation) {
+      return { content: [{ type: "text", text: formatDeprecationNotice(deprecation, [component]) }] };
+    }
+
+    // ApiDocLoader.get is exact-first, then case-insensitive and generic-stripped
+    // (IgbCombo → IgbCombo<T>).
+    const entry = docLoader.get(platform, component);
 
     if (!entry) {
-      // Try case-insensitive search within platform
-      const results = docLoader.search({ platform, filter: resolvedComponent });
-      const caseInsensitive = results.find(
-        e => e.component.toLowerCase() === resolvedComponent.toLowerCase()
-      );
-
-      if (caseInsensitive) {
-        resolvedComponent = caseInsensitive.component;
-        entry = caseInsensitive;
-      }
-
-      if (!entry) {
-        const platformName = getPlatformConfig(platform).displayName;
-        return {
-          content: [{
-            type: "text",
-            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use search_api to find available components.`
-          }],
-          isError: true,
-        };
-      }
+      const platformName = getPlatformConfig(platform).displayName;
+      return {
+        content: [{
+          type: "text",
+          text: `API reference for "${component}" not found in ${platformName}. Use search_api to find available components.`
+        }],
+        isError: true,
+      };
     }
+    const resolvedComponent = entry.component;
 
     const content = entry.content;
     if (!content) {
@@ -100,7 +103,7 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
       return {
         content: [{
           type: "text",
-          text: `No results found for "${query}"${platformText}.`
+          text: withDeprecationNotices(platform, `No results found for "${query}"${platformText}.`, [query])
         }]
       };
     }
@@ -119,6 +122,137 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
       ? `⚠ Results span multiple frameworks (${[...frameworks].join(', ')}). Only use entries that match your target framework — never apply APIs, events, or binding syntax from one framework to another.\n\n`
       : '';
 
-    return { content: [{ type: "text", text: crossPlatformWarning + lines.join("\n\n") }] };
+    // Only the query is scanned: excerpts from live entries (data sources, event
+    // args) often reference deprecated types incidentally.
+    const text = withDeprecationNotices(platform, crossPlatformWarning + lines.join("\n\n"), [query]);
+    return { content: [{ type: "text", text }] };
+  };
+}
+
+const TYPE_ONLY_KINDS = new Set(['interface', 'type']);
+const BLAZOR_CONTROLS_PACKAGES = new Set(['IgniteUI.Blazor', 'IgniteUI.Blazor.Lite', 'IgniteUI.Blazor.GridLite']);
+
+function groupByModule(matches: ResolvedImport[]): Map<string, ResolvedImport[]> {
+  const groups = new Map<string, ResolvedImport[]>();
+  for (const m of [...matches].sort((a, b) => a.module.localeCompare(b.module))) {
+    const list = groups.get(m.module) ?? [];
+    if (!list.some(x => x.symbol === m.symbol)) list.push(m);
+    groups.set(m.module, list);
+  }
+  return groups;
+}
+
+function formatEsImports(matches: ResolvedImport[]): string[] {
+  const lines: string[] = [];
+  for (const [module, list] of groupByModule(matches)) {
+    const names = [...list]
+      .sort((a, b) => a.symbol.localeCompare(b.symbol))
+      .map(m => (TYPE_ONLY_KINDS.has(m.kind ?? '') ? `type ${m.symbol}` : m.symbol));
+    lines.push(`import { ${names.join(', ')} } from '${module}';`);
+  }
+  return ['```ts', ...lines, '```'];
+}
+
+function formatBlazor(matches: ResolvedImport[]): string[] {
+  const lines: string[] = [];
+  const groups = groupByModule(matches);
+  if ([...groups.keys()].some(p => BLAZOR_CONTROLS_PACKAGES.has(p))) {
+    lines.push('```razor', '@using IgniteUI.Blazor.Controls', '```', '');
+  }
+  for (const [pkg, list] of groups) {
+    const names = list.map(m => (m.alsoIn ? `${m.symbol} (also in ${m.alsoIn.map(p => `\`${p}\``).join(', ')})` : m.symbol));
+    lines.push(`- NuGet \`${pkg}\`: ${names.join(', ')}`);
+  }
+
+  lines.push('', 'Notes:');
+  lines.push('- nuget.org ships trial builds as `<Package>.Trial` (e.g. `IgniteUI.Blazor.Trial`); the licensed Infragistics feed uses the plain package id.');
+  const otherPackages = [...groups.keys()].filter(p => !BLAZOR_CONTROLS_PACKAGES.has(p));
+  if (otherPackages.length > 0) {
+    lines.push(`- The \`@using\` namespace for ${otherPackages.map(p => `\`${p}\``).join(', ')} is not listed here; check the package's API reference.`);
+  }
+  const modules = [...new Set(matches.flatMap(m => (m.registerModule ? [m.registerModule] : [])))];
+  if (modules.length > 0) {
+    lines.push(`- Register the component modules in Program.cs: \`builder.Services.AddIgniteUIBlazor(${modules.map(m => `typeof(${m})`).join(', ')});\``);
+  }
+  return lines;
+}
+
+function formatPlatform(platform: Platform, matches: ResolvedImport[]): string {
+  const lines = [`## ${getPlatformConfig(platform).displayName}`, ''];
+  if (platform === 'blazor') {
+    return [...lines, ...formatBlazor(matches)].join('\n');
+  }
+
+  lines.push(...formatEsImports(matches));
+  const notes: string[] = [];
+  if (platform === 'webcomponents') {
+    const toDefine = matches
+      .filter(m => m.module === 'igniteui-webcomponents' && m.symbol.endsWith('Component'))
+      .map(m => m.symbol);
+    if (toDefine.length > 0) {
+      notes.push(`Import \`defineComponents\` from \`igniteui-webcomponents\`, then register the elements once at startup: \`defineComponents(${toDefine.join(', ')});\`.`);
+    }
+    if (matches.some(m => m.module === 'igniteui-webcomponents-grids/grids')) {
+      notes.push("Grid elements are registered by the side-effect import `import 'igniteui-webcomponents-grids/grids/combined';`.");
+    }
+  }
+  for (const m of matches.filter(m => m.alsoIn)) {
+    notes.push(`\`${m.symbol}\` is also exported by ${m.alsoIn!.map(p => `\`${p}\``).join(', ')}; use whichever package the project already depends on.`);
+  }
+  notes.push(`If package.json depends on the \`@infragistics/\`-scoped (licensed) build of a package, keep that scope with the same path, e.g. \`@infragistics/${matches[0].module}\`.`);
+
+  lines.push('', 'Notes:', ...notes.map(n => `- ${n}`));
+  return lines.join('\n');
+}
+
+export function createResolveImportHandler(resolver: ImportResolver) {
+  return async (params: ResolveImportParams): Promise<CallToolResult> => {
+    const { symbols, platform } = params;
+    // Requested symbols per deprecation, so its notice can name them.
+    const deprecated = new Map<Deprecation, string[]>();
+    const results = symbols.flatMap(s => {
+      let deprecation = findDeprecation(platform, s);
+      const result = deprecation ? undefined : resolver.resolve(s, platform);
+      // Without a platform an unprefixed name is checked only once no framework resolves it.
+      if (result && !platform && result.matches.length === 0) deprecation = findDeprecation('any', s);
+      if (deprecation) {
+        deprecated.set(deprecation, [...(deprecated.get(deprecation) ?? []), s]);
+        return [];
+      }
+      return result ? [result] : [];
+    });
+
+    const byPlatform = new Map<Platform, ResolvedImport[]>();
+    for (const m of results.flatMap(r => r.matches)) {
+      byPlatform.set(m.platform, [...(byPlatform.get(m.platform) ?? []), m]);
+    }
+
+    const sections = [...deprecated].map(([d, requested]) => formatDeprecationNotice(d, requested));
+    const ambiguous = results.filter(r => r.matches.length > 1);
+    if (ambiguous.length > 0) {
+      const names = ambiguous.map(r => `"${r.query}"`).join(', ');
+      sections.push(`⚠ ${names} ${ambiguous.length > 1 ? 'exist' : 'exists'} in several frameworks. Use only the section for your target framework, or pass \`platform\`.`);
+    }
+
+    for (const p of PLATFORMS) {
+      const list = byPlatform.get(p);
+      if (list) sections.push(formatPlatform(p, list));
+    }
+
+    const unresolved = results.filter(r => r.matches.length === 0);
+    if (unresolved.length > 0) {
+      const scope = platform ? ` in ${getPlatformConfig(platform).displayName}` : '';
+      const lines = unresolved.map(r => {
+        const hint = r.suggestions.length > 0 ? ` Did you mean: ${r.suggestions.join(', ')}?` : '';
+        return `- \`${r.query}\` — not found${scope}.${hint}`;
+      });
+      sections.push(['## Not resolved', '', ...lines, '', 'Confirm the exact name with search_api before importing it.'].join('\n'));
+    }
+
+    return {
+      content: [{ type: "text", text: sections.join('\n\n') }],
+      // Deprecated symbols are answered by their notice; the rest fail only if none resolved.
+      ...(results.length > 0 && byPlatform.size === 0 ? { isError: true } : {}),
+    };
   };
 }

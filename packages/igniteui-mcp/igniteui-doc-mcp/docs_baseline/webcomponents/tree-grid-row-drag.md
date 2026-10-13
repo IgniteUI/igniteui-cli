@@ -1,19 +1,18 @@
 ---
-title: Web Components Tree Grid Row Dragging - Ignite UI for Web Components
-_description: Row dragging in Web Components Tree Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
-_keywords: Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-drag
+title: "Web Components Tree Grid Row Dragging - Ignite UI for Web Components"
+description: Row dragging in Web Components Tree Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
+keywords: "Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-drag"
+llms:
+  description: "The Ignite UI for Web Components Row Dragging feature in Web Components Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse."
+_componentKey: TreeGrid
 _tocName: Row Dragging
 _premium: true
 ---
-
 # Row Dragging in Web Components Tree Grid
 
-The Ignite UI for Web Components Row Dragging feature in Web Components Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component and is configurable via the [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) input.
+The Ignite UI for Web Components Row Dragging feature in Web Components Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component and is configurable via the [`IgcTreeGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) input.
 
 ## Web Components Tree Grid Row Drag Example
 
@@ -112,46 +111,54 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), all you need to do is set the grid's [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), all you need to do is set the grid's [`IgcTreeGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's [`IgcTreeGrid.rowDragStart`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDragStart) event to fire. Releasing the click at any time will cause [`IgcTreeGrid.rowDragEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDragEnd) event to fire.
 
 ```html
 <igc-tree-grid row-draggable="true">
 </igc-tree-grid>
 ```
 
-### Templating the Drag Icon
+### Drop Areas
 
-The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
+First we need to register the `DragDropModule`:
 
-```html
-<igc-tree-grid row-draggable="true" id="grid">
-</igc-tree-grid>
+```typescript
+import { IgcDragDropModule } from 'igniteui-webcomponents';
+// ...
+ModuleManager.register(
+    IgcDragDropModule
+);
 ```
 
 ```ts
 constructor() {
-    var grid = this.grid = document.getElementById('grid') as IgcHierarchicalGridComponent;
-    grid.dragIndicatorIconTemplate = this.dragIndicatorIconTemplate;
+    var grid = this.grid = document.getElementById('grid') as IgcGridComponent;
+
+    this._bind = () => {
+        grid.rowDragGhost = this.rowDragGhostTemplate;
+    }
+    this._bind();
 }
 
-public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
-    return html`<igc-icon name="drag_handle" collection="material"></igc-icon>`;
+public rowDragGhostTemplate = (ctx: IgcGridRowDragGhostContext) => {
+    return html`<igc-icon fontSet="material">arrow_right_alt</igc-icon>`;
 }
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+### Templating the Drag Icon
 
-<!-- ComponentEnd: TreeGrid -->
+The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
+#### Example Demo
+
+
 
 ## Application Demo
 
 ### Row Reordering Demo
 
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
-
-<!-- ComponentStart: TreeGrid -->
 
 ```html
 <igc-tree-grid id="tGrid" row-draggable="true" primary-key="ID">
@@ -166,26 +173,18 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
+**Note:** 
+Make sure that there is a [`IgcTreeGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-> [!Note]
-> Make sure that there is a [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
-
-Once [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
-
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
+Once [`IgcTreeGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 - Is the row expanded? If so, collapse it.
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=data) array
+- Once you've found the **target** row, swap the records' places in the `Data` array
 - Was the row initially selected? If so, mark it as selected.
 
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
-
 Below, you can see this implemented:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```ts
 public webTreeGridReorderRowStartHandler(args: CustomEvent<IgcRowDragStartEventArgs){
@@ -240,17 +239,12 @@ public webTreeGridReorderRowStartHandler(args: CustomEvent<IgcRowDragStartEventA
         }
         return -1;
     }
-```
 
-<!-- ComponentEnd: TreeGrid -->
+```
 
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 Notice that we also have row selection enabled and we preserve the selection when dropping the dragged row.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -291,17 +285,11 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 
 ## Limitations
 
-Currently, there are no known limitations for the [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable).
+Currently, there are no known limitations for the [`IgcTreeGrid.rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable).
 
 ## API References
-
-- [`rowDraggable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowDraggable)
-- `RowDragStart`
-- `RowDragEnd`
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 ## Additional Resources
-
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

@@ -1,16 +1,15 @@
 ---
-title: Blazor Tree Grid Exporting - Ignite UI for Blazor
-_description: With Ignite UI for Blazor Tree Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
-_keywords: Blazor, Tree Grid, Tree Grid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/export-excel
+title: "Blazor Tree Grid Exporting - Ignite UI for Blazor"
+description: With Ignite UI for Blazor Tree Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
+keywords: "Blazor, Tree Grid, Tree Grid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/export-excel"
+llms:
+  description: "The Ignite UI for Blazor Tree Grid provides data export functionality through the Grid Toolbar Exporter component."
+_componentKey: TreeGrid
 _tocName: Exporting
 _premium: true
 ---
-
 # Blazor Tree Grid Exporting
 
 The Ignite UI for Blazor Tree Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) inside the grid's toolbar. By default, all export formats are enabled.
@@ -154,17 +153,31 @@ public class EmployeesNestedData
 }
 ```
 
+## Exporting Tree Grid Data
+
+To initiate an export, you can use the handler of a button in your component's template.
+
+```Razor
+<IgbGrid data="localData"/>
+<button @onclick="exportButtonHandler">Export to Excel</button>
+<button @onclick="exportPdfButtonHandler">Export to PDF</button>
+```
+
 ## Export Multi Column Headers Grid
 
-You can export [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
+You can export [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` [`IgbGridToolbarExportEventArgs.ignoreMultiColumnHeaders`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExportEventArgs&member=ignoreMultiColumnHeaders) to `true`.
 
-> [!Note]
-> The exported [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
+**Note:** 
+The exported `IgbTreeGrid` will not be formatted as a table, since Excel tables do not support multiple column headers.
 
-> [!Note]
-> [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
->
-> - [`ExportExcel`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter&member=ExportExcel), `ExportCsv`, `ExportPdf`
+**Note:** 
+The exported [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
+
+**Note:** 
+[`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+- `export-excel`, `export-csv`, `export-pdf`
+- `exportExcel`, `exportCsv`, `exportPdf`
+- [`ExportExcel`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter&member=exportExcel), `ExportCsv`, `ExportPdf`
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -373,12 +386,11 @@ public class EmployeesFlatDetails
 
 ## Export Grid with Frozen Column Headers
 
-By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` `FreezeHeaders` to `true`.
+By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` [`IgbGridToolbarExportEventArgs.freezeHeaders`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExportEventArgs&member=freezeHeaders) to `true`.
 
-> [!Note]
-> PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
+**Note:** 
+PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
 
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ```razor
  <IgbTreeGrid>
@@ -394,13 +406,10 @@ By default, the Excel Exporter service exports the grid with scrollable (unfroze
 igRegisterScript("WebGridExportEventFreezeHeaders", (ev) => {
     ev.detail.options.freezeHeaders = false;
 }, false);
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## Known Limitations
-
-<!-- ComponentStart: TreeGrid -->
 
 |Limitation|Description|
 |--- |--- |
@@ -409,12 +418,8 @@ igRegisterScript("WebGridExportEventFreezeHeaders", (ev) => {
 |Cell Styling|The Excel exporter service does not support exporting a custom style applied to a cell component. In such scenarios we recommend using the [Excel Library](../../excel-library.md).|
 |Wide PDF layouts|Very wide grids can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.|
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## API References
-
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

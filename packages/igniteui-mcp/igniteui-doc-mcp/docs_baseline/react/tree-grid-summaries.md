@@ -1,16 +1,15 @@
 ---
-title: React Tree Grid Summaries - Ignite UI for React
-_description: Configure React Tree Grid summaries in the group footer of the column and use the option to set custom React template in the Ignite UI for React Material table
-_keywords: React Tree Grid summaries, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["GridBaseDirective", "Column", "SummaryOperand"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/summaries
+title: "React Tree Grid Summaries - Ignite UI for React"
+description: Configure React Tree Grid summaries in the group footer of the column and use the option to set custom React template in the Ignite UI for React Material table
+keywords: "React Tree Grid summaries, React, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/summaries"
+llms:
+  description: "The Ignite UI for React Summaries feature in React Tree Grid functions on a per-column level as group footer."
+_componentKey: TreeGrid
 _tocName: Summaries
 _premium: true
 ---
-
 # React Tree Grid Summaries
 
 The Ignite UI for React Summaries feature in React Tree Grid functions on a per-column level as group footer. React IgrTreeGrid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom  template in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
@@ -193,13 +192,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-> [!Note]
-> The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
+**Note:** 
+The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
 [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) summaries can also be enabled on a per-column level in Ignite UI for React, which means that you can activate it only for columns that you need. [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
 
-For `string` and `boolean` [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType), the following function is available:
-
+For `string` and `boolean` [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType), the following function is available:
 - Count
 
 For `number`, `currency` and `percent` data types, the following functions are available:
@@ -211,14 +209,13 @@ For `number`, `currency` and `percent` data types, the following functions are a
 - Sum
 
 For `date` data type, the following functions are available:
-
 - Count
 - Earliest
 - Latest
 
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
 
-[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) summaries are enabled per-column by setting [`hasSummary`](mcp:get_api_reference?platform=react&component=IgrColumn&member=hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs).
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) summaries are enabled per-column by setting [`IgrColumnState.hasSummary`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`Locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs).
 
 ```tsx
 <IgrTreeGrid autoGenerate={false} height="800px" width="800px">
@@ -231,9 +228,7 @@ All available column data types could be found in the official [Column types top
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=enableSummaries)/[`disableSummaries`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=disableSummaries) of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
+The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`IgrTreeGrid.enableSummaries`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=enableSummaries)/[`IgrTreeGrid.disableSummaries`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=disableSummaries) of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 ```tsx
 const enableSummary = () => {
@@ -255,11 +250,8 @@ const disableSummary = () => {
 <button onClick={disableSummary}>Disable Summary </button>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Summary Template
-
-[`summaryTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryTemplate) targets the column summary providing as a context the column summary results.
+[`SummaryTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryTemplate) targets the column summary providing as a context the column summary results.
 
 ```tsx
 const summaryTemplate = (ctx: IgrSummaryTemplateContext) => {
@@ -274,7 +266,7 @@ const summaryTemplate = (ctx: IgrSummaryTemplateContext) => {
 <IgrColumn hasSummary={true} summaryTemplate={summaryTemplate}></IgrColumn>
 ```
 
-When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`summaryRowHeight`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
+When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`SummaryRowHeight`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -530,16 +522,14 @@ root.render(<Sample/>);
 
 ## Disabled Summaries
 
-The [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property provides precise per-column control over the React Tree Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgrTreeGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
+The [`DisabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property provides precise per-column control over the React Tree Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgrTreeGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **['count', 'min', 'max']** by specifying their summary keys in an array.
 
 This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the IgrTreeGrid's summaries to changing application states or user actions.
 
-The following examples illustrate how to use the `disabledSummaries` property to manage summaries for different columns and exclude specific default and custom summary types in the React Tree Grid:
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+The following examples illustrate how to use the [`IgrColumn.disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property to manage summaries for different columns and exclude specific default and custom summary types in the React Tree Grid:
 
 ```tsx
-<!-- Disable default summaries -->
+// Disable default summaries
 <IgrColumn
     field="UnitPrice"
     header="Unit Price"
@@ -548,7 +538,7 @@ The following examples illustrate how to use the `disabledSummaries` property to
     disabledSummaries={['count', 'sum', 'average']}
 />
 
-<!-- Disable custom summaries -->
+// Disable custom summaries
 <IgrColumn
     field="UnitsInStock"
     header="Units In Stock"
@@ -557,15 +547,14 @@ The following examples illustrate how to use the `disabledSummaries` property to
     summaries={discontinuedSummary}
     disabledSummaries={['discontinued', 'totalDiscontinued']}
 />
-```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+```
 
 For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
 
-For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property.
+For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`DisabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property.
 
-At runtime, summaries can also be dynamically disabled using the [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
+At runtime, summaries can also be dynamically disabled using the [`DisabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -1121,8 +1110,37 @@ root.render(<DisabledSummariesTreeGridSample/>);
 ```
 
 ## Formatting summaries
+By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`Locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs). When using custom operands, the [`Locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and [`IgrColumn.pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`SummaryFormatter`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryFormatter) property.
 
-By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs). When using custom operands, the [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryFormatter) property.
+```typescript
+public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOperand): string {
+    const result = summary.summaryResult;
+    if (summaryOperand instanceof IgxDateSummaryOperand && summary.key !== 'count'
+        && result !== null && result !== undefined) {
+        const pipe = new DatePipe('en-US');
+        return pipe.transform(result,'MMM YYYY');
+    }
+    return result;
+}
+```
+
+```typescript
+    public dateSummaryFormat(summary: IgcSummaryResult, summaryOperand: IgcSummaryOperand): string {
+        const result = summary.summaryResult;
+        if (summaryOperand instanceof IgcDateSummaryOperand && summary.key !== "count" && result !== null && result !== undefined) {
+            const format = new Intl.DateTimeFormat("en", { year: "numeric" });
+            return format.format(new Date(result));
+        }
+        return result;
+    }
+```
+
+```ts
+constructor() {
+    var column = this.column = document.getElementById('column') as IgcColumnComponent;
+    column.summaryFormatter = this.dateSummaryFormat;
+}
+```
 
 ```tsx
 const summaryFormatter = (summary: IgrSummaryResult, summaryOperand: IgrSummaryOperand): string => {
@@ -1135,6 +1153,7 @@ const summaryFormatter = (summary: IgrSummaryResult, summaryOperand: IgrSummaryO
   }
 
 <IgrColumn hasSummary={true} summaryFormatter={summaryFormatter}></IgrColumn>
+
 ```
 
 ```typescript
@@ -1308,27 +1327,25 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentStart: TreeGrid -->
-
 ## Child Summaries
 
-The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) supports separate summaries for the root nodes and for each nested child node level. Which summaries are shown is configurable using the [`summaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryCalculationMode) property. The child level summaries can be shown before or after the child nodes using the [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) property. Along with these two properties the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) exposes and [`showSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the parent node that refers to is collapsed.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) supports separate summaries for the root nodes and for each nested child node level. Which summaries are shown is configurable using the [`SummaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryCalculationMode) property. The child level summaries can be shown before or after the child nodes using the [`SummaryPosition`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryPosition) property. Along with these two properties the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) exposes and [`ShowSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the parent node that refers to is collapsed.
 
-The available values of the [`summaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryCalculationMode) property are:
+The available values of the [`SummaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryCalculationMode) property are:
 
-- `RootLevelOnly` - Summaries are calculated only for the root level nodes.
-- `ChildLevelsOnly` - Summaries are calculated only for the child levels.
-- `RootAndChildLevels` - Summaries are calculated for both root and child levels. This is the default value.
+- [`RootLevelOnly`](mcp:get_api_reference?platform=react&component=GridSummaryCalculationMode) - Summaries are calculated only for the root level nodes.
+- [`ChildLevelsOnly`](mcp:get_api_reference?platform=react&component=GridSummaryCalculationMode) - Summaries are calculated only for the child levels.
+- [`RootAndChildLevels`](mcp:get_api_reference?platform=react&component=GridSummaryCalculationMode) - Summaries are calculated for both root and child levels. This is the default value.
 
-The available values of the [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) property are:
+The available values of the [`SummaryPosition`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryPosition) property are:
 
-- `Top` - The summary row appears before the list of child rows.
-- `Bottom` - The summary row appears after the list of child rows. This is the default value.
+- [`Top`](mcp:get_api_reference?platform=react&component=GridSummaryPosition) - The summary row appears before the list of child rows.
+- [`Bottom`](mcp:get_api_reference?platform=react&component=GridSummaryPosition) - The summary row appears after the list of child rows. This is the default value.
 
-The [`showSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the parent row is collapsed. If the property is set to **true** the summary row stays visible when parent row is collapsed.
+The [`ShowSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the parent row is collapsed. If the property is set to **true** the summary row stays visible when parent row is collapsed.
 
-> [!Note]
-> The [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
+**Note:** 
+The [`SummaryPosition`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -1525,8 +1542,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Keyboard Navigation
 
 The summary rows can be navigated with the following keyboard interactions:
@@ -1540,7 +1555,7 @@ The summary rows can be navigated with the following keyboard interactions:
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -1560,10 +1575,6 @@ Then set the related CSS properties for that class:
 ```
 
 ### Demo
-
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- ComponentStart: TreeGrid -->
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -1754,15 +1765,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## API References
 
-- [`IgrSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrSummaryOperand)
-- [`IgrNumberSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrNumberSummaryOperand)
-- [`IgrDateSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrDateSummaryOperand)
-- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
+
+[`IgrSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrSummaryOperand)<br />
+[`IgrNumberSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrNumberSummaryOperand)<br />
+[`IgrDateSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrDateSummaryOperand)<br />
 
 ## Additional Resources
 

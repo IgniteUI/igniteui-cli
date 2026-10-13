@@ -1,12 +1,13 @@
 ---
-title: React Snackbar | Infragistics
-_description: With Ignite UI for React Snackbar component, developers can easily integrate a brief, single-line message within mobile and desktop applications.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Snackbar components
-_license: MIT
+title: "React Snackbar | Infragistics"
+description: With Ignite UI for React Snackbar component, developers can easily integrate a brief, single-line message within mobile and desktop applications.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Snackbar components"
+license: MIT
 mentionedTypes: ["Snackbar"]
+llms:
+  description: "The Ignite UI for React Snackbar component is used to provide feedback about an operation by showing a brief message at the bottom of the screen."
 _tocName: Snackbar
 ---
-
 # React Snackbar
 
 The Ignite UI for React Snackbar component is used to provide feedback about an operation by showing a brief message at the bottom of the screen.
@@ -47,8 +48,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ### Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -68,7 +67,7 @@ Before using the [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`Show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -91,7 +90,7 @@ const onShowButtonClicked = () => {
 
 ### Display Time
 
-Use the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -127,7 +126,7 @@ root.render(<SnackbarDisplayTime />);
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=actionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=actionText) you can display an action button inside the component.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -229,16 +228,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarStyling />);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`actionText`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=actionText)
-- [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime)
-- [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=keepOpen)
-- [`show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show)
-- [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar)<br />
 
 ## Additional Resources
 

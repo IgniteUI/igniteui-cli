@@ -1,46 +1,39 @@
 ---
-title: React Pivot Grid State Persistence - Ignite UI for React
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for React. Learn how to restore columns, explore usage, and see demos!
-_keywords: state persistence, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["GridStateBaseDirective", "GridState", "PivotConfiguration", "PivotDimension", "PivotValue"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/state-persistence
+title: "React Pivot Grid State Persistence - Ignite UI for React"
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for React. Learn how to restore columns, explore usage, and see demos!
+keywords: state persistence, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/state-persistence"
+llms:
+  description: "The Ignite UI for React State Persistence in React Pivot Grid allows developers to easily save and restore the grid state."
+_componentKey: PivotGrid
 _tocName: State Persistence
 _premium: true
 ---
-
 # React Pivot Grid State Persistence
 
-The Ignite UI for React State Persistence in React Pivot Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) is applied on the React [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid), it exposes the [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState), [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString), [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) and [`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for React State Persistence in React Pivot Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) is applied on the React [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid), it exposes the [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState), [`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString), [`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) and [`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
 [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) supports saving and restoring the state of the following features:
 
-<!-- ComponentStart: PivotGrid -->
-
-- `Sorting`
-- `Filtering`
-- `CellSelection`
-- `ColumnSelection`
-- `Expansion`
+- [`Sorting`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo&member=sorting)
+- [`Filtering`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo&member=filtering)
+- [`IgrPivotGrid.cellSelection`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=cellSelection)
+- [`IgrPivotGrid.columnSelection`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=columnSelection)
+- [`Expansion`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo&member=expansion)
 - [`IgrPivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration)
-  - Pivot Configuration properties defined by the `IPivotConfiguration` interface.
+  - Pivot Configuration properties defined by the [`IgrPivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration) interface.
   - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](state-persistence.md#restoring-pivot-configuration) section.
-
-<!-- ComponentEnd: PivotGrid -->
 
 ## Usage
 
-The [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method returns the grid state in a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
+The [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method returns the grid state in a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
 
-The [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
+The [`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```tsx
 <IgrPivotGrid>
@@ -48,12 +41,8 @@ The developer may choose to get only the state for a certain feature/features, b
 </IgrPivotGrid>
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
 ```tsx
-// get an `IgrGridStateInfo` object, containing all features original state objects, as returned by the grid public API
+// get an `GridStateInfo` object, containing all features original state objects, as returned by the grid public API
 const state: IgrGridStateInfo = gridStateRef.current.getState([]);
 
 // get all features` state in a serialized JSON string
@@ -61,11 +50,12 @@ const stateString: string = gridStateRef.current.getStateAsString([]);
 
 // get the sorting and filtering expressions
 const sortingFilteringStates: IgrGridStateInfo = gridStateRef.current.getState(['sorting', 'filtering']);
+
 ```
 
-[`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) - The method accepts a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
+[`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) - The method accepts a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
 
-[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
+[`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
 ```tsx
 gridStateRef.current.applyState(gridState, []);
@@ -73,9 +63,7 @@ gridStateRef.current.applyStateFromString(gridStateString, []);
 gridStateRef.current.applyState(sortingFilteringStates, [])
 ```
 
-The [`options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseDirective&member=options) object implements the [`IgrGridStateOptions`](mcp:get_api_reference?platform=react&component=IgrGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState)/[`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState)/[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods will not restore state for them.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
+The [`Options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseDirective&member=options) object implements the [`IgrGridStateOptions`](mcp:get_api_reference?platform=react&component=IgrGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState)/[`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) methods will not put the state of these features in the returned value and [`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState)/[`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods will not restore state for them.
 
 ```tsx
 <IgrGridState options={{ cellSelection: false, sorting: false }}></IgrGridState>
@@ -83,17 +71,11 @@ The [`options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseD
 
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `LocalStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
 ```tsx
 <IgrPivotGrid onRendered={restoreGridState}>
     <IgrGridState ref={gridStateRef}></IgrGridState>
 </IgrPivotGrid>
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```tsx
 useEffect(() => {
@@ -129,9 +111,8 @@ const restoreGridState = () => {
         gridStateRef.current.applyStateFromString(state, []);
     }
 }
-```
 
-<!-- ComponentStart: PivotGrid -->
+```
 
 ## Restoring Pivot Configuration
 
@@ -139,7 +120,18 @@ const restoreGridState = () => {
 
 - Assign event handlers for the `DimensionInit` and `ValueInit` events:
 
-> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) property.
+```tsx
+      <IgrPivotGrid
+        ref={gridRef}
+        data={gridData}
+        pivotConfiguration={pivotConfiguration}
+        valueInit={onValueInit}
+      >
+        <IgrGridState ref={gridStateRef}></IgrGridState>
+      </IgrPivotGrid>
+```
+
+> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`IgrPivotGrid.pivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotGrid&member=pivotConfiguration) property.
 
 - In the `ValueInit` event handler set all custom aggregators, formatters and styles:
 
@@ -169,8 +161,6 @@ const restoreGridState = () => {
     }
   }
 ```
-
-<!-- ComponentEnd: PivotGrid -->
 
 ## Demo
 
@@ -609,20 +599,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-<!-- ComponentStart: PivotGrid -->
-
-<!-- ComponentEnd: PivotGrid -->
-
 ## Limitations
 
-<!-- ComponentStart: PivotGrid -->
-
-- [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) directive will ignore the pivot dimension `MemberFunction`, pivot values [`member`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=member), `Formatter`, custom [`aggregate`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=aggregate) functions, [`styles`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=styles) and pivot configuration strategies: [`columnStrategy`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=columnStrategy) and [`rowStrategy`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=rowStrategy).
-
-<!-- ComponentEnd: PivotGrid -->
-
-<!-- ComponentStart: PivotGrid -->
-
-<!-- * [Pivot Grid Features](features.md) -->
-
-<!-- ComponentEnd: PivotGrid -->
+- [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) directive will ignore the pivot dimension [`MemberFunction`](mcp:get_api_reference?platform=react&component=IgrPivotDimension&member=memberFunction), pivot values [`Member`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=member), [`Formatter`](mcp:get_api_reference?platform=react&component=IgrColumn&member=formatter), custom [`Aggregate`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=aggregate) functions, [`Styles`](mcp:get_api_reference?platform=react&component=IgrPivotValue&member=styles) and pivot configuration strategies: [`ColumnStrategy`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=columnStrategy) and [`RowStrategy`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=rowStrategy).

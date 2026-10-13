@@ -1,23 +1,24 @@
 ---
 title: React Chart Markers | Data Visualization | Infragistics
-_description: Infragistics' React Chart Markers
-_keywords: React Charts, Markers, Marker Size, Infragistics
-_license: commercial
+description: Infragistics' React Chart Markers
+keywords: React Charts, Markers, Marker Size, Infragistics
+license: commercial
 mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeries", "ScatterLineSeries", "ScatterSplineSeries", "ScatterSeries", "LineSeries", "SplineSeries", "MarkerAutomaticBehavior", "SeriesViewer"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for React, markers are visual elements that display the values of data points in the chart's plot area."
 _tocName: Chart Markers
 _premium: true
 ---
-
 # React Chart Markers
 
 In Ignite UI for React, markers are visual elements that display the values of data points in the chart's plot area. Markers help your end-users immediately identify a data point's value even if the value falls between major or minor grid lines.
 
 ## React Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) property to [`Circle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html#Circle) enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `MarkerTypes` property to `Circle` enum value.
 
-The colors of the markers are also managed by setting the [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerBrushes) and [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerOutlines) properties in the sample below. The markers and [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the `MarkerBrushes` and `MarkerOutlines` properties in the sample below. The markers and `CategoryChart.ChartType` is configurable in this sample by using the drop-downs as well.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -181,17 +182,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Chart Marker Size
 
 You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
 
 By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
 
-The `MarkerSize` property is available on all series types that derive from [`IgrMarkerSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html), including [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html), [`IgrSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineseries.html), [`IgrAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrareaseries.html), [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html), [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html), [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html), [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html), and polar/radial series types.
+The `MarkerSize` property is available on all series types that derive from `MarkerSeries`, including `LineSeries`, `SplineSeries`, `AreaSeries`, `ColumnSeries`, `ScatterSeries`, `ScatterLineSeries`, `ScatterSplineSeries`, and polar/radial series types.
 
-The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html) in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control:
+The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a `ScatterLineSeries` in the `XamDataChart` control:
 
 ```tsx
 <IgrDataChart>
@@ -208,7 +207,7 @@ The following code examples show how to set `MarkerSize` to 30 device-independen
 To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
 
 ```tsx
-<IgrLineSeries markerSize={NaN} markerType="Circle" ... />
+<IgrLineSeries markerSize= markerType="Circle" />
 ```
 
 The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
@@ -486,24 +485,20 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-> [!NOTE]
-> For [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html), the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusScale). Bubble sizes remain entirely driven by the data and scale configuration.
-
-<div class="divider--half"></div>
+**Note:** 
+For `BubbleSeries`, the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the `RadiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
 
 ## React Chart Checkmark Marker Type
 
-The Ignite UI for React charts include a `Checkmark` option in the [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+The Ignite UI for React charts include a `Checkmark` option in the `MarkerType` enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
 
-You can apply the `Checkmark` marker type to an individual series by setting its [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerAutomaticBehavior) property to `MarkerAutomaticBehavior.Checkmark`.
+You can apply the `Checkmark` marker type to an individual series by setting its `MarkerType` property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's `MarkerAutomaticBehavior` property to `MarkerAutomaticBehavior.Checkmark`.
 
 The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
 
-<div class="divider--half"></div>
-
 ## React Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  [`markerTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerTemplate) property of a series rendered in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the `IgrCategoryChart` control as it is demonstrated in example below.
 
 ```tsx
 import React from 'react';
@@ -664,8 +659,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartMarkerTemplates/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -674,15 +667,4 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerBrushes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerOutlines)
-- `MarkerSize`
-- [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType)
-- `UseLightweightMarkers`
-- [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerAutomaticBehavior)
-- `SeriesViewer.CheckmarkMarkerTemplate`
-- [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
+`IgrCategoryChart`

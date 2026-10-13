@@ -51,6 +51,8 @@ vi.mock("../lib/api-doc-loader.js", () => ({
 vi.mock("../config/platforms.js", () => ({
   PLATFORMS: ["angular", "react", "blazor", "webcomponents"],
   getPlatforms: () => [],
+  // Server instructions name each deprecated component's framework at import time.
+  getPlatformConfig: (key: string) => ({ key, displayName: key }),
 }));
 
 describe("get_doc fallback resolution", () => {

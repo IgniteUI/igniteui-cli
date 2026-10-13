@@ -1,4 +1,6 @@
-import { GoogleAnalytics, GoogleAnalyticsParameters, InquirerWrapper, PackageManager, Util } from "@igniteui/cli-core";
+import {
+	Config, GoogleAnalytics, GoogleAnalyticsParameters, InquirerWrapper, PackageManager, ProjectConfig, Util
+} from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
@@ -11,6 +13,8 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
+		// isolate from the user's global config, e.g. custom templates that log errors (extra GA posts)
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 		spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]));
 		process.chdir("./output");
 	});

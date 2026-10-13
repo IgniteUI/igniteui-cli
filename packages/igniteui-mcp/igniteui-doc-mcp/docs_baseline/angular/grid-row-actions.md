@@ -1,30 +1,43 @@
 ---
 title:  Row actions in Angular Data Grid - Ignite UI for Angular 
-_description: The grid component in Ignite UI for Angular provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular ActionStrip components, Angular ActionStrip directives, Angular ActionStrip controls
-_license: commercial
+description: The grid component in Ignite UI for Angular provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular ActionStrip components, Angular ActionStrip directives, Angular ActionStrip controls
+license: commercial
+llms:
+  description: "The grid component in Ignite UI for Angular provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning."
 _tocName: Row Actions
 _premium: true
 ---
 # Row Actions in Angular Data Grid
-The grid component in Ignite UI for Angular provides the ability to use [ActionStrip](../action-strip.md) and utilize CRUD for row/cell components and row pinning. The Action Strip component can host predefined UI controls for these operations.
+
+The grid component in Ignite UI for Angular provides the ability to use [ActionStrip](/action-strip) and utilize CRUD for row/cell components and row pinning. The Action Strip component can host predefined UI controls for these operations.
+
 ## Usage
+
 The first step is to import the **IgxActionStripModule** in our **app.module.ts** file:
+
 ```typescript
 // app.module.ts
+
 ...
 import { IgxActionStripModule } from 'igniteui-angular/action-strip';
 // import { IgxActionStripModule } from '@infragistics/igniteui-angular'; for licensed package
+
 @NgModule({
     ...
     imports: [..., IgxActionStripModule],
     ...
 })
 ```
+
 The predefined `actions` UI components are:
-- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI specifically designed for the grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) option and row deletion of the grid.
-- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI specifically designed for the grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+
+- [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI specifically designed for the grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) option and row deletion of the grid.
+
+- [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI specifically designed for the grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+
 They are added inside the `<igx-action-strip>` and this is all needed to have an Action Strip providing default interactions.
+
 ```html
 <igx-grid [data]="data" [rowEditable]="true" [primaryKey]="'ID'">
     <igx-column *ngFor="let c of columns" [field]="c.field">
@@ -36,10 +49,14 @@ They are added inside the `<igx-action-strip>` and this is all needed to have an
     </igx-action-strip>
 </igx-grid>
 ```
->[!NOTE]
-> When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
+
+**Note:** 
+When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
+
 ## Custom implementation
+
 These components expose templates giving flexibility for customization. For instance, if we would like to use the `ActionStrip` for a Gmail scenario with row actions such as `delete`, `edit` and etc. You can simply create button component with `igx-icon`, add click event to it and insert it into the `igx-action-strip` component.
+
 ```html
 <igx-grid>
     <igx-action-strip #actionstrip>
@@ -53,6 +70,7 @@ These components expose templates giving flexibility for customization. For inst
     </igx-action-strip>
 </igx-grid>
 ```
+
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -133,13 +151,15 @@ export class GridActionStripSampleComponent {
     }
 }
 ```
->[!NOTE]
-> The predefined actions inherit [`IgxGridActionsBaseDirective`]({environment:infragisticsBaseUrl}/classes/igxgridactionsbasedirective.html) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
+
+**Note:** 
+The predefined actions inherit [`IgxGridActionsBaseDirective`](https://www.infragistics.com/classes/igxgridactionsbasedirective.html) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
+
 ## API References
 For more detailed information regarding the Action Strip API, refer to the following links:
-- [`IgxActionStripComponent API`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
+- [`IgxActionStrip`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
 Additional components and/or directives that can be used within the Action Strip:
 - [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
-- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
-- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
-- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
+- [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)

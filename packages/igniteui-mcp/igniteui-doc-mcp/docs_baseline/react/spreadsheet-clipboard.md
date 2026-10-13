@@ -1,13 +1,14 @@
 ---
-title: React Spreadsheet | Clipboard Operations | Infragistics
-_description: Use clipboard operations such as copy, cut and paste within Infragistics' React spreadsheet control. View Infragistics Ignite UI for React spreadsheet demos today!
-_keywords: Spreadsheet, clipboard operations, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Spreadsheet | Clipboard Operations | Infragistics"
+description: Use clipboard operations such as copy, cut and paste within Infragistics' React spreadsheet control. View Infragistics Ignite UI for React spreadsheet demos today!
+keywords: Spreadsheet, clipboard operations, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction", "SpreadsheetCommandType", "Command"]
+llms:
+  description: "Explains how to copy, cut, and paste cells in the React Spreadsheet by using its clipboard commands and API."
 _tocName: Clipboard
 _premium: true
 ---
-
 # React Working with Clipboard
 
 This topic explains how to perform clipboard operations on the Ignite UI for React spreadsheet component.
@@ -199,24 +200,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetClipboard/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
-Before making use of the clipboard you will want to import the `SpreadsheetAction` enumeration:
-
-<!-- React -->
+Before making use of the clipboard you will want to import the `IgrSpreadsheetAction` enumeration:
 
 ```ts
 import { IgrSpreadsheet } from 'igniteui-react-spreadsheet';
 import { SpreadsheetAction } from 'igniteui-react-spreadsheet';
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
-The following code snippet shows how you can execute commands related to the clipboard in the React [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) control:
+The following code snippet shows how you can execute commands related to the clipboard in the React `IgrSpreadsheet` control:
 
 ```ts
 public cut(): void {
@@ -234,5 +229,5 @@ public paste(): void {
 
 ## API References
 
-- `SpreadsheetAction`
-- [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html)
+`IgrSpreadsheetAction`<br />
+`IgrSpreadsheet`<br />

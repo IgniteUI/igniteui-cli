@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid Collapsible Column Groups - Ignite UI for Blazor
-_description: Take advantage of the capability to show\hide smaller and concise set of data with the use of collapsible column groups in our Blazor Hierarchical Grid. Try it now!
-_keywords: Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["ColumnGroup"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/collapsible-column-groups
+title: "Blazor Hierarchical Grid Collapsible Column Groups - Ignite UI for Blazor"
+description: Take advantage of the capability to show\hide smaller and concise set of data with the use of collapsible column groups in our Blazor Hierarchical Grid. Try it now!
+keywords: "Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/collapsible-column-groups"
+llms:
+  description: "The Ignite UI for Blazor Collapsible Column Groups feature in Blazor Hierarchical Grid allows you to organize and manage multiple levels of nested columns and column groups in the IgbHierarchicalGrid by grouping them together and providing the option to collapse or expand these groups."
+_componentKey: HierarchicalGrid
 _tocName: Collapsible Column Groups
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Collapsible Column Groups Overview
 
 The Ignite UI for Blazor Collapsible Column Groups feature in Blazor Hierarchical Grid allows you to organize and manage multiple levels of nested columns and column groups in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by grouping them together and providing the option to collapse or expand these groups for improved data visualization and navigation.
@@ -324,7 +323,7 @@ public class HierarchicalCustomersData
 To get started with the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:
 
 ```cmd
-> dotnet add package IgniteUI.Blazor --version 25.2.83 (March 2026)
+> dotnet add package IgniteUI.Blazor --version 26.1.98
 ```
 
 For a complete introduction to the Ignite UI for Blazor, read the [getting started](../../general-getting-started.md) topic.
@@ -335,9 +334,9 @@ Also, we strongly suggest that you take a brief look at [multi-column headers](m
 
 **Collapsible Column Groups** is a part of the multi-column headers feature which provides a way to collapse/expand a column group to a smaller set of data. When a column group is collapsed, a subset of the columns will be shown to the end-user and the other child columns of the group will hide. Each collapsed/expanded column can be bound to the grid data source, or it may be unbound, thus calculated.
 
-In order to define a column group as collapsible, you need to set the [`Collapsible`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=Collapsible) property on the [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) to **true**.
+In order to define a column group as collapsible, you need to set the [`IgbColumnGroup.collapsible`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=collapsible) property on the [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) to **true**.
 
-You need to define the property [`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
+You need to define the property [`IgbColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=visibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`IgbColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=visibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`IgbColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=visibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`IgbColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=visibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
 
 Let's see the markup below:
 
@@ -357,22 +356,59 @@ Let's see the markup below:
 ```
 
 To summarize, every child column has three states:
-
 - Can be always visible, no matter the expanded state of its parent.
 - Can be visible, when its parent is collapsed.
 - Can be hidden, when its parent is collapsed.
 
-The initial state of the column group which is specified as collapsible is [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=Expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
+The initial state of the column group which is specified as collapsible is [`IgbColumnGroup.expanded`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
+
+## Expand/Collapse Indicator Template
+
+Default expand indicator for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the following:
+
+Default collapse indicator for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is the following:
+
+Also, if you need to change the default expand/collapse indicator, we provide templating options in order to achieve this.
+
+```razor
+ <IgbColumnGroup @ref="infoColumn" Header="Customer Information" Collapsible="true">
+    <IgbColumn Field="CustomerName" Header="Full name" VisibleWhenCollapsed="true"></IgbColumn>
+    <IgbColumn Field="CustomerID" Header="Customer ID" VisibleWhenCollapsed="false"></IgbColumn>
+    <IgbColumn Field="FirstName" Header="First Name" VisibleWhenCollapsed="false"></IgbColumn>
+    <IgbColumn Field="LastName" Header="Last Name" VisibleWhenCollapsed="false"></IgbColumn>
+    <IgbColumnGroup @ref="addressColumn" Header="Customer Address">
+        <IgbColumn Field="Country" Header="Country" Sortable="true"></IgbColumn>
+        <IgbColumn Field="City" Header="City" Sortable="true"></IgbColumn>
+    </IgbColumnGroup>
+ </IgbColumnGroup>
+
+@code {
+    private IgbColumnGroup infoColumn;
+    private IgbColumnGroup addressColumn;
+
+    public RenderFragment<IgbColumnTemplateContext> ColumnIndicatorTemplate = (context) =>
+    {
+        string icon = context.Column.Expanded ? "remove" : "add";
+        return @<IgbIcon IconName="@icon" Collection="material"></IgbIcon>;
+    };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        this.infoColumn.CollapsibleIndicatorTemplate = this.ColumnIndicatorTemplate;
+        this.addressColumn.CollapsibleIndicatorTemplate = this.ColumnIndicatorTemplate;
+    }
+}
+
+```
 
 > **Note**
 > Please keep in mind that initially collapse group option takes precedence over column hidden - If you declared your column to be hidden using the property
 > hidden and you have a group defined where the same column should be shown, the column will be shown.
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+[`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

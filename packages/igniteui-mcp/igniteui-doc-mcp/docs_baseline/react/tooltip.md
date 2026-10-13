@@ -1,12 +1,13 @@
 ---
-title: React Tooltip | Infragistics
-_description: The Ignite UI for React Tooltip component provides us with the ability to easily create a tooltip and attach it into an element.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Tooltip components
-_license: MIT
+title: "React Tooltip | Infragistics"
+description: The Ignite UI for React Tooltip component provides us with the ability to easily create a tooltip and attach it into an element.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Tooltip components"
+license: MIT
 mentionedTypes: ["Tooltip", "PopoverPlacement"]
+llms:
+  description: "The Ignite UI for React Tooltip component provides a way to display a tooltip for a specific element."
 _tocName: Tooltip
 ---
-
 # React Tooltip
 
 The Ignite UI for React Tooltip component provides a way to display a tooltip for a specific element. A tooltip is a popup that displays information related to an element, usually when the element receives keyboard focus or when the mouse hovers over it.
@@ -83,7 +84,7 @@ Now you can start with a basic configuration of the React [`IgrTooltip`](mcp:get
 
 ### Tooltip target
 
-To attach a tooltip to the desired element, use the [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor) property of the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) and set it to the ID of the target element.
+To attach a tooltip to the desired element, use the [`Anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor) property of the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) and set it to the ID of the target element.
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -117,13 +118,13 @@ The tooltip content is defined by placing custom content between the opening and
 </IgrTooltip>
 ```
 
-Alternatively, to set simple text, you can use the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property.
+Alternatively, to set simple text, you can use the [`Message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property.
 
 ```tsx
 <IgrTooltip message="This is my custom content here."></IgrTooltip>
 ```
 
-If you use both approaches (slotted content and the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property), the slotted content will take priority and the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) value will be ignored.
+If you use both approaches (slotted content and the [`Message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property), the slotted content will take priority and the [`Message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) value will be ignored.
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -132,7 +133,7 @@ If you use both approaches (slotted content and the [`message`](mcp:get_api_refe
 </IgrTooltip>
 ```
 
-In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property value.
+In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`Message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property value.
 
 The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) content can be more than just simple text. Since the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
@@ -224,7 +225,7 @@ root.render(<TooltipRich />);
 
 ### Show/Hide delay settings
 
-If you want to control the delay before showing and hiding the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip), you can use the [`showDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
+If you want to control the delay before showing and hiding the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip), you can use the [`ShowDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`HideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
 
 ```tsx
 <IgrTooltip showDelay="600" hideDelay="800">
@@ -232,18 +233,18 @@ If you want to control the delay before showing and hiding the [`IgrTooltip`](mc
 </IgrTooltip>
 ```
 
-> [!NOTE]
-> It's important to note that the Tooltip API methods — [`show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show), [`hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide), and [`toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) — DO NOT take the [`showDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties into account. They act immediately when invoked.
+**Note:** 
+It's important to note that the Tooltip API methods — [`Show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show), [`Hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide), and [`Toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) — DO NOT take the [`ShowDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`HideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement
 
-The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property along with one of the `PopoverPlacement` options.
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property along with one of the [`IgrPopoverPlacement`](mcp:get_api_reference?platform=react&component=PopoverPlacement) options.
 
-If the [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property is not set, the default value is `Bottom`, which places the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) below the target element.
+If the [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property is not set, the default value is `Bottom`, which places the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) below the target element.
 
-Additionally, you can make the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) "sticky" using the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property, which adds a close button and keeps the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) from disappearing when the user stops hovering over the target element.
+Additionally, you can make the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) "sticky" using the [`Sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property, which adds a close button and keeps the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) from disappearing when the user stops hovering over the target element.
 
-The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) also includes an optional arrow indicator that can be configured via the [`withArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement).
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) also includes an optional arrow indicator that can be configured via the [`WithArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement).
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -252,7 +253,7 @@ The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) al
 </IgrTooltip>
 ```
 
-In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property in action:
+In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`Sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property in action:
 
 ```css
 /* shared styles are loaded from: */
@@ -338,7 +339,7 @@ root.render(<TooltipPlacement />);
 
 ### Triggers
 
-By default, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideTriggers) properties, which allow you to control when the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) in different scenarios.
+By default, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is triggered only while hovering over the target element. However, you can change this behavior using the [`ShowTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showTriggers) and [`HideTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideTriggers) properties, which allow you to control when the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) in different scenarios.
 
 ```css
 /* shared styles are loaded from: */
@@ -516,7 +517,7 @@ root.render(<TooltipTriggers />);
 ### Advanced Example
 
 The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar), [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge), [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton), [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard) and [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) components.
+In the following example, you can see how we create descriptive tooltips by using the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar), [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge), [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton), [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard) and `IgrCategoryChart` components.
 
 ```typescript
 export class IncomeTaxesItem {
@@ -1299,9 +1300,9 @@ Apart from the properties we've already covered, the [`IgrTooltip`](mcp:get_api_
 
 |Name|Type|Description|
 |--|--|--|
-| [`open`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=open) | boolean | Determines whether the tooltip is visible. |
-| [`withArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
-| [`offset`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
+| [`Open`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=open) | boolean | Determines whether the tooltip is visible. |
+| [`WithArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
+| [`Offset`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=offset) | number | Sets the pixel distance between the tooltip and its [`Anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
 
 ### Methods
 
@@ -1309,15 +1310,15 @@ In addition to its configurable properties, the [`IgrTooltip`](mcp:get_api_refer
 
 |Name|Description|
 |--|--|
-| [`show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
-| [`hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide) | Hides the tooltip if it’s not already hidden. |
-| [`toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
+| [`Show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`Anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
+| [`Hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide) | Hides the tooltip if it’s not already hidden. |
+| [`Toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
 
 ## Accessibility & ARIA Support
 
 The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is built with accessibility in mind and includes the following ARIA attributes:
 
-- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property is enabled, the role changes to `status`.
+- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`Sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property is enabled, the role changes to `status`.
 - `inert` - Dynamically toggled based on visibility. When the tooltip is hidden, it becomes inert.
 - `aria-atomic` - Set to true, ensuring that the entire tooltip content is announced when it changes.
 - `aria-live` - Set to polite, indicating to screen readers that updates should be announced only when the user is idle.
@@ -1392,20 +1393,17 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipStyling />);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip)
-- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)
-- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
-- [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge)
-- [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)
-- [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip)<br />
+[`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)<br />
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)<br />
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)<br />
+[`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)<br />
+[`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)<br />
+[`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge)<br />
+[`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)<br />
+`IgrCategoryChart`<br />
 
 ## Additional Resources
 

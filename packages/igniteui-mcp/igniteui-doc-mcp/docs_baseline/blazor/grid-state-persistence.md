@@ -1,16 +1,15 @@
 ---
-title: Blazor Grid State Persistence - Ignite UI for Blazor
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Blazor. Learn how to restore columns, explore usage, and see demos!
-_keywords: state persistence, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["GridStateBaseDirective", "GridState", "PivotConfiguration", "PivotDimension", "PivotValue"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/state-persistence
+title: "Blazor Grid State Persistence - Ignite UI for Blazor"
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Blazor. Learn how to restore columns, explore usage, and see demos!
+keywords: state persistence, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/state-persistence"
+llms:
+  description: "The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to easily save and restore the grid state."
+_componentKey: Grid
 _tocName: State Persistence
 _premium: true
 ---
-
 # Blazor Grid State Persistence
 
 The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) is applied on the Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
@@ -18,8 +17,6 @@ The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to e
 ## Supported Features
 
 [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) supports saving and restoring the state of the following features:
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 - **Sorting**
 - **Filtering**
@@ -34,21 +31,13 @@ The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to e
 - **Columns**
   - Multi column headers
   - Columns order
-  - Column properties defined by the `IColumnState` interface.
-
-<!-- * Columns templates and functions are restored using application level code, see [Restoring Column](state-persistence.md#restoring-columns) section. -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
+  - Column properties defined by the [`IgbColumnState`](mcp:get_api_reference?platform=blazor&component=IgbColumnState) interface.
 
 ## Usage
 
 The `GetStateAsStringAsync` returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```razor
 <IgbGrid>
@@ -66,16 +55,14 @@ The developer may choose to get only the state for a certain feature/features, b
 
 `ApplyStateFromStringAsync` - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
-```razor
+```csharp
 gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=Options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
+The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-```razor
+```csharp
 gridState.Options = new IgbGridStateOptions
     {
         CellSelection = false,
@@ -84,10 +71,6 @@ gridState.Options = new IgbGridStateOptions
 ```
 
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `LocalStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -135,6 +118,44 @@ The simple to use single-point API's allows to achieve a full state persistence 
         string state = await JS.InvokeAsync<string>("window.localStorage.getItem", "grid-state");
         if (state) {
             gridState.ApplyStateFromStringAsync(state, new string[0]);
+        }
+    }
+}
+```
+
+## Restoring columns
+
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will not persist columns templates, column formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. Let's show how to do this for templated columns:
+
+1 - Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the `ColumnInit` event:
+
+```razor
+<IgbGrid ColumnInit="OnColumnInit">
+    <IgbGridState @ref="gridState"></IgbGridState>
+    <IgbColumn Field="IsActive" Header="IsActive" BodyTemplate="ActiveTemplate">
+    </IgbColumn>
+</IgbGrid>
+
+@code {
+    public static RenderFragment<IgbCellTemplateContext> ActiveTemplate = (context) =>
+    {
+        bool value = Convert.ToBoolean(context.Cell.Value);
+        return @<IgbCheckbox Checked="@value"></IgbCheckbox>;
+    };
+}
+
+```
+
+2 - In the `ColumnInit` event handler, assign the template to the column [`BodyTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=bodyTemplate) property:
+
+```razor
+@code {
+    public void OnColumnInit(IgbColumnComponentEventArgs args)
+    {
+        IgbColumn column = args.Detail;
+        if (column.Field == "IsActive")
+        {
+            column.BodyTemplate = ActiveTemplate;
         }
     }
 }
@@ -433,15 +454,15 @@ public class CustomersData
 
 ## Limitations
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+- [`IgbGridState.getStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns [`Formatter`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=formatter), [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=filters), [`Summaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=summaries), [`IgbGrid.sortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=sortStrategy), [`IgbColumn.cellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellClasses), [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=cellStyles), [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=headerTemplate) and [`BodyTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=bodyTemplate) properties.
 
-- [`GetStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns `Formatter`, [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+## API References
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentStart: Grid -->
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState)<br />
+[`IgbPivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration)<br />
+[`IgbPivotDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension)<br />
+[`IgbPivotValue`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue)<br />
 
 ## Additional Resources
 
@@ -449,7 +470,3 @@ public class CustomersData
 - [Filtering](filtering.md)
 - [Sorting](sorting.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->

@@ -1,14 +1,15 @@
 ---
-title: Web Components Pivot Grid Custom Remote | Pivot Tables | Infragistics
-_description: Create fast, responsive Web Components pivot grids and tables with Ignite UI for Web Components. Perform complex data analysis via pivot data.
-_keywords: Web Components pivot grid, Web Components material pivot table, ignite ui for Web Components, pivot grid customization, pivot grid remote, pivot remote
-_license: commercial
+title: "Web Components Pivot Grid Custom Remote | Pivot Tables | Infragistics"
+description: Create fast, responsive Web Components pivot grids and tables with Ignite UI for Web Components. Perform complex data analysis via pivot data.
+keywords: "Web Components pivot grid, Web Components material pivot table, ignite ui for Web Components, pivot grid customization, pivot grid remote, pivot remote"
+license: commercial
 mentionedTypes: ["PivotGrid", "PivotConfiguration", "PivotKeys"]
 namespace: Infragistics.Controls
+llms:
+  description: "In scenarios where the pivot data is already grouped and aggregated from a remote service and there's no need for further processing on the client, the pivot grid can be configured to use a custom empty strategy that will skip data processing on the client and allow it to."
 _tocName: Remote Operations
 _premium: true
 ---
-
 # Web Components Pivot Grid Remote Operations
 
 In scenarios where the pivot data is already grouped and aggregated from a remote service and there's no need for further processing on the client, the pivot grid can be configured to use a custom empty strategy that will skip data processing on the client and allow it to directly display the data as is:
@@ -20,7 +21,8 @@ public pivotConfigHierarchy: IgcPivotConfiguration = {
 }
 ```
 
-The following example show how to handle scenarios, where the data is already aggregated and how its structure should look like: ```typescript
+The following example show how to handle scenarios, where the data is already aggregated and how its structure should look like:
+```typescript
 export class PivotNoopData extends Array<any> {
     public constructor() {
         super();
@@ -173,25 +175,24 @@ public aggregatedData = [
 ```
 
 The Pivot grid provides the object keys fields it uses to do its pivot calculations.
+- [`Children`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=children) - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
+- [`Records`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=records) - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the [`PivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys).
+- [`Aggregations`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=aggregations) - Field that stores aggregation values. It's applied while creating the hierarchies and also it should not be changed for common scenarios.
+- [`Level`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=level) - Field that stores dimension level based on its hierarchy. Avoid setting fields in the data with the same name as this property. If your data records has **level** property, you can specify different and unique value for it using the [`PivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys).
+- [`ColumnDimensionSeparator`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=columnDimensionSeparator) - Separator used when generating the unique column field values. It is the dash(**-**) from the example from above - **All-Bulgaria**.
+- [`RowDimensionSeparator`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=rowDimensionSeparator) - Separator used when generating the unique row field values. It is the underscore(**_**) from the example from above - **AllProducts_records**. It's used when creating the [`Records`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=records) and [`Level`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=level) field.
 
-- [`children`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=children) - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
-- [`records`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=records) - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the [`pivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys).
-- [`aggregations`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=aggregations) - Field that stores aggregation values. It's applied while creating the hierarchies and also it should not be changed for common scenarios.
-- [`level`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=level) - Field that stores dimension level based on its hierarchy. Avoid setting fields in the data with the same name as this property. If your data records has **level** property, you can specify different and unique value for it using the [`pivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys).
-- [`columnDimensionSeparator`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=columnDimensionSeparator) - Separator used when generating the unique column field values. It is the dash(**-**) from the example from above - **All-Bulgaria**.
-- [`rowDimensionSeparator`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=rowDimensionSeparator) - Separator used when generating the unique row field values. It is the underscore(**\_**) from the example from above - **AllProducts_records**. It's used when creating the [`records`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=records) and [`level`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotKeys&member=level) field.
-
-All of these are stored in the [`pivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys) property which is part of the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and can be used to change the default pivot keys.
+All of these are stored in the [`PivotKeys`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=pivotKeys) property which is part of the [`PivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and can be used to change the default pivot keys.
 These defaults are:
 
 ```typescript
-export const   = {
+export const DEFAULT_PIVOT_KEYS = {
     aggregations: 'aggregations', records: 'records', children: 'children', level: 'level',
     rowDimensionSeparator: '_', columnDimensionSeparator: '-'
 };
 ```
 
-Setting `NoopPivotDimensionsStrategy` for the [`columnStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=columnStrategy) and [`rowStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=rowStrategy) skips the data grouping and aggregation done by the data pipes, but the pivot grid still needs declarations for the rows, columns, values and filters in order to render the pivot view as expected:
+Setting [`IgcNoopPivotDimensionsStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcNoopPivotDimensionsStrategy) for the [`ColumnStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=columnStrategy) and [`RowStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=rowStrategy) skips the data grouping and aggregation done by the data pipes, but the pivot grid still needs declarations for the rows, columns, values and filters in order to render the pivot view as expected:
 
 ```typescript
 public pivotConfig: IgcPivotConfiguration = {
@@ -230,9 +231,9 @@ public pivotConfig: IgcPivotConfiguration = {
 }
 ```
 
-It is important for the data to match the configuration. For the best results no additional fields should be included into the aggregated data and no fields from the provided data should be left undeclared as rows or columns. The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) component builds its data based on the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and it is expected for the configuration and aggregated data to match accordingly.
+It is important for the data to match the configuration. For the best results no additional fields should be included into the aggregated data and no fields from the provided data should be left undeclared as rows or columns. The [`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) component builds its data based on the [`PivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and it is expected for the configuration and aggregated data to match accordingly.
 
-Similarly for other remote data operations like sorting and filtering, data processing can be skipped by setting the related empty strategies - [`filterStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=filterStrategy), [`sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=sortStrategy):
+Similarly for other remote data operations like sorting and filtering, data processing can be skipped by setting the related empty strategies - [`FilterStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=filterStrategy), [`SortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=sortStrategy):
 
 ```html
 <igc-pivot-grid filter-strategy="noopFilterStrategy" sort-strategy="noopSortStrategy">
@@ -245,15 +246,11 @@ public noopSortStrategy = NoopSortingStrategy.instance();
 ```
 
 ## API References
-
-- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
-- [`IgcPivotDataSelectorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent)
-
+[`IgcPivotGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
+[`IgcPivotDataSelector`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent)
 ## Additional Resources
 
-<!-- * [Web Components Pivot Grid Features](pivot-grid-features.md) -->
-
-- [Web Components Pivot Grid Overview](overview.md)
+- [Web Components Pivot Grid Overview](./overview.md)
 
 Our community is active and always welcoming to new ideas.
 

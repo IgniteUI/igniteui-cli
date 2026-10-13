@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics
-_description: Use Infragistics' React JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for React map tutorials!
-_keywords: React map, geographic series, Ignite UI for React, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+title: "React Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
+description: Use Infragistics' React JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for React map tutorials!
+keywords: "React map, geographic series, Ignite UI for React, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In the Ignite UI for React map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
 _tocName: Binding Multiple Sources
 _premium: true
 ---
-
 # React Binding Multiple Data Sources
 
-In the Ignite UI for React map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) for plotting geographic locations of airports, the [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) for plotting flights between airports, and 2nd [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) for plotting gridlines of major geographic coordinates.
+In the Ignite UI for React map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgrGeographicSymbolSeries` for plotting geographic locations of airports, the `IgrGeographicPolylineSeries` for plotting flights between airports, and 2nd `IgrGeographicPolylineSeries` for plotting gridlines of major geographic coordinates.
 
 ## React Binding Multiple Data Sources Example
 
@@ -1179,19 +1180,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingMultipleSources/>);
 ```
 
-<div class="divider--half"></div>
-
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) – displays locations of major airports
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) – displays flights between airports
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) – displays gridlines of major coordinates
+- `IgrGeographicSymbolSeries` – displays locations of major airports
+- `IgrGeographicPolylineSeries` – displays flights between airports
+- `IgrGeographicPolylineSeries` – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
 ## Creating Data Sources
 
-Create data sources for all geographic series that you want to display in the Ignite UI for React map. For example, you can the use [WorldConnections](geo-map-resources-world-connections.md) script.
+Create data sources for all geographic series that you want to display in the Ignite UI for React map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
 ```ts
 import WorldConnections from "./WorldConnections";
@@ -1210,7 +1209,7 @@ public onMapReferenced(map: IgrGeographicMap) {
 
 ## Overlaying Flights
 
-Create first [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) object with flight connections between major airports and add it to the Series collection of the Ignite UI for React map.
+Create first `IgrGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for React map.
 
 ```ts
 const lineSeries = new IgrGeographicPolylineSeries ( { name: "lineSeries" });
@@ -1223,7 +1222,7 @@ this.geoMap.series.add(lineSeries);
 
 ## Overlaying Gridlines
 
-Create second [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) object with geographic gridlines and add it to the Series collection of the Ignite UI for React map.
+Create second `IgrGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for React map.
 
 ```ts
 const gridSeries = new IgrGeographicPolylineSeries( { name: "gridSeries" });
@@ -1236,7 +1235,7 @@ this.geoMap.series.add(gridSeries);
 
 ## Overlaying Airports
 
-Create [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) object with airport points and add it to the Series collection of the geographic Ignite UI for React map.
+Create `IgrGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for React map.
 
 ```ts
 const symbolSeries = new IgrGeographicSymbolSeries ( { name: "symbolSeries" });
@@ -1254,6 +1253,5 @@ this.geoMap.series.add(symbolSeries);
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
 ## API References
-
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html)
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html)
+`IgrGeographicPolylineSeries`
+`IgrGeographicSymbolSeries`

@@ -1,20 +1,18 @@
 ---
-title: Web Components Hierarchical Grid Size - Ignite UI for Web Components
-_description: Learn how to apply different size capabilities to the Hierarchical Grid component. You can use a set of compact view options in the Ignite UI for Web Components.
-_keywords:  material size, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "Web Components Hierarchical Grid Size - Ignite UI for Web Components"
+description: Learn how to apply different size capabilities to the Hierarchical Grid component. You can use a set of compact view options in the Ignite UI for Web Components.
+keywords:  material size, Web Components, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for Web Components Size feature in Web Components Hierarchical Grid allows users to control the spacing and layout of data within the IgcHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Size
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Size
 
-The Ignite UI for Web Components Size feature in Web Components Hierarchical Grid allows users to control the spacing and layout of data within the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for Web Components Size feature in Web Components Hierarchical Grid allows users to control the spacing and layout of data within the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -28,7 +26,7 @@ The Ignite UI for Web Components Size feature in Web Components Hierarchical Gri
 
 ## Usage
 
-As you can see in the demo above, the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
+As you can see in the demo above, the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
 
 ```css
 .gridSize {
@@ -41,14 +39,14 @@ As you can see in the demo above, the [`IgcHierarchicalGridComponent`](mcp:get_a
 </igc-hierarchical-grid>
 ```
 
-And now let's see in details how each option reflects on the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component. When you switch between different size options the height of each [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component. When you switch between different size options the height of each [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgcHierarchicalGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `56px`;
+- **large** - this is the default [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgcHierarchicalGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgcHierarchicalGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgcHierarchicalGrid.width`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
 
@@ -71,8 +69,6 @@ Let's now continue with our sample and see in action how the `--ig-size` is appl
     </igc-property-editor-panel>
 </div>
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 Now we can add the markup.
 
@@ -114,13 +110,7 @@ Now we can add the markup.
 </igc-hierarchical-grid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```ts
 constructor() {
@@ -152,24 +142,34 @@ public webGridSetGridSize(sender: any, args: IgcPropertyEditorPropertyDescriptio
 }
 ```
 
-Another option that [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides for you, in order to be able to change the height of the rows in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), is the property [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight). So let's see in action how this property affects the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) layout along with the `--ig-size`.
+Another option that [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides for you, in order to be able to change the height of the rows in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), is the property [`IgcHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight). So let's see in action how this property affects the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgcHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Hierarchical Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight) property to the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent):
+We can now extend our sample and add [`IgcHierarchicalGrid.rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowHeight) property to the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent):
 
-```html
-<igc-hierarchical-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">
-</igc-hierarchical-grid>
-```
+ ```html
+ <igc-hierarchical-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">
+ </igc-hierarchical-grid>
+ ```
 
 ## API References
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+## Additional Resources
 
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [Virtualization and Performance](virtualization.md)
+- [Editing](editing.md)
+
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
 
 Our community is active and always welcoming to new ideas.
 

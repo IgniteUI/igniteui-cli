@@ -1,12 +1,13 @@
 ---
-title: React Tree Component | Infragistics
-_description: With React Tree component you can display hierarchical data in a tree-view structure, customize nodes easily and load data on demand. Try it now.
-_keywords: React Tree, Item Tree, overview, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Tree Component | Infragistics"
+description: With React Tree component you can display hierarchical data in a tree-view structure, customize nodes easily and load data on demand. Try it now.
+keywords: "React Tree, Item Tree, overview, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Tree", "TreeItem", "Icon", "CircularProgress"]
+llms:
+  description: "Ignite UI for React Tree, also known as TreeView component, is a high-performance control that visualizes expandable data structures within a tree-like UI, enabling you to apply load on demand for child items."
 _tocName: Tree
 ---
-
 # React Tree Overview
 
 Ignite UI for React Tree, also known as TreeView component, is a high-performance control that visualizes expandable data structures within a tree-like UI, enabling you to apply load on demand for child items. The Ignite UI for React Tree also provides features like expanding and collapsing nodes, nested app navigation, Ignite UI for React Tree nodes either can be generated manually or from a bound data source.
@@ -61,8 +62,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TreeBasicExample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## How to Use Ignite UI for React Tree With Ignite UI
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -81,16 +80,15 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 The simplest way to start using the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) is as follows:
 
 ### Declaring a tree
-
 [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem) is the representation of every item that belongs to the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree).
-Items provide [`disabled`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=disabled), [`active`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=active), [`selected`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=selected) and [`expanded`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
-The [`value`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=value) property can be used to add a reference to the data entry the item represents.
+Items provide [`Disabled`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=disabled), [`Active`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=active), [`Selected`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=selected) and [`Expanded`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
+The [`Value`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=value) property can be used to add a reference to the data entry the item represents.
 
 Items can be bound to a data model so that their expanded and selected states are reflected in the underlying data as well.
 
 - Declaring a tree by creating static unbound items
 
-In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`label`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=label) property or provide a custom slot content for the [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem) label.
+In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`Label`](mcp:get_api_reference?platform=react&component=IgrTreeItem&member=label) property or provide a custom slot content for the [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem) label.
 
 ```tsx
 <IgrTree>
@@ -111,21 +109,20 @@ In order to render a tree you do not necessarily need a data set - individual it
 </IgrTree>
 ```
 
-> [!Note]
-> You can provide a custom slot content for each [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
+**Note:** 
+You can provide a custom slot content for each [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions
 
 [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem) could be expanded or collapsed:
-
 - by clicking on the item expand indicator (default behavior).
-- by clicking on the item if the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) [`toggleNodeOnClick`](mcp:get_api_reference?platform=react&component=IgrTree&member=toggleNodeOnClick) property is set to `true`.
+- by clicking on the item if the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) [`ToggleNodeOnClick`](mcp:get_api_reference?platform=react&component=IgrTree&member=toggleNodeOnClick) property is set to `true`.
 
-By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`singleBranchExpand`](mcp:get_api_reference?platform=react&component=IgrTree&member=singleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
+By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`SingleBranchExpand`](mcp:get_api_reference?platform=react&component=IgrTree&member=singleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
 
 ## React Tree Selection
 
-In order to setup item selection in the Ignite UI for React Tree component, you just need to set its [`selection`](mcp:get_api_reference?platform=react&component=IgrTree&member=selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
+In order to setup item selection in the Ignite UI for React Tree component, you just need to set its [`Selection`](mcp:get_api_reference?platform=react&component=IgrTree&member=selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
 
 ### None
 
@@ -133,14 +130,13 @@ In the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) by de
 
 ### Multiple
 
-To enable multiple item selection in the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) just set the [`selection`](mcp:get_api_reference?platform=react&component=IgrTree&member=selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
+To enable multiple item selection in the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) just set the [`Selection`](mcp:get_api_reference?platform=react&component=IgrTree&member=selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
 
 ```tsx
 <IgrTree selection="multiple" />
 ```
 
 ### Cascade
-
 To enable cascade item selection in the [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree), just set the selection property to **cascade**. This will render a checkbox for every item.
 
 ```tsx
@@ -150,7 +146,6 @@ To enable cascade item selection in the [`IgrTree`](mcp:get_api_reference?platfo
 In this mode a parent's selection state entirely depends on the selection state of its children. When a parent has some selected and some deselected children, its checkbox is in an indeterminate state.
 
 ## Keyboard Navigation
-
 Keyboard navigation in [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
 
 The [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) navigation is compliant with W3C accessibility standards and convenient to use.
@@ -170,7 +165,7 @@ The [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree) navigati
 - <kbd>SPACE</kbd> - toggles selection of the current item. Marks the node as active.
 - <kbd>SHIFT</kbd> + <kbd>SPACE</kbd> - toggles selection of all items between the active one and the one pressed Space while holding <kbd>SHIFT</kbd> if selection is enabled.
 - <kbd>ENTER</kbd> - activates the focused item. If the item has link in it, opens the link.
-- <kbd>\*</kbd> - expands the item and all sibling items on the same level.
+- <kbd>*</kbd> - expands the item and all sibling items on the same level.
 
 When selection is enabled, end-user selection of items is only allowed through the rendered checkbox. Since both selection types allow multiple selection, the following mouse and keyboard interactions are available:
 
@@ -249,15 +244,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TreeStyling/>);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree)
-- [`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree)<br />
+[`IgrTreeItem`](mcp:get_api_reference?platform=react&component=IgrTreeItem)<br />
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)<br />
+[`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)<br />
 
 ## Additional Resources
 

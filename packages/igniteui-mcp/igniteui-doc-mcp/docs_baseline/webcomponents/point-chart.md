@@ -1,21 +1,20 @@
 ---
-title: Web Components Point Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Point Chart
-_keywords: Web Components Charts, Point Chart, Infragistics
-_license: commercial
+title: "Web Components Point Chart | Data Visualization | Infragistics"
+description: Infragistics' Web Components Point Chart
+keywords: "Web Components Charts, Point Chart, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Point Chart renders a collection of points."
 _tocName: Point Chart
 _premium: true
 ---
-
 # Web Components Point Chart
-
 The Ignite UI for Web Components Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Web Components Point Chart Example
-
-You can create the Web Components Point Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to `ItemsSource` property and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
+You can create the Web Components Point Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -50,10 +49,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Point Chart with Single Series
-
 In the following example, the Web Components Point Chart plots a single data source by automatically selecting numeric data column for y-axis and non-numeric data column for x-axis.
 
 ```typescript
@@ -89,11 +85,8 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Point Chart with Multiple Series
-
-Since the Web Components Point Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
+Since the Web Components Point Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -128,10 +121,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Point Chart Styling
-
 Once the Web Components Point Chart is set up, we may want to make some further styling customizations such as change the markers and its outlines, brushes and thickness.
 
 ```typescript
@@ -167,11 +157,8 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Point Charts
-
-You can create more advanced types of Web Components Point Charts using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by following these topics:
+You can create more advanced types of Web Components Point Charts using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart)
@@ -186,13 +173,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType)
-- [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes)
-- [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines)
-- [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes)
-- [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerThickness)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

@@ -1,14 +1,15 @@
 ---
-title: Angular Map | Data Visualization Tools | Binding CSV Data | Infragistics
-_description: Learn how to use Infragistics' Angular map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Angular map demos!
-_keywords: Angular map, plot data, Ignite UI for Angular, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicHighDensityScatterSeries"]
+title: "Angular Map | Data Visualization Tools | Binding CSV Data | Infragistics"
+description: Learn how to use Infragistics' Angular map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Angular map demos!
+keywords: "Angular map, plot data, Ignite UI for Angular, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicHighDensityScatterSeries"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Angular map component, you can plot geographic data loaded from various file types."
 _tocName: Binding CSV File
 _premium: true
 ---
-
 # Angular Binding CSV Files with Geographic Locations
 
 With the Ignite UI for Angular map component, you can plot geographic data loaded from various file types. For example, you can load geographic locations from a comma separated values (CSV) file.
@@ -147,24 +148,20 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from CSV file:
 
-```ts
+```csv
 City,Lat,Lon,State,Code,County,Density,Population
 New York,40.7856,-74.0093,New Jersey,NJ,Hudson,21057,54227
 Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgxGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html) in the map component to an array of objects created from loaded CSV file with geographic locations.
+The following code loads and binds `IgxGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded CSV file with geographic locations.
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
 <igx-geographic-map #map
     width="700px"
     height="500px"
@@ -256,11 +253,4 @@ export class MapBindingDataCsvComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html)
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html#longitudeMemberPath)
-- [`heatMaximumColor`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html#heatMaximumColor)
-- [`heatMinimumColor`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html#heatMinimumColor)
-- [`pointExtent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html#pointExtent)
+`IgxGeographicHighDensityScatterSeries`

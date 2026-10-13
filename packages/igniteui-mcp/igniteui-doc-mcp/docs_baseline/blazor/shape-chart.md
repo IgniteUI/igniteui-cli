@@ -1,14 +1,15 @@
 ---
 title: Blazor Shape Chart | Data Visualization | Infragistics
-_description: Infragistics' Blazor Shape Chart
-_keywords: Blazor Charts, Shape Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "ScatterPolygonSeries", "ScatterPolylineSeries", "Series", "GeographicShapeSeriesBase"]
+description: Infragistics' Blazor Shape Chart
+keywords: Blazor Charts, Shape Chart, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system."
 _tocName: Shape Chart
 _premium: true
 ---
-
 # Blazor Shape Charts
 
 The Ignite UI for Blazor Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system. They are often used highlight regions in scientific data or they can be used to plot diagrams, blueprints, or even floor plan of buildings.
@@ -102,8 +103,6 @@ You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Scatter Polyline Chart
 
 The Blazor Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
@@ -191,26 +190,17 @@ You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Line Chart](line-chart.md)
-- [Scatter Chart](scatter-chart.md)
+- [Area Chart](./area-chart.md)
+- [Line Chart](./line-chart.md)
+- [Scatter Chart](./scatter-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
-- [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries)
-- [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries&member=DataSource)
-- [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries&member=ShapeMemberPath)
-- [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis)
-- [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)
-- `YAxisName`
-- `XAxisName`
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+[`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries)
+[`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries)
+[`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis)
+[`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)

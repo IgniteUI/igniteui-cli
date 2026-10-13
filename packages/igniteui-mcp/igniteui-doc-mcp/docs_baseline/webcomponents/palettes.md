@@ -1,12 +1,13 @@
 ---
-title: Web Components Styling and Themes | Web Components Palettes | Infragistics
-_description:
-_keywords: Ignite UI for Web Components, Infragistics, Palettes, Styling
-_license: MIT
-mentionedTypes: ["Palettes"]
+title: "Web Components Styling and Themes | Web Components Palettes | Infragistics"
+description:
+keywords: "Ignite UI for Web Components, Infragistics, Palettes, Styling"
+license: MIT
+mentionedTypes: []
+llms:
+  description: "Ignite UI for Web Components exposes CSS variables that allow you to update the colors in your application consistently."
 _tocName: Palettes
 ---
-
 # Palettes in Ignite UI for Web Components
 
 Ignite UI for Web Components exposes CSS variables that allow you to update the colors in your application consistently.
@@ -17,7 +18,16 @@ Palettes in Ignite UI for Web Components provide over 80 color variants as CSS v
 
 The `primary`, `secondary`, and `gray` colors follow the [2014 Material Design Color Palette](https://material.io/design/color/the-color-system.html#tools-for-picking-colors). This means these colors include the following variants:
 
-<table>
+<style>{`
+.palette-table td, .palette-table th {
+  border: 1px solid;
+  padding: 0.5rem;
+}
+.palette-table {
+  margin-bottom: 1rem;
+}
+`}</style>
+<table class="palette-table">
     <tr>
         <th colspan="10" style="text-align: center !important">All</th>
         <th colspan="4" style="text-align: center !important"><b>Primary & Secondary Only</b></th>
@@ -40,40 +50,49 @@ The `primary`, `secondary`, and `gray` colors follow the [2014 Material Design C
     </tr>
 </table>
 
-<div class="divider--half"></div>
-
 As the table above shows, the `gray` color doesn't include the `A100`, `A200`, `A400`, and `A700` variants, while the `primary` and `secondary` colors contain all 14 color variants. We include 5 additional colors that are not part of the 2014 Material Design Color Palette - `info`, `success`, `warn`, `error`, and `surface`.
 
 On top of the aforementioned colors, we also include **Level AA** [WCAG](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) compliant `contrast` colors for each color variant. This means that you can safely use the corresponding `contrast` color variants as foreground colors for the base color variant.
 
-> [!Note]
-> Contrast colors are generated at build-time therefore overriding the CSS variables will not update the corresponding contrast colors.
+**Note:** 
+Contrast colors are CSS relative colors calculated at runtime from the corresponding shade color, so overriding a base color variant updates its contrast color along with it.
 
-Here's an excerpt of the `primary` color as declared in the Light Bootstrap Palette:
+Here's an excerpt of the `primary` color as declared in the Light Material Palette:
 
 ```css
 :root {
   //...
   --ig-primary-500: #09f;
-  --ig-primary-500-contrast: black;
+  --ig-primary-500-contrast: hsla(from color(from var(--ig-primary-500) var(--y-contrast)) h 0 l / 1);
+  --ig-primary-seed: #09f;
   --ig-primary-600: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.89));
-  --ig-primary-600-contrast: black;
+  --ig-primary-600-contrast: hsla(from color(from var(--ig-primary-600) var(--y-contrast)) h 0 l / 1);
   --ig-primary-700: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.81));
   //...
   --ig-secondary-400: hsl(from var(--ig-secondary-500) h calc(s * 0.875) calc(l * 1.08));
-  --ig-secondary-400-contrast: black;
+  --ig-secondary-400-contrast: hsla(from color(from var(--ig-secondary-400) var(--y-contrast)) h 0 l / 1);
   --ig-secondary-500: #df1b74;
-  --ig-secondary-500-contrast: white;
+  --ig-secondary-500-contrast: hsla(from color(from var(--ig-secondary-500) var(--y-contrast)) h 0 l / 1);
   --ig-secondary-600: hsl(from var(--ig-secondary-500) h calc(s * 1.26) calc(l * 0.89));
-  --ig-secondary-600-contrast: white;
+  --ig-secondary-600-contrast: hsla(from color(from var(--ig-secondary-600) var(--y-contrast)) h 0 l / 1);
   //...
+  --ig-wcag-a: 0.31;
+  --ig-wcag-aa: 0.185;
+  --ig-wcag-aaa: 0.178;
+  --ig-contrast-level: var(--ig-wcag-aa);
+  --y: clamp(0, (y / var(--ig-contrast-level) - 1) * -infinity, 1);
+  --y-contrast: xyz-d65 var(--y) var(--y) var(--y);
 }
 ```
 
-All primary color variants are derived from one base variable color variant `--ig-primary-500`. The same goes for the other color variables `--ig-secondary-500`, `--ig-surface-500`, etc. The other variants are generated through the relative color function `hsl()` which takes the main variable color variant `500` and changes it's `staturation` and `lightness` according to the variable variant which is assigned on (`600`,`700`, etc.). We decided to use this approach as it allows us to modify all variants of the `primary`, `secondary`, `surface` and other colors at runtime.
+All primary color variants are derived from one base variable color variant `--ig-primary-500`. The same goes for the other color variables `--ig-secondary-500`, `--ig-surface-500`, etc. The other variants are generated through the relative color function `hsl()` which takes the main variable color variant `500` and changes its `saturation` and `lightness` according to the variable variant which is assigned on (`600`,`700`, etc.). We decided to use this approach as it allows us to modify all variants of the `primary`, `secondary`, `surface` and other colors at runtime.
 
-> [!WARNING]
-> Because the contrast colors are not generated at CSS runtime like the rest, if we change the main color variant(`500`), the contrast color would not be updated. We would need to change them manually. This behavior will be improved upon in an upcoming release, where the contrast colors will also be calculated at CSS runtime.
+Alongside the numbered variants, each color exposes a `seed` variable that holds the base color the palette was generated from, unchanged. For `primary`, `secondary`, and the other chromatic colors the seed matches the `500` variant. For `gray` it does not: `--ig-gray-seed` records the color the grayscale was derived from - black or white, chosen from the surface color's luminance - while `--ig-gray-500` is a generated mid-tone.
+
+The contrast colors are calculated at CSS runtime from the base color's luminance and the chosen contrast level, picking the more readable of black or white. Because the calculation is part of the cascade, changing the main color variant (`500`) updates its contrast colors with it - no manual step is required.
+
+**Note:** 
+The threshold is held in `--ig-contrast-level`, which defaults to `var(--ig-wcag-aa)`. Override it on any scope to switch to `var(--ig-wcag-a)` or `var(--ig-wcag-aaa)`. If you compile the themes from Sass instead of using the prebuilt CSS, the `palette` and `adaptive-contrast` mixins accept `a`, `aa`, or `aaa` directly - see [Accessibility](accessibility.md).
 
 ## Defining Palettes
 
@@ -173,7 +192,3 @@ So far we've covered the `primary`, `secondary`, `gray`, and `surface` color var
   --ig-error-500: #ff134a;
 }
 ```
-
-## API References
-
-- `Palettes`

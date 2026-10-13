@@ -1,19 +1,20 @@
 ---
 title: ComboBox Templates - MIT license 
-_description: Custom templates for different areas of the igx-combo component can be defined, including items, header, footer, empty list and adding button.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Templates, Angular Combo Templates
-_license: MIT
+description: Custom templates for different areas of the igx-combo component can be defined, including items, header, footer, empty list and adding button.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Templates, Angular Combo Templates
+license: MIT
+llms:
+  description: "The Ignite UI for Angular ComboBox Component allows defining custom templates for different areas such as header, footer, items, empty list and adding button."
 _tocName: Templates
 ---
-
 # ComboBox Templates
 
-<p class="highlight">
+<div class="highlight">
+
 The Ignite UI for Angular ComboBox Component allows defining custom templates for different areas such as header, footer, items, empty list and adding button.
-</p>
+</div>
 
 ## Angular ComboBox Templates Example
-
 
 ```typescript
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
@@ -103,7 +104,6 @@ export class ComboTemplateComponent implements OnInit {
 }
 ```
 
-
 ## Usage
 
 To get started with the ComboBox component, first you need to import the `IgxComboModule` in your **app.module.ts** file:
@@ -134,12 +134,15 @@ Use selector `[igxComboItem]`:
 <igx-combo #templateCombo [data]="lData" [valueKey]="'field'" >
     <ng-template igxComboItem let-display let-key="valueKey">
         <div class="item">
+
             <span class="state">{{ display[key] }}</span>
             <span class="region">{{ display.region }}</span>
-        </div>
+        
+</div>
     </ng-template>
 </igx-combo>
 ```
+
 
 ### Header Item template
 
@@ -148,7 +151,9 @@ Use selector `[igxComboHeaderItem]`:
 ```html
 <igx-combo #templateCombo [data]="lData" [groupKey]="'region'">
     <ng-template igxComboHeaderItem let-display let-key="groupKey">
-        <div class="header-item">Region: {{ display[key] }}</div>
+        <div class="header-item">
+Region: {{ display[key] }}
+</div>
     </ng-template>
 </igx-combo>
 ```
@@ -160,7 +165,9 @@ Use selector `[igxComboHeader]`:
 ```html
 <igx-combo>
     <ng-template igxComboHeader>
-        <div class="header-class">State - Region</div>
+        <div class="header-class">
+State - Region
+</div>
     </ng-template>
 </igx-combo>
 ```
@@ -172,7 +179,9 @@ Use selector `[igxComboFooter]`:
 ```html
 <igx-combo>
     <ng-template igxComboFooter>
-        <div class="footer-class">Infragistics 2018</div>
+        <div class="footer-class">
+Infragistics 2018
+</div>
     </ng-template>
 </igx-combo>
 ```
@@ -215,8 +224,8 @@ Use selector `[igxComboToggleIcon]`:
 </igx-combo>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ### Clear Icon Template
 
@@ -242,23 +251,19 @@ When used with templates, the `igxComboClearIcon` and the `igxComboToggleIcon` s
 ```
 
 ## API References
-
-
-<div class="divider--half"></div>
-
-- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
-- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-
+<hr/>
+- [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
+- `IgxComboComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [ComboBox Component](combo.md)
-- [ComboBox Features](combo-features.md)
-- [ComboBox Remote Binding](combo-remote.md)
-- [Template Driven Forms Integration](input-group.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
-- [Single Select ComboBox](simple-combo.md)
+- [ComboBox Component](/combo)
+- [ComboBox Features](/combo-features)
+- [ComboBox Remote Binding](/combo-remote)
+- [Template Driven Forms Integration](/input-group)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
+- [Single Select ComboBox](/simple-combo)
 
 Our community is active and always welcoming to new ideas.
 

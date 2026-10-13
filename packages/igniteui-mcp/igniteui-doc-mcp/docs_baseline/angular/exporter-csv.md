@@ -1,23 +1,23 @@
 ---
 title: Export to CSV/TSV Component - Native Angular | Ignite UI for Angular
-_description: Users can export their data for editing or offline presentation can do so in CSV or TSV format with the Export to CSV/TSV Ignite UI for Angular component.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Grid, Angular Data Grid, Angular Grid Control, Angular Grid Component, CSV Export, TSV Export
-_license: commercial
+description: Users can export their data for editing or offline presentation can do so in CSV or TSV format with the Export to CSV/TSV Ignite UI for Angular component.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Grid, Angular Data Grid, Angular Grid Control, Angular Grid Component, CSV Export, TSV Export
+license: commercial
+llms:
+  description: "The IgniteUI CSV Exporter service can export data in a Character Separated Values format from both raw data (array) or from an IgxGrid, IgxHierarchicalGrid and IgxTreeGrid."
 _tocName: CSV Exporter
 _premium: true
 ---
-
 # CSV Exporter
 
-<p class="highlight">
+<div class="highlight">
 
-The IgniteUI CSV Exporter service can export data in a Character Separated Values format from both raw data (array) or from an [**IgxGrid**](grid/grid.md), [**IgxHierarchicalGrid**](hierarchicalgrid/hierarchical-grid.md) and [**IgxTreeGrid**](treegrid/tree-grid.md).
+The IgniteUI CSV Exporter service can export data in a Character Separated Values format from both raw data (array) or from an [**IgxGrid**](/grid/grid), [**IgxHierarchicalGrid**](/hierarchicalgrid/hierarchical-grid) and [**IgxTreeGrid**](/treegrid/tree-grid).
 The exporting functionality is encapsulated in the [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService) class.
-</p>
-<div class="divider"></div>
+</div>
+<igc-divider></igc-divider>
 
 ## Angular CSV Exporter Example
-
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -64,7 +64,7 @@ export class CsvExportComponent {
 </p>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 To start using the IgniteUI CSV Exporter first import the [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService) in the app.module.ts file and add the service to the `providers` array:
 
@@ -82,8 +82,8 @@ import { IgxCsvExporterService } from 'igniteui-angular/grids/core';
 export class AppModule {}
 ```
 
-> [!Note]
-> In v12.2.1 and later, the exporter services are provided in root, which means you no longer need to declare them in the AppModule providers.
+**Note:** 
+In v12.2.1 and later, the exporter services are provided in root, which means you no longer need to declare them in the AppModule providers.
 
 To initiate an export process you may use the handler of a button in your component's template.
 
@@ -120,11 +120,10 @@ public exportButtonHandler() {
 
 If all went well, you should see an export button. When pressed, it will trigger the export process and the browser will download a file named "ExportedDataFile.csv" which contains the data from the `localData` array in CSV format.
 
-
 ## Exporting IgxGrid's Data
 
-The CSV Exporter service can also export data in CSV format from an [**IgxGrid**](grid/grid.md). The only difference is that you need to invoke the
-[`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)'s [`export`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=export) method and pass the [**IgxGrid**](grid/grid.md) as first argument.
+The CSV Exporter service can also export data in CSV format from an [**IgxGrid**](/grid/grid). The only difference is that you need to invoke the
+[`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)'s [`export`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=export) method and pass the [**IgxGrid**](/grid/grid) as first argument.
 
 Here is an example:
 
@@ -158,7 +157,6 @@ public exportButtonHandler() {
 }
 
 ```
-
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -228,7 +226,6 @@ export class CsvExportSample1Component {
 }
 ```
 
-
 ## Customizing the Exported Format
 
 The CSV Exporter supports several types of exporting formats. The export format may be specified:
@@ -238,19 +235,19 @@ The CSV Exporter supports several types of exporting formats. The export format 
 
 Different export formats have different file extensions and value delimiters. The following table maps the export formats and their respective file extensions and delimiters:
 
-| Format                                                                        | File Extension | Default Delimiter |
-| :---------------------------------------------------------------------------- | :------------- | :---------------- |
-| [`CsvFileTypes.CSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=csv) | .csv           | Comma             |
-| [`CsvFileTypes.TAB`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=tab) | .tab           | Tab               |
-| [`CsvFileTypes.TSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=tsv) | .tsv           | Tab               |
+| Format | File Extension | Default Delimiter |
+| :--- | :--- | :--- |
+| [`IgxCsvFileTypes.CSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=CSV) | .csv | Comma |
+| [`IgxCsvFileTypes.TAB`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TAB) | .tab | Tab |
+| [`IgxCsvFileTypes.TSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TSV) | .tsv | Tab |
 
-<div class="divider--half"></div>
+<hr/>
 
 You can also specify a custom delimiter using the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) objects's [`valueDelimiter`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions&member=valuedelimiter) property.
 
 ## Customizing the Exported Content
 
-In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
+In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`IgxIRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example will exclude a column from the export if its name is "Age" and if its index is 1:
 
@@ -265,25 +262,19 @@ this.csvExportService.columnExporting.subscribe((args: IColumnExportingEventArgs
 this.csvExportService.export(this.igxGrid1, new IgxCsvExporterOptions('ExportedDataFile'));
 ```
 
-When you are exporting data from [**IgxGrid**](grid/grid.md) the export process takes in account features like row filtering and column hiding and exports only the data visible in the grid. You can configure the exporter service to include filtered rows or hidden columns by setting properties on the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) object. These properties are described in the table below.
+When you are exporting data from [**IgxGrid**](/grid/grid) the export process takes in account features like row filtering and column hiding and exports only the data visible in the grid. You can configure the exporter service to include filtered rows or hidden columns by setting properties on the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) object. These properties are described in the table below.
 
 ## API References
-
 The CSV Exporter service has a few more APIs to explore, which are listed below.
-
-- [IgxCsvExporterService API](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)
-- [IgxCsvExporterOptions API](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions)
-
+- [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)
+- [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions)
 Additional components that were used:
-
-- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
-<div class="divider"></div>
-
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+<igc-divider></igc-divider>
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

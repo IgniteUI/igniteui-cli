@@ -1,16 +1,17 @@
 ---
 title: React Excel Library| Working with Charts | Infragistics
-_description: Use the Infragistics' React excel library's chart feature to add visual charting representations of data trends across regions of cells in a worksheet. Visualize Ignite UI for React excel data in over 70 chart types!
-_keywords: Excel library, charts,  Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Workbook", "Worksheet"]
+description: Use the Infragistics' React excel library's chart feature to add visual charting representations of data trends across regions of cells in a worksheet. Visualize Ignite UI for React excel data in over 70 chart types!
+keywords: Excel library, charts,  Ignite UI for React, Infragistics
+license: commercial
+
+llms:
+  description: "The Infragistics React Excel Engine's WorksheetChart functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet."
 _tocName: Working with Charts
 _premium: true
 ---
-
 # React Working with Charts
 
-The Infragistics React Excel Engine's [`WorksheetChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetchart.html) functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet. For example, if you want to see your Excel data in a region of cells visualized as a column, line, or over 70 other chart types, this feature can help you to achieve that.
+The Infragistics React Excel Engine's `IgrWorksheetChart` functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet. For example, if you want to see your Excel data in a region of cells visualized as a column, line, or over 70 other chart types, this feature can help you to achieve that.
 
 ## React Working with Charts Example
 
@@ -301,16 +302,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithCharts/>);
 ```
 
-> [!Note]
-> The XLSX format is required. Other formats are not supported at this time.
-
-<div class="divider--half"></div>
+**Note:** 
+The XLSX format is required. Other formats are not supported at this time.
 
 ## Usage
-
 In order to add a chart to a worksheet, you must use the `AddChart` method of the worksheet's shapes collection. In this method, you can specify the chart type that you wish to use, the top-left cell, the bottom-right cell, and the percentages of those cells that you wish for the chart to take up.
 
-The `AddChart` method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the [`setSourceData`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetchart.html#setSourceData) method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
+The `AddChart` method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the `SetSourceData` method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
 
 There are over 70 supported chart types, including `Line`, `Area`, [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn), and `Pie`.
 
@@ -325,10 +323,4 @@ chart.setSourceData("A2:M6", true);
 ```
 
 ## API References
-
-- `AddChart`
-- `Area`
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- `Line`
-- `Pie`
-- [`WorksheetChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetchart.html)
+`IgrWorksheetChart`

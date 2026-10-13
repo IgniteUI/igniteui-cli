@@ -1,13 +1,14 @@
 ---
-title: Angular Spreadsheet | Hyperlinks | Infragistics
-_description: Use Infragistics' Angular spreadsheet control to display hyperlinks in the Excel workbook, which can link to websites, file directories and other worksheets. View Ignite UI for Angular spreadsheet tutorials!
-_keywords: Excel Spreadsheet, hyperlinks, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Spreadsheet | Hyperlinks | Infragistics"
+description: Use Infragistics' Angular spreadsheet control to display hyperlinks in the Excel workbook, which can link to websites, file directories and other worksheets. View Ignite UI for Angular spreadsheet tutorials!
+keywords: Excel Spreadsheet, hyperlinks, Ignite UI for Angular, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "The Angular Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook."
 _tocName: Hyperlinks
 _premium: true
 ---
-
 # Angular Spreadsheet Hyperlinks
 
 The Angular Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook.
@@ -82,32 +83,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Hyperlinks Overview
 
-Hyperlinks are added to the [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html) control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheethyperlink.html) object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
+Hyperlinks are added to the `IgxSpreadsheet` control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a `IgxWorksheetHyperlink` object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
 
 ## Dependencies
 
-When setting up your Angular spreadsheet control to use hyperlinks, you will need to import the [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheethyperlink.html) class like so:
-
-<!-- Angular -->
+When setting up your Angular spreadsheet control to use hyperlinks, you will need to import the `IgxWorksheetHyperlink` class like so:
 
 ```ts
 import { WorksheetHyperlink } from 'igniteui-angular-excel';
 ```
-
-## Code Snippet
-
-The following code snippet demonstrates how to add a hyperlink to the currently viewed worksheet in the Angular [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html) control:
-
-```ts
-this.spreadsheet.activeWorksheet.hyperlinks().add(new WorksheetHyperlink("A1", "http://www.infragistics.com", "Infragistics", "Infragistics Home Page"));
-```
-
-## API References
-
-- `Hyperlinks`
-- [`IgxSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_spreadsheet.igxspreadsheetcomponent.html)
-- [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheethyperlink.html)

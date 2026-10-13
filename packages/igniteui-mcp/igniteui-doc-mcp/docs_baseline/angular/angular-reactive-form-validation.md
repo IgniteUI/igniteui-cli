@@ -1,10 +1,11 @@
 ---
 title: Angular reactive form validation – Ignite UI for Angular
-_description: Angular form validation is a process of verifying if inputs entered by a user into a web-form are correct. Check how to do it with Ignite UI for Angular reactive forms.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Reactive Forms, Angular Forms
+description: Angular form validation is a process of verifying if inputs entered by a user into a web-form are correct. Check how to do it with Ignite UI for Angular reactive forms.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Reactive Forms, Angular Forms
+llms:
+  description: "Reactive forms in Angular provide a direct access to the underlying form object model, offering an immutable and explicit approach to handling form inputs."
 _tocName: Angular Reactive Forms
 ---
-
 # Angular reactive form validation
 
 ## What are reactive forms in Angular?
@@ -30,7 +31,6 @@ Reactive forms are built around observable streams which track every unique chan
 **Consistent & structured data flow**
 
 The data flow in Angular reactive forms is well-structured because the form logic is led by the component class. This enables you to add validator functions directly to the FormControl instance in the component class. Whenever a change occurs, Angular calls these functions.
-
 
 ## What is angular form validation?
 
@@ -366,7 +366,7 @@ igx-card, article {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Angular form group validation
 
@@ -420,15 +420,15 @@ export class MyComponent implements OnInit {
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Related topics:
 
-- [Combo](combo.md)
-- [Select](select.md)
-- [Input Group](input-group.md)
-- [Date Picker](date-picker.md)
-- [Time Picker](time-picker.md)
+- [Combo](/combo)
+- [Select](/select)
+- [Input Group](/input-group)
+- [Date Picker](/date-picker)
+- [Time Picker](/time-picker)
 
 Our community is active and always welcoming to new ideas.
 

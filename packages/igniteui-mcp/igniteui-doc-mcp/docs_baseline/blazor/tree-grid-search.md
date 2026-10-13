@@ -1,15 +1,14 @@
 ---
-title: Blazor Tree Grid Search Filter - Ignite UI for Blazor
-_description: Perform data manipulation without affecting the underlying data with Tree Grid Batch Editing, using Blazor Tree Grid. See demos & examples!
-_keywords: Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid"]
-namespace: Infragistics.Controls
+title: "Blazor Tree Grid Search Filter - Ignite UI for Blazor"
+description: Perform data manipulation without affecting the underlying data with Tree Grid Batch Editing, using Blazor Tree Grid. See demos & examples!
+keywords: "Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+llms:
+  description: "The Ignite UI for Blazor Search Filter feature in Blazor Tree Grid enables the process of finding values in the collection of data."
+_componentKey: TreeGrid
 _tocName: Search
 _premium: true
 ---
-
 # Blazor Tree Grid Search Filter
 
 The Ignite UI for Blazor Search Filter feature in Blazor Tree Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Blazor Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
@@ -189,13 +188,9 @@ Let's start by creating our grid and binding it to our data. We will also add so
 </IgbTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 Great, and now let's prepare for the search API of our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
 
-<!-- ComponentStart: TreeGrid -->
-
-```razor
+```csharp
 private IgbTreeGrid treeGrid;
 
 public string searchText = "";
@@ -203,23 +198,19 @@ public bool caseSensitive = false;
 public bool exactMatch = false;
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Blazor Search Box Input
 
-Now let's create our search input! By binding our `SearchText` to the `Value` property to our newly created input and subscribe to the `ValueChanging` event, we can detect every single `SearchText` modification by the user. This will allow us to use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
+Now let's create our search input! By binding our [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext) to the `Value` property to our newly created input and subscribe to the `ValueChanging` event, we can detect every single [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext) modification by the user. This will allow us to use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s `FindNext` and `FindPrev` methods to highlight all the occurrences of the [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext) and scroll to the next/previous one (depending on which method we have invoked).
 
-Both the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and the [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods have three arguments:
+Both the `FindNext` and the `FindPrev` methods have three arguments:
 
 - `Text`: **string** (the text we are searching for)
-- (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
-- (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
+- (optional) [`IgbSearchInfo.caseSensitive`](mcp:get_api_reference?platform=blazor&component=IgbSearchInfo&member=caseSensitive): **boolean** (should the search be case sensitive or not, default value is false)
+- (optional) [`IgbSearchInfo.exactMatch`](mcp:get_api_reference?platform=blazor&component=IgbSearchInfo&member=exactMatch): **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext) by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
 The methods from above return a **number** value (the number of times the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) contains the given string).
-
-<!-- ComponentStart: TreeGrid -->
 
 ```razor
 <IgbInput ValueChanging="OnValueChanging" Value="@searchText" />
@@ -228,15 +219,12 @@ public void NextSearch()
 {
     this.treeGrid.FindNext(this.searchText, this.caseSensitive, this.exactMatch);
 }
-```
 
-<!-- ComponentEnd: TreeGrid -->
+```
 
 ### Add Search Buttons
 
-In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and the [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods inside the buttons' respective click event handlers.
-
-<!-- ComponentStart: TreeGrid -->
+In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the `FindNext` and the `FindPrev` methods inside the buttons' respective click event handlers.
 
 ```razor
 <IgbIconButton Variant="IconButtonVariant.Flat" @onclick="PrevSearch">
@@ -259,11 +247,12 @@ In order to freely search and navigate among our search results, let's create a 
         this.treeGrid.FindNextAsync(this.searchText, this.caseSensitive, this.exactMatch);
     }
 }
+
 ```
 
 ### Add Keyboard Search
 
-We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)/[`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods depending on which key the user has pressed.
+We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the `FindNext`/`FindPrev` methods depending on which key the user has pressed.
 
 ```razor
 <IgbInput ValueChanging="OnValueChanging" Value="@searchText" @onkeydown="OnSearchKeyDown" />
@@ -284,15 +273,10 @@ We can also allow the users to navigate the results by using the keyboard's arro
         this.treeGrid.FindNextAsync(this.searchText, this.caseSensitive, this.exactMatch);
     }
 }
+
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Case Sensitive and Exact Match
-
-<!-- ComponentStart: TreeGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
 
 Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use simple selectable `Chips` and bind to the `SelectedChanged` event to determine when the user interacts with them.
 
@@ -315,11 +299,12 @@ Now let's allow the user to choose whether the search should be case sensitive a
         this.grid.FindNextAsync(this.searchText, this.caseSensitive, this.exactMatch);
     }
 }
+
 ```
 
 ### Persistence
 
-What if we would like to filter and sort our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s `PerPage` property.
+What if we would like to filter and sort our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext)! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s `PerPage` property.
 
 ### Adding icons
 
@@ -327,9 +312,7 @@ By using some of our other components, we can create an enriched user interface 
 
 To do this, let's go and grab the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput), [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) and the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) modules.
 
-<!-- ComponentStart: TreeGrid -->
-
-```razor
+```csharp
 // eg. Program.cs register the following:
 builder.Services.AddIgniteUIBlazor(
     typeof(IgbTreeGridModule),
@@ -338,8 +321,6 @@ builder.Services.AddIgniteUIBlazor(
     typeof(IgbIconModule)
 );
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ```razor
 @code {
@@ -363,11 +344,12 @@ builder.Services.AddIgniteUIBlazor(
         }
     }
 }
+
 ```
 
 Finally, let's update our template with the new components!
 
-<!-- ComponentEnd: TreeGrid -->
+We will wrap all of our components inside an [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput). On the left we will toggle between a search and a delete/clear icon (depending on whether the search input is empty or not). In the center, we will position the input itself. In addition, whenever the delete icon is clicked, we will update our [`IgbTreeGrid.findNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=findNext) and invoke the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s `ClearSearch` method to clear the highlights.
 
 ```razor
 <IgbInput ValueChanging="OnValueChanging" Value="@searchText" @onkeydown="OnSearchKeyDown">
@@ -410,7 +392,7 @@ Finally, let's update our template with the new components!
 
 On the right in our input group, let's create three separate containers with the following purposes:
 
-- For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
+- For displaying a couple of chips that toggle the [`IgbSearchInfo.caseSensitive`](mcp:get_api_reference?platform=blazor&component=IgbSearchInfo&member=caseSensitive) and the [`IgbSearchInfo.exactMatch`](mcp:get_api_reference?platform=blazor&component=IgbSearchInfo&member=exactMatch) properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
 
 ```razor
     <div class="chips" slot="suffix">
@@ -435,7 +417,7 @@ On the right in our input group, let's create three separate containers with the
 }
 ```
 
-- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)/[`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods.
+- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the `FindNext`/`FindPrev` methods.
 
 ```razor
 <div class="searchButtons" slot="suffix">
@@ -457,38 +439,20 @@ On the right in our input group, let's create three separate containers with the
         this.grid.FindNextAsync(this.searchText, this.caseSensitive, this.exactMatch);
     }
 }
+
 ```
 
 ## Known Limitations
 
 |Limitation|Description|
 |--- |--- |
-|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`Searchable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Searchable) property on the column to false.|
+|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`Searchable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=searchable) property on the column to false.|
 |Remote Virtualization| The search will not work properly when using remote virtualization|
 |Cells with cut off text| When the text in the cell is too large to fit and the text we are looking for is cut off by the ellipsis, we will still scroll to the cell and include it in the match count, but nothing will be highlighted |
 
 ## API References
-
-In this article we implemented our own search bar for the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Blazor components like icons, chips and inputs. The search API is listed below.
-
-[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) methods:
-
-- [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)
-- [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev)
-- [`ClearSearch`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ClearSearch)
-- [`RefreshSearch`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RefreshSearch)
-
-[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) properties:
-
-- [`Searchable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Searchable)
-
-Additional components with relative APIs that were used:
-
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
-- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
-- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 - [Virtualization and Performance](virtualization.md)

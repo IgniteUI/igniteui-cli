@@ -1,18 +1,21 @@
 ---
 title: Elevations/Shadows
-_description:
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+llms:
+  description: "Elevations are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation."
 _tocName: Elevations
 ---
-
 # Elevations
 
-<p class="highlight">Elevations are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation. You can create sets of elevations using our Sass theming library.</p>
-<div class="divider"></div>
+<div class="highlight">
+Elevations are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation. You can create sets of elevations using our Sass theming library.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
-Elevations in Ignite UI for Angular are declared as a map of 25 elements. Each element is a key-value pair where the key is the elevation level name (0..24) and the value is a list of 3 `box-shadow` declarations. We allow you to generate new sets of elevations where you can define the color for the shadows. Additionally, we expose functions for retrieving a specific elevation level from the elevations map. We expose a global variable `$elevations` that is used across components by default. If you've not read the CSS variables [documentation](../elevations.md) related to Elevations, we suggest you do that first before reading on.
+Elevations in Ignite UI for Angular are declared as a map of 25 elements. Each element is a key-value pair where the key is the elevation level name (0..24) and the value is a list of 3 `box-shadow` declarations. We allow you to generate new sets of elevations where you can define the color for the shadows. Additionally, we expose functions for retrieving a specific elevation level from the elevations map. We expose a global variable `$elevations` that is used across components by default. If you've not read the CSS variables [documentation](/themes/elevations) related to Elevations, we suggest you do that first before reading on.
 
 ## Usage
 
@@ -94,7 +97,7 @@ $card-theme: card-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Custom Elevations
 
@@ -112,18 +115,15 @@ $elevations: (
 
 ## Elevation Schema Declarations
 
-The elevation levels are also used in theme schema declarations. More on that in the [Schema](schemas.md) section of the documentation.
-<div class="divider--half"></div>
+The elevation levels are also used in theme schema declarations. More on that in the [Schema](/themes/sass/schemas) section of the documentation.
+<hr/>
 
 ## API References
-
-- [Creating Elevations](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/elevations#mixin-elevations)
-- [Retrieving Elevations](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/elevations#function-elevation)
-
-
+- `Creating Elevations`
+- `Retrieving Elevations`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

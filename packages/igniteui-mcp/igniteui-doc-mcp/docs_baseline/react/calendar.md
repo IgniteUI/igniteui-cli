@@ -1,12 +1,13 @@
 ---
-title: React Calendar Component - Ignite UI for React
-_description: With React Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
-_keywords: React Calendar, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Calendar Component - Ignite UI for React"
+description: With React Calendar Component, users can create intuitive calendars for applications to display date information using three different selection modes. Try it Now
+keywords: "React Calendar, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Calendar", "DateRangeType", "DateRangeDescriptor"]
+llms:
+  description: "The Ignite UI for React Calendar component is lightweight and easy to configure."
 _tocName: Calendar
 ---
-
 # React Calendar Overview
 
 The Ignite UI for React Calendar component is lightweight and easy to configure. It is used for showing dates and weekdays. It is also the best way for providing monthly or yearly views to end-users. The Ignite UI for React Calendar control lets you restrict the minimum and maximum date ranges that people can navigate through.
@@ -16,8 +17,6 @@ The Ignite UI for Ignite UI for React Calendar provides an easy and intuitive wa
 ## React Calendar Example
 
 The following React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component example shows a basic calendar with a single day selection mode. See how it works or inspect the code behind.
-
-<div class="divider--half"></div>
 
 ```tsx
 import React from 'react';
@@ -73,7 +72,7 @@ The simplest way to start using the Ignite UI for React [`IgrCalendar`](mcp:get_
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) is using single selection mode but you can change it by setting the [`selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) is using single selection mode but you can change it by setting the [`IgrCalendar.selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) property as shown in this example.
 
 ```tsx
 <IgrCalendar selection="multiple" />
@@ -108,7 +107,7 @@ root.render(<CalendarMultipleSelection/>);
 
 ### Range Selection
 
-Following the same approach, we can switch [`selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) to range mode:
+Following the same approach, we can switch [`IgrCalendar.selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) to range mode:
 
 ```tsx
 <IgrCalendar selection="range" />
@@ -143,19 +142,21 @@ root.render(<CalendarRangeSelection/>);
 
 ### Active View and Date
 
-The Ignite UI for React Calendar component allows you to switch between three different views: days, months and years. The [`activeView`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) property. The [`activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) property also reflects the changes of the currently visible date made by the end user.
+The Ignite UI for React Calendar component allows you to switch between three different views: days, months and years. The [`IgrCalendar.activeView`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`IgrCalendar.activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) property. The [`IgrCalendar.activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) property also reflects the changes of the currently visible date made by the end user.
 
 ### Header Options
 
-By default, the Ignite UI for React Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=headerOrientation) property.
+By default, the Ignite UI for React Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the [`IgrCalendar.hasHeader`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=hasHeader) property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`IgrCalendar.headerOrientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=headerOrientation) property.
 
-> [!Note]
-> Please note that the Ignite UI for React Calendar header is not rendered when the [`selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) is set to multiple.
+**Note:** 
+Please note that the Ignite UI for React Calendar header is not rendered when the [`IgrCalendar.selection`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=selection) is set to multiple.
 
-> [!Note]
-> Please note that the Ignite UI for React Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=headerOrientation) property corresponds to the `header-orientation` attribute.
+**Note:** 
+Please note that the Ignite UI for React Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=headerOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for React Calendar component exposes a `title` slot which allows you to customize the title of the header.
+
+When slotting content into the `title` slot, we recommend using a `<span>` element rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
 
 ```tsx
 <IgrCalendar selection="range" headerOrientation="vertical">
@@ -198,9 +199,9 @@ root.render(<CalendarHeader/>);
 
 ### Localization and Formatting
 
-Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) those are controlled and customized through the following properties - [`locale`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=locale), [`formatOptions`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=formatOptions), [`weekStart`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=weekStart).
+Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) those are controlled and customized through the following properties - [`IgrCalendar.locale`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=locale), `IgrIWorksheetCellFormat.formatOptions`, [`IgrFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=react&component=IgrFieldPipeArgs&member=weekStart).
 
-Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=locale) property to a value, based on the user's location choice:
+Let's go ahead and try those along with other customizations. First thing we need to set is the [`IgrFieldPipeArgs.weekStart`](mcp:get_api_reference?platform=react&component=IgrFieldPipeArgs&member=weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the `IgrIWorksheetCellFormat.formatOptions` property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`IgrCalendar.locale`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=locale) property to a value, based on the user's location choice:
 
 ```tsx
 <IgrRadioGroup alignment="horizontal" value={this.state.calendarLocale}>
@@ -218,12 +219,13 @@ Let's go ahead and try those along with other customizations. First thing we nee
     </IgrRadio>
     <IgrRadio name="lang" value="ja" onChange={this.onRadioChange}>
         <span>JA</span>
-    </IgrRadio>                    
+    </IgrRadio>
 </IgrRadioGroup>
 
-<IgrCalendar weekStart='monday' formatOptions={this.state.calendarFormat} 
+<IgrCalendar weekStart='monday' formatOptions={this.state.calendarFormat}
     locale={this.state.calendarLocale}
     value={new Date()}/>
+
 ```
 
 ```tsx
@@ -314,14 +316,14 @@ root.render(<CalendarFormatting/>);
 
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property. The [`disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property is an array of [`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) objects. Each descriptor has a `Type` and optionally a [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property. The [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property is an array of [`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) objects. Each descriptor has a `IgrType` and optionally a `DateRange` which is an array of `Date` objects.
 
-These are the available options for the `Type` property:
+These are the available options for the `IgrType` property:
 
-- `After` - disables the dates after the first date in the [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange)
-- `Before` - disables the dates before the first date in the [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange)
-- `Between` - disables the dates between the first and the second date in the [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange)
-- `Specific` - disables the dates specified in the [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange) array
+- `After` - disables the dates after the first date in the `DateRange`
+- `Before` - disables the dates before the first date in the `DateRange`
+- `Between` - disables the dates between the first and the second date in the `DateRange`
+- `Specific` - disables the dates specified in the `DateRange` array
 - `Weekdays` - disables all weekdays
 - `Weekends` - disables all weekends
 
@@ -400,9 +402,9 @@ root.render(<CalendarDisabledDates/>);
 
 ### Special dates
 
-The [`specialDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=specialDates) property is using almost the same configuration principles as the [`disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`IgrCalendar.specialDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=specialDates) property is using almost the same configuration principles as the [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
-Let's add some special dates to our Calendar. In order to do this, we will create a [`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) and pass the dates between the 3rd and the 8th of the current month:
+Let's add some special dates to our Calendar. In order to do this, we will create a [`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) and pass the dates between the 3rd and the 8th of the current month:
 
 ```ts
 const today = new Date();
@@ -477,7 +479,7 @@ root.render(<CalendarSpecialDates/>);
 
 ### Week numbers
 
-You can use the [`showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`IgrCalendar.showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```tsx
 <IgrCalendar showWeekNumbers={true} />
@@ -514,9 +516,9 @@ root.render(<CalendarWeekNumbers/>);
 
 ### Multiple Months
 
-Using the [`visibleMonths`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=visibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`orientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=orientation) property. By default, the [`orientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=orientation) property is set to `horizontal`.
+Using the [`IgrCalendar.visibleMonths`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=visibleMonths) property, you can display more than one month when the Calendar is in `days` view. When multiple months are displayed, you can configure whether you want to stack them vertically or horizontally by using the [`IgrCalendar.orientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=orientation) property. By default, the [`IgrCalendar.orientation`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=orientation) property is set to `horizontal`.
 
-The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`hideOutsideDays`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=hideOutsideDays) property to **true** or using its corresponding boolean attribute [`hideOutsideDays`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=hideOutsideDays).
+The Calendar displays leading and trailing dates from the previous and the next months. You could hide these dates by setting the [`IgrCalendar.hideOutsideDays`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=hideOutsideDays) property to **true** or using its corresponding boolean attribute [`HideOutsideDays`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=hideOutsideDays).
 
 ```tsx
 <IgrCalendar visibleMonths={2} hideOutsideDays={true} />
@@ -622,7 +624,7 @@ root.render(<CalendarSize />);
 
 ### Events
 
-The Calendar component emits the `Change` event when the selected dates are changed by the end user. You can subscribe to the event like this:
+The Calendar component emits the [`IgrCalendar.change`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=change) event when the selected dates are changed by the end user. You can subscribe to the event like this:
 
 ```tsx
 <IgrCalendar onChange={this.onCalendarChange} />
@@ -658,11 +660,11 @@ When a **day** inside the `days` view is focused, use:
 
 When a **month** inside the `months` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) to the currently focused month and switch to `days` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgrCalendar.activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) to the currently focused month and switch to `days` view.
 
 When an **year** inside the `years` view is focused, use:
 
-- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) to the currently focused year and switch to `months` view.
+- <kbd>SPACE</kbd> or <kbd>ENTER</kbd> key to change the [`IgrCalendar.activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate) to the currently focused year and switch to `months` view.
 
 When the **previous** or the **next** buttons (in the subheader) are focused, use:
 
@@ -702,7 +704,7 @@ The [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) 
 | `week-number-inner` | Week number inner element. |
 | `date` | Date element. |
 | `date-inner` | Date inner element. |
-| `first` | The first selected date element. |
+| `Igrfirst` | The first selected date element. |
 | `last` | The last selected date element. |
 | `inactive` | Inactive date element. |
 | `hidden` | Hidden date element. |
@@ -816,14 +818,10 @@ root.render(<CalendarStyling/>);
 
 ## API References
 
-- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`activeDate`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeDate)
-- [`activeView`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=activeView)
-- [`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor)
-- [`dateRange`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor&member=dateRange)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)<br />
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)<br />
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)<br />
+[`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor)
 
 ## Additional Resources
 

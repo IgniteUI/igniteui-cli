@@ -1,30 +1,29 @@
 ---
-title: Web Components Grid Remote Data Operations - Ignite UI for Web Components
-_description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for Web Components.
-_keywords: Remote Data, Paging, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["GridBaseDirective"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Remote Data Operations - Ignite UI for Web Components"
+description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for Web Components.
+keywords: Remote Data, Paging, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for Web Components Remote Data Operations feature in Web Components Grid supports operations such as remote virtualization, remote sorting, remote filtering and others."
+_componentKey: Grid
 _tocName: Remote Data Operations
 _premium: true
 ---
-
 # Web Components Grid Remote Data Operations
 
-By default, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) uses its own logic for performing data operations.
+By default, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) uses its own logic for performing data operations.
 
-You can perform these tasks remotely and feed the resulting data to the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by taking advantage of certain inputs and events, which are exposed by the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+You can perform these tasks remotely and feed the resulting data to the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by taking advantage of certain inputs and events, which are exposed by the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Infinite Scroll
 
-A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+ A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
-To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the `StartIndex` and `ChunkSize` properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
+To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the [`IgcForOfState.chunkSize`](mcp:get_api_reference?platform=webcomponents&component=IgcForOfState&member=chunkSize) and [`IgcForOfState.chunkSize`](mcp:get_api_reference?platform=webcomponents&component=IgcForOfState&member=chunkSize) properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
 
-The first thing to do is fetch the first chunk of the data. Setting the [`totalItemCount`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
+The first thing to do is fetch the first chunk of the data. Setting the [`IgcGrid.totalItemCount`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
 
-Additionally, you have to subscribe to the `DataPreLoad` output, so that you can provide the data needed by the grid when it tries to display a different chunk, rather than the currently loaded one. In the event handler, you have to determine whether to fetch new data or return data, that's already cached locally.
+Additionally, you have to subscribe to the [`IgcGrid.dataPreLoad`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=dataPreLoad) output, so that you can provide the data needed by the grid when it tries to display a different chunk, rather than the currently loaded one. In the event handler, you have to determine whether to fetch new data or return data, that's already cached locally.
 
 ### Infinite Scroll Demo
 
@@ -152,8 +151,6 @@ export class RemoteNwindService {
 
 ## Remote Paging
 
-<!-- ComponentStart: Grid -->
-
 The paging feature can operate with remote data. In order to demonstrate this let's first declare our service that will be responsible for data fetching. We will need the count of all data items in order to calculate the page count. This logic will be added to our service.
 
 ```ts
@@ -188,11 +185,7 @@ export class RemotePagingService {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-After declaring the service, we need to create a component, which will be responsible for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) construction and data subscription.
-
-<!-- ComponentStart: Grid -->
+After declaring the service, we need to create a component, which will be responsible for the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) construction and data subscription.
 
 First we need to bind to the relevant events so when we change pages and the amount of records shown per page, the remote service will fetch the correct amount of data
 
@@ -301,30 +294,19 @@ export class RemotePagingService {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ComponentEnd: Grid -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Paging](paging.md)
 - [Virtualization and Performance](virtualization.md)
@@ -335,8 +317,6 @@ export class RemotePagingService {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

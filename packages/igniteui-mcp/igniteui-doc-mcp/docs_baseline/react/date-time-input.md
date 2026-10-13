@@ -1,12 +1,13 @@
 ---
-title: React DateTimeInput | Infragistics
-_description: Infragistics' React DateTimeInput allows the user to edit date and time in an input element
-_keywords: React input, Ignite UI for React, Infragistics
-_license: MIT
+title: "React DateTimeInput | Infragistics"
+description: Infragistics' React DateTimeInput allows the user to edit date and time in an input element
+keywords: "React input, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["DateTimeInput"]
+llms:
+  description: "The Ignite UI for React Date Time Input allows the user to set and edit the date and time in a chosen input element."
 _tocName: Date Time Input
 ---
-
 # React Date Time Input Overview
 
 The Ignite UI for React Date Time Input allows the user to set and edit the date and time in a chosen input element. The user can edit both date and time portions using an editable masked input. Additionally, one can specify a desired display and input format, as well as min and max values to utilize validation.
@@ -79,8 +80,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
 ### Value binding
-
-The easiest way to set the value of the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) component is by passing a Date object to the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property:
+The easiest way to set the value of the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) component is by passing a Date object to the [`Value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property:
 
 ```tsx
 <IgrDateTimeInput value={someValue}></IgrDateTimeInput>
@@ -91,15 +91,12 @@ The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateT
 The string can be a full `ISO` string, in the format `YYYY-MM-DDTHH:mm:ss.sssZ` or it could be separated into date-only and time-only portions.
 
 #### Date-only
-
-If a date-only string is bound to the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
+If a date-only string is bound to the [`Value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
 
 #### Time-only
-
 Time-only strings are normally not defined in the `ECMA` specification, however to allow the directive to be integrated in scenarios which require time-only solutions, it supports the 24 hour format - `HH:mm:ss`. The 12 hour format is not supported.
 
 #### Full ISO string
-
 If a full `ISO` string is bound, the directive will parse it only if all elements required by [Date.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format) are provided.
 
 All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete date-only, time-only, or full `ISO` strings will be parsed as `InvalidDate`.
@@ -124,11 +121,10 @@ The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateT
 
 The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) supports different display and input formats.
 
-It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=displayFormat) is provided, the component will use the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) as such.
+It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`DisplayFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=displayFormat) is provided, the component will use the [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) as such.
 
 ### Input Format
-
-The table bellow shows formats that are supported by the component's [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat):
+The table bellow shows formats that are supported by the component's [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat):
 
 |Format|Description|
 |-------|----------|
@@ -146,7 +142,7 @@ The table bellow shows formats that are supported by the component's [`inputForm
 | `mm` | Minutes with an explicitly set leading zero. |
 | `tt` | AM/PM section for 12-hour format. |
 
-To set a specific input format, pass it as a string to the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
+To set a specific input format, pass it as a string to the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput). This will set both the expected user input format and the `mask`. Additionally, the [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
 
 ```tsx
 <IgrDateTimeInput inputFormat="dd-MM-yy" displayFormat="medium"></IgrDateTimeInput>
@@ -206,7 +202,6 @@ root.render(<DateTimeInputInputFormatDisplayFormat/>);
 ```
 
 ### Display format
-
 The date time input exposes predefined formats for displaying date/time in various manners. All of the examples below are given in en-US locale.
 
 | Option | Example |
@@ -224,7 +219,8 @@ The date time input exposes predefined formats for displaying date/time in vario
 | `longTime` | 12:00:00 AM GMT+3 |
 | `fullTime` | 12:00:00 AM Eastern European Summer Time |
 
-Furthermore, users can construct a displayFormat string using the supported symbols described in the following table. <br>
+Furthermore, users can construct a displayFormat string using the supported symbols described in the following table.
+<br />
 
 | Type | Format | Description | Example |
 |:---|-------:|:-----------|:--------|
@@ -253,12 +249,12 @@ Furthermore, users can construct a displayFormat string using the supported symb
 |   | `tttt` | Long | noon |
 |   | `ttttt` | Narrow | n |
 
-> [!Note]
-> Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
+**Note:** 
+Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
 
 ## Min/max value
 
-You can specify [`min`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=max) properties to restrict input and control the validity of the component. Just like the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property, they can be of type `string`.
+You can specify [`Min`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=min) and [`Max`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=max) properties to restrict input and control the validity of the component. Just like the [`Value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property, they can be of type `string`.
 
 ```tsx
  <IgrDateTimeInput min={minDate} max={maxDate}></IgrDateTimeInput>
@@ -320,9 +316,9 @@ root.render(<DateTimeInputMinMaxValue/>);
 
 ## Step up/down
 
-The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) exposes public [`stepUp`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepDown) methods. They increment or decrement a specific [`IgrDatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
+In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
 Try it in the example below:
 
@@ -483,13 +479,10 @@ root.render(<DateTimeInputStyling/>);
 ```
 
 ## API References
-
-- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
-- [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+[`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+[`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

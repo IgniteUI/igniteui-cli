@@ -1,12 +1,13 @@
 ---
-title: Web Components Checkbox Component | Ignite UI for Web Components
-_description: Learn how to use the Web Components Checkbox Component to add checkboxes and enable checked, unchecked or indeterminate state for end-users.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Checkbox components, Web Components Checkbox controls
-_license: MIT
+title: "Web Components Checkbox Component | Ignite UI for Web Components"
+description: Learn how to use the Web Components Checkbox Component to add checkboxes and enable checked, unchecked or indeterminate state for end-users.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Checkbox components, Web Components Checkbox controls"
+license: MIT
 mentionedTypes: ["Checkbox", "Form"]
+llms:
+  description: "The Web Components Checkbox is a component that lets you add checkboxes to your Web Components apps."
 _tocName: Checkbox
 ---
-
 # Web Components Checkbox Overview
 
 The Web Components Checkbox is a component that lets you add checkboxes to your Web Components apps. It behaves as a standard HTML checkbox, enabling users to select basic checked and unchecked states or an additional indeterminate state. You also get full control over the styling of the Web Components checkbox component and ability to use it with forms.
@@ -18,11 +19,9 @@ The Web Components Checkbox is a component that lets you add checkboxes to your 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
-At its core, the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 First, you need to install the Ignite UI for Web Components by running the following command:
 
@@ -30,7 +29,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcCheckboxComponent } from "igniteui-webcomponents";
@@ -41,16 +40,14 @@ defineComponents(IgcCheckboxComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<div class="divider--half"></div>
-
-The simplest way to start using the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) is as follows:
+The simplest way to start using the [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) is as follows:
 
 ```html
 <igc-checkbox></igc-checkbox>
 ```
 
-> [!WARNING]
-> The [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning:** 
+The [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -62,7 +59,7 @@ To provide a meaningful label for the checkbox, simply place some text between t
 <igc-checkbox>Label</igc-checkbox>
 ```
 
-You can specify if the label should be positioned before or after the checkbox toggle by setting the `label-position` attribute of the checkbox. Allowed values are `before` and `after` (default):
+You can specify if the label should be positioned before or after the checkbox toggle by setting the [`LabelPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=labelPosition) attribute of the checkbox. Allowed values are `before` and `after` (default):
 
 ```html
 <igc-checkbox label-position="before">Label</igc-checkbox>
@@ -89,7 +86,7 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 
 ### Checked
 
-You can use the [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`Checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```html
 <igc-checkbox checked></igc-checkbox>
@@ -102,7 +99,7 @@ You can use the [`checked`](mcp:get_api_reference?platform=webcomponents&compone
 
 ### Indeterminate
 
-You can use the [`indeterminate`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
+You can use the [`Indeterminate`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
 
 ```html
 <igc-checkbox indeterminate></igc-checkbox>
@@ -115,7 +112,7 @@ You can use the [`indeterminate`](mcp:get_api_reference?platform=webcomponents&c
 
 ### Required
 
-You can use the [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=required) property to mark the checkbox as required.
+You can use the [`Required`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=required) property to mark the checkbox as required.
 
 ```html
 <igc-checkbox required></igc-checkbox>
@@ -123,7 +120,7 @@ You can use the [`required`](mcp:get_api_reference?platform=webcomponents&compon
 
 ### Invalid
 
-You can use the [`invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=invalid) attribute to mark the checkbox as invalid.
+You can use the [`Invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=invalid) attribute to mark the checkbox as invalid.
 
 ```html
 <igc-checkbox invalid></igc-checkbox>
@@ -131,7 +128,7 @@ You can use the [`invalid`](mcp:get_api_reference?platform=webcomponents&compone
 
 ### Disabled
 
-You can use the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=disabled) attribute to disable the checkbox.
+You can use the [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=disabled) attribute to disable the checkbox.
 
 ```html
 <igc-checkbox disabled></igc-checkbox>
@@ -144,7 +141,7 @@ You can use the [`disabled`](mcp:get_api_reference?platform=webcomponents&compon
 
 ### Forms
 
-You can use the [`name`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=name) and [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=value) attributes when using the checkbox with `Form`.
+You can use the [`Name`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=name) and [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=value) attributes when using the checkbox with `Form`.
 
 ```html
 <igc-checkbox name="wifi" value="enabled"></igc-checkbox>
@@ -152,7 +149,7 @@ You can use the [`name`](mcp:get_api_reference?platform=webcomponents&component=
 
 ## Styling
 
-The [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component exposes four CSS parts which we can use for styling:
+The [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component exposes four CSS parts which we can use for styling:
 
 |Name|Description|
 |--|--|
@@ -188,12 +185,7 @@ igc-checkbox::part(control checked)::after {
 ```
 
 ## API References
-
-- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)
-- [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked)
-- [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=disabled)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

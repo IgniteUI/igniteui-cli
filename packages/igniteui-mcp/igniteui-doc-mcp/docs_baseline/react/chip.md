@@ -1,12 +1,13 @@
 ---
-title: React Chip | Infragistics
-_description: Infragistics' React Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
-_keywords: React, UI controls, web widgets, UI widgets, Web Components, React Chip Components, Infragistics
-_license: MIT
+title: "React Chip | Infragistics"
+description: Infragistics' React Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
+keywords: "React, UI controls, web widgets, UI widgets, Web Components, React Chip Components, Infragistics"
+license: MIT
 mentionedTypes: ["Chip"]
+llms:
+  description: "Ignite UI for React Chips help people enter information, make selections, filter content, or trigger actions."
 _tocName: Chip
 ---
-
 # React Chip Overview
 
 Ignite UI for React Chips help people enter information, make selections, filter content, or trigger actions.
@@ -51,7 +52,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipOverview/>);
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
@@ -74,13 +75,13 @@ The simplest way to start using the [`IgrChip`](mcp:get_api_reference?platform=r
 <IgrChip></IgrChip>
 ```
 
-To display a selectable chip, you can use the [`selectable`](mcp:get_api_reference?platform=react&component=IgrChip&member=selectable) property of the chip.
+To display a selectable chip, you can use the [`Selectable`](mcp:get_api_reference?platform=react&component=IgrChip&member=selectable) property of the chip.
 
 ```tsx
 <IgrChip selectable={true}></IgrChip>
 ```
 
-To display a removable chip, you can use the [`removable`](mcp:get_api_reference?platform=react&component=IgrChip&member=removable) property of the chip.
+To display a removable chip, you can use the [`Removable`](mcp:get_api_reference?platform=react&component=IgrChip&member=removable) property of the chip.
 
 ```tsx
 <IgrChip removable={true}></IgrChip>
@@ -90,7 +91,7 @@ To display a removable chip, you can use the [`removable`](mcp:get_api_reference
 
 ### Variants
 
-The Ignite UI for React chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](mcp:get_api_reference?platform=react&component=IgrChip&member=variant) property.
+The Ignite UI for React chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](mcp:get_api_reference?platform=react&component=IgrChip&member=variant) property.
 
 ```tsx
 <IgrChip variant="success"></IgrChip>
@@ -146,17 +147,90 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipVariants/>);
 ```
 
+### Outlined
+
+The Ignite UI for React chip can be rendered in an outlined style and have a border around it by setting the [`Outlined`](mcp:get_api_reference?platform=react&component=IgrChip&member=outlined) property.
+
+```tsx
+<IgrChip outlined={true}></IgrChip>
+```
+
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import { IgrChip } from 'igniteui-react';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+
+export default class ChipOutlined extends React.Component<any, any> {
+
+    constructor(props: any) {
+        super(props);           
+    }
+
+    private handleChipRemove = (event: CustomEvent<boolean>) => {
+        const chip = event.target as IgrChip;
+        chip.remove();
+    }
+
+    public render(): JSX.Element {
+        return (
+            <div className="container sample" style={{flexDirection: "row", gap: "8px", alignItems: "baseline"}}>
+                 <IgrChip outlined={true} selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Default</span>
+                 </IgrChip>
+                 <IgrChip outlined={true} variant="primary" selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Primary</span>
+                 </IgrChip>
+                 <IgrChip outlined={true} variant="info" selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Info</span>
+                 </IgrChip>
+                 <IgrChip outlined={true} variant="success" selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Success</span>
+                 </IgrChip>
+                 <IgrChip outlined={true} variant="warning" selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Warning</span>
+                 </IgrChip>
+                 <IgrChip outlined={true} variant="danger" selectable={true} removable={true} onRemove={this.handleChipRemove}>
+                     <span>Danger</span>
+                 </IgrChip>
+            </div>
+        );
+    }
+}
+
+// rendering above class to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<ChipOutlined/>);
+```
+
 ### Disabled
 
-The Ignite UI for React chip can be disabled by using the [`disabled`](mcp:get_api_reference?platform=react&component=IgrChip&member=disabled) property.
+The Ignite UI for React chip can be disabled by using the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrChip&member=disabled) property.
 
 ```tsx
 <IgrChip disabled={true}></IgrChip>
 ```
 
-### Prefix / Suffix
+### Slots
 
-With the `Prefix` and `Suffix` parts of the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the exposed component slots, you can add custom content to different parts of the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip). The component provides default select and remove icons, but you can customize them using the `select` and `remove` slots. You can also add additional content before or after the main content using the `start` and `end` slots.
+
+We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `remove`, `select`, `start`, and `end` slots.
+
+```tsx
+<IgrChip selectable={true} removable={true}>
+    <IgrIcon slot="select" name="verified-account"></IgrIcon>
+    <IgrIcon slot="start" name="brush"></IgrIcon>
+    <span>Chip</span>
+    <IgrIcon slot="end" name="blood"></IgrIcon>
+    <IgrIcon slot="remove" name="pacifier"></IgrIcon>
+</IgrChip>
+```
 
 ```css
 /* shared styles are loaded from: */
@@ -385,10 +459,7 @@ root.render(<ChipStyling/>);
 ```
 
 ## API References
-
-- [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

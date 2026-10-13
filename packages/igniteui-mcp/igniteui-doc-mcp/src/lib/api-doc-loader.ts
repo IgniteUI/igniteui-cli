@@ -2,6 +2,7 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { Platform, PlatformConfig } from '../config/platforms.js';
+import { findDeprecation } from '../config/deprecations.js';
 import type { DocEntry } from './types/docs.types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -13,8 +14,18 @@ export class ApiDocsInitializationError extends Error {
   }
 }
 
+/** Drop a generic type parameter list: "IgbCombo<T>" → "IgbCombo". */
+export function stripGenerics(name: string): string {
+  return name.replace(/<[^>]*>/g, '').trim();
+}
+
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
+  // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
+  // for IgbCombo<T>), so callers can use the plain class name the docs refer to.
+  private docsByBaseName = new Map<string, DocEntry>();
+  // Every package a name appears in; the exact-name map keeps only the last one loaded.
+  private packagesByKey = new Map<string, Set<string>>();
   private platformConfigs: PlatformConfig[];
 
   constructor(platformConfigs: PlatformConfig[]) {
@@ -88,6 +99,8 @@ export class ApiDocLoader {
           );
         }
 
+        const packageName = content.match(/^Package:\s*(\S+)/m)?.[1] ?? pkgName;
+
         // Split on "### [ComponentName](url)" headings
         // Each chunk starts with the heading line and contains the member list
         const chunks = content.split(/(?=^### \[)/m).filter(c => c.trim());
@@ -98,6 +111,9 @@ export class ApiDocLoader {
           if (!headingMatch) continue;
 
           const componentName = headingMatch[1].trim();
+
+          // Deprecated components are not indexed; the handlers answer for them with a notice.
+          if (findDeprecation(config.key, componentName)) continue;
 
           // Determine type from name prefix / chunk content
           const type = this.inferComponentType(chunk, config.key);
@@ -116,7 +132,7 @@ export class ApiDocLoader {
             .filter(Boolean);
 
           const key = `${config.key}:${componentName}`;
-          this.docs.set(key, {
+          const entry: DocEntry = {
             filepath: llmsFile,
             content: chunk,
             title: componentName,
@@ -125,7 +141,12 @@ export class ApiDocLoader {
             keywords,
             summary: summaryLine.trim(),
             platform: config.key,
-          });
+            package: packageName,
+          };
+          this.docs.set(key, entry);
+          this.indexBaseName(config.key, componentName, entry);
+          const packages = this.packagesByKey.get(key) ?? new Set<string>();
+          this.packagesByKey.set(key, packages.add(packageName));
           count++;
         }
       }
@@ -162,8 +183,38 @@ export class ApiDocLoader {
     return 'class';
   }
 
+  /**
+   * Register an entry under its base name. Later entries replace earlier ones,
+   * mirroring the exact-name map, except that a non-generic name is never
+   * shadowed by a generic one (Blazor has both DynamicContentInfo and
+   * DynamicContentInfo<T>).
+   */
+  private indexBaseName(platform: string, componentName: string, entry: DocEntry): void {
+    const base = stripGenerics(componentName);
+    const key = `${platform}:${base.toLowerCase()}`;
+    const existing = this.docsByBaseName.get(key);
+    const existingIsGeneric = existing !== undefined && stripGenerics(existing.component) !== existing.component;
+    if (!existing || existingIsGeneric || base === componentName) {
+      this.docsByBaseName.set(key, entry);
+    }
+  }
+
+  /**
+   * Exact lookup first; then a case-insensitive, generic-stripped lookup so
+   * "IgbCombo" (or "igbcombo") resolves to the indexed "IgbCombo<T>".
+   */
   get(platform: Platform, name: string): DocEntry | undefined {
-    return this.docs.get(`${platform}:${name}`);
+    return (
+      this.docs.get(`${platform}:${name}`) ??
+      this.docsByBaseName.get(`${platform}:${stripGenerics(name).toLowerCase()}`)
+    );
+  }
+
+  /** All packages that ship the entry's symbol, e.g. IgbCombo → IgniteUI.Blazor and IgniteUI.Blazor.Lite. */
+  getPackages(entry: DocEntry): string[] {
+    const packages = this.packagesByKey.get(`${entry.platform}:${entry.component}`);
+    if (packages) return [...packages];
+    return entry.package ? [entry.package] : [];
   }
 
   search(options: {

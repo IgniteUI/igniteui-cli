@@ -1,16 +1,15 @@
 ---
-title: React Hierarchical Grid Collapsible Column Groups - Ignite UI for React
-_description: Take advantage of the capability to show\hide smaller and concise set of data with the use of collapsible column groups in our React Hierarchical Grid. Try it now!
-_keywords: React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["ColumnGroup"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/collapsible-column-groups
+title: "React Hierarchical Grid Collapsible Column Groups - Ignite UI for React"
+description: Take advantage of the capability to show\hide smaller and concise set of data with the use of collapsible column groups in our React Hierarchical Grid. Try it now!
+keywords: "React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/collapsible-column-groups"
+llms:
+  description: "The Ignite UI for React Collapsible Column Groups feature in React Hierarchical Grid allows you to organize and manage multiple levels of nested columns and column groups in the IgrHierarchicalGrid by grouping them together and providing the option to collapse or expand these groups."
+_componentKey: HierarchicalGrid
 _tocName: Collapsible Column Groups
 _premium: true
 ---
-
 # React Hierarchical Grid Collapsible Column Groups Overview
 
 The Ignite UI for React Collapsible Column Groups feature in React Hierarchical Grid allows you to organize and manage multiple levels of nested columns and column groups in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) by grouping them together and providing the option to collapse or expand these groups for improved data visualization and navigation.
@@ -252,9 +251,9 @@ Also, we strongly suggest that you take a brief look at [multi-column headers](m
 
 **Collapsible Column Groups** is a part of the multi-column headers feature which provides a way to collapse/expand a column group to a smaller set of data. When a column group is collapsed, a subset of the columns will be shown to the end-user and the other child columns of the group will hide. Each collapsed/expanded column can be bound to the grid data source, or it may be unbound, thus calculated.
 
-In order to define a column group as collapsible, you need to set the [`collapsible`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=collapsible) property on the [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=columnGroup) to **true**.
+In order to define a column group as collapsible, you need to set the [`IgrColumnGroup.collapsible`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=collapsible) property on the [`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup) to **true**.
 
-You need to define the property [`visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=visibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=visibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=visibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=visibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
+You need to define the property [`IgrColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=visibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`IgrColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=visibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`IgrColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=visibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`IgrColumnState.visibleWhenCollapsed`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=visibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
 
 Let's see the markup below:
 
@@ -284,22 +283,17 @@ Let's see the markup below:
 ```
 
 To summarize, every child column has three states:
-
 - Can be always visible, no matter the expanded state of its parent.
 - Can be visible, when its parent is collapsed.
 - Can be hidden, when its parent is collapsed.
 
-The initial state of the column group which is specified as collapsible is [`expanded`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
+The initial state of the column group which is specified as collapsible is [`IgrColumnGroup.expanded`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
 
 ## Expand/Collapse Indicator Template
 
 Default expand indicator for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is the following:
 
-<img class="responsive-img" src="../../../images/general/expand_indicator.png" alt="expand_indicator" style="width: 450px; height: 130px"/>
-
 Default collapse indicator for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is the following:
-
-<img class="responsive-img" src="../../../images/general/collapsed_indicator.png" alt="collapsed_indicator" style="width: 400px; height: 130px"/>
 
 Also, if you need to change the default expand/collapse indicator, we provide templating options in order to achieve this.
 
@@ -319,6 +313,7 @@ const collapsibleIndicatorTemplate = (ctx: IgrColumnTemplateContext) => {
         <IgrIcon iconName={ctx.column.expanded ? 'remove' : 'add'}></IgrIcon>
     </div>)
 }
+
 ```
 
 > **Note**
@@ -326,10 +321,9 @@ const collapsibleIndicatorTemplate = (ctx: IgrColumnTemplateContext) => {
 > hidden and you have a group defined where the same column should be shown, the column will be shown.
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

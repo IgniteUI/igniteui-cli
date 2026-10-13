@@ -1,19 +1,18 @@
 ---
-title: Web Components Grid Row Pinning in - Ignite UI for Web Components
-_description: Use the Web Components Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-pinning
+title: "Web Components Grid Row Pinning in - Ignite UI for Web Components"
+description: Use the Web Components Row pinning feature to lock rows with a rich and easy to use API. Let users pin rows in a particular order or duplicate them in a special area.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-pinning"
+llms:
+  description: "The Ignite UI for Web Components Row Pinning feature in Web Components Grid allows you to pin one or multiple rows to the top or bottom of grid."
+_componentKey: Grid
 _tocName: Row Pinning
 _premium: true
 ---
-
 # Web Components Grid Row Pinning
 
-The Ignite UI for Web Components Row Pinning feature in Web Components Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) vertically. The Web Components Grid has a built-in row pinning UI, which is enabled by initializing an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
+The Ignite UI for Web Components Row Pinning feature in Web Components Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) vertically. The Web Components Grid has a built-in row pinning UI, which is enabled by initializing an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 
 ## Web Components Grid Row Pinning Example
 
@@ -24,11 +23,7 @@ The Ignite UI for Web Components Row Pinning feature in Web Components Grid allo
 
 ## Row Pinning UI
 
-The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with the [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) component with the [`IgcGridPinningActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridPinningActionsComponent) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
 
 ```html
 <igc-grid auto-generate="false">
@@ -40,28 +35,24 @@ The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://w
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
 ## Row Pinning API
 
-Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body.
+Row pinning is controlled through the [`IgcRowDirective.pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcRowDirective&member=pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body.
 
 ```typescript
 this.grid.getRowByIndex(0).pinned = true;
 ```
 
-You may also use the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`pinRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=unpinRow) methods of the to pin or unpin records by their ID:
+You may also use the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`PinRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinRow) or [`UnpinRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=unpinRow) methods of the to pin or unpin records by their ID:
 
 ```typescript
 this.grid.pinRow('ALFKI');
 this.grid.unpinRow('ALFKI');
 ```
 
-Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`IgcGrid.rowPinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowPinning) event and changing the [`IgcPinRowEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcPinRowEventArgs) property of the event arguments to the desired position index.
 
 ```html
 <igc-grid id="grid" auto-generate="true">
@@ -82,7 +73,7 @@ public rowPinning(event) {
 
 ## Pinning Position
 
-You can change the row pinning position via the [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`IgcGrid.pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 ```html
@@ -94,8 +85,6 @@ var grid = document.getElementById('dataGrid') as IgcGridComponent;
 grid.pinning = { rows: RowPinningPosition.Bottom };
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ## Custom Row Pinning UI
 
 You can define your custom UI and change the pin state of the rows via the related API.
@@ -104,6 +93,12 @@ You can define your custom UI and change the pin state of the rows via the relat
 
 Let's say that instead of an action strip you would like to show a pin icon in every row allowing the end-user to click and change a particular row's pin state.
 This can be done by adding an extra column with a cell template containing the custom icon.
+
+```html
+<igc-grid id="grid" primary-key="ID" auto-generate="false">
+    <igc-column id="column1" name="column1"></igc-column>
+</igc-grid>
+```
 
 ```typescript
 constructor() {
@@ -120,10 +115,6 @@ public pinCellTemplate = (ctx: IgcCellTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
 On click of the custom icon the pin state of the related row can be changed using the row's API methods.
 
 ```typescript
@@ -132,8 +123,6 @@ public togglePinning(index: number) {
     grid.getRowByIndex(index).pinned = !grid.getRowByIndex(index).pinned;
 }
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 #### Demo
 
@@ -152,10 +141,6 @@ public togglePinning(index: number) {
 }
 ```
 
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
-
 ## Row Pinning Limitations
 
 - Only records that exist in the data source can be pinned.
@@ -165,7 +150,7 @@ public togglePinning(index: number) {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -199,13 +184,14 @@ Then set the related CSS properties for that class:
 
 ## API References
 
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
-- [`IgcRowType`](mcp:get_api_reference?platform=webcomponents&component=IgcRowType)
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+
+  [`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent)
+
+<br />
+[`IgcRowType`](mcp:get_api_reference?platform=webcomponents&component=IgcRowType)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -215,8 +201,6 @@ Then set the related CSS properties for that class:
 - [Column Moving](column-moving.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

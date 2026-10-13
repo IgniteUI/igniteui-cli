@@ -1,18 +1,17 @@
 ---
-title: React Grid Keyboard Navigation - Ignite UI for React
-_description: Learn how to use Grid Keyboard Navigation with Ignite UI for React. With Keyboard interaction, users can quickly navigate between cells, rows, and columns.
-_keywords: keyboard navigation, Ignite UI for React, infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["GridBaseDirective"]
-namespace: Infragistics.Controls
+title: "React Grid Keyboard Navigation - Ignite UI for React"
+description: Learn how to use Grid Keyboard Navigation with Ignite UI for React. With Keyboard interaction, users can quickly navigate between cells, rows, and columns.
+keywords: keyboard navigation, Ignite UI for React, infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for React Keyboard Navigation feature in React Grid provides a rich variety of keyboard interactions for the user."
+_componentKey: Grid
 _tocName: Keyboard navigation
 _premium: true
 ---
-
 # React Grid Keyboard Navigation
 
-The Ignite UI for React Keyboard Navigation feature in React Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
+ The Ignite UI for React Keyboard Navigation feature in React Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
 
 The tabulations of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
 
@@ -24,13 +23,13 @@ Currently, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGri
 - **Column summaries** (if enabled).
 - **Grid paginator** (if enabled).
 
-> [!Note]
-> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
-> Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
+**Note:** 
+Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
+Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
-> [!Note]
-> Exposing any **focusable** element into the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body via template may introduce **side effects** in the keyboard navigation, since the default
-> browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
+**Note:** 
+Exposing any **focusable** element into the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body via template may introduce **side effects** in the keyboard navigation, since the default
+browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
 ## Header Navigation
 
@@ -53,11 +52,7 @@ When the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) hea
 - <kbd>CTRL</kbd> + <kbd>↓</kbd> sorts the active column header in DSC order. If the column is already sorted in DSC, sorting state is cleared.
 - <kbd>SPACE</kbd> selects the column. If the column is already selected, selection is cleared.
 
- <!-- ComponentStart: Grid -->
-
 - <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>←</kbd> groups the column, if the column is marked as groupable.
-
- <!-- ComponentEnd: Grid -->
 
 - <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>→</kbd> ungroups the column, if the column is marked as groupable.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> collapses the column group header, if the header is not already collapsed.
@@ -69,12 +64,8 @@ When the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) bod
 
 ### Key Combination
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 - <kbd>↑</kbd>- navigates one cell up.
 - <kbd>↓</kbd> navigates one cell down.
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 - <kbd>←</kbd> navigates one cell left (no wrapping between lines).
 - <kbd>→</kbd> - navigates one cell right (no wrapping between lines).
@@ -96,24 +87,14 @@ When the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) bod
 - <kbd>SPACE</kbd> - selects the row, if [Row Selection](row-selection.md) is enabled.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> -
 
- <!-- ComponentStart: Grid -->
+  over Group Row - collapses the group.
 
-over Group Row - collapses the group.
-
- <!-- ComponentEnd: Grid -->
-
-- <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - <!-- ComponentStart: Grid -->
-    over Group Row - expands the group.
-
- <!-- ComponentEnd: Grid -->
-
- <!-- ComponentStart: Grid -->
+- <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> -
+  over Group Row - expands the group.
 
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> - over Master Detail Row - collapses the details view.
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - over Master Detail Row - expands the details view.
-- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) property is set to multiple.
-
- <!-- ComponentEnd: Grid -->
+- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`IgrGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to multiple.
 
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
 
@@ -127,7 +108,7 @@ Overriding the default behavior for a certain key or keys combination is one of 
 
 <br />
 
-Let's try the API to demonstrate how to achieve common scenarios like user input validation and custom navigation. First we need to register an event handler for the `GridKeydown` event:
+Let's try the API to demonstrate how to achieve common scenarios like user input validation and custom navigation. First we need to register an event handler for the [`IgrGrid.gridKeydown`](mcp:get_api_reference?platform=react&component=IgrGrid&member=gridKeydown) event:
 
 ```tsx
 <IgrGrid id="grid1" primaryKey="ProductID" onGridKeydown={customKeydown}>
@@ -149,13 +130,23 @@ const customKeydown = (eventArgs: IgrGridKeydownEventArgs) => {
       // 2. CUSTOM NAVIGATION ON ENTER KEY PRESS
   }
 }
+
 ```
 
-> [!Note]
-> Please refer to the sample code for full implementation details.
+Based on the event arg values we identified two cases, where to provide our own logic (see above). Now, using the methods from the API, let's perform the desired - if the user is pressing <kbd>TAB</kbd> key over a cell in edit mode, we will perform validation on the input:
+
+```typescript
+    // 1. USER INPUT VALIDATION ON TAB
+    if (target.column.dataType === 'number' && target.editValue < 10) {
+        // alert the user that the input is invalid
+        return;
+    }
+```
+
+**Note:** 
+Please refer to the sample code for full implementation details.
 
 Use the demo below to try out the custom scenarios that we just implemented:
-
 - Double click or press <kbd>F2</kbd> key on a cell in a numeric column, change the value to **7** and press <kbd>TAB</kbd> key. Prompt message will be shown.
 - Select a cell and press <kbd>ENTER</kbd> key a couple of times. Every key press will move the focus to a cell in the next row, under the same column.
 
@@ -309,9 +300,9 @@ root.render(<Sample/>);
 |--- |--- |
 | Navigating inside а grid with scrollable parent container. | If the grid is positioned inside a scrollable parent container and the user navigates to a grid cell that is out of view, parent container will not be scrolled.|
 
+## API References
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -321,8 +312,6 @@ root.render(<Sample/>);
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

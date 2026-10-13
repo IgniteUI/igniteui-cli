@@ -1,11 +1,12 @@
 ---
 title: Use Ignite UI for React components in Next.js application | Infragistics
-_description: Use Infragistics' React components to create apps and improve data visualization with the world’s fastest React data grid and charts in Next.js.
-_keywords: Ignite UI for React Next.js, Ignite UI for React Components in Next.js, Infragistics
+description: Use Infragistics' React components to create apps and improve data visualization with the world’s fastest React data grid and charts in Next.js.
+keywords: "Ignite UI for React Next.js, Ignite UI for React Components in Next.js, Infragistics"
 mentionedTypes: []
+llms:
+  description: "Explore the seamless integration of Ignite UI for React into your Next.js project."
 _tocName: Integrating Ignite UI for React with Next.js
 ---
-
 # Integrating Ignite UI for React with Next.js
 
 Explore the seamless integration of Ignite UI for React into your Next.js project. This topic is crafted to help developers make the most of the Infragistics React components while leveraging the features of Next.js for building robust and performant full stack applications.
@@ -15,24 +16,8 @@ Explore the seamless integration of Ignite UI for React into your Next.js projec
 1. Install NodeJS.
 2. Install Visual Studio Code.
 
-<div>
-    <div style="display:inline-block;width:45%;text-align:center;">
-      <img src="../images/general/nodejs.svg" alt="nodejs"
-           style="display:flex;max-height:100px;margin:auto auto 20px auto;" />
-      <a target="_blank" href="https://nodejs.org/en/download/" class="no-external-icon"
-         style="color:white;background-color:#09f;text-decoration:none;font-weight:700;font-size:16px;padding: 5px 15px 5px 15px;">
-        DOWNLOAD NODE
-      </a>
-    </div>
-    <div style="display:inline-block;width:45%;text-align:center;">
-      <img src="../images/general/vs-code.svg" alt="vs-code"
-           style="display:flex;max-height:100px;margin:auto auto 20px auto;" />
-      <a target="_blank" href="https://code.visualstudio.com/download" class="no-external-icon"
-         style="color:white;background-color:#09f;text-decoration:none;font-weight:700;font-size:16px;padding: 5px 15px 5px 15px;">
-        DOWNLOAD VS CODE
-      </a>
-    </div>
-</div>
+  
+  
 
 ## Creating New Next.js Project
 
@@ -76,7 +61,7 @@ This will automatically install packages for Ignite UI for React, along with all
 
 ## Importing Component Modules
 
-First we have to import the required modules of the components we want to use. We will go ahead and do this for the [**GeographicMap**](geo-map.md) component.
+First we have to import the required modules of the components we want to use. We will go ahead and do this for the [**GeographicMap**](./geo-map.md) component.
 
 ```ts
 "use client"
@@ -87,8 +72,8 @@ IgrGeographicMapModule.register();
 IgrDataChartInteractivityModule.register();
 ```
 
-> [!Note]
-> It's important to note that Ignite UI for React components are using client-only features like state and browser events. Infragistics' components will work as expected within Client Next.js Components since they have the "use client" directive, but they won't work within Server Components.
+**Note:** 
+It's important to note that Ignite UI for React components are using client-only features like state and browser events. Infragistics' components will work as expected within Client Next.js Components since they have the "use client" directive, but they won't work within Server Components.
 
 ## Using Components
 
@@ -119,8 +104,6 @@ After executing this command, your project will be built and served locally on y
 
 The final result should look something like this screenshot:
 
-<img src="../images/general/geo-map.png" alt="geo-map" />
-
 ## Using React in Next.js Server Components
 
 As mentioned earlier, most components of React rely on state and browser events, making them incompatible with direct use within Server Components. Nevertheless, if you find the need to use them this way, Infragistics' components can be wrapped within their respective Client Components.
@@ -150,8 +133,8 @@ function App() {
 }
 ```
 
-> [!Note]
-> The majority of Ignite UI for React components may remain unwrapped as they are expected to be utilized within other Client Components. Therefore, there is no need to wrap all Infragistics' components.
+**Note:** 
+The majority of Ignite UI for React components may remain unwrapped as they are expected to be utilized within other Client Components. Therefore, there is no need to wrap all Infragistics' components.
 
 ## Dynamic import of Ignite UI for React components
 
@@ -179,7 +162,7 @@ export default function DynamicButtonComponent() {
 }
 ```
 
-However, if a more complex component is used like the [**IgrGrid**](grids/data-grid.md), which typically contains child components, it is essential not to dynamically import each and every child component. The component should be used like this:
+However, if a more complex component is used like the [**IgrGrid**](./grids/data-grid.md), which typically contains child components, it is essential not to dynamically import each and every child component. The component should be used like this:
 
 ```tsx
 "use client";
@@ -250,12 +233,12 @@ export default function GridDynamicComponent() {
     }
   );
 
-  return <IgnGrid data={CustomersDataLocal}></IgnGrid>;
+  return <IgnGrid data=></IgnGrid>;
 }
 ```
 
-> [!Note]
-> Implementing lazy loading for components can enhance performance, but it is advisable to use it exclusively when the components are not immediately visible on the page.
+**Note:** 
+Implementing lazy loading for components can enhance performance, but it is advisable to use it exclusively when the components are not immediately visible on the page.
 
 ## Limitations
 

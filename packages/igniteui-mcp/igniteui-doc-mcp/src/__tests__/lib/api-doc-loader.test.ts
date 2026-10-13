@@ -133,6 +133,35 @@ describe('ApiDocLoader', () => {
     });
   });
 
+  describe('packages', () => {
+    it('falls back to the package directory name when there is no Package: header', () => {
+      const loader = createLoadedLoader();
+      expect(loader.get('angular', 'IgxGridComponent')?.package).toBe('igniteui-angular');
+    });
+
+    it('reads the package from the Package: header', () => {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue(`Platform: Angular\nPackage: igniteui-angular-charts\n\n${FIXTURE_LLMS_CONTENT}`);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      expect(loader.get('angular', 'IgxGridComponent')?.package).toBe('igniteui-angular-charts');
+    });
+
+    it('getPackages lists every package that ships the same name', () => {
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return ['pkg-full', 'pkg-lite'] as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-full') || s.endsWith('pkg-lite')) return ['1.0.0'] as unknown as ReturnType<typeof readdirSync>;
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      const entry = loader.get('angular', 'IgxGridComponent')!;
+      expect(loader.getPackages(entry).sort()).toEqual(['pkg-full', 'pkg-lite']);
+    });
+  });
+
   describe('get()', () => {
     it('returns the entry for a known component', () => {
       const loader = createLoadedLoader();
@@ -157,6 +186,62 @@ describe('ApiDocLoader', () => {
     it('returns undefined for a known component on the wrong platform', () => {
       const loader = createLoadedLoader();
       expect(loader.get('react', 'IgxGridComponent')).toBeUndefined();
+    });
+
+    it('falls back to a case-insensitive match', () => {
+      const loader = createLoadedLoader();
+      expect(loader.get('angular', 'igxgridcomponent')?.component).toBe('IgxGridComponent');
+    });
+
+    describe('generic-typed names', () => {
+      const GENERIC_CONTENT = [
+        '### [IgbCombo<T>](https://example.com/blazor/igbcombo)',
+        '',
+        'A combo box component.',
+        '',
+        '### [DynamicContentInfo<T>](https://example.com/blazor/dci-generic)',
+        '',
+        'Generic variant.',
+        '',
+        '### [DynamicContentInfo](https://example.com/blazor/dci)',
+        '',
+        'Non-generic variant.',
+        '',
+      ].join('\n');
+
+      function createBlazorLoader(): ApiDocLoader {
+        setupFsMocks();
+        mockReadFileSync.mockReturnValue(GENERIC_CONTENT);
+        const loader = new ApiDocLoader([{ ...FIXTURE_CONFIG, key: 'blazor', displayName: 'Blazor' }]);
+        loader.load();
+        return loader;
+      }
+
+      it('resolves the plain class name to the generic-typed entry', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('still resolves the exact generic-typed name', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo<T>')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('resolves a differently-parameterised spelling to the same entry', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo<string>')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('combines case-insensitive and generic-stripped matching', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'igbcombo')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('prefers the exact non-generic entry when both spellings are indexed', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'DynamicContentInfo')?.component).toBe('DynamicContentInfo');
+        expect(loader.get('blazor', 'DynamicContentInfo<T>')?.component).toBe('DynamicContentInfo<T>');
+      });
     });
   });
 
@@ -239,6 +324,32 @@ describe('ApiDocLoader', () => {
       const cause = new Error('underlying');
       const err = new ApiDocsInitializationError('test', { cause });
       expect(err.cause).toBe(cause);
+    });
+  });
+
+  describe('deprecated components', () => {
+    it('does not index entries listed in the deprecation registry', () => {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue([
+        '### [IgbDataGrid](https://example.com/blazor/IgbDataGrid)',
+        'An advanced grid for displaying data.',
+        '- **CellClicked**: `Action<IgbDataGridCellEventArgs>`',
+        '',
+        '### [IgbTextColumn](https://example.com/blazor/IgbTextColumn)',
+        'A text column.',
+        '',
+        '### [IgbGrid](https://example.com/blazor/IgbGrid)',
+        'A grid.',
+        '',
+      ].join('\n'));
+      // Same fixture paths as the Angular config; only the key matters for the registry.
+      const loader = new ApiDocLoader([{ ...FIXTURE_CONFIG, key: 'blazor', displayName: 'Blazor' }]);
+      loader.load();
+
+      expect(loader.get('blazor', 'IgbDataGrid')).toBeUndefined();
+      expect(loader.get('blazor', 'IgbTextColumn')).toBeUndefined();
+      expect(loader.get('blazor', 'IgbGrid')).toBeDefined();
+      expect(loader.search({ platform: 'blazor' }).map(e => e.component)).toEqual(['IgbGrid']);
     });
   });
 });

@@ -1,11 +1,12 @@
 ---
 title: Angular Text Highlight Directive | Ignite UI for Angular | MIT license
-_description: The Ignite UI for Angular TextHighlight directive can be used to highlight parts of text and have an active highlight on one of them.
-_keywords: Angular TextHighlight Directive, Angular Text Highlight Directive, IgxTextHighlight Directive, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: The Ignite UI for Angular TextHighlight directive can be used to highlight parts of text and have an active highlight on one of them.
+keywords: Angular TextHighlight Directive, Angular Text Highlight Directive, IgxTextHighlight Directive, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Components, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The TextHighlightDirective and IgxTextHighlightService in Ignite UI for Angular are used to highlight parts of a text, providing options for case sensitive searches and to highlight only exact matches."
 _tocName: Text Highlight
 ---
-
 # Angular Text Highlight Directive Overview
 
 The [`IgxTextHighlightDirective`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) and `IgxTextHighlightService` in Ignite UI for Angular are used to highlight parts of a text, providing options for case sensitive searches and to highlight only exact matches. They allow the developer to keep an active highlight, which can be any of the already highlighted parts.
@@ -184,7 +185,7 @@ export class TextHighlightSample1Component implements OnDestroy {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Text Highlight Directive
 
@@ -194,7 +195,7 @@ To get started with the Ignite UI for Angular Text Highlight directive, first yo
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](./general/getting-started.md) topic.
 
 The next step is to import the `IgxTextHighlightModule` in your **app.module.ts** file.
 
@@ -231,7 +232,8 @@ import { IgxTextHighlightDirective, IgxTextHighlightService } from 'igniteui-ang
       class="search-text"
     >
       {{ html }}
-    </div>
+    
+</div>
   `,
   styleUrls: ['home.component.scss'],
   standalone: true,
@@ -246,16 +248,15 @@ Now that you have the Ignite UI for Angular Text Highlight module or directive i
 
 ## Using the Angular Text Highlight Directive
 
-Let's create a search box that we can use to highlight different parts of the text. We will use Ignite UI for Angular's [InputGroup](input-group.md) component in which we will add a text input with buttons for clear matches, find next, find previous, and a button for specifying whether the search will be case-sensitive or not. Also it has a label for how many matches we have found.
+Let's create a search box that we can use to highlight different parts of the text. We will use Ignite UI for Angular's [InputGroup](./input-group.md) component in which we will add a text input with buttons for clear matches, find next, find previous, and a button for specifying whether the search will be case-sensitive or not. Also it has a label for how many matches we have found.
 
 ```html
 <div class="search-container">
+
   <igx-input-group type="search" class="input-group">
     <igx-prefix>
       <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
-      <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()"
-        >clear</igx-icon
-      >
+      <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
     </igx-prefix>
 
     <input
@@ -269,6 +270,7 @@ Let's create a search box that we can use to highlight different parts of the te
       (keydown)="searchKeyDown($event)"/>
     <igx-suffix>
       <div class="caseSensitiveButton">
+
         <button
           igxIconButton="flat"
           igxRipple
@@ -277,7 +279,8 @@ Let's create a search box that we can use to highlight different parts of the te
           [style.background]="caseSensitive ? 'rgb(73, 180, 254)' : 'transparent'">
           <igx-icon class="caseSensitiveIcon" fontSet="material">text_fields</igx-icon>
         </button>
-      </div>
+      
+</div>
       <ng-container *ngIf="searchText.length > 0">
         <span>
           <ng-container *ngIf="matchCount > 0">
@@ -288,6 +291,7 @@ Let's create a search box that we can use to highlight different parts of the te
       </ng-container>
 
       <div class="searchButtons">
+
         <button
           igxIconButton="flat"
           igxRipple
@@ -304,14 +308,15 @@ Let's create a search box that we can use to highlight different parts of the te
           [disabled]="!canMoveHighlight">
           <igx-icon fontSet="material">navigate_next</igx-icon>
         </button>
-      </div>
+      
+</div>
     </igx-suffix>
   </igx-input-group>
 </div>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Then, we will add a div with text and the IgxTextHighlight directive. Note that, since we need to bind the value input to the text in the div, we will also use interpolation for the div's text.
 
@@ -590,7 +595,7 @@ export class TextHighlightSample1Component implements OnDestroy {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Search across multiple elements
 
@@ -889,11 +894,11 @@ export class TextHighlightSample2Component implements OnDestroy {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Styles
 
-The [`IgxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) directive can be styled in terms of changing the color and the background of all occurrences of the given string. To get started, we need to import the `index` file, where all the theme functions and component mixins live:
+The [`IgxTextHighlightService`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightService) directive can be styled in terms of changing the color and the background of all occurrences of the given string. To get started, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -902,7 +907,7 @@ The [`IgxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTex
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [`highlight-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-highlight-theme) and accepts the `$resting-background`, `$resting-color`, `$active-background` and the `$active-color` parameters.
+Following the simplest approach, we create a new theme that extends the `highlight-theme` and accepts the `$resting-background`, `$resting-color`, `$active-background` and the `$active-color` parameters.
 
 ```scss
 $dark-highlight: highlight-theme(
@@ -923,12 +928,12 @@ The last step is to **include** the newly created theme.
 }
 ```
 
-> [!NOTE]
-> If the component is using an [`Emulated`](/themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep` to apply the styles.
+**Note:** 
+Token overrides normally inherit through Emulated View Encapsulation, but generated selectors and the custom CSS selectors in the next example may still require `::ng-deep` when they target highlight elements created outside the component's own template.
 
 ### Custom styles
 
-Let's say we want to provide an even richer styling to our highlighted text parts. In order to do this, we can take advantage of the [`cssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=cssclass) and the [`activeCssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=activecssclass) inputs of the [`IgxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) directive. We can combine these classes with the styles from the [`highlight-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-highlight-theme) and provide an awesome experience to our users!
+Let's say we want to provide an even richer styling to our highlighted text parts. In order to do this, we can take advantage of the [`cssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=cssclass) and the [`activeCssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=activecssclass) inputs of the [`IgxTextHighlightService`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightService) directive. We can combine these classes with the styles from the `highlight-theme` and provide an awesome experience to our users!
 
 All we have to do is create a couple of css classes with some properties and attach them by using the inputs from above:
 
@@ -940,6 +945,7 @@ All we have to do is create a couple of css classes with some properties and att
    {{html}}
 </div>
 ```
+
 
 ```scss
 // cssClass
@@ -969,7 +975,6 @@ As mentioned earlier, we can even combine them with a theme:
   }
 }
 ```
-
 
 ### Demo
 
@@ -1149,26 +1154,20 @@ $dark-highlight: highlight-theme(
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
 For more detailed information regarding the TextHighlight directive's API, refer to the following link:
-
-- [`IgxTextHighlight API`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective)
-
+- [`IgxTextHighlightService`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightService)
 Additional components that were used:
-
-- [`IgxInputGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
-- [`IgxInputGroupComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
-
-<div class="divider"></div>
-
+- [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- `IgxInputGroupComponent Styles`
+<igc-divider></igc-divider>
 ## Additional Resources
 
-- [Grid Search](grid/search.md)
+- [Grid Search](./grid/search.md)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

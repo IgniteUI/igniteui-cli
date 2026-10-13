@@ -1,14 +1,17 @@
 ---
 title: Palettes
-_description: 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+llms:
+  description: "The Ignite UI for Angular theming engine provides several powerful functions and mixins for generating and retrieving colors."
 _tocName: Palettes
 ---
-
 # Palettes
 
-<p class="highlight">The Ignite UI for Angular theming engine provides several powerful functions and mixins for generating and retrieving colors.</p>
-<div class="divider"></div>
+<div class="highlight">
+The Ignite UI for Angular theming engine provides several powerful functions and mixins for generating and retrieving colors.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -27,10 +30,10 @@ $melon-palette: palette(
 );
 ```
 
->[!WARNING]
-> The value you pass to `$primary`, `$secondary` and `surface` or any other color **must be of type color**. You cannot pass CSS variables as arguments as those can't be resolved at Sass build-time.
+**Warning:** 
+The value you pass to `$primary`, `$secondary` and `surface` or any other color **must be of type color**. You cannot pass CSS variables as arguments as those can't be resolved at Sass build-time.
 
-We created a palette that contains variants for all colors in it, including automatically created text contrast colors for each variant. If you haven't checked [the documentation](../palettes.md) regarding palettes with CSS variables, go check it out now. It contains information about all the color variants of a palette.
+We created a palette that contains variants for all colors in it, including automatically created text contrast colors for each variant. If you haven't checked [the documentation](/themes/palettes) regarding palettes with CSS variables, go check it out now. It contains information about all the color variants of a palette.
 
 The `palette` function does a lot internally to help you create colors at build-time that you can reuse throughout your `.scss` documents. The function is nice in that it will create a huge map of colors for you, but the algorithm for generating the color variants is very opinionated and may not match your exact needs. Our component themes don't care how the palette is generated, it only cares about the shape of the map.
 
@@ -144,10 +147,10 @@ $handmade-palette: (
 
 ```
 
->[!WARNING]
-> It's important to set the map keys as strings, explicitly between quotation marks - `'primary'`, `'secondary'`, `'gray'`, etc. The same applies for all color variants - `500`, `500-contrast`, etc.
+**Warning:** 
+It's important to set the map keys as strings, explicitly between quotation marks - `'primary'`, `'secondary'`, `'gray'`, etc. The same applies for all color variants - `500`, `500-contrast`, etc.
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Predefined Palettes
 
@@ -191,7 +194,7 @@ $my-color-palette: palette(
 );
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Colors Variants
 
@@ -227,7 +230,7 @@ $my-warning-color: color($my-palette, 'warn');
 
 If you omit the `$palette` argument, you will get a string referencing the corresponding CSS variable variant. If you do not provide `$color` and/or `$variant`, they will be assigned to `primary` and `500` respectively.
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Contrast Text Colors
 
@@ -244,7 +247,7 @@ $my-primary-800-text: contrast-color($my-palette, 'primary', 600);
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Color Classes
 
@@ -269,14 +272,16 @@ For instance, if you want to generate CSS classes that apply background color to
 The above code will generate CSS classes for each color variant in the palette. For instance, the `500` color variant of the `primary` palette will be given the following class `.bg-primary-500`;
 
 ```html
-<div class="bg-primary-500">...</div>
+<div class="bg-primary-500">
+...
+</div>
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## CSS Variables
 
-When reading about the color palette in the [CSS Variables](../palettes.md) section of the documentation, you would've noticed that all palette colors are included as CSS variables. We do this internally every time we generate a theme using the `theme` mixin. The `theme` calls another mixin in its body - `palette`. It takes a palette and converts the colors in it into CSS variables.
+When reading about the color palette in the [CSS Variables](/themes/palettes) section of the documentation, you would've noticed that all palette colors are included as CSS variables. We do this internally every time we generate a theme using the `theme` mixin. The `theme` calls another mixin in its body - `palette`. It takes a palette and converts the colors in it into CSS variables.
 
 You use this mixin when you want your custom palette colors to be included as CSS variables.
 
@@ -294,15 +299,15 @@ $my-palette: palette(
 
 ## API Reference
 
-- [Palettes](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette)
-- [Getting Palette Colors](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color)
-- [Getting Contrast Colors](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-contrast-color)
-- [Generating Color Classes](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/utilities#mixin-color-classes)
-- [Schemas](./schemas.md)
+- `Palettes`
+- `Getting Palette Colors`
+- `Getting Contrast Colors`
+- `Generating Color Classes`
+- [Schemas](/themes/sass/schemas)
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

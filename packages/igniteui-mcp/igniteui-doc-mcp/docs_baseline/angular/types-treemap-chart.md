@@ -1,21 +1,22 @@
 ---
-title: Angular Treemap | Data Visualization Tools | Orientation | Layout | Data Binding | Infragistics
-_description: Use Infragistics' Angular Treemap control show relative weighting of data points at more than one level supporting strip, squarified, and slice-and-dice algorithms. Learn about Ignite UI for Angular treemap!
-_keywords: Angular Tree Map, Treemap, layout, orientation, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Treemap | Data Visualization Tools | Orientation | Layout | Data Binding | Infragistics"
+description: Use Infragistics' Angular Treemap control show relative weighting of data points at more than one level supporting strip, squarified, and slice-and-dice algorithms. Learn about Ignite UI for Angular treemap!
+keywords: "Angular Tree Map, Treemap, layout, orientation, Ignite UI for Angular, Infragistics"
+license: commercial
 mentionedTypes: ["Treemap", "TreemapOrientation", "TreemapLayoutType", "TreemapHighlightingMode", "TreemapHighlightedValueDisplayMode"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Treemap chart displays hierarchical (tree-structured) data as a set of nested nodes."
 _tocName: Treemap
 _premium: true
 ---
-
 # Angular Treemap
 
 The Ignite UI for Angular Treemap chart displays hierarchical (tree-structured) data as a set of nested nodes. Each branch of the tree is given a treemap node, which is then tiled with smaller nodes representing sub-branches. Each node’s rectangle has an area proportional to a specified dimension on the data. Often the nodes are colored to show a separate dimension of the data.
 
 ## Angular Treemap Example
 
-In the following example, the [`IgxTreemapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html) demonstrates the 30 largest countries in the world by total area.
+In the following example, the `IgxTreemap` demonstrates the 30 largest countries in the world by total area.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -118,8 +119,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Treemap Recommendations
 
 ### Are Angular Treemaps right for your project?
@@ -153,13 +152,13 @@ There are several common use cases for choosing a Treemap. When you:
 
 - The data source must be an array or a list of data items
 - The data source must contain at least one data item otherwise the map will not render any nodes.
-- All data items must contain at least one data column (e.g. string) which should be mapped to the [`labelMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#labelMemberPath) property.
-- All data items must contain at least one numeric data column which should be mapped using the [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#valueMemberPath) property.
-- To categorize data into organized tiles you can optionally use [`parentIdMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#parentIdMemberPath) and [`idMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#idMemberPath).
+- All data items must contain at least one data column (e.g. string) which should be mapped to the `LabelMemberPath` property.
+- All data items must contain at least one numeric data column which should be mapped using the `ValueMemberPath` property.
+- To categorize data into organized tiles you can optionally use `ParentIdMemberPath` and `IdMemberPath`.
 
 ## Angular Treemap Configuration
 
-In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`layoutType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutType) and [`layoutOrientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutOrientation) properties.
+In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the `LayoutType` and `LayoutOrientation` properties.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -325,8 +324,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ### Layout Types
 
 The Treemap chart displays the relative weight of data. It uses a variety of algorithms to help it determine how the layout of its data items should occur:
@@ -342,9 +339,9 @@ The Treemap allows you to choose the algorithm that is best for your requirement
 
 ### Layout Orientation
 
-[`layoutOrientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
+`LayoutOrientation` property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
 
-Note that the [`layoutOrientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutOrientation) property works with the layout types SliceAndDice and Strip.
+Note that the `LayoutOrientation` property works with the layout types SliceAndDice and Strip.
 
 - `Horizontal` – the child nodes are going to be stacked horizontally(SliceAndDice).
 - `Vertical` – the child nodes are going to be stacked vertically (SliceAndDice).
@@ -527,7 +524,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ### Angular Treemap Highlighting
 
-In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightingMode)to Brighten or FadeOthers.
+In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set `HighlightingMode`to Brighten or FadeOthers.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -674,10 +671,10 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Treemap Percent based highlighting
 
-- [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
-- [`highlightedValueMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
-- [`highlightedValueOpacity`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
-- [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedValuesDisplayMode): Enables or disables highlighted values.
+- `HighlightedItemsSource`: Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
+- `HighlightedValueMemberPath`: Specifies the name of the property in the datasource where the highlighted values are read.
+- `HighlightedValueOpacity`: Controls the opacity of the normal value behind the highlighted value.
+- `HighlightedValuesDisplayMode`: Enables or disables highlighted values.
   - Auto: The treemap decides what mode to use.
   - Overlay: The treemap displays highlighted values over top the normal value with a slight opacity applied to the normal value.
   - Hidden: The treemap does not show highlighted values.
@@ -792,21 +789,12 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Shape Chart](shape-chart.md)
+- [Area Chart](./area-chart.md)
+- [Shape Chart](./shape-chart.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgxTreemapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html)
-- [`layoutOrientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutOrientation)
-- [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedValuesDisplayMode)
-- [`highlightedValueMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedValueMemberPath)
-- [`layoutType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#layoutType)
+`IgxTreemap`

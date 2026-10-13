@@ -1,11 +1,12 @@
 ---
 title: Getting Started | Ignite UI for Blazor Open-Source Libraries | Infragistics
-_description: Use Infragistics' Open-Source Blazor components to create apps with lightweight, MIT licensed components including Grid Lite. Try now.
-_keywords: Ignite UI for Blazor, Infragistics, Getting Started, Open-Source, MIT License
+description: Use Infragistics' Open-Source Blazor components to create apps with lightweight, MIT licensed components including Grid Lite. Try now.
+keywords: "Ignite UI for Blazor, Infragistics, Getting Started, Open-Source, MIT License"
 mentionedTypes: []
+llms:
+  description: "Ignite UI for Blazor offers open-source UI components under the MIT license."
 _tocName: Open-Source Libraries
 ---
-
 # Getting Started with Open-Source Libraries
 
 This topic provides step-by-step instructions for creating Blazor applications with the Ignite UI for Blazor open-source libraries using Visual Studio.
@@ -23,8 +24,8 @@ The open-source libraries include:
 
 - Start Visual Studio and click **Create a new project** on the start page, select a Blazor template such as **Blazor Server App**, **Blazor WebAssembly App**, or **Blazor Web App**, and click **Next**.
 
-> [!Note]
-> When using **Blazor Server App**, ensure you add `@rendermode InteractiveServer` in the pages where the components are used.
+**Note:** 
+When using **Blazor Server App**, ensure you add `@rendermode InteractiveServer` in the pages where the components are used.
 
 - Provide a project name and location, then click **Next**.
 
@@ -34,8 +35,8 @@ The open-source libraries include:
 
 The IgniteUI.Blazor.Lite package contains open-source UI components delivered via NuGet.
 
-> [!Note]
-> You should not combine the **IgniteUI.Blazor** and **IgniteUI.Blazor.Lite** packages in the same project. They use the same namespaces and contain duplicate components, so only one of them should be used.
+**Note:** 
+You should not combine the **IgniteUI.Blazor** and **IgniteUI.Blazor.Lite** packages in the same project. They use the same namespaces and contain duplicate components, so only one of them should be used.
 
 In Visual Studio, open the NuGet package manager by selecting **Tools** → **NuGet Package Manager** → **Manage NuGet Packages for Solution**. Search for and install the **IgniteUI.Blazor.Lite** NuGet package.
 
@@ -69,7 +70,7 @@ builder.Services.AddIgniteUIBlazor();
 var app = builder.Build();
 ```
 
-2 - Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
+2 - Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -113,11 +114,11 @@ Add an Ignite UI for Blazor component to your razor page, for example:
 </IgbCard>
 ```
 
-For more detailed information about which components are included in the light package, see the - [Open-Source vs Premium Components](general-open-source-vs-premium.md) topic.
+For more detailed information about which components are included in the light package, see the - [Open-Source vs Premium Components](./general-open-source-vs-premium.md) topic.
 
-For more detailed information about Grid Lite features and configuration, see the [Grid Lite Overview](grid-lite/overview.md) topic.
+For more detailed information about Grid Lite features and configuration, see the [Grid Lite Overview](./grid-lite/overview.md) topic.
 
 ## Additional Resources
 
-- [Open-Source vs Premium Components](general-open-source-vs-premium.md)
-- [Grid Lite Overview](grid-lite/overview.md)
+- [Open-Source vs Premium Components](./general-open-source-vs-premium.md)
+- [Grid Lite Overview](./grid-lite/overview.md)

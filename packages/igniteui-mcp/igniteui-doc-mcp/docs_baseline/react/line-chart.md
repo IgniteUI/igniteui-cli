@@ -1,21 +1,22 @@
 ---
-title: React Line Chart and Graph | Ignite UI for React
-_description: The React Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
-_keywords: React Charts, Line Chart, Line Graph, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
+title: "React Line Chart and Graph | Ignite UI for React"
+description: The React Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
+keywords: "React Charts, Line Chart, Line Graph, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time."
 _tocName: Line Chart
 _premium: true
 ---
-
 # React Line Chart
 
-The Ignite UI for React Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time. It’s often used to show trends and perform comparative analysis. The Y-Axis (labels on left side) show a numeric value, while the X-Axis (bottom labels) show a time-series or comparison category. You can include one or more data sets to compare, which would render as multiple lines in the chart.
+The Ignite UI for React Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time. It's often used to show trends and perform comparative analysis. The Y-Axis (labels on left side) show a numeric value, while the X-Axis (bottom labels) show a time-series or comparison category. You can include one or more data sets to compare, which would render as multiple lines in the chart.
 
 ## React Line Chart Example
 
-You can create the React Line Chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line) enum, as shown in the example below.
+You can create the React Line Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to `Line` enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -134,8 +135,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Line Chart Recommendations
 
 ### Are React Line Charts right for your project?
@@ -185,7 +184,7 @@ There are several common use cases for choosing a Line Chart:
 
 The React Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period, as we have shown in the example below.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -289,13 +288,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Line Chart with Multiple Series
 
-Since the React Line Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
+Since the React Line Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -414,15 +411,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Line Chart with Live Data
 
 The React Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds as demonstrated in the following demo.
 
 In this example, we are streaming live data into the React Line Chart at an interval of your choosing. You can set the data points from 5,000 to 1 million and update the chart to optimize the scale based on the device you are rendering the chart on.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
 
 ```typescript
 export class CategoryChartSharedData {
@@ -674,13 +669,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighFrequency/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Styling Line Chart
 
 Once our chart is set up, we may want to make some further styling customizations such as change the line colors, change the legend font family, and/or increase the size of the axis labels to make it easier to read.
 
-You can create this type of chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line), as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -802,9 +795,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-You can also create a dashed line within the [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) by using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) and setting the [`dashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarlineseries.html#dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
+You can also create a dashed line within the `IgrLineSeries` by using the `IgrDataChart` and setting the `DashArray` property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
-The following example demonstrates usage of the [`dashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarlineseries.html#dashArray) in a [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html):
+The following example demonstrates usage of the `DashArray` in a `IgrLineSeries` in `IgrDataChart`:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -979,15 +972,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Line Charts
 
-The following sections explain more advanced types of React Line Charts that can be created using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control instead of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control with simplified API.
+The following sections explain more advanced types of React Line Charts that can be created using the `IgrDataChart` control instead of `IgrCategoryChart` control with simplified API.
 
 ## React Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html), as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedLineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1167,13 +1158,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Line Chart
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100LineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1349,13 +1338,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Line Chart
 
 The Radial Line Chart belongs to a group of radial charts and has a shape of an unfilled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Line Chart, but wraps the data points around a circular axis rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrRadialLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrRadialLineSeries`, as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -1513,13 +1500,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Polar Line Chart
 
 The Polar Line Chart belongs to a group of polar charts and is rendered using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. Polar Line Charts use the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrPolarLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarlineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrPolarLineSeries`, as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -1680,8 +1665,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1699,8 +1682,16 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type        | Control Name       | API Members |
 | ------------------|--------------------|----------------------- |
-| Line              | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)    | [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) = [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Line) |
-| Polar Line        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrPolarLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarlineseries.html) |
-| Radial Line       | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrRadialLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html) |
-| Stacked Line      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html) |
-| Stacked 100% Line | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)     | [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html) |
+| Line              | `IgrCategoryChart`    | `CategoryChart.ChartType` = `Line` |
+| Polar Line        | `IgrDataChart`     | `IgrPolarLineSeries` |
+| Radial Line       | `IgrDataChart`     | `IgrRadialLineSeries` |
+| Stacked Line      | `IgrDataChart`     | `IgrStackedLineSeries` |
+| Stacked 100% Line | `IgrDataChart`     | `IgrStacked100LineSeries` |
+
+`IgrCategoryChart`<br />
+`IgrDataChart`<br />
+`IgrLineSeries`<br />
+`IgrPolarLineSeries`<br />
+`IgrRadialLineSeries`<br />
+`IgrStackedLineSeries`<br />
+`IgrStacked100LineSeries`<br />

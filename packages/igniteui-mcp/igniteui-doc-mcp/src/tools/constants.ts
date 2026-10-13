@@ -73,6 +73,13 @@ Use this as the discovery step when the exact component name is unknown — e.g.
 Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to get_api_reference for full details. To reduce response size, use section="properties", "methods", or "events" instead of the default "all".
 
 Always specify \`platform\` when your target framework is known — this prevents cross-framework API contamination. Omit only when you explicitly need to compare or search across all frameworks at once. Maximum query length is 256 characters.
+`,
+
+  resolve_import: `Return the exact import statement for Ignite UI symbols — which package and entry point each class, directive, module, service, interface, enum, type or constant must be imported from. Covers angular, react, webcomponents, and blazor.
+
+Call this BEFORE writing or fixing import statements. Ignite UI for Angular is split into secondary entry points (e.g. IgxGridComponent → 'igniteui-angular/grids/grid', IgxColumnComponent → 'igniteui-angular/grids/core', IgxButtonDirective → 'igniteui-angular/directives'); guessed paths are a common cause of "has no exported member" / "cannot find module" compile errors. React and Web Components symbols are spread over several packages (e.g. igniteui-react-grids, igniteui-webcomponents-grids/grids). For Blazor, returns the NuGet package, the @using namespace and the module registration.
+
+Pass every symbol a file needs in one call: symbols=["IgxGridComponent", "IgxColumnComponent"]. The platform is inferred from the Igx/Igr/Igc/Igb prefix; pass \`platform\` for names without one (e.g. "GridSelectionMode"). Returns ready-to-paste import lines grouped by module, plus "Did you mean" suggestions for names that do not exist (e.g. IgxGrid → IgxGridComponent). Up to 50 symbols per call.
 `
 };
 
@@ -160,6 +167,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 - **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents, blazor)
 - **\`get_api_reference\`** — retrieve properties, methods, and events for a known component
+- **\`resolve_import\`** — get the exact import path (package + entry point) for one or more symbols before writing import statements
 
 ## Project Setup
 

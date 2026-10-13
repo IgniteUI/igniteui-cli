@@ -1,17 +1,18 @@
 ---
-title: Web Components Hierarchical Grid | Fastest Web Components Hierarchical Table | Infragistics
-_description: The Ignite UI for Web Components Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: Web Components hierarchical grid, igniteui for Web Components, infragistics
-_license: commercial
+title: "Web Components Hierarchical Grid | Fastest Web Components Hierarchical Table | Infragistics"
+description: The Ignite UI for Web Components Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: "Web Components hierarchical grid, igniteui for Web Components, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGrid", "RowIsland"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Web Components HierarchicalGrid allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible."
 _tocName: Load on Demand
 _premium: true
 ---
-
 # Hierarchical Grid Load On Demand
 
-The Ignite UI for Web Components [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
+The Ignite UI for Web Components [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
 
 This topic demonstrates how to configure Load on Demand by creating a Remote Service Provider that communicates with an already available remote service. Here's the working demo and later we will go through it step by step and describe the process of creating it.
 
@@ -64,8 +65,6 @@ As you can see `buildUrl()` will be the method that will generate our url based 
 
 Next we will define how we should build our URL for the GET request. This is where we will be able to get the data for our main grid but also for any child grid inside it. We will use the `Customers` data from  this [topic](https://data-northwind.indigo.design/swagger/index.html) for our root level and use `Orders` and `Details` for the lower levels. The model will differ per application but we will use the following one:
 
-<img class="responsive-img" src="../../../images/hgrid-database.jpg" alt="hgrid-database" />
-
 What we first need is the `key` of our table to determine from where to get the data for the desired grid, the primary key of the parent row and its unique ID.
 
 We will define all this in the `dataState` object. An example:
@@ -89,7 +88,7 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
@@ -115,7 +114,7 @@ function buildUrl(dataState: any) {
             qS += `${dataState.parentKey}/${dataState.parentID}/${dataState.key}`;
         }
     }
-    return `${URL}${qS}`;
+    return `$${qS}`;
 }
 ```
 
@@ -125,7 +124,7 @@ Next we will setup our hierarchical grid and connect it to our remote service pr
 
 ### Template defining
 
-First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
+First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`PrimaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
 
 ```html
 <igc-hierarchical-grid id="hGrid" primary-key="customerId" height="600px">
@@ -155,7 +154,7 @@ There is one thing missing in our template though, and that is the data for our 
 
 We will easily set the data of the root grid after getting its data from the service in our code later, since we can use the `id="hGrid"` reference.
 
-Setting the data for any child that has been expanded is a bit different. When a row is expanded for the first time, a new child [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html) component provides the `GridCreated` event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the service, and apply it.
+Setting the data for any child that has been expanded is a bit different. When a row is expanded for the first time, a new child [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgcRowIsland`](mcp:get_api_reference?platform=webcomponents&component=IgcRowIslandComponent) component provides the `GridCreated` event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the service, and apply it.
 
 We can use one method for all row islands since we built our service so that it needs only information if it is the root level, the key of the row island, the primary key of the parent row, and its unique identifier. All this information can be accessed either directly from the event arguments, or from the row island responsible for triggering the event.
 
@@ -242,11 +241,11 @@ public gridCreated(event: CustomEvent<IgcGridCreatedEventArgs>, _parentKey: stri
 }
 ```
 
-With this, the setup of our application is almost done. This last step aims to improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) supports a loading indicator that can be displayed while the grid is empty. If new data is received, the loading indicator will hide and the data will be rendered.
+With this, the setup of our application is almost done. This last step aims to improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) supports a loading indicator that can be displayed while the grid is empty. If new data is received, the loading indicator will hide and the data will be rendered.
 
 ### Setup of loading indication
 
-The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) can display a loading indicator by setting the [`isLoading`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
+The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) can display a loading indicator by setting the [`IsLoading`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
 
 In this case the final version of our configuration would look like this:
 
@@ -293,13 +292,11 @@ public gridCreated(event: CustomEvent<IgcGridCreatedEventArgs>, _parentKey: stri
 ```
 
 ## API References
-
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcRowIsland`](mcp:get_api_reference?platform=webcomponents&component=IgcRowIslandComponent)
 ## Additional Resources
 
-- [Hierarchical Grid Component](overview.md)
+- [Hierarchical Grid Component](./overview.md)
 
 Our community is active and always welcoming to new ideas.
 

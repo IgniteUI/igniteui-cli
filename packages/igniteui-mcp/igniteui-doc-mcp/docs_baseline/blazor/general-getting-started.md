@@ -1,33 +1,25 @@
 ---
 title: Getting Started | Ignite UI for Blazor | Infragistics
-_description: Install Ignite UI for Blazor and render your first component. Covers CLI scaffolding, manual package setup, and AI tooling with Agent Skills and MCP servers.
-_keywords: Ignite UI for Blazor, Infragistics, Getting Started
+description: "Install Ignite UI for Blazor and render your first component. Covers CLI scaffolding, manual package setup, and AI tooling with Agent Skills and MCP servers."
+keywords: "Ignite UI for Blazor, Infragistics, Getting Started"
 last_updated: "2025-04-06"
 mentionedTypes: []
+llms:
+  description: "Ignite UI for Blazor is a complete set of UI widgets, components, and Figma UI kits for Blazor by Infragistics."
 _tocName: Blazor Server App
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Getting Started With Ignite UI for Blazor
 
 This topic provides step-by-step instructions for creating Blazor Server applications with Ignite UI for Blazor using Visual Studio.
 
 ## Create a New Blazor Server Project
-
 The steps below describe how to create a new Blazor Server project. If you want to add Ignite UI for Blazor to an existing application, go to the [**Install Ignite UI for Blazor Package**](#install-ignite-ui-for-blazor) section.
 
 Start Visual Studio 2022 and click **Create a new project** on the start page, select the **Blazor Server App** template, and click **Next**.
 
-<img src="../images/general/new-blazor-project-server.jpg" alt="new-blazor-project-server" />
-
 Provide a project name and location, and click **Next**
 
-<img src="../images/general/new-blazor-project-configure-server.jpg" alt="new-blazor-configure-server" />
-
 Specify additional project options, and click **Create**
-
-<img src="../images/general/new-blazor-project-info-server.jpg" alt="new-blazor-info-server" />
 
 ## Install Ignite UI for Blazor
 
@@ -35,7 +27,7 @@ Ignite UI for Blazor is delivered via NuGet packages. To use the Ignite UI for B
 
 In Visual Studio, open the NuGet package manager by selecting **Tools** → **NuGet Package Manager** → **Manage NuGet Packages for Solution**. Search for and install the **IgniteUI.Blazor** NuGet package.
 
-For more information on installing Ignite UI for Blazor using NuGet, read the [Installing Ignite UI for Blazor](general-installing-blazor.md) topic.
+For more information on installing Ignite UI for Blazor using NuGet, read the [Installing Ignite UI for Blazor](./general-installing-blazor.md) topic.
 
 ## Register Ignite UI for Blazor
 
@@ -55,13 +47,13 @@ builder.Services.AddIgniteUIBlazor();
 var app = builder.Build();
 ```
 
-2 - Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
+2 - Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 
 ```razor
 @using IgniteUI.Blazor.Controls
 ```
 
-3a - Add the Style Sheet in the **\<head>** element of the **Pages/\_Layout.cshtml** or **Pages/\_Host.cshtml** file:
+3a - Add the Style Sheet in the **`<head>`** element of the **Pages/_Layout.cshtml** or **Pages/_Host.cshtml** file:
 
 ```razor
 <head>
@@ -88,13 +80,13 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-2 - Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
+2 - Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 
 ```razor
 @using IgniteUI.Blazor.Controls
 ```
 
-3a - Add the Style Sheet in the **\<head>** element of the **Pages/\_Host.cshtml** file:
+3a - Add the Style Sheet in the **`<head>`** element of the **Pages/_Host.cshtml** file:
 
 ```razor
 <head>
@@ -102,7 +94,7 @@ public void ConfigureServices(IServiceCollection services)
 </head>
 ```
 
-3b - Add Script Reference to the **Pages/\_Host.cshtml** file:
+3b - Add Script Reference to the **Pages/_Host.cshtml** file:
 
 ```razor
 <script src="_content/IgniteUI.Blazor/app.bundle.js"></script>
@@ -135,4 +127,3 @@ Add an Ignite UI for Blazor component to your razor page:
 
 Build and run the Blazor app.
 
-<img src="../images/general/getting-started-blazor-card.jpg" alt="getting-started-blazor-card" />

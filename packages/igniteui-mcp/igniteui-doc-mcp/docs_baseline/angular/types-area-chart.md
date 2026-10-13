@@ -1,21 +1,22 @@
 ---
-title: Angular Area Chart | Data Visualization | Infragistics
-_description: Infragistics' Angular Area Chart
-_keywords: Angular Charts, Area Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "CategoryChartType"]
+title: "Angular Area Chart | Data Visualization | Infragistics"
+description: Infragistics' Angular Area Chart
+keywords: "Angular Charts, Area Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in."
 _tocName: Area Chart
 _premium: true
 ---
-
 # Angular Area Chart
 
-The Ignite UI for Angular Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
+The Ignite UI for Angular Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
 
 ## Angular Area Chart Example
 
-You can create Angular Category Area Chart in the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to **Area** enum, as shown in the example below.
+You can create Angular Category Area Chart in the `IgxCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Area** enum, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -121,8 +122,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Area Chart Recommendations
 
 ### Area Chart Use Cases
@@ -157,7 +156,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## Angular Area Chart with Single Series
 
-Angular Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to [`Area`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.categorycharttype.html#Area) value, as shown in the example below.
+Angular Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in `IgxCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `Area` value, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -252,11 +251,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `ItemsSource` property of the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `DataSource` property of the `IgxCategoryChart` control.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -362,11 +359,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Area Chart Styling
 
-Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
+Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -477,15 +472,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Area Charts
 
-The following sections explain more advanced types of Angular Area Charts that can be created using the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control instead of [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control with simplified API.
+The following sections explain more advanced types of Angular Area Charts that can be created using the `IgxDataChart` control instead of `IgxCategoryChart` control with simplified API.
 
 ## Angular Step Area Chart
 
-The Angular Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) property to [`StepArea`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.categorycharttype.html#StepArea) value, as shown in the example below.
+The Angular Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in `IgxCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `StepArea` value, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -595,13 +588,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
-The following sections explain more advanced types of Angular Area Charts that can be created using the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control instead of [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control with simplified API.
+The following sections explain more advanced types of Angular Area Charts that can be created using the `IgxDataChart` control instead of `IgxCategoryChart` control with simplified API.
 
 ## Angular Range Area Chart
 
-The Angular Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxRangeAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxrangeareaseriescomponent.html), as shown in the example below.
+The Angular Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxRangeAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -752,11 +743,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked Area Chart
 
-The Angular Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxStackedAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedareaseriescomponent.html), as shown in the example below.
+The Angular Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxStackedAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -938,11 +927,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked 100% Area Chart
 
-The Angular Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxStacked100AreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100areaseriescomponent.html), as shown in the example below.
+The Angular Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxStacked100AreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1121,11 +1108,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked Spline Area Chart
 
-The Angular Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxStackedSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedsplineareaseriescomponent.html), as shown in the example below.
+The Angular Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxStackedSplineAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1307,11 +1292,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked 100% Spline Area Chart
 
-The Angular Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxStacked100SplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100splineareaseriescomponent.html), as shown in the example below.
+The Angular Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxStacked100SplineAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1489,11 +1472,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Radial Area Chart
 
-The Angular Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxRadialAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxradialareaseriescomponent.html), as shown in the example below.
+The Angular Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxRadialAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1649,11 +1630,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Polar Area Chart
 
-The Angular Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpolarareaseriescomponent.html), as shown in the example below.
+The Angular Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxPolarAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1814,11 +1793,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Polar Spline Area Chart
 
-The Angular Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to [`IgxPolarSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpolarsplineareaseriescomponent.html), as shown in the example below.
+The Angular Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in `IgxDataChart` control by binding your data to `IgxPolarSplineAreaSeries`, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1968,8 +1945,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1987,13 +1962,26 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) | [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) = [`Area`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.categorycharttype.html#Area)  |
-| Step Area                | [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) | [`chartType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#chartType) = [`StepArea`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.categorycharttype.html#StepArea)  |
-| Range Area               | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxRangeAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxrangeareaseriescomponent.html)  |
-| Radial Area              | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxRadialAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxradialareaseriescomponent.html)  |
-| Polar Area               | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpolarareaseriescomponent.html)  |
-| Polar Spline Area        | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxPolarSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpolarsplineareaseriescomponent.html)  |
-| Stacked Area             | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxStackedAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedareaseriescomponent.html)  |
-| Stacked Spline Area      | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxStackedSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedsplineareaseriescomponent.html)  |
-| Stacked 100% Area        | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxStacked100AreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100areaseriescomponent.html)  |
-| Stacked 100% Spline Area | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)  | [`IgxStacked100SplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100splineareaseriescomponent.html)  |
+| Area                     | `IgxCategoryChart` | `CategoryChart.ChartType` = `Area`  |
+| Step Area                | `IgxCategoryChart` | `CategoryChart.ChartType` = `StepArea`  |
+| Range Area               | `IgxDataChart`  | `IgxRangeAreaSeries`  |
+| Radial Area              | `IgxDataChart`  | `IgxRadialAreaSeries`  |
+| Polar Area               | `IgxDataChart`  | `IgxPolarAreaSeries`  |
+| Polar Spline Area        | `IgxDataChart`  | `IgxPolarSplineAreaSeries`  |
+| Stacked Area             | `IgxDataChart`  | `IgxStackedAreaSeries`  |
+| Stacked Spline Area      | `IgxDataChart`  | `IgxStackedSplineAreaSeries`  |
+| Stacked 100% Area        | `IgxDataChart`  | `IgxStacked100AreaSeries`  |
+| Stacked 100% Spline Area | `IgxDataChart`  | `IgxStacked100SplineAreaSeries`  |
+
+## API References
+
+`IgxCategoryChart`<br />
+`IgxDataChart`<br />
+`IgxRangeAreaSeries`<br />
+`IgxRadialAreaSeries`<br />
+`IgxPolarAreaSeries`<br />
+`IgxPolarSplineAreaSeries`<br />
+`IgxStackedAreaSeries`<br />
+`IgxStackedSplineAreaSeries`<br />
+`IgxStacked100AreaSeries`<br />
+`IgxStacked100SplineAreaSeries`<br />

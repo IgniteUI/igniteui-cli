@@ -1,193 +1,184 @@
 ---
-title: Ignite UI for Blazor Accessibility Compliance | Ignite UI for Blazor | Infragistics
-_description: Ignite UI for Blazor Accessibility Support and Compliance - Section 508 Compliance, WCAG and ARIA .
-_keywords: accessibility, Blazor, ignite ui for Blazor, infragistics
-_license: MIT
+title: "Blazor Accessibility Compliance | Ignite UI for Blazor | Infragistics"
+description: "Accessibility support in Ignite UI for Blazor - the standards we target, per-component keyboard and screen reader status, and how to report an accessibility issue."
+keywords: "Ignite UI for Blazor, Infragistics, Accessibility, WCAG, Section 508, EN 301 549, ARIA, Keyboard"
+license: MIT
+last_updated: "2026-08-27"
 mentionedTypes: []
+llms:
+  description: "Accessibility support in Ignite UI for Blazor: the conformance standards targeted, the per-component keyboard and screen-reader documentation index, required configuration, and the channel for reporting accessibility issues."
 _tocName: Accessibility Compliance
 ---
-
-<style>
-.greenCheck {
-  content:url("../../images/general/greenCheck.png");
-}
-
-.redCheck {
-  content:url("../../images/general/redX.png");
-}
-</style>
-
 # Accessibility Compliance
 
-As the leading global provider of UI and UX tools for developers, our Blazor team at Infragistics is committed to providing components and tools that make it easier for you to create the best possible user experience. Our goal is to enable you to focus on crafting the best applications and the best user experience for all users.
+This page records the accessibility standards Ignite UI for Blazor targets, what each component's own documentation covers today, and how to report an accessibility problem.
 
-Here you can find specific information regarding the accessibility support and compliance for our Blazor grids, charts, and UI components and controls within Ignite UI for Blazor.
+Accessibility support is delivered by two layers — the components themselves and the theming engine that styles them. Use this page to find the status of a specific component; use [Theming Accessibility](../themes/accessibility.md) for contrast, text scaling, and chart color behavior.
 
-## Section 508 Compliance
+**Note:** 
+**Scope of this page.** The information below reflects the **Default theme** and the current documented behavior of each component. It is a support summary, not a formal conformance statement. Custom themes, typography changes, and animation or color overrides can change the result.
 
-[Section 508](http://www.section508.gov/) of the Rehabilitation Act was amended in 1998 by Congress to require all Federal agencies to make their electronic and information technology accessible to people with disabilities. Since then, Section 508 compliance has not only been a requirement in government agencies, but it's also important when providing software solutions and designing Web pages.
+## Standards We Target
 
-Section 1194.22 of the Section 508 law specifically targets Web-based intranet and internet information and systems, and contains a set of 16 rules to follow. In order to enable you to keep your Web applications and Web sites compatible with these rules with minimal effort on your part, Infragistics has taken steps to ensure that the Ignite UI for Blazor controls and components are compliant with the relevant accessibility rules.
-
-The matrix below provides a high-level outline of the accessibility support provided by our visual controls (and related components). To learn more about an individual control/component's accessibility compliance, click the name of the control/component.
-
-### Ignite UI for Blazor Compliance with Section 508
-
-|**Component/Principle**|<a title="A text equivalent for every non-text element shall be provided (e.g., via 'alt', 'longdesc', or in element content)."> (a)</a><br/>|<a title="Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation">(b)</a><br/>|<a title="Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup">(c)</a><br/>|<a title="Documents shall be organized so they are readable without requiring an associated style sheet">(d)</a><br/>|<a title="Redundant text links shall be provided for each active region of a server-side image map">(e)</a><br/>|<a title="Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape">(f)</a><br/>|<a title="Row and column headers shall be identified for data tables">(g)</a><br/>|<a title="Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers">(h)</a><br/>|<a title="Frames shall be titled with text that facilitates frame identification and navigation">(i)</a><br/>|<a title="Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz">(j)</a><br/>|<a title="A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance cannot be accomplished in any other way">(k)</a><br/>|<a title="When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with functional text that can be read by assistive technology.">(l)</a><br/>|<a title="When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to a plug-in or applet that complies with §1194.21 (a)">(m)</a><br/>|<a title="When electronic forms are designed to be completed online, the form shall allow people using assistive technology to access the information, field elements, and functionality required for completion and submission of the form, including all directions and cues.">(n)</a><br/>|<a title="A method shall be provided that permits users to skip repetitive navigation links.">(o)</a><br/>|<a title="When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required">(p)</a><br/>|
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-|**Grids**|||||||||||||||||
-| - Grid|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-| - HierarchicalGrid|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-| - TreeGrid|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-|**Other**||||||||||<span class="greenCheck" />_|||||||
-| - Avatar|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Badge|<span class="greenCheck" />||<span class="greenCheck" />|||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Bottom navigation|||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Button|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Button group|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Calendar|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Card|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Carousel|<span class="greenCheck" />||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-| - Checkbox|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Chip|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Circular progress|<span class="greenCheck" />||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Combo|<span class="greenCheck" />||<span class="greenCheck" />|||||||<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Date time input|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Date picker|||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Divider|<span class="greenCheck" />||<span class="greenCheck" />|||||||||<span class="greenCheck" />|||||
-| - Dialog|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Drop down|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Expansion panel|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Icon|||<span class="greenCheck" />|||||||||<span class="redCheck" />|||||
-| - Input|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Input group|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Linear progress|<span class="greenCheck" />||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - List|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Navbar|<span class="greenCheck" />||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Navigation drawer|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Radio group|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Radio|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Select|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Slider|||<span class="greenCheck" />|||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Snackbar|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-| - Switch|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Tabs|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="greenCheck" />||<span class="greenCheck" />|||
-| - Time picker|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />|||
-| - Toast|||<span class="greenCheck" />|<span class="greenCheck" />||||||<span class="greenCheck" />_||<span class="redCheck" />||<span class="greenCheck" />||<span class="redCheck" />|
-
-**LEGEND**
-
-||||
+| Standard | Region | What it requires |
 |---|---|---|
-|<span class="greenCheck" />|The control/component is completely accessible in this particular area.||
-|<span class="greenCheck" />\*|The control/component is accessible in this particular area after implementing certain configurations| Example: Use **NoopAnimationsModule**utility module to allow disabling of animations|
-|<span class="redCheck" />|The control/component is not entirely accessible unless you perform some sort of action.||
-|'white space'|this particular rule does not apply to the control||
+| <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1 Level AA</a> | International | The success criteria listed below. The baseline referenced by the other two. |
+| <a href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer">Section 508 (Revised)</a> | United States | Federal procurement. Since the Revised Section 508 Standards (published 2017, compliance date January 2018) it incorporates WCAG 2.0 Level AA by reference, so it is satisfied by the same work. |
+| <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/" target="_blank" rel="noopener noreferrer">EN 301 549</a> | Europe | The European standard referenced for ICT accessibility, built on WCAG. The European Accessibility Act, which builds on it, applies from 28 June 2025. |
 
-> [!WARNING]
-> The table above is relevant only to the **Default theme**of Ignite UI for Blazor theming library. The checklist compliance might be different when it comes to custom themes, typography and any visual changes related to animations and colors.
+**Note:** 
+Section 508 previously defined its own 16 rules under §1194.22. Those were superseded by the Revised Standards, which adopt WCAG directly. Targeting WCAG 2.1 Level AA therefore addresses all three frameworks above.
 
-### Compliance Information
+### Success criteria that apply to UI components
 
-- **a** - A text equivalent for every non-text element shall be provided (e.g., via "alt", "longdesc", or in element content).
-- **b** - Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.
-- **c** - Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.
-- **d** - Documents shall be organized so they are readable without requiring an associated style sheet.
-- **e** - Redundant text links shall be provided for each active region of a server-side image map.
-- **f** - Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.
-- **g** - Row and column headers shall be identified for data tables.
-- **h** - Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.
-- **i** - Frames shall be titled with text that facilitates frame identification and navigation.
-- **j** - Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.
-- **k** - A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance cannot be accomplished in any other way. The content of the text-only page shall be updated whenever the primary page changes.
-- **l** - When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with functional text that can be read by assistive technology.
-- **m** - When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to a plug-in or applet that complies with §1194.21(a) through l.
-- **n** - When electronic forms are designed to be completed on-line, the form shall allow people using assistive technology to access the information, field elements, and functionality required for completion and submission of the form, including all directions and cues.
-- **o** - A method shall be provided that permits users to skip repetitive navigation links.
-- **p** - When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.
+WCAG conformance is claimed against individual **success criteria**, not against the broader guidelines. These are the criteria that a UI component library can affect:
 
-## WCAG compliance
+| Criterion | Level | What it means for a component |
+|---|:--:|---|
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" target="_blank" rel="noopener noreferrer">1.1.1 Non-text Content</a> | A | Icons and images carry a text alternative. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" rel="noopener noreferrer">1.3.1 Info and Relationships</a> | A | Structure conveyed visually is also conveyed in markup. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html" target="_blank" rel="noopener noreferrer">1.3.2 Meaningful Sequence</a> | A | Reading order matches visual order. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">1.4.3 Contrast (Minimum)</a> | AA | Text meets 4.5:1 against its background. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html" target="_blank" rel="noopener noreferrer">1.4.4 Resize Text</a> | AA | Text scales to 200% without loss of content. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" target="_blank" rel="noopener noreferrer">1.4.11 Non-text Contrast</a> | AA | Control boundaries and states meet 3:1. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html" target="_blank" rel="noopener noreferrer">1.4.13 Content on Hover or Focus</a> | AA | Tooltips and popovers are dismissible and persistent. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html" target="_blank" rel="noopener noreferrer">2.1.1 Keyboard</a> | A | All functionality is reachable by keyboard. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html" target="_blank" rel="noopener noreferrer">2.1.2 No Keyboard Trap</a> | A | Focus can always move back out. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html" target="_blank" rel="noopener noreferrer">2.4.3 Focus Order</a> | A | Tab order follows a meaningful sequence. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" target="_blank" rel="noopener noreferrer">2.4.7 Focus Visible</a> | AA | The focused control is visibly indicated. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html" target="_blank" rel="noopener noreferrer">2.5.3 Label in Name</a> | A | The accessible name contains the visible label. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html" target="_blank" rel="noopener noreferrer">3.2.1 On Focus</a> | A | Focus alone does not trigger a change of context. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-input.html" target="_blank" rel="noopener noreferrer">3.2.2 On Input</a> | A | Changing a value alone does not trigger a change of context. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" target="_blank" rel="noopener noreferrer">3.3.2 Labels or Instructions</a> | A | Inputs carry labels or instructions. |
+| <a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" target="_blank" rel="noopener noreferrer">4.1.2 Name, Role, Value</a> | A | Every control exposes a name, a role, and its current state. |
 
-[WCAG](https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=111) is simply a set of formal guidelines on how to develop accessible web content. These standards represent a higher level of accessibility than 508 standards, although they are identical or very similar. WCAG focuses primarily on HTML accessibility.
+## How Accessibility Is Delivered
 
-|**Component/Guideline**|<a title="Text Alternatives - Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.">1.1</a><br/>|<a title="Time-based Media - Provide alternatives for time-based media.">1.2</a><br/>|<a title="Adaptable - Create content that can be presented in different ways (for example simpler layout) without losing information or structure">1.3 </a><br/>|<a title="Distinguishable - Make it easier for users to see and hear content including separating foreground from background.">1.4</a><br/>|<a title="Keyboard Accessible - Make all functionality available from a keyboard">2.1</a><br/>|<a title="Enough Time - Provide users enough time to read and use content.">2.2</a><br/>|<a title="Seizures and Physical Reactions - Do not design content in a way that is known to cause seizures or physical reactions.">2.3</a><br/>|<a title="Navigable - Provide ways to help users navigate, find content, and determine where they are">2.4</a><br/>|<a title="Input Modalities - Make it easier for users to operate functionality through various inputs beyond keyboard.<br/>">2.5</a><br/>|<a title="Readable - Make text content readable and understandable">3.1</a><br/>|<a title="Predictable - Make Web pages appear and operate in predictable ways">3.2</a><br/>|<a title="Input Assistance - Help users avoid and correct mistakes">3.3</a><br/>|<a title="Compatible - Maximize compatibility with current and future user agents, including assistive technologies">4.1 </a><br/>|
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-|**Grids**||||||||||||||
-| - Grid|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_||<span class="greenCheck" />|
-| - HierarchicalGrid|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_||<span class="greenCheck" />|
-| - TreeGrid|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_||<span class="greenCheck" />|
-|**Other**|||||||<span class="greenCheck" />_|||||||
-| - Avatar|<span class="greenCheck" />|||<span class="greenCheck" />||<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Badge|<span class="greenCheck" />|||<span class="greenCheck" />||<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Banner|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Bottom navigation||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Button||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Button group||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Calendar|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_||<span class="greenCheck" />|
-| - Card|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Carousel|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_||<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Checkbox|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_|||
-| - Chip||||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Circular progress|<span class="greenCheck" />|||<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />_|||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Combo|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|
-| - Date time editor||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />||
-| - Date picker||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />||
-| - Divider|<span class="greenCheck" />||||||||||<span class="greenCheck" />_|||
-| - Dialog|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Drop down|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Expansion panel|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Icon||||<span class="greenCheck" />||<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Input|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />||
-| - Input group|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />||
-| - Label|<span class="greenCheck" />|||<span class="greenCheck" />||<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Linear progress|<span class="greenCheck" />|||<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />_|||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - List|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||||<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Month picker||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|
-| - Navbar|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Navigation drawer|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Radio group|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Radio|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Select|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Slider||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Snackbar|||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />_||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Switch|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Tabs|<span class="greenCheck" />|||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Time picker||||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|<span class="greenCheck" />|<span class="greenCheck" />|
-| - Toast|||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />_||<span class="greenCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-| - Tooltip|<span class="greenCheck" />||<span class="greenCheck" />|<span class="greenCheck" />||<span class="greenCheck" />_|<span class="greenCheck" />_||<span class="redCheck" />|<span class="greenCheck" />|<span class="greenCheck" />_|||
-
-**Legend**
-
-||||
+| Layer | Responsible for | Where it is documented |
 |---|---|---|
-|<span class="greenCheck" />|The control/component is completely accessible in this particular area.||
-|<span class="greenCheck" />\*|The control/component is accessible in this particular area after implementing certain configurations|Example 1: Guideline 2.2. For certain components additional actions and time parameters should be set; Example 2: Guideline 2.3. Use **NoopAnimationsModule**utility module to allow disabling of animations;|
-|<span class="redCheck" />|The control/component is not entirely accessible unless you perform some sort of action.||
-|'white space'|this particular rule does not apply to the control||
+| **Component library** (`igniteui-angular` on Angular) | Keyboard operability, focus movement, ARIA roles and states, screen-reader announcements. | The index below, and each component topic. |
+| **Theming engine** (`igniteui-theming`) | Color contrast, text sizing, chart color palettes, styling utilities for custom controls. | [Theming Accessibility](../themes/accessibility.md) |
 
-> [!WARNING]
-> The table above is relevant only to the **Default theme**of Ignite UI for Blazor theming library. The checklist compliance might be different when it comes to custom themes, typography and any visual changes related to animations and colors.
+## Component Support
 
-### Compliance Information
+This index records what each component's documentation covers today. **Not documented yet** means the component's own documentation does not describe this behavior — it is a statement about the documentation, not about the component.
 
-- **Principle 1 - Perceivable** - Information and user interface components must be presentable to users in ways they can perceive
-  - Guideline 1.1 – **Text Alternatives** - Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
-  - Guideline 1.2 – **Time-based Media** - Provide alternatives for time-based media.
-  - Guideline 1.3 – **Adaptable** - Create content that can be presented in different ways (for example simpler layout) without losing information or structure.
-  - Guideline 1.4 – **Distinguishable** - Make it easier for users to see and hear content including separating foreground from background.
-- **Principle 2 – Operable** - User interface components and navigation must be operable.
-  - Guideline 2.1 – **Keyboard Accessible** - Make all functionality available from a keyboard.
-  - Guideline 2.2 – **Enough Time** - Provide users enough time to read and use content.
-  - Guideline 2.3 – **Seizures and Physical Reactions** - Do not design content in a way that is known to cause seizures or physical reactions.
-  - Guideline 2.4 – **Navigable** - Provide ways to help users navigate, find content, and determine where they are.
-  - Guideline 2.5 – **Input Modalities** - Make it easier for users to operate functionality through various inputs beyond keyboard.
-- **Principle 3 – Understandable** - Information and the operation of the user interface must be understandable.
-  - Guideline 3.1 – **Readable** - Make text content readable and understandable.
-  - Guideline 3.2 – **Predictable** - Make Web pages appear and operate in predictable ways.
-  - Guideline 3.3 – **Input Assistance** - Help users avoid and correct mistakes.
-- **Principle 4 – Robust** - Content must be robust enough that it can be interpreted by a wide variety of user agents, including assistive technologies.
-  - Guideline 4.1 – **Compatible** - Maximize compatibility with current and future user agents, including assistive technologies
+| Status | Meaning |
+|---|---|
+| **Documented** | The behavior is described in the component's own documentation, linked in the row. |
+| **Requires configuration** | Available once the setting named in [Configuration Required](#configuration-required) is applied. |
+| **Not documented yet** | The component's documentation does not yet describe this behavior. |
 
-## WAI-ARIA Support
+| Component | Keyboard interaction | Screen reader / ARIA | Reference |
+|---|---|---|---|
+| [Grid](../grids/data-grid.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../grids/data-grid.md#keyboard-navigation) |
+| [Hierarchical Grid](../grids/hierarchical-grid/overview.md) | Documented | Not documented yet | [Keyboard navigation](../grids/data-grid.md#keyboard-navigation) |
+| [Tree Grid](../grids/tree-grid/overview.md) | Documented | Not documented yet | [Keyboard navigation](../grids/data-grid.md#keyboard-navigation) |
+| [Tree](../grids/tree.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../grids/tree.md#keyboard-navigation) |
+| [List](../grids/list.md) | Not documented yet | Not documented yet | — |
+| [Avatar](../layouts/avatar.md#accessibility) | Documented | Documented | [Accessibility](../layouts/avatar.md#accessibility) |
+| [Badge](../inputs/badge.md#accessibility) | Documented | Documented | [Accessibility](../inputs/badge.md#accessibility) |
+| [Banner](../notifications/banner.md) | Not documented yet | Not documented yet | — |
+| [Button](../inputs/button.md) | Not documented yet | Not documented yet | — |
+| [Button Group](../inputs/button-group.md) | Not documented yet | Not documented yet | — |
+| [Calendar](../scheduling/calendar.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../scheduling/calendar.md#keyboard-navigation) |
+| [Card](../layouts/card.md) | Not documented yet | Not documented yet | — |
+| [Carousel](../layouts/carousel.md#accessibility) | Documented | Documented | [Accessibility](../layouts/carousel.md#accessibility) |
+| [Checkbox](../inputs/checkbox.md) | Not documented yet | Not documented yet | — |
+| [Chip](../inputs/chip.md) | Not documented yet | Not documented yet | — |
+| [Circular Progress](../inputs/circular-progress.md) | Not documented yet | Not documented yet | — |
+| [Combo](../inputs/combo/overview.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/combo/overview.md#keyboard-navigation) |
+| [Date Time Input](../inputs/date-time-input.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/date-time-input.md#keyboard-navigation) |
+| [Date Picker](../scheduling/date-picker.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../scheduling/date-picker.md#keyboard-navigation) |
+| [Dialog](../notifications/dialog.md) | Not documented yet | Not documented yet | — |
+| [Divider](../layouts/divider.md) | Not documented yet | Not documented yet | — |
+| [Dock Manager](../layouts/dock-manager.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/dock-manager.md#keyboard-navigation) |
+| [Dropdown](../inputs/dropdown.md) | Not documented yet | Not documented yet | — |
+| [Expansion Panel](../layouts/expansion-panel.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/expansion-panel.md#keyboard-navigation) |
+| [Icon](../layouts/icon.md) | Not documented yet | Not documented yet | — |
+| [Icon Button](../inputs/icon-button.md) | Not documented yet | Not documented yet | — |
+| [Input](../inputs/input.md) | Not documented yet | Not documented yet | — |
+| [Linear Progress](../inputs/linear-progress.md) | Not documented yet | Not documented yet | — |
+| [Navbar](../menus/navbar.md) | Not documented yet | Not documented yet | — |
+| [Navigation Drawer](../menus/navigation-drawer.md) | Not documented yet | Not documented yet | — |
+| [Radio](../inputs/radio.md) | Not documented yet | Not documented yet | — |
+| [Rating](../inputs/rating.md) | Not documented yet | Not documented yet | — |
+| [Select](../inputs/select.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/select.md#keyboard-navigation) |
+| [Slider](../inputs/slider.md) | Not documented yet | Not documented yet | — |
+| [Snackbar](../notifications/snackbar.md) | Not documented yet | Not documented yet | — |
+| [Stepper](../layouts/stepper.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/stepper.md#keyboard-navigation) |
+| [Switch](../inputs/switch.md) | Not documented yet | Not documented yet | — |
+| [Tabs](../layouts/tabs.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/tabs.md#keyboard-navigation) |
+| [Text Area](../inputs/text-area.md) | Not documented yet | Not documented yet | — |
+| [Toast](../notifications/toast.md) | Not documented yet | Not documented yet | — |
+| [Tooltip](../inputs/tooltip.md#accessibility--aria-support) | Documented | Documented | [Accessibility](../inputs/tooltip.md#accessibility--aria-support) |
 
-In 2014 the W3C finalized their [WAI-ARIA specification](http://www.w3.org/TR/wai-aria/) which defined how to design Web content and Web applications to be more accessible to users with disabilities.
+**Warning:** 
+Rows marked **Not documented yet** are a gap in this documentation, not a known defect. If you need a conformance answer for a specific component before the next review cycle, [open an issue](#reporting-an-accessibility-issue) and ask.
+
+## Configuration Required
+
+Some accessibility outcomes depend on how you configure the application rather than on the component alone.
+
+| Concern | Criterion | What to configure |
+|---|---|---|
+| Animation and motion | <a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes-or-below-threshold.html" target="_blank" rel="noopener noreferrer">2.3.1 Three Flashes or Below</a> | No configuration required. The animation player reads the operating system's `prefers-reduced-motion: reduce` setting and plays animations with a duration of `0` when it is set. |
+
+The remaining items apply to every platform.
+
+| Concern | Criterion | What to configure |
+|---|---|---|
+| Time limits on transient messages | <a href="https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html" target="_blank" rel="noopener noreferrer">2.2.1 Timing Adjustable</a> | Components that auto-dismiss — such as Snackbar and Toast — expose a display-duration setting. Extend it, or disable auto-dismiss, so a user has time to read the message. |
+| Color contrast after theming | <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">1.4.3 Contrast (Minimum)</a> | Set foreground colors with `contrast-color()` or `adaptive-contrast()` rather than fixed values. See [Theming Accessibility](../themes/accessibility.md). |
+| Accessible names on icon-only controls | <a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" target="_blank" rel="noopener noreferrer">4.1.2 Name, Role, Value</a> | Supply an accessible name in your own markup. A control showing only an icon has no name until you give it one. |
+
+## Formal Conformance Documentation
+
+This page is a documentation index, not a conformance claim. It records what our own documentation covers; it does not certify any component against a standard.
+
+For procurement, contract, or audit purposes — where a traceable, per-criterion conformance statement is required — request the current accessibility conformance report (VPAT) through your account manager or Infragistics support. Cite the product, version, and the standard the report must address (WCAG 2.1 Level AA, Section 508, or EN 301 549).
+
+**Note:** 
+Earlier revisions of this page carried per-component conformance matrices. Those tables asserted a level of conformance that was not backed by a traceable, per-criterion assessment, and have been removed rather than restated. The conformance report is the authoritative source for that information.
+
+## Reporting an Accessibility Issue
+
+If you find an accessibility problem in a component, report it on the <a href="https://github.com/IgniteUI/igniteui-blazor/issues" target="_blank" rel="noopener noreferrer">Ignite UI for Blazor issue tracker</a>.
+
+Include the component, the assistive technology and browser you used, the expected behavior, and the WCAG success criterion you believe is affected. Accessibility reports are triaged against the criteria listed above.
+
+## Additional Resources
+
+- [Theming Accessibility](../themes/accessibility.md) — contrast, text scaling, and chart palettes.
+- <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1 Quick Reference</a> — all success criteria with techniques.
+- <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank" rel="noopener noreferrer">WAI-ARIA Authoring Practices</a> — expected keyboard and ARIA behavior per interaction pattern.
+- <a href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer">Section 508</a> — United States federal procurement requirements.
+- [Formal Conformance Documentation](#formal-conformance-documentation) — how to request a conformance report (VPAT) for procurement.
+
+## FAQ
+
+  **Q: Is Ignite UI for Blazor WCAG compliant?**
+
+    Conformance is a property of a finished application, not of a component library on its own. Ignite UI for Blazor targets WCAG 2.1 Level AA and documents per-component behavior in the index above, but the markup, content, and configuration you add determine the result. Use the index above to check the components you rely on, and report anything that does not behave as documented.
+  
+
+  **Q: Why do some components say &quot;Not documented yet&quot;?**
+
+    That status means the component's own documentation does not yet describe the behavior. It is not a statement that the component fails a criterion - it records what the documentation covers, so you can tell the difference between a behavior that is documented and one that is not.
+  
+
+  **Q: Does Section 508 still have its own separate rules?**
+
+    No. The Revised Section 508 Standards (published 2017, compliance date January 2018) replaced the earlier §1194.22 rules and adopt WCAG Level AA by reference, so meeting WCAG also addresses Section 508.
+  
+
+  **Q: Does the compliance information apply to custom themes?**
+
+    Partly. Keyboard and ARIA behavior is unaffected by theming. Color contrast is not — overriding colors can move text below the required ratio. Verify custom palettes as described in Theming Accessibility.
+  
+
+  **Q: Where do I find the keyboard shortcuts for a component?**
+
+    On the component's own topic, linked from the Reference column above. The grid family shares a dedicated keyboard navigation topic.
+  
+

@@ -1,16 +1,23 @@
 ---
 title: Editing and Validation in Angular Hierarchical Grid - Infragistics
-_description: Validate the input of the users in grid and notify them if it's valid or not while using Angular Hierarchical Grid. See demos & examples!
-_keywords: angular validation, ignite ui for angular, infragistics
-_license: commercial
+description: Validate the input of the users in grid and notify them if it's valid or not while using Angular Hierarchical Grid. See demos & examples!
+keywords: angular validation, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "The Hierarchical Grid's editing exposes a built-in validation mechanism of user input when editing cells/rows."
 _tocName: Validation
 _premium: true
 ---
 # Angular Hierarchical Grid Editing and Validation
+
 The Hierarchical Grid's editing exposes a built-in validation mechanism of user input when editing cells/rows. It extends the [Angular Form validation](https://angular.io/guide/form-validation) functionality to allow easier integration with a well known functionality. When the state of the editor changes, visual indicators are applied to the edited cell.
+
 ## Configuration
+
 ### Configure via template-driven configuration
+
 We extend some of the Angular Forms validator directives to directly work with the `IgxColumn`. The same validators are available as attributes to be set declaratively in `igx-column`. The following validators are supported out-of-the-box:
+
 - required
 - min
 - max
@@ -18,11 +25,15 @@ We extend some of the Angular Forms validator directives to directly work with t
 - minlength
 - maxlength
 - pattern
+
 To validate that a column input would be set and the value is going to be formatted as an email, you can use the related directives:
+
 ```html
 <igx-column [field]="email" [header]="User E-mail" required email></igx-column>
 ```
+
 The following sample demonstrates how to use the prebuilt `required`, `email` and `min` validator directives in a Hierarchical Grid.
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -95,13 +106,15 @@ export class HierarchicalGridValidatorServiceComponent implements OnInit {
     padding: 16px;
 }
 ```
-<div class="divider--half"></div>
+
 ### Configure via reactive forms
+
 We expose the `FormGroup` that will be used for validation when editing starts on a row/cell via a `formGroupCreated` event. You can modify it by adding your own validators for the related fields:
+
 ```html
 <igx-hierarchical-grid (formGroupCreated)='formCreateHandler($event)' ...>
 ```
-@@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
+
 ```ts
     public formCreateHandler(args: IGridFormGroupCreatedEventArgs) {
         const formGroup = args.formGroup;
@@ -114,25 +127,38 @@ We expose the `FormGroup` that will be used for validation when editing starts o
         shippedDateRecord.addValidators(this.pastDateValidator());
     }
 ```
-}
+
 You can decide to write your own validator function, or use one of the [built-in Angular validator functions](https://angular.io/guide/form-validation#built-in-validator-functions).
+
 ## Validation service API
+
 The grid exposes a validation service via the [`validation`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=validation) property.
 That service has the following public APIs:
+
 - [`valid`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=valid) - returns if the grid validation state is valid.
 - [`getInvalid`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=getInvalid) - returns records with invalid states.
 - [`clear`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=clear) - clears state for record by id or clears all state if no id is provided.
 - [`markAsTouched`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=markAsTouched) - marks the related record/field as touched.
+
 Invalid states will persist until the validation errors in them are fixed according to the validation rule or they are cleared.
+
 ## Validation triggers
+
 Validation will be triggered in the following scenarios:
+
 - While editing via the cell editor based on the grid's [`validationTrigger`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=validationTrigger). Either on `change` while typing in the editor, or on `blur` when the editor loses focus or closes.
 - When updating cells/rows via the API - [`updateRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateRow), [`updateCell`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateCell) etc..
 - When using batch editing and the [`undo`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=undo)/[`redo`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=redo) API of the transaction service.
-> Note: Validation will not trigger for records that have not been edited via user input or via the editing API. Visual indicators on the cell will only shown if the related input is considered touched - either via user interaction or via the `markAsTouched` API of the validation service.
+
+**Note:** 
+Validation will not trigger for records that have not been edited via user input or via the editing API. Visual indicators on the cell will only shown if the related input is considered touched - either via user interaction or via the `markAsTouched` API of the validation service.
+
 ## Angular Hierarchical Grid Validation Customization Options
+
 ### Set a custom validator
+
 You can define your own validation directive to use on a `<igx-column>` in the template.
+
 ```ts
 @Directive({
     selector: '[phoneFormat]',
@@ -148,13 +174,18 @@ export class PhoneFormatDirective extends Validators {
     }
 }
 ```
+
 Once it is defined and added in your app module you can set it declaratively to a given column in the grid:
+
 ```html
 <igx-column phoneFormat="\+\d{1}\-(?!0)(\d{3})\-(\d{3})\-(\d{4})\b" ...>
 ```
+
 ### Change default error template
+
 You can define your own custom error template that will be displayed in the error tooltip when the cell enters invalid state.
 This is useful in scenarios where you want to add your own custom error message or otherwise change the look or content of the message.
+
 ```html
 <igx-column ... >
   <ng-template igxCellValidationError let-cell='cell' let-defaultErr="defaultErrorTemplate">
@@ -166,13 +197,17 @@ This is useful in scenarios where you want to add your own custom error message 
   </ng-template>
 </igx-column>
 ```
+
 ### Prevent exiting edit mode on invalid state
+
 In some cases you may want to disallow submitting an invalid value in the data.
 In that scenarios you can use the [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) or [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit) events and cancel the event in case the new value is invalid.
-Both events' arguments have a [`valid`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs&member=valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
+Both events' arguments have a [`IgxIGridEditEventArgs.valid`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs&member=valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
+
 ```html
 <igx-hierarchical-grid (cellEdit)='cellEdit($event)' ...>
 ```
+
 ```ts
 public cellEdit(evt) {
   if (!evt.valid) {
@@ -180,8 +215,11 @@ public cellEdit(evt) {
   }
 }
 ```
+
 ### Example
+
 The below example demonstrates the above-mentioned customization options.
+
 ```typescript
 import { Component, Directive, forwardRef, Input, ViewChild } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
@@ -400,12 +438,11 @@ export class HierarchicalGridValidatorServiceExtendedComponent {
     padding: 10px 0;
 }
 ```
-<div class="divider--half"></div>
+
 ## Cross-field validation
+
 In some scenarios validation of one field may depend on the value of another field in the record.
 In that case a custom validator can be used to compare the values in the record via their shared `FormGroup`.
-
-
 
   Cross-field validators can be added to the formGroup on the [`formGroupCreated`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=formGroupCreated) event. In them multiple fields can be compared for validity.
 
@@ -447,7 +484,9 @@ In that case a custom validator can be used to compare the values in the record 
         }
     }
   ```
+
 The multi-field errors can then be displayed in a separate pinned column.
+
 ```html
 <igx-column field="row_valid" header=" " [editable]="false" [dataType]="'number'" [pinned]="true" [width]="'50px'">
         <ng-template igxCell let-cell="cell">
@@ -467,7 +506,9 @@ The multi-field errors can then be displayed in a separate pinned column.
         </ng-template>
     </igx-column>
 ```
+
 Errors and the detailed messages can be determined based on the row and cell's validity.
+
 ```ts
     public isRowValid(cell: CellType) {
         const hasErrors = !!cell.row.validation.errors || cell.row.cells.some(x => !!x.validation.errors);
@@ -496,8 +537,11 @@ Errors and the detailed messages can be determined based on the row and cell's v
         return messages;
     }
 ```
+
 ### Cross-field example
+
 The below sample demonstrates cross-field validation in a Hierarchical Grid for both the root and child data.
+
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -740,26 +784,38 @@ export class HierarchicalGridValidatorServiceCrossCellComponent implements OnIni
     padding: 10px 0;
 }
 ```
-<div class="divider--half"></div>
+
 ## Styling
-Using the [Ignite UI for Angular Theme Library](../themes/index.md), we can alter the default validation styles while editing.
+
+Using the [Ignite UI for Angular Theme Library](/themes), we can alter the default validation styles while editing.
+
 In the example below, we will make use of the exposed template for validation message, which pops out in a tooltip and overriding the error color to modify the default looks of the validation.
 We will also style the background of the invalid rows to make them more distinct.
+
 ### Import theme
+
 The easiest way to style and access css variables is to define styles in our `app`'s global style file (typically `styles.scss`).
 The first thing we need to do is import the `themes/index` file - this gives us access to all the powerful tools of the Ignite UI for Angular Sass framework:
+
 ```scss
 @use "igniteui-angular/theming" as *;
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
+
 ### Include the styles
+
 In order to change the error color you can use the css variable `--ig-error-500`:
+
 ```scss
 --ig-error-500: 34, 80%, 63%;
 ```
+
 ### Custom Templates
+
 Changing the default error template allows setting custom classes and styles:
+
 ```html
 <ng-template igxCellValidationError let-cell='cell' let-defaultErr='defaultErrorTemplate'>
   <div class="validator-container">
@@ -768,8 +824,11 @@ Changing the default error template allows setting custom classes and styles:
   </div>
 </ng-template>
 ```
+
 ### Invalid row and cell styles
+
 Rows and cells provide API for the developers to know if a row or cell is invalid and what kind of errors are active.
+
 ```ts
 public rowStyles = {
     background: (row: RowType) => row.validation.status === 'INVALID' ? '#FF000033' : '#00000000'
@@ -788,14 +847,20 @@ public cellStyles = {
   }
 }
 ```
+
 ```html
 <igx-hierarchical-grid [rowStyles]="rowStyles">
   <igx-column field="Artist" [editable]="true" [dataType]="'string'" required [cellClasses]="cellStyles">
-  ...
+  </igx-column>
   <igx-row-island [key]="'Albums'" [rowStyles]="rowStyles">
     <igx-column field="Album" [editable]="true" [dataType]="'string'" required [cellClasses]="cellStyles">
+    </igx-column>
+  </igx-row-island>
+</igx-hierarchical-grid>
 ```
+
 ### Demo
+
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -816,7 +881,7 @@ export class HGridValidationStyleComponent {
     @ViewChild('hierarchicalGrid', { read: IgxHierarchicalGridComponent, static: true }) public hierarchicalGrid: IgxHierarchicalGridComponent;
     @ViewChild('childGrid', { static: true }) private childGrid: IgxRowIslandComponent;
     public localData: Singer[];
-    public rowStyles = {
+    public rowStyles: any = {
         background: (row: RowType) => row.validation.status === 'INVALID' ? '#FF000033' : '#00000000'
     };
     public cellStyles = {
@@ -895,23 +960,29 @@ igx-hierarchical-grid {
   --ig-error-500: 34deg, 80%, 63%;
 }
 ```
-<div class="divider--half"></div>
+
 ## API References
-- [IgxBaseTransactionService](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Known Issues and Limitations
-| Limitation                                                                                              | Description                                                                                                                                                                                                                 |
-| :------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|Limitation|Description|
+| --- | --- |
 | When `validationTrigger` is blur, `editValue` and validation will trigger only after editor is blurred. | Reason is that this utilizes the formControl's [`updateOn`](https://angular.io/api/forms/AbstractControl#updateOn) property. This determines the event on which the formControl will update and trigger related validators. |
+
 ## Additional Resources
-- [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)
-- [Hierarchical Grid Overview](hierarchical-grid.md)
-- [Hierarchical Grid Editing](editing.md)
-- [Hierarchical Grid Row Editing](row-editing.md)
-- [Hierarchical Grid Row Adding](row-adding.md)
-- [Hierarchical Grid Transactions](batch-editing.md)
-<div class="divider--half"></div>
+
+- [Build CRUD operations with igxGrid](/general/how-to/how-to-perform-crud)
+- [Hierarchical Grid Overview](/hierarchicalgrid/hierarchical-grid)
+
+- [Hierarchical Grid Editing](/hierarchicalgrid/editing)
+
+- [Hierarchical Grid Row Editing](/hierarchicalgrid/row-editing)
+- [Hierarchical Grid Row Adding](/hierarchicalgrid/row-adding)
+- [Hierarchical Grid Transactions](/hierarchicalgrid/batch-editing)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

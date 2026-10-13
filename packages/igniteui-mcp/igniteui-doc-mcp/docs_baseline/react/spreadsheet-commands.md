@@ -1,16 +1,17 @@
 ---
-title: React Spreadsheet | Commands | Infragistics
-_description: Perform commands to activate different features of Infragistics' React spreadsheet control. Learn commands such as ZoomIn and ZoomOut with Ignite UI for React spreadsheet!
-_keywords: Spreadsheet, commands, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Spreadsheet | Commands | Infragistics"
+description: Perform commands to activate different features of Infragistics' React spreadsheet control. Learn commands such as ZoomIn and ZoomOut with Ignite UI for React spreadsheet!
+keywords: Spreadsheet, commands, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction"]
+llms:
+  description: "The React Spreadsheet component allows you to perform commands for activating different features of the spreadsheet."
 _tocName: Commands
 _premium: true
 ---
-
 # React Working with Commands
 
-The React Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the SpreadsheetAction enum for a full list.
+The React Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the `IgrSpreadsheetAction` enum for a full list.
 
 ## React Working with Commands Example
 
@@ -193,18 +194,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetCommands/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
-Before making use of the commands you will want to import the `SpreadsheetAction`
+Before making use of the commands you will want to import the `IgrSpreadsheetAction`
 
 ```ts
 import { IgrSpreadsheet } from 'igniteui-react-spreadsheet';
 import { SpreadsheetAction } from 'igniteui-react-spreadsheet';
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -226,5 +223,4 @@ public zoomOut(): void {
 
 ## API References
 
-- `ExecuteAction`
-- `SpreadsheetAction`
+`IgrSpreadsheetAction`<br />

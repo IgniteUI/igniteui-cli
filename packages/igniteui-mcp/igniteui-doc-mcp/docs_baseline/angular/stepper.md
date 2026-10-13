@@ -1,15 +1,15 @@
 ---
 title: Angular Stepper Component – Ignite UI for Angular - MIT license 
-_description: Use the Angular Stepper component to visualize content as a process and show its progress by dividing the content into logical steps. Learn how to do it.
-_keywords: Angular Stepper component, Angular Wizard Component, Angular Stepper Control, Angular Wizard Control, Angular UI Components, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Infragistics
-_license: MIT
+description: Use the Angular Stepper component to visualize content as a process and show its progress by dividing the content into logical steps. Learn how to do it.
+keywords: Angular Stepper component, Angular Wizard Component, Angular Stepper Control, Angular Wizard Control, Angular UI Components, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Infragistics
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Stepper is a highly customizable component that visualizes content as a process and shows its progress by dividing the content into successive steps."
 _tocName: Stepper
 ---
-
 # Angular Stepper Component Overview
 
 The Ignite UI for Angular Stepper is a highly customizable component that visualizes content as a process and shows its progress by dividing the content into successive steps. It appears as a vertical or horizontal line. Provided by the Ignite UI for [Angular Component library](https://www.infragistics.com/products/ignite-ui-angular), the stepper component delivers a wizard-like workflow and multiple features like step validation, styling, orientation and keyboard navigation.
-
 
 ## Angular Stepper Example
 
@@ -651,7 +651,7 @@ $my-card: card-theme(
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 Here is the a sample demonstrating how to achieve the above functionality using Angular Reactive Forms.
 
@@ -1340,7 +1340,7 @@ To get started with the Ignite UI for Angular Stepper component, first you need 
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxStepperModule` in your **app.module.ts** file.
 
@@ -1364,7 +1364,6 @@ Alternatively, as of `16.0.0` you can import the `IgxStepperComponent` as a stan
 ```typescript
 // home.component.ts
 
-import { HammerModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { IGX_STEPPER_DIRECTIVES } from 'igniteui-angular/stepper';
 // import { IGX_STEPPER_DIRECTIVES } from '@infragistics/igniteui-angular'; for licensed package
@@ -1381,8 +1380,8 @@ import { IGX_STEPPER_DIRECTIVES } from 'igniteui-angular/stepper';
     </igx-stepper>`,
     styleUrls: ['home.component.scss'],
     standalone: true,
-    imports: [IGX_STEPPER_DIRECTIVES, FormsModule, HammerModule]
-    /* or imports: [IgxStepperComponent, FormsModule, HammerModule] */
+    imports: [IGX_STEPPER_DIRECTIVES, FormsModule]
+    /* or imports: [IgxStepperComponent, FormsModule] */
 })
 export class HomeComponent {
     public task: Task;
@@ -1394,7 +1393,7 @@ Now that you have the Angular Stepper module or directives imported, you can sta
 
 ## Using the Angular Stepper
 
-[IgxStepComponent](mcp:get_api_reference?platform=angular&component=IgxStepComponent) is the representation of every step that belongs to the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). Steps provide [isValid](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid), [active](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active), [optional](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional), [disabled](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) and [completed](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) properties, which give you the ability to configure the step states according to your business requirement.
+[`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStep) is the representation of every step that belongs to the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper). Steps provide [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid), [`active`](mcp:get_api_reference?platform=angular&component=IgxStep&member=active), [`optional`](mcp:get_api_reference?platform=angular&component=IgxStep&member=optional), [`disabled`](mcp:get_api_reference?platform=angular&component=IgxStep&member=disabled) and [`completed`](mcp:get_api_reference?platform=angular&component=IgxStep&member=completed) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring a Stepper
 
@@ -1418,8 +1417,9 @@ Steps can be declared using one of the following approaches.
 </igx-stepper>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 - Creating static steps
 
@@ -1449,22 +1449,19 @@ For each step the user has the ability to configure indicator, title, subtitle a
 </igx-stepper>
 ```
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 500px" src="../images/stepper/stepper-step.png" alt="Ignite UI for Angular Stepper Step Structure" />
 
 ### Changing the Stepper Orientation
 
-You can customize the stepper orientation through the exposed [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
+You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
 
 **Horizontal Stepper Orientation**
 
-`horizontal` is the default value for the `igx-stepper` [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property.
-When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) [contentTop](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
-
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../images/stepper/stepper-contentTop.png" alt="Ignite UI for Angular Stepper Content Rendered Above Stepper" />
+`horizontal` is the default value for the `igx-stepper` [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property.
+When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) [`contentTop`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property to `vertical`.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property to `vertical`.
 
 ```html
 <igx-stepper [orientation]="'vertical'">
@@ -1478,7 +1475,7 @@ You can easily switch from the horizontal to vertical layout. In order to change
 </igx-stepper>
 ```
 
-The sample below demonstrates how stepper [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) and [titles position](stepper.md#customizing-the-steps) could be changed runtime.
+The sample below demonstrates how stepper [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) and [titles position](/stepper#customizing-the-steps) could be changed runtime.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -1594,30 +1591,30 @@ $sample-gap: 20px;
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Step States
 
-[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) supports four steps states and each of them apply different styles by default:
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) supports four steps states and each of them apply different styles by default:
 
-- [**active**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
-- [**disabled**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
-- [**optional**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
-- [**completed**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed [CSS variables](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-stepper-theme).
+- [`**active**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
+- [`**disabled**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
+- [`**optional**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
+- [`**completed**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed `CSS variables`.
 
-The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the opportunity to set validation logic for each step through the two-way bindable [**isValid**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
-By default, the [isValid](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property of a step is set to `true`.
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) gives you the opportunity to set validation logic for each step through the two-way bindable [`**isValid**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
+By default, the [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid) property of a step is set to `true`.
 
 ### Linear Stepper
 
-The `igx-stepper` gives you the opportunity to set its steps flow using the [linear](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent).
+The `igx-stepper` gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper).
 
-When the [linear](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
+When the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
-> [!NOTE]
-> Optional steps validity is not taken into account in order to move forward.
+**Note:** 
+Optional steps validity is not taken into account in order to move forward.
 
 The following example demonstrates how to configure a linear stepper:
 
@@ -1818,25 +1815,25 @@ igx-radio {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Step Interactions
 
-[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) provides the following API methods for step interactions:
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) provides the following API methods for step interactions:
 
-- [**navigateTo**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=navigateTo) – activates the step by given index.
-- [**next**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=next) - activates the next non-disabled step.
-- [**prev**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=prev) – activates the previous non-disabled step.
-- [**reset**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=reset) – resets the stepper to its initial state.
+- [`**navigateTo**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=navigateTo) – activates the step by given index.
+- [`**next**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=next) - activates the next non-disabled step.
+- [`**prev**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=prev) – activates the previous non-disabled step.
+- [`**reset**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=reset) – resets the stepper to its initial state.
 
-> [!NOTE]
-> The reset method would not clear the step`s content. This should be done manually.
+**Note:** 
+The reset method would not clear the step`s content. This should be done manually.
 
 ### Customizing the Steps
 
 The Ignite UI for Angular Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property of the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). It takes a member of the `IgxStepType` enum:
+This could be achieved through the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) property of the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper). It takes a member of the `IgxStepType` enum:
 
 - Full _(default value)_
 - Indicator
@@ -1847,7 +1844,7 @@ This could be achieved through the [stepType](mcp:get_api_reference?platform=ang
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [titlePosition](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
+The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
 
 - end
 - start
@@ -1858,23 +1855,23 @@ When the `igx-stepper` is horizontally orientated, the title position default va
 
 When the orientation is set to vertical layout the title position by default is `end`.
 
-> [!NOTE]
-> [titlePosition](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property is applicable **only** when the stepper [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property is set to `full`.
+**Note:** 
+[`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=titlePosition) property is applicable **only** when the stepper [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) property is set to `full`.
 
 **Indicator**
 
-If you want to display only indicators for the steps, set the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `indicator`.
+If you want to display only indicators for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) option to `indicator`.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [IgxIconComponent](icon.md) or [IgxAvatarComponent](avatar.md) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [IgxIconComponent](/icon) or [IgxAvatarComponent](layouts/avatar.md) as step indicators.
 
 **Title**
 
-If you want to display only titles for the steps, set the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `title`.
+If you want to display only titles for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) option to `title`.
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
-> [!NOTE]
-> This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
+**Note:** 
+This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
 
 The sample below demonstrates all exposed step types and how they could be changed:
 
@@ -1956,9 +1953,9 @@ $sample-gap: 20px;
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
-The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
 
 ```html
 <igx-stepper>
@@ -1977,25 +1974,25 @@ The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxSt
 </igx-stepper>
 ```
 
-> [!NOTE]
-> This templates would be applied for all steps with the relevant state.
+**Note:** 
+This templates would be applied for all steps with the relevant state.
 
 ### Angular Stepper Animations
 
 Angular Stepper Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [horizontalAnimationType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=horizontalAnimationType) input.
+When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=horizontalAnimationType) input.
 
-In **vertically orientated** layout, the animation type could be defined using the [verticalAnimationType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
+In **vertically orientated** layout, the animation type could be defined using the [`verticalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to the both animation type inputs disables stepper animations.
 
-[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [animationDuration](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=animationDuration) property, which takes a number as an argument and it is common to the both orientations.
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=animationDuration) property, which takes a number as an argument and it is common to the both orientations.
 
 ## Keyboard Navigation
 
 Angular Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
 
 **Key Combinations**
 
@@ -2009,8 +2006,9 @@ The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxSt
 - <kbd>End</kbd> - moves the focus to the header of the LAST enabled step in the `igx-stepper`
 - <kbd>Enter / Space</kbd> - activates the currently focused step
 
- > [!NOTE]
- > By design when the user presses the <kbd>Tab</kbd> key over the step header the focus will move to the step content container. In case the container should be skipped the developer should set the content container `[tabIndex]="-1"`.
+ **Note:** 
+ By design when the user presses the <kbd>Tab</kbd> key over the step header the focus will move to the step content container. In case the container should be skipped the developer should set the content container `[tabIndex]="-1"`.
+ 
 
 The Stepper Component is also available in the low-code, [drag and drop App Builder™](https://www.infragistics.com/products/appbuilder).
 
@@ -2020,84 +2018,47 @@ The Stepper Component is also available in the low-code, [drag and drop App Buil
 
 When you modify a primary property, all related dependent properties are automatically updated to reflect the change:
 
-<table class="collapsible-table">
-    <thead>
-        <tr>
-        <th>Primary Property</th>
-        <th>Dependent Property</th>
-        <th>Description</th>
-        </tr>
-    </thead>
-    <tbody class="group">
-        <tr class="primary">
-        <td><details><summary><strong>$step-background</strong></summary></details></td>
-        <td>$step-hover-background</td>
-        <td>The background of the step header on hover</td>
-        </tr>
-        <tr class="dependent"><td></td><td>$step-focus-background</td><td>The background of the step header on focus</td></tr>
-        <tr class="dependent"><td></td><td>$indicator-background</td><td>The background color of the step indicator</td></tr>
-        <tr class="dependent"><td></td><td>$title-color</td><td>The color of the step title</td></tr>
-        <tr class="dependent"><td></td><td>$subtitle-color</td><td>The color of the step subtitle</td></tr>
-        <tr class="dependent"><td></td><td>$current-step-background</td><td>The background of the current step header</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-step-background</td><td>The background of the invalid step header</td></tr>
-        <tr class="dependent"><td></td><td>$complete-step-background</td><td>The background of the complete step header</td></tr>
-        <tr class="dependent"><td></td><td>$disabled-indicator-background</td><td>The indicator background of the disabled step</td></tr>
-        <tr class="dependent"><td></td><td>$disabled-title-color</td><td>The title color of the disabled step</td></tr>
-        <tr class="dependent"><td></td><td>$disabled-subtitle-color</td><td>The subtitle color of the disabled step</td></tr>
-        <tr class="dependent"><td></td><td>$step-separator-color</td><td>The separator border color between steps</td></tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-        <td><details><summary><strong>$indicator-background</strong></summary></details></td>
-        <td>$indicator-outline</td>
-        <td>The outline color of the step indicator</td>
-        </tr>
-        <tr class="dependent"><td></td><td>$indicator-color</td><td>The text color of the step indicator</td></tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-        <td><details><summary><strong>$current-step-background</strong></summary></details></td>
-        <td>$current-step-hover-background</td>
-        <td>The background of the current step header on hover</td>
-        </tr>
-        <tr class="dependent"><td></td><td>$current-step-focus-background</td><td>The background of the current step header on focus</td></tr>
-        <tr class="dependent"><td></td><td>$current-indicator-background</td><td>The background color of the current step indicator</td></tr>
-        <tr class="dependent"><td></td><td>$current-title-color</td><td>The color of the current step title</td></tr>
-        <tr class="dependent"><td></td><td>$current-subtitle-color</td><td>The color of the current step subtitle</td></tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-        <td><details><summary><strong>$invalid-indicator-background</strong></summary></details></td>
-        <td>$invalid-indicator-outline</td>
-        <td>The outline color of the invalid step indicator</td>
-        </tr>
-        <tr class="dependent"><td></td><td>$invalid-indicator-color</td><td>The color of the invalid step indicator</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-title-color</td><td>The color of the invalid step title</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-subtitle-color</td><td>The color of the invalid step subtitle</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-title-hover-color</td><td>The color of the invalid step title on hover</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-subtitle-hover-color</td><td>The color of the invalid step subtitle on hover</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-title-focus-color</td><td>The color of the invalid step title on focus</td></tr>
-        <tr class="dependent"><td></td><td>$invalid-subtitle-focus-color</td><td>The color of the invalid step subtitle on focus</td></tr>
-    </tbody>
-    <tbody class="group">
-        <tr class="primary">
-        <td><details><summary><strong>$complete-step-background</strong></summary></details></td>
-        <td>$complete-step-hover-background</td>
-        <td>The background of the complete step header on hover</td>
-        </tr>
-        <tr class="dependent"><td></td><td>$complete-step-focus-background</td><td>The background of the complete step header on focus</td></tr>
-        <tr class="dependent"><td></td><td>$complete-indicator-background</td><td>The background color of the complete step indicator</td></tr>
-        <tr class="dependent"><td></td><td>$complete-indicator-color</td><td>The color of the completed step indicator</td></tr>
-        <tr class="dependent"><td></td><td>$complete-title-color</td><td>The color of the complete step title</td></tr>
-        <tr class="dependent"><td></td><td>$complete-subtitle-color</td><td>The color of the complete step subtitle</td></tr>
-        <tr class="dependent"><td></td><td>$complete-title-hover-color</td><td>The color of the complete step title on hover</td></tr>
-        <tr class="dependent"><td></td><td>$complete-subtitle-hover-color</td><td>The color of the complete step subtitle on hover</td></tr>
-        <tr class="dependent"><td></td><td>$complete-title-focus-color</td><td>The color of the complete step title on focus</td></tr>
-        <tr class="dependent"><td></td><td>$complete-subtitle-focus-color</td><td>The color of the complete step subtitle on focus</td></tr>
-    </tbody>
-</table>
+| Primary Property | Dependent Property | Description |
+| --- | --- | --- |
+| **$step-background** | $step-hover-background | The background of the step header on hover |
+|  | $step-focus-background | The background of the step header on focus |
+|  | $indicator-background | The background color of the step indicator |
+|  | $title-color | The color of the step title |
+|  | $subtitle-color | The color of the step subtitle |
+|  | $current-step-background | The background of the current step header |
+|  | $invalid-step-background | The background of the invalid step header |
+|  | $complete-step-background | The background of the complete step header |
+|  | $disabled-indicator-background | The indicator background of the disabled step |
+|  | $disabled-title-color | The title color of the disabled step |
+|  | $disabled-subtitle-color | The subtitle color of the disabled step |
+|  | $step-separator-color | The separator border color between steps |
+| **$indicator-background** | $indicator-outline | The outline color of the step indicator |
+|  | $indicator-color | The text color of the step indicator |
+| **$current-step-background** | $current-step-hover-background | The background of the current step header on hover |
+|  | $current-step-focus-background | The background of the current step header on focus |
+|  | $current-indicator-background | The background color of the current step indicator |
+|  | $current-title-color | The color of the current step title |
+|  | $current-subtitle-color | The color of the current step subtitle |
+| **$invalid-indicator-background** | $invalid-indicator-outline | The outline color of the invalid step indicator |
+|  | $invalid-indicator-color | The color of the invalid step indicator |
+|  | $invalid-title-color | The color of the invalid step title |
+|  | $invalid-subtitle-color | The color of the invalid step subtitle |
+|  | $invalid-title-hover-color | The color of the invalid step title on hover |
+|  | $invalid-subtitle-hover-color | The color of the invalid step subtitle on hover |
+|  | $invalid-title-focus-color | The color of the invalid step title on focus |
+|  | $invalid-subtitle-focus-color | The color of the invalid step subtitle on focus |
+| **$complete-step-background** | $complete-step-hover-background | The background of the complete step header on hover |
+|  | $complete-step-focus-background | The background of the complete step header on focus |
+|  | $complete-indicator-background | The background color of the complete step indicator |
+|  | $complete-indicator-color | The color of the completed step indicator |
+|  | $complete-title-color | The color of the complete step title |
+|  | $complete-subtitle-color | The color of the complete step subtitle |
+|  | $complete-title-hover-color | The color of the complete step title on hover |
+|  | $complete-subtitle-hover-color | The color of the complete step subtitle on hover |
+|  | $complete-title-focus-color | The color of the complete step title on focus |
+|  | $complete-subtitle-focus-color | The color of the complete step subtitle on focus |
 
-Using the [Ignite UI for Angular Theming](themes/index.md), we can greatly alter the `igx-stepper` appearance.
+Using the [Ignite UI for Angular Theming](/themes), we can greatly alter the `igx-stepper` appearance.
 
 First, in order to use the functions exposed by the theme engine, we need to import the `index` file in our style file:
 
@@ -2108,7 +2069,7 @@ First, in order to use the functions exposed by the theme engine, we need to imp
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-Following the simplest approach, we create a new theme that extends the [stepper-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-stepper-theme) and provide just a few base parameters. The theme will automatically generate all required styles, including state-specific colors and accessible contrasting foregrounds. You can also override any of the available parameters if you want more control over the appearance.
+Following the simplest approach, we create a new theme that extends the `stepper-theme` and provide just a few base parameters. The theme will automatically generate all required styles, including state-specific colors and accessible contrasting foregrounds. You can also override any of the available parameters if you want more control over the appearance.
 
 ```scss
 $stepper-theme: stepper-theme(
@@ -2130,7 +2091,7 @@ The last step is to include the component's theme.
 
 ### Demo
 
-The sample below demonstrates a simple styling applied through the [Ignite UI for Angular Theming](themes/index.md).
+The sample below demonstrates a simple styling applied through the [Ignite UI for Angular Theming](/themes).
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -2220,7 +2181,7 @@ $stepper-theme: stepper-theme(
 
 ### Styling with Tailwind
 
-You can style the stepper using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the stepper using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -2238,7 +2199,7 @@ The utility file includes both `light` and `dark` theme variants.
 
 Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
 
-You can find the full list of properties in the [stepper-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-stepper-theme). The syntax is as follows:
+You can find the full list of properties in the `stepper-theme`. The syntax is as follows:
 
 ```html
 <igx-stepper
@@ -2247,21 +2208,90 @@ You can find the full list of properties in the [stepper-theme](https://www.infr
 </igx-stepper>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+**Note:** 
+The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
 
 At the end your stepper should look like this:
 
-<div class="sample-container loading" style="height:200px">
-    <iframe id="stepper-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/layouts/stepper-tailwind-styling-sample/' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+```typescript
+import { Component, ViewChild } from '@angular/core';
+import { IStepChangingEventArgs, IgxStepActiveIndicatorDirective, IgxStepCompletedIndicatorDirective, IgxStepComponent, IgxStepContentDirective, IgxStepSubtitleDirective, IgxStepTitleDirective, IgxStepperComponent } from 'igniteui-angular/stepper';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 
-<div class="divider--half"></div>
+@Component({
+    selector: 'app-stepper-tailwind-styling-sample',
+    styleUrls: ['./stepper-tailwind-styling-sample.component.scss'],
+    templateUrl: './stepper-tailwind-styling-sample.component.html',
+    imports: [IgxStepperComponent, IgxStepActiveIndicatorDirective, IgxIconComponent, IgxStepCompletedIndicatorDirective, IgxStepComponent, IgxStepTitleDirective, IgxStepSubtitleDirective, IgxStepContentDirective, IgxButtonDirective]
+})
+export class StepperTailwindStylingSampleComponent {
+    @ViewChild('stepper', { read: IgxStepperComponent })
+    public stepper: IgxStepperComponent;
+
+    public activeStepChanging(evt: IStepChangingEventArgs): void {
+        this.stepper.steps.forEach(step => {
+            if (step.index >= evt.oldIndex && step.index < evt.newIndex) {
+                step.completed = true;
+            }
+        });
+    }
+
+    public reset(): void {
+        this.stepper.steps.forEach(step => step.completed = false);
+        this.stepper.reset();
+    }
+}
+```
+```html
+<igx-stepper class="!light-stepper ![--step-background:#7B9E89] ![--border-radius-step-header:6px]" #stepper (activeStepChanging)="activeStepChanging($event)">
+    <ng-template igxStepActiveIndicator>
+        <igx-icon>edit</igx-icon>
+    </ng-template>
+    <ng-template igxStepCompletedIndicator>
+        <igx-icon>check</igx-icon>
+    </ng-template>
+    <igx-step>
+        <span igxStepTitle>Order</span>
+        <span igxStepSubtitle>required</span>
+        <div igxStepContent>
+            <div class="sample-step-actions">
+                <button igxButton="contained" (click)="stepper.next()">NEXT</button>
+            </div>
+        </div>
+    </igx-step>
+    <igx-step>
+        <span igxStepTitle>Payment</span>
+        <span igxStepSubtitle>Optional</span>
+        <div igxStepContent>
+            <div class="sample-step-actions">
+                <button igxButton="contained" (click)="stepper.prev()">PREVIOUS</button>
+                <button igxButton="contained" (click)="stepper.next()">NEXT</button>
+            </div>
+        </div>
+    </igx-step>
+    <igx-step>
+        <span igxStepTitle>Confirmation</span>
+        <span igxStepSubtitle>required</span>
+        <div igxStepContent>
+            <div class="sample-step-actions">
+                <button igxButton="contained" (click)="stepper.prev()">PREVIOUS</button>
+                <button igxButton="contained" (click)="reset()">RESET</button>
+            </div>
+        </div>
+    </igx-step>
+</igx-stepper>
+```
+```scss
+@use "layout.scss";
+```
+
+<hr/>
 
 ## API Reference
 
-- [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent)
-- [IgxStepComponent](mcp:get_api_reference?platform=angular&component=IgxStepComponent)
+- [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper)
+- [`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStep)
 
 ## Additional Resources
 
@@ -2269,4 +2299,3 @@ Our community is active and always welcoming new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
-

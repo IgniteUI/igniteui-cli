@@ -1,16 +1,17 @@
 ---
-title: Blazor Map | Data Visualization Tools | Binding Geographic Shape Files | Infragistics
-_description: Use Infragistics' Blazor JavaScript map to load geo-spatial data from shape files. View Ignite UI for Blazor map demos!
-_keywords: Blazor map, shapefiles, Ignite UI for Blazor, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Blazor Map | Data Visualization Tools | Binding Geographic Shape Files | Infragistics"
+description: Use Infragistics' Blazor JavaScript map to load geo-spatial data from shape files. View Ignite UI for Blazor map demos!
+keywords: "Blazor map, shapefiles, Ignite UI for Blazor, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "The Ignite UI for Blazor map component, the ShapefileRecord class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of IgxShapefileRecord objects."
 _tocName: Binding Shape File
 _premium: true
 ---
-
 # Blazor Binding Shape Files with Geo-spatial Data
 
-The Ignite UI for Blazor map component, the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) objects.
+The Ignite UI for Blazor map component, the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of `IgxShapefileRecord` objects.
 
 ## Blazor Binding Shape Files with Geo-spatial Data Example
 
@@ -44,30 +45,22 @@ The Ignite UI for Blazor map component, the [`IgbShapeDataSource`](mcp:get_api_r
 }
 ```
 
-<div class="divider--half"></div>
-
-The following table explains properties of the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) class for loading shape files.
+The following table explains properties of the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) class for loading shape files.
 
 | Property | Type | Description   |
 |----------|------|---------------|
-| [`ShapefileSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource&member=ShapefileSource) | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
-|[`DatabaseSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource&member=DatabaseSource) | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
+| `ShapefileSource` | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
+|`DatabaseSource` | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
 
-<!-- TODO add for WPF only: -->
-
-<!-- Both of the source properties for shape files are of Uri type. This means that shape files can be embedded resources in the application assembly and on the internet (via http). Refer to the previous section for more information on this process. The rules for resolving Uri objects are equivalent to any standard Uri property, for example the BitmapImage.UriSource property. -->
-
-When both source properties are set to non-null values, then the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) is populated with [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) objects and the `ImportCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
+When both source properties are set to non-null values, then the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) is populated with `IgxShapefileRecord` objects and the `ImportCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
 
 ## Loading Shapefiles
-
-The following code creates an instance of the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) object for loading a shape file that contains locations of major cities in the world. It also demonstrates how to handle the `ImportCompleted` event as a prerequisite for binding data to the map component.
+The following code creates an instance of the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) object for loading a shape file that contains locations of major cities in the world. It also demonstrates how to handle the `ImportCompleted` event as a prerequisite for binding data to the map component.
 
 ## Binding Shapefiles
+In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have an [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) property which can be bound to an array of objects. The [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) is an example such array because it contains a list of `IgxShapefileRecord` objects.
 
-In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have an [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property which can be bound to an array of objects. The [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) is an example such array because it contains a list of [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) objects.
-
-The [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) class provides properties for storing geo-spatial data, listed in the following table.
+The `ShapefileRecord` class provides properties for storing geo-spatial data, listed in the following table.
 
 | Property     | Description   |
 |--------------|---------------|
@@ -77,12 +70,12 @@ The [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbSh
 This data structure is suitable for use in most Geographic Series as long as appropriate data columns are mapped to them.
 
 ## Code Snippet
-
-This code example assumes that shape files were loaded using the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource).
-The following code binds [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) in the map component to the [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) and maps the `Points` property of all [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) objects.
+This code example assumes that shape files were loaded using the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord).
+The following code binds [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) in the map component to the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord) and maps the `Points` property of all `IgxShapefileRecord` objects.
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicPolylineSeries ShapefileDataSource="@DataSource"
@@ -107,10 +100,9 @@ The following code binds [`IgbGeographicPolylineSeries`](mcp:get_api_reference?p
 ```
 
 ## API References
-
-- `Fields`
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- `ImportCompleted`
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource)
-- `Points`
-- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord)
+[`Fields`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord&member=fields)
+[`ImportCompleted`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord&member=importCompleted)
+[`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource)
+[`Points`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord&member=points)

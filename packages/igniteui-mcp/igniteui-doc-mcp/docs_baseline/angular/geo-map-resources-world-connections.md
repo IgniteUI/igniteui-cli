@@ -1,16 +1,17 @@
 ---
-title: Angular Map | World Connections | Data Source | Infragistics
-_description: Use Infragistics' Angular JavaScript map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for Angular map demos!
-_keywords: Angular map, map data, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Angular Map | World Connections | Data Source | Infragistics"
+description: Use Infragistics' Angular JavaScript map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for Angular map demos!
+keywords: "Angular map, map data, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines."
 _tocName: World Connections
 _premium: true
 ---
-
 # Angular World Connections
 
-The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines. You can use these data sources as reference point for creating your own geographic data. Note that this utility depends on [WorldUtil](geo-map-resources-world-util.md) and [WorldLocations](geo-map-resources-world-locations.md) scripts.
+The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines. You can use these data sources as reference point for creating your own geographic data. Note that this utility depends on [WorldUtil](./geo-map-resources-world-util.md) and [WorldLocations](./geo-map-resources-world-locations.md) scripts.
 
 ## Code Snippet
 
@@ -142,5 +143,4 @@ export default class WorldConnections {
 ```
 
 ## API References
-
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
+`IgxGeographicMap`

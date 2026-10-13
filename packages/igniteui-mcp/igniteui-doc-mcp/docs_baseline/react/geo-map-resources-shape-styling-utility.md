@@ -1,16 +1,17 @@
 ---
-title: React Map | Shape Map Resources | Infragistics
-_description: Use Infragistics' React JavaScript map to load geo-spatial data from shape files. View Ignite UI for React map demos!
-_keywords: React map, shape styling, conditional formatting, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "React Map | Shape Map Resources | Infragistics"
+description: Use Infragistics' React JavaScript map to load geo-spatial data from shape files. View Ignite UI for React map demos!
+keywords: "React map, shape styling, conditional formatting, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of an utility that helps with styling UI elements of GeographicShapeSeries in React GeographicMap component."
 _tocName: Shape Styling Utility
 _premium: true
 ---
-
 # React Shape Styling Utility
 
-The resource topic provides implementation of an utility that helps with styling UI elements of [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) in React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) component.
+The resource topic provides implementation of an utility that helps with styling UI elements of `IgrGeographicShapeSeries` in React `IgrGeographicMap` component.
 
 ## Required Imports
 
@@ -254,6 +255,5 @@ export class ShapeComparison {
 ```
 
 ## API References
-
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html)
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrGeographicShapeSeries`
+`IgrGeographicMap`

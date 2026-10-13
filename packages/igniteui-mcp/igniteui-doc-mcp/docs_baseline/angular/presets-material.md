@@ -1,4 +1,7 @@
 ---
+title: "Default Theme"
+llms:
+  description: "The light version of the Material theme is the default theme in Ignite UI for Angular."
 _tocName: Material
 ---
 # Default Theme
@@ -71,4 +74,4 @@ Since all individual components use the `$light-material-palette` by default, if
 
 ## API Overview
 
-- [Global Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme)
+- `Global Theme`

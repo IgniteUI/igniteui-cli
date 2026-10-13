@@ -1,21 +1,20 @@
 ---
-title: Blazor Point Chart | Data Visualization | Infragistics
-_description: Infragistics' Blazor Point Chart
-_keywords: Blazor Charts, Point Chart, Infragistics
-_license: commercial
+title: "Blazor Point Chart | Data Visualization | Infragistics"
+description: Infragistics' Blazor Point Chart
+keywords: "Blazor Charts, Point Chart, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Point Chart renders a collection of points."
 _tocName: Point Chart
 _premium: true
 ---
-
 # Blazor Point Chart
-
 The Ignite UI for Blazor Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Blazor Point Chart Example
-
-You can create the Blazor Point Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Point** enum, as shown in the example below.
+You can create the Blazor Point Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Point** enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -109,10 +108,7 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Point Chart with Single Series
-
 In the following example, the Blazor Point Chart plots a single data source by automatically selecting numeric data column for y-axis and non-numeric data column for x-axis.
 
 ```razor
@@ -191,11 +187,8 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Point Chart with Multiple Series
-
-Since the Blazor Point Chart allows you to combine multiple series and compare or see how they change over time, let’s see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
+Since the Blazor Point Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the point chart will automatically update to fit the additional data.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -289,10 +282,7 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Point Chart Styling
-
 Once the Blazor Point Chart is set up, we may want to make some further styling customizations such as change the markers and its outlines, brushes and thickness.
 
 ```razor
@@ -391,10 +381,7 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Point Charts
-
 You can create more advanced types of Blazor Point Charts using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control instead of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
@@ -410,13 +397,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
-- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
-- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType)
-- [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerTypes)
-- [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerOutlines)
-- [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerBrushes)
-- [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerThickness)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)

@@ -1,12 +1,13 @@
 ---
 title: Radio and Radio Group
-_description: With Ignite UI for React Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Radio Button components, React Radio Button controls, React Radio Group component, React Radio Group control
-_license: MIT
+description: With Ignite UI for React Radio Button and Radio Group controls, developers can seamlessly present lists of options for users to select for better UI in template-driven and reactive forms.
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Radio Button components, React Radio Button controls, React Radio Group component, React Radio Group control"
+license: MIT
 mentionedTypes: ["Radio", "RadioGroup", "Form"]
+llms:
+  description: "The Ignite UI for React Radio component allows the user to select a single option from an available set of options that are listed side by side."
 _tocName: Radio & Radio Group
 ---
-
 # React Radio & Radio Group
 
 The Ignite UI for React Radio component allows the user to select a single option from an available set of options that are listed side by side.
@@ -51,8 +52,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioGroup/>);
 ```
 
-<div class="divider--half"></div>
-
 ### Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -72,15 +71,16 @@ The simplest way to start using the [`IgrRadio`](mcp:get_api_reference?platform=
 
 ```tsx
 <IgrRadioGroup>
-  <IgrRadio value="apple"><span>Apple</span></IgrRadio>
-  <IgrRadio value="banana"><span>Banana</span></IgrRadio>
-  <IgrRadio value="Mango"><span>Mango</span></IgrRadio>
-  <IgrRadio value="orange"><span>Orange</span></IgrRadio>
+  <IgrRadio value="apple">Apple</IgrRadio>
+  <IgrRadio value="banana">Banana</IgrRadio>
+  <IgrRadio value="Mango">Mango</IgrRadio>
+  <IgrRadio value="orange">Orange</IgrRadio>
 </IgrRadioGroup>
 ```
 
-> [!WARNING]
-> The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning: Warning**
+
+The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -89,20 +89,22 @@ The simplest way to start using the [`IgrRadio`](mcp:get_api_reference?platform=
 To provide a meaningful label for the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio), simply place some text between the opening and closing tags:
 
 ```tsx
-<IgrRadio><span>Label</span></IgrRadio>
+<IgrRadio>Label</IgrRadio>
 ```
 
-You can specify if the label should be positioned before or after the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) button by setting the [`LabelPosition`](mcp:get_api_reference?platform=react&component=IgrRadio&member=labelPosition) attribute. Allowed values are `before` and `after`(default):
 
 ```tsx
-<IgrRadio labelPosition="before"><span>Apple</span></IgrRadio>
+<IgrRadio labelPosition="before">Apple</IgrRadio>
 ```
 
 The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
 
 ```tsx
-<span id="radio-label">Label</span>
-<IgrRadio aria-labelledby="radio-label"></IgrRadio>
+<>
+    <span id="radio-label">Label</span>
+    <IgrRadio aria-labelledby="radio-label"></IgrRadio>
+</>
 ```
 
 ```css
@@ -159,14 +161,14 @@ root.render(<RadioLabel/>);
 
 ### Checked
 
-You can use the `checked` attribute to toggle on the radio.
+You can use the [`Checked`](mcp:get_api_reference?platform=react&component=IgrRadio&member=checked) attribute to toggle on the radio.
 
 ```tsx
 <IgrRadioGroup>
-  <IgrRadio value="apple"><span>Apple</span></IgrRadio>
-  <IgrRadio value="banana" checked={true}><span>Banana</span></IgrRadio>
-  <IgrRadio value="Mango"><span>Mango</span></IgrRadio>
-  <IgrRadio value="orange"><span>Orange</span></IgrRadio>
+  <IgrRadio value="apple">Apple</IgrRadio>
+  <IgrRadio value="banana" checked={true}>Banana</IgrRadio>
+  <IgrRadio value="Mango">Mango</IgrRadio>
+  <IgrRadio value="orange">Orange</IgrRadio>
 </IgrRadioGroup>
 ```
 
@@ -210,7 +212,7 @@ root.render(<RadioGroup/>);
 
 ### Invalid
 
-You can use the `invalid` attribute to mark the radio as invalid.
+You can use the [`Invalid`](mcp:get_api_reference?platform=react&component=IgrRadio&member=invalid) attribute to mark the radio as invalid.
 
 ```tsx
 <IgrRadio invalid={true}></IgrRadio>
@@ -251,14 +253,14 @@ root.render(<RadioInvalid/>);
 
 ### Disabled
 
-You can use the `disabled` attribute to disable the radio.
+You can use the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrRadio&member=disabled) attribute to disable the radio.
 
 ```tsx
 <IgrRadioGroup>
-  <IgrRadio value="apple"><span>Apple</span></IgrRadio>
-  <IgrRadio value="banana" disabled={true}><span>Banana</span></IgrRadio>
-  <IgrRadio value="Mango"><span>Mango</span></IgrRadio>
-  <IgrRadio value="orange"><span>Orange</span></IgrRadio>
+  <IgrRadio value="apple">Apple</IgrRadio>
+  <IgrRadio value="banana" disabled={true}>Banana</IgrRadio>
+  <IgrRadio value="Mango">Mango</IgrRadio>
+  <IgrRadio value="orange">Orange</IgrRadio>
 </IgrRadioGroup>
 ```
 
@@ -302,14 +304,14 @@ root.render(<RadioDisabled/>);
 
 ### Group Alignment
 
-The [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
+The [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the [`alignment`](mcp:get_api_reference?platform=react&component=IgrRadioGroup&member=alignment) attribute. Allowed values are `vertical`(default) and `horizontal`.
 
 ```tsx
 <IgrRadioGroup alignment="horizontal">
-  <IgrRadio value="apple"><span>Apple</span></IgrRadio>
-  <IgrRadio value="banana" disabled={true}><span>Banana</span></IgrRadio>
-  <IgrRadio value="Mango"><span>Mango</span></IgrRadio>
-  <IgrRadio value="orange"><span>Orange</span></IgrRadio>
+  <IgrRadio value="apple">Apple</IgrRadio>
+  <IgrRadio value="banana" disabled={true}>Banana</IgrRadio>
+  <IgrRadio value="Mango">Mango</IgrRadio>
+  <IgrRadio value="orange">Orange</IgrRadio>
 </IgrRadioGroup>
 ```
 
@@ -353,14 +355,14 @@ root.render(<RadioAlignment/>);
 
 ### Forms
 
-You can use the `name` and `value` attributes when using the radio with `Form`.
+You can use the [`Name`](mcp:get_api_reference?platform=react&component=IgrRadio&member=name) and [`Value`](mcp:get_api_reference?platform=react&component=IgrRadio&member=value) attributes when using the radio with `Form`.
 
 ```tsx
 <IgrRadioGroup>
-  <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-  <IgrRadio name="fruit" value="banana"><span>Banana</span></IgrRadio>
-  <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-  <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+  <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+  <IgrRadio name="fruit" value="banana">Banana</IgrRadio>
+  <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+  <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
 </IgrRadioGroup>
 ```
 
@@ -433,13 +435,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioStyling/>);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)<br />
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)<br />
 
 ## Additional Resources
 

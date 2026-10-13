@@ -1,24 +1,25 @@
 ---
 title: Angular Pivot Grid Features | Pivot Tables | Infragistics
-_description: Create fast, responsive Angular pivot grids and tables with Ignite UI for Angular. Perform complex data analysis via pivot data.
-_keywords: angular pivot grid, Angular pivot table, ignite ui for angular, pivot grid features, pivot features
-_license: commercial
+description: Create fast, responsive Angular pivot grids and tables with Ignite UI for Angular. Perform complex data analysis via pivot data.
+keywords: angular pivot grid, Angular pivot table, ignite ui for angular, pivot grid features, pivot features
+license: commercial
+llms:
+  description: "The pivot and flat grid component classes inherit from a common base and thus share some functionality and features."
 _tocName: Pivot Grid Features
 _premium: true
 ---
-
 # Angular Pivot Grid Features
 
 The pivot and flat grid component classes inherit from a common base and thus share some functionality and features.
 
->[!NOTE]
->Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for `IgxPivotGrid`. These include:
->
-> - CRUD operations
-> - Grouping
-> - Row/Column Pinning
-> - Summaries
-> - Paging
+**Note:** 
+Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for `IgxPivotGrid`. These include:
+
+- CRUD operations
+- Grouping
+- Row/Column Pinning
+- Summaries
+- Paging
 
 The Pivot Grid component has additional features and functionalities related to its dimensions as described below.
 
@@ -205,13 +206,13 @@ igx-pivot-data-selector {
 
 All dimensions (filters, rows, columns) can be filtered via the chip UI or the API. This functionality is embedded and enabled by default.
 
->[!NOTE]
->You can use the filtering dimension to filter out data values which are not a part of the pivot view.
+**Note:** 
+You can use the filtering dimension to filter out data values which are not a part of the pivot view.
 
 The filtering UI can be opened via the dimension chips filter icon and allows excel-style filtering of the unique dimension values.
 
->[!NOTE]
->If there is not enough space for all of the filtering chips, the pivot grid will show the ones that were cut off into a dropdown. End-users can access and manipulate them there.
+**Note:** 
+If there is not enough space for all of the filtering chips, the pivot grid will show the ones that were cut off into a dropdown. End-users can access and manipulate them there.
 
 Dimensions can also be filtered initially via the dimension configuration in `pivotConfiguration` with the dimension's `filter` property.
 It can be set to a new `FilteringExpressionsTree` with the related filter condition, for example:
@@ -279,8 +280,8 @@ public pivotConfigHierarchy: IPivotConfiguration = {
 }
 ```
 
->[!NOTE]
->As of version `18.0.0` the IgniteUI for Angular the `width` of the row dimensions can also be set to `auto`.
+**Note:** 
+As of version `18.0.0` the IgniteUI for Angular the `width` of the row dimensions can also be set to `auto`.
 
 ## Dimensions selection
 
@@ -353,8 +354,8 @@ Additionally the position of the summary can be changed via the `horizontalSumma
 public pivotUI: IPivotUISettings = { rowLayout: PivotRowLayoutType.Horizontal, horizontalSummariesPosition: PivotSummaryPosition.Bottom };
 ```
 
->[!NOTE]
-> The row summary related options - `horizontalSummary` and  `horizontalSummariesPosition` are applicable only for the `Horizontal` layout mode.
+**Note:** 
+The row summary related options - `horizontalSummary` and  `horizontalSummariesPosition` are applicable only for the `Horizontal` layout mode.
 
 ```typescript
 import { Component, ViewChild } from "@angular/core";
@@ -596,23 +597,17 @@ All chips can change their order within their area by drag & drop.
 The chips from `rows`, `column`, `filter`(dimension chips) can be moved from any of those areas to any other and at any place.
 Chips from these areas can not be moved to the `values` area and chips from the `values` area can not be moved to any of the dimension areas.
 
->[!NOTE]
->The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
+**Note:** 
+The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
 
 ## API References
-
-- [IgxPivotGridComponent](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
-- [IgxPivotDataSelectorComponent](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
-
-
+- [`IgxPivotGrid`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
+- [`IgxPivotDataSelector`](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Angular Pivot Grid Overview](/pivotgrid/pivot-grid)
+- [Angular Pivot Grid Custom Aggregations](/pivotgrid/pivot-grid-custom)
 
-- [Angular Pivot Grid Overview](pivot-grid.md)
-- [Angular Pivot Grid Custom Aggregations](pivot-grid-custom.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

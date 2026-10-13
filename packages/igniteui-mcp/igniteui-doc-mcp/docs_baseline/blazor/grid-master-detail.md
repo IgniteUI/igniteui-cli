@@ -1,13 +1,14 @@
 ---
-title: Blazor Master-Detail Grid - Infragistics
-_description: Define expandable detail view template for data in rows with Ignite UI Blazor Grid. Useful for displaying master-detail style data in a hierarchical structure.
-_keywords: Blazor, {ComponentKeywords}, Ignite UI for Blazor, master detail, Infragistics
-_license: commercial
+title: "Blazor Master-Detail Grid - Infragistics"
+description: Define expandable detail view template for data in rows with Ignite UI Blazor Grid. Useful for displaying master-detail style data in a hierarchical structure.
+keywords: "Blazor, , Ignite UI for Blazor, master detail, Infragistics"
+license: commercial
 mentionedTypes: ["Infragistics.Controls.Grid"]
+llms:
+  description: "The Grid component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content."
 _tocName: Master-Detail
 _premium: true
 ---
-
 # Blazor Master-Detail Grid
 
 The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
@@ -136,7 +137,7 @@ To configure the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=Igb
 
 Context of the template is the master record data, so that values from the master record can be displayed in the detail template. For example:
 
-```razor
+```javascript
 // In JavaScript
 igRegisterScript("DetailTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -152,12 +153,11 @@ igRegisterScript("DetailTemplate", (ctx) => {
 ## API
 
 Additional API methods for controlling the expansion states are also exposed:
-
-- [`ExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExpandAll)
-- [`CollapseAll`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CollapseAll)
-- [`ToggleRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ToggleRow)
-- [`ExpandRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExpandRow)
-- [`CollapseRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CollapseRow)
+- [`ExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=expandAll)
+- [`CollapseAll`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=collapseAll)
+- [`ToggleRow`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=toggleRow)
+- [`ExpandRow`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=expandRow)
+- [`CollapseRow`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -166,7 +166,7 @@ Additional API methods for controlling the expansion states are also exposed:
   - <kbd>🡑</kbd> - navigates one row up, focusing a cell from the previous row.
   - <kbd>🡓</kbd> - navigates one row down, focusing a cell from the next row.
   - <kbd>TAB</kbd> - Allows focus to move to the next focusable element inside the template if there are focusable elements, otherwise moves to the next grid row.
-  - <kbd>SHIFT</kbd> + <kbd><kbd>TAB</kbd> - moves the focus to the previous row.
+  - <kbd>SHIFT</kbd> + <kbd>TAB</kbd> - moves the focus to the previous row.
 
 - When focus is on a data row with expander:
   - <kbd>ALT</kbd> + <kbd>🡒</kbd> or <kbd>ALT</kbd> + <kbd>🡓</kbd> - expands the row.
@@ -182,6 +182,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- `HierarchicalGridRow`
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
+[`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)<br />

@@ -1,12 +1,13 @@
 ---
-title: React Splitter Component | Layout Controls | Infragistics
-_description: Use the Ignite UI for React Splitter component to create two resizable panes with horizontal or vertical layouts, collapse and expand behavior, keyboard support, and nested split views.
-_keywords: splitter, split panes, resizable panes, web components splitter, React splitter, Ignite UI for React
-_license: MIT
+title: "React Splitter Component | Layout Controls | Infragistics"
+description: "Use the Ignite UI for React Splitter component to create two resizable panes with horizontal or vertical layouts, collapse and expand behavior, keyboard support, and nested split views."
+keywords: "splitter, split panes, resizable panes, web components splitter, React splitter, Ignite UI for React"
+license: MIT
 mentionedTypes: ["Splitter", "SplitterResizeEventArgs"]
+llms:
+  description: "The Ignite UI for React Splitter provides a resizable split-pane layout that divides content into two areas: start and end."
 _tocName: Splitter
 ---
-
 # React Splitter Overview
 
 The Ignite UI for React Splitter provides a resizable split-pane layout that divides content into two areas: `start` and `end`. Users can drag the splitter bar, use keyboard shortcuts, or collapse and expand panes with built-in controls. You can also nest splitters to build complex dashboard-style layouts.
@@ -112,8 +113,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SplitterOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with React Splitter
 
 First, you need to install the corresponding Ignite UI for React npm package by running the following command:
@@ -122,7 +121,7 @@ First, you need to install the corresponding Ignite UI for React npm package by 
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html) and its necessary CSS, like so:
+You will then need to import the `IgrSplitter` and its necessary CSS, like so:
 
 ```tsx
 import { IgrSplitter } from 'igniteui-react';
@@ -140,9 +139,11 @@ Use the `start` and `end` slots to place pane content:
 </IgrSplitter>
 ```
 
+We recommend using a `<div>` or other semantic elements such as `<section>` or `<article>` for the `start` and `end` slots of the Splitter component.
+
 ### Orientation
 
-Set the [`orientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#orientation) property to control pane direction:
+Set the `Orientation` property to control pane direction:
 
 - `horizontal` (default): start and end panes are rendered left and right.
 - `vertical`: start and end panes are rendered top and bottom.
@@ -158,9 +159,9 @@ Set the [`orientation`](https://www.infragistics.com/products/ignite-ui-react/do
 
 Use size properties to set initial and constrained pane sizes:
 
-- [`startSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#startSize), [`endSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#endSize)
-- [`startMinSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#startMinSize), [`endMinSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#endMinSize)
-- [`startMaxSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#startMaxSize), [`endMaxSize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#endMaxSize)
+- `StartSize`, `EndSize`
+- `StartMinSize`, `EndMinSize`
+- `StartMaxSize`, `EndMaxSize`
 
 Values accept CSS length values such as `px` and `%`.
 
@@ -180,10 +181,10 @@ Values accept CSS length values such as `px` and `%`.
 
 Use these properties to control interactions:
 
-- [`disableResize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#disableResize): disables pane resizing.
-- [`disableCollapse`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#disableCollapse): disables pane collapsing.
-- [`hideDragHandle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#hideDragHandle): hides the drag handle.
-- [`hideCollapseButtons`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#hideCollapseButtons): hides collapse and expand buttons.
+- `DisableResize`: disables pane resizing.
+- `DisableCollapse`: disables pane collapsing.
+- `HideDragHandle`: hides the drag handle.
+- `HideCollapseButtons`: hides collapse and expand buttons.
 
 You can also collapse or expand panes programmatically:
 
@@ -266,9 +267,9 @@ root.render(<SplitterOverview />);
 
 The Splitter emits the following events during resize operations:
 
-- [`onResizeStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#onResizeStart): fired once when resizing starts.
-- [`onResizing`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#onResizing): fired continuously while resizing.
-- [`onResizeEnd`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html#onResizeEnd): fired once when resizing ends.
+- `ResizeStart`: fired once when resizing starts.
+- `Resizing`: fired continuously while resizing.
+- `ResizeEnd`: fired once when resizing ends.
 
 The event detail includes current `StartPanelSize`, `EndPanelSize`, and `Delta` for ongoing and end events.
 
@@ -298,7 +299,7 @@ When the splitter bar is focused:
 
 ## Styling
 
-The [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html) component exposes CSS parts for styling:
+The `IgrSplitter` component exposes CSS parts for styling:
 
 | Name | Description |
 | ---- | ----------- |
@@ -392,10 +393,8 @@ root.render(<SplitterOverview />);
 ```
 
 ## API References
-
-- [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html)
+API references: `IgrSplitter`
 - [`Styling & Themes`](../themes/overview.md)
-
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

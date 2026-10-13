@@ -1,16 +1,17 @@
 ---
-title: React Excel Library| Using Cells | Infragistics
-_description: Learn how to perform operations on Infragistics' React excel library's cells such as accessing them, adding formulas and comments, merging cells and formatting cells. View Ignite UI for React excel demos!
-_keywords: Excel library,  cell operations, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Excel Library| Using Cells | Infragistics"
+description: Learn how to perform operations on Infragistics' React excel library's cells such as accessing them, adding formulas and comments, merging cells and formatting cells. View Ignite UI for React excel demos!
+keywords: Excel library,  cell operations, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "WorkbookStyleCollection", "IWorksheetCellFormat", "WorkbookColorInfo", "DisplayOptions"]
+llms:
+  description: "The WorksheetCell objects in an Excel worksheet is the object that holds your actual data values for the worksheet."
 _tocName: Using Cells
 _premium: true
 ---
-
 # React Using Cells
 
-The [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) objects in an Excel worksheet is the object that holds your actual data values for the worksheet. This topic goes over the many operations that you can perform on these cells, such as accessing them and their regions by name, adding formulas and comments to the cells, and merging and formatting them.
+The `IgrWorksheetCell` objects in an Excel worksheet is the object that holds your actual data values for the worksheet. This topic goes over the many operations that you can perform on these cells, such as accessing them and their regions by name, adding formulas and comments to the cells, and merging and formatting them.
 
 ## React Using Cells Example
 
@@ -369,8 +370,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithCells/>);
 ```
 
-<div class="divider--half"></div>
-
 ## References
 
 The following code shows the imports needed to use the code-snippets below:
@@ -387,7 +386,7 @@ import { FormattedString } from "igniteui-react-excel";
 
 ## Referencing Cells and Regions
 
-You can access a [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) object or a [`WorksheetRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetregion.html) object by calling the [`worksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetregion.html#worksheet) object’s [`getCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#getCell) or [`getRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#getRegion) methods, respectively. Both methods accept a string parameter that references a cell. Getting a reference to a cell is useful when applying formats or working with formulas and cell contents.
+You can access a `IgrWorksheetCell` object or a `IgrWorksheetRegion` object by calling the `IgrWorksheet` object’s `GetCell` or `GetRegion` methods, respectively. Both methods accept a string parameter that references a cell. Getting a reference to a cell is useful when applying formats or working with formulas and cell contents.
 
 The following example code demonstrates how to reference cells and regions:
 
@@ -405,7 +404,7 @@ var region = worksheet.getRegion("G1:G10");
 
 In Microsoft Excel, individual cells, as well as cell regions can have names assigned to them. The name of a cell or region can be used to reference that cell or region instead of their address.
 
-The Infragistics React Excel Library supports the referencing of cells and regions by name through the [`getCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#getCell) and [`getRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#getRegion) methods of the [`worksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetregion.html#worksheet) object. You refer to the cell or region using the [`NamedReference`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.namedreference.html) instance that refers to that cell or region.
+The Infragistics React Excel Library supports the referencing of cells and regions by name through the `GetCell` and `GetRegion` methods of the `IgrWorksheet` object. You refer to the cell or region using the `IgrNamedReference` instance that refers to that cell or region.
 
 You can use the following code snippet as an example for naming a cell or region:
 
@@ -426,7 +425,7 @@ var region = worksheet.getRegion("myRegion");
 
 ## Adding a Comment to a Cell
 
-A comment allows you to display hints or notes for a cell when the end user’s mouse hovers over a cell. The comments display as a tooltip-like callout that contains text. The Infragistics React Excel Library allows you to add comments to a cell by setting a [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) object’s [`comment`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#comment) property.
+A comment allows you to display hints or notes for a cell when the end user’s mouse hovers over a cell. The comments display as a tooltip-like callout that contains text. The Infragistics React Excel Library allows you to add comments to a cell by setting a `IgrWorksheetCell` object’s `Comment` property.
 
 The following example code demonstrates how to add a comment to a cell:
 
@@ -443,7 +442,7 @@ worksheet.rows(0).cells(0).comment = cellComment;
 
 ## Adding a Formula to a Cell
 
-The Infragistics React Excel Library allows you to add Microsoft Excel formulas to a cell or group of cells in a worksheet. You can do this using the [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) object’s [`applyFormula`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#applyFormula) method or by instantiating a [`formula`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#formula) object and applying it to a cell. Regardless of the manner in which you apply a formula to a cell, you can access the [`formula`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#formula) object using the [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) object’s [`formula`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#formula) property. If you need the value, use the cell’s [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#value) property.
+The Infragistics React Excel Library allows you to add Microsoft Excel formulas to a cell or group of cells in a worksheet. You can do this using the `IgrWorksheetCell` object’s `ApplyFormula` method or by instantiating a `IgrFormula` object and applying it to a cell. Regardless of the manner in which you apply a formula to a cell, you can access the `IgrFormula` object using the `IgrWorksheetCell` object’s `Formula` property. If you need the value, use the cell’s `Value` property.
 
 The following code shows you how to add a formula to a cell.
 
@@ -458,8 +457,7 @@ The following code shows you how to add a formula to a cell.
 ```
 
 ## Copying a Cell’s Format
-
-Cells can have different formatting, including background color, format string, and font style. If you need a cell to have the same format as a previously formatted cell, instead of individually setting each option exposed by the [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) object’s [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) property, you can call the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) object’s [`setFormatting`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#setFormatting) method and pass it a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) object to copy. This will copy every format setting from the first cell to the second cell. You can also do this for a row, merged cell region, or column.
+Cells can have different formatting, including background color, format string, and font style. If you need a cell to have the same format as a previously formatted cell, instead of individually setting each option exposed by the `IgrWorksheetCell` object’s `CellFormat` property, you can call the `IgrIWorksheetCellFormat` object’s `SetFormatting` method and pass it a `IgrIWorksheetCellFormat` object to copy. This will copy every format setting from the first cell to the second cell. You can also do this for a row, merged cell region, or column.
 
 The following code shows you how to copy the format of the 2nd column to the 4th column:
 
@@ -477,7 +475,7 @@ worksheet.columns(3).cellFormat.setFormatting(worksheet.columns(1).cellFormat);
 
 ## Formatting a Cell
 
-The Infragistics React Excel Library allows you to customize the look and behavior of a cell. You can customize a cell by setting properties exposed by the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) property of the [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html), [`WorksheetRow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetrow.html), [`WorksheetColumn`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcolumn.html), or [`WorksheetMergedCellsRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetmergedcellsregion.html) objects.
+The Infragistics React Excel Library allows you to customize the look and behavior of a cell. You can customize a cell by setting properties exposed by the `CellFormat` property of the `IgrWorksheetCell`, `IgrWorksheetRow`, `IgrWorksheetColumn`, or `IgrWorksheetMergedCellsRegion` objects.
 
 You can customize every aspect of a cell’s appearance. You can set a cell’s font, background, and borders, as well as text alignment and rotation. You can even apply a different format on a character-by-character basis for a cell’s text.
 
@@ -487,7 +485,7 @@ The following code shows you how to format a cell to display numbers as currency
 
 ```ts
 var workbook = new Workbook(format);
-var workbook = workbook.worksheets().add("Sheet1");
+var worksheet = workbook.worksheets().add("Sheet1");
 
 worksheet.columns(2).cellFormat.formatString = "\"$\"#,##0.00";
 ```
@@ -496,27 +494,27 @@ worksheet.columns(2).cellFormat.formatString = "\"$\"#,##0.00";
 
 The color palette is analogous to the color dialog in Microsoft Excel 2007 UI. You can open this color dialog by navigating to Excel Options => Save => Colors.
 
-You can create all possible fill types using static properties and methods on the [`CellFill`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfill.html) class. They are as follows:
+You can create all possible fill types using static properties and methods on the `IgrCellFill` class. They are as follows:
 
 - `NoColor` - A property that represents a fill with no color, which allows a background image of the worksheet, if any, to show through.
 
-- `CreateSolidFill` - Returns a [`CellFillPattern`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillpattern.html) instance which has a pattern style of `Solid` and a background color set to the [`color`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html#color) or [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) specified in the method.
+- `CreateSolidFill` - Returns a `IgrCellFillPattern` instance which has a pattern style of `Solid` and a background color set to the `Color` or `IgrWorkbookColorInfo` specified in the method.
 
-- `CreatePatternFill` - Returns a [`CellFillPattern`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillpattern.html) instance which has the specified pattern style and the [`color`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html#color) or [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) values, specified for the background and pattern colors.
+- `CreatePatternFill` - Returns a `IgrCellFillPattern` instance which has the specified pattern style and the `Color` or `IgrWorkbookColorInfo` values, specified for the background and pattern colors.
 
-- `CreateLinearGradientFill` - Returns a [`CellFillLinearGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfilllineargradient.html) instance with the specified angle and gradient stops.
+- `CreateLinearGradientFill` - Returns a `IgrCellFillLinearGradient` instance with the specified angle and gradient stops.
 
-- `CreateRectangularGradientFill` - Returns a [`CellFillRectangularGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillrectangulargradient.html) instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
+- `CreateRectangularGradientFill` - Returns a `IgrCellFillRectangularGradient` instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
 
 The derived types, representing the various fills which can be created, are as follows:
 
-- [`CellFillPattern`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillpattern.html) - A pattern that represents a cell fill of no color, a solid color, or a pattern fill for a cell. It has background color info and a pattern color info which correspond directly to the color sections in the Fill tab of the Format Cells dialog of Excel.
+- `IgrCellFillPattern` - A pattern that represents a cell fill of no color, a solid color, or a pattern fill for a cell. It has background color info and a pattern color info which correspond directly to the color sections in the Fill tab of the Format Cells dialog of Excel.
 
-- [`CellFillLinearGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfilllineargradient.html) - Represents a linear gradient fill. It has an angle, which is degrees clockwise of the left to right linear gradient, and a gradients stops collection which describes two or more color transitions along the length of the gradient.
+- `IgrCellFillLinearGradient` - Represents a linear gradient fill. It has an angle, which is degrees clockwise of the left to right linear gradient, and a gradients stops collection which describes two or more color transitions along the length of the gradient.
 
-- [`CellFillRectangularGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillrectangulargradient.html) - Represents a rectangular gradient fill. It has top, left, right, and bottom values, which describe, in relative coordinates, the inner rectangle from which the gradient starts and goes out to the cell edges. It also has a gradient stops collection which describes two or more color transitions along the path from the inner rectangle to the cell edges.
+- `IgrCellFillRectangularGradient` - Represents a rectangular gradient fill. It has top, left, right, and bottom values, which describe, in relative coordinates, the inner rectangle from which the gradient starts and goes out to the cell edges. It also has a gradient stops collection which describes two or more color transitions along the path from the inner rectangle to the cell edges.
 
-The following code snippet demonstrates how to create a solid fill in a [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html):
+The following code snippet demonstrates how to create a solid fill in a `IgrWorksheetCell`:
 
 ```ts
 var workbook = new Workbook();
@@ -566,11 +564,11 @@ Each workbook has 12 associated theme colors. They are the following:
 
 - There are default values when a workbook is created, which can be customized via Excel.
 
-Colors are defined by the [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) class, which is a sealed immutable class. The class has a static `Automatic` property, which returns the automatic color, and there are various constructors which allow you to create a [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) instance with a color or a theme value and an optional tint.
+Colors are defined by the `IgrWorkbookColorInfo` class, which is a sealed immutable class. The class has a static `Automatic` property, which returns the automatic color, and there are various constructors which allow you to create a `IgrWorkbookColorInfo` instance with a color or a theme value and an optional tint.
 
-The [`getResolvedColor`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html#getResolvedColor) method on [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) allows you to determine what color will actually be seen by the user when they open the file in Excel.
+The `GetResolvedColor` method on `IgrWorkbookColorInfo` allows you to determine what color will actually be seen by the user when they open the file in Excel.
 
-If the [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html) represents a theme color, you must pass in a Workbook instance to the method so it can get the theme color’s RGB value from the workbook.
+If the `IgrWorkbookColorInfo` represents a theme color, you must pass in a Workbook instance to the method so it can get the theme color’s RGB value from the workbook.
 
 When saving out in the newer file formats such as .xlsx, the newer color information is saved directly into the file. When saving out in an older file format such as .xls, the index to the closest color in the palette will be saved out. In addition, the older formats have future feature records that can be saved out to indicate the newer color information.
 
@@ -578,37 +576,37 @@ When the older formats are opened in Microsoft Excel 2003 and earlier versions, 
 
 ## Excel Format Support
 
-You can set a host of different formats on a [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html) by using the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) object returned by the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) property of that cell. This [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) object enables you to style many different aspects of the cell such as borders, font, fill, alignments, and whether or not the cell should shrink to fit or be locked.
+You can set a host of different formats on a `IgrWorksheetCell` by using the `IgrIWorksheetCellFormat` object returned by the `CellFormat` property of that cell. This `IgrIWorksheetCellFormat` object enables you to style many different aspects of the cell such as borders, font, fill, alignments, and whether or not the cell should shrink to fit or be locked.
 
-You can also access the built-in styles to Microsoft Excel 2007 using the [`styles`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbook.html#styles) collection of the [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#workbook) object. The full list of styles in Excel can be found in the Cell Styles gallery of the Home tab of Microsoft Excel 2007.
+You can also access the built-in styles to Microsoft Excel 2007 using the `Styles` collection of the `IgrWorkbook` object. The full list of styles in Excel can be found in the Cell Styles gallery of the Home tab of Microsoft Excel 2007.
 
-There is a special type of style on the workbook's [`styles`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbook.html#styles) collection known as the "normal" style, which can be accessed using that collection's [`normalStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#normalStyle) property, or by indexing into the collection with the name "Normal".
+There is a special type of style on the workbook’s `Styles` collection known as the "normal" style, which can be accessed using that collection’s `NormalStyle` property, or by indexing into the collection with the name "Normal".
 
-The [`normalStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#normalStyle) contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing the properties on the [`normalStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#normalStyle) will change all of the default cell format properties on the workbook. This is useful, for example, if you want to change the default font for your workbook.
+The `NormalStyle` contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing the properties on the `NormalStyle` will change all of the default cell format properties on the workbook. This is useful, for example, if you want to change the default font for your workbook.
 
-You can clear the [`styles`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbook.html#styles) collection or reset it to its predefined state by using the [`clear`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#clear) and [`reset`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#reset) methods, respectively. Both of these will remove all user-defined styles, but [`clear`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#clear) will clear the [`styles`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbook.html#styles) collection entirely.
+You can clear the `Styles` collection or reset it to its predefined state by using the `Clear` and `Reset` methods, respectively. Both of these will remove all user-defined styles, but `Clear` will clear the `Styles` collection entirely.
 
-With this feature, a [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style) property has been added to the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) object. This is a reference to a [`WorkbookStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstyle.html) instance, representing the parent style of the format. For formats of a style, this property will always be null, because styles cannot have a parent style. For row, column, and cell formats, the [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style) property always returns the [`normalStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#normalStyle) by default.
+With this feature, a `Style` property has been added to the `IgrIWorksheetCellFormat` object. This is a reference to a `IgrWorkbookStyle` instance, representing the parent style of the format. For formats of a style, this property will always be null, because styles cannot have a parent style. For row, column, and cell formats, the `Style` property always returns the `NormalStyle` by default.
 
-If the [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style) property is set to null, it will revert back to the [`normalStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstylecollection.html#normalStyle). If it is set to another style in the styles collection, that style will now hold the defaults for all unset properties on the cell format.
+If the `Style` property is set to null, it will revert back to the `NormalStyle`. If it is set to another style in the styles collection, that style will now hold the defaults for all unset properties on the cell format.
 
-When the [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style) property is set on a cell format, the format options included on the [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style) are removed from the cell format. All other properties are left intact. For example, if a cell style including border formatting was created and that style was set as the cell's [`style`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/interfaces/igniteui_react_excel.iworksheetcellformat.html#style), the border format option on the cell format would be removed and the cell format only includes fill formatting.
+When the `Style` property is set on a cell format, the format options included on the `Style` are removed from the cell format. All other properties are left intact. For example, if a cell style including border formatting was created and that style was set as the cell’s `Style`, the border format option on the cell format would be removed and the cell format only includes fill formatting.
 
 When a format option flag is removed from a format, all associated properties are reset to their unset values, so the cell format’s border properties are implicitly reset to default/unset values.
 
-You can determine what would really be seen in cells by using the [`getResolvedCellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#getResolvedCellFormat) method on classes which represent a row, column, cell, and merged cell.
+You can determine what would really be seen in cells by using the `GetResolvedCellFormat` method on classes which represent a row, column, cell, and merged cell.
 
-This method returns a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) instance which refers back to the associated [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) on which it is based. So subsequent changes to the [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat) property will be reflected in the instance returned from a [`getResolvedCellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#getResolvedCellFormat) call.
+This method returns a `IgrIWorksheetCellFormat` instance which refers back to the associated `IgrIWorksheetCellFormat` on which it is based. So subsequent changes to the `CellFormat` property will be reflected in the instance returned from a `GetResolvedCellFormat` call.
 
 ## Merging Cells
 
 Aside from setting the value or format of cells, you can also merge cells to make two or more cells appear as one. If you merge cells, they must be in a rectangular region.
 
-When you merge cells, each cell in the region will have the same value and cell format. The merged cells will also be associated with the same [`WorksheetMergedCellsRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetmergedcellsregion.html) object, accessible from their [`associatedMergedCellsRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#associatedMergedCellsRegion) property. The resultant [`WorksheetMergedCellsRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetmergedcellsregion.html) object will also have the same value and cell format as the cells.
+When you merge cells, each cell in the region will have the same value and cell format. The merged cells will also be associated with the same `IgrWorksheetMergedCellsRegion` object, accessible from their `AssociatedMergedCellsRegion` property. The resultant `IgrWorksheetMergedCellsRegion` object will also have the same value and cell format as the cells.
 
 Setting the value (or cell format) of the region or any cell in the region will change the value of all cells and the region. If you un-merge cells, all of the previously merged cells will retain the shared cell format they had before they were unmerged. However, only the top-left cell of the region will retain the shared value.
 
-In order to create a merged cell region, you must add a range of cells to the [`worksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#worksheet) object’s [`mergedCellsRegions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#mergedCellsRegions) collection. This collection exposes an `Add` method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
+In order to create a merged cell region, you must add a range of cells to the `IgrWorksheet` object’s `MergedCellsRegions` collection. This collection exposes an `Add` method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
 
 ```ts
 var workbook = new Workbook();
@@ -670,11 +668,11 @@ If a text is used in the cell, the cell displayed text will always be full value
 
 The only time when this is not the case is when padding characters are used in format string. Then the value will be displayed as all hash marks when there is not enough room for the text.
 
-You can set the worksheet's [`displayOptions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#displayOptions)' [`showFormulasInCells`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.displayoptions.html#showFormulasInCells) property to  have formulas be displayed in cells instead of their results, and format strings and cell widths are ignored. Text values display as if their format string were @ , non-integral numeric values display as if their format string were 0.0 and integral numeric values display as if their format string were 0 .
+You can set the worksheet's `DisplayOptions`' `ShowFormulasInCells` property to have formulas be displayed in cells instead of their results, and format strings and cell widths are ignored. Text values display as if their format string were @ , non-integral numeric values display as if their format string were 0.0 and integral numeric values display as if their format string were 0 .
 
 Additionally, if the value cannot fit, it will not display as all hashes. Display text will still return its full text as the cell text, even though it may not be fully seen.
 
-The following code snippet demonstrates the usage of the [`getText`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#getText) method to get the text as it would be displayed in Excel:
+The following code snippet demonstrates the usage of the `GetText` method to get the text as it would be displayed in Excel:
 
 ```ts
 var workbook = new Workbook();
@@ -684,21 +682,17 @@ var cellText = worksheet.rows(0).cells(0).getText();
 ```
 
 ## API References
-
-- `Add`
-- [`CellFillLinearGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfilllineargradient.html)
-- [`CellFillPattern`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillpattern.html)
-- [`CellFillRectangularGradient`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfillrectangulargradient.html)
-- [`CellFill`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.cellfill.html)
-- [`cellFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#cellFormat)
-- [`displayOptions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#displayOptions)'
-- [`formula`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#formula)
-- [`mergedCellsRegions`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#mergedCellsRegions)
-- [`WorkbookColorInfo`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookcolorinfo.html)
-- [`WorkbookStyle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbookstyle.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheet.html#workbook)
-- [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html)
-- [`WorksheetColumn`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcolumn.html)
-- [`WorksheetRegion`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetregion.html)
-- [`WorksheetRow`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetrow.html)
-- [`worksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetcell.html#worksheet)
+`IgrCellFillLinearGradient`
+`IgrCellFillPattern`
+`IgrCellFillRectangularGradient`
+`IgrCellFill`
+`IgrIWorksheetCellFormat`
+`IgrFormula`
+`IgrWorkbookColorInfo`
+`IgrWorkbookStyle`
+`IgrWorkbook`
+`IgrWorksheetCell`
+`IgrWorksheetColumn`
+`IgrWorksheetRegion`
+`IgrWorksheetRow`
+`IgrWorksheet`

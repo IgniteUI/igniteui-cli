@@ -1,28 +1,32 @@
 ---
-title: Theming Engine - Angular | Ignite UI for Angular
-_description: The Ignite UI for Angular Theming engine was developed through SASS with a low-difficulty API that offers restyling of one component, multiple components, or the entire application.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Engine, Angular Theming
+title: Theming
+description: Ignite UI for Angular theming lets you restyle components with CSS custom properties and an optional Sass engine, from a single component to your entire application.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Theming Engine, Angular Theming, CSS variables, Sass theming, palettes, elevations, roundness
+llms:
+  description: "Ignite UI for Angular allows you to modify the styles of all component themes using CSS variables, or go deeper with its Sass theming engine."
+last_updated: "2026-09-10"
 _tocName: Overview
 ---
-
 # Theming
 
-Ignite UI for Angular allows you to modify the styles of all component themes using CSS variables. If you really wanted to dig deep, we provide a powerful Sass theming engine that allows you to create global component themes tailored to your specific design language that work in all modern browsers.
+Ignite UI for Angular allows you to modify the styles of all component themes using CSS variables, or go deeper with a powerful Sass theming engine that lets you create global or component themes tailored to your specific design language, in all modern browsers.
 
->[!NOTE]
-> This document describes the theming system in Ignite UI for Angular from version 12 forward. Starting with version 12 **CSS variables are the recommended way to modify the global and component themes**.
-> You can still use the Sass theming library as you would've prior to version 12.
+**Note:** 
+This document describes the theming system in Ignite UI for Angular from version 12 forward. Starting with version 12, **CSS variables are the recommended way to modify the global and component themes**. The Sass theming library is still available and works alongside CSS variables.
 
-## Basic Usage
+## Key Features
 
-Ignite UI for Angular includes the following themes as part of its package:
+| Feature | Description | Benefit |
+| :------ | :----------- | :------ |
+| Bundled design-system themes | Material, Bootstrap, Fluent, and Indigo themes, each with light and dark variants and built-in LTR/RTL support. | Get a production-ready look with a single stylesheet reference — no build step required. |
+| CSS custom properties | Every theme exposes color, elevation, typography, and configuration values as `--ig-*` CSS variables. | Restyle components at runtime, per-application or per-instance, without recompiling Sass. |
+| Sass theming engine | The same Sass API used internally to build every bundled theme, exposed as public mixins and functions. | Generate palettes, exclude unused component tokens, and build fully custom themes at compile time. |
+| Global and local component variables | Each component exposes a global (`--ig-[component]-*`) and a local (`--*`) variable for the same property. | Override a look application-wide, then selectively override individual instances without extra CSS specificity tricks. |
+| Configurable roundness and elevation | Single `--ig-radius-factor` and `--ig-elevation-factor` variables scale every component's corners and shadows. | Change the overall shape and depth of the UI without touching individual component styles. |
 
-- Material
-- Bootstrap
-- Fluent
-- Indigo
+## Bundled Themes
 
-All themes have light and dark variants as well as support for left-to-right(LTR) and right-to-left(RTL) content by default. The easiest way to start using any of the bundled themes in your application is by specifying the path to a CSS theme file in your `angular.json` configuration. For example, if you wanted to use the dark Material theme, you would include the path to the theme file like so:
+All themes ship with light and dark variants and support left-to-right (LTR) and right-to-left (RTL) content by default. The easiest way to use a bundled theme is to reference its CSS file in your `angular.json` configuration. For example, to use the dark Material theme:
 
 ```json
 "styles": [
@@ -31,8 +35,8 @@ All themes have light and dark variants as well as support for left-to-right(LTR
 ]
 ```
 
->[!NOTE]
-> If you've installed the Ignite UI for Angular package using `ng add igniteui-angular`, you will have noticed that we've already added `igniteui-angular.css` to the styles array.
+**Note:** 
+If you installed Ignite UI for Angular using `ng add igniteui-angular`, `igniteui-angular.css` is already added to the styles array for you.
 
 Here's the full list of themes included in the styles folder:
 
@@ -52,19 +56,15 @@ Here's the full list of themes included in the styles folder:
 | **Indigo Light**        | `node_modules/igniteui-angular/styles/igniteui-indigo-light.css`       |
 | **Indigo Dark**         | `node_modules/igniteui-angular/styles/igniteui-indigo-dark.css`        |
 
-As you can see, we ship Ignite UI for Angular with a substantial amount of themes.
+All bundled themes are compiled from the same Sass source, using the theming engine's public `mixins` and `functions`. If Sass isn't your thing, that's fine — every compiled theme also exposes its values as [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), so you can restyle it without a Sass build step. You can also combine both approaches in the same project.
 
-This is not the end of our theming story, though. All themes are compiled from Sass source and are built using our powerful theming engine. This engine contains Sass `mixins` and `functions` many of which are publicly exposed, which allows you to completely redesign all components in your application.
+## Customizing with CSS Variables
 
-If Sass isn't your thing that's completely fine, we've made it easy to modify the compiled themes using [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), or otherwise known as CSS variables. You can still use Sass in combination with CSS variables.
+Every bundled CSS theme declares its variables in the `:root` scope, covering `colors`, `shadows`, `typography`, and `configuration`. Changing any of them updates the corresponding component styles across your application.
 
-## Global Variables
+### Palette Colors
 
-If you inspect any of the CSS themes above, you will notice that there are quite a few CSS variables included in the `:root` scope; We include variables for `colors`, `shadows`, `typography`, and `configuration`. Modifying any of these variables will allow you to customize the overall look and feel of the theme and conversely the components.
-
-What most people look for when modifying a theme is changing the default colors used by the components.
-
-If you wanted to change the primary and secondary colors, all you have to do is type the following in your `styles.css` file:
+To change the primary and secondary colors, set the corresponding variables in your `styles.css` file:
 
 ```css
 /* styles.css */
@@ -75,16 +75,14 @@ If you wanted to change the primary and secondary colors, all you have to do is 
 }
 ```
 
-Let's break down the names of these color variables. The `ig` prefix is there as a unique identifier to indicate that this variable is part of an Ignite UI for Angular theme, `primary` is the color variable name, and `500` stands for the color variant. We will take a deeper look at palettes in the [Palettes](./palettes.md) section of the documentation. For now all you need to know is that we have several base color variables (primary, secondary, surface, success, info, etc.) that include different shades or _variants_ that are all generated from the main color variants. The `500` color variants that we set in the above example are considered the main variable color and all of the other variants for the given color variable are generated from the `500` variant.
+The `ig` prefix identifies the variable as part of an Ignite UI for Angular theme, `primary` names the color variable, and `500` is the color variant. Ignite UI for Angular ships several base color variables (`primary`, `secondary`, `surface`, `success`, `info`, and more), each with a range of variants generated from its `500` (main) value. Changing the `500` variant regenerates the rest of that color's palette. See [Palettes](/themes/palettes) for the full list of variants.
 
-Changing these variants, you can completely overhaul the entire palette.
+**Warning:** 
+Some components do not use colors from the palettes. In those instances, target the component's CSS variables directly to modify their colors. To find out which palette colors a component uses, see the `Sass Theming API Reference`.
 
->[!WARNING]
-> Some components do not use colors from the palettes. In those instances, you will have to target the component CSS variables directly to modify their colors.
-> To find out which palette colors are used by what component, take a look at the [Components Documentation](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes).
+### Elevations
 
-Likewise, changing the `elevations`(shadows) is just as easy. We include 25 elevation levels (0-24).
-Here's a simplified version of what those variables look like:
+Elevations (shadows) work the same way, across 25 levels (0–24):
 
 ```css
 /* styles.css */
@@ -100,43 +98,37 @@ Here's a simplified version of what those variables look like:
 }
 ```
 
-These are essentially stacked CSS [`box-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow) declarations. You can replace them with any other valid `box-shadow` value. The higher the elevation level number is, the bigger the shadow is. Again, different components use different elevation levels, to find out which elevation levels are used by which component, take look at the [Components Documentation](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes). We will take a deeper look at elevations in the [Elevations](./elevations.md) of the documentation.
+Each variable is a stacked CSS [`box-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow) declaration; you can replace any of them with another valid `box-shadow` value. The higher the elevation level, the larger the shadow. Different components use different elevation levels by default — see [Elevations](/themes/elevations) for the full breakdown, and the `Sass Theming API Reference` for which level each component uses.
 
-## Configuration
+### Roundness and Elevation Factor
 
-There are several variables that allow you to configure the global behavior of the theme:
+Two variables configure component shape and depth globally:
 
-### Roundness
+- `--ig-radius-factor` sets the radius factor of all components. The default is `1`. Set it to `0` to make every component's corners square:
 
-To configure the radius factor of all components you can change the value of the `--ig-radius-factor` variable. The default value is 1, meaning the default radius factor is used across component themes.
+  ```css
+  /* Makes all components appear blocky in shape */
+  :root {
+    --ig-radius-factor: 0;
+  }
+  ```
 
-Example:
+- `--ig-elevation-factor` sets the elevation (shadow) factor of all components. The default is `1`. Set it to `0` to remove shadows entirely:
 
-```css
-/* Makes all components appear blocky in shape */
-:root {
-  --ig-radius-factor: 0;
-}
-```
+  ```css
+  /* Makes all components appear flat (no shadows) */
+  :root {
+    --ig-elevation-factor: 0;
+  }
+  ```
 
-### Elevation Factor
+See [Roundness](/themes/roundness) to scope `--ig-radius-factor` to individual components instead of the whole application.
 
-To configure the elevation factor of all components you can change the value of the `--ig-elevation-factor` variable. The default value is 1, meaning the default elevations are used across component themes.
+### Component Variables
 
-Example:
+Every component exposes two variables for each themeable property: a **global** variable (prefixed `--ig-[component-name]-`) and a **local** variable (`--*`). Both modify the same property; the difference is scope. Global variables apply from any parent selector to all instances of a component. Local variables apply only to the instances matched by the selector that sets them, and always take priority over the global variable.
 
-```css
-/* Makes all components appear flat (no-shadows) */
-:root {
-  --ig-elevation-factor: 0;
-}
-```
-
-## Component Variables
-
-All components provide the ability to modify their themes using component-specific CSS variables. Each component exposes two variables that modify the same property. The exposed variables can be thought of as `global` and `local`. They both modify the component theme in the same way, the only difference is that `global` variables have the `igx-[component-name]` prefix attached to the variable name and can be used from parent selectors to style child components, while `local` variables are specific to a component instance.
-
-Let's look at an example. Say you wanted to modify the background of the avatar. The avatar looks for the following CSS variables that modify its background:
+For example, the avatar component looks for `--ig-avatar-background` (global) and `--background` (local):
 
 ```css
 /* styles.css */
@@ -149,12 +141,7 @@ igx-avatar {
 }
 ```
 
-The snippet above will set the background in all avatars to orange.
-
-The avatar component will look for the `--background` variable first. If explicitly set, it will take its value. In other words, `local` variables have higher priority and will work **only** if applied to the `igx-avatar` directly, either by using its tag selector or any other selector that targets `igx-avatar`.
-The global `--ig-avatar-background` can be thought of as _fallback_ variable. It's going to be used only if the local `--background` is not explicitly overridden.
-
-For the curious, here's how this is implemented internally in the avatar:
+This sets the background of every avatar to orange, because the local `--background` variable overrides the global one wherever it's set on `igx-avatar` directly. Here's how the avatar implements this internally:
 
 ```css
 igx-avatar {
@@ -163,19 +150,17 @@ igx-avatar {
 }
 ```
 
-You would generally use _global_ variables when you want to apply changes to all instances of a component while _local_ variables target specific component instances and will always override the global variable.
-
-Here's another example:
+Use the global variable to restyle all instances of a component at once; use the local variable to target specific instances. For example:
 
 ```html
-<!-- app.component.html -->
+{/* app.component.html */}
 <igx-avatar>AB</igx-avatar>
 <igx-avatar>CD</igx-avatar>
 <app-contacts></app-contacts>
 ```
 
 ```html
-<!-- contacts.component.html -->
+{/* contacts.component.html */}
 <igx-avatar>EF</igx-avatar>
 <igx-avatar>GH</igx-avatar>
 ```
@@ -194,20 +179,56 @@ igx-avatar {
 }
 ```
 
-Avatars `AB` and `CD` will use the globally set _lavender_ color as background, while avatars `EF` and `GH` will have _purple_ backgrounds.
+Avatars `AB` and `CD` use the globally set _lavender_ background, while avatars `EF` and `GH` — scoped under `contacts.component.css` — use _purple_.
 
-**Each component has all of its theme properties documented in the styling section of the component documentation.**
+**Each component documents its own theme properties in the styling section of its topic.**
 
-This should be all you need to get you started with theming. You can modify global palette colors, elevations, and change component theme properties by creating global and local component themes. If you want to learn more, we have extensive documentation covering topics like **Palettes**, **Elevations**, **Typography**, and **Theming with Sass** in depth.
+## Sass Theming Engine
+
+If CSS variables don't give you enough control — for example, you need several reusable theme variants of the same component, or you want to tree-shake the generated CSS down to only the components you use — use the Sass theming engine directly. It exposes the same `palette`, `core`, and `theme` APIs used to build every bundled theme:
+
+```scss
+// Import the theming module
+@use "igniteui-angular/theming" as *;
+
+$my-color-palette: palette(
+  $primary: #2ab759,
+  $secondary: #f96a88,
+  $surface: #e5e5e5
+);
+
+// IMPORTANT: Always include core() first — it provides the base
+// definitions theme() depends on.
+@include core();
+@include theme($my-color-palette);
+```
+
+See [Theming with Sass](/themes/sass) for the full concept breakdown — palettes, schemas, typography, roundness, elevations, and animations — and how to build global or component-scoped themes with it.
+
+## Accessibility
+
+Palette colors and their contrast text colors are generated together: every color variant in a palette has a matching `-contrast` variant (black or white) chosen for readable contrast against it, retrievable with the Sass `contrast-color` function — see [Contrast Text Colors](/themes/sass/palettes#contrast-text-colors). Compiled themes also expose each one as a `--ig-*-contrast` CSS variable; see [Palettes](/themes/palettes).
+
+The `core()` Sass mixin accepts an `$enhanced-accessibility` argument (default `false`). Enabling it switches chart color brushes to a color-blind–friendly palette instead of the regular one:
+
+```scss
+@include core($enhanced-accessibility: true);
+```
+
+## API References
+
+- `Sass Theming API Reference`
+
+## Next Steps
+
+- [Palettes](/themes/palettes)
+- [Elevations](/themes/elevations)
+- [Typography](/themes/typography)
+- [Roundness](/themes/roundness)
+- [Spacing](/themes/spacing)
+- [Theming with Sass](/themes/sass)
 
 ## Additional Resources
-
-Related topics:
-
-- [Palettes](./palettes.md)
-- [Elevations](./elevations.md)
-- [Typography](./typography.md)
-- [Theming with Sass](./sass/index.md)
 
 Our community is active and always welcoming to new ideas.
 

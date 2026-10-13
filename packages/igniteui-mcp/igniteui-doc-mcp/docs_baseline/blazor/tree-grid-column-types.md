@@ -1,21 +1,18 @@
 ---
-title: Blazor Tree Grid Column Data Types - Ignite UI for Blazor
-_description: Handle cell and editing templates in Blazor by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
-_keywords: Column Data Type , Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-types
+title: "Blazor Tree Grid Column Data Types - Ignite UI for Blazor"
+description: Handle cell and editing templates in Blazor by choosing from several predefined column data types - number, string, date, boolean, currency and percent column.
+keywords: Column Data Type , Blazor, Tree Grid, IgbTreeGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/column-types"
+llms:
+  description: "The Blazor Tree Grid provides a default handling of number, string, date, boolean, currency and percent column data types, based on which the appearance of the default and editing templates will be present."
+_componentKey: TreeGrid
 _tocName: Column Types
 _premium: true
 ---
-
 # Blazor Tree Grid Column Types Overview
 
 The Blazor Tree Grid provides a default handling of **number**, **string**, **date**, **boolean**, **currency** and **percent** column data types, based on which the appearance of the default and editing templates will be present.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ## Blazor Tree Grid Column Types Example
 
@@ -475,21 +472,19 @@ public class Worker
 //end data
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## Blazor Tree Grid Default Template
 
-If you want to enable a data type-specific template, you should set the column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) input, otherwise the column will be treated as a string column since that is the default value for column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType).
+If you want to enable a data type-specific template, you should set the column [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType).
 
-The following sections describe the default templates for each [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType).
+The following sections describe the default templates for each [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType).
 
 ### String
 
-This column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) is not changing the appearance or format of the cell value.
+This column [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) is not changing the appearance or format of the cell value.
 
 ### Number
 
-If the [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale) settings, as well as when [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=locale) settings, as well as when [`IgbColumn.pipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
@@ -500,11 +495,12 @@ If the [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&me
 @code {
     private IgbColumnPipeArgs formatOptions = new IgbColumnPipeArgs() { DigitsInfo = "1.4-4" };
 }
+
 ```
 
 ### DateTime, Date and Time
 
-The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale) format or [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
+The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=locale) format or [`IgbColumn.pipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
 
 - **format** - The default value for formatting the date is `'mediumDate'`. Other available options are `'short'`, `'long'`, `'shortDate'`, `'fullDate'`, `'longTime'`, `'fullTime'` and etc.
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
@@ -515,13 +511,14 @@ The appearance of the date portions will be set (e.g. day, month, year) based on
 @code {
     private IgbColumnPipeArgs formatDateOptions = new IgbColumnPipeArgs()
     {
-        /** The date/time components that a date column will display, using predefined options or a custom format string. */
-        /** e.g 'dd/mm/yyyy' or 'shortDate' **/
+        // The date/time components that a date column will display, using predefined options or a custom format string.
+        // e.g 'dd/mm/yyyy' or 'shortDate'
         Format = "longDate",
-        /** A timezone offset (such as '+0430'), or a standard UTC/GMT or continental US timezone abbreviation. */
+        /** A timezone offset (such as '+0430'), or a standard UTC/GMT or continental US timezone abbreviation.*/
         Timezone = "GMT"
     };
 }
+
 ```
 
 Available timezones:
@@ -539,7 +536,7 @@ Available timezones:
 | Hawaii Standard Time      |‘UTC-10’                   |
 | India Standard Time       |‘UTC+4’                    |
 
-The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
+The `IgbTreeGrid` accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
@@ -558,15 +555,13 @@ As you can see in the sample, we specify a different format options in order to 
 #### Cell Editing
 
 When it comes to cell editing based on the column type a different editor will appear:
-
-- `DateTime` - `DateTimeEditor` will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
+- `DateTime` - [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)  will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
 - `Date` - [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) will be used.
-- `Time` - `TimePicker` will be used.
+- `Time` - [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) will be used.
 
 #### Filtering
 
 The same editors listed above will be used when it comes to Quick Filtering/Excel-style Filtering. These are the following filtering operands that each type exposes:
-
 - `DateTime` and `Date` - Equals, Does Not Equal, Before, After, Today, Yesterday, This Month, Last Month, Next Month, This Year, Last Year, Next Year, Empty, Not Empty, Null, Not Null;
 - `Time` - At, Not At, Before, After, At or Before, At or After, Empty, Not Empty, Null, Not Null;
 
@@ -596,7 +591,7 @@ Default template is using the value coming from the data as an image source to a
 <IgbColumn DataType="GridColumnDataType.Image"></IgbColumn>
 ```
 
-When [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=AutoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When `AutoGenerate` is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 
 ### Currency
 
@@ -604,7 +599,7 @@ When [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGri
 
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
 
-By using the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
+By using the [`IgbColumn.pipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```razor
 <IgbColumn Field="UnitsInStock" DataType="GridColumnDataType.Currency" PipeArgs=formatOptions></IgbColumn>
@@ -616,14 +611,15 @@ By using the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbCol
         Display = "symbol-narrow"
     };
 }
+
 ```
 
 | Parameter                 | Description                                                |
 |---------------------------| -------------------------|
 | digitsInfo                | Represents Decimal representation of currency value        |
-| display\-                | Displays the value by narrow or wide symbol                |
+| display*                  | Displays the value by narrow or wide symbol                |
 
-\*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
+*display - for the default en-US locale, the code USD can be represented by the narrow symbol $ or the wide symbol US$.
 
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
@@ -640,19 +636,20 @@ When it comes to cell editing, the value will be the same as the data source val
     private IgbColumnPipeArgs formatPercentOptions = new IgbColumnPipeArgs()
     {
         /**
-        * Decimal representation options, specified by a string in the following format:
+        *Decimal representation options, specified by a string in the following format:
         * `{minIntegerDigits}`.`{minFractionDigits}`-`{maxFractionDigits}`.
-        * `minIntegerDigits`: The minimum number of integer digits before the decimal point. Default is 1.
+        *`minIntegerDigits`: The minimum number of integer digits before the decimal point. Default is 1.
         * `minFractionDigits`: The minimum number of digits after the decimal point. Default is 0.
-        * `maxFractionDigits`: The maximum number of digits after the decimal point. Default is 3.
+        *`maxFractionDigits`: The maximum number of digits after the decimal point. Default is 3.
         */
         DigitsInfo = "2.2-3"
     };
 }
+
 ```
 
-> [!Note]
-> When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
+**Note:** 
+When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template
 
@@ -684,21 +681,19 @@ Custom template and column formatter definition will always take precedence over
  <IgbColumn FormatterScript="CurrencyFormatter"></IgbColumn>
 </IgbTreeGrid>
 
+```
+
+```javascript
 //In Javascript
 igRegisterScript("CurrencyFormatter", (value) => {
     return `$ ${value.toFixed(0)}`;
 }, false);
+
 ```
 
 ## API References
-
-- `Cell`
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs)
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-- [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale)
-- [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 - For custom templates you can see [cell editing topic](cell-editing.md#cell-editing-templates)

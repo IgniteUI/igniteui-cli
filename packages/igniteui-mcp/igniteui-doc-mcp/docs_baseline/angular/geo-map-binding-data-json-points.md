@@ -1,14 +1,15 @@
 ---
-title: Angular Map | Data Visualization Tools | Binding JSON Files | Infragistics
-_description: Learn how to use Infragistics' Angular map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Angular map demos!
-_keywords: Angular map, JSON files, Ignite UI for Angular, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Angular Map | Data Visualization Tools | Binding JSON Files | Infragistics"
+description: Learn how to use Infragistics' Angular map to display data that contains geographic locations from view models or geographic locations loaded from JSON files. View Ignite UI for Angular map demos!
+keywords: "Angular map, JSON files, Ignite UI for Angular, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Angular map, you can plot geographic data loaded from various file types."
 _tocName: Binding JSON File
 _premium: true
 ---
-
 # Angular Binding JSON Files with Geographic Locations
 
 With the Ignite UI for Angular map, you can plot geographic data loaded from various file types. For example, you can load geographic locations from JavaScript Object Notation (JSON) file.
@@ -132,10 +133,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from JSON file:
 
 ```json
@@ -148,11 +146,10 @@ Here is an example of data from JSON file:
 ```
 
 ## Code Snippet
-
-The following code loads and binds [`IgxGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html) in the map component to an array of objects created from loaded JSON file with geographic locations:
+The following code loads and binds `IgxGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded JSON file with geographic locations:
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -232,10 +229,9 @@ export class MapBindingDataJsonPointsComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html)
-- [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html)
-- `GeographicMap`
-- `DataSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html#longitudeMemberPath)
+`IgxGeographicHighDensityScatterSeries`
+`IgxGeographicSymbolSeries`
+`IgxGeographicMap`
+`DataSource`
+`LatitudeMemberPath`
+`LongitudeMemberPath`

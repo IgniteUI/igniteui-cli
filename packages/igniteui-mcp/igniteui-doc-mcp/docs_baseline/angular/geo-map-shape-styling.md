@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics
-_description: Learn how to apply custom styling to Infragistics' Angular map's shape series. Check out Ignite UI for Angular map tutorials!
-_keywords: Angular map, custom styling, Ignite UI for Angular, Infragistics, conditional formatting, shape styling
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeries", "Series"]
+title: "Angular Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics"
+description: Learn how to apply custom styling to Infragistics' Angular map's shape series. Check out Ignite UI for Angular map tutorials!
+keywords: "Angular map, custom styling, Ignite UI for Angular, Infragistics, conditional formatting, shape styling"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeries", "Series"]
+llms:
+  description: "Explains how to apply data-driven conditional styling to geographic shape series in the Ignite UI for Angular Map."
 _tocName: Shape Styling
 _premium: true
 ---
-
 # Angular Shape Styling on Geographic Shape Series
 
-This topic explains how to apply custom styling to the [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) in the Angular [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html).
+This topic explains how to apply custom styling to the `IgxGeographicShapeSeries` in the Angular `IgxGeographicMap`.
 
 ## Angular Shape Styling on Geographic Shape Series Example
 
@@ -169,21 +170,18 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Required Imports
 
 Shape styling requires that you import the following classes:
 
 ```ts
-import { IgxGeographicShapeSeries } from 'igniteui-angular-maps';
+import { IgxGeographicShapeSeriesComponent } from 'igniteui-angular-maps';
 import { IgxStyleShapeEventArgs } from 'igniteui-angular-charts';
 import { IgxShapeDataSource } from 'igniteui-angular-core';
 import { IgxShapefileRecord } from 'igniteui-angular-core';
 ```
 
-Note that the following code examples are using the [Shape Styling Utility](geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
-
+Note that the following code examples are using the [Shape Styling Utility](./geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
 - [Shape Comparison Styling](#shape-comparison-styling)
 - [Shape Random Styling](#shape-random-styling)
 - [Shape Range Styling](#shape-range-styling)
@@ -201,10 +199,10 @@ this.shapeRandomStyling = new ShapeRandomStyling();
 this.shapeRandomStyling.shapeStrokeColors = ['Black'];
 this.shapeRandomStyling.shapeFillColors = ['#8C23D1', '#0E9759', '#B4D336', '#F2A464', '#D74545', 'DodgerBlue'];
 
-this.geoSeries = new IgxGeographicShapeSeries();
+this.geoSeries = new IgxGeographicShapeSeriesComponent();
 this.geoSeries.styleShape = this.onStylingShape;
 // ...
-public onStylingShape(s: IgxGeographicShapeSeries, args: IgxStyleShapeEventArgs) {
+public onStylingShape(s: IgxGeographicShapeSeriesComponent, args: IgxStyleShapeEventArgs) {
     const itemRecord = args.item as IgxShapefileRecord;
     const shapeStyle = this.ShapeRandomStyling.getStyle(itemRecord);
     args.shapeOpacity = shapeStyle.opacity;
@@ -230,10 +228,10 @@ this.shapeScaleStyling.defaultFill = 'Gray';
 this.shapeScaleStyling.shapeStrokeColors = ['Black'];
 this.shapeScaleStyling.shapeFillColors = ['DodgerBlue', 'yellow', '#c2f542', '#e8c902', '#e8b602', '#e87902', 'brown'];
 
-this.geoSeries = new IgxGeographicShapeSeries();
+this.geoSeries = new IgxGeographicShapeSeriesComponent();
 this.geoSeries.styleShape = this.onStylingShape;
 // ...
-public onStylingShape(s: IgxGeographicShapeSeries, args: IgxStyleShapeEventArgs) {
+public onStylingShape(s: IgxGeographicShapeSeriesComponent, args: IgxStyleShapeEventArgs) {
     const itemRecord = args.item as IgxShapefileRecord;
     const shapeStyle = this.shapeScaleStyling.getStyle(itemRecord);
     args.shapeOpacity = shapeStyle.opacity;
@@ -260,10 +258,10 @@ this.shapeRangeStyling.ranges = [
     { fill: 'brown',  minimum: 500000000, maximum: 2000000000, }, // 500 M - 2 B
 ];
 
-this.geoSeries = new IgxGeographicShapeSeries();
+this.geoSeries = new IgxGeographicShapeSeriesComponent();
 this.geoSeries.styleShape = this.onStylingShape;
 // ...
-public onStylingShape(s: IgxGeographicShapeSeries, args: IgxStyleShapeEventArgs) {
+public onStylingShape(s: IgxGeographicShapeSeriesComponent, args: IgxStyleShapeEventArgs) {
     const itemRecord = args.item as IgxShapefileRecord;
     const shapeStyle = this.shapeRangeStyling.getStyle(itemRecord);
     args.shapeOpacity = shapeStyle.opacity;
@@ -305,10 +303,10 @@ this.shapeComparisonStyling.itemMappings = [
     { fill: '#b64fff', itemValue: 'Australia' },
 ];
 
-this.geoSeries = new IgxGeographicShapeSeries();
+this.geoSeries = new IgxGeographicShapeSeriesComponent();
 this.geoSeries.styleShape = this.onStylingShape;
 // ...
-public onStylingShape(s: IgxGeographicShapeSeries, args: IgxStyleShapeEventArgs) {
+public onStylingShape(s: IgxGeographicShapeSeriesComponent, args: IgxStyleShapeEventArgs) {
     const itemRecord = args.item as IgxShapefileRecord;
     const shapeStyle = this.shapeComparisonStyling.getStyle(itemRecord);
     args.shapeOpacity = shapeStyle.opacity;
@@ -319,6 +317,5 @@ public onStylingShape(s: IgxGeographicShapeSeries, args: IgxStyleShapeEventArgs)
 ```
 
 ## API References
-
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
+`IgxGeographicShapeSeries`
+`IgxGeographicMap`

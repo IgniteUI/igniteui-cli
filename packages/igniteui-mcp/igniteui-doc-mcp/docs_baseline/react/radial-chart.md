@@ -1,21 +1,22 @@
 ---
-title: React Radial Chart | Data Visualization | Infragistics
-_description: Infragistics' React Radial Chart
-_keywords: React Charts, Radial Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "RadialLineSeries", "Series"]
+title: "React Radial Chart | Data Visualization | Infragistics"
+description: Infragistics' React Radial Chart
+keywords: "React Charts, Radial Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "RadialLineSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Radial Chart takes data and render it as collection of data points wrapped around a circle (rather than stretching along a horizontal line)."
 _tocName: Radial Chart
 _premium: true
 ---
-
 # React Radial Chart
 
 The Ignite UI for React Radial Chart takes data and render it as collection of data points wrapped around a circle (rather than stretching along a horizontal line). Radial Chart is also mapping a list of categories from the minimum to the maximum of the extent of the chart, and support the category grouping mechanisms.
 
 ## React Radial Area Chart
 
-The React Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrRadialAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialareaseries.html), as shown in the example below.
+The React Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrRadialAreaSeries`, as shown in the example below.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -173,11 +174,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Column Chart
 
-The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrRadialColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialcolumnseries.html), as shown in the example below:
+The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrRadialColumnSeries`, as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -333,11 +332,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Line Chart
 
-The React Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrRadialLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html), as shown in the example below:
+The React Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the `IgrDataChart` control by binding your data to `IgrRadialLineSeries`, as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -495,11 +492,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Pie Chart
 
-The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrRadialPieSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialpieseries.html), as shown in the example below:
+The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrRadialPieSeries`, as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -655,11 +650,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Chart Styling
 
-Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control.
+Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in `IgrDataChart` control.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -817,13 +810,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Chart Settings
 
-In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the `LabelMode` property for the [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html).
-
-<div class="divider--half"></div>
+In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the `LabelMode` property for the `IgrCategoryAngleAxis`.
 
 ## Additional Resources
 
@@ -837,16 +826,10 @@ You can find more information about related chart types in these topics:
 
 ## API References
 
-The following table lists API members mentioned in the above sections:
-
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
-- [`IgrRadialAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialareaseries.html)
-- [`IgrRadialColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialcolumnseries.html)
-- [`IgrRadialLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html)
-- [`IgrRadialPieSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialpieseries.html)
-- `ItemsSource`
-- `AngleAxisName`
-- `ValueAxisName`
-- [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html#valueMemberPath)
-- [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html)
-- [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html)
+`IgrDataChart`<br />
+`IgrRadialAreaSeries`<br />
+`IgrRadialColumnSeries`<br />
+`IgrRadialLineSeries`<br />
+`IgrRadialPieSeries`<br />
+`IgrCategoryAngleAxis`<br />
+`IgrNumericRadiusAxis`<br />

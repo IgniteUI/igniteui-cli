@@ -4,7 +4,7 @@ class IgxNavigationDrawerComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Navigation Drawer";
-		this.group = "Layouts";
+		this.group = "Menus";
 		this.description = "a container element for side navigation, providing quick access between views";
 	}
 }

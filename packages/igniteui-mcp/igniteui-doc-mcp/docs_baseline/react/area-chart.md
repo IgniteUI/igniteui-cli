@@ -1,21 +1,22 @@
 ---
-title: React Area Chart | Data Visualization | Infragistics
-_description: Infragistics' React Area Chart
-_keywords: React Charts, Area Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "CategoryChartType"]
+title: "React Area Chart | Data Visualization | Infragistics"
+description: Infragistics' React Area Chart
+keywords: "React Charts, Area Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in."
 _tocName: Area Chart
 _premium: true
 ---
-
 # React Area Chart
 
-The Ignite UI for React Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
+The Ignite UI for React Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). This chart emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values. Therefore, they are often chronological, showing a change of quantity e.g. accumulation of a commodity over time.
 
 ## React Area Chart Example
 
-You can create React Category Area Chart in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to **Area** enum, as shown in the example below.
+You can create React Category Area Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Area** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -134,8 +135,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Area Chart Recommendations
 
 ### Area Chart Use Cases
@@ -170,7 +169,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## React Area Chart with Single Series
 
-React Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Area`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Area) value, as shown in the example below.
+React Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `Area` value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -274,11 +273,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `ItemsSource` property of the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `DataSource` property of the `IgrCategoryChart` control.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -397,11 +394,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Area Chart Styling
 
-Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
+Area charts often have semi-transparent fill for their areas, thicker lines and slightly larger markers than usual. Below is an example showing how you can style the Area Chart from earlier accordingly.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -525,15 +520,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Area Charts
 
-The following sections explain more advanced types of React Area Charts that can be created using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control instead of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control with simplified API.
+The following sections explain more advanced types of React Area Charts that can be created using the `IgrDataChart` control instead of `IgrCategoryChart` control with simplified API.
 
 ## React Step Area Chart
 
-The React Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`StepArea`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#StepArea) value, as shown in the example below.
+The React Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `StepArea` value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -656,13 +649,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
-The following sections explain more advanced types of React Area Charts that can be created using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control instead of [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control with simplified API.
+The following sections explain more advanced types of React Area Charts that can be created using the `IgrDataChart` control instead of `IgrCategoryChart` control with simplified API.
 
 ## React Range Area Chart
 
-The React Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrRangeAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangeareaseries.html), as shown in the example below.
+The React Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrRangeAreaSeries`, as shown in the example below.
 
 ```typescript
 export class TemperatureRangeDataItem {
@@ -817,11 +808,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Area Chart
 
-The React Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html), as shown in the example below.
+The React Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrStackedAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1001,11 +990,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Area Chart
 
-The React Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html), as shown in the example below.
+The React Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrStacked100AreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1182,11 +1169,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Spline Area Chart
 
-The React Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrStackedSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineareaseries.html), as shown in the example below.
+The React Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrStackedSplineAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1366,11 +1351,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Spline Area Chart
 
-The React Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrStacked100SplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineareaseries.html), as shown in the example below.
+The React Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrStacked100SplineAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1546,11 +1529,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Radial Area Chart
 
-The React Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrRadialAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialareaseries.html), as shown in the example below.
+The React Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrRadialAreaSeries`, as shown in the example below.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -1708,11 +1689,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Polar Area Chart
 
-The React Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrPolarAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarareaseries.html), as shown in the example below.
+The React Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrPolarAreaSeries`, as shown in the example below.
 
 ```typescript
 export class BoatSailingDataItem {
@@ -1875,11 +1854,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Polar Spline Area Chart
 
-The React Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to [`IgrPolarSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarsplineareaseries.html), as shown in the example below.
+The React Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in `IgrDataChart` control by binding your data to `IgrPolarSplineAreaSeries`, as shown in the example below.
 
 ```typescript
 export class BoatSailingDataItem {
@@ -2027,8 +2004,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -2046,13 +2021,26 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) | [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) = [`Area`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#Area)  |
-| Step Area                | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) | [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) = [`StepArea`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.categorycharttype.html#StepArea)  |
-| Range Area               | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrRangeAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangeareaseries.html)  |
-| Radial Area              | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrRadialAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialareaseries.html)  |
-| Polar Area               | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrPolarAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarareaseries.html)  |
-| Polar Spline Area        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrPolarSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarsplineareaseries.html)  |
-| Stacked Area             | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html)  |
-| Stacked Spline Area      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrStackedSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineareaseries.html)  |
-| Stacked 100% Area        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html)  |
-| Stacked 100% Spline Area | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)  | [`IgrStacked100SplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineareaseries.html)  |
+| Area                     | `IgrCategoryChart` | `CategoryChart.ChartType` = `Area`  |
+| Step Area                | `IgrCategoryChart` | `CategoryChart.ChartType` = `StepArea`  |
+| Range Area               | `IgrDataChart`  | `IgrRangeAreaSeries`  |
+| Radial Area              | `IgrDataChart`  | `IgrRadialAreaSeries`  |
+| Polar Area               | `IgrDataChart`  | `IgrPolarAreaSeries`  |
+| Polar Spline Area        | `IgrDataChart`  | `IgrPolarSplineAreaSeries`  |
+| Stacked Area             | `IgrDataChart`  | `IgrStackedAreaSeries`  |
+| Stacked Spline Area      | `IgrDataChart`  | `IgrStackedSplineAreaSeries`  |
+| Stacked 100% Area        | `IgrDataChart`  | `IgrStacked100AreaSeries`  |
+| Stacked 100% Spline Area | `IgrDataChart`  | `IgrStacked100SplineAreaSeries`  |
+
+## API References
+
+`IgrCategoryChart`<br />
+`IgrDataChart`<br />
+`IgrRangeAreaSeries`<br />
+`IgrRadialAreaSeries`<br />
+`IgrPolarAreaSeries`<br />
+`IgrPolarSplineAreaSeries`<br />
+`IgrStackedAreaSeries`<br />
+`IgrStackedSplineAreaSeries`<br />
+`IgrStacked100AreaSeries`<br />
+`IgrStacked100SplineAreaSeries`<br />

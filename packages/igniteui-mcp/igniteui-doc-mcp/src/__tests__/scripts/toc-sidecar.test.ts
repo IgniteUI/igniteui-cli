@@ -7,7 +7,7 @@ import {
   resolveUniqueName,
   type TocSidecarRecord,
 } from "../../../scripts/lib/toc-sidecar.js";
-import { walkTocYaml, type TocEntry, type TocNode } from "../../../scripts/lib/toc-index.js";
+import { walkTocJson, type TocEntry, type TocNode } from "../../../scripts/lib/toc-index.js";
 
 const TOC: TocNode[] = [
   { name: "Grids & Lists", header: true },
@@ -39,7 +39,7 @@ describe("TocSidecar", () => {
     const sidecar = new TocSidecar("angular", root);
     const written = new Set<string>();
 
-    for (const entry of walkTocYaml(TOC)) {
+    for (const entry of walkTocJson(TOC)) {
       const file = sidecar.nameFor(entry.href) ?? "excel-utility.md";
       written.add(file);
       sidecar.record(entry, file);
@@ -61,7 +61,7 @@ describe("TocSidecar", () => {
 
   it("returns the cached name for an href it has already seen", () => {
     const sidecar = new TocSidecar("react", tempRoot());
-    const [first] = walkTocYaml(TOC);
+    const [first] = walkTocJson(TOC);
     expect(sidecar.nameFor(first.href)).toBeUndefined();
     sidecar.record(first, "excel-utility.md");
     expect(sidecar.nameFor(first.href)).toBe("excel-utility.md");
@@ -69,7 +69,7 @@ describe("TocSidecar", () => {
 
   it("replaces the previous sidecar rather than merging into it", () => {
     const root = tempRoot();
-    const stale: TocEntry = walkTocYaml(TOC)[0];
+    const stale: TocEntry = walkTocJson(TOC)[0];
 
     const first = new TocSidecar("blazor", root);
     first.record(stale, "excel-utility.md");
@@ -89,7 +89,7 @@ describe("TocSidecar", () => {
 
   it("rejects a record set that does not match the files written", () => {
     const sidecar = new TocSidecar("angular", tempRoot());
-    sidecar.record(walkTocYaml(TOC)[0], "excel-utility.md");
+    sidecar.record(walkTocJson(TOC)[0], "excel-utility.md");
     expect(() => sidecar.write(new Set(["excel-utility.md", "extra.md"]))).toThrow(
       /sidecar mismatch/
     );
@@ -97,7 +97,7 @@ describe("TocSidecar", () => {
 
   it("leaves the previous sidecar intact when the write fails", () => {
     const root = tempRoot();
-    const entry = walkTocYaml(TOC)[0];
+    const entry = walkTocJson(TOC)[0];
 
     const first = new TocSidecar("angular", root);
     first.record(entry, "excel-utility.md");

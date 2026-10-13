@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Shape Polyline Series | Infragistics
-_description: Use Infragistics Angular map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Angular map's series!
-_keywords: Angular map, Ignite UI for Angular, shape polyline series, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "Angular Map | Data Visualization Tools | Shape Polyline Series | Infragistics"
+description: Use Infragistics Angular map's shape polyline series to render roads or connections between geographic locations such as cities or airports. Learn more about Ignite UI for Angular map's series!
+keywords: "Angular map, Ignite UI for Angular, shape polyline series, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In Angular map component, you can use the GeographicPolylineSeries to display geo-spatial data using polylines in a geographic context."
 _tocName: Geographic Polyline Map
 _premium: true
 ---
-
 # Angular Geographic Polyline Map
 
-In Angular map component, you can use the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) to display geo-spatial data using polylines in a geographic context. This type of geographic series is often used to render roads or connections between geographic locations such as cities or airports.
+In Angular map component, you can use the `IgxGeographicPolylineSeries` to display geo-spatial data using polylines in a geographic context. This type of geographic series is often used to render roads or connections between geographic locations such as cities or airports.
 
 ## Angular Geographic Polyline Map Example
 
@@ -160,22 +161,16 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
-The [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) works a lot like the [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) except that geo-spatial data is rendered with polylines instead of polygons.
+The `IgxGeographicPolylineSeries` works a lot like the `IgxGeographicShapeSeries` except that geo-spatial data is rendered with polylines instead of polygons.
 
 ## Data Requirements
-
-Similarly to other types of geographic series in the control, the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriesbasecomponent.html#shapeMemberPath) property. The [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) uses points of this mapped data column to plot polygons in the control.
+Similarly to other types of geographic series in the control, the `IgxGeographicPolylineSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicPolylineSeries` uses points of this mapped data column to plot polygons in the control.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) to locations of cities loaded from a shape file using the [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource).
-
-<!-- Angular -->
+The following code shows how to bind the `IgxGeographicPolylineSeries` to locations of cities loaded from a shape file using the [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord).
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
 
         <igx-geographic-map #map
             width="700px"
@@ -200,7 +195,7 @@ The following code shows how to bind the [`IgxGeographicPolylineSeriesComponent`
 ```ts
 import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild} from "@angular/core";
 import { IgxShapeDataSource } from 'igniteui-angular-core';
-import { IgxIgxGeographicMapComponent } from 'igniteui-angular-maps';
+import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
 import { IgxGeographicPolylineSeriesComponent } from 'igniteui-angular-maps';
 
 @Component({
@@ -280,8 +275,6 @@ export class MapTypeShapePolylineSeriesComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html)
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource)
+`IgxGeographicPolylineSeries`
+`IgxGeographicShapeSeries`
+[`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord)

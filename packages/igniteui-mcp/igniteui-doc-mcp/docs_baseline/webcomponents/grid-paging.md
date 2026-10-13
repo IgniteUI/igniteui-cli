@@ -1,22 +1,22 @@
 ---
-title: Web Components Grid Paging - Ignite UI for Web Components
-_description: Configure Web Components pagination and create custom pages in the Web Components table by Ignite UI, get data for the requested pages with variety of events.
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-_keywords: Paging, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/paging
+title: "Web Components Grid Paging - Ignite UI for Web Components"
+description: Configure Web Components pagination and create custom pages in the Web Components table by Ignite UI, get data for the requested pages with variety of events.
+keywords: Paging, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/paging"
+llms:
+  description: "The Ignite UI for Web Components Pagination feature in Web Components Grid is used to split a large set of data into a sequence of pages that have similar content."
+_componentKey: Grid
 _tocName: Paging
 _premium: true
 ---
-
 # Web Components Grid Pagination Overview
 
-The Ignite UI for Web Components Pagination feature in Web Components Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Grid supports template for custom pages.
+The Ignite UI for Web Components Pagination feature in Web Components Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Grid supports template for custom pages.
 
 ## Web Components Grid Pagination Example
 
-The following example represents [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pages via "Go to last page" and "Go to first page" buttons.
 
 ```typescript
 export class AthletesDataItem {
@@ -71,22 +71,18 @@ export class AthletesData extends Array<AthletesDataItem> {
 </igc-grid>
 ```
 
-<!-- ComponentStart: Grid -->
-
 ## Paging with Group By
 
 Group rows participate in the paging process along with data rows. They count towards the page size for each page. Collapsed rows are not included in the paging process.
 
 Integration between Paging and Group By is described in the [Group By](groupby.md#web-components-grid-group-by-with-paging) topic.
 
-<!-- ComponentEnd: Grid -->
-
 ## Usage
 
-The [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) component is used along with the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent) component is used along with the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 ```html
-<igc-grid id="grid" className="gridSize">
+<igc-grid id="grid" class="gridSize">
     <igc-paginator id="paginator" per-page="10">
     </igc-paginator>
 </igc-grid>
@@ -103,8 +99,6 @@ constructor() {
     paginator.selectOptions = selectOptions;
 }
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Paginator Component Demo
 
@@ -152,18 +146,10 @@ export class AthletesData extends Array<AthletesDataItem> {
     }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- * [Paginator](../paginator.md) -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -173,8 +159,6 @@ export class AthletesData extends Array<AthletesDataItem> {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

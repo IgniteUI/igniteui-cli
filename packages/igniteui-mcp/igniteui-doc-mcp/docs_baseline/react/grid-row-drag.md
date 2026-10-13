@@ -1,19 +1,18 @@
 ---
-title: React Grid Row Dragging - Ignite UI for React
-_description: Row dragging in React Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
-_keywords: React, Grid, IgrGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-drag
+title: "React Grid Row Dragging - Ignite UI for React"
+description: Row dragging in React Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
+keywords: "React, Grid, IgrGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-drag"
+llms:
+  description: "The Ignite UI for React Row Dragging feature in React Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse."
+_componentKey: Grid
 _tocName: Row Dragging
 _premium: true
 ---
-
 # Row Dragging in React Grid
 
-The Ignite UI for React Row Dragging feature in React Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component and is configurable via the [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) input.
+The Ignite UI for React Row Dragging feature in React Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component and is configurable via the [`IgrGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) input.
 
 ## React Grid Row Drag Example
 
@@ -166,7 +165,7 @@ root.render(<App />);
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), all you need to do is set the grid's [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), all you need to do is set the grid's [`IgrGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's [`IgrGrid.rowDragStart`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDragStart) event to fire. Releasing the click at any time will cause [`IgrGrid.rowDragEnd`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDragEnd) event to fire.
 
 ```tsx
 <IgrGrid rowDraggable={true}>
@@ -175,13 +174,7 @@ In order to enable row-dragging for your [`IgrGrid`](mcp:get_api_reference?platf
 
 ### Templating the Drag Icon
 
-The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: Grid -->
+The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
 ```tsx
 const dragIndicatorIconTemplate = (ctx: IgrGridEmptyTemplateContext) => {
@@ -194,41 +187,36 @@ const dragIndicatorIconTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 
 <IgrGrid rowDraggable={true} dragIndicatorIconTemplate={dragIndicatorIconTemplate}>
 </IgrGrid>
+
 ```
 
-<!-- ComponentEnd: Grid -->
+Once our drop handlers are properly configured, we're good to go!
+
+The result of the configuration can be seem below:
+
+#### Example Demo
+
+
 
 ## Application Demo
-
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
 
 ### Row Reordering Demo
 
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
-
-<!-- ComponentStart: Grid -->
 
 ```tsx
 <IgrGrid rowDraggable={true} primaryKey="ID" onRowDragEnd={webGridReorderRowHandler}>
 </IgrGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Make sure that there is a [`IgrGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-> [!Note]
-> Make sure that there is a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
-
-Once [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
-
-<!-- ComponentStart: Grid -->
+Once [`IgrGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`data`](mcp:get_api_reference?platform=react&component=IgrGrid&member=data) array
-
-<!-- ComponentEnd: Grid -->
+- Once you've found the **target** row, swap the records' places in the `Data` array
 
 Below, you can see this implemented:
 
@@ -258,15 +246,9 @@ const getCurrentRowIndex = (rowList: any[], cursorPosition) => {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 
-<!-- ComponentStart: Grid -->
-
 Holding onto the drag icon will allow you to move a row anywhere in the grid:
-
-<!-- ComponentEnd: Grid -->
 
 ```typescript
 export class CustomersDataItem {
@@ -446,23 +428,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
-
 ## Limitations
 
-Currently, there are no known limitations for the [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable).
+Currently, there are no known limitations for the [`IgrGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable).
 
 ## API References
-
-- [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowDraggable)
-- `RowDragStart`
-- `RowDragEnd`
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
-
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

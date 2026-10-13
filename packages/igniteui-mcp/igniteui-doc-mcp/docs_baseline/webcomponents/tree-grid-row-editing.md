@@ -1,23 +1,22 @@
 ---
-title: Web Components Tree Grid Editing Rows - Ignite UI for Web Components
-_description: Want to enable row editing in Web Components Tree Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Web Components Tree Grid rows editing component!
-_keywords: Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-editing
+title: "Web Components Tree Grid Editing Rows - Ignite UI for Web Components"
+description: Want to enable row editing in Web Components Tree Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Web Components Tree Grid rows editing component!
+keywords: "Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-editing"
+llms:
+  description: "The Ignite UI for Web Components Row Editing feature in Web Components Tree Grid allows editing data directly within the IgcTreeGrid."
+_componentKey: TreeGrid
 _tocName: Row Editing
 _premium: true
 ---
-
 # Web Components Tree Grid Row Editing
 
-The Ignite UI for Web Components Row Editing feature in Web Components Tree Grid allows editing data directly within the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for Web Components Row Editing feature in Web Components Tree Grid allows editing data directly within the `IgcTreeGrid`. On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## Web Components Tree Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the `IgcTreeGrid`. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -56,21 +55,19 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-> [!Note]
-> When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
+**Note:** 
+When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
 
-Define a [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) with bound data source and [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) set to true:
-
-<!-- ComponentStart: TreeGrid -->
+Define a `IgcTreeGrid` with bound data source and [`IgcTreeGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) set to true:
 
 ```html
 <igc-tree-grid id="grid" primary-key="ID" width="100%" height="500px" row-editable="true">
     <igc-column field="Name" header="Name" data-type="string"></igc-column>
     <igc-column field="Age" header="Age" data-type="number"></igc-column>
     <igc-column field="Title" header="Title" data-type="string"></igc-column>
-    <igc-column field="HireDate" field="Hire Date" data-type="date"></igc-column>
+    <igc-column field="HireDate" header="Hire Date" data-type="date"></igc-column>
 </igc-tree-grid>
 ```
 
@@ -81,16 +78,14 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
+**Note:** 
+Setting primary key is mandatory for row editing operations.
 
-> [!Note]
-> Setting primary key is mandatory for row editing operations.
+**Note:** 
+Enabling editing for individual columns is not necessary. Using the [`IgcTreeGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) property in the `IgcTreeGrid`, all rows, with defined `Field` property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`IgcTreeGrid.editable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=editable) input of that column to `false`.
 
-> [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) property in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), all rows, with defined [`field`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) input of that column to `false`.
-
-> [!Note]
-> The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+**Note:** 
+The `IgcTreeGrid` utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -110,13 +105,13 @@ constructor() {
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), the cell will also stay in edit mode.
+- If row is in edit mode and `IgcTreeGrid` is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When `IgcTreeGrid` is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the `IgcTreeGrid`, the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when `IgcTreeGrid` is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -137,8 +132,6 @@ constructor() {
 ### Customizing Text
 
 Customizing the text of the row editing overlay is possible using via templating.
-
-The `RowChangesCount` property is exposed and it holds the count of the changed cells.
 
 ```ts
 public rowEditTextTemplate = (ctx: IgcGridRowEditTextTemplateContext) => {
@@ -162,7 +155,7 @@ public rowEditActionsTemplate = (ctx: IgcGridRowEditActionsTemplateContext) => {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -177,8 +170,6 @@ Then set the related CSS properties for that class:
     --ig-banner-banner-message-color: #423589;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -229,28 +220,15 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgcTreeGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- [`endEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=endEdit)
-- [`field`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=field)
-- [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable)
-- [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey)
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

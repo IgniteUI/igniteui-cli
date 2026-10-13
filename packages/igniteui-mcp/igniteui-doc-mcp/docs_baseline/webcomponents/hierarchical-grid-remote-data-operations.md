@@ -1,24 +1,35 @@
 ---
-title: Web Components Hierarchical Grid Remote Data Operations - Ignite UI for Web Components
-_description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for Web Components.
-_keywords: Remote Data, Paging, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["GridBaseDirective"]
-namespace: Infragistics.Controls
+title: "Web Components Hierarchical Grid Remote Data Operations - Ignite UI for Web Components"
+description: Start using Angular remote data operations like remote filtering, remote sorting, and remote scrolling to load data from a server with Ignite UI for Web Components.
+keywords: Remote Data, Paging, Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+llms:
+  description: "The Ignite UI for Web Components Remote Data Operations feature in Web Components Hierarchical Grid supports operations such as remote virtualization, remote sorting, remote filtering and others."
+_componentKey: HierarchicalGrid
 _tocName: Remote Data Operations
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Remote Data Operations
 
-By default, the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) uses its own logic for performing data operations.
+By default, the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) uses its own logic for performing data operations.
 
-You can perform these tasks remotely and feed the resulting data to the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) by taking advantage of certain inputs and events, which are exposed by the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+You can perform these tasks remotely and feed the resulting data to the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) by taking advantage of certain inputs and events, which are exposed by the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+
+## Infinite Scroll
+
+ A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+
+To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the [`IgcForOfState.chunkSize`](mcp:get_api_reference?platform=webcomponents&component=IgcForOfState&member=chunkSize) and [`IgcForOfState.chunkSize`](mcp:get_api_reference?platform=webcomponents&component=IgcForOfState&member=chunkSize) properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
+
+The first thing to do is fetch the first chunk of the data. Setting the [`IgcHierarchicalGrid.totalItemCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
+
+Additionally, you have to subscribe to the [`IgcHierarchicalGrid.dataPreLoad`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=dataPreLoad) output, so that you can provide the data needed by the grid when it tries to display a different chunk, rather than the currently loaded one. In the event handler, you have to determine whether to fetch new data or return data, that's already cached locally.
+
+### Infinite Scroll Demo
+
+
 
 ## Remote Paging
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```ts
 export class RemotePagingService {
@@ -57,13 +68,10 @@ export class RemotePagingService {
         return `${qS}`;
     }
 }
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-After declaring the service, we need to create a component, which will be responsible for the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) construction and data subscription.
-
-<!-- ComponentStart: HierarchicalGrid -->
+After declaring the service, we need to create a component, which will be responsible for the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) construction and data subscription.
 
 First we need to bind to the relevant events so when we change pages and the amount of records shown per page, the remote service will fetch the correct amount of data
 
@@ -174,27 +182,18 @@ For further reference, please check the demo bellow:
 
 
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgcHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

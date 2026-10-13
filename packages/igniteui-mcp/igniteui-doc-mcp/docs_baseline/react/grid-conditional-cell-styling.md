@@ -1,39 +1,38 @@
 ---
-title: React Grid Conditional Cell Styling - Ignite UI for React
-_description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in React Grid to make cells stand out.
-_keywords: conditional styling, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/conditional-cell-styling
+title: "React Grid Conditional Cell Styling - Ignite UI for React"
+description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in React Grid to make cells stand out.
+keywords: conditional styling, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/conditional-cell-styling"
+llms:
+  description: "The Ignite UI for React Conditional Styling feature in React Grid allows custom styling on a row or cell level."
+_componentKey: Grid
 _tocName: Conditional Styling
 _premium: true
 ---
-
 # React Grid Conditional Styling
 
-The Ignite UI for React Conditional Styling feature in React Grid allows custom styling on a row or cell level. The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for React Conditional Styling feature in React Grid allows custom styling on a row or cell level.  The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Grid Conditional Row Styling
 
 The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
-- By setting [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
+- By setting [`IgrGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
+- By setting [`IgrGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) rows by setting the [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input and define custom rules.
+You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) rows by setting the [`IgrGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input and define custom rules.
 
 ```tsx
 <IgrGrid id="grid" height="600px" width="100%" rowClasses={rowClasses}>
 </IgrGrid>
 ```
 
-The [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgrGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const rowClasses = {
@@ -152,9 +151,9 @@ root.render(<Sample/>);
 
 ### Using Row Styles
 
-The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) control exposes the [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) control exposes the [`IgrGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`IgrGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) and [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) is:
+> The callback signature for both [`IgrGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) and [`IgrGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) is:
 
 ```tsx
 (row: IgrRowType) => boolean
@@ -172,10 +171,8 @@ const rowStyles = {
 
 ```tsx
 <IgrGrid id="grid" height="600px" width="100%" rowStyles={rowStyles}>
-<IgrGrid>
+</IgrGrid>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -457,21 +454,16 @@ root.render(<Sample/>);
 
 The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
-
-You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
+You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
 
 ```tsx
 <IgrColumn field="BeatsPerMinute" dataType="number" cellClasses={beatsPerMinuteClasses}></IgrColumn>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-The [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- ComponentStart: Grid -->
+The [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const upFontCondition = (rowData: any, columnKey: any): boolean => {
@@ -497,8 +489,6 @@ const beatsPerMinuteClasses = {
     color: red !important;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -678,17 +668,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`IgrColumn.cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles)` which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
-```ts
-(rowData: any, columnKey: string, cellValue: any, rowIndex: number) => boolean
-```
-
 ### Using Cell Styles
 
-Columns expose the [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -710,8 +696,6 @@ const webGridCellStyles = {
 ```tsx
 <IgrColumn cellStyles={webGridCellStyles}></IgrColumn>
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -866,8 +850,6 @@ root.render(<Sample/>);
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!--ComponentStart: Grid, HierarchicalGrid, TreeGrid-->
-
 ```tsx
 const backgroundClasses = {
     myBackground: (rowData: any, columnKey: string) => {
@@ -884,18 +866,15 @@ const editDone = (event: IgrGridEditEventArgs) => {
   <IgrColumn id="Col2" field="Col2" dataType="number" editable={true} cellClasses={backgroundClasses}></IgrColumn>
   <IgrColumn id="Col3" field="Col3" header="Col3" dataType="string" cellClasses={backgroundClasses}></IgrColumn>
 </IgrGrid>
-```
 
-<!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
+```
 
 ## API References
 
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Editing](editing.md)
@@ -909,13 +888,8 @@ const editDone = (event: IgrGridEditEventArgs) => {
 - [Column Hiding](column-hiding.md)
 - [Selection](selection.md)
 - [Searching](search.md)
-
-<!-- * [Toolbar](toolbar.md) -->
-
 - [Multi-column Headers](multi-column-headers.md)
 - [Size](size.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,18 +1,17 @@
 ---
 title: Angular Schematics & Ignite UI CLI | Ignite UI for Angular | Infragistics
-_description: The Ignite UI CLI and Ignite UI for Angular Schematics collection scaffold Angular projects and component views pre-configured for Ignite UI for Angular. Includes MCP server for AI assistant integration.
-_keywords: ignite ui for angular, angular schematics, ignite ui cli, scaffolding, infragistics
+description: The Ignite UI CLI and Ignite UI for Angular Schematics collection scaffold Angular projects and component views pre-configured for Ignite UI for Angular. Includes MCP server for AI assistant integration.
+keywords: ignite ui for angular, angular schematics, ignite ui cli, scaffolding, infragistics
 last_updated: "2025-04-06"
+llms:
+  description: "The Ignite UI CLI and the Ignite UI for Angular Schematics collection are two complementary scaffolding tools for generating Angular projects and component views pre-configured for Ignite UI for Angular."
 _tocName: Angular Schematics & Ignite UI CLI
 ---
-
-<!-- schema: Article -->
-
 # Angular Schematics & Ignite UI CLI
 
 The Ignite UI CLI and the Ignite UI for Angular Schematics collection are two complementary scaffolding tools for generating Angular projects and component views pre-configured for Ignite UI for Angular. Both provide a guided step-by-step wizard and non-interactive command modes. Both produce the same project output - they differ only in how they integrate with your workflow.
 
-The Ignite UI CLI does not manage Blazor or Web Components projects through this Angular toolchain. For the Angular-only Schematics workflow without a separate global tool, use `@igniteui/angular-schematics` directly with the Angular CLI. Neither tool is required to use Ignite UI for Angular - the library can be installed and configured manually as described in the [Getting Started guide](getting-started.md).
+The Ignite UI CLI does not manage Blazor or Web Components projects through this Angular toolchain. For the Angular-only Schematics workflow without a separate global tool, use `@igniteui/angular-schematics` directly with the Angular CLI. Neither tool is required to use Ignite UI for Angular - the library can be installed and configured manually as described in the [Getting Started guide](./getting-started.md).
 
 ## Ignite UI CLI
 

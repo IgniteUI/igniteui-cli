@@ -1,13 +1,14 @@
 ---
 title: Angular Grid Lite Sorting | Ignite UI for Angular | MIT license
-_description: Try Angular Grid Lite with sort operations, sort customization, and remote sorting for Angular Grid Lite. See demos and examples and build your next app.
-_keywords: sorting, {Platform}, {ComponentKeywords}, {ProductName}, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Try Angular Grid Lite with sort operations, sort customization, and remote sorting for Angular Grid Lite. See demos and examples and build your next app.
+keywords: sorting, Angular, , Ignite UI for Angular, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "The Grid Lite supports sorting operations on its data source."
 _tocName: Sorting
 ---
-
 # Sort Operations
 
 The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `sortable` property of the column.
@@ -115,8 +116,8 @@ The grid supports both single and multi-column sorting. Multi-column is enabled 
 grid.sortingOptions = { mode: 'single' };
 ```
 
->[!NOTE]
->The single/multi-column sorting behavior controls how end-users interact with the Grid lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
+**Note:** 
+The single/multi-column sorting behavior controls how end-users interact with the Grid lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-State Sorting
 
@@ -308,7 +309,7 @@ When a sorting operation is performed through the UI, the component emits a cust
 After the grid applies the new sorting state, a `sorted` event is emitted. It contains the expression which was used in the last sort operation and it is not cancellable.
 
 ```html
-<igx-grid-lite (sorting)="onSorting($event)" (sorted)="onSorted($event)">
+<igx-grid-lite (sorting)="onSorting($event)" (sorted)="onSorted($event)"></igx-grid-lite>
 ```
 
 ```typescript
@@ -439,7 +440,7 @@ igx-grid-lite {
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the **`dataPipelineConfiguration`** property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a **`DataPipelineParams`** object.
+Using the [`dataPipelineConfiguration`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=dataPipelineConfiguration) property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a **`DataPipelineParams`** object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -592,17 +593,15 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
-
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Filtering](filtering.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Filtering](/grid-lite/filtering)
 
 Our community is active and always welcoming to new ideas.
 

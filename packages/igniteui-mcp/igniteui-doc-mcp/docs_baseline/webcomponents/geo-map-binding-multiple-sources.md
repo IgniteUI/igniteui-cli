@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics
-_description: Use Infragistics' Web Components JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, geographic series, Ignite UI for Web Components, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+title: "Web Components Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
+description: Use Infragistics' Web Components JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, geographic series, Ignite UI for Web Components, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
 _tocName: Binding Multiple Sources
 _premium: true
 ---
-
 # Web Components Binding Multiple Data Sources
 
-In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) for plotting geographic locations of airports, the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) for plotting flights between airports, and 2nd [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) for plotting gridlines of major geographic coordinates.
+In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgcGeographicSymbolSeries` for plotting geographic locations of airports, the `IgcGeographicPolylineSeries` for plotting flights between airports, and 2nd `IgcGeographicPolylineSeries` for plotting gridlines of major geographic coordinates.
 
 ## Web Components Binding Multiple Data Sources Example
 
@@ -1011,37 +1012,34 @@ export class WorldUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) – displays locations of major airports
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) – displays flights between airports
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) – displays gridlines of major coordinates
+- `IgcGeographicSymbolSeries` – displays locations of major airports
+- `IgcGeographicPolylineSeries` – displays flights between airports
+- `IgcGeographicPolylineSeries` – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
 ## Creating Data Sources
 
-Create data sources for all geographic series that you want to display in the Ignite UI for Web Components map. For example, you can the use [WorldConnections](geo-map-resources-world-connections.md) script.
+Create data sources for all geographic series that you want to display in the Ignite UI for Web Components map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
 ## Overlaying Flights
 
-Create first [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Web Components map.
+Create first `IgcGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for Web Components map.
 
 ## Overlaying Gridlines
 
-Create second [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) object with geographic gridlines and add it to the Series collection of the Ignite UI for Web Components map.
+Create second `IgcGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for Web Components map.
 
 ## Overlaying Airports
 
-Create [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) object with airport points and add it to the Series collection of the geographic Ignite UI for Web Components map.
+Create `IgcGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for Web Components map.
 
 ## Summary
 
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
 ## API References
-
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
+`IgcGeographicPolylineSeries`
+`IgcGeographicSymbolSeries`

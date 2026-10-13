@@ -1,16 +1,17 @@
 ---
-title: React Map | World Connections | Data Source | Infragistics
-_description: Use Infragistics' React JavaScript map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for React map demos!
-_keywords: React map, map data, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "React Map | World Connections | Data Source | Infragistics"
+description: Use Infragistics' React JavaScript map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for React map demos!
+keywords: "React map, map data, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines."
 _tocName: World Connections
 _premium: true
 ---
-
 # React World Connections
 
-The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines. You can use these data sources as reference point for creating your own geographic data. Note that this utility depends on [WorldUtil](geo-map-resources-world-util.md) and [WorldLocations](geo-map-resources-world-locations.md) scripts.
+The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines. You can use these data sources as reference point for creating your own geographic data. Note that this utility depends on [WorldUtil](./geo-map-resources-world-util.md) and [WorldLocations](./geo-map-resources-world-locations.md) scripts.
 
 ## Code Snippet
 
@@ -142,5 +143,4 @@ export default class WorldConnections {
 ```
 
 ## API References
-
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrGeographicMap`

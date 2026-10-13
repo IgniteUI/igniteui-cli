@@ -10,11 +10,11 @@ import {
 	usePrefix,
 	useState,
 	type Status,
+	type Theme,
 } from "@inquirer/core";
 import { Separator } from "@inquirer/prompts";
 import { styleText } from "node:util";
 import type { PartialDeep } from "@inquirer/type";
-import type { Theme } from "@inquirer/core";
 
 export type ExclusiveCheckboxChoice<Value> = {
 	value: Value;

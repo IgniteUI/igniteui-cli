@@ -1,14 +1,15 @@
 ---
 title: Web Components Data Chart | Data Visualization Tools | Navigation | Infragistics
-_description: Navigate Infragistics' Web Components charts by panning right and left and zooming horizontally and vertically using mouse or touch. Learn about Ignite UI for Web Components graph navigation capabilities!
-_keywords: Web Components charts, data chart, navigation, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "CategoryChart", "FinancialChart", "ModifierKeys"]
+description: Navigate Infragistics' Web Components charts by panning right and left and zooming horizontally and vertically using mouse or touch. Learn about Ignite UI for Web Components graph navigation capabilities!
+keywords: Web Components charts, data chart, navigation, Ignite UI for Web Components, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components charts allows for interactive panning and zooming via the mouse, keyboard and touch."
 _tocName: Chart Navigation
 _premium: true
 ---
-
 # Web Components Chart Navigation
 
 The Ignite UI for Web Components charts allows for interactive panning and zooming via the mouse, keyboard and touch.
@@ -77,15 +78,13 @@ export class SampleFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 Like this sample? Get access to our complete Web Components toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download it for free.</a>
 
 ## Chart Navigation with User Interactions
 
-Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), it is on by default, but it is not in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
+Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), it is on by default, but it is not in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). In order to enable or disable navigation in the UI, you need to set either the [`IsHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled) and/or the [`IsVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`DefaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`DefaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -95,9 +94,9 @@ Navigation in the Web Components data chart can happen with either touch, the mo
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`DefaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=dragModifier) and [`panModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`DragModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=dragModifier) and [`PanModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
@@ -109,7 +108,7 @@ The zoom and pan operations can also be enabled by using modifier keys by settin
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=horizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`VerticalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=verticalViewScrollbarMode) and [`HorizontalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=horizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
@@ -234,20 +233,18 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Chart Navigation through Code
 
-> [!Note]
-> Code navigation of the chart can only be used for the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
+**Note:** 
+Code navigation of the chart can only be used for the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 The Web Components data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`windowPositionHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`windowPositionVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`windowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
-- [`windowScaleHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
-- [`windowScaleVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
+- [`WindowPositionHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`WindowPositionVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`WindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect): A `IgcRect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`WindowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`WindowScaleHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
+- [`WindowScaleVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
 ## Additional Resources
 
@@ -257,14 +254,6 @@ You can find more information about related chart features in these topics:
 - [Chart Trendlines](chart-trendlines.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction)
-- [`dragModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=dragModifier)
-- [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled)
-- [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled)
-- [`panModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=panModifier)
-- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-- [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)

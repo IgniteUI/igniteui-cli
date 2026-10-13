@@ -1,39 +1,38 @@
 ---
-title: React Tree Grid Conditional Cell Styling - Ignite UI for React
-_description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in React Tree Grid to make cells stand out.
-_keywords: conditional styling, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/conditional-cell-styling
+title: "React Tree Grid Conditional Cell Styling - Ignite UI for React"
+description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in React Tree Grid to make cells stand out.
+keywords: conditional styling, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/conditional-cell-styling"
+llms:
+  description: "The Ignite UI for React Conditional Styling feature in React Tree Grid allows custom styling on a row or cell level."
+_componentKey: TreeGrid
 _tocName: Conditional Styling
 _premium: true
 ---
-
 # React Tree Grid Conditional Styling
 
-The Ignite UI for React Conditional Styling feature in React Tree Grid allows custom styling on a row or cell level. The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for React Conditional Styling feature in React Tree Grid allows custom styling on a row or cell level.  The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Tree Grid Conditional Row Styling
 
 The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component;
-- By setting [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) input on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component;
+- By setting [`IgrTreeGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component;
+- By setting [`IgrTreeGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) input on the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) rows by setting the [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input and define custom rules.
+You can conditionally style the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) rows by setting the [`IgrTreeGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input and define custom rules.
 
 ```tsx
 <IgrTreeGrid id="grid" height="600px" width="100%" rowClasses={rowClasses}>
 </IgrTreeGrid>
 ```
 
-The [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgrTreeGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const rowClasses = {
@@ -184,9 +183,9 @@ root.render(<Sample/>);
 
 ### Using Row Styles
 
-The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) control exposes the [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) control exposes the [`IgrTreeGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`IgrTreeGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) and [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) is:
+> The callback signature for both [`IgrTreeGrid.rowStyles`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowStyles) and [`IgrTreeGrid.rowClasses`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowClasses) is:
 
 ```tsx
 (row: IgrRowType) => boolean
@@ -212,8 +211,6 @@ const rowStyles = {
 <IgrTreeGrid autoGenerate={true} primaryKey="ID" foreignKey="ParentID" data={data} rowStyles={rowStyles}>
 </IgrTreeGrid>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -380,20 +377,17 @@ root.render(<Sample/>);
 
 The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
-
-You can conditionally style the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
+You can conditionally style the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
 
 ```tsx
 <IgrColumn field="UnitPrice" header="Unit Price" dataType="currency" cellClasses={unitPriceCellClasses}>
 </IgrColumn>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-The [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const upPriceCondition = (rowData: any, columnKey: any): boolean => {
@@ -408,6 +402,7 @@ const unitPriceCellClasses = {
     downPrice: downPriceCondition,
     upPrice: upPriceCondition
 };
+
 ```
 
 ```css
@@ -419,8 +414,6 @@ const unitPriceCellClasses = {
     color: green !important;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -585,17 +578,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`IgrColumn.cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles)` which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
-```ts
-(rowData: any, columnKey: string, cellValue: any, rowIndex: number) => boolean
-```
-
 ### Using Cell Styles
 
-Columns expose the [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -615,8 +604,6 @@ const webTreeGridCellStyles = {
 ```tsx
 <IgrColumn cellStyles={webTreeGridCellStyles}></IgrColumn>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -759,8 +746,6 @@ root.render(<Sample/>);
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!--ComponentStart: Grid, HierarchicalGrid, TreeGrid-->
-
 ```tsx
 const backgroundClasses = {
     myBackground: (rowData: any, columnKey: string) => {
@@ -777,14 +762,13 @@ const editDone = (event: IgrGridEditEventArgs) => {
   <IgrColumn id="Col2" field="Col2" dataType="number" editable={true} cellClasses={backgroundClasses}></IgrColumn>
   <IgrColumn id="Col3" field="Col3" header="Col3" dataType="string" cellClasses={backgroundClasses}></IgrColumn>
 </IgrTreeGrid>
-```
 
-<!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
+```
 
 ## API References
 
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
 
 ## Additional Resources
 

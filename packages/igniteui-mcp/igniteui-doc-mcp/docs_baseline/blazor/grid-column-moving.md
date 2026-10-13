@@ -1,34 +1,36 @@
 ---
-title: Blazor Grid Column Reordering & Moving - Ignite UI for Blazor
-_description: Set custom column order & enable columns reordering via drag/drop mouse or touch gestures, or by using the Blazor Column Moving API. Try Ignite UI for Blazor!
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-moving
+title: "Blazor Grid Column Reordering & Moving - Ignite UI for Blazor"
+description: Set custom column order & enable columns reordering via drag/drop mouse or touch gestures, or by using the Blazor Column Moving API. Try Ignite UI for Blazor!
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-moving"
+llms:
+  description: "The Blazor Grid Column Moving feature in Ignite UI for Blazor allows quick and easy column reordering."
+_componentKey: Grid
 _tocName: Column Moving
 _premium: true
 ---
-
 # Grid Column Reordering & Moving
 
 The Blazor Grid Column Moving feature in Ignite UI for Blazor allows quick and easy column reordering. This can be done through the Column Moving API or by dragging and dropping the headers to another position via mouse or touch gestures. In the Blazor Grid, you can enable Column Moving for pinned and unpinned columns and for [Multi-Column Headers](multi-column-headers.md) as well.
 
-> [!Note]
-> Reordering between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same group. Moving is allowed between columns/column-groups, if they are top level columns.
+**Note:** 
+Reordering between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same group. Moving is allowed between columns/column-groups, if they are top level columns.
 
-> [!Note]
-> If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
+**Note:** 
+If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
-> [!Note]
-> If the pinned area exceeds its maximum allowed width (80% of the total [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
+**Note:** 
+If the pinned area exceeds its maximum allowed width (80% of the total [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
+
 
 ```razor
+@code {
     public RenderFragment<IgbColumnTemplateContext> headerTemplate => (context) =>
     {
         return @<IgbIcon Collection="fas" IconName="fa-thumbtack" draggable="false" @onclick="() => onClick()"></IgbIcon>;
     };
+}
 ```
 
 ## Blazor Grid Column Moving Overview Example
@@ -286,23 +288,19 @@ public class FinancialDataAll
 
 ## Overview
 
-**Column moving** feature is enabled on a per-grid level, meaning that the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) could have either movable or immovable columns. This is done via the [`Moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Moving) input of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
-
-<!-- ComponentStart: Grid -->
+**Column moving** feature is enabled on a per-grid level, meaning that the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) could have either movable or immovable columns. This is done via the [`IgbGrid.moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=moving) input of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 ```razor
 <IgbGrid Moving=true></IgbGrid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## API
 
 In addition to the drag and drop functionality, the Column Moving feature also provides API methods to allow moving a column/reordering columns programmatically:
 
-[`MoveColumn`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=MoveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
+[`IgbGridBaseDirective.moveColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a [`IgbDropPosition`](mcp:get_api_reference?platform=blazor&component=DropPosition) value), which determines whether to place the column before or after the target column.
 
-```razor
+```csharp
     public async void HandleClick()
     {
         IgbColumn Col1 = await this.grid.GetColumnByVisibleIndexAsync(0);
@@ -311,9 +309,9 @@ In addition to the drag and drop functionality, the Column Moving feature also p
     }
 ```
 
-[`Move`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
+[`Move`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
 
-```razor
+```csharp
     public async void HandleClick()
     {
         IgbColumn Col1 = await this.grid.GetColumnByVisibleIndexAsync(0);
@@ -321,15 +319,13 @@ In addition to the drag and drop functionality, the Column Moving feature also p
     }
 ```
 
-Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`Moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Moving) property to true.
+Note that when using the column moving feature, the [`IgbGrid.columnMovingEnd`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnMovingEnd) event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`IgbGrid.moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=moving) property to true.
 
 ## Events
 
-There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are `ColumnMovingStart`, `ColumnMoving` and `ColumnMovingEnd`.
+There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are [`IgbGrid.columnMovingStart`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnMovingStart), `ColumnMoving` and [`IgbGrid.columnMovingEnd`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnMovingEnd).
 
-You can subscribe to the `ColumnMovingEnd` event of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+You can subscribe to the [`IgbGrid.columnMovingEnd`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=columnMovingEnd) event of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
 
 ```razor
     <IgbGrid ShowGroupArea="true" @ref='Grid' Width="100%" Height="100%"
@@ -342,7 +338,7 @@ You can subscribe to the `ColumnMovingEnd` event of the [`IgbGrid`](mcp:get_api_
     </IgbGrid>
 ```
 
-```razor
+```javascript
 igRegisterScript("onColumnMovingEnd", (event) => {
     if (event.detail.source.field === "Category" && event.detail.target.field === "Change On Year(%)") {
         event.detail.cancel = true;
@@ -352,7 +348,7 @@ igRegisterScript("onColumnMovingEnd", (event) => {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
@@ -618,13 +614,9 @@ public class FinancialDataAll
 ```
 
 ## API References
-
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -635,8 +627,6 @@ public class FinancialDataAll
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
 - [Searching](search.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

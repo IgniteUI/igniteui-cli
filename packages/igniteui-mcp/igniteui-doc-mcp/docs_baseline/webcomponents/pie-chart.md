@@ -1,21 +1,20 @@
 ---
-title: Web Components Pie Charts and Graphs | Ignite UI for Web Components
-_description: The Ignite UI for Web Components pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Try for FREE.
-_keywords: Web Components charts, pie chart, Ignite UI for Web Components, Infragistics, data binding, slice selection, slice explosion, animation
-_license: commercial
-mentionedTypes: ["XamPieChart", "XamDataChart"]
+title: "Web Components Pie Charts and Graphs | Ignite UI for Web Components"
+description: The Ignite UI for Web Components pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+keywords: "Web Components charts, pie chart, Ignite UI for Web Components, Infragistics, data binding, slice selection, slice explosion, animation"
+license: commercial
+mentionedTypes: ["PieChart", "DataChart"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
 _tocName: Pie Chart
 _premium: true
 ---
-
 # Web Components Pie Chart
-
 The Ignite UI for Web Components Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value. Categories are rendered as sections in a circular, or pie-shaped graph. Each section, or pie slice, has an arc length proportional to its underlying data value. Categories are shown in proportion to other categories based on their value percentage to the total value being analyzed, as parts of 100 or 100%.
 
 ## Web Components Pie Chart Example
-
-You can create the Web Components Pie Chart in the [`IgcPieChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
+You can create the Web Components Pie Chart in the [`IgcPieChart`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -49,10 +48,7 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Pie Chart Recommendations
-
 Pie Charts are appropriate for small data sets and are easy to read at a glance. Pie charts are just one type of part-to-whole visualization. Others include:
 
 - Pie
@@ -93,12 +89,11 @@ Do Not Use Pie Chart When:
 - It would be easier for the viewer to perceive the value difference in a Bar chart.
 
 ## Web Components Pie Chart Legend
-
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgcLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLegendComponent) property. The [`legendLabelMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`Legend`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legend) property. The [`LegendLabelMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`legendItemTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemTemplate) and [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`LegendItemTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemTemplate) and [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -131,16 +126,13 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Web Components Pie Chart Others Category
-
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`othersCategoryThreshold`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryThreshold) is set to 2, and [`othersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`OthersCategoryThreshold`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryThreshold) is set to 2, and [`OthersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`othersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) to Percent, then [`othersCategoryThreshold`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) is most appropriate for your application.
+If you set [`OthersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) to Percent, then [`OthersCategoryThreshold`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType) is most appropriate for your application.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -174,10 +166,7 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Pie Chart Explosion
-
 The pie chart supports explosion of individual pie slices as well as a `SliceClick` event that allows you to modify selection states and implement custom logic
 
 ```css
@@ -185,13 +174,10 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Pie Chart Selection
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=selectedItems) property. The selected slices are then highlighted.
 
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=selectedItems) property. The selected slices are then highlighted.
-
-There is a property called [`selectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`SelectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
 
 The pie chart supports three different selection modes.
 
@@ -200,13 +186,12 @@ The pie chart supports three different selection modes.
 - Manual - When the mode is set to Manual, selection is disabled.
 
 The pie chart has 4 events associated with selection:
-
 - SelectedItemChanging
 - SelectedItemChanged
 - SelectedItemsChanging
 - SelectedItemsChanged
 
-The events that end in “Changing” are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
+The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
 
 For scenarios where you click on the Others slice, the pie chart will return an object called [`IgcPieSliceOthersContext`](mcp:get_api_reference?platform=webcomponents&component=IgcPieSliceOthersContext). This object contains a list of the data items contained within the Others slice.
 
@@ -215,10 +200,7 @@ For scenarios where you click on the Others slice, the pie chart will return an 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Pie Chart Animation
-
 You can animate the pie chart smoothly by setting the `radiusFactor` property, which will scale the chart's radius. Also set the `startAngle` property to angle the chart such that it keep increasing the chart angle while rotating.
 
 In the code below, the radiusFactor is increasing the chart by 0.25% of the size, and startAngle is rotating the chart by 1 degree. When radiusFactor and startAngle reached to its maximum limit the animation is stopped by reset the animation flag and clear the interval.
@@ -228,10 +210,7 @@ In the code below, the radiusFactor is increasing the chart by 0.25% of the size
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Pie Chart Styling
-
 Once our pie chart is created, we may want to make some further styling customizations such as a change of the colors for the slices of the chart, as demonstrated below:
 
 ```typescript
@@ -266,10 +245,7 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Radial Pie Chart
-
 The Radial Pie Chart belongs to a group of Radial Charts and uses belongs to a group of radial charts and uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line.
 
 ```typescript
@@ -304,8 +280,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 - [Donut Chart](donut-chart.md)
@@ -313,17 +287,4 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 - [Radial Chart](radial-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemBadgeTemplate)
-- [`legendItemTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendItemTemplate)
-- [`legendLabelMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=legendLabelMemberPath)
-- [`othersCategoryThreshold`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryThreshold)
-- [`othersCategoryType`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=othersCategoryType)
-- [`selectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent&member=selectionMode)
-
-|Chart Type       | Control Name   | API Members |
-|-----------------|----------------|------------ |
-|Pie Chart      | [`IgcPieChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent)     | `PieChart` |
-|Radial Pie Chart | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcRadialPieSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent) |
+[`IgcPieChart`](mcp:get_api_reference?platform=webcomponents&component=IgcPieChartComponent)

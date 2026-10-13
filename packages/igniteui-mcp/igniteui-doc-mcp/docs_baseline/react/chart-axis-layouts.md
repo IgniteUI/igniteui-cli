@@ -1,25 +1,26 @@
 ---
-title: React Axis Layouts | Data Visualization | Infragistics
-_description: Infragistics' React Axis Layouts
-_keywords: React Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics
-_license: commercial
-mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "XamDataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+title: "React Axis Layouts | Data Visualization | Infragistics"
+description: Infragistics' React Axis Layouts
+keywords: "React Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics"
+license: commercial
+mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+llms:
+  description: "All Ignite UI for React charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart."
 _tocName: Axis Layouts
 _premium: true
 ---
-
 # React Axis Layouts
 
 All Ignite UI for React charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart. These features are demonstrated in the examples given below.
 
-> [!Note]
-> the following examples can be applied to [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) as well as [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) controls.
+**Note:** 
+the following examples can be applied to `IgrCategoryChart` as well as `IgrFinancialChart` controls.
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelLocation) property of the React charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelLocation) property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The `XAxisLabelLocation` property of the React charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the `YAxisLabelLocation` property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the `YAxisLabelLocation` so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -178,19 +179,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ## Axis Orientation Example
-
-TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
-e.g. https://www.infragistics.com/help/wpf/datachart-axis-orientation
- -->
-
 ## Axis Advanced Scenarios
 
-For more advanced axis layout scenarios, you can use React Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html).
+For more advanced axis layout scenarios, you can use React Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the `IgrDataChart`.
 
 ### Axis Sharing Example
 
-You can share and add multiple axes in the same plot area of the React [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). It a common scenario to use share [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) and add multiple [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
+You can share and add multiple axes in the same plot area of the React `IgrDataChart`. It a common scenario to use share `IgrTimeXAxis` and add multiple `IgrNumericYAxis` to plot many data sources that have wide range of values (e.g. stock prices and stock trade volumes).
 
 The following example depicts a stock price and trade volume chart with a [Stock Chart](../types/stock-chart.md) and a [Column Chart](../types/column-chart.md) plotted. In this case, the Y-Axis on the left is used by the [Column Chart](../types/column-chart.md) and the Y-Axis on the right is used by the [Stock Chart](../types/stock-chart.md), while the X-Axis is shared between the two.
 
@@ -340,11 +335,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
 
-<div class="divider--half"></div>
-
 ### Axis Crossing Example
 
-In addition to placing axes outside plot area, the React [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`crossingAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#crossingAxis) and [`crossingValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#crossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
+In addition to placing axes outside plot area, the React `IgrDataChart` also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting `CrossingAxis` and `CrossingValue` properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
 
 The following example shows a Sin and Cos wave represented by a [Scatter Spline Chart](../types/scatter-chart.md) with the X and Y axes crossing each other at the (0, 0) origin point.
 
@@ -495,8 +488,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -509,25 +500,16 @@ You can find more information about related chart features in these topics:
 The following is a list of API members mentioned in the above sections:
 d in the above sections:
 
-| [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)                                         | [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)                 |
+| `IgrDataChart`                                         | `IgrCategoryChart`                 |
 | ------------------------------------------------------ | ------------------------------- |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`crossingAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#crossingAxis)             | None                            |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`crossingValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#crossingValue)            | None                            |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ [`isInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#isInverted)               | [`xAxisInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisInverted)                 |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ [`isInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#isInverted)               | [`yAxisInverted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisInverted)                 |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `LabelLocation`            | [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelLocation)            |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `LabelLocation`            | [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelLocation)            |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `LabelHorizontalAlignment` | [`yAxisLabelHorizontalAlignment`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelHorizontalAlignment) |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `LabelVerticalAlignment`   | [`xAxisLabelVerticalAlignment`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelVerticalAlignment)   |
-| `Axes` ➔ [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) ➔ `LabelVisibility`          | [`yAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#yAxisLabelVisibility)          |
-| `Axes` ➔ [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) ➔ `LabelVisibility`          | [`xAxisLabelVisibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#xAxisLabelVisibility)          |
+| `Axes` -> `IgrNumericYAxis` -> `CrossingAxis`             | None                            |
+| `Axes` -> `IgrNumericYAxis` -> `CrossingValue`            | None                            |
+| `Axes` -> `IgrNumericXAxis` -> `IsInverted`               | `XAxisInverted`                 |
+| `Axes` -> `IgrNumericYAxis` -> `IsInverted`               | `YAxisInverted`                 |
+| `Axes` -> `IgrNumericYAxis` -> `LabelLocation`            | `YAxisLabelLocation`            |
+| `Axes` -> `IgrNumericXAxis` -> `LabelLocation`            | `XAxisLabelLocation`            |
+| `Axes` -> `IgrNumericYAxis` -> `LabelHorizontalAlignment` | `YAxisLabelHorizontalAlignment` |
+| `Axes` -> `IgrNumericXAxis` -> `LabelVerticalAlignment`   | `XAxisLabelVerticalAlignment`   |
+| `Axes` -> `IgrNumericYAxis` -> `LabelVisibility`          | `YAxisLabelVisibility`          |
+| `Axes` -> `IgrNumericXAxis` -> `LabelVisibility`          | `XAxisLabelVisibility`          |
 
-<!-- TODO correct links in Transformer -->
-
-<!--
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.location`            | `YAxisLabelLocation`            |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.location`            | `XAxisLabelLocation`            |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.horizontalAlignment` | `YAxisLabelHorizontalAlignment` |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.verticalAlignment`   | `XAxisLabelVerticalAlignment`   |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.visibility`          | `YAxisLabelVisibility`          |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.visibility`          | `XAxisLabelVisibility`          | -->

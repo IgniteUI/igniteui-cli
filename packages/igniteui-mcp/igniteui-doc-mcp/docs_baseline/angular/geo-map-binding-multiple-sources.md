@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics
-_description: Use Infragistics' Angular JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Angular map tutorials!
-_keywords: Angular map, geographic series, Ignite UI for Angular, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+title: "Angular Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
+description: Use Infragistics' Angular JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Angular map tutorials!
+keywords: "Angular map, geographic series, Ignite UI for Angular, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
 _tocName: Binding Multiple Sources
 _premium: true
 ---
-
 # Angular Binding Multiple Data Sources
 
-In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) for plotting geographic locations of airports, the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) for plotting flights between airports, and 2nd [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) for plotting gridlines of major geographic coordinates.
+In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgxGeographicSymbolSeries` for plotting geographic locations of airports, the `IgxGeographicPolylineSeries` for plotting flights between airports, and 2nd `IgxGeographicPolylineSeries` for plotting gridlines of major geographic coordinates.
 
 ## Angular Binding Multiple Data Sources Example
 
@@ -154,22 +155,20 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) – displays locations of major airports
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) – displays flights between airports
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) – displays gridlines of major coordinates
+- `IgxGeographicSymbolSeries` – displays locations of major airports
+- `IgxGeographicPolylineSeries` – displays flights between airports
+- `IgxGeographicPolylineSeries` – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
 ## Creating Data Sources
 
-Create data sources for all geographic series that you want to display in the Ignite UI for Angular map. For example, you can the use [WorldConnections](geo-map-resources-world-connections.md) script.
+Create data sources for all geographic series that you want to display in the Ignite UI for Angular map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -216,7 +215,7 @@ Create data sources for all geographic series that you want to display in the Ig
 
 ## Overlaying Flights
 
-Create first [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Angular map.
+Create first `IgxGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for Angular map.
 
 ```html
 <igx-geographic-polyline-series  #polylineSeries
@@ -230,7 +229,7 @@ Create first [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.c
 
 ## Overlaying Gridlines
 
-Create second [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) object with geographic gridlines and add it to the Series collection of the Ignite UI for Angular map.
+Create second `IgxGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for Angular map.
 
 ```html
   <igx-geographic-polyline-series  #polylineSeries
@@ -245,7 +244,7 @@ Create second [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.
 
 ## Overlaying Airports
 
-Create [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) object with airport points and add it to the Series collection of the geographic Ignite UI for Angular map.
+Create `IgxGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for Angular map.
 
 ```html
 <igx-geographic-symbol-series  #symbolSeries
@@ -338,6 +337,5 @@ export class MapBindingMultipleSourcesComponent implements AfterViewInit {
 ```
 
 ## API References
-
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html)
-- [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html)
+`IgxGeographicPolylineSeries`
+`IgxGeographicSymbolSeries`

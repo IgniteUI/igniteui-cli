@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics
-_description: Learn how to apply custom styling to Infragistics' Web Components map's shape series. Check out Ignite UI for Web Components map tutorials!
-_keywords: Web Components map, custom styling, Ignite UI for Web Components, Infragistics, conditional formatting, shape styling
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeries", "Series"]
+title: "Web Components Map | Data Visualization Tools | Shape Styling | Conditional Formatting | Infragistics"
+description: Learn how to apply custom styling to Infragistics' Web Components map's shape series. Check out Ignite UI for Web Components map tutorials!
+keywords: "Web Components map, custom styling, Ignite UI for Web Components, Infragistics, conditional formatting, shape styling"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeries", "Series"]
+llms:
+  description: "Explains how to apply data-driven conditional styling to geographic shape series in the Ignite UI for Web Components Map."
 _tocName: Shape Styling
 _premium: true
 ---
-
 # Web Components Shape Styling on Geographic Shape Series
 
-This topic explains how to apply custom styling to the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) in the Web Components [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html).
+This topic explains how to apply custom styling to the `IgcGeographicShapeSeries` in the Web Components `IgcGeographicMap`.
 
 ## Web Components Shape Styling on Geographic Shape Series Example
 
@@ -481,8 +482,6 @@ export class WorldUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Required Imports
 
 Shape styling requires that you import the following classes:
@@ -494,8 +493,7 @@ import { IgcShapeDataSource } from 'igniteui-webcomponents-core';
 import { IgcShapefileRecord } from 'igniteui-webcomponents-core';
 ```
 
-Note that the following code examples are using the [Shape Styling Utility](geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
-
+Note that the following code examples are using the [Shape Styling Utility](./geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
 - [Shape Comparison Styling](#shape-comparison-styling)
 - [Shape Random Styling](#shape-random-styling)
 - [Shape Range Styling](#shape-range-styling)
@@ -630,6 +628,5 @@ public onStylingShape(s: IgcGeographicShapeSeriesComponent, args: IgcStyleShapeE
 ```
 
 ## API References
-
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcGeographicShapeSeries`
+`IgcGeographicMap`

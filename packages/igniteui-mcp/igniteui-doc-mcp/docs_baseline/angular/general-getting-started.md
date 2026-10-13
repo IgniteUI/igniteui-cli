@@ -1,13 +1,12 @@
 ---
 title: Getting Started | Ignite UI for Angular | Infragistics
-_description: Install Ignite UI for Angular and render your first component in under 5 minutes. Covers Ignite UI CLI scaffolding, Angular Schematics, ng add setup, manual standalone usage, and AI-assisted development tooling.
-_keywords: ignite ui for angular, getting started, angular components, install, setup, igniteui-angular, infragistics
+description: Install Ignite UI for Angular and render your first component in under 5 minutes. Covers Ignite UI CLI scaffolding, Angular Schematics, ng add setup, manual standalone usage, and AI-assisted development tooling.
+keywords: ignite ui for angular, getting started, angular components, install, setup, igniteui-angular, infragistics
 last_updated: "2025-04-06"
+llms:
+  description: "Ignite UI for Angular is a library of 100+ enterprise UI components - including data grids, charts, editors, navigation controls, and layout containers - distributed as the igniteui-angular npm package by Infragistics."
 _tocName: Getting started
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Get Started with Ignite UI for Angular
 
 [`Ignite UI for Angular`](https://github.com/IgniteUI/igniteui-angular) is a library of 100+ enterprise UI components - including data grids, charts, editors, navigation controls, and layout containers - distributed as the `igniteui-angular` npm package by Infragistics. This guide walks through three installation paths (Ignite UI CLI, Angular Schematics, and Angular CLI with `ng add`) and ends with a working `IgxGridComponent` rendered from local data.
@@ -47,13 +46,13 @@ Or create a project non-interactively:
 ig new <project-name> --framework=angular --type=igx-ts --template=side-nav
 ```
 
-> [!NOTE]
-> As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project that uses standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
+**Note:** 
+As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project that uses standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
 
-> [!NOTE]
-> At some point during the process you may be asked to [log in to the Infragistics npm registry](ignite-ui-licensing.md#how-to-setup-your-environment-to-use-the-private-npm-feed-step-by-step-guide) if not already configured. This applies when using components under a [commercial license](./open-source-vs-premium.md#comparison-table-for-all-components).
+**Note:** 
+At some point during the process you may be asked to [log in to the Infragistics npm registry](./ignite-ui-licensing.md#how-to-setup-your-environment-to-use-the-private-npm-feed-step-by-step-guide) if not already configured. This applies when using components under a [commercial license](./open-source-vs-premium.md#comparison-table-for-all-components).
 
-For a full walkthrough of all CLI options and project templates, see [Getting Started with Ignite UI CLI](cli/getting-started-with-cli.md) and [Angular Schematics and Ignite UI CLI](cli-overview.md).
+For a full walkthrough of all CLI options and project templates, see [Getting Started with Ignite UI CLI](./cli/getting-started-with-cli.md) and [Angular Schematics and Ignite UI CLI](./cli-overview.md).
 
 ### Install with Angular Schematics
 
@@ -69,7 +68,7 @@ Activate the guided wizard:
 ng new --collection="@igniteui/angular-schematics"
 ```
 
-For a step-by-step walkthrough see [Step-by-Step Guide Using Ignite UI for Angular Schematics](cli/step-by-step-guide-using-angular-schematics.md).
+For a step-by-step walkthrough see [Step-by-Step Guide Using Ignite UI for Angular Schematics](./cli/step-by-step-guide-using-angular-schematics.md).
 
 ### Install with Angular CLI (`ng add`)
 
@@ -79,14 +78,14 @@ If you already have an Angular project or prefer to work entirely within the Ang
 ng new <project-name> --style=scss
 ```
 
-SCSS is recommended because the [Ignite UI for Angular Theming Library](../themes.md) is built on it and `ng add` configures the default theme automatically. Then add Ignite UI for Angular:
+SCSS is recommended because the [Ignite UI for Angular Theming Library](../themes/sass/index.md) is built on it and `ng add` configures the default theme automatically. Then add Ignite UI for Angular:
 
 ```cmd
 ng add igniteui-angular
 ```
 
-> [!NOTE]
-> `ng add` installs the trial version of `igniteui-angular`. If your project was scaffolded with the Ignite UI CLI, skip this step - the CLI already handles package setup. To switch to the licensed package later, see [Upgrade from Trial to Licensed](#upgrade-from-trial-to-licensed) below.
+**Note:** 
+`ng add` installs the trial version of `igniteui-angular`. If your project was scaffolded with the Ignite UI CLI, skip this step - the CLI already handles package setup. To switch to the licensed package later, see [Upgrade from Trial to Licensed](#upgrade-from-trial-to-licensed) below.
 
 #### Additional packages
 
@@ -120,8 +119,8 @@ ng g @igniteui/angular-schematics:component
 ig add
 ```
 
-> [!NOTE]
-> The `ig add` command is available in projects created by the Ignite UI CLI or in Angular CLI projects where Ignite UI for Angular was added with `ng add igniteui-angular`.
+**Note:** 
+The `ig add` command is available in projects created by the Ignite UI CLI or in Angular CLI projects where Ignite UI for Angular was added with `ng add igniteui-angular`.
 
 ## Add Components Manually (Standalone)
 
@@ -194,7 +193,6 @@ Or, for projects created with the Angular CLI:
 ng serve
 ```
 
-<img class="responsive-img" src="../../images/general/igniteui-project.png" alt="Ignite UI for Angular application with IgxGridComponent rendered" />
 
 ## Upgrade from Trial to Licensed
 
@@ -210,7 +208,7 @@ Or, using the Ignite UI CLI:
 ig upgrade-packages
 ```
 
-The schematic updates package dependencies and replaces source references. You will be prompted to [log in to the Infragistics private npm registry](ignite-ui-licensing.md#how-to-setup-your-environment-to-use-the-private-npm-feed-step-by-step-guide) if not already configured.
+The schematic updates package dependencies and replaces source references. You will be prompted to [log in to the Infragistics private npm registry](./ignite-ui-licensing.md#how-to-setup-your-environment-to-use-the-private-npm-feed-step-by-step-guide) if not already configured.
 
 ## AI-Assisted Development
 
@@ -221,18 +219,16 @@ Ignite UI for Angular ships two tools for AI-assisted development.
 **The Ignite UI MCP Server** is a built-in server in the Ignite UI CLI that connects AI assistants to live Ignite UI component documentation and API references directly inside your editor. Unlike static skills, the MCP server answers queries about current APIs, retrieves setup guides on demand, and supports accurate code generation for Ignite UI components. Start it with `ig mcp` after installing the CLI. For client configuration and available tools, see [Ignite UI CLI MCP Overview](../ai/cli-mcp.md).
 
 ## API References
-
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
 ## Additional Resources
 
 - [Ignite UI for Angular Skills](../ai/skills.md)
 - [Ignite UI CLI MCP Overview](../ai/cli-mcp.md)
-- [Angular Schematics and Ignite UI CLI](cli-overview.md)
+- [Angular Schematics and Ignite UI CLI](./cli-overview.md)
 - [Ignite UI CLI Commands](https://github.com/IgniteUI/igniteui-cli/wiki#available-commands)
-- [Grid overview](../grid/grid.md)
-- [Grid Lite overview](../grid-lite/overview.md)
+- [Grid overview](/grid/grid)
+- [Grid Lite overview](/grid-lite/overview)
 
 ---
 

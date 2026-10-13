@@ -1,12 +1,13 @@
 ---
-title: Web Components Tooltip | Infragistics
-_description: The Ignite UI for Web Components Tooltip component provides us with the ability to easily create a tooltip and attach it into an element.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Tooltip components
-_license: MIT
+title: "Web Components Tooltip | Infragistics"
+description: The Ignite UI for Web Components Tooltip component provides us with the ability to easily create a tooltip and attach it into an element.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Tooltip components"
+license: MIT
 mentionedTypes: ["Tooltip", "PopoverPlacement"]
+llms:
+  description: "The Ignite UI for Web Components Tooltip component provides a way to display a tooltip for a specific element."
 _tocName: Tooltip
 ---
-
 # Web Components Tooltip
 
 The Ignite UI for Web Components Tooltip component provides a way to display a tooltip for a specific element. A tooltip is a popup that displays information related to an element, usually when the element receives keyboard focus or when the mouse hovers over it.
@@ -24,13 +25,13 @@ igc-avatar {
 
 ### Getting Started
 
-To start using the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), first, you need to install the Ignite UI for Web Components by running the following command:
+To start using the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), first, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-After that, you need to import the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), its necessary CSS, and register its module, as follows:
+After that, you need to import the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), its necessary CSS, and register its module, as follows:
 
 ```ts
 import { defineComponents, IgcTooltipComponent } from 'igniteui-webcomponents';
@@ -41,7 +42,7 @@ defineComponents(IgcTooltipComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the Web Components [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
+Now you can start with a basic configuration of the Web Components [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
 
 ```html
 <igc-tooltip anchor="hover-button">
@@ -55,7 +56,7 @@ Now you can start with a basic configuration of the Web Components [`IgcTooltipC
 
 ### Tooltip target
 
-To attach a tooltip to the desired element, use the [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor) property of the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) and set it to the ID of the target element.
+To attach a tooltip to the desired element, use the [`Anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor) property of the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) and set it to the ID of the target element.
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -83,7 +84,7 @@ constructor() {
 
 ### Tooltip content
 
-The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
+The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
 
 ```html
 <igc-tooltip>
@@ -91,13 +92,13 @@ The tooltip content is defined by placing custom content between the opening and
 </igc-tooltip>
 ```
 
-Alternatively, to set simple text, you can use the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property.
+Alternatively, to set simple text, you can use the [`Message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property.
 
 ```html
 <igc-tooltip message="This is my custom content here."></igc-tooltip>
 ```
 
-If you use both approaches (slotted content and the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property), the slotted content will take priority and the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) value will be ignored.
+If you use both approaches (slotted content and the [`Message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property), the slotted content will take priority and the [`Message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) value will be ignored.
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -106,9 +107,9 @@ If you use both approaches (slotted content and the [`message`](mcp:get_api_refe
 </igc-tooltip>
 ```
 
-In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property value.
+In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`Message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property value.
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) content can be more than just simple text. Since the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) content can be more than just simple text. Since the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
 ```css
 /* shared styles are loaded from: */
@@ -148,7 +149,7 @@ igc-tooltip::part(base) {
 
 ### Show/Hide delay settings
 
-If you want to control the delay before showing and hiding the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), you can use the [`showDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
+If you want to control the delay before showing and hiding the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), you can use the [`ShowDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`HideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
 
 ```html
 <igc-tooltip show-delay="600" hide-delay="800">
@@ -156,18 +157,18 @@ If you want to control the delay before showing and hiding the [`IgcTooltipCompo
 </igc-tooltip>
 ```
 
-> [!NOTE]
-> It's important to note that the Tooltip API methods — [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show), [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide), and [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) — DO NOT take the [`showDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties into account. They act immediately when invoked.
+**Note:** 
+It's important to note that the Tooltip API methods — [`Show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show), [`Hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide), and [`Toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) — DO NOT take the [`ShowDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`HideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property along with one of the `PopoverPlacement` options.
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property along with one of the [`IgcPopoverPlacement`](mcp:get_api_reference?platform=webcomponents&component=PopoverPlacement) options.
 
-If the [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property is not set, the default value is `Bottom`, which places the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) below the target element.
+If the [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property is not set, the default value is `Bottom`, which places the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) below the target element.
 
-Additionally, you can make the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) "sticky" using the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property, which adds a close button and keeps the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) from disappearing when the user stops hovering over the target element.
+Additionally, you can make the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) "sticky" using the [`Sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property, which adds a close button and keeps the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) from disappearing when the user stops hovering over the target element.
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also includes an optional arrow indicator that can be configured via the [`withArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement).
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also includes an optional arrow indicator that can be configured via the [`WithArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement).
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -176,7 +177,7 @@ The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&compone
 </igc-tooltip>
 ```
 
-In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property in action:
+In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`Sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property in action:
 
 ```css
 /* shared styles are loaded from: */
@@ -196,7 +197,7 @@ igc-button::part(base) {
 
 ### Triggers
 
-By default, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideTriggers) properties, which allow you to control when the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) in different scenarios.
+By default, the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is triggered only while hovering over the target element. However, you can change this behavior using the [`ShowTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showTriggers) and [`HideTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideTriggers) properties, which allow you to control when the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) in different scenarios.
 
 ```css
 /* shared styles are loaded from: */
@@ -232,8 +233,8 @@ By default, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcompon
 
 ### Advanced Example
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent), [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent), [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent), [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components.
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
+In the following example, you can see how we create descriptive tooltips by using the [`IgcList`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent), [`IgcAvatar`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), [`IgcBadge`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent), [`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent), [`IgcCard`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent) and [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components.
 
 ```typescript
 export class IncomeTaxesItem {
@@ -702,36 +703,36 @@ igc-tooltip::part(base) {
 
 ### Additional Properties
 
-Apart from the properties we've already covered, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
+Apart from the properties we've already covered, the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
 
 |Name|Type|Description|
 |--|--|--|
-| [`open`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=open) | boolean | Determines whether the tooltip is visible. |
-| [`withArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
-| [`offset`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
+| [`Open`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=open) | boolean | Determines whether the tooltip is visible. |
+| [`WithArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
+| [`Offset`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=offset) | number | Sets the pixel distance between the tooltip and its [`Anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
 
 ### Methods
 
-In addition to its configurable properties, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also exposes three methods that you can use:
+In addition to its configurable properties, the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also exposes three methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
-| [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide) | Hides the tooltip if it’s not already hidden. |
-| [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
+| [`Show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`Anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
+| [`Hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide) | Hides the tooltip if it’s not already hidden. |
+| [`Toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
 
 ## Accessibility & ARIA Support
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is built with accessibility in mind and includes the following ARIA attributes:
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is built with accessibility in mind and includes the following ARIA attributes:
 
-- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property is enabled, the role changes to `status`.
+- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`Sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property is enabled, the role changes to `status`.
 - `inert` - Dynamically toggled based on visibility. When the tooltip is hidden, it becomes inert.
 - `aria-atomic` - Set to true, ensuring that the entire tooltip content is announced when it changes.
 - `aria-live` - Set to polite, indicating to screen readers that updates should be announced only when the user is idle.
 
 ## Styling
 
-The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component exposes two CSS parts that you can use for styling:
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component exposes two CSS parts that you can use for styling:
 
 |Name|Description|
 |--|--|
@@ -768,20 +769,17 @@ igc-tooltip::part(bottom) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent)
-- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)
-- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
-- [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent)
-- [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent)
-- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent)<br />
+[`IgcAvatar`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)<br />
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)<br />
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)<br />
+[`IgcCard`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)<br />
+[`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)<br />
+[`IgcBadge`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent)<br />
+[`IgcList`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent)<br />
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
 
 ## Additional Resources
 

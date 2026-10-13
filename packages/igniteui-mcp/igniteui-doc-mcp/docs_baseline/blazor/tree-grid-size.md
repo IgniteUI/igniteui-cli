@@ -1,20 +1,18 @@
 ---
-title: Blazor Tree Grid Size - Ignite UI for Blazor
-_description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for Blazor.
-_keywords:  material size, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/size
+title: "Blazor Tree Grid Size - Ignite UI for Blazor"
+description: Learn how to apply different size capabilities to the Tree Grid component. You can use a set of compact view options in the Ignite UI for Blazor.
+keywords:  material size, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/size"
+llms:
+  description: "The Ignite UI for Blazor Size feature in Blazor Tree Grid allows users to control the spacing and layout of data within the IgbTreeGrid."
+_componentKey: TreeGrid
 _tocName: Size
 _premium: true
 ---
-
 # Blazor Tree Grid Size
 
-The Ignite UI for Blazor Size feature in Blazor Tree Grid allows users to control the spacing and layout of data within the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
-
+The Ignite UI for Blazor Size feature in Blazor Tree Grid allows users to control the spacing and layout of data within the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content.  They can choose from three size options:
 - `--ig-size-large`
 - `--ig-size-medium`
 - `--ig-size-small`
@@ -246,18 +244,16 @@ As you can see in the demo above, the [`IgbTreeGrid`](mcp:get_api_reference?plat
 </IgbTreeGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component. When you switch between different size options the height of each [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component. When you switch between different size options the height of each [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`IgbTreeGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `56px`;
+- **large** - this is the default [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`IgbTreeGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`IgbTreeGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`IgbTreeGrid.width`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=width) is `56px`;
 
-> [!Note]
-> Please keep in mind that currently you **can not** override any of the sizes.
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```razor
 <div class="options vertical">
@@ -279,8 +275,6 @@ Let's now continue with our sample and see in action how the `--ig-size` is appl
     </IgbPropertyEditorPanel>
 </div>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 Now we can add the markup.
 
@@ -322,55 +316,60 @@ Now we can add the markup.
 </IgbTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 Finally, let's provide the necessary logic in order to actually apply the size:
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-```razor
-@code {
-    // In JavaScript
+```javascript
+// In JavaScript
     igRegisterScript("WebGridSetGridSize", (sender, evtArgs) => {
         var newVal = evtArgs.newValue.toLowerCase();
         var grid = document.getElementById("grid");
         grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
     }, false);
-}
 ```
 
-Another option that [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) provides for you, in order to be able to change the height of the rows in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), is the property [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowHeight). So let's see in action how this property affects the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) layout along with the `--ig-size`.
+Another option that [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) provides for you, in order to be able to change the height of the rows in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), is the property [`IgbTreeGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowHeight). So let's see in action how this property affects the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`IgbTreeGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Tree Grid**, as it has been described above.
 
-We can now extend our sample and add [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowHeight) property to the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid):
+We can now extend our sample and add [`IgbTreeGrid.rowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowHeight) property to the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid):
 
-```razor
-<IgbTreeGrid
-   @ref="grid"
-   Id="grid"
-   Class="gridSize"
-   Width="100%"
-   Height="100%"
-   AutoGenerate="true"
-   Data="northwindEmployees"
-   RowHeight="rowHeight">
+ ```razor
+ <IgbTreeGrid
+    @ref="grid"
+    Id="grid"
+    Class="gridSize"
+    Width="100%"
+    Height="100%"
+    AutoGenerate="true"
+    Data="northwindEmployees"
+    RowHeight="rowHeight">
 </IgbTreeGrid>
 
 @code {
-   private string rowHeight = "80px";
+    private string rowHeight = "80px";
 }
-```
+
+ ```
 
 ## API References
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+## Additional Resources
 
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [Virtualization and Performance](virtualization.md)
+- [Editing](editing.md)
+- [Paging](paging.md)
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
+
+- [Searching](search.md)
 
 Our community is active and always welcoming to new ideas.
 

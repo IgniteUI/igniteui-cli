@@ -1,12 +1,13 @@
 ---
 title: Hierarchical Grid load on demand - Native Angular | Ignite UI for Angular
-_description: The Ignite UI for Angular Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Hierarchical Grid component, Angular Hierarchical Data Table component, Angular Hierarchical Grid control, Angular Hierarchical Data Table control, Angular High Performance Hierarchical Grid, Angular High Performance Hierarchical Data Table, Hierarchical Grid, Hierarchical Data Table
-_license: commercial
+description: The Ignite UI for Angular Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Hierarchical Grid component, Angular Hierarchical Data Table component, Angular Hierarchical Grid control, Angular Hierarchical Data Table control, Angular High Performance Hierarchical Grid, Angular High Performance Hierarchical Data Table, Hierarchical Grid, Hierarchical Data Table
+license: commercial
+llms:
+  description: "The Ignite UI for Angular HierarchicalGrid allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible."
 _tocName: Load on Demand
 _premium: true
 ---
-
 # Hierarchical Grid Load On Demand
 
 The Ignite UI for Angular [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
@@ -177,8 +178,6 @@ export class HierarchicalGridLoDSampleComponent implements OnInit, AfterViewInit
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Hierarchical Grid Setup
 
 Let's setup our hierarchical grid. First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
@@ -202,7 +201,7 @@ We can use one method for all row islands since the endpoint only needs the key 
 
 Now let's improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) supports a loading indicator that can be displayed while the grid is empty.
 
-We display a loading indicator by setting the [`isLoading`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=isloading) property to `true` while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to `true` in our template, but we want to hide it (by setting it to `false`) and display that the grid has no data if the service returns an empty array.
+We display a loading indicator by setting the [`isLoading`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=isLoading) property to `true` while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to `true` in our template, but we want to hide it (by setting it to `false`) and display that the grid has no data if the service returns an empty array.
 
 Finally, let's turn the [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property off and define the columns collection in the markup.
 
@@ -280,7 +279,7 @@ public schema: EntityType[] = [
 
 #### Setting initial filter
 
-Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) and set it to the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
+Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) and set it to the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
 
 Let's say we want to filter customers that have order's freight at least `500`. We will take advantage of the ability to create nested queries in the filtering expressions and this is the result:
 
@@ -349,8 +348,6 @@ public ngAfterViewInit() {
 
 Next we will define how we should build our URL for the GET request in order to get the data for our child grids. This is the visual representation of the relations between the tables:
 
-<img class="responsive-img" alt="Relational Hierarchical Database" src="../../images/hgrid-database.jpg" />
-
 Finally, we need to implement our `gridCreated` method that will request data for any new child grid created. It will be similar to getting the root level grid data, just this time we will use the data provided in the event [`gridCreated`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent&member=gridCreated) and build our URL with it:
 
 ````TypeScript
@@ -372,18 +369,13 @@ private buildUrl(event: IGridCreatedEventArgs) {
 ````
 
 ## API References
-
-- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
-- [IgxRowIslandComponent](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent)
-
+- [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [`IgxRowIsland`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Hierarchical Grid Component](/hierarchicalgrid/hierarchical-grid)
 
-- [Hierarchical Grid Component](hierarchical-grid.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
-- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular

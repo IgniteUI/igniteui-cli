@@ -1,23 +1,22 @@
 ---
-title: Blazor Grid Editing Rows - Ignite UI for Blazor
-_description: Want to enable row editing in Blazor Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Blazor Grid rows editing component!
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-editing
+title: "Blazor Grid Editing Rows - Ignite UI for Blazor"
+description: Want to enable row editing in Blazor Grid? Need a powerful API for CRUD operations? Try our Ignite UI for Blazor Grid rows editing component!
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-editing"
+llms:
+  description: "The Ignite UI for Blazor Row Editing feature in Blazor Grid allows editing data directly within the IgbGrid."
+_componentKey: Grid
 _tocName: Row Editing
 _premium: true
 ---
-
 # Blazor Grid Row Editing
 
-The Ignite UI for Blazor Row Editing feature in Blazor Grid allows editing data directly within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for Blazor Row Editing feature in Blazor Grid allows editing data directly within the `IgbGrid`. On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## Blazor Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the `IgbGrid`. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -157,12 +156,12 @@ public class NwindData
 }
 ```
 
-> [!Note]
-> When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
+**Note:** 
+When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
 
-Define a [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) with bound data source and [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowEditable) set to true:
+Define a `IgbGrid` with bound data source and [`IgbGrid.rowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowEditable) set to true:
 
 ```razor
  <IgbGrid Width="100%"  
@@ -194,16 +193,14 @@ Define a [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) wi
     }
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Setting primary key is mandatory for row editing operations.
 
-> [!Note]
-> Setting primary key is mandatory for row editing operations.
+**Note:** 
+Enabling editing for individual columns is not necessary. Using the [`IgbGrid.rowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowEditable) property in the `IgbGrid`, all rows, with defined `Field` property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`IgbGrid.editable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=editable) input of that column to `false`.
 
-> [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowEditable) property in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), all rows, with defined [`Field`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) input of that column to `false`.
-
-> [!Note]
-> The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+**Note:** 
+The `IgbGrid` utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -223,13 +220,13 @@ Define a [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) wi
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), the cell will also stay in edit mode.
+- If row is in edit mode and `IgbGrid` is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When `IgbGrid` is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the `IgbGrid`, the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when `IgbGrid` is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -245,11 +242,7 @@ Define a [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) wi
 
 - Summaries will be updated after row edit is finished. Same is valid for the other features like sorting, filtering, etc.
 
-<!-- ComponentStart: Grid -->
-
 - Expanding and collapsing grouped rows will not terminate editing for the current row.
-
-<!-- ComponentEnd: Grid -->
 
 ## Customizing Row Editing Overlay
 
@@ -257,9 +250,7 @@ Define a [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) wi
 
 Customizing the text of the row editing overlay is possible using via templating.
 
-The `RowChangesCount` property is exposed and it holds the count of the changed cells.
-
-```razor
+```javascript
 igRegisterScript("RowEditTextTemplate", (ctx) => {
     var html = window.igTemplating.html;
     return html`<div>
@@ -272,7 +263,7 @@ igRegisterScript("RowEditTextTemplate", (ctx) => {
 
 Customizing the buttons of the row editing overlay also possible via templating.
 
-```razor
+```javascript
  igRegisterScript("RowEditActionsTemplate", (ctx) => {
     var html = window.igTemplating.html;
     window.endRowEdit = ctx.implicit;
@@ -285,7 +276,7 @@ Customizing the buttons of the row editing overlay also possible via templating.
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -300,8 +291,6 @@ Then set the related CSS properties for that class:
     --ig-banner-banner-message-color: #423589;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Demo
 
@@ -445,37 +434,18 @@ public class NwindData
 
 ## Known Issues and Limitations
 
-- When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`IgbGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
-
 - Row Expand/collapse
-
 - Row Editing
-
 - Row Pinning
 
 ## API References
-
-- [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `EndEdit`
-- [`Field`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Field)
-- [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable)
-- [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey)
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 ## Additional Resources
 
-<!-- ComponentStart: Grid -->
-
 - [Grid Editing](editing.md)
-
-<!-- ComponentEnd: Grid -->
-
-<!-- * [Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

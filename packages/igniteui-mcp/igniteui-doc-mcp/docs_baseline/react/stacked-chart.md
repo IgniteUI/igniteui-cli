@@ -1,21 +1,22 @@
 ---
-title: React Stacked Chart | Data Visualization | Infragistics
-_description: Infragistics' React Stacked Chart
-_keywords: React Charts, Stacked Chart, Stacked 100% Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "StackedAreaSeries", "Stacked100AreaSeries", "StackedBarSeries", "Stacked100BarSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "StackedLineSeries", "Stacked100LineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "StackedSplineAreaSeries", "Stacked100SplineAreaSeries", "Series"]
+title: "React Stacked Chart | Data Visualization | Infragistics"
+description: Infragistics' React Stacked Chart
+keywords: "React Charts, Stacked Chart, Stacked 100% Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "StackedAreaSeries", "Stacked100AreaSeries", "StackedBarSeries", "Stacked100BarSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "StackedLineSeries", "Stacked100LineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "StackedSplineAreaSeries", "Stacked100SplineAreaSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines."
 _tocName: Stacked Chart
 _premium: true
 ---
-
 # React Stacked Chart
 
 The Ignite UI for React Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines. Standard Stacked Charts render actual values of data items while Stacked 100% Charts render values as percentage of total values.
 
 ## React Stacked Chart Types
 
-The following example, you can use the drop-down to switch between all of the different types stacked charts available in the React [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control.
+The following example, you can use the drop-down to switch between all of the different types stacked charts available in the React `IgrDataChart` control.
 
 ```tsx
 import React from 'react';
@@ -352,15 +353,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeStackedSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 The following sections demonstrate individual types of Ignite UI for React Stacked Charts.
 
 ## React Stacked Area Chart
 
-Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
+Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](./area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html), as shown in the example below.
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -540,13 +539,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100 Area Chart
-
 Sometimes the series represent part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html), as shown in the example below.
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100AreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -723,15 +719,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Bar Chart
 
 A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is used to compare the composition of different categories of data by displaying different sized fragments in the horizontal bars of the chart. The length of each bar, or stack of fragments, is proportionate to its overall value.
 
-The Stacked Bar Chart differs from the [Bar Chart](bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
+The Stacked Bar Chart differs from the [Bar Chart](./bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html), as shown in the example below.
+In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedBarSeries`, as shown in the example below.
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -902,13 +896,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Bar Chart
 
 The React Stacked 100% Bar Chart is identical to the React stacked bar chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100% bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html), as shown in the example below.
+In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100BarSeries`, as shown in the example below.
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -1077,13 +1069,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Column Chart
 
-The Stacked Column Chart is identical to the [Column Chart](column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
+The Stacked Column Chart is identical to the [Column Chart](./column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedcolumnseries.html), as shown in the example below.
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedColumnSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1261,13 +1251,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Column Chart
 
 The Stacked 100% Column Chart is identical to the Stacked Column Chart in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100% Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100ColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100columnseries.html), as shown in the example below.
+The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100ColumnSeries`, as shown in the example below.
 
 ```typescript
 export class OnlineTrafficByDeviceItem {
@@ -1427,11 +1415,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html), as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedLineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1611,13 +1597,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Line Chart
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html), as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100LineSeries`, as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1793,13 +1777,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Spline Area Chart
 
-Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
+Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](./area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineareaseries.html), as shown in the example below.
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedSplineAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -1979,13 +1961,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Spline Area Chart
 
 The Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100SplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineareaseries.html), as shown in the example below.
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100SplineAreaSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -2161,11 +2141,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked Spline Chart
 
-The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html), as shown in the example below.
+The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStackedSplineSeries`, as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -2345,13 +2323,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Stacked 100% Spline Chart
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html).
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrStacked100SplineSeries`.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -2526,33 +2502,29 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
-
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Bar Chart](bar-chart.md)
-- [Column Chart](column-chart.md)
-- [Line Chart](line-chart.md)
-- [Spline Chart](spline-chart.md)
+- [Area Chart](./area-chart.md)
+- [Bar Chart](./bar-chart.md)
+- [Column Chart](./column-chart.md)
+- [Line Chart](./line-chart.md)
+- [Spline Chart](./spline-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
 | Chart Type               | Control Name   | API Members |
 | -------------------------|----------------|-------------------------------- |
-| Stacked Area             | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html) |
-| Stacked Bar              | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html) |
-| Stacked Column           | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedcolumnseries.html) |
-| Stacked Line             | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html) |
-| Stacked Spline           | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html) |
-| Stacked Spline Area      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStackedSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineareaseries.html) |
-| Stacked 100% Area        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html) |
-| Stacked 100% Bar         | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html) |
-| Stacked 100% Column      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100ColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100columnseries.html) |
-| Stacked 100% Line        | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html) |
-| Stacked 100% Spline      | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html) |
-| Stacked 100% Spline Area | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrStacked100SplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineareaseries.html) |
+| Stacked Area             | `IgrDataChart` | `IgrStackedAreaSeries` |
+| Stacked Bar              | `IgrDataChart` | `IgrStackedBarSeries` |
+| Stacked Column           | `IgrDataChart` | `IgrStackedColumnSeries` |
+| Stacked Line             | `IgrDataChart` | `IgrStackedLineSeries` |
+| Stacked Spline           | `IgrDataChart` | `IgrStackedSplineSeries` |
+| Stacked Spline Area      | `IgrDataChart` | `IgrStackedSplineAreaSeries` |
+| Stacked 100% Area        | `IgrDataChart` | `IgrStacked100AreaSeries` |
+| Stacked 100% Bar         | `IgrDataChart` | `IgrStacked100BarSeries` |
+| Stacked 100% Column      | `IgrDataChart` | `IgrStacked100ColumnSeries` |
+| Stacked 100% Line        | `IgrDataChart` | `IgrStacked100LineSeries` |
+| Stacked 100% Spline      | `IgrDataChart` | `IgrStacked100SplineSeries` |
+| Stacked 100% Spline Area | `IgrDataChart` | `IgrStacked100SplineAreaSeries` |

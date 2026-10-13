@@ -1,14 +1,15 @@
 ---
-title: Blazor Data Grid Component - Infragistics
-_description: Create super-fast, responsive Blazor Data Grids and tables with Ignite UI for Blazor. Supports editing, filtering, data binding and many more. Try it now!
-_keywords: Blazor, Ignite UI for Blazor, Infragistics, Getting Started, Grid
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.ColumnPipeArgs"]
+title: "Blazor Data Grid Documentation & API"
+description: Create super-fast, responsive Blazor Data Grids and tables with Ignite UI for Blazor. Supports editing, filtering, data binding and many more. Try it now!
+keywords: "Blazor, Ignite UI for Blazor, Infragistics, Getting Started, Grid"
+license: commercial
+mentionedTypes: ["Grid", "Column", "Cell", "CellTemplateContext", "GridRowComponent", "GridToolbar", "Paginator"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Blazor Data Grid component is used for displaying large volumes of data."
 _tocName: Grid
 ---
-
-<style>
+<style>{`
     .sample-content {
         display: flex;
         flex-flow: row wrap;
@@ -31,29 +32,24 @@ _tocName: Grid
     }
 
     .tabbar-wrapper > p {
-        padding-right: 20px
+        padding-right: 20px;
     }
-</style>
+`}</style>
 
-# Blazor Grid Overview and Configuration
+# Blazor Data Grid Documentation
 
 <div class="sample-content">
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <p>The Blazor Data Grid component is used for displaying large volumes of data. Modern and more complex grids ensure smooth UX and bring an array of features for manipulating tabular data. There is an intuitive API, theming, branding, filtering, sorting, data selection, Excel-style filtering, and many more.</p>
             <p>The Ignite UI for Blazor Data Table / Data Grid is a tabular Blazor grid component that allows you to quickly bind and display your data with little coding or configuration. Features of the Blazor data grid in our toolbox include filtering, sorting, templates, row selection, row grouping, row pinning, movable columns, virtualization, Master-Detail, and much more.</p>
-            <p>The Blazor tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant, making Ignite UI for Blazor Data Grid the best Blazor Data Grid on the market. </p>
+            <p>The Blazor tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant.</p>
         </div>
     </article>
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <div class="tab-content">
-                <img class="b-lazy responsive-img"
-                    src="../../images/general/landing-grid-page.png"
-                    data-src="../../images/general/landing-grid-page.png"
-                    data-srcset="../../images/general/landing-grid-page.png 480w, ../../images/general/landing-grid-page.png 768w, ../../images/general/landing-grid-page.png 1100w"
-                    alt="Blazor Data Grid"
-                    title="Blazor Data Grid Component - Infragistics">
+                
             </div>
         </div>
     </article>
@@ -217,8 +213,6 @@ public class NwindData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Blazor Data Grid
 
 ### Dependencies
@@ -244,12 +238,13 @@ Afterwards, you may start implementing the control by adding the following names
 
 ### Component Modules
 
-The `DataGrid` requires the following modules:
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) requires the following modules:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbGridModule));
+
 ```
 
 ## Usage
@@ -260,15 +255,15 @@ Now that we have the grid packages imported, let’s get started with the basic 
 <IgbGrid Id="grid1" Data="data" AutoGenerate="true"></IgbGrid>
 ```
 
-The [`Id`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`Id`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while [`data`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=data) binds the grid, in this case to local data.
 
-The [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AutoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=autoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Blazor Grid
 
 Each operation for grid editing includes batch operations, meaning the API gives you the option to group edits into a single server call, or you can perform grid edit / update operations as they occur with grid interactions. Along with a great developer experience as an editable grid with CRUD operations, the grid includes Excel-like keyboard navigation. Common default grid navigation is included, plus the option to override any navigation option to meet the needs of your customers. An editable grid in with a great navigation scheme is critical to any modern line of business application, with the Ignite UI grid we make it easy.
 
-Following this topic you will learn more about [cell template](data-grid.md#cell-template) and [cell editing template](data-grid.md#cell-editing-template) and editing.
+Following this topic you will learn more about [cell template](./data-grid.md#cell-template) and [cell editing template](./data-grid.md#cell-editing-template) and editing.
 
 ## Grid Column Configuration
 
@@ -276,7 +271,7 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ### Defining Columns
 
-Let's turn the [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AutoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```razor
 <IgbGrid AutoGenerate=false AllowFiltering=true>
@@ -292,7 +287,9 @@ The header template can be set to modify the column headers. The snippets below 
 
 ```razor
 <IgbColumn Field="Name" HeaderTemplateScript="UpperCaseTemplate" />
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("UpperCaseTemplate", (ctx) => {
 
@@ -313,7 +310,9 @@ When cell template is set it changes all the cells in the column. The context ob
 
 ```razor
 <IgbColumn Field="Name" BodyTemplateScript="NameCellTemplate"/>
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("NameCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -322,23 +321,25 @@ igRegisterScript("NameCellTemplate", (ctx) => {
 }, false);
 
 function formatTitleCase(value) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 ```
 
-In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the `Cell` instance itself as shown below:
+In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`Cell`](mcp:get_api_reference?platform=blazor&component=IgbCellTemplateContext&member=cell) instance itself as shown below:
 
 ```razor
 <IgbGrid Id="grid" AutoGenerate=false>
     <IgbColumn Field="Name" BodyTemplateScript="NameCellTemplate" />
     <IgbColumn Field="Subscription" BodyTemplateScript="SubscriptionCellTemplate" />
 </IgbGrid>
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("NameCellTemplate", (ctx) => {
        var html = window.igTemplating.html;
     return html`
-        <span tabindex="0" @keyup=${(e) => this.deleteRow(e, ctx.cell.id.rowIndex)}> ${this.formatTitleCase(ctx.cell.value)}</span >
+        <span tabindex="0" @keyup=${(e) => this.deleteRow(e, ctx.cell.id.rowIndex)}> ${this.formatTitleCase(ctx.cell.value)}</span>
     `;
 }, false);
 
@@ -358,23 +359,25 @@ function deleteRow(e, rowIndex) {
 }
 
 function formatTitleCase(value) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 ```
 
 > **Note**:
 > The grid exposes a default handling for number, string, date and boolean column types. For example, the column will display `check` or `close` icon, instead of true/false by default, for boolean column type.
 
-When properly implemented, the cell editing template also ensures that the cell's `EditValue` will correctly pass through the grid [editing event cycle](grid/editing.md#event-arguments-and-sequence).
+When properly implemented, the cell editing template also ensures that the cell's [`EditValue`](mcp:get_api_reference?platform=blazor&component=IgbCellType&member=editValue) will correctly pass through the grid [editing event cycle](./grid/editing.md#event-arguments-and-sequence).
 
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) property of the column to true.
+to set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=editable) property of the column to true.
 
 ```razor
 <IgbColumn Field="Price" Editable=true DataType="GridColumnDataType.Number" InlineEditorTemplateScript="PriceCellTemplate" />
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("PriceCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -392,7 +395,7 @@ function updateValue(event, value) {
 }
 ```
 
-Make sure to check the API for the `Cell` in order to get accustomed with the provided properties you can use in your templates.
+Make sure to check the API for the [`IgbCellType`](mcp:get_api_reference?platform=blazor&component=IgbCellType) in order to get accustomed with the provided properties you can use in your templates.
 
 ### Column Template API
 
@@ -410,7 +413,9 @@ Each of the column templates can be changed programmatically at any point throug
         column.BodyTemplateScript = "NormalViewTemplate";
     }
 }
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("NormalViewTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -451,25 +456,25 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=DigitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=digitsInfo) - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs) is set. Example:
 
 ```razor
 <IgbColumn Field="OrderDate"
            DataType=GridColumnDataType.Date
-           PipeArgs=@(new IgbColumnPipeArgs() { Timezone="UTC+0", DigitsInfo="1.2-2", Format = "longDate" }) />
+           PipeArgs=@(new IgbColumnPipeArgs() { Timezone="UTC+0", Format = "longDate" }) />
 
 <IgbColumn Field="UnitPrice"
-           DataType=GridColumnDataType.Date
-           PipeArgs=@(new IgbColumnPipeArgs() { Timezone="UTC+0", DigitsInfo="1.2-2", Format = "longDate" }) />
+           DataType=GridColumnDataType.Number
+           PipeArgs=@(new IgbColumnPipeArgs() { DigitsInfo="1.2-2" }) />
 ```
 
-The `OrderDate` column will respect only the [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Format) and [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=DigitsInfo).
+The `OrderDate` column will respect only the [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=format) and [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=digitsInfo).
 
-All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
+All available column data types could be found in the official [Column types topic](./grid/column-types.md#default-template).
 
 ## Complex Data Binding
 
@@ -477,7 +482,7 @@ Complex Data Binding allows for seamless interaction with multi-level data, comp
 
 Take a look at the following data model:
 
-```razor
+```csharp
 public class AminoAcid
 {
     public string Name { get; set; }
@@ -511,7 +516,9 @@ An alternative way to bind complex data, or to visualize composite data (from mo
 
 ```razor
 <IgbColumn Field="Abbreviation.Long" BodyTemplateScript="AbbreviationLongCellTemplate"/>
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("AbbreviationLongCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -538,7 +545,7 @@ function GetWeight(rowIndex) {
 
 Here is an example on how body template is used to display complex data. Below is the data that we are going to use:
 
-```razor
+```csharp
 public class EmployeesNestedData : List<EmployeesNestedDataItem>
 {
     public EmployeesNestedData()
@@ -599,7 +606,9 @@ The custom template for the column, that will render the nested data:
 
 ```razor
 <IgbColumn Header="Employees" Field="Employees" BodyTemplateScript="WebGridNestedDataCellTemplate" />
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("WebGridNestedDataCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -778,13 +787,13 @@ public class EmployeesNestedData
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Data) property of the [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](mcp:get_api_reference?platform=blazor&component=IgbGridRow&member=data) property of the [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow).
 
 Since the Blazor grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
 Below is the data that we are going to use:
 
-```razor
+```csharp
 public class CustomersData : List<CustomersDataItem>
 {
     public CustomersData()
@@ -813,7 +822,9 @@ The custom template:
 <IgbColumn Header="Address" Field="Address"
            Editable="true"
            BodyTemplateScript="AddressCellTemplate" />
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("AddressCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -839,7 +850,9 @@ Keep in mind that with the above defined template you will not be able to make e
 <IgbColumn Header="Address" Field="Address"
            Editable="true"
            InlineEditorTemplateScript="AddressEditCellTemplate" />
+```
 
+```javascript
 //In JavaScript:
 igRegisterScript("AddressEditCellTemplate", (ctx) => {
     var html = window.igTemplating.html;
@@ -850,17 +863,17 @@ igRegisterScript("AddressEditCellTemplate", (ctx) => {
     return html`<div class="address-container--edit">
     <div>
         <span><strong>Country:</strong></span>
-        <input id='Country' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.Country}"></input>
+        <input id='Country' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.Country}">
         <br>
         <span><strong>City:</strong></span>
-        <input id='City' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.City}"></input>
+        <input id='City' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.City}">
     </div>
     <div>
         <span><strong>Postal Code:</strong></span>
-        <input id='PostalCode' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.PostalCode}"></input>
+        <input id='PostalCode' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.PostalCode}">
         <br>
         <span><strong>Selected:</strong></span>
-        <input id='Phone' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.Phone}"></input>
+        <input id='Phone' onkeyup='keyUpHandler()' value="${ctx.cell.row.data.Phone}">
     </div>
     <br>
 </div>`;
@@ -1002,18 +1015,11 @@ public class CustomersData
 
 Keyboard navigation of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
-<!-- The sizing topic is still not available thus the Sizing section is commented out. -->
-
-<!-- ## Sizing
-
-See the [Grid Sizing](sizing.md) topic. -->
-
 ## Styling Blazor Grid
-
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grids/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./grid/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```razor
  <IgbGrid Class="grid"></IgbGrid>
@@ -1041,27 +1047,41 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- `Cell`
-- [`IgbCellTemplateContext`](mcp:get_api_reference?platform=blazor&component=IgbCellTemplateContext)
-- [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)
-- [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
-- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
+[`IgbCellType`](mcp:get_api_reference?platform=blazor&component=IgbCellType)<br />
+[`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)<br />
+[`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)<br />
 
-## Additional Resources
+[`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)<br />
+[`IgbCellTemplateContext`](mcp:get_api_reference?platform=blazor&component=IgbCellTemplateContext)<br />
+[`IgbCellType`](mcp:get_api_reference?platform=blazor&component=IgbCellType)<br />
+[`IgbColumnPipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs)<br />
 
-- [Grid Sizing](grid/sizing.md)
-- [Virtualization and Performance](grid/virtualization.md)
-- [Paging](grid/paging.md)
-- [Filtering](grid/filtering.md)
-- [Sorting](grid/sorting.md)
-- [Summaries](grid/summaries.md)
-- [Column Moving](grid/column-moving.md)
-- [Column Pinning](grid/column-pinning.md)
-- [Column Resizing](grid/column-resizing.md)
-- [Selection](grid/selection.md)
-- [Column Data Types](grid/column-types.md#default-template)
+## Theming Dependencies
+
+- **Icon Theme**
+- **InputGroup Theme**
+- **Chip Theme**
+- **Ripple Theme**
+- **Button Theme**
+- **Overlay Theme**
+- **DropDown Theme**
+- **Calendar Theme**
+- **SnackBar Theme**
+- **Badge Theme**
+
+- [Grid Sizing](./grid/sizing.md)
+- [Virtualization and Performance](./grid/virtualization.md)
+- [Paging](./grid/paging.md)
+- [Filtering](./grid/filtering.md)
+- [Sorting](./grid/sorting.md)
+- [Summaries](./grid/summaries.md)
+- [Column Moving](./grid/column-moving.md)
+- [Column Pinning](./grid/column-pinning.md)
+- [Column Resizing](./grid/column-resizing.md)
+- [Selection](./grid/selection.md)
+- [Column Data Types](./grid/column-types.md#default-template)
 
 Our community is active and always welcoming to new ideas.
 

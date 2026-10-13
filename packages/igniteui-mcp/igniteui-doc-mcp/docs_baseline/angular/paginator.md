@@ -1,11 +1,12 @@
 ---
 title: Angular Paginator Example – Ignite UI for Angular - MIT license 
-_description: Configure Angular pagination and create custom pages in the Angular table, or other iterable UI collection, by Ignite UI, get data for the requested pages with variety of angular events.
-_keywords: angular paginator, angular paginator component, angular ui components, igniteui for angular, infragistics
-_license: MIT
+description: Configure Angular pagination and create custom pages in the Angular table, or other iterable UI collection, by Ignite UI, get data for the requested pages with variety of angular events.
+keywords: angular paginator, angular paginator component, angular ui components, igniteui for angular, infragistics
+license: MIT
+llms:
+  description: "Pagination in Angular is an optimization technique when working with huge data sets."
 _tocName: Paginator
 ---
-
 # Angular Paginator Component Overview
 
 Pagination in Angular is an optimization technique when working with huge data sets. The purpose of Angular Paginator is to provide UI and API to split and distribute a high volumes of data into equally sized pages, which can be navigated by the end-user.
@@ -113,7 +114,7 @@ export class PaginationSampleComponent implements AfterViewInit {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Paginator
 
@@ -123,7 +124,7 @@ To get started with the Ignite UI for Angular Paginator component, first you nee
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxPaginatorModule` in the **app.module.ts** file.
 
@@ -147,7 +148,6 @@ Alternatively, as of `16.0.0` you can import the `IgxPaginatorComponent` as a st
 // home.component.ts
 
 import { NgFor } from '@angular/common';
-import { HammerModule } from '@angular/platform-browser';
 import { IGX_PAGINATOR_DIRECTIVES } from 'igniteui-angular/paginator';
 import { IGX_LIST_DIRECTIVES } from 'igniteui-angular/list';
 // import { IGX_PAGINATOR_DIRECTIVES, IGX_LIST_DIRECTIVES } from '@infragistics/igniteui-angular'; for licensed package
@@ -162,8 +162,8 @@ import { IGX_LIST_DIRECTIVES } from 'igniteui-angular/list';
     `,
     styleUrls: ['home.component.scss'],
     standalone: true,
-    imports: [IGX_PAGINATOR_DIRECTIVES, IGX_LIST_DIRECTIVES, HammerModule, NgFor]
-    /* or imports: [IgxPaginatorComponent, IgxListComponent, IgxListItemComponent, HammerModule, NgFor] */
+    imports: [IGX_PAGINATOR_DIRECTIVES, IGX_LIST_DIRECTIVES, NgFor]
+    /* or imports: [IgxPaginatorComponent, IgxListComponent, IgxListItemComponent, NgFor] */
 })
 export class HomeComponent {
     public products: Product [];
@@ -202,7 +202,7 @@ Also, the paging area supports adding custom template by the user, if a `igx-pag
 </igx-paginator>
 ```
 
-In addition, [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) were introduced and now the paginator components allows a custom content to be defined, as it is shown in the example below. The first will add the dropdown element and label corresponding for the page size and the latter will handle the page navigation with all action buttons.
+In addition, [`IgxPageSizeSelector`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigation`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) were introduced and now the paginator components allows a custom content to be defined, as it is shown in the example below. The first will add the dropdown element and label corresponding for the page size and the latter will handle the page navigation with all action buttons.
 
 ```html
 <igx-paginator #paginator>
@@ -234,12 +234,11 @@ Paging can also be done programmatically through the Paging API /which is descri
 | paging        |                 Emitted before paging is performed. Cancelable.    |
 | pagingDone    |                             Emitted after paging is performed.     |
 
-
 ## Angular Paginator Localization
 
-With only a few lines of code you can easily localize all strings part of the Paging component. In order to localize a given Paging instance use the input property [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings). You can use this
+With only a few lines of code you can easily localize all strings part of the Paging component. In order to localize a given Paging instance use the input property [`resourceStrings`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings). You can use this
 
-**Step 1** - Import `IPaginatorResourceStrings` interface and [changei18n](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/#changei18n) function:
+**Step 1** - Import `IPaginatorResourceStrings` interface and [`Igxchangei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function:
 
 ```ts
 import { IPaginatorResourceStrings, changei18n } from "igniteui-angular/core";
@@ -259,7 +258,7 @@ private paginatorResourceStrings: IPaginatorResourceStrings = {
 ```
 
 
-**Step 3** - Pass the object to the [changei18n](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/#changei18n) function as a parameter in order to change the global i18n for the component on app.module level. This will change the resource string of all Paging components part of your application:
+**Step 3** - Pass the object to the [`Igxchangei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function as a parameter in order to change the global i18n for the component on app.module level. This will change the resource string of all Paging components part of your application:
 
 ```ts
 public ngOnInit(): void {
@@ -267,7 +266,7 @@ public ngOnInit(): void {
 }
 ```
 
-In order to change the resource string to a specific Paging component, you can use a @ViewChild and set the desired [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) within a `requestAnimationFrame` method with a callback, that will be invoked before the page repaint. Setting a newly instantiated object to the [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) property will localize only that given component's instance.
+In order to change the resource string to a specific Paging component, you can use a @ViewChild and set the desired [`resourceStrings`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) within a `requestAnimationFrame` method with a callback, that will be invoked before the page repaint. Setting a newly instantiated object to the [`resourceStrings`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) property will localize only that given component's instance.
 
 ```ts
 @ViewChild('paginator', { read: IgxPaginatorComponent, static: false }) public paginator: IgxPaginatorComponent;
@@ -282,22 +281,19 @@ public ngOnInit(): void {
 
 
 ## API References
-
-- [IgxPaginator API](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
-- [IgxPaginator Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme)
-
+- [`IgxPaginator API`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
+- `IgxPaginator Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [Grid](grid/grid.md)
-- [Virtualization and Performance](grid/virtualization.md)
-- [Filtering](grid/filtering.md)
-- [Sorting](grid/sorting.md)
-- [Summaries](grid/summaries.md)
+- [Grid](/grid/grid)
+- [Virtualization and Performance](/grid/virtualization)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Summaries](/grid/summaries)
 
-
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

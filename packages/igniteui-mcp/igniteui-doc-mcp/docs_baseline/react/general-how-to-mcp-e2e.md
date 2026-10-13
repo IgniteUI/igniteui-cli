@@ -1,20 +1,19 @@
 ---
-title: Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP - Ignite UI for React
-_description: Follow an end-to-end Ignite UI for React workflow with Ignite UI CLI MCP and Ignite UI Theming MCP start CLI-first, connect both MCP servers, create or extend the app through chat, ask documentation questions, and apply a custom theme.
-_keywords: React, Ignite UI for React, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, workflow, theming, prompt
-_language: en
-_license: MIT
-_canonicalLink: "{environment:dvUrl}/components/general-how-to-mcp-e2e"
-namespace: Infragistics.Controls
+title: "Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP - Ignite UI for React"
+description: "Follow an end-to-end Ignite UI for React workflow with Ignite UI CLI MCP and Ignite UI Theming MCP start CLI-first, connect both MCP servers, create or extend the app through chat, ask documentation questions, and apply a custom theme."
+keywords: "React, Ignite UI for React, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, workflow, theming, prompt"
+license: MIT
+_canonicalLink: "/components/general-how-to-mcp-e2e"
 mentionedTypes: []
+llms:
+  description: "Ignite UI CLI MCP and Ignite UI Theming MCP work together to let an AI assistant scaffold, extend, and theme an Ignite UI for React application through chat prompts."
 _tocName: Build App with CLI MCP and Theming MCP
 ---
-
 # Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP
 
 <p class="highlight">Ignite UI CLI MCP and Ignite UI Theming MCP work together to let an AI assistant scaffold, extend, and theme an Ignite UI for React application through chat prompts. CLI MCP handles project creation, component work, and documentation questions. Theming MCP handles palettes, themes, tokens, and styling workflows. This topic shows the full process in one clear flow.</p>
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## How CLI MCP and Theming MCP Divide Responsibilities
 
@@ -23,7 +22,7 @@ CLI MCP and Theming MCP are two separate STDIO-transport MCP servers with distin
 | Concern                                          | Server      |
 | ------------------------------------------------ | ----------- |
 | Create and scaffold project structure            | CLI MCP     |
-| Add or update {}components   | CLI MCP     |
+| Add or update React components              | CLI MCP     |
 | Query component APIs and documentation           | CLI MCP     |
 | Generate color palettes and shade variations     | Theming MCP |
 | Create and apply global theme configurations     | Theming MCP |
@@ -43,7 +42,7 @@ Before you start, make sure you have:
 
 This walkthrough works best with a **CLI-first** setup because Ignite UI CLI scaffolds the project and prepares the first MCP configuration for VS Code automatically.
 
-If you still need the detailed setup reference for each client, see [Ignite UI CLI MCP](ai/cli-mcp.md) and [Ignite UI Theming MCP](ai/theming-mcp.md).
+If you still need the detailed setup reference for each client, see [Ignite UI CLI MCP](./ai/cli-mcp.md) and [Ignite UI Theming MCP](./ai/theming-mcp.md).
 
 ## Step 1: Start with Ignite UI CLI
 
@@ -250,12 +249,10 @@ In practice, the most effective pattern is to use CLI MCP for project and compon
 
 ## Related Topics
 
-- [AI-Assisted Development with Ignite UI](ai/ai-assisted-development-overview.md)
-- [Ignite UI for React Skills](ai/skills.md)
-- [Ignite UI CLI MCP](ai/cli-mcp.md)
-- [Ignite UI Theming MCP](ai/theming-mcp.md)
-
-<div class="divider--half"></div>
+- [AI-Assisted Development with Ignite UI](./ai/ai-assisted-development-overview.md)
+- [Ignite UI for React Skills](./ai/skills.md)
+- [Ignite UI CLI MCP](./ai/cli-mcp.md)
+- [Ignite UI Theming MCP](./ai/theming-mcp.md)
 
 Our community is active and always welcoming to new ideas.
 

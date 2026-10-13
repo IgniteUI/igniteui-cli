@@ -1,19 +1,18 @@
 ---
-title: Blazor Text Area | Data Visualization Tools | Infragistics
-_description: Infragistics' Blazor Text Area is a component where the user can enter a sizable amount of free-form text.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, Web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Input, Blazor Textarea components, Blazor Textarea controls
+title: "Blazor Text Area | Data Visualization Tools | Infragistics"
+description: Infragistics' Blazor Text Area is a component where the user can enter a sizable amount of free-form text.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, Web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Input, Blazor Textarea components, Blazor Textarea controls"
 mentionedTypes: ["Input", "Icon", "Textarea", "Toast"]
-_license: MIT
+license: MIT
+llms:
+  description: "The Ignite UI for Blazor Text Area represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizable amount of free-form text, for example a comment on a review or feedback form."
 _tocName: Text Area
 ---
-
 # Blazor Text Area Overview
 
 The Ignite UI for Blazor Text Area represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizable amount of free-form text, for example a comment on a review or feedback form.
 
 ## Blazor Text Area Example
-
-<div class="divider--half"></div>
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -30,13 +29,13 @@ The Ignite UI for Blazor Text Area represents a multi-line plain-text editing co
 
 ## Dependencies
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbTextareaModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -50,7 +49,14 @@ After we import the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&compon
 
 ## Prefix, Suffix &  Helper Text
 
-With `prefix` and `suffix` slots we can add different content before and after the main content of the Text Area. The `helper-text` slot provides a hint placed below the Text Area. In the following sample we will create a new Text Area field with a text prefix, an icon suffix and a helper text as a hint:
+With `prefix` and `suffix` slots we can add different content before and after the main content of the Text Area. The `helper-text` slot provides a hint placed below the Text Area. When slotting content, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component for icons. In the following sample, we will create a new Text Area field with an icon prefix and helper text as a hint:
+
+```razor
+<IgbTextarea Label="Your feedback">
+    <IgbIcon IconName="feedback" Collection="material" slot="prefix"></IgbIcon>
+    <span slot="helper-text">Give us a short description of what you liked/disliked</span>
+</IgbTextarea>
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -224,14 +230,13 @@ igc-textarea::part(suffix) {
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
 
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea)
-- [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+[`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea)
+[`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)
 
 ## Additional Resources
 

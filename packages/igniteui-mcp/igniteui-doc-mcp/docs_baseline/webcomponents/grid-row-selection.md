@@ -1,31 +1,25 @@
 ---
-title: Web Components Grid Row Selection - Ignite UI for Web Components
-_description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Web Components Grid. See demos & examples!
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["GridBaseDirective", "RowSelectorTemplateDetails", "HeadSelectorTemplateDetails", "Checkbox"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-selection
+title: "Web Components Grid Row Selection - Ignite UI for Web Components"
+description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Web Components Grid. See demos & examples!
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-selection"
+llms:
+  description: "The Ignite UI for Web Components Row Selection feature in Web Components Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data."
+_componentKey: Grid
 _tocName: Row Selection
 _premium: true
 ---
-
 # Web Components Grid Row Selection
 
-The Ignite UI for Web Components Row Selection feature in Web Components Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent):
-
+The Ignite UI for Web Components Row Selection feature in Web Components Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent):
 - None Selection
 - Multiple Selection
 - Single Selection
 
 ## Web Components Row Selection Example
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The sample below demonstrates the three types of [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The sample below demonstrates the three types of [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 ```typescript
 export class FinancialDataAllItem {
@@ -117,10 +111,9 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 ```
 
 ## Setup
+In order to setup row selection in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you just need to set the [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property. This property accepts [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
 
-In order to setup row selection in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you just need to set the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) property. This property accepts `GridSelectionMode` enumeration.
-
-`GridSelectionMode` exposes the following modes:
+[`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**
@@ -130,11 +123,11 @@ Below we will take a look at each of them in more detail.
 
 ### None Selection
 
-In the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default row selection is disabled ([`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) UI, the only way to complete these actions is to use the provided API methods.
+In the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default row selection is disabled ([`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) UI, the only way to complete these actions is to use the provided API methods.
 
 ### Single Selection
 
-Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
+Single row selection can now be easily set up, the only thing you need to do, is to set [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected [`IgcGrid.rowSelectionChanging`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelectionChanging) event is emitted.
 
 ```html
 <igc-grid id="grid" row-selection="Single" auto-generate="true"
@@ -160,7 +153,7 @@ public handleRowSelection(args: IgcRowSelectionEventArgs) {
 
 ### Multiple Selection
 
-To enable multiple row selection in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) just set the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) just set the [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
 
 ```html
 <igc-grid id="grid" primary-key="ProductID" row-selection="Multiple"
@@ -170,19 +163,15 @@ To enable multiple row selection in the [`IgcGridComponent`](mcp:get_api_referen
 
 **Notes**
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-- Row selection will trigger `RowSelectionChanging` event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
-- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`hideRowSelectors`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=hideRowSelectors) to **true**.
+- Row selection will trigger [`IgcGrid.rowSelectionChanging`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelectionChanging) event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
+- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`HideRowSelectors`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=hideRowSelectors) to **true**.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 
 ## API usage
 
 ### Select Rows Programmatically
 
-The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```html
 <igc-grid id="grid"
@@ -192,6 +181,7 @@ auto-generate="true">
 </igc-grid>
 
 <button id='select'>Select 1,2 and 5</button>
+
 ```
 
 ```ts
@@ -204,11 +194,11 @@ public onClickSelect() {
 }
 ```
 
-This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) selection.
+This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) selection.
 
 ### Deselect Rows
 
-If you need to deselect rows programmatically, you can use the [`deselectRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=deselectRows) method.
+If you need to deselect rows programmatically, you can use the [`DeselectRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=deselectRows) method.
 
 ```html
 <igc-grid id="grid"
@@ -218,6 +208,7 @@ auto-generate="true">
 </igc-grid>
 
 <button id='deselect'>DeSelect</button>
+
 ```
 
 ```ts
@@ -232,8 +223,7 @@ public onClickDeselect() {
 
 ### Row Selection Event
 
-When there is some change in the row selection `RowSelectionChanging` event is emitted. `RowSelectionChanging` exposes the following arguments:
-
+When there is some change in the row selection [`IgcGrid.rowSelectionChanging`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelectionChanging) event is emitted. [`IgcGrid.rowSelectionChanging`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelectionChanging) exposes the following arguments:
 - `OldSelection`  - array of row IDs that contains the previous state of the row selection.
 - `NewSelection` - array of row IDs that match the new state of the row selection.
 - `Added` - array of row IDs that are currently added to the selection.
@@ -260,17 +250,17 @@ public handleRowSelectionChange(args) {
 
 ### Select All Rows
 
-Another useful API method that [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides is [`selectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides is [`SelectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
 
-> **Note** Keep in mind that [`selectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectAllRows) will not select the rows that are deleted.
+> **Note** Keep in mind that [`SelectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectAllRows) will not select the rows that are deleted.
 
 ### Deselect All Rows
 
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a [`deselectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a [`DeselectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
 
 ### How to get Selected Rows
 
-If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectedRows) getter.
+If you need to see which rows are currently selected, you can get their row IDs with the [`IgcGrid.selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectedRows) getter.
 
 ```ts
 public getSelectedRows() {
@@ -279,7 +269,7 @@ public getSelectedRows() {
 }
 ```
 
-Additionally, assigning row IDs to [`selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectedRows) will allow you to change the grid's selection state.
+Additionally, assigning row IDs to [`IgcGrid.selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectedRows) will allow you to change the grid's selection state.
 
 ```ts
 public mySelectedRows = [1, 2, 3]; // an array of row IDs
@@ -292,15 +282,15 @@ constructor() {
 
 ### Row Selector Templates
 
-You can template header and row selectors in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and also access their contexts which provide useful functionality for different scenarios.
+You can template header and row selectors in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
-To create a custom row selector template,  within the `igc-grid` you can use the [`rowSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
+To create a custom row selector template,  within the `igc-grid` you can use the [`RowSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
 
-The [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=selected) property shows whether the current row is selected or not while the [`index`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=index) property can be used to access the row index.
+The [`IgcColumn.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) property shows whether the current row is selected or not while the [`Index`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=index) property can be used to access the row index.
 
 ```ts
 public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
@@ -318,7 +308,7 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-The [`rowID`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=rowID) property can be used to get a reference of an `igc-grid` row. This is useful when you implement a `click` handler on the row selector element.
+The [`RowID`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=rowID) property can be used to get a reference of an `igc-grid` row. This is useful when you implement a `click` handler on the row selector element.
 
 ```ts
 public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
@@ -332,13 +322,13 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) and we bind `rowContext.selected` to its [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) and we bind `rowContext.selected` to its [`Checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
-To create a custom header selector template, within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you can use the [`headSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
+To create a custom header selector template, within the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you can use the [`HeadSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
 
-The [`selectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) property shows you how many rows are currently selected while [`totalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) shows you how many rows there are in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) in total.
+The [`SelectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) property shows you how many rows are currently selected while [`TotalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) shows you how many rows there are in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) in total.
 
 ```ts
 public headSelectorTemplate = (ctx: IgcHeadSelectorTemplateContext) => {
@@ -346,7 +336,7 @@ public headSelectorTemplate = (ctx: IgcHeadSelectorTemplateContext) => {
 };
 ```
 
-The [`selectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) and [`totalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
+The [`SelectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) and [`TotalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
 
 ```html
 <igc-grid id="grid"
@@ -372,11 +362,12 @@ public headSelectorTemplate = (ctx: IgcHeadSelectorTemplateContext) => {
         }
         return html`<igc-checkbox></igc-checkbox>`;
 }
+
 ```
 
 ### Row Numbering Demo
 
-This demo shows the usage of custom header and row selectors. The latter uses [`index`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=index) to display row numbers and an [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) bound to [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=selected).
+This demo shows the usage of custom header and row selectors. The latter uses `RowContext.Index` to display row numbers and an [`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) bound to `RowContext.Selected`.
 
 ```typescript
 export class CustomersDataItem {
@@ -418,13 +409,9 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ### Excel Style Row Selectors Demo
 
 This demo uses custom templates to resemble Excel-like header and row selectors.
-
-<!-- NOTE this sample is differed -->
 
 ```typescript
 export class CustomersDataItem {
@@ -470,11 +457,9 @@ export class CustomersData extends Array<CustomersDataItem> {
     }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ### Conditional Selection Demo
 
-This demo prevents some rows from being selected using the `RowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
+This demo prevents some rows from being selected using the [`IgcGrid.rowSelectionChanging`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelectionChanging) event and a custom template with disabled checkbox for non-selectable rows.
 
 ```typescript
 export class CustomersDataItem {
@@ -518,12 +503,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## API References
 
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent)<br />
+[`IgcGroupByRowSelectorTemplateDetails`](mcp:get_api_reference?platform=webcomponents&component=IgcGroupByRowSelectorTemplateDetails)<br />
+[`IgcHeadSelectorTemplateDetails`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails)<br />
+[`IgcCheckbox`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 - [Selection](selection.md)
 - [Cell selection](cell-selection.md)
@@ -535,8 +521,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

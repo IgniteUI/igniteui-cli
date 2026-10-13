@@ -1,13 +1,14 @@
 ---
-title: Web Components Map | World Utility | Data Source | Infragistics
-_description: Use Infragistics' Web Components JavaScript map data utility to generate geographic data. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, map data, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Web Components Map | World Utility | Data Source | Infragistics"
+description: Use Infragistics' Web Components JavaScript map data utility to generate geographic data. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, map data, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of utility that helps with generating Web Components geographic data."
 _tocName: World Utility
 _premium: true
 ---
-
 # Web Components World Utility
 
 The resource topic provides implementation of utility that helps with generating Web Components geographic data.
@@ -196,5 +197,4 @@ export default class WorldUtils {
 ```
 
 ## API References
-
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcGeographicMap`

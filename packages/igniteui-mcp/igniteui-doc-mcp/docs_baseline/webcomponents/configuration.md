@@ -1,12 +1,13 @@
 ---
-title: Web Components Styling and Themes | Web Components Theming | Theme Switching | Infragistics
-_description: Use Infragistics' Web Components components to create apps and improve data visualization with the world’s fastest, virtualized, real-time Web Components data grid and streaming financial and business and financial charts.
-_keywords: Ignite UI for Web Components, Infragistics, Themes, Styling
-_license: MIT
+title: "Web Components Styling and Themes | Web Components Theming | Theme Switching | Infragistics"
+description: Use Infragistics' Web Components components to create apps and improve data visualization with the world's fastest, virtualized, real-time Web Components data grid and streaming financial and business and financial charts.
+keywords: "Ignite UI for Web Components, Infragistics, Themes, Styling"
+license: MIT
 mentionedTypes: ["ConfigureTheme"]
+llms:
+  description: "The themes in Ignite UI for Web Components can be customized by altering various CSS variables."
 _tocName: Configuration
 ---
-
 # Customizing Themes in Ignite UI for Web Components
 
 The themes in Ignite UI for Web Components can be customized by altering various CSS variables. By overwriting those variables, you can customize the palettes, typography, elevations, roundness, size, and spacing.
@@ -98,4 +99,4 @@ As mentioned before, you can control the horizontal and vertical spacing individ
 
 ## API References
 
-- `ConfigureTheme`
+[`IgcconfigureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)<br />

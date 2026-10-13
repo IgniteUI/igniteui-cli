@@ -231,23 +231,44 @@ describe("Unit - MCP runtime", () => {
 			expect(result.content[0].text).toBe(apiContent);
 		});
 
-		it("falls back to case-insensitive component matching", async () => {
+		it("delegates fuzzy component matching to the loader and reports the resolved name", async () => {
+			// Case-insensitive and generic-stripped lookups live in ApiDocLoader.get;
+			// the handler uses whatever entry comes back.
 			const docLoader = {
-				get: jasmine.createSpy().and.returnValue(undefined),
-				search: jasmine.createSpy().and.returnValue([
-					{ component: "IgcGridComponent", platform: "webcomponents", content: "# IgcGridComponent" }
-				])
+				get: jasmine.createSpy().and.returnValue({
+					component: "IgcGridComponent",
+					platform: "webcomponents",
+					content: "# IgcGridComponent\n\n## Properties\n- height: string"
+				}),
+				search: jasmine.createSpy().and.returnValue([])
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
 			const result = await handler({
 				platform: "webcomponents",
 				component: "igcgridcomponent",
-				section: "all"
+				section: "properties"
 			});
 
-			expect(docLoader.search).toHaveBeenCalledWith({ platform: "webcomponents", filter: "igcgridcomponent" });
+			expect(docLoader.get).toHaveBeenCalledWith("webcomponents", "igcgridcomponent");
+			expect(docLoader.search).not.toHaveBeenCalled();
 			expect(result.isError).toBeUndefined();
+			expect(result.content[0].text).toContain("# IgcGridComponent (webcomponents) - properties");
+		});
+
+		it("treats a blank or placeholder member as omitted", async () => {
+			const apiContent = "# IgrGrid\n\n## Properties\n- height: string\n\n## Methods\n- refresh(): void";
+			const docLoader = {
+				get: jasmine.createSpy().and.returnValue({ component: "IgrGrid", platform: "react", content: apiContent }),
+				search: jasmine.createSpy().and.returnValue([])
+			};
+			const handler = createGetApiReferenceHandler(docLoader);
+
+			for (const member of ["", ".*", "*"]) {
+				const result = await handler({ platform: "react", component: "IgrGrid", section: "all", member });
+				expect(result.isError).withContext(`member=${JSON.stringify(member)}`).toBeUndefined();
+				expect(result.content[0].text).toBe(apiContent);
+			}
 		});
 
 		it("returns an error when an API reference is not found", async () => {

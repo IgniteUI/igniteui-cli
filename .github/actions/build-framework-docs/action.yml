@@ -42,13 +42,13 @@ runs:
         BASE=packages/igniteui-mcp/igniteui-doc-mcp
         case "$FW" in
           angular)
-            SUBS="angular/igniteui-docfx angular/igniteui-angular-samples angular/igniteui-angular-examples" ;;
+            SUBS="common/igniteui-documentation angular/igniteui-angular-samples angular/igniteui-angular-examples" ;;
           react)
-            SUBS="common/igniteui-xplat-docs react/igniteui-react-examples" ;;
+            SUBS="common/igniteui-documentation react/igniteui-react-examples" ;;
           blazor)
-            SUBS="common/igniteui-xplat-docs blazor/igniteui-blazor-examples" ;;
+            SUBS="common/igniteui-documentation blazor/igniteui-blazor-examples" ;;
           webcomponents)
-            SUBS="common/igniteui-xplat-docs webcomponents/igniteui-wc-examples" ;;
+            SUBS="common/igniteui-documentation webcomponents/igniteui-wc-examples" ;;
           *)
             echo "::error::Unknown framework '$FW'"; exit 1 ;;
         esac
@@ -63,12 +63,6 @@ runs:
       with:
         node-version: 24.x
         cache: yarn
-
-    # The cross-platform gulp build restores the docfx dotnet tool.
-    - uses: actions/setup-dotnet@v6
-      if: inputs.framework != 'angular'
-      with:
-        dotnet-version: 8.x
 
     - name: Install packages
       shell: bash
@@ -103,21 +97,10 @@ runs:
       run: |
         set -euo pipefail
 
-        # Only the xplat gulp target uses an abbreviated name.
-        case "$FW" in
-          webcomponents) XPLAT="wc" ;;
-          angular)       XPLAT="" ;;
-          *)             XPLAT="$FW" ;;
-        esac
-
         if [ "$MODE" = "full" ]; then
           npm run "clear:$FW"
         else
           npm run clear:build
-        fi
-
-        if [ -n "$XPLAT" ]; then
-          npm run "build:xplat-$XPLAT"
         fi
 
         npm run "export:$FW"

@@ -1,15 +1,16 @@
 ---
-title: Blazor Date Range Picker Component - Ignite UI for Blazor
-_description: Infragistics' Blazor Date Range Picker allows the user to select a range of two dates from a calendar and set it in an input element.
-_keywords: Blazor Date Range Picker, Ignite UI for Blazor, Infragistics
-_license: MIT
+title: "Blazor Date Range Picker Component - Ignite UI for Blazor"
+description: Infragistics' Blazor Date Range Picker allows the user to select a range of two dates from a calendar and set it in an input element.
+keywords: "Blazor Date Range Picker, Ignite UI for Blazor, Infragistics"
+license: MIT
 mentionedTypes: ["DateRangePicker"]
+llms:
+  description: "The Ignite UI for Blazor Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates."
 _tocName: Date Range Picker
 ---
-
 # Blazor Date Range Picker Overview
 
-The Ignite UI for Blazor Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates. It is highly customizable to fit various application requirements, offering features such as date range restrictions, configurable date formats, and more.
+The Ignite UI for Blazor Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates.  It is highly customizable to fit various application requirements, offering features such as date range restrictions, configurable date formats, and more.
 
 ## Date Range Picker Example
 
@@ -41,13 +42,13 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](mcp:get_api_reference
 
 To get started with the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component, first we need to register its module as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDateRangePickerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/\_Host.cshtml file in a Blazor Server project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/_Host.cshtml file in a Blazor Server project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -71,7 +72,7 @@ To instantiate a [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&co
 <IgbDateRangePicker @ref="DateRangePicker"></IgbDateRangePicker>
 ```
 
-To switch the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) to use two inputs, set the [`UseTwoInputs`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=UseTwoInputs) property to `true`.
+To switch the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) to use two inputs, set the [`IgbDateRangePicker.useTwoInputs`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=useTwoInputs) property to `true`.
 
 ```razor
 <IgbDateRangePicker UseTwoInputs="true"></IgbDateRangePicker>
@@ -79,7 +80,7 @@ To switch the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&compo
 
 ### Value
 
-In addition to being selected or typed by the user, the range value of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) can also be set using the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
+In addition to being selected or typed by the user, the range value of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) can also be set using the [`IgbDateRangePicker.value`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=value) property. It's important to note that the value must follow the format: **`{ start: startDate, end: endDate }`**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```razor
  <IgbDateRangePicker @ref="DateRangePicker" Value="@Range" Label="Date Range"/>
@@ -97,13 +98,13 @@ In addition to being selected or typed by the user, the range value of the [`Igb
 
 ### Read-only & Non-editable
 
-You can also make the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ReadOnly) property.
+You can also make the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`IgbDateRangePicker.readOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=readOnly) property.
 
 ```razor
  <IgbDateRangePicker UseTwoInputs="true" ReadOnly="true"/>
 ```
 
-Alternatively, you can use the [`NonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=NonEditable) property, which, unlike [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ReadOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
+Alternatively, you can use the [`IgbDateRangePicker.nonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=nonEditable) property, which, unlike [`IgbDateRangePicker.readOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
 
 ```razor
  <IgbDateRangePicker UseTwoInputs="true" NonEditable="true"/>
@@ -111,7 +112,7 @@ Alternatively, you can use the [`NonEditable`](mcp:get_api_reference?platform=bl
 
 ### Popup modes
 
-By default, when clicked, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`Mode`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Mode) property to `dialog`.
+By default, when clicked, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`IgbDateRangePicker.mode`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=mode) property to `dialog`.
 
 ```razor
  <IgbDateRangePicker Mode="PickerMode.Dialog"/>
@@ -153,7 +154,7 @@ You can also navigate within the calendar pop-up using the keyboard. The navigat
 
 ### Label
 
-You can define a label for the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component using the [`Label`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Label) property when it is in single input mode. In two inputs mode, you can use the [`LabelStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=LabelStart) and [`LabelEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=LabelEnd) properties to define labels for the start and end date input fields, respectively.
+You can define a label for the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component using the [`IgbDateRangePicker.label`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=label) property when it is in single input mode. In two inputs mode, you can use the [`IgbDateRangePicker.labelStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=labelStart) and [`IgbDateRangePicker.labelEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=labelEnd) properties to define labels for the start and end date input fields, respectively.
 
 ```razor
  <IgbDateRangePicker Label="Date Range"/>
@@ -165,22 +166,22 @@ You can define a label for the [`IgbDateRangePicker`](mcp:get_api_reference?plat
 
 ### Format
 
-You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Locale), [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat), and [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisplayFormat).
+You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`IgbDateRangePicker.locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=locale), [`IgbDateRangePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=inputFormat), and [`IgbDateRangePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=displayFormat).
 
-The [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
+The [`IgbDateRangePicker.locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
 For example, to display the date in a Japanese format, you can set the locale property like this:
 
 ```razor
  <IgbDateRangePicker Locale="ja-JP"/>
 ```
 
-If you want to manually define the date format, you can use the [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat) property by passing a custom format string:
+If you want to manually define the date format, you can use the [`IgbDateRangePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=inputFormat) property by passing a custom format string:
 
 ```razor
  <IgbDateRangePicker InputFormat="dd/MM/yy"/>
 ```
 
-The [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisplayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat), if both properties are used together:
+The [`IgbDateRangePicker.displayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`IgbDateRangePicker.inputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=inputFormat), if both properties are used together:
 
 ```razor
  <IgbDateRangePicker InputFormat="dd/MM/yy" DisplayFormat='yy/MM/dd'/>
@@ -192,17 +193,17 @@ You can further customize the pop-up calendar using various properties:
 
 |Name|Type|Description|
 |--|--|--|
-| [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
-| [`VisibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=VisibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
-| [`ShowWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ShowWeekNumbers) | string | Enables or disables the week number column in the calendar. |
-| [`Open`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Open) | boolean | Determines whether the calendar picker is open. |
-| [`KeepOpenOnSelect`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=KeepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
-| [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=KeepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
-| [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=WeekStart) | string | Sets the start day of the week. |
-| [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HideOutsideDays) | boolean | Hides days that fall outside the current month view. |
-| [`HideHeader`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
-| [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HeaderOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
-| [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ActiveDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
+| [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
+| [`VisibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
+| [`ShowWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
+| [`Open`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=open) | boolean | Determines whether the calendar picker is open. |
+| [`KeepOpenOnSelect`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
+| [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
+| [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbFieldPipeArgs&member=weekStart) | string | Sets the start day of the week. |
+| [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
+| [`HideHeader`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
+| [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
+| [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
 
 ```razor
  <IgbDateRangePicker Orientation="ContentOrientation.Vertical" VisibleMonths="1" ShowWeekNumbers="true"/>
@@ -210,7 +211,7 @@ You can further customize the pop-up calendar using various properties:
 
 ### Min & Max
 
-You can also set the [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Min) and [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) will become invalid.
+You can also set the [`IgbDateRangePicker.min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=min) and [`IgbDateRangePicker.max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) will become invalid.
 
 ```razor
  <IgbDateRangePicker Min="@MinDate" Max="@MaxDate"/>
@@ -223,7 +224,7 @@ You can also set the [`Min`](mcp:get_api_reference?platform=blazor&component=Igb
 
 ### Custom & Predefined Date Ranges
 
-You can also add custom date range chips to the calendar pop-up for faster range selection using the [`CustomRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=CustomRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`UsePredefinedRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=UsePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
+You can also add custom date range chips to the calendar pop-up for faster range selection using the [`IgbDateRangePicker.customRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`IgbDateRangePicker.usePredefinedRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
 
 ```razor
 <IgbDateRangePicker CustomRanges="@CustomRanges" UsePredefinedRanges="true" Label="Custom Ranges" />
@@ -293,7 +294,7 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 
 ### Disabled & Special dates
 
-You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisabledDates) property.
+You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`IgbDateRangePicker.disabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=disabledDates) property.
 
 ```razor
 <IgbDateRangePicker DisabledDates="@DisabledDates" />
@@ -308,13 +309,13 @@ You also have the ability to set disabled dates in the calendar to narrow the ra
 }
 ```
 
-You can see more information about all the possibilities that the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
+You can see more information about all the possibilities that the [`IgbDateRangePicker.disabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
 
-You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`SpecialDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=SpecialDates) property instead. [Special dates](./calendar.md#special-dates)
+You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`IgbDateRangePicker.specialDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=specialDates) property instead. [Special dates](./calendar.md#special-dates)
 
 ### Forms
 
-The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component can also be used seamlessly with the HTML form element. The [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Min), [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Max), and [`Required`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Required) properties act as form validators.
+The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component can also be used seamlessly with the HTML form element. The [`IgbDateRangePicker.min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=min), [`IgbDateRangePicker.max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=max), and [`IgbDateRangePicker.required`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=required) properties act as form validators.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -393,14 +394,14 @@ In addition to the properties we've already covered, the [`IgbDateRangePicker`](
 
 |Name|Type|Description|
 |--|--|--|
-| [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Disabled) | boolean | Disables the component. |
-| [`NonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=NonEditable) | boolean | Disables typing in the input field(s). |
-| [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Placeholder) | string | Placeholder text for the single input mode. |
-| [`PlaceholderStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=PlaceholderStart) | string | Placeholder text for the start date input (two inputs mode). |
-| [`PlaceholderEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=PlaceholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
-| [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
-| [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
-| [`ResourceStrings`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ResourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
+| [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=disabled) | boolean | Disables the component. |
+| [`NonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=nonEditable) | boolean | Disables typing in the input field(s). |
+| [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=placeholder) | string | Placeholder text for the single input mode. |
+| [`PlaceholderStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
+| [`PlaceholderEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
+| [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
+| [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
+| [`ResourceStrings`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
 
 ### Slots
 
@@ -415,9 +416,9 @@ The `prefix` and `suffix` slots allow you to insert custom content before or aft
 </IgbDateRangePicker>
 ```
 
-In two inputs mode, you can use the `prefix-start`, `prefix-end`, `suffix-start`, and `suffix-end` slots instead to target the individual inputs.
+In two-input mode, you can use the `prefix-start`, `prefix-end`, `suffix-start`, and `suffix-end` slots instead to target the individual inputs. For all `prefix-` and `suffix-` type slots, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
-Another set of useful slots are `clear-icon` and `calendar-icon`, which allow you to customize the icons for the clear and calendar buttons in the input fields:
+Another set of useful slots are `clear-icon` and `calendar-icon`, which allow you to customize the icons for the clear and calendar buttons in the input fields. For these slots we also recommend using a `<span>` element for symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
 ```razor
 <IgbDateRangePicker>
@@ -426,7 +427,7 @@ Another set of useful slots are `clear-icon` and `calendar-icon`, which allow yo
 </IgbDateRangePicker>
 ```
 
-In two inputs mode, you can also customize the default “to” text between the fields by using the `separator` slot:
+In two-input mode, you can also customize the default “to” text between the fields using the `separator` slot. For best result, we recommend using a `<span>` element for this slot.
 
 ```razor
 <IgbDateRangePicker UseTwoInputs="true">
@@ -434,7 +435,7 @@ In two inputs mode, you can also customize the default “to” text between the
 </IgbDateRangePicker>
 ```
 
-The `actions` slot allows you to insert a custom action button with your own logic. For example, the button below toggles week numbers column in the calendar:
+The `actions` slot allows you to insert a custom action button with your own logic. For example, the button below toggles the week numbers column in the calendar. We recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```razor
 <IgbDateRangePicker Mode="PickerMode.Dialog" @ref="ActionsDateRange">
@@ -456,6 +457,10 @@ In addition to the slots we've already covered, the following slots are also ava
 | `calendar-icon-open` | Icon or content shown when the picker is open (applies to both inputs in two inputs mode). |
 | `calendar-icon-open-start` | Icon or content for the open state of the start input (two inputs mode).|
 | `calendar-icon-open-end` | Icon or content for the open state of the end input (two inputs mode). |
+
+For the `title`, `helper-text`, and `header-date` slots, we recommend using a `<span>` element. A `<span>` provides a neutral container that inherits the component's styles cleanly, without carrying built-in styling properties that can interfere with the component's intended typography and layout.
+
+And for the `clear-icon-` and `calendar-icon-` type slots, we recommend using a `<span>` element for symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -556,16 +561,16 @@ In addition to the properties and slots, the [`IgbDateRangePicker`](mcp:get_api_
 
 |Name|Description|
 |--|--|
-| [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Show) | Displays the calendar picker component. |
-| [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Hide) | Hides the calendar picker component. |
-| [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Toggle) | Toggles the calendar picker between the shown and hidden states. |
-| [`Clear`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Clear) | Clears the input fields, removing any user input. |
-| [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Select) | Selects a date range value in the picker. |
-| [`SetCustomValidity`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=SetCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
+| [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=show) | Displays the calendar picker component. |
+| [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=hide) | Hides the calendar picker component. |
+| [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=toggle) | Toggles the calendar picker between the shown and hidden states. |
+| [`Clear`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=clear) | Clears the input fields, removing any user input. |
+| [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=select) | Selects a date range value in the picker. |
+| [`SetCustomValidity`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
 
 ## Styling
 
-Since the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component uses the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) also exposes some unique CSS parts that you can use to customize its appearance:
+Since the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component uses the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](./calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) also exposes some unique CSS parts that you can use to customize its appearance:
 
 |Name|Description|
 |--|--|
@@ -681,12 +686,11 @@ igc-date-range-picker::part(clear-icon-end) {
 
 ## API References
 
-- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
-- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
-- [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker)
-- [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput)
-- [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)<br />
+[`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)<br />
+[`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker)<br />
+[`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput)<br />
+[`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog)<br />
 
 ## Additional Resources
 

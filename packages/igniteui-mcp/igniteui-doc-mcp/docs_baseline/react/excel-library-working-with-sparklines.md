@@ -1,13 +1,14 @@
 ---
-title: React Excel Library| Working with Sparklines | Infragistics
-_description: Use sparkline charts in Infragistics' React excel library to visual data trends across a region of cells in your worksheet. View Ignite UI for React excel engine tutorials!
-_keywords: Excel library, sparkline chart, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Excel Library| Working with Sparklines | Infragistics"
+description: Use sparkline charts in Infragistics' React excel library to visual data trends across a region of cells in your worksheet. View Ignite UI for React excel engine tutorials!
+keywords: Excel library, sparkline chart, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Workbook"]
+llms:
+  description: "The Infragistics React Excel Library has support for adding sparklines to an Excel Worksheet."
 _tocName: Working with Sparklines
 _premium: true
 ---
-
 # React Working with Sparklines
 
 The Infragistics React Excel Library has support for adding sparklines to an Excel Worksheet. These can be used to show simple visual representations of data trends across a region of cells of data in your worksheet. For example, if you wanted to see your Excel data across a particular cell region visualized as a simple column or line sparkline chart, this feature can help you to achieve that.
@@ -325,10 +326,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithSparklines/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Supported Sparklines
-
 The following is a list of the supported predefined sparkline types.
 
 - Line
@@ -347,5 +345,4 @@ workbook.save(workbook, "Sparklines.xlsx");
 ```
 
 ## API References
-
-- [`Workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.workbook.html)
+`IgrWorkbook`

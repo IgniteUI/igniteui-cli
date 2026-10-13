@@ -1,15 +1,18 @@
 ---
 title: Schemas
-_description: Ignite UI for Angular theming schemas allow you to create recipes for component themes.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+description: Ignite UI for Angular theming schemas allow you to create recipes for component themes.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+llms:
+  description: "Schemas are a simple, declarative way to list all properties a component theme uses."
 _tocName: Schemas
 ---
-
 # Schemas
 
-<p class="highlight">Schemas are a simple, declarative way to list all properties a component theme uses.</p>
+<div class="highlight">
+Schemas are a simple, declarative way to list all properties a component theme uses.
+</div>
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Overview
 
@@ -54,13 +57,13 @@ $light-avatar: (
 );
 ```
 
-As you can see from the example above, the component schema defines the properties the [Avatar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme) consumes. It just prescribes the colors the avatar should use, without referencing a concrete color palette map.
+As you can see from the example above, the component schema defines the properties the `Avatar Theme` consumes. It just prescribes the colors the avatar should use, without referencing a concrete color palette map.
 
 Let's take the `background` property for example. It tells the avatar theme what the default background should be.
 
 _The `background` can be assigned any value, that is, a value that can be assigned to the CSS `background-color` property._ You can also assign a map to `background`, like in the sample above. When you assign a map to the `background` property, the map should contain functions as the key names (e.g. `color`), and arguments for the functions as values for said keys. We do this to be able to resolve the values later on, when the avatar theme is being built. See, because we don't know the palette a user might pass to the avatar theme, we should be able to resolve it later on, only when the palette is known.
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Extending Schemas
 
@@ -148,7 +151,8 @@ $indigo-avatar: map.get($light-indigo-schema, avatar);
     @include tokens(
         avatar-theme(
             $schema: $indigo-avatar
-        )
+        ),
+        $mode: 'scoped'
     );
 }
 ```
@@ -161,14 +165,14 @@ We use schemas internally to create variations that result in different pre-bund
 
 ## API Overview
 
-- [Light Components Schema](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas#variable-light-material-schema)
-- [Dark Components Schema](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas#variable-dark-material-schema)
-- [Global Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme)
-- [Avatar Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
+- `Light Components Schema`
+- `Dark Components Schema`
+- `Global Theme`
+- `Avatar Theme`
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

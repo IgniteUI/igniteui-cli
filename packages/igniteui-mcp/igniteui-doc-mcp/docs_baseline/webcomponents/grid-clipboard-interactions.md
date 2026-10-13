@@ -1,19 +1,18 @@
 ---
-title: Web Components Grid Clipboard Interactions - Ignite UI for Web Components
-_description: The Web Components Grid Clipboard functionality provides fast, easy and customizable way to copy, paste and export data to Excel or other programs. Try it now!
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/clipboard-interactions
+title: "Web Components Grid Clipboard Interactions - Ignite UI for Web Components"
+description: The Web Components Grid Clipboard functionality provides fast, easy and customizable way to copy, paste and export data to Excel or other programs. Try it now!
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/clipboard-interactions"
+llms:
+  description: "Copy to clipboard operations are now available in the IgcGrid."
+_componentKey: Grid
 _tocName: Clipboard Interactions
 _premium: true
 ---
-
 # Web Components Grid Clipboard Overview
 
-Copy to clipboard operations are now available in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). This functionality provides a fast, easy and customizable way to copy data of the Web Components [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) into Excel or other external programs.
+Copy to clipboard operations are now available in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). This functionality provides a fast, easy and customizable way to copy data of the Web Components [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) into Excel or other external programs.
 
 ## Web Components Grid Clipboard Example
 
@@ -156,31 +155,31 @@ Copy behavior is working with the default interaction defined by the browser and
 ## Limitations
 
 - Both the **cut** and **copy** events are not natively supported in Internet Explorer. The exception is the
-    **paste** event (IE 11) which is emitted but does not expose the `ClipboardData` property in the event.
 
-> [!Note]
-> In order to **copy** cells in IE 11, you can use the keyboard selection. Hold the <kbd>SHIFT</kbd> key in order to make a multi-cell selection, press <kbd>CTRL</kbd> + <kbd>C</kbd> in order to copy.
+**paste** event (IE 11) which is emitted but does not expose the [`ClipboardData`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions) property in the event.
+**Note:** 
+In order to **copy** cells in IE 11, you can use the keyboard selection. Hold the <kbd>SHIFT</kbd> key in order to make a multi-cell selection, press <kbd>CTRL</kbd> + <kbd>C</kbd> in order to copy.
 
 - The copy behavior is disabled while the grid is in edit mode.
 - The current version of this feature covers only the **copy** from grid behavior. Later on we plan to expose `paste` within grid behavior.
 
 ## API Usage
 
-We expose [`clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clipboardOptions) property, which handles the following options:
+We expose [`IgcGrid.clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clipboardOptions) property, which handles the following options:
+- [`IgcClipboardOptions.enabled`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions&member=enabled) Enables/disables copying of selected cells.
+- [`IgcClipboardOptions.copyHeaders`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions&member=copyHeaders) Include the associated headers when copying.
+- [`IgcClipboardOptions.copyFormatters`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions&member=copyFormatters) Apply any existing column formatters to the copied data.
+- [`IgcClipboardOptions.separator`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions&member=separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
 
-- `Enabled` Enables/disables copying of selected cells.
-- `CopyHeaders` Include the associated headers when copying.
-- `CopyFormatters` Apply any existing column formatters to the copied data.
-- `Separator` The string separator to use the for formatting the data in the clipboard. Default is `/t`
+**Note:** 
+Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-> [!Note]
-> Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
+- [`gridCopy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponentEventMap&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`IgcGrid.clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clipboardOptions).
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clipboardOptions).
-
+## API References
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcClipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcClipboardOptions)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Paging](paging.md)
 - [Filtering](filtering.md)
@@ -191,8 +190,6 @@ We expose [`clipboardOptions`](mcp:get_api_reference?platform=webcomponents&comp
 - [Selection](selection.md)
 - [Virtualization and Performance](virtualization.md)
 - [Multi-column headers](multi-column-headers.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

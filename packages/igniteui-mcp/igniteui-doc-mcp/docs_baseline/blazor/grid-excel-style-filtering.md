@@ -1,15 +1,14 @@
 ---
-title: Blazor Grid Excel Style Filtering - Ignite UI for Blazor
-_description: Learn how to configure Excel filtering in Blazor Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
+title: "Blazor Grid Excel Style Filtering - Ignite UI for Blazor"
+description: Learn how to configure Excel filtering in Blazor Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+llms:
+  description: "The Blazor Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI."
+_componentKey: Grid
 _tocName: Excel Style Filtering
 _premium: true
 ---
-
 # Excel Filtering in Blazor Grid
 
 The Blazor Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI. It simplifies the process of working with large datasets. The main idea is to help them filter the data that is most relevant, while eliminating irrelevant entries.
@@ -223,7 +222,7 @@ public class NwindData
 
 ## Usage
 
-To turn on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowFiltering) should be set to **true** and the [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component's Excel-style filtering, two inputs should be set. The [`IgbGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowFiltering) should be set to **true** and the [`IgbGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -244,7 +243,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected), [`DisablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisablePinning), [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`IgbColumn.sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=sortable), [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected), [`IgbColumnState.disablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=disablePinning), [`IgbColumnState.disableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=disableHiding).
 
 ```razor
 <IgbGrid AutoGenerate="false" Data=northwindEmployees AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter">
@@ -256,9 +255,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 </IgbGrid>
 ```
 
-In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable).
-
-<!-- ComponentEnd: Grid -->
+In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -438,9 +435,9 @@ public class NwindData
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`IgbGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`IgbGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=excelStyleHeaderIconTemplate):
 
 ```razor
 <IgbGrid
@@ -449,43 +446,16 @@ The following code demonstrates how to customize the Excel style filter menu usi
     FilterMode="FilterMode.ExcelStyleFilter"
     ExcelStyleHeaderIconTemplateScript="WebGridFilterAltIconTemplate">
 </IgbGrid>
+```
 
+```javascript
 // In JavaScript
 igRegisterScript("WebGridFilterAltIconTemplate", (ctx) => {
     var html = window.igTemplating.html;
         return html`<img height="15px" width="15px" src="http://static.infragistics.com/xplatform/images/grid/propeller-logo.svg" title="Continued" alt="Continued" />`
 }, false);
+
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- ```razor
-Add razor snipets
-``` -->
-
-<!-- ```html
-<igc-grid id="grid1" auto-generate="false" height="650px" width="100%" allow-filtering="true" filter-mode="ExcelStyleFilter">
-
-    <igc-grid-excel-style-filtering min-height="380px" max-height="500px">
-        <igc-excel-style-column-operations>
-            <igc-excel-style-header
-                show-pinning="true"
-                show-hiding="true"
-            >
-            </igc-excel-style-header>
-
-            <igc-excel-style-sorting></igc-excel-style-sorting>
-        </igc-excel-style-column-operations>
-
-        <igc-excel-style-filter-operations>
-            <igc-excel-style-search></igc-excel-style-search>
-        </igc-excel-style-filter-operations>
-    </igc-grid-excel-style-filtering>
-
-</igc-grid>
-``` -->
-
-<!-- ComponentEnd: Grid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -657,7 +627,7 @@ public class NwindData
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -841,13 +811,9 @@ public class NwindData
 ```
 
 ## API References
-
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -857,8 +823,6 @@ public class NwindData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,15 +1,16 @@
 ---
-title: Web Components Linear Progress | Linear Progress | Infragistics
-_description: Display a progress bar and customize its appearance with endless color and striping options with Linear Progress Indicator component.
-_keywords: Web Components Linear Progress, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Linear Progress | Linear Progress | Infragistics"
+description: Display a progress bar and customize its appearance with endless color and striping options with Linear Progress Indicator component.
+keywords: "Web Components Linear Progress, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["LinearProgress"]
+llms:
+  description: "The Ignite UI for Web Components Linear Progress Indicator component provides a visual indicator of an application’s process as it changes."
 _tocName: Linear Progress
 ---
-
 # Web Components Linear Progress Overview
 
-The Ignite UI for Web Components Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
+The Ignite UI for Web Components Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
 
 ## Web Components Linear Progress Example
 
@@ -17,8 +18,6 @@ The Ignite UI for Web Components Linear Progress Indicator component provides a 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -28,7 +27,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent), you need to register it as follows:
+Before using the [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent), you need to register it as follows:
 
 ```ts
 import {defineComponents, IgcLinearProgressComponent} from 'igniteui-webcomponents';
@@ -39,7 +38,7 @@ defineComponents(IgcLinearProgressComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) is as follows:
+The simplest way to start using the [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) is as follows:
 
 ```html
 <igc-linear-progress value="100"></igc-linear-progress>
@@ -47,7 +46,7 @@ The simplest way to start using the [`IgcLinearProgressComponent`](mcp:get_api_r
 
 ### Progress Types
 
-You can set the type of your indicator, using  the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using  the [`Variant`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```html
 <igc-linear-progress value="100" variant="success"></igc-linear-progress>
@@ -55,22 +54,20 @@ You can set the type of your indicator, using  the [`variant`](mcp:get_api_refer
 
 ### Striped Progress
 
-You can make the indicator striped, using the [`striped`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=striped) property:
+You can make the indicator striped, using the [`Striped`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=striped) property:
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=indeterminate) property.
+If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=indeterminate) property.
 
 ### Animation Duration
 
-The [`animationDuration`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
+The [`AnimationDuration`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
 
 ```html
 <igc-linear-progress animation-duration="5000" indeterminate></igc-linear-progress>
@@ -78,11 +75,11 @@ The [`animationDuration`](mcp:get_api_reference?platform=webcomponents&component
 
 ### Text Properties
 
-You can align the default value, using the [`labelAlign`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=labelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
+You can align the default value, using the [`LabelAlign`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=labelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
 
-To hide the default label of the progress indicator, use the [`hideLabel`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=hideLabel) attribute.
+To hide the default label of the progress indicator, use the [`HideLabel`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=hideLabel) attribute.
 
-The [`labelFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=labelFormat) property can be used to customize the [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) default label.
+The [`LabelFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent&member=labelFormat) property can be used to customize the [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) default label.
 
 The following sample demonstrates the above configuration:
 
@@ -96,8 +93,6 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ### Dynamic Progress
 
 You can dynamically change the value of the progress indicator by using external controls like buttons. To achieve this, we can bind the value to a class property:
@@ -107,11 +102,9 @@ You can dynamically change the value of the progress indicator by using external
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Styling
 
-The [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) component exposes CSS parts for almost all of its inner elements:
+The [`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
@@ -162,12 +155,8 @@ igc-linear-progress::part(label){
 ```
 
 ## API References
-
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
-- [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+[`IgcLinearProgress`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

@@ -1,23 +1,22 @@
 ---
-title: Web Components Hierarchical Grid Column Pinning - Ignite UI for Web Components
-_description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
-_keywords: Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-pinning
+title: "Web Components Hierarchical Grid Column Pinning - Ignite UI for Web Components"
+description: Want to use the Pinning feature of the Ignite UI for Web Components when you develop your next app? Easily lock column or change column order with rich API.
+keywords: "Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-pinning"
+llms:
+  description: "The Ignite UI for Web Components Column Pinning feature in Web Components Hierarchical Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the IgcHierarchicalGrid."
+_componentKey: HierarchicalGrid
 _tocName: Column Pinning
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Column Pinning
 
-The Ignite UI for Web Components Column Pinning feature in Web Components Hierarchical Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). There’s an integrated UI for Column Pinning, accessible via the Web Components Hierarchical Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Web Components Column Pinning feature in Web Components Hierarchical Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the `IgcHierarchicalGrid`. There’s an integrated UI for Column Pinning, accessible via the Web Components Hierarchical Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Web Components Hierarchical Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
 
 ```css
 /* shared styles are loaded from: */
@@ -26,7 +25,7 @@ This example demonstrates how you can pin a column or multiple columns to the le
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinned) property of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) body.
+Column pinning is controlled through the [`IgcColumn.pinned`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinned) property of the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) body.
 
 ```html
 <igc-hierarchical-grid id="hierarchicalGrid" class="hgrid" auto-generate="false"
@@ -36,26 +35,16 @@ Column pinning is controlled through the [`pinned`](mcp:get_api_reference?platfo
 </igc-hierarchical-grid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-You may also use the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s [`pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=unpinColumn) methods of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) to pin or unpin columns by their field name:
-
-<!-- ComponentStart: HierarchicalGrid -->
+You may also use the [`IgcHierarchicalGrid.pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=pinColumn) or [`IgcHierarchicalGrid.unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=unpinColumn) methods of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) to pin or unpin columns by their field name:
 
 ```typescript
 this.hierarchicalGrid.pinColumn('Artist');
 this.hierarchicalGrid.unpinColumn('Debut');
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-<!-- Angular, React, WebComponents -->
-
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- end: Angular, React, WebComponents, React -->
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`IgcHierarchicalGrid.columnPin`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=columnPin) event and changing the [`IgcPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
 ```html
 <igc-hierarchical-grid id="dataGrid" auto-generate="true"></igc-hierarchical-grid>
@@ -79,7 +68,7 @@ public columnPinning(event) {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`IgcColumn.pinningPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pinningPosition) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```html
@@ -99,7 +88,6 @@ grid.pinning = { columns: ColumnPinningPosition.End };
 ```
 
 ### Column Pinning on Both Sides
-
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 
 ```css
@@ -118,18 +106,18 @@ This can be done by creating a header template for the columns with a custom ico
 ```html
 <igc-hierarchical-grid id="hGrid" class="hierarchicalGrid" auto-generate="false"
     height="500px" width="100%">
-    <igc-column id="CompanyName" field="CompanyName" header="Company Name" width="200px" pinned="true"></igx-column>
-    <igc-column id="ContactName" field="ContactName" header="Contact Name" width="150px"></igx-column>
-    <igc-column id="ContactTitle" field="ContactTitle" header="Contact Title" width="200px"></igx-column>
+    <igc-column id="CompanyName" field="CompanyName" header="Company Name" width="200px" pinned="true"></igc-column>
+    <igc-column id="ContactName" field="ContactName" header="Contact Name" width="150px"></igc-column>
+    <igc-column id="ContactTitle" field="ContactTitle" header="Contact Title" width="200px"></igc-column>
     <igc-row-island key="Orders" auto-generate="false">
-        <igc-column id="OrderDate" field="OrderDate" header="Order Date" data-type="Date" width="150px"></igx-column>
-        <igc-column id="RequiredDate" field="RequiredDate" header="Required Date" data-type="Date" width="150px"></igx-column>
-        <igc-column id="ShippedDate" field="ShippedDate" header="Shipped Date" data-type="Date" width="150px"></igx-column>
-        <igc-column id="ShipVia" field="ShipVia" header="Ship Via" width="150px"></igx-column>
+        <igc-column id="OrderDate" field="OrderDate" header="Order Date" data-type="date" width="150px"></igc-column>
+        <igc-column id="RequiredDate" field="RequiredDate" header="Required Date" data-type="date" width="150px"></igc-column>
+        <igc-column id="ShippedDate" field="ShippedDate" header="Shipped Date" data-type="date" width="150px"></igc-column>
+        <igc-column id="ShipVia" field="ShipVia" header="Ship Via" width="150px"></igc-column>
         <igc-row-island key="OrderDetails" auto-generate="false">
-            <igc-column field="UnitPrice" header="Unit Price" width="150px"></igx-column>
-            <igc-column field="Quantity" width="150px"></igx-column>
-            <igc-column field="Discount" width="150px"></igx-column>
+            <igc-column field="UnitPrice" header="Unit Price" width="150px"></igc-column>
+            <igc-column field="Quantity" width="150px"></igc-column>
+            <igc-column field="Discount" width="150px"></igc-column>
         </igc-row-island>
     </igc-row-island>
 </igc-hierarchical-grid>
@@ -159,15 +147,14 @@ constructor() {
 
 public pinHeaderTemplate = (ctx: IgcCellTemplateContext) => {
     return html`
-        <div class="title-inner">
+<div class="title-inner">
             <span style="float:left">${ctx.cell.column.header}</span>
-            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igx-icon>
+            <igc-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" @click="${() => toggleColumn(ctx.cell.column)}"></igc-icon>
         </div>
     `;
 }
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 On click of the custom icon the pin state of the related column can be changed using the column's API methods.
 
@@ -186,13 +173,11 @@ public toggleColumn(col: IgcColumnComponent) {
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
-
-<!-- WebComponents, Blazor, React -->
+- Setting column widths in percentage (%) explicitly makes the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set an `ID` for the grid first:
 
 ```html
@@ -224,27 +209,19 @@ Then set the related CSS properties to this class:
 }
 ```
 
-<!-- end: WebComponents, Blazor -->
-
 ## API References
-
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
 - [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
+
 - [Filtering](filtering.md)
 - [Sorting](sorting.md)
 - [Summaries](summaries.md)
 - [Column Moving](column-moving.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 Our community is active and always welcoming to new ideas.
 

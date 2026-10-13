@@ -1,19 +1,20 @@
 ---
-title: Web Components Map | Data Visualization Tools | Map Overview | Infragistics
-_description: Use Infragistics' Web Components JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Web Components map demos!
-_keywords: Web Components map, geographic map, imagery tiles, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Web Components Map | Data Visualization Tools | Map Overview | Infragistics"
+description: Use Infragistics' Web Components JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Web Components map demos!
+keywords: "Web Components map, geographic map, imagery tiles, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "The Ignite UI for Web Components map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
 _tocName: Geographic Map Features
 ---
-
 # Web Components Map Overview
 
 The Ignite UI for Web Components map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps.
 
 ## Web Components Map Example
 
-The following sample demonstrates how display data in [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) using [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html) also known as Bubble Series.
+The following sample demonstrates how display data in `IgcGeographicMap` using `IgcGeographicProportionalSymbolSeries` also known as Bubble Series.
 
 ```typescript
 export class WorldLocations {
@@ -661,11 +662,9 @@ export class WorldLocations {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
-The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html) can be added for plotting geographic locations such as cities and the [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) for plotting connections (e.g. roads) between these geographic locations.
+The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgcGeographicSymbolSeries` can be added for plotting geographic locations such as cities and the `IgcGeographicPolylineSeries` for plotting connections (e.g. roads) between these geographic locations.
 
 The map provides customizable navigation behaviors for navigating map content using mouse, keyboard, or code-behind.
 
@@ -687,7 +686,7 @@ npm install --save igniteui-webcomponents-maps
 
 ## Component Modules
 
-The [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
+The `IgcGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
 ```ts
 import { IgcGeographicMapModule } from 'igniteui-webcomponents-maps';
@@ -709,8 +708,6 @@ ModuleManager.register(
 );
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
@@ -721,33 +718,26 @@ Now that the map module is imported, next step is to create geographic map. The 
 </igc-geographic-map>
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related Web Components map features in these topics:
 
-- [Geographic Map Navigation](geo-map-navigation.md)
+- [Geographic Map Navigation](./geo-map-navigation.md)
 
-<!-- - [Geographic Map Imagery](geo-map-display-imagery-types.md) -->
-
-- [Using Scatter Symbol Series](geo-map-type-scatter-symbol-series.md)
-- [Using Scatter Proportional Series](geo-map-type-scatter-bubble-series.md)
-- [Using Scatter Contour Series](geo-map-type-scatter-contour-series.md)
-- [Using Scatter Density Series](geo-map-type-scatter-density-series.md)
-- [Using Scatter Area Series](geo-map-type-scatter-area-series.md)
-- [Using Shape Polygon Series](geo-map-type-shape-polygon-series.md)
-- [Using Shape Polyline Series](geo-map-type-shape-polyline-series.md)
+- [Using Scatter Symbol Series](./geo-map-type-scatter-symbol-series.md)
+- [Using Scatter Proportional Series](./geo-map-type-scatter-bubble-series.md)
+- [Using Scatter Contour Series](./geo-map-type-scatter-contour-series.md)
+- [Using Scatter Density Series](./geo-map-type-scatter-density-series.md)
+- [Using Scatter Area Series](./geo-map-type-scatter-area-series.md)
+- [Using Shape Polygon Series](./geo-map-type-shape-polygon-series.md)
+- [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
-- [`IgcGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html)
-- [`IgcGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographichighdensityscatterseriescomponent.html)
-- [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html)
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- [`IgcGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicproportionalsymbolseriescomponent.html)
-- [`IgcGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicsymbolseriescomponent.html)
-- [`IgcGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html)
+`IgcGeographicMap`
+`IgcGeographicContourLineSeries`
+`IgcGeographicHighDensityScatterSeries`
+`IgcGeographicPolylineSeries`
+`IgcGeographicShapeSeries`
+`IgcGeographicProportionalSymbolSeries`
+`IgcGeographicSymbolSeries`
+`IgcGeographicScatterAreaSeries`

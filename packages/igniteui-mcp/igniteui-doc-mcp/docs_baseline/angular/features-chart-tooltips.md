@@ -1,21 +1,22 @@
 ---
-title: Angular Chart Tooltips | Data Visualization | Infragistics
-_description: Infragistics' Angular Chart Tooltips
-_keywords: Angular Charts, Tooltips, Infragistics
-_license: commercial
+title: "Angular Chart Tooltips | Data Visualization | Infragistics"
+description: Infragistics' Angular Chart Tooltips
+keywords: "Angular Charts, Tooltips, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
 _tocName: Chart Tooltips
 _premium: true
 ---
-
 # Angular Chart Tooltips
 
-In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html), [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html), and [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) controls.
+In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls.
 
 ## Angular Chart Tooltip Types
 
-Angular Chart provide three types of tooltips that you can with tooltips enabled by setting the [`toolTipType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Angular Chart provide three types of tooltips that you can with tooltips enabled by setting the `ToolTipType` property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -162,18 +163,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
-The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#toolTipType) property is configurable and can be set to one of the following options:
+The `ToolTipType` property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| [`Default`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
-| [`Data`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Data) Tooltip | Display the data tooltips for all series in the chart. |
-| [`Item`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
-| [`Category`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
-
-<div class="divider--half"></div>
+| `Default`  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
+| `Data` Tooltip | Display the data tooltips for all series in the chart.  |
+| `Item`  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
+| `Category` Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
 
 ## Angular Chart Tooltip Template
 
@@ -181,7 +178,7 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in Angular [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) control. Note that you can also apply the same logic to custom tooltips in Angular [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) control.
+This example shows how to create custom tooltips for all series in Angular `IgxCategoryChart` control. Note that you can also apply the same logic to custom tooltips in Angular `IgxFinancialChart` control.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -282,8 +279,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
-<div class="divider--half"></div>
 
 ## Custom Tooltips in Data Chart
 
@@ -392,8 +387,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -402,14 +395,7 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](chart-markers.md)
 
 ## API References
-
-The [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) and [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) components share the following API properties:
-
-- [`toolTipType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#toolTipType)
-
-In the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) component, you can use the following API components and properties:
-
-- [`IgxDataToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatatooltiplayercomponent.html)
-- [`IgxItemToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxitemtooltiplayercomponent.html)
-- [`IgxCategoryToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorytooltiplayercomponent.html)
-- `ShowDefaultToolTip`
+`IgxDataToolTipLayer`
+`IgxCategoryChart`
+`IgxFinancialChart`
+`IgxDataChart`

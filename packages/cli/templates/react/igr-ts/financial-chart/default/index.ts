@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_CHARTS_PACKAGE } from "../../constants";
 
 class IgrTsFinancialChartTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -12,7 +13,7 @@ class IgrTsFinancialChartTemplate extends IgniteUIForReactTemplate {
 		this.name = "Financial Chart";
 		this.description = `charting component that makes it easy to visualize financial data by
 							using a simple and intuitive API.`;
-		this.packages = ["igniteui-react-charts@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_CHARTS_PACKAGE];
 	}
 }
 module.exports = new IgrTsFinancialChartTemplate();

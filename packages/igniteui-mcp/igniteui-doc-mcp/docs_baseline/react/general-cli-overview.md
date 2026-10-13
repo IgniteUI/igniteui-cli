@@ -1,15 +1,14 @@
 ---
-title: React CLI - Ignite UI for React
-_description: The Ignite UI for React CLI scaffolds React projects, adds pre-configured component views, and connects AI coding assistants via a built-in MCP server.
-_keywords: React cli, command line interface, Ignite UI for React, Infragistics,
+title: "React CLI - Ignite UI for React"
+description: "The Ignite UI for React CLI scaffolds React projects, adds pre-configured component views, and connects AI coding assistants via a built-in MCP server."
+keywords: "React cli, command line interface, Ignite UI for React, Infragistics"
 mentionedTypes: []
-_license: MIT
+license: MIT
 last_updated: "2026-04-21"
+llms:
+  description: "The Ignite UI CLI (igniteui-cli) is a standalone global command-line tool for creating and scaffolding React applications with Ignite UI for React."
 _tocName: Ignite UI CLI
 ---
-
-<!-- schema: HowTo -->
-
 # Ignite UI CLI for React
 
 The [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) (`igniteui-cli`) is a standalone global command-line tool for creating and scaffolding React applications with Ignite UI for React. It provides project templates pre-configured for Ignite UI for React, a guided step-by-step wizard for first-time setup, non-interactive `new` and `add` commands for scripted workflows, a development server, and a built-in MCP server for connecting AI coding assistants to live Ignite UI for React documentation.
@@ -58,34 +57,41 @@ or:
 ig new
 ```
 
-For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI CLI](general-step-by-step-guide-using-cli.md).
+For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI CLI](./general-step-by-step-guide-using-cli.md).
 
 ### Create a project directly
 
 To create a React project non-interactively, provide `react` as the framework and `igr-ts` as the project type:
 
 ```cmd
-ig new <project-name> --framework=react --type=igr-ts --template=top-nav
+ig new <project-name> --framework=react --template=side-nav
 ```
 
-The following project templates are available for React:
+The following base project templates are available for React:
 
-| Template ID | Description                                        |
-| :---------- | :------------------------------------------------- |
-| empty       | Minimal project structure with no predefined views |
-| base        | Project structure with a home page                 |
-| top-nav     | Project structure with a top navigation bar        |
+| Template ID   | Description                                                                 |
+| :------------ | :-------------------------------------------------------------------------- |
+| empty         | Minimal project structure with no predefined views. Authentication is not available for this template. |
+| side-nav      | Project structure with a side navigation drawer. Supports authentication as an add-on (see below). |
+| side-nav-mini | Project structure with a compact side navigation drawer. Supports authentication as an add-on (see below). |
+
+When using the interactive wizard, selecting `side-nav` or `side-nav-mini` triggers an additional prompt asking whether to add authentication. Selecting `empty` skips the authentication prompt. The following template IDs are generated and can also be used directly with `ig new` for non-interactive creation - they are not shown in the wizard's template list:
+
+| Template ID        | Description                                      |
+| :----------------- | :----------------------------------------------- |
+| side-nav-auth      | Side navigation extended with authentication.    |
+| side-nav-mini-auth | Side navigation mini extended with authentication. |
 
 The following arguments are available when creating a project:
 
 | Argument         | Alias  | Description                                                                                                           |
 | :--------------- | :----- | :-------------------------------------------------------------------------------------------------------------------- |
-| `name`           | `-n`   | The name of the application. The application is created inside a directory with the same name.                       |
+| `name`           | `-n`   | The name of the application. The application is created inside a directory with the same name.                        |
 | `--framework`    | `-f`   | The framework for the generated project. Default: `jquery`. Supported: `jquery`, `angular`, `react`, `webcomponents`. |
-| `--type`         | `-t`   | The project type for the selected framework. Use `igr-ts` for React or `igc-ts` for Web Components.                  |
-| `--template`     |        | The project template to use. See the template tables above for available options per framework.                      |
-| `--skip-git`     | `--sg` | Skips automatic Git repository initialization. Uses the global `skip-git` config value if omitted.                   |
-| `--skip-install` | `--si` | Skips npm package installation on project creation.                                                                  |
+| `--type`         | `-t`   | The project type for the selected framework. Use `igr-ts` for React or `igc-ts` for Web Components.                   |
+| `--template`     |        | The project template to use. See the template tables above for available options per framework.                       |
+| `--skip-git`     | `--sg` | Skips automatic Git repository initialization. Uses the global `skip-git` config value if omitted.                    |
+| `--skip-install` | `--si` | Skips npm package installation on project creation.                                                                   |
 | `--assistants`   |        | Configures MCP servers for the specified AI coding assistants. Values: `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none`. |
 | `--agents`       |        | Copies Agent Skill files into the specified agents' skill directories. Values: `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none`. |
 
@@ -120,13 +126,13 @@ Navigate through the options using the arrow keys, toggle selections with SPACE,
 To skip the AI configuration prompts entirely during project creation, pass `--assistants none --agents none`:
 
 ```cmd
-ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants none --agents none
+ig new my-app --framework=react --template=side-nav --assistants none --agents none
 ```
 
 To auto-configure AI tools without prompting, specify the desired values:
 
 ```cmd
-ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants vscode --agents copilot claude
+ig new my-app --framework=react --template=side-nav --assistants vscode --agents copilot claude
 ```
 
 ## Add a Component Template
@@ -155,10 +161,10 @@ To list all available templates in the current project:
 ig list
 ```
 
-For a guided walkthrough of the component addition wizard, see [Step-by-Step Guide Using Ignite UI CLI](general-step-by-step-guide-using-cli.md#add-view).
+For a guided walkthrough of the component addition wizard, see [Step-by-Step Guide Using Ignite UI CLI](./general-step-by-step-guide-using-cli.md#add-view).
 
-> [!NOTE]
-> Your routing file will be updated with the path to the newly generated page. For example, a component named `MyGrid` will be navigable at `/my-grid`.
+**Note:** 
+Your routing file will be updated with the path to the newly generated page. For example, a component named `MyGrid` will be navigable at `/my-grid`.
 
 To see all component templates available for the current project, run `ig list`. The list is project-aware and reflects the selected framework and type.
 
@@ -210,8 +216,8 @@ If you have the CLI installed globally:
 ig ai-config
 ```
 
-> [!NOTE]
-> Without a version pin, `npx` may pull an older CLI version that does not recognize the `ai-config` subcommand and will instead launch an interactive project-creation prompt, scaffolding a new project inside your existing one. Make sure that you have installed CLI version 16.x.
+**Note:** 
+Without a version pin, `npx` may pull an older CLI version that does not recognize the `ai-config` subcommand and will instead launch an interactive project-creation prompt, scaffolding a new project inside your existing one. Make sure that you have installed CLI version 16.x.
 
 #### Interactive Mode
 
@@ -219,11 +225,11 @@ If no parameters are provided, the command enters interactive mode. You are firs
 
 ```bash
 ? Which AI coding assistants do you want to configure MCP servers for? (Press <space> to select)
-❯◉ VS Code (GitHub Copilot)     - writes .vscode/mcp.json
- ◉ Cursor                      - writes .cursor/mcp.json
- ◯ Generic (.mcp.json)         - writes .mcp.json
- ◯ Gemini CLI                  - writes .gemini/settings.json
- ◯ JetBrains (AI Assistant)    - writes .junie/mcp.json
+❯◉ VS Code (GitHub Copilot)       - writes .vscode/mcp.json
+ ◉ Cursor                          - writes .cursor/mcp.json
+ ◯ Generic (.mcp.json)             - writes .mcp.json
+ ◯ Gemini CLI                      - writes .gemini/settings.json
+ ◯ JetBrains (AI Assistant)        - writes .junie/mcp.json
  ◯ None
 ```
 
@@ -232,12 +238,12 @@ Next, you are prompted to select which AI agents should receive skill files:
 ```bash
 ? Which AI agents should receive skill files? (Press <space> to select)
 ❯◉ GitHub Copilot (.agents/skills/) - copies skills to .agents/skills/
- ◉ Claude (.claude/skills/)      - copies skills to .claude/skills/
- ◉ Cursor (.cursor/rules/)       - copies skills to .cursor/rules/
- ◯ Codex (.codex/)               - copies skills to .codex/
- ◯ Windsurf (.windsurfrules)     - copies skills to .windsurfrules/
- ◯ Gemini CLI (.gemini/)         - copies skills to .gemini/
- ◯ JetBrains Junie (.junie/)     - copies skills to .junie/guidelines/
+ ◉ Claude (.claude/skills/)          - copies skills to .claude/skills/
+ ◉ Cursor (.cursor/rules/)           - copies skills to .cursor/rules/
+ ◯ Codex (.codex/)                   - copies skills to .codex/
+ ◯ Windsurf (.windsurfrules)         - copies skills to .windsurfrules/
+ ◯ Gemini CLI (.gemini/)             - copies skills to .gemini/
+ ◯ JetBrains Junie (.junie/)         - copies skills to .junie/guidelines/
  ◯ None
 ```
 
@@ -306,7 +312,9 @@ Configure your AI client to use the CLI MCP server manually. Most teams connect 
 }
 ```
 
-For per-client setup guides (VS Code, GitHub, Cursor, Claude Desktop, Claude Code, JetBrains) and a full description of available tools, see [Ignite UI CLI MCP](./ai/cli-mcp.md). For an end-to-end walkthrough using both MCP servers, see [Build an App End-to-End with CLI MCP and Theming MCP](./general-how-to-mcp-e2e.md).
+For per-client setup guides (VS Code, GitHub, Cursor, Claude Desktop, Claude Code, JetBrains) and a full description of available tools, see [Ignite UI CLI MCP](./ai/cli-mcp.md).
+
+For an end-to-end walkthrough using both MCP servers, see [Build an App End-to-End with CLI MCP and Theming MCP](./general-how-to-mcp-e2e.md).
 
 ## Ignite UI CLI Commands
 
@@ -314,15 +322,15 @@ A full list of available Ignite UI CLI commands is maintained on the [Ignite UI 
 
 | Command                                                               | Alias | Description                                                                                                                                                               |
 | :-------------------------------------------------------------------- | :---- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [ig start](https://github.com/IgniteUI/igniteui-cli/wiki/start)       |       | Builds the application, starts a web server, and opens it in the default browser.                                                                                        |
-| [ig build](https://github.com/IgniteUI/igniteui-cli/wiki/build)       |       | Builds the application into an output directory.                                                                                                                         |
-| [ig generate](https://github.com/IgniteUI/igniteui-cli/wiki/generate) | g     | Generates a new custom template for supported frameworks and project types.                                                                                              |
-| [ig help](https://github.com/IgniteUI/igniteui-cli/wiki/help)         | -h    | Lists available commands with brief descriptions.                                                                                                                        |
-| [ig config](https://github.com/IgniteUI/igniteui-cli/wiki/config)     |       | Reads and writes Ignite UI CLI configuration settings.                                                                                                                   |
-| [ig doc](https://github.com/IgniteUI/igniteui-cli/wiki/doc)           |       | Searches the Infragistics knowledge base for a given term.                                                                                                               |
+| [ig start](https://github.com/IgniteUI/igniteui-cli/wiki/start)       |       | Builds the application, starts a web server, and opens it in the default browser.                                                                                         |
+| [ig build](https://github.com/IgniteUI/igniteui-cli/wiki/build)       |       | Builds the application into an output directory.                                                                                                                          |
+| [ig generate](https://github.com/IgniteUI/igniteui-cli/wiki/generate) | g     | Generates a new custom template for supported frameworks and project types.                                                                                               |
+| [ig help](https://github.com/IgniteUI/igniteui-cli/wiki/help)         | -h    | Lists available commands with brief descriptions.                                                                                                                         |
+| [ig config](https://github.com/IgniteUI/igniteui-cli/wiki/config)     |       | Reads and writes Ignite UI CLI configuration settings.                                                                                                                    |
+| [ig doc](https://github.com/IgniteUI/igniteui-cli/wiki/doc)           |       | Searches the Infragistics knowledge base for a given term.                                                                                                                |
 | [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/list)         | l     | Lists available templates for the project's framework and type. When run inside a project folder, uses the project's framework and type regardless of provided arguments. |
-| [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test)         |       | Executes the tests for the current project.                                                                                                                              |
-| ig upgrade-packages                                                   |       | Upgrades Ignite UI packages in the project from Trial to Licensed.                                                                                                       |
-| ig mcp                                                                |       | Starts the built-in MCP server for connecting AI coding assistants to Ignite UI for React component documentation.                                                             |
-| [ig ai-config](https://github.com/IgniteUI/igniteui-cli/wiki/ai-config)                                                        |       | Configures MCP servers and copies Agent Skills into each agent's skills directory. Supports `--assistants` and `--agents` flags or interactive mode.                      |
-| ig version                                                            | -v    | Shows the Ignite UI CLI version installed locally, or globally if no local installation is found.                                                                        |
+| [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test)         |       | Executes the tests for the current project.                                                                                                                               |
+| ig upgrade-packages                                                   |       | Upgrades Ignite UI packages in the project from Trial to Licensed.                                                                                                        |
+| ig mcp                                                                |       | Starts the built-in MCP server for connecting AI coding assistants to Ignite UI for React component documentation.                                                              |
+| [ig ai-config](https://github.com/IgniteUI/igniteui-cli/wiki/ai-config)                                                        |       | Configures MCP servers and copies Agent Skills into each agent's skills directory. Supports `--assistants` and `--agents` flags or interactive mode.                       |
+| ig version                                                            | -v    | Shows the Ignite UI CLI version installed locally, or globally if no local installation is found.                                                                         |

@@ -1,21 +1,22 @@
 ---
-title: Web Components Chart Tooltips | Data Visualization | Infragistics
-_description: Infragistics' Web Components Chart Tooltips
-_keywords: Web Components Charts, Tooltips, Infragistics
-_license: commercial
+title: "Web Components Chart Tooltips | Data Visualization | Infragistics"
+description: Infragistics' Web Components Chart Tooltips
+keywords: "Web Components Charts, Tooltips, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Web Components charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
 _tocName: Chart Tooltips
 _premium: true
 ---
-
 # Web Components Chart Tooltips
 
-In Web Components charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls.
+In Web Components charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls.
 
 ## Web Components Chart Tooltip Types
 
-Web Components Chart provide three types of tooltips that you can with tooltips enabled by setting the [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Web Components Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -49,18 +50,14 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
-The [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType) property is configurable and can be set to one of the following options:
+The [`ToolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=toolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| [`Default`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
-| [`Data`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Data) Tooltip | Display the data tooltips for all series in the chart. |
-| [`Item`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
-| [`Category`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
-
-<div class="divider--half"></div>
+| [`Default`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
+| [`Data`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Data) Tooltip | Display the data tooltips for all series in the chart.  |
+| [`Item`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
+| [`Category`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
 
 ## Web Components Chart Tooltip Template
 
@@ -68,14 +65,12 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control. Note that you can also apply the same logic to custom tooltips in Web Components [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control.
+This example shows how to create custom tooltips for all series in Web Components [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control. Note that you can also apply the same logic to custom tooltips in Web Components [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ## Custom Tooltips in Data Chart
 
@@ -101,8 +96,6 @@ export class SampleCategoryData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -111,14 +104,7 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](chart-markers.md)
 
 ## API References
-
-The [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components share the following API properties:
-
-- [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType)
-
-In the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component, you can use the following API components and properties:
-
-- [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent)
-- [`IgcItemToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcItemToolTipLayerComponent)
-- [`IgcCategoryToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryToolTipLayerComponent)
-- `ShowDefaultToolTip`
+[`IgcDataToolTipLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

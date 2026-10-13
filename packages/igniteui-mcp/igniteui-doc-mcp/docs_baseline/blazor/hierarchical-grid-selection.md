@@ -1,15 +1,14 @@
 ---
-title: Blazor Hierarchical Grid Selection - Ignite UI for Blazor
-_description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "Blazor Hierarchical Grid Selection - Ignite UI for Blazor"
+description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for Blazor Select feature in Blazor Hierarchical Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: HierarchicalGrid
 _tocName: Selection
 ---
-
 # Blazor Hierarchical Grid Selection Overview
 
 With the Ignite UI for Blazor Select feature in Blazor Hierarchical Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for Blazor Select feature in Blazor Hierarchical Grid you can
 - Cell selection
 - Column selection
 
-With the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowSelection) property, you can specify:
+With the [`IgbHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -269,45 +268,33 @@ public class SingersData
 
 ## Blazor Hierarchical Grid Selection Options
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The Ignite UI for Blazor [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). In order to change/enable selection mode you can use [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowSelection), [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=CellSelection) or [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) properties.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The Ignite UI for Blazor [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). In order to change/enable selection mode you can use [`IgbHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowSelection), [`IgbHierarchicalGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellSelection) or [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable) properties.
 
 ### Blazor Hierarchical Grid Row Selection
 
-Property [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowSelection) enables you to specify the following options:
+Property [`IgbHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 - `Single` - Selection of only one row within the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 - `MultipleCascade` - This is a mode for cascading selection, resulting in the selection of all children in the tree below the record that the user selects with user interaction. In this mode a parent's selection state entirely depends on the selection state of its children.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### Blazor Hierarchical Grid Cell Selection
 
-Property [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=CellSelection) enables you to specify the following options:
+Property [`IgbHierarchicalGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 - `Single` - Selection of only one cell within the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) would be available.
 - `Multiple` - Currently, this is the default state of the selection in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Cell selection topic](cell-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### Blazor Hierarchical Grid Column Selection
 
-The [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -315,15 +302,11 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ## Known Issues and Limitations
 
-When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgbHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -331,9 +314,7 @@ When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&compon
 - Row Pinning
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

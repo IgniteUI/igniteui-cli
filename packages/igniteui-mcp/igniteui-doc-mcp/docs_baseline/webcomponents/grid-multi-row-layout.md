@@ -1,15 +1,14 @@
 ---
-title: Web Components Grid Multi Row Layout - Ignite UI for Web Components
-_description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for Web Components Data Grid. Check out examples and demos!
-_keywords: Multi-Row Layout, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
+title: "Web Components Grid Multi Row Layout - Ignite UI for Web Components"
+description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for Web Components Data Grid. Check out examples and demos!
+keywords: Multi-Row Layout, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+llms:
+  description: "The Multi-row Layout in the Ignite UI for Web Components extends the rendering capabilities of the Web Components Grid."
+_componentKey: Grid
 _tocName: Multi-Row Layout
 _premium: true
 ---
-
 # Web Components Grid Multi-row Layout
 
 The Multi-row Layout in the Ignite UI for Web Components extends the rendering capabilities of the Web Components Grid. The feature allows splitting a single data record into multiple visible rows.
@@ -56,14 +55,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The declaration of Multi-row Layout is achieved through [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component. Each [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component should be considered as a block, containing one or multiple [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent) component. Each [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent) component should be considered as a block, containing one or multiple [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`IgcColumnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnGroupComponent) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
-The [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component exposes four [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties to determine the location and span of each cell:
-
-- [`colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colStart) - column index from which the field is starting. This property is **mandatory**.
-- [`rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`colEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`rowEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+The [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component exposes four [`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties to determine the location and span of each cell:
+- [`IgcColumnState.colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`IgcColumn.rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`IgcColumnState.colEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`IgcColumn.rowEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```html
 <igc-column-layout>
@@ -89,18 +87,16 @@ The [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&componen
 
 The result of the above configuration can be seen on the screenshot below:
 
-<img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
-
-> [!Note]
-> [`rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowStart) and [`colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colStart) properties must be set for each [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) into a [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout). The [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+**Note:** 
+[`IgcGrid.rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStart) and [`IgcGrid.colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=colStart) properties must be set for each [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) into a [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent). The [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
-Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component.
+Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`IgcColumnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnLayoutComponent) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component.
 
-- Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
+- Filtering - only Excel Style Filtering is supported. Setting [`IgcGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) explicitly to [`FilterMode.quickFilter`](mcp:get_api_reference?platform=webcomponents&component=FilterMode&member=quickFilter) has no effect.
 - Paging - works on records, not visual rows.
-- Group By - `HideGroupedColumns` option has no effect in Multi-row Layout. The grouped columns are always visible.
+- Group By - [`IgcGrid.hideGroupedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=hideGroupedColumns) option has no effect in Multi-row Layout. The grouped columns are always visible.
 
 The following features are currently **not** supported:
 
@@ -111,7 +107,7 @@ The following features are currently **not** supported:
 
 ## Keyboard Navigation
 
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with Multi-Row Layouts provides build-in keyboard navigation.
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with Multi-Row Layouts provides build-in keyboard navigation.
 
 ### Horizontal Navigation
 
@@ -124,17 +120,17 @@ The following features are currently **not** supported:
 - <kbd>CTRL</kbd> + <kbd>↑</kbd> or <kbd>CTRL</kbd> + <kbd>Down</kbd> - Navigate and apply focus on the same column on the first or on the last row.
 - <kbd>CTRL</kbd> + <kbd>HOME</kbd> or <kbd>CTRL</kbd> + <kbd>END</kbd> - Navigate to the first row and focus first cell or navigate to the last row and focus the last cell.
 
-> [!Note]
-> Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
+**Note:** 
+Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
 
-> [!Note]
-> Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
+**Note:** 
+Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
 
 ### Custom Keyboard Navigation
 
 The grid allows customizing the default navigation behavior when a certain key is pressed. Actions like **going to the next cell** or **cell below** could be handled easily with the powerful keyboard navigation API:
 
-- `GridKeydown` is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
+- [`IgcGrid.gridKeydown`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=gridKeydown) is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
 - `NavigateTo` - this method allows you to navigate to a position based on provided `RowIndex` and `VisibleColumnIndex`
 
 The demo below adds additional navigation down/up via the <kbd>ENTER</kbd> and <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> keys, similar to the behavior observed in Excel.
@@ -188,7 +184,7 @@ export class CompanyData extends Array<CompanyDataItem> {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -260,22 +256,15 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
 - [Sorting](sorting.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,21 +1,17 @@
 ---
-title: Web Components Dock Manager | Desktop Integration | Infragistics
-_description: Use Infragistics' Web Components dock manager component to manage the layout of multi-window Electron desktop application. Check out Ignite UI for Web Components dock manager tutorials!
-_keywords: dock manager, layout, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Dock Manager | Desktop Integration | Infragistics"
+description: Use Infragistics' Web Components dock manager component to manage the layout of multi-window Electron desktop application. Check out Ignite UI for Web Components dock manager tutorials!
+keywords: dock manager, layout, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["DockManager", "DocumentHost", "DockManagerLayout", "DockManagerPaneType", "ContentPane", "SplitPane", "TabGroupPane", "PinnedLocation", "PaneHeaderElement"]
+llms:
+  description: "The Infragistics Web Components Dock Manager component can be used in a multi-window Electron desktop application to manage the layout of each window, drag panes outside of a window in order to create a new window and drag/drop panes from one window to another."
 _tocName: Desktop Integration
 _premium: true
 ---
-
 # Web Components Dock Manager Desktop Integration
 
 The Infragistics Web Components Dock Manager component can be used in a multi-window [Electron](https://www.electronjs.org/) desktop application to manage the layout of each window, drag panes outside of a window in order to create a new window and drag/drop panes from one window to another. You could find a sample implementation of such application in the following repository https://github.com/IgniteUI/dock-manager-electron-app.
-
-<!-- TODO: Add a gif of the application and a link to download the exe -->
-
-<img class="responsive-img" src="../../images/dockmanager-electron-app.gif"
-alt="Web Components Dock Manager desktop integration"/>
 
 ## Implementation
 
@@ -24,7 +20,6 @@ Let's go through the most important parts of the implementation of this applicat
 ### Project Structure
 
 We have used the [Electron Forge](https://www.electronforge.io/) CLI tool and its [Typescript + Webpack](https://www.electronforge.io/templates/typescript-+-webpack-template) template to create an Electron application. Electron has two types of processes: Main and Renderer.
-
 - The Main process creates web pages by creating **BrowserWindow** instances. Each **BrowserWindow** instance runs the web page in its Renderer process.
 - The Renderer process manages only the corresponding web page.
 
@@ -32,13 +27,13 @@ The **index.ts** script specifies the entry point of the Electron application th
 
 ### Dock Manager Setup
 
-After installing the Dock Manager package, we have registered the Dock Manager component using the **defineCustomElements()** in the **renderer.ts** file. This allows to add the **<igc-dockmanager>** in the **index.html** file.
+After installing the Dock Manager package, we have registered the Dock Manager component using the **defineCustomElements()** in the **renderer.ts** file. This allows to add the **`<igc-dockmanager>`** in the **index.html** file.
 
 For the Dock Manager pane contents we have used **iframe** elements which host different urls. In our case these urls point to [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) samples. Since the **iframe** elements are self-contained, moving them from one window to another is easily accomplished.
 
 ### Drag and drop
 
-In order to support dragging panes outside the application window we have replaced the built-in drag/drop which creates in-application floating panes with a custom implementation based on the [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). We have subscribed to the `PaneHeaderConnected` and `TabHeaderConnected` events which are fired when a header element is connected to the DOM. When a header element is connected we reset the built-in [`dragService`](mcp:get_api_reference?platform=webcomponents&component=IgcPaneHeaderElement&member=dragService) and attach `DragStart` and `DragEnd` event listeners.
+In order to support dragging panes outside the application window we have replaced the built-in drag/drop which creates in-application floating panes with a custom implementation based on the [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). We have subscribed to the `PaneHeaderConnected` and `TabHeaderConnected` events which are fired when a header element is connected to the DOM. When a header element is connected we reset the built-in [`DragService`](mcp:get_api_reference?platform=webcomponents&component=IgcPaneHeaderElement&member=dragService) and attach `DragStart` and `DragEnd` event listeners.
 
 ```ts
 const paneHeaderConnected = (event: CustomEvent<IgcPaneHeaderConnectionEventArgs>) => {
@@ -57,7 +52,7 @@ const paneHeaderConnected = (event: CustomEvent<IgcPaneHeaderConnectionEventArgs
 dockManager.addEventListener('paneHeaderConnected', paneHeaderConnected);
 ```
 
-In the `PaneHeaderDragStart` function we set the [`draggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) property of the Dock Manager component which will notify it that a drag operation has been started.
+In the `PaneHeaderDragStart` function we set the [`DraggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) property of the Dock Manager component which will notify it that a drag operation has been started.
 
 ```ts
 const paneHeaderDragStart = async (pane: IgcContentPane, event: DragEvent) => {
@@ -67,7 +62,7 @@ const paneHeaderDragStart = async (pane: IgcContentPane, event: DragEvent) => {
 }
 ```
 
-We have subscribed to the `DragOver` and `drop` events of the `document` element. In the `DragOver` listener we notify the Dock Manager that the mouse is dragged over it by setting its [`dropPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=dropPosition)) property. This forces the Dock Manager to display its docking indicators.
+We have subscribed to the `DragOver` and `drop` events of the `document` element. In the `DragOver` listener we notify the Dock Manager that the mouse is dragged over it by setting its [`DropPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=dropPosition) property. This forces the Dock Manager to display its docking indicators.
 
 ```ts
 const handleDocumentDragOver = (event: DragEvent) => {
@@ -117,7 +112,7 @@ const handleDocumentDrop = async (event: DragEvent) => {
 }
 ```
 
-When a pane is dropped out of its current window, we need to remove the [`draggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) from its Dock Manager component and update the layout.
+When a pane is dropped out of its current window, we need to remove the [`DraggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) from its Dock Manager component and update the layout.
 
 ```ts
 const draggedPane = dockManager.draggedPane as IgcContentPane;
@@ -155,7 +150,7 @@ For the full source code please clone the [repository](https://github.com/Ignite
 
 ## API References
 
-- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)
-- [`IgcDocumentHost`](mcp:get_api_reference?platform=webcomponents&component=IgcDocumentHost)
-- [`IgcDockManagerLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerLayout)
-- [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)
+[`IgcDockManager`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)<br />
+[`IgcDocumentHost`](mcp:get_api_reference?platform=webcomponents&component=IgcDocumentHost)<br />
+[`IgcDockManagerLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerLayout)<br />
+[`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)<br />

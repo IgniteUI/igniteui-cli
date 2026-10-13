@@ -1,22 +1,23 @@
 ---
-title: Blazor Chart Data Selection | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Blazor chart with the data selection!
-_keywords: Blazor charts, chart data, selection, data selection, Ignite UI for Blazor, Infragistics
-_license: commercial
+title: "Blazor Chart Data Selection | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for Blazor chart with the data selection!
+keywords: "Blazor charts, chart data, selection, data selection, Ignite UI for Blazor, Infragistics"
+license: commercial
 _language: en
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor selection feature in Blazor Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart."
 _tocName: Chart Data Selection
 _premium: true
 ---
-
 # Blazor Chart Selection
 
-The Ignite UI for Blazor selection feature in Blazor {ComponentTitle} allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
+The Ignite UI for Blazor selection feature in Blazor Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
 
 ## Configuring Selection
 
-The default behavior [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the `{ComponentName}`:
+The default behavior [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart):
 
 - **Auto**
 - **None**
@@ -32,10 +33,10 @@ The default behavior [`SelectionMode`](mcp:get_api_reference?platform=blazor&com
 - **ThickOutline**
 
 `Brighten` will fade the selected item while `FadeOthers` will cause the opposite effect occur.
-`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`SelectionBrush`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectionBrush) setting.
+`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`SelectionBrush`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectionBrush) setting.
 `SelectionColorOutline` and `SelectionColorThickOutline` will draw a border around the series.
 
-In conjunction, a [`SelectionBehavior`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
+In conjunction, a [`SelectionBehavior`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
 
 - **Auto**
 - **PerDataItemMultiSelect**
@@ -129,7 +130,7 @@ public class TemperatureAverageData
 
 ## Configuring Multiple Selection
 
-Other selection modes offer various methods of selection. For example using [`SelectionBehavior`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
+Other selection modes offer various methods of selection. For example using [`SelectionBehavior`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
 `PerSeriesAndDataItemGlobalSingleSelect` allows single series selection across all categories at a time.
 
 ```razor
@@ -264,7 +265,7 @@ public class EnergyRenewableConsumption
 
 ## Configuring Outline Selection
 
-When [`FocusBrush`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=FocusBrush) is applied, selected series will appear with a border when the [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectionMode) property is set to one of the focus options.
+When [`FocusBrush`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=focusBrush) is applied, selected series will appear with a border when the [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectionMode) property is set to one of the focus options.
 
 ## Radial Series Selection
 
@@ -408,14 +409,13 @@ public class FootballPlayerStats
 ```
 
 ## Programmatic Selection
+Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart). The [`Matcher`](mcp:get_api_reference?platform=blazor&component=IgbChartSelection&member=matcher) property of the [`IgbChartSelection`](mcp:get_api_reference?platform=blazor&component=IgbChartSelection) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
 
-Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart). The `Matcher` property of the [`IgbChartSelection`](mcp:get_api_reference?platform=blazor&component=IgbChartSelection) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
-
-The matcher is ideal for using in charts, such as the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) when you do not have access to the actual series, like the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`SelectedSeriesItems`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=SelectedSeriesItems) collection using a matcher with the following properties set
+The matcher is ideal for using in charts, such as the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) when you do not have access to the actual series, like the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`SelectedSeriesItems`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=selectedSeriesItems) collection using a matcher with the following properties set
 
 For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to select the series bound to Solar values, you can add a ChartSelection object to the SelectedSeriesItems collection using a matcher with the following properties set.
 
-```razor
+ ```razor
 @using IgniteUI.Blazor.Controls
 @using System
 @using System.Collections.Generic

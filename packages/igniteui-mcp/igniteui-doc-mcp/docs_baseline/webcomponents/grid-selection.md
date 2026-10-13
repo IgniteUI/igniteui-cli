@@ -1,15 +1,14 @@
 ---
-title: Web Components Grid Selection - Ignite UI for Web Components
-_description: See how easy it is to select data in Ignite UI for Web Components grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "Web Components Grid Selection - Ignite UI for Web Components"
+description: See how easy it is to select data in Ignite UI for Web Components grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for Web Components Select feature in Web Components Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: Grid
 _tocName: Selection
 ---
-
 # Web Components Grid Selection Overview
 
 With the Ignite UI for Web Components Select feature in Web Components Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for Web Components Select feature in Web Components Grid you 
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property, you can specify:
+With the [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -26,7 +25,7 @@ With the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component
 
 ## Web Components Grid Selection Example
 
-The sample below demonstrates three types of **cell selection** behaviors in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Use the buttons below to enable each of the available selection modes.
+The sample below demonstrates three types of **cell selection** behaviors in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Use the buttons below to enable each of the available selection modes.
 
 ```css
 /* shared styles are loaded from: */
@@ -35,39 +34,31 @@ The sample below demonstrates three types of **cell selection** behaviors in the
 
 ## Web Components Grid Selection Options
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The Ignite UI for Web Components [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) properties.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The Ignite UI for Web Components [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). In order to change/enable selection mode you can use [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection), [`IgcGrid.cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) or [`IgcColumn.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) properties.
 
 ### Web Components Grid Row Selection
 
-Property [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) enables you to specify the following options:
+Property [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) enables you to specify the following options:
 
-- `None` - Row selection would be disabled for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
-- `Single` - Selection of only one row within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
+- `None` - Row selection would be disabled for the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+- `Single` - Selection of only one row within the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### Web Components Grid Cell Selection
 
-Property [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) enables you to specify the following options:
+Property [`IgcGrid.cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) enables you to specify the following options:
 
-- `None` - Cell selection would be disabled for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
-- `Single` - Selection of only one cell within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
-- `Multiple` - Currently, this is the default state of the selection in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- `None` - Cell selection would be disabled for the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+- `Single` - Selection of only one cell within the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
+- `Multiple` - Currently, this is the default state of the selection in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
 > Go to [Cell selection topic](cell-selection.md) for more information.
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Web Components Grid Column Selection
 
-The [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) property enables you to specify the following options for each [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgcColumn.selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) property enables you to specify the following options for each [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -75,17 +66,11 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: Grid -->
 
 ## Web Components Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the [`IgcGrid.contextMenu`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=contextMenu) event you can add a custom context menu to facilitate your work with [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
@@ -143,6 +128,7 @@ The context menu will have the following functions:
         this.toggleContextMenu();
     }
 
+
     public copySelectedData() {
         const selectedData = this.grid.getSelectedData();
         this.copyData(selectedData);
@@ -161,9 +147,10 @@ The context menu will have the following functions:
         document.execCommand('copy');
         document.body.removeChild(tempElement);
     }
+
 ```
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) will fetch the copied data and will paste it in a container element.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) will fetch the copied data and will paste it in a container element.
 
 The template we are going to use to combine the grid with the context menu:
 
@@ -199,7 +186,6 @@ The template we are going to use to combine the grid with the context menu:
         <igc-icon name="content_copy"></igc-icon>Copy Cells Data
       </span>
     </div>
-  </div>
 ```
 
 Select multiple cells and press the right mouse button. The context menu will appear and after selecting **Copy cells data** the selected data will appear in the right empty box.
@@ -369,11 +355,9 @@ export class NwindData extends Array<NwindDataItem> {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgcGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -381,12 +365,8 @@ When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents
 - Row Pinning
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Row Selection](row-selection.md)
 - [Cell Selection](cell-selection.md)
@@ -396,8 +376,6 @@ When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents
 - [Summaries](summaries.md)
 - [Column Moving](column-moving.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

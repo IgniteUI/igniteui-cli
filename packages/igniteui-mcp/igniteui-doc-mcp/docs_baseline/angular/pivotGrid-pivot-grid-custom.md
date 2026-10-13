@@ -1,13 +1,13 @@
 ---
 title: Angular Pivot Grid Custom Remote | Pivot Tables | Infragistics
-_description: Create fast, responsive Angular pivot grids and tables with Ignite UI for Angular. Perform complex data analysis via pivot data.
-_keywords: angular pivot grid, Angular pivot table, ignite ui for angular, pivot grid customization, pivot grid remote, pivot remote
-_license: commercial
+description: Create fast, responsive Angular pivot grids and tables with Ignite UI for Angular. Perform complex data analysis via pivot data.
+keywords: angular pivot grid, Angular pivot table, ignite ui for angular, pivot grid customization, pivot grid remote, pivot remote
+license: commercial
+llms:
+  description: "In scenarios where the pivot data is already grouped and aggregated from a remote service and there's no need for further processing on the client, the pivot grid can be configured to use a custom empty strategy that will skip data processing on the client and allow it to."
 _tocName: Pivot Grid Remote Operations
 _premium: true
 ---
-
-
 # Angular Pivot Grid Remote Operations
 
 In scenarios where the pivot data is already grouped and aggregated from a remote service and there's no need for further processing on the client, the pivot grid can be configured to use a custom empty strategy that will skip data processing on the client and allow it to directly display the data as is:
@@ -219,19 +219,13 @@ public noopSortStrategy = NoopSortingStrategy.instance();
 ```
 
 ## API References
-
-- [IgxPivotGridComponent](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
-- [IgxPivotDataSelectorComponent](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
-
-
+- [`IgxPivotGrid`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
+- [`IgxPivotDataSelector`](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Angular Pivot Grid Features](/pivotgrid/pivot-grid-features)
+- [Angular Pivot Grid Overview](/pivotgrid/pivot-grid)
 
-- [Angular Pivot Grid Features](pivot-grid-features.md)
-- [Angular Pivot Grid Overview](pivot-grid.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

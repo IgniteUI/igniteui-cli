@@ -1,13 +1,15 @@
 ---
 title: Handling Angular Events | Event Binding | WPF to Angular Guide | Infragistics
-_description: Learn about Angular event binding and how to create your own Angular custom events. See how Angular uses DOM events to do this and handles user inputs.
-_keywords: handling angular events, ignite ui for angular, infragistics
+description: Learn about Angular event binding and how to create your own Angular custom events. See how Angular uses DOM events to do this and handles user inputs.
+keywords: handling angular events, ignite ui for angular, infragistics
+llms:
+  description: "The Angular events are emitted as a response to user interactions."
 _tocName: Angular Events
 ---
-
 # Handling Angular Events
 
-> [!Video https://www.youtube.com/embed/V1Futz4W400]
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/V1Futz4W400">
+</iframe>
 
 The Angular events are emitted as a response to user interactions. When an Angular event is emitted, its event handling logic is executed. WPF provides routed events, CLR events, and commands. While in Angular, there are DOM events.
 
@@ -51,7 +53,7 @@ onClicked(event) {
 Sometimes passing the event object might not be very useful. Instead, you may want to pass the value of an `input` on the page.
 
 ```html
-<input #messageInput>
+<input #messageInput/>
 <button (click)="onClicked(messageInput.value)">Click Me</button>
 ```
 
@@ -64,7 +66,7 @@ onClicked(message) {
 Let's say that we want to print the value of an input on pressing Enter. You could do that in Angular like this:
 
 ```html
-<input #messageInput (keyup)="onInputKeyup($event, messageInput.value)">
+<input #messageInput (keyup)="onInputKeyup($event, messageInput.value)"/>
 ```
 
 ```typescript
@@ -78,7 +80,7 @@ onInputKeyup(event, message) {
 Surprisingly, in Angular, there is an even easier way to do that. You could bind to the `keyup.enter` pseudo-event. Using this approach, the event handler will be called only when the user presses Enter.
 
 ```html
-<input #messageInput (keyup.enter)="onInputKeyup(messageInput.value)">
+<input #messageInput (keyup.enter)="onInputKeyup(messageInput.value)"/>
 ```
 
 ```typescript
@@ -145,7 +147,7 @@ this.taskCompleted.emit(new TaskEventArgs());
 - [Angular User Input](https://angular.io/guide/user-input)
 - [Component Interaction: Parent listens for child events](https://angular.io/guide/component-interaction#parent-listens-for-child-event)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

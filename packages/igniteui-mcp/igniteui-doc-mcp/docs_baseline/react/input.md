@@ -1,19 +1,18 @@
 ---
-title: React Input | Data Visualization Tools | Infragistics
-_description: Infragistics' React input is a component where the user can enter data. Improve your application with Ignite UI for React!
-_keywords: React input, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Input | Data Visualization Tools | Infragistics"
+description: Infragistics' React input is a component where the user can enter data. Improve your application with Ignite UI for React!
+keywords: "React input, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Input", "Icon", "Radio"]
+llms:
+  description: "The Ignite UI for React Input is a component where the user can enter data."
 _tocName: Input
 ---
-
 # React Input Overview
 
 The Ignite UI for React Input is a component where the user can enter data.
 
 ## React Input Example
-
-<div class="divider--half"></div>
 
 ```css
 /* shared styles are loaded from: */
@@ -69,7 +68,7 @@ After we import the [`IgrInput`](mcp:get_api_reference?platform=react&component=
 
 ## Prefix & Suffix
 
-With `prefix` and `suffix` slots we can add different content before and after the main content of the Input. In the following sample we will create a new Input field with a text prefix and an icon suffix:
+With `prefix` and `suffix` slots we can add different content before and after the main content of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput). We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots. In the following sample we will create a new Input field with a text prefix and an icon suffix:
 
 ```css
 /* shared styles are loaded from: */
@@ -112,7 +111,7 @@ root.render(<InputPrefixSuffix/>);
 
 ## Helper Text
 
-The `helper-text` slot provides a hint placed below the Input. Let's add some helper text to our phone Input:
+The `helper-text` slot provides a hint placed below the Input. We recommend using a `<span>` element for the helper text. Let's add it to our phone Input:
 
 ```css
 /* shared styles are loaded from: */
@@ -233,7 +232,6 @@ root.render(<InputSize />);
 ```
 
 In the sample above we have demonstrated the use of the following attributes:
-
 - `required` - Used to mark the input as required
 - `disabled` - Used to disable the input
 - `readonly` - Used to mark the input as readonly
@@ -327,15 +325,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputStyling/>);
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+[`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

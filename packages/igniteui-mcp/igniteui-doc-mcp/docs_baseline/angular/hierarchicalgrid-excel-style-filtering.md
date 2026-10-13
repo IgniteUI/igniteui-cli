@@ -1,15 +1,20 @@
 ---
 title: Excel Style Filtering in Angular Hierarchical Grid - Ignite UI for Angular
-_description: Learn how to configure Excel filtering in Angular Hierarchical Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, igniteui for angular, infragistics
-_license: commercial
+description: Learn how to configure Excel filtering in Angular Hierarchical Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, igniteui for angular, infragistics
+license: commercial
 _canonicalLink: grid/excel-style-filtering
+llms:
+  description: "The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Hierarchical Grid."
 _tocName: Excel Style Filtering
 _premium: true
 ---
 # Excel Filtering in Angular Hierarchical Grid
+
 The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Hierarchical Grid.
+
 ## Angular Hierarchical Grid Excel Style Filtering Example
+
 ```typescript
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -140,22 +145,32 @@ igx-buttongroup{
     width: 500px;
 }
 ```
-<div class="divider--half"></div>
+
 ## Usage
+
 To turn on the grid excel filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=allowFiltering) should be set to `true` and the [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=filterMode) should be set to `excelStyleFilter`.
+
 ```html
 <igx-hierarchical-grid [data]="data" [autoGenerate]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
 </igx-hierarchical-grid>
 ```
+
 ## Interactions
+
 In order to open the filter menu for a particular column, the Angular filter icon in the header should be clicked. Additionally, you can use the `Ctrl + Shift + L` combination on a selected header. If the column can be sorted, pinned, moved, selected or hidden along with the filtering functionality, there will be buttons available for the features that are turned on.
-If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`OR`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=or).
+
+If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or).
+
 If you type something in the search box and apply the filter, only the items that match the search criteria will be selected. If you want to add items to the currently filtered ones, however, you should select the option `Add current selection to filter`.
+
 If you want to clear the filter, you can check the `Select All` option and then click the Apply button.
+
 To apply a filter with different expressions, you can click the **Text filter**, which will open a sub menu with all available filter operators for the particular column. Selecting one of them will open the custom filter dialog, where you can add as many expressions as you want with different filter and logic operators. There is also a clear button, which can clear the filter.
-<div class="divider--half"></div>
+
 ## Configure Menu Features
+
 Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortable), [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected), [`disablePinning`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disableHiding).
+
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false" [moving]="true" [allowFiltering]='true' filterMode="excelStyleFilter"
     [height]="'650px'" [width]="'100%'" [rowHeight]="'65px'" #hierarchicalGrid>
@@ -192,9 +207,9 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
     </igx-row-island>
 </igx-hierarchical-grid>
 ```
-<div class="divider--half"></div>
+
 In the sample below 'Artist' column have all three features enabled, 'Debut' have all three disabled, 'Grammy Nominations' has only pinning and hiding.
-<div class="divider--half"></div>
+
 ```typescript
 import { Component } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
@@ -276,13 +291,18 @@ export class HGridExcelStyleFilteringSample2Component {
     margin: 1px
 }
 ```
-<div class="divider--half"></div>
+
 ## Templates
+
 If you want to further customize the Excel style filter menu without disabling the column features you could use custom templates. The Excel Style filter menu provides two directives for templating:
+
 - `IgxExcelStyleColumnOperationsTemplateDirective` - re-templates the area with all column operations like sorting, pinning, etc.
 - `IgxExcelStyleFilterOperationsTemplateDirective` - re-templates the area with all filter specific operations.
+
 You could either re-template only one of those areas or both of them. You could put any custom content inside those directives or you could use any of our built-in Excel style filtering components.
-The following code demonstrates how to define a custom Excel style filter menu using the [`igx-excel-style-header`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent), [`igx-excel-style-sorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent) and [`igx-excel-style-search`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent) components.
+
+The following code demonstrates how to define a custom Excel style filter menu using the [`IgxExcelStyleHeader`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent), [`IgxExcelStyleSorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent) and [`IgxExcelStyleSearch`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent) components.
+
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false" [allowFiltering]='true' filterMode="excelStyleFilter"
     [height]="'650px'" [width]="'100%'" [rowHeight]="'65px'" #hierarchicalGrid>
@@ -322,9 +342,12 @@ The following code demonstrates how to define a custom Excel style filter menu u
             </igx-excel-style-filter-operations>
         </igx-grid-excel-style-filtering>
         ....
+    </igx-row-island>
 </igx-hierarchical-grid>
 ```
+
 You could also re-template the Excel style filtering icon in the column header using the `igxExcelStyleHeaderIcon` directive:
+
 ```html
 <igx-hierarchical-grid ...>
     <ng-template igxExcelStyleHeaderIcon>
@@ -332,7 +355,7 @@ You could also re-template the Excel style filtering icon in the column header u
     </ng-template>
 </igx-hierarchical-grid>
 ```
-<div class="divider--half"></div>
+
 ```typescript
 import { Component } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
@@ -453,21 +476,31 @@ export class HGridExcelStyleFilteringSample3Component {
     margin: 1px
 }
 ```
+
 Here is the full list of Excel style filtering components that you could use:
-- [`igx-excel-style-header`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent)
-- [`igx-excel-style-sorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent)
-- [`igx-excel-style-moving`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleMovingComponent)
-- [`igx-excel-style-pinning`](mcp:get_api_reference?platform=angular&component=IgxExcelStylePinningComponent)
-- [`igx-excel-style-hiding`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHidingComponent)
-- [`igx-excel-style-selecting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSelectingComponent)
-- [`igx-excel-style-clear-filters`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleClearFiltersComponent)
-- [`igx-excel-style-conditional-filter`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleConditionalFilterComponent)
-- [`igx-excel-style-search`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent)
-<div class="divider--half"></div>
+
+- [`IgxExcelStyleHeader`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent)
+- [`IgxExcelStyleSorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent)
+- [`IgxExcelStyleMoving`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleMovingComponent)
+- [`IgxExcelStylePinning`](mcp:get_api_reference?platform=angular&component=IgxExcelStylePinningComponent)
+- [`IgxExcelStyleHiding`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHidingComponent)
+- [`IgxExcelStyleSelecting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSelectingComponent)
+- [`IgxExcelStyleClearFilters`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleClearFiltersComponent)
+- [`IgxExcelStyleConditionalFilter`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleConditionalFilterComponent)
+- [`IgxExcelStyleSearch`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent)
+
 ## Unique Column Values Strategy
-The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. These values can be provided manually and loaded on demand, which is demonstrated in the [`Hierarchical Grid Remote Data Operations`](remote-data-operations.md#unique-column-values-strategy) topic.
+
+The list items inside the Excel Style Filtering dialog represent the unique values for the respective column.
+
+These values can be provided manually and loaded on demand, which is demonstrated in the [`Hierarchical Grid Remote Data Operations`](/hierarchicalgrid/remote-data-operations#unique-column-values-strategy) topic.
+
 ## Formatted Values Filtering Strategy
-By default, the Hierarchical Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy). }  The following sample demonstrates how to format the numeric values of a column as strings and filter the Hierarchical Grid based on the string values:
+
+By default, the Hierarchical Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. In order to do that you can use the [`IgxFormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy).
+
+The following sample demonstrates how to format the numeric values of a column as strings and filter the Hierarchical Grid based on the string values:
+
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -535,11 +568,16 @@ export class HGridFormattedFilteringStrategyComponent {
     margin: 16px;
 }
 ```
->[!NOTE]
->The formatted values filtering strategy won't work correctly if you have more than one column bound to the same field from your data and one of the columns has a formatter.
+
+**Note:** 
+The formatted values filtering strategy won't work correctly if you have more than one column bound to the same field from your data and one of the columns has a formatter.
+
 ## External Excel Style filtering
+
 As you see at the demos above the default appearance of the Excel Style filtering dialog is inside the Hierarchical Grid. So this dialog is only visible when configuring the filters. There is a way to make that dialog stay always visible - it can be used outside of the grid as a standalone component. In the demo below, the Excel style filtering is declared separately of the Hierarchical Grid.
+
 ### Demo
+
 ```typescript
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -659,9 +697,11 @@ export class HGridExternalExcelStyleFilteringComponent implements AfterViewInit{
     margin-left: 1px;
 }
 ```
-<div class="divider--half"></div>
+
 ### Usage
-In order to configure the Excel style filtering component, you should set its [`column`](mcp:get_api_reference?platform=angular&component=IgxGridExcelStyleFilteringComponent&member=column) property to one of the Hierarchical Grid's columns. In the sample above, we have bound the [`column`](mcp:get_api_reference?platform=angular&component=IgxGridExcelStyleFilteringComponent&member=column) property to the value of an IgxSelectComponent that displays the Hierarchical Grid's columns.
+
+In order to configure the Excel style filtering component, you should set its [`column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) property to one of the Hierarchical Grid's columns. In the sample above, we have bound the [`column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) property to the value of an IgxSelectComponent that displays the Hierarchical Grid's columns.
+
 ```html
 <igx-select #gridColums value="Artist">
    <label igxLabel>Columns:</label>
@@ -669,13 +709,18 @@ In order to configure the Excel style filtering component, you should set its [`
        {{ c.field }}
    </igx-select-item>
 </igx-select>
+
 <igx-grid-excel-style-filtering [column]="hierarchicalgrid1.getColumnByName(gridColums.value)">
 </igx-grid-excel-style-filtering>
 ```
+
 ## External Outlet
+
 The Hierarchical Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) creates separate stacking context for each grid in the DOM. This ensures that all descendant elements of the grid will render as intended, without overlapping one another.
 However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
+
 ### Demo
+
 ```typescript
 import { Component, OnInit } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
@@ -798,105 +843,66 @@ export class HierarchicalGridExternalOutletComponent implements OnInit {
     padding-top: 10px;
 }
 ```
+
 ## Styling
-To get started with styling the Excel Style Filtering dialog, we need to import the `index` file, where all the theme functions and component mixins live:
+
+To get started with styling the Excel Style Filtering dialog, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
+
 ```scss
 @use "igniteui-angular/theming" as *;
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
-The Excel Style Filtering dialog takes its background color from the grid's theme, using the `filtering-row-background` parameter. Additionally, there are specific Excel Style Filtering parameters available for customizing the text color of elements within the dialog. To change the overall style of the dialog, you need to create a custom theme.
+
+There are a couple of ways to style the Excel Style Filtering dialog. It can be styled using the `grid-theme`. The Excel Style Filtering dialog inherits the `$background`, `$foreground`, and `$accent-color` values defined in the `grid-theme`. It also provides dedicated parameters for customizing the dialog’s text colors.
+
+Alternatively, you can use the dedicated `excel-filtering-theme`, which allows you to fully style only the Excel Style Filtering dialog.
+
+The simplest approach is to use the `grid-theme`:
+
 ```scss
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
+
 $custom-grid: grid-theme(
-  $filtering-row-background: #ffcd0f,
-  $excel-filtering-header-foreground: #292826,
-  $excel-filtering-subheader-foreground: #292826,
-  $excel-filtering-actions-foreground: #006400,
-  $excel-filtering-actions-hover-foreground: #ffcd0f,
-  $excel-filtering-actions-disabled-foreground: #9e9e9e
+  $background: $background,
+  $foreground: $foreground,
+  $accent-color: $accent,
 );
 ```
-We obviously have a lot more components inside the excel like filtering dialog, such as buttons, checkboxes, a list and even a drop-down. In order to style them, we need to create a separate theme for each one:
-```scss
-$custom-button: contained-button-theme(
-  $background: #ffcd0f,
-  $foreground: #292826,
-  $hover-background: #292826,
-  $hover-foreground: #ffcd0f
-);
-$flat-custom-button: flat-button-theme(
-  $foreground: #ffcd0f,
-);
-$custom-checkbox: checkbox-theme(
-  $empty-color: #292826,
-  $fill-color: #292826,
-  $tick-color: #ffcd0f,
-  $label-color: #292826
-);
-$custom-drop-down: drop-down-theme(
-  $background-color: #ffcd0f,
-  $item-text-color: #292826,
-  $hover-item-background: #292826,
-  $hover-item-text-color: #ffcd0f
-);
-$custom-input-group: input-group-theme(
-  $box-background: #ffcd0f,
-  $idle-text-color: #292826,
-  $focused-text-color: #292826,
-  $filled-text-color: #292826
-);
-$custom-list: list-theme(
-  $background: #ffcd0f
-);
-```
->[!NOTE]
->Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.
-In this example we only changed some of the parameters for the listed components, but the [`button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme), [`checkbox-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme), [`drop-down-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme), [`input-group-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme), [`list-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-list-theme) themes provide way more parameters to control their respective styling.
-The last step is to **include** each component’s custom theme. We will also set the color property for the input's placeholder.
+
+The background and foreground colors of the Excel Style Filtering dialog are inherited from the grid theme. Additionally, all nested components, such as buttons and checkboxes, inherit the accent color from the grid theme.
+
+After that, we are ready to include our newly created grid theme. If we want to make additional style changes specific to the Excel Style Filtering dialog, we can target it directly:
+
 ```scss
 :host {
     @include tokens($custom-grid);
-    @include tokens($custom-drop-down);
 
-    .igx-excel-filter, 
-    .igx-excel-filter__secondary {
-        @include tokens($custom-button);
-        @include tokens($custom-checkbox);
-        @include tokens($custom-input-group);
-        @include tokens($custom-list);
-
-        .igx-input-group__input::placeholder {
-            color: #ffcd0f;
-        }
+    igx-grid-excel-style-filtering {
+        --ig-excel-filtering-background: #444;
     }
 }
 ```
->[!NOTE]
->We scope most of the components' mixins within `.igx-excel-filter` and `.igx-excel-filter__secondary`, so that these custom themes will affect only components nested in the excel style filtering dialog and all of its sub-dialogs. Otherwise other buttons, checkboxes, input-groups and lists would be affected too.
->[!NOTE]
->If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`:
+
+**Note:** 
+This sample uses `::ng-deep` because both the generated theme selectors and the direct Excel Filtering selector must reach elements inside the grid's view. Moving the overrides to a global stylesheet is an alternative.
+
+
 ```scss
-:host {
-  ::ng-deep {
+:host ::ng-deep {
     @include tokens($custom-grid);
-    @include tokens($custom-drop-down);
 
-    .igx-excel-filter,
-    .igx-excel-filter__secondary {
-      @include tokens($custom-button);
-      @include tokens($flat-custom-button);
-      @include tokens($custom-checkbox);
-      @include tokens($custom-input-group);
-      @include tokens($custom-list);
-      
-      .igx-input-group__input::placeholder {
-        color: #ffcd0f;
-      }
+    igx-grid-excel-style-filtering {
+        --ig-excel-filtering-background: #444;
     }
-  }
 }
 ```
+
 ### Demo
+
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -982,26 +988,29 @@ $custom-grid: grid-theme(
     }
 }
 ```
->[!NOTE]
->The sample will not be affected by the selected global theme from `Change Theme`.
-<div class="divider--half"></div>
+
+**Note:** 
+The sample will not be affected by the selected global theme from `Change Theme`.
+
 ## API References
-<div class="divider--half"></div>
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
-- [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- `IgxHierarchicalGridComponent Styles`
+- `Excel Filtering Theme`
 ## Additional Resources
-<div class="divider--half"></div>
-- [Hierarchical Grid overview](hierarchical-grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-<div class="divider--half"></div>
+
+- [Hierarchical Grid overview](/hierarchicalgrid/hierarchical-grid)
+- [Paging](/hierarchicalgrid/paging)
+
+- [Virtualization and Performance](/hierarchicalgrid/virtualization)
+- [Sorting](/hierarchicalgrid/sorting)
+- [Summaries](/hierarchicalgrid/summaries)
+- [Column Moving](/hierarchicalgrid/column-moving)
+- [Column Pinning](/hierarchicalgrid/column-pinning)
+- [Column Resizing](/hierarchicalgrid/column-resizing)
+- [Selection](/hierarchicalgrid/selection)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

@@ -1,15 +1,16 @@
 ---
 title: Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP - Ignite UI for Angular
-_description: Follow an end-to-end Ignite UI for Angular workflow with Ignite UI CLI MCP and Ignite UI Theming MCP start CLI-first, connect both MCP servers, create or extend the app through chat, ask documentation questions, and apply a custom theme.
-_keywords: Angular, Ignite UI for Angular, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, workflow, theming, prompt
+description: Follow an end-to-end Ignite UI for Angular workflow with Ignite UI CLI MCP and Ignite UI Theming MCP start CLI-first, connect both MCP servers, create or extend the app through chat, ask documentation questions, and apply a custom theme.
+keywords: Angular, Ignite UI for Angular, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, workflow, theming, prompt
+llms:
+  description: "Ignite UI CLI MCP and Ignite UI Theming MCP work together to let an AI assistant scaffold, extend, and theme an Ignite UI for Angular application through chat prompts."
 _tocName: Build App with CLI MCP and Theming MCP
 ---
-
 # Build an App End-to-End with Ignite UI CLI MCP and Ignite UI Theming MCP
 
 <p class="highlight">Ignite UI CLI MCP and Ignite UI Theming MCP work together to let an AI assistant scaffold, extend, and theme an Ignite UI for Angular application through chat prompts. CLI MCP handles project creation, component work, and documentation questions. Theming MCP handles palettes, themes, tokens, and styling workflows. This topic shows the full process in one clear flow.</p>
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## How CLI MCP and Theming MCP Divide Responsibilities
 
@@ -38,7 +39,7 @@ Before you start, make sure you have:
 
 This walkthrough works best with a **CLI-first** setup because Ignite UI CLI scaffolds the project and prepares the first MCP configuration for VS Code automatically.
 
-If you still need the detailed setup reference for each client, see [Angular Schematics & Ignite UI CLI](~/components/general/cli-overview.md) and [Ignite UI Theming MCP](~/components/ai/theming-mcp.md).
+If you still need the detailed setup reference for each client, see [Angular Schematics & Ignite UI CLI](../cli-overview.md) and [Ignite UI Theming MCP](../../ai/theming-mcp.md).
 
 ## Step 1: Start with Ignite UI CLI
 
@@ -245,11 +246,9 @@ In practice, the most effective pattern is to use CLI MCP for project and compon
 
 ## Related Topics
 
-- [Angular Schematics & Ignite UI CLI](~/components/general/cli-overview.md)
-- [Ignite UI Theming MCP](~/components/ai/theming-mcp.md)
-- [Ignite UI for Angular Skills](~/components/ai/skills.md)
-
-<div class="divider--half"></div>
+- [Angular Schematics & Ignite UI CLI](../cli-overview.md)
+- [Ignite UI Theming MCP](../../ai/theming-mcp.md)
+- [Ignite UI for Angular Skills](../../ai/skills.md)
 
 Our community is active and always welcoming to new ideas.
 

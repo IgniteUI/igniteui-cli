@@ -1,6 +1,5 @@
 import { checkbox, confirm, input, select, Separator } from '@inquirer/prompts';
-import type { Context } from '@inquirer/type';
-import type { PartialDeep } from '@inquirer/type';
+import type { Context, PartialDeep } from '@inquirer/type';
 import type { Theme } from '@inquirer/core';
 import { exclusiveCheckbox, type ExclusiveCheckboxChoice } from "./ExclusiveCheckbox";
 

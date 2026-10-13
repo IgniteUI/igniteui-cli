@@ -1,21 +1,18 @@
 ---
 title: Agent Skills | AI Skills | AI-Assisted Development | Ignite UI for Angular | Infragistics
-_description: Learn how to use Agent Skills to supercharge AI-assisted development with Ignite UI for Angular components, grids, data operations, and theming.
-_keywords: Ignite UI for Angular, agent skills, ai assisted development, github copilot, cursor, windsurf, claude, gemini cli, junie
-_license: MIT
-mentionedTypes: []
+description: Learn how to use Agent Skills to supercharge AI-assisted development with Ignite UI for Angular components, grids, data operations, and theming.
+keywords: Ignite UI for Angular, agent skills, ai assisted development, github copilot, cursor, windsurf, claude, gemini cli, junie
 last_updated: "2026-04-24"
+llms:
+  description: "Ignite UI for Angular ships with Agent Skills - structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, Gemini CLI, JetBrains Junie, etc.) how to work with Ignite UI for Angular."
 _tocName: Ignite UI for Angular Skills
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Ignite UI for Angular Agent Skills
 
 Ignite UI for Angular ships with **[Agent Skills](https://agentskills.io/)** - structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, Gemini CLI, JetBrains Junie, etc.) how to work with Ignite UI for Angular. These skill files provide context-aware guidance on components, grids, data operations, and theming, enabling your AI assistant to generate accurate, idiomatic code that follows best practices.
 
-> [!NOTE]
-> The AI tooling landscape is evolving rapidly. Skill discovery locations and distribution options may change as tools and IDEs are updated. Always consult the official documentation for your specific tool or agent for the latest information.
+**Note:** 
+The AI tooling landscape is evolving rapidly. Skill discovery locations and distribution options may change as tools and IDEs are updated. Always consult the official documentation for your specific tool or agent for the latest information.
 
 ## Available Skills
 
@@ -28,8 +25,8 @@ The skill files live in the [`skills/`](https://github.com/IgniteUI/igniteui-ang
 | Theming & Styling | [`skills/igniteui-angular-theming/SKILL.md`](https://github.com/IgniteUI/igniteui-angular/blob/master/skills/igniteui-angular-theming/SKILL.md) | Palettes, typography, elevations, component themes, MCP server |
 | Generate From Image Design | [`skills/igniteui-angular-generate-from-image-design/SKILL.md`](https://github.com/IgniteUI/igniteui-angular/blob/master/skills/igniteui-angular-generate-from-image-design/SKILL.md) | Build Angular apps from screenshots, mockups, and wireframes using Ignite UI components |
 
-> [!NOTE]
-> Starting with Ignite UI for Angular **21.1.0**, these skills are automatically discovered when placed in your agent's skills path (e.g., `.claude/skills`, `.agents/skills`, `.cursor/rules/`). This release ships with an optional migration to add these skills to your project automatically.
+**Note:** 
+Starting with Ignite UI for Angular **21.1.0**, these skills are automatically discovered when placed in your agent's skills path (e.g., `.claude/skills`, `.agents/skills`, `.cursor/rules/`). This release ships with an optional migration to add these skills to your project automatically.
 
 ## Skill Locations
 
@@ -145,8 +142,8 @@ ng generate @igniteui/angular-schematics:ai-config --assistants cursor --agents 
 
 This also registers the `@angular/cli` MCP server alongside the Ignite UI servers.
 
-> [!NOTE]
-> If you installed Ignite UI for Angular manually and want to copy skills without running `ai-config`, the skill files are also available under `node_modules`. To copy them into your project (e.g. into `.agents/skills/`), run:
+**Note:** 
+If you installed Ignite UI for Angular manually and want to copy skills without running `ai-config`, the skill files are also available under `node_modules`. To copy them into your project (e.g. into `.agents/skills/`), run:
 
 **macOS / Linux / Windows (PowerShell)**
 
@@ -247,11 +244,11 @@ Once complete, the skills are ready to use - no manual file copying required.
 
 The **Theming skill** includes setup instructions for the `igniteui-theming` MCP server, which gives AI assistants access to live theming tools such as palette generation and component theme scaffolding. See the [Theming skill file](https://github.com/IgniteUI/igniteui-angular/blob/master/skills/igniteui-angular-theming/SKILL.md) for configuration steps for VS Code, Cursor, Claude Desktop, and JetBrains IDEs.
 
-For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./theming-mcp.md) documentation.
+For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](/ai/theming-mcp) documentation.
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 - <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting-started">Getting Started with Ignite UI for Angular</a>
 - <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview">Angular Schematics & Ignite UI CLI</a>
@@ -259,7 +256,7 @@ For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

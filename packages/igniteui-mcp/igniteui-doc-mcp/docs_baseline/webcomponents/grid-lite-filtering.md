@@ -1,13 +1,14 @@
 ---
-title: Web Components Grid Lite Filtering | Ignite UI for Web Components | MIT license
-_description: Filter operations, filter customization, and remote filtering for Grid Lite. Create apps with our open-source Web Components Grid Lite. Try it now.
-_keywords: filtering, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Web Components Grid Lite Filtering | Ignite UI for Web Components | MIT license"
+description: Filter operations, filter customization, and remote filtering for Grid Lite. Create apps with our open-source Web Components Grid Lite. Try it now.
+keywords: filtering, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite supports filtering operations on its data source."
 _tocName: Filtering
 ---
-
 # Web Components Grid Lite Filter Operations
 
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `filterable` property of the column.
@@ -214,7 +215,7 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 ## Filter API
 
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `GridLite.filterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the [`GridLite.filterExpressions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite&member=filterExpressions) property.
 
 The `filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
@@ -449,7 +450,7 @@ igc-grid-lite {
 In cases where filtering must be done remotely or you want to save the current state/data to a server somewhere,
 the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a `DataPipelineParams` object.
+Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a [`IgcDataPipelineParams`](mcp:get_api_reference?platform=webcomponents&component=DataPipelineParams) object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -471,8 +472,6 @@ export type DataPipelineParams<T extends object> = {
 ```typescript
 grid.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
-
-<!-- End: React, WebComponents -->
 
 The custom callback can be async as the grid will wait for it until it resolves.
 
@@ -646,17 +645,15 @@ igc-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
 ## API References
 
-- `{ComponentName}`
-- `Column`
--->
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
 
 Our community is active and always welcoming to new ideas.
 

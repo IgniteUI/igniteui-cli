@@ -1,36 +1,37 @@
 ---
-title: React Axis Types | Data Visualization | Infragistics
-_description: Infragistics' React Axis Types
-_keywords: React Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics
-_license: commercial
+title: "React Axis Types | Data Visualization | Infragistics"
+description: Infragistics' React Axis Types
+keywords: "React Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React Category Chart uses only one CategoryXAxis and one NumericYAxis type."
 _tocName: Axis Types
 _premium: true
 ---
-
 # React Axis Types
 
-The Ignite UI for React Category Chart uses only one [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) and one [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) type. Similarly, Ignite UI for React Financial Chart uses only one [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) and one [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) types. However, the Ignite UI for React Data Chart provides support for multiple axis types that you can position on any side of the chart by setting [axis location](chart-axis-layouts.md#axis-locations-example) or even inside of the chart by using [axis crossing](chart-axis-layouts.md#axis-crossing-example) properties. This topic goes over each one, which axes and series are compatible with each other, and some specific properties to the unique axes.
+The Ignite UI for React Category Chart uses only one `IgrCategoryXAxis` and one `IgrNumericYAxis` type. Similarly, Ignite UI for React Financial Chart uses only one `IgrTimeXAxis` and one `IgrNumericYAxis` types. However, the Ignite UI for React Data Chart provides support for multiple axis types that you can position on any side of the chart by setting [axis location](chart-axis-layouts.md#axis-locations-example) or even inside of the chart by using [axis crossing](chart-axis-layouts.md#axis-crossing-example) properties. This topic goes over each one, which axes and series are compatible with each other, and some specific properties to the unique axes.
 
 ## Cartesian Axes
 
-The [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) with Cartesian Axes, allows you to plot data in horizontal (X-axis) and vertical (X-axis) direction with 3 types of X-Axis
-([`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html), [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html), and [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html)) and 2 types of Y-Axis ([`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) and [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html)).
+The `IgrDataChart` with Cartesian Axes, allows you to plot data in horizontal (X-axis) and vertical (X-axis) direction with 3 types of X-Axis
+(`IgrCategoryXAxis`, `IgrNumericXAxis`, and `IgrTimeXAxis`) and 2 types of Y-Axis (`IgrCategoryYAxis` and `IgrNumericYAxis`).
 
 ### Category X-Axis
 
-The [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) treats its data as a sequence of categorical data items. It can display almost any type of data including strings and numbers. If you are plotting numbers on this axis, it is important to keep in mind that this axis is a discrete axis and not continuous. This means that each categorical data item will be placed equidistant from the one before it. The items will also be plotted in the order that they appear in the axis' data source.
+The `IgrCategoryXAxis` treats its data as a sequence of categorical data items. It can display almost any type of data including strings and numbers. If you are plotting numbers on this axis, it is important to keep in mind that this axis is a discrete axis and not continuous. This means that each categorical data item will be placed equidistant from the one before it. The items will also be plotted in the order that they appear in the axis' data source.
 
-The [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) requires you to provide a `DataSource` and a [`label`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#label) in order to plot data with it. It is generally used with the [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) to plot the following type of series:
+The `IgrCategoryXAxis` requires you to provide a `IgrDataSource` and a `Label` in order to plot data with it. It is generally used with the `IgrNumericYAxis` to plot the following type of series:
 
 | Category Series  | Stacked Series | Financial Series |
 |------------------|----------------|--------------------|
-| - [`IgrAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrareaseries.html) <br> - [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html) <br> - [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) <br> - [`IgrPointSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpointseries.html)  <br> - [`IgrSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineseries.html) <br>  - [`IgrSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineareaseries.html) <br> - [`IgrStepLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsteplineseries.html) <br> - [`IgrStepAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstepareaseries.html) <br> - [`IgrRangeAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangeareaseries.html) <br> - [`IgrRangeColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangecolumnseries.html) <br> - [`IgrWaterfallSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrwaterfallseries.html) | - [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html) <br> - [`IgrStackedColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedcolumnseries.html) <br> - [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html) <br> - [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html) <br> - [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html) <br> - [`IgrStacked100ColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100columnseries.html) <br> - [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html) <br> - [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html) <br> <br> <br> <br> | - [`IgrFinancialPriceSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialpriceseries.html) <br> - [`IgrBollingerBandsOverlay`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbollingerbandsoverlay.html) <br> - [`IgrForceIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrforceindexindicator.html) <br> - [`IgrMedianPriceIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmedianpriceindicator.html) <br> - [`IgrMassIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmassindexindicator.html)  <br> - [`IgrRelativeStrengthIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrelativestrengthindexindicator.html) <br> - [`IgrStandardDeviationIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstandarddeviationindicator.html) <br> - [`IgrTypicalPriceIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtypicalpriceindicator.html) <br> <br> <br> <br> |
+| - `IgrAreaSeries` <br /> - `IgrColumnSeries` <br /> - `IgrLineSeries` <br /> - `IgrPointSeries`  <br /> - `IgrSplineSeries` <br />  - `IgrSplineAreaSeries` <br /> - `IgrStepLineSeries` <br /> - `IgrStepAreaSeries` <br /> - `IgrRangeAreaSeries` <br /> - `IgrRangeColumnSeries` <br /> - `IgrWaterfallSeries` | - `IgrStackedAreaSeries` <br /> - `IgrStackedColumnSeries` <br /> - `IgrStackedLineSeries` <br /> - `IgrStackedSplineSeries` <br /> - `IgrStacked100AreaSeries` <br /> - `IgrStacked100ColumnSeries` <br /> - `IgrStacked100LineSeries` <br /> - `IgrStacked100SplineSeries` <br /> <br /> <br /> <br /> | - `IgrFinancialPriceSeries` <br /> - `IgrBollingerBandsOverlay` <br /> - `IgrForceIndexIndicator` <br /> - `IgrMedianPriceIndicator` <br /> - `IgrMassIndexIndicator`  <br /> - `IgrRelativeStrengthIndexIndicator` <br /> - `IgrStandardDeviationIndicator` <br /> - `IgrTypicalPriceIndicator` <br /> <br /> <br /> <br /> |
 
-The following example demonstrates usage of the [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) type:
+ The following example demonstrates usage of the `IgrCategoryXAxis` type:
 
-```typescript
+ ```typescript
 export class ContinentsBirthRateItem {
     public constructor(init: Partial<ContinentsBirthRateItem>) {
         Object.assign(this, init);
@@ -208,16 +209,16 @@ root.render(<Sample/>);
 
 ### Category Y-Axis
 
-The [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) works very similarly to the [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `DataSource` and a [`label`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#label) in order to plot data with it. The [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) is generally used with the [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) to plot the following type of series:
+The `IgrCategoryYAxis` works very similarly to the `IgrCategoryXAxis` described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `IgrDataSource` and a `Label` in order to plot data with it. The `IgrCategoryYAxis` is generally used with the `IgrNumericXAxis` to plot the following type of series:
 
-- [`IgrBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbarseries.html)
+- `IgrBarSeries`
 - `RangeBarSeries`
-- [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html)
-- [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html)
+- `IgrStackedBarSeries`
+- `IgrStacked100BarSeries`
 
-The following example demonstrates usage of the [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) type:
+ The following example demonstrates usage of the `IgrCategoryYAxis` type:
 
-```typescript
+ ```typescript
 export class HighestGrossingMoviesItem {
     public constructor(init: Partial<HighestGrossingMoviesItem>) {
         Object.assign(this, init);
@@ -378,27 +379,27 @@ root.render(<Sample/>);
 
 ### Numeric X-Axis
 
-The [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html). Alternatively, if combined with the [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html), these labels will be placed corresponding to the `ValueMemberPath` of the [`IgrBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbarseries.html), `RangeBarSeries`, [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html), and [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html).
+The `IgrNumericXAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the `IgrNumericXAxis` labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a `IgrNumericYAxis`. Alternatively, if combined with the `IgrCategoryXAxis`, these labels will be placed corresponding to the `ValueMemberPath` of the `IgrBarSeries`, `RangeBarSeries`, `IgrStackedBarSeries`, and `IgrStacked100BarSeries`.
 
-The [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) is compatible with the following type of series:
+The `IgrNumericXAxis` is compatible with the following type of series:
 
-- [`IgrBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbarseries.html)
+- `IgrBarSeries`
 - `RangeBarSeries`
-- [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html)
-- [`IgrHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrhighdensityscatterseries.html)
-- [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html)
-- [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html)
-- [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html)
-- [`IgrScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterareaseries.html)
-- [`IgrScatterContourSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattercontourseries.html)
-- [`IgrScatterPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolylineseries.html)
-- [`IgrScatterPolygonSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html)
-- [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html)
-- [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html)
+- `IgrBubbleSeries`
+- `IgrHighDensityScatterSeries`
+- `IgrScatterSeries`
+- `IgrScatterLineSeries`
+- `IgrScatterSplineSeries`
+- `IgrScatterAreaSeries`
+- `IgrScatterContourSeries`
+- `IgrScatterPolylineSeries`
+- `IgrScatterPolygonSeries`
+- `IgrStackedBarSeries`
+- `IgrStacked100BarSeries`
 
-The following example demonstrates usage of the [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html):
+ The following example demonstrates usage of the `IgrNumericXAxis`:
 
-```typescript
+ ```typescript
 export class SampleDensityData {
 
     public static create(): any[] {
@@ -539,17 +540,17 @@ root.render(<DataChartTypeScatterDensitySeries/>);
 
 ### Numeric Y-Axis
 
-The [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) labels depends on the `YMemberPath` property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html). Alternatively, if combined with the [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html), these labels will be placed corresponding to the `ValueMemberPath` of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
+The `IgrNumericYAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the `IgrNumericYAxis` labels depends on the `YMemberPath` property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a `IgrNumericXAxis`. Alternatively, if combined with the `IgrCategoryYAxis`, these labels will be placed corresponding to the `ValueMemberPath` of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
 
-The [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html) is compatible with the following type of series:
+The `IgrNumericYAxis` is compatible with the following type of series:
 
 | Category Series  | Stacked Series | Financial Series | Scatter Series |
 |------------------|----------------|------------------|----------------|
-| - [`IgrAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrareaseries.html) <br> - [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html) <br> - [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) <br> - [`IgrPointSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpointseries.html)  <br> - [`IgrSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineseries.html) <br>  - [`IgrSplineAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineareaseries.html) <br> - [`IgrStepLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsteplineseries.html) <br> - [`IgrStepAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstepareaseries.html) <br> - [`IgrRangeAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangeareaseries.html) <br> - [`IgrRangeColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrangecolumnseries.html) <br> - [`IgrWaterfallSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrwaterfallseries.html) <br> | - [`IgrStackedAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedareaseries.html) <br> - [`IgrStackedColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedcolumnseries.html) <br> - [`IgrStackedLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedlineseries.html) <br> - [`IgrStackedSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedsplineseries.html) <br> - [`IgrStacked100AreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100areaseries.html) <br> - [`IgrStacked100ColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100columnseries.html) <br> - [`IgrStacked100LineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100lineseries.html) <br> - [`IgrStacked100SplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100splineseries.html) <br> | - [`IgrFinancialPriceSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialpriceseries.html) <br> - [`IgrBollingerBandsOverlay`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbollingerbandsoverlay.html) <br> - [`IgrForceIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrforceindexindicator.html) <br> - [`IgrMedianPriceIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmedianpriceindicator.html) <br> - [`IgrMassIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmassindexindicator.html)  <br> - [`IgrRelativeStrengthIndexIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrrelativestrengthindexindicator.html) <br> - [`IgrStandardDeviationIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstandarddeviationindicator.html) <br> - [`IgrTypicalPriceIndicator`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtypicalpriceindicator.html) <br> | - [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html) <br> - [`IgrHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrhighdensityscatterseries.html) <br> - [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html) <br>  - [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html) <br> - [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html) <br> - [`IgrScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterareaseries.html) <br> - [`IgrScatterContourSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattercontourseries.html) <br> - [`IgrScatterPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolylineseries.html)  <br> - [`IgrScatterPolygonSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterpolygonseries.html)  <br> |
+| - `IgrAreaSeries` <br /> - `IgrColumnSeries` <br /> - `IgrLineSeries` <br /> - `IgrPointSeries`  <br /> - `IgrSplineSeries` <br />  - `IgrSplineAreaSeries` <br /> - `IgrStepLineSeries` <br /> - `IgrStepAreaSeries` <br /> - `IgrRangeAreaSeries` <br /> - `IgrRangeColumnSeries` <br /> - `IgrWaterfallSeries` <br /> | - `IgrStackedAreaSeries` <br /> - `IgrStackedColumnSeries` <br /> - `IgrStackedLineSeries` <br /> - `IgrStackedSplineSeries` <br /> - `IgrStacked100AreaSeries` <br /> - `IgrStacked100ColumnSeries` <br /> - `IgrStacked100LineSeries` <br /> - `IgrStacked100SplineSeries` <br /> | - `IgrFinancialPriceSeries` <br /> - `IgrBollingerBandsOverlay` <br /> - `IgrForceIndexIndicator` <br /> - `IgrMedianPriceIndicator` <br /> - `IgrMassIndexIndicator`  <br /> - `IgrRelativeStrengthIndexIndicator` <br /> - `IgrStandardDeviationIndicator` <br /> - `IgrTypicalPriceIndicator` <br /> | - `IgrBubbleSeries` <br /> - `IgrHighDensityScatterSeries` <br /> - `IgrScatterSeries` <br />  - `IgrScatterLineSeries` <br /> - `IgrScatterSplineSeries` <br /> - `IgrScatterAreaSeries` <br /> - `IgrScatterContourSeries` <br /> - `IgrScatterPolylineSeries`  <br /> - `IgrScatterPolygonSeries`  <br /> |
 
-The following example demonstrates usage of the [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html):
+ The following example demonstrates usage of the `IgrNumericYAxis`:
 
-```typescript
+ ```typescript
 export class HealthDataForFranceItem {
     public constructor(init: Partial<HealthDataForFranceItem>) {
         Object.assign(this, init);
@@ -746,41 +747,41 @@ root.render(<Sample/>);
 
 ### Time X Axis
 
-The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `DateTimeMemberPath`. This, along with a `DataSource` is required to plot data with this axis type.
+The `IgrTimeXAxis` treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `DateTimeMemberPath`. This, along with a `IgrDataSource` is required to plot data with this axis type.
 
-The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) is the X-Axis type in the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) component.
+The `IgrTimeXAxis` is the X-Axis type in the `IgrFinancialChart` component.
 
 #### Breaks in Time X Axis
 
-The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) has the option to exclude intervals of data by using [`breaks`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html#breaks). As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of [`IgrTimeAxisBreak`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisbreak.html) can be added to the `Breaks` collection of the axis and configured by using a unique [`start`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisbreak.html#start), [`end`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisbreak.html#end) and [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisbreak.html#interval).
+The `IgrTimeXAxis` has the option to exclude intervals of data by using `Breaks`. As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of `IgrTimeAxisBreak` can be added to the `Breaks` collection of the axis and configured by using a unique `Start`, `End` and `Interval`.
 
 #### Formatting in Time X Axis
 
-The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) has the [`labelFormats`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html#labelFormats) property, which represents a collection of [`IgrTimeAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html) objects. Each [`IgrTimeAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html) added to the collection is responsible for assigning a unique [`format`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html#format) and [`range`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html#range). This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
+The `IgrTimeXAxis` has the `LabelFormats` property, which represents a collection of `IgrTimeAxisLabelFormat` objects. Each `IgrTimeAxisLabelFormat` added to the collection is responsible for assigning a unique `Format` and `Range`. This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
 
-The [`format`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html#format) property of the [`IgrTimeAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html) specifies what format to use for a particular visible range. The [`range`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html#range) property of the [`IgrTimeAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html) specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two [`IgrTimeAxisLabelFormat`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxislabelformat.html) elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
+The `Format` property of the `IgrTimeAxisLabelFormat` specifies what format to use for a particular visible range. The `Range` property of the `IgrTimeAxisLabelFormat` specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two `IgrTimeAxisLabelFormat` elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
 
 #### Intervals in Time X Axis
 
-The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) replaces the conventional [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html#interval) property of the category and numeric axes with an [`intervals`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html#intervals) collection of type [`IgrTimeAxisInterval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html). Each [`IgrTimeAxisInterval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html) added to the collection is responsible for assigning a unique [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#interval), [`range`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#range) and [`intervalType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#intervalType). This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
+The `IgrTimeXAxis` replaces the conventional `Interval` property of the category and numeric axes with an `Intervals` collection of type `IgrTimeAxisInterval`. Each `IgrTimeAxisInterval` added to the collection is responsible for assigning a unique `Interval`, `Range` and `IntervalType`. This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
 
-- [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#interval): This specifies the interval to use. This is tied to the [`intervalType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#intervalType) property. For example, if the [`intervalType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#intervalType) is set to `Days`, then the numeric value specified in [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#interval) will be in days.
-- [`range`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#range): This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
-- [`intervalType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#intervalType): This specifies the unit of time for the [`interval`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimeaxisinterval.html#interval) property.
+- `Interval`: This specifies the interval to use. This is tied to the `IntervalType` property. For example, if the `IntervalType` is set to `Days`, then the numeric value specified in `Interval` will be in days.
+- `Range`: This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
+- `IntervalType`: This specifies the unit of time for the `Interval` property.
 
 ## Polar Axes
 
-The [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) with Polar Axes, allows you to plot data outwards (radius axis) from center of the chart and around (angle axis) of center of the chart.
+The `IgrDataChart` with Polar Axes, allows you to plot data outwards (radius axis) from center of the chart and around (angle axis) of center of the chart.
 
 ### Category Angle Axis
 
-The [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html) treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
+The `IgrCategoryAngleAxis` treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
 
-The [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html) is generally used with the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) to plot [Radial Series](../types/radial-chart.md).
+The `IgrCategoryAngleAxis` is generally used with the `IgrNumericRadiusAxis` to plot [Radial Series](../types/radial-chart.md).
 
-The following example demonstrates usage of the [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html) type:
+The following example demonstrates usage of the `IgrCategoryAngleAxis` type:
 
-```typescript
+ ```typescript
 export class FootballPlayerStatsItem {
     public constructor(init: Partial<FootballPlayerStatsItem>) {
         Object.assign(this, init);
@@ -938,23 +939,23 @@ root.render(<Sample/>);
 
 ### Proportional Category Angle Axis
 
-The [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
+The `IgrProportionalCategoryAngleAxis` treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
 
-The [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) is generally used with the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) to plot a pie chart eg. [Radial Series](../types/radial-chart.md).
+The `IgrProportionalCategoryAngleAxis` is generally used with the `IgrNumericRadiusAxis` to plot a pie chart eg. [Radial Series](../types/radial-chart.md).
 
-The following example demonstrates usage of the [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) type:
+The following example demonstrates usage of the `IgrProportionalCategoryAngleAxis` type:
 
-
+ 
 
 ### Numeric Angle Axis
 
-The [`IgrNumericAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericangleaxis.html) treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the [`IgrNumericAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericangleaxis.html) varies according to the value in the data column mapped using the `RadiusMemberPath` property of the [Polar Series](../types/polar-chart.md) object or the `ValueMemberPath` property of the [Radial Series](../types/radial-chart.md) object.
+The `IgrNumericAngleAxis` treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the `IgrNumericAngleAxis` varies according to the value in the data column mapped using the `RadiusMemberPath` property of the [Polar Series](../types/polar-chart.md) object or the `ValueMemberPath` property of the [Radial Series](../types/radial-chart.md) object.
 
-The The [`IgrNumericAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericangleaxis.html) can be used with either the [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html) to plot [Radial Series](../types/radial-chart.md) or with the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) to plot [Polar Series](../types/polar-chart.md) respectively.
+The The `IgrNumericAngleAxis` can be used with either the `IgrCategoryAngleAxis` to plot [Radial Series](../types/radial-chart.md) or with the `IgrNumericRadiusAxis` to plot [Polar Series](../types/polar-chart.md) respectively.
 
-The following example demonstrates usage of the [`IgrNumericAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericangleaxis.html) type:
+The following example demonstrates usage of the `IgrNumericAngleAxis` type:
 
-```typescript
+ ```typescript
 export class BoatSailingDataItem {
     public constructor(init: Partial<BoatSailingDataItem>) {
         Object.assign(this, init);
@@ -1098,13 +1099,13 @@ root.render(<Sample/>);
 
 ### Numeric Radius Axis
 
-The [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the `AngleMemberPath` property of the corresponding polar series.
+The `IgrNumericRadiusAxis` treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the `AngleMemberPath` property of the corresponding polar series.
 
-The [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) can be used with the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) to plot [Polar Series](../types/polar-chart.md).
+The `IgrNumericRadiusAxis` can be used with the `IgrNumericRadiusAxis` to plot [Polar Series](../types/polar-chart.md).
 
-The following example demonstrates usage of the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) type:
+The following example demonstrates usage of the `IgrNumericRadiusAxis` type:
 
-```typescript
+ ```typescript
 export class BoatSailingDataItem {
     public constructor(init: Partial<BoatSailingDataItem>) {
         Object.assign(this, init);

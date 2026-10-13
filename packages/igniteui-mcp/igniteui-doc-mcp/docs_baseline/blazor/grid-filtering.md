@@ -1,15 +1,14 @@
 ---
-title: Blazor Grid Filtering - Ignite UI for Blazor
-_description: Start using angular filter to return specific data with Blazor Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "Blazor Grid Filtering - Ignite UI for Blazor"
+description: Start using angular filter to return specific data with Blazor Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for Blazor Filtering in Blazor Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: Grid
 _tocName: Filtering
 ---
-
 # Blazor Grid Filtering
 
 The Ignite UI for Blazor Filtering in Blazor Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
@@ -135,25 +134,21 @@ public class NwindData
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) exposes the following properties - [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowFiltering), [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowAdvancedFiltering), [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilterMode) and [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) exposes the following properties - [`IgbGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowFiltering), [`IgbGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowAdvancedFiltering), [`IgbGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=filterMode) and [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable).
 
-Property [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowFiltering) enables you to specify the following options:
-
+Property [`IgbGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgbGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilterMode) enables you to specify the following options:
-
+Property [`IgbGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) enables you to specify the following options:
-
+Property [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -164,18 +159,14 @@ Property [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColum
 </IgbGrid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowAdvancedFiltering) input property to **true**
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgbGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowAdvancedFiltering) input property to **true**
 
 ```razor
 <IgbGrid Data=data AutoGenerate=true AllowAdvancedFiltering=true />
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -185,13 +176,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpression&member=ignoreCase) and the initial `Condition` properties.
 
-The filtering feature is enabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component by setting the [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowFiltering) input to **true**. The default [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) input to **false**.
-
-<!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
+The filtering feature is enabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component by setting the [`IgbGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=allowFiltering) input to **true**. The default [`IgbGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgbColumn.filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=filterable) input to **false**.
 
 ```razor
 <IgbGrid Data=data AutoGenerate=false AllowFiltering=true>
@@ -200,12 +187,12 @@ The filtering feature is enabled for the [`IgbGrid`](mcp:get_api_reference?platf
 </IgbGrid>
 ```
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), set the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilteringExpressionsTree) property to an array of [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), set the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) [`IgbFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpressionsTree) property to an array of [`IgbFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbFilteringExpressionsTree) for each column to be filtered.
 
 ```razor
 <IgbGrid
@@ -243,11 +230,12 @@ To set the initial filtering state of the [`IgbGrid`](mcp:get_api_reference?plat
 
     public IgbFilteringExpressionsTree filteringExpressions;
 }
+
 ```
 
 ### Filtering logic
 
-The [`FilteringLogic`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilteringLogic) property of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) controls how filtering multiple columns will resolve in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). You can change it at any time through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) API, or through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) input property.
+The [`IgbFilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) controls how filtering multiple columns will resolve in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). You can change it at any time through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) API, or through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) input property.
 
 ```razor
  <IgbGrid FilteringLogic="FilteringLogic.Or"></IgbGrid>
@@ -259,7 +247,7 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -486,17 +474,13 @@ public class NwindData
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -506,8 +490,6 @@ public class NwindData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -7,9 +7,8 @@ SUBMODULES=(
   angular/igniteui-angular
   angular/igniteui-angular-examples
   angular/igniteui-angular-samples
-  angular/igniteui-docfx
   blazor/igniteui-blazor-examples
-  common/igniteui-xplat-docs
+  common/igniteui-documentation
   react/igniteui-react-examples
   webcomponents/igniteui-wc-examples
 )

@@ -1,12 +1,13 @@
 ---
-title: Web Components Chip | Infragistics
-_description: Infragistics' Web Components Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
-_keywords: Web Components, UI controls, web widgets, UI widgets, Web Components, Web Components Chip Components, Infragistics
-_license: MIT
+title: "Web Components Chip | Infragistics"
+description: Infragistics' Web Components Chip component allows you to display content in a predefined style to decorate other components anywhere in an application.
+keywords: "Web Components, UI controls, web widgets, UI widgets, Web Components, Web Components Chip Components, Infragistics"
+license: MIT
 mentionedTypes: ["Chip"]
+llms:
+  description: "Ignite UI for Web Components Chips help people enter information, make selections, filter content, or trigger actions."
 _tocName: Chip
 ---
-
 # Web Components Chip Overview
 
 Ignite UI for Web Components Chips help people enter information, make selections, filter content, or trigger actions.
@@ -18,7 +19,7 @@ Ignite UI for Web Components Chips help people enter information, make selection
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
@@ -28,7 +29,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcChipComponent } from 'igniteui-webcomponents';
@@ -39,19 +40,19 @@ defineComponents(IgcChipComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) is as follows:
+The simplest way to start using the [`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) is as follows:
 
 ```html
 <igc-chip></igc-chip>
 ```
 
-To display a selectable chip, you can use the [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=selectable) property of the chip.
+To display a selectable chip, you can use the [`Selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=selectable) property of the chip.
 
 ```html
 <igc-chip selectable></igc-chip>
 ```
 
-To display a removable chip, you can use the [`removable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=removable) property of the chip.
+To display a removable chip, you can use the [`Removable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=removable) property of the chip.
 
 ```html
 <igc-chip removable></igc-chip>
@@ -61,7 +62,7 @@ To display a removable chip, you can use the [`removable`](mcp:get_api_reference
 
 ### Variants
 
-The Ignite UI for Web Components chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=variant) property.
+The Ignite UI for Web Components chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=variant) property.
 
 ```html
 <igc-chip variant="success"></igc-chip>
@@ -72,25 +73,40 @@ The Ignite UI for Web Components chip supports several pre-defined stylistic var
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
+### Outlined
+
+The Ignite UI for Web Components chip can be rendered in an outlined style and have a border around it by setting the [`Outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=outlined) property.
+
+```html
+<igc-chip outlined></igc-chip>
+```
+
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+
 ### Disabled
 
-The Ignite UI for Web Components chip can be disabled by using the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=disabled) property.
+The Ignite UI for Web Components chip can be disabled by using the [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=disabled) property.
 
 ```html
 <igc-chip disabled></igc-chip>
 ```
 
-### Prefix / Suffix
+### Slots
 
-With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the exposed component slots, you can add custom content to different parts of the [`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent). The component provides default select and remove icons, but you can customize them using the `select` and `remove` slots. You can also add additional content before or after the main content using the `start` and `end` slots.
+
+We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `remove`, `select`, `start`, and `end` slots.
 
 ```html
 <igc-chip selectable removable>
-  <span slot="select"><igc-icon name="verified-account"></igc-icon></span>
-  <span slot="start"><igc-icon name="brush"></igc-icon></span>
+    <igc-icon slot="select" name="verified-account"></igc-icon>
+    <igc-icon slot="start" name="brush"></igc-icon>
     Chip
-  <span slot="end"><igc-icon name="blood"></igc-icon></span>
-  <span slot="remove"><igc-icon name="pacifier"></igc-icon></span>
+    <igc-icon slot="end" name="blood"></igc-icon>
+    <igc-icon slot="remove" name="pacifier"></igc-icon>
 </igc-chip>
 ```
 
@@ -101,7 +117,7 @@ With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](mcp:get_api_ref
 
 ## Size
 
-We allow the user to choose the size of the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) by utilizing the `--ig-size` CSS variable:
+We allow the user to choose the size of the [`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) by utilizing the `--ig-size` CSS variable:
 
 ```css
 .size-small {
@@ -141,7 +157,7 @@ We allow the user to choose the size of the [`IgcChipComponent`](mcp:get_api_ref
 
 ## Styling
 
-The [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
+The [`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
 
 ```css
 igc-chip::part(base) {
@@ -170,10 +186,7 @@ igc-chip::part(suffix) {
 ```
 
 ## API References
-
-- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcChip`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

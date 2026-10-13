@@ -1,19 +1,18 @@
 ---
-title: Web Components Grid Sorting - Ignite UI for Web Components
-_description: Get started with the Web Components sorting feature of Ignite UI for Web Components Grid! Configure a mix of sortable columns & change the display order of data records.
-_keywords: Web Components sort, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/sorting
+title: "Web Components Grid Sorting - Ignite UI for Web Components"
+description: Get started with the Web Components sorting feature of Ignite UI for Web Components Grid! Configure a mix of sortable columns & change the display order of data records.
+keywords: "Web Components sort, Web Components, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/sorting"
+llms:
+  description: "The Ignite UI for Web Components Data Sorting feature in Web Components Grid is enabled on a per-column level, meaning that the IgcGrid can have a mix of sortable and non-sortable columns."
+_componentKey: Grid
 _tocName: Sorting
 _premium: true
 ---
-
 # Web Components Grid Sorting
 
-The Ignite UI for Web Components Data Sorting feature in Web Components Grid is enabled on a per-column level, meaning that the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can have a mix of sortable and non-sortable columns. Performing Web Components sort actions enables you to change the display order of the records based on specified criteria.
+The Ignite UI for Web Components Data Sorting feature in Web Components Grid is enabled on a per-column level, meaning that the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can have a mix of sortable and non-sortable columns. Performing Web Components sort actions enables you to change the display order of the records based on specified criteria.
 
 ## Web Components Grid Sorting Overview Example
 
@@ -52,7 +51,7 @@ export class ProductSales extends Array<ProductSalesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-This is done via the [`sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable) input. With the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) sorting, you can also set the [`sortingIgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`IgcColumn.sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable) input. With the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) sorting, you can also set the [`IgcColumnState.sortingIgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=sortingIgnoreCase) property to perform case sensitive sorting:
 
 ```html
 <igc-column field="ProductName" header="Product Name" data-type="string" sortable="true"></igc-column>
@@ -62,7 +61,7 @@ This is done via the [`sortable`](mcp:get_api_reference?platform=webcomponents&c
 
 Having a certain amount of sorted columns could be really confusing if there is no indication of the sorted order.
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a solution for this problem by indicating the index of each sorted column.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a solution for this problem by indicating the index of each sorted column.
 
 ```typescript
 export class FinancialDataAllItem {
@@ -131,13 +130,11 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API using the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) [`sort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sort) method:
+You can sort any column or a combination of columns through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API using the [`Sort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sort) method:
 
 ```typescript
 import { SortingDirection } from 'igniteui-webcomponents-grids';
 ```
-
-<!-- ComponentStart: Grid -->
 
 ```typescript
 
@@ -151,14 +148,10 @@ this.grid.sort([
 ]);
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+Sorting is performed using our [`IgcGridSortingStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridSortingStrategy) algorithm. Any [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) or `ISortingExpression` can use a custom implementation of the [`IgcGridSortingStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridSortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-> [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
-
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearSort) method:
-
-<!-- ComponentStart: Grid -->
+As with the filtering behavior, you can clear the sorting state by using the [`IgcGrid.clearSort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearSort) method:
 
 ```typescript
 // Removes the sorting state from the ProductName column
@@ -168,17 +161,15 @@ this.grid.clearSort('ProductName');
 this.grid.clearSort();
 ```
 
-<!-- ComponentEnd: Grid -->
+**Note:** 
+The [`IgcGrid.sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortStrategy) of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is of different type compared to the [`IgcGrid.sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortStrategy) of the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), since they work in different scopes and expose different parameters.
 
-> [!Note]
-> The [`sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortStrategy) of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is of different type compared to the [`sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortStrategy) of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), since they work in different scopes and expose different parameters.
-
-> [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+**Note:** 
+The sorting operation **DOES NOT** change the underlying data source of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by passing an array of sorting expressions to the [`sortingExpressions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortingExpressions) property of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+It is possible to set the initial sorting state of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by passing an array of sorting expressions to the [`IgcGrid.sortingExpressions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortingExpressions) property of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```typescript
 public connectedCallback() {
@@ -189,20 +180,14 @@ public connectedCallback() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-> [!Note]
-> If values of type `string` are used by a column of [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) `Date`, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) won't parse them to `Date` objects and using [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
-
-<!-- ComponentStart: Grid -->
-
-<!-- ComponentEnd: Grid -->
+**Note:** 
+If values of type `string` are used by a column of [`IgcGrid.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=dataType) `Date`, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) won't parse them to `Date` objects and using [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`sortHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`IgcGrid.sortHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 ```ts
 constructor() {
@@ -216,7 +201,7 @@ public sortHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => {
 }
 ```
 
-- [`sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`IgcGrid.sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 ```ts
 constructor() {
@@ -230,7 +215,7 @@ public sortAscendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => 
 }
 ```
 
-- [`sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`IgcGrid.sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 ```ts
 constructor() {
@@ -246,7 +231,7 @@ public sortDescendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) =>
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -307,11 +292,10 @@ export class ProductSales extends Array<ProductSalesItem> {
 
 ## API References
 
-- [`IgcSortingExpression`](mcp:get_api_reference?platform=webcomponents&component=IgcSortingExpression)
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcSortingExpression`](mcp:get_api_reference?platform=webcomponents&component=IgcSortingExpression)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -321,8 +305,6 @@ export class ProductSales extends Array<ProductSalesItem> {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

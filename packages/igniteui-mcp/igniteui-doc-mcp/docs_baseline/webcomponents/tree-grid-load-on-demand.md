@@ -1,14 +1,15 @@
 ---
-title: Web Components Tree Grid | Fastest Web Components Tree Table | Infragistics
-_description: The Ignite UI for Web Components Tree Grid provides the necessary tools to load child data on demand when a parent row is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: Web Components tree grid, igniteui for Web Components, infragistics
-_license: commercial
+title: "Web Components Tree Grid | Fastest Web Components Tree Table | Infragistics"
+description: The Ignite UI for Web Components Tree Grid provides the necessary tools to load child data on demand when a parent row is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: "Web Components tree grid, igniteui for Web Components, infragistics"
+license: commercial
 mentionedTypes: ["TreeGrid"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Web Components Tree Grid can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible."
 _tocName: Load On Demand
 _premium: true
 ---
-
 # Tree Grid Load On Demand
 
 The Ignite UI for Web Components Tree Grid can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible. Then, only after the user expands a row, the children for that particular parent row will be loaded. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
@@ -79,7 +80,7 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ## Usage
 
-The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=loadChildrenOnDemand).
+The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`LoadChildrenOnDemand`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=loadChildrenOnDemand).
 
 ```html
 <igc-tree-grid id="treeGrid"></igc-tree-grid>
@@ -110,17 +111,17 @@ After the user clicks the expand icon, it is replaced by a loading indicator. Wh
 
 ### Expanding Indicator Visibility
 
-If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igc-tree-grid id="treeGrid" primary-key="ID" foreign-key="ParentID" has-children-key="hasEmployees"></igc-tree-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the done callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
+Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the done callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
 
 ### Custom Loading Indicator
 
-If you want to provide your own custom loading indicator, you can use the [`rowLoadingIndicatorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowLoadingIndicatorTemplate) option to set a custom template.The following code snippet demonstrates how set to it:
+If you want to provide your own custom loading indicator, you can use the [`RowLoadingIndicatorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowLoadingIndicatorTemplate) option to set a custom template.The following code snippet demonstrates how set to it:
 
 ```ts
 constructor() {
@@ -138,9 +139,7 @@ public rowLoadingTemplate() {
 ```
 
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

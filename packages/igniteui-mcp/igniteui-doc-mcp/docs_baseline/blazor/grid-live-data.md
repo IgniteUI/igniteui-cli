@@ -1,14 +1,14 @@
 ---
-title: Blazor Grid Live Data updates - Ignite UI for Blazor
-_description: Check out how the Ignite UI for Blazor Grid can handle thousands of updates per second, while staying responsive for user interactions.
-_keywords: Blazor Grid, IgbGrid updates, Blazor live data, infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid"]
-namespace: Infragistics.Controls
+title: "Blazor Grid Live Data updates - Ignite UI for Blazor"
+description: Check out how the Ignite UI for Blazor Grid can handle thousands of updates per second, while staying responsive for user interactions.
+keywords: "Blazor Grid, IgbGrid updates, Blazor live data, infragistics"
+license: commercial
+llms:
+  description: "The Ignite UI for Blazor Live Data Updates feature in Blazor Grid is used for enabling real-time or near-real-time updates of data displayed within the grid."
+_componentKey: Grid
 _tocName: Live Data / Real-Time
 _premium: true
 ---
-
 # Blazor Grid Live Data Updates
 
 The Ignite UI for Blazor Live Data Updates feature in Blazor Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) can handle thousands of updates per second, while staying responsive for user interactions.
@@ -1642,7 +1642,7 @@ A service provides data to the component when the page loads, and when the slide
 <IgbGrid Id="grid1" @ref="grid1"><IgbGrid>
 ```
 
-```razor
+```csharp
 public void OnStart()
 {
     this.StartButton.Disabled = true;
@@ -1656,6 +1656,7 @@ public void OnStart()
         grid1.Data = this.FinancialDataClass.UpdateRandomPrices(this.CurrentStocks);
     }, null, startTimeSpan, periodTimeSpan);
 }
+
 ```
 
 A change in the data field value or a change in the data object/data collection reference will trigger the corresponding pipes. However, this is not the case for columns, which are bound to [complex data objects](../data-grid.md#complex-data-binding). To resolve the situation, provide a new object reference for the data object containing the property. Example:
@@ -1666,21 +1667,16 @@ A change in the data field value or a change in the data object/data collection 
 </IgbGrid>
 ```
 
-```razor
+```csharp
  grid1.Data = this.FinancialDataClass.UpdateRandomPrices(this.CurrentStocks);
 ```
 
 ## Templates
-
 Updating the view works the same way for columns with a default template and for columns with a custom template. However, it is recommended to keep custom templates relatively simple. As number of elements in the template grows, negative performance impact rises as well.
 
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -1691,8 +1687,6 @@ Updating the view works the same way for columns with a default template and for
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

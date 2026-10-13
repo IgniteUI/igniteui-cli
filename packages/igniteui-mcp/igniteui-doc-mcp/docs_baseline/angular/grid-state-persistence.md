@@ -1,15 +1,21 @@
 ---
 title: Angular Grid State Persistence - Ignite UI for Angular
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Angular. Learn how to restore columns, explore usage, and see demos!
-_keywords: state persistence, ignite ui for angular, infragistics
-_license: commercial
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for Angular. Learn how to restore columns, explore usage, and see demos!
+keywords: state persistence, ignite ui for angular, infragistics
+license: commercial
+llms:
+  description: "The igxGridState directive allows developers to easily save and restore the grid state."
 _tocName: State Persistence
 _premium: true
 ---
 # Angular Grid State Persistence
-Тhe igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive is applied on the grid, it exposes the [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) methods that developers can use to achieve state persistence in any scenario.
+
+The igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive is applied on the grid, it exposes the [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) methods that developers can use to achieve state persistence in any scenario.
+
 ## Supported Features
-[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive supports saving and restoring the state of the following features:
+
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive supports saving and restoring the state of the following features:
+
 - `Sorting`
 - `Filtering`
 - `Advanced Filtering`
@@ -21,101 +27,101 @@ _premium: true
 - `Expansion`
 - `GroupBy`
 - `Columns`
-  - Multi column headers
+
   - Multi-row Layout
+
   - Columns order
-  - Column properties defined by the [`IColumnState`](mcp:get_api_reference?platform=angular&component=IColumnState) interface.
-  - Columns templates and functions are restored using application level code, see [Restoring Column](state-persistence.md#restoring-columns) section.
->[!NOTE]
-> The [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive does not take care of templates. Go to [Restoring Column](state-persistence.md#restoring-columns) section to see how to restore column templates.
->[!NOTE]
-> The `Row Selection`  feature requires the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) property to be set, so it can be stored/restored correctly.
+  - Column properties defined by the [`IgxIColumnState`](mcp:get_api_reference?platform=angular&component=IColumnState) interface.
+  - Columns templates and functions are restored using application level code, see [Restoring Column](/grid/state-persistence#restoring-columns) section.
+
+**Note:** 
+The [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive does not take care of templates. Go to [Restoring Column](/grid/state-persistence#restoring-columns) section to see how to restore column templates.
+
+**Note:** 
+The `Row Selection` feature requires the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) property to be set, so it can be stored/restored correctly.
+
 ## Usage
-[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
+
+[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
 The developer may choose to get only the state for a certain feature/features, by passing in the feature name, or an array with feature names as a second argument.
+
 ```typescript
 // get all features` state in a serialized JSON string
 const gridState = state.getState();
+
 // get an `IGridState` object, containing all features original state objects, as returned by the grid public API
 const gridState: IGridState = state.getState(false);
+
 // get the sorting and filtering expressions
 const sortingFilteringStates: IGridState = state.getState(false, ['sorting', 'filtering']);
 ```
-[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+
+[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+
 ```typescript
 state.setState(gridState);
 state.setState(sortingFilteringStates)
 ```
-`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+
+`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IgxIGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+
 ```typescript
 public options =  { cellSelection: false; sorting: false; }
 ```
+
 ```html
 <igx-grid [igxGridState]="options"></igx-grid>
 ```
+
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `sessionStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
+
 ```typescript
 // app.component.ts
 @ViewChild(IgxGridStateDirective, { static: true })
 public state!: IgxGridStateDirective;
+
 public ngOnInit() {
     this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
         this.saveGridState();
     });
 }
+
 public ngAfterViewInit() {
     this.restoreGridState();
 }
+
 public saveGridState() {
     const state = this.state.getState() as string;
     window.sessionStorage.setItem('grid1-state', state);
 }
+
 public restoreGridState() {
     const state = window.sessionStorage.getItem('grid1-state');
     this.state.setState(state);
 }
 ```
+
 ## Restoring columns
+
 When possible the state directive will reuses the columns that already exists on the grid when restoring the state, instead of creating new column instances. The only scenario where a new instance will be created is when the column (or its children in case of a column groups) have no `field` property so there's no way to uniquely identify the matching column and re-use it.
-For such scenarios, the following [`limitations`](state-persistence.md#limitations) are imposed. In that case restoring complex objects can be achieved with code on application level. Let's show how to do this for templated columns:
+
+For such scenarios, the following [`limitations`](/grid/state-persistence#limitations) are imposed. In that case restoring complex objects can be achieved with code on application level. Let's show how to do this for templated columns:
+
 1. Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event:
-@@if (igxName === 'IgxGrid') {
-    ```html
-    <igx-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-        <igx-column [field]="'IsActive'" header="IsActive">
-            <ng-template igxCell #activeTemplate let-column let-val="val">
-                <igx-checkbox [checked]="val"></igx-checkbox>
-            </ng-template>
-        </igx-column>
-        ...
-    </igx-grid>
-    ```
-}
-@@if (igxName === 'IgxHierarchicalGrid') {
-    ```html
-    <igx-hierarchical-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-        <igx-column [field]="'IsActive'" header="IsActive">
-            <ng-template igxCell #activeTemplate let-column let-val="val">
-                <igx-checkbox [checked]="val"></igx-checkbox>
-            </ng-template>
-        </igx-column>
-        ...
-    </igx-hierarchical-grid>
-    ```
-}
-@@if (igxName === 'IgxTreeGrid') {
-    ```html
-    <igx-tree-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-        <igx-column [field]="'IsActive'" header="IsActive">
-            <ng-template igxCell #activeTemplate let-column let-val="val">
-                <igx-checkbox [checked]="val"></igx-checkbox>
-            </ng-template>
-        </igx-column>
-        ...
-    </igx-tree-grid>
-    ```
-}
-1. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event handler, assign the template to the column `bodyTemplate` property:
+
+```html
+<igx-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
+    <igx-column [field]="'IsActive'" header="IsActive">
+        <ng-template igxCell #activeTemplate let-column let-val="val">
+            <igx-checkbox [checked]="val"></igx-checkbox>
+        </ng-template>
+    </igx-column>
+    ...
+</igx-grid>
+```
+
+2. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event handler, assign the template to the column `bodyTemplate` property:
+
 ```typescript
 @ViewChild('activeTemplate', { static: true }) public activeTemplate: TemplateRef<any>;
 public onColumnInit(column: IgxColumnComponent) {
@@ -126,7 +132,9 @@ public onColumnInit(column: IgxColumnComponent) {
     }
 }
 ```
+
 ## Demo
+
 ```typescript
 /* eslint-disable max-len */
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject } from '@angular/core';
@@ -426,11 +434,16 @@ export class GridSaveStateComponent implements OnInit, AfterViewInit {
     }
 }
 ```
+
 ## Restoring Strategies
-[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist neither remote operations nor custom dimension strategies (For further information see [Grid Remote Operations](remote-data-operations.md) sample) by default (see [`limitations`](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The `IgxGridState` exposes an event called [`stateParsed`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=stateParsed) which can be used to additionally modify the grid state before it gets applied. Let's show how to do this:
->[!NOTE]
-> [`stateParsed`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective) is only emitted when we are using [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) with string argument.
+
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will not persist neither remote operations nor custom dimension strategies (For further information see [Grid Remote Operations](/grid/remote-data-operations) sample) by default (see [`limitations`](/grid/state-persistence#limitations)). Restoring any of these can be achieved with code on application level. The `IgxGridState` exposes an event called [`stateParsed`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=stateParsed) which can be used to additionally modify the grid state before it gets applied. Let's show how to do this:
+
+**Note:** 
+[`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) is only emitted when we are using [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) with string argument.
+
 - Set custom sorting strategy and custom column and row dimension strategies:
+
 ```html
 <igx-grid #grid 
           [data]="data" 
@@ -439,13 +452,17 @@ export class GridSaveStateComponent implements OnInit, AfterViewInit {
           [height]="'500px'">
 </igx-grid>
 ```
+
 ```typescript
 @ViewChild(IgxGridStateDirective, { static: true })
 public state!: IgxGridStateDirective;
+
 public customStrategy = NoopSortingStrategy.instance();
 public options: IGridStateOptions = {...};
 ```
+
 - Restoring the state from the `sessionStorage` and applying the custom strategies looks like the following:
+
 ```typescript
 public restoreState() {
     const state = window.sessionStorage.getItem('grid-state');
@@ -455,6 +472,7 @@ public restoreState() {
     this.state.setState(state as string);
 }
 ```
+
 ```typescript
 import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 
@@ -759,18 +777,21 @@ export class GridStatePersistenceSampleComponent {
     }
 }
 ```
-## Limitations
-- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getstate) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridState`] directive will ignore the columns [`formatter`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=formatter), [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters), [`summaries`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaries), [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortstrategy), [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses), [`cellStyles`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellstyles), [`headerTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=headerTemplate) and [`bodyTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=bodyTemplate) properties.
-<div class="divider--half"></div>
-## API References
-- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridStateDirective](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective)
-## Additional Resources
-<div class="divider--half"></div>
-- [Grid overview](grid.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Selection](selection.md)
 
+## Limitations
+
+- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getstate) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridState`] directive will ignore the columns [`formatter`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=formatter), [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters), [`summaries`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaries), [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortstrategy), [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses), [`cellStyles`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellstyles), [`headerTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=headerTemplate) and [`bodyTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=bodyTemplate) properties.
+
+## API References
+
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective)
+
+## Additional Resources
+
+- [Grid overview](/grid/grid)
+- [Paging](/grid/paging)
+- [Filtering](/grid/filtering)
+- [Sorting](/grid/sorting)
+- [Selection](/grid/selection)
 

@@ -1,13 +1,14 @@
 ---
-title: React Grid Lite Data Binding - Ignite UI for React | MIT license
-_description: Data binding for Grid Lite. Create apps with our open-source React Grid Lite. It’s lightweight and packed with essential features. Try now.
-_keywords: data binding, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "React Grid Lite Data Binding - Ignite UI for React | MIT license"
+description: Data binding for Grid Lite. Create apps with our open-source React Grid Lite. It’s lightweight and packed with essential features. Try now.
+keywords: data binding, React, , Ignite UI for React, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Grid Lite accepts an array of plain objects as a data source."
 _tocName: Data Binding
 ---
-
 # React Grid Lite Data Binding
 
 The Grid Lite accepts an array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
@@ -43,6 +44,7 @@ If the grid has `autoGenerate` enabled, it will "_infer_" the new column configu
 ```tsx
 const [data, setData] = React.useState([/* initial data */]);
 
+
 /** After the new binding the grid will infer the column collection from the bound data. */
 const updateData = () => {
   setData([/* new data */]);
@@ -56,9 +58,10 @@ return (
 );
 ```
 
-> [!NOTE]
-> The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
-> Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
+**Note:** 
+The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
+
+Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.
@@ -275,19 +278,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<GridLiteDataBinding />);
 ```
 
-<!-- TODO ## API References
-
-- `{ComponentName}`
-- `Column`
-
--->
-
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

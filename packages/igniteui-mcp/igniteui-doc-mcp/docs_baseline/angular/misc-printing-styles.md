@@ -1,14 +1,17 @@
 ---
 title: Print Layout
-_description: 
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, printing styles, @media print 
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, printing styles, @media print 
+llms:
+  description: "The Ignite UI for Angular theming engine provides some default printing styles, which make sure that our components have at least the bare minimum to look the same on paper as they appear on the web page."
 _tocName: Printing styles
 ---
-
 # Printing styles
 
-<p class="highlight">The Ignite UI for Angular theming engine provides some default printing styles, which make sure that our components have at least the bare minimum to look the same on paper as they appear on the web page.</p>
-<div class="divider--half"></div>
+<div class="highlight">
+The Ignite UI for Angular theming engine provides some default printing styles, which make sure that our components have at least the bare minimum to look the same on paper as they appear on the web page.
+</div>
+<hr/>
 
 ## How to make use of the printing styles
 
@@ -51,4 +54,4 @@ Here @media print is used in order to make sure that the styles you write inside
 
 If you want to print in black and white you can use `.igx-bw-print` class on any element and that element and everything inside it will turn black & white when printed.
 
-To print the [`igx-grid`](../../grid/grid.md) we recommend using the [`export to excel`](../../grid/export-excel.md) feature or making a screenshot of the grid and printing it.
+To print the [`igx-grid`](/grid/grid) we recommend using the [`export to excel`](/grid/export-excel) feature or making a screenshot of the grid and printing it.

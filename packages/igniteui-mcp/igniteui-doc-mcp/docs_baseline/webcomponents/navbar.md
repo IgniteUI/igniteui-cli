@@ -1,19 +1,20 @@
 ---
-title: Web Components Navbar | Infragistics
-_description: Infragistics' Web Components navbar provides optimal UI experience with seamless integration to allow users to move within an application smoothly. Improve your application with Ignite UI for  Web Components!
-_keywords: Web Components navbar, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Navbar | Infragistics"
+description: Infragistics' Web Components navbar provides optimal UI experience with seamless integration to allow users to move within an application smoothly. Improve your application with Ignite UI for  Web Components!
+keywords: "Web Components navbar, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["Navbar"]
+llms:
+  description: "The Ignite UI for Web Components Navbar informs the user of their current position in an app."
 _tocName: Navbar
 ---
-
 # Web Components Navbar Overview
 
 The Ignite UI for Web Components Navbar informs the user of their current position in an app. The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
 
 ## Web Components Navbar Example
 
-The following example represents a [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with icons and text header:
+The following example represents a [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with icons and text header:
 
 ```css
 /* shared styles are loaded from: */
@@ -28,7 +29,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you need to register it as follows:
+Before using the [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavbarComponent } from 'igniteui-webcomponents';
@@ -38,7 +39,7 @@ defineComponents(IgcNavbarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Then in the template of [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you can add the following code to show a basic [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with a title only:
+Then in the template of [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you can add the following code to show a basic [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with a title only:
 
 ```html
 <igc-navbar>Navigation Title</igc-navbar>
@@ -46,7 +47,7 @@ Then in the template of [`IgcNavbarComponent`](mcp:get_api_reference?platform=we
 
 ### Content
 
-You can enhance the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) component by adding [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
+You can enhance the [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) component by adding [`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
 
 ```html
 <igc-navbar>
@@ -59,7 +60,7 @@ You can enhance the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcom
 
 ## Styling
 
-The `NavBar` component exposes several CSS parts, giving you full control over its style:
+The [`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -104,14 +105,11 @@ igc-navbar::part(middle) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+[`IgcNavbar`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
 ## Additional Resources
 
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)

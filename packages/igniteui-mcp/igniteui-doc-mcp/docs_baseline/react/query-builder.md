@@ -1,12 +1,13 @@
 ---
-title: React Query Builder | Infragistics
-_description: Infragistics' React Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
-_keywords: React Query Builder, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Query Builder | Infragistics"
+description: Infragistics' React Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
+keywords: "React Query Builder, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["QueryBuilder"]
+llms:
+  description: "The Ignite UI for React Query Builder provides a rich UI that allows developers to build complex data filtering queries for a specified data set."
 _tocName: Query Builder
 ---
-
 # React Query Builder Overview
 
 The Ignite UI for React Query Builder provides a rich UI that allows developers to build complex data filtering queries for a specified data set. With this component, you can build an expression tree and specify AND/OR conditions between expressions, with editors and condition lists determined by each field's data type. The expression tree can then be easily transformed to a query in a format the backend supports.
@@ -193,9 +194,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-# Getting started with React Query Builder
-
-To start using the `QueryBuilder`, first, you need to install the `Ignite UI for React` package by running the following command:
+## Getting started with React Query Builder
+To start using the [`IgrQueryBuilder`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder), first, you need to install the `Ignite UI for React` package by running the following command:
 
 ```cmd
 npm install igniteui-react igniteui-react-grids
@@ -207,7 +207,7 @@ You also need to reference the corresponding styles based on your project config
 import 'igniteui-webcomponents-grids/grids/themes/light/bootstrap.css';
 ```
 
-# Using the React Query Builder
+## Using the React Query Builder
 
 If no expression tree is initially set, you start by choosing an entity and which of its fields the query should return. After that, conditions or sub-groups can be added.
 
@@ -217,94 +217,75 @@ Clicking on the (AND or OR) button placed above each group, will open a menu wit
 
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups.
 
-You can start using the component by setting the `Entities` property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
-The Query Builder has the [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
+You can start using the component by setting the [`Entities`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder&member=entities) property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
+The Query Builder has the [`ExpressionTree`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder&member=expressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
 
 ```tsx
-private queryBuilderRef: React.RefObject<IgcQueryBuilderComponent>;
+const queryBuilderRef = useRef<IgrQueryBuilder>(null);
 
-constructor(props: any) {
-  super(props);
-  this.queryBuilderRef = React.createRef();
-  this.state = {
-    expressionTree: null
-  };
-}
+const ordersFields: Field[] = [
+  { field: 'orderId', dataType: 'number' },
+  { field: 'customerId', dataType: 'string' },
+  { field: 'orderDate', dataType: 'date' }
+];
 
-componentDidMount() {
+const entities: Entity[] = [
+  { name: 'Orders', fields: ordersFields }
+];
+
+const onExpressionTreeChange = (newTree: IgrFilteringExpressionsTree) => {
+  // Handle expression tree changes
+  console.log('Expression tree changed:', newTree);
+};
+
+const handleExpressionTreeChange = (event: CustomEvent<IgrFilteringExpressionsTree>) => {
+  onExpressionTreeChange(event.detail);
+};
+
+useEffect(() => {
   const tree = new IgrFilteringExpressionsTree();
   tree.operator = FilteringLogic.And;
   tree.entity = 'Orders';
 
-  this.setState({ expressionTree: tree });
-
-  if (this.queryBuilderRef.current && tree) {
-    const queryBuilder = this.queryBuilderRef.current;
-    queryBuilder.entities = this.entities as any;
+  if (queryBuilderRef.current) {
+    const queryBuilder = queryBuilderRef.current;
+    queryBuilder.entities = entities as any;
     queryBuilder.expressionTree = tree;
-    queryBuilder.addEventListener('expressionTreeChange', this.handleExpressionTreeChange);
+    queryBuilder.addEventListener('expressionTreeChange', handleExpressionTreeChange);
   }
-}
 
-componentWillUnmount() {
-  if (this.queryBuilderRef.current) {
-    this.queryBuilderRef.current.removeEventListener('expressionTreeChange', this.handleExpressionTreeChange);
-  }
-}
+  return () => {
+    if (queryBuilderRef.current) {
+      queryBuilderRef.current.removeEventListener('expressionTreeChange', handleExpressionTreeChange);
+    }
+  };
+}, []);
 
-private handleExpressionTreeChange = (event: CustomEvent<IgcExpressionTree>) => {
-  this.setState({ expressionTree: event.detail });
-};
-
-private get ordersFields(): Field[] {
-  return [
-    { field: 'orderId', dataType: 'number' },
-    { field: 'customerId', dataType: 'string' },
-    { field: 'orderDate', dataType: 'date' }
-  ];
-}
-
-private get entities(): Entity[] {
-  return [
-    { name: 'Orders', fields: this.ordersFields }
-  ];
-}
-
-private onExpressionTreeChange() {
-  // Handle expression tree changes
-  console.log('Expression tree changed:', this.state.expressionTree);
-}
-
-public render(): JSX.Element {
-  return (
-    <div className="container sample">
-      <IgrQueryBuilder ref={this.queryBuilderRef} id="queryBuilder"></IgrQueryBuilder>
-    </div>
-  );
-}
+return (
+  <div className="container sample">
+    <IgrQueryBuilder ref={queryBuilderRef} id="queryBuilder"></IgrQueryBuilder>
+  </div>
+);
 ```
 
-The [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree) is stored in the component state which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions. The event listener is attached in `componentDidMount` and cleaned up in `componentWillUnmount`.
+The [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree) is a bindable property which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions. The event listener is attached in `useEffect` and cleaned up in the returned teardown function.
 
 ```tsx
-private handleExpressionTreeChange = (event: CustomEvent<IgcExpressionTree>) => {
-  this.setState({ expressionTree: event.detail });
-  this.onExpressionTreeChange();
+const handleExpressionTreeChange = (event: CustomEvent<IgrFilteringExpressionsTree>) => {
+  onExpressionTreeChange(event.detail);
 };
 ```
 
-# Expressions Dragging
+## Expressions Dragging
 
 Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard reordering approaches. With those, users can adjust their query logic dynamically.
 
 - Dragging a chip does not modify its condition/contents, only its position.
 - Chip can also be dragged along groups and subgroups. For example, grouping/ungrouping expressions is achieved via the Expressions Dragging functionality.
-    In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
+In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
 
-> [!NOTE]
-> Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
-
-<img class="responsive-img" alt="Animated Example of Query Builder Drag and Drop using the Mouse" src="../../images/general/query-builder-drag-and-drop.gif" />
+**Note:** 
+Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
 
 ## Keyboard interaction
 
@@ -315,10 +296,8 @@ Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard r
 - <kbd>Space</kbd> / <kbd>Enter</kbd> - focused expression enters edit mode. If chip is been moved, this confirms it's new position.
 - <kbd>Esc</kbd> - chip's reordering is canceled and it returns to it's original position.
 
-> [!NOTE]
-> Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
-
-<img class="responsive-img" alt="Animated Example of Keyboard Drag and Drop Using the Ignite UI for Angular Query Builder" src="../../images/general/query-builder-keyboard-drag-and-drop.gif" />
+**Note:** 
+Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
 
 ## Templating
 
@@ -326,35 +305,36 @@ The Ignite UI for React Query Builder allows defining templates for the componen
 
 ### Header Template
 
-By default the `{ComponentName}` header would not be displayed. In order to define such, the `igc-query-builder-header` component should be added inside `igc-query-builder`.
+By default the [`IgrQueryBuilder`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder) header would not be displayed. In order to define such, the [`IgrQueryBuilderHeader`](mcp:get_api_reference?platform=react&component=IgrQueryBuilderHeader) component should be added inside the query builder.
 
 ### Search Value Template
 
-The search value of a condition can be templated by setting the `SearchValueTemplate` property to a function that returns a lit-html template.
+The search value of a condition can be templated by setting the [`SearchValueTemplate`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder&member=searchValueTemplate) property to a function that returns a lit-html template.
 
-> [!Note]
-> When using `SearchValueTemplate`, you must provide templates for all field types in your entity, or the query builder will not function correctly. It is mandatory to implement a default/fallback template that handles any fields or conditions not covered by specific custom templates. Without this, users will not be able to edit
-> conditions for those fields.
+**Note:** 
+When using `SearchValueTemplate`, you must provide templates for all field types in your entity, or the query builder will not function correctly. It is mandatory to implement a default/fallback template that handles any fields or conditions not covered by specific custom templates. Without this, users will not be able to edit
+
+conditions for those fields.
 
 ```tsx
 <IgrQueryBuilder 
-  ref={this.queryBuilderRef} 
+  ref={queryBuilderRef} 
   id="queryBuilder"
-  searchValueTemplate={this.buildSearchValueTemplate}>
+  searchValueTemplate={buildSearchValueTemplate}>
   <IgrQueryBuilderHeader title="Query Builder Template Sample"></IgrQueryBuilderHeader>
 </IgrQueryBuilder>
 ```
 
 ```tsx
-componentDidMount() {
-  if (this.queryBuilderRef.current && tree) {
-    const queryBuilder = this.queryBuilderRef.current;
-    queryBuilder.entities = this.entities as any;
+useEffect(() => {
+  if (queryBuilderRef.current) {
+    const queryBuilder = queryBuilderRef.current;
+    queryBuilder.entities = entities as any;
     queryBuilder.expressionTree = tree;
   }
-}
+}, []);
 
-private buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
+const buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
   const field = ctx.selectedField?.field;
   const condition = ctx.selectedCondition;
   const matchesEqualityCondition = condition === 'equals' || condition === 'doesNotEqual';
@@ -364,22 +344,22 @@ private buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
   }
 
   if (field === 'Region' && matchesEqualityCondition) {
-    return this.buildRegionSelect(ctx);
+    return buildRegionSelect(ctx);
   }
 
   if (field === 'OrderStatus' && matchesEqualityCondition) {
-    return this.buildStatusRadios(ctx);
+    return buildStatusRadios(ctx);
   }
 
   if (ctx.selectedField?.dataType === 'date') {
-    return this.buildDatePicker(ctx);
+    return buildDatePicker(ctx);
   }
 
   if (ctx.selectedField?.dataType === 'time') {
-    return this.buildTimeInput(ctx);
+    return buildTimeInput(ctx);
   }
 
-  return this.buildDefaultInput(ctx, matchesEqualityCondition);
+  return buildDefaultInput(ctx, matchesEqualityCondition);
 };
 ```
 
@@ -392,7 +372,7 @@ For the Region Select example:
 { field: 'Region', dataType: 'string' }
 
 // Template
-private buildRegionSelect = (ctx: QueryBuilderSearchValueContext) => {
+const buildRegionSelect = (ctx: QueryBuilderSearchValueContext) => {
   const currentValue = ctx?.implicit?.value?.value ?? '';
   const key = `region-select-${currentValue}`;
 
@@ -401,17 +381,17 @@ private buildRegionSelect = (ctx: QueryBuilderSearchValueContext) => {
       className="qb-select"
       key={key}
       value={currentValue}
-      change={(sender: any) => {
-        const value = sender.value;
+      onChange={(sender: any) => {
+        const value = sender.detail.value;
         const currentKey = ctx?.implicit?.value?.value ?? '';
 
         if (!value || value === currentKey) return;
 
         setTimeout(() => {
-          ctx.implicit.value = this.regionOptions.find(option => option.value === value) ?? null;
+          ctx.implicit.value = regionOptions.find(option => option.value === value) ?? null;
         });
       }}>
-      {this.regionOptions.map(option => (
+      {regionOptions.map(option => (
         <IgrSelectItem key={option.value} value={option.value}>
           <span>{option.text}</span>
         </IgrSelectItem>
@@ -428,7 +408,7 @@ For the Status Radio Group example:
 { field: 'OrderStatus', dataType: 'number' }
 
 // Template
-private buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
+const buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
   const implicitValue = ctx.implicit?.value;
   const currentValue = implicitValue === null ? '' : implicitValue.toString();
   const key = `status-radio-${currentValue}`;
@@ -439,8 +419,8 @@ private buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
       style={{ gap: '5px' }}
       alignment="horizontal"
       value={currentValue}
-      change={(sender: any) => {
-        const value = sender.value;
+      onChange={(sender: any) => {
+        const value = sender.detail;
         if (value === undefined) return;
 
         const numericValue = Number(value);
@@ -450,7 +430,7 @@ private buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
           ctx.implicit.value = numericValue;
         });
       }}>
-      {this.statusOptions.map(option => (
+      {statusOptions.map(option => (
         <IgrRadio
           key={option.value}
           name="status"
@@ -471,7 +451,7 @@ For the Date Picker example:
 { field: 'OrderDate', dataType: 'date' }
 
 // Template
-private buildDatePicker = (ctx: QueryBuilderSearchValueContext) => {
+const buildDatePicker = (ctx: QueryBuilderSearchValueContext) => {
   const implicitValue = ctx.implicit?.value;
   const currentValue = implicitValue instanceof Date
     ? implicitValue
@@ -488,10 +468,9 @@ private buildDatePicker = (ctx: QueryBuilderSearchValueContext) => {
       key={key}
       value={currentValue}
       disabled={!isEnabled}
-      click={(sender: any) => sender.show()}
-      change={(sender: any) => {
+      onChange={(sender: any) => {
         setTimeout(() => {
-          ctx.implicit.value = sender.value;
+          ctx.implicit.value = sender.detail;
         });
       }}>
     </IgrDatePicker>
@@ -506,8 +485,8 @@ For the Time Input example:
 { field: 'RequiredTime', dataType: 'time' }
 
 // Template
-private buildTimeInput = (ctx: QueryBuilderSearchValueContext) => {
-  const currentValue = this.normalizeTimeValue(ctx.implicit?.value);
+const buildTimeInput = (ctx: QueryBuilderSearchValueContext) => {
+  const currentValue = normalizeTimeValue(ctx.implicit?.value);
   const allowedConditions = ['at', 'not_at', 'at_before', 'at_after', 'before', 'after'];
   const isDisabled = ctx.selectedField == null || allowedConditions.indexOf(ctx.selectedCondition ?? '') === -1;
   const key = `time-input-${currentValue}`;
@@ -518,9 +497,9 @@ private buildTimeInput = (ctx: QueryBuilderSearchValueContext) => {
       inputFormat="hh:mm tt"
       value={currentValue}
       disabled={isDisabled}
-      change={(sender: any) => {
+      onChange={(sender: any) => {
         setTimeout(() => {
-          ctx.implicit.value = sender.value;
+          ctx.implicit.value = sender.detail;
         });
       }}>
       <div slot="prefix">
@@ -540,7 +519,7 @@ For the Default Input template:
 { field: 'IsRushOrder', dataType: 'boolean' }
 
 // Template that handles all these types
-private buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualityCondition: boolean) => {
+const buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualityCondition: boolean) => {
   const selectedField = ctx.selectedField;
   const dataType = selectedField?.dataType;
   const isNumber = dataType === 'number';
@@ -566,8 +545,8 @@ private buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualit
       disabled={isDisabled}
       placeholder={placeholder}
       type={isNumber ? 'number' : 'text'}
-      input={(sender: any) => {
-        const value = sender.value;
+      onInput={(sender: any) => {
+        const value = sender.detail;
         setTimeout(() => {
           ctx.implicit.value = isNumber
             ? value === '' ? null : Number(value)
@@ -583,14 +562,14 @@ private buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualit
 
 In order to change the appearance of the search value in the chip displayed when a condition is not in edit mode, you can set a formatter function to the fields array. The search value can be accessed through the value argument as follows:
 
-```ts
-this.ordersFields = [
+```tsx
+const ordersFields = [
   { field: 'OrderID', dataType: 'number' },
   { field: 'ShipCountry', dataType: 'string' },
   {
     field: 'OrderDate',
     dataType: 'date',
-    formatter: (value: any) => value.toLocaleDateString(this.queryBuilder?.locale, { 
+    formatter: (value: any) => value.toLocaleDateString(queryBuilderRef.current?.locale, { 
       month: 'short', 
       day: 'numeric', 
       year: 'numeric' 
@@ -1002,17 +981,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-## API Reference
-
-- `QueryBuilder`
-- `QueryBuilderHeader`
-- [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree)
-- [`IgrFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrFilteringExpressionsTree)
-- `FilteringLogic`
-- [`IgrStringFilteringOperand`](mcp:get_api_reference?platform=react&component=IgrStringFilteringOperand)
-- `QueryBuilderSearchValueContext`
-- [Styling & Themes](../themes/overview.md)
-
+## API References
+[`IgrQueryBuilder`](mcp:get_api_reference?platform=react&component=IgrQueryBuilder)
+[`IgrQueryBuilderHeader`](mcp:get_api_reference?platform=react&component=IgrQueryBuilderHeader)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

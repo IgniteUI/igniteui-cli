@@ -1,21 +1,22 @@
 ---
 title: Web Components Chart Data Tooltip | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Web Components chart with the data tooltip layer!
-_keywords: Web Components charts, chart legend, legend, legend types, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+description: Use Infragistics Ignite UI for Web Components chart with the data tooltip layer!
+keywords: Web Components charts, chart legend, legend, legend types, Ignite UI for Web Components, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for Web Components, the DataToolTip displays values and titles of series as well as legend badges of series in a tooltip."
 _tocName: Chart Data Tooltip
 _premium: true
 ---
-
 # Web Components Chart Data Tooltip
 
-In Ignite UI for Web Components, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) components.
+In Ignite UI for Web Components, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgcDataLegend`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) components.
 
 ## Web Components Data Tooltip Properties
 
-All properties of [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) are prefixed with **DataToolTip** and exposed on API of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components. However, you will need to create an instance of [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) and add it to series collection of [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
+All properties of [`IgcDataToolTipLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) are prefixed with **DataToolTip** and exposed on API of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components. However, you will need to create an instance of [`IgcDataToolTipLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) and add it to series collection of [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
 
 ## Web Components Data Tooltip Elements
 
@@ -25,11 +26,11 @@ The **DataToolTip** displays content using a set of three types of rows and four
 
 The rows of the **DataToolTip** include the header row, series row(s), and the summary row.
 
-The header row displays the axis label of the point that is hovered, and can be changed using the [`dataToolTipHeaderText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipHeaderText) property.
+The header row displays the axis label of the point that is hovered, and can be changed using the [`DataToolTipHeaderText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipHeaderText) property.
 
 The series row can actually be a set of rows corresponding to each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol and unit, if specified.
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`dataToolTipSummaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryTitleText) property of the legend. Also, you can use the [`dataToolTipSummaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`DataToolTipSummaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryTitleText) property of the legend. Also, you can use the [`DataToolTipSummaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
 
 The following example demonstrates the data tooltip with a summary applied:
 
@@ -67,15 +68,15 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ### Web Components Data Tooltip Columns
 
-The columns of the [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections of the chart.
+The columns of the [`IgcDataToolTipLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections of the chart.
 
-The title column displays legend badges and series titles, which come from the [`chartTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=chartTitle) property of the different [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`Title`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=chartTitle) property of the different [`Series`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Series) plotted in the chart.
 
-The label column displays the name or abbreviation of the different property paths in the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections of the tooltip.
+The label column displays the name or abbreviation of the different property paths in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections of the tooltip.
 
-The value column displays series values as abbreviated text which can be formatted using the [`dataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`dataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays series values as abbreviated text which can be formatted using the [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
 
-The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`dataToolTipUnitsText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
+The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`DataToolTipUnitsText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
 
 - Category Series (e.g. ColumnSeries)
   - ValueMemberAsLegendUnit="K"
@@ -95,7 +96,7 @@ The units column displays an abbreviation symbol and/or unit text, which can be 
 
 For the above-listed properties, there are corresponding properties ending with **MemberAsLegendLabel** to determine the text in the label columns mentioned previously.
 
-The columns included in the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) and [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
+The columns included in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns) and [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
 
 The following example demonstrates a data tooltip with the added columns of Open, High, Low, Close, and Change:
 
@@ -215,8 +216,8 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 
 ## Web Components Data Tooltip Grouping for Data Chart
 
-[`dataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowVisible) property to true. [`groupingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent&member=groupingMode) should be set to "Grouped" and [`labelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
+[`DataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowVisible) property to true. [`GroupingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent&member=groupingMode) should be set to "Grouped" and [`LabelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -257,7 +258,7 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 
 ## Web Components Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
-You can set [`dataToolTipGroupingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`dataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeX) and [`dataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
+You can set [`DataToolTipGroupingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
 
 The following example demonstrates a data tooltip positioned to the top-right of the chart:
 
@@ -295,7 +296,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Data Tooltip Value Formatting
 
-The **DataToolTip** provides automatic abbreviation of large numbers using its [`dataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`dataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 
 The following example demonstrates a **DataToolTip** with the minimum and maximum fractions set:
 
@@ -333,7 +334,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Data Tooltip Value Mode
 
-You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`dataToolTipValueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`dataToolTipValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`dataToolTipValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatCulture) set to "en-GB":
+You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`DataToolTipValueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatCulture) set to "en-GB":
 
 ```typescript
 //begin async data
@@ -451,15 +452,13 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`layoutMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
-<img src="../../../images/general/layout_mode.png" alt="Layout Mode" />
-
 ## Web Components Data Tooltip Styling
 
-The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`dataToolTipTitleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipTitleTextColor), [`dataToolTipLabelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipLabelTextColor), [`dataToolTipValueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueTextColor), and [`dataToolTipUnitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsTextColor) properties.
+The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`DataToolTipTitleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipTitleTextColor), [`DataToolTipLabelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipLabelTextColor), [`DataToolTipValueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueTextColor), and [`DataToolTipUnitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsTextColor) properties.
 
 The following example demonstrates usage of the styling properties mentioned above:
 
@@ -1472,41 +1471,23 @@ export class StockItem {
 
 Several properties are exposed including grouping portions of the tooltip.
 
-- `GroupTextMargin`
-- [`groupTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextColor)
-- `GroupTextFontSize`
-- `GroupTextFontFamily`
-- `GroupTextFontStyle`
-- `GroupTextFontStretch`
-- `GroupTextFontWeight`
-- `HeaderTextMargin`
-- [`headerTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextColor)
-- `HeaderTextFontSize`
-- `HeaderTextFontFamily`
-- `HeaderTextFontStyle`
-- `HeaderTextFontStretch`
-- `HeaderTextFontWeight`
+- [`GroupTextMargin`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextMargin)
+- [`GroupTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextColor)
+- [`GroupTextFontSize`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontSize)
+- [`GroupTextFontFamily`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontFamily)
+- [`GroupTextFontStyle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontStyle)
+- [`GroupTextFontStretch`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontStretch)
+- [`GroupTextFontWeight`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextFontWeight)
+- [`HeaderTextMargin`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextMargin)
+- [`HeaderTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextColor)
+- [`HeaderTextFontSize`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontSize)
+- [`HeaderTextFontFamily`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontFamily)
+- [`HeaderTextFontStyle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontStyle)
+- [`HeaderTextFontStretch`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontStretch)
+- [`HeaderTextFontWeight`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextFontWeight)
 
 ## API References
-
-- [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipExcludedColumns)
-- [`dataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeX)
-- [`dataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupedPositionModeY)
-- [`dataToolTipGroupingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipGroupingMode)
-- [`dataToolTipHeaderText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipHeaderText)
-- [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipIncludedColumns)
-- [`dataToolTipLabelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipLabelTextColor)
-- [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent)
-- [`dataToolTipSummaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryTitleText)
-- [`dataToolTipSummaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipSummaryType)
-- [`dataToolTipTitleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipTitleTextColor)
-- [`dataToolTipUnitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsTextColor)
-- [`dataToolTipUnitsText`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipUnitsText)
-- [`dataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatAbbreviation)
-- [`dataToolTipValueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatCulture)
-- [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions)
-- [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMaxFractions)
-- [`dataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMinFractions)
-- [`dataToolTipValueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueFormatMode)
-- [`dataToolTipValueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataToolTipValueTextColor)
-- `MemberAsLegendLabel`
+[`IgcDataToolTipLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent)
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

@@ -1,15 +1,17 @@
 ---
-title: React Spreadsheet Component – Ignite UI for React
-_description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for React Spreadsheet. Manage tabular data the way you want!
-_keywords: Excel Spreadsheet, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Spreadsheet Component – Ignite UI for React"
+description: Get flexible layouts, easy customization options & convenient Excel-like interface with Ignite UI for React Spreadsheet. Manage tabular data the way you want!
+keywords: Excel Spreadsheet, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "The React Spreadsheet (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more."
 _tocName: Spreadsheet
+_premium: true
 ---
-
 # React Spreadsheet Overview
 
-The React Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
+The React Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The `IgrSpreadsheet` is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
 
 ## React Spreadsheet Example
 
@@ -186,8 +188,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetOverview/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Functionality
 
 - Features
@@ -232,7 +232,7 @@ npm install --save igniteui-react-spreadsheet
 
 ## Component Modules
 
-The [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) requires the following modules:
+The `IgrSpreadsheet` requires the following modules:
 
 ```ts
 import { IgrExcelModule } from 'igniteui-react-excel';
@@ -242,15 +242,13 @@ IgrExcelModule.register();
 IgrSpreadsheetModule.register();
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Now that the React spreadsheet module is imported, next is the basic configuration of the spreadsheet.
 
-> [!Note]
->
-> In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook).
+**Note:** 
+
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
 
 The following demonstrates how to load a workbook into the React spreadsheet
 
@@ -272,5 +270,5 @@ ngOnInit() {
 
 ## API References
 
-- [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook)
+`IgrSpreadsheet`<br />
+`IgrWorkbook`<br />

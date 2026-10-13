@@ -1,23 +1,20 @@
 ---
-title: React Tree Grid Cell Merging - Ignite UI for React
-_description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for React for React Tree Grid. Check out examples and demos!
-_keywords: cell merging, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: {CanonicalLinkToGridCellMerging}
+title: "React Tree Grid Cell Merging - Ignite UI for React"
+description: Merge adjacent cells with equal values in the Ignite UI for React Tree Grid using the Cell Merging feature. Learn configuration, merging modes, and see live examples!
+keywords: cell merging, React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: ""
+llms:
+  description: "The Ignite UI for React Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell."
+_componentKey: TreeGrid
 _tocName: Cell Merging
 _premium: true
 ---
-
 # React Tree Grid Cell Merging
 
 The Ignite UI for React Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell. Merging is applied vertically within a column and helps improve readability by reducing duplicate values. The feature can be configured to merge cells either by default matching data values or by applying a custom condition.
 
 ## React Tree Grid Cell Merging Example
-
-<!-- ComponentStart: TreeGrid -->
 
 ```typescript
 export class EmployeesFlatDetailsItem {
@@ -228,19 +225,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Enabling and Using Cell Merging
 
 Cell merging in the grid is controlled at two levels:
-
 - Grid-level merge mode – determines when merging is applied.
 - Column-level merge toggle – determines which columns can merge cells.
 
 ### Grid Merge Mode
 
-The grid exposes a `cellMergeMode` property that accepts values from the `GridCellMergeMode` enum:
-
+The grid exposes a [`IgrTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellMergeMode) property that accepts values from the [`IgrGridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode) enum:
 - `always` - Merges any adjacent cells that meet the merging condition, regardless of sort state.
 - `onSort` - Merges adjacent cells only when the column is sorted **(default value)**.
 
@@ -255,8 +248,7 @@ const cellMergeMode: GridCellMergeMode = 'always';
 ```
 
 ### Column Merge Toggle
-
-At the column level, merging can be enabled or disabled with the `merge` property.
+At the column level, merging can be enabled or disabled with the [`merge`](mcp:get_api_reference?platform=react&component=IgrColumnGroup&member=merge) property.
 
 ```tsx
 <IgrColumn field="OrderID" merge={true}></IgrColumn>
@@ -264,7 +256,6 @@ At the column level, merging can be enabled or disabled with the `merge` propert
 ```
 
 In the above example:
-
 - The **OrderID** column will merge adjacent duplicate values.
 - The **ShipperName** column will render normally without merging.
 
@@ -285,19 +276,30 @@ const cellMergeMode: GridCellMergeMode = 'onSort';
 Here, the grid is set to merge only when columns are sorted, and both Category and Product columns are configured for merging.
 
 ## Custom Merge Conditions
-
-In addition to the built-in `always` and `onSort` modes, the grid allows you to define a custom condition for merging cells through the `mergeStrategy` property. This strategy controls both how cells are compared and how merged ranges are calculated.
+In addition to the built-in `always` and `onSort` modes, the grid allows you to define a custom condition for merging cells through the [`IgrTreeGrid.mergeStrategy`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=mergeStrategy) property. This strategy controls both how cells are compared and how merged ranges are calculated.
 
 ### Merge Strategy Class
-
 A custom merge strategy must implement the [`IgrGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrGridMergeStrategy) class:
+
+```ts
+export declare class IgrGridMergeStrategy {
+    merge: (
+        data: any[],
+        field: string,
+        comparer: (prevRecord: any, currentRecord: any, field: string) => boolean,
+        result: any[],
+        activeRowIndex?: number,
+        grid?: GridType
+    ) => any[];
+
+    comparer: (prevRecord: any, record: any, field: string) => boolean;
+}
+```
 
 - `merge` - defines how merged cells are produced.
 - `comparer` - defines the condition to decide if two adjacent records should be merged.
 
-<!-- ComponentStart: TreeGrid -->
-
-The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) and [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy). [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
+The `IgxTreeGrid` provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) and [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy). [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
 
 ### Extending the Default Strategy
 
@@ -316,11 +318,8 @@ export class MyCustomStrategy extends IgrDefaultTreeGridMergeStrategy {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Applying a Custom Strategy
-
-Once defined, assign the strategy to the grid through the `mergeStrategy` property:
+Once defined, assign the strategy to the grid through the [`IgrTreeGrid.mergeStrategy`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=mergeStrategy) property:
 
 ```tsx
 <IgrTreeGrid data={data} mergeStrategy={customStrategy}>
@@ -329,7 +328,9 @@ Once defined, assign the strategy to the grid through the `mergeStrategy` proper
 </IgrTreeGrid>
 ```
 
-<!-- ComponentStart: TreeGrid -->
+```ts
+const customStrategy = new MyCustomStrategy() as IgrGridMergeStrategy;
+```
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -730,10 +731,7 @@ class CustomTreeGridMergeStrategy extends IgrDefaultTreeGridMergeStrategy {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## Feature Integration
-
 Due to the specific behavior of merged cells it has to be noted how exactly it ties together with some of the other features of the grid:
 
 - **Excel export**: merged cells remain merged when exported to Excel.
@@ -743,22 +741,24 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 - **Row selection**: if selected rows intersect merged cells, all related merged cells should be marked as part of the selection.
 - **Navigation/Activation**: when a cell is active, all merged cells in the same row become single cells, i.e. their merge sequence is broken. This also includes activation via keyboard navigation.
 
-> [!NOTE]
-> If a merged cell is clicked, the closest cell from the merge sequence will become active.
+**Note:** 
+If a merged cell is clicked, the closest cell from the merge sequence will become active.
 
 ## API References
-
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`CellMergeMode`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=cellMergeMode)
+[`IgrGridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode)
+[`IgrGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrGridMergeStrategy)
+[`IgrDefaultMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultMergeStrategy)
 ## Additional Resources
 
 - [Filtering](filtering.md)
-- [Excel Style Filtering](excel-style-filtering.md)
+
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
 - [Sorting](sorting.md)
 - [Summaries](summaries.md)
-- [Column Moving](column-moving.md)
+
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)

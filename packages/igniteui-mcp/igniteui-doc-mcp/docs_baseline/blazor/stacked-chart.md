@@ -1,14 +1,15 @@
 ---
-title: Blazor Stacked Chart | Data Visualization | Infragistics
-_description: Infragistics' Blazor Stacked Chart
-_keywords: Blazor Charts, Stacked Chart, Stacked 100% Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "StackedAreaSeries", "Stacked100AreaSeries", "StackedBarSeries", "Stacked100BarSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "StackedLineSeries", "Stacked100LineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "StackedSplineAreaSeries", "Stacked100SplineAreaSeries", "Series"]
+title: "Blazor Stacked Chart | Data Visualization | Infragistics"
+description: Infragistics' Blazor Stacked Chart
+keywords: "Blazor Charts, Stacked Chart, Stacked 100% Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "StackedAreaSeries", "Stacked100AreaSeries", "StackedBarSeries", "Stacked100BarSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "StackedLineSeries", "Stacked100LineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "StackedSplineAreaSeries", "Stacked100SplineAreaSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines."
 _tocName: Stacked Chart
 _premium: true
 ---
-
 # Blazor Stacked Chart
 
 The Ignite UI for Blazor Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines. Standard Stacked Charts render actual values of data items while Stacked 100% Charts render values as percentage of total values.
@@ -225,13 +226,11 @@ The following example, you can use the drop-down to switch between all of the di
 }
 ```
 
-<div class="divider--half"></div>
-
 The following sections demonstrate individual types of Ignite UI for Blazor Stacked Charts.
 
 ## Blazor Stacked Area Chart
 
-Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
+Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](./area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
 
 You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedAreaSeries), as shown in the example below.
 
@@ -409,10 +408,7 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100 Area Chart
-
 Sometimes the series represent part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea.
 
 You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries), as shown in the example below.
@@ -588,13 +584,11 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked Bar Chart
 
 A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is used to compare the composition of different categories of data by displaying different sized fragments in the horizontal bars of the chart. The length of each bar, or stack of fragments, is proportionate to its overall value.
 
-The Stacked Bar Chart differs from the [Bar Chart](bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
+The Stacked Bar Chart differs from the [Bar Chart](./bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
 In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), as shown in the example below.
 
@@ -758,8 +752,6 @@ public class EnergyRenewableConsumption
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Stacked 100% Bar Chart
 
@@ -927,11 +919,9 @@ public class EnergyRenewableConsumption
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked Column Chart
 
-The Stacked Column Chart is identical to the [Column Chart](column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
+The Stacked Column Chart is identical to the [Column Chart](./column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
 You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries), as shown in the example below.
 
@@ -1107,8 +1097,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Column Chart
 
 The Stacked 100% Column Chart is identical to the Stacked Column Chart in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100% Column Chart presents the data in terms of percent of the sum of all values in a data point.
@@ -1262,8 +1250,6 @@ public class OnlineTrafficByDevice
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Stacked Line Chart
 
@@ -1443,8 +1429,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Line Chart
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
@@ -1621,11 +1605,9 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked Spline Area Chart
 
-Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
+Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](./area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
 
 You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries), as shown in the example below.
 
@@ -1803,8 +1785,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Spline Area Chart
 
 The Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea.
@@ -1980,8 +1960,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ## Blazor Stacked Spline Chart
 
@@ -2161,8 +2139,6 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Stacked 100% Spline Chart
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
@@ -2338,20 +2314,16 @@ public class ContinentsBirthRate
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
-
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Bar Chart](bar-chart.md)
-- [Column Chart](column-chart.md)
-- [Line Chart](line-chart.md)
-- [Spline Chart](spline-chart.md)
+- [Area Chart](./area-chart.md)
+- [Bar Chart](./bar-chart.md)
+- [Column Chart](./column-chart.md)
+- [Line Chart](./line-chart.md)
+- [Spline Chart](./spline-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
 | Chart Type               | Control Name   | API Members |

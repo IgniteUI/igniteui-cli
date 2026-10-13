@@ -1,16 +1,17 @@
 ---
-title: React Toolbar Component | Ignite UI for React
-_description: See how you can easily get started with React Toolbar Component. Compatible with the Data Chart. Extend your .
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Toolbar components, React Toolbar controls
-_license: commercial
-mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "XamDataChart", "TrendLineType"]
+title: "React Toolbar Component | Ignite UI for React"
+description: See how you can easily get started with React Toolbar Component. Compatible with the Data Chart. Extend your .
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Toolbar components, React Toolbar controls"
+license: commercial
+mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "TrendLineType"]
+llms:
+  description: "The React Toolbar component is a companion container for UI operations to be used primarily with our charting components."
 _tocName: Toolbar
 _premium: true
 ---
-
 # React Toolbar Overview
 
-The React Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) or [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+The React Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our `IgrDataChart` or `IgrCategoryChart` components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ## React Toolbar Example
 
@@ -186,13 +187,13 @@ npm install igniteui-react-charts
 npm install igniteui-react-core
 ```
 
-The following modules are required when using the [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) with the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) component and it's features.
+The following modules are required when using the `IgrToolbar` with the `IgrDataChart` component and it's features.
 
-```ts
-import { IgxToolbarModule } from 'igniteui-react-layouts';
+```tsx
+import { IgrToolbarModule } from 'igniteui-react-layouts';
 import { IgrDataChartToolbarModule, IgrDataChartCoreModule, IgrDataChartCategoryModule, IgrDataChartAnnotationModule, IgrDataChartInteractivityModule, IgrDataChartCategoryTrendLineModule  } from 'igniteui-react-charts';
 
-IgxToolbarModule.register();
+IgrToolbarModule.register();
 IgrDataChartToolbarModule.register();
 IgrDataChartCoreModule.register();
 IgrDataChartCategoryModule.register();
@@ -205,22 +206,22 @@ IgrDataChartCategoryTrendLineModule.register();
 
 ### Tool Actions
 
-The following is a list of the different [`IgrToolAction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html) items that you can add to the Toolbar.
+The following is a list of the different `IgrToolAction` items that you can add to the Toolbar.
 
-- [`IgrToolActionButton`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionbutton.html)
-- [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html)
-- [`IgrToolActionIconButton`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconbutton.html)
-- [`IgrToolActionIconMenu`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconmenu.html)
-- [`IgrToolActionLabel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionlabel.html)
-- [`IgrToolActionNumberInput`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionnumberinput.html)
-- [`IgrToolActionRadio`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionradio.html)
-- [`IgrToolActionSubPanel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionsubpanel.html)
+- `IgrToolActionButton`
+- `IgrToolActionCheckbox`
+- `IgrToolActionIconButton`
+- `IgrToolActionIconMenu`
+- `IgrToolActionLabel`
+- `IgrToolActionNumberInput`
+- `IgrToolActionRadio`
+- `IgrToolActionSubPanel`
 
-Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgrToolActionIconMenu`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconmenu.html) is a wrapper for other tools that can also be wrapped inside a [`IgrToolActionIconMenu`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconmenu.html).
+Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the `IgrToolActionIconMenu` is a wrapper for other tools that can also be wrapped inside a `IgrToolActionIconMenu`.
 
-New and existing tools can be repositioned and marked hidden using the [`overlayId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#overlayId), [`beforeId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#beforeId) and [`afterId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#afterId) properties on the [`IgrToolAction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html) object. ToolActions also expose a [`visibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#visibility) property.
+New and existing tools can be repositioned and marked hidden using the `OverlayId`, `BeforeId` and `AfterId` properties on the `IgrToolAction` object. ToolActions also expose a `Visibility` property.
 
-The following example demonstrates a couple of features. First you can group tools together in the [`IgrToolActionSubPanel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionsubpanel.html) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`afterId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#afterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`isHighlighted`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#isHighlighted) property on the tool.
+The following example demonstrates a couple of features. First you can group tools together in the `IgrToolActionSubPanel` including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the `AfterId` property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the `IsHighlighted` property on the tool.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -539,7 +540,7 @@ root.render(<Sample/>);
 
 ### React Data Chart Integration
 
-The React Toolbar contains a `Target` property. This is used to link a component, such as the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) as shown in the code below:
+The React Toolbar contains a `Target` property. This is used to link a component, such as the `IgrDataChart` as shown in the code below:
 
 ```tsx
   private toolbar: IgrToolbar
@@ -570,47 +571,47 @@ The React Toolbar contains a `Target` property. This is used to link a component
   }
 ```
 
-Several pre-existing [`IgrToolAction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html) items and menus become available when the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) is linked with the Toolbar. Here is a list of the built-in React [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) Tool Actions and their associated [`overlayId`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#overlayId):
+Several pre-existing `IgrToolAction` items and menus become available when the `IgrDataChart` is linked with the Toolbar. Here is a list of the built-in React `IgrDataChart` Tool Actions and their associated `OverlayId`:
 
 Zooming Actions
 
-- `ZoomMenu`: A [`IgrToolActionIconMenu`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconmenu.html) that exposes three [`IgrToolActionLabel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionlabel.html) items to invoke the [`zoomIn`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#zoomIn) and [`zoomOut`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#zoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgrToolActionLabel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionlabel.html) that invokes the [`resetZoom`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#resetZoom) method on the chart to reset the zoom level to it's default position.
+- `ZoomMenu`: A `IgrToolActionIconMenu` that exposes three `IgrToolActionLabel` items to invoke the `ZoomIn` and `ZoomOut` methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a `IgrToolActionLabel` that invokes the `ResetZoom` method on the chart to reset the zoom level to it's default position.
 
 Trend Actions
 
-- `AnalyzeMenu`: A [`IgrToolActionIconMenu`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioniconmenu.html) that contains several options for configuring different options of the chart.
+- `AnalyzeMenu`: A `IgrToolActionIconMenu` that contains several options for configuring different options of the chart.
 - `AnalyzeHeader`: A sub section header.
   - `LinesMenu`: A sub menu containing various tools for showing different dashed horizontal lines on the chart.
   - `LinesHeader`: A sub menu section header for the following three tools:
-    - `MaxValue`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
-    - `MinValue`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
-    - `Average`:  A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that displays a dashed horizontal line along the yAxis at the average value of the series.
-  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) plot area.
+    - `MaxValue`: A `IgrToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the maximum value of the series.
+    - `MinValue`: A `IgrToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the minimum value of the series.
+    - `Average`:  A `IgrToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the average value of the series.
+  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the `IgrDataChart` plot area.
   - `TrendsHeader`: A sub menu section header for the following three tools:
-    - **Exponential**: A [`IgrToolActionRadio`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionradio.html) that sets the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineType) on each series in the chart to **ExponentialFit**.
-    - **Linear**: A [`IgrToolActionRadio`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionradio.html) that sets the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineType) on each series in the chart to **LinearFit**.
-    - **Logarithmic**: A [`IgrToolActionRadio`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionradio.html) that sets the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineType) on each series in the the chart to **LogarithmicFit**.
+    - **Exponential**: A `IgrToolActionRadio` that sets the `TrendLineType` on each series in the chart to **ExponentialFit**.
+    - **Linear**: A `IgrToolActionRadio` that sets the `TrendLineType` on each series in the chart to **LinearFit**.
+    - **Logarithmic**: A `IgrToolActionRadio` that sets the `TrendLineType` on each series in the the chart to **LogarithmicFit**.
 - `HelpersHeader`: A sub section header.
-  - `SeriesAvg`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that adds or removes a [`IgrValueLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrvaluelayer.html) to the chart's series collection using the [`ValueLayerValueMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.valuelayervaluemode.html) of type [`Average`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.valuelayervaluemode.html#Average).
-  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)'s plot area.
+  - `SeriesAvg`: A `IgrToolActionCheckbox` that adds or removes a `IgrValueLayer` to the chart's series collection using the `IgrValueLayerValueMode` of type `Average`.
+  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the `IgrDataChart`'s plot area.
   - `ValueLabelsHeader`: A sub menu section header for the following tools:
-    - `ShowValueLabels`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that toggles data point values by using a [`IgrCalloutLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcalloutlayer.html).
-    - `ShowLastValueLabel`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that toggles final value axis annotations by using a [`IgrFinalValueLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinalvaluelayer.html).
-- `ShowCrosshairs`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that toggles mouse-over crosshair annotations via the chart's [`crosshairsDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#crosshairsDisplayMode) property.
-- `ShowGridlines`: A [`IgrToolActionCheckbox`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactioncheckbox.html) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
+    - `ShowValueLabels`: A `IgrToolActionCheckbox` that toggles data point values by using a `IgrCalloutLayer`.
+    - `ShowLastValueLabel`: A `IgrToolActionCheckbox` that toggles final value axis annotations by using a `IgrFinalValueLayer`.
+- `ShowCrosshairs`: A `IgrToolActionCheckbox` that toggles mouse-over crosshair annotations via the chart's `CrosshairsDisplayMode` property.
+- `ShowGridlines`: A `IgrToolActionCheckbox` that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
 
 Save to Image Action
 
-- `CopyAsImage`: A [`IgrToolActionLabel`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolactionlabel.html) that exposes an option to copy the chart to the clipboard.
+- `CopyAsImage`: A `IgrToolActionLabel` that exposes an option to copy the chart to the clipboard.
 - `CopyHeader`: A sub section header.
 
 ### SVG Icons
 
-When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`iconCollectionName`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#iconCollectionName). The second is the name of the icon defined on the tool eg. [`iconName`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolaction.html#iconName), followed by adding the SVG string.
+When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. `IconCollectionName`. The second is the name of the icon defined on the tool eg. `IconName`, followed by adding the SVG string.
 
 ### Data URL Icons
 
-Similarly to adding svg, you can also add an Icon image from a URL via the [`registerIconFromDataURL`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html#registerIconFromDataURL). The method's third parameter would be used to enter a string URL.
+Similarly to adding svg, you can also add an Icon image from a URL via the `RegisterIconFromDataURL`. The method's third parameter would be used to enter a string URL.
 
 The following snippet shows both methods of adding an Icon.
 
@@ -655,7 +656,7 @@ public toolbarCustomIconOnViewInit(): void {
 
 ### Vertical Orientation
 
-By default the React Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`orientation`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html#orientation) property.
+By default the React Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the `Orientation` property.
 
 ```tsx
 <IgrToolbar orientation="Vertical" />
@@ -800,18 +801,6 @@ root.render(<Sample/>);
 
 You can add a custom color editor tool to the the React Toolbar, which will also work with the Command event to perform custom styling to your application.
 
-```ts
-<igc-toolbar
-  name="toolbar"
-  id="toolbar">
-      <igc-tool-action-color-editor
-      title="Series Brush Color"
-      name="colorEditorTool"
-      id="colorEditorTool">
-      </igc-tool-action-color-editor>
-</igc-toolbar>
-```
-
 ```tsx
 <IgrToolbar
     ref={this.toolbarRef}
@@ -823,7 +812,8 @@ You can add a custom color editor tool to the the React Toolbar, which will also
 </IgrToolbar>
 ```
 
-The following example demonstrates styling the React Data Chart series brush with the Color Editor tool. ```typescript
+The following example demonstrates styling the React Data Chart series brush with the Color Editor tool.
+```typescript
 export class CountryRenewableElectricityItem {
     public constructor(init: Partial<CountryRenewableElectricityItem>) {
         Object.assign(this, init);
@@ -1006,33 +996,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ## Styling/Theming
+{/* ## Styling/Theming
 
-The icon component can be styled by using it's `BaseTheme` property directly to the `Toolbar`.
-
-```html
-<igx-toolbar baseTheme="SlingshotDark" />
-```
-
-```html
-<igc-toolbar base-theme="SlingshotDark" />
-```
-
-```razor
-<IgbToolbar BaseTheme="BaseControlTheme.SlingshotDark" />
-```
+The icon component can be styled by using it's `BaseTheme` property directly to the `IgrToolbar`.
 
 ```tsx
 <IgrToolbar baseTheme="SlingshotDark" />
 ```
 
-<!-- The following example demonstrates the various theme options that can be applied.
-`sample="/charts/toolbar/theming", height="600", alt="React Toolbar Styling/Theming"` -->
 
 ## API References
 
-- [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html)
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
+`IgrToolbar`<br />
+`IgrDataChart`<br />
 
 ## Additional Resources
 

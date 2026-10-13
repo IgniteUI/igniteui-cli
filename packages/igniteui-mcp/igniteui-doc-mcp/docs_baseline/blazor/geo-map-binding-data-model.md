@@ -1,17 +1,18 @@
 ---
-title: Blazor Map | Data Visualization Tools | Binding Geographic Data Models | Infragistics
-_description: Use Infragistics' Blazor JavaScript map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Blazor map demos!
-_keywords: Blazor map, binding data models, Ignite UI for Blazor, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicScatterAreaSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
+title: "Blazor Map | Data Visualization Tools | Binding Geographic Data Models | Infragistics"
+description: Use Infragistics' Blazor JavaScript map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Blazor map demos!
+keywords: "Blazor map, binding data models, Ignite UI for Blazor, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicScatterAreaSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "The Ignite UI for Blazor map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps."
 _tocName: Binding Data Model
 _premium: true
 ---
-
 # Blazor Binding Geographic Data Models
 
-The Ignite UI for Blazor map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=DataSource) property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
+The Ignite UI for Blazor map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
 
 ## Blazor Binding Geographic Data Models Example
 
@@ -94,26 +95,24 @@ The Ignite UI for Blazor map component is designed to display geo-spatial data f
 }
 ```
 
-<div class="divider--half"></div>
-
 The following table summarized data structures required for each type of geographic series:
 
 | Geographic Series  | Properties   | Description   |
 |--------------|---------------| ---------------|
-| [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
-| [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LongitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LatitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
-| [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=LongitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=LatitudeMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=RadiusMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
-| [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=LongitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=LatitudeMemberPath), [`ColorMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=ColorMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-| [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=LongitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=LatitudeMemberPath), [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries&member=ValueMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-|[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)|[`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries&member=ShapeMemberPath)|Specifies the name of data column of [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=DataSource) items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
-|[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)|[`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries&member=ShapeMemberPath)|Specifies the name of data column of [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=DataSource) items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
+| [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=longitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=latitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
+| [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=longitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=latitudeMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates |
+| [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=longitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=latitudeMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=radiusMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
+| [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=longitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=latitudeMemberPath), [`ColorMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=colorMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+| [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries) | [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=longitudeMemberPath), [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=latitudeMemberPath), [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries&member=valueMemberPath)   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+|[`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)|[`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries&member=shapeMemberPath)|Specifies the name of data column of [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
+|[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)|[`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries&member=shapeMemberPath)|Specifies the name of data column of [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to plot shortest geographic path between these locations using the [WorldUtility](geo-map-resources-world-util.md)
+The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to plot shortest geographic path between these locations using the [WorldUtility](./geo-map-resources-world-util.md)
 
 ```razor
 @using IgniteUI.Blazor.Controls
+
 
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     @for (int i = 0; i < this.DataSource.Count; i++)
@@ -207,16 +206,9 @@ The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_a
 ```
 
 ## API References
-
-- [`ColorMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=ColorMemberPath)
-- [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries)
-- [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
-- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
-- [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries)
-- [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries)
-- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=DataSource)
-- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
-- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
-- [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=RadiusMemberPath)
-- [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries&member=ValueMemberPath)
+[`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries)
+[`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
+[`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+[`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries)
+[`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries)
+[`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)

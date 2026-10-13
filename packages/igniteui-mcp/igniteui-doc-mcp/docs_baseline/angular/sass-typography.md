@@ -1,15 +1,18 @@
 ---
 title: Typography
-_description:
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+description:
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
 _extraFont: https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700
+llms:
+  description: "The Ignite UI for Angular Typography Sass module allows you to modify the typography for all components in your application, specific typographic scale, or specific components."
 _tocName: Typography
 ---
-
 # Typography
 
-<p class="highlight">The Ignite UI for Angular Typography Sass module allows you to modify the typography for all components in your application, specific typographic scale, or specific components.</p>
-<div class="divider"></div>
+<div class="highlight">
+The Ignite UI for Angular Typography Sass module allows you to modify the typography for all components in your application, specific typographic scale, or specific components.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -17,12 +20,12 @@ An application can define multiple typography `scales` that may share scale cate
 
 Ignite UI for Angular exposes 4 default type scales for each of its themes - `$material-type-scale`, `$fluent-type-scale`, `$bootstrap-type-scale`, and `$indigo-type-scale`, which are in turn used by the `typography` mixin to set the typography styles. You can, however, create additional type scales.
 
-In many cases you would only need to make slight modifications to the typography, thus it's recommended that you read the [Typography](../typography.md) section of the CSS Variables documentation first, if you haven't already. Using Sass to modify the typography is only required if you want to make deeper changes pertaining to the entire typographic scale.
+In many cases you would only need to make slight modifications to the typography, thus it's recommended that you read the [Typography](/themes/typography) section of the CSS Variables documentation first, if you haven't already. Using Sass to modify the typography is only required if you want to make deeper changes pertaining to the entire typographic scale.
 
 ## Usage
 
-> [!IMPORTANT]
-> By default we don't apply any typography styles. To use our typography in your application you have to set the `ig-typography` CSS class on a top-level element and include the `typography` mixin in your base `.scss` file.
+**Note:** 
+By default we don't apply any typography styles. To use our typography in your application you have to set the `ig-typography` CSS class on a top-level element and include the `typography` mixin in your base `.scss` file.
 
 We have selected [Titillium Web](https://fonts.google.com/selection?selection.family=Titillium+Web:300,400,600,700) to be the default font in the Material theme for Ignite UI for Angular. To use it you have to host it yourself, or include it from Google Fonts:
 
@@ -62,8 +65,9 @@ The type scale produces a map of 13 typography styles used as scale categories. 
 $my-type-scale: type-scale(...);
 ```
 
-> [!IMPORTANT]
-> You have to provide a type style for each of the 13 scale categories. A style can be generated using the `type-style` function as shown above.
+**Note:** 
+You have to provide a type style for each of the 13 scale categories. A style can be generated using the `type-style` function as shown above.
+
 
 ```scss
 $my-type-scale: type-scale(
@@ -163,8 +167,9 @@ $my-type-scale: extend(
 @include typography($type-scale: $my-type-scale);
 ```
 
-> [!WARNING]
-> The above code will modify the `h6` scale category globally, which will affect the look and feel of all components that use the `h6` scale. This is done for consistency so that all `h6` elements look the same across your app. We understand that you may want to apply the modification for `h6` to specific components only, like the `igx-card` component in our case. This is why every component has its own typography mixin, which accepts a category configuration.
+**Warning:** 
+The above code will modify the `h6` scale category globally, which will affect the look and feel of all components that use the `h6` scale. This is done for consistency so that all `h6` elements look the same across your app. We understand that you may want to apply the modification for `h6` to specific components only, like the `igx-card` component in our case. Every component's typography is applied through the same universal `--ig-{category}-*` design tokens (e.g. `--ig-h6-font-size`), so you can scope an override to just the elements you care about by targeting those tokens with the `type-style-vars` mixin instead of changing the global type scale.
+
 
 ```scss
 // Create a custom h6 scale category style
@@ -172,26 +177,22 @@ $my-h6: type-style(
   $font-size: rem(12px),
 );
 
-// You can specify which categories from the type sale the card uses
-$card-categories: (
-  title: 'h6',
-  title-small: 'subtitle-1',
-  subtitle: 'subtitle-2',
-  content: 'body-2',
-);
-
 .my-cool-card {
-  // Overwrite the 'h6' type style for this scope
+  // Overwrite the 'h6' tokens for this scope only.
+  // Because CSS custom properties inherit, this affects every
+  // descendant that reads the '--ig-h6-*' tokens, including the
+  // card title inside .my-cool-card.
   @include type-style-vars('h6', $my-h6);
-
-  // Pass the custom card catergories to the card typography mixin
-  @include card-typography($card-categories);
 }
 ```
 
-We no longer include the `typography` mixin by passing it the `$my-type-scale` scale with our modification to the `h6` category. Now all we do is pass the custom h6 style we created to the `type-style-vars` mixin.
+Typography is applied automatically as part of each component's tokens, so every part of a component stays visually consistent with the rest of your app out of the box. When you want to give a specific component instance its own distinct look — say, a smaller title on just one card — scope a `type-style-vars` override for that category to the component instance, as shown above. You can also reach for the underlying `--ig-{category}-*` tokens directly as plain CSS custom properties, no Sass required:
 
-Using the card-typography mixin, we can update the typography styles for all elements in the card component. In the example above, the title-small key in the $card-categories map is assigned the subtitle-1 type style. This change makes the small title in the card slightly larger. By default, the card component uses the subtitle-2 type style for the small title, which has a smaller font size than subtitle-1. The mixin allows us to override this default and apply the new style.
+```css
+.my-cool-card {
+  --ig-h6-font-size: 0.75rem;
+}
+```
 
 ## Converting Units
 
@@ -257,11 +258,11 @@ Here's a list of all CSS classes we provide by default:
 - `ig-typography__caption`
 - `ig-typography__overline`
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

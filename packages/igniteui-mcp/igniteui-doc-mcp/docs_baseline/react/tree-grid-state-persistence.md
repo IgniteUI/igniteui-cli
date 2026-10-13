@@ -1,25 +1,22 @@
 ---
-title: React Tree Grid State Persistence - Ignite UI for React
-_description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for React. Learn how to restore columns, explore usage, and see demos!
-_keywords: state persistence, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["GridStateBaseDirective", "GridState", "PivotConfiguration", "PivotDimension", "PivotValue"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/state-persistence
+title: "React Tree Grid State Persistence - Ignite UI for React"
+description: Easily save and restore the grid state, using our comprehensive Ignite UI toolset for React. Learn how to restore columns, explore usage, and see demos!
+keywords: state persistence, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/state-persistence"
+llms:
+  description: "The Ignite UI for React State Persistence in React Tree Grid allows developers to easily save and restore the grid state."
+_componentKey: TreeGrid
 _tocName: State Persistence
 _premium: true
 ---
-
 # React Tree Grid State Persistence
 
-The Ignite UI for React State Persistence in React Tree Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) is applied on the React [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), it exposes the [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState), [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString), [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) and [`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for React State Persistence in React Tree Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) is applied on the React [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), it exposes the [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState), [`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString), [`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) and [`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
 [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) supports saving and restoring the state of the following features:
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 - **Sorting**
 - **Filtering**
@@ -34,21 +31,15 @@ The Ignite UI for React State Persistence in React Tree Grid allows developers t
 - **Columns**
   - Multi column headers
   - Columns order
-  - Column properties defined by the `IColumnState` interface.
-
-<!-- * Columns templates and functions are restored using application level code, see [Restoring Column](state-persistence.md#restoring-columns) section. -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
+  - Column properties defined by the [`IgrColumnState`](mcp:get_api_reference?platform=react&component=IgrColumnState) interface.
 
 ## Usage
 
-The [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method returns the grid state in a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
+The [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method returns the grid state in a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
 
-The [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
+The [`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```tsx
 <IgrTreeGrid>
@@ -56,12 +47,8 @@ The developer may choose to get only the state for a certain feature/features, b
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
 ```tsx
-// get an `IgrGridStateInfo` object, containing all features original state objects, as returned by the grid public API
+// get an `GridStateInfo` object, containing all features original state objects, as returned by the grid public API
 const state: IgrGridStateInfo = gridStateRef.current.getState([]);
 
 // get all features` state in a serialized JSON string
@@ -69,11 +56,12 @@ const stateString: string = gridStateRef.current.getStateAsString([]);
 
 // get the sorting and filtering expressions
 const sortingFilteringStates: IgrGridStateInfo = gridStateRef.current.getState(['sorting', 'filtering']);
+
 ```
 
-[`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) - The method accepts a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
+[`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) - The method accepts a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
 
-[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
+[`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
 ```tsx
 gridStateRef.current.applyState(gridState, []);
@@ -81,9 +69,7 @@ gridStateRef.current.applyStateFromString(gridStateString, []);
 gridStateRef.current.applyState(sortingFilteringStates, [])
 ```
 
-The [`options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseDirective&member=options) object implements the [`IgrGridStateOptions`](mcp:get_api_reference?platform=react&component=IgrGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState)/[`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState)/[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods will not restore state for them.
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
+The [`Options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseDirective&member=options) object implements the [`IgrGridStateOptions`](mcp:get_api_reference?platform=react&component=IgrGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`IgrGridState.getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState)/[`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) methods will not put the state of these features in the returned value and [`IgrGridState.applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState)/[`IgrGridState.applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods will not restore state for them.
 
 ```tsx
 <IgrGridState options={{ cellSelection: false, sorting: false }}></IgrGridState>
@@ -91,17 +77,11 @@ The [`options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseD
 
 The simple to use single-point API's allows to achieve a full state persistence functionality in just a few lines of code. **Copy paste the code from below** - it will save the grid state in the browser `LocalStorage` object every time the user leaves the current page. Whenever the user returns to main page, the grid state will be restored. No more need to configure those complex advanced filtering and sorting expressions every time to get the data you want - do it once and have the code from below do the rest for your users:
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
 ```tsx
 <IgrTreeGrid onRendered={restoreGridState}>
     <IgrGridState ref={gridStateRef}></IgrGridState>
 </IgrTreeGrid>
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
 ```tsx
 useEffect(() => {
@@ -135,6 +115,24 @@ const restoreGridState = () => {
     const state = window.localStorage.getItem('grid-state');
     if (state) {
         gridStateRef.current.applyStateFromString(state, []);
+    }
+}
+
+```
+
+## Restoring columns
+
+[`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) will not persist columns templates, column formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. Let's show how to do this for templated columns:
+
+1 - Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the `ColumnInit` event:
+
+2 - In the `ColumnInit` event handler, assign the template to the column [`BodyTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=bodyTemplate) property:
+
+```tsx
+function onColumnInit(s: IgrGridComponent, e: IgrColumnComponentEventArgs) {
+    const column: IgrColumn = e.detail;
+    if (column.field === 'IsActive') {
+        column.bodyTemplate = this.activeTemplate;
     }
 }
 ```
@@ -584,12 +582,19 @@ root.render(<App />);
 
 ## Limitations
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+- [`IgrGridState.getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) component will ignore the columns [`Formatter`](mcp:get_api_reference?platform=react&component=IgrColumn&member=formatter), [`Filters`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=filters), [`Summaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaries), [`IgrTreeGrid.sortStrategy`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=sortStrategy), [`IgrColumn.cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses), [`CellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles), [`HeaderTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=headerTemplate) and [`BodyTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=bodyTemplate) properties.
 
-- [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) component will ignore the columns `Formatter`, [`filters`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+## API References
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)<br />
+[`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState)<br />
+[`IgrPivotConfiguration`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration)<br />
+[`IgrPivotDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDimension)<br />
+[`IgrPivotValue`](mcp:get_api_reference?platform=react&component=IgrPivotValue)<br />
 
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+## Additional Resources
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
+- [Paging](paging.md)
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Selection](selection.md)

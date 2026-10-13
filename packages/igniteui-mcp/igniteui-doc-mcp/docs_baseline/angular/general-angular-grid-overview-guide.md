@@ -1,14 +1,15 @@
 ---
 title: A Complete Guide to Angular Grid and Angular App Development
-_description: Modern data grids & charts can be complex and include a range of functionalities. Learn about Angular Grids & Angular App Development with our complete guide!
-_keywords: angular, angular app development, infragistics
-_license: commercial 
+description: Modern data grids & charts can be complex and include a range of functionalities. Learn about Angular Grids & Angular App Development with our complete guide!
+keywords: angular, angular app development, infragistics
+license: commercial 
+llms:
+  description: "Get to know the Angular Data Grid and how to use it by checking out this informative section part of our Grid Overview topic."
 _tocName: Angular: A Complete Guide
 ---
-
 # A Complete Guide to Angular Grid and Angular App Development
 
-_Get to know the Angular Data Grid and how to use it [by checking out this informative section](../grids-and-lists.md#what-is-an-angular-data-grid) part of our Grid Overview topic._
+_Get to know the Angular Data Grid and how to use it [by checking out this informative section](/grids-and-lists#what-is-an-angular-data-grid) part of our Grid Overview topic._
 
 ## Ignite UI - Our Framework for Angular App Development
 
@@ -22,17 +23,17 @@ Among its many benefits, Ignite UI for Angular offers easy integration, rapid de
 
 ## Installing and Creating a Project
 
-You can install Ignite UI for Angular with either the Angular CLI or with the [Ignite UI CLI](./cli/getting-started-with-cli.md). To start quickly with the Angular CLI, run the following command:
+You can install Ignite UI for Angular with either the Angular CLI or with the [Ignite UI CLI](/general/cli/getting-started-with-cli). To start quickly with the Angular CLI, run the following command:
 
 `ng add igniteui-angular`
 
-This is the preferred option when you need to add Ignite UI for Angular to an [existing Angular application](getting-started.md#install-ignite-ui-for-angular).
+This is the preferred option when you need to add Ignite UI for Angular to an [existing Angular application](/general/getting-started#installing-ignite-ui-for-angular).
 
 If you’re creating a new application from scratch, we recommend the following approach:
 
 `npm install –g igniteui-cli`
 
-Once the igniteui cli is installed you can easily bootstrap an application by following cli’s [guided experience using the Ignite UI CLI](./cli/step-by-step-guide-using-cli.md) or [Ignite UI for Angular Schematics](./cli/step-by-step-guide-using-angular-schematics.md), which builds a configured app that the end user can run with a single command:
+Once the igniteui cli is installed you can easily bootstrap an application by following cli’s [guided experience using the Ignite UI CLI](/general/cli/step-by-step-guide-using-cli) or [Ignite UI for Angular Schematics](/general/cli/step-by-step-guide-using-angular-schematics), which builds a configured app that the end user can run with a single command:
 
 `ig`
 
@@ -42,11 +43,11 @@ Use this rich set of cli commands to perform other functions, including generati
 
 When it comes to importing product dependencies, we strongly recommend using our Ignite UI CLI. By simply using `ng add igniteui-angular` you can install the Ignite UI for Angular package, along with all of its dependencies, font imports, styles preferences, and more  to your project.
 
-To start using Ignite UI for Angular components without the Ignite UI CLI, make sure you have configured all necessary dependencies and have performed the proper setup of your project. You can learn how to do this manually in the [Getting started](./getting-started.md) topic.
+To start using Ignite UI for Angular components without the Ignite UI CLI, make sure you have configured all necessary dependencies and have performed the proper setup of your project. You can learn how to do this manually in the [Getting started](/general/getting-started) topic.
 
 ## Adding Components to a Template
 
-Once you finish with the development environment setup, you can continue adding and configuring other Ignite UI components. Here’s how to use [our schematics](./cli-overview.md) to add a grid with basic configuration and add templates to some of our columns.
+Once you finish with the development environment setup, you can continue adding and configuring other Ignite UI components. Here’s how to use [our schematics](/general/cli-overview) to add a grid with basic configuration and add templates to some of our columns.
 
 ```html
 <igx-grid #grid1 [data]="localData" height="600px" (selected)="cellSelection($event)">
@@ -56,8 +57,10 @@ Once you finish with the development environment setup, you can continue adding 
     <igx-column field="TrackProgress" sortable="true" header="Track Progress" [filterable]="false">
         <ng-template igxCell let-val>
             <div class="linear-bar-container">
+
                 <igx-linear-bar [textVisibility]="false" class="cell__inner_2" [value]="val"></igx-linear-bar>
-            </div>
+            
+</div>
         </ng-template>
     </igx-column>
     <igx-paginator [perPage]="10">
@@ -155,12 +158,12 @@ export class MyComponent implements OnInit {
 ```html
 <igx-grid [data]="records">
     <igx-column field="ProductId"></igx-column>
-    <!-- rest of the column definitions -->
+    {/* rest of the column definitions */}
     ...
 </igx-grid>
 ```
 
-Check out our [Data-binding topic](../grid/grid.md#angular-grid-data-binding) for more detailed information.
+Check out our [Data-binding topic](/grid/grid#angular-grid-data-binding) for more detailed information.
 
 The same data binding technique is applicable to the other Ignite UI components, such as the igxDataChart.
 
@@ -197,15 +200,16 @@ Angular data grids support easy sorting, filtering, and pagination. With rich AP
     </igx-column>
     <igx-paginator [perPage]="10">
     </igx-paginator>
+</igx-grid>
 ```
 
 The Grid provides three types of Filtering with custom filtering conditions:
 
-- [Filter row](../grid/filtering.md) per column with default filtering strategy provided out of the box, as well as all the standard filtering conditions.
+- [Filter row](/grid/filtering) per column with default filtering strategy provided out of the box, as well as all the standard filtering conditions.
 
-- [Excel style filtering](../grid/excel-style-filtering.md), with a configurable menu of features like sorting, moving, pinning, and hiding features.
+- [Excel style filtering](/grid/excel-style-filtering), with a configurable menu of features like sorting, moving, pinning, and hiding features.
 
-- [Advanced filtering](../grid/advanced-filtering.md) that provides a dialog which allows the creation of groups with filtering conditions across all columns.
+- [Advanced filtering](/grid/advanced-filtering) that provides a dialog which allows the creation of groups with filtering conditions across all columns.
 
 Our [Angular 9 release](https://www.infragistics.com/community/blogs/b/infragistics/posts/ignite-ui-for-angular-9-0-0-release "Ignite UI for Angular 9.0.0 Release") includes plenty of new key features – from data analysis to a rich visualization, grid state persistence, and theming widget.
 
@@ -237,33 +241,171 @@ $my-color-palette: palette(
 
 Since Ignite UI for Angular bases its component designs on the [Material Design Principles](https://material.io/guidelines/material-design/introduction.html "Introduction to Material Design"), we try to get as close as possible to colors, sizes, typography, and the overall look and feel of our components to those created by Google. Example:
 
-<div class="sample-container loading" style="height: 477px">
-    <iframe id="list-sample-4-iframe" src='{environment:crmDemoBaseUrl}/' width="100%" height="100%" seamless="" frameborder="0" onload="onSampleIframeContentLoaded(this);"></iframe>
-</div>
+<code-view iframe-src="{environment:crmDemoBaseUrl}/" github-src="" alt="Angular CRM demo example"></code-view>
 <p style="margin: 0;padding-top: 0.5rem">Like this sample? Get access to our complete Angular toolkit and start building your own apps in minutes. <a class="no-external-icon mchNoDecorate trackCTA" target="_blank" href="https://www.infragistics.com/products/ignite-ui-angular/download" data-xd-ga-action="Download" data-xd-ga-label="Ignite UI for Angular">Download it for free.</a></p>
-
-<div class="divider--half"></div>
-
-We want to also to mention our samples browser Theming widget. Now, you can change themes at runtime in the [Ignite UI sample browser](../grid/grid.md) with just one click. Theming widget allows you to change the styles, colors, roundness, and elevation. Customization of theming has never been easier. Once you are ready with your theme, just press "DOWNLOAD SASS" and you have your SCSS file at your disposal and you can use it in your app:
-
-<div class="divider--half"></div>
-
-<div>
-<img class="b-lazy responsive-img" style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc;"
-    src="../../images/general/ThemingWidget1.gif"
-    data-src="../../images/general/ThemingWidget1.gif"
-    data-srcset="../../images/general/ThemingWidget1.gif 480w, ../../images/general/ThemingWidget1.gif 768w, ../../images/general/ThemingWidget1.gif 1100w"
-    alt="Theming widget example"
-    title="The Theming widget is using Ignite UI powerful theming framework.">
-</div>
 
 ## Data Analysis with Ignite UI
 
-The Ignite Angular UI toolset also includes [data analysis capabilities](data-analysis.md). We strive to give you all of the business capabilities you will need to deliver great experiences to your customers. So, we now provide directives that will give you a more Excel-like experience. For example, by selecting a portion of data you are now able to click a button and perform a quick data analysis on that subset of your data.
+The Ignite Angular UI toolset also includes [data analysis capabilities](/general/data-analysis). We strive to give you all of the business capabilities you will need to deliver great experiences to your customers. So, we now provide directives that will give you a more Excel-like experience. For example, by selecting a portion of data you are now able to click a button and perform a quick data analysis on that subset of your data.
 
-<div class="sample-container loading" style="height: 750px;">
-    <iframe id="grid-dynamic-chart" frameborder="0" seamless="" width="100%" height="100%" data-src="{environment:lobDemosBaseUrl}/grid-dynamic-chart-data/data-analysis" class="lazyload no-theming"></iframe>
-</div>
+```typescript
+/* eslint-disable max-len */
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { IgxChartIntegrationDirective, IgxContextMenuDirective, IgxConditionalFormattingDirective,  OPTIONS_TYPE, CHART_TYPE } from 'igniteui-angular-extras';
+
+import { FinancialData } from '../data/financialData';
+import { IgxGridComponent } from 'igniteui-angular/grids/grid';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { DecimalPipe, CurrencyPipe } from '@angular/common';
+
+@Component({
+    selector: 'app-grid-dynamic-chart-data',
+    templateUrl: './grid-dynamic-chart-data.component.html',
+    styleUrls: ['./grid-dynamic-chart-data.component.scss'],
+    imports: [IgxGridComponent, IgxChartIntegrationDirective, IgxConditionalFormattingDirective, IgxContextMenuDirective, IgxColumnComponent, IgxCellTemplateDirective, DecimalPipe, CurrencyPipe]
+})
+export class GridDynamicChartDataComponent implements OnInit, AfterViewInit {
+
+    public data;
+
+    @ViewChild(IgxChartIntegrationDirective, {static: false})
+    public chartDirective: IgxChartIntegrationDirective;
+
+    public ngOnInit() {
+        this.data = FinancialData.generateData(1000);
+    }
+
+    public ngAfterViewInit() {
+      const pieChartOptions = {
+        labelsPosition: 4,
+        allowSliceExplosion: true,
+        sliceClick: (evt) => { evt.args.isExploded = !evt.args.isExploded; },
+        formatLabel: (context) => `${context.percentValue.toFixed(2)}%`
+      };
+
+      this.chartDirective.setChartComponentOptions(CHART_TYPE.Pie, OPTIONS_TYPE.Chart, pieChartOptions);
+      this.chartDirective.getAvailableCharts()
+                         .filter(chart => chart.indexOf('Scatter') === -1 ||
+                                          chart.indexOf('Bar') === -1 ||
+                                          chart !== CHART_TYPE.Pie)
+                         .forEach(chart => this.chartDirective.setChartComponentOptions(chart, OPTIONS_TYPE.XAxis, {labelAngle: 30}));
+    }
+
+    public formatCurrency(value: number) {
+        return '$' + value.toFixed(3);
+    }
+}
+```
+```html
+<div class="grid-chart-contextmenu-wrapper">
+    <igx-grid #grid igxChartIntegration igxConditionalFormatting igxContextMenu primaryKey='id' [data]="data">
+        <igx-column field="id" [hidden]="true"></igx-column>
+        <igx-column field="category" [editable]="true" [width]="'110px'"></igx-column>
+        <igx-column field="type" [editable]="true" [filterable]="false" [width]="'130px'"></igx-column>
+        <igx-column field="country" [editable]="true" [width]="'100px'"></igx-column>
+        <igx-column field="price" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="startY" [width]="'100px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="startYDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="buy" [width]="'100px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="buyDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="highY" [width]="'100px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="highYDiff" [width]="'120px'" dataType="number" [formatter]="formatCurrency"
+            [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="openPrice" dataType="number" [formatter]="formatCurrency" [editable]="true"
+            [width]="'130px'">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="openPriceDiff" dataType="number" [width]="'140px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="lowY" [width]="'100px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="lowYDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="highD" [width]="'100px'" dataType="number" [headerClasses]="'headerAlignSyle'"
+            [editable]="true" [formatter]="formatCurrency">
+        </igx-column>
+        <igx-column field="highDDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="lowD" [width]="'100px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="lowDDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="sell" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [editable]="true">
+        </igx-column>
+        <igx-column field="sellDiff" dataType="number" [width]="'120px'" [editable]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="finjs-icons">
+                    <span>{{cell.value | number:'1.4-4'}}%</span>
+                </div>
+            </ng-template>
+        </igx-column>
+        <igx-column field="region" [editable]="true"></igx-column>
+        <igx-column field="contract" [editable]="true"></igx-column>
+        <igx-column field="settlement" [width]="'150px'" [editable]="true"></igx-column>
+    </igx-grid>
+  </div>
+```
+```scss
+:host ::ng-deep {
+    .grid-chart-contextmenu-wrapper {
+        --ig-size: var(--ig-size-small);
+        width: 90%;
+        margin: 50px auto;
+        height: 80%;
+    }
+}
+```
 
 ## Tools for Code Generation and Design
 
@@ -276,15 +418,10 @@ Grid components, in general, are intended to visualize large quantities of tabul
 In order to satisfy the requirements of a web application for load time and run-time performance, it is important to virtualize the Document Object Model (DOM) elements that are rendered, and to either swap or reuse DOM elements when the user performs vertical and horizontal scrolling on the component’s container. The igxGrid has great tun-time scrolling performance without visual tears as well as soft performance (defined by the general usability of your software). Here’s an example of a Gif with scrolling performance:
 
 <div>
-<img class="b-lazy responsive-img" style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc;"
-    src="../../images/general/scrolling.gif"
-    data-src="../../images/general/scrolling.gif"
-    data-srcset="../../images/general/scrolling.gif 480w, ../../images/general/scrolling.gif 768w, ../../images/general/scrolling.gif 1100w"
-    alt="Scrolling performance"
-    title="igxGrid virtual scrolling performance">
+
 </div>
 
-<div class="divider--half"></div>
+<hr/>
 
 Check out our Grid and see how easy it is to find and navigate to the feature you want to use, or how appealing the look and feel of it would be in your application.
 

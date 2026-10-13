@@ -1,14 +1,15 @@
 ---
-title: Blazor Hierarchical Grid | Fastest Blazor Hierarchical Table | Infragistics
-_description: The Ignite UI for Blazor Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: Blazor hierarchical grid, igniteui for Blazor, infragistics
-_license: commercial
+title: "Blazor Hierarchical Grid | Fastest Blazor Hierarchical Table | Infragistics"
+description: The Ignite UI for Blazor Hierarchical Grid provides the necessary tools to load data on demand for each child grid that is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: "Blazor hierarchical grid, igniteui for Blazor, infragistics"
+license: commercial
 mentionedTypes: ["HierarchicalGrid", "RowIsland"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for Blazor HierarchicalGrid allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible."
 _tocName: Load on Demand
 _premium: true
 ---
-
 # Hierarchical Grid Load On Demand
 
 The Ignite UI for Blazor [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
@@ -152,7 +153,7 @@ First we will prepare our service provider so we will be ready to get the data w
 
 We will be communicating with our backend service over HTTP protocol using the [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch) global function the browsers provide. That way in order to get our data we will need this simple method in our service:
 
-```razor
+```javascript
 function getData(dataState) {
     return fetch(buildUrl(dataState))
         .then((result) => result.json());
@@ -165,13 +166,11 @@ As you can see `buildUrl()` will be the method that will generate our url based 
 
 Next we will define how we should build our URL for the GET request. This is where we will be able to get the data for our main grid but also for any child grid inside it. We will use the `Customers` data from  this [topic](https://data-northwind.indigo.design/swagger/index.html) for our root level and use `Orders` and `Details` for the lower levels. The model will differ per application but we will use the following one:
 
-<img class="responsive-img" src="../../../images/hgrid-database.jpg" alt="hgrid-database" />
-
 What we first need is the `key` of our table to determine from where to get the data for the desired grid, the primary key of the parent row and its unique ID.
 
 We will define all this in the `dataState` object. An example:
 
-```razor
+```javascript
 const dataState: {
     key: string;
     parentID: any;
@@ -198,7 +197,7 @@ function buildUrl(dataState) {
 
 Finally, this is how our remote service would look like:
 
-```razor
+```javascript
 const DATA_URL = `https://data-northwind.indigo.design/`;
 
 function getData(dataState) {
@@ -225,7 +224,7 @@ Next we will setup our hierarchical grid and connect it to our remote service pr
 
 ### Template defining
 
-First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PrimaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
+First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
 
 ```razor
 <IgbHierarchicalGrid Id="hGrid" PrimaryKey="customerId" Height="600px">
@@ -261,7 +260,7 @@ We can use one method for all row islands since we built our service so that it 
 
 Let's name the method that we will use `OnGridCreated`.
 
-Since the `GridCreated` event provides the `parentID` property, a reference to the row island as `owner` and the new child `grid` property, it will be passed as the first argument. We are only missing information about the parent row's `primaryKey`, but we can easily determine that based on the row island [`ChildDataKey`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland&member=ChildDataKey).
+Since the `GridCreated` event provides the `parentID` property, a reference to the row island as `owner` and the new child `grid` property, it will be passed as the first argument. We are only missing information about the parent row's `primaryKey`, but we can easily determine that based on the row island [`ChildDataKey`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland&member=childDataKey).
 
 The template file, with these changes added, would look like this:
 
@@ -295,7 +294,7 @@ One of our final steps now will be to connect our previously created service to 
 
 We will get a reference to our root grid to set its data. In order to make sure that our grid is rendered before we request its data from the service and assign it, we will use the `Rendered` event. As it doesn't have any parents we can only pass that `rootLevel` is **true**, and the key for it, to the `getData` of our service. Since it returns a Promise we will need to subscribe to it:
 
-```razor
+```javascript
 igRegisterScript("OnGridRendered", () => {
     const grid = document.getElementById("hGrid");
 
@@ -311,7 +310,7 @@ Next, we only need to create our `OnGridCreated` method that will request data f
 
 It will be similar to getting the root level grid data, just this time we will need to pass more information, like `parentID` and `parentKey`. `rootLevel` will be **false** for any child:
 
-```razor
+```javascript
 igRegisterScript("OnGridCreated", (args) => {
     const context = args.detail;
     const _parentKey = context.owner.childDataKey === "Orders" ? "Customers" : "Orders";
@@ -333,11 +332,11 @@ With this, the setup of our application is almost done. This last step aims to i
 
 ### Setup of loading indication
 
-The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can display a loading indicator by setting the [`IsLoading`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=IsLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can display a loading indicator by setting the [`IsLoading`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
 
 In this case the final version of our configuration would look like this:
 
-```razor
+```javascript
 igRegisterScript("OnGridRendered", () => {
     const grid = document.getElementById("hGrid");
 
@@ -372,13 +371,11 @@ igRegisterScript("OnGridCreated", (args) => {
 ```
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbRowIsland`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbRowIsland`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland)
 ## Additional Resources
 
-- [Hierarchical Grid Component](overview.md)
+- [Hierarchical Grid Component](./overview.md)
 
 Our community is active and always welcoming to new ideas.
 

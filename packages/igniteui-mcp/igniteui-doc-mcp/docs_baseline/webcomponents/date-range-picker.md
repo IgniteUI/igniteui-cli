@@ -1,19 +1,20 @@
 ---
-title: Web Components Date Range Picker Component - Ignite UI for Web Components
-_description: Infragistics' Web Components Date Range Picker allows the user to select a range of two dates from a calendar and set it in an input element.
-_keywords: Web Components Date Range Picker, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Date Range Picker Component - Ignite UI for Web Components"
+description: Infragistics' Web Components Date Range Picker allows the user to select a range of two dates from a calendar and set it in an input element.
+keywords: "Web Components Date Range Picker, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["DateRangePicker"]
+llms:
+  description: "The Ignite UI for Web Components Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates."
 _tocName: Date Range Picker
 ---
-
 # Web Components Date Range Picker Overview
 
-The Ignite UI for Web Components Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates. It is highly customizable to fit various application requirements, offering features such as date range restrictions, configurable date formats, and more.
+The Ignite UI for Web Components Date Range Picker is a lightweight component that includes a text input and a calendar pop-up, allowing users to easily select start and end dates.  It is highly customizable to fit various application requirements, offering features such as date range restrictions, configurable date formats, and more.
 
 ## Date Range Picker Example
 
-Below is a sample demonstrating the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component in action, where a calendar pop-up allows users to select start and end dates.
+Below is a sample demonstrating the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component in action, where a calendar pop-up allows users to select start and end dates.
 
 ```css
 /* shared styles are loaded from: */
@@ -22,13 +23,13 @@ Below is a sample demonstrating the [`IgcDateRangePickerComponent`](mcp:get_api_
 
 ### Getting Started
 
-To start using the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), you first need to install the Ignite UI for Web Components by running the following command:
+To start using the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), you first need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-After that, you need to import the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), its necessary CSS, and register its module, as follows:
+After that, you need to import the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), its necessary CSS, and register its module, as follows:
 
 ```ts
 import { defineComponents, IgcDateRangePickerComponent } from 'igniteui-webcomponents';
@@ -37,26 +38,26 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 defineComponents(IgcDateRangePickerComponent);
 ```
 
-Now you can start with a basic configuration of the Web Components [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent).
+Now you can start with a basic configuration of the Web Components [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent).
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Usage
 
-The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
+The [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
 
 When the calendar is visible, a date range can be selected by choosing both a start and end date. Selecting a date will set both the start and end date, and once a second date is chosen, it will set the end date. If a range is already selected, clicking any other date on the calendar will start a new range selection.
 
 ### Display Date Range Picker
 
-To instantiate a [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) in its default single input mode, use the following code:
+To instantiate a [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) in its default single input mode, use the following code:
 
 ```html
 <igc-date-range-picker>
 </igc-date-range-picker>
 ```
 
-To switch the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) to use two inputs, set the [`useTwoInputs`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=useTwoInputs) property to `true`.
+To switch the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) to use two inputs, set the [`IgcDateRangePicker.useTwoInputs`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=useTwoInputs) property to `true`.
 
 ```html
 <igc-date-range-picker use-two-inputs="true">
@@ -65,7 +66,7 @@ To switch the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=web
 
 ### Value
 
-In addition to being selected or typed by the user, the range value of the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) can also be set using the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
+In addition to being selected or typed by the user, the range value of the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) can also be set using the [`IgcDateRangePicker.value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=value) property. It's important to note that the value must follow the format: **`{ start: startDate, end: endDate }`**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```ts
 let dateRange = document.querySelector('igc-date-range-picker') as IgcDateRangePickerComponent;
@@ -83,14 +84,14 @@ In addition, the value can be set as attribute. In this case it should represent
 
 ### Read-only & Non-editable
 
-You can also make the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly) property.
+You can also make the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`IgcDateRangePicker.readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly) property.
 
 ```html
 <igc-date-range-picker use-two-inputs="true" readonly>
 </igc-date-range-picker>
 ```
 
-Alternatively, you can use the [`nonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) property, which, unlike [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
+Alternatively, you can use the [`IgcDateRangePicker.nonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) property, which, unlike [`IgcDateRangePicker.readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
 
 ```html
 <igc-date-range-picker use-two-inputs="true" non-editable="true">
@@ -99,7 +100,7 @@ Alternatively, you can use the [`nonEditable`](mcp:get_api_reference?platform=we
 
 ### Popup modes
 
-By default, when clicked, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`mode`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=mode) property to `dialog`.
+By default, when clicked, the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`IgcDateRangePicker.mode`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=mode) property to `dialog`.
 
 ```html
 <igc-date-range-picker mode="dialog">
@@ -108,7 +109,7 @@ By default, when clicked, the [`IgcDateRangePickerComponent`](mcp:get_api_refere
 
 ### Keyboard Navigation
 
-The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
+The [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -124,7 +125,7 @@ The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents
 | <kbd>ALT</kbd> + <kbd>↓</kbd> | Opens the calendar dropdown |
 | <kbd>ALT</kbd> + <kbd>↑</kbd> | Closes the calendar dropdown |
 
-You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component.
+You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component.
 
 |Keys|Description|
 |----|-----------|
@@ -142,7 +143,7 @@ You can also navigate within the calendar pop-up using the keyboard. The navigat
 
 ### Label
 
-You can define a label for the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=label) property when it is in single input mode. In two inputs mode, you can use the [`labelStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelStart) and [`labelEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelEnd) properties to define labels for the start and end date input fields, respectively.
+You can define a label for the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the [`IgcDateRangePicker.label`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=label) property when it is in single input mode. In two inputs mode, you can use the [`IgcDateRangePicker.labelStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelStart) and [`IgcDateRangePicker.labelEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelEnd) properties to define labels for the start and end date input fields, respectively.
 
 ```html
 <igc-date-range-picker label="Date Range">
@@ -156,9 +157,9 @@ You can define a label for the [`IgcDateRangePickerComponent`](mcp:get_api_refer
 
 ### Format
 
-You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale), [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), and [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat).
+You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`IgcDateRangePicker.locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale), [`IgcDateRangePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), and [`IgcDateRangePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat).
 
-The [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
+The [`IgcDateRangePicker.locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
 For example, to display the date in a Japanese format, you can set the locale property like this:
 
 ```html
@@ -166,14 +167,14 @@ For example, to display the date in a Japanese format, you can set the locale pr
 </igc-date-range-picker>
 ```
 
-If you want to manually define the date format, you can use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat) property by passing a custom format string:
+If you want to manually define the date format, you can use the [`IgcDateRangePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat) property by passing a custom format string:
 
 ```html
 <igc-date-range-picker input-format="dd/MM/yy">
 </igc-date-range-picker>
 ```
 
-The [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), if both properties are used together:
+The [`IgcDateRangePicker.displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`IgcDateRangePicker.inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), if both properties are used together:
 
 ```html
 <igc-date-range-picker input-format="dd/MM/yy" display-format="yy/MM/dd">
@@ -186,17 +187,17 @@ You can further customize the pop-up calendar using various properties:
 
 |Name|Type|Description|
 |--|--|--|
-| [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
-| [`visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
-| [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
-| [`open`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=open) | boolean | Determines whether the calendar picker is open. |
-| [`keepOpenOnSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
-| [`keepOpenOnOutsideClick`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
-| [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=weekStart) | string | Sets the start day of the week. |
-| [`hideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
-| [`hideHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
-| [`headerOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
-| [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
+| [`Orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
+| [`VisibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
+| [`ShowWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
+| [`Open`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=open) | boolean | Determines whether the calendar picker is open. |
+| [`KeepOpenOnSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
+| [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
+| [`WeekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcFieldPipeArgs&member=weekStart) | string | Sets the start day of the week. |
+| [`HideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
+| [`HideHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
+| [`HeaderOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
+| [`ActiveDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
 
 ```html
 <igc-date-range-picker orientation="vertical" visible-months="1" show-week-numbers="true">
@@ -205,7 +206,7 @@ You can further customize the pop-up calendar using various properties:
 
 ### Min & Max
 
-You can also set the [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) will become invalid.
+You can also set the [`IgcDateRangePicker.min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min) and [`IgcDateRangePicker.max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) will become invalid.
 
 ```html
 <igc-date-range-picker min="2025-05-06" max="2025-05-10">
@@ -214,7 +215,7 @@ You can also set the [`min`](mcp:get_api_reference?platform=webcomponents&compon
 
 ### Custom & Predefined Date Ranges
 
-You can also add custom date range chips to the calendar pop-up for faster range selection using the [`customRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`usePredefinedRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
+You can also add custom date range chips to the calendar pop-up for faster range selection using the [`IgcDateRangePicker.customRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`IgcDateRangePicker.usePredefinedRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
 
 ```ts
 const today = new Date();
@@ -248,7 +249,7 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 
 ### Disabled & Special dates
 
-You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property.
+You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`IgcDateRangePicker.disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property.
 
 ```ts
 let dateRange = document.querySelector('igc-date-range-picker') as IgcDateRangePickerComponent;
@@ -264,13 +265,13 @@ dateRange.disabledDates = [
 ] as DateRangeDescriptor[];
 ```
 
-You can see more information about all the possibilities that the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
+You can see more information about all the possibilities that the [`IgcDateRangePicker.disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
 
-You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`specialDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=specialDates) property instead. [Special dates](./calendar.md#special-dates)
+You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`IgcDateRangePicker.specialDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=specialDates) property instead. [Special dates](./calendar.md#special-dates)
 
 ### Forms
 
-The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component can also be used seamlessly with the HTML form element. The [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min), [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max), and [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=required) properties act as form validators.
+The [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component can also be used seamlessly with the HTML form element. The [`IgcDateRangePicker.min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min), [`IgcDateRangePicker.max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max), and [`IgcDateRangePicker.required`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=required) properties act as form validators.
 
 ```css
 /* shared styles are loaded from: */
@@ -285,22 +286,22 @@ igc-button {
 
 ### Properties
 
-In addition to the properties we've already covered, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component offers a variety of additional properties that allow you to further configure its behavior.
+In addition to the properties we've already covered, the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component offers a variety of additional properties that allow you to further configure its behavior.
 
 |Name|Type|Description|
 |--|--|--|
-| [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabled) | boolean | Disables the component. |
-| [`nonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) | boolean | Disables typing in the input field(s). |
-| [`placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholder) | string | Placeholder text for the single input mode. |
-| [`placeholderStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
-| [`placeholderEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
-| [`outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
-| [`prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
-| [`resourceStrings`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
+| [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabled) | boolean | Disables the component. |
+| [`NonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) | boolean | Disables typing in the input field(s). |
+| [`Placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholder) | string | Placeholder text for the single input mode. |
+| [`PlaceholderStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
+| [`PlaceholderEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
+| [`Outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
+| [`Prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
+| [`ResourceStrings`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
 
 ### Slots
 
-You also have the ability to add custom content and modify the appearance of the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the available slots.
+You also have the ability to add custom content and modify the appearance of the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the available slots.
 
 The `prefix` and `suffix` slots allow you to insert custom content before or after the input field (only available in single input mode):
 
@@ -311,9 +312,9 @@ The `prefix` and `suffix` slots allow you to insert custom content before or aft
 </igc-date-range-picker>
 ```
 
-In two inputs mode, you can use the `prefix-start`, `prefix-end`, `suffix-start`, and `suffix-end` slots instead to target the individual inputs.
+In two-input mode, you can use the `prefix-start`, `prefix-end`, `suffix-start`, and `suffix-end` slots instead to target the individual inputs. For all `prefix-` and `suffix-` type slots, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
-Another set of useful slots are `clear-icon` and `calendar-icon`, which allow you to customize the icons for the clear and calendar buttons in the input fields:
+Another set of useful slots are `clear-icon` and `calendar-icon`, which allow you to customize the icons for the clear and calendar buttons in the input fields. For these slots we also recommend using a `<span>` element for symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
 ```html
 <igc-date-range-picker>
@@ -322,7 +323,7 @@ Another set of useful slots are `clear-icon` and `calendar-icon`, which allow yo
 </igc-date-range-picker>
 ```
 
-In two inputs mode, you can also customize the default “to” text between the fields by using the `separator` slot:
+In two-input mode, you can also customize the default “to” text between the fields using the `separator` slot. For best result, we recommend using a `<span>` element for this slot.
 
 ```html
 <igc-date-range-picker use-two-inputs="true">
@@ -330,7 +331,7 @@ In two inputs mode, you can also customize the default “to” text between the
 </igc-date-range-picker>
 ```
 
-The `actions` slot allows you to insert a custom action button with your own logic. For example, the button below toggles week numbers column in the calendar:
+The `actions` slot allows you to insert a custom action button with your own logic. For example, the button below toggles the week numbers column in the calendar. We recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```html
 <igc-date-range-picker id="DateRange">
@@ -338,7 +339,7 @@ The `actions` slot allows you to insert a custom action button with your own log
 </igc-date-range-picker>
 ```
 
-In addition to the slots we've already covered, the following slots are also available in the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component:
+In addition to the slots we've already covered, the following slots are also available in the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component:
 
 |Name|Description|
 |--|--|
@@ -352,6 +353,10 @@ In addition to the slots we've already covered, the following slots are also ava
 | `calendar-icon-open` | Icon or content shown when the picker is open (applies to both inputs in two inputs mode). |
 | `calendar-icon-open-start` | Icon or content for the open state of the start input (two inputs mode).|
 | `calendar-icon-open-end` | Icon or content for the open state of the end input (two inputs mode). |
+
+For the `title`, `helper-text`, and `header-date` slots, we recommend using a `<span>` element. A `<span>` provides a neutral container that inherits the component's styles cleanly, without carrying built-in styling properties that can interfere with the component's intended typography and layout.
+
+And for the `clear-icon-` and `calendar-icon-` type slots, we recommend using a `<span>` element for symbols, or emojis and an [`<igc-icon>`](../layouts/icon.md) component for icons.
 
 ```css
 /* shared styles are loaded from: */
@@ -373,20 +378,20 @@ h3:nth-of-type(1) {
 
 ### Methods
 
-In addition to the properties and slots, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes few methods that you can use:
+In addition to the properties and slots, the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes few methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=show) | Displays the calendar picker component. |
-| [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hide) | Hides the calendar picker component. |
-| [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=toggle) | Toggles the calendar picker between the shown and hidden states. |
-| [`clear`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=clear) | Clears the input fields, removing any user input. |
-| [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=select) | Selects a date range value in the picker. |
-| [`setCustomValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
+| [`Show`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=show) | Displays the calendar picker component. |
+| [`Hide`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hide) | Hides the calendar picker component. |
+| [`Toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=toggle) | Toggles the calendar picker between the shown and hidden states. |
+| [`Clear`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=clear) | Clears the input fields, removing any user input. |
+| [`Select`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=select) | Selects a date range value in the picker. |
+| [`SetCustomValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
 
 ## Styling
 
-Since the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component uses the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes some unique CSS parts that you can use to customize its appearance:
+Since the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component uses the [`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](./calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes some unique CSS parts that you can use to customize its appearance:
 
 |Name|Description|
 |--|--|
@@ -462,12 +467,11 @@ igc-date-range-picker::part(clear-icon-end) {
 
 ## API References
 
-- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
-- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
-- [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent)
-- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
-- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)<br />
+[`IgcCalendar`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)<br />
+[`IgcDateRangePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent)<br />
+[`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)<br />
+[`IgcDialog`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent)<br />
 
 ## Additional Resources
 

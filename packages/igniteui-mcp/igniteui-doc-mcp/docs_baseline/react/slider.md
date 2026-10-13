@@ -1,12 +1,13 @@
 ---
-title: React Slider & Range Slider Components | Ignite UI for React
-_description: Learn how to configure a selection in a given range by using the thumb track with React Slider & Range Slider part of Ignite UI for React. Choose between single and range slider.
-_keywords: React, UI controls, web widgets, UI widgets, React Slider Components, Infragistics
+title: "React Slider & Range Slider Components | Ignite UI for React"
+description: Learn how to configure a selection in a given range by using the thumb track with React Slider & Range Slider part of Ignite UI for React. Choose between single and range slider.
+keywords: "React, UI controls, web widgets, UI widgets, React Slider Components, Infragistics"
 mentionedTypes: ["Slider", "SliderLabel", "RangeSlider"]
-_license: MIT
+license: MIT
+llms:
+  description: "The React Slider & Range Slider components allow selection in a given range by moving the thumb along the track."
 _tocName: Slider & Range Slider
 ---
-
 # React Slider & Range Slider Overview
 
 The React Slider & Range Slider components allow selection in a given range by moving the thumb along the track. The track can be defined as continuous or stepped and you can choose between single and range slider.
@@ -86,7 +87,7 @@ The simplest way to start using the [`IgrSlider`](mcp:get_api_reference?platform
 
 ### Value
 
-The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`value`](mcp:get_api_reference?platform=react&component=IgrSlider&member=value) property. The two thumbs of the Range Slider component display its [`lower`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=lower) and [`upper`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=upper) value properties.
+The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`Value`](mcp:get_api_reference?platform=react&component=IgrSlider&member=value) property. The two thumbs of the Range Slider component display its [`Lower`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=lower) and [`Upper`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=upper) value properties.
 
 Both sliders emit two events when any of the values is changed. The [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) event is emitted whenever a value is changed using keyboard or drag interaction while the `Change` event is emitted when the value change is committed on drag end or keyboard interaction.
 
@@ -149,11 +150,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SliderValue />);
 ```
 
-While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideTooltip) property.
+While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`HideTooltip`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideTooltip) property.
 
 ### Disabled
 
-You can use the [`disabled`](mcp:get_api_reference?platform=react&component=IgrSlider&member=disabled) property of the sliders to disable their user interactions.
+You can use the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrSlider&member=disabled) property of the sliders to disable their user interactions.
 
 ```css
 igc-slider {
@@ -188,7 +189,7 @@ root.render(<SliderDisabled/>);
 
 ### Constraints
 
-The track of the sliders has a minimum and maximum values which are configured using the [`min`](mcp:get_api_reference?platform=react&component=IgrInput&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrInput&member=max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](mcp:get_api_reference?platform=react&component=IgrSlider&member=lowerBound) and [`upperBound`](mcp:get_api_reference?platform=react&component=IgrSlider&member=upperBound) properties.
+The track of the sliders has a minimum and maximum values which are configured using the [`Min`](mcp:get_api_reference?platform=react&component=IgrSlider&member=min) and [`Max`](mcp:get_api_reference?platform=react&component=IgrSlider&member=max) properties. Additionally, you can restrict the thumb dragging using the [`LowerBound`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=lowerBound) and [`UpperBound`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=upperBound) properties.
 
 ```css
 igc-slider {
@@ -223,7 +224,7 @@ root.render(<SliderConstraints/>);
 
 ### Step
 
-The [`step`](mcp:get_api_reference?platform=react&component=IgrInput&member=step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`discreteTrack`](mcp:get_api_reference?platform=react&component=IgrSlider&member=discreteTrack) property of the slider to **true** will make it to display the steps on the track.
+The [`Step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`DiscreteTrack`](mcp:get_api_reference?platform=react&component=IgrSlider&member=discreteTrack) property of the slider to **true** will make it to display the steps on the track.
 
 ```css
 igc-slider {
@@ -256,11 +257,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderDiscrete/>);
 ```
 
-If the [`step`](mcp:get_api_reference?platform=react&component=IgrInput&member=step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](mcp:get_api_reference?platform=react&component=IgrSlider&member=discreteTrack) is set to **true**.
+If the [`Step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`DiscreteTrack`](mcp:get_api_reference?platform=react&component=IgrSlider&member=discreteTrack) is set to **true**.
 
 ### Tick Marks
 
-The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`primaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`secondaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=secondaryTicks) property to a value greater than `0`. The value of [`secondaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
+The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`PrimaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`SecondaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=secondaryTicks) property to a value greater than `0`. The value of [`SecondaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
 
 ```css
 /* shared styles are loaded from: */
@@ -289,9 +290,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderTicks/>);
 ```
 
-Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickOrientation) property. By default, the [`tickOrientation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
+Additionally, you could configure the orientation of the tick marks using the [`TickOrientation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickOrientation) property. By default, the [`TickOrientation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
-By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`hidePrimaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hidePrimaryLabels) and [`hideSecondaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideSecondaryLabels) properties.
+By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the [`SliderTickLabelRotation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickLabelRotation) property. Additionally, you could hide the labels of the primary and secondary ticks using the [`HidePrimaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hidePrimaryLabels) and [`HideSecondaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideSecondaryLabels) properties.
 
 ```css
 /* shared styles are loaded from: */
@@ -326,7 +327,7 @@ root.render(<SliderTickLabels/>);
 
 ### Value Format
 
-If you want to format the thumb and tick label values, the slider provides [`valueFormat`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormat), [`valueFormatOptions`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormatOptions) and [`locale`](mcp:get_api_reference?platform=react&component=IgrSlider&member=locale) properties. Тhe [`valueFormatOptions`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`locale`](mcp:get_api_reference?platform=react&component=IgrSlider&member=locale). The [`valueFormat`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
+If you want to format the thumb and tick label values, the slider provides [`ValueFormat`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormat), [`ValueFormatOptions`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormatOptions) and [`Locale`](mcp:get_api_reference?platform=react&component=IgrSlider&member=locale) properties. The [`ValueFormatOptions`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`Locale`](mcp:get_api_reference?platform=react&component=IgrSlider&member=locale). The [`ValueFormat`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
 
 ```css
 /* shared styles are loaded from: */
@@ -371,7 +372,7 @@ root.render(<SliderValueFormat/>);
 
 ### Labels
 
-In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgrSliderLabel`](mcp:get_api_reference?platform=react&component=IgrSliderLabel) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](mcp:get_api_reference?platform=react&component=IgrSlider&member=min), [`max`](mcp:get_api_reference?platform=react&component=IgrSlider&member=max) and [`step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](mcp:get_api_reference?platform=react&component=IgrSlider&member=min) is set to `0`, [`max`](mcp:get_api_reference?platform=react&component=IgrSlider&member=max) is set to `2` and [`step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) is set to `1`.
+In some cases you would want to format the values of the slider as string values i.e. map the values **[0, 1, 2]** to **['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgrSliderLabel`](mcp:get_api_reference?platform=react&component=IgrSliderLabel) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`Min`](mcp:get_api_reference?platform=react&component=IgrSlider&member=min), [`Max`](mcp:get_api_reference?platform=react&component=IgrSlider&member=max) and [`Step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`Min`](mcp:get_api_reference?platform=react&component=IgrSlider&member=min) is set to `0`, [`Max`](mcp:get_api_reference?platform=react&component=IgrSlider&member=max) is set to `2` and [`Step`](mcp:get_api_reference?platform=react&component=IgrSlider&member=step) is set to `1`.
 
 ```css
 igc-slider {
@@ -509,20 +510,9 @@ root.render(<SliderStyling/>);
 
 ## API References
 
-- [`hidePrimaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hidePrimaryLabels)
-- [`hideSecondaryLabels`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideSecondaryLabels)
-- [`hideTooltip`](mcp:get_api_reference?platform=react&component=IgrSlider&member=hideTooltip)
-- [`primaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=primaryTicks)
-- [`IgrRangeSlider`](mcp:get_api_reference?platform=react&component=IgrRangeSlider)
-- [`secondaryTicks`](mcp:get_api_reference?platform=react&component=IgrSlider&member=secondaryTicks)
-- [`IgrSliderLabel`](mcp:get_api_reference?platform=react&component=IgrSliderLabel)
-- [`IgrSlider`](mcp:get_api_reference?platform=react&component=IgrSlider)
-- `SliderTickLabelRotation`
-- [`tickOrientation`](mcp:get_api_reference?platform=react&component=IgrSlider&member=tickOrientation)
-- [`upperBound`](mcp:get_api_reference?platform=react&component=IgrSlider&member=upperBound)
-- [`valueFormatOptions`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormatOptions)
-- [`valueFormat`](mcp:get_api_reference?platform=react&component=IgrSlider&member=valueFormat)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrRangeSlider`](mcp:get_api_reference?platform=react&component=IgrRangeSlider)<br />
+[`IgrSliderLabel`](mcp:get_api_reference?platform=react&component=IgrSliderLabel)<br />
+[`IgrSlider`](mcp:get_api_reference?platform=react&component=IgrSlider)<br />
 
 ## Additional Resources
 

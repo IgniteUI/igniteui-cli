@@ -1,12 +1,13 @@
 ---
-title: Web Components Rating
-_description: With Ignite UI for Web Components Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Rating components, Web Components Rating controls
-_license: MIT
+title: "Web Components Rating"
+description: With Ignite UI for Web Components Rating, allows users to view and provide feedback using unicode symbols, svg, or icons.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Rating components, Web Components Rating controls"
+license: MIT
 mentionedTypes: ["Rating"]
+llms:
+  description: "The Ignite UI for Web Components Rating component allows users to view and provide feedback."
 _tocName: Rating
 ---
-
 # Web Components Rating Overview
 
 The Ignite UI for Web Components Rating component allows users to view and provide feedback.
@@ -25,7 +26,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent), you need to register it as follows:
+Before using the [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcRatingComponent } from "igniteui-webcomponents";
@@ -36,7 +37,7 @@ defineComponents(IgcRatingComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) is as follows:
+The simplest way to start using the [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) is as follows:
 
 ```html
 <igc-rating></igc-rating>
@@ -46,14 +47,14 @@ This will create a five-star rating component that can be used to input and read
 
 ## Using Custom Symbols
 
-The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgcRatingSymbolComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingSymbolComponent) components between the opening and closing brackets of the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent):
+The [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgcRatingSymbol`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingSymbolComponent) components between the opening and closing brackets of the [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent):
 
 ```html
 <igc-rating>
-  <igc-rating-symbol> <div>💙</div> <div slot="empty">💙</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>💙</div> <div slot="empty">💙</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>💙</div> <div slot="empty">💙</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>💙</div> <div slot="empty">💙</div> </igc-rating-symbol>
+  <igc-rating-symbol> <span>💙</span> <span slot="empty">💙</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>💙</span> <span slot="empty">💙</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>💙</span> <span slot="empty">💙</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>💙</span> <span slot="empty">💙</span> </igc-rating-symbol>
 </igc-rating>
 ```
 
@@ -70,11 +71,11 @@ The Ignite UI for Web Components Rating component has a single selection mode th
 
 ```html
 <igc-rating single>
-  <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
-  <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
+  <igc-rating-symbol> <span>😣</span> <span slot="empty">😣</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>😣</span> <span slot="empty">😣</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>😣</span> <span slot="empty">😣</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>😣</span> <span slot="empty">😣</span> </igc-rating-symbol>
+  <igc-rating-symbol> <span>😣</span> <span slot="empty">😣</span> </igc-rating-symbol>
 </igc-rating>
 ```
 
@@ -90,7 +91,7 @@ igc-rating::part(symbols) {
 
 ## Empty & Selected
 
-The Ignite UI for Web Components Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
+The Ignite UI for Web Components Rating component allows users to use different icons or elements for the 'selected' and 'empty' states of each rating symbol. It is mandatory to provide two icons for each symbol, even if they are the same. One is used for the 'selected' state, which is defined by not specifying any slot, and the other is used for the 'empty' state, which you can define using the `empty` slot. For instance:
 
 ```html
 <igc-rating-symbol>
@@ -104,19 +105,35 @@ The Ignite UI for Web Components Rating component allows users to use different 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
+As shown above, the best practice is to use icons for the rating symbols. We recommend using an [`igc-icon`](../layouts/icon.md) component for the 'empty' and 'selected' icons. However, if you prefer to use symbols or emojis instead of icons, we recommend using a `<span>` element for them, like so:
+
+```html
+<igc-rating>
+  <igc-rating-symbol>
+    <span>😣</span>
+    <span slot="empty">😣</span>
+  </igc-rating-symbol>
+  <igc-rating-symbol>
+    <span>😔</span>
+    <span slot="empty">😔</span>
+  </igc-rating-symbol>
+  ...
+</igc-rating>
+```
+
 ## Configuration
 
 ### Single
 
-Turns on the [`single`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`Single`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=value) attribute sets the current value of the component.
+The [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=value) attribute sets the current value of the component.
 
 ### Label
 
-The [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=label) attribute allows setting the label value of the rating component.
+The [`Label`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -124,11 +141,11 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=max) attribute sets the maximum allowed value of the rating component.
+The [`Max`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`Step`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
@@ -136,25 +153,25 @@ The `hover-preview` attribute makes the component show the possible outcome of u
 
 ### Read-Only
 
-The [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=readOnly) attribute allows the users to set the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`ReadOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=readOnly) attribute allows the users to set the [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
-The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component emits two separate events - `igcHover` and `igcChange`.
+The [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component emits two separate events - `igcHover` and `igcChange`.
 
 ### Hover Event
 
@@ -166,7 +183,7 @@ The `igcChange` event is fired when the selected value changes.
 
 ## Styling
 
-The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -225,10 +242,10 @@ igc-rating::part(symbols) {
 }
 ```
 
-## API Reference
+## API References
 
-- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent)<br />
+[`IgcRatingSymbol`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingSymbolComponent)<br />
 
 ## Additional Resources
 

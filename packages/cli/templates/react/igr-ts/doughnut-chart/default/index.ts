@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_CHARTS_PACKAGE } from "../../constants";
 
 class IgrTsDoughnutChartTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrTsDoughnutChartTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Doughnut Chart";
 		this.description = `proportionally illustrate the occurrences of variables.`;
-		this.packages = ["igniteui-react-charts@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_CHARTS_PACKAGE];
 	}
 }
 module.exports = new IgrTsDoughnutChartTemplate();

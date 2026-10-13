@@ -1,12 +1,13 @@
 ---
-title: React NavDrawer | Infragistics
-_description: Infragistics' React NavDrawer provides side navigation that can be expanded or collapsed within the content
-_keywords: React navbar, Ignite UI for React, Infragistics
-_license: MIT
+title: "React NavDrawer | Infragistics"
+description: Infragistics' React NavDrawer provides side navigation that can be expanded or collapsed within the content
+keywords: "React navbar, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["NavDrawer"]
+llms:
+  description: "The Ignite UI for React Navigation Drawer provides side navigation that can be expanded or collapsed within the content."
 _tocName: Navigation Drawer
 ---
-
 # React Navigation Drawer Overview
 
 The Ignite UI for React Navigation Drawer provides side navigation that can be expanded or collapsed within the content. A mini version provides quick access to navigation even when closed. Its content is completely customizable while also providing default menu item styling.
@@ -275,7 +276,7 @@ To enhance our component a bit, we can use it in conjunction with the [`IgrNavba
 </IgrNavDrawer>
 ```
 
-Let's also add some radio buttons to display all `position` values. This way whenever one gets selected, we will change the position of the drawer.
+Let's also add some radio buttons to display all [`position`](mcp:get_api_reference?platform=react&component=IgrNavDrawer&member=position) values. This way whenever one gets selected, we will change the position of the drawer.
 
 ```tsx
 <IgrRadioGroup alignment="horizontal">
@@ -733,15 +734,14 @@ root.render(<NavDrawerStyling />);
 
 ## API References
 
-- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrNavDrawerHeaderItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerHeaderItem)
-- [`IgrNavDrawerItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerItem)
-- [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer)
-- [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
-- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
-- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)<br />
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)<br />
+[`IgrNavDrawerHeaderItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerHeaderItem)<br />
+[`IgrNavDrawerItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerItem)<br />
+[`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer)<br />
+[`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)<br />
+[`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)<br />
+[`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)<br />
 
 ## Additional Resources
 

@@ -1,19 +1,20 @@
 ---
-title: React ComboBox Component – Ignite UI for React
-_description: React Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox component
-_license: MIT
+title: "React ComboBox Component – Ignite UI for React"
+description: "React Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE"
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox component"
+license: MIT
 mentionedTypes: ["Combo", "SingleSelect", "ComboItem", "ComboHeader", "ComboList"]
+llms:
+  description: "The React ComboBox supports single-selection mode and quick filtering of the list of items via the main input prompt."
 _tocName: Single Selection
 ---
-
 # React Single Selection ComboBox
 
 The React `ComboBox` supports single-selection mode and quick filtering of the list of items via the main input prompt. Users can quickly type in the item they are looking for and be presented with a list of options. Upon pressing the enter key, the first highlighted match will be selected.
 
 ## React Single Selection Example
 
-To enable single-selection and quick filtering, set the [`singleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property on the [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
+To enable single-selection and quick filtering, set the [`SingleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property on the [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
 
 ```tsx
 <IgrCombo singleSelect></IgrCombo>
@@ -110,13 +111,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboSingleSelection />);
 ```
 
-<div class="divider--half"></div>
-
 ## Selection API
 
-The selection API for a ComboBox with the [`singleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
+The selection API for a ComboBox with the [`SingleSelect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=singleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
 
-The main difference is that only one item can be selected at any time. For example, if you have specified a [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) for your combo component, passing more than one item to the [`select`](mcp:get_api_reference?platform=react&component=IgrCombo&member=select)/[`deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
+The main difference is that only one item can be selected at any time. For example, if you have specified a [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) for your combo component, passing more than one item to the [`Select`](mcp:get_api_reference?platform=react&component=IgrCombo&member=select)/[`Deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
 
 Here's how to select/deselect an item programmatically in a single selection combo.
 
@@ -127,7 +126,7 @@ Here's how to select/deselect an item programmatically in a single selection com
 comboRef.current.select('BG01');
 ```
 
-To deselect an item without making a new selection, call the [`deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) method.
+To deselect an item without making a new selection, call the [`Deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) method.
 
 #### Deselecting items
 
@@ -142,11 +141,11 @@ Naturally, some configuration options will have no effect in a single selection 
 
 ### Placeholder
 
-Assigning a value to the [`placeholderSearch`](mcp:get_api_reference?platform=react&component=IgrCombo&member=placeholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
+Assigning a value to the [`PlaceholderSearch`](mcp:get_api_reference?platform=react&component=IgrCombo&member=placeholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
 
 ### Auto-focusing the list of options
 
-Setting the [`autofocusList`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocusList) option on a single selection ComboBox will also have no effect.
+Setting the [`AutofocusList`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocusList) option on a single selection ComboBox will also have no effect.
 
 ## Keyboard Navigation
 
@@ -156,10 +155,8 @@ The keyboard navigation should behave the same as with a non-single selection Co
 
 All other features will behave the same as in a non-single selection ComboBox component.
 
-## API Reference
-
-- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
-
+## API References
+[`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

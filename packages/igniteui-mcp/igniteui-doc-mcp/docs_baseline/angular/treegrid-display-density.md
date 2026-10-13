@@ -1,15 +1,20 @@
 ---
 title:  Angular Grid Size - Ignite UI for Angular
-_description: Learn how to apply size capabilities to the Tree grid component. You can use a set of compact view options in the Ignite UI for Angular.
-_keywords: material density, size igniteui for angular, infragistics
-_license: commercial
+description: Learn how to apply size capabilities to the Tree grid component. You can use a set of compact view options in the Ignite UI for Angular.
+keywords: material density, size igniteui for angular, infragistics
+license: commercial
 _canonicalLink: grid/display-density
+llms:
+  description: "IgxTreeGrid design is based on Material Design Guidelines."
 _tocName: Size
 _premium: true
 ---
 # Angular Tree Grid Size
+
 **IgxTreeGrid** design is based on [Material Design Guidelines](https://material.io/design). We currently provide an option to choose between predefined set of size options that will bring a small, medium, or large view respectively. By selecting the right size for your Material UI table / Material UI grid you can significantly improve the user experience when interacting with large amounts of content.
+
 ## Angular Tree Grid Size Example
+
 ```typescript
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
@@ -144,29 +149,38 @@ igx-buttongroup{
     width: 500px;
 }
 ```
-<div class="divider--half"></div>
+
 ## Usage
-As you can see in the demo above, the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides three size options: **small**, **medium** and **large**. The code snippet below shows how to set size:
+
+As you can see in the demo above, the [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides three size options: **small**, **medium** and **large**. The code snippet below shows how to set size:
+
 ```html
 <igx-tree-grid #treeGrid [data]="data" style="--ig-size: var(--ig-size-small)">
 </igx-tree-grid>
 ```
-And now let's see in details how each option reflects on the Tree Grid component. When you switch between different sizes the height of each Tree Grid element and the corresponding paddings will be changed. Also if you want to apply custom column [**width**](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding.
+
+And now let's see in details how each option reflects on the Tree Grid component. When you switch between different sizes the height of each Tree Grid element and the corresponding paddings will be changed. Also if you want to apply custom column [`**width**`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding.
+
 - **--ig-size-large** - this is the default Tree Grid size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `80px`;
 - **--ig-size-medium** - this is the middle size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `64px`;
 - **--ig-size-small** - this is the smallest size with `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `56px`;
-> [!NOTE]
-> Please keep in mind that currently you **can not** override any of the sizes.
+
+**Note:** 
+Please keep in mind that currently you **can not** override any of the sizes.
+
 Let's now continue with our sample and see in action how each size is applied. Let's first add a button which will help us to switch between each size:
+
 ```html
 <div class="density-chooser">
     <igx-buttongroup [values]="sizes"></igx-buttongroup>
 </div>
 ```
+
 ```typescript
 @ViewChild(IgxButtonGroupComponent) public buttonGroup: IgxButtonGroupComponent;
 public size = 'small';
 public sizes;
+
 public ngOnInit() {
     this.sizes = [
         {
@@ -176,7 +190,7 @@ public ngOnInit() {
         },
         {
             label: 'medium',
-            selected: this.sie === 'medium',
+            selected: this.size === 'medium',
             togglable: true
         },
         {
@@ -187,7 +201,9 @@ public ngOnInit() {
     ];
 }
 ```
+
 Now we can add the markup.
+
 ```html
 <div class="density-chooser">
     <igx-buttongroup [values]="sizes" (selected)="selectSize($event)"></igx-buttongroup>
@@ -234,22 +250,30 @@ Now we can add the markup.
     </igx-column-group>
 </igx-tree-grid>
 ```
+
 Finally, let's provide the necessary logic in order to actually apply the size:
+
 ```typescript
 @ViewChild('treeGrid', { read: IgxTreeGridComponent })
 public treeGrid: IgxTreeGridComponent;
+
 public selectSize(event: any) {
     this.size = this.sizes[event.index].label;
 }
+
 @HostBinding('style.--ig-size')
 protected get sizeStyle() {
     return `var(--ig-size-${this.size})`;
 }
 ```
-Another option that [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides for you, in order to be able to change the height of the rows in the Tree Grid, is the property [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowheight). So let's see in action how this property affects the Tree Grid layout along with the `--ig-size` CSS variable.
+
+Another option that [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides for you, in order to be able to change the height of the rows in the Tree Grid, is the property [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowheight). So let's see in action how this property affects the Tree Grid layout along with the `--ig-size` CSS variable.
+
 Please keep in mind the following:
-- `--ig-size` CSS variable will have **NO** impact on row height **if there is [rowHeight](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowheight) specified**;
+
+- `--ig-size` CSS variable will have **NO** impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowheight) specified**;
 - `--ig-size` will **affect all of the rest elements in the Tree Grid**, as it has been described above;
+
 And now we can extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowHeight) property to the Tree Grid:
 
  ```html
@@ -258,26 +282,27 @@ And now we can extend our sample and add [`rowHeight`](mcp:get_api_reference?pla
  ..............
  </igx-tree-grid>
  ```
-<div class="divider--half"></div>
+
 ## API References
-<div class="divider--half"></div>
-- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-<div class="divider--half"></div>
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- `IgxTreeGridComponent Styles`
+- [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Additional Resources
-- [Tree Grid overview](tree-grid.md)
-- [Virtualization and Performance](virtualization.md)
-- [Editing](editing.md)
-- [Paging](paging.md)
-- [Filtering](filtering.md)
-- [Sorting](sorting.md)
-- [Summaries](summaries.md)
-- [Column Pinning](column-pinning.md)
-- [Column Resizing](column-resizing.md)
-- [Selection](selection.md)
-* [Searching](search.md)
-<div class="divider--half"></div>
+
+- [Tree Grid overview](/treegrid/tree-grid)
+- [Virtualization and Performance](/treegrid/virtualization)
+- [Editing](/treegrid/editing)
+- [Paging](/treegrid/paging)
+- [Filtering](/treegrid/filtering)
+- [Sorting](/treegrid/sorting)
+- [Summaries](/treegrid/summaries)
+- [Column Pinning](/treegrid/column-pinning)
+- [Column Resizing](/treegrid/column-resizing)
+- [Selection](/treegrid/selection)
+
+- [Searching](/treegrid/search)
+
 Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

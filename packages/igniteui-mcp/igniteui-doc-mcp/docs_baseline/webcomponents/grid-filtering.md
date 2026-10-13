@@ -1,18 +1,17 @@
 ---
-title: Web Components Grid Filtering - Ignite UI for Web Components
-_description: Start using angular filter to return specific data with Web Components Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "Web Components Grid Filtering - Ignite UI for Web Components"
+description: Start using angular filter to return specific data with Web Components Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for Web Components Filtering in Web Components Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: Grid
 _tocName: Filtering
 ---
-
 # Web Components Grid Filtering
 
-The Ignite UI for Web Components Filtering in Web Components Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
+The Ignite UI for Web Components Filtering in Web Components Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
 
 - Quick filtering
 - [Excel Style Filtering](excel-style-filtering.md)
@@ -20,7 +19,7 @@ The Ignite UI for Web Components Filtering in Web Components Grid is a feature t
 
 ## Web Components Grid Filtering Example
 
-The sample below demonstrates [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s **Quick Filter** user experience.
+The sample below demonstrates [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s **Quick Filter** user experience.
 
 ```css
 /* shared styles are loaded from: */
@@ -29,25 +28,21 @@ The sample below demonstrates [`IgcGridComponent`](mcp:get_api_reference?platfor
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) exposes the following properties - [`IgcGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering), [`IgcGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering), [`IgcGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) and [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
 
-Property [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) enables you to specify the following options:
-
+Property [`IgcGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgcGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) enables you to specify the following options:
-
+Property [`IgcGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
-
+Property [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -58,17 +53,15 @@ Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=I
 </igc-grid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgcGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering) input property to **true**
 
 ```html
 <igc-grid  data="data" auto-generate="true" allow-advanced-filtering="true">
 </igc-grid>
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -78,11 +71,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgcColumn.dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpression&member=ignoreCase) and the initial [`Condition`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand&member=condition) properties.
 
-The filtering feature is enabled for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
-
-<!-- ComponentStart: Grid, TreeGrid -->
+The filtering feature is enabled for the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component by setting the [`IgcGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) input to **true**. The default [`IgcGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgcColumn.filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
 
 ```html
 <igc-grid auto-generate="false" allow-filtering="true">
@@ -92,12 +83,12 @@ The filtering feature is enabled for the [`IgcGridComponent`](mcp:get_api_refere
 </igc-grid>
 ```
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
-You can filter any column or a combination of columns through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API. The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) exposes several methods for this task - [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filter), [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterGlobal) and [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearFilter).
+You can filter any column or a combination of columns through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API. The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) exposes several methods for this task - `IgcFilter`, `FilterGlobal` and `ClearFilter`.
 
-- [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filter) - filter a single column or a combination of columns.
+- `IgcFilter` - filter a single column or a combination of columns.
 
 There are five filtering operand classes exposed:
 
@@ -116,8 +107,12 @@ this.grid.filter('ProductName', 'myproduct', IgcStringFilteringOperand.instance(
 
 The only required parameters are the column field key and the filtering term. Both the condition and the case sensitivity will be inferred from the column properties if not provided. In the case of multiple filtering, the method accepts an array of filtering expressions.
 
-> [!Note]
-> The filtering operation **DOES NOT** change the underlying data source of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the `IgcGrid`.
+
+**Note:** 
+The filtering operation **DOES NOT** change the underlying data source of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+
 
 ```typescript
 // Multi column filtering
@@ -146,7 +141,7 @@ gridFilteringExpressionsTree.filteringOperands.push(priceFilteringExpressionsTre
 this.grid.filteringExpressionsTree = gridFilteringExpressionsTree;
 ```
 
-- [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterGlobal) - clears all existing filters and applies the new filtering condition to all Grid's columns.
+- `FilterGlobal` - clears all existing filters and applies the new filtering condition to all Grid's columns.
 
 ```typescript
 // Filter all cells for a value which contains `myproduct`
@@ -154,7 +149,7 @@ this.grid.filteringLogic = FilteringLogic.Or;
 this.grid.filterGlobal('myproduct', IgcStringFilteringOperand.instance().condition('contains'), false);
 ```
 
-- [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
+- `ClearFilter` - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 
 ```typescript
 // Remove the filtering state from the ProductName column
@@ -166,7 +161,7 @@ this.grid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), set the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), set the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) property to an array of [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor() {
@@ -193,7 +188,7 @@ constructor() {
 
 ### Filtering logic
 
-The [`filteringLogic`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filteringLogic) property of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) controls how filtering multiple columns will resolve in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). You can change it at any time through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API, or through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) input property.
+The [`IgcFilteringLogic`](mcp:get_api_reference?platform=webcomponents&component=FilteringLogic) property of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) controls how filtering multiple columns will resolve in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). You can change it at any time through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API, or through the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) input property.
 
 ```typescript
 import { FilteringLogic } from "igniteui-webcomponents-grids/grids";
@@ -274,8 +269,6 @@ export class BooleanFilteringOperand extends IgcBooleanFilteringOperand {
 }
 ```
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ```html
 <!-- grid-custom-filtering.component.html -->
 
@@ -294,8 +287,6 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -303,7 +294,7 @@ constructor() {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -337,17 +328,13 @@ Then set the related CSS properties for that class:
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -357,8 +344,6 @@ Then set the related CSS properties for that class:
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

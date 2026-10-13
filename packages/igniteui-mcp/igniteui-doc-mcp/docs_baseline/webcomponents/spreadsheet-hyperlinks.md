@@ -1,13 +1,14 @@
 ---
-title: Web Components Spreadsheet | Hyperlinks | Infragistics
-_description: Use Infragistics' Web Components spreadsheet control to display hyperlinks in the Excel workbook, which can link to websites, file directories and other worksheets. View Ignite UI for Web Components spreadsheet tutorials!
-_keywords: Excel Spreadsheet, hyperlinks, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Spreadsheet | Hyperlinks | Infragistics"
+description: Use Infragistics' Web Components spreadsheet control to display hyperlinks in the Excel workbook, which can link to websites, file directories and other worksheets. View Ignite UI for Web Components spreadsheet tutorials!
+keywords: Excel Spreadsheet, hyperlinks, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet"]
+llms:
+  description: "The Web Components Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook."
 _tocName: Hyperlinks
 _premium: true
 ---
-
 # Web Components Spreadsheet Hyperlinks
 
 The Web Components Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook.
@@ -128,17 +129,13 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Hyperlinks Overview
 
-Hyperlinks are added to the [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheethyperlink.html) object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
+Hyperlinks are added to the `IgcSpreadsheet` control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a `IgcWorksheetHyperlink` object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
 
 ## Dependencies
 
-When setting up your Web Components spreadsheet control to use hyperlinks, you will need to import the [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheethyperlink.html) class like so:
-
-<!-- WebComponents -->
+When setting up your Web Components spreadsheet control to use hyperlinks, you will need to import the `IgcWorksheetHyperlink` class like so:
 
 ```ts
 import { WorksheetHyperlink } from 'igniteui-webcomponents-excel';
@@ -146,7 +143,7 @@ import { WorksheetHyperlink } from 'igniteui-webcomponents-excel';
 
 ## Code Snippet
 
-The following code snippet demonstrates how to add a hyperlink to the currently viewed worksheet in the Web Components [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control:
+The following code snippet demonstrates how to add a hyperlink to the currently viewed worksheet in the Web Components `IgcSpreadsheet` control:
 
 ```ts
 this.spreadsheet.activeWorksheet.hyperlinks().add(new WorksheetHyperlink("A1", "http://www.infragistics.com", "Infragistics", "Infragistics Home Page"));
@@ -154,6 +151,5 @@ this.spreadsheet.activeWorksheet.hyperlinks().add(new WorksheetHyperlink("A1", "
 
 ## API References
 
-- `Hyperlinks`
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
-- [`WorksheetHyperlink`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheethyperlink.html)
+`IgcSpreadsheet`<br />
+`IgcWorksheetHyperlink`<br />

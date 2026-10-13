@@ -5,7 +5,7 @@ class IgxAvatarTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Avatar"];
-		this.controlGroup = "Data Entry & Display";
+		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "avatar";
 		this.projectType = "igx-ts";

@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics
-_description: Use Infragistics React map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for React map's series!
-_keywords: React map, scatter proportional series, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "React Map | Data Visualization Tools | Scatter Proportional Series | Data Binding | Infragistics"
+description: Use Infragistics React map's scatter proportional series to plot markers for the geographic points specified by the data in your application. Learn more about Ignite UI for React map's series!
+keywords: "React map, scatter proportional series, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "In React map component, you can use the GeographicProportionalSymbolSeries to plot bubbles or proportional markers at the geographic locations specified by the data in your application."
 _tocName: Geographic Bubble Map
 _premium: true
 ---
-
 # React Geographic Bubble Map
 
-In React map component, you can use the [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html) to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
+In React map component, you can use the `IgrGeographicProportionalSymbolSeries` to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
 
 ## React Geographic Bubble Map Example
 
@@ -1007,29 +1008,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterBubbleSeries/>);
 ```
 
-<div class="divider--half"></div>
-
-The demo above shows the [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html) series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
+The demo above shows the `IgrGeographicProportionalSymbolSeries` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
 
 ## Configuration Summary
-
-Similar to other types of scatter series in the map control, the [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html) series has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#longitudeMemberPath) and [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#latitudeMemberPath) properties to map these data columns. The [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusScale) and [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusMemberPath) will settings configures the radius for the bubbles.
+Similar to other types of scatter series in the map control, the `IgrGeographicProportionalSymbolSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns. The `RadiusScale` and `RadiusMemberPath` will settings configures the radius for the bubbles.
 
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `ItemsSource`|any|Gets or sets the items source |
-| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#longitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
-| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#latitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the latitude values on the assigned items |
-| [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusMemberPath)|string|Sets the path to use to get the radius values for the series. |
-| [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusScale)|[`IgrSizeScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsizescale.html)|Gets or sets the radius scale property for the current bubble series. |
-| [`minimumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsizescale.html#minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
-| [`maximumValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsizescale.html#maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
+| `DataSource`|any|Gets or sets the items source |
+| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `RadiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
+| `RadiusScale`|`IgrSizeScale`|Gets or sets the radius scale property for the current bubble series. |
+| `MinimumValue`|any|Configure the minimum value for calculating value sub ranges. |
+| `MaximumValue`|any|Configure the maximum value for calculating value sub ranges. |
 
 ## Code Snippet
-
-<!--React -->
 
 ```tsx
 import { IgrGeographicMapModule } from 'igniteui-react-maps';
@@ -1092,9 +1088,5 @@ public onMapReferenced(map: IgrGeographicMap) {
 
 ## API References
 
-- [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#longitudeMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusMemberPath)
-- [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html#radiusScale)
+`IgrGeographicProportionalSymbolSeries`<br />
+`RadiusScale`<br />

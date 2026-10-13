@@ -1,19 +1,18 @@
 ---
-title: Blazor Hierarchical Grid Summaries - Ignite UI for Blazor
-_description: Configure Blazor Hierarchical Grid summaries in the group footer of the column and use the option to set custom Blazor template in the Ignite UI for Blazor Material table
-_keywords: Blazor Hierarchical Grid summaries, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["GridBaseDirective", "Column", "SummaryOperand"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/summaries
+title: "Blazor Hierarchical Grid Summaries - Ignite UI for Blazor"
+description: Configure Blazor Hierarchical Grid summaries in the group footer of the column and use the option to set custom Blazor template in the Ignite UI for Blazor Material table
+keywords: "Blazor Hierarchical Grid summaries, Blazor, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/summaries"
+llms:
+  description: "The Ignite UI for Blazor Summaries feature in Blazor Hierarchical Grid functions on a per-column level as group footer."
+_componentKey: HierarchicalGrid
 _tocName: Summaries
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Summaries
 
-The Ignite UI for Blazor Summaries feature in Blazor Hierarchical Grid functions on a per-column level as group footer. Blazor HierarchicalGrid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom  template in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
+The Ignite UI for Blazor Summaries feature in Blazor Hierarchical Grid functions on a per-column level as group footer. Blazor IgbHierarchicalGrid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom  template in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ## Blazor Hierarchical Grid Summaries Overview Example
 
@@ -266,13 +265,12 @@ public class SingersData
 }
 ```
 
-> [!Note]
-> The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
+**Note:** 
+The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
 [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) summaries can also be enabled on a per-column level in Ignite UI for Blazor, which means that you can activate it only for columns that you need. [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
 
-For `string` and `boolean` [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType), the following function is available:
-
+For `string` and `boolean` [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType), the following function is available:
 - Count
 
 For `number`, `currency` and `percent` data types, the following functions are available:
@@ -284,16 +282,13 @@ For `number`, `currency` and `percent` data types, the following functions are a
 - Sum
 
 For `date` data type, the following functions are available:
-
 - Count
 - Earliest
 - Latest
 
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
 
-[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) summaries are enabled per-column by setting [`HasSummary`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=HasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=Locale) and column [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs).
-
-<!-- ComponentStart: HierarchicalGrid -->
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) summaries are enabled per-column by setting [`IgbColumnState.hasSummary`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`IgbColumn.dataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=locale) and column [`IgbColumn.pipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=pipeArgs).
 
 ```razor
 <IgbHierarchicalGrid AutoGenerate="false" Data="SingersData" Name="hierarchicalGrid" @ref="hierarchicalGrid" Id="hierarchicalGrid" PrimaryKey="ID">
@@ -311,11 +306,7 @@ All available column data types could be found in the official [Column types top
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`EnableSummaries`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=EnableSummaries)/[`DisableSummaries`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=DisableSummaries) of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
-
-<!-- ComponentStart: HierarchicalGrid -->
+The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`IgbHierarchicalGrid.enableSummaries`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=enableSummaries)/[`IgbHierarchicalGrid.disableSummaries`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=disableSummaries) of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ```razor
 <IgbHierarchicalGrid AutoGenerate="false" Data="SingersData" Name="hierarchicalGrid" @ref="hierarchicalGrid" Id="hierarchicalGrid" PrimaryKey="ID">
@@ -333,18 +324,14 @@ The other way to enable/disable summaries for a specific column or a list of col
         await this.hierarchicalGrid.DisableSummariesAsync(disabledSummaries);
     }
 }
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 ## Custom Hierarchical Grid Summaries
 
 If these functions do not fulfill your requirements you can provide a custom summary for the specific columns.
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-```razor
-
+```javascript
 //In JavaScript
 class WebGridDiscontinuedSummary {
     operate(data, allData, fieldName) {
@@ -373,9 +360,8 @@ class WebGridDiscontinuedSummary {
         return result;
     }
 }
-```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+```
 
 As seen in the examples, the base classes expose the `Operate` method, so you can choose to get all default summaries and modify the result, or calculate entirely new summary results.
 
@@ -384,8 +370,10 @@ The method returns a list of [`IgbSummaryResult`](mcp:get_api_reference?platform
 and take optional parameters for calculating the summaries.
 See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.
 
-> [!Note]
-> In order to calculate the summary row height properly, the Hierarchical Grid needs the `Operate` method to always return an array of [`IgbSummaryResult`](mcp:get_api_reference?platform=blazor&component=IgbSummaryResult) with the proper length even when the data is empty.
+**Note:** 
+In order to calculate the summary row height properly, the Hierarchical Grid needs the `Operate` method to always return an array of [`IgbSummaryResult`](mcp:get_api_reference?platform=blazor&component=IgbSummaryResult) with the proper length even when the data is empty.
+
+And now let's add our custom summary to the column `GrammyAwards`. We will achieve that by setting the Summaries` property to the class we create below.
 
 ```razor
 <IgbHierarchicalGrid
@@ -397,26 +385,26 @@ See [Custom summaries, which access all data](#custom-summaries-which-access-all
         ColumnInitScript="WebHierarchicalGridCustomSummary">
 </IgbHierarchicalGrid>
 
+```
+
+```javascript
 // In Javascript
 igRegisterScript("WebHierarchicalGridCustomSummary", (event) => {
     if (event.detail.field === "GrammyAwards") {
         event.detail.summaries = WebHierarchicalGridSummary;
     }
 }, false);
+
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Custom summaries, which access all data
-
-Now you can access all Hierarchical Grid data inside the custom column summary. Two additional optional parameters are introduced in the SummaryOperand `Operate` method.
+ Now you can access all Hierarchical Grid data inside the custom column summary. Two additional optional parameters are introduced in the `IgbSummaryOperand` `Operate` method.
 As you can see in the code snippet below the operate method has the following three parameters:
-
 - columnData - gives you an array that contains the values only for the current column
 - allGridData - gives you the whole grid data source
 - fieldName - current column field
 
-```razor
+```csharp
 class WebGridDiscontinuedSummary {
     operate(data, allData, fieldName) {
         const discontinuedData = allData.filter((rec) => rec['Discontinued']).map(r => r[fieldName]);
@@ -429,10 +417,6 @@ class WebGridDiscontinuedSummary {
     }
 }
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -683,16 +667,15 @@ public class SingersData
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Summary Template
-
-[`SummaryTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SummaryTemplate) targets the column summary providing as a context the column summary results.
+[`SummaryTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=summaryTemplate) targets the column summary providing as a context the column summary results.
 
 ```razor
 <IgbColumn HasSummary="true" SummaryTemplateScript="SummaryTemplate">
 </IgbColumn>
+```
 
+```javascript
 igRegisterScript("SummaryTemplate", (ctx) => {
     var html = window.igTemplating.html;
     return html`<div>
@@ -701,7 +684,7 @@ igRegisterScript("SummaryTemplate", (ctx) => {
 }, false);
 ```
 
-When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`SummaryRowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SummaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
+When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`SummaryRowHeight`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1083,13 +1066,11 @@ public class SingersData
 
 ## Disabled Summaries
 
-The [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisabledSummaries) property provides precise per-column control over the Blazor Hierarchical Grid summary feature. This property enables users to customize the summaries displayed for each column in the HierarchicalGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
+The [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=disabledSummaries) property provides precise per-column control over the Blazor Hierarchical Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgbHierarchicalGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **['count', 'min', 'max']** by specifying their summary keys in an array.
 
-This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the HierarchicalGrid's summaries to changing application states or user actions.
+This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the IgbHierarchicalGrid's summaries to changing application states or user actions.
 
-The following examples illustrate how to use the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisabledSummaries) property to manage summaries for different columns and exclude specific default and custom summary types in the Blazor Hierarchical Grid:
-
-<!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
+The following examples illustrate how to use the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=disabledSummaries) property to manage summaries for different columns and exclude specific default and custom summary types in the Blazor Hierarchical Grid:
 
 ```razor
 <!-- Disable default summaries -->
@@ -1110,13 +1091,11 @@ The following examples illustrate how to use the [`DisabledSummaries`](mcp:get_a
     DisabledSummaries="['discontinued', 'totalDiscontinued']" />
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
-
 For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
 
-For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisabledSummaries) property.
+For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=disabledSummaries) property.
 
-At runtime, summaries can also be dynamically disabled using the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
+At runtime, summaries can also be dynamically disabled using the [`DisabledSummaries`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1474,7 +1453,7 @@ The summary rows can be navigated with the following keyboard interactions:
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -1743,15 +1722,10 @@ public class SingersData
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## API References
 
-- `SummaryOperand`
-- `NumberSummaryOperand`
-- `DateSummaryOperand`
-- [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)<br />
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)<br />
 
 ## Additional Resources
 

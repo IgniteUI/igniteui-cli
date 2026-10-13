@@ -1,15 +1,16 @@
 ---
-title: Blazor Excel Library| Data Spreadsheet and Table | Infragistics
-_description: Use Infragistics' Blazor excel library to work with spreadsheet data using Microsoft Excel features. Learn how easily you can transfer data from excel to your application using Ignite UI for Blazor excel library!
-_keywords: Excel library, Ignite UI for Blazor, Infragistics, workbook
-_license: commercial
+title: "Blazor Excel Library| Data Spreadsheet and Table | Infragistics"
+description: Use Infragistics' Blazor excel library to work with spreadsheet data using Microsoft Excel features.  Learn how easily you can transfer data from excel to your application using Ignite UI for Blazor excel library!
+keywords: Excel library, Ignite UI for Blazor, Infragistics, workbook
+license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "Cell", "Formula"]
+llms:
+  description: "The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like Workbook, Worksheet, Cell, Formula and many more."
 _tocName: Excel Library
 ---
-
 # Blazor Excel Library Overview
 
-The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like `Workbook`, `Worksheet`, `Cell`, `Formula` and many more. The Infragistics Blazor Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
+The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook), [`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet), [`Cell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell), [`IgbFormula`](mcp:get_api_reference?platform=blazor&component=Formula) and many more. The Infragistics Blazor Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
 
 ## Blazor Excel Library Example
 
@@ -289,17 +290,21 @@ namespace Infragistics.Samples
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Requirements
 
-In order to use the Blazor excel library, you need to add the following using statement:
+In order to use the Blazor excel library, you need to add the Excel Library NuGet package like this:
+
+```cmd
+> dotnet add package IgniteUI.Blazor.Documents.Excel
+```
+
+Add the following using statement:
 
 ```razor
 @using Infragistics.Documents.Excel
 ```
 
-If you are using a Web Assembly (WASM) Blazor project, there are a couple of extra steps:
+If you are using a Blazor WebAssembly (WASM) project, there are a couple of extra steps:
 
 - Add a reference to the following script in the wwwroot/index.html file:
 
@@ -307,7 +312,7 @@ If you are using a Web Assembly (WASM) Blazor project, there are a couple of ext
 <script src="_content/IgniteUI.Blazor.Documents.Excel/excel.js"></script>
 ```
 
-- Set the static `Workbook.InProcessRuntime` to the current runtime. This can be done by using the following code:
+- Set the static [`Workbook.InProcessRuntime`](mcp:get_api_reference?platform=blazor&component=Workbook&member=InProcessRuntime) to the current runtime. This can be done by using the following code:
 
 ```razor
 @using Microsoft.JSInterop
@@ -326,8 +331,7 @@ If you are using a Web Assembly (WASM) Blazor project, there are a couple of ext
 ```
 
 ## Supported Versions of Microsoft Excel
-
-The following is a list of the supported versions of Excel.\*\*
+The following is a list of the supported versions of Excel.**
 
 - Microsoft Excel 97
 
@@ -345,13 +349,16 @@ The following is a list of the supported versions of Excel.\*\*
 
 - Microsoft Excel 2016
 
+**Note:** 
+The Excel Library does not support the Excel Binary Workbook (.xlsb) format at this time.
+
 ## Load and Save Workbooks
 
-Now that the Excel Library module is imported, next step is to load a workbook.
+Now that the Excel Library package is installed, next step is to load a workbook.
 
-In order to load and save `Workbook` objects, you can utilize the save method of the actual `Workbook` object, as well as its static `Load` method.
+In order to load and save [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) objects, you can utilize the `Save` method of the actual [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object, as well as its static `Load` method.
 
-```razor
+```csharp
 protected override void OnInitialized()
 {
     var memoryStream = new System.IO.MemoryStream();
@@ -372,8 +379,5 @@ private void SaveFile(byte[] bytes, string fileName, string mime)
 ```
 
 ## API References
-
-- `Load`
-- `WorkbookInProcessRuntime`
-- `Worksheet`
-- `Workbook`
+[`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet)
+[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)

@@ -1,13 +1,14 @@
 ---
-title: Web Components Excel Library| Using Workbooks| Infragistics
-_description: Use Infragistics' Web Components excel library to create workbooks and worksheets, input data and export the date to Microsoft® Excel. View Ignite UI for Web Components excel tutorials for more information!
-_keywords: Excel library, workbooks, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Excel Library| Using Workbooks| Infragistics"
+description: Use Infragistics' Web Components excel library to create workbooks and worksheets, input data and export the date to Microsoft® Excel. View Ignite UI for Web Components excel tutorials for more information!
+keywords: Excel library, workbooks, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Workbook"]
+llms:
+  description: "The Infragistics Web Components Excel Engine enables you to save data to and load data from Microsoft® Excel®."
 _tocName: Using Workbooks
 _premium: true
 ---
-
 # Web Components Using Workbooks
 
 The Infragistics Web Components Excel Engine enables you to save data to and load data from Microsoft® Excel®. You can create workbooks and worksheets, input data, and export the data to Excel using the library’s various classes. The Infragistics Web Components Excel Engine makes it easy to export the data in your application as an Excel spreadsheet as well as import data from Excel into your application.
@@ -128,11 +129,9 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Change Default Font
 
-First create a new instance of [`IWorkbookFont`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/interfaces/igniteui_webcomponents_excel.iworkbookfont.html). Next, add the new font to the [`styles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#styles) collection of the [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html). This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
+First create a new instance of `IgcIWorkbookFont`. Next, add the new font to the `Styles` collection of the `IgcWorkbook`. This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
 
 ```ts
 var workbook = new Workbook();
@@ -144,7 +143,7 @@ font.height = 16 * 20;
 
 ## Setting Workbook Properties
 
-Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Web Components Excel Library to set these properties using the [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html) object’s [`documentProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#documentProperties) property. The available properties are:
+Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Web Components Excel Library to set these properties using the `IgcWorkbook` object’s `DocumentProperties` property. The available properties are:
 
 - `Author`
 
@@ -180,11 +179,11 @@ The protection is not enforced via the Infragistics Excel Engine's object model.
 
 Protection is applied to a workbook by invoking its `protect` method.
 
-When a [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html) is protected without a password, the end user may unprotect the [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html) in Excel without having to supply a password. To programmatically unprotect a [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html), one may use the `unprotect` method.
+When a `IgcWorkbook` is protected without a password, the end user may unprotect the `IgcWorkbook` in Excel without having to supply a password. To programmatically unprotect a `IgcWorkbook`, one may use the `unprotect` method.
 
-When a [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html) is protected, the values of the properties of the [`WorkbookProtection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbookprotection.html) instance from this [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html)'s `protection` property indicate the disabled operations.
+When a `IgcWorkbook` is protected, the values of the properties of the `IgcWorkbookProtection` instance from this `IgcWorkbook`'s `protection` property indicate the disabled operations.
 
-If [`isProtected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#isProtected) is already true, the `protect` method will be ignored.
+If `IsProtected` is already true, the `protect` method will be ignored.
 
 ```ts
 var workbook = new Workbook();
@@ -206,8 +205,6 @@ var protection = workbook.protection;
 ```
 
 ## API References
-
-- [`documentProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html#documentProperties)
-- [`WorkbookProtection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbookprotection.html)
-- [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html)
-- [`Workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.workbook.html)
+`IgcDocumentProperties`
+`IgcWorkbookProtection`
+`IgcWorkbook`

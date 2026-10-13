@@ -1,16 +1,17 @@
 ---
-title: Web Components Map | Shape Map Resources | Infragistics
-_description: Use Infragistics' Web Components JavaScript map to load geo-spatial data from shape files. View Ignite UI for Web Components map demos!
-_keywords: Web Components map, shape styling, conditional formatting, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Web Components Map | Shape Map Resources | Infragistics"
+description: Use Infragistics' Web Components JavaScript map to load geo-spatial data from shape files. View Ignite UI for Web Components map demos!
+keywords: "Web Components map, shape styling, conditional formatting, Ignite UI for Web Components, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of an utility that helps with styling UI elements of GeographicShapeSeries in Web Components GeographicMap component."
 _tocName: Shape Styling Utility
 _premium: true
 ---
-
 # Web Components Shape Styling Utility
 
-The resource topic provides implementation of an utility that helps with styling UI elements of [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) in Web Components [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) component.
+The resource topic provides implementation of an utility that helps with styling UI elements of `IgcGeographicShapeSeries` in Web Components `IgcGeographicMap` component.
 
 ## Required Imports
 
@@ -254,6 +255,5 @@ export class ShapeComparison {
 ```
 
 ## API References
-
-- [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html)
-- [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html)
+`IgcGeographicShapeSeries`
+`IgcGeographicMap`

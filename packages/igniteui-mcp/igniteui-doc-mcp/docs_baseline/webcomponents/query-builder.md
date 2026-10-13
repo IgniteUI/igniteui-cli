@@ -1,12 +1,13 @@
 ---
-title: Web Components Query Builder | Infragistics
-_description: Infragistics' Web Components Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
-_keywords: Web Components Query Builder, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Query Builder | Infragistics"
+description: Infragistics' Web Components Query Builder allows users to build complex custom queries in angular apps with a great UI experience. Try it Now.
+keywords: "Web Components Query Builder, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["QueryBuilder"]
+llms:
+  description: "The Ignite UI for Web Components Query Builder provides a rich UI that allows developers to build complex data filtering queries for a specified data set."
 _tocName: Query Builder
 ---
-
 # Web Components Query Builder Overview
 
 The Ignite UI for Web Components Query Builder provides a rich UI that allows developers to build complex data filtering queries for a specified data set. With this component, you can build an expression tree and specify AND/OR conditions between expressions, with editors and condition lists determined by each field's data type. The expression tree can then be easily transformed to a query in a format the backend supports.
@@ -25,9 +26,8 @@ The Ignite UI for Web Components Query Builder provides a rich UI that allows de
 }
 ```
 
-# Getting started with Web Components Query Builder
-
-To start using the `QueryBuilder`, first, you need to install the `Ignite UI for Web Components` package by running the following command:
+## Getting started with Web Components Query Builder
+To start using the [`IgcQueryBuilder`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent), first, you need to install the `Ignite UI for Web Components` package by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents igniteui-webcomponents-grids
@@ -39,7 +39,7 @@ You also need to reference the corresponding styles based on your project config
 import 'igniteui-webcomponents-grids/grids/themes/light/bootstrap.css';
 ```
 
-# Using the Web Components Query Builder
+## Using the Web Components Query Builder
 
 If no expression tree is initially set, you start by choosing an entity and which of its fields the query should return. After that, conditions or sub-groups can be added.
 
@@ -49,8 +49,8 @@ Clicking on the (AND or OR) button placed above each group, will open a menu wit
 
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups.
 
-You can start using the component by setting the `Entities` property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
-The Query Builder has the [`IgcExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcExpressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
+You can start using the component by setting the [`Entities`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent&member=entities) property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
+The Query Builder has the [`ExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent&member=expressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
 
 ```html
 <igc-query-builder id="queryBuilder">
@@ -98,18 +98,16 @@ this.queryBuilder.addEventListener('expressionTreeChange', (e: CustomEvent<IgcEx
 });
 ```
 
-# Expressions Dragging
+## Expressions Dragging
 
 Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard reordering approaches. With those, users can adjust their query logic dynamically.
 
 - Dragging a chip does not modify its condition/contents, only its position.
 - Chip can also be dragged along groups and subgroups. For example, grouping/ungrouping expressions is achieved via the Expressions Dragging functionality.
-    In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
+In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
 
-> [!NOTE]
-> Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
-
-<img class="responsive-img" alt="Animated Example of Query Builder Drag and Drop using the Mouse" src="../../images/general/query-builder-drag-and-drop.gif" />
+**Note:** 
+Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
 
 ## Keyboard interaction
 
@@ -120,10 +118,8 @@ Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard r
 - <kbd>Space</kbd> / <kbd>Enter</kbd> - focused expression enters edit mode. If chip is been moved, this confirms it's new position.
 - <kbd>Esc</kbd> - chip's reordering is canceled and it returns to it's original position.
 
-> [!NOTE]
-> Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
-
-<img class="responsive-img" alt="Animated Example of Keyboard Drag and Drop Using the Ignite UI for Angular Query Builder" src="../../images/general/query-builder-keyboard-drag-and-drop.gif" />
+**Note:** 
+Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
 
 ## Templating
 
@@ -131,7 +127,7 @@ The Ignite UI for Web Components Query Builder allows defining templates for the
 
 ### Header Template
 
-By default the `{ComponentName}` header would not be displayed. In order to define such, the `igc-query-builder-header` component should be added inside `igc-query-builder`.
+By default the [`IgcQueryBuilder`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent) header would not be displayed. In order to define such, the [`IgcQueryBuilderHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderHeaderComponent) component should be added inside the query builder.
 
 ```html
 <igc-query-builder id="queryBuilder">
@@ -142,11 +138,12 @@ By default the `{ComponentName}` header would not be displayed. In order to defi
 
 ### Search Value Template
 
-The search value of a condition can be templated by setting the `SearchValueTemplate` property to a function that returns a lit-html template.
+The search value of a condition can be templated by setting the [`SearchValueTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent&member=searchValueTemplate) property to a function that returns a lit-html template.
 
-> [!Note]
-> When using `SearchValueTemplate`, you must provide templates for all field types in your entity, or the query builder will not function correctly. It is mandatory to implement a default/fallback template that handles any fields or conditions not covered by specific custom templates. Without this, users will not be able to edit
-> conditions for those fields.
+**Note:** 
+When using `SearchValueTemplate`, you must provide templates for all field types in your entity, or the query builder will not function correctly. It is mandatory to implement a default/fallback template that handles any fields or conditions not covered by specific custom templates. Without this, users will not be able to edit
+
+conditions for those fields.
 
 ```ts
 constructor() {
@@ -343,14 +340,14 @@ private buildDefaultInput(ctx: IgcQueryBuilderSearchValueContext) {
 
 In order to change the appearance of the search value in the chip displayed when a condition is not in edit mode, you can set a formatter function to the fields array. The search value can be accessed through the value argument as follows:
 
-```ts
-this.ordersFields = [
+```tsx
+const ordersFields = [
   { field: 'OrderID', dataType: 'number' },
   { field: 'ShipCountry', dataType: 'string' },
   {
     field: 'OrderDate',
     dataType: 'date',
-    formatter: (value: any) => value.toLocaleDateString(this.queryBuilder?.locale, { 
+    formatter: (value: any) => value.toLocaleDateString(queryBuilderRef.current?.locale, { 
       month: 'short', 
       day: 'numeric', 
       year: 'numeric' 
@@ -384,17 +381,9 @@ We’ve created this example to show you the templating and formatter functional
 }
 ```
 
-## API Reference
-
-- `QueryBuilder`
-- `QueryBuilderHeader`
-- [`IgcExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcExpressionTree)
-- [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree)
-- `FilteringLogic`
-- [`IgcStringFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcStringFilteringOperand)
-- `QueryBuilderSearchValueContext`
-- [Styling & Themes](../themes/overview.md)
-
+## API References
+[`IgcQueryBuilder`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderComponent)
+[`IgcQueryBuilderHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcQueryBuilderHeaderComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

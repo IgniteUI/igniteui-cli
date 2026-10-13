@@ -13,7 +13,7 @@ class PivotGridTemplate extends IgniteUIForReactTemplate {
 		this.description = "IgrPivotGrid template for React";
 		this.projectType = "igr-ts";
 		this.components = ["Pivot Grid"];
-		this.controlGroup = "Data Grids";
+		this.controlGroup = "Grids & Lists";
 		this.packages = [IGNITEUI_REACT_GRIDS_PACKAGE];
 		this.hasExtraConfiguration = false;
 	}

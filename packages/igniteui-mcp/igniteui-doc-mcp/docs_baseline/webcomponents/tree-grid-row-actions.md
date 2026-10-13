@@ -1,66 +1,35 @@
 ---
 title:  Row actions in Web Components Tree Grid - Infragistics
-_description: The IgcTreeGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
-_keywords: Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-actions
+description: The IgcTreeGrid provides the ability to use ActionStrip and utilize CRUD for row/cell components and row pinning.
+keywords: "Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-actions"
+llms:
+  description: "The Ignite UI for Web Components Row Actions feature in Web Components Tree Grid enables developers to use an ActionStrip and utilize CRUD for row/cell components and row pinning."
+_componentKey: TreeGrid
 _tocName: Row Actions
 _premium: true
 ---
-
 # Row Actions in Web Components Tree Grid
 
-The Ignite UI for Web Components Row Actions feature in Web Components Tree Grid enables developers to use an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) – editing and pinning.
+The Ignite UI for Web Components Row Actions feature in Web Components Tree Grid enables developers to use an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) – editing and pinning.
 
 ## Usage
 
 The predefined actions UI components are:
 
-- [`IgcGridEditingActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditingactions.html) - includes functionality and UI specifically designed for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) option and row deletion of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+- [`IgcGridEditingActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditingActionsComponent) - includes functionality and UI specifically designed for the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`IgcTreeGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) option and row deletion of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
-- [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) - includes functionality and UI specifically designed for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgcGridPinningActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridPinningActionsComponent) - includes functionality and UI specifically designed for the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
-They are added inside the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) and this is all needed to have an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) providing default interactions.
+They are added inside the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) and this is all needed to have an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) providing default interactions.
 
-<!-- ComponentEnd: TreeGrid -->
-
-```html
-<igc-grid row-editable="true" primary-key="ID">
-    <igc-column field="field"></igc-column>
-    <igc-action-strip>
-        <igc-grid-pinning-actions></igc-grid-pinning-actions>
-        <igc-grid-editing-actions></igc-grid-editing-actions>
-    </igc-action-strip>
-</igc-grid>
-```
-
-<!-- ComponentStart: TreeGrid -->
-
-```html
-<igc-tree-grid row-editable="true" primary-key="ID">
-    <igc-column field="field"></igc-column>
-    <igc-action-strip>
-        <igc-grid-pinning-actions></igc-grid-pinning-actions>
-        <igc-grid-editing-actions></igc-grid-editing-actions>
-    </igc-action-strip>
-</igc-tree-grid>
-```
-
-<!-- ComponentEnd: TreeGrid -->
-
-> [!Note]
-> When `ActionStripComponent` is a child component of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), hovering a row will automatically show the UI.
+**Note:** 
+When [`IgcActionStripComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) is a child component of the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 
-These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html).
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: Grid, TreeGrid -->
+These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent).
 
 ```html
 <igc-tree-grid>
@@ -70,8 +39,6 @@ These components expose templates giving flexibility for customization. For inst
     </igc-action-strip>
 </igc-tree-grid>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 ```typescript
 export class EmployeesFlatDetailsItem {
@@ -117,11 +84,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 ```
 
 ## API References
-
-- [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html)
-- [`IgcGridEditingActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditingactions.html)
-
-Our community is active and always welcoming to new ideas.
-
-- [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
-- [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcGridPinningActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridPinningActionsComponent)
+[`IgcGridEditingActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditingActionsComponent)

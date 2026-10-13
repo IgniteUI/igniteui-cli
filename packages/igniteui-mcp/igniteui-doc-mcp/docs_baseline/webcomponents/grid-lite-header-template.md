@@ -1,54 +1,40 @@
 ---
-title: Web Components Grid Lite Header Template | Ignite UI for Web Components | MIT license
-_description: Configure and customize custom Grid Lite column header renderers. See demos and examples! Build applications with open-source Web Components Grid Lite. Try it now.
-_keywords: header template, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "Web Components Grid Lite Header Template | Ignite UI for Web Components | MIT license"
+description: Configure and customize custom Grid Lite column header renderers. See demos and examples! Build applications with open-source Web Components Grid Lite. Try it now.
+keywords: header template, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "Similar to the cell templates, column headers can also be customized to better fit the desired use case."
 _tocName: Header Template
 ---
-
 # Customizing the Column Header
 
 Similar to the cell templates, column headers can also be customized to better fit the desired use case. You can pass a text label through the `header` property, or provide a full-blown custom template.
 
 ## Customization via Header Text
 
-<!-- React, WebComponents -->
-
 By default the column uses the `field` property for label text. To customize the label, set the `header` property to a more human readable format.
-
-<!-- End: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite-column field="price" header="Price per item"></igc-grid-lite-column>
 ```
 
-<!-- End: Blazor -->
-
-> [!NOTE]
-> When `headerTemplate` is provided, `header` is ignored.
+**Note:** 
+When `headerTemplate` is provided, `header` is ignored.
 
 ## Customization via Header Template
 
 Similar to the cell template, you can also pass a custom template renderer and create your own DOM inside the column header.
 
-<!-- WebComponents -->
-
 ```typescript
 import { html } from 'lit';
+
 
 const column = document.querySelector('igc-grid-lite-column');
 column.headerTemplate = () => html`<h3>⭐ Rating ⭐</h3>`;
 ```
-
-<!-- End: WebComponents -->
-
-<!-- End: React -->
-
-<!-- End: Blazor -->
 
 ```typescript
 export type UserSimple = {
@@ -197,18 +183,16 @@ igc-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-- `{ComponentName}`
-- `Column`
-
--->
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Cell Template](cell-template.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](./column-configuration.md)
+- [Cell Template](./cell-template.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

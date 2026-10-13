@@ -1,16 +1,15 @@
 ---
-title: React Hierarchical Grid Cell Editing - Ignite UI for React
-_description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "React Hierarchical Grid Cell Editing - Ignite UI for React"
+description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for React Cell Editing in React Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the React Hierarchical Grid component and comes with powerful API for React CRUD operations."
+_componentKey: HierarchicalGrid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # React Hierarchical Grid Cell Editing
 
 The Ignite UI for React Cell Editing in React Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the React Hierarchical Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -170,56 +169,30 @@ root.render(<Sample/>);
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
 - on single click to another cell - when you click on another cell in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
 You can also modify the cell value through the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) API but only if primary key is defined:
 
-<!-- ComponentStart: HierarchicalGrid -->
-
-```typescript
-public updateCell() {
-    this.hierarchicalGrid.updateCell(newValue, rowID, 'Age');
-}
-```
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-Another way to update cell is directly through `Update` method of `Cell`:
-
-<!-- ComponentStart: HierarchicalGrid -->
-
-```typescript
-public updateCell() {
-    const cell = this.hierarchicalGrid.getCellByColumn(rowIndex, 'ReorderLevel');
-    // You can also get cell by rowID if primary key is defined
-    // cell = this.hierarchicalGrid.getCellByKey(rowID, 'ReorderLevel');
-    cell.update(70);
-}
-```
-
-<!-- ComponentEnd: HierarchicalGrid -->
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=react&component=IgrCellType&member=update) method of `Cell`:
 
 ### Cell Editing Templates
 
@@ -446,56 +419,22 @@ root.render(<Sample/>);
 
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component exposes the `AddRow` method which will add the provided data to the data source itself.
-
-<!-- ComponentStart: HierarchicalGrid -->
-
-```typescript
-public addRow() {
-    // Adding a new record
-    // Assuming we have a `getNewRecord` method returning the new row data
-    const record = this.getNewRecord();
-    this.hierarchicalGrid.addRow(record);
-}
-```
-
-<!-- ComponentEnd: HierarchicalGrid -->
+The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component exposes the [`AddRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=addRow) method which will add the provided data to the data source itself.
 
 ### Updating data in the Hierarchical Grid
 
-Updating data in the Hierarchical Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
-
-<!-- ComponentStart: HierarchicalGrid -->
-
-```typescript
-// Updating the whole row
-this.hierarchicalGrid.updateRow(newData, this.selectedCell.cellID.rowID);
-
-// Just a particular cell through the Grid API
-this.hierarchicalGrid.updateCell(newData, this.selectedCell.cellID.rowID, this.selectedCell.column.field);
-
-// Directly using the cell `update` method
-this.selectedCell.update(newData);
-
-// Directly using the row `update` method
-const row = this.hierarchicalGrid.getRowByKey(rowID);
-row.update(newData);
-```
-
-<!-- ComponentEnd: HierarchicalGrid -->
+Updating data in the Hierarchical Grid is achieved through [`IgrHierarchicalGrid.updateRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=updateRow) and [`IgrHierarchicalGrid.updateCell`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ### Deleting data from the Hierarchical Grid
 
-Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) is defined.
-
-<!-- ComponentStart: HierarchicalGrid -->
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=deleteRow) method will remove the specified row only if a [`IgrHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) is defined.
 
 ```typescript
 // Delete row through Grid API
@@ -505,11 +444,13 @@ const row = this.hierarchicalGrid.getRowByIndex(rowIndex);
 row.delete();
 ```
 
+These can be wired to user interactions, not necessarily related to the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) for example, a button click:
+
 ### Cell Validation on Edit Event
 
 Using the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)'s editing events, we can alter how the user interacts with the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgrHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
@@ -518,26 +459,14 @@ The first thing we need to do is bind to the grid's event:
 </IgrHierarchicalGrid>
 ```
 
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- Blazor -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+The [`IgrHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
-
 ```tsx
 public handleCellEdit(event: IgrGridEditEventArgs): void {
-    const detail = args.detail;
-    if (detail.column != null && d.column.field == "UnitsOnOrder") {
+    const detail = event.detail;
+    if (detail.column != null && detail.column.field == "UnitsOnOrder") {
         if (detail.newValue > detail.rowData.UnitsInStock) {
             detail.cancel = true;
             alert("You cannot order more than the units in stock!");
@@ -545,8 +474,6 @@ public handleCellEdit(event: IgrGridEditEventArgs): void {
     }
 }
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 The result of the above validation being applied to our [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) can be seen in the below demo:
 
@@ -720,7 +647,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -736,8 +663,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ### Styling Example
 
@@ -893,8 +818,7 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 ## Additional Resources

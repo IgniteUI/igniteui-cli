@@ -1,17 +1,18 @@
 ---
 title: Open Source vs Premium | Ignite UI for Angular | Infragistics
-_description: Ignite UI for Angular is a complete set of native Angular UI components, which allow you to build fast, feature-rich and Material designed applications!
-_keywords: ignite ui for angular, getting started, angular components
+description: Ignite UI for Angular is a complete set of native Angular UI components, which allow you to build fast, feature-rich and Material designed applications!
+keywords: ignite ui for angular, getting started, angular components
+llms:
+  description: "Ignite UI for Angular offers two distinct paths for building modern, data-driven applications: Open-Source Components and Premium Components."
 _tocName: Open-Source vs Premium
 ---
-
 # Open-Source vs Premium in Ignite UI for Angular
 
 Ignite UI for Angular offers two distinct paths for building modern, data-driven applications: Open-Source Components and Premium Components. This dual approach ensures flexibility for developers at every stage of their project.
 
 ## Open-Source Components
 
-There are over 50+ UI components available under the MIT license, including [Grid Lite](../grid-lite/overview.md), Accordion, Avatar, Badge, Banner, Button, Calendar, Carousel, Checkbox, Chip, Combo, Date Picker, Drop Down, Input, List, Snackbar, and more. You can find the full list in the [Comparison Table for All Components](#comparison-table-for-all-components).
+There are over 50+ UI components available under the MIT license, including [Grid Lite](/grid-lite/overview), Accordion, Avatar, Badge, Banner, Button, Calendar, Carousel, Checkbox, Chip, Combo, Date Picker, Drop Down, Input, List, Snackbar, and more. You can find the full list in the [Comparison Table for All Components](#comparison-table-for-all-components).
 
 All Open-Source components are marked in the header of their topics with: 
 
@@ -23,14 +24,14 @@ Our Ignite UI Premium components come with advanced enterprise features and are 
 
 ### Grids and advanced components
 
-- [Data Grid](../grid/grid.md), [Hierarchical Grid](../hierarchicalgrid/hierarchical-grid.md), [Tree Grid](../treegrid/tree-grid.md), [Pivot Grid](../pivotGrid/pivot-grid.md)
-- [Dock Manager](../dock-manager.md)
-- [Query Builder](../query-builder.md)
-- [Charting library](../charts/chart-overview.md)
-- [Maps library](../geo-map.md)
-- [Excel Library](../excel-library.md)
-- [Spreadsheet](../spreadsheet-overview.md)
-- Gauges - [Bullet Graph](../bullet-graph.md), [Linear Gauge](../linear-gauge.md) and [Radial Gauge](../radial-gauge.md)
+- [Data Grid](/grid/grid), [Hierarchical Grid](/hierarchicalgrid/hierarchical-grid), [Tree Grid](/treegrid/tree-grid), [Pivot Grid](/pivotgrid/pivot-grid)
+- [Dock Manager](/dock-manager)
+- [Query Builder](/query-builder)
+- [Charting library](/charts/chart-overview)
+- [Maps library](/geo-map)
+- [Excel Library](/excel-library)
+- [Spreadsheet](/spreadsheet-overview)
+- Gauges - [Bullet Graph](/bullet-graph), [Linear Gauge](/linear-gauge) and [Radial Gauge](/radial-gauge)
 
 All Premium components are marked in the header of their topics with: 
 

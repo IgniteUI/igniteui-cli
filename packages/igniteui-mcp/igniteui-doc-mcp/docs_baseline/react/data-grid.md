@@ -1,14 +1,15 @@
 ---
-title: React Data Grid Component - Infragistics
-_description: Create super-fast, responsive React Data Grids and tables with Ignite UI for React. Supports editing, filtering, data binding and many more. Try it now!
-_keywords: React, Ignite UI for React, Infragistics, Getting Started, Grid
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.ColumnPipeArgs"]
+title: "React Data Grid Documentation & API"
+description: Create super-fast, responsive React Data Grids and tables with Ignite UI for React. Supports editing, filtering, data binding and many more. Try it now!
+keywords: "React, Ignite UI for React, Infragistics, Getting Started, Grid"
+license: commercial
+mentionedTypes: ["Grid", "Column", "Cell", "CellTemplateContext", "GridRowComponent", "GridToolbar", "Paginator"]
 namespace: Infragistics.Controls
+llms:
+  description: "The React Data Grid component is used for displaying large volumes of data."
 _tocName: Grid
 ---
-
-<style>
+<style>{`
     .sample-content {
         display: flex;
         flex-flow: row wrap;
@@ -31,29 +32,24 @@ _tocName: Grid
     }
 
     .tabbar-wrapper > p {
-        padding-right: 20px
+        padding-right: 20px;
     }
-</style>
+`}</style>
 
-# React Grid Overview and Configuration
+# React Data Grid Documentation
 
 <div class="sample-content">
     <article class="sample-column">
         <div class="tabbar-wrapper">
-            <p>The React Data Grid component is used for displaying large volumes of data. Modern and more complex grids ensure smooth UX and bring an array of features for manipulating tabular data. There is an intuitive API, theming, branding, filtering, sorting, data selection, Excel-style filtering, and many more.</p>
+            <p>The [React Data Grid](https://www.infragistics.com/products/react-data-grid) component is used for displaying large volumes of data. Modern and more complex grids ensure smooth UX and bring an array of features for manipulating tabular data. There is an intuitive API, theming, branding, filtering, sorting, data selection, Excel-style filtering, and many more.</p>
             <p>The Ignite UI for React Data Table / Data Grid is a tabular React grid component that allows you to quickly bind and display your data with little coding or configuration. Features of the React data grid in our toolbox include filtering, sorting, templates, row selection, row grouping, row pinning, movable columns, virtualization, Master-Detail, and much more.</p>
-            <p>The React tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant, making Ignite UI for React Data Grid the best React Data Grid on the market. </p>
+            <p>The React tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant.</p>
         </div>
     </article>
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <div class="tab-content">
-                <img class="b-lazy responsive-img"
-                    src="../../images/general/landing-grid-page.png"
-                    data-src="../../images/general/landing-grid-page.png"
-                    data-srcset="../../images/general/landing-grid-page.png 480w, ../../images/general/landing-grid-page.png 768w, ../../images/general/landing-grid-page.png 1100w"
-                    alt="React Data Grid"
-                    title="React Data Grid Component - Infragistics">
+                
             </div>
         </div>
     </article>
@@ -202,8 +198,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with React Data Grid
 
 ### Dependencies
@@ -227,7 +221,7 @@ The corresponding styles should also be referenced. You can choose light or dark
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 ```
 
-For more details on how to customize the appearance of the grid, you may have a look at the [styling](data-grid.md#styling-react-grid) section.
+For more details on how to customize the appearance of the grid, you may have a look at the [styling](./data-grid.md#styling-react-grid) section.
 
 ## Usage
 
@@ -237,15 +231,15 @@ Now that we have the grid packages imported, let’s get started with the basic 
 <IgrGrid id="grid1" autoGenerate={true} data={localData}></IgrGrid>
 ```
 
-The [`id`](mcp:get_api_reference?platform=react&component=IgrGrid&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`Id`](mcp:get_api_reference?platform=react&component=IgrGrid&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while [`data`](mcp:get_api_reference?platform=react&component=IgrGrid&member=data) binds the grid, in this case to local data.
 
-The [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`AutoGenerate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable React Grid
 
 Each operation for grid editing includes batch operations, meaning the API gives you the option to group edits into a single server call, or you can perform grid edit / update operations as they occur with grid interactions. Along with a great developer experience as an editable grid with CRUD operations, the grid includes Excel-like keyboard navigation. Common default grid navigation is included, plus the option to override any navigation option to meet the needs of your customers. An editable grid in with a great navigation scheme is critical to any modern line of business application, with the Ignite UI grid we make it easy.
 
-Following this topic you will learn more about [cell template](data-grid.md#cell-template) and [cell editing template](data-grid.md#cell-editing-template) and editing.
+Following this topic you will learn more about [cell template](./data-grid.md#cell-template) and [cell editing template](./data-grid.md#cell-editing-template) and editing.
 
 ## Grid Column Configuration
 
@@ -253,11 +247,11 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`AutoGenerate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```tsx
 <IgrGrid id="grid1" autoGenerate={false} allowFiltering={true} data={localData}>
-    <IgrColumn field="Name" sortable={true}></igc-column>
+    <IgrColumn field="Name" sortable={true}></IgrColumn>
     <IgrColumn field="AthleteNumber" header="Athlete number" filterable={false} sortable={true}></IgrColumn>
     <IgrColumn field="TrackProgress" header="Track progress" filterable={false}></IgrColumn>
 </IgrGrid>
@@ -289,7 +283,7 @@ When cell template is set it changes all the cells in the column. The context ob
 
 ```tsx
 function formatTitleCase(value: string) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 
 function nameCellTemplate(ctx: IgrCellTemplateContext) {
@@ -303,7 +297,7 @@ function nameCellTemplate(ctx: IgrCellTemplateContext) {
 <IgrColumn field="Name" bodyTemplate={nameCellTemplate}></IgrColumn>
 ```
 
-In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the `Cell` instance itself as shown below:
+In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`Cell`](mcp:get_api_reference?platform=react&component=IgrCellTemplateContext&member=cell) instance itself as shown below:
 
 ```tsx
 function nameCellTemplate(ctx: IgrCellTemplateContext) {
@@ -337,7 +331,7 @@ function deleteRow(rowID: any) {
 }
 
 function formatTitleCase(value: string) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 
 <IgrGrid id="grid" ref={grid} autoGenerate={false} data={data} primaryKey="Name">
@@ -349,12 +343,12 @@ function formatTitleCase(value: string) {
 > **Note**:
 > The grid exposes a default handling for number, string, date and boolean column types. For example, the column will display `check` or `close` icon, instead of true/false by default, for boolean column type.
 
-When properly implemented, the cell editing template also ensures that the cell's `EditValue` will correctly pass through the grid [editing event cycle](grid/editing.md#event-arguments-and-sequence).
+When properly implemented, the cell editing template also ensures that the cell's [`EditValue`](mcp:get_api_reference?platform=react&component=IgrCellType&member=editValue) will correctly pass through the grid [editing event cycle](./grid/editing.md#event-arguments-and-sequence).
 
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property of the column to true.
+to set the [`Editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property of the column to true.
 
 ```tsx
 function priceCellTemplate(ctx: IgrCellTemplateContext) {
@@ -376,7 +370,7 @@ function updateValue(value: number) {
 <IgrColumn field="Price" dataType="number" editable={true} inlineEditorTemplate={priceCellTemplate}></IgrColumn>
 ```
 
-Make sure to check the API for the `Cell` in order to get accustomed with the provided properties you can use in your templates.
+Make sure to check the API for the [`IgrCellType`](mcp:get_api_reference?platform=react&component=IgrCellType) in order to get accustomed with the provided properties you can use in your templates.
 
 ### Column Template API
 
@@ -432,11 +426,11 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- `Format` - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- `Timezone` - the timezone offset for dates. By default uses the end-user's local system timezone
-- `DigitsInfo` - decimal representation objects. Default to **1.0-3**
+- [`Format`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`Timezone`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`DigitsInfo`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=digitsInfo) - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`PipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) is set. Example:
 
 ```tsx
 const columnPipeArgs: IgrColumnPipeArgs = {
@@ -448,9 +442,9 @@ const columnPipeArgs: IgrColumnPipeArgs = {
 <IgrColumn field="OrderDate" dataType="date" pipeArgs={columnPipeArgs}></IgrColumn>
 ```
 
-The `OrderDate` column will respect only the `Format` and `Timezone` properties, while the `UnitPrice` will only respect the `DigitsInfo`.
+The `OrderDate` column will respect only the [`Format`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=format) and [`Timezone`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs&member=digitsInfo).
 
-All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
+All available column data types could be found in the official [Column types topic](./grid/column-types.md#default-template).
 
 ## Grid Data Structure
 
@@ -481,10 +475,10 @@ const POJO = [{
   }];
 ```
 
-> **WARNING**:
-> **The key values must not contain arrays**.
+>**WARNING**:
+>**The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) columns **the data keys must be identical.**
+>If you use [`AutoGenerate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -492,7 +486,7 @@ Our React Data Grid provides unmatched data binding options and is optimized for
 
 Before going any further with the React Data Grid we want to change the grid to bind to remote data service, which is the common scenario in large-scale applications.
 
-You can do this by fetching the data from a given url receiving a JSON response and assigning it to the grid's `data` property that is used as the grid's data source:
+You can do this by fetching the data from a given url receiving a JSON response and assigning it to the grid's [`data`](mcp:get_api_reference?platform=react&component=IgrGrid&member=data) property that is used as the grid's data source:
 
 ```tsx
 <IgrGrid ref={grid} data={data}></IgrGrid>
@@ -508,7 +502,7 @@ function fetchData(url: string): void {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`AutoGenerate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`AutoGenerate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 
@@ -544,6 +538,7 @@ For example, in order to display the weights of a given amino acid in the grid t
 An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
+
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
 
 ```tsx
@@ -844,7 +839,7 @@ root.render(<Sample/>);
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](mcp:get_api_reference?platform=react&component=IgrGrid&member=data) property of the [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent&member=data) property of the [`IgrGridRowComponent`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent).
 
 Since the React grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -948,7 +943,7 @@ function addressEditCellTemplate(ctx: IgrCellTemplateContext) {
     );
 }
 
-<IgrColumn field="Address" dataType="number" width="25%" editable={true} inlineEditorTemplate={addressEditCellTemplate}></IgrColumn>
+<IgrColumn field="Address" dataType="string" width="25%" editable={true} inlineEditorTemplate={addressEditCellTemplate}></IgrColumn>
 ```
 
 ### Working with Flat Data Example
@@ -1214,18 +1209,11 @@ root.render(<Sample/>);
 
 Keyboard navigation of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
-<!-- The sizing topic is still not available thus the Sizing section is commented out. -->
-
-<!-- ## Sizing
-
-See the [Grid Sizing](sizing.md) topic. -->
-
 ## Styling React Grid
-
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grids/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./grid/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```tsx
 <IgrGrid className="grid"></IgrGrid>
@@ -1253,15 +1241,29 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- `Cell`
-- [`IgrCellTemplateContext`](mcp:get_api_reference?platform=react&component=IgrCellTemplateContext)
-- [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html)
-- [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
-- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)<br />
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)<br />
+[`IgrCellType`](mcp:get_api_reference?platform=react&component=IgrCellType)<br />
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)<br />
+[`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)<br />
 
-## Additional Resources
+[`IgrGridRowComponent`](mcp:get_api_reference?platform=react&component=IgrGridRowComponent)<br />
+[`IgrCellTemplateContext`](mcp:get_api_reference?platform=react&component=IgrCellTemplateContext)<br />
+[`IgrCellType`](mcp:get_api_reference?platform=react&component=IgrCellType)<br />
+[`IgrColumnPipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumnPipeArgs)<br />
+
+## Theming Dependencies
+
+- **Icon Theme**
+- **InputGroup Theme**
+- **Chip Theme**
+- **Ripple Theme**
+- **Button Theme**
+- **Overlay Theme**
+- **DropDown Theme**
+- **Calendar Theme**
+- **SnackBar Theme**
+- **Badge Theme**
 
 Our community is active and always welcoming to new ideas.
 

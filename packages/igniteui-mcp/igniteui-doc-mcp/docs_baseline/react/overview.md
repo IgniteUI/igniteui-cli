@@ -1,12 +1,13 @@
 ---
-title: React ComboBox Component – Ignite UI for React
-_description: React Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox component
-_license: MIT
+title: "React ComboBox Component – Ignite UI for React"
+description: "React Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE"
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox component"
+license: MIT
 mentionedTypes: ["Combo", "ComboItem", "ComboHeader", "ComboList"]
+llms:
+  description: "React ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list."
 _tocName: Combo Box
 ---
-
 # React ComboBox Overview
 
 React ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list. The component also supports options for React ComboBox keyboard navigation, templates to customize how the items, header, and footer are displayed.
@@ -54,8 +55,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with React ComboBox
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -71,8 +70,9 @@ import { IgrCombo } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-> [!WARNING]
-> The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning: Warning**
+
+The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
 
@@ -100,26 +100,19 @@ const cities: City[] = [
 
 When the combo is bound to a list of complex data (i.e. objects), we need to specify a property that the control will use to handle item selection. The component exposes the following properties:
 
-<!-- end: Blazor -->
+- `T` - **required**, if [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
+- [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, the selection API will use object references to select items.
+- [`DisplayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey), the combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) (if any).
+In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and [`DisplayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) respectively.
 
-- `T` - **required**, if [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
-
-<!-- end: Blazor -->
-
-- [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, the selection API will use object references to select items.
-- [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey), the combo will use the specified [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) (if any).
-    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) respectively.
-
-> [!Note]
-> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and/or [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey).
+**Note:** 
+When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and/or [`DisplayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey).
 
 ### Setting Value
 
-The ComboBox component exposes a [`value`](mcp:get_api_reference?platform=react&component=IgrCombo&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
+The ComboBox component exposes a [`Value`](mcp:get_api_reference?platform=react&component=IgrCombo&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
 
-If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
-
-Example:
+If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
 
 ```tsx
 const comboRef = useRef<IgrCombo>(null);
@@ -135,7 +128,7 @@ comboRef.current.value = ['NY01', 'UK01'];
 
 The combo component exposes APIs that allow you to change the currently selected items.
 
-Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](mcp:get_api_reference?platform=react&component=IgrCombo&member=select) and [`deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`Select`](mcp:get_api_reference?platform=react&component=IgrCombo&member=select) and [`Deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
 
 #### Select/deselect some items
 
@@ -153,7 +146,7 @@ comboRef.current.select([]);
 comboRef.current.deselect([]);
 ```
 
-If the [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+If the [`ValueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
 
 ```tsx
 // Select/deselect values by object references when no valueKey is provided
@@ -269,10 +262,10 @@ root.render(<ComboSelection />);
 
 ### Validation
 
-The Ignite UI for React Combo component supports most of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties, such as [`required`](mcp:get_api_reference?platform=react&component=IgrCombo&member=required), [`disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled), [`autofocus`](mcp:get_api_reference?platform=react&component=IgrInput&member=autofocus), [`invalid`](mcp:get_api_reference?platform=react&component=IgrCombo&member=invalid), etc. The component also exposes two methods bound to its validation:
+The Ignite UI for React [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) component supports most of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties, such as [`Required`](mcp:get_api_reference?platform=react&component=IgrCombo&member=required), [`Disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled), [`Autofocus`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocus), [`Invalid`](mcp:get_api_reference?platform=react&component=IgrCombo&member=invalid), etc. The component also exposes two methods bound to its validation:
 
-- [`reportValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
-- [`checkValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
+- [`ReportValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
+- [`CheckValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
 
 ## Keyboard Navigation
 
@@ -295,28 +288,28 @@ You can change the appearance of the [`IgrCombo`](mcp:get_api_reference?platform
 
 | Part name            | Description                                                                     |
 | -------------------- | ------------------------------------------------------------------------------- |
-| `label`              | The encapsulated text label.                                                   |
-| `input`              | The main input field.                                                          |
-| `native-input`       | The native input of the main input field.                                      |
-| `prefix`             | The prefix wrapper.                                                            |
-| `suffix`             | The suffix wrapper.                                                            |
-| `toggle-icon`        | The toggle icon wrapper.                                                       |
-| `clear-icon`         | The clear icon wrapper.                                                        |
+| `label`              | The encapsulated text label.                                                    |
+| `input`              | The main input field.                                                           |
+| `native-input`       | The native input of the main input field.                                       |
+| `prefix`             | The prefix wrapper.                                                             |
+| `suffix`             | The suffix wrapper.                                                             |
+| `toggle-icon`        | The toggle icon wrapper.                                                        |
+| `clear-icon`         | The clear icon wrapper.                                                         |
 | `case-icon`          | A case-icon wrapper that renders content inside the suffix of the filter-input. |
-| `helper-text`        | The helper text wrapper.                                                       |
-| `search-input`       | The search input field.                                                        |
-| `list-wrapper`       | The list of options wrapper.                                                   |
-| `list`               | The list of options box.                                                       |
-| `item`               | Represents each item in the list of options.                                   |
-| `group-header`       | Represents each header in the list of options.                                 |
-| `active`             | Appended to the item parts list when the item is active.                       |
-| `selected`           | Appended to the item parts list when the item is selected.                     |
-| `checkbox`           | Represents each checkbox of each list item.                                    |
-| `checkbox-indicator` | Represents the checkbox indicator of each list item.                           |
-| `checked`            | Appended to checkbox parts list when checkbox is checked.                      |
-| `header`             | The container holding the header content.                                      |
-| `footer`             | The container holding the footer content.                                      |
-| `empty`              | The container holding the empty content.                                       |
+| `helper-text`        | The helper text wrapper.                                                        |
+| `search-input`       | The search input field.                                                         |
+| `list-wrapper`       | The list of options wrapper.                                                    |
+| `list`               | The list of options box.                                                        |
+| `item`               | Represents each item in the list of options.                                    |
+| `group-header`       | Represents each header in the list of options.                                  |
+| `active`             | Appended to the item parts list when the item is active.                        |
+| `selected`           | Appended to the item parts list when the item is selected.                      |
+| `checkbox`           | Represents each checkbox of each list item.                                     |
+| `checkbox-indicator` | Represents the checkbox indicator of each list item.                            |
+| `checked`            | Appended to checkbox parts list when checkbox is checked.                       |
+| `header`             | The container holding the header content.                                       |
+| `footer`             | The container holding the footer content.                                       |
+| `empty`              | The container holding the empty content.                                        |
 
 Using the CSS parts we have full control over the Combo styling.
 
@@ -452,10 +445,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboStyling />);
 ```
 
-## API Reference
+## API References
 
-- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
-- [`Styling & Themes`](../../themes/overview.md)
+[`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)<br />
 
 ## Additional Resources
 

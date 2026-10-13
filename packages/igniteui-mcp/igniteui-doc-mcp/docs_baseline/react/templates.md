@@ -1,12 +1,13 @@
 ---
-title: React ComboBox Component Templates – Ignite UI for React
-_description: Ignite UI for React ComboBox component templates
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox Component Templates
-_license: MIT
+title: "React ComboBox Component Templates – Ignite UI for React"
+description: "Ignite UI for React ComboBox component templates"
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox Component Templates"
+license: MIT
 mentionedTypes: ["Combo"]
+llms:
+  description: "The Ignite UI for React ComboBox component allows defining custom templates for different areas such as items, group headers, empty list, and icons."
 _tocName: Templates
 ---
-
 # React ComboBox Templates
 
 The Ignite UI for React ComboBox component allows defining custom templates for different areas such as items, group headers, empty list, and icons.
@@ -131,7 +132,7 @@ root.render(<ComboTemplates />);
 
 ### Item Template
 
-The [`itemTemplate`](mcp:get_api_reference?platform=react&component=IgrCombo&member=itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
+The [`ItemTemplate`](mcp:get_api_reference?platform=react&component=IgrCombo&member=itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
 
 ```tsx
 type City = {
@@ -161,7 +162,7 @@ const renderItemTemplate = (args: ComboTemplateProps<City>) => {
 
 ### Group Header Template
 
-The [`groupHeaderTemplate`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
+The [`GroupHeaderTemplate`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
 
 ```tsx
 <IgrCombo
@@ -181,7 +182,7 @@ const renderGroupHeaderTemplate = (args: ComboTemplateProps<City>) => {
 
 ## Slots
 
-Other than custom templates, the Ignite UI for React ComboBox component exposes several slots that allow users to pass custom content to different combo parts.
+Other than custom templates, the Ignite UI for React ComboBox component exposes several slots that allow users to pass custom content to different parts of the component. For all ComboBox slots, we recommend using a `<span>` element for simple text, symbols, or emojis, and an [`<igc-icon>`](../../layouts/icon.md) component when adding icons. For the `header` and `footer` slots, you can also use more semantic elements such as `<header>` and `<footer>`.
 
 ### Header Slot
 
@@ -189,9 +190,7 @@ To render a custom header above the list of options pass content to the `header`
 
 ```tsx
 <IgrCombo>
-  <header slot="header">
-        Header content goes here
-  </header>
+  <span slot="header">Header content goes here</span>
 </IgrCombo>
 ```
 
@@ -201,9 +200,7 @@ To render a custom footer below the list of options pass content to the `footer`
 
 ```tsx
 <IgrCombo>
-  <footer slot="footer">
-        Footer content goes here
-  </footer>
+  <span slot="footer">Footer content goes here</span>
 </IgrCombo>
 ```
 
@@ -213,7 +210,7 @@ To render a custom content when the filtering operation returns no result, use t
 
 ```tsx
 <IgrCombo>
-  <div slot="empty">¯\_(ツ)_/¯</div>
+  <span slot="empty">¯\_(ツ)_/¯</span>
 </IgrCombo>
 ```
 
@@ -223,9 +220,7 @@ The toggle icon in the combo input can also be modified via the `toggle-icon` sl
 
 ```tsx
 <IgrCombo>
-  <span slot="toggle-icon">
-    <IgrIcon name="down" collection="material"></IgrIcon>
-  </span>
+  <IgrIcon slot="toggle-icon" name="down" collection="material"></IgrIcon>
 </IgrCombo>
 ```
 
@@ -235,11 +230,13 @@ The clear icon can be changed via the `clear-icon` slot:
 
 ```tsx
 <IgrCombo>
-  <span slot="clear-icon">
-    <IgrIcon name="clear" collection="material"></IgrIcon>
-  </span>
+  <IgrIcon slot="clear-icon" name="clear"></IgrIcon>
 </IgrCombo>
 ```
+
+## API References
+
+[`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
 
 ## Additional Resources
 

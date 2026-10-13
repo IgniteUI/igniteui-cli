@@ -1,15 +1,16 @@
 ---
-title: Blazor Icon Button Component
-_description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for Blazor Icon Button component.
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Icon Button components, Blazor Icon Button controls
-_license: MIT
+title: "Blazor Icon Button Component"
+description: Developers can utilize and use various icons interchangeably as buttons with custom colors and more with Ignite UI for Blazor Icon Button component.
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Icon Button components, Blazor Icon Button controls"
+license: MIT
 mentionedTypes: ["IconButton", "ButtonBase", "Button", "Icon"]
+llms:
+  description: "The Ignite UI for Blazor Icon Button component allows developers to use registered icons as buttons in their application."
 _tocName: Icon Button
 ---
-
 # Blazor Icon Button Overview
 
-The Ignite UI for Blazor Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](button.md) component as well.
+The Ignite UI for Blazor Icon Button component allows developers to use registered icons as buttons in their application. It carries all features of the [icon](../layouts/icon.md) component but adds features from the [button](./button.md) component as well.
 
 ## Blazor Icon Button Example
 
@@ -48,19 +49,19 @@ The Ignite UI for Blazor Icon Button component allows developers to use register
 }
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Usage
 
 Before using the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbIconButtonModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -76,7 +77,7 @@ The simplest way to start using the [`IgbIconButton`](mcp:get_api_reference?plat
 
 ### Variant
 
-Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the `variant` attribute of the icon button.
+Similar to the regular button components, the icon button supports several variants - `flat` (default), `contained`, and `outlined`; To change the icon button type set the [`variant`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=variant) attribute of the icon button.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -167,7 +168,7 @@ igc-icon-button {
 
 ### Type
 
-The icon button component will change its internal structure from `<button>` to an `<a>` type element when the `href` attribute is set. In that case the icon button can be thought of as a regular link. Setting the `href` attribute will allow you to also set the `rel`, `target`, and `download` attributes of the icon button.
+The icon button component will change its internal structure from `<button>` to an `<a>` type element when the [`href`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=href) attribute is set. In that case the icon button can be thought of as a regular link. Setting the [`href`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=href) attribute will allow you to also set the [`rel`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=rel), [`target`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=target), and [`download`](mcp:get_api_reference?platform=blazor&component=IgbIconButton&member=download) attributes of the icon button.
 
 ```razor
 <IgbIconButton IconName="thumb-up" Collection="material" Href="https://duckduckgo.com" Target="_blank" />
@@ -240,13 +241,9 @@ igc-icon-button::part(icon) {
 ```
 
 ## API References
-
-- [`IgbButtonBase`](mcp:get_api_reference?platform=blazor&component=IgbButtonBase)
-- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
-- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+[`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 ## Additional Resources
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

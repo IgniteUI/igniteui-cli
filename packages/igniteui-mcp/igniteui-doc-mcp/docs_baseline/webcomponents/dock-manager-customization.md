@@ -1,19 +1,18 @@
 ---
-title: Web Components Dock Manager | Customization | Infragistics
-_description: Use Infragistics' Web Components dock manager component to manage the layout through panes, with the ability to customize it. Check out Ignite UI for Web Components dock manager tutorials!
-_keywords: dock manager, layout, customization, Ignite UI for Web Components
-_license: commercial
+title: "Web Components Dock Manager | Customization | Infragistics"
+description: Use Infragistics' Web Components dock manager component to manage the layout through panes, with the ability to customize it. Check out Ignite UI for Web Components dock manager tutorials!
+keywords: dock manager, layout, customization, Ignite UI for Web Components
+license: commercial
 mentionedTypes: ["DockManager", "ContentPane"]
+llms:
+  description: "The Infragistics Web Components Dock Manager component provides you with the properties needed to further customize the layout to suit your specific application requirements."
 _tocName: Customization
 _premium: true
 ---
-
 ## Customizing Web Components Dock Manager
 
 The Infragistics Web Components Dock Manager component provides you with the properties needed to further customize the layout to suit your specific application requirements.
 Let's dive in and explore how Web Components DockManager empowers you to create exceptional user interfaces and enhance the productivity of your applications!
-
-<div class="divider--half"></div>
 
 ## Proximity Dock
 
@@ -28,7 +27,6 @@ this.dockManager.proximityDock = true;
 In order to right dock a dragged pane 1 in pane 2, the cursor should be in the area defined by the right border of pane 2 and the right border offset to left. The offset distance is specified as a proximity dock threshold and is set to a value of 50px. In cases where there is a splitter, docking can be performed from both sides of the splitter.
 
 ### Outer Docking
-
 To perform outer dock, you must first meet specific criteria. In Dock Manager, outer docking is only allowed within a document host, meaning you will be docking the target pane to the outer regions of the document host.
 
 In order to perform an outer top dock for example, must fall within the region defined by the top border of the document host and stay within the top border offset. The offset distance is specified as a proximity dock outer threshold and is explicitly set to a value of 25px. The proximity dock threshold's value of 50px remains unchanged which essentially means that in this scenario, only a 25px area is available for inner docking. In cases where there is a splitter inside the document host, outer dock can be performed from both sides of the splitter.
@@ -107,7 +105,6 @@ igc-dockmanager > div {
 ```
 
 ## Control Inner Docking
-
 By default, the Dock Manager allows users to effortlessly drag and dock panes inside each other, creating tabs. To provide more control over this functionality, we've introduced two properties - `allowInnerDock` and `acceptsInnerDock`.
 
 By setting the `acceptsInnerDock` property of an [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane), developers can control docking inside specific content panes. When this property is set to false, users will be restricted from performing inner docking in the specified pane.
@@ -258,5 +255,5 @@ igc-dockmanager > div {
 
 ## API References
 
-- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)
-- [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)
+[`IgcDockManager`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)<br />
+[`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)<br />

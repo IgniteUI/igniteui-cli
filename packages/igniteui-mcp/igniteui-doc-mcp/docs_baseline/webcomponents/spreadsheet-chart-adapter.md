@@ -1,16 +1,17 @@
 ---
-title: Web Components Spreadsheet | Chart Adapter | Infragistics
-_description: Display charts such as column, line and area, in the Infragistics' Web Components spreadsheet control. Learn how to integrate charts in Ignite UI for Web Components spreadsheet!
-_keywords: Excel Spreadsheet, chart adapter, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Spreadsheet | Chart Adapter | Infragistics"
+description: Display charts such as column, line and area, in the Infragistics' Web Components spreadsheet control. Learn how to integrate charts in Ignite UI for Web Components spreadsheet!
+keywords: Excel Spreadsheet, chart adapter, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "Worksheet", "WorksheetShapeCollection", "WorksheetChart"]
+llms:
+  description: "The Web Components Spreadsheet component allows displaying charts in your Spreadsheet."
 _tocName: Chart Adapter
 _premium: true
 ---
-
 # Web Components Spreadsheet Chart Adapter
 
-The Web Components Spreadsheet component allows displaying charts in your [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html).
+The Web Components Spreadsheet component allows displaying charts in your `IgcSpreadsheet`.
 
 ## Web Components Spreadsheet Chart Adapter Example
 
@@ -128,13 +129,13 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Chart Adapter Overview
 
-Using [`chartAdapter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#chartAdapter) you can display the charts in the spreadsheet. The spreadsheet chart adapters creates and initializes chart elements for the spreadsheet based on a Infragistics.Documents.Excel.WorksheetChart instance.
+Using
+`IgcSpreadsheetChartAdapterBase`
+you can display the charts in the spreadsheet. The spreadsheet chart adapters creates and initializes chart elements for the spreadsheet based on a Infragistics.Documents.Excel.WorksheetChart instance.
 
-In order to add a WorksheetChart to a worksheet, you must use the [`addChart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetshapecollection.html#addChart) method of the worksheet’s Shapes collection.You can find more detail of adding charts in Excel below.
+In order to add a WorksheetChart to a worksheet, you must use the `AddChart` method of the worksheet’s Shapes collection. You can find more detail of adding charts in Excel below.
 
 Here are the steps by step description :
 
@@ -192,11 +193,11 @@ There are over 35 chart types supported by the Spreadsheet ChartAdapters includi
 
 ## Dependencies
 
-> [!Note]
->
-> In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#workbook).
+**Note:** 
 
-When setting up your Web Components spreadsheet control to add charts, you will need to import the [`SpreadsheetChartAdapter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet_chart_adapter.spreadsheetchartadapter.html) class like so:
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
+
+When setting up your Web Components spreadsheet control to add charts, you will need to import the `IgcSpreadsheetChartAdapter` class like so:
 
 ```ts
 // Module Manager for registering the modules of the chart
@@ -227,7 +228,7 @@ ModuleManager.register(
 
 ## Code Snippet
 
-The following code snippet demonstrates how to add charts to the currently viewed worksheet in the [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control:
+The following code snippet demonstrates how to add charts to the currently viewed worksheet in the `IgcSpreadsheet` control:
 
 ```typescript
 this.spreadsheet.chartAdapter = new SpreadsheetChartAdapter();
@@ -283,8 +284,7 @@ ExcelUtility.loadFromUrl(process.env.PUBLIC_URL + "/ExcelFiles/ChartData.xlsx").
 
 ## API References
 
-- [`addChart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetshapecollection.html#addChart)
-- [`chartAdapter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#chartAdapter)
-- [`SpreadsheetChartAdapter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet_chart_adapter.spreadsheetchartadapter.html)
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html#workbook)
+`IgcSpreadsheetChartAdapterBase`
+<br />
+`IgcSpreadsheet`<br />
+`IgcWorkbook`<br />

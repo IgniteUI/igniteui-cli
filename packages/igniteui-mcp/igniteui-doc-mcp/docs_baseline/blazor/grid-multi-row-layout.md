@@ -1,15 +1,14 @@
 ---
-title: Blazor Grid Multi Row Layout - Ignite UI for Blazor
-_description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for Blazor Data Grid. Check out examples and demos!
-_keywords: Multi-Row Layout, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
+title: "Blazor Grid Multi Row Layout - Ignite UI for Blazor"
+description: Position and size columns in a more powerful way, using the multi-row layout functionality in the Ignite UI for Blazor Data Grid. Check out examples and demos!
+keywords: Multi-Row Layout, Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+llms:
+  description: "The Multi-row Layout in the Ignite UI for Blazor extends the rendering capabilities of the Blazor Grid."
+_componentKey: Grid
 _tocName: Multi-Row Layout
 _premium: true
 ---
-
 # Blazor Grid Multi-row Layout
 
 The Multi-row Layout in the Ignite UI for Blazor extends the rendering capabilities of the Blazor Grid. The feature allows splitting a single data record into multiple visible rows.
@@ -253,11 +252,10 @@ public class CustomersData
 The declaration of Multi-row Layout is achieved through [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component. Each [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component should be considered as a block, containing one or multiple [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
 The [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) component exposes four [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties to determine the location and span of each cell:
-
-- [`ColStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColStart) - column index from which the field is starting. This property is **mandatory**.
-- [`RowStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`ColEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`RowEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+- [`IgbColumnState.colStart`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`IgbColumn.rowStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`IgbColumnState.colEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`IgbColumn.rowEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```razor
 <IgbColumnLayout>
@@ -283,18 +281,16 @@ The [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) com
 
 The result of the above configuration can be seen on the screenshot below:
 
-<img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
-
-> [!Note]
-> [`RowStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowStart) and [`ColStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColStart) properties must be set for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) into a [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout). The [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+**Note:** 
+[`IgbGrid.rowStart`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowStart) and [`IgbGrid.colStart`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=colStart) properties must be set for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) into a [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout). The [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
 Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) component.
 
-- Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
+- Filtering - only Excel Style Filtering is supported. Setting [`IgbGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=filterMode) explicitly to [`FilterMode.quickFilter`](mcp:get_api_reference?platform=blazor&component=FilterMode&member=quickFilter) has no effect.
 - Paging - works on records, not visual rows.
-- Group By - `HideGroupedColumns` option has no effect in Multi-row Layout. The grouped columns are always visible.
+- Group By - [`IgbGrid.hideGroupedColumns`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=hideGroupedColumns) option has no effect in Multi-row Layout. The grouped columns are always visible.
 
 The following features are currently **not** supported:
 
@@ -318,17 +314,17 @@ The following features are currently **not** supported:
 - <kbd>CTRL</kbd> + <kbd>↑</kbd> or <kbd>CTRL</kbd> + <kbd>Down</kbd> - Navigate and apply focus on the same column on the first or on the last row.
 - <kbd>CTRL</kbd> + <kbd>HOME</kbd> or <kbd>CTRL</kbd> + <kbd>END</kbd> - Navigate to the first row and focus first cell or navigate to the last row and focus the last cell.
 
-> [!Note]
-> Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
+**Note:** 
+Navigation through cells which span on multiple rows or columns is done with accordance to the starting navigation cell and will allow returning to the starting cell using the key for the opposite direction. The same approach is used when navigating through group rows.
 
-> [!Note]
-> Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
+**Note:** 
+Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
 
 ### Custom Keyboard Navigation
 
 The grid allows customizing the default navigation behavior when a certain key is pressed. Actions like **going to the next cell** or **cell below** could be handled easily with the powerful keyboard navigation API:
 
-- `GridKeydown` is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
+- [`IgbGrid.gridKeydown`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=gridKeydown) is exposed. The event will emit `IGridKeydownEventArgs`. This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `KeyDown` event.
 - `NavigateTo` - this method allows you to navigate to a position based on provided `RowIndex` and `VisibleColumnIndex`
 
 The demo below adds additional navigation down/up via the <kbd>ENTER</kbd> and <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> keys, similar to the behavior observed in Excel.
@@ -530,7 +526,7 @@ public class CompanyData
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -738,22 +734,15 @@ public class CustomersData
 ```
 
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout)
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
 - [Sorting](sorting.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

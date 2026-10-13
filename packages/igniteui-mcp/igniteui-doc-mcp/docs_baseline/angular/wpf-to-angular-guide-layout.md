@@ -1,10 +1,11 @@
 ---
 title: Angular Page Layout Elements | WPF to Angular Guide | Infragistics
-_description: Learn how to customize the page layout of your Angular application with our in-depth tutorial of using CSS features like Flexbox & Grid. 
-_keywords: angular page layout elements, ignite ui for angular, infragistics
+description: Learn how to customize the page layout of your Angular application with our in-depth tutorial of using CSS features like Flexbox & Grid. 
+keywords: angular page layout elements, ignite ui for angular, infragistics
+llms:
+  description: "In WPF, in order to layout the elements in your application, you need to put them inside a Panel."
 _tocName: Layout Elements
 ---
-
 # Page Layout
 
 In WPF, in order to layout the elements in your application, you need to put them inside a [`Panel`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.panel?view=netframework-4.8). The panel is a container element that controls the arrangement of its child elements. In Angular, in order to customize the page layout and its child elements, you have to use CSS. Let us go through some of the most popular panels in WPF and see how we can achieve similar layout with CSS.
@@ -23,12 +24,12 @@ The [`StackPanel`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.co
 </StackPanel>
 ```
 
-<img class="responsive-img" src="../../../images/general/wpf_stackpanel.png" alt="WPF StackPanel" />
 
 If we want to achieve similar layout in Angular, we may use CSS Flexbox layout. The Flexible Box Layout Module is a powerful mechanism which allows designing a flexible responsive layout structure. In order to use the Flexbox layout, we have to define a container which has its [`display`](https://www.w3schools.com/cssref/pr_class_display.asp) property set to `flex`. Also in order to stack the items vertically, we have to set the [`flex-direction`](https://www.w3schools.com/cssref/css3_pr_flex-direction.asp) property to `column`.
 
 ```html
 <div class="flex-container">
+
     <button>1</button>
     <button>2</button>
     <button>3</button>
@@ -45,8 +46,6 @@ If we want to achieve similar layout in Angular, we may use CSS Flexbox layout. 
 ```
 
 Here is the final result in the browser:
-
-<img class="responsive-img" src="../../../images/general/angular_stackpanel.png" alt="Angular StackPanel" />
 
 The default value of the [`flex-direction`](https://www.w3schools.com/cssref/css3_pr_flex-direction.asp) property is `row`, which is equivalent to a StackPanel with Horizontal orientation in WPF. The flexbox also supports `row-reverse` and `column-reverse` directions which stack the items right to left and bottom to top respectively.
 
@@ -69,12 +68,12 @@ The [`WrapPanel`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.con
 </WrapPanel>
 ```
 
-<img class="responsive-img" src="../../../images/general/wpf_wrappanel.png" alt="WPF WrapPanel" />
 
 In order to achieve similar result in Angular, we will use the Flexbox layout again. As in the case with StackPanel, we have to set the [`display`](https://www.w3schools.com/cssref/pr_class_display.asp) property to `flex`, but we also have to set the [`flex-wrap`](https://www.w3schools.com/cssref/css3_pr_flex-wrap.asp) property to `wrap`.
 
 ```html
 <div class="flex-container">
+
     <button>1</button>
     <button>2</button>
     <button>3</button>
@@ -95,8 +94,6 @@ button {
 ```
 
 Here is the final result in the browser:
-
-<img class="responsive-img" src="../../../images/general/angular_wrappanel.png" alt="Angular WrapPanel" />
 
 If you want to achieve a result similar to a WrapPanel with Orientation="Vertical", you have to set the [`flex-direction`](https://www.w3schools.com/cssref/css3_pr_flex-direction.asp) property to `column`. The [`flex-flow`](https://www.w3schools.com/cssref/css3_pr_flex-flow.asp) property is a shorthand property for setting both the `flex-direction` and `flex-wrap` properties.
 
@@ -136,12 +133,12 @@ The [`Grid`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls
 </Grid>
 ```
 
-<img class="responsive-img" src="../../../images/general/wpf_grid.png" alt="WPF Grid" />
 
 In Angular, we could use the CSS Grid Layout Module, which offers a grid-based layout system, with rows and columns. In order to use the Grid layout, we have to define a container which has its [`display`](https://www.w3schools.com/cssref/pr_class_display.asp) property set to `grid` or `inline-grid`.
 
 ```html
 <div class="grid-container">
+
     <button class="button1">1</button>
     <button>2</button>
     <button>3</button>
@@ -158,8 +155,8 @@ In Angular, we could use the CSS Grid Layout Module, which offers a grid-based l
 }
 ```
 
-> [!NOTE]
-> The CSS Grid Layout is [not supported](https://caniuse.com/#feat=css-grid) in older browsers like Internet Explorer 11.
+**Note:** 
+The CSS Grid Layout is [not supported](https://caniuse.com/#feat=css-grid) in older browsers like Internet Explorer 11.
 
 Now let us define the columns of the grid using the [`grid-template-columns`](https://www.w3schools.com/cssref/pr_grid-template-columns.asp) property.
 
@@ -190,8 +187,6 @@ Now we will add the rows with height of 50px each using the [`grid-template-rows
 ```
 
 If we open the application now it looks like this:
-
-<img class="responsive-img" src="../../../images/general/angular_grid.png" alt="Angular Grid" />
 
 You could see one important difference between the WPF and CSS grids. In WPF the default value of Grid.Row and Grid.Column is 0, while the CSS grid layout automatically assigns the next available row and column to its children.
 
@@ -229,7 +224,6 @@ Here is the full CSS and the final result in the browser:
 }
 ```
 
-<img class="responsive-img" src="../../../images/general/angular_grid_span.png" alt="Angular Grid Span" />
 
 The `grid-row` and `grid-column` properties are shorthand properties for the [`grid-row-start`](https://www.w3schools.com/cssref/pr_grid-row-start.asp), [`grid-row-end`](https://www.w3schools.com/cssref/pr_grid-row-end.asp), [`grid-column-start`](https://www.w3schools.com/cssref/pr_grid-column-start.asp) and [`grid-column-end`](https://www.w3schools.com/cssref/pr_grid-column-end.asp) properties. You could learn more about the CSS Grid container and item properties in the tutorials in the **Additional Resources** section.
 
@@ -240,7 +234,7 @@ The `grid-row` and `grid-column` properties are shorthand properties for the [`g
 - [CSS Grid Container](https://www.w3schools.com/css/css_grid_container.asp)
 - [CSS Grid Item](https://www.w3schools.com/css/css_grid_item.asp)
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

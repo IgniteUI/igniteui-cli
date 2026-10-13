@@ -1,15 +1,17 @@
 ---
 title: Localization (i18n) - Native Angular | Ignite UI for Angular
-_description: The Ignite UI for Angular Localization mechanism provides the ability to change/localize strings in the components.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components
+description: The Ignite UI for Angular Localization mechanism provides the ability to change/localize strings in the components.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components
+llms:
+  description: "As of 21.1.0 this is the recommended way of applying localization to the Ignite UI for Angular components."
 _tocName: Localization (i18n)
 ---
-
 # Localization (i18n)
 
 ## Localization (i18n)
 
->Note: As of 21.1.0 this is the recommended way of applying localization to the Ignite UI for Angular components.
+**Note:** 
+As of 21.1.0 this is the recommended way of applying localization to the Ignite UI for Angular components.
 
 With our new localization we introduce more features with less requirements for both our localization strings and formatting for all available locales. The formatting is now based on the standards introduced by the `Intl` API.
 
@@ -131,7 +133,8 @@ export class LocalizationAllResourcesComponent implements OnInit {
 }
 ```
 
->Note: Hindi (HI) included in the sample is only for illustrational purposes and to emphasize on the possibility to pass a custom localization object. In this sample, it contains only several localized strings for the summary. More details at [Custom localized resource strings](#custom-localized-resource-strings) section below.
+**Note:** 
+Hindi (HI) included in the sample is only for illustrational purposes and to emphasize on the possibility to pass a custom localization object. In this sample, it contains only several localized strings for the summary. More details at [Custom localized resource strings](#custom-localized-resource-strings) section below.
 
 ### Locale
 
@@ -157,7 +160,9 @@ In general you should register your resources under the languages, regions and s
 
 With this approach we have the ability to set localization through the `lang` global attribute of the `HTML` tag. This attribute is being watched and if it is changed, all rendered components will update their resource strings to the currently set language. All rules regarding the tag used apply as described above.
 
-> Note: This works only on root level and will not work for inner elements on the page.
+**Note:** 
+This works only on root level and will not work for inner elements on the page.
+
 
 ```html
 <html lang="ja">
@@ -347,7 +352,8 @@ public resourcesDE = GridResourceStringsDE;
 
 If you would like to localize your app, but we do not provide resource strings for the language you use and would like to provide your own translation, you can always provide custom resource string. You can do that globally or per component(using the `resourceStrings` property).
 
->Note: Feel free to contribute to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) package with more languages. The `igniteui-angular-i18n` are based on them.
+**Note:** 
+Feel free to contribute to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) package with more languages. The `igniteui-angular-i18n` are based on them.
 
 You can use the provided `IResourceStrings` type for all components to get typings for the resource stings used:
 
@@ -395,7 +401,8 @@ registerI18n(customResources, 'en');
 
 ```
 
->Note: The last examples set only specific resource strings. This means that the rest will default to English, if they are not available for the components in use to get.
+**Note:** 
+The last examples set only specific resource strings. This means that the rest will default to English, if they are not available for the components in use to get.
 
 ### Available resource strings
 
@@ -419,10 +426,10 @@ registerI18n(customResources, 'en');
 - [IgxResourceStringsZHHANS](https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular-i18n/src/i18n/ZH-HANS/resources.ts)
 - [IgxResourceStringsZHHANT](https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular-i18n/src/i18n/ZH-HANT/resources.ts)
 
-
 ## Legacy Localization (i18n)
 
->Note: This is an old way of handling localization that was recommended until 21.0.x. We suggest using the new available way above if you are using newer versions. This will still work until further notice.
+**Note:** 
+This is an old way of handling localization that was recommended until 21.0.x. We suggest using the new available way above if you are using newer versions. This will still work until further notice.
 
 Currently, Ignite UI for Angular ships with resource strings for the following languages and scripts: Bulgarian, Czech, Danish, Dutch, English, French, German, Hungarian, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Romanian, Spanish, Swedish, Turkish, Traditional Chinese (zh-Hant) and Simplified Chinese (zh-Hans). These are available via the `igniteui-angular-i18n` package, except for English which comes as a default localization in `igniteui-angular`.
 
@@ -590,7 +597,8 @@ export class LocalizationAllResourcesOldComponent implements OnInit {
 }
 ```
 
->Note: Hindi (HI) included in the sample is only for illustrational purposes and to emphasize on the possibility to pass a custom localization object. In this sample, it contains only several localized strings for the summary. More details at [Utilize own localized resources](#utilize-own-localized-resources) section below.
+**Note:** 
+Hindi (HI) included in the sample is only for illustrational purposes and to emphasize on the possibility to pass a custom localization object. In this sample, it contains only several localized strings for the summary. More details at [Utilize own localized resources](#utilize-own-localized-resources) section below.
 
 ### Usage
 
@@ -664,7 +672,8 @@ export class AppComponent implements OnInit {
 }
 ```
 
->Note: Feel free to contribute to the [`igniteui-angular-i18n`](https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular-i18n) package with more languages!
+**Note:** 
+Feel free to contribute to the [`igniteui-angular-i18n`](https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular-i18n) package with more languages!
 
 #### Utilize own localized resources
 
@@ -762,7 +771,7 @@ this.grid.resourceStrings = newGridRes;
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

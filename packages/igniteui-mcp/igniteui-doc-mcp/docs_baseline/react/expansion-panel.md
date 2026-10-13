@@ -1,13 +1,14 @@
 ---
-title: React Expansion Panel | Expansion Panel | Infragistics
-_description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
-_keywords: React Expansion Panel, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Expansion Panel | Expansion Panel | Infragistics"
+description: Expansion Panel component provides an easily configurable expandable component with two states - collapsed and expanded.
+keywords: "React Expansion Panel, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Infragistics.Controls.Layouts.Implementation.ExpansionPanel"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Ignite UI for React Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded."
 _tocName: Expansion Panel
 ---
-
 # React Expansion Panel Overview
 
 The Ignite UI for React Expansion Panel is a lightweight accordion component which can be rendered in two states - collapsed or expanded. The expansion panel can be toggled using mouse click, or keyboard interactions.
@@ -53,8 +54,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelUsage/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -74,14 +73,14 @@ The simplest way to start using the [`IgrExpansionPanel`](mcp:get_api_reference?
 
 ```tsx
 <IgrExpansionPanel>
-    <h1 slot="title">Golden Retriever</h1>
-    <h3 slot="subtitle">Medium-large gun dog</h3>
-    <span>
-        The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
-        and upland game birds, during hunting and shooting parties.[3] The name retriever refers to the breeds ability
-        to retrieve shot game undamaged due to their soft mouth. Golden retrievers have an instinctive love of water, and
-        are easy to train to basic or advanced obedience standards.
-    </span>
+  <span slot="title">Golden Retriever</span>
+  <span slot="subtitle">Medium-large gun dog</span>
+  <span>
+    The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
+    and upland game birds, during hunting and shooting parties.[3] The name retriever refers to the breeds ability
+    to retrieve shot game undamaged due to their soft mouth. Golden retrievers have an instinctive love of water, and
+    are easy to train to basic or advanced obedience standards.
+  </span>
 </IgrExpansionPanel>
 ```
 
@@ -89,10 +88,10 @@ The simplest way to start using the [`IgrExpansionPanel`](mcp:get_api_reference?
 
 The Expansion Panel component raises the following events:
 
-- Closed - Raised when the expansion panel is collapsed
-- Opened - Raised when the expansion panel is expanded
-- Closing - Raised when the expansion panel starts collapsing
-- Opening - Raised when the expansion panel starts expanding
+- **Closed** - Raised when the expansion panel is collapsed
+- **Opened** - Raised when the expansion panel is expanded
+- **Closing** - Raised when the expansion panel starts collapsing
+- **Opening** - Raised when the expansion panel starts expanding
 
 The following sample demonstrates how we can add some logic to our component to make it show/hide the `subtitle` depending on the current state of the panel.
 
@@ -186,17 +185,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelPropertiesAndEvents/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Component Customization
-
 The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) allows for easy customization of the header through the exposed `title`, `subTitle` and `indicator` slots.
 
-Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
+Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
-The next code sample demonstrates how to configure the component's button to go on the **right**side.
+The next code sample demonstrates how to configure the component's button to go on the **right** side.
 
 ```css
 igc-expansion-panel {
@@ -272,7 +268,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelComponentCustomization/>);
 ```
 
-<div class="divider--half"></div>
+### Recommended Elements for Slots
+
+When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
+The `indicator` slot is intended for icon-like content. We recommend using the [`<igc-icon>`](../layouts/icon.md) component for this purpose. Alternatively, if you don't want to use an icon for the indicator, a `<span>` element can be used to display text, symbols, or emojis.
+
+```tsx
+<IgrExpansionPanel>
+  <span slot="title">Golden Retriever</span>
+  <span slot="subtitle">Medium-large gun dog</span>
+  <IgrIcon slot="indicator" name="arrow_forward"></IgrIcon>
+</IgrExpansionPanel>
+```
 
 ## Keyboard Navigation
 
@@ -406,13 +414,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelStyling/>);
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

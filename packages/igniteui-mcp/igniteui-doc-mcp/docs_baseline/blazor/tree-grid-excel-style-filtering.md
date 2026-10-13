@@ -1,15 +1,14 @@
 ---
-title: Blazor Tree Grid Excel Style Filtering - Ignite UI for Blazor
-_description: Learn how to configure Excel filtering in Blazor Tree Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
+title: "Blazor Tree Grid Excel Style Filtering - Ignite UI for Blazor"
+description: Learn how to configure Excel filtering in Blazor Tree Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, Blazor, Ignite UI for Blazor, Infragistics
+license: commercial
+llms:
+  description: "The Blazor Tree Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI."
+_componentKey: TreeGrid
 _tocName: Excel Style Filtering
 _premium: true
 ---
-
 # Excel Filtering in Blazor Tree Grid
 
 The Blazor Tree Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI. It simplifies the process of working with large datasets. The main idea is to help them filter the data that is most relevant, while eliminating irrelevant entries.
@@ -176,7 +175,7 @@ public class FoodsData
 
 ## Usage
 
-To turn on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=AllowFiltering) should be set to **true** and the [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component's Excel-style filtering, two inputs should be set. The [`IgbTreeGrid.allowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=allowFiltering) should be set to **true** and the [`IgbTreeGrid.filterMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbTreeGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -197,7 +196,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected), [`DisablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisablePinning), [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`IgbColumn.sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=sortable), [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected), [`IgbColumnState.disablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=disablePinning), [`IgbColumnState.disableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=disableHiding).
 
 ```razor
 <IgbTreeGrid AutoGenerate="false" Data="FoodsData" PrimaryKey="ID" ForeignKey="ParentID" Moving="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter">
@@ -215,8 +214,6 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 ```
 
 In the sample below 'Product Name' and 'Discontinued' columns have all three features enabled, 'Unit Price' have all three disabled, 'Added Date' has only pinning and hiding.
-
-<!-- ComponentEnd: TreeGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -347,9 +344,9 @@ public class FoodsData
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`IgbTreeGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`IgbTreeGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=excelStyleHeaderIconTemplate):
 
 ```razor
 <IgbTreeGrid
@@ -358,42 +355,16 @@ The following code demonstrates how to customize the Excel style filter menu usi
     FilterMode="FilterMode.ExcelStyleFilter"
     ExcelStyleHeaderIconTemplateScript="WebGridFilterAltIconTemplate">
 </IgbTreeGrid>
+```
 
+```javascript
 // In JavaScript
 igRegisterScript("WebGridFilterAltIconTemplate", (ctx) => {
     var html = window.igTemplating.html;
         return html`<img height="15px" width="15px" src="http://static.infragistics.com/xplatform/images/grid/propeller-logo.svg" title="Continued" alt="Continued" />`
 }, false);
+
 ```
-
-<!-- ```razor
-Add razor snipets
-``` -->
-
-<!-- ```html
-<igc-tree-grid id="treegrid1" auto-generate="false" height="650px" width="100%" allow-filtering="true"
-    primary-key="ID" foreign-key="ParentID" filter-mode="ExcelStyleFilter">
-
-    <igc-grid-excel-style-filtering min-height="380px" max-height="500px">
-        <igc-excel-style-column-operations>
-            <igc-excel-style-header
-                show-pinning="true"
-                show-hiding="true"
-            >
-            </igc-excel-style-header>
-
-            <igc-excel-style-sorting></igc-excel-style-sorting>
-        </igc-excel-style-column-operations>
-
-        <igc-excel-style-filter-operations>
-            <igc-excel-style-search></igc-excel-style-search>
-        </igc-excel-style-filter-operations>
-    </igc-grid-excel-style-filtering>
-
-</igc-tree-grid>
-``` -->
-
-<!-- ComponentEnd: TreeGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -517,11 +488,9 @@ public class FoodsData
 }
 ```
 
-<!-- ComponentStart: TreeGrid -->
-
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -650,10 +619,8 @@ public class FoodsData
 ```
 
 ## API References
-
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
-- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
-
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

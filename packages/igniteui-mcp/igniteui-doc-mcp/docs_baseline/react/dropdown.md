@@ -1,12 +1,13 @@
 ---
-title: React Dropdown List Component | Ignite UI for React
-_description: With React Dropdown List component you can add interactivity and see styling options to a scrollable list of items in your app. Try it now. React now.
-_keywords: React, UI controls, web widgets, UI widgets, React Dropdown Component, Infragistics
-_license: MIT
+title: "React Dropdown List Component | Ignite UI for React"
+description: With React Dropdown List component you can add interactivity and see styling options to a scrollable list of items in your app. Try it now.  React now.
+keywords: "React, UI controls, web widgets, UI widgets, React Dropdown Component, Infragistics"
+license: MIT
 mentionedTypes: ["Dropdown", "DropdownItem", "DropdownHeader", "DropdownGroup"]
+llms:
+  description: "Feature-rich, the React Dropdown list offers out-of-the-box filtering, accessibility, preselected values, flexible data binding, grouping, UI customization, and more."
 _tocName: Dropdown
 ---
-
 # React Dropdown List Component - Overview
 
 Feature-rich, the React Dropdown list offers out-of-the-box filtering, accessibility, preselected values, flexible data binding, grouping, UI customization, and more. What this component practically does is to effectively and easily replace HTML select tags, enabling users to quickly choose a non-editable value from a predefined set of several options.
@@ -78,18 +79,18 @@ The simplest way to start using the [`IgrDropdown`](mcp:get_api_reference?platfo
 
 ```tsx
 <IgrDropdown>
-    <div slot="target">
-        <IgrButton><span>Options</span></IgrButton>
-    </div>
-    <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
-    <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
-    <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
+  <div slot="target">
+    <IgrButton><span>Options</span></IgrButton>
+  </div>
+  <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
+  <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
+  <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
 </IgrDropdown>
 ```
 
 ### Target
 
-The React Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=showTarget), [`hide`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=hide) and [`toggleTarget`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgrPositionStrategy`](mcp:get_api_reference?platform=react&component=IgrPositionStrategy) of the React Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=sameWidth) property to `true`.
+The React Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`Show`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=show), [`Hide`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=hide) and [`Toggle`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=toggle) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`PositionStrategy`](mcp:get_api_reference?platform=react&component=IgrOverlaySettings&member=positionStrategy) of the React Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`SameWidth`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=sameWidth) property to `true`.
 
 ```css
 /* shared styles are loaded from: */
@@ -147,7 +148,7 @@ root.render(<DropDownTarget/>);
 
 ### Position
 
-The preferred placement of the React Dropdown can be set using the [`placement`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=placement) property. The default placement of the Dropdown is `bottom-start`. The [`flip`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the React Dropdown list to its target can be specified using the [`distance`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=distance) property.
+The preferred placement of the React Dropdown can be set using the [`Placement`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=placement) property. The default placement of the Dropdown is `bottom-start`. The [`Flip`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the React Dropdown list to its target can be specified using the [`Distance`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=distance) property.
 
 ```css
 /* shared styles are loaded from: */
@@ -226,11 +227,27 @@ root.render(<DropDownPosition/>);
 
 ### Selection
 
-The [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown) emits the `Change` event when the user selects an item. The [`select`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=select) method of the Dropdown allows you to select an item by its index or value.
+The [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown) emits the `Change` event when the user selects an item. The [`Select`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=select) method of the Dropdown allows you to select an item by its index or value.
 
 ### Item
 
-The [`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=selected) property. You could also disable an item so that it can't be selected using the [`disabled`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=disabled) property. The [`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=value) property allows you to provide a custom value to an item. If the [`value`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=value) is not set, it resolves to the text content of the item.
+The [`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`Selected`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=selected) property. You could also disable an item so that it can't be selected using the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=disabled) property.
+
+The [`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots.
+We recommend using a `<span>` element when adding simple text, symbols, or emojis, and an [`<igc-icon>`](../layouts/icon.md) component when adding icons to the `prefix` and `suffix` slots.
+
+```tsx
+<IgrDropdown>
+  <IgrButton slot="target"><span>Countries</span></IgrButton>
+  <IgrDropdownItem>
+    <IgrIcon slot="prefix" name="place"></IgrIcon>
+    <span>Germany</span>
+    <span slot="suffix">DE</span>
+  </IgrDropdownItem>
+</IgrDropdown>
+```
+
+The [`Value`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=value) property allows you to provide a custom value to an item. If the [`Value`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&member=value) is not set, it resolves to the text content of the item.
 
 ```css
 /* shared styles are loaded from: */
@@ -459,11 +476,11 @@ root.render(<DropDownGroup/>);
 
 ### Scroll Strategy
 
-The [`scrollStrategy`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
+The [`ScrollStrategy`](mcp:get_api_reference?platform=react&component=IgrOverlaySettings&member=scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
 
 ### Keep Open
 
-By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=keepOpenOnOutsideClick) and [`keepOpenOnSelect`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=keepOpenOnSelect) properties.
+By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=keepOpenOnOutsideClick) and [`KeepOpenOnSelect`](mcp:get_api_reference?platform=react&component=IgrDropdown&member=keepOpenOnSelect) properties.
 
 ## Styling
 
@@ -585,13 +602,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownStyling/>);
 ```
 
-## API Reference
+## API References
 
-- [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown)
-- [`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem)
-- [`IgrDropdownHeader`](mcp:get_api_reference?platform=react&component=IgrDropdownHeader)
-- [`IgrDropdownGroup`](mcp:get_api_reference?platform=react&component=IgrDropdownGroup)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown)
+[`IgrDropdownItem`](mcp:get_api_reference?platform=react&component=IgrDropdownItem)
+[`IgrDropdownHeader`](mcp:get_api_reference?platform=react&component=IgrDropdownHeader)
+[`IgrDropdownGroup`](mcp:get_api_reference?platform=react&component=IgrDropdownGroup)
 
 ## Additional Resources
 

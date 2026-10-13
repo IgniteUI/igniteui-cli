@@ -1,21 +1,21 @@
 ---
 title: Angular Batch Editing | Angular Crud | Ignite UI for Angular | Infragistics
-_description: How to configure batch editing for Ignite UI Angular components and execute CRUD operations on them, using Transaction service.
-_keywords: batch editing, igniteui for angular, infragistics
+description: How to configure batch editing for Ignite UI Angular components and execute CRUD operations on them, using Transaction service.
+keywords: batch editing, igniteui for angular, infragistics
+llms:
+  description: "You may get advantage of the Transaction Service when using any component that needs to preserve the state of its data source and to commit many transactions at once."
 _tocName: How to use the Transaction Service
 _premium: true
 ---
-
 # How to use the Transaction service
 
-You may get advantage of the [`Transaction Service`](mcp:get_api_reference?platform=angular&component=TransactionService) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
+You may get advantage of the [`Transaction Service`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
 
-When working with the Ignite UI for Angular grid components, you may use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`igxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
+When working with the Ignite UI for Angular grid components, you may use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
 
 ## Angular How to use the Transaction service Example
 
 In this topic we will use [`igxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component to demonstrate how to enable transactions. We will demonstrate how to add transactions, how to transform the data through a [pipe](https://angular.io/guide/pipes) and how to visually update the view in order to let the user see the changes that are about to be committed.
-
 
 ```typescript
 import { Component, inject } from '@angular/core';
@@ -220,7 +220,7 @@ igx-icon {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Include Transaction Service
 
@@ -252,7 +252,7 @@ export class TransactionBaseComponent { }
 
 ### Inject Transaction Service in component
 
-In our `ts` file, we should import [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) from the `igniteui-angular` library, as well as the [`State`](mcp:get_api_reference?platform=angular&component=State) and [`Transaction`](mcp:get_api_reference?platform=angular&component=Transaction) interfaces and the [`TransactionType`](mcp:get_api_reference?platform=angular&component=TransactionType) enum, which will be needed by our application:
+In our `ts` file, we should import [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) from the `igniteui-angular` library, as well as the [`IgxState`](mcp:get_api_reference?platform=angular&component=State) and [`IgxTransaction`](mcp:get_api_reference?platform=angular&component=Transaction) interfaces and the [`IgxTransactionType`](mcp:get_api_reference?platform=angular&component=TransactionType) enum, which will be needed by our application:
 
 ```typescript
 import { IgxTransactionService, State, Transaction, TransactionType } from 'igniteui-angular/core';
@@ -283,8 +283,9 @@ In our html template, we define an [`igxList`](mcp:get_api_reference?platform=an
 </igx-list>
 ```
 
-> [!NOTE]
-> This example uses `igx-icon` with the default Material Icons family. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+**Note:** 
+This example uses `igx-icon` with the default Material Icons family. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ## Pipe for pending changes
 
@@ -377,7 +378,6 @@ The third list item contains a delete button, which deletes the item's data.
 <igx-icon igxListAction (click)="onDelete()" *ngIf="item.id === 2 && !isDeleted(item.id)">delete</igx-icon>
 ```
 
-
 When the button is pressed, inside `onDelete` event handler, a 'DELETE' transaction is created:
 
 ```typescript
@@ -442,7 +442,8 @@ The demo demonstrates the pending transactions inside a log:
     <h5>Transaction Log</h5>
     <div *ngFor="let transaction of this.getTransactionLog()">
         {{transaction.type.toUpperCase()}} -> {{transaction.name}} Costs: {{transaction.price}}
-    </div>
+    
+</div>
 </div>
 ```
 
@@ -461,14 +462,16 @@ We will also add a representation of the current state of our list. It will show
 <div>
     <h5>Data Items</h5>
     <div *ngFor="let item of this.wishlist">
-        <div>{{item.name}} - {{item.price}}</div>
-    </div>
+        <div>{{item.name}} - {{item.price}}
+</div>
+    
+</div>
 </div>
 ```
 
 ## Commit pending transactions
 
-Once we are done with all our changes, we may commit them all at once using the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method of the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). It applies all transactions over the provided data:
+Once we are done with all our changes, we may commit them all at once using the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method of the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). It applies all transactions over the provided data:
 
 ```html
 <button igxButton="contained" (click)="onCommit()" [disabled]="this.getTransactionLog().length === 0">Commit Transactions</button>
@@ -482,13 +485,13 @@ public onCommit(): void {
 
 ```
 
-If we are using the [`igxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
+If we are using the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
 
 ```typescript
 public onCommit(): void {
     this.transactions.commit(this.wishlist, primaryKey, childDataKey);
 }
-````
+```
 
 ## Clear pending transactions
 
@@ -507,8 +510,8 @@ public onClear(): void {
 
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [Transaction Service API](mcp:get_api_reference?platform=angular&component=TransactionService)
-- [Transaction Service](transaction.md)
-- [Transaction Service class hierarchy](transaction-classes.md)
+- [`Transaction Service API`](mcp:get_api_reference?platform=angular&component=IgxTransactionService)
+- [Transaction Service](/transaction)
+- [Transaction Service class hierarchy](/transaction-classes)

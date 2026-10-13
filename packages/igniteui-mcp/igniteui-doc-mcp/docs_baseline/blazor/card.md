@@ -1,12 +1,13 @@
 ---
 title: Card Component
-_description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
-_keywords: Ignite UI for Blazor, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls
-_license: MIT
+description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
+keywords: "Ignite UI for Blazor, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls"
+license: MIT
 mentionedTypes: ["Card", "CardActions", "CardContent", "CardHeader", "CardMedia", "Avatar", "Button", "Icon", "IconButton", "Ripple"]
+llms:
+  description: "The Ignite UI for Blazor Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information."
 _tocName: Card
 ---
-
 # Blazor Card Overview
 
 The Ignite UI for Blazor Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information. Cards can be used to create a multimedia dashboard.
@@ -85,8 +86,6 @@ The Ignite UI for Blazor Card displays text, images, icons, and buttons in a vis
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Cards allow you to easily display content composed of different types of objects or similar objects whose size and supported actions can vary.
@@ -95,13 +94,13 @@ Cards allow you to easily display content composed of different types of objects
 
 Before using the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard), you need to register it as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbCardModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -117,10 +116,9 @@ Then, to represent the demo card template, we can add the following code:
         <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50">
     </IgbCardMedia>
     <IgbCardHeader>
-        <h3 slot="title">New York City</h3>
-        <h5 slot="subtitle">City in New York</h5>
+        <span slot="title">New York City</span>
+        <span slot="subtitle">City in New York</span>
     </IgbCardHeader>
-
     <IgbCardContent>
        <p>New York City comprises 5 boroughs sitting where the
            Hudson River meets the Atlantic Ocean. At its core is Manhattan,
@@ -144,7 +142,7 @@ Then, to represent the demo card template, we can add the following code:
 </IgbCard>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, to _tag_ an element as a header title, we need to place it between the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) tags and set its slot name to `title`. Conversely, to define a subtitle, we need to set the slot name to `subtitle`. When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. A `<span>` provides a neutral container that inherits the component’s styles cleanly.
 
 Any image or video we want to show in the card, we wrap inside the [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) tags. The [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
@@ -154,23 +152,21 @@ Finally, the [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=
 
 ### Media, Thumbs, and Avatars
 
-If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
+If you want to display an image or icon in the card header next to the title and subtitle, assign the element's slot attribute to `thumbnail`. For the best results, we recommend using an [`igc-avatar`](../layouts/avatar.md) component for the `thumbnail` slot, as it integrates seamlessly with the card header's layout and styling.
 
 Taking the card above as an example, we can edit the contents of the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) and add an avatar with `slot="thumbnail"`:
 
 ```razor
 <IgbCardHeader>
     <IgbAvatar slot="thumbnail" Src="path/to/image" Initials="TS" />
-
-    <h3 slot="title">Title</h5>
-    <h5 slot="subtitle">Subtitle</h5>
+    <span slot="title">Title</span>
+    <span slot="subtitle">Subtitle</span>
 </IgbCardHeader>
 ```
 
 The above example will show the avatar alongside the title and subtitle in the card header.
 
 ### Outlined cards
-
 The card has an `outlined` attribute which, if set, removes any shadows from the card, replacing them with a thin border to separate the card from the background.
 
 ### Horizontal Layout
@@ -185,14 +181,12 @@ Here's an example of an outlined horizontal card:
         <div>
             <IgbCardHeader>
                 <img slot="thumbnail" src="ROZES-Under-the-Grave.jpg" alt="ROZES-Under-the-Grave" />
-                <h5 slot="title">Rozes</h5>
-                <h5 slot="subtitle">Under the Grave (2016)</h5>
+                <span slot="title">Rozes</span>
+                <span slot="subtitle">Under the Grave (2016)</span>
             </IgbCardHeader>
             <IgbCardContent>
-                <p>
-                    As I have always said: I write what's real and what's true,
-                    even if it means throwing myself under the bus.
-                </p>
+                <p>As I have always said: I write what's real and what's true,
+                    even if it means throwing myself under the bus.</p>
             </IgbCardContent>
         </div>
         <div class="divider"></div>
@@ -278,13 +272,13 @@ Below is an example showing how you can create a semi-horizontal card, where we 
         <div>
             <IgbCardHeader>
                 <IgbAvatar slot="thumbnail" src/>
-                <h5 slot="title">HERE</h5>
-                <h5 slot="subtitle">by Mellow D</h5>
+                <span slot="title">HERE</span>
+                <span slot="subtitle">by Mellow D</span>
             </IgbCardHeader>
             <IgbCardContent>
-              <p>Far far away, behind the word mountains,
-              far from the countries Vokalia and Consonantia,
-              there live the blind texts.</p>
+                <p>Far far away, behind the word mountains,
+                far from the countries Vokalia and Consonantia,
+                there live the blind texts.</p>
             </IgbCardContent>
             <IgbCardActions>
                 <IgbButton>Play Album</IgbButton>
@@ -349,12 +343,11 @@ Below is an example showing how you can create a semi-horizontal card, where we 
 ### Card Actions
 
 The card actions area allows additional configuration to what we have already mentioned.
-
-You can reverse the order of the text button and the icon buttons by switching their slot names.
+The area is intended to hold actionable items, like buttons. There are two slots available that can be used to position content: `start` and `end`. We can assign these slots to any element placed inside the [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions), and it will be positioned accordingly, either at the `start` or the `end` of the area. These slots can be used with any type of content, but we highly recommend sticking to actionable elements, or wrappers of actionable elements, as shown in the example below:
 
 ```razor
 <IgbCardActions>
-    <IgbButton slot="start">
+    <IgbButton slot="end">
         <IgbRipple />
         Read more
     </IgbButton>
@@ -368,8 +361,6 @@ You can reverse the order of the text button and the icon buttons by switching t
     </div>
 </IgbCardActions>
 ```
-
-Now the icon buttons will appear before the text button.
 
 You can also add more content in-between by simply omitting the slot property and let the elements go to the default slot.
 
@@ -490,23 +481,21 @@ igc-icon-button::part(base) {
 ```
 
 ### Summary
-
 In this article we covered a lot of ground with the card component. We created a simple card and added some images to make it a bit more appealing. We used some additional Blazor inside our card, like avatars, buttons and icons, to enrich the experience and add some functionality. And finally, we changed the card's appearance by changing the major colors of the building blocks.
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
 
-- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
-- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
-- [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions)
-- [`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent)
-- [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader)
-- [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia)
-- [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard)
-- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
-- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)<br />
+[`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)<br />
+[`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions)<br />
+[`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent)<br />
+[`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader)<br />
+[`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia)<br />
+[`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard)<br />
+[`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)<br />
+[`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)<br />
 
 ## Additional Resources
 

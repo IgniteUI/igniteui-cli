@@ -1,13 +1,14 @@
 ---
-title: Web Components Spreadsheet | Clipboard Operations | Infragistics
-_description: Use clipboard operations such as copy, cut and paste within Infragistics' Web Components spreadsheet control. View Infragistics Ignite UI for Web Components spreadsheet demos today!
-_keywords: Spreadsheet, clipboard operations, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Spreadsheet | Clipboard Operations | Infragistics"
+description: Use clipboard operations such as copy, cut and paste within Infragistics' Web Components spreadsheet control. View Infragistics Ignite UI for Web Components spreadsheet demos today!
+keywords: Spreadsheet, clipboard operations, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction", "SpreadsheetCommandType", "Command"]
+llms:
+  description: "Explains how to copy, cut, and paste cells in the Web Components Spreadsheet by using its clipboard commands and API."
 _tocName: Clipboard
 _premium: true
 ---
-
 # Web Components Working with Clipboard
 
 This topic explains how to perform clipboard operations on the Ignite UI for Web Components spreadsheet component.
@@ -128,22 +129,18 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
-Before making use of the clipboard you will want to import the `SpreadsheetAction` enumeration:
+Before making use of the clipboard you will want to import the `IgcSpreadsheetAction` enumeration:
 
 ```ts
 import { IgcSpreadsheetComponent } from 'igniteui-webcomponents-spreadsheet';
 import { SpreadsheetAction } from 'igniteui-webcomponents-spreadsheet';
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
-The following code snippet shows how you can execute commands related to the clipboard in the Web Components [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html) control:
+The following code snippet shows how you can execute commands related to the clipboard in the Web Components `IgcSpreadsheet` control:
 
 ```ts
 public cut(): void {
@@ -161,5 +158,5 @@ public paste(): void {
 
 ## API References
 
-- `SpreadsheetAction`
-- [`IgcSpreadsheetComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_spreadsheet.igcspreadsheetcomponent.html)
+`IgcSpreadsheetAction`<br />
+`IgcSpreadsheet`<br />

@@ -1,15 +1,17 @@
 ---
 title: Tailwind Integration for Web Components
-_description: Learn how to integrate Tailwind CSS with custom utility classes from the Ignite UI theming engine. This guide walks you through the setup and demonstrates how to use design tokens for colors, typography, and shadows in a utility-first approach.
-_keywords: Ignite UI for Web Components, Infragistics, Themes, Styling, Tailwind CSS, custom CSS, utility classes, theming engine, typography, shadows, colors
-_license: MIT
+description: Learn how to integrate Tailwind CSS with custom utility classes from the Ignite UI theming engine. This guide walks you through the setup and demonstrates how to use design tokens for colors, typography, and shadows in a utility-first approach.
+keywords: "Ignite UI for Web Components, Infragistics, Themes, Styling, Tailwind CSS, custom CSS, utility classes, theming engine, typography, shadows, colors"
+license: MIT
 mentionedTypes: ["ConfigureTheme"]
+llms:
+  description: "Ignite UI for Web Components offers full theming customization through CSS variables."
 _tocName: Custom Tailwind Classes
 ---
+# Tailwind CSS Integration with Ignite UI for Web Components
 
-# Tailwind CSS Integration with Ignite UI for WebComponents
-
-Ignite UI for WebComponents offers full theming customization through CSS variables. In this guide, you'll learn how to integrate Tailwind CSS into your project and enhance it with custom utility classes provided by the `igniteui-theming` package. These classes expose Ignite UI design tokens for colors, shadows, and typography, enabling a seamless utility-first styling experience. <br>
+Ignite UI for Web Components offers full theming customization through CSS variables. In this guide, you'll learn how to integrate Tailwind CSS into your project and enhance it with custom utility classes provided by the `igniteui-theming` package. These classes expose Ignite UI for Web Components design tokens for colors, shadows, and typography, enabling a seamless utility-first styling experience.
+<br />
 
 ## Overview
 
@@ -53,18 +55,32 @@ Let’s look at how to use each.
 
 Our color utility classes are powered by tokens from each Ignite UI theme. You can apply them directly in your HTML:
 
-You can explore Tailwind’s full color system in this [topic](https://tailwindcss.com/docs/color), and apply it using the Ignite UI-provided class names. <br>
+```html
+<h1 class="bg-primary-500 text-primary-500-contrast">This is a title</h1>
+```
+
+You can explore Tailwind’s full color system in this [topic](https://tailwindcss.com/docs/color), and apply it using the Ignite UI-provided class names.
+<br />
 
 ### Shadow utility classes
 
 You can add depth using any of the predefined [elevation levels](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/elevations) (from 0 to 24):
 
-You can find all the shadow-related utility classes provided by Tailwind in this [topic](https://tailwindcss.com/docs/box-shadow) <br>
+```html
+<div class="shadow-elevation-8">Elevated container</div>
+```
+
+You can find all the shadow-related utility classes provided by Tailwind in this [topic](https://tailwindcss.com/docs/box-shadow)
+<br />
 
 ### Typography custom utility styles
 
 To apply the font, add the `font-ig` class to a top-level element. You can also define the base font size using the `text-base` utility class.
 We provide custom utility classes for each typography level (e.g., h1, h2, body-1). Use them like so:
+
+```html
+<p class="type-style-h3">This paragraph gets the h3 styles</p>
+```
 
 Each class applies all necessary font settings, spacing, and sizing according to the [Ignite UI type scale](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/typography).
 
@@ -86,8 +102,8 @@ main {
 }
 ```
 
-> [!NOTE]
-> This sample is fictional and fully custom, it’s not part of the Ignite UI component library.
+**Note:** 
+This sample is fictional and fully custom, it’s not part of the Ignite UI component library.
 
 ## Summary
 

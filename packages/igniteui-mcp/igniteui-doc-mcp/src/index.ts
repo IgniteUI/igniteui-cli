@@ -10,11 +10,13 @@ import { TOOL_DESCRIPTIONS, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
-import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
-import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { applyDocAlias, buildProjectSetupGuide, normalizeDocName, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+import { getApiReferenceSchema, resolveImportSchema, searchApiSchema } from "./tools/schemas.js";
+import { createGetApiReferenceHandler, createResolveImportHandler, createSearchApiHandler } from "./tools/handlers.js";
+import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
+import { ImportResolver } from "./lib/import-resolver.js";
 import { getPlatforms } from "./config/platforms.js";
+import { formatDeprecationInstructions, withDeprecationNotices } from "./config/deprecations.js";
 
 dotenv.config({ quiet: true });
 
@@ -60,6 +62,8 @@ const FRAMEWORK_ENUM = z
     "Ignite UI framework. Detect from user context: Angular (Igx prefix, e.g. IgxGrid) → 'angular', React (Igr prefix, e.g. IgrGrid) → 'react', Blazor (Igb prefix, e.g. IgbGrid) → 'blazor', Web Components (Igc prefix + Component suffix, e.g. IgcGridComponent) → 'webcomponents'. Also check file extensions (.razor → blazor, .tsx → react, .ts+.html → angular or webcomponents), package names (igniteui-angular, igniteui-react, igniteui-webcomponents, IgniteUI.Blazor), or ask the user if unclear."
   );
 
+const DEPRECATION_INSTRUCTIONS = formatDeprecationInstructions();
+
 const server = new McpServer(
   { name: "igniteui-mcp-server", version: "1.0.0" },
   {
@@ -73,7 +77,9 @@ const server = new McpServer(
       "If the framework is unclear from context, ask the user. " +
       "LIBRARY BOUNDARY RULE: Once the target framework is identified, always pass it as the 'framework' or 'platform' parameter to every tool call. " +
       "Never apply component APIs, event names, binding syntax, prop names, or state patterns from one framework to code in another framework. " +
-      "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable.",
+      "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable. " +
+      "Before writing import statements for Ignite UI symbols, call resolve_import to get the exact package and entry point." +
+      (DEPRECATION_INSTRUCTIONS ? ` ${DEPRECATION_INSTRUCTIONS}` : ""),
   }
 );
 
@@ -96,6 +102,16 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
       inputSchema: searchApiSchema,
     },
     createSearchApiHandler(docLoader)
+  );
+
+  server.registerTool(
+    "resolve_import",
+    {
+      description: TOOL_DESCRIPTIONS.resolve_import,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: resolveImportSchema,
+    },
+    createResolveImportHandler(new ImportResolver(docLoader))
   );
 }
 
@@ -135,7 +151,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, filter, group, detail }) => {
       const start = performance.now();
-      const text = await docsProvider.listComponents(framework, { filter, group, detail });
+      const index = await docsProvider.listComponents(framework, { filter, group, detail });
+      // Only the filter is scanned: the index itself lists component names, deprecated ones included.
+      const text = withDeprecationNotices(framework, index, [filter ?? ""]);
       log("list_components", { framework, filter, group, detail }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
@@ -160,24 +178,14 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, name }) => {
       const start = performance.now();
-      const resolvedName = applyDocAlias(framework, normalizeDocName(name.trim()));
-      let { text, found } = await docsProvider.getDoc(framework, resolvedName);
+      const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, name);
 
-      // Generic grid-prefix fallback: if the doc isn't found and the name doesn't
-      // already start with a component-type prefix, try "grid-{name}".
-      // This handles bare feature names like "sorting", "remote-data-operations",
-      // "row-editing" etc. without needing an explicit alias for every grid sub-doc.
-      let servedName = resolvedName;
-      if (!found && !/^(grid|hierarchical|tree|pivot|hierarchicalgrid|treegrid|pivotgrid|combo|drop-down|select|for-of)[-]/.test(resolvedName)) {
-        const withGridPrefix = await docsProvider.getDoc(framework, `grid-${resolvedName}`);
-        if (withGridPrefix.found) {
-          ({ text, found } = withGridPrefix);
-          servedName = `grid-${resolvedName}`;
-        }
-      }
+      const served = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
+      // Some docs (sparkline, excel-library) still show deprecated components in their samples.
+      const body = withDeprecationNotices(framework, served, [name, text]);
 
-      log("get_doc", { framework, name: servedName }, text, Math.round(performance.now() - start));
-      return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
+      log("get_doc", { framework, name: servedName }, body, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: body }], ...(found ? {} : { isError: true }) };
     }
   );
 
@@ -214,7 +222,8 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       }
 
       try {
-        const text = await docsProvider.searchDocs(framework, sanitized);
+        const results = await docsProvider.searchDocs(framework, sanitized);
+        const text = withDeprecationNotices(framework, results, [queryText, results]);
         log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
         return { content: [{ type: "text" as const, text }] };
       } catch (err) {

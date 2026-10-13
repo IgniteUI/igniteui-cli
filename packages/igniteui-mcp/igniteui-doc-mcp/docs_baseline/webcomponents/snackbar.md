@@ -1,26 +1,25 @@
 ---
-title: Web Components Snackbar | Infragistics
-_description: With Ignite UI for Web Components Snackbar component, developers can easily integrate a brief, single-line message within mobile and desktop applications.
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Snackbar components
-_license: MIT
+title: "Web Components Snackbar | Infragistics"
+description: With Ignite UI for Web Components Snackbar component, developers can easily integrate a brief, single-line message within mobile and desktop applications.
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Snackbar components"
+license: MIT
 mentionedTypes: ["Snackbar"]
+llms:
+  description: "The Ignite UI for Web Components Snackbar component is used to provide feedback about an operation by showing a brief message at the bottom of the screen."
 _tocName: Snackbar
 ---
-
 # Web Components Snackbar
 
 The Ignite UI for Web Components Snackbar component is used to provide feedback about an operation by showing a brief message at the bottom of the screen.
 
 ## Ignite UI for Web Components Snackbar Example
 
-This sample demonstrates how to create [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component.
+This sample demonstrates how to create [`IgcSnackbar`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<div class="divider--half"></div>
 
 ### Usage
 
@@ -30,7 +29,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent), you need to register it as follows:
+Before using the [`IgcSnackbar`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcSnackbarComponent } from 'igniteui-webcomponents';
@@ -40,7 +39,7 @@ defineComponents(IgcSnackbarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`Show`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=show) method and call it on a button click.
 
 ```html
 <igc-button onclick="snackbar.show()" variant="contained">Show Snackbar</igc-button>
@@ -51,7 +50,7 @@ The simplest way to display the snackbar component is to use its [`show`](mcp:ge
 
 ### Display Time
 
-Use the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```css
 /* shared styles are loaded from: */
@@ -60,7 +59,7 @@ Use the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=I
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=actionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=actionText) you can display an action button inside the component.
 
 ```css
 /* shared styles are loaded from: */
@@ -69,7 +68,7 @@ By default, the snackbar component is hidden automatically after a period specif
 
 ## Styling
 
-The [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component exposes several CSS parts to give you full control over its styling:
+The [`IgcSnackbar`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -98,16 +97,9 @@ igc-snackbar::part(base) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`actionText`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=actionText)
-- [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime)
-- [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=keepOpen)
-- [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=show)
-- [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcSnackbar`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent)<br />
 
 ## Additional Resources
 

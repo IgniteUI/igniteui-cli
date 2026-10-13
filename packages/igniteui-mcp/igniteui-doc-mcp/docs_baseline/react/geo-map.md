@@ -1,19 +1,20 @@
 ---
-title: React Map | Data Visualization Tools | Map Overview | Infragistics
-_description: Use Infragistics' React JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for React map demos!
-_keywords: React map, geographic map, imagery tiles, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "React Map | Data Visualization Tools | Map Overview | Infragistics"
+description: Use Infragistics' React JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for React map demos!
+keywords: "React map, geographic map, imagery tiles, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "The Ignite UI for React map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
 _tocName: Geographic Map Features
 ---
-
 # React Map Overview
 
 The Ignite UI for React map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps.
 
 ## React Map Example
 
-The following sample demonstrates how display data in [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) using [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html) also known as Bubble Series.
+The following sample demonstrates how display data in `IgrGeographicMap` using `IgrGeographicProportionalSymbolSeries` also known as Bubble Series.
 
 ```typescript
 export default class WorldLocations {
@@ -1008,11 +1009,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterBubbleSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
-The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) can be added for plotting geographic locations such as cities and the [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) for plotting connections (e.g. roads) between these geographic locations.
+The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgrGeographicSymbolSeries` can be added for plotting geographic locations such as cities and the `IgrGeographicPolylineSeries` for plotting connections (e.g. roads) between these geographic locations.
 
 The map provides customizable navigation behaviors for navigating map content using mouse, keyboard, or code-behind.
 
@@ -1034,7 +1033,7 @@ npm install --save igniteui-react-maps
 
 ## Component Modules
 
-The [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
+The `IgrGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
 ```ts
 import { IgrGeographicMapModule } from 'igniteui-react-maps';
@@ -1044,8 +1043,6 @@ import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
 IgrGeographicMapModule.register();
 IgrDataChartInteractivityModule.register();
 ```
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -1058,33 +1055,26 @@ Now that the map module is imported, next step is to create geographic map. The 
     zoomable="true" />
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related React map features in these topics:
 
-- [Geographic Map Navigation](geo-map-navigation.md)
+- [Geographic Map Navigation](./geo-map-navigation.md)
 
-<!-- - [Geographic Map Imagery](geo-map-display-imagery-types.md) -->
-
-- [Using Scatter Symbol Series](geo-map-type-scatter-symbol-series.md)
-- [Using Scatter Proportional Series](geo-map-type-scatter-bubble-series.md)
-- [Using Scatter Contour Series](geo-map-type-scatter-contour-series.md)
-- [Using Scatter Density Series](geo-map-type-scatter-density-series.md)
-- [Using Scatter Area Series](geo-map-type-scatter-area-series.md)
-- [Using Shape Polygon Series](geo-map-type-shape-polygon-series.md)
-- [Using Shape Polyline Series](geo-map-type-shape-polyline-series.md)
+- [Using Scatter Symbol Series](./geo-map-type-scatter-symbol-series.md)
+- [Using Scatter Proportional Series](./geo-map-type-scatter-bubble-series.md)
+- [Using Scatter Contour Series](./geo-map-type-scatter-contour-series.md)
+- [Using Scatter Density Series](./geo-map-type-scatter-density-series.md)
+- [Using Scatter Area Series](./geo-map-type-scatter-area-series.md)
+- [Using Shape Polygon Series](./geo-map-type-shape-polygon-series.md)
+- [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
-- [`IgrGeographicContourLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographiccontourlineseries.html)
-- [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html)
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html)
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html)
-- [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicproportionalsymbolseries.html)
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html)
-- [`IgrGeographicScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicscatterareaseries.html)
+`IgrGeographicMap`
+`IgrGeographicContourLineSeries`
+`IgrGeographicHighDensityScatterSeries`
+`IgrGeographicPolylineSeries`
+`IgrGeographicShapeSeries`
+`IgrGeographicProportionalSymbolSeries`
+`IgrGeographicSymbolSeries`
+`IgrGeographicScatterAreaSeries`

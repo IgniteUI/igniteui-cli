@@ -1,21 +1,22 @@
 ---
-title: React Chart Tooltips | Data Visualization | Infragistics
-_description: Infragistics' React Chart Tooltips
-_keywords: React Charts, Tooltips, Infragistics
-_license: commercial
+title: "React Chart Tooltips | Data Visualization | Infragistics"
+description: Infragistics' React Chart Tooltips
+keywords: "React Charts, Tooltips, Infragistics"
+license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In React charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
 _tocName: Chart Tooltips
 _premium: true
 ---
-
 # React Chart Tooltips
 
-In React charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html), and [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) controls.
+In React charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` controls.
 
 ## React Chart Tooltip Types
 
-React Chart provide three types of tooltips that you can with tooltips enabled by setting the [`toolTipType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+React Chart provide three types of tooltips that you can with tooltips enabled by setting the `ToolTipType` property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -173,18 +174,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
-The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#toolTipType) property is configurable and can be set to one of the following options:
+The `ToolTipType` property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| [`Default`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.tooltiptype.html#Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
-| [`Data`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.tooltiptype.html#Data) Tooltip | Display the data tooltips for all series in the chart. |
-| [`Item`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.tooltiptype.html#Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
-| [`Category`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.tooltiptype.html#Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
-
-<div class="divider--half"></div>
+| `Default`  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
+| `Data` Tooltip | Display the data tooltips for all series in the chart.  |
+| `Item`  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
+| `Category` Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
 
 ## React Chart Tooltip Template
 
@@ -192,7 +189,7 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in React [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control. Note that you can also apply the same logic to custom tooltips in React [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) control.
+This example shows how to create custom tooltips for all series in React `IgrCategoryChart` control. Note that you can also apply the same logic to custom tooltips in React `IgrFinancialChart` control.
 
 ```tsx
 import React from 'react';
@@ -305,8 +302,6 @@ export default class CategoryChartTooltipTemplate extends React.Component<any, a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartTooltipTemplate/>);
 ```
-
-<div class="divider--half"></div>
 
 ## Custom Tooltips in Data Chart
 
@@ -479,8 +474,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTooltipTemplate/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -489,14 +482,7 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](chart-markers.md)
 
 ## API References
-
-The [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) components share the following API properties:
-
-- [`toolTipType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#toolTipType)
-
-In the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) component, you can use the following API components and properties:
-
-- [`IgrDataToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatatooltiplayer.html)
-- [`IgrItemToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igritemtooltiplayer.html)
-- [`IgrCategoryToolTipLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorytooltiplayer.html)
-- `ShowDefaultToolTip`
+`IgrDataToolTipLayer`
+`IgrCategoryChart`
+`IgrFinancialChart`
+`IgrDataChart`

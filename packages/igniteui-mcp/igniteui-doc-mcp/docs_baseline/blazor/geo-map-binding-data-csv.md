@@ -1,14 +1,15 @@
 ---
-title: Blazor Map | Data Visualization Tools | Binding CSV Data | Infragistics
-_description: Learn how to use Infragistics' Blazor map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Blazor map demos!
-_keywords: Blazor map, plot data, Ignite UI for Blazor, Infragistics, data binding
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicHighDensityScatterSeries"]
+title: "Blazor Map | Data Visualization Tools | Binding CSV Data | Infragistics"
+description: Learn how to use Infragistics' Blazor map to display data that contains geographic locations from view models or geographic locations loaded from CSV files. View Ignite UI for Blazor map demos!
+keywords: "Blazor map, plot data, Ignite UI for Blazor, Infragistics, data binding"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicHighDensityScatterSeries"]
 namespace: Infragistics.Controls.Maps
+llms:
+  description: "With the Ignite UI for Blazor map component, you can plot geographic data loaded from various file types."
 _tocName: Binding CSV File
 _premium: true
 ---
-
 # Blazor Binding CSV Files with Geographic Locations
 
 With the Ignite UI for Blazor map component, you can plot geographic data loaded from various file types. For example, you can load geographic locations from a comma separated values (CSV) file.
@@ -84,11 +85,14 @@ With the Ignite UI for Blazor map component, you can plot geographic data loaded
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Data Example
-
 Here is an example of data from CSV file:
+
+```csv
+City,Lat,Lon,State,Code,County,Density,Population
+New York,40.7856,-74.0093,New Jersey,NJ,Hudson,21057,54227
+Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
+```
 
 ```razor
 City,Lat,Lon,State,Code,County,Density,Population
@@ -97,7 +101,6 @@ Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
 ```
 
 ## Code Snippet
-
 The following code loads and binds [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries) in the map component to an array of objects created from loaded CSV file with geographic locations.
 
 ```razor
@@ -164,11 +167,4 @@ The following code loads and binds [`IgbGeographicHighDensityScatterSeries`](mcp
 ```
 
 ## API References
-
-- [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
-- `DataSource`
-- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LatitudeMemberPath)
-- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LongitudeMemberPath)
-- [`HeatMaximumColor`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=HeatMaximumColor)
-- [`HeatMinimumColor`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=HeatMinimumColor)
-- [`PointExtent`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=PointExtent)
+[`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)

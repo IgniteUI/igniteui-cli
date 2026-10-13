@@ -1,16 +1,15 @@
 ---
-title: Web Components Tree Grid Cell Editing - Ignite UI for Web Components
-_description: The Tree Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "Web Components Tree Grid Cell Editing - Ignite UI for Web Components"
+description: The Tree Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, Web Components, Tree Grid, IgcTreeGrid, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for Web Components Cell Editing in Web Components Tree Grid provides a great data manipulation capability of the content of individual cells within the Web Components Tree Grid component and comes with powerful API for React CRUD operations."
+_componentKey: TreeGrid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # Web Components Tree Grid Cell Editing
 
 The Ignite UI for Web Components Cell Editing in Web Components Tree Grid provides a great data manipulation capability of the content of individual cells within the Web Components Tree Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -62,33 +61,28 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API but only if primary key is defined:
-
-<!-- ComponentStart: TreeGrid -->
+You can also modify the cell value through the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API but only if primary key is defined:
 
 ```typescript
 public updateCell() {
@@ -96,11 +90,7 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-Another way to update cell is directly through `Update` method of `Cell`:
-
-<!-- ComponentStart: TreeGrid -->
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType&member=update) method of `Cell`:
 
 ```typescript
 public updateCell() {
@@ -111,15 +101,11 @@ public updateCell() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```html
 <igc-column
@@ -163,8 +149,6 @@ public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 Working sample of the above can be found here for further reference:
 
 ```typescript
@@ -205,16 +189,14 @@ export class RoleplayTreeGridData extends Array<RoleplayTreeGridDataItem> {
 
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides a straightforward API for basic CRUD operations.
+The [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component exposes the [`addRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=addRow) method which will add the provided data to the data source itself.
-
-<!-- ComponentStart: TreeGrid -->
+The [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component exposes the [`AddRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=addRow) method which will add the provided data to the data source itself.
 
 ```typescript
 public addNewChildRow() {
@@ -226,13 +208,9 @@ public addNewChildRow() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Updating data in the Tree Grid
 
-Updating data in the Tree Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
-
-<!-- ComponentStart: TreeGrid -->
+Updating data in the Tree Grid is achieved through [`IgcTreeGrid.updateRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=updateRow) and [`IgcTreeGrid.updateCell`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ```typescript
 // Updating the whole row
@@ -249,13 +227,9 @@ const row = this.treeGrid.getRowByKey(rowID);
 row.update(newData);
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 ### Deleting data from the Tree Grid
 
-Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) is defined.
-
-<!-- ComponentStart: TreeGrid -->
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=deleteRow) method will remove the specified row only if a [`IgcTreeGrid.primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) is defined.
 
 ```typescript
 // Delete row through Tree Grid API
@@ -265,15 +239,19 @@ const row = this.treeGrid.getRowByIndex(rowIndex);
 row.delete();
 ```
 
+These can be wired to user interactions, not necessarily related to the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) for example, a button click:
+
 ### Cell Validation on Edit Event
 
-Using the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s editing events, we can alter how the user interacts with the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+Using the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s editing events, we can alter how the user interacts with the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgcTreeGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- ComponentStart: TreeGrid -->
+```razor
+<igc-tree-grid CellEditScript="HandleCellEdit" />
+```
 
 ```typescript
 constructor() {
@@ -283,16 +261,12 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- ComponentStart: TreeGrid -->
+The [`IgcTreeGrid.cellEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 ```typescript
 public webTreeGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
     const column = event.detail.column;
-        
+
     if (column.field === 'Age') {
         if (event.detail.newValue < 18) {
             event.detail.cancel = true;
@@ -308,11 +282,7 @@ public webTreeGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
 
 ```
 
-<!-- Blazor -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-The result of the above validation being applied to our [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) can be seen in the below demo:
+The result of the above validation being applied to our [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) can be seen in the below demo:
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -353,10 +323,8 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```html
 <igc-tree-grid class="treeGrid"></igc-tree-grid>
@@ -371,8 +339,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ### Styling Example
 
@@ -420,8 +386,7 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 ```
 
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-- [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
 ## Additional Resources

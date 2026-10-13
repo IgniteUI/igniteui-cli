@@ -1,23 +1,18 @@
 ---
-title: React Tree Grid Row Adding - Ignite UI for React
-_description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
-_keywords: React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-adding
+title: "React Tree Grid Row Adding - Ignite UI for React"
+description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
+keywords: "React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-adding"
+llms:
+  description: "The Ignite UI for React Row Adding feature in React Tree Grid enables users to input and submit new data records without navigating to a separate form or page."
+_componentKey: TreeGrid
 _tocName: Row Adding
 _premium: true
 ---
-
 # React Tree Grid Row Adding
 
-<!-- ComponentStart: TreeGrid -->
-
 The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides a convenient way to perform data manipulations through inline row adding and a powerful API for React CRUD operations. Add an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled in the grid's template, hover a row and use the provided button, press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> to spawn the UI for adding a child for the selected row.
-
-<!-- ComponentEnd: TreeGrid -->
 
 ## React Tree Grid Row Adding Example
 
@@ -177,11 +172,7 @@ root.render(<Sample/>);
 
 ## Row Adding Usage
 
-Then define a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) with bound data source, [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`addRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
-
-<!-- ComponentStart: TreeGrid -->
-
-<!-- ComponentStart: TreeGrid -->
+Then define a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) with bound data source, [`IgrTreeGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`IgrTreeGrid.addRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 ```tsx
 <IgrTreeGrid autoGenerate={false} primaryKey="ID" foreignKey="ParentID" rowEditable={true}>
@@ -194,26 +185,17 @@ Then define a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=Igr
         <IgrGridEditingActions addRow={true}></IgrGridEditingActions>
     </IgrActionStrip>
 </IgrTreeGrid>
+
 ```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
-
-<!-- ComponentStart: TreeGrid -->
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
 
 > **Note**:
 > The [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType) to fine tune which records the buttons show for.
-
-<!-- ComponentEnd: TreeGrid -->
 
 The internal `BaseTransactionService` is automatically provided for [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
@@ -221,23 +203,9 @@ The internal `BaseTransactionService` is automatically provided for [`IgrTreeGri
 
 [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
-<!-- ComponentStart: TreeGrid -->
+Using [`IgrTreeGrid.beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. The second parameter controls if the row is added as a child to the context row or as a sibling. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
-Using [`beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. The second parameter controls if the row is added as a child to the context row or as a sibling. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
-
-```typescript
-this.treeGrid.beginAddRowById('ALFKI', true);   // Spawns the add row UI to add a child for the row with PK 'ALFKI'
-this.treeGrid.beginAddRowById(null);            // Spawns the add row UI as the first record
-```
-
-The [`beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowByIndex) method works similarly but the row to use as context is specified by index.
-
-```typescript
-this.treeGrid.beginAddRowByIndex(10, true);   // Spawns the add row UI to add a child for the row at index 10
-this.treeGrid.beginAddRowByIndex(null);       // Spawns the add row UI as the first record
-```
-
-<!-- ComponentEnd: TreeGrid -->
+The [`IgrTreeGrid.beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowByIndex) method works similarly but the row to use as context is specified by index.
 
 ## Positioning
 
@@ -257,11 +225,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
 
-<!-- ComponentStart: TreeGrid -->
-
 - <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a child
-
-<!-- ComponentEnd: TreeGrid -->
 
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
@@ -277,9 +241,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowAddTextTemplate).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+Customizing the text of the row adding overlay is possible using the [`IgrGridBaseDirective.rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowAddTextTemplate).
 
 ```tsx
 gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
@@ -291,7 +253,9 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid-->
+### Customizing Buttons
+
+Customizing the buttons of the row editing overlay is possible by using the `RowEditActions` template.
 
 ## Styling
 
@@ -300,24 +264,11 @@ The row adding UI comprises the buttons in the [`IgrActionStrip`](mcp:get_api_re
 - [Tree Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
 
-<!-- - [ActionStrip](../action-strip.md#styling) -->
-
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `RowEditCancel`
-- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=endEdit)
-- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey)
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 ## Additional Resources
 
 - [Tree Grid Editing](editing.md)
-
-<!-- * [Tree Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

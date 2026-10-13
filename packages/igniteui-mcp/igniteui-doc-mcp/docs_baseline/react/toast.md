@@ -1,12 +1,13 @@
 ---
-title: React Toast Notifications | Ignite UI for React
-_description: With Ignite UI for React Toast component, developers can easily integrate a brief, single-line message within mobile and desktop applications. Try it Now
-_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Toast components
-_license: MIT
+title: "React Toast Notifications | Ignite UI for React"
+description: With Ignite UI for React Toast component, developers can easily integrate a brief, single-line message within mobile and desktop applications. Try it Now
+keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Toast components"
+license: MIT
 mentionedTypes: ["Toast"]
+llms:
+  description: "The React Toast is a super lightweight and small pop-up component that is used for displaying a message content, notifying end-users about the status of a changed record."
 _tocName: Toast
 ---
-
 # React Toast Overview
 
 The React Toast is a super lightweight and small pop-up component that is used for displaying a message content, notifying end-users about the status of a changed record. You can easily position and show React toast notifications at the bottom or at any other specified area of the screen. Or you can also dismiss them in a simple and easy way.
@@ -49,8 +50,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ToastOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ### How To Use Ignite UI for React Toast Notification
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -70,7 +69,7 @@ Before using the React [`IgrToast`](mcp:get_api_reference?platform=react&compone
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the toast component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrToast&member=show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`Show`](mcp:get_api_reference?platform=react&component=IgrToast&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -92,9 +91,9 @@ const onShowButtonClicked = () => {
 
 ### Properties
 
-Use the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrToast&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=react&component=IgrToast&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```tsx
 <div>
@@ -235,17 +234,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ToastStyling />);
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
-- [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime)
-- [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrToast&member=keepOpen)
-- [`show`](mcp:get_api_reference?platform=react&component=IgrToast&member=show)
-- [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

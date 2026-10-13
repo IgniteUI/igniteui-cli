@@ -1,22 +1,23 @@
 ---
-title: Web Components Chart Data Selection | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Web Components chart with the data selection!
-_keywords: Web Components charts, chart data, selection, data selection, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Chart Data Selection | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for Web Components chart with the data selection!
+keywords: "Web Components charts, chart data, selection, data selection, Ignite UI for Web Components, Infragistics"
+license: commercial
 _language: en
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components selection feature in Web Components Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart."
 _tocName: Chart Data Selection
 _premium: true
 ---
-
 # Web Components Chart Selection
 
-The Ignite UI for Web Components selection feature in Web Components {ComponentTitle} allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
+The Ignite UI for Web Components selection feature in Web Components Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
 
 ## Configuring Selection
 
-The default behavior [`selectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the `{ComponentName}`:
+The default behavior [`SelectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent):
 
 - **Auto**
 - **None**
@@ -32,10 +33,10 @@ The default behavior [`selectionMode`](mcp:get_api_reference?platform=webcompone
 - **ThickOutline**
 
 `Brighten` will fade the selected item while `FadeOthers` will cause the opposite effect occur.
-`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`selectionBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBrush) setting.
+`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`SelectionBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBrush) setting.
 `SelectionColorOutline` and `SelectionColorThickOutline` will draw a border around the series.
 
-In conjunction, a [`selectionBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
+In conjunction, a [`SelectionBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
 
 - **Auto**
 - **PerDataItemMultiSelect**
@@ -83,7 +84,7 @@ export class TemperatureAverageData extends Array<TemperatureAverageDataItem> {
 
 ## Configuring Multiple Selection
 
-Other selection modes offer various methods of selection. For example using [`selectionBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
+Other selection modes offer various methods of selection. For example using [`SelectionBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
 `PerSeriesAndDataItemGlobalSingleSelect` allows single series selection across all categories at a time.
 
 ```typescript
@@ -123,11 +124,11 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 ## Configuring Outline Selection
 
-When [`focusBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=focusBrush) is applied, selected series will appear with a border when the [`selectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionMode) property is set to one of the focus options.
+When [`FocusBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=focusBrush) is applied, selected series will appear with a border when the [`SelectionMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectionMode) property is set to one of the focus options.
 
 ## Radial Series Selection
 
-This example demonstrates another series type via the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) where each radial series can be selected with different colors.
+This example demonstrates another series type via the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) where each radial series can be selected with different colors.
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -162,14 +163,13 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 ```
 
 ## Programmatic Selection
+Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent). The [`Matcher`](mcp:get_api_reference?platform=webcomponents&component=IgcChartSelection&member=matcher) property of the [`IgcChartSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcChartSelection) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
 
-Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent). The `Matcher` property of the [`IgcChartSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcChartSelection) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
-
-The matcher is ideal for using in charts, such as the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) when you do not have access to the actual series, like the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`selectedSeriesItems`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectedSeriesItems) collection using a matcher with the following properties set
+The matcher is ideal for using in charts, such as the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) when you do not have access to the actual series, like the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`SelectedSeriesItems`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=selectedSeriesItems) collection using a matcher with the following properties set
 
 For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to select the series bound to Solar values, you can add a ChartSelection object to the SelectedSeriesItems collection using a matcher with the following properties set.
 
-```typescript
+ ```typescript
 export class EnergyRenewableConsumptionItem {
     public constructor(init: Partial<EnergyRenewableConsumptionItem>) {
         Object.assign(this, init);
@@ -208,6 +208,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) Properties                    | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) Properties |
+| [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) Properties                    | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) Properties |
 | ----------------------------------------------|---------------------------|
 |                                               |                           |

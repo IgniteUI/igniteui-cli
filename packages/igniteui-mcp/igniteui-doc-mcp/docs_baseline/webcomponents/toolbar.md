@@ -1,16 +1,17 @@
 ---
-title: Web Components Toolbar Component | Ignite UI for Web Components
-_description: See how you can easily get started with Web Components Toolbar Component. Compatible with the Data Chart. Extend your .
-_keywords: Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Toolbar components, Web Components Toolbar controls
-_license: commercial
-mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "XamDataChart", "TrendLineType"]
+title: "Web Components Toolbar Component | Ignite UI for Web Components"
+description: See how you can easily get started with Web Components Toolbar Component. Compatible with the Data Chart. Extend your .
+keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components Toolbar components, Web Components Toolbar controls"
+license: commercial
+mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "TrendLineType"]
+llms:
+  description: "The Web Components Toolbar component is a companion container for UI operations to be used primarily with our charting components."
 _tocName: Toolbar
 _premium: true
 ---
-
 # Web Components Toolbar Overview
 
-The Web Components Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) or [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+The Web Components Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) or [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ## Web Components Toolbar Example
 
@@ -77,7 +78,7 @@ npm install igniteui-webcomponents-charts
 npm install igniteui-webcomponents-core
 ```
 
-The following modules are required when using the [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) with the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component and it's features.
+The following modules are required when using the `IgcToolbar` with the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component and it's features.
 
 ```ts
 import { ModuleManager } from 'igniteui-webcomponents-core';
@@ -100,22 +101,22 @@ ModuleManager.register(
 
 ### Tool Actions
 
-The following is a list of the different [`IgcToolActionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html) items that you can add to the Toolbar.
+The following is a list of the different `IgcToolAction` items that you can add to the Toolbar.
 
-- [`IgcToolActionButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionbuttoncomponent.html)
-- [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html)
-- [`IgcToolActionIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconbuttoncomponent.html)
-- [`IgcToolActionIconMenuComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconmenucomponent.html)
-- [`IgcToolActionLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionlabelcomponent.html)
-- [`IgcToolActionNumberInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionnumberinputcomponent.html)
-- [`IgcToolActionRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionradiocomponent.html)
-- [`IgcToolActionSubPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html)
+- `IgcToolActionButton`
+- `IgcToolActionCheckbox`
+- `IgcToolActionIconButton`
+- `IgcToolActionIconMenu`
+- `IgcToolActionLabel`
+- `IgcToolActionNumberInput`
+- `IgcToolActionRadio`
+- `IgcToolActionSubPanel`
 
-Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgcToolActionIconMenuComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconmenucomponent.html) is a wrapper for other tools that can also be wrapped inside a [`IgcToolActionIconMenuComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconmenucomponent.html).
+Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the `IgcToolActionIconMenu` is a wrapper for other tools that can also be wrapped inside a `IgcToolActionIconMenu`.
 
-New and existing tools can be repositioned and marked hidden using the [`overlayId`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#overlayId), [`beforeId`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#beforeId) and [`afterId`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#afterId) properties on the [`IgcToolActionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html) object. ToolActions also expose a [`visibility`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#visibility) property.
+New and existing tools can be repositioned and marked hidden using the `OverlayId`, `BeforeId` and `AfterId` properties on the `IgcToolAction` object. ToolActions also expose a `Visibility` property.
 
-The following example demonstrates a couple of features. First you can group tools together in the [`IgcToolActionSubPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`afterId`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#afterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`isHighlighted`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#isHighlighted) property on the tool.
+The following example demonstrates a couple of features. First you can group tools together in the `IgcToolActionSubPanel` including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the `AfterId` property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the `IsHighlighted` property on the tool.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -171,7 +172,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ### Web Components Data Chart Integration
 
-The Web Components Toolbar contains a `Target` property. This is used to link a component, such as the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) as shown in the code below:
+The Web Components Toolbar contains a `Target` property. This is used to link a component, such as the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) as shown in the code below:
 
 ```html
   <div>
@@ -203,47 +204,47 @@ The Web Components Toolbar contains a `Target` property. This is used to link a 
   }
 ```
 
-Several pre-existing [`IgcToolActionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html) items and menus become available when the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) is linked with the Toolbar. Here is a list of the built-in Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) Tool Actions and their associated [`overlayId`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#overlayId):
+Several pre-existing `IgcToolAction` items and menus become available when the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) is linked with the Toolbar. Here is a list of the built-in Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) Tool Actions and their associated `OverlayId`:
 
 Zooming Actions
 
-- `ZoomMenu`: A [`IgcToolActionIconMenuComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconmenucomponent.html) that exposes three [`IgcToolActionLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionlabelcomponent.html) items to invoke the [`zoomIn`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=zoomIn) and [`zoomOut`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=zoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgcToolActionLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionlabelcomponent.html) that invokes the [`resetZoom`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=resetZoom) method on the chart to reset the zoom level to it's default position.
+- `ZoomMenu`: A `IgcToolActionIconMenu` that exposes three `IgcToolActionLabel` items to invoke the [`ZoomIn`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=zoomIn) and [`ZoomOut`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=zoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a `IgcToolActionLabel` that invokes the [`ResetZoom`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=resetZoom) method on the chart to reset the zoom level to it's default position.
 
 Trend Actions
 
-- `AnalyzeMenu`: A [`IgcToolActionIconMenuComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioniconmenucomponent.html) that contains several options for configuring different options of the chart.
+- `AnalyzeMenu`: A `IgcToolActionIconMenu` that contains several options for configuring different options of the chart.
 - `AnalyzeHeader`: A sub section header.
   - `LinesMenu`: A sub menu containing various tools for showing different dashed horizontal lines on the chart.
   - `LinesHeader`: A sub menu section header for the following three tools:
-    - `MaxValue`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
-    - `MinValue`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
-    - `Average`:  A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that displays a dashed horizontal line along the yAxis at the average value of the series.
-  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) plot area.
+    - `MaxValue`: A `IgcToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the maximum value of the series.
+    - `MinValue`: A `IgcToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the minimum value of the series.
+    - [`Average`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Average):  A `IgcToolActionCheckbox` that displays a dashed horizontal line along the yAxis at the average value of the series.
+  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) plot area.
   - `TrendsHeader`: A sub menu section header for the following three tools:
-    - **Exponential**: A [`IgcToolActionRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionradiocomponent.html) that sets the [`trendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the chart to **ExponentialFit**.
-    - **Linear**: A [`IgcToolActionRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionradiocomponent.html) that sets the [`trendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the chart to **LinearFit**.
-    - **Logarithmic**: A [`IgcToolActionRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionradiocomponent.html) that sets the [`trendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the the chart to **LogarithmicFit**.
+    - **Exponential**: A `IgcToolActionRadio` that sets the [`TrendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the chart to **ExponentialFit**.
+    - **Linear**: A `IgcToolActionRadio` that sets the [`TrendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the chart to **LinearFit**.
+    - **Logarithmic**: A `IgcToolActionRadio` that sets the [`TrendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=trendLineType) on each series in the the chart to **LogarithmicFit**.
 - `HelpersHeader`: A sub section header.
-  - `SeriesAvg`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that adds or removes a [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to the chart's series collection using the [`ValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) of type [`Average`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Average).
-  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)'s plot area.
+  - `SeriesAvg`: A `IgcToolActionCheckbox` that adds or removes a [`IgcValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) to the chart's series collection using the [`IgcValueLayerValueMode`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode) of type [`Average`](mcp:get_api_reference?platform=webcomponents&component=ValueLayerValueMode&member=Average).
+  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)'s plot area.
   - `ValueLabelsHeader`: A sub menu section header for the following tools:
-    - `ShowValueLabels`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that toggles data point values by using a [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent).
-    - `ShowLastValueLabel`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that toggles final value axis annotations by using a [`IgcFinalValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent).
-- `ShowCrosshairs`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that toggles mouse-over crosshair annotations via the chart's [`crosshairsDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=crosshairsDisplayMode) property.
-- `ShowGridlines`: A [`IgcToolActionCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncheckboxcomponent.html) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
+    - `ShowValueLabels`: A `IgcToolActionCheckbox` that toggles data point values by using a [`IgcCalloutLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent).
+    - `ShowLastValueLabel`: A `IgcToolActionCheckbox` that toggles final value axis annotations by using a [`IgcFinalValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent).
+- `ShowCrosshairs`: A `IgcToolActionCheckbox` that toggles mouse-over crosshair annotations via the chart's [`CrosshairsDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=crosshairsDisplayMode) property.
+- `ShowGridlines`: A `IgcToolActionCheckbox` that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
 
 Save to Image Action
 
-- `CopyAsImage`: A [`IgcToolActionLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionlabelcomponent.html) that exposes an option to copy the chart to the clipboard.
+- `CopyAsImage`: A `IgcToolActionLabel` that exposes an option to copy the chart to the clipboard.
 - `CopyHeader`: A sub section header.
 
 ### SVG Icons
 
-When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`iconCollectionName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#iconCollectionName). The second is the name of the icon defined on the tool eg. [`iconName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#iconName), followed by adding the SVG string.
+When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. `IconCollectionName`. The second is the name of the icon defined on the tool eg. `IconName`, followed by adding the SVG string.
 
 ### Data URL Icons
 
-Similarly to adding svg, you can also add an Icon image from a URL via the [`registerIconFromDataURL`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html#registerIconFromDataURL). The method's third parameter would be used to enter a string URL.
+Similarly to adding svg, you can also add an Icon image from a URL via the `RegisterIconFromDataURL`. The method's third parameter would be used to enter a string URL.
 
 The following snippet shows both methods of adding an Icon.
 
@@ -292,7 +293,7 @@ public toolbarCustomIconOnViewInit(): void {
 
 ### Vertical Orientation
 
-By default the Web Components Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html#orientation) property.
+By default the Web Components Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the `Orientation` property.
 
 ```html
 <igc-toolbar orientation="Vertical" />
@@ -349,7 +350,8 @@ You can add a custom color editor tool to the the Web Components Toolbar, which 
 </igc-toolbar>
 ```
 
-The following example demonstrates styling the Web Components Data Chart series brush with the Color Editor tool. ```typescript
+The following example demonstrates styling the Web Components Data Chart series brush with the Color Editor tool.
+```typescript
 export class CountryRenewableElectricityItem {
     public constructor(init: Partial<CountryRenewableElectricityItem>) {
         Object.assign(this, init);
@@ -401,33 +403,19 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 }
 ```
 
-<!-- ## Styling/Theming
+{/* ## Styling/Theming
 
-The icon component can be styled by using it's `BaseTheme` property directly to the `Toolbar`.
-
-```html
-<igx-toolbar baseTheme="SlingshotDark" />
-```
+The icon component can be styled by using it's `BaseTheme` property directly to the `IgcToolbar`.
 
 ```html
 <igc-toolbar base-theme="SlingshotDark" />
 ```
 
-```razor
-<IgbToolbar BaseTheme="BaseControlTheme.SlingshotDark" />
-```
-
-```tsx
-<IgrToolbar baseTheme="SlingshotDark" />
-```
-
-<!-- The following example demonstrates the various theme options that can be applied.
-`sample="/charts/toolbar/theming", height="600", alt="Web Components Toolbar Styling/Theming"` -->
 
 ## API References
 
-- [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html)
-- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+`IgcToolbar`<br />
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
 
 ## Additional Resources
 

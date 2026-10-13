@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid Multi-Column Headers - Ignite UI for Blazor
-_description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for Blazor grid and combine them into multi headers.
-_keywords: Multi-Column Headers, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/multi-column-headers
+title: "Blazor Hierarchical Grid Multi-Column Headers - Ignite UI for Blazor"
+description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for Blazor grid and combine them into multi headers.
+keywords: Multi-Column Headers, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/multi-column-headers"
+llms:
+  description: "The Ignite UI for Blazor Multi-Column Headers feature in Blazor Hierarchical Grid allows you to group columns by placing them under a common multi-header."
+_componentKey: HierarchicalGrid
 _tocName: Multi-Column Headers
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Multi-Column Headers Overview
 
 The Ignite UI for Blazor Multi-Column Headers feature in Blazor Hierarchical Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
@@ -409,7 +408,7 @@ public class HierarchicalCustomers
 }
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) component with [`Header`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) component with [`Header`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=header) title information passed.
 
 ```razor
 <IgbHierarchicalGrid Data="HierarchicalCustomers" Name="hierarchicalGrid" @ref="hierarchicalGrid" Id="hierarchicalGrid" PrimaryKey="ID" Moving="true" AllowFiltering="true">
@@ -429,8 +428,6 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) leads to the desired result.
 
 ```razor
@@ -446,14 +443,12 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 Every [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+**Note:** 
+When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
+Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
+When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
-> [!Note]
-> When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
-> Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
-> When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
 ```razor
 <IgbHierarchicalGrid Data="HierarchicalCustomers" Name="hierarchicalGrid" @ref="hierarchicalGrid" Id="hierarchicalGrid" PrimaryKey="ID" Moving="true" AllowFiltering="true">
@@ -468,11 +463,9 @@ Every [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColu
 </IgbHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ## Multi-Column Header Template
 
-Each of the column groups of the grid can be templated separately. The column group expects `RenderFragment` for the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=HeaderTemplate) property.
+Each of the column groups of the grid can be templated separately. The column group expects `RenderFragment` for the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=headerTemplate) property.
 The expression is provided with the column group object as a context.
 
 ```razor
@@ -487,7 +480,7 @@ The expression is provided with the column group object as a context.
 }
 ```
 
-If you want to re-use a single template for several column groups, you could set the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=HeaderTemplate) property of the column group like this:
+If you want to re-use a single template for several column groups, you could set the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=headerTemplate) property of the column group like this:
 
 ```razor
 <IgbColumnGroup Header="General Information" HeaderTemplate="Template">
@@ -503,8 +496,9 @@ If you want to re-use a single template for several column groups, you could set
 }
 ```
 
-> [!Note]
-> If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+**Note:** 
+If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+
 
 ```razor
 @code {
@@ -518,6 +512,7 @@ If you want to re-use a single template for several column groups, you could set
         return @<IgbIcon AdditionalAttributes="DraggableAttributes"  @onclick="onClick"/>;
     };
 }
+
 ```
 
 The following sample demonstrates how to implement collapsible column groups using header templates.
@@ -891,7 +886,7 @@ public class HierarchicalCustomers
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -1253,10 +1248,9 @@ public class HierarchicalCustomers
 ```
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+[`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

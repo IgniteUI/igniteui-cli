@@ -1,107 +1,178 @@
 ---
-title: Angular Badge Component – Ignite UI for Angular | Infragistics | MIT license
-_description: Display an active count or icon in a predefined style to decorate other components anywhere in an application with Ignite UI for Angular Badge control.
-_keywords: Angular Badge component, Angular Badge control, Ignite UI for Angular, Angular UI Components
-_license: MIT 
+title: "Badge"
+description: "The Ignite UI for Angular Badge displays a short status, category, count, or notification indicator alongside avatars, navigation menus, and other components."
+keywords: "Angular Badge, Ignite UI for Angular, badge indicator"
+license: MIT
+mentionedTypes: ["Badge"]
+last_updated: "2026-07-24"
+llms:
+  description: "The Ignite UI for Angular Badge component displays a short status, category, count, or notification indicator alongside avatars, navigation menus, and other components."
 _tocName: Badge
 ---
+# Badge Component
 
-# Angular Badge Component Overview
+The Angular Badge component is provided by the platform-specific Ignite UI for Angular package and is used in conjunction with avatars, navigation menus, or other components in an application when a visual notification is needed. Badges are usually designed with predefined styles to communicate information, success, warnings, or errors.
 
-<p class="highlight">Angular Badge is a component used in conjunction with avatars, navigation menus, or other components in an application when a visual notification is needed. Badges are usually  designed as icons with a predefined style to communicate information, success, warnings, or errors.</p>
+## Live Demo
 
-## Angular Badge Example
-
-<code-view style="height:100px"
-           data-demos-base-url="{environment:demosBaseUrl}"
-           iframe-src="{environment:demosBaseUrl}/data-display/badge-sample-2/" alt="Angular Badge Example">
-</code-view>
-
-<div class="divider--half"></div>
-
-## Getting Started with Ignite UI for Angular Badge
-
-To get started with the Ignite UI for Angular Badge component, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
-
-```cmd
-ng add igniteui-angular
-```
-
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
-
-The next step is to import the `IgxBadgeModule` in your **app.module.ts** file.
+The Angular Badge demo shows how the component can communicate a compact status or notification next to another interface element.
 
 ```typescript
-// app.module.ts
-
-...
-import { IgxBadgeModule } from 'igniteui-angular/badge';
-// import { IgxBadgeModule } from '@infragistics/igniteui-angular'; for licensed package
-
-@NgModule({
-    ...
-    imports: [..., IgxBadgeModule],
-    ...
-})
-export class AppModule {}
-```
-
-Alternatively, as of `16.0.0` you can import the `IgxBadgeComponent` as a standalone dependency.
-
-```typescript
-// home.component.ts
-
-...
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
-// import { IgxBadgeComponent } from '@infragistics/igniteui-angular'; for licensed package
+import { IgxChipComponent } from 'igniteui-angular/chips';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
-    selector: 'app-home',
-    template: '<igx-badge icon="check" type="success" shape="square"></igx-badge>',
-    styleUrls: ['home.component.scss'],
-    standalone: true,
-    imports: [IgxBadgeComponent]
+    selector: 'app-badge-overview',
+    templateUrl: './badge-overview.component.html',
+    styleUrls: ['./badge-overview.component.scss'],
+    imports: [IgxAvatarComponent, IgxBadgeComponent, IgxChipComponent, IgxIconComponent]
 })
-export class HomeComponent {}
+export class BadgeOverviewComponent { }
+```
+```html
+<igx-avatar
+    class="avatar-anchor"
+    src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+    shape="circle"
+    size="small">
+</igx-avatar>
+<igx-badge icon="check" outlined type="success"></igx-badge>
+
+<igx-icon class="mail-anchor">mail</igx-icon>
+<igx-badge value="2" outlined type="error"></igx-badge>
+
+<igx-chip class="events-anchor">Events</igx-chip>
+<igx-badge value="new" outlined type="info"></igx-badge>
+
+<igx-icon class="notifications-anchor">notifications</igx-icon>
+<igx-badge dot outlined type="error"></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(60px);
+    min-height: 7rem;
+}
+
+igx-icon {
+    color: var(--ig-gray-700);
+    font-size: rem(24px);
+}
+
+igx-chip {
+    --ig-size: var(--ig-size-large);
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(10%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+igx-badge:nth-of-type(1) {
+    inset-block-start: anchor(85.5%);
+}
+
+$anchors: avatar, mail, events, notifications;
+
+@each $anchor in $anchors {
+    $i: list.index($anchors, $anchor);
+
+    .#{$anchor}-anchor {
+        anchor-name: --#{$anchor};
+    }
+
+    igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$anchor};
+    }
+}
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+## Anatomy
 
-Now that you have the Ignite UI for Angular Badge module or component imported, you can start with a basic configuration of the `igx-badge` component.
+The Angular Badge presents a compact label or dot indicator that decorates another interface element.
 
-## Using the Angular Badge Component
+**Badge anatomy:** The Badge component is a compact label or dot indicator that decorates another interface element.
 
-Let's see how the demo sample is done. It's a simple success badge on an avatar. To build that, we need to import the `IgxAvatarModule`, along with the `IgxBadgeModule`:
+<style>{`
+  .badge-anatomy {
+    --igd-anatomy-padding: 64px 32px;
+  }
+
+  .badge-anatomy .igd-anatomy__image {
+    max-width: 520px;
+  }
+`}</style>
+
+<span class="ig-typography__body-2" style="display: block; margin-bottom: 24px;"><strong>1. Dot indicator:</strong> A small badge dot used to show a status or a new update.<br />
+<strong>2. Icon:</strong> Represents the type of status or action.<br />
+<strong>3. Container:</strong> The badge shape that holds and styles the icon or label.<br />
+<strong>4. Label:</strong> Text or a number displayed inside the badge.</span>
+
+The component renders its content inside the `base` CSS part. Use the component's default slot for text or other inline content; when `dot` is enabled, the badge renders as an indicator without content.
+
+```text
+<igc-badge>
+└── ::part(base)
+  └── default slot content
+</igc-badge>
+```
+
+## Getting Started
+
+To use the Angular Badge, follow the [Ignite UI for Angular Getting Started](../general/getting-started.md) topic for the basic project setup, then register the component for your target platform.
+
+For Angular using the **igniteui-angular** package, install the package:
+
+```cmd
+npm install igniteui-angular
+```
+
+Then import `IgxBadgeComponent` in the component `imports` collection.
+
+```ts
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
+```
+
+The simplest way to start using the [`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) is as follows:
+
+```html
+<igx-badge></igx-badge>
+```
+
+## Usage
+
+Use the Angular Badge to display a short status, category, count, or notification indicator alongside another component.
+
+Let's see how the demo sample is done. It's a simple success badge on an avatar. To build that, import the `IgxAvatarModule` together with the `IgxBadgeModule`:
 
 ```typescript
-// app.module.ts
-...
 import { IgxBadgeModule } from 'igniteui-angular/badge';
 import { IgxAvatarModule } from 'igniteui-angular/avatar';
-// import {  IgxBadgeModule, IgxAvatarModule } from '@infragistics/igniteui-angular'; for licensed package
-
-@NgModule({
-  ...
-  imports: [..., IgxBadgeModule, IgxAvatarModule],
-  ...
-})
-
-export class AppModule {}
 ```
 
-_Alternatively, as of `16.0.0` you can import the `IgxBadgeComponent` and `IgxAvatarComponent` as standalone dependencies._
-
-Next, we will add those components to our template:
+Add both modules to the component `imports` collection, or import the standalone components. Then add the components to your template:
 
 ```html
 <div class="wrapper">
-    <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
-    <igx-badge icon="check" type="success"></igx-badge>
+  <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
+  <igx-badge icon="check" type="success"></igx-badge>
 </div>
 ```
 
-Using the wrapper, we will position the badge absolutely, covering a little bit of the avatar:
+Use a relatively positioned wrapper to place the Badge over the avatar:
 
 ```scss
 .wrapper {
@@ -116,79 +187,130 @@ igx-badge {
 }
 ```
 
-### Badge Shape
+### Type
 
-We can change the badge shape through the `shape` attribute setting its value to `square`. By default, the shape of the badge is `rounded`.
+The Badge can carry different types of content such as a number or an icon.
 
-```html
-<igx-badge icon="check" type="success" shape="square"></igx-badge>
-```
-
-If everything's done right, you should see the demo sample shown above in your browser.
-
-### Badge Size
-
-The size of the badge can be controlled using the `--size` variable. It will make sure that the badge sizes proportionally in both directions. Keep in mind, however, that badges containing text values use the `caption` typography style for its font-size and line-height. For that reason, when setting the `--size` of a badge containing text to values below 16px, you will also need to modify its typography.
-
-Example:
-
-```scss
-igx-badge {
-  --size: 12px;
-
-  font-size: calc(var(--size) / 2);
-  line-height: normal;
-}
-```
-
-### Badge Value and Icon
-
-Use the `[value]` input to display text or a numeric count inside the badge:
+Use the `[value]` input to display text or a numeric count inside the Badge:
 
 ```html
 <igx-badge [value]="model.value"></igx-badge>
 ```
 
-Use the `[icon]` input to display an icon inside the badge:
+Use the `[icon]` input to display an icon inside the Badge:
 
 ```html
 <igx-badge icon="check" type="success"></igx-badge>
 ```
 
-When both `[icon]` and `[value]` are set, the badge displays both simultaneously:
+When both `[icon]` and `[value]` are set, the Badge displays both simultaneously:
 
 ```html
-<!-- Both the icon "check" and the value "5" will be shown -->
 <igx-badge icon="check" value="5" type="success"></igx-badge>
 ```
 
-Or you can project content directly:
+You can also project content directly. When projecting both an icon and text, wrap the text to keep the correct padding:
 
 ```html
-  <igx-badge>{{ model.value }}</igx-badge>
-
-  <!-- When projecting both icon and text, wrap the text to keep correct padding. -->
-  <igx-badge>
-    <igx-icon>bluetooth</igx-icon>
-    <span>Bluetooth</span>
-  </igx-badge>
+<igx-badge>
+  <igx-icon>bluetooth</igx-icon>
+  <span>Bluetooth</span>
+</igx-badge>
 ```
 
-### Badge Icon
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
-In addition to material icons, the `igx-badge` component also supports usage of [Material Icons Extended](../components/material-icons-extended.md) and any other custom icon set. To add an icon from the material icons extended set inside your badge component, first you have to register it:
+@Component({
+    selector: 'app-badge-type',
+    templateUrl: './badge-type.component.html',
+    styleUrls: ['./badge-type.component.scss'],
+    imports: [IgxAvatarComponent, IgxBadgeComponent]
+})
+export class BadgeTypeComponent { }
+```
+```html
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge dot outlined type="success"></igx-badge>
+<span>Dot</span>
 
-```ts
-export class BadgeIconComponent implements OnInit { 
-    constructor (protected _iconService: IgxIconService) {}
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="check" outlined type="success"></igx-badge>
+<span>Icon</span>
 
-    public ngOnInit() {
-        this._iconService.addSvgIconFromText(heartMonitor.name, heartMonitor.value, 'imx-icons');
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge value="2" outlined type="success"></igx-badge>
+<span>Text</span>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+$types: dot, icon, text;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(60px);
+    row-gap: rem(16px);
+    min-height: 8.5rem;
+    padding: rem(32px);
+}
+
+igx-avatar {
+    --ig-avatar-size: #{rem(40px)};
+
+    grid-row: 1;
+}
+
+span {
+    grid-row: 2;
+    text-align: center;
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+
+    @include type-style("caption") {
+        margin: 0;
+    }
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(85.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+@each $type in $types {
+    $i: list.index($types, $type);
+
+    igx-avatar:nth-of-type(#{$i}) {
+        anchor-name: --#{$type};
+    }
+
+    igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$type};
     }
 }
 ```
 
-Then, just specify the icon name and family as follows:
+#### Icon
+In addition to Material Icons, the Angular Badge supports Material Icons Extended and other custom icon sets. Register the custom icon with `IgxIconService`, then specify its name and icon set:
+
+```ts
+this._iconService.addSvgIconFromText(heartMonitor.name, heartMonitor.value, 'imx-icons');
+```
 
 ```html
 <igx-badge icon="heart-monitor" iconSet="imx-icons"></igx-badge>
@@ -258,7 +380,12 @@ span {
 
     grid-row: 2;
     text-align: center;
-    color: var(--ig-gray-700);
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
 }
 
 igx-badge:last-of-type {
@@ -272,262 +399,917 @@ igx-badge:last-of-type {
 }
 ```
 
-### Dot Badge
+#### Dot
 
-The `igx-badge` component can also render as a minimal dot indicator for notifications by enabling its `dot` property. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
+The Ignite UI for Angular Badge can also render as a minimal dot indicator for notifications by setting its [`dot`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=dot) attribute. Dot badges do not support content, but they can be outlined and can use any of the available dot types (for example, `primary`, `success`, or `info`).
 
-<code-view style="height: 100px"
-           data-demos-base-url="{environment:demosBaseUrl}"
-           iframe-src="{environment:demosBaseUrl}/data-display/badge-dot-sample/" >
-</code-view>
-
-### Badge in List
-
-Let's extend the previous sample and create a list with contacts, similar to those in chat clients. In addition to the contact name, we want to display an avatar and the current state of the contact (online, offline or away). To achieve this, we're using the [`igx-badge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) and [`igx-avatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent) components. For a container, [`igx-list`](mcp:get_api_reference?platform=angular&component=IgxListComponent) is used.
-
-To continue, include all needed modules and import them in the **app.module.ts** file.
-
-```typescript
-// app.module.ts
-
-...
-import { IgxListModule } from 'igniteui-angular/list';
-import { IgxAvatarModule } from 'igniteui-angular/avatar';
-import { IgxBadgeModule } from 'igniteui-angular/badge';
-// import { IgxListModule, IgxAvatarModule, IgxBadgeModule } from '@infragistics/igniteui-angular'; for licensed package
-
-@NgModule({
-    ...
-    imports: [..., IgxListModule, IgxAvatarModule, IgxBadgeModule],
-})
-export class AppModule {}
-```
-
->[!NOTE]
->The [`igx-badge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) has [`icon`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=icon), [`value`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=value), and [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) inputs to configure the badge look. You can set the icon by providing its name from the official [material icons set](https://material.io/icons/). The badge type can be set to either [`default`](mcp:get_api_reference?platform=angular&component=Type&member=default), [`info`](mcp:get_api_reference?platform=angular&component=Type&member=info), [`success`](mcp:get_api_reference?platform=angular&component=Type&member=success), [`warning`](mcp:get_api_reference?platform=angular&component=Type&member=warning), or [`error`](mcp:get_api_reference?platform=angular&component=Type&member=error). Depending on the type, a specific background color is applied.
-
-In our sample, [`icon`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=icon) and [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) are bound to model properties named _icon_ and _type_.
-
-Next, we're adding the contacts in our template:
+Set the [`dot`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=dot) attribute to render a minimal notification indicator without content:
 
 ```html
-<!-- contacts.component.html -->
-
-<igx-list>
-  <igx-list-item isHeader="true">
-    Team Members (4)
-  </igx-list-item>
-  <igx-list-item *ngFor="let member of members">
-    <div class="wrapper">
-      <div>
-        <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
-        <igx-badge [icon]="member.icon" [type]="member.type" class="badge-style"></igx-badge>
-      </div>
-      <div class="contact-container">
-        <span class="contact-name">{{ member.name }}</span>
-      </div>
-    </div>
-  </igx-list-item>
-</igx-list>
-```
-
-We're going to create our members in the typescript file like this:
-
-```typescript
-// contacts.component.ts
-
-...
- public members: Member[] = [
-    new Member('Terrance Orta', 'online'),
-    new Member('Donna Price', 'online'),
-    new Member('Lisa Landers', 'away'),
-    new Member('Dorothy H. Spencer', 'offline'),
-  ];
-
+<igx-badge dot></igx-badge>
 ```
 
 ```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
+import { IgxIconComponent, IgxIconService} from 'igniteui-angular/icon';
+import { facebookMessenger } from '@igniteui/material-icons-extended';
 
-...
-class Member {
-    public name: string;
-    public status: string;
-    public type: string;
-    public icon: string;
+@Component({
+    selector: 'app-badge-dot',
+    styleUrls: ['./badge-dot.component.scss'],
+    templateUrl: './badge-dot.component.html',
+    imports: [IgxAvatarComponent, IgxBadgeComponent, IgxIconComponent]
+})
+export class BadgeDotComponent {
+    constructor(private iconService: IgxIconService) {
+        this.iconService.addSvgIconFromText('facebookMessenger', facebookMessenger.value);
+    }
 
-    constructor(name: string, status: string) {
-        this.name = name;
-        this.status = status;
-        switch (status) {
-            case 'online':
-                this.type = 'success';
-                this.icon = 'check';
-                break;
-            case 'away':
-                this.type = 'warning';
-                this.icon = 'schedule';
-                break;
-            case 'offline':
-                this.type = 'error';
-                this.icon = 'remove';
-                break;
-        }
+    public notifications = [
+        { title: 'Contract renewal', time: '09:12', unread: true },
+        { title: 'Weekly digest', time: 'Yesterday', unread: false }
+    ];
+
+    public tabs = [
+        { label: 'Home', icon: 'home', active: true, hasUpdates: false },
+        { label: 'Chat', icon: 'facebookMessenger', active: false, hasUpdates: true },
+        { label: 'Profile', icon: 'person', active: false, hasUpdates: false }
+    ];
+}
+```
+```html
+<igx-avatar
+    class="icon-anchor"
+    icon="notifications"
+    shape="circle"
+    size="small">
+</igx-avatar>
+<igx-badge dot outlined type="error"></igx-badge>
+
+<div class="notifications-card">
+    @for (item of notifications; track item.title) {
+        <div class="notification-row">
+            <span class="row-indicator">
+                @if (item.unread) {
+                    <igx-badge dot type="info"></igx-badge>
+                }
+            </span>
+            <span class="row-title">{{ item.title }}</span>
+            <span class="row-time" [class.unread]="item.unread">{{ item.time }}</span>
+            <igx-icon class="row-chevron">chevron_right</igx-icon>
+        </div>
+    }
+</div>
+
+<igx-avatar
+    class="avatar-anchor"
+    src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+    shape="circle"
+    size="small">
+</igx-avatar>
+<igx-badge dot outlined type="error"></igx-badge>
+
+<div class="nav-card">
+    @for (tab of tabs; track tab.label) {
+        <div class="nav-item" [class.active]="tab.active">
+            <span class="nav-icon">
+                <igx-icon [name]="tab.icon"></igx-icon>
+                @if (tab.hasUpdates) {
+                    <igx-badge dot type="info"></igx-badge>
+                }
+            </span>
+            <span class="nav-label">{{ tab.label }}</span>
+        </div>
+    }
+</div>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    --sample-accent: var(--ig-primary-800);
+
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(40px);
+    min-height: 8.5rem;
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(14.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+igx-avatar.icon-anchor {
+    --ig-avatar-background: var(--ig-gray-300);
+}
+
+$anchors: icon, avatar;
+
+@each $anchor in $anchors {
+    $i: list.index($anchors, $anchor);
+
+    .#{$anchor}-anchor {
+        anchor-name: --#{$anchor};
+    }
+
+    :host > igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$anchor};
+    }
+}
+
+.notifications-card,
+.nav-card {
+    background: var(--ig-surface-500);
+    border-radius: rem(4px);
+    box-shadow: 0 rem(1px) rem(3px) hsl(from var(--ig-gray-900) h s l / 0.12);
+}
+
+.notifications-card {
+    min-width: rem(270px);
+    padding-block: rem(8px);
+}
+
+.notification-row {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    padding: rem(8px) rem(12px);
+    color: var(--ig-gray-900);
+}
+
+.row-indicator {
+    display: inline-flex;
+    justify-content: center;
+    width: rem(12px);
+}
+
+.row-title {
+    flex: 1;
+}
+
+.unread {
+    color: var(--ig-gray-900);
+    font-weight: 600;
+}
+
+.row-chevron {
+    color: var(--ig-gray-600);
+    font-size: rem(18px);
+}
+
+.nav-card {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    padding: rem(8px) rem(12px);
+}
+
+.nav-item {
+    @include type-style("caption") {
+        margin: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(4px);
+    min-width: rem(56px);
+    color: var(--ig-gray-700);
+
+    &.active {
+        color: var(--sample-accent);
+    }
+}
+
+.nav-icon {
+    position: relative;
+    display: inline-flex;
+
+    igx-badge {
+        position: absolute;
+        inset-block: rem(-2px) auto;
+        inset-inline: auto rem(-6px);
     }
 }
 ```
 
-Position the badge in its parent container:
+### Size
 
-```css
-/* contacts.component.css */
+Control the Badge size with the `--size` CSS variable. For text badges smaller than `16px`, also adjust the font size and line height:
 
-.wrapper {
-    display: flex;
-    flex-direction: row;
+```scss
+igx-badge {
+  --size: 12px;
+
+  font-size: calc(var(--size) / 2);
+  line-height: normal;
 }
-
-.contact-name {
-    font-weight: 600;
-}
-
-.contact-container {
-    margin-left: 20px;
-}
-
-.badge-style {
-  position: absolute;
-  bottom: 2.5px;
-  left: 40px;
-}
-
 ```
 
-If the sample is configured properly, a list of members should be displayed and every member has an avatar and a badge, showing its current state.
+```typescript
+import { Component } from '@angular/core';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
-<code-view style="height: 280px"
-           data-demos-base-url="{environment:demosBaseUrl}"
-           iframe-src="{environment:demosBaseUrl}/data-display/badge-sample-3/" >
-</code-view>
+@Component({
+    selector: 'app-badge-size',
+    templateUrl: './badge-size.component.html',
+    styleUrls: ['./badge-size.component.scss'],
+    imports: [IgxBadgeComponent]
+})
+export class BadgeSizeComponent { }
+```
+```html
+<span>Small</span>
+<igx-badge dot type="error"></igx-badge>
+<igx-badge value="2" type="info"></igx-badge>
+<igx-badge icon="check" type="success"></igx-badge>
+
+<span>Medium</span>
+<igx-badge dot type="error"></igx-badge>
+<igx-badge value="2" type="info"></igx-badge>
+<igx-badge icon="check" type="success"></igx-badge>
+
+<span>Large</span>
+<igx-badge dot type="error"></igx-badge>
+<igx-badge value="2" type="info"></igx-badge>
+<igx-badge icon="check" type="success"></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-template-columns: rem(80px) rem(32px) rem(40px) rem(40px);
+    place-content: center;
+    place-items: center;
+    column-gap: rem(8px);
+    row-gap: rem(40px);
+    padding: rem(32px);
+}
+
+span {
+    justify-self: end;
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+
+    @include type-style("body-2") {
+        margin: 0;
+    }
+}
+
+$sizes: small, medium, large;
+
+@each $size in $sizes {
+    $i: list.index($sizes, $size);
+
+    igx-badge:nth-of-type(n + #{($i - 1) * 3 + 1}):nth-of-type(-n + #{$i * 3}) {
+        --ig-size: var(--ig-size-#{$size});
+    }
+}
+```
+
+### Shape
+
+The Badge shape can be set to `rounded` (the default) or `square` with the [`shape`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=shape) attribute.
+
+```html
+<igx-badge icon="check" type="success" shape="square"></igx-badge>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
+
+@Component({
+    selector: 'app-badge-shape',
+    templateUrl: './badge-shape.component.html',
+    styleUrls: ['./badge-shape.component.scss'],
+    imports: [IgxBadgeComponent]
+})
+export class BadgeShapeComponent { }
+```
+```html
+<span>Rounded</span>
+<igx-badge icon="check" type="success" shape="rounded"></igx-badge>
+<igx-badge value="2" type="success" shape="rounded"></igx-badge>
+<igx-badge icon="check" type="success" shape="rounded"></igx-badge>
+
+<span>Square</span>
+<igx-badge icon="check" type="info" shape="square"></igx-badge>
+<igx-badge value="2" type="info" shape="square"></igx-badge>
+<igx-badge icon="check" type="info" shape="square"></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-template-columns: rem(80px) rem(40px) rem(40px) rem(40px);
+    place-content: center;
+    place-items: center;
+    column-gap: rem(8px);
+    row-gap: rem(40px);
+    min-height: 8.5rem;
+}
+
+span {
+    justify-self: end;
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+
+    @include type-style("body-2") {
+        margin: 0;
+    }
+}
+
+$sizes: small, medium, large;
+
+@each $size in $sizes {
+    $i: list.index($sizes, $size);
+
+    igx-badge:nth-of-type(3n + #{$i}) {
+        --ig-size: var(--ig-size-#{$size});
+    }
+}
+```
+
+When the Badge has a `square` shape, it can be further customized by setting a custom border radius using the `--border-radius` CSS variable.
+
+### Variants
+
+The Angular Badge supports the Primary, Info, Success, Warn, and Error types. Set the [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) attribute to select a type.
+
+```html
+<igx-badge type="success"></igx-badge>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
+
+@Component({
+    selector: 'app-badge-variants',
+    styleUrls: ['./badge-variants.component.scss'],
+    templateUrl: './badge-variants.component.html',
+    imports: [IgxAvatarComponent, IgxBadgeComponent]
+})
+export class BadgeVariantsComponent { }
+```
+```html
+<igx-avatar icon="notifications" shape="circle" size="small"></igx-avatar>
+<igx-badge value="2" outlined type="primary"></igx-badge>
+<span>Primary</span>
+
+<igx-avatar initials="AZ" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="check" outlined type="info"></igx-badge>
+<span>Info</span>
+
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="check" outlined type="success"></igx-badge>
+<span>Success</span>
+
+<igx-avatar icon="mail" shape="circle" size="small"></igx-avatar>
+<igx-badge value="2" outlined type="warning"></igx-badge>
+<span>Warn</span>
+
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="close" outlined type="error"></igx-badge>
+<span>Error</span>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+$variants: primary, info, success, warning, error;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(40px);
+    row-gap: rem(12px);
+    min-height: 8.5rem;
+    padding: rem(32px);
+}
+
+igx-avatar {
+    grid-row: 1;
+}
+
+span {
+    grid-row: 2;
+    text-align: center;
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+
+    @include type-style("body-2") {
+        margin: 0;
+    }
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(85.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+@each $variant in $variants {
+    $i: list.index($variants, $variant);
+
+    igx-avatar:nth-of-type(#{$i}) {
+        anchor-name: --#{$variant};
+    }
+
+    igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$variant};
+    }
+}
+```
+
+### Outlined
+
+The badge can also have a subtle border around it when the [`outlined`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=outlined) attribute is set.
+
+```html
+<igx-badge outlined></igx-badge>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
+import { IGX_STEPPER_DIRECTIVES } from 'igniteui-angular/stepper';
+
+@Component({
+  selector: 'app-badge-outlined',
+  styleUrls: ['./badge-outlined.component.scss'],
+  templateUrl: './badge-outlined.component.html',
+  imports: [IgxAvatarComponent, IgxBadgeComponent, IGX_STEPPER_DIRECTIVES]
+})
+
+export class BadgeOutlinedComponent {
+  public steps = [
+    { index: 1, label: 'Orders', completed: true, active: false, flagged: false },
+    { index: 2, label: 'Payment', completed: false, active: true, flagged: true },
+    { index: 3, label: 'Shipping', completed: false, active: false, flagged: false }
+  ];
+}
+```
+```html
+<igx-avatar class="icon-anchor" icon="favorite_border" shape="circle" size="small"></igx-avatar>
+<igx-badge value="23" type="info" outlined></igx-badge>
+
+<igx-avatar class="initials-anchor" initials="AZ" shape="rounded" size="small"></igx-avatar>
+<igx-badge icon="close" type="error" outlined></igx-badge>
+
+<igx-stepper orientation="horizontal" stepType="full" titlePosition="bottom">
+    @for (step of steps; track step.label) {
+        <igx-step [active]="step.active" [completed]="step.completed">
+            <!-- The flagged step's indicator carries the anchor name, so the
+                 badge below stays on it no matter which step is selected. -->
+            <span igxStepIndicator [class.flagged-anchor]="step.flagged">{{ step.index }}</span>
+            <span igxStepTitle>{{ step.label }}</span>
+        </igx-step>
+    }
+</igx-stepper>
+<igx-badge class="flagged-badge" dot type="info" outlined></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass" as *;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(60px);
+    min-height: 100vh;
+    padding-inline: rem(16px);
+
+    ::ng-deep {
+        // NOTE! This is just for the sake of the sample, don't do this in your app.
+        // The stepper body is where the content for each step goes, and it should be visible.
+        // This sample doesn't have any content, so we hide it to avoid the empty space.
+        .igx-stepper__body {
+            display: none;
+        }
+    }
+}
+
+.icon-anchor {
+    --ig-avatar-background: #{color($color: gray, $variant: 900, $opacity: 0.08)};
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(14.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+
+    &:nth-of-type(2) {
+        inset-block-start: anchor(85.5%);
+    }
+}
+
+$anchors: icon, initials, flagged;
+
+@each $anchor in $anchors {
+    $i: list.index($anchors, $anchor);
+
+    .#{$anchor}-anchor {
+        anchor-name: --#{$anchor};
+    }
+
+    :host > igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$anchor};
+    }
+}
+
+igx-stepper {
+    --ig-stepper-step-separator-style: dashed;
+    --ig-stepper-step-separator-color: var(--ig-gray-400);
+
+    inline-size: rem(320px);
+}
+
+span[igxStepIndicator] {
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
+}
+```
+
+### Do/Don't
+
+**When to use:** Use a Badge to communicate a short status, category, count, or notification state alongside another component. Use `dot` when the indicator does not need visible text.
+
+**When not to use:** Do not use a Badge as the primary control for an action, as a replacement for a form validation message, or when the status cannot be understood from the badge content, surrounding context, or accessible labeling.
+
+<div class="table-responsive">
+  <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
+    <thead>
+      <tr>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Do</th>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Don't</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Properties
+
+The Angular Badge exposes platform-specific properties for controlling its content, appearance, and indicator behavior.
+
+The Angular Badge exposes the following properties. Use the API reference for the complete type definitions.
+
+| name | type | default | description |
+| --- | --- | --- | --- |
+| [`dot`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=dot) | boolean | `false` | Renders the Badge as a dot indicator without content. |
+| [`outlined`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=outlined) | boolean | `false` | Displays an outline around the Badge. |
+| [`shape`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=shape) | BadgeShape | `rounded` | Sets the Badge shape. |
+| [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) | BadgeType | `default` | Sets the Angular Badge stylistic type. |
+| [`cssClass`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=cssClass) | string | — | Applies a custom CSS class. |
 
 ## Styling
 
-### Badge Theme Property Map
+The Angular Badge uses the [`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) component's `base` CSS part and documented styling variables to customize its appearance.
 
-Changing the `$background-color` property automatically updates the following dependent properties:
+### Sass Theming
 
-<table class="collapsible-table">
-  <thead>
-    <tr>
-      <th>Primary Property</th>
-      <th>Dependent Property</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody class="group">
-    <tr class="primary">
-      <td><strong>$background-color</strong></td>
-      <td>$icon-color</td>
-      <td>The color used for icons in the badge.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>$text-color</td>
-      <td>The color used for text in the badge.</td>
-    </tr>
-  </tbody>
-</table>
+Use the Ignite UI for Angular theme system to style the Badge consistently with the rest of your application.
 
-To get started with styling the badges, we need to import the `index` file, where all the theme functions and component mixins live:
+### CSS Variables
 
-```scss
-@use "igniteui-angular/theming" as *;
+| variable | what it changes |
+| --- | --- |
+| `--background-color` | The badge background color. |
+| `--border-color` | The badge border color. |
+| `--border-radius` | The badge corner radius. |
+| `--elevation` | The badge shadow. |
+| `--icon-color` | The badge icon color. |
+| `--text-color` | The badge text color. |
+| `--size` | The badge size. |
+| `--dot-size` | The size of the dot-type badge. |
 
-// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-```
+### Style Parts
 
-Following the simplest approach, we create a new theme that extends the [`badge-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme) and accepts some parameters that style the badge's items. When you set the `$background-color`, the `$icon-color` and `$text-color` are automatically assigned based on which offers better contrast—black or white. Note that the `$border-radius` property only takes effect when the badge's `shape` is set to `square`.
+| part | what it styles |
+| --- | --- |
+| `base` | The Badge root element. |
 
-```scss
-$custom-badge-theme: badge-theme(
-  $background-color: #57a5cd,
-  $border-radius: 4px
-);
-```
-
-To include the new theme we use the `tokens` mixin:
-
-```scss
-:host {
-  @include tokens($custom-badge-theme);
+```css
+igc-badge::part(base) {
+  --background-color: var(--ig-error-A100);
+  --border-radius: 2px;
 }
 ```
 
-### Demo
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
-<code-view style="height:340px"
-           no-theming
-           data-demos-base-url="{environment:demosBaseUrl}"
-           iframe-src="{environment:demosBaseUrl}/data-display/badge-styling-sample/" >
-</code-view>
+
+@Component({
+    selector: 'app-badge-styling',
+    styleUrls: ['./badge-styling.component.scss'],
+    templateUrl: './badge-styling.component.html',
+    imports: [IgxAvatarComponent, IgxBadgeComponent]
+})
+export class BadgeStylingComponent { }
+```
+```html
+<igx-avatar class="avatar-green" icon="person" shape="circle" size="small"></igx-avatar>
+<igx-badge class="badge-teal" icon="photo_camera" outlined></igx-badge>
+
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png" shape="circle" size="small"></igx-avatar>
+<igx-badge class="badge-amber" icon="star_border" outlined></igx-badge>
+
+<igx-avatar class="avatar-pink" icon="favorite_border" shape="circle" size="small"></igx-avatar>
+<igx-badge class="badge-magenta" value="2" outlined></igx-badge>
+
+<igx-avatar src="https://dl.infragistics.com/x/img/avatars/avatar6.png" shape="rounded" size="small"></igx-avatar>
+<igx-badge class="badge-lime" dot outlined></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "sass:map";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(60px);
+    min-height: 7rem;
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(85.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+.avatar-green {
+    --ig-avatar-background: var(--ig-success-200);
+    --ig-avatar-icon-color: var(--ig-success-700);
+}
+
+.avatar-pink {
+    --ig-avatar-background: #da64ff;
+    --ig-avatar-icon-color: var(--ig-gray-50);
+}
+
+$badges: (
+    teal: var(--ig-success-700),
+    amber: #c97c00,
+    magenta: #9c27b0,
+    lime: var(--ig-success-700),
+);
+
+@each $name, $color in $badges {
+    $i: list.index(map.keys($badges), $name);
+
+    igx-avatar:nth-of-type(#{$i}) {
+        anchor-name: --#{$name};
+    }
+
+    .badge-#{$name} {
+        --ig-badge-background-color: #{$color};
+
+        position-anchor: --#{$name};
+    }
+}
+```
 
 ### Styling with Tailwind
 
-You can style the `badge` using our custom Tailwind utility classes. Make sure to [set up Tailwind](themes/misc/tailwind-classes.md) first.
+You can style the Badge using custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
-Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
+Along with the Tailwind import in your global stylesheet, include the utility file:
 
 ```scss
 @import "tailwindcss";
-...
 @use 'igniteui-theming/tailwind/utilities/material.css';
 ```
 
-The utility file includes both `light` and `dark` theme variants.
-
-- Use `light-*` classes for the light theme.
-- Use `dark-*` classes for the dark theme.
-- Append the component name after the prefix, e.g., `light-badge`, `dark-badge`.
-
-Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
-
-You can find the full list of properties in the [badge-theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme). The syntax is as follows:
+Use `light-badge` and `dark-badge` for the light and dark theme variants. You can override the generated CSS variables with arbitrary properties:
 
 ```html
 <igx-badge
-class="!light-badge ![--background:#FF4E00] ![--border-radius:4px]">
+  class="!light-badge ![--background:#FF4E00] ![--border-radius:4px]">
 </igx-badge>
 ```
 
->[!NOTE]
->The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
+The exclamation mark (`!`) ensures that the utility class takes precedence over the component's default theme.
 
-At the end your badges should look like this:
+```typescript
+import { Component } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
-<div class="sample-container loading" style="height:340px">
-    <iframe id="badge-tailwind-styling-iframe" data-src='{environment:demosBaseUrl}/data-display/badge-tailwind-styling-sample' width="100%" height="100%" seamless frameBorder="0" class="lazyload"></iframe>
-</div>
+
+@Component({
+    selector: 'app-badge-tailwind-styling',
+    styleUrls: ['./badge-tailwind-styling.component.scss'],
+    templateUrl: './badge-tailwind-styling.component.html',
+    imports: [IgxAvatarComponent, IgxBadgeComponent]
+})
+export class BadgeTailwindStylingComponent { }
+```
+```html
+<igx-avatar initials="AZ" shape="rounded" size="small"></igx-avatar>
+<igx-badge icon="close" outlined class="[--ig-badge-background-color:var(--ig-error-500)]"></igx-badge>
+
+<igx-avatar icon="person" shape="rounded" size="small"></igx-avatar>
+<igx-badge icon="volume_off" outlined class="[--ig-badge-background-color:#8b5bb1]"></igx-badge>
+
+<igx-avatar initials="AZ" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="remove" outlined class="[--ig-badge-background-color:var(--ig-gray-900)]"></igx-badge>
+
+<igx-avatar icon="person" shape="square" size="small"></igx-avatar>
+<igx-badge icon="check" outlined class="[--ig-badge-background-color:var(--ig-success-600)]"></igx-badge>
+```
+```scss
+@use "sass:list";
+@use "igniteui-theming/sass/typography" as *;
+
+$anchors: close, volume, remove, check;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(48px);
+    min-height: 7rem;
+}
+
+igx-badge {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    inset-block-start: anchor(85.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
+}
+
+@each $anchor in $anchors {
+    $i: list.index($anchors, $anchor);
+
+    igx-avatar:nth-of-type(#{$i}) {
+        anchor-name: --#{$anchor};
+    }
+
+    igx-badge:nth-of-type(#{$i}) {
+        position-anchor: --#{$anchor};
+    }
+}
+```
+
+## Accessibility
+
+The Angular Badge is a non-interactive status visual that communicates a short count, state, or notification.
+
+### Keyboard Interaction
+
+The Badge does not receive focus, handle keyboard input, or expose component interaction events.
+
+| Key | Action |
+| -- | -- |
+| n/a | The Badge is not keyboard interactive. |
+
+### Screen Readers / ARIA
+
+The Badge host uses `role="status"` to expose its content as status information.
+
+- The component initializes with `role="status"` and `aria-label="badge"`.
+- Angular derives `aria-roledescription` from the Badge type and its icon or value. Set the `label` input when `badge` is not a meaningful accessible name.
+- Add a meaningful `label` for a Badge without text or a `dot` Badge when its status is not otherwise available to assistive technology.
+
+### Accessibility Compliance
+
+Infragistics documents Ignite UI for Angular accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic.
+
+| Criterion | How the component complies |
+| -- | -- |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html) | The Badge exposes the semantic `status` role. The xplat implementation also exposes a role description based on the current variant; Angular exposes an accessible label and a role description based on its type and content. |
+
+Your responsibilities:
+
+- Provide an accessible name that explains the status when the Badge has no meaningful text, especially for `dot` Badges.
+- Do not use Badge color as the only indication of status; pair it with text, an icon, or another accessible cue.
+- Keep sufficient contrast between the Badge foreground and background when overriding theme styles.
+
+## Troubleshooting
+
+Use this section to check boundaries and common decisions before treating Badge as an interactive control or the only indication of status.
+
+### Why does my custom background color not change the Badge?
+
+The selected `variant` takes precedence over the `--background-color` CSS variable. To use a custom background color, avoid setting a variant that applies its own background color.
+
+### Why is my dot Badge not displaying content?
+
+The `dot` property renders the Badge as a minimal indicator and does not support content. Use a regular Badge when you need to display text or other inline content.
+
+### Known Limitations
+
+The Angular Badge has the following platform-independent limitations.
+
+- A dot Badge is an indicator only and cannot display text or an icon.
+- Badge styling and variant/type names differ between Angular and the other supported frameworks. Use the platform-specific examples and API links on this page rather than copying an attribute between frameworks.
+- The Badge is a visual status indicator and does not provide keyboard interaction of its own.
 
 ## API References
 
-<div class="divider--half"></div>
+The Angular Badge API reference lists the complete verified API surface for the target platform.
+[`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent)
 
-- [IgxAvatarComponent](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
-- [IgxBadgeComponent](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent)
-- [IgxBadgeComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme)
-- [IgxListComponent](mcp:get_api_reference?platform=angular&component=IgxListComponent)
-- [IgxListItemComponent](mcp:get_api_reference?platform=angular&component=IgxListItemComponent)
-- [IgxBadgeType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#IgxBadgeType)
+## Dependencies
 
-## Theming Dependencies
-
-- [IgxIcon Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
+The Angular Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in **Getting Started**.
 
 ## Additional Resources
 
-<div class="divider--half"></div>
-
-Our community is active and always welcoming to new ideas.
+The following resources provide additional Angular Badge guidance and project support.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+
+## Related Components
+
+The Angular Badge is commonly used with related components such as Avatar when a status indicator belongs to another visual element.
+
+- [Avatar](../layouts/avatar.md) — combine an Avatar with a Badge to show a status indicator.
+
+## FAQ
+
+  **Q: Can a Badge display both an icon and text?**
+
+    Yes. Use the Badge's content area for the text and the supported icon content for the visual indicator. Keep the combination short so it remains a compact status or category label.
+  
+
+  **Q: How do I display a notification dot without content?**
+
+    Set the platform-specific `dot` property or attribute. A dot Badge intentionally renders without text or other content.
+  
+
+  **Q: When should I use a dot Badge instead of a text Badge?**
+
+    Use a dot Badge when the status is communicated by presence alone. Use a text Badge when users need the status, category, or count to be understandable without relying on color or position.
+  
+
+  **Q: Which package should I install for Badge?**
+
+    Use `igniteui-angular` for Angular, `igniteui-react` for React, `igniteui-webcomponents` for Web Components, and `IgniteUI.Blazor` for Blazor. Keep related Ignite UI packages on the same release version.
+  
+

@@ -4,7 +4,7 @@ class IgxActionStripComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Action Strip";
-		this.group = "Grids & Lists";
+		this.group = "Interactions";
 		this.description = "provides a template area with one or more actions overlaid on a container";
 	}
 }

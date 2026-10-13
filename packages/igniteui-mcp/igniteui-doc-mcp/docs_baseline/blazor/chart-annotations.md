@@ -1,14 +1,15 @@
 ---
 title: Blazor Chart Annotations | Data Visualization | Infragistics
-_description: Infragistics' Blazor Chart Annotations
-_keywords: Blazor Charts, Annotations, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "CrosshairLayer", "FinalValueLayer", "CalloutLayer"]
+description: Infragistics' Blazor Chart Annotations
+keywords: Blazor Charts, Annotations, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Blazor chart's hover interactions and annotations are implemented through hover interaction layers, which are series that are added to the series collection."
 _tocName: Chart Annotations
 _premium: true
 ---
-
 # Blazor Chart Annotations
 
 The Blazor chart's hover interactions and annotations are implemented through hover interaction layers, which are series that are added to the series collection. These layers are dependent on the cursor position. Each of these annotation layers provides a different hover interaction that may be used individually or combined with others to provide powerful hover interactions.
@@ -132,25 +133,22 @@ The following example demonstrates the annotation layers that are available on t
 }
 ```
 
-<div class="divider--half"></div>
-
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
 
 ## Blazor Crosshair Layer
 
-The [`IgbCrosshairLayer`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer) renders as crossing lines intersecting at the actual value of every series that they are configured to target with each series rendering a separate set of lines.
+The [`IgbCrosshairLayer`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer) renders as crossing lines intersecting at the actual value of every series that they are configured to target with each series rendering a separate set of lines.
 
 Crosshair types include:
-
 - Horizontal
 - Vertical
 - Both
 
-The chart's crosshairs can also be configured to snap to data points by setting the [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
+The chart's crosshairs can also be configured to snap to data points by setting the [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=crosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
 
-You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer&member=TargetSeries) property.
+You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer&member=targetSeries) property.
 
-By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer&member=Brush) property of the Crosshair Layer.
+By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer&member=brush) property of the Crosshair Layer.
 
 The following example shows how to configure the crosshair layer but targeting a single series, setting the type to vertical and styling the brush color.
 
@@ -181,19 +179,17 @@ The following example shows how to configure the crosshair layer but targeting a
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Final Value Layer
 
 The [`IgbFinalValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer) of the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control provides a quick view along the axis of the ending value displayed in a series.
 
-You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbCrosshairLayer&member=TargetSeries) property.
+You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=targetSeries) property.
 
 You can also customize this annotation by setting the following properties:
 
-- [`AxisAnnotationBackground`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=AxisAnnotationBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- [`AxisAnnotationTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=AxisAnnotationTextColor): This property is used to choose the brush for the annotation's text color.
-- [`AxisAnnotationOutline`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=AxisAnnotationOutline): This property is used to choose the brush for the annotation's outline color.
+- [`AxisAnnotationBackground`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=axisAnnotationBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- [`AxisAnnotationTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=axisAnnotationTextColor): This property is used to choose the brush for the annotation's text color.
+- [`AxisAnnotationOutline`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer&member=axisAnnotationOutline): This property is used to choose the brush for the annotation's outline color.
 
 The following example demonstrates how to style the final value layer annotation by setting the properties listed above.
 
@@ -224,25 +220,23 @@ The following example demonstrates how to style the final value layer annotation
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Blazor Callout Layer
 
-The [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer) displays annotations from existing or new data on the chart control. The annotations appear next to the given data values in the data source.
+The [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer) displays annotations from existing or new data on the chart control. The annotations appear next to the given data values in the data source.
 
 Use the callout annotations to display additional information, such as notes or specific details about data points, that you would like to point out to your users.
 
-You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=TargetSeries) property.
+You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=targetSeries) property.
 
 You can also customize this annotation by setting the following properties:
 
-- [`CalloutLeaderBrush`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutLeaderBrush): This property is used to choose the brush for the leader lines for the callouts for the layer.
-- [`CalloutOutline`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutOutline): This property is used to choose the brush for the annotation's outline color.
-- [`CalloutBackground`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- [`CalloutTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutTextColor): This property is used to choose the brush for the annotation's text color.
-- [`CalloutStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutStrokeThickness): This property is used to choose the thickness for the callout backing.
-- [`CalloutCornerRadius`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=CalloutCornerRadius): This property is used to curve the corners of the callouts.
-- [`AllowedPositions`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=AllowedPositions): This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
+- [`CalloutLeaderBrush`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutLeaderBrush): This property is used to choose the brush for the leader lines for the callouts for the layer.
+- [`CalloutOutline`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutOutline): This property is used to choose the brush for the annotation's outline color.
+- [`CalloutBackground`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- [`CalloutTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutTextColor): This property is used to choose the brush for the annotation's text color.
+- [`CalloutStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutStrokeThickness): This property is used to choose the thickness for the callout backing.
+- [`CalloutCornerRadius`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=calloutCornerRadius): This property is used to curve the corners of the callouts.
+- [`AllowedPositions`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=allowedPositions): This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
 
 The following example demonstrates how to style the callout layer annotations by setting the properties listed above:
 
@@ -359,11 +353,9 @@ public class CountryRenewableElectricity
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Timeline Styling
 
-The following example demonstrates how to style the data chart as a timeline with annotations by setting the [`AllowedPositions`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=AllowedPositions) properties listed above:
+The following example demonstrates how to style the data chart as a timeline with annotations by setting the [`AllowedPositions`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer&member=allowedPositions) properties listed above:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -467,8 +459,4 @@ The following example demonstrates how to style the data chart as a timeline wit
 ```
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsSnapToData)
-- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+[`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)

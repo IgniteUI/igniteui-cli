@@ -1,15 +1,14 @@
 ---
-title: React Hierarchical Grid Filtering - Ignite UI for React
-_description: Start using angular filter to return specific data with React Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
-_keywords: filter, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/filtering
+title: "React Hierarchical Grid Filtering - Ignite UI for React"
+description: Start using angular filter to return specific data with React Hierarchical Grid. Check the advanced filtering options, including data-type Excel-style filtering.
+keywords: filter, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/filtering"
+llms:
+  description: "The Ignite UI for React Filtering in React Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions."
+_componentKey: HierarchicalGrid
 _tocName: Filtering
 ---
-
 # React Hierarchical Grid Filtering
 
 The Ignite UI for React Filtering in React Hierarchical Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
@@ -212,25 +211,21 @@ root.render(<Sample/>);
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) exposes the following properties - [`IgrHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering), [`IgrHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering), [`IgrHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) and [`IgrColumn.filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable).
 
-Property [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering) enables you to specify the following options:
-
+Property [`IgrHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering) enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering) enables you to specify the following options:
-
+Property [`IgrHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering) enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) enables you to specify the following options:
-
+Property [`IgrHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) enables you to specify the following options:
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) enables you to specify the following options:
-
+Property [`IgrColumn.filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
 
@@ -241,17 +236,15 @@ Property [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`IgrHierarchicalGrid.allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowAdvancedFiltering) input property to **true**
 
 ```tsx
 <IgrHierarchicalGrid data={nwindData} autoGenerate={false} ref={gridRef} allowAdvancedFiltering={true}>
 </IgrHierarchicalGrid>
 ```
 
-> [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is the intersection between the results of the two filters.
+**Note:** 
+You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -261,16 +254,16 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the [`IgnoreCase`](mcp:get_api_reference?platform=react&component=IgrFilteringExpression&member=ignoreCase) and the initial [`Condition`](mcp:get_api_reference?platform=react&component=IgrBooleanFilteringOperand&member=condition) properties.
 
-The filtering feature is enabled for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) input to **false**.
+The filtering feature is enabled for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component by setting the [`IgrHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering) input to **true**. The default [`IgrHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`IgrColumn.filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) input to **false**.
 
-> [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+**Note:** 
+If values of type **string** are used by a column of data type **date**, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), set the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), set the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) [`IgrFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrFilteringExpressionsTree) property to an array of [`IgrFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrFilteringExpressionsTree) for each column to be filtered.
 
 ```tsx
 const filteringExpressions: IgrFilteringExpressionsTree = {
@@ -303,12 +296,13 @@ return (
 
 ### Filtering logic
 
-The [`filteringLogic`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filteringLogic) property of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). You can change it at any time through the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) API, or through the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) input property.
+The [`IgrFilteringLogic`](mcp:get_api_reference?platform=react&component=FilteringLogic) property of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). You can change it at any time through the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) API, or through the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) input property.
 
 ```tsx
 import { FilteringLogic } from "igniteui-react-grids";
 
 <IgrHierarchicalGrid filteringLogic={FilteringLogic.Or}></IgrHierarchicalGrid>
+
 ```
 
 The default value of `AND` returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the 'ProductName' cell value contains 'myproduct' and the 'Price' cell value is greater than 55.
@@ -317,7 +311,7 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -542,14 +536,12 @@ root.render(<Sample/>);
 
 ## Known Limitations
 
-> [!Note]
-> Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
+**Note:** 
+Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

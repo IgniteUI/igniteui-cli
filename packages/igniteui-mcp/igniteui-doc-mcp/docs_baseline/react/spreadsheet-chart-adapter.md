@@ -1,16 +1,17 @@
 ---
-title: React Spreadsheet | Chart Adapter | Infragistics
-_description: Display charts such as column, line and area, in the Infragistics' React spreadsheet control. Learn how to integrate charts in Ignite UI for React spreadsheet!
-_keywords: Excel Spreadsheet, chart adapter, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Spreadsheet | Chart Adapter | Infragistics"
+description: Display charts such as column, line and area, in the Infragistics' React spreadsheet control. Learn how to integrate charts in Ignite UI for React spreadsheet!
+keywords: Excel Spreadsheet, chart adapter, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["Spreadsheet", "Worksheet", "WorksheetShapeCollection", "WorksheetChart"]
+llms:
+  description: "The React Spreadsheet component allows displaying charts in your Spreadsheet."
 _tocName: Chart Adapter
 _premium: true
 ---
-
 # React Spreadsheet Chart Adapter
 
-The React Spreadsheet component allows displaying charts in your [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html).
+The React Spreadsheet component allows displaying charts in your `IgrSpreadsheet`.
 
 ## React Spreadsheet Chart Adapter Example
 
@@ -216,13 +217,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetAdapterForCharts/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Chart Adapter Overview
 
-Using [`chartAdapter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#chartAdapter) you can display the charts in the spreadsheet. The spreadsheet chart adapters creates and initializes chart elements for the spreadsheet based on a Infragistics.Documents.Excel.WorksheetChart instance.
+Using
+`IgrSpreadsheetChartAdapterBase`
+you can display the charts in the spreadsheet. The spreadsheet chart adapters creates and initializes chart elements for the spreadsheet based on a Infragistics.Documents.Excel.WorksheetChart instance.
 
-In order to add a WorksheetChart to a worksheet, you must use the [`addChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetshapecollection.html#addChart) method of the worksheet’s Shapes collection.You can find more detail of adding charts in Excel below.
+In order to add a WorksheetChart to a worksheet, you must use the `AddChart` method of the worksheet’s Shapes collection. You can find more detail of adding charts in Excel below.
 
 Here are the steps by step description :
 
@@ -280,11 +281,11 @@ There are over 35 chart types supported by the Spreadsheet ChartAdapters includi
 
 ## Dependencies
 
-> [!Note]
->
-> In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook).
+**Note:** 
 
-When setting up your React spreadsheet control to add charts, you will need to import the [`SpreadsheetChartAdapter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet_chart_adapter.spreadsheetchartadapter.html) class like so:
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
+
+When setting up your React spreadsheet control to add charts, you will need to import the `IgrSpreadsheetChartAdapter` class like so:
 
 ```ts
 import { IgrExcelXlsxModule } from 'igniteui-react-excel';
@@ -309,7 +310,7 @@ IgrSpreadsheetChartAdapterModule.register();
 
 ## Code Snippet
 
-The following code snippet demonstrates how to add charts to the currently viewed worksheet in the [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) control:
+The following code snippet demonstrates how to add charts to the currently viewed worksheet in the `IgrSpreadsheet` control:
 
 ```typescript
 this.spreadsheet.chartAdapter = new SpreadsheetChartAdapter();
@@ -365,8 +366,7 @@ ExcelUtility.loadFromUrl(process.env.PUBLIC_URL + "/ExcelFiles/ChartData.xlsx").
 
 ## API References
 
-- [`addChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_excel.worksheetshapecollection.html#addChart)
-- [`chartAdapter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#chartAdapter)
-- [`SpreadsheetChartAdapter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet_chart_adapter.spreadsheetchartadapter.html)
-- [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook)
+`IgrSpreadsheetChartAdapterBase`
+<br />
+`IgrSpreadsheet`<br />
+`IgrWorkbook`<br />

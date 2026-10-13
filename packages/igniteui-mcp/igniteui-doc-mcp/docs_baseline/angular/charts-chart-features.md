@@ -1,15 +1,17 @@
 ---
-title: Angular Chart Features | Data Visualization | Infragistics
-_description: Infragistics' Angular Chart Features
-_keywords: Angular Charts, Features, Infragistics
-_license: commercial
-mentionedTypes: ["FinancialChart", "CategoryChart", "XamDataChart"]
+title: "Angular Chart Features | Data Visualization | Infragistics"
+description: Infragistics' Angular Chart Features
+keywords: "Angular Charts, Features, Infragistics"
+license: commercial
+mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
+llms:
+  description: "The Ignite UI for Angular Charts allow you to display many different features to portray the full data story to be told with your chart."
 _tocName: Chart Features
+_premium: true
 ---
-
 # Angular Chart Features
 
-The Ignite UI for Angular Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs - allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
+The Ignite UI for Angular Charts allow you to display many different features to portray the full data story to be told with your chart. Each of these features are fully customizable, and can be styled to suit your design needs — allowing you full control. Interactions such as highlighting and annotations allow you to call out important data details allowing for a deeper data analysis within your chart.
 
 The Angular Charts offer the following chart features:
 
@@ -147,8 +149,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
-<div class="divider--half"></div>
 
 ## Annotations
 
@@ -315,8 +315,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Animations
 
 Animate your chart as it loads a new data source by enabling animations. These are customizable by setting different types of animations and the speed at which those animations take place. You can learn more about this feature in the [Chart Animations](features/chart-animations.md) topic.
@@ -453,11 +451,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Highlighting
 
-Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This features is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
+Bring focus to visuals such as lines, columns, or markers by highlighting them as the mouse hovers over the data items. This feature is enabled on all chart types. You can learn more about this feature in the [Chart Highlighting](features/chart-highlighting.md) topic.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -626,8 +622,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Markers
 
 Identify data points quickly, even if the value falls between major gridlines with the use of markers on the chart series. These are fully customizable in style, color, and shape. You can learn more about this feature in the [Chart Markers](features/chart-markers.md) topic.
@@ -785,8 +779,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
-<div class="divider--half"></div>
 
 ## Navigation
 
@@ -976,8 +968,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Overlays
 
 Overlays allows you to annotate important values and thresholds by plotting horizontal or vertical lines in charts. You can learn more about this feature in the [Chart Overlays](features/chart-overlays.md) topic.
@@ -1074,8 +1064,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
-<div class="divider--half"></div>
 
 ## Performance
 
@@ -1274,8 +1262,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Tooltips
 
 Display all information relevant to the particular series type via Tooltips. There are different tooltips that can be enabled, such as Item-level and Category-level tooltips. You can learn more about this feature in the [Chart Tooltips](features/chart-tooltips.md) topic.
@@ -1425,8 +1411,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Trendlines
 
 Use trendlines to identify a trend or find patterns in your data. There are many different trendlines supported by the Angular chart, such as CubicFit and LinearFit. You can learn more about this feature in the [Chart Trendlines](features/chart-trendlines.md) topic.
@@ -1537,10 +1521,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
-- [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
-- [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html)
+`IgxFinancialChart`
+`IgxCategoryChart`
+`IgxDataChart`

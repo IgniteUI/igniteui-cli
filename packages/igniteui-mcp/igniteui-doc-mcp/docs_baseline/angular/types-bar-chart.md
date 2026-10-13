@@ -1,21 +1,20 @@
 ---
-title: Angular Bar Chart and Graph | Ignite UI for Angular
-_description: Angular Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE.
-_keywords: Angular Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "Series"]
+title: "Angular Bar Chart and Graph | Ignite UI for Angular"
+description: "Angular Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE."
+keywords: "Angular Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different."
 _tocName: Bar Chart
 _premium: true
 ---
-
 # Angular Bar Chart
-
-The Ignite UI for Angular Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different lengths. This chart is ideal for showing variations in the value of an item over time. Data is represented using a collection of rectangles that extend from the left to right of the chart towards the values of data points. Bar Chart is very similar to [Column Chart](column-chart.md) except that Bar Chart renders with 90 degrees clockwise rotation and therefore it has horizontal orientation (left to right) while [Column Chart](column-chart.md) has vertical orientation (up and down)
+The Ignite UI for Angular Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different lengths. This chart is ideal for showing variations in the value of an item over time. Data is represented using a collection of rectangles that extend from the left to right of the chart towards the values of data points. Bar Chart is very similar to [Column Chart](column-chart.md) except that Bar Chart renders with 90 degrees clockwise rotation and therefore it has horizontal orientation (left to right) while [Column Chart](column-chart.md) has vertical orientation (up and down)
 
 ## Angular Bar Chart Example
-
-You can create Angular Bar Chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data sources to multiple [`IgxBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxbarseriescomponent.html), as shown in the example below:
+You can create Angular Bar Chart in the `IgxDataChart` control by binding your data sources to multiple `IgxBarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -176,12 +175,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Bar Chart Recommendations
 
 ### Are Angular Bar Charts right for your project?
-
 Angular Bar Chart includes several variants based on your data or how you want to tell the correct story with your data. These include:
 
 - Grouped Bar Chart
@@ -190,7 +186,6 @@ Angular Bar Chart includes several variants based on your data or how you want t
 - Stacked 100 Bar Chart
 
 ### Bar Chart Use Cases
-
 There are several common use cases for choosing a Bar Chart:
 
 - You need to show trends over time or a numeric value change in a category of data.
@@ -207,7 +202,6 @@ These use cases are commonly used for the following scenarios:
 - Any String Value Comparing a Numeric Value or Time-Series Value.
 
 ### Bar Chart Best Practices
-
 - Start you numeric Axis at 0.
 - Use a single color for the bars.
 - Be sure the space separating each bar is 1/2 the width of the bar itself.
@@ -215,22 +209,17 @@ These use cases are commonly used for the following scenarios:
 - Right-align category values on the Y-Axis (left side labels of chart) for readability.
 
 ### When Not to Use Bar Chart
-
 - You have too much data so the Y-Axis can't fit in the space or is not legible.
 - You need a detailed Time-Series analysis  - consider a [Line Chart](line-chart.md) with a Time-Series for this type of data.
 
 ### Bar Chart Data Structure
-
 - The data source must be an array or a list of data items.
 - The data source must contain at least one data item.
 - The list must contain at least one data column (string or date time).
 - The list must contain at least one numeric data column.
 
-<div class="divider--half"></div>
-
 ## Angular Bar Chart with Single Series
-
-Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxbarseriescomponent.html), as shown in the example below:
+Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxBarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -367,11 +356,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Bar Chart with Multiple Series
 
-The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to multiple [`IgxBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxbarseriescomponent.html), as shown in the example below:
+The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the `IgxDataChart` control by binding your data to multiple `IgxBarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -532,11 +519,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Bar Chart Styling
 
-The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxbarseriescomponent.html) and adding a [`IgxCalloutLayerComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcalloutlayercomponent.html), as shown in the example below:
+The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxBarSeries` and adding a `IgxCalloutLayer`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -691,15 +676,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked Bar Chart
 
 A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is used to compare the composition of different categories of data by displaying different sized fragments in the horizontal bars of the chart. The length of each bar, or stack of fragments, is proportionate to its overall value.
 
 The Stacked Bar Chart differs from the Bar Chart in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedbarseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedBarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -871,13 +854,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Angular Stacked 100% Bar Chart
 
 The Angular Stacked 100% Bar Chart is identical to the Angular Stacked Bar Chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100 bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control by binding your data to a [`IgxStacked100BarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100barseriescomponent.html), as shown in the example below:
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100BarSeries`, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1047,7 +1028,166 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
+## Angular Range Bar Chart
+
+The Angular Range Bar Chart belongs to a group of range charts and is rendered using horizontal rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the left like the traditional [Category Bar Chart](bar-chart.md#angular-bar-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items.
+
+Range values are represented on the X-Axis and categories are displayed on the Y-Axis. Because each bar visualizes both a low value and a high value, this chart is useful for scenarios such as showing daily temperature ranges, minimum and maximum prices, or any bounded measurements where a single value is not sufficient.
+
+The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#angular-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
+
+You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxRangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a `NumericXAxis` with a `CategoryYAxis`, as shown in the example below:
+
+```typescript
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppComponent } from "./app.component";
+
+import { IgxDataChartAnnotationModule, IgxDataChartCategoryModule, IgxDataChartCoreModule, IgxDataChartInteractivityModule, IgxDataChartVerticalCategoryModule, IgxLegendModule, IgxRangeBarSeriesModule } from 'igniteui-angular-charts';
+
+@NgModule({
+  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent
+],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    IgxDataChartAnnotationModule,
+    IgxDataChartCategoryModule,
+    IgxDataChartCoreModule,
+    IgxDataChartInteractivityModule,
+    IgxDataChartVerticalCategoryModule,
+    IgxLegendModule,
+    IgxRangeBarSeriesModule
+],
+  providers: [],
+  schemas: []
+})
+export class AppModule {}
+```
+```typescript
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { TemperatureRangeDataItem, TemperatureRangeData } from './TemperatureRangeData';
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxRangeBarSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
+
+@Component({
+    standalone: false,
+    selector: "app-root",
+    styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class AppComponent implements AfterViewInit
+{
+
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxCategoryYAxisComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("rangeBarSeries1", { static: true } )
+	private rangeBarSeries1: IgxRangeBarSeriesComponent
+	@ViewChild("rangeBarSeries2", { static: true } )
+	private rangeBarSeries2: IgxRangeBarSeriesComponent
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
+    private _temperatureRangeData: TemperatureRangeData = null;
+    public get temperatureRangeData(): TemperatureRangeData {
+        if (this._temperatureRangeData == null)
+        {
+            this._temperatureRangeData = new TemperatureRangeData();
+        }
+        return this._temperatureRangeData;
+    }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
+
+}
+```
+```html
+<div class="container vertical sample">
+  <div class="legend-title">
+      Monthly Temperature Range in LA and NYC
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      [legend]="legend">
+          <igx-category-y-axis
+          name="yAxis"
+          #yAxis
+          label="month"
+          interval="1"
+          [dataSource]="temperatureRangeData">
+          </igx-category-y-axis>
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          title="Temperature (in Celsius)"
+          titleAngle="0"
+          titleTopMargin="10">
+          </igx-numeric-x-axis>
+          <igx-range-bar-series
+          name="RangeBarSeries1"
+          #rangeBarSeries1
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          title="Los Angeles"
+          lowMemberPath="lowLA"
+          highMemberPath="highLA"
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
+          </igx-range-bar-series>
+          <igx-range-bar-series
+          name="RangeBarSeries2"
+          #rangeBarSeries2
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          title="New York"
+          lowMemberPath="lowNY"
+          highMemberPath="highNY"
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
+          </igx-range-bar-series>
+          <igx-data-tool-tip-layer
+          name="dataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>
+```
+```scss
+/* styles are loaded the Shared CSS file located at:
+https://dl.infragistics.com/x/css/samples/shared.v8.css
+*/
+```
 
 ## Additional Resources
 
@@ -1060,13 +1200,10 @@ You can find more information about related chart types in these topics:
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
-
-The following table lists API members mentioned in the above sections:
-
-- [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
-- `ItemsSource`
-- [`IgxBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxbarseriescomponent.html)
-- [`IgxCalloutLayerComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcalloutlayercomponent.html)
-- [`IgxStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedbarseriescomponent.html)
-- [`IgxStacked100BarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstacked100barseriescomponent.html)
-- [`IgxStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxstackedbarseriescomponent.html)
+`IgxDataChart`
+`IgxBarSeries`
+`IgxCalloutLayer`
+`IgxStackedBarSeries`
+`IgxStacked100BarSeries`
+`IgxRangeBarSeries`
+`DataSource`

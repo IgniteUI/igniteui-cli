@@ -1,77 +1,51 @@
 ---
-title: Blazor Accordion | Accordion | Infragistics
-_description: Accordion is used to build vertical expandable panels in accordion menu.
-_keywords: Blazor Accordion, Ignite UI for Blazor, Infragistics
-_license: MIT
-mentionedTypes: ["Accordion", "Infragistics.Controls.Layouts.Implementation.ExpansionPanel"]
+title: "Blazor Accordion Component | Layouts | Infragistics"
+description: "Blazor Accordion is a layout component for organizing expandable and collapsible content panels in a vertical container."
+keywords: "Blazor Accordion, accordion component, expandable panels, Ignite UI for Blazor, Infragistics"
+license: MIT
+last_updated: "2026-07-30"
+mentionedTypes: ["Accordion", "ExpansionPanel"]
 namespace: Infragistics.Controls
+relatedComponents: ["ExpansionPanel"]
+llms:
+  description: "The Ignite UI for Blazor Accordion helps developers group related content into expandable and collapsible panels inside a vertical layout."
 _tocName: Accordion
 ---
+# Accordion Component
 
-# Blazor Accordion Overview
+The Ignite UI for Blazor Accordion is a layout component for organizing expandable content panels in a single vertical container.
 
-The Ignite UI for Blazor Accordion is a GUI component for building vertical expandable panels with clickable headers and associated content sections, displayed in a single container. The accordion is commonly used to reduce the need of scrolling across multiple sections of content on a single page. It offers keyboard navigation and API to control the underlying panels' expansion state.
-
-Users are enabled to interact and navigate among a list of items, such as thumbnails or labels. Each one of those items can be toggled (expanded or collapsed) in order to reveal the containing information. Depending on the configuration, there can be a single or multiple expanded items at a time.
-
-## Blazor Accordion Example
-
-The following is a basic Ignite UI for Blazor Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
-
-In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand) property to toggle between single and multiple branches to be expanded at a time.
+## Live Demo
 
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="accordion-sample">
+    <div class="accordion-content">
+        <div class="accordion-toolbar">
+            <IgbSwitch Change="OnSwitchChange">
+                <span>Single Expand</span>
+            </IgbSwitch>
+        </div>
 
-<div class="container vertical scrollable">
-    <IgbSwitch Change="OnSwitchChange">Single Expand</IgbSwitch>
-    <IgbAccordion SingleExpand="@SingleExpand">
-        <IgbExpansionPanel>
-            <span slot="title">What has changed about subscription and pricing model?</span>
-            <span>
-                We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
-                for you to manage your license subscriptions and allows us to provide a better level of service for you. We
-                updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
-                (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
-                including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components), as well as Infragistics Professional,
-                Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
-                so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
-                price.
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">Who will the updated changes impact?</span>
-            <span>
-                The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
-                Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
-                Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
-                blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
-                So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
-                be honored and renewed based upon the current agreement.
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</span>
-            <span>
-                For Ignite UI customers, we are moving away from NPM for licensed packages. The current NPM packages will be replaced with
-                packages that include a “Trial Version” watermark. Licensed packages for Ignite UI will be available from our cloud hosted ProGet
-                server. For more information, please refer to this article: Moving from Trial to Licensed Ignite UI NPM Packages
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">What happens if I don't renew my subscription?</span>
-            <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">If I don't renew my subscription will I still have access to previous versions of Infragistics products?</span>
-            <span>
-                Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
-                previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
-                to renew it.
-            </span>
-        </IgbExpansionPanel>
-    </IgbAccordion>
+        <IgbAccordion SingleExpand="@SingleExpand">
+            <IgbExpansionPanel Open>
+                <span slot="title">Account</span>
+                <span slot="subtitle">Profile and security settings</span>
+                <p>Update your profile details, password, and sign-in preferences.</p>
+            </IgbExpansionPanel>
+            <IgbExpansionPanel>
+                <span slot="title">Notifications</span>
+                <span slot="subtitle">Email and product updates</span>
+                <p>Choose which notifications you receive and how often they are delivered.</p>
+            </IgbExpansionPanel>
+            <IgbExpansionPanel>
+                <span slot="title">Billing</span>
+                <span slot="subtitle">Payment and invoice settings</span>
+                <p>Manage payment methods, billing contacts, and invoice delivery options.</p>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+    </div>
 </div>
 
 @code {
@@ -84,364 +58,625 @@ In it, you can see how to define an accordion and its expansion panels. The samp
 }
 ```
 
-<div class="divider--half"></div>
+## Anatomy
 
-## Getting Started with Blazor Accordion
+The accordion structure consists of an accordion container with one or more expansion panel children.
 
-Before using the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion), you need to register it as follows:
+**Blazor Accordion anatomy anatomy:** The accordion anatomy labels the accordion host and child expansion panel structure.
 
-```razor
-// in Program.cs file
+<span class="ig-typography__body-2" style="display: block; margin-bottom: 24px;"><strong>1. Header:</strong> displays the section title and description and can be clicked to reveal or hide the panel's content<br />
+<strong>2. Icon:</strong> indicates if the panel is open or closed. Could be placed on the left or on the right side of the header<br />
+<strong>3. Panel:</strong> the section of content linked to an accordion header</span>
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule));
+<style>{`
+  .accordion-anatomy {
+    --igd-anatomy-padding: 64px 32px;
+  }
+
+  .accordion-anatomy .igd-anatomy__image {
+    max-width: 640px;
+  }
+`}</style>
+
+```text
+igc-accordion                    // host - manages a set of expansion panels
+└─ igc-expansion-panel            // child panel
+   ├─ [slot="title"]              // panel header title
+   ├─ [slot="subtitle"]           // optional header subtitle
+   ├─ [slot="indicator"]          // custom collapsed/default indicator
+   ├─ [slot="indicator-expanded"] // optional custom expanded-state indicator
+   └─ default slot                // expandable panel content
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+## Getting Started
+
+Use the accordion with the Ignite UI for Blazor version installed in your application. Complete the shared [Getting Started](../general-getting-started.md) topic before adding framework-specific imports or registration.
+
+Register the accordion module in `Program.cs` and add the theme stylesheet to your host page.
+
+```csharp
+builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule));
+```
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-Now you can start with a basic configuration of the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) and its panels.
-
 ## Usage
 
-Each section in the Blazor Accordion Component is defined using an Blazor Expansion Panel.
-Panels provide `Disabled` and `Open` properties, which give you the ability to configure the states of the panel as per your requirement.
+Build the accordion by placing one or more [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) components inside an [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) container.
 
-### Declaring an Accordion
+### Single Expansion
 
-The accordion wraps all expansion panels declared inside it.
+Set [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=singleExpand) to switch between one-open-panel behavior and multiple-open-panel behavior.
 
 ```razor
 <IgbAccordion SingleExpand=true>
-    <IgbExpansionPanel>
-        <div slot="title">Title Panel 1</div>
-        <div>
-            Content Panel 1
-        </div>
-    </IgbExpansionPanel>
-    <IgbExpansionPanel>
-        <div slot="title">Title Panel 2</div>
-        <div>
-            Content Panel 2
-        </div>
-    </IgbExpansionPanel>
+  <IgbExpansionPanel>
+    <span slot="title">Title Panel 1</span>
+    <p>Content Panel 1</p>
+  </IgbExpansionPanel>
+  <IgbExpansionPanel>
+    <span slot="title">Title Panel 2</span>
+    <p>Content Panel 2</p>
+  </IgbExpansionPanel>
 </IgbAccordion>
 ```
 
-As demonstrated above, the [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
+### Programmatic Expansion
 
-By using the [`HideAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=HideAll) and [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=ShowAll) methods you can respectively collapse and expand all [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)s of the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) programmatically.
+Use [`HideAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=hideAll) and [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=showAll) to collapse or expand all available panels programmatically.
 
-> [!Note]
-> If [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand) property is set to **true** calling [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=ShowAll) method would expand only the focused panel.
+**Note:** 
+Calling [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=showAll) expands all panels, even when [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=singleExpand) is `true`.
 
-### Blazor Accordion Customization Example
 
-With the Blazor Accordion, you can customize the header and content panel's appearance.
+```razor
+<IgbButton @onclick="ShowAll">Show All</IgbButton>
+<IgbButton @onclick="HideAll">Hide All</IgbButton>
 
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel).
+<IgbAccordion @ref="accordion">
+  <IgbExpansionPanel>
+    <span slot="title">Title Panel 1</span>
+    <p>Content Panel 1</p>
+  </IgbExpansionPanel>
+  <IgbExpansionPanel>
+    <span slot="title">Title Panel 2</span>
+    <p>Content Panel 2</p>
+  </IgbExpansionPanel>
+</IgbAccordion>
+
+@code {
+    private IgbAccordion accordion;
+
+    private async Task ShowAll() => await accordion.ShowAllAsync();
+
+    private async Task HideAll() => await accordion.HideAllAsync();
+}
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="accordion-sample">
+    <div class="accordion-content">
+        <div class="accordion-toolbar">
+            <IgbButton class="action-button" Variant="ButtonVariant.Contained" @onclick="ShowAll">
+                <span>Show All</span>
+            </IgbButton>
+            <IgbButton class="action-button" Variant="ButtonVariant.Contained" @onclick="HideAll">
+                <span>Hide All</span>
+            </IgbButton>
+        </div>
 
-<style>
-    igc-accordion {
-        width: 100%;
-    }
+        <IgbAccordion @ref="Accordion">
+            <IgbExpansionPanel Open>
+                <span slot="title">Billing</span>
+                <span slot="subtitle">Invoices and payment settings</span>
+                <p>Review invoices, update payment methods, and manage billing contacts.</p>
+            </IgbExpansionPanel>
 
-    .sample-wrapper {
-        overflow-y: auto;
-        max-height: 530px;
-        margin: 8px;
-    }
+            <IgbExpansionPanel Open>
+                <span slot="title">Security</span>
+                <span slot="subtitle">Password and access controls</span>
+                <p>Configure password rules, multi-factor authentication, and recovery options.</p>
+            </IgbExpansionPanel>
 
-    igc-range-slider {
-        margin: 24px;
-    }
-
-    .categories-container {
-        display: flex;
-        flex-flow: column nowrap;
-    }
-
-    igc-checkbox,
-    igc-radio {
-        margin: 4px 0;
-    }
-
-    igc-expansion-panel {
-        border: 1px solid rgba(174, 174, 174, 0.25);
-    }
-
-    igc-rating {
-        flex-direction: row;
-    }
-</style>
-
-<div class="container vertical scrollable">
-    <IgbAccordion>
-        <IgbExpansionPanel>
-            <span slot="title" id="categories">@CategoryTitle</span>
-            <div class="categories-container">
-                @foreach (var category in Categories)
-                {
-                    <IgbCheckbox Value="@category.Id" Checked="@category.Selected" Change="OnCategoryChange">@category.Label</IgbCheckbox>
-                }
-            </div>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">Cost: $<span id="lowerCost">@SliderLower</span> to $<span id="upperCost">@SliderUpper</span></span>
-            <IgbRangeSlider Min="0" Max="1000" Lower="@SliderLower" Upper="@SliderUpper" Change="OnSliderChange"></IgbRangeSlider>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title" id="rating">@RatingTitle</span>
-            <IgbRadioGroup>
-                @foreach (var rating in Ratings)
-                {
-                    <IgbRadio name="rating" Value="@rating.Id" Change="OnRadioChange">
-                        <IgbRating Label="@rating.Label" Value="@rating.Value" Max="5" class="size-small" ReadOnly="true"></IgbRating>
-                    </IgbRadio>
-                }
-            </IgbRadioGroup>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title" id="timeTitle">@TimeTitle</span>
-            <IgbDateTimeInput @ref="DateTimeInputRef" InputFormat="hh:mm tt" Label="Arrive before" class="size-small" Change="OnTimeChange">
-                <IgbIcon IconName="clock" Collection="material" slot="prefix"></IgbIcon>
-                <IgbIcon IconName="clear" Collection="material" slot="suffix" @onclick="OnTimeClear"></IgbIcon>
-            </IgbDateTimeInput>
-        </IgbExpansionPanel>
-    </IgbAccordion>
-
-    <IgbIcon @ref="@RegisterIconRef"/>
+            <IgbExpansionPanel Open>
+                <span slot="title">Notifications</span>
+                <span slot="subtitle">Product updates and account alerts</span>
+                <p>Choose which product updates and account alerts are sent to your team.</p>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+    </div>
 </div>
 
 @code {
-    IgbIcon? RegisterIconRef;
+    private IgbAccordion Accordion { get; set; }
 
-    IgbDateTimeInput? DateTimeInputRef;
-
-    double SliderLower = 200;
-    double SliderUpper = 800;
-
-    string CategoryTitle = "Categories";
-    List<Category> Categories = new List<Category>();
-
-    string RatingTitle = "Rating";
-    List<Rating> Ratings = new List<Rating>();
-
-    string TimeTitle = "Time";
-
-    protected override async Task OnInitializedAsync()
+    private void ShowAll()
     {
-        Categories.Add(new Category { Id = "0", Label = "Bike" });
-        Categories.Add(new Category { Id = "1", Label = "Motorcycle" });
-        Categories.Add(new Category { Id = "2", Label = "Car" });
-        Categories.Add(new Category { Id = "3", Label = "Taxi" });
-        Categories.Add(new Category { Id = "4", Label = "Public Transport" });
-
-        Ratings.Add(new Rating { Id = "0", Label = "1 star or more", Value = 1.5 });
-        Ratings.Add(new Rating { Id = "1", Label = "2 star or more", Value = 2.5 });
-        Ratings.Add(new Rating { Id = "2", Label = "3 star or more", Value = 3.5 });
-        Ratings.Add(new Rating { Id = "3", Label = "4 star or more", Value = 4.5 });
+        Accordion.ShowAll();
     }
+
+    private void HideAll()
+    {
+        Accordion.HideAll();
+    }
+}
+```
+
+### Customize Panel Content
+
+Customize the panel headers and content through the underlying [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) slots.
+
+```razor
+<IgbAccordion>
+  <IgbExpansionPanel Open>
+    <span slot="title">Billing</span>
+    <span slot="subtitle">Payment and invoice settings</span>
+    <p>Update payment methods, billing contacts, and invoice delivery options.</p>
+  </IgbExpansionPanel>
+</IgbAccordion>
+```
+
+```razor
+@using IgniteUI.Blazor.Controls
+
+<div class="accordion-sample">
+    <div class="accordion-content">
+        <IgbAccordion>
+            <IgbExpansionPanel Open>
+                <span slot="title">@TransportationTitle</span>
+                <span slot="subtitle">Choose how you want to travel</span>
+                <span>
+                    <p class="panel-description">Select one or more transportation options for your trip.</p>
+                    <div class="categories-container">
+                        @foreach (var category in Categories)
+                        {
+                            <IgbCheckbox class="category-option" Value="@category.Id" Checked="@category.Selected" Change="OnCategoryChange">@category.Label</IgbCheckbox>
+                        }
+                    </div>
+                </span>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">Budget: $@SliderLower - $@SliderUpper</span>
+                <span slot="subtitle">Set the price range</span>
+                <span>
+                    <p class="panel-description">Adjust the minimum and maximum cost for available options.</p>
+                    <div class="range-summary">
+                        <span>$@SliderLower</span>
+                        <span>$@SliderUpper</span>
+                    </div>
+                    <IgbRangeSlider class="cost-slider" Min="0" Max="1000" Lower="@SliderLower" Upper="@SliderUpper" Change="OnSliderChange"></IgbRangeSlider>
+                </span>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">@RatingTitle</span>
+                <span slot="subtitle">Filter by review score</span>
+                <span>
+                    <p class="panel-description">Choose the lowest rating you want to include in the results.</p>
+                    <IgbRadioGroup class="rating-options">
+                        @foreach (var rating in Ratings)
+                        {
+                            <IgbRadio class="rating-option" name="rating" Value="@rating.Id" Change="OnRadioChange">
+                                <IgbRating Label="@rating.Label" Value="@rating.Value" Max="5" class="rating-control size-small" ReadOnly="true"></IgbRating>
+                            </IgbRadio>
+                        }
+                    </IgbRadioGroup>
+                </span>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">@ArrivalTimeTitle</span>
+                <span slot="subtitle">Set the latest arrival time</span>
+                <span>
+                    <p class="panel-description">Pick the latest acceptable arrival time for your trip.</p>
+                    <IgbDateTimeInput @ref="DateTimeInputRef" InputFormat="hh:mm tt" Label="Arrive before" class="time-input size-small" Change="OnTimeChange">
+                        <IgbIcon IconName="clock" Collection="material" slot="prefix"></IgbIcon>
+                        <IgbIcon IconName="clear" Collection="material" slot="suffix" @onclick="OnTimeClear"></IgbIcon>
+                    </IgbDateTimeInput>
+                </span>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+
+        <IgbIcon @ref="RegisterIconRef" />
+    </div>
+</div>
+
+@code {
+    private IgbIcon? RegisterIconRef;
+    private IgbDateTimeInput? DateTimeInputRef;
+    private double SliderLower = 200;
+    private double SliderUpper = 800;
+    private string SelectedRating = string.Empty;
+    private string ArrivalTime = "Any time";
+
+    private List<Category> Categories { get; } = [
+        new() { Id = "0", Label = "Bike" },
+        new() { Id = "1", Label = "Motorcycle" },
+        new() { Id = "2", Label = "Car" },
+        new() { Id = "3", Label = "Taxi" },
+        new() { Id = "4", Label = "Public Transport" }
+    ];
+
+    private List<Rating> Ratings { get; } = [
+        new() { Id = "2", Label = "2 stars or more", Value = 2 },
+        new() { Id = "3", Label = "3 stars or more", Value = 3 },
+        new() { Id = "4", Label = "4 stars or more", Value = 4 },
+        new() { Id = "5", Label = "5 stars or more", Value = 5 }
+    ];
+
+    private string TransportationTitle => Categories.Where(category => category.Selected).Select(category => category.Label) is var selected && selected.Any()
+        ? $"Transportation: {string.Join(", ", selected)}"
+        : "Transportation";
+
+    private string RatingTitle => string.IsNullOrEmpty(SelectedRating) ? "Minimum Rating" : $"Minimum Rating: {SelectedRating}";
+
+    private string ArrivalTimeTitle => ArrivalTime == "Any time" ? "Arrival Time" : $"Arrival Time: {ArrivalTime}";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && this.RegisterIconRef != null)
+        if (firstRender && RegisterIconRef is not null)
         {
-            await this.RegisterIconRef.EnsureReady();
-            string clearIcon = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /></svg>";
-            string clockIcon = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path d='M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z' /></svg>";
-            await this.RegisterIconRef.RegisterIconFromTextAsync("clear", clearIcon, "material");
-            await this.RegisterIconRef.RegisterIconFromTextAsync("clock", clockIcon, "material");
+            await RegisterIconRef.EnsureReady();
+            const string clearIcon = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /></svg>";
+            const string clockIcon = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path d='M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z' /></svg>";
+            await RegisterIconRef.RegisterIconFromTextAsync("clear", clearIcon, "material");
+            await RegisterIconRef.RegisterIconFromTextAsync("clock", clockIcon, "material");
         }
     }
 
-    public void OnCategoryChange(IgbCheckboxChangeEventArgs args)
+    private void OnCategoryChange(IgbCheckboxChangeEventArgs args)
     {
-        var id = (args.Parent as IgbCheckbox).Value;
-        var category = Categories.Where(x => x.Id == id).FirstOrDefault();
-        if (category != null)
-            category.Selected = args.Detail.Checked;
-
-        UpdateCheckedCategories();
-    }
-
-    private void UpdateCheckedCategories()
-    {
-        string checkedItems = "";
-        Categories.ForEach(category =>
+        var id = (args.Parent as IgbCheckbox)?.Value;
+        var category = Categories.FirstOrDefault(item => item.Id == id);
+        if (category is not null)
         {
-            if (category.Selected)
-            {
-                checkedItems += checkedItems != "" ? ", " + category.Label : "Categories: " + category.Label;
-            }
-        });
-        CategoryTitle = checkedItems == "" ? "Categories" : checkedItems;
-        StateHasChanged();
+            category.Selected = args.Detail.Checked;
+        }
     }
 
     private void OnSliderChange(IgbRangeSliderValueEventArgs args)
     {
-        if (args.Detail != null)
+        if (args.Detail is not null)
         {
             SliderLower = args.Detail.Lower;
             SliderUpper = args.Detail.Upper;
-            StateHasChanged();
         }
     }
 
     private void OnRadioChange(IgbRadioChangeEventArgs args)
     {
-        var id = (args.Parent as IgbRadio).Value;
-        var rating = Ratings.Where(x => x.Id == id).FirstOrDefault();
-        if (rating != null)
+        var id = (args.Parent as IgbRadio)?.Value;
+        var rating = Ratings.FirstOrDefault(item => item.Id == id);
+        if (rating is not null)
         {
-            RatingTitle = "Rating: " + rating.Label;
-            StateHasChanged();
+            SelectedRating = rating.Label;
         }
     }
 
-    private async Task OnTimeChange(IgbComponentDateValueChangedEventArgs args)
+    private Task OnTimeChange(IgbComponentDateValueChangedEventArgs args)
     {
-        TimeTitle = "Time: " + (args.Parent as IgbDateTimeInput).Label + " " + args.Detail.ToShortTimeString();
-        StateHasChanged();
-
-
+        ArrivalTime = args.Detail.ToShortTimeString();
+        return Task.CompletedTask;
     }
 
     private async Task OnTimeClear()
     {
-        if (DateTimeInputRef != null)
+        if (DateTimeInputRef is not null)
         {
             await DateTimeInputRef.ClearAsync();
         }
-        TimeTitle = "Time";
-        StateHasChanged();
+
+        ArrivalTime = "Any time";
     }
 
-    public class Category
+    private sealed class Category
     {
-        public string Id { get; set; }
+        public string Id { get; init; } = string.Empty;
         public bool Selected { get; set; }
-        public string Label { get; set; }
+        public string Label { get; init; } = string.Empty;
     }
 
-    public class Rating
+    private sealed class Rating
     {
-        public string Id { get; set; }
-        public string Label { get; set; }
-        public double Value { get; set; }
+        public string Id { get; init; } = string.Empty;
+        public string Label { get; init; } = string.Empty;
+        public double Value { get; init; }
     }
 }
 ```
 
-<div class="divider--half"></div>
+### Nest Accordions
 
-### Nested Blazor Accordions Scenario
+Nest an accordion inside an expansion panel when you need a second level of grouped disclosure.
 
-In the following Blazor Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) is achieved by adding an accordion inside an expansion panel.
+```razor
+<IgbAccordion>
+  <IgbExpansionPanel Open>
+    <span slot="title">Workspace Settings</span>
+    <IgbAccordion>
+      <IgbExpansionPanel>
+        <span slot="title">Notifications</span>
+        <p>Configure email and product notification preferences.</p>
+      </IgbExpansionPanel>
+    </IgbAccordion>
+  </IgbExpansionPanel>
+</IgbAccordion>
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="accordion-sample">
+    <div class="accordion-content">
+        <div class="accordion-toolbar">
+            <IgbSwitch Change="OnSwitchChange">
+                <span>Single Expand</span>
+            </IgbSwitch>
+        </div>
 
-<div class="container vertical scrollable">
-    <IgbSwitch Change="OnSwitchChange">Single Expand</IgbSwitch>
-    <IgbAccordion SingleExpand="@SingleExpand">
-        <IgbExpansionPanel Open>
-            <span slot="title">Common questions about renewal.</span>
-            <IgbAccordion SingleExpand="@SingleExpand">
-                <IgbExpansionPanel>
-                    <span slot="title">What happens if I don't renew my subscription?</span>
-                    <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
-                </IgbExpansionPanel>
-                <IgbExpansionPanel>
-                    <span slot="title">If I don't renew my subscription will I still have access to previous versions of Infragistics products?</span>
-                    <span>
-                        Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
-                        previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
-                        to renew it.
-                    </span>
-                </IgbExpansionPanel>
-                <IgbExpansionPanel>
-                    <span slot="title">Will I be automatically charged for my renewal/ Can I be automatically charged for renewal?</span>
-                    <span>
-                        Any new subscriptions purchased online, via our eCommerce system, will renew automatically. Subscription renewal can be canceled,
-                        at any time, before the next automatic renewal date. Subscriptions purchased directly from Infragistics or Infragistics' partners are
-                        subject to the renewal terms that were agreed upon as part of that purchase.
-                    </span>
-                </IgbExpansionPanel>
-            </IgbAccordion>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">What has changed about subscription and pricing model?</span>
-            <span>
-                We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
-                for you to manage your license subscriptions and allows us to provide a better level of service for you. We
-                updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
-                (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
-                including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components), as well as Infragistics Professional,
-                Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
-                so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
-                price.
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">Who will the updated changes impact?</span>
-            <span>
-                The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
-                Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
-                Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
-                blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
-                So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
-                be honored and renewed based upon the current agreement.
-            </span>
-        </IgbExpansionPanel>
-    </IgbAccordion>
+        <IgbAccordion SingleExpand="@SingleExpand">
+            <IgbExpansionPanel Open>
+                <span slot="title">Workspace Settings</span>
+                <span slot="subtitle">Nested account, access, and billing options</span>
+
+                <IgbAccordion SingleExpand="@SingleExpand">
+                    <IgbExpansionPanel Open>
+                        <span slot="title">Profile</span>
+                        <span slot="subtitle">Name, photo, and contact details</span>
+                        <p>Update the public information shown to other workspace members.</p>
+                    </IgbExpansionPanel>
+
+                    <IgbExpansionPanel>
+                        <span slot="title">Security</span>
+                        <span slot="subtitle">Password and sign-in preferences</span>
+                        <p>Review active sessions, change your password, and configure sign-in requirements.</p>
+                    </IgbExpansionPanel>
+
+                    <IgbExpansionPanel>
+                        <span slot="title">Notifications</span>
+                        <span slot="subtitle">Email and product updates</span>
+                        <p>Choose the messages you receive for comments, assignments, and releases.</p>
+                    </IgbExpansionPanel>
+                </IgbAccordion>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">Team Access</span>
+                <span slot="subtitle">Members, roles, and permissions</span>
+                <p>Invite teammates, assign roles, and review workspace permissions.</p>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">Billing</span>
+                <span slot="subtitle">Plan, invoices, and payment method</span>
+                <p>Manage subscription details, billing contacts, and invoice delivery.</p>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+    </div>
 </div>
 
 @code {
-    public bool SingleExpand { get; set; }
+    private bool SingleExpand { get; set; }
 
-    public void OnSwitchChange(IgbCheckboxChangeEventArgs args)
+    private void OnSwitchChange(IgbCheckboxChangeEventArgs args)
     {
         SingleExpand = args.Detail.Checked;
     }
 }
 ```
 
-<div class="divider--half"></div>
+### Do/Don't
 
-## Keyboard Navigation
+**When to use:** Use the accordion when you need to organize secondary content, FAQ entries, settings groups, or other related vertical sections that users expand on demand. Keep panel titles short and descriptive, and enable single-expansion behavior when users should focus on one section at a time.
 
-Keyboard navigation in the Blazor Accordion provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the panels.
+**When not to use:** Use the [Expansion Panel](./expansion-panel.md) when you need a single standalone expandable section instead of a coordinated container that manages multiple panels together. Do not use an accordion to hide essential primary content or to group unrelated sections.
 
-The Accordion navigation is compliant with W3C accessibility standards and convenient to use.
+<div class="table-responsive">
+  <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
+    <thead>
+      <tr>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Do</th>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Don't</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-**Key Combinations**
+## Properties
 
-- <kbd>↓</kbd> - moves the focus to the panel below
-- <kbd>↑</kbd> - moves the focus to the panel above
-- <kbd>ALT</kbd> + <kbd>↓</kbd> - opens the focused panel in the accordion
-- <kbd>ALT</kbd> + <kbd>↑</kbd> - closes the focused panel in the accordion
-- <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>↓</kbd> - opens all enabled panels (if singleExpand is set to true opens the focused panel)
-- <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>↑</kbd> - closes all enabled panels
-- <kbd>HOME</kbd> - navigates to the FIRST enabled panel in the accordion
-- <kbd>END</kbd> - navigates to the LAST enabled panel in the accordion
+The accordion exposes container-level controls; panel-specific state is configured on each [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel).
 
-<div class="divider"></div>
+| Name | Type | Default | Description |
+| -- | -- | -- | -- |
+| [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=singleExpand) | `boolean` | `false` | Controls whether one or multiple panels can stay expanded at the same time. |
+| [`Panels`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=panels) | [`ExpansionPanel[]`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) | n/a | Returns the collection of child expansion panels in the accordion. |
+
+## Methods
+
+Use the accordion methods when you need to change panel state from your code.
+
+| Name | Description |
+| -- | -- |
+| [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=showAll) | Expands all available panels. |
+| [`HideAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=hideAll) | Collapses the available panels. |
+
+## Styling
+
+Style the Blazor accordion with CSS parts and Ignite UI theme variables.
+
+```razor
+@using IgniteUI.Blazor.Controls
+
+<div class="accordion-sample">
+    <div class="accordion-content">
+        <IgbAccordion>
+            <IgbExpansionPanel Open>
+                <span slot="title">Getting Started</span>
+                <span slot="subtitle">Setup and onboarding</span>
+                <p>Find installation steps, project setup guidance, and resources for building your first application.</p>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">Billing</span>
+                <span slot="subtitle">Invoices and payment methods</span>
+                <p>Review invoices, update payment methods, and manage billing contacts for your account.</p>
+            </IgbExpansionPanel>
+
+            <IgbExpansionPanel>
+                <span slot="title">Security</span>
+                <span slot="subtitle">Access and authentication</span>
+                <p>Configure password rules, multi-factor authentication, and recovery options for your team.</p>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+    </div>
+</div>
+```
+
+Style the accordion by targeting the parts exposed by its child [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) components.
+
+### Styling Variables
+
+Use Ignite UI for Blazor theme CSS variables as values when styling the expansion panel parts.
+
+| Variable | What it changes |
+| -- | -- |
+| `--ig-secondary-900` | Supplies the dark background color used by the panel and header in the example below. |
+| `--ig-secondary-900-contrast` | Supplies a readable foreground color for content on `--ig-secondary-900`. |
+| `--ig-warn-500` | Supplies the accent color used by the indicator, title, and subtitle in the example below. |
+
+```css
+igc-expansion-panel {
+  background-color: var(--ig-secondary-900);
+  color: var(--ig-secondary-900-contrast);
+}
+
+igc-expansion-panel::part(header) {
+  background-color: var(--ig-secondary-900);
+}
+
+igc-expansion-panel::part(indicator),
+igc-expansion-panel::part(title),
+igc-expansion-panel::part(subtitle) {
+  color: var(--ig-warn-500);
+}
+```
+
+### CSS Parts
+
+| Part | What it changes |
+| -- | -- |
+| `header` | The container for the expansion indicator, title, and subtitle. |
+| `title` | The title container. |
+| `subtitle` | The subtitle container. |
+| `indicator` | The indicator container. |
+| `content` | The expansion panel content wrapper. |
+
+### Styling with Tailwind
+
+Use Tailwind utility classes with CSS part selectors when you want to keep the styling close to the component markup.
+
+```css
+@tailwind utilities;
+
+.accordion-tailwind-sample {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+```
+
+## Accessibility
+
+The accordion supports keyboard interaction for moving focus between panels and changing their expanded state.
+
+### Keyboard Interaction
+
+Use the keyboard shortcuts below to move through the accordion and open or close panels.
+
+| Key | Action |
+| -- | -- |
+| <kbd>Down Arrow</kbd> | Moves focus to the panel below. |
+| <kbd>Up Arrow</kbd> | Moves focus to the panel above. |
+| <kbd>Alt</kbd> + <kbd>Down Arrow</kbd> | Opens the focused panel. |
+| <kbd>Alt</kbd> + <kbd>Up Arrow</kbd> | Closes the focused panel. |
+| <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Down Arrow</kbd> | Opens all enabled panels. If [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=singleExpand) is `true`, opens only the focused panel. |
+| <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Up Arrow</kbd> | Closes all enabled panels. |
+| <kbd>Home</kbd> | Moves focus to the first enabled panel. |
+| <kbd>End</kbd> | Moves focus to the last enabled panel. |
+
+### Screen Readers / ARIA
+
+The accordion's accessibility semantics are provided through its child expansion panels and their headers.
+
+- Each panel header exposes `role="button"`, `aria-expanded`, and `aria-controls`.
+- Each panel body exposes `role="region"` and a label through `aria-labelledby` or `aria-label`.
+- Use clear title text for each panel so assistive technologies can announce a meaningful label.
+- Keep interactive content inside panel bodies in a logical tab order.
+
+### Accessibility Compliance
+
+Infragistics documents Ignite UI for Blazor accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic. The accordion's compliance evidence comes from the child [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) components that provide the interactive headers and regions.
+
+| Criterion | How the component complies |
+| -- | -- |
+| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard) | The accordion supports keyboard commands for moving focus and opening or closing panels. |
+| [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order) | Focus moves through enabled panels in sequence, with shortcuts for jumping to the first and last panel. |
+
+Your responsibilities:
+
+- Provide panel titles that describe the content behind each disclosure area.
+- Preserve a logical focus order in the surrounding page layout.
+- Validate any custom styling against your application's contrast and focus-indicator requirements.
 
 ## API References
 
-- [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion)
-- [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
+[`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion)
+[`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
+
+## Dependencies
+
+The accordion depends on [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) for its visible sections.
+
+The accordion also depends on the shared theme stylesheet for its default appearance.
 
 ## Additional Resources
 
+Use these resources to continue with Ignite UI for Blazor Accordion support, source, and related layout guidance.
+
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
 - [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
+
+## Related Components
+
+- [Expansion Panel](./expansion-panel.md) - The collapsible section the accordion is built from. See it for configuring individual panels.
+
+## FAQ
+
+  **Q: Should multiple accordion panels be open at the same time?**
+
+    Allow multiple panels to stay open when users need to compare or cross-reference their content. Use single-expansion behavior when the workflow is clearer with one active section at a time.
+  
+  **Q: When should I avoid using an accordion?**
+
+    Avoid using an accordion for essential, long, or comparison-heavy content that users need to read at once. Use clear headings, a separate page, or another layout when hiding the content would make it harder to find or compare.
+  
+  **Q: How should I write accordion headers?**
+
+    Use short, descriptive headers that clearly identify the content revealed by each panel. Users should be able to scan the headers and decide which section to open.
+  
+  **Q: Can an accordion header contain other buttons or links?**
+
+    Avoid placing other interactive controls inside an accordion header. Keep secondary actions outside the header so the panel trigger remains clear and does not contain nested interactive elements.
+  
+

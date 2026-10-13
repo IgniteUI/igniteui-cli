@@ -1,15 +1,14 @@
 ---
-title: Web Components Hierarchical Grid Excel Style Filtering - Ignite UI for Web Components
-_description: Learn how to configure Excel filtering in Web Components Hierarchical Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
+title: "Web Components Hierarchical Grid Excel Style Filtering - Ignite UI for Web Components"
+description: Learn how to configure Excel filtering in Web Components Hierarchical Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, Web Components, Ignite UI for Web Components, Infragistics
+license: commercial
+llms:
+  description: "The Web Components Hierarchical Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI."
+_componentKey: HierarchicalGrid
 _tocName: Excel Style Filtering
 _premium: true
 ---
-
 # Excel Filtering in Web Components Hierarchical Grid
 
 The Web Components Hierarchical Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI. It simplifies the process of working with large datasets. The main idea is to help them filter the data that is most relevant, while eliminating irrelevant entries.
@@ -23,7 +22,7 @@ The Web Components Hierarchical Grid exposes an Excel-style filtering feature th
 
 ## Usage
 
-To turn on the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) should be set to **true** and the [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component's Excel-style filtering, two inputs should be set. The [`IgcHierarchicalGrid.allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=allowFiltering) should be set to **true** and the [`IgcHierarchicalGrid.filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```html
 <igc-hierarchical-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
@@ -44,7 +43,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable), [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected), [`disablePinning`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`IgcColumn.sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable), [`IgcColumn.selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected), [`IgcColumnState.disablePinning`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disablePinning), [`IgcColumnState.disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disableHiding).
 
 ```html
 <igc-hierarchical-grid auto-gGenerate="false" moving="true" allow-filtering='true' filter-mode="ExcelStyleFilter"
@@ -60,8 +59,6 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 
 In the sample below 'Artist' column have all three features enabled, 'Debut' have all three disabled, 'Grammy Nominations' has only pinning and hiding.
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -69,9 +66,9 @@ In the sample below 'Artist' column have all three features enabled, 'Debut' hav
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`IgcHierarchicalGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=excelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`IgcHierarchicalGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=excelStyleHeaderIconTemplate):
 
 ```ts
 constructor() {
@@ -82,15 +79,10 @@ constructor() {
 public webGridFilterAltIconTemplate = (ctx: IgcCellTemplateContext) => {
     return html`<img height="15px" width="15px" src="http://static.infragistics.com/xplatform/images/grid/propeller-logo.svg" title="Continued" alt="Continued" />`
 }
+
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- ```razor
-Add razor snipets
-``` -->
-
-<!-- ```html
+```html
 <igc-hierarchical-grid class="hgrid" auto-generate="false" allow-fFiltering='true' filter-mode="ExcelStyleFilter"
     height="650px" width="100%" row-height="65px" id="hierarchicalGrid">
 
@@ -126,10 +118,9 @@ Add razor snipets
             </igc-excel-style-filter-operations>
         </igc-grid-excel-style-filtering>
 
+    </igc-row-island>
 </igc-hierarchical-grid>
-``` -->
-
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 ```css
 /* shared styles are loaded from: */
@@ -138,7 +129,7 @@ Add razor snipets
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```html
@@ -185,10 +176,8 @@ Then set the related CSS properties to this class:
 ```
 
 ## API References
-
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

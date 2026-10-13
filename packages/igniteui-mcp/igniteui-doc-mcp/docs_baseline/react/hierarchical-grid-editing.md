@@ -1,92 +1,80 @@
 ---
-title: React Hierarchical Grid Editing - Ignite UI for React
-_description: Get a powerful public API and an easy way to perform data manipulations like creating, updating, or deleting records. See the React Hierarchical Grid editing options!
-_keywords: data manipulation, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/editing
+title: "React Hierarchical Grid Editing - Ignite UI for React"
+description: Get a powerful public API and an easy way to perform data manipulations like creating, updating, or deleting records. See the React Hierarchical Grid editing options!
+keywords: data manipulation, React, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/editing"
+llms:
+  description: "The Ignite UI for React Cell Editing feature in React Hierarchical Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records."
+_componentKey: HierarchicalGrid
 _tocName: Editing
 ---
-
 # React Hierarchical Grid Editing
 
 The Ignite UI for React Cell Editing feature in React Hierarchical Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records. The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides you with a powerful public API which allows you to customize the way these operations are performed. The data manipulation phases are:
-
 - [Cell Editing](cell-editing.md)
 - [Row Editing](row-editing.md)
 - Batch Editing (Coming Soon)
 
 ## Setup
 
-In order to specify which edit mode should be enabled, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) exposes the following boolean properties - [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) and [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable).
+In order to specify which edit mode should be enabled, the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) exposes the following boolean properties - [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) and [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable).
 
-The [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property enables you to specify the following options:
+The [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property enables you to specify the following options:
 
 - **false** - the editing for the corresponding column will be disabled. This is the default value.
 - **true** - the editing for the corresponding column will be enabled.
 
-> Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
+>Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid).
 
-The [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property enables you to specify the following options:
+The [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property enables you to specify the following options:
 
 - **false** - the row editing in the corresponding grid will be disabled. This is the default value.
 - **true** - the row editing in the corresponding grid will be enabled.
 
-In the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), if you set [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property to true, and the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
+In the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), if you set [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) property to true, and the [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
 
-<!--
 [Batch editing](batch-editing.md) in the grid can be enabled for both [cell editing](cell-editing.md) and [row editing](row-editing.md) modes. In order to set up batch editing it is necessary to provide to the grid a  **TransactionService**.
--->
 
 - **Cell and Batch Editing** - in this scenario every singe modification of each cell is preserved separately and undo/ redo operations are available on cell level;
 - **Row and Batch Editing** - in this scenario the modifications are preserved on row level so undo/ redo operations will not be working for each cell that is modified but for the bunch of cell from each row.
 
 ### Editing Templates
 
-If you want to use a data type specific edit templates, you should specify the column's [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property. So let's now see what are the default templates for each type:
+ If you want to use a data type specific edit templates, you should specify the column's [`IgrColumn.dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property. So let's now see what are the default templates for each type:
 
 - For `string` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput).
 - For `number` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) type="number", so if you try to update cell to a value which can not be parsed to a number your change is going to be discarded, and the value in the cell will be set to 0.
 - For `date` data type, default template is using [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
-- For `dateTime` data type, default template is using `DateTimeEditor`. This editor will give you a mask directions for the input elements part of the DateTime object.
-- For `time` - data type, default template is using `TimePicker`.
+- For `dateTime` data type, default template is using [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker). This editor will give you a mask directions for the input elements part of the DateTime object.
+- For `time` - data type, default template is using [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput).
 - For `boolean` data type, default template is using [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox).
-- For `currency` data type, default template is using `InputGroup` with prefix/suffix configuration based on application or grid locale settings.
-- For `percent` data type, default template is using `InputGroup` with suffix element that shows a preview of the edited value in percents.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- For `currency` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) with prefix/suffix configuration based on application or grid locale settings.
+- For `percent` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) with suffix element that shows a preview of the edited value in percents.
 
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Event Arguments and Sequence
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 The grid exposes a wide array of events that provide greater control over the editing experience. These events are fired during the [**Row Editing**](row-editing.md) and [**Cell Editing**](cell-editing.md) lifecycle - when starting, committing or canceling the editing action.
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-| Event           | Description                                                                                                                                               | Arguments                  | Cancellable |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `RowEditEnter`  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
-| `CellEditEnter` | Fires when a cell **enters edit mode** (after `RowEditEnter`)                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
-| `CellEdit`      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
-| `CellEditDone`  | If value is changed, fires **after** a cell has been edited and cell's value is **committed*-                                                           | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
-| `CellEditExit`  | Fires when a cell **exits edit mode*-                                                                                                                   | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
-| `RowEdit`       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
-| `RowEditDone`   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                            | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
-| `RowEditExit`   | If `RowEditing` is enabled, fires when a row **exits edit mode*-                                                                                        | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
+ | Event           | Description                                                                                                                                               | Arguments                  | Cancellable |
+ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
+ | [`IgrHierarchicalGrid.rowEditEnter`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditEnter)  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)    | **true**    |
+ | [`IgrHierarchicalGrid.cellEditEnter`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEditEnter) | Fires when a cell **enters edit mode** (after [`IgrHierarchicalGrid.rowEditEnter`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditEnter))                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true**    |
+ | [`IgrHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEdit)      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true**    |
+ | [`IgrHierarchicalGrid.cellEditDone`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEditDone)  | If value is changed, fires **after** a cell has been edited and cell's value is **committed**                                                             | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false**   |
+ | [`IgrHierarchicalGrid.cellEditExit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEditExit)  | Fires when a cell **exits edit mode**                                                                                                                     | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false**   |
+ | [`IgrHierarchicalGrid.rowEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEdit)       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true**    |
+ | [`IgrHierarchicalGrid.rowEditDone`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditDone)   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                             | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false**   |
+ | [`IgrHierarchicalGrid.rowEditExit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditExit)   | If `RowEditing` is enabled, fires when a row **exits edit mode**                                                                                          | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false**   |
 
 ### Event Cancellation
 
-- `RowEditEnter` - Neither `Row` nor `Cell` will enter edit mode.
-- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
-- `CellEdit` - Allowed `Cell` and/or `Row` edit, hitting **Done** button or **Enter** won't commit the value or row transaction. Cell editing and Row editing won't be closed until **Cancel** button is clicked.
-- `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
+- [`IgrHierarchicalGrid.rowEditEnter`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditEnter) - Neither `Row` nor `Cell` will enter edit mode.
+- [`IgrHierarchicalGrid.cellEditEnter`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEditEnter) - Prevents entering cell edit. If [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
+- [`IgrHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=cellEdit) - Allowed `Cell` and/or `Row` edit, hitting **Done** button or **Enter** won't commit the value or row transaction. Cell editing and Row editing won't be closed until **Cancel** button is clicked.
+- [`IgrHierarchicalGrid.rowEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEdit) - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 
 The following sample demonstrates the editing execution sequence in action:
 
@@ -352,7 +340,6 @@ root.render(<Sample/>);
 ```
 
 ### Features integration
-
 While a cell/row is in edit mode, a user may interact with the grid in many ways. The following table specifies how a certain interaction affects the current editing:
 
 | Hierarchical Grid | Filtering | Sorting | Paging | Moving | Pinning | Hiding | GroupBy | Resizing | Escape | Enter |  F2   |  Tab  | Cell Click | Add new row/Delete/Edit |
@@ -374,26 +361,20 @@ function onSorting(args: IgrSortingEventArgs) {
 
 <IgrHierarchicalGrid data={localData} primaryKey="ProductID" onSorting={onSorting}>
 </IgrHierarchicalGrid>
+
 ```
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
 
 - [Column Data Types](column-types.md#default-template)
 - [Virtualization and Performance](virtualization.md)
-- [Paging](paging.md)
+
 - [Filtering](filtering.md)
 - [Sorting](sorting.md)
 - [Summaries](summaries.md)
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentStart: HierarchicalGrid -->
-
-<!-- * [Searching](search.md) -->
-
-<!-- ComponentEnd: HierarchicalGrid -->

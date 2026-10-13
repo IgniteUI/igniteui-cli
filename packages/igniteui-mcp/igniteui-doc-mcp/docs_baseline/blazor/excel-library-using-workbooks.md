@@ -1,13 +1,14 @@
 ---
-title: Blazor Excel Library| Using Workbooks| Infragistics
-_description: Use Infragistics' Blazor excel library to create workbooks and worksheets, input data and export the date to Microsoft® Excel. View Ignite UI for Blazor excel tutorials for more information!
-_keywords: Excel library, workbooks, Ignite UI for Blazor, Infragistics
-_license: commercial
+title: "Blazor Excel Library| Using Workbooks| Infragistics"
+description: Use Infragistics' Blazor excel library to create workbooks and worksheets, input data and export the date to Microsoft® Excel. View Ignite UI for Blazor excel tutorials for more information!
+keywords: Excel library, workbooks, Ignite UI for Blazor, Infragistics
+license: commercial
 mentionedTypes: ["Workbook"]
+llms:
+  description: "The Infragistics Blazor Excel Engine enables you to save data to and load data from Microsoft® Excel®."
 _tocName: Using Workbooks
 _premium: true
 ---
-
 # Blazor Using Workbooks
 
 The Infragistics Blazor Excel Engine enables you to save data to and load data from Microsoft® Excel®. You can create workbooks and worksheets, input data, and export the data to Excel using the library’s various classes. The Infragistics Blazor Excel Engine makes it easy to export the data in your application as an Excel spreadsheet as well as import data from Excel into your application.
@@ -385,11 +386,17 @@ namespace Infragistics.Samples
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Change Default Font
 
-First create a new instance of `IWorkbookFont`. Next, add the new font to the `Styles` collection of the `Workbook`. This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
+First create a new instance of [`IgbIWorkbookFont`](mcp:get_api_reference?platform=blazor&component=IWorkbookFont). Next, add the new font to the [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection of the [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook). This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
+
+```ts
+var workbook = new Workbook();
+var font: IWorkbookFont;
+font = workbook.styles().normalStyle.styleFormat.font;
+font.name = "Times New Roman";
+font.height = 16 * 20;
+```
 
 ```razor
 var workbook = new Workbook();
@@ -400,27 +407,33 @@ font.Height = 16 * 20;
 
 ## Setting Workbook Properties
 
-Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Blazor Excel Library to set these properties using the `Workbook` object’s `DocumentProperties` property. The available properties are:
+Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Blazor Excel Library to set these properties using the [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object’s [`DocumentProperties`](mcp:get_api_reference?platform=blazor&component=Workbook&member=documentProperties) property. The available properties are:
 
-- `Author`
+- [`Author`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=author)
 
-- `Title`
+- [`Title`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=title)
 
-- `Subject`
+- [`Subject`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=subject)
 
-- `Keywords`
+- [`Keywords`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=keywords)
 
-- `Category`
+- [`Category`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=category)
 
-- `Status`
+- [`Status`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=status)
 
-- `Comments`
+- [`Comments`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=comments)
 
-- `Company`
+- [`Company`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=company)
 
-- `Manager`
+- [`Manager`](mcp:get_api_reference?platform=blazor&component=DocumentProperties&member=manager)
 
 The following code demonstrates how to create a workbook and set its `title` and `status` document properties.
+
+```ts
+var workbook = new Workbook();
+workbook.documentProperties.title = "Expense Report";
+workbook.documentProperties.status = "Complete";
+```
 
 ```razor
 var workbook = new Workbook();
@@ -436,11 +449,16 @@ The protection is not enforced via the Infragistics Excel Engine's object model.
 
 Protection is applied to a workbook by invoking its `protect` method.
 
-When a `Workbook` is protected without a password, the end user may unprotect the `Workbook` in Excel without having to supply a password. To programmatically unprotect a `Workbook`, one may use the `unprotect` method.
+When a [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) is protected without a password, the end user may unprotect the [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) in Excel without having to supply a password. To programmatically unprotect a [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook), one may use the `unprotect` method.
 
-When a `Workbook` is protected, the values of the properties of the `WorkbookProtection` instance from this `Workbook`'s `protection` property indicate the disabled operations.
+When a [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) is protected, the values of the properties of the [`IgbWorkbookProtection`](mcp:get_api_reference?platform=blazor&component=WorkbookProtection) instance from this [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)'s `protection` property indicate the disabled operations.
 
-If `IsProtected` is already true, the `protect` method will be ignored.
+If [`IsProtected`](mcp:get_api_reference?platform=blazor&component=Workbook&member=isProtected) is already true, the `protect` method will be ignored.
+
+```ts
+var workbook = new Workbook();
+workbook.protect(false, false);
+```
 
 ```razor
 var workbook = new Workbook();
@@ -449,6 +467,11 @@ workbook.Protect(false, false);
 
 Check if a workbook has protection. This read-only property returns true if the workbook has any protection set using the overloads of the Protect method.
 
+```ts
+var workbook = new Workbook();
+var protect = workbook.isProtected;
+```
+
 ```razor
 var workbook = new Workbook();
 var protect = workbook.IsProtected;
@@ -456,14 +479,17 @@ var protect = workbook.IsProtected;
 
 This read-only property returns an object of type WorkbookProtection which contains properties for obtaining each protection setting individually.
 
+```ts
+var workbook = new Workbook();
+var protection = workbook.protection;
+```
+
 ```razor
 var workbook = new Workbook();
 var protect = workbook.Protection;
 ```
 
 ## API References
-
-- `DocumentProperties`
-- `WorkbookProtection`
-- `Workbook`
-- `Workbook`
+[`IgbDocumentProperties`](mcp:get_api_reference?platform=blazor&component=DocumentProperties)
+[`IgbWorkbookProtection`](mcp:get_api_reference?platform=blazor&component=WorkbookProtection)
+[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)

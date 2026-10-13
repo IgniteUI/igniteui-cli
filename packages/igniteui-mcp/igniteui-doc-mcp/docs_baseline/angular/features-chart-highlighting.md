@@ -1,14 +1,15 @@
 ---
 title: Angular Chart Highlighting | Data Visualization | Infragistics
-_description: Infragistics' Angular Chart Highlighting
-_keywords: Angular Charts, Highlighting, Infragistics
-_license: commercial
-mentionedTypes: ["CategoryChart"]
+description: Infragistics' Angular Chart Highlighting
+keywords: Angular Charts, Highlighting, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "All Angular Charts support a variety of highlighting options."
 _tocName: Chart Highlighting
 _premium: true
 ---
-
 ## Angular Chart Highlighting Example
 
 The following example demonstrates the different highlighting options that are available on the Angular chart.
@@ -157,13 +158,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 # Angular Chart Highlighting Modes & Behaviors
 
-All Angular Charts support a variety of highlighting options. [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html), [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html), and [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) controls and they have the same API for using the highlighting feature.
+All Angular Charts support a variety of highlighting options. `HighlightingMode` can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. `HighlightingBehavior` can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls and they have the same API for using the highlighting feature.
 
-The following example demonstrates the [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingMode) Angular chart.
+The following example demonstrates the `HighlightingMode` Angular chart.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -295,7 +294,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The following example demonstrates the [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingBehavior) Angular chart.
+The following example demonstrates the `HighlightingBehavior` Angular chart.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -430,7 +429,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 # Angular Chart Legend Highlighting
 
-All Angular Charts support legend highlighting. [`legendHighlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html), [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html), and [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) controls and they have the same API for using the highlighting feature.
+All Angular Charts support legend highlighting. `LegendHighlightingMode` can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls and they have the same API for using the highlighting feature.
 
 The following example demonstrates the legend series highlighting Angular chart.
 
@@ -541,13 +540,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Layers
 
-The Ignite UI for Angular [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) can enable three types of highlighting when hovering over data items.
+The Ignite UI for Angular `IgxCategoryChart` can enable three types of highlighting when hovering over data items.
 
-1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`isSeriesHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isSeriesHighlightingEnabled) property to true.
+1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the `IsSeriesHighlightingEnabled` property to true.
 
-2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`isItemHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isItemHighlightingEnabled) property to true.
+2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the `IsItemHighlightingEnabled` property to true.
 
-3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`isCategoryHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isCategoryHighlightingEnabled) property to true.
+3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the `IsCategoryHighlightingEnabled` property to true.
 
 The following example demonstrates the different highlighting layers that are available on the Angular chart.
 
@@ -727,15 +726,6 @@ You can find more information about related chart features in these topics:
 - [Chart Tooltips](chart-tooltips.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingMode)
-- [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#highlightingBehavior)
-- `LegendHighlightingBehavior`
-- [`isCategoryHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isCategoryHighlightingEnabled)
-- [`isItemHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isItemHighlightingEnabled)
-- [`isSeriesHighlightingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#isSeriesHighlightingEnabled)
-- [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
-- [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
-- [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html)
+`IgxCategoryChart`
+`IgxDataChart`
+`IgxFinancialChart`

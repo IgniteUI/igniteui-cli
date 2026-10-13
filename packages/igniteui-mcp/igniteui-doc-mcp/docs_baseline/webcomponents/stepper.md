@@ -1,12 +1,13 @@
 ---
-title: Web Components Stepper Component - Ignite UI for Web Components
-_description: Web Components Stepper component is used to visualize content as a process and to show its progress by dividing the content into logical steps. Try it for FREE.
-_keywords: Web Components Stepper, Ignite UI for Web Components, Infragistics
-_license: MIT
+title: "Web Components Stepper Component - Ignite UI for Web Components"
+description: "Web Components Stepper component is used to visualize content as a process and to show its progress by dividing the content into logical steps. Try it for FREE."
+keywords: "Web Components Stepper, Ignite UI for Web Components, Infragistics"
+license: MIT
 mentionedTypes: ["Stepper"]
+llms:
+  description: "The Web Components Stepper Component provides a wizard-like workflow and is used for showing progress through numbered steps."
 _tocName: Stepper
 ---
-
 # Web Components Stepper Overview
 
 The Web Components Stepper Component provides a wizard-like workflow and is used for showing progress through numbered steps. It enables developers to divide a lengthy content into a sequence of logical steps, helping end-users more easily navigate the entire process. The Web Components Stepper is displayed as a vertical or a horizontal line. The Web Components Stepper has multiple features like step validation, styling, orientation and keyboard navigation.
@@ -25,8 +26,6 @@ igc-switch {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Web Components Stepper
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -35,7 +34,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent), you need to register it as follows:
+Before using the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcStepperComponent } from 'igniteui-webcomponents';
@@ -45,56 +44,42 @@ defineComponents(IgcStepperComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) and its steps.
+Now you can start with a basic configuration of the Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) and its steps.
 
 ## How To Use Web Components Stepper
-
-The [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) is the representation of every step that belongs to the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). Steps provide [`invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=invalid), [`active`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=active), [`optional`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=optional), [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=disabled) and [`complete`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=complete) properties, which give you the ability to configure the step states according to your business requirement.
+The [`IgcStep`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) is the representation of every step that belongs to the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). Steps provide [`Step.Invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=Invalid), [`Step.Active`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=Active), [`Step.Optional`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=Optional), [`Step.Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=Disabled) and [`Step.Complete`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=Complete) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring Web Components Stepper
 
-Steps can be declared using one of the following approaches.
-
-- Iterating through a data set
-
-```html
-<igc-stepper>
-    ${stepsData.map((step) => html`
-    <igc-step .disabled=${step.disabled}>
-        <div slot="indicator">
-            <igc-icon .iconName=${step.indicator}></igc-icon>
-        </div>
-
-        <p slot="title">${step.title}</p>
-    </igc-step>
-    `
-</igc-stepper>
-```
-
-- Creating static steps
+Steps can be declared the following way:
 
 ```html
 <igc-stepper>
     <igc-step>
-       <p slot="title">Step 1</p>
+       <span slot="title">Step 1</span>
     </igc-step>
     <igc-step>
-       <p slot="title">Step 2</p>
+       <span slot="title">Step 2</span>
     </igc-step>
 </igc-stepper>
 ```
 
-For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
+For each step the user has the ability to configure the indicator, title and subtitle using the `indicator`, `title`, and `subtitle` slots.
 
-> [!Note]
-> The `Default` [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) slot renders the content of the step.
+For the `title` and `subtitle` slots, we recommend using `<span>` elements rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. Using a `<span>` gives you a neutral container that inherits the component's styles cleanly.
+
+For the `indicator` slot, we also recommend using a `<span>` element for symbol or emoji indicators, and an [`<igc-icon>`](../layouts/icon.md) component for icon indicators.
+
+**Note:** 
+The `default` [`IgcStep`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) slot renders the content of the step.
+
 
 ```html
 <igc-stepper>
     <igc-step>
        <igc-icon slot="indicator" iconName="home"></igc-icon>
-       <p slot="title">Home</p>
-       <p slot="subtitle">Home Sub Title</p>
+       <span slot="title">Home</span>
+       <span slot="subtitle">Home Sub Title</span>
        <div>
           Step Content
        </div>
@@ -102,22 +87,20 @@ For each step the user has the ability to configure indicator, title and subtitl
 </igc-stepper>
 ```
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 500px" src="../../images/stepper/stepper-step.png" alt="stepper-step"/>
 
 ### Orientation in Web Components Stepper
 
-You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
+You can customize the stepper orientation through the exposed [`Orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property. It could be set to **horizontal** or **vertical**.
 
 **Horizontal Stepper Orientation**
 
-**horizontal**is the default value for the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) orientation property.
-When the Web Components stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) [`contentTop`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+**horizontal** is the default value for the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) orientation property.
 
-<img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../../images/stepper/stepper-contentTop.png" alt="stepper-contentTop" />
+When the Web Components stepper is horizontally orientated you have the opportunity to determine whether the steps' content would be displayed above or below the steps' headers. This could be achieved by setting the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) [`ContentTop`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps' content would be displayed above the steps' headers.
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property to **vertical**.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`Orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property to **vertical**.
 
 The sample below demonstrates how stepper orientation and titles position could be changed runtime.
 
@@ -146,11 +129,9 @@ The sample below demonstrates how stepper orientation and titles position could 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ### Step States
 
-Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) supports five steps states and each of them apply different styles by default:
+Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) supports five steps states and each of them apply different styles by default:
 
 - **active** - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to **true**, the initial active step would be the first non-disabled step.
 - **disabled** - Determines whether the step is intractable. By default, the disabled attribute of a step is set to **false**.
@@ -160,15 +141,15 @@ Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcompone
 
 ### Linear Web Components Stepper
 
-The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent).
+The Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) gives you the opportunity to set its steps flow using the [`Linear`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent).
 
 ```html
 <igc-stepper linear="true">
     <igc-step>
-       <p slot="title">Step 1</p>
+        <span slot="title">Step 1</span>
     </igc-step>
     <igc-step>
-       <p slot="title">Step 2</p>
+        <span slot="title">Step 2</span>
     </igc-step>
 </igc-stepper>
 ```
@@ -177,27 +158,25 @@ When the linear property is set to **true**, the stepper will require the curren
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
-> [!Note]
-> Optional steps validity is not taken into account in order to move forward.
+**Note:** 
+Optional steps validity is not taken into account in order to move forward.
 
 ### Step Interactions
 
-[`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) provides the following API methods for step interactions:
-
+[`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) provides the following API methods for step interactions:
 - **navigateTo** – activates the step by given index.
 - **next** - activates the next non-disabled step.
 - **prev** – activates the previous non-disabled step.
 - **reset** – resets the stepper to its initial state.
 
-> [!Note]
-> The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step\`s content. This should be done manually.
+**Note:** 
+The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step`s content. This should be done manually.
 
 ### Customizing the Steps
 
 The Ignite UI for Web Components Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`stepType`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=stepType) property of the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). It takes the following values:
-
+This could be achieved through the [`StepType`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=stepType) property of the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). It takes the following values:
 - Full **(default value)**
 - Indicator
 - Title
@@ -207,26 +186,25 @@ This could be achieved through the [`stepType`](mcp:get_api_reference?platform=w
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=titlePosition) property. It takes the following values:
-
+The user can configure the title position using the [`TitlePosition`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=titlePosition) property. It takes the following values:
 - undefined **(default value)**
 - end
 - start
 - bottom
 - top
 
-When the Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
+When the Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
-> [!Note]
-> **titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
+**Note:** 
+**titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
 
 **indicator**
 
 If you want to display only indicators for the steps, set the stepType option to **indicator**.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or [`IgcAvatar`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) as step indicators.
 
 **Title**
 
@@ -234,8 +212,8 @@ If you want to display only titles for the steps, set the stepType option to **t
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
-> [!Note]
-> This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
+**Note:** 
+This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
 
 The sample below demonstrates all exposed step types and how they could be changed:
 
@@ -252,19 +230,95 @@ The sample below demonstrates all exposed step types and how they could be chang
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
+### Dynamic Step Height
+
+When the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) is horizontally oriented, the content area height is determined by the step with the most content. All other steps share this fixed height, which may result in visible empty space in steps with less content.
+
+To override the fixed height and have the content area adapt to the active step's content, set the **--body-grid-rows** CSS variable to **0fr** (the default is **1fr**):
+
+```css
+igc-stepper {
+  --body-grid-rows: 0fr;
+}
+```
+
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-stepper {
+  background: var(--ig-gray-100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--ig-gray-400);
+  margin-block-start: 0.75rem;
+}
+
+igc-step::part(content) {
+  @media (width < 756px) {
+    overflow: scroll;
+  }
+}
+
+header {
+  border: 1px solid var(--ig-gray-400);
+  border-radius: 0.375rem;
+  background: var(--ig-gray-100);
+  padding: 0.5rem;
+  font-size: 1.375rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 195px;
+  justify-content: center;
+}
+
+igc-switch {
+  --border-radius-track: 0px;
+  --thumb-size: 1rem;
+  --border-radius-thumb: 2px;
+  --size: 2.5rem;
+  --thumb-off-color: var(--ig-primary-500);
+  --thumb-on-color: var(--ig-primary-500);
+  --track-on-color: white;
+  --track-on-hover-color: white;
+  --thumb-off-hover-color: var(--ig-primary-500);
+  --border-on-color: var(--ig-gray-400);
+  --border-on-hover-color: var(--ig-gray-500);
+
+  margin-inline: 0.5rem;
+}
+
+igc-switch::part(control) {
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+output {
+  font-size: 1.125rem;
+}
+
+li {
+  font-size: 1rem;
+  padding-block: 0.5rem;
+}
+
+.container {
+  padding: 1rem;
+}
+```
 
 ### Stepper Animations
 
-The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
+The Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=horizontalAnimation) input.
+When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`HorizontalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=horizontalAnimation) input.
 
-In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
+In a vertically orientated layout, the animation type could be defined using the [`VerticalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to both animation type inputs disables stepper animations.
 
-The [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
+The [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [`AnimationDuration`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=animationDuration) property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
 
 ```css
 /* shared styles are loaded from: */
@@ -285,12 +339,10 @@ The [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&compone
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Keyboard Navigation
 
 The Ignite UI for Web Components Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
+The Web Components [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
 
 **Key Combinations**
 
@@ -306,7 +358,7 @@ The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcom
 
 ## Styling Web Components Stepper
 
-You can change the appearance of the [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgcStep`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -329,7 +381,7 @@ You can change the appearance of the [`IgcStepComponent`](mcp:get_api_reference?
 | `body` | Wrapper of the step's content. |
 | `content` | The steps content. |
 
-Using these CSS parts we can customize thе appearance of the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component like this:
 
 ```css
 igc-step::part(title) {
@@ -403,15 +455,12 @@ igc-step[active]:active::part(indicator) {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## API References
 
-- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent)
-- [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent)
-- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcStepper`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent)<br />
+[`IgcStep`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent)<br />
+[`IgcAvatar`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)<br />
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)<br />
 
 ## Additional Resources
 

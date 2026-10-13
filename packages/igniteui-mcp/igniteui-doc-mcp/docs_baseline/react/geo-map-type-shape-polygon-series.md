@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Shape Polygon Series | Infragistics
-_description: Use Infragistics React map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for React map's series!
-_keywords: React map, shape polygon series, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series", "GeographicShapeSeriesBase"]
+title: "React Map | Data Visualization Tools | Shape Polygon Series | Infragistics"
+description: Use Infragistics React map's shape polygon series to render shapes of countries or regions defined by geographic locations. Learn more about Ignite UI for React map's series!
+keywords: "React map, shape polygon series, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+llms:
+  description: "In React map component, you can use the GeographicShapeSeries to display geo-spatial data using shape polygons in a geographic context."
 _tocName: Geographic Polygon Map
 _premium: true
 ---
-
 # React Geographic Polygon Map
 
-In React map component, you can use the [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
+In React map component, you can use the `IgrGeographicShapeSeries` to display geo-spatial data using shape polygons in a geographic context. This type of geographic series is often used to render shapes of countries or regions defined by geographic locations.
 
 ## React Geographic Polygon Map Example
 
@@ -562,19 +563,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterPolygonSeries/>);
 ```
 
-<div class="divider--half"></div>
-
-The [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) works a lot like the [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) except that geo-spatial data is rendered with polygons instead of polylines.
+The `IgrGeographicShapeSeries` works a lot like the `IgrGeographicPolylineSeries` except that geo-spatial data is rendered with polygons instead of polylines.
 
 ## Data Requirements
-
-Similar to other types of geographic series in the map control, the [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseriesbase.html#shapeMemberPath) property. The [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) uses points of this mapped data column to plot polygons in the map control.
+Similar to other types of geographic series in the map control, the `IgrGeographicShapeSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicShapeSeries` uses points of this mapped data column to plot polygons in the map control.
 
 ## Code Snippet
-
-The following code demonstrates how to bind the [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) to shapes of countries in the world loaded from a shape file using the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html).
-
-<!-- React -->
+The following code demonstrates how to bind the `IgrGeographicShapeSeries` to shapes of countries in the world loaded from a shape file using the `IgrShapefileRecord`.
 
 ```tsx
 import { IgrGeographicMapModule } from 'igniteui-react-maps';
@@ -654,9 +649,6 @@ public createSeries(shapeData: any[], shapeBrush: string, shapeTitle: string)
 ```
 
 ## API References
-
-- [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html)
-- [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseriesbase.html#shapeMemberPath)
-- [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html)
+`IgrGeographicPolylineSeries`
+`IgrGeographicShapeSeries`
+`IgrShapefileRecord`

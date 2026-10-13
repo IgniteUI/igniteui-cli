@@ -1,16 +1,15 @@
 ---
-title: Web Components Grid Column Hiding - Ignite UI for Web Components
-_description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
-_keywords: Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/column-hiding
+title: "Web Components Grid Column Hiding - Ignite UI for Web Components"
+description: Learn how to use the Column Hiding feature that allows users to change the visible state of the columns directly through the UI of the Ignite Material UI table.
+keywords: "Web Components, Grid, IgcGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/column-hiding"
+llms:
+  description: "Ignite UI for Web Components IgcGrid provides a ColumnActionsComponent with a ColumnHidingDirective which allows users to perform column hiding directly through the user interface or by using the Web Components component."
+_componentKey: Grid
 _tocName: Column Hiding
 _premium: true
 ---
-
 # Web Components Grid Column Hiding
 
 The Ignite UI for Web Components has a built-in column hiding UI, which can be used through the Web Components Grid toolbar to change the visible state of the columns. Developers have the flexibility to define the Column Hiding UI anywhere within the page as needed. The Web Components Grid Column Hiding feature is especially useful when one wants to decrease the size of the grid and to eliminate the need for tabbing through redundant fields.
@@ -59,30 +58,28 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Grid Setup
 
-Let's start by creating our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and binding it to our data. We will also enable both filtering and sorting for the columns.
+Let's start by creating our [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and binding it to our data. We will also enable both filtering and sorting for the columns.
 
 ```html
 <igc-grid id="grid" auto-generate="false" width="100%" height="560px" allow-filtering="true">
-    <igc-column field="ID" data-type="String" sortable="true" hidden="true"></igc-column>
-    <igc-column field="ContactName" data-type="String" sortable="true" hidden="true"></igc-column>
-    <igc-column field="ContactTitle" data-type="String" sortable="true"></igc-column>
-    <igc-column field="City" data-type="String" sortable="true"></igc-column>
-    <igc-column field="CompanyName" data-type="String" sortable="true"></igc-column>
-    <igc-column field="Fax" data-type="String" sortable="true"></igc-column>
-    <igc-column field="Address" data-type="String" sortable="true"></igc-column>
-    <igc-column field="PostalCode" data-type="String" sortable="true"></igc-column>
-    <igc-column field="Country" data-type="String" sortable="true"></igc-column>
-    <igc-column field="Phone" data-type="String" sortable="true"></igc-column>
+    <igc-column field="ID" data-type="string" sortable="true" hidden="true"></igc-column>
+    <igc-column field="ContactName" data-type="string" sortable="true" hidden="true"></igc-column>
+    <igc-column field="ContactTitle" data-type="string" sortable="true"></igc-column>
+    <igc-column field="City" data-type="string" sortable="true"></igc-column>
+    <igc-column field="CompanyName" data-type="string" sortable="true"></igc-column>
+    <igc-column field="Fax" data-type="string" sortable="true"></igc-column>
+    <igc-column field="Address" data-type="string" sortable="true"></igc-column>
+    <igc-column field="PostalCode" data-type="string" sortable="true"></igc-column>
+    <igc-column field="Country" data-type="string" sortable="true"></igc-column>
+    <igc-column field="Phone" data-type="string" sortable="true"></igc-column>
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an [`IgcDropdown`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
-For this purpose all we have to do is set both the [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) and the [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html) inside of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+For this purpose all we have to do is set both the [`IgcGridToolbarActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarActionsComponent) and the [`IgcGridToolbarHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent) inside of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```html
 <igc-grid>
@@ -94,19 +91,9 @@ For this purpose all we have to do is set both the [`IgcGridToolbarActions`](htt
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
-
-By using the [`title`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=title) and `Prompt` properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
+By using the [`Title`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent&member=title) and [`Prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent&member=prompt) properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
 
 ```html
 <igc-grid id="grid">
@@ -118,47 +105,28 @@ By using the [`title`](mcp:get_api_reference?platform=webcomponents&component=Ig
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
-<!-- Web Components -->
-
-<!-- end: Web Components -->
-
 You can see the result of the code from above at the beginning of this article in the Web Components Column Hiding Example section.
 
 ### Disable hiding of a column
-
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnState&member=disableHiding) property to true.
 
 ```html
 <igc-grid>
-    <igc-column field="ContactName" data-type="String" sortable="true" disable-hiding="true"></igc-column>
-    <igc-column field="ContactTitle" data-type="String" sortable="true" disable-hiding="true"></igc-column>
+    <igc-column field="ContactName" data-type="string" sortable="true" disable-hiding="true"></igc-column>
+    <igc-column field="ContactTitle" data-type="string" sortable="true" disable-hiding="true"></igc-column>
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Styling
 
-The grid could be further customized by setting some of the available [CSS variables](../theming-grid.md).
+The grid could be further customized by setting some of the available [CSS variables](../grid/theming-grid.md).
 In order to achieve that, we will use a class that we will first assign to the grid:
-
-<!-- ComponentStart: Grid -->
 
 ```html
 <igc-grid class="grid"></igc-grid>
 ```
 
-<!-- ComponentEnd: Grid -->
-
 Then set the related CSS variables for the related components. We will apply the styles also only on the `igx-column-actions`, so the rest of the grid is unaffected:
-
-<!-- ComponentStart: Grid -->
 
 ```css
 .grid  igx-column-actions {
@@ -190,9 +158,8 @@ Then set the related CSS variables for the related components. We will apply the
     --ig-button-focus-visible-foreground: black;
     --ig-button-disabled-foreground: #ffcd0f;
 }
-```
 
-<!-- ComponentEnd: Grid -->
+```
 
 ### Demo
 
@@ -264,34 +231,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 ## API References
-
-In this article we learned how to use the built-in column hiding UI in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
-
-- `ColumnActionsComponent`
-
-Additional components with relative APIs that were used:
-
-[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
-
-- [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding)
-
-[`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) properties:
-
-- `showProgress`
-
-[`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) methods:
-
-- [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html)
-- [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html)
-- [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
-
-[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) events:
-
-- `ColumnVisibilityChanged`
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+[`IgcGridToolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarComponent)
+[`IgcGridToolbarHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarHidingComponent)
+[`IgcGridToolbarActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarActionsComponent)
+[`IgcGridToolbarTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarTitleComponent)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Filtering](filtering.md)
@@ -301,8 +247,6 @@ Additional components with relative APIs that were used:
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,19 +1,18 @@
 ---
-title: React Tree Grid Row Dragging - Ignite UI for React
-_description: Row dragging in React Tree Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
-_keywords: React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-drag
+title: "React Tree Grid Row Dragging - Ignite UI for React"
+description: Row dragging in React Tree Grid is used to quickly rearrange rows by dragging them with the mouse. See how to configure row dragging in your project.
+keywords: "React, Tree Grid, IgrTreeGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-drag"
+llms:
+  description: "The Ignite UI for React Row Dragging feature in React Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse."
+_componentKey: TreeGrid
 _tocName: Row Dragging
 _premium: true
 ---
-
 # Row Dragging in React Tree Grid
 
-The Ignite UI for React Row Dragging feature in React Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component and is configurable via the [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) input.
+The Ignite UI for React Row Dragging feature in React Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component and is configurable via the [`IgrTreeGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) input.
 
 ## React Tree Grid Row Drag Example
 
@@ -214,7 +213,7 @@ root.render(<App />);
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), all you need to do is set the grid's [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), all you need to do is set the grid's [`IgrTreeGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's [`IgrTreeGrid.rowDragStart`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDragStart) event to fire. Releasing the click at any time will cause [`IgrTreeGrid.rowDragEnd`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDragEnd) event to fire.
 
 ```tsx
 <IgrTreeGrid rowDraggable={true}>
@@ -223,11 +222,7 @@ In order to enable row-dragging for your [`IgrTreeGrid`](mcp:get_api_reference?p
 
 ### Templating the Drag Icon
 
-The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
-
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentStart: TreeGrid -->
+The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
 ```tsx
     const dragIndicatorIconTemplate = (ctx: IgrGridEmptyTemplateContext) => {
@@ -240,11 +235,12 @@ The drag handle icon can be templated using the grid's [`dragIndicatorIconTempla
 
     <IgrTreeGrid rowDraggable={true} dragIndicatorIconTemplate={dragIndicatorIconTemplate}>
     </IgrTreeGrid>
+
 ```
 
-<!-- ComponentEnd: TreeGrid -->
+#### Example Demo
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
+
 
 ## Application Demo
 
@@ -252,33 +248,23 @@ The drag handle icon can be templated using the grid's [`dragIndicatorIconTempla
 
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
 
-<!-- ComponentStart: TreeGrid -->
-
 ```tsx
 <IgrTreeGrid rowDraggable={true} primaryKey="ID" onRowDragStart={webTreeGridReorderRowStartHandler} onRowDragEnd={webTreeGridReorderRowStartHandler}>
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
+**Note:** 
+Make sure that there is a [`IgrTreeGrid.primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-> [!Note]
-> Make sure that there is a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
-
-Once [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
-
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
+Once [`IgrTreeGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 - Is the row expanded? If so, collapse it.
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`data`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=data) array
+- Once you've found the **target** row, swap the records' places in the `Data` array
 - Was the row initially selected? If so, mark it as selected.
 
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
-
 Below, you can see this implemented:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```tsx
 const webTreeGridReorderRowStartHandler = (args: IgrRowDragStartEventArgs) => {
@@ -332,15 +318,9 @@ const getCurrentRowIndex = (rowList: any[], cursorPosition: any) => {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 
-<!-- ComponentStart: TreeGrid, HierarchicalGrid -->
-
 Notice that we also have row selection enabled and we preserve the selection when dropping the dragged row.
-
-<!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -548,17 +528,11 @@ root.render(<Sample/>);
 
 ## Limitations
 
-Currently, there are no known limitations for the [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable).
+Currently, there are no known limitations for the [`IgrTreeGrid.rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable).
 
 ## API References
-
-- [`rowDraggable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowDraggable)
-- `RowDragStart`
-- `RowDragEnd`
-- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 ## Additional Resources
-
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

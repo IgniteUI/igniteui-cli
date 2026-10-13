@@ -1,25 +1,26 @@
 ---
-title: Blazor Axis Layouts | Data Visualization | Infragistics
-_description: Infragistics' Blazor Axis Layouts
-_keywords: Blazor Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics
-_license: commercial
-mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "XamDataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+title: "Blazor Axis Layouts | Data Visualization | Infragistics"
+description: Infragistics' Blazor Axis Layouts
+keywords: "Blazor Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics"
+license: commercial
+mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+llms:
+  description: "All Ignite UI for Blazor charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart."
 _tocName: Axis Layouts
 _premium: true
 ---
-
 # Blazor Axis Layouts
 
 All Ignite UI for Blazor charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart. These features are demonstrated in the examples given below.
 
-> [!Note]
-> the following examples can be applied to [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) as well as [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls.
+**Note:** 
+the following examples can be applied to [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) as well as [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls.
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The [`XAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelLocation) property of the Blazor charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelLocation) property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The [`XAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisLabelLocation) property of the Blazor charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisLabelLocation) property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -136,12 +137,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-<!-- ## Axis Orientation Example
-
-TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
-e.g. https://www.infragistics.com/help/wpf/datachart-axis-orientation
- -->
-
 ## Axis Advanced Scenarios
 
 For more advanced axis layout scenarios, you can use Blazor Data Chart to share axis, add multiple y-axis and/or x-axis in the same plot area, or even cross axes at specific values. The following examples show how to use these features of the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart).
@@ -207,11 +202,9 @@ The following example depicts a stock price and trade volume chart with a [Stock
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Axis Crossing Example
 
-In addition to placing axes outside plot area, the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`CrossingAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=CrossingAxis) and [`CrossingValue`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=CrossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
+In addition to placing axes outside plot area, the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting [`CrossingAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=crossingAxis) and [`CrossingValue`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=crossingValue) properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
 
 The following example shows a Sin and Cos wave represented by a [Scatter Spline Chart](../types/scatter-chart.md) with the X and Y axes crossing each other at the (0, 0) origin point.
 
@@ -294,8 +287,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
     }
 }
 ```
-
-<div class="divider--half"></div>
 
 ### Axis Timeline Example
 
@@ -416,23 +407,14 @@ d in the above sections:
 
 | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)                                         | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)                 |
 | ------------------------------------------------------ | ------------------------------- |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ [`CrossingAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=CrossingAxis)             | None                            |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ [`CrossingValue`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=CrossingValue)            | None                            |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) ➔ [`IsInverted`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=IsInverted)               | [`XAxisInverted`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInverted)                 |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ [`IsInverted`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=IsInverted)               | [`YAxisInverted`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInverted)                 |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ `LabelLocation`            | [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelLocation)            |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) ➔ `LabelLocation`            | [`XAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelLocation)            |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ `LabelHorizontalAlignment` | [`YAxisLabelHorizontalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelHorizontalAlignment) |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) ➔ `LabelVerticalAlignment`   | [`XAxisLabelVerticalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelVerticalAlignment)   |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) ➔ `LabelVisibility`          | [`YAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelVisibility)          |
-| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) ➔ [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) ➔ `LabelVisibility`          | [`XAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelVisibility)          |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`CrossingAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=crossingAxis)             | None                            |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`CrossingValue`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=crossingValue)            | None                            |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) -> [`IsInverted`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=isInverted)               | [`XAxisInverted`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisInverted)                 |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`IsInverted`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=isInverted)               | [`YAxisInverted`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInverted)                 |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`LabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=labelLocation)            | [`YAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisLabelLocation)            |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) -> [`LabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=labelLocation)            | [`XAxisLabelLocation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisLabelLocation)            |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`LabelHorizontalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=labelHorizontalAlignment) | [`YAxisLabelHorizontalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisLabelHorizontalAlignment) |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) -> [`LabelVerticalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=labelVerticalAlignment)   | [`XAxisLabelVerticalAlignment`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisLabelVerticalAlignment)   |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) -> [`LabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=labelVisibility)          | [`YAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisLabelVisibility)          |
+| [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) -> [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) -> [`LabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis&member=labelVisibility)          | [`XAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisLabelVisibility)          |
 
-<!-- TODO correct links in Transformer -->
-
-<!--
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.location`            | `YAxisLabelLocation`            |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.location`            | `XAxisLabelLocation`            |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.horizontalAlignment` | `YAxisLabelHorizontalAlignment` |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.verticalAlignment`   | `XAxisLabelVerticalAlignment`   |
-| `Axes` &#10132; `NumericYAxis` &#10132; `labelSettings.visibility`          | `YAxisLabelVisibility`          |
-| `Axes` &#10132; `NumericXAxis` &#10132; `labelSettings.visibility`          | `XAxisLabelVisibility`          | -->

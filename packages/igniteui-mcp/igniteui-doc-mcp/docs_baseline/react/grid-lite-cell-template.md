@@ -1,24 +1,76 @@
 ---
-title: React Grid Lite Cell Template | Ignite UI for React | MIT license
-_description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source React Grid Lite. Try now.
-_keywords: cell template, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+title: "React Grid Lite Cell Template | Ignite UI for React | MIT license"
+description: Configure and customize custom Grid Lite cell renderers. Create apps with our open-source React Grid Lite. Try now.
+keywords: cell template, React, , Ignite UI for React, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "By default, the grid uses the field of the column to render the value as a string inside the cell."
 _tocName: Cell Template
 ---
-
 # Column Cell Template
 
 By default, the grid uses the field of the column to render the value as a string inside the cell. This is fine for basic scenarios, but if you want to customize the rendered output or the final output is a combination of different data fields, you can customize the cell template.
 
 To achieve that, set the `cellTemplate` property of the column.
 
+```tsx
+// Define cellTemplate function
+const currencyCellTemplate = (ctx: IgrCellContext) => (
+  {/* Template contents */}
+);
+
+// Set the cellTemplate property
+return (
+  <IgrGridLite data={data} id="grid-lite">
+    <IgrGridLiteColumn
+      field="price"
+      header="Price"
+      dataType="number"
+      cellTemplate={currencyCellTemplate}
+    ></IgrGridLiteColumn>
+  </IgrGridLite>
+);
+```
+
+## Use as a Formatter Function
+
+For the simple scenario where some formatting is required, one can just return the formatted value. Here is an example for displaying a number value to a locale currency format:
+
+```tsx
+const formatCurrency = new Intl.NumberFormat("en-150", {
+  style: "currency",
+  currency: "EUR",
+});
+
+// Return the custom currency formatted value
+const currencyCellTemplate = (ctx: IgrCellContext) => (
+  <span>{formatCurrency(ctx.value)}</span>
+);
+```
+
+You can combine values of different fields from the data source as well.
+
+
+```tsx
+const { format: asCurrency } = new Intl.NumberFormat("en-150", {
+  style: "currency",
+  currency: "EUR",
+});
+
+// Return the custom currency formatted value
+const totalCellTemplate = (ctx: IgrCellContext) => (
+  <span>{asCurrency(ctx.value * ctx.row.data.count)}</span>
+);
+```
+
+## Custom DOM Templates
+
+Aside from using the `cellTemplate` property as a value formatter, you can also create your own DOM template, which
+will be rendered inside the cell container.
+
 You can template any standard DOM elements as well as web components from other libraries.
-
-<!-- End: WebComponents -->
-
-<!-- React -->
 
 ```tsx
 // Import defineComponents and an igniteui-webcomponents component such as the rating component.
@@ -34,18 +86,12 @@ const satisfactionCellTemplate = (ctx: IgrCellContext) => (
 );
 ```
 
-<!-- End: React -->
-
-<!-- End: Blazor -->
-
-> [!NOTE]
-> Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
+**Note:** 
+Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object
 
 The custom cell renderer is passed an `GridLiteCellContext` object as a parameter with the following props:
-
-<!-- React, WebComponents -->
 
 ```typescript
 /**
@@ -73,8 +119,6 @@ export interface GridLiteCellContext<
   value: PropertyType<T, K>;
 }
 ```
-
-<!-- End: React, WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -303,19 +347,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Sample />);
 ```
 
-<!-- TODO ## API References
-
-- `{ComponentName}`
-- `Column`
-
--->
-
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](./column-configuration.md)
+- [Sorting](./sorting.md)
+- [Filtering](./filtering.md)
+- [Theming & Styling](./theming.md)
 
 Our community is active and always welcoming to new ideas.
 

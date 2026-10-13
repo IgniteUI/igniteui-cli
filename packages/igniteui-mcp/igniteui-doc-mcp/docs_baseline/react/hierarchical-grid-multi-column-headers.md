@@ -1,16 +1,15 @@
 ---
-title: React Hierarchical Grid Multi-Column Headers - Ignite UI for React
-_description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for React grid and combine them into multi headers.
-_keywords: Multi-Column Headers, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-mentionedTypes: ["Column"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/multi-column-headers
+title: "React Hierarchical Grid Multi-Column Headers - Ignite UI for React"
+description: Start grouping column headers by placing them under a common hierarchical header with the help of Ignite UI for React grid and combine them into multi headers.
+keywords: Multi-Column Headers, React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/multi-column-headers"
+llms:
+  description: "The Ignite UI for React Multi-Column Headers feature in React Hierarchical Grid allows you to group columns by placing them under a common multi-header."
+_componentKey: HierarchicalGrid
 _tocName: Multi-Column Headers
 _premium: true
 ---
-
 # React Hierarchical Grid Multi-Column Headers Overview
 
 The Ignite UI for React Multi-Column Headers feature in React Hierarchical Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
@@ -337,7 +336,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) component with [`header`](mcp:get_api_reference?platform=react&component=IgrColumn&member=header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup) component with [`Header`](mcp:get_api_reference?platform=react&component=IgrColumn&member=header) title information passed.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={hierarchicalCustomers} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" moving={true} allowFiltering={true}>
@@ -357,9 +356,7 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup) leads to the desired result.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={hierarchicalCustomers} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" moving={true} allowFiltering={true}>
@@ -374,14 +371,12 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+Every [`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+**Note:** 
+When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
+Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
+When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
-Every [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
-
-> [!Note]
-> When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
-> Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
-> When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={hierarchicalCustomers} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" moving={true} allowFiltering={true}>
@@ -395,8 +390,6 @@ Every [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&m
     </IgrColumnGroup>
 </IgrHierarchicalGrid>
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ## Multi-Column Header Template
 
@@ -415,8 +408,9 @@ const groupHeaderTemplate = (e: IgrColumnTemplateContext) => {
 }
 ```
 
-> [!Note]
-> If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+**Note:** 
+If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
+
 
 ```tsx
 const columnHeaderTemplate = (e: IgrColumnTemplateContext ) => {
@@ -749,7 +743,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -1047,10 +1041,9 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+[`IgrColumnGroup`](mcp:get_api_reference?platform=react&component=IgrColumnGroup)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

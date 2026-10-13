@@ -1,4 +1,9 @@
-import { Util } from "@igniteui/cli-core";
+import { Template, Util } from "@igniteui/cli-core";
+// default imports give the module objects themselves, so their functions can be spied on
+import child_process from "child_process";
+import fs from "fs";
+import * as path from "path";
+import { BaseComponent } from "../../packages/core/templates/BaseComponent";
 
 describe("Unit - Util", () => {
 	it("className should replace dashes and empty spaces", async () => {
@@ -201,6 +206,179 @@ describe("Unit - Util", () => {
 			process.env.CI = "true";
 
 			expect(Util.canPrompt()).toBe(false);
+		});
+	});
+
+	describe("getOSFriendlyName", () => {
+		it("maps known platforms and falls back for others", () => {
+			expect(Util.getOSFriendlyName("win32")).toBe("Windows");
+			expect(Util.getOSFriendlyName("darwin")).toBe("Mac OS");
+			expect(Util.getOSFriendlyName("freebsd")).toBe("FreeBSD");
+			expect(Util.getOSFriendlyName("linux")).toBe("Unknown OS");
+		});
+	});
+
+	describe("merge", () => {
+		it("returns the target unchanged without a source", () => {
+			const target = { a: 1 };
+
+			expect(Util.merge(target, null)).toBe(target);
+			expect(Util.merge(target, undefined)).toEqual({ a: 1 });
+		});
+
+		it("merges nested objects and unique array items", () => {
+			const target = { nested: { a: 1 }, list: [1, 2] };
+
+			Util.merge(target, { nested: { b: 2 }, list: [2, 3], added: { c: 3 } });
+
+			expect(target).toEqual({ nested: { a: 1, b: 2 }, list: [1, 2, 3], added: { c: 3 } } as any);
+		});
+
+		it("skips arrays when the target value is not an array", () => {
+			const target = { list: "not an array" };
+
+			Util.merge(target, { list: [1, 2] });
+
+			expect(target.list).toBe("not an array");
+		});
+	});
+
+	describe("execSync", () => {
+		let exitSpy: jasmine.Spy;
+		let childExecSpy: jasmine.Spy;
+
+		beforeEach(() => {
+			exitSpy = spyOn(process, "exit");
+			childExecSpy = spyOn(child_process, "execSync");
+		});
+
+		it("returns the command output", () => {
+			childExecSpy.and.returnValue("output");
+
+			expect(Util.execSync("cmd", { cwd: "dir" })).toBe("output");
+			expect(childExecSpy).toHaveBeenCalledWith("cmd", { cwd: "dir" });
+		});
+
+		it("exits when the process was interrupted with ^C", () => {
+			childExecSpy.and.throwError(Object.assign(new Error("interrupted"), { stderr: Buffer.from("output^C"), status: 1 }));
+
+			Util.execSync("cmd");
+
+			expect(exitSpy).toHaveBeenCalled();
+		});
+
+		it("exits on SIGINT exit codes", () => {
+			for (const status of [130, 255, 3221225786]) {
+				exitSpy.calls.reset();
+				childExecSpy.and.throwError(Object.assign(new Error("killed"), { status }));
+
+				Util.execSync("cmd");
+
+				expect(exitSpy).withContext(`status ${status}`).toHaveBeenCalled();
+			}
+		});
+
+		it("rethrows other errors", () => {
+			childExecSpy.and.throwError(Object.assign(new Error("failed"), { status: 1, stderr: "error" }));
+
+			expect(() => Util.execSync("cmd")).toThrowError("failed");
+			expect(exitSpy).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("gitInit", () => {
+		it("initializes and commits the project", () => {
+			const execSpy = spyOn(Util, "execSync");
+			spyOn(Util, "log");
+
+			Util.gitInit("parent", "proj");
+
+			const options = jasmine.objectContaining({ cwd: path.join("parent", "proj") });
+			expect(execSpy.calls.allArgs()).toEqual([
+				["git init", options],
+				["git add .", options],
+				["git commit -m \"Initial commit for project\"", options]
+			]);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(/Git Initialized and Project 'proj' Committed/));
+		});
+
+		it("logs an error when git fails", () => {
+			spyOn(Util, "execSync").and.throwError("git not found");
+			spyOn(Util, "error");
+
+			Util.gitInit("parent", "proj");
+
+			expect(Util.error).toHaveBeenCalledWith(
+				"Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
+		});
+	});
+
+	describe("truncate", () => {
+		it("keeps text within the limit", () => {
+			expect(Util.truncate("short", 10)).toBe("short");
+			expect(Util.truncate("exactly10!", 10)).toBe("exactly10!");
+		});
+
+		it("truncates longer text with the truncate characters", () => {
+			expect(Util.truncate("some longer text", 10)).toBe("some lo...");
+			expect(Util.truncate("some longer text", 10, 2, "-")).toBe("some lon--");
+		});
+	});
+
+	describe("createDirectory", () => {
+		it("ignores existing folders", () => {
+			spyOn(fs, "mkdirSync").and.throwError(Object.assign(new Error("exists"), { code: "EEXIST" }));
+
+			expect(() => Util.createDirectory("existing")).not.toThrow();
+		});
+
+		it("logs and rethrows other errors", () => {
+			spyOn(fs, "mkdirSync").and.throwError(Object.assign(new Error("permission denied"), { code: "EACCES" }));
+			spyOn(Util, "error");
+
+			expect(() => Util.createDirectory("locked")).toThrowError("permission denied");
+			expect(Util.error).toHaveBeenCalledWith(`Failed to create ${path.resolve(process.cwd(), "locked")}`, "red");
+			expect(Util.error).toHaveBeenCalledWith("permission denied", "red");
+		});
+	});
+
+	describe("formatChoices", () => {
+		const createComponent = (name: string, templates: Partial<Template>[], description = "") => {
+			const component = Object.create(BaseComponent.prototype) as BaseComponent;
+			return Object.assign(component, { name, description, templates });
+		};
+
+		// not defined when stdout isn't a TTY
+		let columns: number;
+		beforeEach(() => {
+			columns = process.stdout.columns;
+			process.stdout.columns = 80;
+		});
+		afterEach(() => {
+			process.stdout.columns = columns;
+		});
+
+		it("uses the template description for a component with a single template", () => {
+			const choices = Util.formatChoices([createComponent("Grid", [{ description: "Grid template" }], "Grid component")]);
+
+			expect(choices[0].value).toBe("Grid");
+			expect(choices[0].short).toBe("Grid");
+			expect(choices[0].name).toContain("Grid template");
+			expect(choices[0].name).not.toContain("Grid component");
+		});
+
+		it("uses the component description for a component with multiple templates", () => {
+			const choices = Util.formatChoices([
+				createComponent("Grid", [{ description: "first" }, { description: "second" }], "Grid component")
+			]);
+
+			expect(choices[0].name).toContain("Grid component");
+		});
+
+		it("keeps only the name when there is no description", () => {
+			const choices = Util.formatChoices([{ name: "Plain", description: "" }]);
+
+			expect(choices).toEqual([{ name: "Plain", short: "Plain", value: "Plain" }]);
 		});
 	});
 });

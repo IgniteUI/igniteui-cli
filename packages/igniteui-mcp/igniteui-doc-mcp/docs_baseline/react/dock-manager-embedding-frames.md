@@ -1,13 +1,14 @@
 ---
-title: React Dock Manager | Embed Frames | Infragistics
-_description: Use Infragistics' React dock manager to embed interactive content using panes. View Ignite UI for React dock manager tutorials!
-_keywords: dock manager, embed frames, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Dock Manager | Embed Frames | Infragistics"
+description: Use Infragistics' React dock manager to embed interactive content using panes. View Ignite UI for React dock manager tutorials!
+keywords: dock manager, embed frames, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["DockManager"]
+llms:
+  description: "The Infragistics React Dock Manager component provides you with the layout for embedding interactive content in your application using panes."
 _tocName: Embedding Frames
 _premium: true
 ---
-
 # React Embedding Frames in Dock Manager
 
 The Infragistics React Dock Manager component provides you with the layout for embedding interactive content in your application using panes.
@@ -153,50 +154,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DockManagerEmbeddingFrames/>);
 ```
 
-<!-- <div>
-    <button data-localize="stackblitz" disabled class="stackblitz-btn" data-iframe-id="dock-manager-overview-iframe" data-demos-base-url="http://localhost:4200">View on StackBlitz
-    </button>
-</div> -->
-
-<div class="divider--half"></div>
-
-<!--
-## Usage
-
-Once the Dock Manager is imported, you can add it on the page:
-
-```html
-<igc-dockmanager id="dockManager">
-</igc-dockmanager>
-```
-
-```ts
-import { IgcDockManagerPaneType, IgcSplitPaneOrientation, IgcDockManagerComponent } from 'igniteui-dockmanager';
-
-// ...
-
-this.dockManager = document.getElementById("dockManager") as IgcDockManagerComponent;
-this.dockManager.layout = {
-    rootPane: {
-        type: IgcDockManagerPaneType.splitPane,
-        orientation: IgcSplitPaneOrientation.horizontal,
-        panes: [
-            {
-                type: IgcDockManagerPaneType.contentPane,
-                contentId: 'content1',
-                header: 'Pane 1'
-            }
-        ]
-    }
-};
-```
-
-```html
-<igc-dockmanager id="dockManager">
-    <div slot="content1" style="width: 100%; height: 100%;">Content 1</div>
-</igc-dockmanager>
-``` -->
-
 ## API References
 
-- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)
+[`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)<br />

@@ -1,21 +1,22 @@
 ---
-title: Blazor Sparkline | Data Visualization Tools | Infragistics
-_description: Use Infragistics' Blazor sparkline chart control to render in a small scale layout such as a grid cell or stand alone. Learn about the Ignite UI for Blazor sparkline chart configurable elements!
-_keywords: Sparkline, Ignite UI for Blazor, Infragistics, WinLoss, Area, Column
-_license: commercial
-mentionedTypes: ["XamSparkline", "SparklineDisplayType", "TrendLineType"]
+title: "Blazor Sparkline | Data Visualization Tools | Infragistics"
+description: Use Infragistics' Blazor sparkline chart control to render in a small scale layout such as a grid cell or stand alone. Learn about the Ignite UI for Blazor sparkline chart configurable elements!
+keywords: Sparkline, Ignite UI for Blazor, Infragistics, WinLoss, Area, Column
+license: commercial
+mentionedTypes: ["Sparkline", "SparklineDisplayType", "TrendLineType"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Blazor Sparkline is a lightweight charting control."
 _tocName: Sparkline Chart
 _premium: true
 ---
-
 # Blazor Sparkline
 
-The Ignite UI for Blazor Sparkline is a lightweight charting control. It is intended for rendering within a small-scale layout such as within a grid cell but can also be rendered alone. The `Sparkline` has several visual elements and corresponding features that can be configured and customized such as the chart type, markers, ranges, trendlines, unknown value plotting, and tooltips.
+The Ignite UI for Blazor Sparkline is a lightweight charting control. It is intended for rendering within a small-scale layout such as within a grid cell but can also be rendered alone. The [`IgbSparkline`](mcp:get_api_reference?platform=blazor&component=IgbSparkline) has several visual elements and corresponding features that can be configured and customized such as the chart type, markers, ranges, trendlines, unknown value plotting, and tooltips.
 
 ## Blazor Sparkline Example
 
-The following example shows all the different types of `Sparkline` available. The type is defined by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property. If the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property is not specified, then by default, the `Line` type is displayed.
+The following example shows all the different types of [`IgbSparkline`](mcp:get_api_reference?platform=blazor&component=IgbSparkline) available. The type is defined by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=displayType) property. If the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=displayType) property is not specified, then by default, the [`Line`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Line) type is displayed.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -75,49 +76,41 @@ The following example shows all the different types of `Sparkline` available. Th
 
 }
 ```
-
-<div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
 
 ## Sparkline Recommendations
 
 ### Is the Sparkline chart right for your project?
-
 The primary benefit of the Sparkline control compared to other charting controls is that it can render in a limited space such as a grid cell with all its visual elements shown.
 
 The Blazor Sparkline has the ability to mark the data points with elliptical icons to indicate the highest, lowest, first, last, and negative values. The markers can be customized with a desired shape, color, or image.
 
 ### Sparkline Use Cases
-
 - You have a compact space to display a chart in.
 - You want to show trends in a series of values, such as weekly revenue.
 
 ### Sparkline Best Practices
-
 - Always start the Y-Axis (left or right axis) at 0 so data comparison is accurate.
 - Order time-series data from left to right.
 - Use visual attributes like solid lines to show a series of data.
 
 ### When Not to Use Sparkline
-
 - You need to analyze the data in detail.
 - You need to display every label of the data points. It only allows showing high and low values on the Y-Axis, and first and last values on the X-Axis.
 
 ### Sparkline Data Structure
-
 - It requires one-dimensional data.
 - The data set must contain at least two numeric fields.
 - The text in the data source fields can be used to display the first and last label on the X-Axis.
 
 ## Sparkline Types
+The Blazor Sparkline supports the following types of sparklines by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=displayType) property accordingly:
 
-The Blazor Sparkline supports the following types of sparklines by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property accordingly:
-
-- `Line`:  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
-- `Area`: Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
-- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
-- `WinLoss`: This type is similar in its visual appearance to Column chart type, in which the value of each column is equal to either the positive maximum (for positive values) or the negative minimum (for negative value) of the data set. The idea is to indicate a win or loss scenario. For the Win/Loss chart to display properly, the data set must have both positive and negative values. If the WinLoss sparkline is bound to the same data as the other types such as the Line type, which can be bound to a collection of numeric values, then the Blazor Sparkline will select two values from the collection - the highest and the lowest - and will render the sparkline based upon those values.
+- [`Line`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Line):  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
+- [`Area`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Area): Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
+- [`Column`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Column): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
+- [`WinLoss`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=WinLoss): This type is similar in its visual appearance to Column chart type, in which the value of each column is equal to either the positive maximum (for positive values) or the negative minimum (for negative value) of the data set. The idea is to indicate a win or loss scenario. For the Win/Loss chart to display properly, the data set must have both positive and negative values. If the WinLoss sparkline is bound to the same data as the other types such as the Line type, which can be bound to a collection of numeric values, then the Blazor Sparkline will select two values from the collection - the highest and the lowest - and will render the sparkline based upon those values.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -178,11 +171,9 @@ The Blazor Sparkline supports the following types of sparklines by setting the [
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Markers
 
-The Blazor Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of `Line`, `Area`, and [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The `WinLoss` type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
+The Blazor Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of [`Line`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Line), [`Area`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Area), and [`Column`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Column). The [`WinLoss`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=WinLoss) type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
 
 Markers in the sparkline can be placed in any combination of the following locations:
 
@@ -193,7 +184,7 @@ Markers in the sparkline can be placed in any combination of the following locat
 - `Last`: Display a marker on the last data point in the sparkline.
 - `Negative`: Display markers on the negative data points plotted in the sparkline.
 
-All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`LowMarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerBrush), [`LowMarkerVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerVisibility), and [`LowMarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerSize).
+All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`LowMarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=lowMarkerBrush), [`LowMarkerVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=lowMarkerVisibility), and [`LowMarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=lowMarkerSize).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -372,21 +363,19 @@ public class SparklineProfitData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Normal Range
 
 The normal range feature of the Blazor Sparkline is a horizontal stripe representing some pre-defined meaningful range when the data is being visualized. The normal range can be set as a shaded area outlined with the desired color.
 
-The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's `Line` display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
+The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's [`Line`](mcp:get_api_reference?platform=blazor&component=SparklineDisplayType&member=Line) display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
 
-- [`NormalRangeVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeVisibility): Whether the normal range is visible.
-- [`NormalRangeMaximum`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeMaximum): The bottom border of the range.
-- [`NormalRangeMinimum`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeMinimum): The top border of the range.
+- `NormalRangeVisibility`: Whether the normal range is visible.
+- `NormalRangeMaximum`: The bottom border of the range.
+- `NormalRangeMinimum`: The top border of the range.
 
-By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`NormalRangeFill`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeFill) property.
+By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`NormalRangeFill`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=normalRangeFill) property.
 
-You can also configure whether to show the normal range in front of or behind the plotted series in your Blazor Sparkline by setting the [`DisplayNormalRangeInFront`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayNormalRangeInFront) property.
+You can also configure whether to show the normal range in front of or behind the plotted series in your Blazor Sparkline by setting the [`DisplayNormalRangeInFront`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=displayNormalRangeInFront) property.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -517,13 +506,11 @@ public class SparklineMixedData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Trendlines
 
-The Blazor Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=TrendLineType) property.
+The Blazor Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`IgbTrendLineType`](mcp:get_api_reference?platform=blazor&component=TrendLineType) property.
 
-The trendlines are calculated according to the algorithm specified by the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=TrendLineType) property using the values of the data the the chart is bound to.
+The trendlines are calculated according to the algorithm specified by the [`IgbTrendLineType`](mcp:get_api_reference?platform=blazor&component=TrendLineType) property using the values of the data the the chart is bound to.
 
 Trendlines can only be displayed one at a time and by default, the trendline is not displayed.
 
@@ -628,13 +615,11 @@ public class SparklineMixedData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Unknown Value Interpolation
 
 The Blazor Sparkline can detect unknown values and render the space for unknown values through a specified interpolation algorithm. If your data contains null values and you do not use this feature, meaning no interpolation is specified, the unknown value will not be plotted.
 
-To plot the unknown values, you can set the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting) property of the Blazor Sparkline. The sample below shows the differences between the values of the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
+To plot the unknown values, you can set the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=unknownValuePlotting) property of the Blazor Sparkline. The sample below shows the differences between the values of the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=unknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -735,8 +720,6 @@ public class SparklineUnknownData
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Sparkline in Data Grid
 
 You can embed the Blazor Sparkline in a template column of data grid or other UI controls that support templates. The following code example shows how to do this:
@@ -808,19 +791,9 @@ You can embed the Blazor Sparkline in a template column of data grid or other UI
 
 You can find more information about related chart types in these topics:
 
-- [Area Chart](area-chart.md)
-- [Column Chart](column-chart.md)
-- [Line Chart](line-chart.md)
+- [Area Chart](./area-chart.md)
+- [Column Chart](./column-chart.md)
+- [Line Chart](./line-chart.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`DisplayNormalRangeInFront`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayNormalRangeInFront)
-- [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType)
-- [`LowMarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerBrush)
-- [`LowMarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerSize)
-- [`LowMarkerVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerVisibility)
-- [`NormalRangeFill`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeFill)
-- [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting)
-- [`IgbSparkline`](mcp:get_api_reference?platform=blazor&component=IgbSparkline)
+[`IgbSparkline`](mcp:get_api_reference?platform=blazor&component=IgbSparkline)

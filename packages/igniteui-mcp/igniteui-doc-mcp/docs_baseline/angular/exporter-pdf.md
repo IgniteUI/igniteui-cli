@@ -1,22 +1,22 @@
 ---
 title: Export to PDF Component - Native Angular | Ignite UI for Angular
-_description: Users can export their data for offline presentation can do so in PDF format with the Export to PDF Ignite UI for Angular component.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Controls, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Grid, Angular Data Grid, Angular Grid Control, Angular Grid Component, PDF Export, Angular PDF Component, Angular Export PDF
-_license: commercial
+description: Users can export their data for offline presentation can do so in PDF format with the Export to PDF Ignite UI for Angular component.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Controls, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Grid, Angular Data Grid, Angular Grid Control, Angular Grid Component, PDF Export, Angular PDF Component, Angular Export PDF
+license: commercial
+llms:
+  description: "The Ignite UI for Angular PDF Exporter service provides powerful functionality to export data in PDF format from various sources, including raw data arrays and advanced grid components such as IgxGrid, IgxTreeGrid, IgxHierarchicalGrid, and IgxPivotGrid."
 _tocName: PDF Exporter
 _premium: true
 ---
-
 # PDF Exporter
 
-<p class="highlight">
+<div class="highlight">
 
-The Ignite UI for Angular PDF Exporter service provides powerful functionality to export data in PDF format from various sources, including raw data arrays and advanced grid components such as [**IgxGrid**](grid/grid.md), [**IgxTreeGrid**](treegrid/tree-grid.md), [**IgxHierarchicalGrid**](hierarchicalgrid/hierarchical-grid.md), and [**IgxPivotGrid**](pivotGrid/pivot-grid.md). The exporting functionality is encapsulated in the [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService) class, which enables seamless data export to PDF format with comprehensive features including multi-page document support, automatic page breaks, and customizable formatting options.
-</p>
-<div class="divider"></div>
+The Ignite UI for Angular PDF Exporter service provides powerful functionality to export data in PDF format from various sources, including raw data arrays and advanced grid components such as [**IgxGrid**](/grid/grid), [**IgxTreeGrid**](/treegrid/tree-grid), [**IgxHierarchicalGrid**](/hierarchicalgrid/hierarchical-grid), and [**IgxPivotGrid**](/pivotgrid/pivot-grid). The exporting functionality is encapsulated in the [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService) class, which enables seamless data export to PDF format with comprehensive features including multi-page document support, automatic page breaks, and customizable formatting options.
+</div>
+<igc-divider></igc-divider>
 
 ## Angular PDF Exporter Example
-
 
 ```typescript
 import { Component, inject, signal } from '@angular/core';
@@ -50,7 +50,7 @@ export class PdfExportComponent {
 <button igxButton="contained" (click)="exportButtonHandler()">Export Data</button><br />
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Usage
 
@@ -105,7 +105,7 @@ If all went well, you should see an export button. When pressed, it will trigger
 
 ## Customizing the Exported Content
 
-In the above examples, the PDF Exporter service exports all available data. However, there are situations where you may want to skip exporting a row or an entire column. To achieve this, you can subscribe to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=rowexporting) events, which are fired for each column and/or each row respectively. You can then cancel the export by setting the event argument object's [`cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
+In the above examples, the PDF Exporter service exports all available data. However, there are situations where you may want to skip exporting a row or an entire column. To achieve this, you can subscribe to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=rowexporting) events, which are fired for each column and/or each row respectively. You can then cancel the export by setting the event argument object's [`IgxIRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example excludes a column from the export if its header is "Age" and its index is 1:
 
@@ -563,7 +563,7 @@ export class ExportPdfCustomFontComponent {
 }
 ```
 
-<div class="divider--half"></div>
+<hr/>
 
 ## Known Limitations
 
@@ -572,22 +572,16 @@ export class ExportPdfCustomFontComponent {
 | Wide PDF layouts | Very wide grids can force PDF columns to shrink to fit the page. Apply explicit column widths or hide low‑priority fields before exporting to keep the document legible. |
 
 ## API References
-
 The PDF Exporter service has a few more APIs to explore, which are listed below.
-
-- [`IgxPdfExporterService API`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService)
-- [`IgxPdfExporterOptions API`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterOptions)
-
+- [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService)
+- [`IgxPdfExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterOptions)
 Additional components that were used:
-
-- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
-<div class="divider"></div>
-
+- [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- `IgxGridComponent Styles`
+<igc-divider></igc-divider>
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

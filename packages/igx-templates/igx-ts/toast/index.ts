@@ -4,7 +4,7 @@ class IgxToastComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Toast";
-		this.group = "Interactions";
+		this.group = "Notifications";
 		this.description = "shows application messages in a stylized, non-interactive pop-up box";
 	}
 }

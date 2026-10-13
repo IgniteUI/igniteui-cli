@@ -1,12 +1,13 @@
 ---
 title: Card Component
-_description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
-_keywords: Ignite UI for Web Components, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls
-_license: MIT
+description: Present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information with Ignite UI for Web Card component.
+keywords: "Ignite UI for Web Components, UI controls, Web widgets, web widgets, UI widgets, Native Web Components Suite, Native Web Controls, Native Web Components Library, Web Card component, Web Card controls"
+license: MIT
 mentionedTypes: ["Card", "CardActions", "CardContent", "CardHeader", "CardMedia", "Avatar", "Button", "Icon", "IconButton", "Ripple"]
+llms:
+  description: "The Ignite UI for Web Components Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information."
 _tocName: Card
 ---
-
 # Web Components Card Overview
 
 The Ignite UI for Web Components Card displays text, images, icons, and buttons in a visually rich presentation that can serve as an entry point to more detailed information. Cards can be used to create a multimedia dashboard.
@@ -24,8 +25,6 @@ The Ignite UI for Web Components Card displays text, images, icons, and buttons 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Cards allow you to easily display content composed of different types of objects or similar objects whose size and supported actions can vary.
@@ -38,7 +37,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent), you need to register it as follows:
+Before using the [`IgcCard`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcCardComponent } from 'igniteui-webcomponents';
@@ -55,16 +54,13 @@ Then, to represent the demo card template, we can add the following code:
     <igc-card-media>
         <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50">
     </igc-card-media>
-
     <igc-card-header>
-        <h3 slot="title">New York</h3>
-        <h5 slot="subtitle">City in New York</h5>
+        <span slot="title">New York</span>
+        <span slot="subtitle">City in New York</span>
     </igc-card-header>
-
     <igc-card-content>
         <p>New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers.</p>
     </igc-card-content>
-
     <igc-card-actions>
         <igc-button slot="start">
             <igc-ripple></igc-ripple>
@@ -82,33 +78,31 @@ Then, to represent the demo card template, we can add the following code:
 </igc-card>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, to _tag_ an element as a header title, we need to place it between the [`IgcCardHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) tags and set its slot name to `title`. Conversely, to define a subtitle, we need to set the slot name to `subtitle`. When slotting content into the `title` and `subtitle` slots, we recommend using `<span>` rather than heading elements (`<h1>`–`<h6>`). Heading elements carry built-in styling (such as font size, line height, and margins) that can interfere with the component's intended typography and layout. A `<span>` provides a neutral container that inherits the component’s styles cleanly.
 
-Any image or video we want to show in the card, we wrap inside the [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) tags. The [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+Any image or video we want to show in the card, we wrap inside the [`IgcCardMedia`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) tags. The [`IgcCardMedia`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
-You can place anything inside the [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) tags. Usually text goes there.
+You can place anything inside the [`IgcCardContent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) tags. Usually text goes there.
 
-Finally, the [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) is where you'd place any actionable items, like buttons.
+Finally, the [`IgcCardActions`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) is where you'd place any actionable items, like buttons.
 
 ### Media, Thumbs, and Avatars
 
-If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
+If you want to display an image or icon in the card header next to the title and subtitle, assign the element's slot attribute to `thumbnail`. For the best results, we recommend using an [`igc-avatar`](../layouts/avatar.md) component for the `thumbnail` slot, as it integrates seamlessly with the card header's layout and styling.
 
-Taking the card above as an example, we can edit the contents of the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and add an avatar with `slot="thumbnail"`:
+Taking the card above as an example, we can edit the contents of the [`IgcCardHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and add an avatar with `slot="thumbnail"`:
 
 ```html
 <igc-card-header>
     <igc-avatar slot="thumbnail" src="path/to/image" initials="TS"></igc-avatar>
-
-    <h3 slot="title">Title</h3>
-    <h5 slot="subtitle">Subtitle</h5>
+    <span slot="title">Title</span>
+    <span slot="subtitle">Subtitle</span>
 </igc-card-header>
 ```
 
 The above example will show the avatar alongside the title and subtitle in the card header.
 
 ### Outlined cards
-
 The card has an `outlined` attribute which, if set, removes any shadows from the card, replacing them with a thin border to separate the card from the background.
 
 ### Horizontal Layout
@@ -123,8 +117,8 @@ Here's an example of an outlined horizontal card:
         <div>
             <igc-card-header>
                 <img src="ROZES-Under-the-Grave.jpg" slot="thumbnail">
-                <h5 slot="title">Rozes</h5>
-                <h5 slot="subtitle">Under the Grave (2016)</h5>
+                <span slot="title">Rozes</span>
+                <span slot="subtitle">Under the Grave (2016)</span>
             </igc-card-header>
             <igc-card-content>
                 <p>As I have always said: I write what’s real and what’s true,
@@ -141,7 +135,7 @@ Here's an example of an outlined horizontal card:
 </igc-card>
 ```
 
-We are using an additional `div` element to bundle the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
+We are using an additional `div` element to bundle the [`IgcCardHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and [`IgcCardContent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
 
 The styles that `.card-horizontal` class applies are:
 
@@ -196,9 +190,9 @@ If everything went well, our card should look like this:
 
 ### Alternative layouts
 
-You can get even more creative with the layout of the [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent).
+You can get even more creative with the layout of the [`IgcCard`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent).
 
-Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) appears alongside the vertical sections.
+Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgcCardMedia`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) appears alongside the vertical sections.
 
 ```html
 <igc-card>
@@ -206,8 +200,8 @@ Below is an example showing how you can create a semi-horizontal card, where we 
         <div>
             <igc-card-header>
                 <igc-avatar src="mellow_d.jpg" slot="thumbnail">MD</igc-avatar>
-                <h5 slot="title">HERE</h5>
-                <h5 slot="subtitle">by Mellow D</h5>
+                <span slot="title">HERE</span>
+                <span slot="subtitle">by Mellow D</span>
             </igc-card-header>
             <igc-card-content>
                 <p>Far far away, behind the word mountains,
@@ -267,8 +261,7 @@ Below is an example showing how you can create a semi-horizontal card, where we 
 ### Card Actions
 
 The card actions area allows additional configuration to what we have already mentioned.
-
-You can reverse the order of the text button and the icon buttons by switching their slot names.
+The area is intended to hold actionable items, like buttons. There are two slots available that can be used to position content: `start` and `end`. We can assign these slots to any element placed inside the [`IgcCardActions`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent), and it will be positioned accordingly, either at the `start` or the `end` of the area. These slots can be used with any type of content, but we highly recommend sticking to actionable elements, or wrappers of actionable elements, as shown in the example below:
 
 ```html
 <igc-card-actions>
@@ -287,13 +280,11 @@ You can reverse the order of the text button and the icon buttons by switching t
 </igc-card-actions>
 ```
 
-Now the icon buttons will appear before the text button.
-
 You can also add more content in-between by simply omitting the slot property and let the elements go to the default slot.
 
 ## Styling
 
-Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent), [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent), [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) and [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) sub-components.
+Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgcCardHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent), [`IgcCardContent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent), [`IgcCardMedia`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) and [`IgcCardActions`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) sub-components.
 
 ```css
 igc-card {
@@ -350,23 +341,21 @@ igc-icon-button+igc-icon-button {
 ```
 
 ### Summary
-
 In this article we covered a lot of ground with the card component. We created a simple card and added some images to make it a bit more appealing. We used some additional Web Components inside our card, like avatars, buttons and icons, to enrich the experience and add some functionality. And finally, we changed the card's appearance by changing the major colors of the building blocks.
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
 
-- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
-- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
-- [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent)
-- [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent)
-- [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent)
-- [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent)
-- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)
-- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcAvatar`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)<br />
+[`IgcButton`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)<br />
+[`IgcCardActions`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent)<br />
+[`IgcCardContent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent)<br />
+[`IgcCardHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent)<br />
+[`IgcCardMedia`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent)<br />
+[`IgcCard`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)<br />
+[`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)<br />
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)<br />
 
 ## Additional Resources
 

@@ -1,12 +1,13 @@
 ---
-title: Web Components Styling and Themes | Web Components Elevations | Infragistics
-_description:
-_keywords: Ignite UI for Web Components, Infragistics, Elevations, Styling
-_license: MIT
-mentionedTypes: ["Elevations"]
+title: "Web Components Styling and Themes | Web Components Elevations | Infragistics"
+description:
+keywords: "Ignite UI for Web Components, Infragistics, Elevations, Styling"
+license: MIT
+mentionedTypes: []
+llms:
+  description: "The implementation of the Elevations in Ignite UI for Web Components is modeled after the Elevations in Material Design."
 _tocName: Elevations
 ---
-
 # Elevations in Ignite UI for Web Components
 
 The implementation of the Elevations in Ignite UI for Web Components is modeled after the [Elevations in Material Design](https://material.io/design/environment/elevation.html#elevation-in-material-design). They are used to establish and maintain functional boundaries between Document Object Model trees to enable better functional encapsulation.
@@ -83,7 +84,3 @@ In addition to elevation levels, Ignite UI for Web Components exposes a CSS vari
 ```
 
 The `--ig-elevation-factor` can also be set to a decimal value or a value bigger than 1. The bigger the value, the larger the shadow will be.
-
-## API References
-
-- `Elevations`

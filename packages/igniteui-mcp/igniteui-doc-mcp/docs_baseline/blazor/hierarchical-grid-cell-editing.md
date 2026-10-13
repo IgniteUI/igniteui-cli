@@ -1,16 +1,15 @@
 ---
-title: Blazor Hierarchical Grid Cell Editing - Ignite UI for Blazor
-_description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
-_keywords: data manipulation, excel editing, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/cell-editing
+title: "Blazor Hierarchical Grid Cell Editing - Ignite UI for Blazor"
+description: The Hierarchical Grid is using in-cell editing. It has a default cell editing template, but it also lets you define your own custom templates for update-data action. Try it now!
+keywords: data manipulation, excel editing, Blazor, Hierarchical Grid, IgbHierarchicalGrid, Ignite UI for Blazor, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/cell-editing"
+llms:
+  description: "The Ignite UI for Blazor Cell Editing in Blazor Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the Blazor Hierarchical Grid component and comes with powerful API for React CRUD operations."
+_componentKey: HierarchicalGrid
 _tocName: Cell Editing
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Cell Editing
 
 The Ignite UI for Blazor Cell Editing in Blazor Hierarchical Grid provides a great data manipulation capability of the content of individual cells within the Blazor Hierarchical Grid component and comes with powerful API for React CRUD operations. It is a fundamental feature in apps like spreadsheets, data tables, and data grids, allowing users to add, edit, or update data within specific cells.
@@ -182,27 +181,24 @@ public class NwindData
 ### Editing through UI
 
 You can enter edit mode for specific cell, when an editable cell is focused in one of the following ways:
-
 - on double click;
 - on single click - Single click will enter edit mode only if the previously selected cell was in edit mode and currently selected cell is editable. If the previously selected cell was not in edit mode, single click will select the cell without entering edit mode;
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 
 You can exit edit mode **without committing** the changes in one of the following ways:
-
 - on key press <kbd>Escape</kbd>;
 - when you perform **sorting**, **filtering**, **searching** and **hiding** operations;
 
 You can exit edit mode and **commit** the changes in one of the following ways:
-
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
 - on single click to another cell - when you click on another cell in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). This is valid for both cell editing and row editing.
+**Note:** 
+The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
@@ -214,9 +210,7 @@ You can also modify the cell value through the [`IgbHierarchicalGrid`](mcp:get_a
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-Another way to update cell is directly through `Update` method of `Cell`:
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=blazor&component=IgbCellType&member=update) method of `Cell`:
 
 ```razor
 @code {
@@ -227,15 +221,11 @@ Another way to update cell is directly through `Update` method of `Cell`:
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- ComponentStart: HierarchicalGrid -->
 
 ```razor
 <IgbColumn
@@ -248,12 +238,9 @@ If you want to provide a custom template which will be applied to a cell, you ca
 </IgbColumn>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 and pass the template:
 
-```razor
-// In JavaScript
+```javascript
 
 igRegisterScript("WebGridCellEditCellTemplate", (ctx) => {
     let cellValues = [];
@@ -424,14 +411,14 @@ public class HGridDndData
 
 ## CRUD operations
 
-> [!Note]
-> Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
+**Note:** 
+Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component exposes the `AddRow` method which will add the provided data to the data source itself.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component exposes the [`AddRow`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=addRow) method which will add the provided data to the data source itself.
 
 ```razor
 @code {
@@ -441,11 +428,9 @@ The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbH
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 ### Updating data in the Hierarchical Grid
 
-Updating data in the Hierarchical Grid is achieved through `UpdateRow` and `UpdateCell` methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
+Updating data in the Hierarchical Grid is achieved through [`IgbHierarchicalGrid.updateRow`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=updateRow) and [`IgbHierarchicalGrid.updateCell`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 ```razor
 @code {
@@ -462,15 +447,12 @@ Updating data in the Hierarchical Grid is achieved through `UpdateRow` and `Upda
     IgbRowType row = this.hierarchicalGrid.GetRowByKey(rowID);
     row.Update(newData);
 }
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 ### Deleting data from the Hierarchical Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PrimaryKey) is defined.
-
-<!-- ComponentStart: HierarchicalGrid -->
+Please keep in mind that [`DeleteRow`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=deleteRow) method will remove the specified row only if a [`IgbHierarchicalGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=primaryKey) is defined.
 
 ```razor
 @code {
@@ -482,11 +464,13 @@ Please keep in mind that `DeleteRow` method will remove the specified row only i
 }
 ```
 
+These can be wired to user interactions, not necessarily related to the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) for example, a button click:
+
 ### Cell Validation on Edit Event
 
 Using the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s editing events, we can alter how the user interacts with the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
-In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
+In this example, we'll validate a cell based on the data entered in it by binding to the [`IgbHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
 The first thing we need to do is bind to the grid's event:
 
@@ -494,21 +478,11 @@ The first thing we need to do is bind to the grid's event:
 <IgbHierarchicalGrid CellEditScript="HandleCellEdit" />
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- Blazor -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+The [`IgbHierarchicalGrid.cellEdit`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=cellEdit) emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- ComponentEnd: TreeGrid -->
-
-```razor
+```javascript
 // In JavaScript
 igRegisterScript("WebGridEditingEventsCellEdit", (ev) => {
     var d = ev.detail;
@@ -520,9 +494,8 @@ igRegisterScript("WebGridEditingEventsCellEdit", (ev) => {
         }
     }
 }, false);
-```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+```
 
 The result of the above validation being applied to our [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can be seen in the below demo:
 
@@ -698,7 +671,7 @@ public class NwindData
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -714,8 +687,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-editing-background: #add8e6;
 }
 ```
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ### Styling Example
 
@@ -877,8 +848,7 @@ public class NwindData
 ```
 
 ## API References
-
-- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
-- [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)
-
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+[`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)
 ## Additional Resources

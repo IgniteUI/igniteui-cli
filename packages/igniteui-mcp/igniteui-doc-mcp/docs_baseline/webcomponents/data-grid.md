@@ -1,14 +1,15 @@
 ---
-title: Web Components Data Grid Component - Infragistics
-_description: Create super-fast, responsive Web Components Data Grids and tables with Ignite UI for Web Components. Supports editing, filtering, data binding and many more. Try it now!
-_keywords: Web Components, Ignite UI for Web Components, Infragistics, Getting Started, Grid
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.ColumnPipeArgs"]
+title: "Web Components Data Grid Documentation & API"
+description: Create super-fast, responsive Web Components Data Grids and tables with Ignite UI for Web Components. Supports editing, filtering, data binding and many more. Try it now!
+keywords: "Web Components, Ignite UI for Web Components, Infragistics, Getting Started, Grid"
+license: commercial
+mentionedTypes: ["Grid", "Column", "Cell", "CellTemplateContext", "GridRowComponent", "GridToolbar", "Paginator"]
 namespace: Infragistics.Controls
+llms:
+  description: "The Web Components Data Grid component is used for displaying large volumes of data."
 _tocName: Grid
 ---
-
-<style>
+<style>{`
     .sample-content {
         display: flex;
         flex-flow: row wrap;
@@ -31,29 +32,24 @@ _tocName: Grid
     }
 
     .tabbar-wrapper > p {
-        padding-right: 20px
+        padding-right: 20px;
     }
-</style>
+`}</style>
 
-# Web Components Grid Overview and Configuration
+# Web Components Data Grid Documentation
 
 <div class="sample-content">
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <p>The Web Components Data Grid component is used for displaying large volumes of data. Modern and more complex grids ensure smooth UX and bring an array of features for manipulating tabular data. There is an intuitive API, theming, branding, filtering, sorting, data selection, Excel-style filtering, and many more.</p>
             <p>The Ignite UI for Web Components Data Table / Data Grid is a tabular Web Components grid component that allows you to quickly bind and display your data with little coding or configuration. Features of the Web Components data grid in our toolbox include filtering, sorting, templates, row selection, row grouping, row pinning, movable columns, virtualization, Master-Detail, and much more.</p>
-            <p>The Web Components tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant, making Ignite UI for Web Components Data Grid the best Web Components Data Grid on the market. </p>
+            <p>The Web Components tables are optimized for speed and performance, with the ability to handle millions of rows and columns, and real-time updates in an instant.</p>
         </div>
     </article>
     <article class="sample-column">
         <div class="tabbar-wrapper">
             <div class="tab-content">
-                <img class="b-lazy responsive-img"
-                    src="../../images/general/landing-grid-page.png"
-                    data-src="../../images/general/landing-grid-page.png"
-                    data-srcset="../../images/general/landing-grid-page.png 480w, ../../images/general/landing-grid-page.png 768w, ../../images/general/landing-grid-page.png 1100w"
-                    alt="Web Components Data Grid"
-                    title="Web Components Data Grid Component - Infragistics">
+                
             </div>
         </div>
     </article>
@@ -71,8 +67,6 @@ In this Ignite UI for Web Components Grid example, you can see how users can do 
         --ig-size: var(--ig-size-medium);
     }
 ```
-
-<div class="divider--half"></div>
 
 ## Getting Started with Web Components Data Grid
 
@@ -98,11 +92,11 @@ import 'igniteui-webcomponents-grids/grids/themes/light/bootstrap.css';
 
 Or to link it:
 
-```typescript
+```html
 <link rel='stylesheet' href='node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css'>
 ```
 
-For more details on how to customize the appearance of the grid, you may have a look at the [styling](data-grid.md#styling-web-components-grid) section.
+For more details on how to customize the appearance of the grid, you may have a look at the [styling](./data-grid.md#styling-web-components-grid) section.
 
 ## Usage
 
@@ -119,23 +113,23 @@ constructor() {
 }
 ```
 
-The [`id`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`Id`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=data) binds the grid, in this case to local data.
 
-The [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property tells the grid to auto generate the grid's [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`AutoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=autoGenerate) property tells the grid to auto generate the grid's [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Web Components Grid
 
 Each operation for grid editing includes batch operations, meaning the API gives you the option to group edits into a single server call, or you can perform grid edit / update operations as they occur with grid interactions. Along with a great developer experience as an editable grid with CRUD operations, the grid includes Excel-like keyboard navigation. Common default grid navigation is included, plus the option to override any navigation option to meet the needs of your customers. An editable grid in with a great navigation scheme is critical to any modern line of business application, with the Ignite UI grid we make it easy.
 
-Following this topic you will learn more about [cell template](data-grid.md#cell-template) and [cell editing template](data-grid.md#cell-editing-template) and editing.
+Following this topic you will learn more about [cell template](./data-grid.md#cell-template) and [cell editing template](./data-grid.md#cell-editing-template) and editing.
 
 ## Grid Column Configuration
 
-[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`AutoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```html
 <igc-grid id="grid1" auto-generate="false" allow-filtering="true">
@@ -203,11 +197,11 @@ public nameCellTemplate = (ctx: IgcCellTemplateContext) => {
 }
 
 public formatTitleCase(value: string) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 ```
 
-In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the `Cell` instance itself as shown below:
+In the snippet above we take a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`Cell`](mcp:get_api_reference?platform=webcomponents&component=IgcCellTemplateContext&member=cell) instance itself as shown below:
 
 ```html
 <igc-grid id="grid" auto-generate="false">
@@ -245,19 +239,19 @@ public deleteRow(rowIndex: number) {
 }
 
 public formatTitleCase(value: string) {
-    return value.toUpperCase();
+    return value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 }
 ```
 
 > **Note**:
 > The grid exposes a default handling for number, string, date and boolean column types. For example, the column will display `check` or `close` icon, instead of true/false by default, for boolean column type.
 
-When properly implemented, the cell editing template also ensures that the cell's `EditValue` will correctly pass through the grid [editing event cycle](grid/editing.md#event-arguments-and-sequence).
+When properly implemented, the cell editing template also ensures that the cell's [`EditValue`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType&member=editValue) will correctly pass through the grid [editing event cycle](./grid/editing.md#event-arguments-and-sequence).
 
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property of the column to true.
+to set the [`Editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property of the column to true.
 
 ```html
 <igc-column id="price" field="Price" data-type="number" editable="true"></igc-column>
@@ -282,11 +276,11 @@ public updateValue(value: number) {
 }
 ```
 
-Make sure to check the API for the `Cell` in order to get accustomed with the provided properties you can use in your templates.
+Make sure to check the API for the [`IgcCellType`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType) in order to get accustomed with the provided properties you can use in your templates.
 
 ### Column Template API
 
-Each of the column templates can be changed programmatically at any point through the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
+Each of the column templates can be changed programmatically at any point through the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
 
 ```html
 <igc-grid>
@@ -331,11 +325,11 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`digitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`Format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`Timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`DigitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo) - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`PipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) is set. Example:
 
 ```html
 <igc-column id="orderDate" field="OrderDate" data-type="date"></igc-column>
@@ -361,13 +355,13 @@ constructor() {
 }
 ```
 
-The `OrderDate` column will respect only the [`format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) and [`timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) properties, while the `UnitPrice` will only respect the [`digitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo).
+The `OrderDate` column will respect only the [`Format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) and [`Timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo).
 
-All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
+All available column data types could be found in the official [Column types topic](./grid/column-types.md#default-template).
 
 ## Grid Data Structure
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
 
 ```typescript
 const OBJECT_ARRAY = [{
@@ -394,10 +388,10 @@ const POJO = [{
   }];
 ```
 
-> **WARNING**:
-> **The key values must not contain arrays**.
+>**WARNING**:
+>**The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) columns **the data keys must be identical.**
+>If you use [`AutoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -405,7 +399,7 @@ Our Web Components Data Grid provides unmatched data binding options and is opti
 
 Before going any further with the Web Components Data Grid we want to change the grid to bind to remote data service, which is the common scenario in large-scale applications.
 
-You can do this by fetching the data from a given url receiving a JSON response and assigning it to the grid's `data` property that is used as the grid's data source:
+You can do this by fetching the data from a given url receiving a JSON response and assigning it to the grid's [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=data) property that is used as the grid's data source:
 
 ```html
 <igc-grid id="grid1"></igc-grid>
@@ -423,7 +417,7 @@ public onDataLoaded(jsonData: any[]) {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`AutoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`AutoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 
@@ -456,9 +450,10 @@ For example, in order to display the weights of a given amino acid in the grid t
 <igc-column field="weight.residue"></igc-column>
 ```
 
-An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is to use a custom body template for the column. Generally, one can:
+An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
+
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
 
 ```html
@@ -629,7 +624,7 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=data) property of the [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent&member=data) property of the [`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent).
 
 Since the Web Components grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -694,7 +689,7 @@ public getPostalCode(rowIndex: number) {
 Keep in mind that with the above defined template you will not be able to make editing operations, so we need an editor template.
 
 ```html
-<igc-column id="address" field="Address" data-type="number" width="25%" editable="true"></igc-column>
+<igc-column id="address" field="Address" data-type="string" width="25%" editable="true"></igc-column>
 ```
 
 ```typescript
@@ -719,17 +714,17 @@ public webGridCompositeAddressEditCellTemplate = (ctx: IgcCellTemplateContext) =
     return html`<div class="address-container--edit" style="display: inline-grid">
             <div>
                 <span><strong>Country:</strong></span>
-                <input id='Country' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.Country}"></input>
+                <input id='Country' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.Country}">
                 <br>
                 <span><strong>City:</strong></span>
-                <input id='City' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.City}"></input>
+                <input id='City' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.City}">
             </div>
             <div>
                 <span><strong>Postal Code:</strong></span>
-                <input id='PostalCode' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.PostalCode}"></input>
+                <input id='PostalCode' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.PostalCode}">
                 <br>
                 <span><strong>Selected:</strong></span>
-                <input id='Phone' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.Phone}"></input>
+                <input id='Phone' @keyup=${(e: any) => keyUpHandler(e, ctx)} value="${cell.row.data.Phone}">
             </div>
             <br>
         </div>`;
@@ -738,7 +733,7 @@ public webGridCompositeAddressEditCellTemplate = (ctx: IgcCellTemplateContext) =
 
 ### Working with Flat Data Example
 
-Using code snippets from previous section will result in the following example of [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+Using code snippets from previous section will result in the following example of [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ```typescript
 export class CustomersDataItem {
@@ -782,20 +777,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Keyboard Navigation
 
-Keyboard navigation of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
-
-<!-- The sizing topic is still not available thus the Sizing section is commented out. -->
-
-<!-- ## Sizing
-
-See the [Grid Sizing](sizing.md) topic. -->
+Keyboard navigation of the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
 ## Styling Web Components Grid
-
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grids/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./grid/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```html
 <igc-grid class="grid"></igc-grid>
@@ -823,15 +811,29 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- `Cell`
-- [`IgcCellTemplateContext`](mcp:get_api_reference?platform=webcomponents&component=IgcCellTemplateContext)
-- [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
-- [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html)
-- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
+[`IgcCellType`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType)<br />
+[`IgcGridToolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarComponent)<br />
+[`IgcPaginator`](mcp:get_api_reference?platform=webcomponents&component=IgcPaginatorComponent)<br />
 
-## Additional Resources
+[`IgcGridRowComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridRowComponent)<br />
+[`IgcCellTemplateContext`](mcp:get_api_reference?platform=webcomponents&component=IgcCellTemplateContext)<br />
+[`IgcCellType`](mcp:get_api_reference?platform=webcomponents&component=IgcCellType)<br />
+[`IgcColumnPipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs)<br />
+
+## Theming Dependencies
+
+- **Icon Theme**
+- **InputGroup Theme**
+- **Chip Theme**
+- **Ripple Theme**
+- **Button Theme**
+- **Overlay Theme**
+- **DropDown Theme**
+- **Calendar Theme**
+- **SnackBar Theme**
+- **Badge Theme**
 
 Our community is active and always welcoming to new ideas.
 

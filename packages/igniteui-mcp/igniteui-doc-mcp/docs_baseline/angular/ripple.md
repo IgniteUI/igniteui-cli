@@ -1,18 +1,21 @@
 ---
 title: Angular Ripple Directive – Ignite UI for Angular | Infragistics | MIT license
-_description: With Ignite UI for Angular Ripple directive, developers can define an area which received a ripple animation effect for powerful UI enhancement.
-_keywords: Angular Ripple component, Angular Ripple Directive, Angular Ripple control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: With Ignite UI for Angular Ripple directive, developers can define an area which received a ripple animation effect for powerful UI enhancement.
+keywords: Angular Ripple component, Angular Ripple Directive, Angular Ripple control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "The Ignite UI for Angular Ripple component creates an animation in response to a touch or a mouse click."
 _tocName: Ripple
 ---
-
 # Angular Ripple Directive Overview
 
-<p class="highlight">The Ignite UI for Angular Ripple component creates an animation in response to a touch or a mouse click.</p>
+<div class="highlight">
+The Ignite UI for Angular Ripple component creates an animation in response to a touch or a mouse click.
+</div>
 
 ## Angular Ripple Example
 
-<div class="divider--half"></div>
+<hr/>
 
 ```typescript
 import { Component } from '@angular/core';
@@ -36,8 +39,8 @@ export class RippleSample5Component { }
 }
 ```
 
-<p style="margin: 0;padding-top: 0.5rem">Like this sample? Get access to our complete Angular toolkit and start building your own apps in minutes. <a class="no-external-icon mchNoDecorate trackCTA" target="_blank" href="https://www.infragistics.com/products/ignite-ui-angular/download" data-xd-ga-action="Download" data-xd-ga-label="Ignite UI for Angular">Download it for free.</a></p>
-<div class="divider--half"></div>
+<div style="margin: 0;padding-top: 0.5rem">Like this sample? Get access to our complete Angular toolkit and start building your own apps in minutes. <a class="no-external-icon mchNoDecorate trackCTA" target="_blank" href="https://www.infragistics.com/products/ignite-ui-angular/download" data-xd-ga-action="Download" data-xd-ga-label="Ignite UI for Angular">Download it for free.</a></div>
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Ripple Directive
 
@@ -47,7 +50,7 @@ To get started with the Ignite UI for Angular Ripple directive, first you need t
 ng add igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
 
 The next step is to import the `IgxRippleModule` in the **app.module.ts** file.
 
@@ -87,10 +90,10 @@ export class HomeComponent {}
 
 Now that you have the Ignite UI for Angular Ripple module or directive imported, you can start using the `igxRipple` directive.
 
-> [!WARNING]
-> The [`igxRipple`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) uses the Web Animation API and runs natively on [browsers that support it.](http://caniuse.com/#feat=web-animation)
-> The `web-animations.min.js` polyfill is [available](https://github.com/web-animations/web-animations-js)
-> for other browsers.
+**Warning:** 
+The [`igxRipple`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) uses the Web Animation API and runs natively on [browsers that support it.](http://caniuse.com/#feat=web-animation)
+The `web-animations.min.js` polyfill is [available](https://github.com/web-animations/web-animations-js)
+for other browsers.
 
 ## Using the Angular Ripple Directive
 
@@ -200,7 +203,7 @@ export class RippleSample4Component { }
 
 ### Ripple Target
 
-Use the [`igxRippleTarget`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective&member=igxRippleTarget) property to attach a ripple effect to a specific element inside a parent element.
+Use the [`igxRippleTarget`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective&member=rippleTarget) property to attach a ripple effect to a specific element inside a parent element.
 
 ```html
 <div class="parent" igxRipple="white" igxRippleTarget=".child" [igxRippleCentered]="true">
@@ -258,8 +261,8 @@ h5{
 }
 ```
 
-> [!NOTE]
-> The child element, which you want to target with the `igxRippleTarget` property, has to be relatively positioned.
+**Note:** 
+The child element, which you want to target with the `igxRippleTarget` property, has to be relatively positioned.
 
 ## Styling
 
@@ -272,7 +275,7 @@ First, in order to use the functions exposed by the theme engine, we need to imp
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
 
-You can easily create a new theme, that extends the [`ripple-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme) and accepts the parameters, required to customize the ripple as desired.
+You can easily create a new theme, that extends the `ripple-theme` and accepts the parameters, required to customize the ripple as desired.
 
 ```scss
 $custom-ripple-theme: ripple-theme(
@@ -288,8 +291,8 @@ The next step is to pass the custom ripple theme:
 }
 ```
 
-> [!NOTE]
-> A color set using the `igxRiple` directive would take precedence over one set by a custom theme.
+**Note:** 
+A color set using the `igxRiple` directive would take precedence over one set by a custom theme.
 
 ### Demo
 
@@ -342,15 +345,12 @@ $custom-ripple-theme: ripple-theme(
 ```
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxRippleDirective](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
-- [IgxRipple Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
-
+<hr/>
+- [`IgxRippleDirective`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
+- `IgxRipple Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

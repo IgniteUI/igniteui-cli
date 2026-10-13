@@ -1,14 +1,14 @@
 ---
 title: React Spreadsheet | Activation | Infragistics
-_description: Learn how to use the activation feature of the  React spreadsheet control which is split between the cells, panes and worksheets. Check out the Ignite UI for React spreadsheet demos!
-_keywords: Excel Spreadsheet, activation, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Spreadsheet"]
+description: Learn how to use the activation feature of the  React spreadsheet control which is split between the cells, panes and worksheets. Check out the Ignite UI for React spreadsheet demos!
+keywords: Excel Spreadsheet, activation, Ignite UI for React, Infragistics
+license: commercial
 
+llms:
+  description: "The React Spreadsheet component exposes properties that allow you to determine the currently active cell, pane, and worksheet in the control."
 _tocName: Activation
 _premium: true
 ---
-
 # React Spreadsheet Activation
 
 The React Spreadsheet component exposes properties that allow you to determine the currently active cell, pane, and worksheet in the control. This is helpful as it can help you to determine where the user may be navigating or editing in the control.
@@ -210,19 +210,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetActivation/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Activation Overview
 
-The activation of the React [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) control is split up between the cells, panes, and worksheets of the current [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook) of the spreadsheet. The three "active" properties are described below:
+The activation of the React `IgrSpreadsheet` control is split up between the cells, panes, and worksheets of the current `IgrWorkbook` of the spreadsheet. The three "active" properties are described below:
 
-- [`activeCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activeCell): Returns or sets the active cell in the spreadsheet. To set it, you must create a new instance of [`SpreadsheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.spreadsheetcell.html) and pass in information about that cell, such as the column and row or the string address of the cell.
-- [`activePane`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activePane): Returns the active pane in the currently active worksheet of the spreadsheet control.
-- [`activeWorksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activeWorksheet): Returns or sets the active worksheet in the [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook) of the spreadsheet control. This can be set by setting it to an existing worksheet in the [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook) attached to the spreadsheet.
+- `ActiveCell`: Returns or sets the active cell in the spreadsheet. To set it, you must create a new instance of `IgrSpreadsheetCell` and pass in information about that cell, such as the column and row or the string address of the cell.
+- `ActivePane`: Returns the active pane in the currently active worksheet of the spreadsheet control.
+- `ActiveWorksheet`: Returns or sets the active worksheet in the `IgrWorkbook` of the spreadsheet control. This can be set by setting it to an existing worksheet in the `IgrWorkbook` attached to the spreadsheet.
 
 ## Code Snippet
 
-The following code snippet shows setting activation of the cell and worksheet in the [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) control:
+The following code snippet shows setting activation of the cell and worksheet in the `IgrSpreadsheet` control:
 
 ```ts
 this.spreadsheet.activeWorksheet = this.spreadsheet.workbook.worksheets(1);
@@ -232,9 +230,7 @@ this.spreadsheet.activeCell = new SpreadsheetCell("C5");
 
 ## API References
 
-- [`activeCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activeCell)
-- [`activePane`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activePane)
-- [`activeWorksheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#activeWorksheet)
-- [`SpreadsheetCell`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.spreadsheetcell.html)
-- [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook)
+`IgrSpreadsheetCell`
+<br />
+`IgrSpreadsheet`<br />
+`IgrWorkbook`<br />

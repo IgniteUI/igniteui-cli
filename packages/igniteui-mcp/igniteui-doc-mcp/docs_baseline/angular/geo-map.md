@@ -1,19 +1,21 @@
 ---
-title: Angular Map | Data Visualization Tools | Map Overview | Infragistics
-_description: Use Infragistics' Angular JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Angular map demos!
-_keywords: Angular map, geographic map, imagery tiles, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "Series"]
+title: "Angular Map | Data Visualization Tools | Map Overview | Infragistics"
+description: Use Infragistics' Angular JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Angular map demos!
+keywords: "Angular map, geographic map, imagery tiles, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "Series"]
+llms:
+  description: "The Ignite UI for Angular map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
 _tocName: Geographic Map Features
+_premium: true
 ---
-
 # Angular Map Overview
 
 The Ignite UI for Angular map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps.
 
 ## Angular Map Example
 
-The following sample demonstrates how display data in [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) using [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html) also known as Bubble Series.
+The following sample demonstrates how display data in `IgxGeographicMap` using `IgxGeographicProportionalSymbolSeries` also known as Bubble Series.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -160,11 +162,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
-The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html) can be added for plotting geographic locations such as cities and the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) for plotting connections (e.g. roads) between these geographic locations.
+The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgxGeographicSymbolSeries` can be added for plotting geographic locations such as cities and the `IgxGeographicPolylineSeries` for plotting connections (e.g. roads) between these geographic locations.
 
 The map provides customizable navigation behaviors for navigating map content using mouse, keyboard, or code-behind.
 
@@ -186,7 +186,7 @@ npm install --save igniteui-angular-maps
 
 ## Component Modules
 
-The [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
+The `IgxGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
 ```ts
 // app.module.ts
@@ -227,14 +227,12 @@ export class MapOverviewComponent implements AfterViewInit {
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Usage
 
 Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
 
 ```html
-<div className="sampleRoot" >
+<div class="sampleRoot" >
     <igx-geographic-map #map
         width="700px"
         height="500px"
@@ -243,33 +241,26 @@ Now that the map module is imported, next step is to create geographic map. The 
 </div>
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related Angular map features in these topics:
 
-- [Geographic Map Navigation](geo-map-navigation.md)
+- [Geographic Map Navigation](./geo-map-navigation.md)
 
-<!-- - [Geographic Map Imagery](geo-map-display-imagery-types.md) -->
-
-- [Using Scatter Symbol Series](geo-map-type-scatter-symbol-series.md)
-- [Using Scatter Proportional Series](geo-map-type-scatter-bubble-series.md)
-- [Using Scatter Contour Series](geo-map-type-scatter-contour-series.md)
-- [Using Scatter Density Series](geo-map-type-scatter-density-series.md)
-- [Using Scatter Area Series](geo-map-type-scatter-area-series.md)
-- [Using Shape Polygon Series](geo-map-type-shape-polygon-series.md)
-- [Using Shape Polyline Series](geo-map-type-shape-polyline-series.md)
+- [Using Scatter Symbol Series](./geo-map-type-scatter-symbol-series.md)
+- [Using Scatter Proportional Series](./geo-map-type-scatter-bubble-series.md)
+- [Using Scatter Contour Series](./geo-map-type-scatter-contour-series.md)
+- [Using Scatter Density Series](./geo-map-type-scatter-density-series.md)
+- [Using Scatter Area Series](./geo-map-type-scatter-area-series.md)
+- [Using Shape Polygon Series](./geo-map-type-shape-polygon-series.md)
+- [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
-- [`IgxGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographiccontourlineseriescomponent.html)
-- [`IgxGeographicHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographichighdensityscatterseriescomponent.html)
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html)
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html)
-- [`IgxGeographicSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicsymbolseriescomponent.html)
-- [`IgxGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html)
+`IgxGeographicMap`
+`IgxGeographicContourLineSeries`
+`IgxGeographicHighDensityScatterSeries`
+`IgxGeographicPolylineSeries`
+`IgxGeographicShapeSeries`
+`IgxGeographicProportionalSymbolSeries`
+`IgxGeographicSymbolSeries`
+`IgxGeographicScatterAreaSeries`

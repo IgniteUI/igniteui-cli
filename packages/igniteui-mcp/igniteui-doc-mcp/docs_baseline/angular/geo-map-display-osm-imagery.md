@@ -1,16 +1,17 @@
 ---
-title: Angular Map | Data Visualization Tools | Displaying Open Street Maps Imagery | Infragistics
-_description: Use Infragistics' Angular to display imagery from OSM maps. View Ignite UI for Angular map tutorials!
-_keywords: Angular map, OSM, Ignite UI for Angular, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Angular Map | Data Visualization Tools | Displaying Open Street Maps Imagery | Infragistics"
+description: Use Infragistics' Angular to display imagery from OSM maps. View Ignite UI for Angular map tutorials!
+keywords: "Angular map, OSM, Ignite UI for Angular, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The Angular OpenStreetMapImagery is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world."
 _tocName: Displaying OSM Imagery
 _premium: true
 ---
-
 # Angular Displaying Imagery from Open Street Maps
 
-The Angular [`IgxOpenStreetMapImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxopenstreetmapimagery.html) is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
+The Angular `IgxOpenStreetMapImagery` is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
 By the default, the Ignite UI for Angular map component already displays geographic imagery from the Open Street Maps. Therefore, there is no need to configure the control to display geographic imagery from the Open Street Maps.
 
 ## Angular Displaying Imagery from Open Street Maps Example
@@ -86,11 +87,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-<div class="divider--half"></div>
-
 ## Code Snippet
-
-This code example explicitly sets `BackgroundContent` of the map component to the [`IgxOpenStreetMapImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxopenstreetmapimagery.html) object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets `BackgroundContent` of the map component to the `IgxOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
 
 ```html
 <igx-geographic-map #map
@@ -111,6 +109,4 @@ this.map.backgroundContent = tileSource;
 ```
 
 ## API References
-
-- `BackgroundContent`
-- [`IgxOpenStreetMapImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxopenstreetmapimagery.html)
+`IgxOpenStreetMapImagery`

@@ -5,7 +5,7 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Select In Form"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "select-in-form";
 		this.projectType = "igx-ts";

@@ -1,16 +1,15 @@
 ---
-title: React Tree Grid for Ignite UI for React for
-_description: Use React Tree Grid for essential UI operations. Hosts different UI controls for the Grid’s features - column hiding, pinning, excel exporting, etc.
-_keywords: React, Tree Grid, Tree Grid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["GridToolbar"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid", "GridToolbarActions"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/toolbar
+title: "React Tree Grid for Ignite UI for React for"
+description: Use React Tree Grid for essential UI operations. Hosts different UI controls for the Grid’s features - column hiding, pinning, excel exporting, etc.
+keywords: "React, Tree Grid, Tree Grid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/toolbar"
+llms:
+  description: "The Ignite UI for React Toolbar in is a container for UI operations in the React Tree Grid."
+_componentKey: TreeGrid
 _tocName: Toolbar
 _premium: true
 ---
-
 # React Tree Grid Toolbar
 
 The Ignite UI for React Toolbar in is a container for UI operations in the React Tree Grid. The React toolbar is located at the top of the React component, i.e., the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the React Tree Grid includes:
@@ -21,8 +20,6 @@ The Ignite UI for React Toolbar in is a container for UI operations in the React
 - Advanced Filtering
 
 The toolbar and the predefined UI components support React events and expose API for developers.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ## React Toolbar Grid Example
 
@@ -186,11 +183,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-The predefined [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) and [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle) UI components are added inside the [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
-
-<!-- ComponentStart: TreeGrid -->
+The predefined [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) and [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle) UI components are added inside the [`IgrTreeGrid.toolbar`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=toolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
 ```tsx
 <IgrTreeGrid data={data} primaryKey="ID" foreignKey="ParentID" autoGenerate={true}>
@@ -208,14 +201,10 @@ The predefined [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&co
 </IgrTreeGrid>
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-> [!Note]
-> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+**Note:** 
+As seen in the code snippet above, the predefined [`Actions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions&member=actions) UI components are wrapped in the [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```tsx
 <IgrTreeGrid data={data} primaryKey="ID" foreignKey="ParentID" autoGenerate={true}>
@@ -223,6 +212,8 @@ Of course, each of these UIs can be added independently of each other, or may no
     </IgrGridToolbar>
 </IgrTreeGrid>
 ```
+
+For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
 
 ## Features
 
@@ -233,8 +224,6 @@ As shown above, it can be configured to provide default components for controlli
 These features can be enabled independently from each other by following a pattern similar to the card component of the Ignite UI for React suite.
 
 Listed below are the main features of the toolbar with example code for each of them.
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ```typescript
 export class EmployeesFlatAvatarsItem {
@@ -415,15 +404,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ### Title
 
 Setting a title for the toolbar in your grid is achieved by using the [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle).
 
 Users can provide anything from simple text to more involved templates.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 <IgrGridToolbar>
@@ -433,15 +418,11 @@ Users can provide anything from simple text to more involved templates.
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Actions
 
 The [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 <IgrGridToolbar>
@@ -451,15 +432,11 @@ toolbar interaction components.
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Column Pinning
 
 The [`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 <IgrGridToolbar>
@@ -469,14 +446,10 @@ The component is setup to work out of the box with the parent grid containing th
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Column Hiding
 
 The [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 <IgrGridToolbar>
@@ -486,13 +459,9 @@ title, the placeholder for the component input and the height of the dropdown it
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
 <IgrGridToolbar>
@@ -501,8 +470,6 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
     </IgrGridToolbarActions>
 </IgrGridToolbar>
 ```
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### Data Exporting
 
@@ -514,8 +481,6 @@ These range from changing the display text, to enabling/disabling options in the
 
 Here is a snippet showing some of the options which can be customized through the React template:
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 ```tsx
 <IgrGridToolbar>
     <IgrGridToolbarActions>
@@ -524,18 +489,14 @@ Here is a snippet showing some of the options which can be customized through th
 </IgrGridToolbar>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> [!Note]
-> By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
-> You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
-> You can also cancel the export process by setting the cancel field of the event args to true.
+**Note:** 
+By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
+You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
+You can also cancel the export process by setting the cancel field of the event args to true.
 
 The following code snippet demonstrates subscribing to the toolbar exporting event and configuring the exporter options:
-
-<!-- ComponentStart: TreeGrid -->
 
 ```tsx
 const configureExport = (evt: IgrGridToolbarExportEventArgs) => {
@@ -550,9 +511,8 @@ const configureExport = (evt: IgrGridToolbarExportEventArgs) => {
 
 <IgrTreeGrid onToolbarExporting={configureExport}>
 </IgrTreeGrid>
-```
 
-<!-- ComponentEnd: TreeGrid -->
+```
 
 The following sample demonstrates how to customize the exported files:
 
@@ -724,11 +684,9 @@ root.render(<Sample/>);
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
 
-Moreover, users can set the toolbar [`showProgress`](mcp:get_api_reference?platform=react&component=IgrGridToolbar&member=showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
+Moreover, users can set the toolbar [`ShowProgress`](mcp:get_api_reference?platform=react&component=IgrGridToolbar&member=showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
 
 The sample belows uses has significant amount of data, in order to increase the time needed for data export so the progressbar can be seen. Additionally it has another button that simulates a long running operation in the grid:
-
-<!-- NOTE this sample is differed -->
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -885,9 +843,179 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TreeGridDataExportingIndicatorSample />);
 ```
 
+## Custom Content
+
+If the actions part of the toolbar component is not sufficient for a particular use case, the toolbar itself has a general content projection where users can provide additional UI. If the user needs the respective grid instance for API calls or bindings, they can create a template reference variable.
+
+Here is a sample snippet:
+
+```tsx
+<IgrTreeGrid>
+    <IgrGridToolbar>
+        <IgrGridToolbarTitle>
+           Custom Title
+        </IgrGridToolbarTitle>
+        {/*
+            Everything between the toolbar tags except the default toolbar components
+            will be projected as custom content.
+        */}
+        <IgrGridToolbarActions>
+        </IgrGridToolbarActions>
+    </IgrGridToolbar>
+</IgrTreeGrid>
+```
+
+The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
+
+```typescript
+export class EmployeesFlatAvatarsItem {
+    public constructor(init: Partial<EmployeesFlatAvatarsItem>) {
+        Object.assign(this, init);
+    }
+
+    public Age: number;
+    public Avatar: string;
+    public HireDate: string;
+    public ID: number;
+    public Name: string;
+    public ParentID: number;
+    public Title: string;
+
+}
+export class EmployeesFlatAvatars extends Array<EmployeesFlatAvatarsItem> {
+    public constructor(items: Array<EmployeesFlatAvatarsItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new EmployeesFlatAvatarsItem({ Age: 55, Avatar: `https://dl.infragistics.com/x/img/people/men/25.png`, HireDate: `2008-03-20`, ID: 1, Name: `Johnathan Winchester`, ParentID: -1, Title: `Development Manager` }),
+                new EmployeesFlatAvatarsItem({ Age: 42, Avatar: `https://dl.infragistics.com/x/img/people/women/14.png`, HireDate: `2014-01-22`, ID: 4, Name: `Ana Sanders`, ParentID: -1, Title: `CEO` }),
+                new EmployeesFlatAvatarsItem({ Age: 49, Avatar: `https://dl.infragistics.com/x/img/people/women/12.png`, HireDate: `2014-01-22`, ID: 18, Name: `Victoria Lincoln`, ParentID: -1, Title: `Accounting Manager` }),
+                // ... 15 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.cell__inner {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    margin-left: 30px;
+}
+```
+```tsx
+import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+
+import {
+  IgrCellTemplateContext,
+  IgrGridToolbar,
+  IgrGridToolbarActions,
+  IgrGridToolbarExporter,
+  IgrGridToolbarHiding,
+  IgrGridToolbarPinning,
+  IgrGridToolbarTitle,
+  IgrTreeGrid,
+  IgrTreeGridModule,
+} from "igniteui-react-grids";
+import { IgrColumn } from "igniteui-react-grids";
+import { IgrAvatar, IgrAvatarModule, IgrButton, IgrIcon, IgrIconModule, registerIconFromText } from "igniteui-react";
+
+import "igniteui-react-grids/grids/themes/light/bootstrap.css";
+
+import { EmployeesFlatAvatars } from "./EmployeesFlatAvatars";
+
+IgrTreeGridModule.register();
+IgrAvatarModule.register();
+IgrIconModule.register();
+
+const icon = `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`;
+
+export default function App() {
+  const employeesData = new EmployeesFlatAvatars();
+  const treeGridRef = useRef<IgrTreeGrid>(null);
+
+  useEffect(() => {
+    registerIconFromText("clear", icon, "material");
+  }, []);
+
+  function webTreeGridAvatarCellTemplate(props: {
+    dataContext: IgrCellTemplateContext;
+  }) {
+    return (
+      <div className="cell__inner">
+        <IgrAvatar
+          shape="circle"
+          src={props.dataContext.cell.row.data.Avatar}
+        ></IgrAvatar>
+        <span className="name">{props.dataContext.cell.value}</span>
+      </div>
+    );
+  }
+
+  function clearSort() {
+    treeGridRef.current.clearSort("");
+  }
+
+  return (
+    <div className="container sample ig-typography">
+      <div className="container fill">
+
+        <IgrTreeGrid
+          autoGenerate={false}
+          ref={treeGridRef}
+          data={employeesData}
+          primaryKey="ID"
+          foreignKey="ParentID"
+        >
+          <IgrGridToolbar key="toolbar">
+            <IgrGridToolbarTitle key="toolbarTitle">
+              <span key="toolbarTitleText">Tree Grid Toolbar</span>
+            </IgrGridToolbarTitle>
+            <IgrButton key="btn" onClick={clearSort}>
+              <span slot="prefix" key="clearIcon">
+                <IgrIcon name="clear" collection="material"></IgrIcon>
+              </span>
+              <span key="clearSort">Clear Sort</span>
+            </IgrButton>
+            <IgrGridToolbarActions key="toolbarActions">
+              <IgrGridToolbarHiding key="toolbarHiding"></IgrGridToolbarHiding>
+              <IgrGridToolbarPinning key="toolbarPinning"></IgrGridToolbarPinning>
+              <IgrGridToolbarExporter key="toolbarExporter"></IgrGridToolbarExporter>
+            </IgrGridToolbarActions>
+          </IgrGridToolbar>
+          <IgrColumn
+            field="Name"
+            dataType="string"
+            bodyTemplate={webTreeGridAvatarCellTemplate}
+          ></IgrColumn>
+          <IgrColumn field="Title" dataType="string" sortable={true}></IgrColumn>
+          <IgrColumn field="ID" dataType="number" sortable={true}></IgrColumn>
+          <IgrColumn field="Age" dataType="number" sortable={true}></IgrColumn>
+          <IgrColumn field="HireDate" dataType="date" sortable={true}></IgrColumn>
+        </IgrTreeGrid>
+      </div>
+    </div>
+  );
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -1073,20 +1201,13 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-The Grid Toolbar service has a few more APIs to explore, which are listed below.
-
-- [`IgrGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGridToolbarAdvancedFiltering)
-- [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
-- [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter)
-- [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
-- [`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning)
-- [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
-
-[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) Events:
-
-- `ToolbarExporting`
-
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
+[`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
+[`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter)
+[`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning)
+[`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
+[`IgrGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGridToolbarAdvancedFiltering)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

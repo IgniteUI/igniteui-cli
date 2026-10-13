@@ -1,10 +1,11 @@
 ---
 title: How to create ASP.NET Core SignalR service for live-data streaming.
-_description: Modern data grid & dock manager are used for application creation along with ASP.NET Core SignalR.
-_keywords: angular, signalr, .net core, infragistics
+description: Modern data grid & dock manager are used for application creation along with ASP.NET Core SignalR.
+keywords: angular, signalr, .net core, infragistics
+llms:
+  description: "In this topic, we’ll see how to create applications for both streaming and receiving data with ASP.NET Core SignalR."
 _tocName: Build Real-time SignalR App with .NET Core
 ---
-
 # Real-time Web App with ASP.NET Core SignalR
 
 In this topic, we’ll see how to create applications for both _streaming_ and _receiving_ data with **ASP.NET Core SignalR**.
@@ -26,19 +27,7 @@ When we talk in terms of [WebSockets](https://docs.microsoft.com/en-us/aspnet/co
 
 This is how SignalR handles modern clients and servers, it uses WebSockets under the hood when available, and gracefully falls back to other techniques and technologies when it isn't:
 
-<img style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc; min-width: calc(100% - 950px); max-width: calc(100% - 400px);"
-  src="../../../images/general/how-to/ws-party-1.jpg"
-  data-src="../../../images/general/how-to/ws-party-1.jpg"
-  alt="Real-time Web App with ASP.NET Core SignalR"
-  title="Real-time Web App with ASP.NET Core SignalR" />
-
 It's like a handshake, the Client and Server agree on what to use and they use it. This is called **process negotiation**.
-
-<img style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc; min-width: calc(100% - 650px); max-width: calc(100% - 400px);"
-  src="../../../images/general/how-to/ws-lets-party.jpg"
-  data-src="../../../images/general/how-to/ws-lets-party.jpg"
-  alt="Real-time Web App with Web Sockets"
-  title="Real-time Web App with Web Sockets" />
 
 ## SignalR Example
 
@@ -788,13 +777,6 @@ igx-grid {
 Let's see how to set up the ASP.NET Core SignalR application.
 In Visual Studio from _File_ >> _New project_ choose ASP.NET Core Web Application and follow the setup. Feel free to follow [the official Microsoft documentation tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-3.1&tabs=visual-studio) if you experience any configuration difficulties.
 
-<img style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc; min-width: calc(100% - 650px); max-width: calc(100% - 400px);"
-  src="../../../images/general/how-to/create-new-project.jpg"
-  data-src="../../../images/general/how-to/create-new-project.jpg"
-  alt="Create ASP.NET Core App project"
-  title="Create ASP.NET Core App project" />
-
-
 ### SignalR Config Setup
 
 Add the following code to the [Startup.cs file](https://github.com/IgniteUI/finjs-web-api/blob/master/WebAPI/Startup.cs):
@@ -865,12 +847,6 @@ Let's start by explaining what is a [SignalR hub?](https://docs.microsoft.com/en
 The SignalR Hub API enables you to call methods on connected clients from the server. In the server code, you define methods that are called by the client. In SignalR there is this concept called _Invocation_ - you can actually be calling the hub from the client with a particular method. In the client code, you define methods that are called from the server.
 
 The actual hub lives on the server-side. Imagine you have _Clients_ and _the Hub_ is between all of them. You can say something to all the Clients with `Clients.All.doWork()` by invoking a method on the hub. This will goes to all connected clients. Also, you can communicate with only one client, which is the Caller, because he is the caller of that particular method.
-
-<img style="-webkit-box-shadow: 8px 9px 9px 5px #ccc; -moz-box-shadow: 8px 9px 9px 5px #ccc; box-shadow: 8px 9px 9px 5px #ccc; min-width: calc(100% - 650px); max-width: calc(100% - 400px);"
-  src="../../../images/general/how-to/ws-hub-callers.jpg"
-  data-src="../../../images/general/how-to/ws-hub-callers.jpg"
-  alt="SignalR Hub Setup with callers"
-  title="SignalR Hub Setup with callers" />
 
 We've created a [StreamHub class](https://github.com/IgniteUI/finjs-web-api/blob/d493f159e0a6f14b5ffea3e893f543f057fdc92a/WebAPI/Models/StreamHub.cs#L9) that inherits the base Hub class, which is responsible for managing connections, groups, and messaging. It's good to keep in mind that the Hub class is stateless and each new invocation of a certain method is in a new instance of this class. It's useless to save state in instance properties, rather we suggest using static properties, in our case we use static key-value pair collection to store data for each connected client.
 

@@ -1,14 +1,15 @@
 ---
-title: React Data Chart | Data Visualization Tools | Synchronization | Infragistics
-_description: Synchronize between multiple Infragistics' React charts controls including zooming, panning and crosshair events. Learn about our Ignite UI for React graph synchronization capabilities!
-_keywords: React charts, data chart, synchronization, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamDataChart"]
+title: "React Data Chart | Data Visualization Tools | Synchronization | Infragistics"
+description: Synchronize between multiple Infragistics' React charts controls including zooming, panning and crosshair events. Learn about our Ignite UI for React graph synchronization capabilities!
+keywords: "React charts, data chart, synchronization, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["DataChart"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for React data chart allows for synchronization with respect to the coordination of zooming, panning, and crosshair events between multiple charts."
 _tocName: Chart Synchronization
 _premium: true
 ---
-
 # React Chart Synchronization
 
 The Ignite UI for React data chart allows for synchronization with respect to the coordination of zooming, panning, and crosshair events between multiple charts. This can help you to visualize the same areas of multiple charts, assuming your data sources are similar or the same with respect to the axes.
@@ -134,23 +135,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartSynchronization/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Chart Synchronization Properties
 
 There are four options of chart synchronization, in that you can synchronize horizontally only, vertically only, both, or you can choose not to synchronize at all, which is the default.
 
 If you want to synchronize a set of charts, you can assign them the same name to the `SyncChannel` property and then specify whether or not to synchronize the charts horizontally and/or vertically by setting the `SynchronizeHorizontally` and `SynchronizeVertically` properties to the corresponding boolean value.
 
-Note that in order to synchronize either vertically and/or horizontally, you will need to set the [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isHorizontalZoomEnabled) and/or [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isVerticalZoomEnabled) property to **true**, respectively. A synchronized chart that is dependent on another chart will still zoom regardless of this property setting.
+Note that in order to synchronize either vertically and/or horizontally, you will need to set the `IsHorizontalZoomEnabled` and/or `IsVerticalZoomEnabled` property to **true**, respectively. A synchronized chart that is dependent on another chart will still zoom regardless of this property setting.
 
 ## API References
-
-The following is a list of API members mentioned in the above sections:
-
-- [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isHorizontalZoomEnabled)
-- [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isVerticalZoomEnabled)
-- `SyncChannel`
-- `SynchronizeHorizontally`
-- `SynchronizeVertically`
-- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
+`IgrDataChart`

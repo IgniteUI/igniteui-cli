@@ -1,13 +1,14 @@
 ---
 title: Free Web Components Data Grid Lite (Open Source) - Ignite UI Grid Lite | MIT license
-_description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
-_keywords: overview, Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
+description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
+keywords: overview, Web Components, , Ignite UI for Web Components, Infragistics
+mentionedTypes: []
 namespace: Infragistics.Controls
-_license: MIT
+license: MIT
+llms:
+  description: "The Ignite UI for Web Components Grid Lite is a lightweight, high-performance Web Components data grid that’s free to use, open-source, and built for modern Web Components applications."
 _tocName: Grid Lite
 ---
-
 # Free & Open-Source Web Components Data Grid (Grid Lite)
 
 The Ignite UI for Web Components Grid Lite is a lightweight, high-performance Web Components data grid that’s free to use, open-source, and built for modern Web Components applications.
@@ -21,11 +22,10 @@ Our free, open-source Web Components Grid Lite comes with the following column-b
 ## Installation and Setup
 
 ### Installation
-
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
 
 ```cmd
-npm install igniteui-grid-lite
+npm install igniteui-grid-lite --save
 ```
 
 Or using yarn:
@@ -36,6 +36,22 @@ yarn add igniteui-grid-lite
 
 ### Using the Grid Lite in your Web Components code
 
+In the file where you want to use Grid Lite, import and register it before your component class or function is declared:
+
+```ts
+import { IgcGridLite } from 'igniteui-grid-lite';
+
+IgcGridLite.register();
+```
+
+Get the element from the HTML in your TypeScript file by id:
+
+```ts
+const gridLite = document.getElementById('grid-lite') as IgcGridLite<ProductInfo>;
+```
+
+Add the `<igc-grid-lite>` element to your markup:
+
 ```html
 <div class="grid-lite-wrapper">
     <igc-grid-lite id="grid-lite"></igc-grid-lite>
@@ -43,7 +59,6 @@ yarn add igniteui-grid-lite
 ```
 
 ## Grid Lite in Action
-
 ```typescript
 export type UserSimple = {
   id: string;
@@ -230,3 +245,8 @@ Yes. Ignite UI Grid Lite is a free, open-source Web Components data grid release
 - No feature gating
 
 However, if your project scales and grows in complexity and functionality, and you require an enterprise-grade application, we have a seamless upgrade strategy. It will make the transitioning from the free Web Components data grid (Grid Lite) to the full-featured and advanced Data Grid simpler and faster.
+
+## API References
+
+[`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
+[`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />

@@ -1,21 +1,22 @@
 ---
 title: ComboBox Remote Binding - MIT license 
-_description: The igx-combo exposes API that allows to bind a combo to a remote service and retrieve data on demand.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Combo controls, Angular Combo Remote Binding
-_license: MIT
+description: The igx-combo exposes API that allows to bind a combo to a remote service and retrieve data on demand.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Combo components, Angular Combo controls, Angular Combo Remote Binding
+license: MIT
+llms:
+  description: "The Ignite UI for Angular ComboBox Component exposes an API that allows binding a combobox to a remote service and retrieving data on demand."
 _tocName: Remote Binding
 ---
-
 # ComboBox Remote Binding
 
-<p class="highlight">
+<div class="highlight">
+
 The Ignite UI for Angular ComboBox Component exposes an API that allows binding a combobox to a remote service and retrieving data on demand.
-</p>
+</div>
 
 ## Angular ComboBox Remote Binding Example
 
-The sample below demonstrates remote binding using the [dataPreLoad](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=dataPreLoad) property to load new chunk of remote data:
-
+The sample below demonstrates remote binding using the [`dataPreLoad`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=dataPreLoad) property to load new chunk of remote data:
 
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
@@ -103,8 +104,9 @@ export class ComboRemoteComponent implements OnInit, AfterViewInit {
     }
 
     public onOpened() {
-        const scroll: number = this.remoteCombo.virtualScrollContainer.getScrollForIndex(this.itemID - 1);
-        this.remoteCombo.virtualScrollContainer.scrollPosition = scroll + this.additionalScroll;
+        // additionalScroll is one row, set when the selection is the last item. Landing a
+        // row further down puts that item at the bottom of the viewport.
+        void this.remoteCombo.virtualScrollContainer.scrollToIndex(this.itemID - 1 + (this.additionalScroll ? 1 : 0), { block: 'start' });
         this.cdr.detectChanges();
     }
 
@@ -171,7 +173,6 @@ export class ComboRemoteComponent implements OnInit, AfterViewInit {
 }
 ```
 
-
 ## Usage
 
 To get started with the ComboBox component, first you need to import the `IgxComboModule` in your **app.module.ts** file. In this demo, a remote service is used for server requests, therefore, we also need to include the `HttpClientModule`:
@@ -195,7 +196,7 @@ export class AppModule {}
 
 ### Define Remote Service
 
-When binding a combobox to remote data, we need to have an available service that will load data on demand from a server. The combobox component exposes the [virtualizationState](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=virtualizationState) property which gives the current state of a combobox - the first index and the number of items that need to be loaded. In order to show properly the scroll size, the [totalItemCount](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=totalItemCount) property should have value that corresponds to the total items on the server.
+When binding a combobox to remote data, we need to have an available service that will load data on demand from a server. The combobox component exposes the [`virtualizationState`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=virtualizationState) property which gives the current state of a combobox - the first index and the number of items that need to be loaded. In order to show properly the scroll size, the [`totalItemCount`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=totalItemCount) property should have value that corresponds to the total items on the server.
 
 The code below defines a simple service that has a `getData()` method, which receives combobox's current state information and returns data as an observable:
 
@@ -365,37 +366,35 @@ export class ComboRemoteComponent implements OnInit {
 }
 ```
 
-> [!Note]
-> Anytime new data is loaded, we update the `totalItemCount` property, in order to have proper size of the list's scroll bar. In that case, the service returns total size using the property `@odata.count`.
-> [!Note]
-> A service needs to be included as a provider.
+**Note:** 
+Anytime new data is loaded, we update the `totalItemCount` property, in order to have proper size of the list's scroll bar. In that case, the service returns total size using the property `@odata.count`.
+
+**Note:** 
+A service needs to be included as a provider.
 
 ### Handling Selection
 
-When using a combobox bound to remote data loaded in chunks and dealing with a more complex data type (e.g. objects), it is necessary to define a `valueKey`. As stated in the [combobox topic](combo.md#data-value-and-display-properties), when no `valueKey` is specified, the combobox will try to handle selection by `equality (===)`. Since the objects that will be marked as selected will not be the same as the object that are continuously loaded, the selection will fail.
+When using a combobox bound to remote data loaded in chunks and dealing with a more complex data type (e.g. objects), it is necessary to define a `valueKey`. As stated in the [combobox topic](/combo#data-value-and-display-properties), when no `valueKey` is specified, the combobox will try to handle selection by `equality (===)`. Since the objects that will be marked as selected will not be the same as the object that are continuously loaded, the selection will fail.
 
-> [!Note]
-> When binding a combobox to remote data, make sure to specify a `valueKey`, representing a property that is unique to each item.
+**Note:** 
+When binding a combobox to remote data, make sure to specify a `valueKey`, representing a property that is unique to each item.
 
 When the combobox is bound to remote data, setting value/selected items through API will only take into account the items that are loaded in the current chunk. If you want to set an initial value, make sure those specific items are loaded before selecting.
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
-- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-
+<hr/>
+- [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
+- `IgxComboComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+<hr/>
 
-- [ComboBox Component](combo.md)
-- [ComboBox Features](combo-features.md)
-- [ComboBox Templates](combo-templates.md)
-- [Template Driven Forms Integration](input-group.md)
-- [Reactive Forms Integration](angular-reactive-form-validation.md)
-- [Single Select ComboBox](simple-combo.md)
+- [ComboBox Component](/combo)
+- [ComboBox Features](/combo-features)
+- [ComboBox Templates](/combo-templates)
+- [Template Driven Forms Integration](/input-group)
+- [Reactive Forms Integration](/angular-reactive-form-validation)
+- [Single Select ComboBox](/simple-combo)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,16 +1,17 @@
 ---
 title: Angular Grid Lite Data Binding | Ignite UI for Angular | MIT license
-_description: Data binding for Angular Grid Lite. Create apps with our open-source Angular Grid Lite. It’s lightweight and packed with essential features. Try now.
-_keywords: data binding, Infragistics
-_license: MIT
-mentionedTypes: [{ComponentApiMembers}]
+description: Data binding for Angular Grid Lite. Create apps with our open-source Angular Grid Lite. It’s lightweight and packed with essential features. Try now.
+keywords: data binding, Infragistics
+license: MIT
+mentionedTypes: []
 namespace: Infragistics.Controls
+llms:
+  description: "The Grid Lite accepts an array of plain objects as a data source."
 _tocName: Data Binding
 ---
-
 # Angular Grid Lite Data Binding
 
-The Grid Lite accepts and array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
+The Grid Lite accepts an array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
 
 When applying data transformations, such as sorting and filtering, the grid does not modify the original data reference. That is to say, data transformations will not be reflected in the original source. The grid does not track changes to the objects inside the data array, so direct modification of the data objects will not be reflected.
 
@@ -26,7 +27,7 @@ grid.data = [...{
 
 ```html
 <igx-grid-lite>
-    <!-- Update column configuration, add or remove columns as needed to represent the new data. -->
+    {/* Update column configuration, add or remove columns as needed to represent the new data. */}
     <igx-grid-lite-column field="id"></igx-grid-lite-column>
 </igx-grid-lite>
 ```
@@ -50,9 +51,10 @@ Or just set the respective properties in the html instead of using a `@ViewChild
 ```
 
 
->[!NOTE]
->The sort/filter states of the Grid Lite component are kept when changing the data source in this manner.
-Usually you will want to reset them by calling either **`clearSort()`** and/or **`clearFilter()`**.
+**Note:** 
+The sort/filter states of the Grid Lite component are kept when changing the data source in this manner.
+
+Usually you will want to reset them by calling either [`clearSort()`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=clearSort) and/or [`clearFilter()`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent&member=clearFilter).
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.
@@ -121,19 +123,17 @@ igx-grid-lite {
 }
 ```
 
-<!-- TODO ## API References
+## API References
 
-* `{ComponentName}`
-* `Column`
-
--->
+- [`IgxGridLite`](mcp:get_api_reference?platform=angular&component=IgxGridLiteComponent)
+- [`IgxGridLiteColumn`](mcp:get_api_reference?platform=angular&component=IgxGridLiteColumnComponent)
 
 ## Additional Resources
 
-- [Column Configuration](column-configuration.md)
-- [Sorting](sorting.md)
-- [Filtering](filtering.md)
-- [Theming & Styling](theming.md)
+- [Column Configuration](/grid-lite/column-configuration)
+- [Sorting](/grid-lite/sorting)
+- [Filtering](/grid-lite/filtering)
+- [Theming & Styling](/grid-lite/theming)
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,13 +1,14 @@
 ---
-title: Blazor Dock Manager | Updating Panes | Infragistics
-_description: Use Infragistics' Blazor dock manager control to create interactive content using panes that can update based on actions. Check out Ignite UI for Blazor dock manager tutorials!
-_keywords: dock manager, layout, updating panes, Ignite UI for Blazor
-_license: commercial
+title: "Blazor Dock Manager | Updating Panes | Infragistics"
+description: Use Infragistics' Blazor dock manager control to create interactive content using panes that can update based on actions. Check out Ignite UI for Blazor dock manager tutorials!
+keywords: dock manager, layout, updating panes, Ignite UI for Blazor
+license: commercial
 mentionedTypes: ["DockManager"]
+llms:
+  description: "The Infragistics Blazor Dock Manager component provides you with the layout for creating interactive content in your application using panes that can update based on actions of end-users."
 _tocName: Using Panes
 _premium: true
 ---
-
 # Blazor Updating Panes in Dock Manager
 
 The Infragistics Blazor Dock Manager component provides you with the layout for creating interactive content in your application using panes that can update based on actions of end-users.
@@ -166,50 +167,6 @@ The Infragistics Blazor Dock Manager component provides you with the layout for 
 }
 ```
 
-<!-- <div>
-    <button data-localize="stackblitz" disabled class="stackblitz-btn" data-iframe-id="dock-manager-overview-iframe" data-demos-base-url="https://localhost:44317">View on StackBlitz
-    </button>
-</div> -->
-
-<div class="divider--half"></div>
-
-<!--
-## Usage
-
-Once the Dock Manager is imported, you can add it on the page:
-
-```html
-<igc-dockmanager id="dockManager">
-</igc-dockmanager>
-```
-
-```ts
-import { IgcDockManagerPaneType, IgcSplitPaneOrientation, IgcDockManagerComponent } from 'igniteui-dockmanager';
-
-// ...
-
-this.dockManager = document.getElementById("dockManager") as IgcDockManagerComponent;
-this.dockManager.layout = {
-    rootPane: {
-        type: IgcDockManagerPaneType.splitPane,
-        orientation: IgcSplitPaneOrientation.horizontal,
-        panes: [
-            {
-                type: IgcDockManagerPaneType.contentPane,
-                contentId: 'content1',
-                header: 'Pane 1'
-            }
-        ]
-    }
-};
-```
-
-```html
-<igc-dockmanager id="dockManager">
-    <div slot="content1" style="width: 100%; height: 100%;">Content 1</div>
-</igc-dockmanager>
-``` -->
-
 ## API References
 
-- [`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)
+[`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)<br />

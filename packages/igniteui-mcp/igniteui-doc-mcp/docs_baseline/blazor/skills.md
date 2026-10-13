@@ -1,21 +1,20 @@
 ---
-title: Agent Skills | AI Skills | AI-Assisted Development | Ignite UI for Blazor | Infragistics
-_description: Learn how to use Agent Skills to supercharge AI-assisted development with Ignite UI for Blazor components, grids, data operations, and theming.
-_keywords: Ignite UI for Blazor, agent skills, ai assisted development, github copilot, cursor, windsurf, claude, gemini cli, junie
-_license: MIT
+title: "Agent Skills | AI Skills | AI-Assisted Development | Ignite UI for Blazor | Infragistics"
+description: "Learn how to use Agent Skills to supercharge AI-assisted development with Ignite UI for Blazor components, grids, data operations, and theming."
+keywords: "Ignite UI for Blazor, agent skills, ai assisted development, github copilot, cursor, windsurf, claude, gemini cli, junie"
+license: MIT
 mentionedTypes: []
 last_updated: "2026-04-24"
+llms:
+  description: "Ignite UI for Blazor ships with Agent Skills - structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, Gemini CLI, JetBrains Junie, etc.) how to work with Ignite UI for Blazor."
 _tocName: Agent Skills
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Ignite UI for Blazor Agent Skills
 
 Ignite UI for Blazor ships with **[Agent Skills](https://agentskills.io/)** - structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, Gemini CLI, JetBrains Junie, etc.) how to work with Ignite UI for Blazor. These skill files provide context-aware guidance on components, grids, data operations, and theming, enabling your AI assistant to generate accurate, idiomatic code that follows best practices.
 
-> [!NOTE]
-> The AI tooling landscape is evolving rapidly. Skill discovery locations and distribution options may change as tools and IDEs are updated. Always consult the official documentation for your specific tool or agent for the latest information.
+**Note:** 
+The AI tooling landscape is evolving rapidly. Skill discovery locations and distribution options may change as tools and IDEs are updated. Always consult the official documentation for your specific tool or agent for the latest information.
 
 ## Available Skills
 
@@ -134,8 +133,8 @@ ig ai-config --assistants generic vscode --agents claude copilot cursor
 | `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively |
 | `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively |
 
-> [!NOTE]
-> For Blazor, `ai-config` detects your project via `.csproj` or `.sln`. The `IgniteUI.Blazor` NuGet package does not need to be installed. If no project file is found, the command prompts you to select a framework.
+**Note:** 
+For Blazor, `ai-config` detects your project via `.csproj` or `.sln`. The `IgniteUI.Blazor` NuGet package does not need to be installed. If no project file is found, the command prompts you to select a framework.
 
 ### **Option B - Use the `GitHub CLI`**
 
@@ -208,14 +207,12 @@ For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./
 
 ## Additional Resources
 
-<div class="divider--half"></div>
-
 - [Getting Started with Ignite UI for Blazor](../general-getting-started.md)
+
 - [AI-Assisted Development with Ignite UI](./ai-assisted-development-overview.md)
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)
 
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)

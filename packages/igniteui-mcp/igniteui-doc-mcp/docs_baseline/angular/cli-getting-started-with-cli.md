@@ -1,14 +1,12 @@
 ---
 title: Getting Started with Ignite UI CLI | Ignite UI for Angular | Infragistics
-_description: Install the Ignite UI CLI globally and use it to scaffold Angular projects, add component views, run a development server, and connect an MCP server to your AI coding assistant.
-_keywords: ignite ui cli, ignite ui for angular, angular scaffolding, getting started, infragistics
+description: Install the Ignite UI CLI globally and use it to scaffold Angular projects, add component views, run a development server, and connect an MCP server to your AI coding assistant.
+keywords: ignite ui cli, ignite ui for angular, angular scaffolding, getting started, infragistics
 last_updated: "2026-04-21"
-_license: MIT
+llms:
+  description: "The Ignite UI CLI is a standalone global command-line tool for scaffolding Angular, React, and jQuery projects pre-configured for Ignite UI components."
 _tocName: Getting Started with Ignite UI CLI
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Getting Started with Ignite UI CLI
 
 The Ignite UI CLI is a standalone global command-line tool for scaffolding Angular, React, and jQuery projects pre-configured for Ignite UI components. It provides a guided step-by-step wizard for first-time setup, non-interactive `new` and `add` commands for scripted workflows, a development server, and a built-in MCP server for connecting AI coding assistants to live Ignite UI documentation.
@@ -56,14 +54,14 @@ ig new
 ```
 
 <div style="display:inline-block;">
-    <a style="background: url(../../../images/general/buildCLIapp.gif); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;"
+    <a style={`background: url(${buildCLIappGif.src}); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;`}
        href="https://youtu.be/QK_NsdtdA70" target="_blank">
-        <img src="../../../images/general/play.svg" alt="Play video: Building Your First Ignite UI CLI App" style="vertical-align: middle;" />
+        
     </a>
     <p style="text-align:center;">Building Your First Ignite UI CLI App</p>
 </div>
 
-For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI CLI](step-by-step-guide-using-cli.md).
+For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI CLI](./step-by-step-guide-using-cli.md).
 
 ### Create a project directly
 
@@ -91,16 +89,23 @@ ig new my-app --framework=angular --type=igx-ts --assistants none --agents none
 3. Git is initialized (unless `--skip-git`)
 4. Dependencies are installed (unless `--skip-install`)
 
-> [!NOTE]
-> As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project with standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
+**Note:** 
+As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project with standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
 
-The new application is created in a directory named after the project. The following project templates are available for Angular:
+The new application is created in a directory named after the project. The following base project templates are available for Angular:
 
 | Template ID   | Description                                                                                                                                      |
 | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------- |
-| empty         | Project structure with routing and a home page                                                                                                   |
-| side-nav      | Project structure with a side navigation drawer                                                                                                  |
-| side-nav-auth | Side navigation project extended with a user authentication module. See [Angular Authentication Project Template](auth-template.md) for details. |
+| empty         | Project structure with routing and a home page. Authentication is not available for this template.                                               |
+| side-nav      | Project structure with a side navigation drawer. Supports authentication as an add-on (see below).                                               |
+| side-nav-mini | Project structure with a compact side navigation drawer. Supports authentication as an add-on (see below).                                       |
+
+When using the interactive wizard, selecting `side-nav` or `side-nav-mini` triggers an additional prompt asking whether to add authentication. The following template IDs are generated and can also be used directly with `ig new` for non-interactive creation - they are not shown in the wizard's template list:
+
+| Template ID        | Description                                                                                                                                          |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| side-nav-auth      | Side navigation extended with a user authentication module. See [Angular Authentication Project Template](./auth-template.md) for details.                |
+| side-nav-mini-auth | Side navigation mini extended with a user authentication module. See [Angular Authentication Project Template](./auth-template.md) for details.           |
 
 The following arguments are available when creating a project:
 
@@ -176,7 +181,7 @@ The following arguments are available when creating a project:
 
 ## Add a Component Template
 
-To add an [available Ignite UI for Angular template](component-templates.md) to an existing project, provide the template ID and a name for the new component:
+To add an [available Ignite UI for Angular template](./component-templates.md) to an existing project, provide the template ID and a name for the new component:
 
 ```cmd
 ig add grid newGrid
@@ -188,7 +193,7 @@ To list all available templates in your project directory:
 ig list
 ```
 
-Template addition is supported in projects created with the Ignite UI CLI, Angular Schematics, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI CLI](step-by-step-guide-using-cli.md#add-view).
+Template addition is supported in projects created with the Ignite UI CLI, Angular Schematics, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI CLI](./step-by-step-guide-using-cli.md#add-view).
 
 The following arguments are available when adding a template:
 
@@ -241,7 +246,7 @@ ig ai-config --assistants generic vscode --agents claude copilot
 ```
 
 | Flag | Values | Default |
-|------|--------|---------|  
+|------|--------|---------|
 | `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively; `generic` in non-interactive mode |
 | `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively; `generic` + `claude` in non-interactive mode |
 
@@ -250,7 +255,7 @@ When run without flags, `ig ai-config` enters interactive mode and prompts you t
 1. **Choose coding assistants** - select one or more targets for MCP server configuration (Generic, VS Code, Cursor, Gemini, Junie), or None to skip.
 2. **Choose AI agents** - select one or more agents for skill files and instruction files (Generic, Claude, Copilot, Cursor, Codex, Windsurf, Gemini, Junie), or None to skip.
 
-Defaults in interactive mode are **Generic** for assistants and **Generic + Claude** for agents. For details on the wizard prompts, see [Step-by-Step Guide Using Ignite UI CLI - Configure AI assistants](step-by-step-guide-using-cli.md#configure-ai-assistants).
+Defaults in interactive mode are **Generic** for assistants and **Generic + Claude** for agents. For details on the wizard prompts, see [Step-by-Step Guide Using Ignite UI CLI - Configure AI assistants](./step-by-step-guide-using-cli.md#configure-ai-assistants).
 
 If you want to configure your AI client manually, or use a client other than VS Code, start the MCP server directly:
 

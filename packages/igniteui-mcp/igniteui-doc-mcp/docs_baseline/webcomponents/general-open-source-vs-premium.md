@@ -1,10 +1,11 @@
 ---
 title: Open Source vs Premium | Ignite UI for Web Components | Infragistics
-_description: Ignite UI for Angular is a complete set of native Angular UI components, which allow you to build fast, feature-rich and Material designed applications!
-_keywords: Ignite UI for Web Components, getting started, angular components
+description: Ignite UI for Angular is a complete set of native Angular UI components, which allow you to build fast, feature-rich and Material designed applications!
+keywords: "Ignite UI for Web Components, getting started, angular components"
+llms:
+  description: "Ignite UI for Web Components offers two distinct paths for building modern, data-driven applications: Open-Source Components and Premium Components."
 _tocName: Open-Source vs Premium
 ---
-
 # Open-Source vs Premium in Ignite UI for Web Components
 
 Ignite UI for Web Components offers two distinct paths for building modern, data-driven applications: Open-Source Components and Premium Components. This dual approach ensures flexibility for developers at every stage of their project.
@@ -28,7 +29,7 @@ Our Ignite UI Premium components come with advanced enterprise features and are 
 - [Charting library](../components/charts/chart-overview.md)
 - [Maps library](../components/geo-map.md)
 - [Spreadsheet](../components/spreadsheet-overview.md)
-- [Excel Library](../components/excel-library.md)
+- [Excel Library](../components/excel-library.md)  
 - Gauges - [Bullet Graph](../components/bullet-graph.md), [Linear Gauge](../components/linear-gauge.md) and [Radial Gauge](../components/radial-gauge.md)
 - [Toolbar](../components/menus/toolbar.md)
 

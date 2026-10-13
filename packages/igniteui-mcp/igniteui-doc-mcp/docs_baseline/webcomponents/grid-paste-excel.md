@@ -1,24 +1,24 @@
 ---
-title: Web Components Excel Like {ComponentTitle} - Infragistics
-_description: Configure the Web Components Grid to paste data from excel, by using rich and performance API with less code, and use the rich API do export selected grid data easily.
-_keywords: export selected, igniteui for Web Components, {ComponentKeywords}, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Excel Like  - Infragistics"
+description: Configure the Web Components Grid to paste data from excel, by using rich and performance API with less code, and use the rich API do export selected grid data easily.
+keywords: export selected, igniteui for Web Components, , Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["Infragistics.Controls.Grid"]
+llms:
+  description: "The Ignite UI for Web Components Grid can read Excel data that is copied to the clipboard."
 _tocName: Paste from Excel
 _premium: true
 ---
-
 # Web Components Grid Paste from Excel
 
-The Ignite UI for Web Components [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
+The Ignite UI for Web Components [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
 
 ## Web Components Paste from Excel Example
 
-This sample demonstrates how to implement pasting from Excel into the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Material UI table.
+This sample demonstrates how to implement pasting from Excel into the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Material UI table.
 To work with the sample open up any Excel spreadsheet, copy some rows, and paste it into the grid using the keyboard (<kbd>CTRL</kbd> + <kbd>V</kbd>, <kbd>SHIFT</kbd> + <kbd>INSERT</kbd>,<kbd>CMD</kbd> + <kbd>V</kbd>).
 
 On the top there is a dropdown button with 2 options:
-
 <ol>
 <li>"Paste data as new rows" – in this mode any data copied from Excel will be appended to the grid as new rows</li>
 <li>"Paste starting from active cell" – in this mode the data in the grid will be overwritten.</li>
@@ -185,6 +185,7 @@ public processData(data: any) {
     }
     return pasteData;
 }
+
 ```
 
 The pasted data can then be added as new records or used to update the existing records based on the user selection.
@@ -269,15 +270,14 @@ public updateRecords(processedData: any[]) {
         }
     }
 }
+
 ```
 
 ## API References
-
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
-
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 ## Additional Resources
 
-- [Excel Exporter](export-excel.md) - Use the Excel Exporter service to export data to Excel from Grid. It also provides the option to only export the selected data from the Grid. The exporting functionality is encapsulated in the ExcelExporterService class and the data is exported in MS Excel table format. This format allows features like filtering, sorting, etc. To do this you need to invoke the ExcelExporterService's export method and pass the Grid component as first argument.
+- [Excel Exporter](./export-excel.md) - Use the Excel Exporter service to export data to Excel from Grid. It also provides the option to only export the selected data from the Grid. The exporting functionality is encapsulated in the ExcelExporterService class and the data is exported in MS Excel table format. This format allows features like filtering, sorting, etc. To do this you need to invoke the ExcelExporterService's export method and pass the Grid component as first argument.
 
 Our community is active and always welcoming to new ideas.
 

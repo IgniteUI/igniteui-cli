@@ -1,31 +1,25 @@
 ---
-title: Blazor Grid Row Selection - Ignite UI for Blazor
-_description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Blazor Grid. See demos & examples!
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["GridBaseDirective", "RowSelectorTemplateDetails", "HeadSelectorTemplateDetails", "Checkbox"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-selection
+title: "Blazor Grid Row Selection - Ignite UI for Blazor"
+description: Perform data manipulation without affecting the underlying data with Grid Batch Editing, using Blazor Grid. See demos & examples!
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-selection"
+llms:
+  description: "The Ignite UI for Blazor Row Selection feature in Blazor Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data."
+_componentKey: Grid
 _tocName: Row Selection
 _premium: true
 ---
-
 # Blazor Grid Row Selection
 
 The Ignite UI for Blazor Row Selection feature in Blazor Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid):
-
 - None Selection
 - Multiple Selection
 - Single Selection
 
 ## Blazor Row Selection Example
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
 The sample below demonstrates the three types of [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -284,10 +278,9 @@ public class FinancialDataAll
 ```
 
 ## Setup
+In order to setup row selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), you just need to set the [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) property. This property accepts [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
 
-In order to setup row selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), you just need to set the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) property. This property accepts `GridSelectionMode` enumeration.
-
-`GridSelectionMode` exposes the following modes:
+[`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**
@@ -297,11 +290,11 @@ Below we will take a look at each of them in more detail.
 
 ### None Selection
 
-In the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by default row selection is disabled ([`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) UI, the only way to complete these actions is to use the provided API methods.
+In the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by default row selection is disabled ([`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) UI, the only way to complete these actions is to use the provided API methods.
 
 ### Single Selection
 
-Single row selection can now be easily set up, the only thing you need to do, is to set [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
+Single row selection can now be easily set up, the only thing you need to do, is to set [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected [`IgbGrid.rowSelectionChanging`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelectionChanging) event is emitted.
 
 ```razor
     <IgbGrid Width="100%"
@@ -324,7 +317,7 @@ Single row selection can now be easily set up, the only thing you need to do, is
 
 ### Multiple Selection
 
-To enable multiple row selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) just set the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) just set the [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
 
 ```razor
     <IgbGrid Width="100%"
@@ -340,19 +333,15 @@ To enable multiple row selection in the [`IgbGrid`](mcp:get_api_reference?platfo
 
 **Notes**
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-- Row selection will trigger `RowSelectionChanging` event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
-- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`HideRowSelectors`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=HideRowSelectors) to **true**.
+- Row selection will trigger [`IgbGrid.rowSelectionChanging`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelectionChanging) event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
+- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`HideRowSelectors`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=hideRowSelectors) to **true**.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 
 ## API usage
 
 ### Select Rows Programmatically
 
-The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`IgbGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```razor
     <IgbGrid Width="100%"
@@ -379,7 +368,7 @@ This will add the rows which correspond to the data entries with IDs 1, 2 and 5 
 
 ### Deselect Rows
 
-If you need to deselect rows programmatically, you can use the [`DeselectRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=DeselectRows) method.
+If you need to deselect rows programmatically, you can use the [`DeselectRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=deselectRows) method.
 
 ```razor
     <IgbGrid Width="100%"
@@ -404,8 +393,7 @@ If you need to deselect rows programmatically, you can use the [`DeselectRows`](
 
 ### Row Selection Event
 
-When there is some change in the row selection `RowSelectionChanging` event is emitted. `RowSelectionChanging` exposes the following arguments:
-
+When there is some change in the row selection [`IgbGrid.rowSelectionChanging`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelectionChanging) event is emitted. [`IgbGrid.rowSelectionChanging`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelectionChanging) exposes the following arguments:
 - `OldSelection`  - array of row IDs that contains the previous state of the row selection.
 - `NewSelection` - array of row IDs that match the new state of the row selection.
 - `Added` - array of row IDs that are currently added to the selection.
@@ -434,17 +422,17 @@ When there is some change in the row selection `RowSelectionChanging` event is e
 
 ### Select All Rows
 
-Another useful API method that [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides is [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides is [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
 
-> **Note** Keep in mind that [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectAllRows) will not select the rows that are deleted.
+> **Note** Keep in mind that [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=selectAllRows) will not select the rows that are deleted.
 
 ### Deselect All Rows
 
-[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a [`DeselectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=DeselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a [`DeselectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
 
 ### How to get Selected Rows
 
-If you need to see which rows are currently selected, you can get their row IDs with the [`SelectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectedRows) getter.
+If you need to see which rows are currently selected, you can get their row IDs with the [`IgbGrid.selectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectedRows) getter.
 
 ```razor
     <IgbGrid Width="100%"
@@ -466,7 +454,7 @@ If you need to see which rows are currently selected, you can get their row IDs 
     }
 ```
 
-Additionally, assigning row IDs to [`SelectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectedRows) will allow you to change the grid's selection state.
+Additionally, assigning row IDs to [`IgbGrid.selectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectedRows) will allow you to change the grid's selection state.
 
 ```razor
 <IgbGrid Width="100%"
@@ -489,15 +477,15 @@ Additionally, assigning row IDs to [`SelectedRows`](mcp:get_api_reference?platfo
 
 You can template header and row selectors in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
-To create a custom row selector template,  within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) you can use the [`RowSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
+To create a custom row selector template,  within the `IgbGrid` you can use the [`RowSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
 
-The [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Selected) property shows whether the current row is selected or not while the [`Index`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Index) property can be used to access the row index.
+The [`IgbColumn.selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selected) property shows whether the current row is selected or not while the [`Index`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=index) property can be used to access the row index.
 
-```razor
+```javascript
 igRegisterScript("WebGridRowSelectorTemplate", (ctx) => {
     var html = window.igTemplating.html;
     if (ctx.implicit.selected) {
@@ -514,15 +502,15 @@ igRegisterScript("WebGridRowSelectorTemplate", (ctx) => {
 }, false);
 ```
 
-The [`RowID`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=RowID) property can be used to get a reference of an [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) row. This is useful when you implement a `click` handler on the row selector element.
+The [`RowID`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=rowID) property can be used to get a reference of an `IgbGrid` row. This is useful when you implement a `click` handler on the row selector element.
 
-In the above example we are using an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) and we bind `rowContext.selected` to its [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) and we bind `rowContext.selected` to its [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
-To create a custom header selector template, within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), you can use the [`HeadSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=HeadSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
+To create a custom header selector template, within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), you can use the [`HeadSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
 
-The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=SelectedCount) property shows you how many rows are currently selected while [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=TotalCount) shows you how many rows there are in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) in total.
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=selectedCount) property shows you how many rows are currently selected while [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=totalCount) shows you how many rows there are in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) in total.
 
 ```razor
 public RenderFragment<IgbHeadSelectorTemplateContext> Template = (context) =>
@@ -531,11 +519,11 @@ public RenderFragment<IgbHeadSelectorTemplateContext> Template = (context) =>
 };
 ```
 
-The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=SelectedCount) and [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=TotalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=selectedCount) and [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
 
 ### Row Numbering Demo
 
-This demo shows the usage of custom header and row selectors. The latter uses [`Index`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Index) to display row numbers and an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) bound to [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Selected).
+This demo shows the usage of custom header and row selectors. The latter uses `RowContext.Index` to display row numbers and an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) bound to `RowContext.Selected`.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -633,13 +621,9 @@ public class CustomersData
 }
 ```
 
-<!-- ComponentStart: Grid, TreeGrid -->
-
 ### Excel Style Row Selectors Demo
 
 This demo uses custom templates to resemble Excel-like header and row selectors.
-
-<!-- NOTE this sample is differed -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -767,11 +751,9 @@ public class CustomersData
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ### Conditional Selection Demo
 
-This demo prevents some rows from being selected using the `RowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
+This demo prevents some rows from being selected using the [`IgbGrid.rowSelectionChanging`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelectionChanging) event and a custom template with disabled checkbox for non-selectable rows.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -880,12 +862,13 @@ public class CustomersData
 
 ## API References
 
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-- [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)<br />
+[`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)<br />
+[`IgbGroupByRowSelectorTemplateDetails`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails)<br />
+[`IgbHeadSelectorTemplateDetails`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails)<br />
+[`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid, TreeGrid -->
 
 - [Selection](selection.md)
 - [Cell selection](cell-selection.md)
@@ -897,8 +880,6 @@ public class CustomersData
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid, TreeGrid -->
 
 Our community is active and always welcoming to new ideas.
 

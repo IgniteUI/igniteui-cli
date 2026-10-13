@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | ESRI Map Resources | Infragistics
-_description: Use Infragistics' React to display imagery from ESRI maps. View Ignite UI for React map tutorials!
-_keywords: React map, ESRI, Ignite UI for React, Infragistics, imagery tile source, map background
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "React Map | Data Visualization Tools | ESRI Map Resources | Infragistics"
+description: Use Infragistics' React to display imagery from ESRI maps. View Ignite UI for React map tutorials!
+keywords: "React map, ESRI, Ignite UI for React, Infragistics, imagery tile source, map background"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of an utility that helps with using ArcGISOnlineMapImagery provided by Esri Maps in GeographicMap."
 _tocName: Esri Utility
 _premium: true
 ---
-
 # React Esri Utility
 
-The resource topic provides implementation of an utility that helps with using [`IgrArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrarcgisonlinemapimagery.html) provided by Esri Maps in [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html).
+The resource topic provides implementation of an utility that helps with using `IgrArcGISOnlineMapImagery` provided by Esri Maps in `IgrGeographicMap`.
 
 ## Code Snippet
 
@@ -82,6 +83,5 @@ export enum EsriStyle {
 ```
 
 ## API References
-
-- [`IgrArcGISOnlineMapImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrarcgisonlinemapimagery.html)
-- [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html)
+`IgrArcGISOnlineMapImagery`
+`IgrGeographicMap`

@@ -1,24 +1,19 @@
 ---
-title: Web Components Hierarchical Grid Row Adding - Ignite UI for Web Components
-_description: Learn how to use and customize the built-in row adding functionality with Web Components and utilize intuitive grid row adding and CRUD capabilities.
-_keywords: Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-adding
+title: "Web Components Hierarchical Grid Row Adding - Ignite UI for Web Components"
+description: Learn how to use and customize the built-in row adding functionality with Web Components and utilize intuitive grid row adding and CRUD capabilities.
+keywords: "Web Components, Hierarchical Grid, IgcHierarchicalGrid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-adding"
+llms:
+  description: "The Ignite UI for Web Components Row Adding feature in Web Components Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page."
+_componentKey: HierarchicalGrid
 _tocName: Row Adding
 _premium: true
 ---
-
 # Web Components Hierarchical Grid Row Adding
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The Ignite UI for Web Components Row Adding feature in Web Components Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page. With the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), users can manipulate data through inline row adding and a powerful API for CRUD operations.
-Add an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with editing actions enabled in the grid's template. After that hover a row and use the provided button. Finally press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The Ignite UI for Web Components Row Adding feature in Web Components Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page. With the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), users can manipulate data through inline row adding and a powerful API for CRUD operations.
+Add an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) component with editing actions enabled in the grid's template. After that hover a row and use the provided button. Finally press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI.
 
 ## Web Components Hierarchical Grid Row Adding Example
 
@@ -29,20 +24,16 @@ Add an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-co
 
 ## Row Adding Usage
 
-Then define a [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) with bound data source, [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) set to true and an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+Then define a [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) with bound data source, [`IgcHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable) set to true and an [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) component with editing actions enabled. The [`IgcHierarchicalGrid.addRow`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 ```html
 <igc-hierarchical-grid id="hGrid" auto-generate="false" primary-key="Debut" row-editable="true">
-    <igc-column field="Artist" data-type="String"></igc-column>
-    <igc-column field="HasGrammyAward" header="Has Grammy Award?" data-type="Boolean'">
+    <igc-column field="Artist" data-type="string"></igc-column>
+    <igc-column field="HasGrammyAward" header="Has Grammy Award?" data-type="boolean">
     </igc-column>
-    <igc-column field="Debut" data-type="Number"></igc-column>
-    <igc-column field="GrammyNominations" header="Grammy Nominations" data-type="Number"></igc-column>
-    <igc-column field="GrammyAwards" header="Grammy Awards" data-type="Number"></igc-column>
+    <igc-column field="Debut" data-type="number"></igc-column>
+    <igc-column field="GrammyNominations" header="Grammy Nominations" data-type="number"></igc-column>
+    <igc-column field="GrammyAwards" header="Grammy Awards" data-type="number"></igc-column>
 
     <igc-action-strip id="actionstrip1">
         <igc-grid-editing-actions add-row="true"></igc-grid-editing-actions>
@@ -50,14 +41,14 @@ Then define a [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=we
 
     <igc-row-island key="Albums" auto-generate="false" primary-key="USBillboard200" row-editable="true">
         <igc-column field="Album" [data-type]="String"></igc-column>
-        <igc-column field="LaunchDate" header="Launch Date" data-type="Date"></igc-column>
-        <igc-column field="BillboardReview" header="Billboard Review" data-type="Number"></igc-column>
-        <igc-column field="USBillboard200" header="US Billboard 200" data-type="Number"></igc-column>
+        <igc-column field="LaunchDate" header="Launch Date" data-type="date"></igc-column>
+        <igc-column field="BillboardReview" header="Billboard Review" data-type="number"></igc-column>
+        <igc-column field="USBillboard200" header="US Billboard 200" data-type="number"></igc-column>
         <igc-row-island key="Songs" auto-generate="false" primary-key="Number" row-editable="true">
-            <igc-column field="Number" header="No." data-type="Number"></igc-column>
-            <igc-column field="Title" data-type="String"></igc-column>
-            <igc-column field="Released" data-type="Date"></igc-column>
-            <igc-column field="Genre" data-type="String"></igc-column>
+            <igc-column field="Number" header="No." data-type="number"></igc-column>
+            <igc-column field="Title" data-type="string"></igc-column>
+            <igc-column field="Released" data-type="date"></igc-column>
+            <igc-column field="Genre" data-type="string"></igc-column>
 
             <igc-action-strip id="actionstrip3">
                 <igc-grid-editing-actions add-row="true"></igc-grid-editing-actions>
@@ -72,50 +63,40 @@ Then define a [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=we
 </igc-hierarchical-grid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) column's input to `false`.
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`IgcColumn.editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) column's input to `false`.
 
 > **Note**:
-> The [`IgcGridEditingActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditingactions.html) input controlling the visibility of the add row button may use the action strip context (which is of type [`IgcRowType`](mcp:get_api_reference?platform=webcomponents&component=IgcRowType) to fine tune which records the button shows for.
+> The [`IgcGridEditingActions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditingActionsComponent) input controlling the visibility of the add row button may use the action strip context (which is of type [`IgcRowType`](mcp:get_api_reference?platform=webcomponents&component=IgcRowType) to fine tune which records the button shows for.
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-The internal `BaseTransactionService` is automatically provided for [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). It holds pending cell changes until the row state is submitted or cancelled.
+The internal `BaseTransactionService` is automatically provided for [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). It holds pending cell changes until the row state is submitted or cancelled.
 
 ## Start Row Adding Programmatically
 
-[`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-Using [`beginAddRowById`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
+Using [`IgcHierarchicalGrid.beginAddRowById`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
 ```typescript
 this.grid.beginAddRowById('ALFKI');  // Spawns the add row UI under the row with PK 'ALFKI'
 this.grid.beginAddRowById(null);     // Spawns the add row UI as the first record
 ```
 
-The `BeginAddRowByIndex` method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
+The [`IgcHierarchicalGrid.beginAddRowByIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
 
 ```typescript
 this.grid.beginAddRowByIndex(10);   // Spawns the add row UI at index 10
 this.grid.beginAddRowByIndex(0);    // Spawns the add row UI as the first record
 ```
 
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
 ## Positioning
 
 - The default position of row add UI is below the row that the end user clicked the add row button for.
 
-- The [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) scrolls to fully display the add row UI automatically.
+- The [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) scrolls to fully display the add row UI automatically.
 
 - The overlay for the add row UI maintains its position during scrolling.
 
@@ -123,34 +104,29 @@ this.grid.beginAddRowByIndex(0);    // Spawns the add row UI as the first record
 
 The add row UI has the same behavior as the row editing one as they are designed to provide a consistent editing experience to end users. Please, refer to the [Hierarchical Grid Row Editing](row-editing.md) topic for more information.
 
-After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). In a [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) to its position if it is not in view.
+After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent). In a [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) to its position if it is not in view.
 
 ## Keyboard Navigation
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
+
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
 - <kbd>TAB</kbd> move focus from one editable cell in the row to the next and from the right-most editable cell to the CANCEL and DONE buttons. Navigation from DONE button goes to the left-most editable cell within the currently edited row.
 
 ## Feature Integration
 
-- Any row adding operation will stop if the data view of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
+- Any row adding operation will stop if the data view of the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
-<!-- ComponentStart: HierarchicalGrid -->
-
-- When spawning the UI for the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), any child layout currently expanded for a row that the end user clicks the add row button for is collapsed.
-
-<!-- ComponentEnd: HierarchicalGrid -->
+- When spawning the UI for the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), any child layout currently expanded for a row that the end user clicks the add row button for is collapsed.
 
 ## Customizing Row Adding Overlay
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowAddTextTemplate).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+Customizing the text of the row adding overlay is possible using the [`IgcGridBaseDirective.rowAddTextTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowAddTextTemplate).
 
 ```ts
 this.grid.rowAddTextTemplate = (ctx: IgcGridEmptyTemplateContext) => {
@@ -158,33 +134,31 @@ this.grid.rowAddTextTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+### Customizing Buttons
+
+Customizing the buttons of the row editing overlay is possible by using the `RowEditActions` template.
+
+```ts
+this.grid.rowEditActionsTemplate = (endRowEdit: IgcGridRowEditActionsTemplateContext) => {
+    return html`
+        <button @click="${evt => endRowEdit.implicit(false, evt)}">Cancel</button>
+        <button @click="${evt => endRowEdit.implicit(true, evt)}">Apply</button>
+    `;
+}
+```
 
 ## Styling
 
-The row adding UI comprises the buttons in the [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
+The row adding UI comprises the buttons in the [`IgcActionStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcActionStripComponent) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
 
 - [Hierarchical Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
 
-<!-- - [ActionStrip](../action-strip.md#styling) -->
-
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `RowEditCancel`
-- [`endEdit`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=endEdit)
-- [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=primaryKey)
-- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
-
+[`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 ## Additional Resources
 
 - [Hierarchical Grid Editing](editing.md)
-
-<!-- * [Hierarchical Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

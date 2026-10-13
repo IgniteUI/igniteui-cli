@@ -1,19 +1,18 @@
 ---
-title: Web Components Tree Grid Exporting - Ignite UI for Web Components
-_description: With Ignite UI for Web Components Tree Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
-_keywords: Web Components, Tree Grid, Tree Grid, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.TreeGrid", "Infragistics.Controls.GridCell", "Infragistics.Controls.TreeGridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/export-excel
+title: "Web Components Tree Grid Exporting - Ignite UI for Web Components"
+description: With Ignite UI for Web Components Tree Grid exporting you can export grid data to Excel, CSV, and PDF formats while preserving features like filtering, sorting, and the current grid state.
+keywords: "Web Components, Tree Grid, Tree Grid, Ignite UI for Web Components, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/export-excel"
+llms:
+  description: "The Ignite UI for Web Components Tree Grid provides data export functionality through the Grid Toolbar Exporter component."
+_componentKey: TreeGrid
 _tocName: Exporting
 _premium: true
 ---
-
 # Web Components Tree Grid Exporting
 
-The Ignite UI for Web Components Tree Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) inside the grid's toolbar. By default, all export formats are enabled.
+The Ignite UI for Web Components Tree Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgcGridToolbarExporter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarExporterComponent) inside the grid's toolbar. By default, all export formats are enabled.
 
 ## Web Components Exporting Example
 
@@ -76,15 +75,19 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ## Export Multi Column Headers Grid
 
-You can export [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
+You can export [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` [`IgcExporterOptionsBase.ignoreMultiColumnHeaders`](mcp:get_api_reference?platform=webcomponents&component=IgcExporterOptionsBase&member=ignoreMultiColumnHeaders) to `true`.
 
-> [!Note]
-> The exported [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) will not be formatted as a table, since Excel tables do not support multiple column headers.
+**Note:** 
+The exported `IgcTreeGrid` will not be formatted as a table, since Excel tables do not support multiple column headers.
 
-> [!Note]
-> [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
->
-> - `export-excel`, `export-csv`, `export-pdf`
+**Note:** 
+The exported [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) will not be formatted as a table, since Excel tables do not support multiple column headers.
+
+**Note:** 
+[`IgcGridToolbarExporter`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarExporterComponent) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+- `export-excel`, `export-csv`, `export-pdf`
+- `exportExcel`, `exportCsv`, `exportPdf`
+- [`ExportExcel`](mcp:get_api_reference?platform=webcomponents&component=IgcGridToolbarExporterComponent&member=exportExcel), `ExportCsv`, `ExportPdf`
 
 ```typescript
 export class EmployeesFlatDetailsItem {
@@ -131,12 +134,11 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 
 ## Export Grid with Frozen Column Headers
 
-By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` `FreezeHeaders` to `true`.
+By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` [`IgcExporterOptionsBase.freezeHeaders`](mcp:get_api_reference?platform=webcomponents&component=IgcExporterOptionsBase&member=freezeHeaders) to `true`.
 
-> [!Note]
-> PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
+**Note:** 
+PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
 
-<!-- ComponentStart: Grid, TreeGrid -->
 
 ```ts
 constructor() {
@@ -147,15 +149,10 @@ constructor() {
 public webGridExportEventFreezeHeaders(args: any): void {
   args.detail.options.freezeHeaders = true;
 }
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- ComponentEnd: Grid, TreeGrid -->
-
 ## Known Limitations
-
-<!-- ComponentStart: TreeGrid -->
 
 |Limitation|Description|
 |--- |--- |
@@ -164,12 +161,8 @@ public webGridExportEventFreezeHeaders(args: any): void {
 |Cell Styling|The Excel exporter service does not support exporting a custom style applied to a cell component. In such scenarios we recommend using the [Excel Library](../../excel-library.md).|
 |Wide PDF layouts|Very wide grids can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.|
 
-<!-- ComponentEnd: TreeGrid -->
-
 ## API References
-
-- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
-
+[`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 ## Additional Resources
 
 Our community is active and always welcoming to new ideas.

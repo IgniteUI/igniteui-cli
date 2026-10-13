@@ -1,0 +1,2162 @@
+{
+ "platform": "webcomponents",
+ "sources": {
+  "igniteui-wc-examples": "d80db3d25"
+ },
+ "symbols": {
+  "AnnotationLayerProxyDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "AnyValueDataValidationRule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "AxisGroup": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "AxisPosition": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "AxisType": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "AzureMapsImageryStyle": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "BingMapsImageryStyle": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "BrushSelectionMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "CalloutPlacementPositions": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "CategoryChartDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "CategoryChartType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "CategoryTransitionInMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "CellContentHorizontalAlignment": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "CellContentVerticalAlignment": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "CellReferenceMode": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "ChartTitle": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "ChartType": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "Color": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ColorScaleInterpolationMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "ColumnExchangingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnHidingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnMovingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnMovingMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnOptionsIconBehavior": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnPinningPosition": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "ColumnPropertyUpdatingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnResizingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnResizingMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ColumnShowingAnimationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ComboItemTemplate": {
+   "module": "igniteui-webcomponents"
+  },
+  "ComponentRenderer": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "CrosshairsDisplayMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "CustomDataValidationRule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "CustomFilterCondition": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "DataChartAnnotationDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartCategoryDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartCategoryTrendLineDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartCoreDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartInteractivityDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartRadialCoreDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartRadialDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartScatterCoreDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartScatterDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataChartToolbarDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataContext": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataGridCellLayoutPanel": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "DataGridPresenterManager": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "DataGridSelectionMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "DataLegendDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataPieChartDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataPipelineConfiguration": {
+   "module": "igniteui-grid-lite"
+  },
+  "DataSourceSummaryOperand": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataTemplateMeasureInfo": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataTemplateRenderInfo": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "DataValidationErrorStyle": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "DatePart": {
+   "module": "igniteui-webcomponents"
+  },
+  "DatePartDeltas": {
+   "module": "igniteui-webcomponents"
+  },
+  "DateRangeType": {
+   "module": "igniteui-webcomponents"
+  },
+  "DefaultSummaryResult": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "EditModeType": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "EditorType": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "EnterKeyBehaviorAfterEdit": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "EnterKeyBehaviors": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "EnumUtil": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ExcelComparisonOperator": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "FilterComparisonType": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "FilterExpression": {
+   "module": "igniteui-grid-lite"
+  },
+  "FilterFactory": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "FilterLogicalOperator": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "FilterOperation": {
+   "module": "igniteui-grid-lite"
+  },
+  "FilterUIType": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "FilteringLogic": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "FinalValueSelectionMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialChartType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialChartVolumeType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialChartXAxisMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialChartYAxisMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialChartZoomSliderType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FinancialIndicatorType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "FormatConditionTextOperator": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "FormattedString": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "Formula": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "GridActivationMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "GridKeydownTargetType": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "GroupHeaderDisplayMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "HeaderClickAction": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "HeatTileGeneratorWebWorker": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "HorizontalAlignment": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IDataSource": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ISummaryResult": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgPoint": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgRect": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcAbsoluteVolumeOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAbsoluteVolumeOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAccordionComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcAccumulationDistributionIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAccumulationDistributionIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcActionStripComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcActiveNodeChangeEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcAnnotationLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAnnotationLayerProxyModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcArcGISOnlineMapImagery": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcAvatarComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcAverageDirectionalIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAverageDirectionalIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAverageTrueRangeIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAverageTrueRangeIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcAzureMapsImagery": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcBadgeComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcBannerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcBarSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBarSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBingMapsMapImagery": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcBollingerBandWidthIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBollingerBandWidthIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBollingerBandsOverlayComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBollingerBandsOverlayModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBooleanFilteringOperand": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcBubbleSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBubbleSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcBulletGraphComponent": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcBulletGraphModule": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcButtonComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcButtonGroupComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcByLevelTreeGridMergeStrategy": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcCalendarComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCalloutLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCalloutLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCardActionsComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCardComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCardContentComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCardHeaderComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCardMediaComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCarouselComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCategoryAngleAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryChartToolbarModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryHighlightLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryHighlightLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryItemHighlightLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryItemHighlightLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryToolTipLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryToolTipLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryXAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryXAxisModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryYAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCategoryYAxisModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCellStyleRequestedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcCellTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcCellType": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcChaikinOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChaikinOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChaikinVolatilityIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChaikinVolatilityIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChartCursorEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChartMouseEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChartSelection": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChartSeriesEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcChatComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcChatMessage": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcChatOptions": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCheckboxChangeEventArgs": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCheckboxComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCheckboxListModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcChipComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCircularProgressComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcColorEditorComponent": {
+   "module": "igniteui-webcomponents-inputs"
+  },
+  "IgcColorEditorModule": {
+   "module": "igniteui-webcomponents-inputs"
+  },
+  "IgcColumnChooserComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnChooserModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcColumnFragmentModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcColumnGroupComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcColumnGroupDescription": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnGroupingModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnLayoutComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcColumnPipeArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcColumnSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcColumnSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcColumnSortDescription": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnSummaryDescription": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcColumnTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcColumnWidth": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcComboBoxColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcComboComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcCommodityChannelIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCommodityChannelIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcContentPane": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcCrosshairLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCrosshairLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCustomPaletteBrushScaleComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCustomPaletteColorScaleComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcCustomPaletteColorScaleModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDashboardTileComponent": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcDataAnnotationBandLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationBandLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationLineLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationLineLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationRectLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationRectLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationSliceLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationSliceLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationStripLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataAnnotationStripLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataBindingEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataChartAnnotationModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartCategoryCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartCategoryModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartCategoryTrendLineModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcDataChartFinancialCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartFinancialModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartFinancialOverlaysModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartInteractivityModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartMouseButtonEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartPolarCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartPolarModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartRadialCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartRadialModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartScatterCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartScatterModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartShapeCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartShapeModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartStackedModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartToolbarModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataChartVerticalCategoryModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataGridColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataGridComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataGridModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataGridToolbarComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataGridToolbarModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDataLegendComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataLegendModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataPieChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataPieChartCoreModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataPieChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDataToolTipLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDatePickerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcDateRangePickerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcDateTimeColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDateTimeFormatSpecifier": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcDateTimeFormatSpecifierModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcDateTimeInputComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcDefaultMergeStrategy": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcDefaultTreeGridMergeStrategy": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcDefinitionBaseComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcDetrendedPriceOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDetrendedPriceOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDialogComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcDividerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcDockManagerComponent": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcDockManagerLayout": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcDockManagerPane": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcDockManagerPaneType": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcDomainChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDomainChartSeriesPointerEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDoughnutChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDoughnutChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcDropdownComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcEaseOfMovementIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcEaseOfMovementIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcExcelCoreModule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "IgcExcelModule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "IgcExcelXlsxModule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "IgcExpansionPanelComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcExporterEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcExporterOptionsBase": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcExpressionTree": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcFastStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFastStochasticOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFileInputComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcFilterOperand": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcFilteringExpressionsTree": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcFilteringOperand": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcFilteringOperation": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcFinalValueLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinalValueLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialChartCustomIndicatorArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialPriceSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFinancialPriceSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcForOfState": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcForceIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcForceIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFullStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFullStochasticOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFunnelChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcFunnelChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcGeographicContourLineSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicHighDensityScatterSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicHighDensityScatterSeriesModule": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicMapComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicMapDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcGeographicMapModule": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicPolylineSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicProportionalSymbolSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicScatterAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicShapeSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicSymbolSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicSymbolSeriesModule": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGeographicTileSeriesComponent": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcGridActiveCellChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridCellValueChangingEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridColumnOptionsComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridColumnOptionsModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridColumnsChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridCreatedEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridCustomFilterRequestedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridEditDoneEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridEditEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridKeydownEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridLite": {
+   "module": "igniteui-grid-lite"
+  },
+  "IgcGridMasterDetailContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridMergeStrategy": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridSelectedCellRangesChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridSelectedCellsChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridSelectedItemsChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridSelectedKeysChangedEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcGridStateComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridStateOptions": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridToolbarComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridToolbarExportEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridToolbarExporterComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridToolbarTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGridToolbarTitleComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGroupByRecord": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGroupByRowTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcGroupingExpression": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcHeadSelectorTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcHeatTileGenerator": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcHierarchicalGridComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcHighDensityScatterSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcHighDensityScatterSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcHighlightComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcIconButtonComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcIconComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcImageColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcIndexCollection": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcInputComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcItemLegendComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcItemLegendModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcItemToolTipLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcItemToolTipLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLegendComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLegendModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLinearContourValueResolverComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLinearContourValueResolverModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcLinearGaugeComponent": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcLinearGaugeDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcLinearGaugeModule": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcLinearGraphRangeComponent": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcLinearProgressComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcListComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcListHeaderComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcListItemComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcMarkerTypeCollection": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMarketFacilitationIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMarketFacilitationIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMaskInputComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcMassIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMassIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMedianPriceIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMedianPriceIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMoneyFlowIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMoneyFlowIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMovingAverageConvergenceDivergenceIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMovingAverageConvergenceDivergenceIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcMultiColumnComboBoxComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcMultiColumnComboBoxModule": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcNavDrawerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcNavDrawerItemComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcNavbarComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcNegativeVolumeIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNegativeVolumeIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNoopPivotDimensionsStrategy": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcNumberAbbreviatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumberFormatSpecifier": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcNumberFormatSpecifierModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcNumberSummaryOperand": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcNumericAngleAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumericColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcNumericRadiusAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumericXAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumericXAxisModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumericYAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcNumericYAxisModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcOnBalanceVolumeIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcOnBalanceVolumeIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcOpenStreetMapImagery": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcPaginatorComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPaginatorResourceStrings": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPaneCloseEventArgs": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcPercentagePriceOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPercentagePriceOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPercentageVolumeOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPercentageVolumeOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPieChartComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPieChartDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcPieChartModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPinningConfig": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotAggregator": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotConfiguration": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotDataSelectorComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotDateDimension": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotDateDimensionOptions": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotDimension": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotGridComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPivotValue": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcPlotAreaMouseButtonEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPlotAreaMouseEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPointSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarLineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarLineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarScatterSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarScatterSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarSplineAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarSplineAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarSplineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPolarSplineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPositiveVolumeIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPositiveVolumeIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPriceChannelOverlayComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPriceChannelOverlayModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPriceVolumeTrendIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPriceVolumeTrendIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcPropertyEditorPanelComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcPropertyEditorPanelModule": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcPropertyEditorPropertyDescriptionButtonClickEventArgs": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcPropertyEditorPropertyDescriptionChangedEventArgs": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcPropertyEditorPropertyDescriptionComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcProportionalCategoryAngleAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcProvideCalculatorEventArgs": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcQueryBuilderComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcQueryBuilderSearchValueContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRadialAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialColumnSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialColumnSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialGaugeComponent": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcRadialGaugeDashboardTileModule": {
+   "module": "igniteui-webcomponents-dashboards"
+  },
+  "IgcRadialGaugeModule": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcRadialGaugeRangeComponent": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "IgcRadialLineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialLineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialPieSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadialPieSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRadioComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcRadioGroupComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcRangeAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeBarSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeBarSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeColumnSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeColumnSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRangeSliderComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcRateOfChangeAndMomentumIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRateOfChangeAndMomentumIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRatingComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcRectChangedEventArgs": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcRelativeStrengthIndexIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRelativeStrengthIndexIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRenderFunction": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRingSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRingSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcRippleComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcRowDragEndEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRowDragStartEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRowIslandComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRowSelectionEventArgs": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRowSelectorTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcRowType": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcScatterAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterContourSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterContourSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterLineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterLineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterPolygonSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterPolygonSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterPolylineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterPolylineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterSplineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcScatterSplineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSelectComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSelectGroupComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSelectHeaderComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSelectItemComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSelectedValueChangedEventArgs": {
+   "module": "igniteui-webcomponents-inputs"
+  },
+  "IgcSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSeriesMatcher": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSeriesViewerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcShapeDataSource": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcShapefileRecord": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "IgcSizeScaleComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSizeScaleModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSliceClickEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSliderComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSlowStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSlowStochasticOscillatorIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSnackbarComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSortingExpression": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcSparklineComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSparklineModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSplitPane": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcSplitPaneOrientation": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcSplitterComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcSpreadsheetActiveCellChangedEventArgs": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "IgcSpreadsheetChartAdapterModule": {
+   "module": "igniteui-webcomponents-spreadsheet-chart-adapter"
+  },
+  "IgcSpreadsheetComponent": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "IgcSpreadsheetModule": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "IgcStacked100AreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100AreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100BarSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100BarSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100ColumnSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100ColumnSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100LineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100LineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100SplineAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100SplineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStacked100SplineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedAreaSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedBarSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedBarSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedColumnSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedColumnSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedFragmentSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedFragmentSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedLineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedLineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedSplineAreaSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedSplineSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStackedSplineSeriesModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStandardDeviationIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStandardDeviationIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStepComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcStepperComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcStochRSIIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStochRSIIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStrategyBasedIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStrategyBasedIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcStringFilteringOperand": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcStyleShapeEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcSummaryOperand": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcSummaryResult": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcSummaryTemplateContext": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcSwitchComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTRIXIndicatorComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTRIXIndicatorModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTabComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTabGroupPane": {
+   "module": "igniteui-dockmanager"
+  },
+  "IgcTabsComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTemplateCellInfo": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTemplateCellUpdatingEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTemplateColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTemplateHeaderCellUpdatingEventArgs": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTemplateHeaderComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTextColumnComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTextHeaderComponent": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "IgcTextareaComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTileGeneratorMapImagery": {
+   "module": "igniteui-webcomponents-maps"
+  },
+  "IgcTileManagerComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTimeXAxisComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTimeXAxisModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcToastComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcToolActionCheckboxComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionColorEditorComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionColorEditorModule": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionComboModule": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionGroupHeaderComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionIconMenuComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionLabelComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolActionSubPanelComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolCommandEventArgs": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolbarComponent": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcToolbarModule": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "IgcTooltipComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTreeComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTreeGridComponent": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "IgcTreeItemComponent": {
+   "module": "igniteui-webcomponents"
+  },
+  "IgcTreemapComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTreemapModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTreemapNodePointerEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTreemapNodeStyleMappingComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTrendLineLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcTrendLineLayerModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcUserAnnotationInformation": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcUserAnnotationInformationEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcUserAnnotationToolTipContentUpdatingEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcValueBrushScaleComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcValueBrushScaleModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcValueLayerComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcValueOverlayComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcValueOverlayModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcWaterfallSeriesComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcXDatePickerComponent": {
+   "module": "igniteui-webcomponents-inputs"
+  },
+  "IgcXDatePickerModule": {
+   "module": "igniteui-webcomponents-inputs"
+  },
+  "IgcZoomSliderComponent": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcZoomSliderModule": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IgcZoomSliderResolvingAxisValueEventArgs": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "IndicatorDisplayType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "InteractionState": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ItemLegendDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "LabelsPosition": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "Legend": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "LegendDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "LegendHighlightingMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "LegendPosition": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "LinearGraphNeedleShape": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "LinearScaleOrientation": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "ListDataValidationRule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "ListSortDirection": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "LocalDataSource": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "Localization": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "MarkerFillMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "MarkerOutlineMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "MarkerType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "MarkerType_$type": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "MergedCellMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "ModifierKeys": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ModuleManager": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "NumberAbbreviatorDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "NumberFormatSpecifierDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ODataVirtualDataSource": {
+   "module": "igniteui-webcomponents-datasources"
+  },
+  "OneConstraintDataValidationOperator": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "OneConstraintDataValidationRule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "OrderedSortCondition": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "OthersCategoryType": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "PinnedPositions": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "PriceDisplayType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "PropertyEditorPanelDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "PropertyEditorValueType": {
+   "module": "igniteui-webcomponents-layouts"
+  },
+  "RadialGaugeBackingShape": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "RadialGaugeNeedleShape": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "RadialGaugePivotShape": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "RadialGaugeScaleOversweepShape": {
+   "module": "igniteui-webcomponents-gauges"
+  },
+  "RelativeIndex": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "RowPinningPosition": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "SeriesHighlightingBehavior": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "SeriesHighlightingMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "ShapefileConverter": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "SortDirection": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "SortIndicatorStyle": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "SortMode": {
+   "module": "igniteui-webcomponents-data-grids"
+  },
+  "SortingDirection": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "SparklineDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "SparklineDisplayType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "SparklineType": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "SpreadsheetAction": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "SpreadsheetCell": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "SpreadsheetCellSelectionMode": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "SpreadsheetChartAdapter": {
+   "module": "igniteui-webcomponents-spreadsheet-chart-adapter"
+  },
+  "SpreadsheetEnterKeyNavigationDirection": {
+   "module": "igniteui-webcomponents-spreadsheet"
+  },
+  "Style": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "SummaryCalculator": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "SweepDirection": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "ToolTipType": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "ToolbarDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "TreemapDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "TreemapFillScaleMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "TreemapHeaderDisplayMode": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "TrendLineLayerDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "TrendLineType": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "TwoConstraintDataValidationOperator": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "TwoConstraintDataValidationRule": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "Uri": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "VerticalAlignment": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "Visibility": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebActionStripDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebCheckboxDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebColumnGroupDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebColumnLayoutDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebGridDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebGridToolbarDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebHierarchicalGridDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebInputDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebPaginatorDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebSelectDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "WebTreeGridDescriptionModule": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "Workbook": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorkbookColorInfo": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorkbookFormat": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorkbookLoadOptions": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorkbookOptionsBase": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorkbookSaveOptions": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "Worksheet": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetCell": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetCellComment": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetColumnWidthUnit": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetMergedCellsRegion": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetRegion": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "WorksheetTableColumnArea": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "XValues": {
+   "module": "igniteui-webcomponents-excel"
+  },
+  "YAxisLabelLocation": {
+   "module": "igniteui-webcomponents-charts"
+  },
+  "createMarkdownRenderer": {
+   "module": "igniteui-webcomponents/extras"
+  },
+  "defineAllComponents": {
+   "module": "igniteui-webcomponents"
+  },
+  "defineComponents": {
+   "module": "igniteui-webcomponents"
+  },
+  "html": {
+   "module": "igniteui-webcomponents-core"
+  },
+  "registerI18n": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "registerIcon": {
+   "module": "igniteui-webcomponents"
+  },
+  "registerIconFromText": {
+   "module": "igniteui-webcomponents"
+  },
+  "setCurrentI18n": {
+   "module": "igniteui-webcomponents-grids/grids"
+  },
+  "setIconRef": {
+   "module": "igniteui-webcomponents"
+  }
+ }
+}

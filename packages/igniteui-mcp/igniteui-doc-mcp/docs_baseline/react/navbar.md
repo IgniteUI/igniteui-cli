@@ -1,12 +1,13 @@
 ---
-title: React Navbar | Infragistics
-_description: Infragistics' React navbar provides optimal UI experience with seamless integration to allow users to move within an application smoothly. Improve your application with Ignite UI for  React!
-_keywords: React navbar, Ignite UI for React, Infragistics
-_license: MIT
+title: "React Navbar | Infragistics"
+description: Infragistics' React navbar provides optimal UI experience with seamless integration to allow users to move within an application smoothly. Improve your application with Ignite UI for  React!
+keywords: "React navbar, Ignite UI for React, Infragistics"
+license: MIT
 mentionedTypes: ["Navbar"]
+llms:
+  description: "The Ignite UI for React Navbar informs the user of their current position in an app."
 _tocName: Navbar
 ---
-
 # React Navbar Overview
 
 The Ignite UI for React Navbar informs the user of their current position in an app. The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
@@ -112,7 +113,7 @@ You can enhance the [`IgrNavbar`](mcp:get_api_reference?platform=react&component
 
 ## Styling
 
-The `NavBar` component exposes several CSS parts, giving you full control over its style:
+The [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -214,14 +215,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavbarStyling/>);
 ```
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## API References
-
-- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
-- [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
-- [`Styling & Themes`](../themes/overview.md)
-
+[`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+[`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

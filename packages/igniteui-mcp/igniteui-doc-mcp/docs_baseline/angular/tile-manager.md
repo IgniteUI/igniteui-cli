@@ -1,11 +1,12 @@
 ---
 title: Manage Angular Page Layout | Tile Manager | Ignite UI | Infragistics | MIT license
-_description: The Ignite UI for Angular Tile Manager component enables the display of content in individual tiles.
-_keywords: manage angular page layout, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Tile Manager, Infragistics, Tile , Angular Tile Manager component, Angular Tile Manager control
-_license: MIT
+description: The Ignite UI for Angular Tile Manager component enables the display of content in individual tiles.
+keywords: manage angular page layout, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Native Angular Components, Angular Tile Manager, Infragistics, Tile , Angular Tile Manager component, Angular Tile Manager control
+license: MIT
+llms:
+  description: "The Tile Manager component enables the display of content in individual tiles."
 _tocName: Tile Manager
 ---
-
 # Angular Tile Manager Overview
 
 The Tile Manager component enables the display of content in individual tiles. It allows users to interact with these tiles by rearranging and resizing them, giving them the freedom to customize the layout and appearance of the content according to their preferences. This flexibility enhances the user experience by enabling a more personalized and efficient way to view and manage content.
@@ -271,10 +272,10 @@ igx-card-content {
   overflow: hidden;
 }
 ```
-<div class="divider--half"></div>
+<hr/>
 
-> [!WARNING]
-> Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
+**Warning:** 
+Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
 
 ## Getting Started with Ignite UI for Angular Tile Manager
 
@@ -330,6 +331,6 @@ The Tile Manager offers two components that we can use:
 </igc-tile-manager>
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_Getting Started_](general/getting-started.md) topic.
+For a complete introduction to the Ignite UI for Angular, read the [_Getting Started_](/general/getting-started) topic.
 
-For further information on the usage of the Tile Manager component, you can check out [this topic]({environment:infragisticsBaseUrl}/products/ignite-ui-web-components/web-components/components/layouts/tile-manager.html).
+For further information on the usage of the Tile Manager component, you can check out [this topic](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/layouts/tile-manager.html).

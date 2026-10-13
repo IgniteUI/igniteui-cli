@@ -1,16 +1,17 @@
 ---
-title: React Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics
-_description: Use Infragistics React map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for React map's series!
-_keywords: React map, scatter symbol series, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "ShapefileConverter", "Series"]
+title: "React Map | Data Visualization Tools | Scatter Symbol Series | Data Binding | Infragistics"
+description: Use Infragistics React map's scatter symbol series to display geo-spatial data using points or markers in a geographic context.. Learn more about Ignite UI for React map's series!
+keywords: "React map, scatter symbol series, Ignite UI for React, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
+llms:
+  description: "In React map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
 _tocName: Geographic Symbol Map
 _premium: true
 ---
-
 # React Geographic Symbol Map
 
-In React map component, you can use the [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
+In React map component, you can use the `IgrGeographicSymbolSeries` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
 
 ## React Geographic Symbol Map Example
 
@@ -984,17 +985,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterSymbolSeries/>);
 ```
 
-<div class="divider--half"></div>
-
 ## Data Requirements
-
-Similarly to other types of geographic series in the map component, the [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) has the `ItemsSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#latitudeMemberPath) and [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#longitudeMemberPath) properties. The [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the `IgrGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-
-The following code shows how to bind the [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html) to locations of cities loaded from a shape file using the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html).
-
-<!-- React -->
+The following code shows how to bind the `IgrGeographicSymbolSeries` to locations of cities loaded from a shape file using the `IgrShapefileRecord`.
 
 ```tsx
 
@@ -1041,9 +1036,5 @@ public addSeries(locations: any[], brush: string)
 ```
 
 ## API References
-
-- [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html)
-- `ItemsSource`
-- [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#latitudeMemberPath)
-- [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#longitudeMemberPath)
-- [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html)
+`IgrGeographicSymbolSeries`
+`IgrShapefileRecord`

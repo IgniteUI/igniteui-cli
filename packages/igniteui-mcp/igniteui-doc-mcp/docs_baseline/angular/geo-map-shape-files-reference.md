@@ -1,13 +1,14 @@
 ---
-title: Angular Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics
-_description: Learn about shape files format to use with Infragistics' Angular map. Check out Ignite UI for Angular map tutorials!
-_keywords: Angular map, shape files, Ignite UI for Angular, Infragistics, shape editing
-_license: commercial
-mentionedTypes: ["XamGeographicMap", "GeographicShapeSeriesBase", "Series"]
+title: "Angular Map | Data Visualization Tools | Shape Files Reference | Shape Files Editing | Infragistics"
+description: Learn about shape files format to use with Infragistics' Angular map. Check out Ignite UI for Angular map tutorials!
+keywords: "Angular map, shape files, Ignite UI for Angular, Infragistics, shape editing"
+license: commercial
+mentionedTypes: ["GeographicMap", "GeographicShapeSeriesBase", "Series"]
+llms:
+  description: "Before plotting geo-spatial data in the control, one should get familiar with the following resources which provide general information about maps and geo-spatial data."
 _tocName: Shape Files Reference
 _premium: true
 ---
-
 # Angular Shape Files Reference
 
 ## Purpose
@@ -36,7 +37,7 @@ Before plotting geo-spatial data in the control, one should get familiar with th
 
 ## Shape Files Format
 
-The Angular [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
+The Angular `IgxGeographicMap` control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
 
 The following table provides basic information and purpose for each type of shape files.
 
@@ -70,7 +71,7 @@ The following list provides resource tools for editing shape files.
 
 ## Shape Files Data Sources
 
-The following list provides resources for obtaining shape files. Also, samples for the [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) control are good source of shape files. These shape files are included in the installer for the Samples Browser.
+The following list provides resources for obtaining shape files. Also, samples for the `IgxGeographicMap` control are good source of shape files. These shape files are included in the installer for the Samples Browser.
 
 - [ESRI - World Map Data](http://www.esri.com/data/download/basemap/index.html)
 - [ESRI - Census 2010 Tiger/Line® - Shape Files](http://www.census.gov/geo/www/tiger/tgrshp2010/tgrshp2010.html)
@@ -90,13 +91,10 @@ The following list provides resources for obtaining shape files. Also, samples f
 
 The following topics provide additional information related to this topic.
 
-- [Binding Shape Files](geo-map-binding-shp-file.md)
+- [Binding Shape Files](./geo-map-binding-shp-file.md)
 
 ## API References
-
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
-- [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html)
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriesbasecomponent.html#shapeMemberPath)
-- [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource)
+`IgxGeographicMap`
+`IgxGeographicPolylineSeries`
+`IgxGeographicShapeSeries`
+[`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord)

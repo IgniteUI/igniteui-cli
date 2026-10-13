@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_CHARTS_PACKAGE } from "../../constants";
 
 class IgrTsPieChartTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrTsPieChartTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Pie Chart";
 		this.description = `easily illustate the proportions of data entries`;
-		this.packages = ["igniteui-react-charts@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_CHARTS_PACKAGE];
 	}
 }
 module.exports = new IgrTsPieChartTemplate();

@@ -1,15 +1,14 @@
 ---
-title: React Grid Excel Style Filtering - Ignite UI for React
-_description: Learn how to configure Excel filtering in React Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
-_keywords: excel like filter, React, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
+title: "React Grid Excel Style Filtering - Ignite UI for React"
+description: Learn how to configure Excel filtering in React Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+keywords: excel like filter, React, Ignite UI for React, Infragistics
+license: commercial
+llms:
+  description: "The React Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI."
+_componentKey: Grid
 _tocName: Excel Style Filtering
 _premium: true
 ---
-
 # Excel Filtering in React Grid
 
 The React Grid exposes an Excel-style filtering feature that provides an Excel-like filtering UI. It simplifies the process of working with large datasets. The main idea is to help them filter the data that is most relevant, while eliminating irrelevant entries.
@@ -205,7 +204,7 @@ root.render(<Sample/>);
 
 ## Usage
 
-To turn on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowFiltering) should be set to **true** and the [`filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component's Excel-style filtering, two inputs should be set. The [`IgrGrid.allowFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowFiltering) should be set to **true** and the [`IgrGrid.filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={true} allowFiltering={true} filterMode="excelStyleFilter">
@@ -226,7 +225,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortable), [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected), [`disablePinning`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`IgrColumn.sortable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortable), [`IgrColumn.selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected), [`IgrColumnState.disablePinning`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=disablePinning), [`IgrColumnState.disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumnState&member=disableHiding).
 
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={false} allowFiltering={true} filterMode="excelStyleFilter">
@@ -243,9 +242,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 </IgrGrid>
 ```
 
-In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable).
-
-<!-- ComponentEnd: Grid -->
+In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`IgrColumn.selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable).
 
 ```css
 /* shared styles are loaded from: */
@@ -404,11 +401,9 @@ root.render(<Sample/>);
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`IgrGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=excelStyleHeaderIconTemplate):
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
+The following code demonstrates how to customize the Excel style filter menu using the [`IgrGrid.excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=excelStyleHeaderIconTemplate):
 
 ```tsx
 const webGridFilterAltIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
@@ -426,37 +421,8 @@ const webGridFilterAltIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 <IgrGrid autoGenerate={true} allowFiltering={true} filterMode="excelStyleFilter"
     excelStyleHeaderIconTemplate={webGridFilterAltIconTemplate}>
 </IgrGrid>
+
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- ```razor
-Add razor snipets
-``` -->
-
-<!-- ```html
-<igc-grid id="grid1" auto-generate="false" height="650px" width="100%" allow-filtering="true" filter-mode="ExcelStyleFilter">
-
-    <igc-grid-excel-style-filtering min-height="380px" max-height="500px">
-        <igc-excel-style-column-operations>
-            <igc-excel-style-header
-                show-pinning="true"
-                show-hiding="true"
-            >
-            </igc-excel-style-header>
-
-            <igc-excel-style-sorting></igc-excel-style-sorting>
-        </igc-excel-style-column-operations>
-
-        <igc-excel-style-filter-operations>
-            <igc-excel-style-search></igc-excel-style-search>
-        </igc-excel-style-filter-operations>
-    </igc-grid-excel-style-filtering>
-
-</igc-grid>
-``` -->
-
-<!-- ComponentEnd: Grid -->
 
 ```css
 /* shared styles are loaded from: */
@@ -613,7 +579,7 @@ root.render(<Sample/>);
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```tsx
@@ -802,13 +768,9 @@ root.render(<Sample/>);
 ```
 
 ## API References
-
-- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -818,8 +780,6 @@ root.render(<Sample/>);
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

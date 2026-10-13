@@ -1,5 +1,7 @@
 # Cross-Platform Documentation Architecture (`igniteui-xplat-docs`)
 
+> **Historical.** igniteui-xplat-docs was archived on 2026-06-08 and replaced by IgniteUI/igniteui-documentation. The pipeline no longer runs this gulp build; see knowledgebase entry 36.
+
 Analysis of how React, Blazor, and WebComponents documentation is built from the shared `igniteui-xplat-docs` repository. This is essential reference for building export/inject pipelines for these platforms.
 
 ## Overview

@@ -1,11 +1,12 @@
 ---
 title: Localization (i18n) | Ignite UI for React | Infragistics
-_description: Use Infragistics' React Localization for components to easily translate and localize fully Infragistics' React components
-_keywords: Ignite UI for React, Infragistics, Localization, Internationalization, i18n
+description: Use Infragistics' React Localization for components to easily translate and localize fully Infragistics' React components
+keywords: "Ignite UI for React, Infragistics, Localization, Internationalization, i18n"
 mentionedTypes: ["Grid"]
+llms:
+  description: "The new localization introduces more features with fewer requirements for both the localization strings and formatting for all available locales."
 _tocName: Localization(i18n)
 ---
-
 # React Localization (i18n)
 
 The new localization introduces more features with fewer requirements for both the localization strings and formatting for all available locales. The formatting is based on the standards introduced by the `Intl` API.
@@ -175,11 +176,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<GridLocalizationSample />);
 ```
 
-> Note: Hindi (HI) included in the sample is for illustrative purposes only, to demonstrate the possibility of passing a custom localization object. In this sample, it contains only a few localized strings for the summary. For more details, see the [Custom localized resource strings](#custom-localized-resource-strings) section below.
+**Note:** 
+Hindi (HI) included in the sample is for illustrative purposes only, to demonstrate the possibility of passing a custom localization object. In this sample, it contains only a few localized strings for the summary. For more details, see the [Custom localized resource strings](#custom-localized-resource-strings) section below.
 
 ## Locale
 
-The term **locale** refers to the general strings defining the different languages and regions. These are based on the [BCP 47](https://developer.mozilla.org/en-US/docs/Glossary/BCP\_47\_language_tag) tag definition. Most of the basic ones are described in the [IANA Language Subtag Registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). For a list of languages, refer to the [ISO 639 language standard](https://www.loc.gov/standards/iso639-2/).
+The term **locale** refers to the general strings defining the different languages and regions. These are based on the [BCP 47](https://developer.mozilla.org/en-US/docs/Glossary/BCP_47_language_tag) tag definition. Most of the basic ones are described in the [IANA Language Subtag Registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). For a list of languages, refer to the [ISO 639 language standard](https://www.loc.gov/standards/iso639-2/).
 
 It affects both the formatting of dates and numbers and the localized resource strings that Ignite UI for React components use. The default locale for Ignite UI for React is `en-US`.
 
@@ -187,7 +189,7 @@ The locale can be set in several ways, either globally or per component.
 
 ### Global API
 
-You can set the locale that will be used globally using the `setCurrentI18n` method, available from the [`igniteui-react`](https://www.npmjs.com/package/igniteui-react) or [`igniteui-react-grids`](http://npmjs.com/package/igniteui-react-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
+You can set the locale that will be used globally using the [`IgrsetCurrentI18n`](mcp:get_api_reference?platform=react&component=setCurrentI18n) method, available from the [`igniteui-react`](https://www.npmjs.com/package/igniteui-react) or [`igniteui-react-grids`](http://npmjs.com/package/igniteui-react-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
 
 ```ts
 setCurrentI18n('de');
@@ -201,7 +203,9 @@ In general, resources should be registered under the languages, regions, and scr
 
 This approach enables setting the localization through the `lang` global attribute of the `HTML` tag. This attribute is observed, and if it changes, all rendered components update their resource strings to the currently set language. All rules regarding the tag used apply as described above.
 
-> Note: This works only on root level and will not work for inner elements on the page.
+**Note:** 
+This works only on root level and will not work for inner elements on the page.
+
 
 ```tsx
 <html lang="ja">
@@ -329,9 +333,10 @@ If both region and script are used, consider the `en` language with `GB` region 
 
 If Ignite UI for React does not provide resource strings for the required language, custom resource strings can always be provided.
 
-> Note: Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
+**Note:** 
+Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
 
-You can use the provided `IResourceStrings` type for all components to get typings for the resource strings used:
+You can use the provided [`IgrIResourceStrings`](mcp:get_api_reference?platform=react&component=IResourceStrings) type for all components to get typings for the resource strings used:
 
 ```tsx
 import { IResourceStrings } from 'igniteui-react';
@@ -377,7 +382,8 @@ registerI18n(customResources, 'en');
 
 ```
 
-> Note: The last examples set only specific resource strings. The remaining strings default to English if they are not available for the components in use.
+**Note:** 
+The last examples set only specific resource strings. The remaining strings default to English if they are not available for the components in use.
 
 ## Available resource strings
 

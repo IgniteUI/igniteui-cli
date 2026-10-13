@@ -1,25 +1,26 @@
 ---
 title: React Chart Trendlines | Data Visualization | Infragistics
-_description: Infragistics' React Chart Trendlines
-_keywords: React Charts, Trendlines, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "FinancialChart", "CategoryChart", "XamDataChart", "TrendLineType"]
+description: Infragistics' React Chart Trendlines
+keywords: React Charts, Trendlines, Infragistics
+license: commercial
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "In Ignite UI for React charts, trendlines help in identifying a trend or finding patterns in data."
 _tocName: Chart Trendlines
 _premium: true
 ---
-
 # React Chart Trendlines
 
-In Ignite UI for React charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html), and [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) (except for stacked series, shape series, and range series).
+In Ignite UI for React charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` (except for stacked series, shape series, and range series).
 
-Trendlines are off by default, but you can enable them by setting the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineType) property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
+Trendlines are off by default, but you can enable them by setting the `TrendLineType` property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
 
 The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the `TrendLineDashArray` property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
 
 ## React Chart Trendlines Example
 
-The following sample depicts a [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) showing the stock trend of Microsoft between 2013 and 2017 with a **QuinticFit** trendline initially applied. There is a drop-down that will allow you to change the type of trendline that is applied, and all possible trendline types are listed within that drop-down.
+The following sample depicts a `IgrFinancialChart` showing the stock trend of Microsoft between 2013 and 2017 with a **QuinticFit** trendline initially applied. There is a drop-down that will allow you to change the type of trendline that is applied, and all possible trendline types are listed within that drop-down.
 
 ```typescript
 export default class StocksHistory {
@@ -214,11 +215,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartTrendlines/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Chart Trendlines Dash Array Example
 
-The following sample depicts a [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) showing a [`IgrFinancialPriceSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialpriceseries.html) with a **QuarticFit** dashed trendline applied via the [`trendLineDashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialpriceseries.html#trendLineDashArray) property:
+The following sample depicts a `IgrDataChart` showing a `IgrFinancialPriceSeries` with a **QuarticFit** dashed trendline applied via the `TrendLineDashArray` property:
 
 ```typescript
 export class Stock2YearsItem {
@@ -378,33 +377,31 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-<div class="divider--half"></div>
-
 ## React Chart Trendline Layer
 
-The [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) is a series type, you can add more than one of them to the [`IgrSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html) collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
+The `IgrTrendLineLayer` is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the `IgrTrendLineLayer` is a series type, you can add more than one of them to the `Series` collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
 
 ## Trendline Layer Usage
 
-The [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) must be provided with a [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#targetSeries) and a [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#trendLineType) in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
+The `IgrTrendLineLayer` must be provided with a `TargetSeries` and a `TrendLineType` in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
 
-If you would like to show the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) in the Legend, you can do so by setting the `UseLegend` property to `true`.
+If you would like to show the `IgrTrendLineLayer` in the Legend, you can do so by setting the `UseLegend` property to `true`.
 
 ## Styling the Trendline Layer
 
-By default, the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) renders with the same color as its [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#targetSeries) in a dashed line. This can be configured by using the various styling properties on the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html).
+By default, the `IgrTrendLineLayer` renders with the same color as its `TargetSeries` in a dashed line. This can be configured by using the various styling properties on the `IgrTrendLineLayer`.
 
-To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's [`brushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#brushes) palette based on the index in which the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) is placed in the chart's [`IgrSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html) collection.
+To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's `Brushes` palette based on the index in which the `IgrTrendLineLayer` is placed in the chart's `Series` collection.
 
-You can also modify the way that the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html) appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
+You can also modify the way that the `IgrTrendLineLayer` appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
 
 The following are the options for the `AppearanceMode` property:
 
 - `Auto`: This will default to the DashPattern enumeration.
-- `BrightnessShift`: The trendline will take the [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#targetSeries) brush and modify its brightness based on the provided `ShiftAmount`.
-- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `DashArray` property on the [`IgrTrendLineLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html).
-- `OpacityShift`: The trendline will take the [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#targetSeries) brush and modify its opacity based on the provided `ShiftAmount`.
-- `SaturationShift`: The trendline will take the [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtrendlinelayer.html#targetSeries) brush and modify its saturation based on the provided `ShiftAmount`.
+- `BrightnessShift`: The trendline will take the `TargetSeries` brush and modify its brightness based on the provided `ShiftAmount`.
+- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `DashArray` property on the `IgrTrendLineLayer`.
+- `OpacityShift`: The trendline will take the `TargetSeries` brush and modify its opacity based on the provided `ShiftAmount`.
+- `SaturationShift`: The trendline will take the `TargetSeries` brush and modify its saturation based on the provided `ShiftAmount`.
 
 ## Additional Resources
 
@@ -414,18 +411,7 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-
-The [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) components share the following API properties:
-
-- [`trendLineBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineBrushes)
-- [`trendLinePeriod`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLinePeriod)
-- [`trendLineThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineThickness)
-- [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#trendLineType)
-
-In the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) component, most types of series have the following API properties:
-
-- [`trendLineBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterbase.html#trendLineBrush)
-- [`trendLineDashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterbase.html#trendLineDashArray)
-- [`trendLinePeriod`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterbase.html#trendLinePeriod)
-- [`trendLineThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterbase.html#trendLineThickness)
-- [`trendLineType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterbase.html#trendLineType)
+`IgrCategoryChart`
+`IgrFinancialChart`
+`IgrDataChart`
+`IgrTrendLineLayer`

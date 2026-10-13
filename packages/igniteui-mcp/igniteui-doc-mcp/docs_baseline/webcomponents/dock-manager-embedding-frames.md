@@ -1,13 +1,14 @@
 ---
-title: Web Components Dock Manager | Embed Frames | Infragistics
-_description: Use Infragistics' Web Components dock manager to embed interactive content using panes. View Ignite UI for Web Components dock manager tutorials!
-_keywords: dock manager, embed frames, Ignite UI for Web Components, Infragistics
-_license: commercial
+title: "Web Components Dock Manager | Embed Frames | Infragistics"
+description: Use Infragistics' Web Components dock manager to embed interactive content using panes. View Ignite UI for Web Components dock manager tutorials!
+keywords: dock manager, embed frames, Ignite UI for Web Components, Infragistics
+license: commercial
 mentionedTypes: ["DockManager"]
+llms:
+  description: "The Infragistics Web Components Dock Manager component provides you with the layout for embedding interactive content in your application using panes."
 _tocName: Embedding Frames
 _premium: true
 ---
-
 # Web Components Embedding Frames in Dock Manager
 
 The Infragistics Web Components Dock Manager component provides you with the layout for embedding interactive content in your application using panes.
@@ -60,14 +61,7 @@ The Infragistics Web Components Dock Manager component provides you with the lay
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<!-- <div>
-    <button data-localize="stackblitz" disabled class="stackblitz-btn" data-iframe-id="dock-manager-overview-iframe" data-demos-base-url="http://localhost:4200">View on StackBlitz
-    </button>
-</div> -->
-
-<div class="divider--half"></div>
-
-<!--
+{/*
 ## Usage
 
 Once the Dock Manager is imported, you can add it on the page:
@@ -102,8 +96,10 @@ this.dockManager.layout = {
 <igc-dockmanager id="dockManager">
     <div slot="content1" style="width: 100%; height: 100%;">Content 1</div>
 </igc-dockmanager>
-``` -->
+```
+
+ */}
 
 ## API References
 
-- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)
+[`IgcDockManager`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)<br />

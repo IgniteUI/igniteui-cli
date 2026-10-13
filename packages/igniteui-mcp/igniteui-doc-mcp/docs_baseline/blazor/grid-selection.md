@@ -1,15 +1,14 @@
 ---
-title: Blazor Grid Selection - Ignite UI for Blazor
-_description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
-_keywords: Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "PivotGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/selection
+title: "Blazor Grid Selection - Ignite UI for Blazor"
+description: See how easy it is to select data in Ignite UI for Blazor grid using variety of events, rich API or with simple mouse interactions like single select.
+keywords: "Blazor, Grid, IgbGrid, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/selection"
+llms:
+  description: "With the Ignite UI for Blazor Select feature in Blazor Grid you can easily interact with and manipulate data using simple mouse interactions."
+_componentKey: Grid
 _tocName: Selection
 ---
-
 # Blazor Grid Selection Overview
 
 With the Ignite UI for Blazor Select feature in Blazor Grid you can easily interact with and manipulate data using simple mouse interactions. There are three selection modes available:
@@ -18,7 +17,7 @@ With the Ignite UI for Blazor Select feature in Blazor Grid you can easily inter
 - Cell selection
 - Column selection
 
-With the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) property, you can specify:
+With the [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -174,15 +173,11 @@ public class NwindData
 
 ## Blazor Grid Selection Options
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-The Ignite UI for Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). In order to change/enable selection mode you can use [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection), [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) or [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) properties.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
+The Ignite UI for Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). In order to change/enable selection mode you can use [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection), [`IgbGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=cellSelection) or [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable) properties.
 
 ### Blazor Grid Row Selection
 
-Property [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) enables you to specify the following options:
+Property [`IgbGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 - `Single` - Selection of only one row within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) would be available.
@@ -192,21 +187,17 @@ Property [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGri
 
 ### Blazor Grid Cell Selection
 
-Property [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) enables you to specify the following options:
+Property [`IgbGrid.cellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 - `Single` - Selection of only one cell within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) would be available.
 - `Multiple` - Currently, this is the default state of the selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Cell selection topic](cell-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ### Blazor Grid Column Selection
 
-The [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`IgbColumn.selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -214,28 +205,23 @@ This leads to the following three variations:
 - Multi column selection - holding <kbd>CTRL</kbd> + <kbd>mouse click</kbd> over the column cells.
 - Range column selection - holding <kbd>SHIFT</kbd> + <kbd>mouse click</kbd> selects everything in between.
 
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
-
 > Go to [Column selection topic](column-selection.md) for more information.
-
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- ComponentStart: Grid -->
 
 ## Blazor Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the [`IgbGrid.contextMenu`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=contextMenu) event you can add a custom context menu to facilitate your work with [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
 Basically the main function will look like this:
 
-```razor
+```csharp
     public void RightClick(MouseEventArgs e)
     {
         this.MenuX = e.ClientX + "px";
         this.MenuY = e.ClientY + "px";
     }
+
 
     public void onMenuShow(IgbGridCellEventArgs e)
     {
@@ -243,6 +229,7 @@ Basically the main function will look like this:
         this.ShowMenu = true;
         this.ClickedCell = detail.Cell;
     }
+
 ```
 
 The context menu will have the following functions:
@@ -251,13 +238,14 @@ The context menu will have the following functions:
 - Copy the selected cell's _dataRow_.
 - If the selected cell is within a **multi-cell selection range**, copy all the _selected data_.
 
-```razor
+```csharp
     public void CopyCellData()
     {
         this.ShowMenu = false;
         this.SelectedData = this.ClickedCell.Value.ToString();
         StateHasChanged();
     }
+
 
     public async void CopyRowData()
     {
@@ -274,6 +262,7 @@ The context menu will have the following functions:
         this.SelectedData = JsonConvert.SerializeObject(selectedData);
         StateHasChanged();
     }
+
 ```
 
 The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) will fetch the copied data and will paste it in a container element.
@@ -584,11 +573,9 @@ public class NwindData
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
 ## Known Issues and Limitations
 
-When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`IgbGrid.primaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -596,12 +583,8 @@ When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&compon
 - Row Pinning
 
 ## API References
-
-- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
-
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Row Selection](row-selection.md)
 - [Cell Selection](cell-selection.md)
@@ -611,8 +594,6 @@ When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&compon
 - [Summaries](summaries.md)
 - [Column Moving](column-moving.md)
 - [Virtualization and Performance](virtualization.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

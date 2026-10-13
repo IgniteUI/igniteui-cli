@@ -1,27 +1,22 @@
 ---
-title: Blazor Hierarchical Grid Sorting - Ignite UI for Blazor
-_description: Get started with the Blazor sorting feature of Ignite UI for Blazor Hierarchical Grid! Configure a mix of sortable columns & change the display order of data records.
-_keywords: Blazor sort, Blazor, Ignite UI for Blazor, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/sorting
+title: "Blazor Hierarchical Grid Sorting - Ignite UI for Blazor"
+description: Get started with the Blazor sorting feature of Ignite UI for Blazor Hierarchical Grid! Configure a mix of sortable columns & change the display order of data records.
+keywords: "Blazor sort, Blazor, Ignite UI for Blazor, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/sorting"
+llms:
+  description: "The Ignite UI for Blazor Data Sorting feature in Blazor Hierarchical Grid is enabled on a per-column level, meaning that the IgbHierarchicalGrid can have a mix of sortable and non-sortable columns."
+_componentKey: HierarchicalGrid
 _tocName: Sorting
 _premium: true
 ---
-
 # Blazor Hierarchical Grid Sorting
 
 The Ignite UI for Blazor Data Sorting feature in Blazor Hierarchical Grid is enabled on a per-column level, meaning that the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can have a mix of sortable and non-sortable columns. Performing Blazor sort actions enables you to change the display order of the records based on specified criteria.
 
 ## Blazor Hierarchical Grid Sorting Overview Example
 
-<!-- ComponentStart: HierarchicalGrid -->
-
-Additionally there is a custom contextmenu added for sorting using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s `ContextMenu` Output.
-
-<!-- ComponentEnd: HierarchicalGrid -->
+Additionally there is a custom contextmenu added for sorting using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s [`IgbHierarchicalGrid.contextMenu`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=contextMenu) Output.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -301,7 +296,7 @@ public class SingersData
 }
 ```
 
-This is done via the [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable) input. With the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) sorting, you can also set the [`SortingIgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`IgbColumn.sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=sortable) input. With the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) sorting, you can also set the [`IgbColumnState.sortingIgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=sortingIgnoreCase) property to perform case sensitive sorting:
 
 ```razor
 <IgbColumn Field="Title" Sortable="true"></IgbColumn>
@@ -608,9 +603,7 @@ public class SingersData
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API using the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) [`Sort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=Sort) method:
-
-<!-- ComponentStart: HierarchicalGrid -->
+You can sort any column or a combination of columns through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API using the [`Sort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sort) method:
 
 ```razor
 @code {
@@ -627,12 +620,10 @@ You can sort any column or a combination of columns through the [`IgbHierarchica
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+**Note:** 
+Sorting is performed using our [`IgbGridSortingStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGridSortingStrategy) algorithm. Any [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) or `ISortingExpression` can use a custom implementation of the [`IgbGridSortingStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGridSortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-> [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
-
-As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=ClearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`IgbHierarchicalGrid.clearSort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=clearSort) method:
 
 ```razor
 @code {
@@ -644,19 +635,15 @@ As with the filtering behavior, you can clear the sorting state by using the [`C
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
+**Note:** 
+The [`IgbHierarchicalGrid.sortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortStrategy) of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is of different type compared to the [`IgbHierarchicalGrid.sortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortStrategy) of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn), since they work in different scopes and expose different parameters.
 
-> [!Note]
-> The [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortStrategy) of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is of different type compared to the [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortStrategy) of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn), since they work in different scopes and expose different parameters.
-
-> [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
+**Note:** 
+The sorting operation **DOES NOT** change the underlying data source of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by passing an array of sorting expressions to the [`SortingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortingExpressions) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
-
-<!-- ComponentStart: HierarchicalGrid -->
+It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by passing an array of sorting expressions to the [`IgbHierarchicalGrid.sortingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortingExpressions) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ```razor
 @code {
@@ -675,18 +662,14 @@ It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](m
 }
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-> [!Note]
-> If values of type `string` are used by a column of [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) `Date`, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) won't parse them to `Date` objects and using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+**Note:** 
+If values of type `string` are used by a column of [`IgbHierarchicalGrid.dataType`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=dataType) `Date`, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) won't parse them to `Date` objects and using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`SortHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgbHierarchicalGrid.sortHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 ```razor
 <IgbHierarchicalGrid SortHeaderIconTemplate="SortDefaultTemplate"></IgbHierarchicalGrid>
@@ -697,13 +680,10 @@ The sorting indicator icon in the column header can be customized using a templa
         return @<IgbIcon Size="SizableComponentSize.Small" IconName="unfold_more" Collection="material"></IgbIcon>;
     };
 }
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-- [`SortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgbHierarchicalGrid.sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 ```razor
 <IgbHierarchicalGrid SortAscendingHeaderIconTemplate="SortAscendingTemplate"></IgbHierarchicalGrid>
@@ -714,13 +694,10 @@ The sorting indicator icon in the column header can be customized using a templa
         return @<IgbIcon Size="SizableComponentSize.Small" IconName="expand_less" Collection="material"></IgbIcon>;
     };
 }
+
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-- [`SortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+- [`IgbHierarchicalGrid.sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 ```razor
 <IgbHierarchicalGrid SortDescendingHeaderIconTemplate="SortDescendingTemplate"></IgbHierarchicalGrid>
@@ -731,13 +708,12 @@ The sorting indicator icon in the column header can be customized using a templa
         return @<IgbIcon Size="SizableComponentSize.Small" IconName="expand_more" Collection="material"></IgbIcon>;
     };
 }
-```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
+```
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor
@@ -1037,7 +1013,8 @@ public class SingersData
 
 ## API References
 
-- [`IgbSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbSortingExpression)
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)<br />
+[`IgbSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbSortingExpression)<br />
 
 ## Additional Resources
 

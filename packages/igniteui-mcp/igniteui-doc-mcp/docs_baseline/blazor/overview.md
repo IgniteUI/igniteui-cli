@@ -1,12 +1,13 @@
 ---
-title: Blazor ComboBox Component – Ignite UI for Blazor
-_description: Blazor Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
-_keywords: Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor ComboBox component
-_license: MIT
+title: "Blazor ComboBox Component – Ignite UI for Blazor"
+description: "Blazor Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE"
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor ComboBox component"
+license: MIT
 mentionedTypes: ["Combo", "ComboItem", "ComboHeader", "ComboList"]
+llms:
+  description: "Blazor ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list."
 _tocName: Combo Box
 ---
-
 # Blazor ComboBox Overview
 
 Blazor ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list. The component also supports options for Blazor ComboBox keyboard navigation, templates to customize how the items, header, and footer are displayed.
@@ -31,26 +32,25 @@ The Ignite UI for Blazor ComboBox component provides a list of options from whic
 }
 ```
 
-<div class="divider--half"></div>
-
 ## Getting Started with Blazor ComboBox
 
-To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) component, first we need to register its module as follows:
+To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) component, first we need to register its module as follows:
 
-```razor
+```csharp
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbComboModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-> [!WARNING]
-> The [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) component doesn't work with the standard `<form>` element. Use `Form` instead.
+**Warning: Warning**
+
+The [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
 
@@ -88,32 +88,25 @@ Then, we will bind an array of objects to the combo data source used for buildin
 
 When the combo is bound to a list of complex data (i.e. objects), we need to specify a property that the control will use to handle item selection. The component exposes the following properties:
 
-<!-- end: Blazor -->
+- `T` - **required**, if [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey).
+- [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) is omitted, the selection API will use object references to select items.
+- [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey), the combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) (if any).
+In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) and [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey) respectively.
 
-- `T` - **required**, if [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey).
-
-<!-- end: Blazor -->
-
-- [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) is omitted, the selection API will use object references to select items.
-- [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey), the combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) (if any).
-    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) and [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey) respectively.
-
-> [!Note]
-> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) and/or [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey).
+**Note:** 
+When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) and/or [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=displayKey).
 
 ### Setting Value
 
-The ComboBox component exposes a [`Value`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
+The ComboBox component exposes a [`Value`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
 
-If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey).
-
-Example:
+If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey).
 
 ### Selection API
 
 The combo component exposes APIs that allow you to change the currently selected items.
 
-Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Select) and [`Deselect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=select) and [`Deselect`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
 
 #### Select/deselect some items
 
@@ -161,7 +154,7 @@ Besides selecting items from the list of options by user interaction, you can se
 }
 ```
 
-If the [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+If the [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -223,10 +216,10 @@ If the [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&mem
 
 ### Validation
 
-The Ignite UI for Blazor Combo component supports most of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties, such as [`Required`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Required), [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Disabled), [`Autofocus`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Autofocus), [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Invalid), etc. The component also exposes two methods bound to its validation:
+The Ignite UI for Blazor [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) component supports most of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties, such as [`Required`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=required), [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=disabled), [`Autofocus`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=autofocus), [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=invalid), etc. The component also exposes two methods bound to its validation:
 
-- [`ReportValidity`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ReportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
-- [`CheckValidity`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=CheckValidity) - a wrapper around reportValidity to comply with the native input API.
+- [`ReportValidity`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
+- [`CheckValidity`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
 
 ## Keyboard Navigation
 
@@ -245,32 +238,32 @@ When the combo component is focused and the list of options is **visible**:
 
 ## Styling
 
-You can change the appearance of the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) component and its items, by using the exposed CSS parts listed below:
+You can change the appearance of the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) component and its items, by using the exposed CSS parts listed below:
 
 | Part name            | Description                                                                     |
 | -------------------- | ------------------------------------------------------------------------------- |
-| `label`              | The encapsulated text label.                                                   |
-| `input`              | The main input field.                                                          |
-| `native-input`       | The native input of the main input field.                                      |
-| `prefix`             | The prefix wrapper.                                                            |
-| `suffix`             | The suffix wrapper.                                                            |
-| `toggle-icon`        | The toggle icon wrapper.                                                       |
-| `clear-icon`         | The clear icon wrapper.                                                        |
+| `label`              | The encapsulated text label.                                                    |
+| `input`              | The main input field.                                                           |
+| `native-input`       | The native input of the main input field.                                       |
+| `prefix`             | The prefix wrapper.                                                             |
+| `suffix`             | The suffix wrapper.                                                             |
+| `toggle-icon`        | The toggle icon wrapper.                                                        |
+| `clear-icon`         | The clear icon wrapper.                                                         |
 | `case-icon`          | A case-icon wrapper that renders content inside the suffix of the filter-input. |
-| `helper-text`        | The helper text wrapper.                                                       |
-| `search-input`       | The search input field.                                                        |
-| `list-wrapper`       | The list of options wrapper.                                                   |
-| `list`               | The list of options box.                                                       |
-| `item`               | Represents each item in the list of options.                                   |
-| `group-header`       | Represents each header in the list of options.                                 |
-| `active`             | Appended to the item parts list when the item is active.                       |
-| `selected`           | Appended to the item parts list when the item is selected.                     |
-| `checkbox`           | Represents each checkbox of each list item.                                    |
-| `checkbox-indicator` | Represents the checkbox indicator of each list item.                           |
-| `checked`            | Appended to checkbox parts list when checkbox is checked.                      |
-| `header`             | The container holding the header content.                                      |
-| `footer`             | The container holding the footer content.                                      |
-| `empty`              | The container holding the empty content.                                       |
+| `helper-text`        | The helper text wrapper.                                                        |
+| `search-input`       | The search input field.                                                         |
+| `list-wrapper`       | The list of options wrapper.                                                    |
+| `list`               | The list of options box.                                                        |
+| `item`               | Represents each item in the list of options.                                    |
+| `group-header`       | Represents each header in the list of options.                                  |
+| `active`             | Appended to the item parts list when the item is active.                        |
+| `selected`           | Appended to the item parts list when the item is selected.                      |
+| `checkbox`           | Represents each checkbox of each list item.                                     |
+| `checkbox-indicator` | Represents the checkbox indicator of each list item.                            |
+| `checked`            | Appended to checkbox parts list when checkbox is checked.                       |
+| `header`             | The container holding the header content.                                       |
+| `footer`             | The container holding the footer content.                                       |
+| `empty`              | The container holding the empty content.                                        |
 
 Using the CSS parts we have full control over the Combo styling.
 
@@ -330,10 +323,9 @@ igc-combo::part(toggle-icon) {
 }
 ```
 
-## API Reference
+## API References
 
-- [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo)
-- [`Styling & Themes`](../../themes/overview.md)
+[`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule)<br />
 
 ## Additional Resources
 

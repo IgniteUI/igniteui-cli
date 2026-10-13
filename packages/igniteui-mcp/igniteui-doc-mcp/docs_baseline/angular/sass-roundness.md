@@ -1,18 +1,21 @@
 ---
 title: Roundness Sass
-_description: Ignite UI for Angular allow you to change the shape of components by changing their border-radius.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+description: Ignite UI for Angular allow you to change the shape of components by changing their border-radius.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+llms:
+  description: "Ignite UI for Angular allows you to change the shape of components by setting their roundness to a value between 0 and 1."
 _tocName: Roundness
 ---
-
 # Roundness
 
-<p class="highlight">Ignite UI for Angular allows you to change the shape of components by setting their roundness to a value between 0 and 1.</p>
-<div class="divider"></div>
+<div class="highlight">
+Ignite UI for Angular allows you to change the shape of components by setting their roundness to a value between 0 and 1.
+</div>
+<igc-divider></igc-divider>
 
 ## Overview
 
-Border radius is defined in the [theme schema](https://github.com/IgniteUI/igniteui-theming/blob/18f878033898e1b6a3bb0ed28993e9a4037d1a80/sass/themes/schemas/components/light/_toast.scss#L44) of the component (see the example below). The border radius for any component defined in this manner can then be controlled via the `$roundness` parameter of the [theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme) mixin or a single CSS variable called `--ig-radius-factor`.
+Border radius is defined in the [theme schema](https://github.com/IgniteUI/igniteui-theming/blob/18f878033898e1b6a3bb0ed28993e9a4037d1a80/sass/themes/schemas/components/light/_toast.scss#L44) of the component (see the example below). The border radius for any component defined in this manner can then be controlled via the `$roundness` parameter of the `theme` mixin or a single CSS variable called `--ig-radius-factor`.
 
 ```scss
 $light-toast: extend(
@@ -30,7 +33,7 @@ $light-toast: extend(
 );
 ```
 
-As you can see from the example, the component schema for the [Toast](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-toast-theme) defines the border radius as a list of three values. The first value is the default border radius (i.e. when `$roundness` or `--ig-radius-factor` is not declared). The second value denotes the minimum allowed border radius (i.e. when `$roundness` or `--ig-radius-factor` is set to `0`). And the third value denotes the maximum allowed border radius (i.e. when `$roundness` or `--ig-radius-factor` is set to `1`). In the toast component the default and maximum values match. Any value between 0 and 1 assigned to `$roundness` or `--ig-radius factor` will set the border radius of the toast as a percentage of the maximum value. For instance, setting the value to `.5` will make the border radius of the Toast component to be 50% of its maximum allowed border radius, which is 13 pixels.
+As you can see from the example, the component schema for the `Toast` defines the border radius as a list of three values. The first value is the default border radius (i.e. when `$roundness` or `--ig-radius-factor` is not declared). The second value denotes the minimum allowed border radius (i.e. when `$roundness` or `--ig-radius-factor` is set to `0`). And the third value denotes the maximum allowed border radius (i.e. when `$roundness` or `--ig-radius-factor` is set to `1`). In the toast component the default and maximum values match. Any value between 0 and 1 assigned to `$roundness` or `--ig-radius factor` will set the border radius of the toast as a percentage of the maximum value. For instance, setting the value to `.5` will make the border radius of the Toast component to be 50% of its maximum allowed border radius, which is 13 pixels.
 
 ```scss
 // Make all components sharp by setting the roundness parameter to 0.
@@ -73,7 +76,7 @@ button {
 
 Now the `border-radius` on the button will be affected by the `$roundness` and `--ig-radius-factor` variables.
 
-<div class="divider--half"></div>
+<hr/>
 
 ### Baseline border radius values
 
@@ -102,9 +105,9 @@ The table below shows an excerpt of some of the component border radius values a
 | **Tooltip**           |  0 / 16px          | 4px                |
 | **Toast**             |  0 / 26px          | 26px               |
 
-Please refer to the [Schema](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas) documentation for each component to find out what the default and min/max radius values are for each theme.
+Please refer to the `Schema` documentation for each component to find out what the default and min/max radius values are for each theme.
 
-<div class="divider--half"></div>
+<hr/>
 
 Our community is active and always welcoming to new ideas.
 

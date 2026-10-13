@@ -1,19 +1,18 @@
 ---
-title: Step-by-Step Guide Using Ignite UI CLI | Ignite UI for Web Components | Infragistics
-_description: Walk through the Ignite UI CLI interactive wizard to create a new Web Components project, choose a template and theme, and add Ignite UI for Web Components component views.
-_keywords: Web Components cli, ignite ui cli, Ignite UI for Web Components, scaffolding, step-by-step, Infragistics
+title: "Step-by-Step Guide Using Ignite UI CLI | Ignite UI for Web Components | Infragistics"
+description: "Walk through the Ignite UI CLI interactive wizard to create a new Web Components project, choose a template and theme, and add Ignite UI for Web Components component views."
+keywords: "Web Components cli, ignite ui cli, Ignite UI for Web Components, scaffolding, step-by-step, Infragistics"
 mentionedTypes: []
 last_updated: "2025-04-08"
+llms:
+  description: "The Ignite UI CLI step-by-step mode is an interactive wizard that guides you through project creation, template selection, theming, and component view addition for Ignite UI for Web Components projects."
 _tocName: Step-by-Step Guide Using Ignite UI CLI
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Step-by-Step Guide Using Ignite UI CLI
 
 The Ignite UI CLI step-by-step mode is an interactive wizard that guides you through project creation, template selection, theming, and component view addition for Ignite UI for Web Components projects. It covers the same operations as the non-interactive `ig new` and `ig add` commands but prompts you at each step rather than requiring all arguments upfront.
 
-The step-by-step mode does not support scripted or non-interactive use - for that, use the `ig new` and `ig add` commands with explicit arguments. The wizard relies on `Inquirer.js`; see [supported terminals](https://github.com/SBoudrias/Inquirer.js#support-os-terminals) for compatibility. For the full CLI reference, see [Ignite UI CLI Overview](general-cli-overview.md).
+The step-by-step mode does not support scripted or non-interactive use - for that, use the `ig new` and `ig add` commands with explicit arguments. The wizard relies on `Inquirer.js`; see [supported terminals](https://github.com/SBoudrias/Inquirer.js#support-os-terminals) for compatibility. For the full CLI reference, see [Ignite UI CLI Overview](./general-cli-overview.md).
 
 To activate the wizard, run:
 
@@ -51,9 +50,11 @@ Choose one of the available project templates. Navigate through the options usin
 
 | Template         | Description                                         |
 | :--------------- | :-------------------------------------------------- |
-| Empty            | Minimal project structure with no predefined views  |
-| Base             | Project structure with a home page                  |
+| Empty            | Minimal project structure with no predefined views. Authentication is not available for this template. |
 | Side Navigation  | Project structure with a side navigation drawer     |
+| Side Navigation Mini | Project structure with a compact side navigation drawer |
+
+If you select **Side Navigation** or **Side Navigation Mini**, the wizard prompts you with an additional step asking whether to add authentication to the project. Answering yes generates the corresponding auth variant (`side-nav-auth` or `side-nav-mini-auth`). If you select **Empty**, the authentication prompt is skipped.
 
 ### Select a theme
 
@@ -95,10 +96,10 @@ Navigate through the options using the arrow keys, toggle selections with SPACE,
 To bypass these prompts in non-interactive mode, pass `--assistants` and `--agents` flags directly to `ig new`:
 
 ```cmd
-ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants vscode --agents copilot claude
+ig new my-app --framework=react --type=igr-ts --template=side-nav --assistants vscode --agents copilot claude
 ```
 
-For more details on the available flag values, see [Ignite UI CLI Overview](general-cli-overview.md#ai-configuration-during-project-creation).
+For more details on the available flag values, see [Ignite UI CLI Overview](./general-cli-overview.md#ai-configuration-during-project-creation).
 
 ### Complete or continue
 
@@ -130,8 +131,8 @@ For example:
 ig add grid MyGrid
 ```
 
-> [!NOTE]
-> Your routing file will be updated with the path to the newly generated page. For example, a component named `MyGrid` will be navigable at `/my-grid`.
+**Note:** 
+Your routing file will be updated with the path to the newly generated page. For example, a component named `MyGrid` will be navigable at `/my-grid`.
 
 ## Run the Application
 

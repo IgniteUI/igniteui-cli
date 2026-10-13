@@ -1,12 +1,13 @@
 ---
-title: React Divider | Layout Controls | Infragistics
-_description: Use Infragistics' React divider component to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
-_keywords: Ignite UI for React, UI controls, React widgets, Web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React DIvider components, React Divider controls
-_license: MIT
+title: "React Divider | Layout Controls | Infragistics"
+description: Use Infragistics' React divider component to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
+keywords: "Ignite UI for React, UI controls, React widgets, Web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React DIvider components, React Divider controls"
+license: MIT
 mentionedTypes: ["Divider"]
+llms:
+  description: "The Ignite UI for React Divider allows the content author to easily create a horizontal/vertical rule as a break between content to better organize information on a page."
 _tocName: Divider
 ---
-
 # React Divider
 
 The Ignite UI for React Divider allows the content author to easily create a horizontal/vertical rule as a break between content to better organize information on a page.
@@ -44,8 +45,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerOverview />);
 ```
 
-<div class="divider--half"></div>
-
 ## Dependencies
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -74,10 +73,9 @@ The [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) is
 ```
 
 ## Usage
-
 ### Vertical Divider
 
-If the [`vertical`](mcp:get_api_reference?platform=react&component=IgrDivider&member=vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
+If the [`Vertical`](mcp:get_api_reference?platform=react&component=IgrDivider&member=vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```tsx
 <IgrDivider vertical></IgrDivider>
@@ -142,7 +140,7 @@ root.render(<DividerVertical />);
 
 ### Type
 
-The [`type`](mcp:get_api_reference?platform=react&component=IgrDivider&member=type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
+The [`Type`](mcp:get_api_reference?platform=react&component=IgrDivider&member=type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
 
 ```tsx
 <IgrDivider type="dashed"></IgrDivider>
@@ -183,7 +181,7 @@ root.render(<DividerDashed/>);
 
 ### Inset Divider
 
-The [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) can be set in on both sides. To `inset` the divider, set the [`middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute is false.
+The [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) can be set in on both sides. To `inset` the divider, set the [`Middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`Middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute is false.
 
 ```css
 /* DividerStyles.css */
@@ -328,21 +326,14 @@ root.render(<DividerSelect />);
 ```
 
 ## CSS Variables
-
 ### Inset
-
 The `--inset` css variable shrinks the divider by the given amount from the start. If middle is set it will shrink from both sides.
 
 ### Color
-
 The `--color` css variable sets the color of the divider.
 
-<div class="divider--half"></div>
-
 ## API References
-
-- [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider)
-
+[`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider)
 ## Additional Resources
 
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)

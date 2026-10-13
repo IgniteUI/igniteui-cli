@@ -1,14 +1,14 @@
 ---
-title: React Grid Live Data updates - Ignite UI for React
-_description: Check out how the Ignite UI for React Grid can handle thousands of updates per second, while staying responsive for user interactions.
-_keywords: React Grid, IgrGrid updates, React live data, infragistics
-_license: commercial
-sharedComponents: ["Grid", "TreeGrid"]
-namespace: Infragistics.Controls
+title: "React Grid Live Data updates - Ignite UI for React"
+description: Check out how the Ignite UI for React Grid can handle thousands of updates per second, while staying responsive for user interactions.
+keywords: "React Grid, IgrGrid updates, React live data, infragistics"
+license: commercial
+llms:
+  description: "The Ignite UI for React Live Data Updates feature in React Grid is used for enabling real-time or near-real-time updates of data displayed within the grid."
+_componentKey: Grid
 _tocName: Live Data / Real-Time
 _premium: true
 ---
-
 # React Grid Live Data Updates
 
 The Ignite UI for React Live Data Updates feature in React Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can handle thousands of updates per second, while staying responsive for user interactions.
@@ -2039,6 +2039,7 @@ const startUpdate = () => {
   setIsStopButtonDisabled(false);
   setIsChartButtonDisabled(true);
 }
+
 ```
 
 A change in the data field value or a change in the data object/data collection reference will trigger the corresponding pipes. However, this is not the case for columns, which are bound to [complex data objects](../data-grid.md#complex-data-binding). To resolve the situation, provide a new object reference for the data object containing the property. Example:
@@ -2063,16 +2064,11 @@ const updateData = (data: any[]) => {
 ```
 
 ## Templates
-
 Updating the view works the same way for columns with a default template and for columns with a custom template. However, it is recommended to keep custom templates relatively simple. As number of elements in the template grows, negative performance impact rises as well.
 
 ## API References
-
-- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
-
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -2083,8 +2079,6 @@ Updating the view works the same way for columns with a default template and for
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,206 +1,370 @@
 ---
-title: React Accordion | Accordion | Infragistics
-_description: Accordion is used to build vertical expandable panels in accordion menu.
-_keywords: React Accordion, Ignite UI for React, Infragistics
-_license: MIT
-mentionedTypes: ["Accordion", "Infragistics.Controls.Layouts.Implementation.ExpansionPanel"]
+title: "React Accordion Component | Layouts | Infragistics"
+description: "React Accordion is a layout component for organizing expandable and collapsible content panels in a vertical container."
+keywords: "React Accordion, accordion component, expandable panels, Ignite UI for React, Infragistics"
+license: MIT
+last_updated: "2026-07-30"
+mentionedTypes: ["Accordion", "ExpansionPanel"]
 namespace: Infragistics.Controls
+relatedComponents: ["ExpansionPanel"]
+llms:
+  description: "The Ignite UI for React Accordion helps developers group related content into expandable and collapsible panels inside a vertical layout."
 _tocName: Accordion
 ---
+# Accordion Component
 
-# React Accordion Overview
+The Ignite UI for React Accordion is a layout component for organizing expandable content panels in a single vertical container.
 
-The Ignite UI for React Accordion is a GUI component for building vertical expandable panels with clickable headers and associated content sections, displayed in a single container. The accordion is commonly used to reduce the need of scrolling across multiple sections of content on a single page. It offers keyboard navigation and API to control the underlying panels' expansion state.
-
-Users are enabled to interact and navigate among a list of items, such as thumbnails or labels. Each one of those items can be toggled (expanded or collapsed) in order to reveal the containing information. Depending on the configuration, there can be a single or multiple expanded items at a time.
-
-## React Accordion Example
-
-The following is a basic Ignite UI for React Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
-
-In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) property to toggle between single and multiple branches to be expanded at a time.
+## Live Demo
 
 ```css
-igc-accordion {
+.accordion-sample {
     width: 100%;
-}
-
-.sample-wrapper {
+    height: 100%;
     overflow-y: auto;
-    max-height: 380px;
-    margin: 8px;
 }
 
-igc-switch {
-    padding: 16px;
+.accordion-content {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
 }
 
-igc-expansion-panel {
-    border: 1px solid rgba(174, 174, 174, 0.25);
+.accordion-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.accordion-sample igc-accordion {
+    display: block;
+    border: 1px solid var(--ig-gray-300);
+    border-radius: 4px;
 }
 ```
 ```tsx
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './AccordionOverview.css';
 import {
-    IgrAccordion, IgrExpansionPanel, IgrSwitch,
-    IgrCheckboxChangeEventArgs } from 'igniteui-react';
+    IgrAccordion,
+    IgrCheckboxChangeEventArgs,
+    IgrExpansionPanel,
+    IgrSwitch
+} from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function AccordionOverview() {
-
-    const [singleExpand, setSingleExpand] = useState<boolean>(false);
+    const accordionRef = useRef<IgrAccordion>(null);
 
     const switchChange = (e: IgrCheckboxChangeEventArgs) => {
-        setSingleExpand(e.detail.checked);
-    }
-  
+        if (accordionRef.current) {
+            accordionRef.current.singleExpand = e.detail.checked;
+        }
+    };
+
     return (
-        <div id="root">
-            <IgrSwitch onChange={switchChange}><span>Single Expand</span></IgrSwitch>
-            <div className="sample-wrapper">
-                <IgrAccordion singleExpand={singleExpand}>
-                    <IgrExpansionPanel>
-                        <span slot="title">What has changed about subscription and pricing model?</span>
-                        <span>We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
-                            for you to manage your license subscriptions and allows us to provide a better level of service for you. We
-                            updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
-                            (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
-                            including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components, as well as Infragistics Professional,
-                            Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
-                            so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
-                            price.</span>
+        <div className="accordion-sample">
+            <div className="accordion-content">
+                <div className="accordion-toolbar">
+                    <IgrSwitch onChange={switchChange}>
+                        <span>Single Expand</span>
+                    </IgrSwitch>
+                </div>
+
+                <IgrAccordion ref={accordionRef}>
+                    <IgrExpansionPanel open>
+                        <span slot="title">Account</span>
+                        <span slot="subtitle">Profile and security settings</span>
+                        <p>Update your profile details, password, and sign-in preferences.</p>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <span slot="title">Who will the updated changes impact?</span>
-                        <span>The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
-                            Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
-                            Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
-                            blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
-                            So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
-                            be honored and renewed based upon the current agreement.</span>
+                        <span slot="title">Notifications</span>
+                        <span slot="subtitle">Email and product updates</span>
+                        <p>Choose which notifications you receive and how often they are delivered.</p>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <span slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</span>
-                        <span>For Ignite UI customers, we are moving away from NPM for licensed packages. The current NPM packages will be replaced with
-                            packages that include a “Trial Version” watermark. Licensed packages for Ignite UI will be available from our cloud hosted ProGet
-                            server. For more information, please refer to this article: Moving from Trial to Licensed Ignite UI NPM Packages</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <span slot="title">What happens if I don&apos;t renew my subscription?</span>
-                        <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <span slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</span>
-                        <span>Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
-                            previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
-                            to renew it.</span>
+                        <span slot="title">Billing</span>
+                        <span slot="subtitle">Payment and invoice settings</span>
+                        <p>Manage payment methods, billing contacts, and invoice delivery options.</p>
                     </IgrExpansionPanel>
                 </IgrAccordion>
             </div>
         </div>
-        
     );
 }
 
-// rendering above component to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AccordionOverview />);
 ```
 
-<div class="divider--half"></div>
+## Anatomy
 
-## Getting Started with React Accordion
+The accordion structure consists of an accordion container with one or more expansion panel children.
 
-First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
+**React Accordion anatomy anatomy:** The accordion anatomy labels the accordion host and child expansion panel structure.
 
-```cmd
-npm install igniteui-react
+<span class="ig-typography__body-2" style="display: block; margin-bottom: 24px;"><strong>1. Header:</strong> displays the section title and description and can be clicked to reveal or hide the panel's content<br />
+<strong>2. Icon:</strong> indicates if the panel is open or closed. Could be placed on the left or on the right side of the header<br />
+<strong>3. Panel:</strong> the section of content linked to an accordion header</span>
+
+<style>{`
+  .accordion-anatomy {
+    --igd-anatomy-padding: 64px 32px;
+  }
+
+  .accordion-anatomy .igd-anatomy__image {
+    max-width: 640px;
+  }
+`}</style>
+
+```text
+igc-accordion                    // host - manages a set of expansion panels
+└─ igc-expansion-panel            // child panel
+   ├─ [slot="title"]              // panel header title
+   ├─ [slot="subtitle"]           // optional header subtitle
+   ├─ [slot="indicator"]          // custom collapsed/default indicator
+   ├─ [slot="indicator-expanded"] // optional custom expanded-state indicator
+   └─ default slot                // expandable panel content
 ```
 
-You will then need to import the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) and the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) and its necessary CSS, like so:
+## Getting Started
+
+Use the accordion with the Ignite UI for React version installed in your application. Complete the shared [Getting Started](../general-getting-started.md) topic before adding framework-specific imports or registration.
+
+Import the React wrappers and the theme stylesheet before you render the accordion.
 
 ```tsx
-import {
-  IgrAccordion,
-  IgrExpansionPanel,
-} from "igniteui-react";
-import "igniteui-webcomponents/themes/light/bootstrap.css";
-
+import { IgrAccordion, IgrExpansionPanel } from 'igniteui-react';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-Before using the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion), you need to register it as follows:
-
-Now you can start with a basic configuration of the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) and its panels.
 
 ## Usage
 
-Each section in the React Accordion Component is defined using an React Expansion Panel.
-Panels provide `Disabled` and `Open` properties, which give you the ability to configure the states of the panel as per your requirement.
+Build the accordion by placing one or more [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) components inside an [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) container.
 
-### Declaring an Accordion
+### Single Expansion
 
-The accordion wraps all expansion panels declared inside it.
+Set [`SingleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) to switch between one-open-panel behavior and multiple-open-panel behavior.
 
 ```tsx
 <IgrAccordion singleExpand={true}>
   <IgrExpansionPanel>
-    <div slot="title">Title Panel 1</div>
-    <div>Content Panel 1</div>
+    <span slot="title">Title Panel 1</span>
+    <p>Content Panel 1</p>
   </IgrExpansionPanel>
   <IgrExpansionPanel>
-    <div slot="title">Title Panel 2</div>
-    <div>Content Panel 2</div>
+    <span slot="title">Title Panel 2</span>
+    <p>Content Panel 2</p>
   </IgrExpansionPanel>
 </IgrAccordion>
 ```
 
-As demonstrated above, the [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
+### Programmatic Expansion
 
-By using the [`hideAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=hideAll) and [`showAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) methods you can respectively collapse and expand all [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)s of the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) programmatically.
+Use [`HideAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=hideAll) and [`ShowAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) to collapse or expand all available panels programmatically.
 
-> [!Note]
-> If [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) property is set to **true** calling [`showAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) method would expand only the focused panel.
+**Note:** 
+Calling [`ShowAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) expands all panels, even when [`SingleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) is `true`.
 
-### React Accordion Customization Example
 
-With the React Accordion, you can customize the header and content panel's appearance.
+```tsx
+const accordionRef = useRef<IgrAccordion>(null);
 
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel).
+return (
+  <>
+    <IgrButton onClick={() => accordionRef.current?.showAll()}>Show All</IgrButton>
+    <IgrButton onClick={() => accordionRef.current?.hideAll()}>Hide All</IgrButton>
+
+    <IgrAccordion ref={accordionRef}>
+      <IgrExpansionPanel>
+        <span slot="title">Title Panel 1</span>
+        <p>Content Panel 1</p>
+      </IgrExpansionPanel>
+      <IgrExpansionPanel>
+        <span slot="title">Title Panel 2</span>
+        <p>Content Panel 2</p>
+      </IgrExpansionPanel>
+    </IgrAccordion>
+  </>
+);
+```
 
 ```css
-igc-accordion {
+.accordion-sample {
     width: 100%;
-}
-
-.sample-wrapper {
+    height: 100%;
     overflow-y: auto;
-    max-height: 530px;
-    margin: 8px;
 }
 
-igc-range-slider {
-    margin: 24px;
+.accordion-content {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.accordion-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.action-button {
+    min-width: 96px;
+}
+
+.accordion-sample igc-accordion {
+    display: block;
+    border: 1px solid var(--ig-gray-300);
+    border-radius: 4px;
+}
+```
+```tsx
+import React, { useRef } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { IgrAccordion, IgrButton, IgrExpansionPanel } from "igniteui-react";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
+
+export default function AccordionProgrammaticExpansion() {
+  const accordionRef = useRef<IgrAccordion>(null);
+
+  return (
+    <div className="accordion-sample">
+      <div className="accordion-content">
+        <div className="accordion-toolbar">
+          <IgrButton
+            className="action-button"
+            variant="contained"
+            onClick={() => accordionRef.current?.showAll()}
+          >
+            <span>Show All</span>
+          </IgrButton>
+          <IgrButton
+            className="action-button"
+            variant="contained"
+            onClick={() => accordionRef.current?.hideAll()}
+          >
+            <span>Hide All</span>
+          </IgrButton>
+        </div>
+
+        <IgrAccordion ref={accordionRef}>
+          <IgrExpansionPanel open>
+            <span slot="title">Billing</span>
+            <span slot="subtitle">Invoices and payment settings</span>
+            <p>
+              Review invoices, update payment methods, and manage billing
+              contacts.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel open>
+            <span slot="title">Security</span>
+            <span slot="subtitle">Password and access controls</span>
+            <p>
+              Configure password rules, multi-factor authentication, and
+              recovery options.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel open>
+            <span slot="title">Notifications</span>
+            <span slot="subtitle">Product updates and account alerts</span>
+            <p>
+              Choose which product updates and account alerts are sent to your
+              team.
+            </p>
+          </IgrExpansionPanel>
+        </IgrAccordion>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AccordionProgrammaticExpansion />);
+```
+
+### Customize Panel Content
+
+Customize the panel headers and content through the underlying [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) slots.
+
+```tsx
+<IgrAccordion>
+  <IgrExpansionPanel open>
+    <span slot="title">Billing</span>
+    <span slot="subtitle">Payment and invoice settings</span>
+    <p>Update payment methods, billing contacts, and invoice delivery options.</p>
+  </IgrExpansionPanel>
+</IgrAccordion>
+```
+
+```css
+.accordion-sample {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.accordion-content {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.accordion-sample igc-accordion {
+    display: block;
+    border: 1px solid var(--ig-gray-300);
+    border-radius: 4px;
+}
+
+.panel-description {
+    margin: 0 0 16px;
+    color: var(--ig-gray-700);
 }
 
 .categories-container {
-    display: flex;
-    flex-flow: column nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 24px;
+    max-width: 520px;
 }
 
-igc-checkbox,
-igc-radio {
+.category-option,
+.rating-option {
     margin: 4px 0;
 }
 
-igc-expansion-panel {
-    border: 1px solid rgba(174, 174, 174, 0.25);
+.range-summary {
+    display: flex;
+    justify-content: space-between;
+    max-width: 560px;
+    margin-bottom: 4px;
+    font-weight: 600;
 }
 
-igc-rating {
+.cost-slider {
+    max-width: 560px;
+    margin: 8px 0 0;
+}
+
+.rating-options {
+    display: grid;
+    gap: 8px;
+    max-width: 360px;
+}
+
+.rating-control {
     flex-direction: row;
+}
+
+.time-input {
+    max-width: 260px;
 }
 
 .size-small {
@@ -211,7 +375,6 @@ igc-rating {
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "./AccordionCustomization.css";
 import {
   IgrAccordion,
   IgrCheckbox,
@@ -232,6 +395,8 @@ import "igniteui-webcomponents/themes/light/bootstrap.css";
 
 type Category = { checked: boolean; type: string };
 
+const ratingOptions = [2, 3, 4, 5];
+
 const clearIcon =
   "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /></svg>";
 const clockIcon =
@@ -247,6 +412,7 @@ export default class AccordionCustomization extends React.Component<any, any> {
   ];
 
   private dateTimeInput: IgrDateTimeInput;
+  private transportationPanel: IgrExpansionPanel;
 
   constructor(props: any) {
     super(props);
@@ -254,7 +420,7 @@ export default class AccordionCustomization extends React.Component<any, any> {
       categories: this.categories,
       cost: { lower: 200, upper: 800 },
       rating: "",
-      time: "Time",
+      time: "Any time",
     };
 
     this.categoriesChange = this.categoriesChange.bind(this);
@@ -263,30 +429,42 @@ export default class AccordionCustomization extends React.Component<any, any> {
     this.timeChange = this.timeChange.bind(this);
     this.clearTime = this.clearTime.bind(this);
     this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
+    this.transportationPanelRef = this.transportationPanelRef.bind(this);
 
     registerIconFromText("clear", clearIcon, "material");
     registerIconFromText("clock", clockIcon, "material");
   }
 
+  public componentDidMount() {
+    if (this.transportationPanel) {
+      this.transportationPanel.open = true;
+    }
+  }
+
   public render(): JSX.Element {
+    const selectedCategories = this.state.categories
+      .filter((c: Category) => c.checked)
+      .map((c: Category) => c.type)
+      .join(", ");
+
     return (
-      <div id="root">
-        <div className="sample-wrapper">
+      <div className="accordion-sample">
+        <div className="accordion-content">
           <IgrAccordion>
-            <IgrExpansionPanel>
+            <IgrExpansionPanel ref={this.transportationPanelRef}>
               <span slot="title">
-                Categories
-                {this.state.categories.some((c: Category) => c.checked) && ": "}
-                {this.state.categories
-                  .filter((c: Category) => c.checked)
-                  .map((c: Category) => c.type)
-                  .join(", ")}
+                Transportation{selectedCategories && `: ${selectedCategories}`}
               </span>
+              <span slot="subtitle">Choose how you want to travel</span>
               <span>
+                <p className="panel-description">
+                  Select one or more transportation options for your trip.
+                </p>
                 <div className="categories-container">
                   {this.state.categories.map((c: Category) => {
                     return (
                       <IgrCheckbox
+                        className="category-option"
                         key={"checkbox-" + c.type}
                         onChange={(e: IgrCheckboxChangeEventArgs) =>
                           this.categoriesChange(e, c.type)
@@ -301,11 +479,19 @@ export default class AccordionCustomization extends React.Component<any, any> {
             </IgrExpansionPanel>
             <IgrExpansionPanel>
               <span slot="title">
-                Cost: $<span id="lowerCost">{this.state.cost.lower}</span> to $
-                <span id="upperCost">{this.state.cost.upper}</span>
+                Budget: ${this.state.cost.lower} - ${this.state.cost.upper}
               </span>
+              <span slot="subtitle">Set the price range</span>
               <span>
+                <p className="panel-description">
+                  Adjust the minimum and maximum cost for available options.
+                </p>
+                <div className="range-summary">
+                  <span>${this.state.cost.lower}</span>
+                  <span>${this.state.cost.upper}</span>
+                </div>
                 <IgrRangeSlider
+                  className="cost-slider"
                   min={0}
                   max={1000}
                   lower={this.state.cost.lower}
@@ -316,14 +502,19 @@ export default class AccordionCustomization extends React.Component<any, any> {
             </IgrExpansionPanel>
             <IgrExpansionPanel>
               <span slot="title">
-                Rating{this.state.rating && ": "}
+                Minimum Rating{this.state.rating && ": "}
                 {this.state.rating}
               </span>
+              <span slot="subtitle">Filter by review score</span>
               <span>
-                <IgrRadioGroup alignment="horizontal">
-                  {[1, 2, 3, 4].map((rating) => {
+                <p className="panel-description">
+                  Choose the lowest rating you want to include in the results.
+                </p>
+                <IgrRadioGroup className="rating-options">
+                  {ratingOptions.map((rating) => {
                     return (
                       <IgrRadio
+                        className="rating-option"
                         key={`${rating}star`}
                         name="rating"
                         value={rating.toString()}
@@ -334,8 +525,8 @@ export default class AccordionCustomization extends React.Component<any, any> {
                             rating > 1 ? "s" : ""
                           } or more`}
                           max={5}
-                          value={rating + 0.5}
-                          className="size-small"
+                          value={rating}
+                          className="rating-control size-small"
                           readOnly={true}
                         ></IgrRating>
                       </IgrRadio>
@@ -346,11 +537,16 @@ export default class AccordionCustomization extends React.Component<any, any> {
             </IgrExpansionPanel>
             <IgrExpansionPanel>
               <span slot="title">
-                {this.state.time}
+                Arrival Time
+                {this.state.time !== "Any time" && `: ${this.state.time}`}
               </span>
+              <span slot="subtitle">Set the latest arrival time</span>
               <span>
+                <p className="panel-description">
+                  Pick the latest acceptable arrival time for your trip.
+                </p>
                 <IgrDateTimeInput
-                  className="size-small"
+                  className="time-input size-small"
                   inputFormat="hh:mm tt"
                   label="Arrive before"
                   ref={this.dateTimeInputRef}
@@ -404,11 +600,11 @@ export default class AccordionCustomization extends React.Component<any, any> {
     const s = e.target as IgrDateTimeInput;
     const result =
       s.value !== null
-        ? `Arrive before ${e.detail.toLocaleTimeString([], {
+        ? e.detail.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
-          })}`
-        : "Time";
+          })
+        : "Any time";
     this.setState({
       time: result,
     });
@@ -417,7 +613,7 @@ export default class AccordionCustomization extends React.Component<any, any> {
   public clearTime() {
     this.dateTimeInput.clear();
     this.setState({
-      time: "Time",
+      time: "Any time",
     });
   }
 
@@ -427,143 +623,505 @@ export default class AccordionCustomization extends React.Component<any, any> {
     }
     this.dateTimeInput = input;
   }
+
+  public transportationPanelRef(panel: IgrExpansionPanel) {
+    if (!panel) {
+      return;
+    }
+    this.transportationPanel = panel;
+  }
 }
 
-// rendering above component to the React DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AccordionCustomization />);
 ```
 
-<div class="divider--half"></div>
+### Nest Accordions
 
-### Nested React Accordions Scenario
+Nest an accordion inside an expansion panel when you need a second level of grouped disclosure.
 
-In the following React Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) is achieved by adding an accordion inside an expansion panel.
+```tsx
+<IgrAccordion>
+  <IgrExpansionPanel open>
+    <span slot="title">Workspace Settings</span>
+    <IgrAccordion>
+      <IgrExpansionPanel>
+        <span slot="title">Notifications</span>
+        <p>Configure email and product notification preferences.</p>
+      </IgrExpansionPanel>
+    </IgrAccordion>
+  </IgrExpansionPanel>
+</IgrAccordion>
+```
 
 ```css
-igc-accordion {
+.accordion-sample {
     width: 100%;
-}
-
-.sample-wrapper {
+    height: 100%;
     overflow-y: auto;
-    max-height: 470px;
-    margin: 8px;
 }
 
-igc-switch {
-    padding: 16px;
+.accordion-content {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
 }
 
-igc-expansion-panel {
-    border: 1px solid rgba(174, 174, 174, 0.25);
+.accordion-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.accordion-sample igc-accordion {
+    display: block;
+    border: 1px solid var(--ig-gray-300);
+    border-radius: 4px;
 }
 ```
 ```tsx
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import './AccordionNestedScenario.css';
+import React, { useRef } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 import {
-    IgrAccordion, IgrExpansionPanel, IgrSwitch,
-    IgrCheckboxChangeEventArgs
-} from 'igniteui-react';
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
+  IgrAccordion,
+  IgrCheckboxChangeEventArgs,
+  IgrExpansionPanel,
+  IgrSwitch,
+} from "igniteui-react";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
 
 export default function AccordionNestedScenario() {
+  const outerAccordionRef = useRef<IgrAccordion>(null);
+  const innerAccordionRef = useRef<IgrAccordion>(null);
 
-    const [singleExpand, setSingleExpand] = useState<boolean>(false);
-    
-    const switchChange = (e: IgrCheckboxChangeEventArgs) => {
-        setSingleExpand(e.detail.checked);
+  const switchChange = (e: IgrCheckboxChangeEventArgs) => {
+    const { checked } = e.detail;
+
+    if (outerAccordionRef.current) {
+      outerAccordionRef.current.singleExpand = checked;
     }
 
-    return (
-        <div id="root">
-            <IgrSwitch onChange={switchChange}><span>Single Expand</span></IgrSwitch>
-            <div className="sample-wrapper">
-                <IgrAccordion singleExpand={singleExpand}>
-                    <IgrExpansionPanel Open>
-                        <span slot="title">Common questions about renewal.</span>
-                        <span>
-                            <IgrAccordion>
-                                <IgrExpansionPanel>
-                                    <span slot="title">What happens if I don&apos;t renew my subscription?</span>
-                                    <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
-                                </IgrExpansionPanel>
-                                <IgrExpansionPanel>
-                                    <span slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</span>
-                                    <span>Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
-                                        previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
-                                        to renew it.</span>
-                                </IgrExpansionPanel>
-                                <IgrExpansionPanel>
-                                    <span slot="title">Will I be automatically charged for my renewal/ Can I be automatically charged for renewal?</span>
-                                    <span>Any new subscriptions purchased online, via our eCommerce system, will renew automatically. Subscription renewal can be canceled,
-                                        at any time, before the next automatic renewal date. Subscriptions purchased directly from Infragistics or Infragistics&apos; partners are
-                                        subject to the renewal terms that were agreed upon as part of that purchase.</span>
-                                </IgrExpansionPanel>
-                            </IgrAccordion>
-                        </span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <span slot="title">What has changed about subscription and pricing model?</span>
-                        <span>We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
-                            for you to manage your license subscriptions and allows us to provide a better level of service for you. We
-                            updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
-                            (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
-                            including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components, as well as Infragistics Professional,
-                            Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
-                            so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
-                            price.</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <span slot="title">Who will the updated changes impact?</span>
-                        <span>The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
-                            Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
-                            Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
-                            blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
-                            So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
-                            be honored and renewed based upon the current agreement.</span>
-                    </IgrExpansionPanel>
-                </IgrAccordion>
-            </div>
+    if (innerAccordionRef.current) {
+      innerAccordionRef.current.singleExpand = checked;
+    }
+  };
+
+  return (
+    <div className="accordion-sample">
+      <div className="accordion-content">
+        <div className="accordion-toolbar">
+          <IgrSwitch onChange={switchChange}>
+            <span>Single Expand</span>
+          </IgrSwitch>
         </div>
-    );
+
+        <IgrAccordion ref={outerAccordionRef}>
+          <IgrExpansionPanel open>
+            <span slot="title">Workspace Settings</span>
+            <span slot="subtitle">
+              Nested account, access, and billing options
+            </span>
+
+            <IgrAccordion ref={innerAccordionRef}>
+              <IgrExpansionPanel open>
+                <span slot="title">Profile</span>
+                <span slot="subtitle">Name, photo, and contact details</span>
+                <p>
+                  Update the public information shown to other workspace
+                  members.
+                </p>
+              </IgrExpansionPanel>
+
+              <IgrExpansionPanel>
+                <span slot="title">Security</span>
+                <span slot="subtitle">Password and sign-in preferences</span>
+                <p>
+                  Review active sessions, change your password, and configure
+                  sign-in requirements.
+                </p>
+              </IgrExpansionPanel>
+
+              <IgrExpansionPanel>
+                <span slot="title">Notifications</span>
+                <span slot="subtitle">Email and product updates</span>
+                <p>
+                  Choose the messages you receive for comments, assignments, and
+                  releases.
+                </p>
+              </IgrExpansionPanel>
+            </IgrAccordion>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel>
+            <span slot="title">Team Access</span>
+            <span slot="subtitle">Members, roles, and permissions</span>
+            <p>
+              Invite teammates, assign roles, and review workspace permissions.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel>
+            <span slot="title">Billing</span>
+            <span slot="subtitle">Plan, invoices, and payment method</span>
+            <p>
+              Manage subscription details, billing contacts, and invoice
+              delivery.
+            </p>
+          </IgrExpansionPanel>
+        </IgrAccordion>
+      </div>
+    </div>
+  );
 }
 
-// rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AccordionNestedScenario />);
 ```
 
-<div class="divider--half"></div>
+### Do/Don't
 
-## Keyboard Navigation
+**When to use:** Use the accordion when you need to organize secondary content, FAQ entries, settings groups, or other related vertical sections that users expand on demand. Keep panel titles short and descriptive, and enable single-expansion behavior when users should focus on one section at a time.
 
-Keyboard navigation in the React Accordion provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the panels.
+**When not to use:** Use the [Expansion Panel](./expansion-panel.md) when you need a single standalone expandable section instead of a coordinated container that manages multiple panels together. Do not use an accordion to hide essential primary content or to group unrelated sections.
 
-The Accordion navigation is compliant with W3C accessibility standards and convenient to use.
+<div class="table-responsive">
+  <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
+    <thead>
+      <tr>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Do</th>
+        <th style="width: 50%; background-color: #d3d3d3; text-align: left; padding: 16px 20px; font-size: 18px; font-weight: 500;">Don't</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+        <td style="border: 1px solid #d3d3d3; padding: 16px 20px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-**Key Combinations**
+## Properties
 
-- <kbd>↓</kbd> - moves the focus to the panel below
-- <kbd>↑</kbd> - moves the focus to the panel above
-- <kbd>ALT</kbd> + <kbd>↓</kbd> - opens the focused panel in the accordion
-- <kbd>ALT</kbd> + <kbd>↑</kbd> - closes the focused panel in the accordion
-- <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>↓</kbd> - opens all enabled panels (if singleExpand is set to true opens the focused panel)
-- <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>↑</kbd> - closes all enabled panels
-- <kbd>HOME</kbd> - navigates to the FIRST enabled panel in the accordion
-- <kbd>END</kbd> - navigates to the LAST enabled panel in the accordion
+The accordion exposes container-level controls; panel-specific state is configured on each [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel).
 
-<div class="divider"></div>
+| Name | Type | Default | Description |
+| -- | -- | -- | -- |
+| [`SingleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) | `boolean` | `false` | Controls whether one or multiple panels can stay expanded at the same time. |
+| [`Panels`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=panels) | [`ExpansionPanel[]`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) | n/a | Returns the collection of child expansion panels in the accordion. |
+
+## Methods
+
+Use the accordion methods when you need to change panel state from your code.
+
+| Name | Description |
+| -- | -- |
+| [`ShowAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) | Expands all available panels. |
+| [`HideAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=hideAll) | Collapses the available panels. |
+
+## Styling
+
+Style the React accordion with CSS parts and Ignite UI theme variables.
+
+```css
+.accordion-sample {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.accordion-content {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.accordion-sample igc-accordion {
+    display: block;
+    border: 1px solid var(--ig-gray-300);
+    border-radius: 4px;
+}
+
+.accordion-sample igc-expansion-panel {
+    background-color: var(--ig-gray-50);
+    color: var(--ig-gray-900);
+    border-radius: 4px;
+}
+
+.accordion-sample igc-expansion-panel::part(header) {
+    background-color: var(--ig-gray-100);
+}
+
+.accordion-sample igc-expansion-panel[open]::part(header) {
+    background-color: var(--ig-primary-50);
+}
+
+.accordion-sample igc-expansion-panel::part(indicator) {
+    color: var(--ig-primary-500);
+}
+
+.accordion-sample igc-expansion-panel::part(title) {
+    color: var(--ig-gray-900);
+    font-weight: 600;
+}
+
+.accordion-sample igc-expansion-panel[open]::part(title),
+.accordion-sample igc-expansion-panel[open]::part(subtitle) {
+    color: var(--ig-primary-700);
+}
+
+.accordion-sample igc-expansion-panel::part(content) {
+    color: var(--ig-gray-700);
+}
+```
+```tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { IgrAccordion, IgrExpansionPanel } from "igniteui-react";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
+
+export default function AccordionStyling() {
+  return (
+    <div className="accordion-sample">
+      <div className="accordion-content">
+        <IgrAccordion>
+          <IgrExpansionPanel open>
+            <span slot="title">Getting Started</span>
+            <span slot="subtitle">Setup and onboarding</span>
+            <p>
+              Find installation steps, project setup guidance, and resources for
+              building your first application.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel>
+            <span slot="title">Billing</span>
+            <span slot="subtitle">Invoices and payment methods</span>
+            <p>
+              Review invoices, update payment methods, and manage billing
+              contacts for your account.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel>
+            <span slot="title">Security</span>
+            <span slot="subtitle">Access and authentication</span>
+            <p>
+              Configure password rules, multi-factor authentication, and
+              recovery options for your team.
+            </p>
+          </IgrExpansionPanel>
+        </IgrAccordion>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AccordionStyling />);
+```
+
+Style the accordion by targeting the parts exposed by its child [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) components.
+
+### Styling Variables
+
+Use Ignite UI for React theme CSS variables as values when styling the expansion panel parts.
+
+| Variable | What it changes |
+| -- | -- |
+| `--ig-secondary-900` | Supplies the dark background color used by the panel and header in the example below. |
+| `--ig-secondary-900-contrast` | Supplies a readable foreground color for content on `--ig-secondary-900`. |
+| `--ig-warn-500` | Supplies the accent color used by the indicator, title, and subtitle in the example below. |
+
+```css
+igc-expansion-panel {
+  background-color: var(--ig-secondary-900);
+  color: var(--ig-secondary-900-contrast);
+}
+
+igc-expansion-panel::part(header) {
+  background-color: var(--ig-secondary-900);
+}
+
+igc-expansion-panel::part(indicator),
+igc-expansion-panel::part(title),
+igc-expansion-panel::part(subtitle) {
+  color: var(--ig-warn-500);
+}
+```
+
+### CSS Parts
+
+| Part | What it changes |
+| -- | -- |
+| `header` | The container for the expansion indicator, title, and subtitle. |
+| `title` | The title container. |
+| `subtitle` | The subtitle container. |
+| `indicator` | The indicator container. |
+| `content` | The expansion panel content wrapper. |
+
+### Styling with Tailwind
+
+Use Tailwind utility classes with CSS part selectors when you want to keep the styling close to the component markup.
+
+```css
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "./index.tsx";
+
+.accordion-tailwind-sample {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+```
+```tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { IgrAccordion, IgrExpansionPanel } from "igniteui-react";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
+
+const panelClassName = [
+  "rounded",
+  "bg-[var(--ig-gray-50)]",
+  "text-[var(--ig-gray-900)]",
+  "[&::part(header)]:bg-[var(--ig-gray-100)]",
+  "[&[open]::part(header)]:bg-[var(--ig-primary-50)]",
+  "[&::part(indicator)]:text-[var(--ig-primary-500)]",
+  "[&::part(title)]:font-semibold",
+  "[&::part(title)]:text-[var(--ig-gray-900)]",
+  "[&[open]::part(title)]:text-[var(--ig-primary-700)]",
+  "[&[open]::part(subtitle)]:text-[var(--ig-primary-700)]",
+  "[&::part(content)]:text-[var(--ig-gray-700)]",
+].join(" ");
+
+export default function AccordionTailwindStyling() {
+  return (
+    <div className="accordion-tailwind-sample">
+      <div className="accordion-tailwind-content box-border mx-auto w-[min(720px,100%)] p-6">
+        <IgrAccordion className="block rounded border border-[var(--ig-gray-300)]">
+          <IgrExpansionPanel className={panelClassName} open>
+            <span slot="title">Getting Started</span>
+            <span slot="subtitle">Setup and onboarding</span>
+            <p>
+              Find installation steps, project setup guidance, and resources for
+              building your first application.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel className={panelClassName}>
+            <span slot="title">Billing</span>
+            <span slot="subtitle">Invoices and payment methods</span>
+            <p>
+              Review invoices, update payment methods, and manage billing
+              contacts for your account.
+            </p>
+          </IgrExpansionPanel>
+
+          <IgrExpansionPanel className={panelClassName}>
+            <span slot="title">Security</span>
+            <span slot="subtitle">Access and authentication</span>
+            <p>
+              Configure password rules, multi-factor authentication, and
+              recovery options for your team.
+            </p>
+          </IgrExpansionPanel>
+        </IgrAccordion>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AccordionTailwindStyling />);
+```
+
+## Accessibility
+
+The accordion supports keyboard interaction for moving focus between panels and changing their expanded state.
+
+### Keyboard Interaction
+
+Use the keyboard shortcuts below to move through the accordion and open or close panels.
+
+| Key | Action |
+| -- | -- |
+| <kbd>Down Arrow</kbd> | Moves focus to the panel below. |
+| <kbd>Up Arrow</kbd> | Moves focus to the panel above. |
+| <kbd>Alt</kbd> + <kbd>Down Arrow</kbd> | Opens the focused panel. |
+| <kbd>Alt</kbd> + <kbd>Up Arrow</kbd> | Closes the focused panel. |
+| <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Down Arrow</kbd> | Opens all enabled panels. If [`SingleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) is `true`, opens only the focused panel. |
+| <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Up Arrow</kbd> | Closes all enabled panels. |
+| <kbd>Home</kbd> | Moves focus to the first enabled panel. |
+| <kbd>End</kbd> | Moves focus to the last enabled panel. |
+
+### Screen Readers / ARIA
+
+The accordion's accessibility semantics are provided through its child expansion panels and their headers.
+
+- Each panel header exposes `role="button"`, `aria-expanded`, and `aria-controls`.
+- Each panel body exposes `role="region"` and a label through `aria-labelledby` or `aria-label`.
+- Use clear title text for each panel so assistive technologies can announce a meaningful label.
+- Keep interactive content inside panel bodies in a logical tab order.
+
+### Accessibility Compliance
+
+Infragistics documents Ignite UI for React accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic. The accordion's compliance evidence comes from the child [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) components that provide the interactive headers and regions.
+
+| Criterion | How the component complies |
+| -- | -- |
+| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard) | The accordion supports keyboard commands for moving focus and opening or closing panels. |
+| [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order) | Focus moves through enabled panels in sequence, with shortcuts for jumping to the first and last panel. |
+
+Your responsibilities:
+
+- Provide panel titles that describe the content behind each disclosure area.
+- Preserve a logical focus order in the surrounding page layout.
+- Validate any custom styling against your application's contrast and focus-indicator requirements.
 
 ## API References
 
-- [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion)
-- [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
+[`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion)
+[`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
+
+## Dependencies
+
+The accordion depends on [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) for its visible sections.
+
+The accordion also depends on the shared theme stylesheet for its default appearance.
 
 ## Additional Resources
 
+Use these resources to continue with Ignite UI for React Accordion support, source, and related layout guidance.
+
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
 - [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)
+
+## Related Components
+
+- [Expansion Panel](./expansion-panel.md) - The collapsible section the accordion is built from. See it for configuring individual panels.
+
+## FAQ
+
+  **Q: Should multiple accordion panels be open at the same time?**
+
+    Allow multiple panels to stay open when users need to compare or cross-reference their content. Use single-expansion behavior when the workflow is clearer with one active section at a time.
+  
+  **Q: When should I avoid using an accordion?**
+
+    Avoid using an accordion for essential, long, or comparison-heavy content that users need to read at once. Use clear headings, a separate page, or another layout when hiding the content would make it harder to find or compare.
+  
+  **Q: How should I write accordion headers?**
+
+    Use short, descriptive headers that clearly identify the content revealed by each panel. Users should be able to scan the headers and decide which section to open.
+  
+  **Q: Can an accordion header contain other buttons or links?**
+
+    Avoid placing other interactive controls inside an accordion header. Keep secondary actions outside the header so the panel trigger remains clear and does not contain nested interactive elements.
+  
+

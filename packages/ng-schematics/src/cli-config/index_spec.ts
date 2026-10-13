@@ -1,5 +1,6 @@
 import * as path from "path";
 
+import { DependencyNotFoundException } from "@angular-devkit/core";
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER } from "@igniteui/cli-core";
@@ -386,6 +387,58 @@ export const appConfig: ApplicationConfig = {
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
 
+	describe("dependency version check", () => {
+		const warnings = () => {
+			const warns: string[] = [];
+			runner.logger.subscribe(entry => {
+				if (entry.level === "warn") {
+					warns.push(entry.message);
+				}
+			});
+			return warns;
+		};
+
+		const setPkgJson = (pkgJson: object) => tree.overwrite("/package.json", JSON.stringify(pkgJson));
+
+		it("should not warn when the project Angular version satisfies the peer dependencies", async () => {
+			const warns = warnings();
+			setPkgJson({ dependencies: { "@angular/core": "^7.0.3", "@angular/common": "^7.0.3" } });
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			expect(warns).not.toContain(jasmine.stringMatching(/Version mismatch/));
+		});
+
+		it("should read Angular versions from devDependencies and peerDependencies", async () => {
+			const warns = warnings();
+			setPkgJson({
+				dependencies: {},
+				devDependencies: { "@angular/core": "^6.0.0" },
+				peerDependencies: { "@angular/common": "^6.0.0" }
+			});
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			expect(warns).toContain(jasmine.stringMatching(/Version mismatch detected/));
+		});
+
+		it("should handle a package.json without devDependencies and peerDependencies", async () => {
+			const warns = warnings();
+			setPkgJson({ dependencies: { "@angular/core": "^6.0.0", "@angular/common": "^6.0.0" } });
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			expect(warns).toContain(jasmine.stringMatching(/Version mismatch detected/));
+		});
+
+		it("should fail when Angular is not a dependency", async () => {
+			setPkgJson({ dependencies: {} });
+
+			await expectAsync(runner.runSchematic("cli-config", {}, tree))
+				.toBeRejectedWithError(DependencyNotFoundException);
+		});
+	});
+
 	it("should schedule the ai-config schematic task", async () => {
 		await runner.runSchematic("cli-config", {}, tree);
 
@@ -522,6 +575,21 @@ export const appConfig: ApplicationConfig = {
 			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
 			expect(content.mcpServers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 			expect(content.servers).toBeUndefined();
+		});
+
+		it("should not copy agent files when agents is none", async () => {
+			await runner.runSchematic("ai-config", { agents: ["none"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith([], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith([], "angular");
+		});
+
+		it("should not write MCP config when assistants is none", async () => {
+			await runner.runSchematic("ai-config", { assistants: ["none"] }, tree);
+
+			expect(tree.exists(mcpFilePath)).toBeFalse();
+			expect(tree.exists("/.mcp.json")).toBeFalse();
+			expect(tree.exists("/.cursor/mcp.json")).toBeFalse();
 		});
 
 		it("should write to .mcp.json when assistant is claude-code", async () => {

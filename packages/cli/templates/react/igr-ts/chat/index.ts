@@ -4,7 +4,7 @@ class IgrChatComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Chat";
-		this.group = "Data Entry & Display";
+		this.group = "Interactions";
 		this.description = `a chat UI component for displaying messages, attachments and input interaction`;
 	}
 }

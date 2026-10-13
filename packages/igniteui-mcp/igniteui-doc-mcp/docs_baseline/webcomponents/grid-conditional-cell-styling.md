@@ -1,32 +1,31 @@
 ---
-title: Web Components Grid Conditional Cell Styling - Ignite UI for Web Components
-_description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Web Components Grid to make cells stand out.
-_keywords: conditional styling, Web Components, Ignite UI for Web Components, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.Grid", "Infragistics.Controls.GridCell", "Infragistics.Controls.GridRow", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/conditional-cell-styling
+title: "Web Components Grid Conditional Cell Styling - Ignite UI for Web Components"
+description: Let users identify different cells quickly. Define a variety of cell styles. Use the conditional cell styling in Web Components Grid to make cells stand out.
+keywords: conditional styling, Web Components, Ignite UI for Web Components, Infragistics
+license: commercial
+_canonicalLink: "grids/grid/conditional-cell-styling"
+llms:
+  description: "The Ignite UI for Web Components Conditional Styling feature in Web Components Grid allows custom styling on a row or cell level."
+_componentKey: Grid
 _tocName: Conditional Styling
 _premium: true
 ---
-
 # Web Components Grid Conditional Styling
 
-The Ignite UI for Web Components Conditional Styling feature in Web Components Grid allows custom styling on a row or cell level. The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for Web Components Conditional Styling feature in Web Components Grid allows custom styling on a row or cell level.  The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Grid Conditional Row Styling
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in Ignite UI for Web Components provides two ways to **conditional styling of rows** based on custom rules.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in Ignite UI for Web Components provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input on the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component;
-- By setting [`rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) input on the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component;
+- By setting [`IgcGrid.rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input on the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component;
+- By setting [`IgcGrid.rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) input on the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) rows by setting the [`rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input and define custom rules.
+You can conditionally style the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) rows by setting the [`IgcGrid.rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input and define custom rules.
 
 ```html
 <igc-grid id="grid" height="600px" width="100%">
@@ -40,7 +39,7 @@ constructor() {
 }
 ```
 
-The [`rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`IgcGrid.rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```ts
 public rowClasses = {
@@ -69,17 +68,15 @@ public rowClasses = {
 
 ### Using Row Styles
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) control exposes the [`rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) control exposes the [`IgcGrid.rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`IgcGrid.rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) and [`rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) is:
+> The callback signature for both [`IgcGrid.rowStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowStyles) and [`IgcGrid.rowClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowClasses) is:
 
 ```ts
 (row: IgcRowType) => boolean
 ```
 
 Let's define our styles:
-
-<!-- ComponentStart: Grid -->
 
 ```typescript
 public rowStyles = {
@@ -101,8 +98,6 @@ constructor() {
     grid1.rowStyles = this.rowStyles;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -199,16 +194,15 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 
 ## Overview
 
-The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in Ignite UI for Web Components provides two ways to **conditional styling of cells** based on custom rules.
+The [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in Ignite UI for Web Components provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) input [`cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) input [`IgcColumn.cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
-
-You can conditionally style the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) cells by setting the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) [`cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) input and define custom rules.
+You can conditionally style the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) cells by setting the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) [`IgcColumn.cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) input and define custom rules.
 
 ```html
-<igc-column id="beatsPerMin" field="BeatsPerMinute" data-type="Number"></igc-column>
+<igc-column id="beatsPerMin" field="BeatsPerMinute" data-type="number"></igc-column>
 ```
 
 ```ts
@@ -218,11 +212,7 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-The [`cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- ComponentStart: Grid -->
+The [`IgcColumn.cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```typescript
 
@@ -238,6 +228,7 @@ public beatsPerMinuteClasses = {
     downFont: this.downFontCondition,
     upFont: this.upFontCondition
 };
+
 ```
 
 ```css
@@ -249,8 +240,6 @@ public beatsPerMinuteClasses = {
     color: red !important;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -306,17 +295,13 @@ export class AthletesData extends Array<AthletesDataItem> {
 }
 ```
 
-- By using the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) input [`cellStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) input [`IgcColumn.cellStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellStyles)` which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
-```ts
-(rowData: any, columnKey: string, cellValue: any, rowIndex: number) => boolean
-```
-
 ### Using Cell Styles
 
-Columns expose the [`cellStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`IgcColumn.cellClasses`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -346,8 +331,6 @@ constructor() {
     col1.cellStyles = this.webGridCellStylesHandler;
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ### Demo
 
@@ -411,10 +394,10 @@ public editDone(evt) {
 
 ```html
 <igc-grid id="grid1" height="500px" width="100%" >
-  <igc-column id="Col1" field="Col1" data-type="number"></igx-column>
-  <igc-column id="Col2" field="Col2" data-type="number" editable="true"></igx-column>
-  <igc-column id="Col3" field="Col3" header="Col3" data-type="string"></igx-column>
-<igc-grid>
+  <igc-column id="Col1" field="Col1" data-type="number"></igc-column>
+  <igc-column id="Col2" field="Col2" data-type="number" editable="true"></igc-column>
+  <igc-column id="Col3" field="Col3" header="Col3" data-type="string"></igc-column>
+</igc-grid>
 ```
 
 ```ts
@@ -431,16 +414,12 @@ constructor() {
 }
 ```
 
-<!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
-
 ## API References
 
-- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
-- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+[`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)<br />
+[`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)<br />
 
 ## Additional Resources
-
-<!-- ComponentStart: Grid -->
 
 - [Virtualization and Performance](virtualization.md)
 - [Editing](editing.md)
@@ -454,13 +433,8 @@ constructor() {
 - [Column Hiding](column-hiding.md)
 - [Selection](selection.md)
 - [Searching](search.md)
-
-<!-- * [Toolbar](toolbar.md) -->
-
 - [Multi-column Headers](multi-column-headers.md)
 - [Size](size.md)
-
-<!-- ComponentEnd: Grid -->
 
 Our community is active and always welcoming to new ideas.
 

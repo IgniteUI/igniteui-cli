@@ -1,23 +1,20 @@
 ---
-title: Ignite UI CLI MCP | Infragistics
-_description: Use the Ignite UI CLI MCP server to scaffold Ignite UI for Web Components projects, add components, and answer API questions through your AI assistant.
-_keywords: Web Components, Ignite UI for Web Components, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, agent, GitHub Copilot, Cursor, Claude, JetBrains
-_language: en
-_license: MIT
-_canonicalLink: "{environment:dvUrl}/components/ai/cli-mcp"
-namespace: Infragistics.Controls
-mentionedTypes: []
+title: "Ignite UI CLI MCP | Infragistics"
+description: "Use the Ignite UI CLI MCP server to scaffold Ignite UI for Web Components projects, add components, and answer API questions through your AI assistant."
+keywords: "Web Components, Ignite UI for Web Components, Infragistics, Ignite UI CLI MCP, Ignite UI Theming MCP, MCP, Model Context Protocol, AI, agent, GitHub Copilot, Cursor, Claude, JetBrains"
+license: MIT
+_canonicalLink: "/components/ai/cli-mcp"
 last_updated: "2026-04-24"
+mentionedTypes: []
+llms:
+  description: "The Ignite UI CLI MCP is a Model Context Protocol (MCP) server that enables AI assistants to scaffold projects, modify existing apps, create and update components, and answer documentation questions for Ignite UI for Web Components applications."
 _tocName: CLI MCP
 ---
-
-<!-- schema: Article, HowTo -->
-
 # Ignite UI CLI MCP
 
 <p class="highlight">The Ignite UI CLI MCP is a <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a> (MCP) server that enables AI assistants to scaffold projects, modify existing apps, create and update components, and answer documentation questions for Ignite UI for Web Components applications. Connect the Ignite UI CLI MCP to your editor, GitHub repository, or desktop AI client and describe what you want - the assistant uses the CLI tools for you.</p>
 
-<div class="divider"></div>
+<igc-divider></igc-divider>
 
 ## Overview
 
@@ -63,8 +60,8 @@ The canonical launch command is:
 npx -y igniteui-cli mcp
 ```
 
-> [!NOTE]
-> The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
+**Note:** 
+The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
 
 ### Choose a setup path
 
@@ -91,19 +88,19 @@ If you are creating a project with Ignite UI CLI first, you can run the CLI in e
 
 - **Global install**
 
-    ```bash
-    npm install -g igniteui-cli
-    ```
+  ```bash
+  npm install -g igniteui-cli
+  ```
 
-    This gives you the `ig` command in any terminal session and is the clearest option if you plan to create and scaffold projects regularly.
+  This gives you the `ig` command in any terminal session and is the clearest option if you plan to create and scaffold projects regularly.
 
 - **Without a global install**
 
-    ```bash
-    npx --package igniteui-cli igniteui new
-    ```
+  ```bash
+  npx --package igniteui-cli igniteui new
+  ```
 
-    This runs the CLI through `npx` instead of a global `ig` command.
+  This runs the CLI through `npx` instead of a global `ig` command.
 
 For the **CLI-first** path, you can create the project in guided mode or with a direct command.
 
@@ -158,8 +155,8 @@ If you created the project with Ignite UI CLI first, review the generated `.vsco
 
 Once saved, open the GitHub Copilot chat panel, switch to **Agent** mode, and the Ignite UI CLI MCP tools will be available.
 
-> [!NOTE]
-> MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
+**Note:** 
+MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
 
 ### Cursor
 
@@ -182,8 +179,8 @@ Cursor supports project-scoped MCP configuration. Create or edit `.cursor/mcp.js
 
 The servers will be picked up automatically when you open a new Cursor chat session.
 
-> [!NOTE]
-> You can also configure MCP servers globally via **Settings → MCP** in Cursor.
+**Note:** 
+You can also configure MCP servers globally via **Settings → MCP** in Cursor.
 
 ### Claude Desktop
 
@@ -249,25 +246,25 @@ JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 4. Enter the following configuration:
 
-    ```json
-    {
-      "mcpServers": {
-        "igniteui-cli": {
-          "command": "npx",
-          "args": ["-y", "igniteui-cli", "mcp"]
-        },
-        "igniteui-theming": {
-          "command": "npx",
-          "args": ["-y", "igniteui-theming", "igniteui-theming-mcp"]
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "mcpServers": {
+       "igniteui-cli": {
+         "command": "npx",
+         "args": ["-y", "igniteui-cli", "mcp"]
+       },
+       "igniteui-theming": {
+         "command": "npx",
+         "args": ["-y", "igniteui-theming", "igniteui-theming-mcp"]
+       }
+     }
+   }
+   ```
 
 5. Click **OK** and restart the AI Assistant.
 
-> [!NOTE]
-> MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
+**Note:** 
+MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
 
 ### Other MCP Clients
 
@@ -324,11 +321,11 @@ Here is a brief overview of each tool:
 | Tool                      | Description                                                                                                                                                          |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `list_components`         | Lists available Ignite UI component docs for a framework. Accepts an optional keyword filter (case-insensitive substring match against name, keywords, and summary). |
-| `get_doc`                 | Gets the full markdown content of a specific component doc by kebab-case name (e.g., `grid-editing`, `combo-overview`). Includes code samples, tables, and links.   |
-| `search_docs`             | Full-text search across Ignite UI docs for a framework. Returns up to 20 ranked results with excerpts.                                                              |
-| `get_project_setup_guide` | Returns the project setup guide for creating a new project in a specific framework, including CLI steps and install instructions.                                   |
-| `search_api`              | Searches API entries by keyword or component name across Angular, React, Blazor and Web Components.                                                                        |
-| `get_api_reference`       | Returns the full API reference for a specific component or class, including properties, methods, and events. Supports Angular, React, Blazor and Web Components.           |
+| `get_doc`                 | Gets the full markdown content of a specific component doc by kebab-case name (e.g., `grid-editing`, `combo-overview`). Includes code samples, tables, and links.    |
+| `search_docs`             | Full-text search across Ignite UI docs for a framework. Returns up to 20 ranked results with excerpts.                                                               |
+| `get_project_setup_guide` | Returns the project setup guide for creating a new project in a specific framework, including CLI steps and install instructions.                                    |
+| `search_api`              | Searches API entries by keyword or component name across Angular, React, Blazor and Web Components.                                                                         |
+| `get_api_reference`       | Returns the full API reference for a specific component or class, including properties, methods, and events. Supports Angular, React, Blazor and Web Components.            |
 
 At a high level, the CLI MCP tools help with:
 
@@ -338,8 +335,8 @@ At a high level, the CLI MCP tools help with:
 - updating project structure and configuration
 - answering documentation and API questions
 
-> [!NOTE]
-> Framework detection uses component prefixes: `for Angular`, `for React`, `for Web Components`, `for Blazor`. The assistant picks up the right framework automatically from your open files or prompt context.
+**Note:** 
+Framework detection uses component prefixes: `for Angular`, `for React`, `for Web Components`, `for Blazor`. The assistant picks up the right framework automatically from your open files or prompt context.
 
 The theming server adds styling, theme, palette, and token workflows to the same client session.
 
@@ -413,8 +410,6 @@ Validate that the JSON uses the `mcpServers` structure and that each local serve
 - [AI-Assisted Development with Ignite UI](./ai-assisted-development-overview.md)
 - [Ignite UI for Web Components Skills](./skills.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)
-
-<div class="divider--half"></div>
 
 Our community is active and always welcoming to new ideas.
 

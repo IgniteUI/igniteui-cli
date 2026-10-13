@@ -1,18 +1,18 @@
 ---
 title: Tree Grid load on demand - Native Angular | Ignite UI for Angular
-_description: The Ignite UI for Angular Tree Grid provides the necessary tools to load child data on demand when a parent row is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
-_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Tree Grid component, Angular Tree Table component, Angular Tree Grid control, Angular Tree Table control, Angular High Performance Tree Grid, Angular High Performance Tree Table, Tree Grid, Tree Table
-_license: commercial
+description: The Ignite UI for Angular Tree Grid provides the necessary tools to load child data on demand when a parent row is expanded. That way the volume of data would be greatly reduced and can be retrieved only when the user needs it.
+keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Tree Grid component, Angular Tree Table component, Angular Tree Grid control, Angular Tree Table control, Angular High Performance Tree Grid, Angular High Performance Tree Table, Tree Grid, Tree Table
+license: commercial
+llms:
+  description: "The Ignite UI for Angular TreeGrid can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible."
 _tocName: Load On Demand
 _premium: true
 ---
-
 # Tree Grid Load On Demand
 
 The Ignite UI for Angular [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible. Then, only after the user expands a row, the children for that particular parent row will be loaded. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
 
 ## Angular Tree Grid Load On Demand Example
-
 
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -64,11 +64,9 @@ export class TreeGridLoadOnDemandSampleComponent implements OnInit {
 }
 ```
 
-<div class="divider--half"></div>
-
 ### Usage
 
-The Load on Demand feature is compatible with both types of Tree Grid data sources - [`primary and foreign keys`](tree-grid.md#primary-and-foreign-keys) or [`child collection`](tree-grid.md#child-collection). You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand).
+The Load on Demand feature is compatible with both types of Tree Grid data sources - [`primary and foreign keys`](/treegrid/tree-grid#primary-and-foreign-keys) or [`child collection`](/treegrid/tree-grid#child-collection). You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand).
 
 ```html
 <igx-tree-grid #treeGrid [data]="data" primaryKey="ID" foreignKey="ParentID"
@@ -76,6 +74,7 @@ The Load on Demand feature is compatible with both types of Tree Grid data sourc
         ...
 </igx-tree-grid>
 ```
+
 
 The [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand) callback provides two parameters:
 
@@ -114,24 +113,17 @@ If you want to provide your own custom loading indicator, you may create an ng-t
 </igx-tree-grid>
 ```
 
-> [!NOTE]
-> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+**Note:** 
+This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ## API References
-
-<div class="divider--half"></div>
-
-- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
-- [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-
+- [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- `IgxGridComponent Styles`
 ## Additional Resources
 
-<div class="divider--half"></div>
+- [Tree Grid overview](/treegrid/tree-grid)
+- [Tree Grid Virtualization and Performance](/treegrid/virtualization)
 
-- [Tree Grid overview](tree-grid.md)
-- [Tree Grid Virtualization and Performance](virtualization.md)
-
-<div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)

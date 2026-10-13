@@ -1,12 +1,13 @@
 ---
-title: Web Components Tabs Control | Layout Controls | Ignite UI for Web Components
-_description: Web Components Tabs component allows users to place tabs at the top and switch between similar data sets. Try it Now
-_keywords: Web Components, UI controls, web widgets, UI widgets, Web Components Tabs Component, Infragistics
-_license: MIT
+title: "Web Components Tabs Control | Layout Controls | Ignite UI for Web Components"
+description: "Web Components Tabs component allows users to place tabs at the top and switch between similar data sets. Try it Now"
+keywords: "Web Components, UI controls, web widgets, UI widgets, Web Components Tabs Component, Infragistics"
+license: MIT
 mentionedTypes: ["Tabs", "Tab", "Icon", "IconButton", "RadioGroup"]
+llms:
+  description: "The Web Components Tabs is a lightweight and user-friendly component that organizes corresponding content in a tab format or a collection of tabs typically placed horizontally."
 _tocName: Tabs
 ---
-
 # Web Components Tabs Overview
 
 The Web Components Tabs is a lightweight and user-friendly component that organizes corresponding content in a tab format or a collection of tabs typically placed horizontally. The Web Components Tab enables end-users to easily click through and display different views. There are several features and customization options like tab orientation, templating, built-in header styles, animation, scroll buttons, and more.
@@ -30,7 +31,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent), you need to import it as follows:
+Before using the [`IgcTabs`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent), you need to import it as follows:
 
 ```ts
 import { defineComponents, IgcTabsComponent } from 'igniteui-webcomponents';
@@ -40,36 +41,38 @@ defineComponents(IgcTabsComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Simple [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) declaration is done as follows:
+Simple [`IgcTabs`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) declaration is done as follows:
 
 ```html
 <igc-tabs>
     <igc-tab label="Tab 1">
-      <span>Content for tab 1</span>
+        <span>Content for tab 1</span>
     </igc-tab>
     <igc-tab label="Tab 2">
-      <span>Content for tab 2</span>
+        <span>Content for tab 2</span>
     </igc-tab>
     <igc-tab>
-      <div slot="label">Tab 3</div>
-      <span>Content for tab 3</span>
+        <span slot="label">Tab 3</span>
+        <span>Content for tab 3</span>
     </igc-tab>
 </igc-tabs>
 ```
 
-Tab text can be set either as simple string using the [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+Tab text can be set either as simple string using the [`Label`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=label) property or by assigning children to the `label` slot. Any remaining children in the `default` slot are rendered as the tab content.
+
+When using the `label` slot, we recommend using a `<span>` element when you want to provide text and an [`<igc-icon>`](../layouts/icon.md) or [`<igc-icon-button>`](../inputs/icon-button.md) component when you want to display icons.
 
 ### Selection
 
-The [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) emits `Change` event when the user selects an item either by key press or click. The [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=select) method allows you to select a tab by specifying the [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) or its id.
+The [`IgcTabs`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) emits [`Change`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=change) event when the user selects an item either by key press or click. The [`Select`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=select) method allows you to select a tab by specifying the [`IgcTab`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) or its id.
 
 If the selected tab is not specified on initial load, the first tab that is not disabled will be selected.
 
-The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
+The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`Activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
 
 ### Disabled Tab
 
-A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=disabled) attribute:
+A tab is disabled by setting the [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=disabled) attribute:
 
 ```html
 <igc-tab label="Tab 1" disabled></igc-tab>
@@ -77,7 +80,7 @@ A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=web
 
 ### Alignment
 
-The [`alignment`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=alignment) property controls how Web Components tabs are positioned. It accepts the following values:
+The [`Alignment`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=alignment) property controls how Web Components tabs are positioned. It accepts the following values:
 
 - `Start` (default): the width of the tab depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container's left side.
 - `Center`: the width of the tab depends on the content and occupies the tabs container's center.
@@ -108,15 +111,15 @@ Scroll buttons are shown when the available space is not enough to render all We
 
 |Keys|Description|
 |----|-----------|
-| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
-| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
+| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab.  |
+| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
 | <kbd>HOME</kbd> | Selects the first tab. |
 | <kbd>END</kbd> | Selects the last tab. |
-| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is `Manual` |
+| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`Activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is `Manual` |
 
 ### Prefix / Suffix
 
-Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot, which can be used to display an icon, text, or both, each tab also provides `prefix` and `suffix` slots for displaying additional content at the beginning and/or the end. When slotting content into the `prefix` and `suffix` slots, we recommend using a `<span>` element for symbols or emojis, and an [`<igc-icon>`](../layouts/icon.md) or [`<igc-icon-button>`](../inputs/icon-button.md) component for icons.
 
 ```css
 /* shared styles are loaded from: */
@@ -133,7 +136,7 @@ igc-icon-button {
 
 ## Styling
 
-The [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) component exposes several CSS parts, giving you full control over its style:
+The [`IgcTabs`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) component exposes several CSS parts, giving you full control over its style:
 
 | Name | Description |
 |--|--|
@@ -141,7 +144,7 @@ The [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=
 | `start-scroll-button` | The start scroll button displayed when the tabs overflow. |
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 
-The [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) component exposes the following CSS parts:
+The [`IgcTab`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) component exposes the following CSS parts:
 
 |Name|Description|
 |--|--|
@@ -231,12 +234,11 @@ igc-tab::part(tab-header)::before {
 
 ## API Reference
 
-- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent)
-- [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent)
-- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
-- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
-- [`Styling & Themes`](../themes/overview.md)
+[`IgcTab`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent)
+[`IgcTabs`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent)
+[`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+[`IgcIconButton`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
+[`IgcRadioGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
 
 ## Additional Resources
 

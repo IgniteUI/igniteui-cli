@@ -1,24 +1,19 @@
 ---
-title: React Hierarchical Grid Row Adding - Ignite UI for React
-_description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
-_keywords: React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics
-_license: commercial
-mentionedTypes: ["Infragistics.Controls.HierarchicalGrid", "Infragistics.Controls.HierarchicalGridRow", "Infragistics.Controls.GridCell", "Infragistics.Controls.Column"]
-sharedComponents: ["Grid", "TreeGrid", "HierarchicalGrid"]
-namespace: Infragistics.Controls
-_canonicalLink: grids/grid/row-adding
+title: "React Hierarchical Grid Row Adding - Ignite UI for React"
+description: Learn how to use and customize the built-in row adding functionality with React and utilize intuitive grid row adding and CRUD capabilities.
+keywords: "React, Hierarchical Grid, IgrHierarchicalGrid, Ignite UI for React, Infragistics"
+license: commercial
+_canonicalLink: "grids/grid/row-adding"
+llms:
+  description: "The Ignite UI for React Row Adding feature in React Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page."
+_componentKey: HierarchicalGrid
 _tocName: Row Adding
 _premium: true
 ---
-
 # React Hierarchical Grid Row Adding
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
 
 The Ignite UI for React Row Adding feature in React Hierarchical Grid enables users to input and submit new data records without navigating to a separate form or page. With the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), users can manipulate data through inline row adding and a powerful API for CRUD operations.
 Add an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled in the grid's template. After that hover a row and use the provided button. Finally press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## React Hierarchical Grid Row Adding Example
 
@@ -222,11 +217,7 @@ root.render(<Sample/>);
 
 ## Row Adding Usage
 
-Then define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) with bound data source, [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- ComponentStart: HierarchicalGrid -->
+Then define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) with bound data source, [`IgrHierarchicalGrid.rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`IgrHierarchicalGrid.addRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={singersData} id="hGrid" primaryKey="ID" rowEditable={true} ref={hierarchicalGrid1Ref}>
@@ -284,20 +275,14 @@ Then define a [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&compo
 </IgrHierarchicalGrid>
 ```
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
-
-<!-- ComponentStart: Grid, HierarchicalGrid -->
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`IgrColumn.editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
 
 > **Note**:
 > The [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) input controlling the visibility of the add row button may use the action strip context (which is of type [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType) to fine tune which records the button shows for.
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 The internal `BaseTransactionService` is automatically provided for [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
@@ -305,23 +290,19 @@ The internal `BaseTransactionService` is automatically provided for [`IgrHierarc
 
 [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
-<!-- ComponentStart: Grid, HierarchicalGrid -->
-
-Using [`beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
+Using [`IgrHierarchicalGrid.beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
 ```typescript
 gridRef.current.beginAddRowById('ALFKI');  // Spawns the add row UI under the row with PK 'ALFKI'
 gridRef.current.beginAddRowById(null);     // Spawns the add row UI as the first record
 ```
 
-The `BeginAddRowByIndex` method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
+The [`IgrHierarchicalGrid.beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
 
 ```typescript
 gridRef.current.beginAddRowByIndex(10);   // Spawns the add row UI at index 10
 gridRef.current.beginAddRowByIndex(0);    // Spawns the add row UI as the first record
 ```
-
-<!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Positioning
 
@@ -340,6 +321,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 ## Keyboard Navigation
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
+
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
 - <kbd>TAB</kbd> move focus from one editable cell in the row to the next and from the right-most editable cell to the CANCEL and DONE buttons. Navigation from DONE button goes to the left-most editable cell within the currently edited row.
@@ -350,19 +332,13 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
-<!-- ComponentStart: HierarchicalGrid -->
-
 - When spawning the UI for the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), any child layout currently expanded for a row that the end user clicks the add row button for is collapsed.
-
-<!-- ComponentEnd: HierarchicalGrid -->
 
 ## Customizing Row Adding Overlay
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowAddTextTemplate).
-
-<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
+Customizing the text of the row adding overlay is possible using the [`IgrGridBaseDirective.rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowAddTextTemplate).
 
 ```tsx
 gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
@@ -374,7 +350,9 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid-->
+### Customizing Buttons
+
+Customizing the buttons of the row editing overlay is possible by using the `RowEditActions` template.
 
 ## Styling
 
@@ -383,24 +361,11 @@ The row adding UI comprises the buttons in the [`IgrActionStrip`](mcp:get_api_re
 - [Hierarchical Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
 
-<!-- - [ActionStrip](../action-strip.md#styling) -->
-
 ## API References
-
-- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowEditable)
-- `RowEditEnter`
-- `RowEdit`
-- `RowEditDone`
-- `RowEditCancel`
-- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=endEdit)
-- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey)
-- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
-
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 ## Additional Resources
 
 - [Hierarchical Grid Editing](editing.md)
-
-<!-- * [Hierarchical Grid Transactions](batch-editing.md) -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -1,17 +1,17 @@
 ---
 title: Angular Star Rating Component – Ignite UI for Angular - MIT license 
-_description: With Angular Star Rating Component, users can view and provide feedback quickly. You can use the rating component in any angular app and angular forms. Try it Now
-_keywords: Angular Rating component, Angular Rating control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
-_license: MIT
+description: With Angular Star Rating Component, users can view and provide feedback quickly. You can use the rating component in any angular app and angular forms. Try it Now
+keywords: Angular Rating component, Angular Rating control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+license: MIT
+llms:
+  description: "Rating in Angular represents a widget enabling users to quickly provide feedback and evaluate a product or a service on a web page by using a star rating system."
 _tocName: Rating
 ---
-
 # Angular Star Rating Overview
 
 Rating in Angular represents a widget enabling users to quickly provide feedback and evaluate a product or a service on a web page by using a star rating system. Simple to use, the component lets developers configure the size and the number of the displayed star rating items.
 
 The Ignite UI Angular Star Rating component can be easily installed from the igniteui-webcomponents package. It provides an intuitive rating experience for end-users, allowing them to view products/services and rate them (usually having the option to choose from 0 to 5 stars in the most common scenarios).
-
 
 ## Angular Rating Example
 
@@ -106,9 +106,7 @@ export class GridWithRatingComponent implements OnInit {
 }
 ```
 
-
-<div class="divider--half"></div>
-
+<hr/>
 
 ## Getting Started with Ignite UI for Angular Star Rating
 
@@ -163,8 +161,8 @@ import { IgcFormsModule } from 'igniteui-angular/directives';
 export class AppModule { }
 ```
 
->[!NOTE]
->If you are importing `IgcFormsModule` and using either `ngModel` or `formControl`, you no longer need to include `CUSTOM_ELEMENTS_SCHEMA` as Angular will recognize the `igc-rating` tag by the custom `ControlValueAccessor` directive.
+**Note:** 
+If you are importing `IgcFormsModule` and using either `ngModel` or `formControl`, you no longer need to include `CUSTOM_ELEMENTS_SCHEMA` as Angular will recognize the `igc-rating` tag by the custom `ControlValueAccessor` directive.
 
 Alternatively, as of `16.0.0` you can import the `IgcFormControlDirective` as a standalone dependency.
 
@@ -299,5 +297,5 @@ span[igxCardHeaderSubtitle] {
 }
 ```
 
-For further information on the usage of the Rating component, you can check out [this topic]({environment:infragisticsBaseUrl}/products/ignite-ui-web-components/web-components/components/inputs/rating.html).
+For further information on the usage of the Rating component, you can check out [this topic](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/inputs/rating.html).
 

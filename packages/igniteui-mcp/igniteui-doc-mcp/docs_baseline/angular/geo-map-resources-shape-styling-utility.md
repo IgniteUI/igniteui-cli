@@ -1,21 +1,22 @@
 ---
-title: Angular Map | Shape Map Resources | Infragistics
-_description: Use Infragistics' Angular JavaScript map to load geo-spatial data from shape files. View Ignite UI for Angular map demos!
-_keywords: Angular map, shape styling, conditional formatting, Ignite UI for Angular, Infragistics
-_license: commercial
-mentionedTypes: ["XamGeographicMap"]
+title: "Angular Map | Shape Map Resources | Infragistics"
+description: Use Infragistics' Angular JavaScript map to load geo-spatial data from shape files. View Ignite UI for Angular map demos!
+keywords: "Angular map, shape styling, conditional formatting, Ignite UI for Angular, Infragistics"
+license: commercial
+mentionedTypes: ["GeographicMap"]
+llms:
+  description: "The resource topic provides implementation of an utility that helps with styling UI elements of GeographicShapeSeries in Angular GeographicMap component."
 _tocName: Shape Styling Utility
 _premium: true
 ---
-
 # Angular Shape Styling Utility
 
-The resource topic provides implementation of an utility that helps with styling UI elements of [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) in Angular [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) component.
+The resource topic provides implementation of an utility that helps with styling UI elements of `IgxGeographicShapeSeries` in Angular `IgxGeographicMap` component.
 
 ## Required Imports
 
 ```ts
-import { IgxGeographicShapeSeries } from 'igniteui-angular-maps';
+import { IgxGeographicShapeSeriesComponent } from 'igniteui-angular-maps';
 import { Style } from 'igniteui-angular-core';
 ```
 
@@ -254,6 +255,5 @@ export class ShapeComparison {
 ```
 
 ## API References
-
-- [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html)
-- [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
+`IgxGeographicShapeSeries`
+`IgxGeographicMap`

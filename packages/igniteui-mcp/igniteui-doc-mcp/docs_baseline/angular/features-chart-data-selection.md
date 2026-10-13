@@ -1,22 +1,23 @@
 ---
-title: Angular Chart Data Selection | Data Visualization Tools | Infragistics
-_description: Use Infragistics Ignite UI for Angular chart with the data selection!
-_keywords: Angular charts, chart data, selection, data selection, Ignite UI for Angular, Infragistics
-_license: commercial
+title: "Angular Chart Data Selection | Data Visualization Tools | Infragistics"
+description: Use Infragistics Ignite UI for Angular chart with the data selection!
+keywords: "Angular charts, chart data, selection, data selection, Ignite UI for Angular, Infragistics"
+license: commercial
 _language: en
-mentionedTypes: ["XamDataChart", "Legend", "CategoryChart", "FinancialChart", "XamDataLegend", "DataToolTipLayer"]
+
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Angular selection feature in Angular Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart."
 _tocName: Chart Data Selection
 _premium: true
 ---
-
 # Angular Chart Selection
 
-The Ignite UI for Angular selection feature in Angular {ComponentTitle} allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
+The Ignite UI for Angular selection feature in Angular Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart. This provides many different possibilities with how users interact with the data presented in more meaningful ways.
 
 ## Configuring Selection
 
-The default behavior [`selectionMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the `{ComponentName}`:
+The default behavior `SelectionMode` turned off and requires opting into one of the following options. There are several selection modes available in the `IgxDataChart`:
 
 - **Auto**
 - **None**
@@ -32,10 +33,10 @@ The default behavior [`selectionMode`](https://www.infragistics.com/products/ign
 - **ThickOutline**
 
 `Brighten` will fade the selected item while `FadeOthers` will cause the opposite effect occur.
-`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any [`selectionBrush`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectionBrush) setting.
+`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any `SelectionBrush` setting.
 `SelectionColorOutline` and `SelectionColorThickOutline` will draw a border around the series.
 
-In conjunction, a [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
+In conjunction, a `SelectionBehavior` is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
 
 - **Auto**
 - **PerDataItemMultiSelect**
@@ -150,7 +151,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Configuring Multiple Selection
 
-Other selection modes offer various methods of selection. For example using [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
+Other selection modes offer various methods of selection. For example using `SelectionBehavior` with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
 `PerSeriesAndDataItemGlobalSingleSelect` allows single series selection across all categories at a time.
 
 ```typescript
@@ -312,11 +313,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Configuring Outline Selection
 
-When [`focusBrush`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#focusBrush) is applied, selected series will appear with a border when the [`selectionMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectionMode) property is set to one of the focus options.
+When `FocusBrush` is applied, selected series will appear with a border when the `SelectionMode` property is set to one of the focus options.
 
 ## Radial Series Selection
 
-This example demonstrates another series type via the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) where each radial series can be selected with different colors.
+This example demonstrates another series type via the `IgxDataChart` where each radial series can be selected with different colors.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -469,14 +470,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Programmatic Selection
+Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the `IgxCategoryChart`. The `Matcher` property of the `IgxChartSelection` object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
 
-Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html). The `Matcher` property of the [`IgxChartSelection`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxchartselection.html) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
-
-The matcher is ideal for using in charts, such as the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) when you do not have access to the actual series, like the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`selectedSeriesItems`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#selectedSeriesItems) collection using a matcher with the following properties set
+The matcher is ideal for using in charts, such as the `IgxCategoryChart` when you do not have access to the actual series, like the `IgxDataChart`. In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the `SelectedSeriesItems` collection using a matcher with the following properties set
 
 For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to select the series bound to Solar values, you can add a ChartSelection object to the SelectedSeriesItems collection using a matcher with the following properties set.
 
-```typescript
+ ```typescript
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -632,6 +632,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) Properties                    | [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) Properties |
+| `IgxCategoryChart` Properties                    | `IgxDataChart` Properties |
 | ----------------------------------------------|---------------------------|
 |                                               |                           |

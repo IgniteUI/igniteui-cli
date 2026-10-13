@@ -1,21 +1,22 @@
 ---
-title: Web Components Column Chart | Data Visualization | Infragistics
-_description: Infragistics' Web Components Column Chart
-_keywords: Web Components Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics
-_license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XamDataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
+title: "Web Components Column Chart | Data Visualization | Infragistics"
+description: Infragistics' Web Components Column Chart
+keywords: "Web Components Charts, Column Chart, Column Graph, Vertical Bar Chart, Infragistics"
+license: commercial
+mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "ColumnSeries", "WaterfallSeries", "StackedColumnSeries", "Stacked100ColumnSeries", "RangeColumnSeries", "RadialColumnSeries", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
+llms:
+  description: "The Ignite UI for Web Components Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights."
 _tocName: Column Chart
 _premium: true
 ---
-
 # Web Components Column Chart
 
-The Ignite UI for Web Components Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
+The Ignite UI for Web Components Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights. These columns extend from the bottom to top of the chart towards the values of data points. This chart emphasizes the amount of change over a period of time or compares multiple items. Column Chart is very similar to [Bar Chart](bar-chart.md) except that Column Chart renders in vertical orientation (up and down) while [Bar Chart](bar-chart.md) has horizontal orientation (left to right) or 90 degrees clockwise rotation.
 
 ## Web Components Column Chart Example
 
-You can create Web Components Column Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) to **Column** enum, as shown in the example below:
+You can create Web Components Column Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) to **Column** enum, as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -49,8 +50,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Column Charts Recommendations
 
 ### Column Charts Use Cases
@@ -81,7 +80,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Column** value, as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Column** value, as shown in the example below:
 
 ```typescript
 export class TemperatureAverageDataItem {
@@ -114,11 +113,9 @@ export class TemperatureAverageData extends Array<TemperatureAverageDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Column** value, as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -152,13 +149,11 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Column Chart Styling
 
 The Web Components Column Chart has many options for styling and modification of the visual appearance.
 
-You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data, as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data, as shown in the example below:
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -195,17 +190,15 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Advanced Types of Column Charts
 
-The following sections explain more advanced types of Web Components Column Charts that can be created using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
+The following sections explain more advanced types of Web Components Column Charts that can be created using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
 
 ## Web Components Waterfall Chart
 
 The Waterfall Chart belongs to a group of category charts and it is rendered using a collection of vertical columns that show the difference between consecutive data points. The columns are color coded for distinguishing between positive and negative changes in value. The Waterfall Chart is similar in appearance to the [Range Column Chart](column-chart.md#web-components-range-column-chart), but it requires only one numeric data column rather than two columns for each data point.
 
-You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcWaterfallSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcWaterfallSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcWaterfallSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcWaterfallSeriesComponent), as shown in the example below:
 
 ```typescript
 export class CompanyIncomeDataItem {
@@ -239,13 +232,11 @@ export class CompanyIncomeData extends Array<CompanyIncomeDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Stacked Column Chart
 
 The Stacked Column Chart is similar to the [Category Column Chart](column-chart.md#web-components-column-chart-example) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the [Stacked Bar Chart](stacked-chart.md#web-components-stacked-bar-chart) but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -283,13 +274,11 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Stacked 100% Column Chart
 
 The Stacked 100% Column Chart is identical to the [Stacked Column Chart](stacked-chart.md#web-components-stacked-column-chart) in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100 Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class OnlineTrafficByDeviceItem {
@@ -324,15 +313,13 @@ export class OnlineTrafficByDevice extends Array<OnlineTrafficByDeviceItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Range Column Chart
 
 The Web Components Range Column Chart belongs to a group of range charts and is rendered using vertical rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the bottom like the traditional [Category Column Chart](column-chart.md#web-components-column-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items. Range values are represented on the Y-Axis and categories are displayed on the X-Axis.
 
-The Range Column Chart is identical to the [Range Area Chart](area-chart.md)(area-chart.md#web-components-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
+The Range Column Chart is identical to the [Range Area Chart](area-chart.md#web-components-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
 
-You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRangeColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeColumnSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRangeColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeColumnSeriesComponent), as shown in the example below:
 
 ```typescript
 export class TemperatureRangeDataItem {
@@ -368,13 +355,11 @@ export class TemperatureRangeData extends Array<TemperatureRangeDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Web Components Radial Column Chart
 
 The Radial Column Chart belongs to a group of [Radial Chart](radial-chart.md), and is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Category Column Chart](column-chart.md#web-components-column-chart-example), but wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent), as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -408,8 +393,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-<div class="divider--half"></div>
-
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -420,14 +403,23 @@ You can find more information about related chart types in these topics:
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
-
 The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)    | [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = **Column** |
-| Radial Column       | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRadialColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent) |
-| Range Column        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRangeColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeColumnSeriesComponent) |
-| Stacked Column      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStackedColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent) |
-| Stacked 100% Column | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent) |
-| Waterfall           | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcWaterfallSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcWaterfallSeriesComponent) |
+| Column              | [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)    | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = **Column** |
+| Radial Column       | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRadialColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent) |
+| Range Column        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRangeColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeColumnSeriesComponent) |
+| Stacked Column      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStackedColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent) |
+| Stacked 100% Column | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStacked100ColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent) |
+| Waterfall           | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcWaterfallSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcWaterfallSeriesComponent) |
+
+[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
+[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcWaterfallSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcWaterfallSeriesComponent)<br />
+[`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)<br />
+[`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent)<br />
+[`IgcRangeColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeColumnSeriesComponent)<br />
+[`IgcRadialColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialColumnSeriesComponent)<br />
+[`IgcStackedColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent)<br />
+[`IgcStacked100ColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent)<br />

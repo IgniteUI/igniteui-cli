@@ -1,3 +1,43 @@
+# 15.8.2 (2026-10-12)
+
+## What's Changed
+* **fix(mcp):** The MCP server now flags the deprecated Blazor `IgbDataGrid` and points to `IgbGrid` instead. `IgbDataGrid` and the types only it uses are dropped from the API index, so `get_api_reference`, `search_api`, and `resolve_import` answer with a deprecation notice and migration guidance. `get_doc`, `search_docs`, and `list_components` append the notice when a request mentions it, and the server instructions warn against suggesting it. [#1833](https://github.com/IgniteUI/igniteui-cli/pull/1833)
+* **fix(deps):** Updated scaffolded React projects to `igniteui-react-grids` `~19.10.0` and Web Components projects to `igniteui-webcomponents-grids` `~7.3.2`. [#1835](https://github.com/IgniteUI/igniteui-cli/pull/1835)
+* **build(deps):** Updated `@modelcontextprotocol/sdk` to 1.31.0, `proxy-addr` to 2.0.8, and `http-cache-semantics` to 4.3.0. [#1838](https://github.com/IgniteUI/igniteui-cli/pull/1838), [#1836](https://github.com/IgniteUI/igniteui-cli/pull/1836)
+
+# 15.8.1 (2026-10-01)
+
+## What's Changed
+* **feat(mcp):** The documentation pipeline now builds Angular, React, Web Components, and Blazor docs from the unified `igniteui-documentation` repository, replacing the archived `igniteui-docfx` and `igniteui-xplat-docs` sources. A single MDX exporter replaces the four per-framework export scripts and preserves code fences, Angular environment URLs, stable doc names, and unprefixed API symbol names. [#1827](https://github.com/IgniteUI/igniteui-cli/pull/1827)
+* **chore(mcp):** Rebuilt the bundled documentation database from the new documentation source. [#1829](https://github.com/IgniteUI/igniteui-cli/pull/1829)
+* **fix(cd):** The MCP Registry publish now runs as a separate job that waits for the new `@igniteui/mcp-server` version to appear on npm and retries the publish, fixing failed registry publishes right after an npm release. Added a manual trigger to publish an existing release tag to the MCP Registry, and prerelease versions are always rejected. [#1824](https://github.com/IgniteUI/igniteui-cli/pull/1824)
+* **fix(cli):** Interrupting a package install with Ctrl+C now exits with code 130, and the TypeScript expression collector compares `true`/`false`/`null` literals and string or numeric property names correctly. Added unit test coverage across core utilities, the package manager, and the TypeScript expression collector. [#1826](https://github.com/IgniteUI/igniteui-cli/pull/1826)
+* **docs(mcp):** Expanded the MCP server README with installation instructions from the MCP Gallery for VS Code and Visual Studio, `resolve_import` guidance, and clarified `list_components` filter behavior. [#1825](https://github.com/IgniteUI/igniteui-cli/pull/1825)
+
+# 15.8.0 (2026-09-30)
+
+## What's Changed
+* **feat(mcp):** Added a `resolve_import` tool that returns the exact import statements for one or more symbols, grouped by module, across Angular, React, Web Components, and Blazor. This prevents "has no exported member" and "cannot find module" errors caused by guessed Ignite UI import paths. [#1821](https://github.com/IgniteUI/igniteui-cli/pull/1821)
+* **fix(mcp):** `get_doc` now falls back to search when a name doesn't resolve directly, and `get_api_reference` supports case-insensitive and generic-stripped symbol lookups with fuzzier component matching. [#1808](https://github.com/IgniteUI/igniteui-cli/pull/1808)
+* **chore(angular):** Updated scaffolded Angular projects to Angular and Ignite UI for Angular `~22.2.0`. [#1813](https://github.com/IgniteUI/igniteui-cli/pull/1813)
+* **feat(react):** Added React `igr-ts` templates for Breadcrumbs, Color Picker (default and with alpha channel), QR Code, and Virtual Scroll. Updated scaffolded projects to `igniteui-react` and `igniteui-react-grids` `~19.9.0`, and chart and gauge templates to `igniteui-react-charts` and `igniteui-react-gauges` `~19.6.0`. [#1820](https://github.com/IgniteUI/igniteui-cli/pull/1820)
+* **feat(webcomponents):** Added a Web Components Breadcrumb template. [#1815](https://github.com/IgniteUI/igniteui-cli/pull/1815)
+* **chore(webcomponents):** Updated scaffolded Web Components projects to `igniteui-webcomponents` `~7.4.1`. [#1814](https://github.com/IgniteUI/igniteui-cli/pull/1814)
+* **chore(templates):** Reorganized component groups for clearer categorization in Angular, React, and Web Components. [#1809](https://github.com/IgniteUI/igniteui-cli/pull/1809)
+* **fix(schematics):** AI configuration now runs before package install and interactive setup in `ng new`, so the "Next Steps" prompt no longer appears too early. [#1816](https://github.com/IgniteUI/igniteui-cli/pull/1816)
+* **chore(mcp):** Switched the default documentation compression model to `gpt-6-luna`. [#1817](https://github.com/IgniteUI/igniteui-cli/pull/1817)
+* **build(deps):** Updated workspace dependencies, including `@hono/node-server` 2.1.1, `hono` 4.13.8, `axios` 1.20.0, `js-yaml` 4.3.2, `minimatch` 10.2.3, `lodash` 4.18.1, and `immutable` 3.8.4. [#1802](https://github.com/IgniteUI/igniteui-cli/pull/1802), [#1805](https://github.com/IgniteUI/igniteui-cli/pull/1805), [#1807](https://github.com/IgniteUI/igniteui-cli/pull/1807)
+
+# 15.7.0 (2026-09-15)
+
+## What's Changed
+* **feat(angular):** Added Angular templates for Action Strip, Avatar, Badge, Banner, Button Group, Card, Chat, Checkbox, Circular Progress, Date Time Editor, Divider, Expansion Panel, Grid Lite, Icon, Linear Progress, Mask, Navbar, Navigation Drawer, Paginator, Query Builder, Radio, Rating, Ripple, Simple Combo, Slider, Snackbar, Splitter, Switch, and Toast. [#1794](https://github.com/IgniteUI/igniteui-cli/pull/1794)
+* **feat(webcomponents):** Added Web Components templates for Carousel, Chat, Color Picker, Combo, Date Range Picker, Dialog, File Input, Highlight, Mask Input, Nav Drawer, QR Code, Range Slider, Select, Snackbar, Splitter, Stepper, Theme Provider, Tile Manager, Toast, Toggle Button, Tooltip, and Virtual Scroll. [#1789](https://github.com/IgniteUI/igniteui-cli/pull/1789)
+* **feat(react):** Added React `igr-ts` templates for Carousel, Chat, Combo, Date Range Picker, Date Time Input, Dialog, File Input, Highlight, Mask Input, Nav Drawer, Range Slider, Select, Snackbar, Splitter, Stepper, Theme Provider, Tile Manager, Toast, Toggle Button, and Tooltip, with related styles and tests. [#1796](https://github.com/IgniteUI/igniteui-cli/pull/1796)
+* **fix(cli):** Improved framework menu visibility and made the `None` option exclusive in AI configuration selections. [#1788](https://github.com/IgniteUI/igniteui-cli/pull/1788)
+* **fix(schematics):** Resolved the valid project template before upgrading packages. [#1799](https://github.com/IgniteUI/igniteui-cli/pull/1799)
+* **fix(templates):** Removed MCP configuration files from generated project templates. [#1800](https://github.com/IgniteUI/igniteui-cli/pull/1800)
+
 # 15.6.1 (2026-09-01)
 
 ## What's Changed

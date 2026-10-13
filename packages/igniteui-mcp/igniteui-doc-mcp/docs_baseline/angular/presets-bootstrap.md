@@ -1,10 +1,13 @@
 ---
+title: "Switching from Material to Bootstrap Theme"
+llms:
+  description: "Since version 9.0 our components include a new theme inspired by Bootstrap 4 and ng-bootstrap."
 _tocName: Bootstrap
 ---
 # Switching from Material to Bootstrap Theme
 
 Since version `9.0` our components include a new theme inspired by [Bootstrap 4](https://getbootstrap.com/) and [ng-bootstrap](https://ng-bootstrap.github.io/#/home).
-In order to switch from `Material` to `Bootstrap`, you can use the [theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme) build-in mixin.
+In order to switch from `Material` to `Bootstrap`, you can use the `theme` build-in mixin.
 
 ## Bootstrap Light Theme
 
@@ -47,4 +50,4 @@ In order to switch from `Material` to `Bootstrap`, you can use the [theme](https
 
 ## API Overview
 
-- [Global Theme](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-theme)
+- `Global Theme`

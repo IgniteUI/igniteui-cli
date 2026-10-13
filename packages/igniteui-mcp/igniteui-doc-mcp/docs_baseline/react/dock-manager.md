@@ -1,12 +1,13 @@
 ---
-title: React Dock Manager | Layout Controls | Infragistics
-_description: Use Infragistics' React dock manager component to manage the layout through panes, with the ability to customize it by pinning, resizing, moving and hiding panes. Check out Ignite UI for React dock manager tutorials!
-_keywords: dock manager, layout, Ignite UI for React, Infragistics
-_license: commercial
+title: "React Dock Manager | Layout Controls | Infragistics"
+description: Use Infragistics' React dock manager component to manage the layout through panes, with the ability to customize it by pinning, resizing, moving and hiding panes. Check out Ignite UI for React dock manager tutorials!
+keywords: dock manager, layout, Ignite UI for React, Infragistics
+license: commercial
 mentionedTypes: ["DockManager", "DocumentHost", "DockManagerLayout", "DockManagerPaneType", "ContentPane", "SplitPane", "TabGroupPane", "PinnedLocation", "PaneHeaderElement"]
+llms:
+  description: "The Infragistics React Dock Manager provides a means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving, maximizing and hiding panes."
 _tocName: Dock Manager
 ---
-
 # React Dock Manager Overview
 
 The Infragistics React Dock Manager provides a means to manage the layout of your application through panes, allowing your end-users to customize it further by pinning, resizing, moving, maximizing and hiding panes.
@@ -201,17 +202,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DockManagerOverview/>);
 ```
 
-<div class="divider--half"></div>
-
 To install the Dock Manager package execute the following command:
 
 ```cmd
 npm install --save igniteui-react-dockmanager
 ```
-
-<!-- end: Angular, React, WebComponents -->
-
-<div class="divider--half"></div>
 
 ## Usage
 
@@ -222,10 +217,10 @@ Once the Dock Manager is imported, you can add it on the page:
 </IgrDockManager>
 ```
 
-> [!Note]
-> Since the Dock Manager component uses ShadowDOM and slots it is not supported on older browsers like Internet Explorer 11 and Edge 18 and below (non-Chromium versions).
+**Note:** 
+Since the Dock Manager component uses ShadowDOM and slots it is not supported on older browsers like Internet Explorer 11 and Edge 18 and below (non-Chromium versions).
 
-The Dock Manager has a [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property, which describes the layout of the panes. To start defining a layout, you should set the [`rootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane) property and add child panes. Here is how you can define a layout with a single content pane:
+The Dock Manager has a [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property, which describes the layout of the panes. To start defining a layout, you should set the [`RootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane) property and add child panes. Here is how you can define a layout with a single content pane:
 
 ```tsx
 import {  IgrDockManager, IgrDockManagerPaneType, IgrSplitPaneOrientation } from 'igniteui-react-dockmanager';
@@ -248,7 +243,7 @@ this.dockManager.layout = {
 };
 ```
 
-To load the content of the panes, the Dock Manager uses [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot). The [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute of the content element should match the [`contentId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=contentId) of the content pane in the layout configuration. It is highly recommended to set width and height of the content elements to **100%** for predictable response when the end-user is resizing panes.
+To load the content of the panes, the Dock Manager uses [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot). The [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute of the content element should match the [`ContentId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=contentId) of the content pane in the layout configuration. It is highly recommended to set width and height of the content elements to **100%** for predictable response when the end-user is resizing panes.
 
 ```tsx
 <IgrDockManager id="dockManager">
@@ -257,16 +252,14 @@ To load the content of the panes, the Dock Manager uses [slots](https://develope
 ```
 
 The Dock Manager defines several pane types:
-
 - [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane)
 - [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane)
 - [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane)
 - [`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost)
 
-Each type of pane has a [`size`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=size) property. Depending on the parent orientation the size may affect either the width or the height of the pane. By default, the size of a pane is relative to the sizes of its sibling panes and defaults to 100. If you have two sibling panes, where the first one has its size set to 200 and the second one - size set to 100, the first will be twice the size of the second one and these two panes would fill up all the available space. If the absolute size of their parent is 900px, they will be sized to 600px and 300px respectively. If, for certain panes, you want to specify their sizes in pixels, instead of relying on the relative distribution of all the available space, you should set the `useFixedSize` of the parent split pane.
+Each type of pane has a [`Size`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=size) property. Depending on the parent orientation the size may affect either the width or the height of the pane. By default, the size of a pane is relative to the sizes of its sibling panes and defaults to 100. If you have two sibling panes, where the first one has its size set to 200 and the second one - size set to 100, the first will be twice the size of the second one and these two panes would fill up all the available space. If the absolute size of their parent is 900px, they will be sized to 600px and 300px respectively. If, for certain panes, you want to specify their sizes in pixels, instead of relying on the relative distribution of all the available space, you should set the `useFixedSize` of the parent split pane.
 
 The end-user can perform the following actions to customize the layout at runtime:
-
 - Pin/unpin a pane
 - Resize a pane
 - Close a pane
@@ -275,7 +268,7 @@ The end-user can perform the following actions to customize the layout at runtim
 - Dock a floating pane
 - Maximize a pane
 
-All of these are reflected in the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property of the Dock Manager.
+All of these are reflected in the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property of the Dock Manager.
 
 ### Content Pane
 
@@ -289,7 +282,7 @@ const contentPane: IgrContentPane = {
 }
 ```
 
-The [`header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) property is used to provide a text header for the content pane. This text is rendered at several places: the top content pane header, the tab header if the pane is in a tab group and the unpinned header if the pane is unpinned. You can provide a custom slot content for each of these places respectively using the [`headerId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=headerId), [`tabHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=tabHeaderId) and [`unpinnedHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedHeaderId) properties. If any of these properties is not set, the [`header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) text is used. Here is how to provide a tab header slot content:
+The [`Header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) property is used to provide a text header for the content pane. This text is rendered at several places: the top content pane header, the tab header if the pane is in a tab group and the unpinned header if the pane is unpinned. You can provide a custom slot content for each of these places respectively using the [`HeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=headerId), [`TabHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=tabHeaderId) and [`UnpinnedHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedHeaderId) properties. If any of these properties is not set, the [`Header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) text is used. Here is how to provide a tab header slot content:
 
 ```tsx
 <IgrDockManager id="dockManager">
@@ -307,7 +300,7 @@ const contentPane: IgrContentPane = {
 }
 ```
 
-When a pane is unpinned, it appears as a tab header at one of the edges of the Dock Manager. If the end-user selects it, its content appears over the docked pinned panes. To unpin a content pane, set its [`isPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property to **false**.
+When a pane is unpinned, it appears as a tab header at one of the edges of the Dock Manager. If the end-user selects it, its content appears over the docked pinned panes. To unpin a content pane, set its [`IsPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property to **false**.
 
 ```tsx
 const contentPane = {
@@ -318,26 +311,17 @@ const contentPane = {
 }
 ```
 
-The [`isPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property affects only content panes that are docked outside a document host. Also, content panes hosted in a floating pane cannot be unpinned.
+The [`IsPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property affects only content panes that are docked outside a document host. Also, content panes hosted in a floating pane cannot be unpinned.
 
-By default, the unpin destination for a content pane is calculated automatically based on the location of the pane relative to the document host. When more than one document host is defined, the nearest one in the parent hierarchy of the unpinned content pane will be used. If there is no document host defined, the default location is used - `Left`. It is also possible to set the desired destination of the unpinned pane by using the [`unpinnedLocation`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedLocation) property.
+By default, the unpin destination for a content pane is calculated automatically based on the location of the pane relative to the document host. When more than one document host is defined, the nearest one in the parent hierarchy of the unpinned content pane will be used. If there is no document host defined, the default location is used - `Left`. It is also possible to set the desired destination of the unpinned pane by using the [`UnpinnedLocation`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedLocation) property.
 
-You can configure which end-user operations are allowed for a content pane using its [`allowClose`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowClose), [`allowPinning`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowPinning), [`allowDocking`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowDocking) and [`allowFloating`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowFloating) properties.
+You can configure which end-user operations are allowed for a content pane using its [`AllowClose`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowClose), [`AllowPinning`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowPinning), [`AllowDocking`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowDocking) and [`AllowFloating`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowFloating) properties.
 
-When defining a content pane, you can set the [`documentOnly`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=documentOnly) property to true so the pane can be docked only in a document host.
+When defining a content pane, you can set the [`DocumentOnly`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=documentOnly) property to true so the pane can be docked only in a document host.
 
-To restrict the user interaction with the content pane and its content, you can set the [`disabled`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=disabled) property to true. This will prevent all user interactions with the pane unless it is a single floating pane. The latter could be moved, maximized or closed (according to the pane's settings for maximizing and closing), so the user can have a look at the elements under it but will not be able to interact with its content.
+To restrict the user interaction with the content pane and its content, you can set the [`Disabled`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=disabled) property to true. This will prevent all user interactions with the pane unless it is a single floating pane. The latter could be moved, maximized or closed (according to the pane's settings for maximizing and closing), so the user can have a look at the elements under it but will not be able to interact with its content.
 
-By default, when you close a pane it gets removed from the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. However, in some cases you would want to temporary hide the pane and show it later again. In order to do that without changing the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object you can use the [`hidden`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=hidden) property of the content pane. Setting the property to **true** will hide it from the UI, but it will remain in the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. In order to override the default close behavior you can subscribe to the `PaneClose` event like this:
-
-```ts
-this.dockManager.addEventListener('paneClose', ev => {
-    for (const pane of ev.detail.panes) {
-        pane.hidden = true;
-    }
-    ev.preventDefault();
-});
-```
+By default, when you close a pane it gets removed from the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. However, in some cases you would want to temporary hide the pane and show it later again. In order to do that without changing the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object you can use the [`Hidden`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=hidden) property of the content pane. Setting the property to **true** will hide it from the UI, but it will remain in the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. In order to override the default close behavior you can subscribe to the `PaneClose` event like this:
 
 ```tsx
 this.dockManager.addEventListener('paneClose', ev => {
@@ -350,7 +334,7 @@ this.dockManager.addEventListener('paneClose', ev => {
 
 ### Split Pane
 
-The [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane) is a container pane which stacks all of its child [`panes`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=panes) horizontally or vertically based on its [`orientation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=orientation) property. Here is how a horizontal split pane with two child content panes is defined:
+The [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane) is a container pane which stacks all of its child [`Panes`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=panes) horizontally or vertically based on its [`Orientation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=orientation) property. Here is how a horizontal split pane with two child content panes is defined:
 
 ```tsx
 const splitPane: IgrSplitPane = {
@@ -373,11 +357,11 @@ const splitPane: IgrSplitPane = {
 
 The split pane may contain child panes of all pane types including other split panes.
 
-By default, if the split pane is empty it is not displayed. Yet if you would like to change that behavior you can set its [`allowEmpty`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=allowEmpty) property to true and the split pane will be presented in the UI even when there is no panes inside it.
+By default, if the split pane is empty it is not displayed. Yet if you would like to change that behavior you can set its [`AllowEmpty`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=allowEmpty) property to true and the split pane will be presented in the UI even when there is no panes inside it.
 
 ### Tab Group Pane
 
-The [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane) displays its child content [`panes`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane&member=panes) as the tabs of a tab component. Here is how a tab group pane with a content pane for each of its two tabs is defined:
+The [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane) displays its child content [`Panes`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=panes) as the tabs of a tab component. Here is how a tab group pane with a content pane for each of its two tabs is defined:
 
 ```tsx
 const tabGroupPane: IgrTabGroupPane = {
@@ -401,7 +385,7 @@ If there is not enough space to display all tab headers, the tab group shows **M
 
 The tabs also can be reordered without being detached from the tab group in which they are located. You can click on a tab of your choice and drag it left or right to the position you want it to be. If you drag the selected tab outside of the tabs area it will be detached into a floating pane.
 
-In case you would like the tab group pane to be displayed in the UI when it has no tabs, you can set the [`allowEmpty`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane&member=allowEmpty) property to true.
+In case you would like the tab group pane to be displayed in the UI when it has no tabs, you can set the [`AllowEmpty`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=allowEmpty) property to true.
 
 ### Document Host
 
@@ -436,7 +420,7 @@ const docHost: IgrDocumentHost = {
 
 ### Floating Pane
 
-The floating pane is a split pane rendered above all other ones in a floating window. The floating pane definitions are stored in the [`floatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) property of the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout). Here is how to add a floating pane with a single content pane inside:
+The floating pane is a split pane rendered above all other ones in a floating window. The floating pane definitions are stored in the [`FloatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) property of the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout). Here is how to add a floating pane with a single content pane inside:
 
 ```tsx
 const layout: IgrDockManagerLayout = {
@@ -463,21 +447,14 @@ const layout: IgrDockManagerLayout = {
 };
 ```
 
-The [`floatingLocation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingLocation), [`floatingWidth`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingWidth) and [`floatingHeight`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingHeight) properties represent absolute dimensions in pixels. Please note that these properties are applied only for the split panes in the [`floatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) array.
+The [`FloatingLocation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingLocation), [`FloatingWidth`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingWidth) and [`FloatingHeight`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingHeight) properties represent absolute dimensions in pixels. Please note that these properties are applied only for the split panes in the [`FloatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) array.
 
-With the [`floatingResizable`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingResizable) and
-[`allowFloatingPanesResize`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=allowFloatingPanesResize) you can set whether resizing floating panes is allowed. The `allowFloatingPanesResize` is an **IgcDockManagerComponent** property, so if the value is set to **false** none of the floating panes can be resized. The `floatingResizable` property can be applied separately on each split pane in the `floatingPanes` array and if the property value is not set, it defaults to the value of the `allowFloatingPanesResize` property. If the `floatingResizable` property is set for a specific pane, its value takes precedence over the `allowFloatingPanesResize` property value.
+With the [`FloatingResizable`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingResizable) and
+[`AllowFloatingPanesResize`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=allowFloatingPanesResize) you can set whether resizing floating panes is allowed. The `allowFloatingPanesResize` is an **IgcDockManagerComponent** property, so if the value is set to **false** none of the floating panes can be resized. The `floatingResizable` property can be applied separately on each split pane in the `floatingPanes` array and if the property value is not set, it defaults to the value of the `allowFloatingPanesResize` property. If the `floatingResizable` property is set for a specific pane, its value takes precedence over the `allowFloatingPanesResize` property value.
 
 ### Active Pane
 
-The Dock Manager component highlights the content pane which contains the focus and exposes it in its [`activePane`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=activePane) property. You can programmatically change the active pane by setting the property. You can also listen for changes of the [`activePane`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=activePane) property by subscribing to the `ActivePaneChanged` event:
-
-```ts
-this.dockManager.addEventListener('activePaneChanged', ev => {
-    console.log(ev.detail.oldPane);
-    console.log(ev.detail.newPane);
-});
-```
+The Dock Manager component highlights the content pane which contains the focus and exposes it in its `ActivePane` property. You can programmatically change the active pane by setting the property. You can also listen for changes of the `ActivePane` property by subscribing to the `ActivePaneChanged` event:
 
 ```tsx
 this.dockManager.addEventListener('activePaneChanged', ev => {
@@ -492,21 +469,15 @@ When you start dragging a floating pane, different docking indicators will appea
 
 #### Root Docking
 
-In this type of docking while dragging a pane, four arrow docking indicators will appear close to the four edges of the dock manager. Once released, the dragged pane will become a direct child of the Dock Manager's [`rootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane). Visually, the newly docked pane will snap into place at the respective edge and occupy up to half of the dock manager's width or height, shifting all the other content to the other half.
-
-<img class="responsive-img" src="../../images/dockmanager-root-docking.jpg" alt="dockmanager-root-docking" />
+In this type of docking while dragging a pane, four arrow docking indicators will appear close to the four edges of the dock manager. Once released, the dragged pane will become a direct child of the Dock Manager's [`RootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane). Visually, the newly docked pane will snap into place at the respective edge and occupy up to half of the dock manager's width or height, shifting all the other content to the other half.
 
 #### Pane Docking
 
 Docking indicators will appear in the center of a content pane or a tab group pane when dragging the floating pane over it. Once released, the dragged pane will snap into place on any side of the target pane or get grouped together with the target pane to create a tabbed layout. Based on the combination of the initial layout and the dock position, the docking operation may cause the dynamic creation of a new split or tab group pane that would become the new parent of both the dragged and the target panes.
 
-<img class="responsive-img" src="../../images/dockmanager-pane-docking.jpg" alt="dockmanager-pane-docking" />
-
 #### Document Host Docking
 
 If the dragged pane is over a document host, then additional docking indicators will appear that will allow for docking relative to the target pane or the whole document host.
-
-<img class="responsive-img" src="../../images/dockmanager-document-host-docking.jpg" alt="dockmanager-document-host-docking" />
 
 #### Splitter Docking
 
@@ -515,8 +486,6 @@ Splitter docking lets your end-users place panes with precision inside an existi
 When the user drops the pane over this indicator, the dock manager inserts the pane into the split pane that owns the targeted splitter, adjusting the neighboring panes to make room. This makes it easy to refine complex layouts by inserting new tools or views exactly between two existing panes, without having to restructure the entire layout.
 
 If your scenario requires a simpler experience without this level of precision, splitter docking can be disabled by setting the Dock Manager `allowSplitterDock` property to **false**.
-
-<img class="responsive-img" src="../../images/dockmanager-splitter-docking.jpg" alt="dockmanager-splitter-docking"/>
 
 #### Edge Docking
 
@@ -528,8 +497,6 @@ This behavior is especially useful when the root pane is scrollable (when its `u
 - For a **vertical** root split pane, drag any pane towards the **top** edge to dock it as the first item, or towards the **bottom** edge to dock it as the last item.
 
 When the user drops the pane over the edge docking indicator, the dock manager inserts the pane at the chosen edge and automatically scrolls it into view. This ensures that newly added tool windows or dashboards are immediately visible, even in complex, scrollable layouts.
-
-<img class="responsive-img" src="../../images/dockmanager-edge-docking.jpg" alt="dockmanager-edge-docking"/>
 
 ### Update Layout
 
@@ -543,29 +510,13 @@ this.dockManager.removePane(contentPane);
 
 This will only update the layout object. To trigger an update of the Dock Manager so the changes are reflected in the UI, the layout object should be re-assigned:
 
-```ts
-this.dockManager.layout = { ...this.dockManager.layout };
-```
-
 ```tsx
 this.dockManager.layout = { ...this.dockManager.layout };
 ```
 
 ### Save/Load Layout
 
-To restore or persist a layout, you simply have to get/set the value of the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property. Here is how to save the layout as a stringified JSON:
-
-```ts
-private savedLayout: string;
-
-private saveLayout() {
-    this.savedLayout = JSON.stringify(this.dockManager.layout);
-}
-
-private loadLayout() {
-    this.dockManager.layout = JSON.parse(this.savedLayout);
-}
-```
+To restore or persist a layout, you simply have to get/set the value of the [`Layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property. Here is how to save the layout as a stringified JSON:
 
 ```tsx
 private savedLayout: string;
@@ -583,17 +534,7 @@ private loadLayout() {
 
 The Dock Manager component raises events when specific end-user interactions are performed for example closing, pinning, resizing and dragging a pane. You can find the full list of Dock Manager events in this [topic](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcdockmanagereventmap.html).
 
-<div class="divider--half"></div>
-
-Here is how to add an event listener for the `PaneClose` event:
-
-```ts
-this.dockManager.addEventListener('paneClose', ev => console.log(ev.detail));
-```
-
-<div class="divider--half"></div>
-
-<div class="divider--half"></div>
+ Here is how to add an event listener for the `PaneClose` event:
 
 ## Customization
 
@@ -603,10 +544,10 @@ Let's utilize these slots and parts to create a customized Dock Manager layout. 
 
 ```tsx
 <IgrDockManager id="dockManager">
-    <div slot="content1" class="dockManagerContent">Content 1</div>
-    <div slot="content2" class="dockManagerContent">Content 2</div>
-    <div slot="content3" class="dockManagerContent">Content 3</div>
-    <!-- ... -->
+    <div slot="content1" className="dockManagerContent">Content 1</div>
+    <div slot="content2" className="dockManagerContent">Content 2</div>
+    <div slot="content3" className="dockManagerContent">Content 3</div>
+    {/* ... */}
 
     <button slot="closeButton">x</button>
 
@@ -947,7 +888,6 @@ The shortcuts are as follows:
 - <kbd>SHIFT</kbd> + <kbd>←</kbd> With multiple tabs in a tab group splits the view and docks the focused tab left
 
 ### Navigating
-
 - <kbd>CMD/CTRL</kbd> + <kbd>F6</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>→</kbd> Focuses next tab in document host
 - <kbd>CMD/CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>F6</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>←</kbd> Focuses previous tab in document host
 - <kbd>ALT</kbd> + <kbd>F6</kbd> Focuses next content pane
@@ -955,7 +895,7 @@ The shortcuts are as follows:
 
 ### Pane Navigator
 
-Тhe following keyboard shortcuts show a navigator from which you can iterate through panes and documents.
+The following keyboard shortcuts show a navigator from which you can iterate through panes and documents.
 
 - <kbd>CMD/CTRL</kbd> + <kbd>F7</kbd> or <kbd>CMD/CTRL</kbd> + <kbd>F8</kbd>  Starts from the first document forward
 - <kbd>ALT</kbd> + <kbd>F7</kbd> or <kbd>ALT</kbd> + <kbd>F8</kbd> Starts from the first pane forward
@@ -963,10 +903,9 @@ The shortcuts are as follows:
 - <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>F7</kbd> or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>F8</kbd> Starts from the last pane backwards
 
 ### Other
-
 - <kbd>ALT</kbd> + <kbd>F3</kbd> Closes the active pane
 
-Practice all of the above mentioned actions in the sample [demo](dock-manager.md#react-dock-manager-example).
+Practice all of the above mentioned actions in the sample [demo](./dock-manager.md#react-dock-manager-example).
 
 ## Styling
 
@@ -1996,8 +1935,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DockManagerStyling/>);
 ```
 
-<div class="divider--half"></div>
-
 ### CSS Parts
 
 | Part name | Description |
@@ -2059,20 +1996,20 @@ The Dock Manager comes with a light and a dark theme. The light theme is the def
 ```
 
 ```tsx
-<IgrDockManager class="dark-theme">
+<IgrDockManager className="dark-theme"></IgrDockManager>
 ```
 
 ## Localization
 
 The Dock Manager lets you localize the strings used in context menus, tooltips, and ARIA attributes. By default, it reads the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute from the root `<html>` element to determine which language to use. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is missing or set to an unsupported value, the Dock Manager uses [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN).
 
-The Dock Manager also exposes a [`resourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property that you can use to modify individual strings directly. When you set the [`resourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
+The Dock Manager also exposes a [`ResourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property that you can use to modify individual strings directly. When you set the [`ResourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
 
 ## API References
 
-- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)
-- [`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost)
-- [`IgrDockManagerLayout`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout)
-- [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane)
-- [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane)
-- [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane)
+[`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)<br />
+[`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost)<br />
+[`IgrDockManagerLayout`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout)<br />
+[`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane)<br />
+[`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane)<br />
+[`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane)<br />

@@ -461,4 +461,81 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith("Error installing package test-pack3");
 		expect(Util.log).toHaveBeenCalledWith("stderr");
 	});
+
+	describe("ensureIgniteUISource upgrade edge cases", () => {
+		class TestPackageManager extends PackageManager {
+			public static ensureRegistryUser(_config: Config): boolean { return true; }
+			public static getPackageJSON(): any { return { dependencies: { "ignite-ui": "~20.1" } }; }
+		}
+
+		const createConfig = () => ({
+			project: {
+				components: ["igGrid", "igExcel"],
+				igniteuiSource: "./node_modules/ignite-ui",
+				isBundle: false,
+				framework: "jquery",
+				projectType: "js",
+				projectTemplate: "empty"
+			}
+		} as unknown as Config);
+
+		const createTemplateManager = (library: object) =>
+			jasmine.createSpyObj("mockTemplateMgr", { getProjectLibrary: library });
+
+		beforeEach(() => {
+			spyOn(ProjectConfig, "setConfig");
+			spyOn(Util, "log");
+			spyOn(Util, "warn");
+			spyOn(TestPackageManager, "removePackage");
+		});
+
+		it("warns and skips the upgrade step when no upgradeable project is found", async () => {
+			spyOn(ProjectConfig, "localConfig").and.returnValue(createConfig());
+			spyOn(TestPackageManager, "addPackage").and.returnValue(true);
+			const library = {
+				hasProject: () => false,
+				getProject: () => ({}),
+				projectIds: ["empty"]
+			};
+
+			await TestPackageManager.ensureIgniteUISource(true, createTemplateManager(library), true);
+
+			expect(Util.warn).toHaveBeenCalledWith("No valid Ignite UI project template found; skipping upgrade step.", "yellow");
+			expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
+			expect(ProjectConfig.setConfig).toHaveBeenCalled();
+		});
+
+		it("logs instructions and keeps the OSS package when installing the full package fails", async () => {
+			const config = createConfig();
+			spyOn(ProjectConfig, "localConfig").and.returnValue(config);
+			spyOn(TestPackageManager, "addPackage").and.returnValue(false);
+
+			await TestPackageManager.ensureIgniteUISource(true, createTemplateManager({}), true);
+
+			// tries the matching version first, then the fallback one
+			expect(TestPackageManager.addPackage).toHaveBeenCalledTimes(2);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(/^Something went wrong with upgrading Ignite UI/), "yellow");
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(/^Please visit/), "yellow");
+			expect(TestPackageManager.removePackage).not.toHaveBeenCalled();
+			expect(ProjectConfig.setConfig).not.toHaveBeenCalled();
+			expect(config.project.igniteuiSource).toBe("./node_modules/ignite-ui");
+		});
+	});
+
+	it("queuePackage should add dependencies to a package.json without them", async () => {
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue("{}"),
+			writeFile: jasmine.createSpy()
+		};
+		spyOn(App.container, "get").and.returnValue(mockFs);
+		spyOn(ProjectConfig, "localConfig").and.returnValue({ packagesInstalled: false } as unknown as Config);
+		const execSpy = spyOn(child_process, "exec");
+
+		await PackageManager.queuePackage("new-pack@^1.0.0");
+
+		const written = JSON.parse((mockFs.writeFile as jasmine.Spy).calls.mostRecent().args[1]);
+		expect(written.dependencies).toEqual({ "new-pack": "^1.0.0" });
+		// packages are installed later with the whole project
+		expect(execSpy).not.toHaveBeenCalled();
+	});
 });

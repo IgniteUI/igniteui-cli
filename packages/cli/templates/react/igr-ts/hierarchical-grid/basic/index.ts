@@ -13,7 +13,7 @@ class HierarchicalGridTemplate extends IgniteUIForReactTemplate {
 		this.description = "IgrHierarchicalGrid template for React";
 		this.projectType = "igr-ts";
 		this.components = ["Hierarchical Grid"];
-		this.controlGroup = "Data Grids";
+		this.controlGroup = "Grids & Lists";
 		this.packages = [IGNITEUI_REACT_GRIDS_PACKAGE];
 		this.hasExtraConfiguration = false;
 	}
