@@ -1,3 +1,10 @@
+# 15.8.2 (2026-10-12)
+
+## What's Changed
+* **fix(mcp):** The MCP server now flags the deprecated Blazor `IgbDataGrid` and points to `IgbGrid` instead. `IgbDataGrid` and the types only it uses are dropped from the API index, so `get_api_reference`, `search_api`, and `resolve_import` answer with a deprecation notice and migration guidance. `get_doc`, `search_docs`, and `list_components` append the notice when a request mentions it, and the server instructions warn against suggesting it. [#1833](https://github.com/IgniteUI/igniteui-cli/pull/1833)
+* **fix(deps):** Updated scaffolded React projects to `igniteui-react-grids` `~19.10.0` and Web Components projects to `igniteui-webcomponents-grids` `~7.3.2`. [#1835](https://github.com/IgniteUI/igniteui-cli/pull/1835)
+* **build(deps):** Updated `@modelcontextprotocol/sdk` to 1.31.0, `proxy-addr` to 2.0.8, and `http-cache-semantics` to 4.3.0. [#1838](https://github.com/IgniteUI/igniteui-cli/pull/1838), [#1836](https://github.com/IgniteUI/igniteui-cli/pull/1836)
+
 # 15.8.1 (2026-10-01)
 
 ## What's Changed
