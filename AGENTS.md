@@ -30,6 +30,8 @@ npm run pipeline:angular:full   # full rebuild pipeline
 npm run inspector               # test with MCP Inspector
 ```
 
+Adding or changing an MCP tool (schema, handler, description, tests, every doc that lists the tool): `igniteui-cli-mcp-tool` skill.
+
 ## Architecture
 
 **Monorepo** managed with lerna + yarn workspaces. Five packages:
@@ -61,7 +63,7 @@ npm run inspector               # test with MCP Inspector
 ### MCP Server
 
 - `McpServer` from `@modelcontextprotocol/sdk` with stdio transport
-- Two modes: **Remote** (default, proxies to `DOCS_BACKEND_URL`) and **Local** (`--local` flag, uses sql.js WASM with FTS4)
+- Two modes: **Local** (default, uses sql.js WASM with FTS4 over the bundled database) and **Remote** (`--remote <url>`, proxies to the .NET docs backend; `IGNITEUI_MCP_DOCS_BACKEND_URL` supplies the URL but does not enable remote mode on its own)
 - Framework detection via component prefix: `Igx` → Angular, `Igr` → React, `Igc` → Web Components, `Igb` → Blazor
 - DB build uses `better-sqlite3` (native, dev only); runtime uses `sql.js` (WASM)
 - Doc compression uses OpenAI API (`OPENAI_API_KEY` in `.env`)

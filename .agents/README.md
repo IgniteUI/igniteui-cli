@@ -1,6 +1,6 @@
 # Ignite UI CLI Skills Guide
 
-AI skills for maintaining the Ignite UI CLI's **project and component templates**: what each one does, how they fit together, and how to maintain them.
+AI skills for maintaining the Ignite UI CLI's **project and component templates** and the **MCP server's tools**: what each one does, how they fit together, and how to maintain them.
 
 Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](https://agentskills.io/specification) format), which VS Code Copilot discovers automatically: you run a workflow by asking for the task, and Copilot loads the matching skill. There are no custom agent files. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
 
@@ -22,6 +22,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 | [`igniteui-cli-component-template`](./skills/igniteui-cli-component-template/SKILL.md) | Workflow | New template folders | Add a component template for Angular, React and/or Web Components |
 | [`igniteui-cli-changelog`](./skills/igniteui-cli-changelog/SKILL.md) | Workflow | `CHANGELOG.md` | Draft or write the release section for a version cut |
 | [`igniteui-cli-ai-config-skills-refresh`](./skills/igniteui-cli-ai-config-skills-refresh/SKILL.md) | Workflow | Bundled `ai-config` skills | Mirror the framework repositories' `skills/` into the `ai-config` templates. In `dry-run` mode: what changed upstream and content issues |
+| [`igniteui-cli-mcp-tool`](./skills/igniteui-cli-mcp-tool/SKILL.md) | Workflow | MCP server `src/`, tests, tool docs | Add an MCP server tool or change an existing one. Its `scripts/call-tool.mjs` calls a tool on the built server over stdio |
 | [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
 | [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
 
@@ -58,6 +59,8 @@ Each workflow runs on its own and does not call the others. You chain them.
 | Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
 | Refresh the skills `ig ai-config` bundles | "refresh ai-config skills for all frameworks" |
 | See how far bundled skills lag behind | "dry-run ai-config skills refresh, all frameworks" |
+| Add an MCP tool | "add an MCP tool that returns a component's theming variables" |
+| Change an MCP tool | "let get_doc accept several doc names in one call" |
 
 Copilot picks the skill from its description. To be explicit, or in any other assistant, name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
 
@@ -72,6 +75,7 @@ AGENTS.md                              ← shared conventions, incl. the rules f
 .agents/
   README.md                            ← this guide
   skills/<name>/SKILL.md               ← every procedure and reference; discovered by Copilot
+  skills/<name>/scripts/               ← helper scripts a skill runs
 ```
 
 ---
