@@ -26,8 +26,9 @@ const ROOTS = {
 	webcomponents: "packages/cli/templates/webcomponents",
 	jquery: "packages/cli/templates/jquery"
 };
+const PRIMARY = ["angular", "react", "webcomponents"];
 const fwArg = values("--framework");
-const frameworks = !fwArg.length ? ["angular", "react", "webcomponents"] : fwArg.includes("all") ? Object.keys(ROOTS) : fwArg;
+const frameworks = !fwArg.length ? PRIMARY : fwArg.includes("all") ? Object.keys(ROOTS) : fwArg;
 const unknownFw = frameworks.filter((f) => !ROOTS[f]);
 if (unknownFw.length) {
 	console.error(`Unknown framework: ${unknownFw.join(", ")}. Use ${Object.keys(ROOTS).join(", ")} or all (Blazor has no npm pins).`);
@@ -65,7 +66,8 @@ const LITERAL = /(["'`])((?:@[a-z0-9][\w.-]*\/)?[a-z0-9][\w.-]*)@([~^]?\d[\w.+-]
 const COMPUTED = /`\$\{(?:resolvePackage\()?(\w+)\)?\}@([~^]?\d[\w.+-]*)`/g;
 const pins = [];
 
-for (const fw of frameworks) {
+// The primary roots are always scanned so packages shared by all of them are known, even when not selected.
+for (const fw of new Set([...frameworks, ...PRIMARY])) {
 	for (const file of walk(join(root, ROOTS[fw]))) {
 		const rel = relative(root, file).split(sep).join("/");
 		if (EXCLUDED.test(rel)) continue;
@@ -90,7 +92,8 @@ for (const fw of frameworks) {
 	}
 }
 
-const inScope = pins.filter((p) => (allDeps || isIgnite(p.name)) && (!onlyPackages.length || onlyPackages.includes(p.name)));
+const inScope = pins.filter((p) => frameworks.includes(p.fw) && (allDeps || isIgnite(p.name)) &&
+	(!onlyPackages.length || onlyPackages.includes(p.name)));
 
 let registry = "https://registry.npmjs.org/";
 try {
@@ -114,7 +117,7 @@ async function packument(name) {
 }
 async function peersOf(name, version) {
 	const body = await fetchJson(`${encode(name)}/${version}`, false);
-	return body.error ? {} : body.peerDependencies || {};
+	return body.error ? body : { peers: body.peerDependencies || {} };
 }
 
 const names = [...new Set(inScope.map((p) => p.name))].sort();
@@ -147,36 +150,80 @@ for (const p of inScope) {
 	if (p.status === "current" && prefixOf(p.range) === "^" && semver.gt(p.target, semver.minVersion(p.range))) p.raisable = true;
 }
 
-const updating = (p) => isIgnite(p.name) && (p.status === "patch" || p.status === "minor");
+const proceeds = (p) => p.status === "patch" || p.status === "minor";
+const updating = (p) => isIgnite(p.name) && proceeds(p);
 const rangeAfter = (p) => (updating(p) ? p.newRange : p.range);
-
-const peerConflicts = [];
-const igniteInScope = inScope.filter((p) => isIgnite(p.name) && p.resolved);
-const checks = new Map();
-for (const p of igniteInScope) {
-	checks.set(`${p.fw}|${p.name}|${p.resolved}|current`, { fw: p.fw, name: p.name, version: p.resolved, when: "current" });
-	if (updating(p)) checks.set(`${p.fw}|${p.name}|${p.target}|after`, { fw: p.fw, name: p.name, version: p.target, when: "after" });
+function stop(p, status, stopReason) {
+	Object.assign(p, { status, stopReason });
+	delete p.newRange;
 }
-for (const c of checks.values()) {
-	const peers = await peersOf(c.name, c.version);
-	for (const [peer, peerRange] of Object.entries(peers)) {
-		for (const pin of pins.filter((x) => x.fw === c.fw && x.name === peer)) {
-			const pm = await packument(peer);
-			if (pm.error) continue;
-			const range = c.when === "after" ? rangeAfter(pin) : pin.range;
-			const resolved = semver.maxSatisfying(pm.versions, range);
-			if (resolved && semver.satisfies(resolved, peerRange, { includePrerelease: true })) continue;
-			peerConflicts.push({ ...c, peer, peerRange, pin: `${pin.file}:${pin.line}`, pinRange: range, resolved, ignitePeer: isIgnite(peer) });
+
+// A package pinned in every primary framework is updated only when all of them are selected or it is named,
+// so a single-framework run does not make the frameworks diverge.
+const allPrimary = PRIMARY.every((fw) => frameworks.includes(fw));
+const named = (name) => onlyPackages.includes(name) || name in targets;
+for (const p of inScope.filter(updating)) {
+	if (allPrimary || named(p.name) || !PRIMARY.every((fw) => pins.some((x) => x.fw === fw && x.name === p.name))) continue;
+	stop(p, "shared-skip", `pinned in ${PRIMARY.join(", ")}: select all three or name it`);
+}
+
+async function findPeerConflicts() {
+	const found = [];
+	const checks = new Map();
+	for (const p of inScope.filter((x) => isIgnite(x.name) && x.resolved)) {
+		checks.set(`${p.fw}|${p.name}|${p.resolved}|current`, { fw: p.fw, name: p.name, version: p.resolved, when: "current" });
+		if (updating(p)) checks.set(`${p.fw}|${p.name}|${p.target}|after`, { fw: p.fw, name: p.name, version: p.target, when: "after" });
+	}
+	// A failed lookup leaves the peers unchecked; it is reported as a conflict with an error so an update fails closed.
+	for (const c of checks.values()) {
+		const { peers, error } = await peersOf(c.name, c.version);
+		if (error) {
+			found.push({ ...c, error: `${c.name}@${c.version} lookup failed: ${error}` });
+			continue;
+		}
+		for (const [peer, peerRange] of Object.entries(peers)) {
+			for (const pin of pins.filter((x) => x.fw === c.fw && x.name === peer)) {
+				const pm = await packument(peer);
+				const range = c.when === "after" ? rangeAfter(pin) : pin.range;
+				const at = { peer, peerRange, pin: `${pin.file}:${pin.line}`, pinRange: range, ignitePeer: isIgnite(peer) };
+				if (pm.error) {
+					found.push({ ...c, ...at, error: `${peer} lookup failed: ${pm.error}` });
+					continue;
+				}
+				const resolved = semver.maxSatisfying(pm.versions, range);
+				if (resolved && semver.satisfies(resolved, peerRange, { includePrerelease: true })) continue;
+				found.push({ ...c, ...at, resolved });
+			}
 		}
 	}
+	return found;
 }
-for (const c of peerConflicts.filter((x) => x.when === "after")) {
-	for (const p of inScope.filter((x) => x.fw === c.fw && x.name === c.name && updating(x))) {
-		p.status = "peer-stop";
-		p.stopReason = `${c.peer} ${c.peerRange} not met by ${c.pin} (${c.pinRange})`;
-		delete p.newRange;
+
+// Stops apply to the whole package: one stopped occurrence holds every other occurrence of that package.
+// Holding a pin changes the ranges other packages' peers are checked against, so repeat until nothing changes.
+let peerConflicts;
+const stopCauses = new Map();
+for (let changed = true; changed;) {
+	changed = false;
+	peerConflicts = await findPeerConflicts();
+	for (const c of peerConflicts.filter((x) => x.when === "after")) {
+		stopCauses.set(JSON.stringify(c), c);
+		for (const p of inScope.filter((x) => x.fw === c.fw && x.name === c.name && updating(x))) {
+			if (c.error) stop(p, "error", `peers unchecked: ${c.error}`);
+			else stop(p, "peer-stop", `${c.peer} ${c.peerRange} not met by ${c.pin} (${c.pinRange})`);
+			changed = true;
+		}
+	}
+	const blockers = {};
+	for (const p of inScope) if (!proceeds(p) && p.status !== "current") blockers[p.name] ??= p;
+	for (const p of inScope.filter((x) => updating(x) && blockers[x.name])) {
+		const b = blockers[p.name];
+		stop(p, "package-stop", `${b.status} at ${b.file}:${b.line}`);
+		changed = true;
 	}
 }
+// The last pass has no "after" conflicts left; keep the ones that caused a stop.
+peerConflicts = [...peerConflicts, ...stopCauses.values()];
 
 const byName = {};
 for (const p of inScope) (byName[p.name] ??= []).push(p);
@@ -227,7 +274,7 @@ console.log(`Frameworks: ${frameworks.join(", ")}${allDeps ? " (all dependencies
 console.log("Peer conflicts");
 if (peerConflicts.length) {
 	table(["fw", "package@version", "when", "peer", "peer range", "pin range", "resolves to", "pin location"],
-		peerConflicts.map((c) => [c.fw, `${c.name}@${c.version}`, c.when, c.peer, c.peerRange, c.pinRange, c.resolved ?? "nothing", c.pin]));
+		peerConflicts.map((c) => [c.fw, `${c.name}@${c.version}`, c.when, c.peer, c.peerRange, c.pinRange, c.error ?? c.resolved ?? "nothing", c.pin]));
 } else console.log("  none");
 
 console.log("\nPins");
