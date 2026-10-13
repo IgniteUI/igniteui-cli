@@ -21,6 +21,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 | [`igniteui-cli-template-version-update`](./skills/igniteui-cli-template-version-update/SKILL.md) | Workflow | Template pins | Update Ignite UI versions that `ig new` / `ig add` scaffold (patch/minor only). In `dry-run` mode: a read-only report of version drift and peer conflicts |
 | [`igniteui-cli-component-template`](./skills/igniteui-cli-component-template/SKILL.md) | Workflow | New template folders | Add a component template for Angular, React and/or Web Components |
 | [`igniteui-cli-changelog`](./skills/igniteui-cli-changelog/SKILL.md) | Workflow | `CHANGELOG.md` | Draft or write the release section for a version cut |
+| [`igniteui-cli-ai-config-skills-refresh`](./skills/igniteui-cli-ai-config-skills-refresh/SKILL.md) | Workflow | Bundled `ai-config` skills | Mirror the framework repositories' `skills/` into the `ai-config` templates. In `dry-run` mode: what changed upstream and content issues |
 | [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
 | [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
 
@@ -55,6 +56,8 @@ Each workflow runs on its own and does not call the others. You chain them.
 | See which templates are missing | "which component templates are missing per framework?" |
 | Make sense of a failed smoke run | "triage output/smoke" |
 | Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
+| Refresh the skills `ig ai-config` bundles | "refresh ai-config skills for all frameworks" |
+| See how far bundled skills lag behind | "dry-run ai-config skills refresh, all frameworks" |
 
 Copilot picks the skill from its description. To be explicit, or in any other assistant, name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
 
