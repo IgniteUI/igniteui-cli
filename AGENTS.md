@@ -53,7 +53,7 @@ npm run inspector               # test with MCP Inspector
 
 ### Template System
 
-- Handlebars for template processing
+- Placeholders are substituted by the CLI, not a template engine: `<%=ClassName%>` style in Angular templates, `$(ClassName)` style in React and Web Components templates
 - Templates in `packages/cli/templates/**/files/` and `packages/igx-templates/`
 - Component/template IDs (e.g., "grid", "combo") used by `ig add` command
 - Default framework is **jQuery** when not specified
