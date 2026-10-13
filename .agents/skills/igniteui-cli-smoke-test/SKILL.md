@@ -55,6 +55,8 @@ Defaults: angular, react, webcomponents; default project template; all component
 
 Runs longer than a few minutes: use a long command timeout, or run it in the background with output redirected to a file and wait for the process to exit. The `Results:` line is not the end: when nothing failed and `--keep` is not set, the script deletes the generated projects after printing it. The script **wipes its `--out` directory at start**, so give each run its own directory (e.g. `--out output/smoke-react`, `--out output/smoke-react-projects`) when you need more than one run's results, and never run two at once into the same directory.
 
+In a cloud agent session (time-limited, see `AGENTS.md`), the build is already done by the setup workflow unless you changed `.ts` sources. Scope each run with `-f <fw>` and `--templates` / `-p`; a full run of all three frameworks can take most of the session.
+
 ## Results
 
 - `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `add`, `install`, `build`. Status: `PASS`, `FAIL`, `SKIP`.

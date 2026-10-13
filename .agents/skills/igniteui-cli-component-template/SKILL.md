@@ -108,7 +108,7 @@ Fix failures caused by your template. When a failure points elsewhere (environme
 
 ## Final Self-Validation
 
-- [ ] No `git` write command was run.
+- [ ] Git was used only as the `AGENTS.md` git rules allow for this session.
 - [ ] The id matches the same component's id in every other framework.
 - [ ] `controlGroup` and the component `group` match an existing `groups.json` key.
 - [ ] Every API used was verified against the pinned version.

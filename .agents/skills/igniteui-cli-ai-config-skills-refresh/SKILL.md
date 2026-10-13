@@ -35,13 +35,13 @@ If the frameworks are missing, stop and ask. A ref other than `master` is a deli
 
 - Your changes are the files under the bundled `skills/` folders in the table, nothing else. The `ai-config` templates' other files (`AGENTS.md`, instruction files, `index.ts`) stay as they are.
 - The bundled copy is an exact mirror of the source `skills/` folder. Content problems (broken links, bad frontmatter) are reported for the framework repository to fix, not edited here.
-- Do not run `scripts/update-skills.ts` or `npm run build:update-skills`: they `git fetch` and `git checkout -B` inside the documentation submodules, which writes to git and moves submodule pointers. Use the script below, which reads from GitHub and runs no git commands.
+- Do not run `scripts/update-skills.ts` or `npm run build:update-skills`: they `git fetch` and `git checkout -B` inside the documentation submodules, which writes to git and moves submodule pointers. Use the script below, which reads from GitHub over HTTPS and runs no git commands.
 
 ---
 
 ## Script
 
-[`scripts/sync-skills.mjs`](./scripts/sync-skills.mjs) (Node, uses the `gh` CLI; requires `gh auth status` to pass):
+[`scripts/sync-skills.mjs`](./scripts/sync-skills.mjs) (Node 18+). It makes two `api.github.com` requests per framework (commit and file list), through `gh` when `gh auth status` passes, otherwise directly with `GH_TOKEN` / `GITHUB_TOKEN` if set (without a token GitHub allows 60 requests an hour). File contents come from `raw.githubusercontent.com` and are checked against the tree's hashes. In a cloud agent session, an `ERROR` naming `api.github.com` means the firewall blocks it: report that for every framework and stop.
 
 ```bash
 node .agents/skills/igniteui-cli-ai-config-skills-refresh/scripts/sync-skills.mjs \
@@ -107,7 +107,7 @@ Items 1-3 above, plus the date. State that nothing was written.
 
 In `dry-run` mode only the first item applies, plus: `git status --short` is unchanged from Step 1.
 
-- [ ] No `git` write command was run, and `scripts/update-skills.ts` was not run.
+- [ ] Git was used only as the `AGENTS.md` git rules allow for this session, and `scripts/update-skills.ts` was not run.
 - [ ] Only files under the bundled `skills/` folders in scope changed.
 - [ ] A rerun of the script without `--apply` reports no changes for every framework in scope.
 - [ ] The spec passed and each framework's `ai-config` run copied every bundled file.

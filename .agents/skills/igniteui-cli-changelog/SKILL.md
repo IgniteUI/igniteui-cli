@@ -93,7 +93,7 @@ When the user corrects something after the report (a reworded bullet, a differen
 
 ## Final Self-Validation
 
-- [ ] No `git` write command was run.
+- [ ] Git was used only as the `AGENTS.md` git rules allow for this session.
 - [ ] In `draft` mode, no file changed; in `write` mode, only `CHANGELOG.md` changed and no existing section was altered.
 - [ ] Every PR in the range is either in a bullet, deliberately skipped (release cut, merge, `CHANGELOG.md`-only), or listed under "Needs human input".
 - [ ] Every bullet links its PR(s) and uses a normalized scope.

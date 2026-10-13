@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Mirror skills/ from the Ignite UI framework repos into the ai-config project templates via the GitHub API (gh CLI).
+// Mirror skills/ from the Ignite UI framework repos into the ai-config project templates.
+// Commit and file list from api.github.com (gh CLI if logged in, else fetch with GH_TOKEN/GITHUB_TOKEN if set); file contents from raw.githubusercontent.com.
 // Read-only unless --apply. Never runs git.
 // Usage: node sync-skills.mjs [--framework angular,react,webcomponents,blazor] [--ref <branch|tag|sha>] [--apply] [--json]
 import { execFile, execSync } from "node:child_process";
@@ -38,9 +39,26 @@ if (!/^[\w.\-/]+$/.test(ref) || ref.startsWith("-")) {
 	process.exit(1);
 }
 
+let useGh;
 async function gh(path) {
-	const { stdout } = await run("gh", ["api", path], { maxBuffer: 256 * 1024 * 1024 });
-	return JSON.parse(stdout);
+	if (useGh === undefined) useGh = await run("gh", ["auth", "status"]).then(() => true, () => false);
+	if (useGh) {
+		const { stdout } = await run("gh", ["api", path], { maxBuffer: 256 * 1024 * 1024 });
+		return JSON.parse(stdout);
+	}
+	const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
+	const res = await fetch(`https://api.github.com/${path}`, {
+		headers: { Accept: "application/vnd.github+json", ...(token && { Authorization: `Bearer ${token}` }) }
+	});
+	if (!res.ok) throw new Error(`api.github.com/${path}: ${res.status} ${(await res.text()).slice(0, 200)}`);
+	return res.json();
+}
+
+async function raw(repo, commit, path) {
+	const url = `https://raw.githubusercontent.com/${repo}/${commit}/skills/${path.split("/").map(encodeURIComponent).join("/")}`;
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`${url}: ${res.status}`);
+	return Buffer.from(await res.arrayBuffer());
 }
 
 const blobSha = (buf) => createHash("sha1").update(`blob ${buf.length}\0`).update(buf).digest("hex");
@@ -139,8 +157,9 @@ for (const fw of frameworks) {
 		}
 		result.deleted = [...local].filter((p) => !(p in remote)).sort();
 		await pool(fetchList, 6, async ([path, sha]) => {
-			const blob = await gh(`repos/${repo}/git/blobs/${sha}`);
-			files[path] = Buffer.from(blob.content, blob.encoding === "base64" ? "base64" : "utf8");
+			const buf = await raw(repo, result.commit, path);
+			if (blobSha(buf) !== sha) throw new Error(`content of skills/${path} does not match its tree entry`);
+			files[path] = buf;
 		});
 		result.added.sort();
 		result.modified.sort();

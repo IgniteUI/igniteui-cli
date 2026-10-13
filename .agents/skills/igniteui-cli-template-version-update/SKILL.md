@@ -162,7 +162,7 @@ When the user corrects something after the report, fix that issue and re-run Ste
 
 In `dry-run` mode only the first item applies, plus: `git status --short` is unchanged from Step 1.
 
-- [ ] No `git` write command was run.
+- [ ] Git was used only as the `AGENTS.md` git rules allow for this session.
 - [ ] Every changed package has zero remaining occurrences of its old version in scope.
 - [ ] No major update was applied.
 - [ ] No range prefix changed.

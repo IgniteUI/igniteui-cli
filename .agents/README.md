@@ -8,7 +8,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 
 ## Ground Rules
 
-- **Workflows never commit.** No `git add`, `commit`, `push`, branches or PRs. Every workflow ends with the working tree changed and a report; a human reviews and commits.
+- **A human decides what gets merged.** Run locally, a workflow never commits: it ends with the working tree changed and a report, and a human reviews and commits. Run by a cloud agent on GitHub (e.g. Copilot cloud agent from an issue or the web UI), it commits to its own branch and opens a pull request whose description is the report; a human reviews and merges. The exact git rules are in `AGENTS.md`.
 - **The smoke test is the proof.** Jasmine stubs package installs, so template work is verified with `scripts/smoke-test.sh`.
 - **Stop and report rather than guess.** Major version updates, missing APIs, id conflicts and anything out of scope are reported, not worked around.
 
@@ -82,7 +82,11 @@ AGENTS.md                              ← shared conventions, incl. the rules f
 
 ## Permissions
 
-Every limit on the workflows (the no-commit rule, the "Maintenance Workflows" rules in `AGENTS.md`, each workflow's "Limits") is an instruction the assistant follows, not a technical restriction. Review the diff before you commit.
+Every limit on the workflows (the git rules, the "Maintenance Workflows" rules in `AGENTS.md`, each workflow's "Limits") is an instruction the assistant follows, not a technical restriction. Review the diff before you commit or merge the agent's pull request; branch protection on `master` is what actually keeps a cloud agent off it.
+
+### Cloud Agent
+
+Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. Its environment comes from `.github/workflows/copilot-setup-steps.yml` (install, build, Playwright Chromium), which takes effect only once it is on `master`. The agent's firewall allows the npm and yarn registries and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
 
 ---
 
@@ -98,7 +102,7 @@ Every limit on the workflows (the no-commit rule, the "Maintenance Workflows" ru
 
 Add one only for a recurring, multi-step task. If an existing reference skill plus a plain request covers it, extend that skill instead.
 
-1. Write `.agents/skills/igniteui-cli-<task>/SKILL.md`: a one-line scope, inputs, "Limits" (only limits specific to this workflow, stated as what the workflow changes and what stops it; the shared ones, including the no-commit rule, stay in `AGENTS.md`), numbered steps with each stop condition at the step where it arises, "Follow-up Corrections" when the right fix differs from simply fixing and re-validating, final report and self-validation. Point to a reference skill at the step that uses it; put it under "Read first" only when most steps need it.
+1. Write `.agents/skills/igniteui-cli-<task>/SKILL.md`: a one-line scope, inputs, "Limits" (only limits specific to this workflow, stated as what the workflow changes and what stops it; the shared ones, including the git rules, stay in `AGENTS.md`), numbered steps with each stop condition at the step where it arises, "Follow-up Corrections" when the right fix differs from simply fixing and re-validating, final report and self-validation. Point to a reference skill at the step that uses it; put it under "Read first" only when most steps need it.
 2. Add it to the Skills and Quick Start tables above.
 
 ### Adding a Reference Skill

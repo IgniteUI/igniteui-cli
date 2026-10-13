@@ -73,7 +73,7 @@ Adding or changing an MCP tool (schema, handler, description, tests, every doc t
 ## Key Conventions
 
 - **yarn for install, npm for scripts**
-- CI runs on Node 20 with `yarn --frozen-lockfile`
+- CI runs on Node 24.x and 26.x with `yarn --frozen-lockfile`; Copilot cloud agent sessions are prepared by `.github/workflows/copilot-setup-steps.yml` (Node 24, install, build, Playwright Chromium)
 - ESLint: `no-var`, `no-eval`, `prefer-const`, `no-console` (off in test files), `no-duplicate-imports`
 - Test files match pattern `*[sS]pec.ts` — found in `spec/`, `packages/cli/migrations/`, `packages/igx-templates/`, `packages/ng-schematics/`
 
@@ -83,10 +83,14 @@ Template maintenance procedures are skills in `.agents/skills/`. Before adding o
 
 These rules bind every run of a workflow skill, whether from the main session or a subagent. No tool enforces them.
 
-- **Never commit.** Leave changes in the working tree and report them with `git status --short` and `git diff --stat`; a human reviews and commits. Git stays read-only (`status`, `diff`, `log`, `show`): do not run `git add`, `git commit`, `git push`, `git stash`, `git checkout -b`, `git branch`, or any other git command that writes, and do not open pull requests.
+- **Git** depends on where the workflow runs:
+  - **Local session** (editor or terminal, a person at the keyboard): never commit. Leave changes in the working tree and report them with `git status --short` and `git diff --stat`; a human reviews and commits. Git stays read-only (`status`, `diff`, `log`, `show`): do not run `git add`, `git commit`, `git push`, `git stash`, `git checkout -b`, `git branch`, or any other git command that writes, and do not open pull requests. Commit only when the user explicitly asks in that session.
+  - **Cloud agent session** (started on GitHub, e.g. Copilot cloud agent assigned an issue or asked from the web UI, expected to deliver a pull request): commit to the session's own working branch and open or update that session's pull request. Fill the PR description from the workflow's Final Report, using the sections of `.github/PULL_REQUEST_TEMPLATE.md`; the report's diff item becomes `git diff --stat <base>...HEAD`. Use the workflow's proposed CHANGELOG line, in conventional form, as the PR title and commit subject (e.g. `chore(angular): update scaffolded igniteui-angular to ~22.2.1`). A stop item that blocks the whole task leaves the PR as a draft with the stop items listed first; a reviewer answers in a PR comment. A `dry-run` or other read-only request commits nothing; its report is the session's answer (the PR description if the platform opened one).
+  - **Never, in either mode**: push to `master`, release branches or any branch other than the session's own; force-push, rebase or otherwise rewrite pushed history; merge, approve or close pull requests; create tags or releases; change other pull requests or issues; commit submodule pointer changes.
 - Temporary files (e.g. `npm pack` output for checking a package's type declarations) go in a temporary directory **outside the repository**. The one exception is `output/` (gitignored), which belongs to `scripts/smoke-test.sh`: smoke runs and commands inside a kept smoke project write there; files under `output/` change only through those runs.
 - Edit the `.ts` source and rebuild; compiled output (`*.js`, `*.js.map` next to a `.ts`) is never edited by hand.
 - Leave the repository's own manifests and lockfiles untouched: root `package.json`, `packages/*/package.json`, `packages/igniteui-mcp/igniteui-doc-mcp/package.json` and `server.json`, `yarn.lock`, any `package-lock.json`. Project-template manifests under `**/files/package.json` are template content and may be edited when the task calls for it.
 - Leave the CLI's own version alone: do not run `lerna`, and do not edit `lerna.json` or `scripts/versionScript.ts`. Leave anything under `.git/`, `coverage/` or any `node_modules/` untouched.
 - Leave secrets unread, at any depth: `.env`, `.env.*`, `.npmrc`, `secrets/`, `*.pem`, `*.key`, `*.pfx`. When a task seems to need one, stop and ask.
-- When something is ambiguous or out of scope, stop and report instead of guessing.
+- When something is ambiguous or out of scope, stop and report instead of guessing. In a cloud agent session, "stop and ask" means writing the question into the PR description and leaving the PR as a draft.
+- Cloud agent sessions have a time limit (59 minutes for Copilot cloud agent) and a network firewall. Scope smoke runs to what changed (`--templates`, one framework per run) instead of the full matrix, and report a blocked host as an environment failure with the host name.

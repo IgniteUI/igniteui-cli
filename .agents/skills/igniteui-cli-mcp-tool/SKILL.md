@@ -165,7 +165,7 @@ When the user rewords a description or response text, change the text and the te
 
 ## Final Self-Validation
 
-- [ ] No `git` write command was run.
+- [ ] Git was used only as the `AGENTS.md` git rules allow for this session.
 - [ ] `package.json` and `server.json` are unchanged.
 - [ ] Package `npm run build` and `npm test` pass; root `npm run lint`, `npm run build` and the MCP runtime spec pass.
 - [ ] `call-tool.mjs --list` shows the tool with the intended input schema.
