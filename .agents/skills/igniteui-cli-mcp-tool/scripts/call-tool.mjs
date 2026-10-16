@@ -48,6 +48,7 @@ server.on("exit", (code, signal) => {
 
 let buffer = "";
 const pending = new Map();
+server.stdout.setEncoding("utf8");
 server.stdout.on("data", (chunk) => {
   buffer += chunk;
   let nl;
