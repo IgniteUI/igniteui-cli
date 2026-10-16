@@ -170,9 +170,25 @@ for (const p of inScope.filter(updating)) {
 async function findPeerConflicts() {
 	const found = [];
 	const checks = new Map();
-	for (const p of inScope.filter((x) => isIgnite(x.name) && x.resolved)) {
-		checks.set(`${p.fw}|${p.name}|${p.resolved}|current`, { fw: p.fw, name: p.name, version: p.resolved, when: "current" });
-		if (updating(p)) checks.set(`${p.fw}|${p.name}|${p.target}|after`, { fw: p.fw, name: p.name, version: p.target, when: "after" });
+	// The "after" state covers every Ignite UI pin in a framework with an update, selected by --package or not,
+	// so an updated peer is checked against the dependents it leaves unchanged. "changed" marks a dependent that moves.
+	const fwUpdating = new Set(inScope.filter(updating).map((p) => p.fw));
+	for (const d of pins.filter((x) => frameworks.includes(x.fw) && isIgnite(x.name))) {
+		const pm = await packument(d.name);
+		const resolved = pm.error ? undefined : semver.maxSatisfying(pm.versions, d.range);
+		if (resolved && inScope.includes(d)) {
+			checks.set(`${d.fw}|${d.name}|${resolved}|current`, { fw: d.fw, name: d.name, version: resolved, when: "current" });
+		}
+		if (!fwUpdating.has(d.fw)) continue;
+		if (pm.error) {
+			found.push({ fw: d.fw, name: d.name, version: d.range, when: "after", changed: false, error: `${d.name} lookup failed: ${pm.error}` });
+			continue;
+		}
+		const version = updating(d) ? d.target : resolved;
+		if (!version) continue;
+		const key = `${d.fw}|${d.name}|${version}|after`;
+		const changed = updating(d) || !!checks.get(key)?.changed;
+		checks.set(key, { fw: d.fw, name: d.name, version, when: "after", changed });
 	}
 	// A failed lookup leaves the peers unchecked; it is reported as a conflict with an error so an update fails closed.
 	for (const c of checks.values()) {
@@ -185,7 +201,9 @@ async function findPeerConflicts() {
 			for (const pin of pins.filter((x) => x.fw === c.fw && x.name === peer)) {
 				const pm = await packument(peer);
 				const range = c.when === "after" ? rangeAfter(pin) : pin.range;
-				const at = { peer, peerRange, pin: `${pin.file}:${pin.line}`, pinRange: range, ignitePeer: isIgnite(peer) };
+				// Neither side moves: the state is the current one, reported by the "current" check if in scope.
+				if (c.when === "after" && !c.changed && range === pin.range) continue;
+				const at ={ peer, peerRange, pin: `${pin.file}:${pin.line}`, pinRange: range, ignitePeer: isIgnite(peer) };
 				if (pm.error) {
 					found.push({ ...c, ...at, error: `${peer} lookup failed: ${pm.error}` });
 					continue;
@@ -201,6 +219,8 @@ async function findPeerConflicts() {
 
 // Stops apply to the whole package: one stopped occurrence holds every other occurrence of that package.
 // Holding a pin changes the ranges other packages' peers are checked against, so repeat until nothing changes.
+// An "after" conflict holds the side that moves: the dependent when it is updated, otherwise the peer whose pin
+// changes. An unchanged dependent with unchecked peers holds every update in its framework.
 let peerConflicts;
 const stopCauses = new Map();
 for (let changed = true; changed;) {
@@ -208,9 +228,10 @@ for (let changed = true; changed;) {
 	peerConflicts = await findPeerConflicts();
 	for (const c of peerConflicts.filter((x) => x.when === "after")) {
 		stopCauses.set(JSON.stringify(c), c);
-		for (const p of inScope.filter((x) => x.fw === c.fw && x.name === c.name && updating(x))) {
+		const held = c.changed ? (x) => x.name === c.name : c.error && !c.peer ? () => true : (x) => x.name === c.peer;
+		for (const p of inScope.filter((x) => x.fw === c.fw && updating(x) && held(x))) {
 			if (c.error) stop(p, "error", `peers unchecked: ${c.error}`);
-			else stop(p, "peer-stop", `${c.peer} ${c.peerRange} not met by ${c.pin} (${c.pinRange})`);
+			else stop(p, "peer-stop", `${c.name}@${c.version} needs ${c.peer} ${c.peerRange}, not met by ${c.pin} (${c.pinRange})`);
 			changed = true;
 		}
 	}

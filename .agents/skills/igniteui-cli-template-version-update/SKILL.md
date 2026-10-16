@@ -59,14 +59,14 @@ node .agents/skills/igniteui-cli-template-version-update/scripts/template-pins.m
 | `current` | The range already admits the target. `current*`: a `^` minimum that could be raised (Observation) |
 | `patch` / `minor` | Proceeds; `new range` shows the result |
 | `major` | Major or `0.x` minor change: stop item |
-| `peer-stop` | Would proceed, but the target's peer is not met by a template pin after the update: stop item, reason in `new range` |
+| `peer-stop` | Would proceed, but after the update the target's peer is not met by a template pin, or the new range leaves an unchanged Ignite UI dependent's peer unmet (checked even when `--package` leaves the dependent out): stop item, reason in `new range` |
 | `package-stop` | Would proceed, but another occurrence of the same package has a stop status (inconsistent pins): held with the rest of the package, reason in `new range` |
 | `shared-skip` | Would proceed, but the package is pinned in all three frameworks and the run selects fewer without naming it (`--package` or `--target`): Observation, not applied |
 | `missing-target` | The target version is not published: stop item |
 | `no-match` | No published version satisfies the current range: broken pin, report it first |
 | `downgrade` / `error` | Target below the current minimum, or a registry lookup failed (including the target's peer lookups, so its peers are unchecked): stop item |
 
-The **Peer conflicts** section lists, per framework, every pin outside the peer range of an Ignite UI package's resolved `current` version or its update target (`after`). A failed peer lookup is listed there too, with the error under `resolves to`; for an `after` row the package becomes `error`. **Inconsistencies** lists different ranges, mixed prefixes and packages shared across frameworks.
+The **Peer conflicts** section lists, per framework, every pin outside the peer range of an Ignite UI package's resolved `current` version, or, after the update (`after`), of any Ignite UI package pinned in that framework. An `after` row stops the side that moves: the dependent when it is updated, otherwise the peer whose new range breaks it. A failed peer lookup is listed there too, with the error under `resolves to`; for an `after` row the package becomes `error`, and when the unchecked package is not itself updated, every update in that framework does. **Inconsistencies** lists different ranges, mixed prefixes and packages shared across frameworks.
 
 ## Steps
 
