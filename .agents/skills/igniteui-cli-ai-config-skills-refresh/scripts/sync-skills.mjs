@@ -166,13 +166,13 @@ for (const fw of frameworks) {
 		result.issues = validate(files);
 
 		if (apply) {
+			for (const path of result.deleted) unlinkSync(join(destAbs, path));
+			if (existsSync(destAbs)) pruneEmptyDirs(destAbs, true);
 			for (const path of [...result.added, ...result.modified]) {
 				const abs = join(destAbs, path);
 				mkdirSync(dirname(abs), { recursive: true });
 				writeFileSync(abs, files[path]);
 			}
-			for (const path of result.deleted) unlinkSync(join(destAbs, path));
-			if (existsSync(destAbs)) pruneEmptyDirs(destAbs, true);
 			result.applied = true;
 		}
 	} catch (e) {
