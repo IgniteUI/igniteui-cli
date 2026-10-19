@@ -23,7 +23,7 @@ const data = [
   { MarketShare: 10, Company: 'Other' }
 ];
 
-@customElement('app-$(path)')
+@customElement('app-$(filePrefix)')
 export default class $(ClassName) extends LitElement {
   static styles = css`
     :host {
