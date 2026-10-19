@@ -39,7 +39,10 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 
 	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs, defaultPath = false) {
 		if (!options.parentName) {
-			return;
+			options.parentName = "app";
+		}
+		if (!options.parentRoutingModulePath) {
+			options.parentRoutingModulePath = "src/app/app-routing.ts";
 		}
 
 		const routeModulePath: string = options.parentRoutingModulePath;

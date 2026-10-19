@@ -1,4 +1,4 @@
-import { App, FS_TOKEN, IFileSystem, ROUTES_VARIABLE_NAME, Util } from "@igniteui/cli-core";
+import { AddTemplateArgs, App, FS_TOKEN, IFileSystem, ROUTES_VARIABLE_NAME, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { IgniteUIForWebComponentsTemplate } from "../../packages/cli/lib/templates/IgniteUIForWebComponentsTemplate";
 import { WebComponentsTypeScriptFileUpdate } from "../../packages/cli/templates/webcomponents/WebComponentsTypeScriptFileUpdate";
@@ -102,11 +102,15 @@ describe("Unit - IgniteUIForWebComponentsTemplate", () => {
 			modulePath: "./my-component/my-component-routing"
 		};
 
-		it("does nothing without a parent name", () => {
-			template.registerInProject("", "My Component", {});
+		it("defaults the parent name and routing module path", () => {
+			const options: AddTemplateArgs = { modulePath: undefined, skipRoute: undefined };
+			template.registerInProject("", "My Component", options);
 
-			expect(mockFs.readFile).not.toHaveBeenCalled();
-			expect(addRouteSpy).not.toHaveBeenCalled();
+			expect(options.parentName).toBe("app");
+			expect(options.parentRoutingModulePath).toBe(routesPath);
+			expect(addRouteSpy).toHaveBeenCalledOnceWith(
+				{ path: "my-component", identifierName: "app-my-component", name: "My Component" }, false);
+			expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		});
 
 		it("adds a route for the component and finalizes", () => {
