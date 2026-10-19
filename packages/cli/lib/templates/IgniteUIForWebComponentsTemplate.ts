@@ -46,15 +46,14 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		}
 
 		const routeModulePath: string = options.parentRoutingModulePath;
-		const routingModule = new WebComponentsTypeScriptFileUpdate(
-			path.join(projectPath, routeModulePath),
-			{ convertTabsToSpaces: true, indentSize: 2, singleQuotes: true }
-		);
-
 		if (
 			!(options && options.skipRoute) &&
 			App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)
 		) {
+			const routingModule = new WebComponentsTypeScriptFileUpdate(
+				path.join(projectPath, routeModulePath),
+				{ convertTabsToSpaces: true, indentSize: 2, singleQuotes: true }
+			);
 			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`;
 			const componentTag = `app-${this.fileName(fullName)}`;
 			const child: RouteLike = {

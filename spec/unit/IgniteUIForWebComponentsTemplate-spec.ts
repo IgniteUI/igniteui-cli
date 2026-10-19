@@ -138,6 +138,19 @@ describe("Unit - IgniteUIForWebComponentsTemplate", () => {
 			expect(finalizeSpy).not.toHaveBeenCalled();
 		});
 
+		it("does not read a missing default routing file when parent options are omitted", () => {
+			mockFs.fileExists.and.returnValue(false);
+			const options: AddTemplateArgs = {};
+
+			template.registerInProject("", "My Component", options);
+
+			expect(options.parentName).toBe("app");
+			expect(options.parentRoutingModulePath).toBe(routesPath);
+			expect(mockFs.readFile).not.toHaveBeenCalled();
+			expect(addRouteSpy).not.toHaveBeenCalled();
+			expect(finalizeSpy).not.toHaveBeenCalled();
+		});
+
 		it("adds a redirect route for the default path", () => {
 			template.registerInProject("", "My Component",
 				{ parentName: "app", parentRoutingModulePath: routesPath }, true);
