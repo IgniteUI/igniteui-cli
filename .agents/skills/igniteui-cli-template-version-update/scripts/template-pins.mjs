@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Inventory, classify and (with --apply) update the package pins in igniteui-cli templates.
-// Usage: node template-pins.mjs [--framework angular,react,webcomponents|all] [--package a,b]
+// Usage: node template-pins.mjs [--framework angular,react,webcomponents,jquery|all] [--package a,b]
 //          [--target pkg@version]... [--all-deps] [--json] [--apply]
 import { execSync } from "node:child_process";
 import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
@@ -28,10 +28,11 @@ const ROOTS = {
 };
 const PRIMARY = ["angular", "react", "webcomponents"];
 const fwArg = values("--framework");
-const frameworks = !fwArg.length ? PRIMARY : fwArg.includes("all") ? Object.keys(ROOTS) : fwArg;
+// "all" means the primary frameworks; jQuery is included only when named.
+const frameworks = !fwArg.length ? PRIMARY : [...new Set(fwArg.flatMap((f) => (f === "all" ? PRIMARY : [f])))];
 const unknownFw = frameworks.filter((f) => !ROOTS[f]);
 if (unknownFw.length) {
-	console.error(`Unknown framework: ${unknownFw.join(", ")}. Use ${Object.keys(ROOTS).join(", ")} or all (Blazor has no npm pins).`);
+	console.error(`Unknown framework: ${unknownFw.join(", ")}. Use ${Object.keys(ROOTS).join(", ")} or all (= ${PRIMARY.join(", ")}; Blazor has no npm pins).`);
 	process.exit(1);
 }
 const onlyPackages = values("--package");

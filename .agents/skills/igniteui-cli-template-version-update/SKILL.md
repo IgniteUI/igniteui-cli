@@ -45,11 +45,11 @@ Steps 2-5 are backed by [`scripts/template-pins.mjs`](./scripts/template-pins.mj
 
 ```bash
 node .agents/skills/igniteui-cli-template-version-update/scripts/template-pins.mjs \
-  [--framework angular,react,webcomponents|jquery|all] [--package <name>,<name>] \
+  [--framework angular,react,webcomponents,jquery|all] [--package <name>,<name>] \
   [--target <pkg>@<version>]... [--apply] [--json] [--all-deps]
 ```
 
-- Defaults: frameworks `angular,react,webcomponents`; Ignite UI packages only; target = npm `latest`.
+- Defaults: frameworks `angular,react,webcomponents`; Ignite UI packages only; target = npm `latest`. `all` means the same three; jQuery is scanned only when named (`--framework jquery` or `all,jquery`).
 - Without `--apply` it is read-only. `--apply` rewrites only `patch`/`minor` rows of Ignite UI packages, keeping each pin's prefix and the file's formatting; every other status is left alone.
 - `--all-deps` adds non-Ignite UI packages to the report as observations. They are never applied.
 - It reads the registry from `npm config get registry`.
