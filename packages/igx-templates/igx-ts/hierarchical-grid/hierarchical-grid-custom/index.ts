@@ -48,6 +48,9 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	}
 
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+		// the template instance is shared, so reset state left over from previous calls
+		this.usePinning = false;
+		this.additionalElements = [""];
 		const columnFeatures = [];
 		const gridFeatures = [];
 		const extraConfig = {
@@ -139,57 +142,57 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				}
 
 				featuresUrls.push(this.getFeatureUrl(feature, featureUrl));
-				selectedFeatures = features.map((e, i) => {
-					anchorWrapper.href = featuresUrls[i];
-					anchorWrapper.text = e;
-					return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
-						`${anchorWrapper.text}${anchorWrapper.end}`;
-				}).toString();
-				if (selectedFeatures.length > 0) {
-					selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
-				}
-				if (toolbarActions.length) {
-					this.dependencies = [
-						...this.dependencies,
-						...[
-							{
-								standalone: true,
-								import: "IgxGridToolbarComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarTitleComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarActionsComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarPinningComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarHidingComponent",
-								from: "<%=igxPackage%>"
-							},
-						],
-					];
+			}
+			selectedFeatures = features.map((e, i) => {
+				anchorWrapper.href = featuresUrls[i];
+				anchorWrapper.text = e;
+				return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
+					`${anchorWrapper.text}${anchorWrapper.end}`;
+			}).toString();
+			if (selectedFeatures.length > 0) {
+				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
+			}
+			if (toolbarActions.length) {
+				this.dependencies = [
+					...this.dependencies,
+					...[
+						{
+							standalone: true,
+							import: "IgxGridToolbarComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarTitleComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarActionsComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarPinningComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarHidingComponent",
+							from: "<%=igxPackage%>"
+						},
+					],
+				];
 
-					const parts = [
-						"  <igx-grid-toolbar>",
-						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
-						"    <igx-grid-toolbar-actions>",
-						...toolbarActions,
-						"    </igx-grid-toolbar-actions>",
-						"  </igx-grid-toolbar>"
-					];
-					this.additionalElements.splice(1, 0, parts.join("\n"));
-				}
+				const parts = [
+					"  <igx-grid-toolbar>",
+					"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
+					"    <igx-grid-toolbar-actions>",
+					...toolbarActions,
+					"    </igx-grid-toolbar-actions>",
+					"  </igx-grid-toolbar>"
+				];
+				this.additionalElements.splice(1, 0, parts.join("\n"));
 			}
 		}
 
