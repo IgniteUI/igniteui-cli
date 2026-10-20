@@ -6,7 +6,7 @@ describe("Unit - ProjectConfig", () => {
 	it("hasLocalConfig returns correct values", async () => {
 		const cwdSpy = spyOn(process, "cwd");
 		spyOn(os, "homedir").and.returnValues("rootDir");
-		spyOn(fs, "statSync").and.returnValue({
+		(spyOn(fs, "statSync") as jasmine.Spy).and.returnValue({
 			isFile: () => true,
 			isDirectory: () => false,
 			isBlockDevice: () => false,

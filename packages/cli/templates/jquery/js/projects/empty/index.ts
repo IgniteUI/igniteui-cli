@@ -6,7 +6,7 @@ class EmptyProject implements ProjectTemplate {
 	public id: string = "jquery";
 	public name: string = "jquery with Javascript";
 	public description: string = "Ignite UI CLI project for jQuery";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public framework: string = "jquery";
 	public projectType: string = "js";
 	public hasExtraConfiguration: boolean = false;

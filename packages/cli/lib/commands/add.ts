@@ -92,7 +92,7 @@ const command: AddCommandType = {
 			return;
 		}
 
-		if (!frameworkLibrary.hasTemplate(argv.template)) {
+		if (!frameworkLibrary.hasTemplate(argv.template!)) {
 			Util.error("Template doesn't exist in the current library", "red");
 			return;
 		}
@@ -102,7 +102,7 @@ const command: AddCommandType = {
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview", "yellow");
 		}
 
-		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
+		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template!);
 		if (selectedTemplate) {
 
 			GoogleAnalytics.post({
@@ -118,7 +118,7 @@ const command: AddCommandType = {
 				cd14: config.project.theme
 			});
 
-			await command.addTemplate(argv.name, selectedTemplate, {
+			await command.addTemplate(argv.name!, selectedTemplate, {
 				modulePath: argv.module,
 				skipRoute: argv.skipRoute
 			});

@@ -50,7 +50,7 @@ describe("Unit - Upgrade command", () => {
 		const mockProjTemplate: ProjectTemplate = {
 			...mockBaseTemplate,
 			installModules: jasmine.createSpy().and.callFake(() => {}),
-			upgradeIgniteUIPackages: null
+			upgradeIgniteUIPackages: null as unknown as ProjectTemplate["upgradeIgniteUIPackages"]
 		};
 
 		const mockTemplate: Template = {
@@ -101,13 +101,15 @@ describe("Unit - Upgrade command", () => {
 				description: "A mock component group"
 			}]),
 			getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
-			getProject: null,
+			getProject: null as unknown as ProjectLibrary["getProject"],
 			hasProject: jasmine.createSpy().and.returnValue(true),
 			hasTemplate: jasmine.createSpy().and.returnValue(false),
 			registerTemplate: jasmine.createSpy()
 		};
 
-		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => null as unknown as ProjectLibrary
+		};
 		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib);
 		spyOn(mockProjLib, "getProject").and.returnValue(mockProjTemplate);
@@ -184,7 +186,9 @@ describe("Unit - Upgrade command", () => {
 			hasProject: jasmine.createSpy().and.returnValue(false)
 		};
 
-		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => null as unknown as ProjectLibrary
+		};
 		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib as ProjectLibrary);
 

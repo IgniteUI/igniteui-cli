@@ -51,7 +51,7 @@ describe('TypeScript AST Transformer', () => {
       );
       astTransformer = new TypeScriptAstTransformer(sourceFile);
 
-      const visitCondition = (node) => ts.isCallExpression(node);
+      const visitCondition = (node: ts.CallExpression) => ts.isCallExpression(node);
       astTransformer.requestNewArgumentInMethodCallExpression(
         visitCondition,
         ts.factory.createIdentifier('arg4'),
@@ -128,7 +128,7 @@ describe('TypeScript AST Transformer', () => {
       const result = astTransformer.findPropertyAssignment(
         (node) =>
           ts.isPropertyAssignment(node) && node.name.getText() === 'key1'
-      );
+      )!;
       expect(result).toBeDefined();
       expect(result.name.getText()).toEqual('key1');
       expect(result.initializer.getText()).toEqual('""');
@@ -153,7 +153,7 @@ describe('TypeScript AST Transformer', () => {
         (node) =>
           ts.isPropertyAssignment(node) && node.name.getText() === 'key1',
         true
-      );
+      )!;
       expect(result).toBeDefined();
       expect(result.name.getText()).toEqual('key1');
       expect(result.initializer.getText()).toEqual('""');
@@ -298,7 +298,7 @@ describe('TypeScript AST Transformer', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
         [ts.factory.createIdentifier('4')],
-        null, // anchor element
+        null as unknown as ts.Expression, // anchor element
         { prepend: true }
       );
 

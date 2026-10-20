@@ -54,9 +54,9 @@ $app-palette: palette($primary, $secondary, $surface);
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
-	public setExtraConfiguration(extraConfigKeys: any[]) { }
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void { }
 	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
-		const config = {
+		const config: { [key: string]: string } = {
 			name,
 			theme,
 			cliVersion: Util.version(),

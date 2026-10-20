@@ -2047,6 +2047,18 @@
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.4.tgz"
   integrity sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==
 
+"@types/resolve@^1.20.6":
+  version "1.20.6"
+  resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.6.tgz#e6e60dad29c2c8c206c026e6dd8d6d1bdda850b8"
+  integrity sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==
+
+"@types/through2@^2.0.41":
+  version "2.0.41"
+  resolved "https://registry.yarnpkg.com/@types/through2/-/through2-2.0.41.tgz#3e5e1720d71ffdfa03c22f2aad6593d12a47034f"
+  integrity sha512-ryQ0tidWkb1O1JuYvWKyMLYEtOWDqF5mHerJzKz/gQpoAaJq2l/dsMPBF0B5BNVT34rbARYJ5/tsZwLfUi2kwQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/tmp@^0.2.6":
   version "0.2.6"
   resolved "https://registry.npmjs.org/@types/tmp/-/tmp-0.2.6.tgz"

@@ -29,14 +29,14 @@ describe("Blazor templates", () => {
 
 	it("igb library should expose the four Blazor themes", () => {
 		const blazorFramework: Framework = require(templatesLocation);
-		const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb");
+		const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb")!;
 		expect(projLibrary.themes).toEqual(["bootstrap", "material", "fluent", "indigo"]);
 	});
 
 	it("empty project template should be registered and visible", () => {
 		const blazorFramework: Framework = require(templatesLocation);
-		const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb");
-		const emptyProject = projLibrary.getProject("empty");
+		const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb")!;
+		const emptyProject = projLibrary.getProject("empty")!;
 		expect(emptyProject).toBeDefined();
 		expect(emptyProject.isHidden).toBeFalse();
 		expect(typeof emptyProject.scaffold).toBe("function");
@@ -45,7 +45,7 @@ describe("Blazor templates", () => {
 	describe("ai-config template file presence", () => {
 		it("ai-config project template must be registered", () => {
 			const blazorFramework: Framework = require(templatesLocation);
-			const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb");
+			const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb")!;
 			expect(projLibrary.getProject(AI_CONFIG_PROJECT_ID)).toBeDefined();
 		});
 

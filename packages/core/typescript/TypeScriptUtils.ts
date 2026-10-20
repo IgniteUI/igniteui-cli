@@ -58,9 +58,9 @@ export class TypeScriptUtils {
 	 * @param filePath File path
 	 * @param source Source AST to print
 	 */
-	public static saveFile(filePath: string, sourceFile: ts.SourceFile);
-	public static saveFile(filePath: string, content: string);
-	public static saveFile(filePath: string, sourceOrContent: ts.SourceFile | string) {
+	public static saveFile(filePath: string, sourceFile: ts.SourceFile): void;
+	public static saveFile(filePath: string, content: string): void;
+	public static saveFile(filePath: string, sourceOrContent: ts.SourceFile | string): void {
 		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
 		if (typeof sourceOrContent === "object" && ts.isSourceFile(sourceOrContent)) {

@@ -36,7 +36,7 @@ export abstract class TypeScriptFileUpdate {
     compilerOptions?: ts.CompilerOptions
   ) {
     this.astTransformer = new TypeScriptAstTransformer(
-      TypeScriptUtils.getFileSource(filePath, compilerOptions?.jsx > 0),
+      TypeScriptUtils.getFileSource(filePath, (compilerOptions?.jsx ?? 0) > 0),
       TS_PRINTER_OPTIONS,
       compilerOptions,
       formatSettings
@@ -94,7 +94,7 @@ export abstract class TypeScriptFileUpdate {
     };
 
     const initializer = asIdentifier
-      ? ts.factory.createIdentifier(route.aliasName || route.identifierName)
+      ? ts.factory.createIdentifier((route.aliasName || route.identifierName)!)
       : this.factory.createArrayLiteralExpression(
           [
             this.factory.createObjectLiteralExpression(
@@ -200,7 +200,7 @@ export abstract class TypeScriptFileUpdate {
     if (route.modulePath) {
       // add an import for the given identifier
       const routeIdentifier: Identifier = {
-        name: route.identifierName,
+        name: route.identifierName!,
         alias: route.aliasName,
       };
 

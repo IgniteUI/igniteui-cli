@@ -238,10 +238,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           node.name.text === propName &&
           parentIsConfigureTestingModule(node)
       );
-    for (const key of Object.keys(copy)) {
+    for (const key of Object.keys(copy) as (keyof AngularDecoratorMetaTarget)[]) {
       const targetMetaProp = findTargetMetaProp(key);
-      const identifiers = copy[key].map(ts.factory.createIdentifier);
-      if (copy[key].length > 0) {
+      const identifiers = copy[key]!.map(ts.factory.createIdentifier);
+      if (copy[key]!.length > 0) {
         this.mutateNgMeta(
           key,
           targetMetaProp,
@@ -388,14 +388,14 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         {
           name: RouteTarget.Path,
           value: ts.factory.createStringLiteral(
-            route.path,
+            route.path!,
             this.formatSettings?.singleQuotes
           ),
         },
         {
           name: RouteTarget.Component,
           value: ts.factory.createIdentifier(
-            route.aliasName || route.identifierName
+            (route.aliasName || route.identifierName)!
           ),
         },
       ];
@@ -454,9 +454,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     meta: AngularDecoratorMetaTarget,
     multiline: boolean = false
   ): void {
-    for (const key of Object.keys(meta)) {
-      if (meta[key].length > 0) {
-        this.addMetaToNgDecorator(decoratorName, meta[key], key, multiline);
+    for (const key of Object.keys(meta) as (keyof AngularDecoratorMetaTarget)[]) {
+      if (meta[key]!.length > 0) {
+        this.addMetaToNgDecorator(decoratorName, meta[key]!, key, multiline);
       }
     }
   }
@@ -495,7 +495,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    */
   private mutateNgMeta(
     target: string,
-    targetMetaProp: ts.PropertyAssignment,
+    targetMetaProp: ts.PropertyAssignment | undefined,
     identifiers: ts.Identifier[],
     visitorCondition: (node: ts.ObjectLiteralExpression) => boolean,
     multiline: boolean
@@ -527,7 +527,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         nodeExpression &&
         ts.isIdentifier(nodeExpression.expression) &&
         nodeExpression.expression;
-      return ts.isIdentifier(token) && token.text;
+      return token && ts.isIdentifier(token) && token.text;
     };
     return !!this.astTransformer.findNodeAncestor(
       node,
@@ -552,6 +552,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           ts.isCallExpression(_node.expression) &&
           _node.expression.expression;
         return (
+          !!nodeExpressionToken &&
           ts.isIdentifier(nodeExpressionToken) &&
           nodeExpressionToken.text === decoratorName
         );
@@ -575,7 +576,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     copy: AngularDecoratorMetaTarget,
     args?: ts.Expression | ts.Expression[]
   ) {
-    if (dep.root && copy.imports.length > 0) {
+    if (dep.root && copy.imports!.length > 0) {
       // add forRoot to the module
       let forRootArgs: ts.Expression[] = [
         this.factory.createArrayLiteralExpression([]),
@@ -585,7 +586,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           ? args
           : [this.factory.createArrayLiteralExpression([args])];
       }
-      copy.imports = copy.imports.map((i) =>
+      copy.imports = copy.imports!.map((i) =>
         this.astTransformer.printer.printNode(
           ts.EmitHint.Unspecified,
           this.factory.createCallExpression(

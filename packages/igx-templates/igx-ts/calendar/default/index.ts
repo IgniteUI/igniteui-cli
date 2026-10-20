@@ -3,7 +3,7 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
+	private userExtraConfiguration: { [key: string]: unknown } = {};
 	constructor() {
 		super(__dirname);
 		this.components = ["Calendar"];
@@ -17,7 +17,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 

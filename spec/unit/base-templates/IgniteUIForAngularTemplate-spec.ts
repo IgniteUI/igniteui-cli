@@ -14,15 +14,15 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			this.description = "test description";
 			this.dependencies = [];
 		}
-		public getBaseVariables(name) { return super.getBaseVariables(name); }
+		public getBaseVariables(name: string) { return super.getBaseVariables(name); }
 	}
 
 	describe("registerInProject", () => {
-		let helpers;
+		let helpers: any;
 		beforeEach(() => {
 			const tsUpdateMock = jasmine.createSpyObj(
 				"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
-			function AngularTypeScriptFileUpdate() {
+			function AngularTypeScriptFileUpdate(this: AngularTypeScriptFileUpdate) {
 				this.addRoute = tsUpdateMock.addRoute;
 				this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
 				this.finalize = tsUpdateMock.finalize;
@@ -68,7 +68,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			};
 			spyOn(templ, "fileExists").and.returnValue(true);
 			spyOn(App.container, "get").and.returnValue(mockFS);
-			spyOn(mockFS, "fileExists").and.callFake(file => {
+			(spyOn(mockFS, "fileExists") as jasmine.Spy).and.callFake(file => {
 				if (file === "src/app/app-routing-module.ts") {
 					return true;
 				}
@@ -296,7 +296,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			let actual = templ.generateConfig("test", options);
 			expect(actual).toEqual(expected);
 
-			spyOn(App.container.get<IFileSystem>(FS_TOKEN), "readFile").and.callFake((filePath: string) => {
+			(spyOn(App.container.get<IFileSystem>(FS_TOKEN), "readFile") as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath === "./package.json") {
 					return `{ "dependencies": { "${FEED_ANGULAR}": "*" } }`;
 				}

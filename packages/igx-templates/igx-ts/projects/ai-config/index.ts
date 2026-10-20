@@ -35,7 +35,7 @@ export class IgxAiConfigPartial implements ProjectTemplate {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	public setExtraConfiguration(_extraConfigKeys: any[]) {
+	public setExtraConfiguration(_extraConfigKeys: { [key: string]: unknown }): void {
 		throw new Error("Method not implemented.");
 	}
 	public generateConfig(_name: string, _theme: string, ..._options: any[]): { [key: string]: any } {

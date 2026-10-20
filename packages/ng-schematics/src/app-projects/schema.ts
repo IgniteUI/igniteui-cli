@@ -5,6 +5,6 @@ export abstract class NewProjectOptions {
 	public templateId?: string;
 	public templatePaths?: string[];
 	public config?: { [key: string]: any };
-	public theme: string;
-	public name: string;
+	public theme!: string;
+	public name!: string;
 }
