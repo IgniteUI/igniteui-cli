@@ -1,0 +1,111 @@
+# Ignite UI CLI Skills Guide
+
+AI skills for maintaining the Ignite UI CLI's **project and component templates** and the **MCP server's tools**: what each one does, how they fit together, and how to maintain them.
+
+Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](https://agentskills.io/specification) format), which VS Code Copilot discovers automatically: you run a workflow by asking for the task, and Copilot loads the matching skill. There are no custom agent files. Shared conventions, including the rules every workflow follows, are in [`AGENTS.md`](../AGENTS.md).
+
+---
+
+## Ground Rules
+
+- **A human decides what gets merged.** Run locally, a workflow never commits: it ends with the working tree changed and a report, and a human reviews and commits. Run by a cloud agent on GitHub (e.g. Copilot cloud agent from an issue or the web UI), it commits to its own branch and opens a pull request whose description is the report; a human reviews and merges. The exact git rules are in `AGENTS.md`.
+- **The smoke test is the proof.** Jasmine stubs package installs, so template work is verified with `scripts/smoke-test.sh`.
+- **Stop and report rather than guess.** Major version updates, missing APIs, id conflicts and anything out of scope are reported, not worked around.
+
+---
+
+## Skills
+
+| Skill | Kind | Writes | Use it for |
+|---|---|---|---|
+| [`igniteui-cli-template-version-update`](./skills/igniteui-cli-template-version-update/SKILL.md) | Workflow | Template pins | Update Ignite UI versions that `ig new` / `ig add` scaffold (patch/minor only). In `dry-run` mode: a read-only report of version drift and peer conflicts |
+| [`igniteui-cli-component-template`](./skills/igniteui-cli-component-template/SKILL.md) | Workflow | New template folders | Add a component template for Angular, React and/or Web Components |
+| [`igniteui-cli-changelog`](./skills/igniteui-cli-changelog/SKILL.md) | Workflow | `CHANGELOG.md` | Draft or write the release section for a version cut |
+| [`igniteui-cli-ai-config-skills-refresh`](./skills/igniteui-cli-ai-config-skills-refresh/SKILL.md) | Workflow | Bundled `ai-config` skills | Mirror the framework repositories' `skills/` into the `ai-config` templates. In `dry-run` mode: what changed upstream and content issues |
+| [`igniteui-cli-mcp-tool`](./skills/igniteui-cli-mcp-tool/SKILL.md) | Workflow | MCP server `src/`, tests, tool docs | Add an MCP server tool or change an existing one. Its `scripts/call-tool.mjs` calls a tool on the built server over stdio |
+| [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
+| [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
+
+The workflows triage their own smoke runs; use the smoke-test skill directly for a run you started by hand.
+
+---
+
+## How They Fit Together
+
+Each workflow runs on its own and does not call the others. You chain them.
+
+```text
+"what's missing?" (anatomy skill) ──► component-template workflow ──┐
+"what's stale?"  (dry-run)        ──► template-version-update workflow ──┤
+                                                                     ▼
+                                      each runs scripts/smoke-test.sh and triages its own failures
+                                                                     │
+                                                   (at release cut)  ▼
+                                                             changelog workflow
+```
+
+---
+
+## Quick Start
+
+| Goal | Ask |
+|---|---|
+| Update Web Components template versions to latest | "update webcomponents template versions" |
+| Update to a specific version | "update template pins of igniteui-angular to 22.3.0" |
+| See which pins are stale or conflicting | "dry-run template version update, all frameworks" |
+| Add a template | "add a Tile Manager component template for angular" |
+| See which templates are missing | "which component templates are missing per framework?" |
+| Make sense of a failed smoke run | "triage output/smoke" |
+| Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
+| Refresh the skills `ig ai-config` bundles | "refresh ai-config skills for all frameworks" |
+| See how far bundled skills lag behind | "dry-run ai-config skills refresh, all frameworks" |
+| Add an MCP tool | "add an MCP tool that returns a component's theming variables" |
+| Change an MCP tool | "let get_doc accept several doc names in one call" |
+
+Copilot picks the skill from its description. To be explicit, or in any other assistant, name the file: "Follow `.agents/skills/igniteui-cli-changelog/SKILL.md`: draft 15.9.0, 2026-10-15".
+
+**Keeping the session small.** The update and template workflows produce long build and smoke output. Start a fresh session per workflow.
+
+---
+
+## File Locations
+
+```text
+AGENTS.md                              ← shared conventions, incl. the rules for maintenance workflows
+.agents/
+  README.md                            ← this guide
+  skills/<name>/SKILL.md               ← every procedure and reference; discovered by Copilot
+  skills/<name>/scripts/               ← helper scripts a skill runs
+```
+
+---
+
+## Permissions
+
+Every limit on the workflows (the git rules, the "Maintenance Workflows" rules in `AGENTS.md`, each workflow's "Limits") is an instruction the assistant follows, not a technical restriction. Review the diff before you commit or merge the agent's pull request; branch protection on `master` is what actually keeps a cloud agent off it.
+
+### Cloud Agent
+
+Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. Its environment comes from `.github/workflows/copilot-setup-steps.yml` (install, build, Playwright Chromium), which takes effect only once it is on `master`. The agent's firewall allows the npm and yarn registries and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
+
+---
+
+## Maintenance Notes
+
+- Skill frontmatter carries `name`, `description` and `license`. Keep the Skills table in line with them.
+- A skill's `description` is loaded in every session and decides when the skill is picked. Lead with the term people use for the task, keep the "WHEN TO USE / WHEN NOT TO USE" form, and name each trigger once; the procedure itself belongs in the body.
+- Each fact lives in one skill. Workflows point to the reference skill (anatomy, smoke-test) at the step that needs it instead of restating it. When repository facts change (new framework root, new pin location, smoke-test flags), update that reference skill (and, for pin locations, `igniteui-cli-template-version-update/scripts/template-pins.mjs`, which encodes them).
+- Boundaries shared by all workflows go in the "Maintenance Workflows" section of `AGENTS.md`, which is always loaded; skills do not link it.
+- `dry-run` mode is read-only by instruction only.
+
+### Adding a Workflow
+
+Add one only for a recurring, multi-step task. If an existing reference skill plus a plain request covers it, extend that skill instead.
+
+1. Write `.agents/skills/igniteui-cli-<task>/SKILL.md`: a one-line scope, inputs, "Limits" (only limits specific to this workflow, stated as what the workflow changes and what stops it; the shared ones, including the git rules, stay in `AGENTS.md`), numbered steps with each stop condition at the step where it arises, "Follow-up Corrections" when the right fix differs from simply fixing and re-validating, final report and self-validation. Point to a reference skill at the step that uses it; put it under "Read first" only when most steps need it.
+2. Add it to the Skills and Quick Start tables above.
+
+### Adding a Reference Skill
+
+1. Write `.agents/skills/<name>/SKILL.md` (`name` must match the folder: lowercase letters, digits, hyphens).
+2. Add it to the Skills table above.
