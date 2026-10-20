@@ -1,6 +1,6 @@
 import * as semver from "semver";
 import { FS_TOKEN, IFileSystem } from "../types";
-import { App, Util } from "../util";
+import { App, ProjectConfig, Util } from "../util";
 import {
 	NPM_ANGULAR, NPM_CLI, NPM_GRID_LITE, NPM_REACT, NPM_WEBCOMPONENTS, UPGRADEABLE_PACKAGES
 } from "./package-resolve";
@@ -9,19 +9,32 @@ import {
 export interface PackageUpdate {
 	name: string;
 	section: "dependencies" | "devDependencies";
-	/** Spec as written in package.json, e.g. `~19.6.0` */
+	/** Spec as written in package.json */
 	declared: string;
-	/** Version from `node_modules/<name>/package.json`, when installed */
+	/** Version in node_modules */
 	installed?: string;
 	/** Version the update is computed from */
 	baseline?: string;
-	/** Why the package can't be updated */
 	skipped?: string;
+	/** Newest version in `^baseline`; equals `baseline` when up to date */
+	target?: string;
+	/** Registry metadata of `target` */
+	manifest?: PackageManifest;
+	/** `latest` dist-tag outside `^baseline`; reported, never applied */
+	nextMajor?: string;
 }
 
-const upgradeable = Object.keys(UPGRADEABLE_PACKAGES).filter(name => name !== NPM_ANGULAR);
+export interface PackageManifest {
+	dependencies?: Record<string, string>;
+	peerDependencies?: Record<string, string>;
+	engines?: Record<string, string>;
+	deprecated?: string;
+}
 
-/** React and Web Components packages `ig update` may change. Angular is excluded - it goes through `ng update`. */
+const upgradeable = (Object.keys(UPGRADEABLE_PACKAGES) as (keyof typeof UPGRADEABLE_PACKAGES)[])
+	.filter(name => name !== NPM_ANGULAR);
+
+/** Packages `ig update` may change; Angular goes through `ng update` instead. */
 export const UPDATABLE_PACKAGES: ReadonlySet<string> = new Set([
 	...upgradeable,
 	...upgradeable.map(name => UPGRADEABLE_PACKAGES[name]),
@@ -31,19 +44,13 @@ export const UPDATABLE_PACKAGES: ReadonlySet<string> = new Set([
 	NPM_CLI
 ]);
 
-/**
- * Specs with a usable baseline: exact, `^`, `~` and x-range, e.g. `19.6.0`, `^19.6.0`, `~19.6.0-rc.1`, `19.x`, `19`.
- * Complex ranges (`||`, `<`, `>=`, `a - b`), tags, protocols and urls are skipped.
- */
+/** Exact, `^`, `~` and x-range specs; complex ranges, tags and urls have no usable baseline. */
 const SIMPLE_SPEC = /^[\^~]?\d+(\.(\d+|[xX*])){0,2}(-[0-9A-Za-z.-]+)?$/;
 
-/** Package an `overrides`/`resolutions` key targets, e.g. `parent/@scope/pkg@^1.0.0` -> `@scope/pkg` */
+/** Package an overrides/resolutions key targets: `parent/@scope/pkg@^1.0.0` -> `@scope/pkg` */
 const OVERRIDE_TARGET = /(?:^|\/)((?:@[^/@]+\/)?[^/@]+)(?:@[^/]*)?$/;
 
-/**
- * Collects the project's direct Ignite UI dependencies with their declared range, installed version and baseline.
- * @throws when `package.json` is missing or invalid
- */
+/** @throws when `package.json` is missing or invalid */
 export function getUpdateCandidates(): PackageUpdate[] {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	if (!fs.fileExists("./package.json")) {
@@ -54,7 +61,7 @@ export function getUpdateCandidates(): PackageUpdate[] {
 	try {
 		pkgJson = JSON.parse(fs.readFile("./package.json"));
 	} catch (err) {
-		throw new Error(`Unable to parse package.json: ${err.message}`);
+		throw new Error(`Unable to parse package.json: ${(err as Error).message}`);
 	}
 
 	const overridden = new Set([...Object.keys(pkgJson.overrides ?? {}), ...Object.keys(pkgJson.resolutions ?? {})]
@@ -75,6 +82,9 @@ export function getUpdateCandidates(): PackageUpdate[] {
 				candidate.skipped = `unsupported spec "${declared}" (only exact, ^, ~ and x-range versions are supported)`;
 			} else if (installed && semver.satisfies(installed, declared)) {
 				candidate.baseline = installed;
+			} else if (installed && semver.gt(installed, minVersion)) {
+				candidate.skipped = `installed ${installed} is outside the declared range "${declared}"; ` +
+					"update package.json or reinstall before updating";
 			} else {
 				if (installed) {
 					Util.warn(`node_modules is out of sync with package.json for ${name} ` +
@@ -91,4 +101,52 @@ export function getUpdateCandidates(): PackageUpdate[] {
 	}
 
 	return candidates;
+}
+
+/** @throws when the registry can't be queried */
+export function getUpdatePlan(): PackageUpdate[] {
+	const plan = getUpdateCandidates();
+	for (const candidate of plan.filter(c => !c.skipped)) {
+		const line = `^${candidate.baseline}`;
+		const info = npmView(`${candidate.name} versions dist-tags`);
+		// publish order, not semver order; a single version comes back as a string
+		const target = semver.maxSatisfying([].concat(info.versions), line);
+		if (!target) {
+			candidate.skipped = `no published version matches "${line}"`;
+			continue;
+		}
+
+		candidate.target = target;
+		candidate.manifest = npmView(`${candidate.name}@${target}`);
+		const latest = info["dist-tags"]?.latest;
+		if (semver.valid(latest) && semver.gtr(latest, line)) {
+			candidate.nextMajor = latest;
+		}
+	}
+	return plan;
+}
+
+/** `npm view <args> --json`, with registry errors turned into actionable messages */
+function npmView(args: string) {
+	try {
+		return JSON.parse(Util.execSync(`npm view ${args} --json`, { stdio: "pipe", encoding: "utf8" }).toString());
+	} catch (err) {
+		const { stdout, message } = err as Error & { stdout?: string };
+		const spec = args.split(" ")[0];
+		let error: { code?: string; summary?: string } = {};
+		try {
+			error = JSON.parse(stdout ?? "").error ?? {};
+		} catch { /* npm missing or non-JSON output */ }
+
+		const licensed = spec.startsWith("@infragistics/");
+		if (licensed && error.code === "E404") {
+			throw new Error(`${spec} was not found. Map the @infragistics scope to the Infragistics feed in .npmrc:\n` +
+				`@infragistics:registry=${ProjectConfig.getConfig().igPackageRegistry}`);
+		}
+		if (licensed && /^(E401|E403|ENEEDAUTH)$/.test(error.code ?? "")) {
+			throw new Error(`Not logged in to the Infragistics feed, required for ${spec}. ` +
+				"Log in with your Infragistics account: npm login --scope=@infragistics --auth-type=legacy");
+		}
+		throw new Error(`Unable to get ${spec} from the registry: ${error.summary ?? message}`);
+	}
 }
