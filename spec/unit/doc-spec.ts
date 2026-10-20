@@ -42,4 +42,18 @@ describe("Unit - Doc command", () => {
 		expect(Util.error).toHaveBeenCalledWith("The search term 'Th1s i$ incorrect' is not valid." + "\n" +
 "Name should start with a letter and can also contain numbers, dashes and spaces.", "red");
 	});
+	it("Should pass the target url to the 'open' package", async () => {
+		const openSpy = jasmine.createSpy("open").and.returnValue(Promise.resolve());
+		const moduleLoader = require("module");
+		const originalLoad = moduleLoader._load;
+		spyOn(moduleLoader, "_load").and.callFake(function (request: string, ...args: unknown[]) {
+			if (request === "open") {
+				return { __esModule: true, default: openSpy };
+			}
+			return originalLoad.call(this, request, ...args);
+		});
+		await doc.open("https://www.infragistics.com/search?q=igGrid");
+		expect(openSpy).toHaveBeenCalledTimes(1);
+		expect(openSpy).toHaveBeenCalledWith("https://www.infragistics.com/search?q=igGrid");
+	});
 });
