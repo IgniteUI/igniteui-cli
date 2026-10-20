@@ -22,22 +22,31 @@ export interface PackageUpdate {
 	manifest?: PackageManifest;
 	/** `latest` dist-tag outside `^baseline`; reported, never applied */
 	nextMajor?: string;
+	/** Spec to write to package.json; unset when nothing changes */
+	newRange?: string;
+	/** Unresolvable constraint between Ignite UI packages; blocks the update */
+	conflict?: string;
 }
 
 export interface PackageManifest {
+	version: string;
 	dependencies?: Record<string, string>;
 	peerDependencies?: Record<string, string>;
 	engines?: Record<string, string>;
 	deprecated?: string;
 }
 
-const upgradeable = (Object.keys(UPGRADEABLE_PACKAGES) as (keyof typeof UPGRADEABLE_PACKAGES)[])
-	.filter(name => name !== NPM_ANGULAR);
+/** Trial <-> licensed name of the same package */
+const COUNTERPART = new Map<string, string>();
+for (const trial of Object.keys(UPGRADEABLE_PACKAGES) as (keyof typeof UPGRADEABLE_PACKAGES)[]) {
+	if (trial !== NPM_ANGULAR) {
+		COUNTERPART.set(trial, UPGRADEABLE_PACKAGES[trial]).set(UPGRADEABLE_PACKAGES[trial], trial);
+	}
+}
 
 /** Packages `ig update` may change; Angular goes through `ng update` instead. */
 export const UPDATABLE_PACKAGES: ReadonlySet<string> = new Set([
-	...upgradeable,
-	...upgradeable.map(name => UPGRADEABLE_PACKAGES[name]),
+	...COUNTERPART.keys(),
 	NPM_REACT,
 	NPM_WEBCOMPONENTS,
 	NPM_GRID_LITE,
@@ -106,33 +115,103 @@ export function getUpdateCandidates(): PackageUpdate[] {
 /** @throws when the registry can't be queried */
 export function getUpdatePlan(): PackageUpdate[] {
 	const plan = getUpdateCandidates();
+	const lines = new Map<PackageUpdate, PackageManifest[]>();
 	for (const candidate of plan.filter(c => !c.skipped)) {
 		const line = `^${candidate.baseline}`;
-		const info = npmView(`${candidate.name} versions dist-tags`);
-		// publish order, not semver order; a single version comes back as a string
-		const target = semver.maxSatisfying([].concat(info.versions), line);
-		if (!target) {
+		const info = npmView(candidate.name, "versions dist-tags");
+		if (!semver.maxSatisfying([].concat(info.versions), line)) {
 			candidate.skipped = `no published version matches "${line}"`;
 			continue;
 		}
-
-		candidate.target = target;
-		candidate.manifest = npmView(`${candidate.name}@${target}`);
 		const latest = info["dist-tags"]?.latest;
 		if (semver.valid(latest) && semver.gtr(latest, line)) {
 			candidate.nextMajor = latest;
+		}
+		// versions with none of the fields come back as plain strings
+		const manifests: (PackageManifest | string)[] = [].concat(
+			npmView(`${candidate.name}@${line}`, "version dependencies peerDependencies deprecated engines"));
+		lines.set(candidate, manifests
+			.map(m => typeof m === "string" ? { version: m } : m)
+			.sort((a, b) => semver.rcompare(a.version, b.version)));
+	}
+
+	const updates = plan.filter(c => !c.skipped);
+	alignTargets(updates, lines);
+	for (const skipped of plan.filter(c => c.skipped)) {
+		for (const { range, from } of constraintsOn(skipped, updates)) {
+			Util.warn(`${from} requires ${skipped.name}@${range}, which is not checked because ${skipped.name} is skipped.`, "yellow");
 		}
 	}
 	return plan;
 }
 
-/** `npm view <args> --json`, with registry errors turned into actionable messages */
-function npmView(args: string) {
+/**
+ * Picks each target as the newest version in its line that satisfies the other targets' dependencies and peers,
+ * repeating until stable since targets depend on each other, then sets `newRange` or `conflict`.
+ */
+function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>): void {
+	let changed = true;
+	for (let pass = 0; changed && pass <= updates.length; pass++) {
+		changed = false;
+		for (const update of updates) {
+			const constraints = constraintsOn(update, updates);
+			const allowed = lines.get(update)!.filter(m => constraints.every(c => semver.satisfies(m.version, c.range)));
+			const manifest = allowed.find(m => updates.every(other => other === update ||
+				requirements(m, other.name).every(range => lines.get(other)!.some(o => semver.satisfies(o.version, range))))) ?? allowed[0];
+			if (manifest?.version !== update.target) {
+				update.target = manifest?.version;
+				update.manifest = manifest;
+				changed = true;
+			}
+		}
+	}
+
+	for (const update of updates) {
+		const target = update.target;
+		const constraints = constraintsOn(update, updates);
+		const fits = (range: string) => constraints.every(c => semver.subset(range, c.range));
+		// `satisfies` (unlike `subset`) tolerates invalid ranges, which then end up here as conflicts
+		if (!target || !constraints.every(c => semver.satisfies(target, c.range))) {
+			update.conflict = `no version in "^${update.baseline}" satisfies ` +
+				constraints.map(c => `${c.range} (required by ${c.from})`).join(", ");
+			update.target = update.manifest = undefined;
+		} else if (target !== update.baseline || !fits(update.declared)) {
+			// npm may later install any version in the written range, so the range itself must fit every constraint
+			update.newRange = [rangeOperator(update.declared) + target, `~${target}`, target].find(fits);
+		}
+	}
+}
+
+/** Ranges the other targets put on `update` */
+function constraintsOn(update: PackageUpdate, updates: PackageUpdate[]): { range: string; from: string }[] {
+	const constraints = [];
+	for (const other of updates) {
+		for (const range of requirements(other.manifest, update.name)) {
+			constraints.push({ range, from: `${other.name}@${other.target}` });
+		}
+	}
+	return constraints;
+}
+
+/** Ranges `manifest` depends on for `name`, by trial or licensed name */
+function requirements(manifest: PackageManifest | undefined, name: string): string[] {
+	const deps: Record<string, string> = { ...manifest?.dependencies, ...manifest?.peerDependencies };
+	return Object.keys(deps).filter(dep => dep === name || COUNTERPART.get(dep) === name).map(dep => deps[dep]);
+}
+
+/** `^`, `~` or `""` (exact): the operator whose range equals `declared`, so `19.x` -> `^` and `19.6.x` -> `~` */
+function rangeOperator(declared: string): string {
+	const min = semver.minVersion(declared)!.version;
+	return ["^", "~"].find(op => semver.validRange(op + min) === semver.validRange(declared)) ?? "";
+}
+
+/** `npm view "<spec>" <fields> --json`, with registry errors turned into actionable messages */
+function npmView(spec: string, fields: string) {
 	try {
-		return JSON.parse(Util.execSync(`npm view ${args} --json`, { stdio: "pipe", encoding: "utf8" }).toString());
+		// quoted: the spec may hold a `^` range, which cmd.exe would otherwise treat as an escape
+		return JSON.parse(Util.execSync(`npm view "${spec}" ${fields} --json`, { stdio: "pipe", encoding: "utf8" }).toString());
 	} catch (err) {
 		const { stdout, message } = err as Error & { stdout?: string };
-		const spec = args.split(" ")[0];
 		let error: { code?: string; summary?: string } = {};
 		try {
 			error = JSON.parse(stdout ?? "").error ?? {};

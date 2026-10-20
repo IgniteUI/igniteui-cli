@@ -1,9 +1,11 @@
+import * as semver from "semver";
 import { Config, IFileSystem } from "../../packages/core/types";
 import { App, ProjectConfig, Util } from "../../packages/core/util";
 import {
-	FEED_ANGULAR, FEED_REACT_GRIDS, NPM_ANGULAR, NPM_CLI, NPM_GRID_LITE, NPM_REACT, NPM_REACT_GRIDS, NPM_WEBCOMPONENTS
+	FEED_ANGULAR, FEED_REACT_GRIDS, FEED_WEBCOMPONENTS_GRIDS, NPM_ANGULAR, NPM_CLI, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_REACT,
+	NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS
 } from "../../packages/core/update/package-resolve";
-import { getUpdateCandidates, getUpdatePlan, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
+import { getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
 
 describe("Unit - version update", () => {
 	let fs: jasmine.SpyObj<IFileSystem>;
@@ -31,7 +33,8 @@ describe("Unit - version update", () => {
 	});
 
 	it("UPDATABLE_PACKAGES includes React/WC trial and licensed names, OSS packages, grid lite and the CLI, but not Angular", () => {
-		for (const name of [NPM_REACT_GRIDS, FEED_REACT_GRIDS, NPM_REACT, NPM_WEBCOMPONENTS, NPM_GRID_LITE, NPM_CLI]) {
+		for (const name of [NPM_REACT_GRIDS, FEED_REACT_GRIDS, NPM_REACT, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS,
+			FEED_WEBCOMPONENTS_GRIDS, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_CLI]) {
 			expect(UPDATABLE_PACKAGES.has(name)).withContext(name).toBe(true);
 		}
 		expect(UPDATABLE_PACKAGES.has(NPM_ANGULAR)).toBe(false);
@@ -49,6 +52,7 @@ describe("Unit - version update", () => {
 					"igniteui-react": "~19.6.0",
 					"igniteui-react-grids": "~19.5.0",
 					"@infragistics/igniteui-react-grids": "~19.6.0",
+					"@infragistics/igniteui-webcomponents-grids": "~7.3.0",
 					"igniteui-grid-lite": "~0.11.0",
 					"igniteui-angular": "~22.2.0",
 					"ignite-ui": "^21.1.0",
@@ -66,6 +70,7 @@ describe("Unit - version update", () => {
 				["igniteui-react", "dependencies"],
 				["igniteui-react-grids", "dependencies"],
 				["@infragistics/igniteui-react-grids", "dependencies"],
+				["@infragistics/igniteui-webcomponents-grids", "dependencies"],
 				["igniteui-grid-lite", "dependencies"],
 				["igniteui-cli", "devDependencies"]
 			]);
@@ -179,27 +184,38 @@ describe("Unit - version update", () => {
 	});
 
 	describe("getUpdatePlan", () => {
-		let registry: Record<string, string | Error>;
+		type Manifest = object | ((version: string) => object);
+		let registry: Record<string, { versions: string | string[]; latest?: string; manifest?: Manifest } | string | Error>;
 
 		function npmError(code: string, summary = `${code} summary`) {
 			return Object.assign(new Error("Command failed"), { stdout: JSON.stringify({ error: { code, summary } }) });
 		}
 
-		function publish(name: string, versions: string | string[], latest?: string, manifest: object = {}) {
-			registry[`npm view ${name} versions dist-tags --json`] = JSON.stringify({ versions, "dist-tags": { latest } });
-			for (const version of ([] as string[]).concat(versions)) {
-				registry[`npm view ${name}@${version} --json`] = JSON.stringify({ name, version, ...manifest });
-			}
+		function publish(name: string, versions: string | string[], latest?: string, manifest?: Manifest) {
+			registry[name] = { versions, latest, manifest };
 		}
 
 		beforeEach(() => {
 			registry = {};
 			(Util.execSync as jasmine.Spy).and.callFake((command: string) => {
-				const response = registry[command] ?? npmError("E404");
-				if (response instanceof Error) {
-					throw response;
+				const [, name, range] = /^npm view "(@?[^@"]+)(?:@([^"]+))?"/.exec(command)!;
+				const entry = registry[name] ?? npmError("E404");
+				if (entry instanceof Error) {
+					throw entry;
 				}
-				return response;
+				if (typeof entry === "string") {
+					return entry;
+				}
+				const { versions, latest, manifest } = entry;
+				if (!range) {
+					return JSON.stringify({ versions, "dist-tags": { latest } });
+				}
+				// like npm: one entry per matching version, a bare version string when it has none of the requested fields
+				const matches = ([] as string[]).concat(versions).filter(v => semver.satisfies(v, range)).map(version => {
+					const fields = typeof manifest === "function" ? manifest(version) : manifest;
+					return fields ? { version, ...fields } : version;
+				});
+				return JSON.stringify(matches.length === 1 ? matches[0] : matches);
 			});
 		});
 
@@ -216,11 +232,11 @@ describe("Unit - version update", () => {
 			}));
 		});
 
-		it("keeps 0.x packages in their minor line", () => {
-			mockProject({ dependencies: { "igniteui-grid-lite": "~0.11.0" } });
+		it("keeps 0.x packages in their minor line and range style", () => {
+			mockProject({ dependencies: { "igniteui-grid-lite": "0.11.x" } });
 			publish("igniteui-grid-lite", ["0.11.0", "0.11.3", "0.12.0"], "0.12.0");
 
-			expect(getUpdatePlan()[0]).toEqual(jasmine.objectContaining({ target: "0.11.3", nextMajor: "0.12.0" }));
+			expect(getUpdatePlan()[0]).toEqual(jasmine.objectContaining({ target: "0.11.3", newRange: "^0.11.3", nextMajor: "0.12.0" }));
 		});
 
 		it("moves a prerelease baseline to later prereleases and the stable release", () => {
@@ -262,7 +278,7 @@ describe("Unit - version update", () => {
 			expect(react.skipped).toBe('no published version matches "^19.6.0"');
 			expect(react.target).toBeUndefined();
 
-			registry["npm view igniteui-react versions dist-tags --json"] = "{}";
+			registry["igniteui-react"] = "{}";
 
 			expect(getUpdatePlan()[0].skipped).toBe('no published version matches "^19.6.0"');
 		});
@@ -287,16 +303,122 @@ describe("Unit - version update", () => {
 				"Infragistics feed in .npmrc:\n@infragistics:registry=https://feed.example/npm/");
 
 			for (const code of ["E401", "E403", "ENEEDAUTH"]) {
-				registry[`npm view ${licensed} versions dist-tags --json`] = npmError(code);
+				registry[licensed] = npmError(code);
 				expect(() => getUpdatePlan()).withContext(code).toThrowError(/^Not logged in to the Infragistics feed/);
 			}
 
 			mockProject({ dependencies: { "igniteui-react": "~19.6.0" } });
-			registry["npm view igniteui-react versions dist-tags --json"] = npmError("ETIMEDOUT", "network timeout");
+			registry["igniteui-react"] = npmError("ETIMEDOUT", "network timeout");
 			expect(() => getUpdatePlan()).toThrowError("Unable to get igniteui-react from the registry: network timeout");
 
-			registry["npm view igniteui-react versions dist-tags --json"] = "not json";
+			registry["igniteui-react"] = "not json";
 			expect(() => getUpdatePlan()).toThrowError(/^Unable to get igniteui-react from the registry: /);
+		});
+
+		describe("alignment", () => {
+			const summary = (plan: PackageUpdate[]) => plan.map(c => [c.name, c.target, c.newRange, c.conflict]);
+
+			it("aligns to an exact peer and writes it as an exact range, in either package order (React)", () => {
+				publish("igniteui-react-charts", ["19.5.2", "19.6.0"], "19.6.0", { peerDependencies: { "igniteui-react-core": "19.6.0" } });
+				publish("igniteui-react-core", ["19.5.2", "19.6.0", "19.7.0"], "19.7.0");
+				const charts = ["igniteui-react-charts", "19.6.0", "~19.6.0", undefined];
+				const core = ["igniteui-react-core", "19.6.0", "19.6.0", undefined];
+
+				mockProject({ dependencies: { "igniteui-react-charts": "~19.5.2", "igniteui-react-core": "~19.5.2" } });
+				expect(summary(getUpdatePlan())).toEqual([charts, core]);
+
+				// core first: it takes 19.7.0 in the first pass and moves back to 19.6.0 once charts has a target
+				mockProject({ dependencies: { "igniteui-react-core": "~19.5.2", "igniteui-react-charts": "~19.5.2" } });
+				expect(summary(getUpdatePlan())).toEqual([core, charts]);
+			});
+
+			it("keeps an older dependent that works with the dependency's major and narrows its range (real React 19.x / WC history)", () => {
+				mockProject(
+					{ dependencies: { "igniteui-react": "~19.3.0", "igniteui-webcomponents": "^6.3.0" } },
+					{ "igniteui-react": "19.3.0", "igniteui-webcomponents": "6.3.3" }
+				);
+				const wcRanges: Record<string, string> = {
+					"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
+				};
+				publish("igniteui-react", Object.keys(wcRanges), "19.9.0",
+					version => ({ dependencies: { "igniteui-webcomponents": wcRanges[version] } }));
+				publish("igniteui-webcomponents", ["6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"], "7.4.1");
+
+				expect(summary(getUpdatePlan())).toEqual([
+					["igniteui-react", "19.4.0", "~19.4.0", undefined],
+					["igniteui-webcomponents", "6.3.6", "~6.3.6", undefined]
+				]);
+			});
+
+			it("matches constraints across trial and licensed names (Web Components)", () => {
+				mockProject({ dependencies: {
+					"@infragistics/igniteui-webcomponents-charts": "^6.0.0", "@infragistics/igniteui-webcomponents-core": "^6.0.0"
+				} });
+				publish("@infragistics/igniteui-webcomponents-charts", ["6.0.0", "6.1.0"], "6.1.0",
+					{ peerDependencies: { "igniteui-webcomponents-core": "6.1.0" } });
+				publish("@infragistics/igniteui-webcomponents-core", ["6.0.0", "6.1.0", "6.2.0"], "6.2.0");
+
+				expect(summary(getUpdatePlan())).toEqual([
+					["@infragistics/igniteui-webcomponents-charts", "6.1.0", "^6.1.0", undefined],
+					["@infragistics/igniteui-webcomponents-core", "6.1.0", "6.1.0", undefined]
+				]);
+			});
+
+			it("reports a conflict instead of downgrading, clearing the stale target, and for unsupported constraint ranges", () => {
+				// core first, so it gets a target in the first pass that charts later rules out
+				mockProject(
+					{ dependencies: { "igniteui-react-core": "~19.7.0", "igniteui-react-charts": "~19.6.0", "igniteui-webcomponents": "^7.2.0" } },
+					{ "igniteui-react-core": "19.7.0" }
+				);
+				publish("igniteui-react-charts", ["19.6.0"], "19.6.0",
+					{ peerDependencies: { "igniteui-react-core": "19.6.0" }, dependencies: { "igniteui-webcomponents": "npm:other@1" } });
+				publish("igniteui-react-core", ["19.6.0", "19.7.0"], "19.7.0");
+				publish("igniteui-webcomponents", ["7.2.0"], "7.2.0");
+
+				const [core, , webcomponents] = getUpdatePlan();
+
+				expect([core.target, core.manifest, core.newRange]).toEqual([undefined, undefined, undefined]);
+				expect(core.conflict).toBe('no version in "^19.7.0" satisfies 19.6.0 (required by igniteui-react-charts@19.6.0)');
+				expect(webcomponents.conflict).toBe('no version in "^7.2.0" satisfies npm:other@1 (required by igniteui-react-charts@19.6.0)');
+			});
+
+			it("rewrites an up-to-date package only when a constraint no longer fits its declared range", () => {
+				mockProject(
+					{ dependencies: { "igniteui-react-charts": "~19.6.0", "igniteui-react-core": "~19.6.0", "igniteui-webcomponents": "^7.2.0" } },
+					{ "igniteui-react-charts": "19.6.0", "igniteui-react-core": "19.6.0", "igniteui-webcomponents": "7.4.1" }
+				);
+				publish("igniteui-react-charts", ["19.6.0"], "19.6.0", { peerDependencies: { "igniteui-react-core": "19.6.0" } });
+				publish("igniteui-react-core", ["19.6.0"], "19.6.0");
+				publish("igniteui-webcomponents", ["7.4.1"], "7.4.1");
+
+				expect(summary(getUpdatePlan())).toEqual([
+					["igniteui-react-charts", "19.6.0", undefined, undefined],
+					["igniteui-react-core", "19.6.0", "19.6.0", undefined],
+					["igniteui-webcomponents", "7.4.1", undefined, undefined]
+				]);
+			});
+
+			it("keeps the declared range style", () => {
+				const ranges: Record<string, string> = {
+					"^19.6.0": "^19.9.0", "~19.6.0": "~19.9.0", "19.6.0": "19.9.0", "19.x": "^19.9.0", "19.6.x": "~19.9.0"
+				};
+				publish("igniteui-react", ["19.6.0", "19.9.0"], "19.9.0");
+				for (const declared of Object.keys(ranges)) {
+					mockProject({ dependencies: { "igniteui-react": declared } });
+
+					expect(getUpdatePlan()[0].newRange).withContext(declared).toBe(ranges[declared]);
+				}
+			});
+
+			it("warns about constraints on skipped packages", () => {
+				mockProject({ dependencies: { "igniteui-react": "~19.6.0", "igniteui-webcomponents": "workspace:*" } });
+				publish("igniteui-react", ["19.9.0"], "19.9.0", { dependencies: { "igniteui-webcomponents": "~7.4.1" } });
+
+				getUpdatePlan();
+
+				expect(Util.warn).toHaveBeenCalledOnceWith("igniteui-react@19.9.0 requires igniteui-webcomponents@~7.4.1, " +
+					"which is not checked because igniteui-webcomponents is skipped.", "yellow");
+			});
 		});
 	});
 });
