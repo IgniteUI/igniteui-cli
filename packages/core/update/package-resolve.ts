@@ -68,6 +68,12 @@ export const FEED_WEBCOMPONENTS_SPREADSHEET = "@infragistics/igniteui-webcompone
 export const NPM_WEBCOMPONENTS_CHART_ADAPTER = "igniteui-webcomponents-spreadsheet-chart-adapter";
 export const FEED_WEBCOMPONENTS_CHART_ADAPTER = "@infragistics/igniteui-webcomponents-spreadsheet-chart-adapter";
 
+// grid lite (peer of igniteui-react)
+export const NPM_GRID_LITE = "igniteui-grid-lite";
+
+// cli
+export const NPM_CLI = "igniteui-cli";
+
 /** packages map of `trial: licensed` names */
 export const UPGRADEABLE_PACKAGES = {
 	// angular
