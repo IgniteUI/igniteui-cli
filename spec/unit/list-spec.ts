@@ -203,4 +203,34 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
 	});
+
+	it("Should list custom templates under the 'Views' group", async () => {
+		const framework = { name: "Angular" };
+		const projectLib = {
+			projectType: "igx-ts",
+			templates: [
+				{ controlGroup: "group1", id: "id1.1", description: "Description for 1.1" },
+				{ controlGroup: "group1", id: "view1", description: "Custom view 1", listInCustomTemplates: true },
+				{ controlGroup: "group2", id: "view2", description: "Custom view 2", listInCustomTemplates: true }
+			]
+		};
+
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: framework,
+			getProjectLibrary: projectLib
+		}));
+
+		await listCmd.handler({ framework: "angular", type: "igx-ts", _: ["list"], $0: "list" });
+
+		expect(Util.error).toHaveBeenCalledTimes(0);
+
+		expect(Util.log).toHaveBeenCalledTimes(6);
+		expect(Util.log).toHaveBeenCalledWith("Available templates for 'Angular' framework 'igx-ts' type");
+		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
+		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
+		expect(Util.log).toHaveBeenCalledWith("'Views' group:");
+		expect(Util.log).toHaveBeenCalledWith("	view1     Custom view 1");
+		expect(Util.log).toHaveBeenCalledWith("	view2     Custom view 2");
+		expect(Util.log).not.toHaveBeenCalledWith("'group2' group:");
+	});
 });
