@@ -94,7 +94,7 @@ for (const fw of new Set([...frameworks, ...PRIMARY])) {
 }
 
 const inScope = pins.filter((p) => frameworks.includes(p.fw) && (allDeps || isIgnite(p.name)) &&
-	(!onlyPackages.length || onlyPackages.includes(p.name)));
+	(!onlyPackages.length || onlyPackages.includes(p.name) || p.name in targets));
 
 let registry = "https://registry.npmjs.org/";
 try {
@@ -177,7 +177,7 @@ async function findPeerConflicts() {
 	for (const d of pins.filter((x) => frameworks.includes(x.fw) && isIgnite(x.name))) {
 		const pm = await packument(d.name);
 		const resolved = pm.error ? undefined : semver.maxSatisfying(pm.versions, d.range);
-		if (resolved && inScope.includes(d)) {
+		if (resolved) {
 			checks.set(`${d.fw}|${d.name}|${resolved}|current`, { fw: d.fw, name: d.name, version: resolved, when: "current" });
 		}
 		if (!fwUpdating.has(d.fw)) continue;
@@ -185,7 +185,7 @@ async function findPeerConflicts() {
 			found.push({ fw: d.fw, name: d.name, version: d.range, when: "after", changed: false, error: `${d.name} lookup failed: ${pm.error}` });
 			continue;
 		}
-		const version = updating(d) ? d.target : resolved;
+		const version = updating(d) ? semver.maxSatisfying(pm.versions, rangeAfter(d)) : resolved;
 		if (!version) continue;
 		const key = `${d.fw}|${d.name}|${version}|after`;
 		const changed = updating(d) || !!checks.get(key)?.changed;

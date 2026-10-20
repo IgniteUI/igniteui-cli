@@ -55,8 +55,8 @@ For each target framework, find the package that provides the component and the 
 
 Verify the component's class or tag, the import path, and every prop/event you plan to use, against that version:
 
-1. **Preferred**: the Ignite UI MCP tools, if available in this session: `list_components`, `get_api_reference` (platform + component), `resolve_import`.
-2. **Otherwise**: the package's type declarations. `npm pack <pkg>@<pinned version> --pack-destination <temp dir>`, extract it, and search the `.d.ts` files. Use a temporary directory outside the repository.
+1. **Discovery**: the Ignite UI MCP tools, if available in this session: `list_components`, `get_api_reference` (platform + component), `resolve_import`. MCP documentation verifies an API only when its source version is confirmed to match the pinned package version; otherwise, use it for discovery and verify against the pinned package's type declarations.
+2. **Pinned-version verification**: `npm pack <pkg>@<pinned version> --pack-destination <temp dir>`, extract it, and search the `.d.ts` files. Use a temporary directory outside the repository. This step is required unless the documentation's source version is confirmed to match the pin.
    - Web Components element tag names (`htmlTagName`) are in the compiled JS (e.g. `esm2015/`), not in the `.d.ts`.
    - Web Components attributes are the property names in dashed form (`chartTitle` → `chart-title`). Confirm in the compiled source when unsure.
 
