@@ -1,0 +1,10 @@
+<p><%=description%></p>
+<igx-item-legend #legend orientation="Horizontal"></igx-item-legend>
+<igx-doughnut-chart height="400px" width="400px">
+  <igx-ring-series name="ring1"
+      [dataSource]="data"
+      valueMemberPath="MarketShare"
+      labelMemberPath="Company"
+      [legend]="legend">
+  </igx-ring-series>
+</igx-doughnut-chart>
