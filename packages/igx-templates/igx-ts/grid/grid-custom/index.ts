@@ -81,9 +81,9 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			const featuresUrls = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
-					case "Sorting":
 					case "Filtering":
 						gridFeatures.push(`[allowFiltering]="true"`);
+					case "Sorting":
 					case "Resizing":
 						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
 						columnFeatures.push(text);
