@@ -5,10 +5,19 @@
 Use this section to tell people about which versions of your project are
 currently being supported with security updates.
 
+`igniteui-cli`, `@igniteui/cli-core`, `@igniteui/mcp-server`:
+
 | Version | Supported          |
 | ------- | ------------------ |
 | 5.x     | :white_check_mark: |
 | < 5.0   | :x:                |
+
+`@igniteui/angular-templates`, `@igniteui/angular-schematics`:
+
+| Version  | Supported          |
+| -------- | ------------------ |
+| 22.2.x   | :white_check_mark: |
+| < 22.2.x | :x:                |
 
 ## Reporting a Vulnerability
 
