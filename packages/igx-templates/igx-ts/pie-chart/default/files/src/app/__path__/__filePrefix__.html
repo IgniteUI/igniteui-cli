@@ -1,0 +1,11 @@
+<p><%=description%></p>
+<div class="legend-title">Global Electricity Demand by Energy Use</div>
+<igx-item-legend #legend orientation="Horizontal"></igx-item-legend>
+<igx-pie-chart height="400px" width="100%"
+    [dataSource]="data"
+    valueMemberPath="MarketShare"
+    labelMemberPath="Category"
+    labelsPosition="BestFit"
+    radiusFactor="0.7"
+    [legend]="legend">
+</igx-pie-chart>
