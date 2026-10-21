@@ -287,7 +287,7 @@ try {
 	}
 
 	if (args.check) {
-		process.exitCode = changed.length || upstreamChanged.length ? 1 : 0;
+		process.exitCode = !previous || changed.length || upstreamChanged.length ? 1 : 0;
 	} else {
 		fs.writeFileSync(UPSTREAM_HASHES, toJson(hashes));
 	}
