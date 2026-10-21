@@ -257,15 +257,6 @@ try {
 	});
 	const sideNavAuthPackage = sideNavAuthPackageJson(basePackage, currentPackage,
 		readJson(templatePath(SIDE_NAV_AUTH, "package.json")));
-	const changed = writeOutputs(new Map([
-		...COPIED.map(file => [
-			templatePath(BASE, file),
-			file.endsWith(".ico") ? fs.readFileSync(path.join(generated, file)) : read(file)
-		]),
-		[templatePath(BASE, "angular.json"), patchAngularJson(JSON.parse(read("angular.json")))],
-		[templatePath(BASE, "package.json"), toJson(basePackage)],
-		[templatePath(SIDE_NAV_AUTH, "package.json"), toJson(sideNavAuthPackage)]
-	]), args.check);
 
 	// the other generated files are kept by hand: fingerprint them to spot upstream changes
 	const hashes = Object.fromEntries(listFiles(generated)
@@ -277,19 +268,29 @@ try {
 		? [...new Set([...Object.keys(previous), ...Object.keys(hashes)])].filter(file => previous[file] !== hashes[file])
 		: [];
 
+	// the fingerprints are an output like the templates, so a missing or outdated baseline fails --check
+	const changed = writeOutputs(new Map([
+		...COPIED.map(file => [
+			templatePath(BASE, file),
+			file.endsWith(".ico") ? fs.readFileSync(path.join(generated, file)) : read(file)
+		]),
+		[templatePath(BASE, "angular.json"), patchAngularJson(JSON.parse(read("angular.json")))],
+		[templatePath(BASE, "package.json"), toJson(basePackage)],
+		[templatePath(SIDE_NAV_AUTH, "package.json"), toJson(sideNavAuthPackage)],
+		[UPSTREAM_HASHES, toJson(hashes)]
+	]), args.check);
+
 	console.log(changed.length
 		? `\n${args.check ? "Would change" : "Updated"}:\n${changed.map(file => `  ${file}`).join("\n")}`
 		: "\nGenerated files are up to date.");
 	if (!previous) {
-		console.log(`\nNo ${path.relative(ROOT, UPSTREAM_HASHES)} yet; this run records the upstream baseline.`);
+		console.log(`\nNo ${path.relative(ROOT, UPSTREAM_HASHES)} yet; a run ${args.check ? "would record" : "records"} the upstream baseline.`);
 	} else if (upstreamChanged.length) {
 		reportUpstreamChanges(upstreamChanged, hashes, read);
 	}
 
-	if (args.check) {
-		process.exitCode = changed.length || upstreamChanged.length ? 1 : 0;
-	} else {
-		fs.writeFileSync(UPSTREAM_HASHES, toJson(hashes));
+	if (args.check && changed.length) {
+		process.exitCode = 1;
 	}
 } finally {
 	fs.rmSync(tmp, { recursive: true, force: true });
