@@ -5,7 +5,7 @@
 //
 //   --angular   @angular/cli range for `ng new`; defaults to the `@angular/cli` pin in `_base/files/package.json`
 //   --igniteui  igniteui-angular range for `ng add`; defaults to the `igniteui-angular` pin in `_base/files/package.json`
-//   --check     writes nothing; lists what a run would change and exits with 1 if anything would
+//   --check     writes nothing in the repository; lists what a run would change and exits with 1 if anything would
 //
 // COPIED files are taken as they are; angular.json and package.json are patched with our deviations,
 // and side-nav-auth's package.json is the `_base` one plus the packages only that project uses.
@@ -284,7 +284,8 @@ try {
 		? `\n${args.check ? "Would change" : "Updated"}:\n${changed.map(file => `  ${file}`).join("\n")}`
 		: "\nGenerated files are up to date.");
 	if (!previous) {
-		console.log(`\nNo ${path.relative(ROOT, UPSTREAM_HASHES)} yet; a run ${args.check ? "would record" : "records"} the upstream baseline.`);
+		const records = args.check ? "would record" : "records";
+		console.log(`\nNo ${path.relative(ROOT, UPSTREAM_HASHES)} yet; a run ${records} the upstream baseline.`);
 	} else if (upstreamChanged.length) {
 		reportUpstreamChanges(upstreamChanged, hashes, read);
 	}
