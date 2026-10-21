@@ -91,6 +91,10 @@ function patchPackageJson(pkg, { current, igniteuiVersion, installedVersion, sem
 	delete devDeps.jsdom; // tests run in a real browser through @vitest/browser-playwright
 	// `ig new` projects use igniteui-cli instead; the schematics flow swaps it back (app-projects)
 	delete devDeps["@igniteui/angular-schematics"];
+	// `ng add angular-eslint` writes its exact version; it follows Angular minors.
+	// Normalized before the pins below are kept, so a retained pin is never rewritten
+	const eslint = semver.minVersion(devDeps["angular-eslint"]);
+	devDeps["angular-eslint"] = `~${eslint.major}.${eslint.minor}.0`;
 
 	// a package already in `_base` keeps its pin while that admits the version installed in the generated
 	// project, so a run moves only the pins the new project needs moved and never loosens the others
@@ -120,9 +124,6 @@ function patchPackageJson(pkg, { current, igniteuiVersion, installedVersion, sem
 			pkg[key][name] = angularVersion;
 		}
 	}
-	// `ng add angular-eslint` writes its exact version; it follows Angular minors
-	const eslint = semver.minVersion(devDeps["angular-eslint"]);
-	devDeps["angular-eslint"] = `~${eslint.major}.${eslint.minor}.0`;
 	// the browser provider must match vitest exactly
 	devDeps["@vitest/browser-playwright"] = devDeps.vitest;
 	return sortDependencies(pkg);
