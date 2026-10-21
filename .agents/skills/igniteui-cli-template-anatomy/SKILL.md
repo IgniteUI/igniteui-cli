@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-template-anatomy
-description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds, template specs or the smoke test (igniteui-cli-smoke-test)."
+description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, the generated Angular base project, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, moving the Angular base to a new Angular version, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds, template specs or the smoke test (igniteui-cli-smoke-test)."
 license: MIT
 ---
 
@@ -82,6 +82,26 @@ Angular has two styles. Pick the one the component library dictates:
 - **Wrapped Web Component** (component not in `igniteui-angular`, e.g. `rating`, `chat`): `defineComponents(IgcXComponent)` from `igniteui-webcomponents`, `schemas: [CUSTOM_ELEMENTS_SCHEMA]`, and `packages` includes `igniteui-webcomponents@<range>`.
 
 React imports components from `igniteui-react` (or `-grids`, `-charts`, `-gauges`) as `Igr*`. Web Components imports `Igc*Component` and calls `defineComponents(...)`.
+
+## Generated Angular Base Project
+
+`scripts/generate-angular-base.mjs` rebuilds the Angular-owned files of `packages/igx-templates/igx-ts/projects/_base/files` from `ng new`, followed by `ng add angular-eslint` (at the Angular major) and `ng add igniteui-angular`. It needs network access and runs `npm install` in a temp folder, a few minutes.
+
+| Goal | Command |
+|---|---|
+| New Angular minor | `node scripts/generate-angular-base.mjs --angular ~22.3.0` |
+| New Angular major (`igniteui-angular` moves with it) | `node scripts/generate-angular-base.mjs --angular ~23.0.0 --igniteui ~23.0.0` |
+| Is the base out of date? Writes nothing, exits 1 if a run would change something | `node scripts/generate-angular-base.mjs --check` |
+
+Without `--angular` / `--igniteui` it uses the `@angular/cli` and `igniteui-angular` pins in `_base/files/package.json`. A run at unchanged versions changes nothing.
+
+- **Generated**: the files in the script's `COPIED` list, `_base/files/angular.json`, `_base/files/package.json` and `side-nav-auth/files/package.json` (the `_base` manifest plus the packages only `side-nav-auth` uses). Our deviations from `ng new` are patches in the script, so a change to them goes into the script; a hand edit is lost on the next run.
+- **Hand-maintained**: every other file in `_base/files` (`README.md`, `src/app/*`, `src/index.html`, `src/styles.scss`, CI workflows, eslint config, environments) and the overlays (`_base_with_home`, `empty`, `side-nav`, `side-nav-auth` tsconfigs, ...).
+- **Upstream changes**: the `ng new`/`ng add` versions of the hand-maintained files are fingerprinted in `scripts/generate-angular-base.upstream.json`. When one changed since the last run, the script lists it with a kept upstream copy: port what applies to our file by hand. The updated fingerprint file belongs in the same change as the run's other output.
+- **Pins**: `ng new` and `ng add` decide which packages exist. A package already in `_base` keeps its pin while that admits the version installed in the generated project, so a run moves only the pins the new project needs moved (never loosening the others), and the template version update workflow stays the owner of Ignite UI pins.
+- **`--igniteui`** sets `igniteui-angular` in the generated manifests only. The other `igniteui-angular` pins (`IGNITEUI_ANGULAR_PACKAGE` and the rest, "Where Ignite UI Versions Are Pinned") must move to the same range; `spec/templates/angular-spec.ts` checks it.
+
+After a run, validate with the smoke test: `-f angular --all-projects`, plus `-p base`, `-p side-nav-auth` and `-p side-nav-mini-auth` (smoke-test skill).
 
 ## Where Ignite UI Versions Are Pinned
 

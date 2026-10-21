@@ -98,7 +98,7 @@ For each distinct package:
    - **major** (or `0.x` minor change): **stop for that package**. Leave all of its pins unchanged.
    - **already current** (the existing range already resolves to the target): no change. This includes `^` pins whose range admits a newer minor (e.g. `^2.1.1` admits 2.2.1). Keep their minimum unless the user asks; list them under Observations as "minimum could be raised to `^<latest>`".
 4. For packages that proceed, check peers: `npm view <pkg>@<target> peerDependencies`.
-   - If a peer is a **non-Ignite UI** package (e.g. a new `igniteui-angular` needing a newer `@angular/core`) and the project templates don't satisfy it, **stop for that package** and report the required change.
+   - If a peer is a **non-Ignite UI** package (e.g. a new `igniteui-angular` needing a newer `@angular/core`) and the project templates don't satisfy it, **stop for that package** and report the required change. For Angular, report it as the generator command that makes the change, with `--igniteui <target>` when `igniteui-angular` is the package moving (anatomy skill, "Generated Angular Base Project").
    - If a peer is another **Ignite UI** package pinned in templates (e.g. `igniteui-angular` → `igniteui-grid-lite ~0.11.0`), that pin must satisfy the peer range after your update. Treat bringing it into range as part of this update, subject to the same patch/minor/major rule; if that would be a major (or `0.x` minor) change, report it as a stop item with the peer range as the reason, so a human can approve it explicitly.
 
    Do this check also for the framework's **main package even when it is not changing**: existing pins can already be out of range.
