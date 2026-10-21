@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-currently being supported with security updates.
+The following versions are currently supported with security updates.
 
 `igniteui-cli`, `@igniteui/cli-core`, `@igniteui/mcp-server`:
 
