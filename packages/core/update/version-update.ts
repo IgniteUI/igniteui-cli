@@ -1,3 +1,4 @@
+import * as jsonc from "jsonc-parser";
 import * as semver from "semver";
 import { FS_TOKEN, IFileSystem } from "../types";
 import { App, ProjectConfig, Util } from "../util";
@@ -143,6 +144,39 @@ export function getUpdatePlan(): PackageUpdate[] {
 		}
 	}
 	return plan;
+}
+
+/**
+ * Writes each `newRange` to package.json as a value-only edit, keeping its formatting.
+ * @throws when the plan has conflicts or can't be applied as planned; nothing is written then
+ */
+export function applyUpdatePlan(plan: PackageUpdate[]): void {
+	const conflicts = plan.filter(c => c.conflict).map(c => c.name);
+	if (conflicts.length) {
+		throw new Error(`Unable to update package.json, conflicting versions for: ${conflicts.join(", ")}`);
+	}
+
+	const fs = App.container.get<IFileSystem>(FS_TOKEN);
+	const original = fs.readFile("./package.json");
+	const pkgJson = JSON.parse(original);
+	const changes = plan.filter(c => c.newRange);
+	let text = original;
+	for (const { name, section, declared, newRange } of changes) {
+		if (pkgJson[section]?.[name] !== declared) {
+			throw new Error(`package.json changed after the update plan was made (${section}.${name}). Run the update again.`);
+		}
+		text = jsonc.applyEdits(text, jsonc.modify(text, [section, name], newRange, {}));
+	}
+	// jsonc edits the first of duplicate keys, while npm reads the last
+	const updated = JSON.parse(text);
+	const duplicate = changes.find(c => updated[c.section][c.name] !== c.newRange);
+	if (duplicate) {
+		throw new Error(`package.json lists ${duplicate.name} more than once in ${duplicate.section}. ` +
+			"Remove the duplicate and run the update again.");
+	}
+	if (text !== original) {
+		fs.writeFile("./package.json", text);
+	}
 }
 
 /**

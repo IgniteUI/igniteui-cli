@@ -5,7 +5,7 @@ import {
 	FEED_ANGULAR, FEED_REACT_GRIDS, FEED_WEBCOMPONENTS_GRIDS, NPM_ANGULAR, NPM_CLI, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_REACT,
 	NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS
 } from "../../packages/core/update/package-resolve";
-import { getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
+import { applyUpdatePlan, getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
 
 describe("Unit - version update", () => {
 	let fs: jasmine.SpyObj<IFileSystem>;
@@ -28,10 +28,6 @@ describe("Unit - version update", () => {
 		spyOn(Util, "execSync");
 	});
 
-	afterEach(() => {
-		expect(fs.writeFile).not.toHaveBeenCalled();
-	});
-
 	it("UPDATABLE_PACKAGES includes React/WC trial and licensed names, OSS packages, grid lite and the CLI, but not Angular", () => {
 		for (const name of [NPM_REACT_GRIDS, FEED_REACT_GRIDS, NPM_REACT, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS,
 			FEED_WEBCOMPONENTS_GRIDS, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_CLI]) {
@@ -44,6 +40,7 @@ describe("Unit - version update", () => {
 	describe("getUpdateCandidates", () => {
 		afterEach(() => {
 			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(fs.writeFile).not.toHaveBeenCalled();
 		});
 
 		it("collects only allowlisted direct dependencies and devDependencies, keeping trial and licensed names", () => {
@@ -217,6 +214,10 @@ describe("Unit - version update", () => {
 				});
 				return JSON.stringify(matches.length === 1 ? matches[0] : matches);
 			});
+		});
+
+		afterEach(() => {
+			expect(fs.writeFile).not.toHaveBeenCalled();
 		});
 
 		it("resolves the newest stable version in the current major, its manifest, and the newer major", () => {
@@ -419,6 +420,93 @@ describe("Unit - version update", () => {
 				expect(Util.warn).toHaveBeenCalledOnceWith("igniteui-react@19.9.0 requires igniteui-webcomponents@~7.4.1, " +
 					"which is not checked because igniteui-webcomponents is skipped.", "yellow");
 			});
+		});
+	});
+
+	describe("applyUpdatePlan", () => {
+		const pkgJson = {
+			name: "app",
+			dependencies: {
+				"igniteui-react": "~19.6.0", "@infragistics/igniteui-react-grids": "~19.6.0", "igniteui-cli": "~15.7.0", "react": "^19.0.0"
+			},
+			devDependencies: { "igniteui-cli": "~15.7.0" },
+			scripts: { start: "vite" }
+		};
+		const plan = [
+			{ name: "igniteui-react", section: "dependencies", declared: "~19.6.0", target: "19.6.0" },
+			{ name: "@infragistics/igniteui-react-grids", section: "dependencies", declared: "~19.6.0", newRange: "19.9.0" },
+			{ name: "igniteui-cli", section: "devDependencies", declared: "~15.7.0", newRange: "~15.8.2" },
+			{ name: "igniteui-webcomponents", section: "dependencies", declared: "workspace:*", skipped: "unsupported spec" }
+		] as PackageUpdate[];
+
+		afterEach(() => {
+			expect(Util.execSync).not.toHaveBeenCalled();
+		});
+
+		it("replaces only the planned version values, keeping indentation, line endings and everything else", () => {
+			const updated = {
+				...pkgJson,
+				dependencies: { ...pkgJson.dependencies, "@infragistics/igniteui-react-grids": "19.9.0" },
+				devDependencies: { ...pkgJson.devDependencies, "igniteui-cli": "~15.8.2" }
+			};
+			for (const indent of ["\t", "  ", "    "]) {
+				for (const eol of ["\n", "\r\n"]) {
+					const format = (json: object) => JSON.stringify(json, null, indent).replace(/\n/g, eol) + eol;
+					mockProject(format(pkgJson));
+					fs.writeFile.calls.reset();
+
+					applyUpdatePlan(plan);
+
+					expect(fs.writeFile).withContext(JSON.stringify(indent + eol)).toHaveBeenCalledOnceWith("./package.json", format(updated));
+				}
+			}
+		});
+
+		it("keeps compact and irregular whitespace", () => {
+			mockProject('{"dependencies" :{"@infragistics/igniteui-react-grids"  :   "~19.6.0" ,"igniteui-react":"~19.6.0"},\r\n' +
+				' "devDependencies":{ "igniteui-cli":"~15.7.0" }}');
+
+			applyUpdatePlan(plan);
+
+			expect(fs.writeFile).toHaveBeenCalledOnceWith("./package.json",
+				'{"dependencies" :{"@infragistics/igniteui-react-grids"  :   "19.9.0" ,"igniteui-react":"~19.6.0"},\r\n' +
+				' "devDependencies":{ "igniteui-cli":"~15.8.2" }}');
+		});
+
+		it("writes nothing when a duplicate key would leave the planned version ineffective", () => {
+			for (const first of ["~19.0.0", "~19.6.0"]) {
+				mockProject('{"dependencies":{"@infragistics/igniteui-react-grids":"' + first + '",' +
+					'"@infragistics/igniteui-react-grids":"~19.6.0"},"devDependencies":{"igniteui-cli":"~15.7.0"}}');
+
+				expect(() => applyUpdatePlan(plan)).withContext(first).toThrowError("package.json lists " +
+					"@infragistics/igniteui-react-grids more than once in dependencies. Remove the duplicate and run the update again.");
+			}
+			expect(fs.writeFile).not.toHaveBeenCalled();
+		});
+
+		it("does not write when nothing changes", () => {
+			mockProject(pkgJson);
+
+			applyUpdatePlan(plan.map(c => ({ ...c, newRange: undefined })));
+
+			expect(fs.writeFile).not.toHaveBeenCalled();
+		});
+
+		it("rejects the whole plan when any package has a conflict", () => {
+			expect(() => applyUpdatePlan([...plan, { name: "igniteui-react-core", conflict: "no version" } as PackageUpdate]))
+				.toThrowError("Unable to update package.json, conflicting versions for: igniteui-react-core");
+			expect(fs.readFile).not.toHaveBeenCalled();
+			expect(fs.writeFile).not.toHaveBeenCalled();
+		});
+
+		it("writes nothing when package.json no longer matches the plan", () => {
+			for (const devDependencies of [{ "igniteui-cli": "~15.8.0" }, {}]) {
+				mockProject({ ...pkgJson, devDependencies });
+
+				expect(() => applyUpdatePlan(plan)).toThrowError("package.json changed after the update plan was made " +
+					"(devDependencies.igniteui-cli). Run the update again.");
+			}
+			expect(fs.writeFile).not.toHaveBeenCalled();
 		});
 	});
 });
