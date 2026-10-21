@@ -15,7 +15,7 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 		if (globalVersion !== localVersion) {
 			console.log("Different igniteui-cli global and local version");			
 		}		
-		if (args[0] === "ai-config") {
+		if (args[0] === "ai-config" || args[0] === "update") {
 			cli = require("../lib/cli");
 		} else {
 			cli = require(res);
