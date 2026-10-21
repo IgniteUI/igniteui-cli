@@ -8,8 +8,8 @@ The following versions are currently supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.x     | :white_check_mark: |
-| < 5.0   | :x:                |
+| 15.x      | :white_check_mark: |
+| < 15.0  | :x:                            |
 
 `@igniteui/angular-templates`, `@igniteui/angular-schematics`:
 
