@@ -265,7 +265,7 @@ describe("Help command", () => {
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
 		--dry-run                 Show the update plan without changing any files [boolean] [default: false]
-		--skip-install, --si      Update package.json without installing packages [boolean] [default: false]
+		--skip-install, --si      Update package.json without installing packages (React and Web Components) [boolean] [default: false]
 		`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");

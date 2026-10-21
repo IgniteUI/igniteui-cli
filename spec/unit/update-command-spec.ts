@@ -1,5 +1,6 @@
 import { App, GoogleAnalytics, PackageUpdate, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
+import * as Module from "module";
 import * as os from "os";
 import * as path from "path";
 import * as versionUpdate from "../../packages/core/update/version-update";
@@ -67,14 +68,17 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain("Ignite UI dependency update plan (React, npm)");
 		});
 
-		it("doesn't update Angular, jQuery or Blazor projects yet", async () => {
+		it("doesn't update jQuery or Blazor projects", async () => {
 			const getPlan = plan();
-			for (const framework of ["angular", "jquery", "blazor"]) {
+			for (const framework of ["jquery", "blazor"]) {
 				(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework } });
 				await run();
 			}
 			expect(getPlan).not.toHaveBeenCalled();
-			expect(log()).toContain("Use ng update instead");
+			expect(output).toEqual([
+				"Updating jquery projects with ig update is not supported.",
+				"Updating blazor projects with ig update is not supported."
+			]);
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -377,5 +381,182 @@ describe("Unit - Update command", () => {
 
 			expect(log()).not.toContain("ig upgrade-packages");
 		});
+	});
+
+	describe("angular", () => {
+		const ngBin = () => path.join(tempDir, "node_modules", "@angular", "cli", "bin", "ng.js");
+
+		function installAngularCli(nodeModules: string, bin = "bin/ng.js") {
+			const cliDir = path.join(nodeModules, "@angular", "cli");
+			fs.mkdirSync(path.join(cliDir, "bin"), { recursive: true });
+			fs.writeFileSync(path.join(cliDir, bin), "");
+			return path.join(cliDir, bin);
+		}
+
+		function angularProject(pkgJson: object, withCli = true) {
+			fs.writeFileSync("package.json", JSON.stringify(pkgJson));
+			if (withCli) {
+				installAngularCli(path.join(tempDir, "node_modules"));
+			}
+		}
+
+		const hint = (igniteUI: string) => "If ng update reported incompatible peer dependencies, " +
+			`update Angular and Ignite UI together: ng update @angular/core @angular/cli ${igniteUI}`;
+
+		beforeEach(() => {
+			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework: "angular" } });
+			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0 });
+		});
+
+		it("previews, then runs, the project's ng update for the package and the ones with ig migrations, with inherited stdio and no shell", async () => {
+			angularProject({
+				dependencies: { "igniteui-angular": "~21.0.0" },
+				devDependencies: { "@igniteui/angular-schematics": "~15.0.0", "igniteui-cli": "~15.0.0" }
+			});
+			const getPlan = plan();
+
+			await run({ dryRun: true });
+
+			expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli @igniteui/angular-schematics" with the project's Angular CLI.`);
+			expect(log()).toContain("including new majors, applies their migrations and installs dependencies. It requires a clean git working tree.");
+			expect(log()).toContain("Dry run: no files were changed.");
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+
+			await run();
+
+			expect(log()).toContain(`Running "ng update igniteui-angular igniteui-cli @igniteui/angular-schematics" with the project's Angular CLI.`);
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
+				[ngBin(), "update", "igniteui-angular", "igniteui-cli", "@igniteui/angular-schematics"], { stdio: "inherit" });
+			expect(getPlan).not.toHaveBeenCalled();
+			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(0);
+		});
+
+		it("updates the licensed package from devDependencies, detected without a project config, and names it in the failure hint", async () => {
+			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 1 });
+			angularProject({ dependencies: { "@angular/core": "^21.0.0" }, devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
+
+			await run();
+
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "@infragistics/igniteui-angular"], { stdio: "inherit" });
+			expect(output).toContain(hint("@infragistics/igniteui-angular"));
+		});
+
+		it("runs the extensionless bin/ng of Angular CLI 12", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~12.0.0" } }, false);
+			const bin = installAngularCli(path.join(tempDir, "node_modules"), "bin/ng");
+
+			await run();
+
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [bin, "update", "igniteui-angular"], { stdio: "inherit" });
+		});
+
+		it("runs an Angular CLI hoisted to a parent node_modules", async () => {
+			fs.mkdirSync("app");
+			process.chdir("app");
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+
+			await run();
+
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular"], { stdio: "inherit" });
+		});
+
+		it("doesn't fall back to an Angular CLI outside the project, such as one on NODE_PATH", async () => {
+			const env = process.env;
+			const globalModules = path.join(tempDir, "global");
+			process.env = { ...env, NODE_PATH: globalModules };
+			installAngularCli(globalModules);
+			(Module as any)._initPaths();
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+
+			try {
+				await run();
+			} finally {
+				process.env = env;
+				(Module as any)._initPaths();
+			}
+
+			expect(log()).toContain("Angular CLI (@angular/cli) not found in this project.");
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("previews without an installed Angular CLI, noting that --skip-install doesn't apply", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+
+			await run({ dryRun: true, skipInstall: true });
+
+			expect(log()).toContain("--skip-install is not supported for Angular projects");
+			expect(log()).toContain(`Would run "ng update igniteui-angular"`);
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).not.toBe(1);
+		});
+
+		it("rejects --skip-install without running anything", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+
+			await run({ skipInstall: true });
+
+			expect(output).toEqual(["--skip-install is not supported for Angular projects: ng update always installs dependencies."]);
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("asks to install dependencies when the project has no Angular CLI", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+
+			await run();
+
+			expect(output).toEqual(["Angular CLI (@angular/cli) not found in this project. " +
+				"Install dependencies first (for example, npm install) and rerun ig update."]);
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("refuses to choose between the trial and licensed packages", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0", "@infragistics/igniteui-angular": "~21.0.0" } });
+
+			await run();
+
+			expect(log()).toContain("Both igniteui-angular and @infragistics/igniteui-angular are listed in package.json.");
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("has nothing to update without an Ignite UI for Angular package", async () => {
+			angularProject({ dependencies: { "@angular/core": "^21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
+
+			await run();
+
+			expect(output).toEqual(["No Ignite UI for Angular package found in package.json. Nothing to update."]);
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).not.toBe(1);
+		});
+
+		it("fails without a package.json", async () => {
+			await run();
+
+			expect(log()).toContain("No valid package.json found");
+			expect(process.exitCode).toBe(1);
+		});
+
+		const results: [string, object, number, string[]][] = [
+			["success", { status: 0 }, 0, []],
+			["failure", { status: 2 }, 2, [hint("igniteui-angular")]],
+			["termination by a signal", { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
+			["spawn error", { status: null, error: new Error("spawnSync node ENOENT") }, 1, ["Unable to run the Angular CLI: spawnSync node ENOENT"]]
+		];
+		for (const [name, result, exitCode, messages] of results) {
+			it(`passes the ng update exit code through (${name})`, async () => {
+				angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+				(Util.spawnSync as jasmine.Spy).and.returnValue(result);
+
+				await run();
+
+				expect(process.exitCode).toBe(exitCode);
+				expect(output.slice(1)).toEqual(messages);
+			});
+		}
 	});
 });

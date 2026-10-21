@@ -1,8 +1,9 @@
 import {
-	applyUpdatePlan, detectFrameworkFromPackageJson, getUpdatePlan, GoogleAnalytics, PackageUpdate, ProjectConfig,
-	UPGRADEABLE_PACKAGES, Util
+	applyUpdatePlan, detectFrameworkFromPackageJson, FEED_ANGULAR, getUpdatePlan, GoogleAnalytics, NPM_ANGULAR, NPM_CLI,
+	PackageUpdate, ProjectConfig, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import * as fs from "fs";
+import * as resolve from "resolve";
 import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
@@ -32,7 +33,7 @@ const command: UpdateCommandType = {
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "Update package.json without installing packages",
+				describe: "Update package.json without installing packages (React and Web Components)",
 				type: "boolean"
 			});
 	},
@@ -64,7 +65,7 @@ const command: UpdateCommandType = {
 				updatePackages(FRAMEWORK_NAMES[framework], !!argv.dryRun, !!argv.skipInstall);
 				break;
 			case "angular":
-				Util.log("Updating Angular projects with ig update is not supported yet. Use ng update instead.");
+				updateAngular(!!argv.dryRun, !!argv.skipInstall);
 				break;
 			default:
 				Util.log(`Updating ${framework} projects with ig update is not supported.`);
@@ -140,6 +141,71 @@ function updatePackages(frameworkName: string, dryRun: boolean, skipInstall: boo
 	}
 	if (plan.some(c => c.name in UPGRADEABLE_PACKAGES)) {
 		Util.log("To switch to licensed packages, run ig upgrade-packages.");
+	}
+}
+
+/** Delegates to the project's own `ng update`, which resolves versions, installs and runs the packages' migrations */
+function updateAngular(dryRun: boolean, skipInstall: boolean): void {
+	if (skipInstall) {
+		const message = "--skip-install is not supported for Angular projects: ng update always installs dependencies.";
+		if (!dryRun) {
+			Util.error(message, "red");
+			process.exitCode = 1;
+			return;
+		}
+		Util.warn(message, "yellow");
+	}
+
+	let deps: Record<string, string>;
+	try {
+		const pkgJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
+		deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
+	} catch {
+		Util.error("No valid package.json found in the current directory.", "red");
+		process.exitCode = 1;
+		return;
+	}
+
+	const igniteUI = [NPM_ANGULAR, FEED_ANGULAR].filter(name => name in deps);
+	if (!igniteUI.length) {
+		Util.log("No Ignite UI for Angular package found in package.json. Nothing to update.");
+		return;
+	}
+	if (igniteUI.length > 1) {
+		Util.error(`Both ${NPM_ANGULAR} and ${FEED_ANGULAR} are listed in package.json. Remove one of them and rerun ig update.`, "red");
+		process.exitCode = 1;
+		return;
+	}
+
+	// these also ship ng-update migrations, so they move in the same ng update call
+	const ngArgs = ["update", ...igniteUI, ...[NPM_CLI, "@igniteui/angular-schematics"].filter(name => name in deps)];
+	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` +
+		"It updates these packages to their latest versions, including new majors, applies their migrations " +
+		"and installs dependencies. It requires a clean git working tree.";
+	if (dryRun) {
+		Util.log(`Would run ${description}`);
+		Util.log("Dry run: no files were changed.");
+		return;
+	}
+
+	let ngBin: string;
+	try {
+		ngBin = resolve.sync("@angular/cli/bin/ng", { basedir: process.cwd() });
+	} catch {
+		Util.error("Angular CLI (@angular/cli) not found in this project. " +
+			"Install dependencies first (for example, npm install) and rerun ig update.", "red");
+		process.exitCode = 1;
+		return;
+	}
+
+	Util.log(`Running ${description}`);
+	const result = Util.spawnSync("node", [ngBin, ...ngArgs], { stdio: "inherit" });
+	process.exitCode = result.status ?? 1;
+	if (result.error) {
+		Util.error(`Unable to run the Angular CLI: ${result.error.message}`, "red");
+	} else if (result.status !== 0) {
+		Util.warn("If ng update reported incompatible peer dependencies, update Angular and Ignite UI together: " +
+			`ng update @angular/core @angular/cli ${igniteUI[0]}`, "yellow");
 	}
 }
 
