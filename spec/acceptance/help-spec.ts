@@ -28,6 +28,7 @@ describe("Help command", () => {
 		ig test                   Executes project tests
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
 		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
+		ig update                 Updates Ignite UI package versions
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
 		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
 
@@ -252,6 +253,25 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
+	});
+
+	it("should show help for the update command", async () => {
+		const child = Util.spawnSync("node", [execLocation, "update", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalHelpText: string = `
+		Options:
+		-v, --version             Show current Ignite UI CLI version         [boolean]
+		-h, --help                Show help                                  [boolean]
+		--dry-run                 Show the update plan without changing any files [boolean] [default: false]
+		--skip-install, --si      Update package.json without installing packages [boolean] [default: false]
+		`;
+
+		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
+		const actualText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualText).toContain(replacedHelpText);
 	});
 
 	it("should show help for the ai-config command", async () => {

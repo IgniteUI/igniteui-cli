@@ -9,6 +9,7 @@ export { default as mcp } from "./mcp";
 export { default as newCommand } from "./new";
 export { default as start } from "./start";
 export { default as test } from "./test";
+export { default as update } from "./update";
 export { default as upgrade } from "./upgrade";
 
 export * from "./types";

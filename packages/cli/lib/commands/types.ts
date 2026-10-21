@@ -97,3 +97,8 @@ export interface UpgradeCommandType extends CommandType {
 	/** Upgrades packages for Angular, React & WC projects. */
 	upgrade(argv: ArgumentsCamelCase<PositionalArgs>): void;
 }
+
+export interface UpdateCommandType extends CommandType {
+	/** Updates Ignite UI package versions of React & WC projects. */
+	update(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void>;
+}

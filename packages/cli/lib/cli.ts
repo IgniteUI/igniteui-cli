@@ -13,6 +13,7 @@ import {
 	newCommand,
 	start,
 	test,
+	update,
 	upgrade,
 } from './commands';
 import { PromptSession } from "./PromptSession";
@@ -36,7 +37,7 @@ export async function run(args = null) {
 	newCommand.addChoices(templateManager.getFrameworkIds());
 
 	const registeredCommands: CommandType[] = [
-		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig
+		newCommand, add, build, start, generate, config, doc, test, list, upgrade, update, mcp, aiConfig
 	];
 
 	const yargsModule = args ? yargs(args) : yargs;
