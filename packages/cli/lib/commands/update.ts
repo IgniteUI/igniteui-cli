@@ -27,15 +27,19 @@ const command: UpdateCommandType = {
 		return yargs
 			.option("dry-run", {
 				default: false,
-				describe: "Show the update plan without changing any files",
+				describe: "Show the update plan without changing any files (for Angular, the ng update command to run)",
 				type: "boolean"
 			})
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "Update package.json without installing packages (React and Web Components)",
+				describe: "Update package.json without installing packages (not supported for Angular)",
 				type: "boolean"
-			});
+			})
+			.epilog("React and Web Components: updates direct Ignite UI dependencies within their current major versions. " +
+				"No code migrations are applied.\n" +
+				"Angular: runs the project's ng update for the Ignite UI packages, which installs their latest versions " +
+				"(including new majors) and applies available migrations.");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

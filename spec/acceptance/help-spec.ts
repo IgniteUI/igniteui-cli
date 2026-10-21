@@ -27,7 +27,7 @@ describe("Help command", () => {
 		ig doc [term]             Opens the Infragistics search for the given term
 		ig test                   Executes project tests
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
-		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
+		ig upgrade-packages       Switches trial Ignite UI packages to their licensed equivalents [aliases: upgrade]
 		ig update                 Updates Ignite UI package versions
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
 		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
@@ -243,10 +243,12 @@ describe("Help command", () => {
 		});
 
 		const originalNewHelpText: string = `
+		Switches trial Ignite UI packages to their licensed equivalents
 		Options:
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
-		--skip-install, --si  Run upgrade without installing packages [boolean] [default: false]
+		--skip-install, --si  Switch the packages without running npm install [boolean] [default: false]
+		Version ranges are kept. To update package versions, use ig update.
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
@@ -261,11 +263,14 @@ describe("Help command", () => {
 		});
 
 		const originalHelpText: string = `
+		Updates Ignite UI package versions
 		Options:
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
-		--dry-run                 Show the update plan without changing any files [boolean] [default: false]
-		--skip-install, --si      Update package.json without installing packages (React and Web Components) [boolean] [default: false]
+		--dry-run                 Show the update plan without changing any files (for Angular, the ng update command to run) [boolean] [default: false]
+		--skip-install, --si      Update package.json without installing packages (not supported for Angular) [boolean] [default: false]
+		React and Web Components: updates direct Ignite UI dependencies within their current major versions. No code migrations are applied.
+		Angular: runs the project's ng update for the Ignite UI packages, which installs their latest versions (including new majors) and applies available migrations.
 		`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
