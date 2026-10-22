@@ -304,6 +304,10 @@ function printPlan(plan: PackageUpdate[], title: string): void {
 	for (const c of plan.filter(c => c.forced)) {
 		Util.warn(`Overridden by --force for ${c.name}: ${c.forced}`, "yellow");
 	}
+	for (const c of plan.filter(c => c.nested)) {
+		Util.warn(`Not met by ${c.name} ${c.newRange ?? c.declared}: ${c.nested}. The requiring packages may get a separate copy of ` +
+			`${c.name}; check that the copies work together at runtime.`, "yellow");
+	}
 	for (const c of plan.filter(c => c.conflict)) {
 		Util.log(`Conflict in ${c.name}: ${c.conflict}`, "red");
 	}

@@ -3,7 +3,7 @@ import { Config, IFileSystem } from "../../packages/core/types";
 import { App, ProjectConfig, Util } from "../../packages/core/util";
 import {
 	FEED_ANGULAR, FEED_REACT_GRIDS, FEED_WEBCOMPONENTS_GRIDS, NPM_ANGULAR, NPM_CLI, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_REACT,
-	NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS
+	NPM_REACT_DOCK_MANAGER, NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS
 } from "../../packages/core/update/package-resolve";
 import { applyUpdatePlan, getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
 
@@ -351,6 +351,92 @@ describe("Unit - version update", () => {
 				]);
 			});
 
+			it("updates past a dependency range no version in the line meets, reporting the nested copy instead of a conflict (real Dock Manager case)", () => {
+				publish(NPM_REACT_DOCK_MANAGER, ["19.8.1", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_DOCK_MANAGER]: version === "19.9.0" ? "~2.2.1" : "~2.1.2" } }));
+				publish(NPM_DOCK_MANAGER, ["1.17.0", "1.19.0", "2.1.2", "2.2.1"], "2.2.1");
+				const nested = "~2.2.1 (required by igniteui-react-dockmanager@19.9.0)";
+				const plan = () => getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.conflict, c.overridable, c.nested]);
+
+				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "^1.17.0", [NPM_REACT_DOCK_MANAGER]: "19.8.1" } },
+					{ [NPM_DOCK_MANAGER]: "1.19.0", [NPM_REACT_DOCK_MANAGER]: "19.8.1" });
+				expect(plan()).toEqual([
+					[NPM_DOCK_MANAGER, "1.19.0", undefined, undefined, undefined, nested],
+					[NPM_REACT_DOCK_MANAGER, "19.9.0", "19.9.0", undefined, undefined, undefined]
+				]);
+
+				// already updated: up to date, nothing blocked
+				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "^1.17.0", [NPM_REACT_DOCK_MANAGER]: "19.9.0" } },
+					{ [NPM_DOCK_MANAGER]: "1.19.0", [NPM_REACT_DOCK_MANAGER]: "19.9.0" });
+				expect(plan()).toEqual([
+					[NPM_DOCK_MANAGER, "1.19.0", undefined, undefined, undefined, nested],
+					[NPM_REACT_DOCK_MANAGER, "19.9.0", undefined, undefined, undefined, undefined]
+				]);
+			});
+
+			it("keeps a dependent whose update would need a separate copy of a dependency that the project shares today", () => {
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_WEBCOMPONENTS]: version === "19.9.0" ? "~7.4.1" : "~7.3.0" } }));
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.3.2", "7.4.1", "7.5.0"], "7.5.0");
+				const plan = () => getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.conflict, c.nested]);
+
+				// whether dock manager requires WC as a dependency or as a peer
+				for (const field of ["dependencies", "peerDependencies"]) {
+					mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.3.0" } },
+						{ [NPM_REACT]: "19.8.0", [NPM_DOCK_MANAGER]: "1.17.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
+					publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { [field]: { [NPM_WEBCOMPONENTS]: "~7.3.0" } });
+
+					expect(plan()).withContext(field).toEqual([
+						[NPM_REACT, "19.8.0", undefined, undefined, undefined],
+						[NPM_DOCK_MANAGER, "1.17.0", undefined, undefined, undefined],
+						[NPM_WEBCOMPONENTS, "7.3.2", "~7.3.2", undefined, undefined]
+					]);
+				}
+			});
+
+			it("keeps a dependent aligned even when another package already needs a separate copy of the dependency", () => {
+				mockProject({ dependencies: {
+					[NPM_REACT]: "~19.8.0", [NPM_GRID_LITE]: "~0.10.0", [NPM_WEBCOMPONENTS]: "^7.3.0", [NPM_DOCK_MANAGER]: "~1.17.0"
+				} }, { [NPM_REACT]: "19.8.0", [NPM_GRID_LITE]: "0.10.0", [NPM_WEBCOMPONENTS]: "7.3.0", [NPM_DOCK_MANAGER]: "1.17.0" });
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_WEBCOMPONENTS]: version === "19.9.0" ? "~7.4.1" : "~7.3.0" } }));
+				publish(NPM_GRID_LITE, ["0.10.0"], "0.10.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "~7.3.0" } });
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~6.0.0" } });
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.3.2", "7.4.1"], "7.4.1");
+
+				expect(getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.conflict, c.nested])).toEqual([
+					[NPM_REACT, "19.8.0", undefined, undefined, undefined],
+					[NPM_GRID_LITE, "0.10.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.3.2", "~7.3.2", undefined, "~6.0.0 (required by igniteui-dockmanager@1.17.0)"],
+					[NPM_DOCK_MANAGER, "1.17.0", undefined, undefined, undefined]
+				]);
+			});
+
+			it("takes the version meeting the most dependency ranges when a separate copy can't be avoided", () => {
+				mockProject({ dependencies: { [NPM_REACT]: "~19.9.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.3.0" } },
+					{ [NPM_REACT]: "19.9.0", [NPM_DOCK_MANAGER]: "1.17.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.3.0" } });
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.3.2", "7.4.1", "7.5.0"], "7.5.0");
+
+				const webcomponents = getUpdatePlan()[2];
+
+				expect([webcomponents.target, webcomponents.newRange, webcomponents.conflict, webcomponents.nested])
+					.toEqual(["7.4.1", "~7.4.1", undefined, "~7.3.0 (required by igniteui-dockmanager@1.17.0)"]);
+			});
+
+			it("still conflicts on a peer range next to an unmet dependency range", () => {
+				mockProject({ dependencies: { [NPM_REACT]: "~19.9.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "~6.5.0" } });
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } });
+				publish(NPM_WEBCOMPONENTS, ["6.5.0", "6.5.1"], "7.4.1");
+
+				const webcomponents = getUpdatePlan()[2];
+
+				expect([webcomponents.target, webcomponents.nested]).toEqual([undefined, undefined]);
+				expect(webcomponents.conflict).toBe('no version in "^6.5.0" satisfies 7.4.0 (required by igniteui-dockmanager@1.17.0)');
+			});
+
 			it("matches constraints across trial and licensed names (Web Components)", () => {
 				mockProject({ dependencies: {
 					"@infragistics/igniteui-webcomponents-charts": "^6.0.0", "@infragistics/igniteui-webcomponents-core": "^6.0.0"
@@ -372,7 +458,7 @@ describe("Unit - version update", () => {
 					{ "igniteui-react-core": "19.7.0" }
 				);
 				publish("igniteui-react-charts", ["19.6.0"], "19.6.0",
-					{ peerDependencies: { "igniteui-react-core": "19.6.0" }, dependencies: { "igniteui-webcomponents": "npm:other@1" } });
+					{ peerDependencies: { "igniteui-react-core": "19.6.0", "igniteui-webcomponents": "npm:other@1" } });
 				publish("igniteui-react-core", ["19.6.0", "19.7.0"], "19.7.0");
 				publish("igniteui-webcomponents", ["7.2.0"], "7.2.0");
 
@@ -466,7 +552,7 @@ describe("Unit - version update", () => {
 					[NPM_REACT]: "~19.9.0", [NPM_WEBCOMPONENTS]: "~7.4.0", [NPM_GRID_LITE]: "~0.11.0", [NPM_DOCK_MANAGER]: "workspace:*"
 				} });
 				publish(NPM_REACT, ["19.9.0"], "19.9.0", { peerDependencies: { [NPM_GRID_LITE]: "0.11.0" } });
-				publish(NPM_WEBCOMPONENTS, ["7.4.1"], "7.4.1", { dependencies: { [NPM_GRID_LITE]: "0.11.2" } });
+				publish(NPM_WEBCOMPONENTS, ["7.4.1"], "7.4.1", { peerDependencies: { [NPM_GRID_LITE]: "0.11.2" } });
 				publish(NPM_GRID_LITE, ["0.11.0", "0.11.2", "0.11.4", "0.12.0"], "0.12.0");
 				const ranges = "0.11.0 (required by igniteui-react@19.9.0), 0.11.2 (required by igniteui-webcomponents@7.4.1)";
 
@@ -495,7 +581,7 @@ describe("Unit - version update", () => {
 					{ [core]: "19.7.0", [NPM_WEBCOMPONENTS]: "7.4.1" }
 				);
 				publish(core, ["19.6.0", "19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1"
-					? { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" }, peerDependencies: { [NPM_GRID_LITE]: "0.11.0" } }
+					? { peerDependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1", [NPM_GRID_LITE]: "0.11.0" } }
 					: {});
 				publish(NPM_WEBCOMPONENTS, ["7.4.1"], "7.4.1");
 				publish(NPM_GRID_LITE, ["0.11.0", "0.11.4"], "0.11.4");
@@ -520,8 +606,7 @@ describe("Unit - version update", () => {
 					{ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_WEBCOMPONENTS]: "^7.2.0" } },
 					{ [core]: "19.7.0" }
 				);
-				publish(charts, ["19.6.0"], "19.6.0",
-					{ peerDependencies: { [core]: "19.6.0" }, dependencies: { [NPM_WEBCOMPONENTS]: "npm:other@1" } });
+				publish(charts, ["19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0", [NPM_WEBCOMPONENTS]: "npm:other@1" } });
 				publish(core, ["19.6.0", "19.7.0"], "19.7.0");
 				publish(NPM_WEBCOMPONENTS, ["7.2.0"], "7.2.0");
 
@@ -539,7 +624,7 @@ describe("Unit - version update", () => {
 				// the lookahead keeps core on 19.7.0, so only the forced 19.7.1 puts the unsupported range on grid lite
 				mockProject({ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_GRID_LITE]: "~0.11.0" } }, { [core]: "19.7.0" });
 				publish(charts, ["19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
-				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { dependencies: { [NPM_GRID_LITE]: "workspace:*" } } : {});
+				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { peerDependencies: { [NPM_GRID_LITE]: "workspace:*" } } : {});
 				publish(NPM_GRID_LITE, ["0.11.0"], "0.11.0");
 
 				const blocked = getUpdatePlan();
@@ -555,7 +640,7 @@ describe("Unit - version update", () => {
 			});
 
 			it("narrows a forced range to keep every requirement its target meets, also when the target is the baseline", () => {
-				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
 				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } });
 				publish(NPM_WEBCOMPONENTS, ["7.4.0", "7.4.3"], "7.4.3");
 				for (const installed of ["7.4.0", "7.4.3"]) {
@@ -568,6 +653,18 @@ describe("Unit - version update", () => {
 						[NPM_WEBCOMPONENTS, "7.4.3", "~7.4.3", undefined, "7.4.0 (required by igniteui-dockmanager@1.17.0)"]
 					]);
 				}
+			});
+
+			it("reports a dependency range a forced target puts on another package as a nested copy, not as forced", () => {
+				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0", [NPM_WEBCOMPONENTS]: "^7.4.0" } },
+					{ [core]: "19.7.0", [NPM_WEBCOMPONENTS]: "7.4.1" });
+				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { dependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } } : {});
+				publish(NPM_WEBCOMPONENTS, ["7.4.0", "7.4.1"], "7.4.1");
+
+				expect(entry(getUpdatePlan(), NPM_WEBCOMPONENTS).nested).toBeUndefined();
+				const webcomponents = entry(getUpdatePlan({ force: true }), NPM_WEBCOMPONENTS);
+				expect([webcomponents.target, webcomponents.newRange, webcomponents.conflict, webcomponents.forced, webcomponents.nested])
+					.toEqual(["7.4.1", undefined, undefined, undefined, "7.4.0 (required by igniteui-react-core@19.7.1)"]);
 			});
 
 			it("suggests --force only when it would update package.json", () => {
@@ -640,7 +737,7 @@ describe("Unit - version update", () => {
 					{ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0", [NPM_REACT]: "~19.9.0", [NPM_WEBCOMPONENTS]: "^7.4.0" } },
 					{ [core]: "19.7.0", [NPM_WEBCOMPONENTS]: "7.4.0" }
 				);
-				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { dependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } } : {});
+				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } } : {});
 				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
 				publish(NPM_WEBCOMPONENTS, ["7.4.0", "7.4.1", "7.5.0"], "7.5.0");
 

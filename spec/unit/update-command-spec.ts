@@ -196,6 +196,18 @@ describe("Unit - Update command", () => {
 			expect(Util.execSync).not.toHaveBeenCalled();
 		});
 
+		it("warns about a nested copy without blocking when up to date", async () => {
+			project();
+			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined, nested: "~7.4.1 (required by igniteui-react@19.9.0)" });
+
+			await run({ dryRun: true });
+
+			expect(output).toContain("Not met by igniteui-webcomponents ~6.0.0: ~7.4.1 (required by igniteui-react@19.9.0). " +
+				"The requiring packages may get a separate copy of igniteui-webcomponents; check that the copies work together at runtime.");
+			expect(log()).toContain("Already up to date.");
+			expect(process.exitCode).not.toBe(1);
+		});
+
 		it("blocks the update on conflicts", async () => {
 			project();
 			const original = read("package.json");

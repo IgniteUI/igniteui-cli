@@ -31,6 +31,8 @@ export interface PackageUpdate {
 	overridable?: boolean;
 	/** Ranges left unmet by `--force`; reported, never blocks */
 	forced?: string;
+	/** Dependency (not peer) ranges left unmet, so the package manager may install a separate copy; reported, never blocks */
+	nested?: string;
 }
 
 export interface PackageManifest {
@@ -159,8 +161,8 @@ export function getUpdatePlan({ force = false, verbose = false } = {}): PackageU
 				...constraints.filter(c => semver.satisfies(update.target!, c.range) && !semver.satisfies(newest.version, c.range))
 					.map(c => formatConstraints([c])),
 				...updates.filter(other => other !== update).flatMap(other => requirements(newest, other.name)
-					.filter(range => !lines.get(other)!.some(m => semver.satisfies(m.version, range)))
-					.map(range => `${newest.version} requires ${other.name}@${range}, outside "^${other.baseline}"`))
+					.filter(({ range }) => !lines.get(other)!.some(m => semver.satisfies(m.version, range)))
+					.map(({ range }) => `${newest.version} requires ${other.name}@${range}, outside "^${other.baseline}"`))
 			];
 			debug(verbose, `${update.name}: target ${update.target} (newest in "^${update.baseline}": ${newest.version}), ` +
 				`range ${update.declared} -> ${update.newRange ?? update.declared}` +
@@ -212,6 +214,8 @@ export function applyUpdatePlan(plan: PackageUpdate[]): void {
 /**
  * Picks each target as the newest version in its line that satisfies the other targets' dependencies and peers,
  * repeating until stable since targets depend on each other, then sets `newRange` or `conflict`.
+ * Only peers conflict: when no version meets every range, the versions meeting the most are kept,
+ * and the dependency ranges they miss get a separate copy, reported as `nested`.
  */
 function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>, force: boolean): void {
 	let changed = true;
@@ -219,9 +223,19 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 		changed = false;
 		for (const update of updates) {
 			const constraints = constraintsOn(update, updates);
-			const allowed = lines.get(update)!.filter(m => constraints.every(c => semver.satisfies(m.version, c.range)));
-			const manifest = allowed.find(m => updates.every(other => other === update ||
-				requirements(m, other.name).every(range => lines.get(other)!.some(o => semver.satisfies(o.version, range))))) ?? allowed[0];
+			const metCount = (m: PackageManifest) => constraints.filter(c => semver.satisfies(m.version, c.range)).length;
+			const meetsPeers = lines.get(update)!.filter(m => constraints.every(c => !c.peer || semver.satisfies(m.version, c.range)));
+			const most = Math.max(...meetsPeers.map(metCount));
+			const allowed = meetsPeers.filter(m => metCount(m) === most);
+			// lookahead: prefer a version whose requirements each other package can meet together with its remaining constraints
+			const rest = updates.filter(other => other !== update);
+			const manifest = allowed.find(m => rest.every(other => {
+				// a dependency range no version meets gets a separate copy anyway, so it must not rule out every candidate
+				const ranges = constraintsOn(other, rest)
+					.filter(c => c.peer || lines.get(other)!.some(o => semver.satisfies(o.version, c.range))).map(c => c.range);
+				return requirements(m, other.name).every(({ range }) => lines.get(other)!.some(o =>
+					[range, ...ranges].every(r => semver.satisfies(o.version, r))));
+			})) ?? allowed[0];
 			if (manifest?.version !== update.target) {
 				update.target = manifest?.version;
 				update.manifest = manifest;
@@ -233,9 +247,10 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 	for (const update of updates) {
 		const target = update.target;
 		const constraints = constraintsOn(update, updates);
+		const peers = constraints.filter(c => c.peer);
 		// `satisfies` (unlike `subset`) tolerates invalid ranges, which then end up here as conflicts
-		if (!target || !constraints.every(c => semver.satisfies(target, c.range))) {
-			update.conflict = `no version in "^${update.baseline}" satisfies ${formatConstraints(constraints)}`;
+		if (!target || !peers.every(c => semver.satisfies(target, c.range))) {
+			update.conflict = `no version in "^${update.baseline}" satisfies ${formatConstraints(peers)}`;
 			update.target = update.manifest = undefined;
 		} else {
 			update.newRange = rangeToWrite(update, target, constraints);
@@ -253,11 +268,19 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 			update.overridable = overridable;
 		}
 	}
+
+	for (const update of updates.filter(u => u.target)) {
+		const unmet = constraintsOn(update, updates).filter(c => !c.peer && !meets(update, c.range));
+		if (unmet.length) {
+			update.nested = formatConstraints(unmet);
+		}
+	}
 }
 
 /**
- * Moves each conflicted package to the newest version in its line, then records on every package the ranges that its
- * target or written range doesn't meet. Ranges that aren't valid semver can't be overridden and keep blocking.
+ * Moves each conflicted package to the newest version in its line, then records on every package the peer ranges that its
+ * target or written range doesn't meet; unmet dependency ranges are reported as `nested` instead.
+ * Ranges that aren't valid semver can't be overridden and keep blocking.
  */
 function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>): void {
 	const conflicted = updates.filter(u => u.conflict);
@@ -268,13 +291,11 @@ function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, Pack
 	}
 	// chosen once every forced target is known, so the package order doesn't matter
 	for (const update of conflicted) {
-		const met = constraintsOn(update, updates).filter(c => semver.satisfies(update.target!, c.range));
-		update.newRange = rangeToWrite(update, update.target!, met);
+		update.newRange = rangeToWrite(update, update.target!, constraintsOn(update, updates));
 	}
 
 	// collected before any package loses its target to a new conflict
-	const unmet = updates.map(update => constraintsOn(update, updates).filter(c =>
-		!semver.satisfies(update.target!, c.range) || !fits(update.newRange ?? update.declared, c.range)));
+	const unmet = updates.map(update => constraintsOn(update, updates).filter(c => c.peer && !meets(update, c.range)));
 	updates.forEach((update, i) => {
 		const invalid = unmet[i].filter(c => !semver.validRange(c.range));
 		if (invalid.length) {
@@ -287,12 +308,18 @@ function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, Pack
 }
 
 function rangeToWrite(update: PackageUpdate, target: string, constraints: { range: string }[]): string | undefined {
-	// npm may later install any version in the written range, so the range itself must fit every constraint
-	const fitsAll = (range: string) => constraints.every(c => fits(range, c.range));
+	// npm may later install any version in the written range, so the range itself must fit every constraint the target meets
+	const met = constraints.filter(c => semver.satisfies(target, c.range));
+	const fitsAll = (range: string) => met.every(c => fits(range, c.range));
 	if (target === update.baseline && fitsAll(update.declared)) {
 		return undefined;
 	}
 	return [rangeOperator(update.declared) + target, `~${target}`, target].find(fitsAll);
+}
+
+/** Whether the target and the range npm may later install from both meet `range` */
+function meets(update: PackageUpdate, range: string): boolean {
+	return semver.satisfies(update.target!, range) && fits(update.newRange ?? update.declared, range);
 }
 
 /** `semver.subset`, which without `includePrerelease` rejects even `7.5.0-rc.2` within `^7.5.0-rc.1` */
@@ -305,20 +332,22 @@ function formatConstraints(constraints: { range: string; from: string }[]): stri
 }
 
 /** Ranges the other targets put on `update` */
-function constraintsOn(update: PackageUpdate, updates: PackageUpdate[]): { range: string; from: string }[] {
+function constraintsOn(update: PackageUpdate, updates: PackageUpdate[]): { range: string; peer: boolean; from: string }[] {
 	const constraints = [];
 	for (const other of updates) {
-		for (const range of requirements(other.manifest, update.name)) {
-			constraints.push({ range, from: `${other.name}@${other.target}` });
+		for (const { range, peer } of requirements(other.manifest, update.name)) {
+			constraints.push({ range, peer, from: `${other.name}@${other.target}` });
 		}
 	}
 	return constraints;
 }
 
-/** Ranges `manifest` depends on for `name`, by trial or licensed name */
-function requirements(manifest: PackageManifest | undefined, name: string): string[] {
-	const deps: Record<string, string> = { ...manifest?.dependencies, ...manifest?.peerDependencies };
-	return Object.keys(deps).filter(dep => dep === name || COUNTERPART.get(dep) === name).map(dep => deps[dep]);
+/** Ranges `manifest` depends on for `name`, by trial or licensed name, each flagged as a peer or not */
+function requirements(manifest: PackageManifest | undefined, name: string): { range: string; peer: boolean }[] {
+	const peers = manifest?.peerDependencies ?? {};
+	const deps: Record<string, string> = { ...manifest?.dependencies, ...peers };
+	return Object.keys(deps).filter(dep => dep === name || COUNTERPART.get(dep) === name)
+		.map(dep => ({ range: deps[dep], peer: dep in peers }));
 }
 
 /** `^`, `~` or `""` (exact): the operator whose range equals `declared`, so `19.x` -> `^` and `19.6.x` -> `~` */
