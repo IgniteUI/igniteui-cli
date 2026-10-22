@@ -27,6 +27,10 @@ export interface PackageUpdate {
 	newRange?: string;
 	/** Unresolvable constraint between Ignite UI packages; blocks the update */
 	conflict?: string;
+	/** Set on conflicts: whether `--force` would override every conflict and update package.json */
+	overridable?: boolean;
+	/** Ranges left unmet by `--force`; reported, never blocks */
+	forced?: string;
 }
 
 export interface PackageManifest {
@@ -114,12 +118,19 @@ export function getUpdateCandidates(): PackageUpdate[] {
 }
 
 /** @throws when the registry can't be queried */
-export function getUpdatePlan(): PackageUpdate[] {
+export function getUpdatePlan({ force = false, verbose = false } = {}): PackageUpdate[] {
 	const plan = getUpdateCandidates();
+	for (const c of plan) {
+		const baseline = c.skipped
+			? `skipped: ${c.skipped}`
+			: `baseline ${c.baseline} (${c.baseline === c.installed ? "installed version" : "declared minimum"})`;
+		debug(verbose, `${c.name} (${c.section}): declared ${c.declared}, installed ${c.installed ?? "none"}, ${baseline}`);
+	}
+
 	const lines = new Map<PackageUpdate, PackageManifest[]>();
 	for (const candidate of plan.filter(c => !c.skipped)) {
 		const line = `^${candidate.baseline}`;
-		const info = npmView(candidate.name, "versions dist-tags");
+		const info = npmView(candidate.name, "versions dist-tags", verbose);
 		if (!semver.maxSatisfying([].concat(info.versions), line)) {
 			candidate.skipped = `no published version matches "${line}"`;
 			continue;
@@ -130,14 +141,33 @@ export function getUpdatePlan(): PackageUpdate[] {
 		}
 		// versions with none of the fields come back as plain strings
 		const manifests: (PackageManifest | string)[] = [].concat(
-			npmView(`${candidate.name}@${line}`, "version dependencies peerDependencies deprecated engines"));
+			npmView(`${candidate.name}@${line}`, "version dependencies peerDependencies deprecated engines", verbose));
 		lines.set(candidate, manifests
 			.map(m => typeof m === "string" ? { version: m } : m)
 			.sort((a, b) => semver.rcompare(a.version, b.version)));
+		debug(verbose, `${candidate.name}: ${manifests.length} version(s) in "${line}", latest ${latest ?? "none"}` +
+			(candidate.nextMajor ? " (newer major, not applied)" : ""));
 	}
 
 	const updates = plan.filter(c => !c.skipped);
-	alignTargets(updates, lines);
+	alignTargets(updates, lines, force);
+	if (verbose) {
+		for (const update of updates.filter(u => u.target)) {
+			const newest = lines.get(update)![0];
+			const constraints = constraintsOn(update, updates);
+			const heldBack = newest.version === update.target ? [] : [
+				...constraints.filter(c => semver.satisfies(update.target!, c.range) && !semver.satisfies(newest.version, c.range))
+					.map(c => formatConstraints([c])),
+				...updates.filter(other => other !== update).flatMap(other => requirements(newest, other.name)
+					.filter(range => !lines.get(other)!.some(m => semver.satisfies(m.version, range)))
+					.map(range => `${newest.version} requires ${other.name}@${range}, outside "^${other.baseline}"`))
+			];
+			debug(verbose, `${update.name}: target ${update.target} (newest in "^${update.baseline}": ${newest.version}), ` +
+				`range ${update.declared} -> ${update.newRange ?? update.declared}` +
+				(constraints.length ? `, requirements: ${formatConstraints(constraints)}` : "") +
+				(heldBack.length ? `; held back by ${heldBack.join(", ")}` : ""));
+		}
+	}
 	for (const skipped of plan.filter(c => c.skipped)) {
 		for (const { range, from } of constraintsOn(skipped, updates)) {
 			Util.warn(`${from} requires ${skipped.name}@${range}, which is not checked because ${skipped.name} is skipped.`, "yellow");
@@ -183,7 +213,7 @@ export function applyUpdatePlan(plan: PackageUpdate[]): void {
  * Picks each target as the newest version in its line that satisfies the other targets' dependencies and peers,
  * repeating until stable since targets depend on each other, then sets `newRange` or `conflict`.
  */
-function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>): void {
+function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>, force: boolean): void {
 	let changed = true;
 	for (let pass = 0; changed && pass <= updates.length; pass++) {
 		changed = false;
@@ -203,17 +233,75 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 	for (const update of updates) {
 		const target = update.target;
 		const constraints = constraintsOn(update, updates);
-		const fits = (range: string) => constraints.every(c => semver.subset(range, c.range));
 		// `satisfies` (unlike `subset`) tolerates invalid ranges, which then end up here as conflicts
 		if (!target || !constraints.every(c => semver.satisfies(target, c.range))) {
-			update.conflict = `no version in "^${update.baseline}" satisfies ` +
-				constraints.map(c => `${c.range} (required by ${c.from})`).join(", ");
+			update.conflict = `no version in "^${update.baseline}" satisfies ${formatConstraints(constraints)}`;
 			update.target = update.manifest = undefined;
-		} else if (target !== update.baseline || !fits(update.declared)) {
-			// npm may later install any version in the written range, so the range itself must fit every constraint
-			update.newRange = [rangeOperator(update.declared) + target, `~${target}`, target].find(fits);
+		} else {
+			update.newRange = rangeToWrite(update, target, constraints);
 		}
 	}
+
+	if (force) {
+		forceConflicts(updates, lines);
+	} else if (updates.some(u => u.conflict)) {
+		// --force is only suggested when it would update package.json, so try it on a copy
+		const trial = updates.map(u => ({ ...u }));
+		forceConflicts(trial, new Map(trial.map((t, i) => [t, lines.get(updates[i])!])));
+		const overridable = !trial.some(t => t.conflict) && trial.some(t => t.newRange);
+		for (const update of updates.filter(u => u.conflict)) {
+			update.overridable = overridable;
+		}
+	}
+}
+
+/**
+ * Moves each conflicted package to the newest version in its line, then records on every package the ranges that its
+ * target or written range doesn't meet. Ranges that aren't valid semver can't be overridden and keep blocking.
+ */
+function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>): void {
+	const conflicted = updates.filter(u => u.conflict);
+	for (const update of conflicted) {
+		update.manifest = lines.get(update)![0];
+		update.target = update.manifest.version;
+		update.conflict = undefined;
+	}
+	// chosen once every forced target is known, so the package order doesn't matter
+	for (const update of conflicted) {
+		const met = constraintsOn(update, updates).filter(c => semver.satisfies(update.target!, c.range));
+		update.newRange = rangeToWrite(update, update.target!, met);
+	}
+
+	// collected before any package loses its target to a new conflict
+	const unmet = updates.map(update => constraintsOn(update, updates).filter(c =>
+		!semver.satisfies(update.target!, c.range) || !fits(update.newRange ?? update.declared, c.range)));
+	updates.forEach((update, i) => {
+		const invalid = unmet[i].filter(c => !semver.validRange(c.range));
+		if (invalid.length) {
+			update.conflict = `--force can't override ranges that aren't valid versions: ${formatConstraints(invalid)}`;
+			update.target = update.manifest = update.newRange = undefined;
+		} else if (unmet[i].length) {
+			update.forced = formatConstraints(unmet[i]);
+		}
+	});
+}
+
+function rangeToWrite(update: PackageUpdate, target: string, constraints: { range: string }[]): string | undefined {
+	// npm may later install any version in the written range, so the range itself must fit every constraint
+	const fitsAll = (range: string) => constraints.every(c => fits(range, c.range));
+	if (target === update.baseline && fitsAll(update.declared)) {
+		return undefined;
+	}
+	return [rangeOperator(update.declared) + target, `~${target}`, target].find(fitsAll);
+}
+
+/** `semver.subset`, which without `includePrerelease` rejects even `7.5.0-rc.2` within `^7.5.0-rc.1` */
+function fits(range: string, constraint: string): boolean {
+	return semver.subset(range, constraint, { includePrerelease: true });
+}
+
+function formatConstraints(constraints: { range: string; from: string }[]): string {
+	return constraints.map(c => `${c.range} (required by ${c.from})`).join(", ");
 }
 
 /** Ranges the other targets put on `update` */
@@ -240,7 +328,8 @@ function rangeOperator(declared: string): string {
 }
 
 /** `npm view "<spec>" <fields> --json`, with registry errors turned into actionable messages */
-function npmView(spec: string, fields: string) {
+function npmView(spec: string, fields: string, verbose: boolean) {
+	debug(verbose, `npm view "${spec}" ${fields}`);
 	try {
 		// quoted: the spec may hold a `^` range, which cmd.exe would otherwise treat as an escape
 		return JSON.parse(Util.execSync(`npm view "${spec}" ${fields} --json`, { stdio: "pipe", encoding: "utf8" }).toString());
@@ -261,5 +350,12 @@ function npmView(spec: string, fields: string) {
 				"Log in with your Infragistics account: npm login --scope=@infragistics --auth-type=legacy");
 		}
 		throw new Error(`Unable to get ${spec} from the registry: ${error.summary ?? message}`);
+	}
+}
+
+/** `--verbose` diagnostic; only values computed here, never configuration or registry output */
+function debug(verbose: boolean, message: string): void {
+	if (verbose) {
+		Util.log(message, "gray");
 	}
 }

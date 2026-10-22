@@ -267,10 +267,16 @@ describe("Help command", () => {
 		Options:
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
-		--dry-run                 Show the update plan without changing any files (for Angular, the ng update command to run) [boolean] [default: false]
-		--skip-install, --si      Update package.json without installing packages (not supported for Angular) [boolean] [default: false]
-		React and Web Components: updates direct Ignite UI dependencies within their current major versions. No code migrations are applied.
-		Angular: runs the project's ng update for the Ignite UI packages, which installs their latest versions (including new majors) and applies available migrations.
+		--dry-run                 Preview the update without changing any files [boolean] [default: false]
+		--skip-install, --si      Update package.json without installing (not supported for Angular) [boolean] [default: false]
+		--force                   Apply updates despite version conflicts between Ignite UI packages [boolean] [default: false]
+		--allow-dirty             Allow uncommitted changes without a warning [boolean] [default: false]
+		--verbose                 Show version resolution and install details [boolean] [default: false]
+		React and Web Components:
+		  Updates direct Ignite UI dependencies within their current major version. No migrations are applied.
+		Angular:
+		  Runs the project's ng update for the Ignite UI packages: installs their latest versions,
+		  including new majors, and applies migrations.
 		`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");

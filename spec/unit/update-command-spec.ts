@@ -27,7 +27,8 @@ describe("Unit - Update command", () => {
 		}) as PackageUpdate));
 	}
 
-	const run = (args: { dryRun?: boolean, skipInstall?: boolean } = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
+	type Flags = Partial<Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose", boolean>>;
+	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
 	const installOptions = () => ({ stdio: "inherit" as const, env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 	const read = (file: string) => fs.readFileSync(file, "utf8");
 	const log = () => output.join("\n");
@@ -222,6 +223,18 @@ describe("Unit - Update command", () => {
 		];
 		for (const [installCommand, lockfiles, packageManager] of managers) {
 			const source = packageManager ?? (Object.keys(lockfiles).join() || "no lockfile");
+			const forcedCommand = installCommand === "npm install" ? "npm install --force" : installCommand;
+			it(`resolves with --force and runs "${forcedCommand}" (${source})`, async () => {
+				project(packageManager ? { packageManager } : {}, lockfiles);
+				const getPlan = plan();
+
+				await run({ force: true });
+
+				expect(getPlan).toHaveBeenCalledOnceWith({ force: true, verbose: false });
+				expect(Util.execSync).toHaveBeenCalledOnceWith(forcedCommand, installOptions());
+				expect(process.exitCode).toBe(0);
+			});
+
 			it(`runs "${installCommand}" with visible output after updating package.json (${source})`, async () => {
 				project(packageManager ? { packageManager } : {}, lockfiles);
 				plan();
@@ -383,6 +396,230 @@ describe("Unit - Update command", () => {
 		});
 	});
 
+	describe("--force", () => {
+		const forceHint = "Rerun with --force to override these conflicts; the updated packages may then not work together.";
+		const overridden = "~6.0.0 (required by igniteui-react@19.9.0)";
+		const conflict = { name: "igniteui-grid-lite", conflict: 'no version in "^0.11.0" satisfies ~0.12.0', target: undefined, newRange: undefined };
+
+		it("applies a forced plan after reporting every overridden range and a summary", async () => {
+			project();
+			plan(
+				{ forced: overridden },
+				{ name: "igniteui-grid-lite", baseline: "0.11.4", target: "0.11.4", newRange: undefined, forced: "0.11.0 (required by igniteui-react@19.9.0)" }
+			);
+
+			await run({ force: true });
+
+			expect(output).toContain("Overridden by --force for igniteui-webcomponents: ~6.0.0 (required by igniteui-react@19.9.0)");
+			expect(output).toContain("Overridden by --force for igniteui-grid-lite: 0.11.0 (required by igniteui-react@19.9.0)");
+			expect(output).toContain("--force overrides the version requirements of 2 Ignite UI package(s); " +
+				"the updated packages may not work together. Run your build and tests.");
+			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
+			expect(Util.execSync).toHaveBeenCalledOnceWith("npm install --force", installOptions());
+			expect(Util.log).not.toHaveBeenCalledWith(jasmine.any(String), "gray");
+			expect(process.exitCode).toBe(0);
+		});
+
+		it("says the requirements remain unmet, without claiming an update, when --force changes nothing", async () => {
+			project();
+			const original = read("package.json");
+			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined, forced: "6.0.0 (required by igniteui-react@19.9.0)" });
+
+			await run({ force: true });
+
+			expect(output).toContain("Overridden by --force for igniteui-webcomponents: 6.0.0 (required by igniteui-react@19.9.0)");
+			expect(output).toContain("Nothing to update. The version requirements listed above for 1 Ignite UI package(s) remain unmet.");
+			expect(log()).not.toContain("Already up to date");
+			expect(log()).not.toContain("--force overrides");
+			expect(read("package.json")).toBe(original);
+			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).not.toBe(1);
+		});
+
+		it("announces forced updates only when they can proceed, in a dry run too", async () => {
+			project({}, { "yarn.lock": "", "bun.lock": "" });
+			plan({ forced: overridden });
+
+			await run({ force: true });
+
+			expect(log()).toContain("Nothing was updated: unable to choose a package manager to install with.");
+			expect(log()).not.toContain("--force overrides");
+			expect(process.exitCode).toBe(1);
+
+			process.exitCode = originalExitCode;
+			await run({ force: true, dryRun: true });
+
+			expect(log()).toContain("--force overrides the version requirements of 1 Ignite UI package(s)");
+			expect(log()).toContain("Dry run: no files were changed.");
+			expect(process.exitCode).not.toBe(1);
+		});
+
+		const previews: [string, Flags, Record<string, string>, string?][] = [
+			["npm, every flag", { force: true, allowDirty: true, verbose: true }, {}, `Would run "npm install --force".`],
+			["yarn", { force: true }, { "yarn.lock": "" }, `Would run "yarn install".`],
+			["--skip-install", { force: true, skipInstall: true }, {}],
+			["several lockfiles", { force: true }, { "yarn.lock": "", "bun.lock": "" }],
+			["no --force", {}, {}]
+		];
+		for (const [name, flags, lockfiles, installLine] of previews) {
+			it(`changes nothing in a dry run, naming the install only when --force changes it (${name})`, async () => {
+				project({}, lockfiles);
+				const original = read("package.json");
+				plan();
+
+				await run({ ...flags, dryRun: true });
+
+				expect(output.filter(line => line.startsWith("Would run"))).toEqual(installLine ? [installLine] : []);
+				expect(log()).toContain("Dry run: no files were changed.");
+				expect(read("package.json")).toBe(original);
+				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(Util.spawnSync).not.toHaveBeenCalled();
+				expect(process.exitCode).not.toBe(1);
+			});
+		}
+
+		const hints: [string, Record<string, string>, string][] = [
+			["npm", {}, `Run "npm install --force" to install them.`],
+			["yarn", { "yarn.lock": "" }, `Run "yarn install" to install them.`],
+			["several lockfiles", { "yarn.lock": "", "bun.lock": "" },
+				"Run your package manager's install command to update the lockfile. With npm, add --force."]
+		];
+		for (const [name, lockfiles, hint] of hints) {
+			it(`only updates package.json with --force --skip-install, naming the install command (${name})`, async () => {
+				project({}, lockfiles);
+				plan();
+
+				await run({ force: true, skipInstall: true });
+
+				expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
+				expect(output).toContain(`Updated 1 package(s) in package.json. ${hint}`);
+				expect(Util.execSync).not.toHaveBeenCalled();
+			});
+		}
+
+		const blocked: [string, Partial<PackageUpdate>[], boolean][] = [
+			["overridable", [{ overridable: true }], true],
+			["not overridable", [{}], false],
+			["partly overridable", [{ overridable: true }, { name: "igniteui-dockmanager" }], false]
+		];
+		for (const [name, conflicts, hinted] of blocked) {
+			it(`blocks on conflicts, suggesting --force only when it can override all of them (${name})`, async () => {
+				project();
+				const original = read("package.json");
+				plan({}, ...conflicts.map(entry => ({ ...conflict, ...entry })));
+
+				await run();
+
+				expect(output.includes(forceHint)).toBe(hinted);
+				expect(read("package.json")).toBe(original);
+				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(process.exitCode).toBe(1);
+			});
+		}
+
+		it("still blocks on a conflict --force can't override", async () => {
+			project();
+			const original = read("package.json");
+			plan({ forced: overridden },
+				{ ...conflict, conflict: "--force can't override ranges that aren't valid versions: npm:other@1 (required by igniteui-react@19.9.0)" });
+
+			await run({ force: true });
+
+			expect(log()).toContain("Conflict in igniteui-grid-lite: --force can't override ranges that aren't valid versions");
+			expect(log()).toContain("Nothing was updated because of the conflicts above.");
+			expect(log()).not.toContain(forceHint);
+			expect(log()).not.toContain("--force overrides");
+			expect(read("package.json")).toBe(original);
+			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("rolls back a failed npm install --force", async () => {
+			project({}, { "package-lock.json": "{}" });
+			const original = read("package.json");
+			plan({ forced: overridden });
+			(Util.execSync as jasmine.Spy).and.callFake(() => {
+				fs.writeFileSync("package-lock.json", "changed");
+				throw new Error("Command failed: npm install --force");
+			});
+
+			await run({ force: true });
+
+			expect(read("package.json")).toBe(original);
+			expect(read("package-lock.json")).toBe("{}");
+			expect(log()).toContain(`"npm install --force" failed. Restored package.json and the lockfile; ` +
+				`node_modules may be partially updated, run "npm ci" to resync it.`);
+			expect(process.exitCode).toBe(1);
+		});
+	});
+
+	describe("--allow-dirty and --verbose", () => {
+		it("skips the uncommitted-changes check with --allow-dirty and still updates", async () => {
+			project();
+			plan();
+			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: " M package.json\n" });
+
+			await run({ allowDirty: true, verbose: true });
+
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(log()).not.toContain("package.json or a lockfile has uncommitted changes");
+			expect(output).toContain("Uncommitted changes not checked (--allow-dirty).");
+			expect(Util.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
+			expect(process.exitCode).toBe(0);
+		});
+
+		it("prints framework, package manager, git, install and rollback details, without environment or .npmrc values", async () => {
+			const token = "npm_FAKE0TOKEN0123456789";
+			const env = process.env;
+			process.env = { ...env, NPM_TOKEN: token };
+			project({ packageManager: "npm@10.9.0" },
+				{ "package-lock.json": "{}", ".npmrc": `//registry.example.com/:_authToken=${token}\n` });
+			const getPlan = plan();
+			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: " M package.json\n?? package-lock.json\n" });
+			(Util.execSync as jasmine.Spy).and.callFake(() => {
+				fs.writeFileSync("npm-shrinkwrap.json", "created");
+				throw new Error("Command failed: npm install");
+			});
+
+			try {
+				await run({ verbose: true });
+			} finally {
+				process.env = env;
+			}
+
+			expect(getPlan).toHaveBeenCalledOnceWith({ force: false, verbose: true });
+			const details = [
+				"Framework: webcomponents (from the project config)",
+				"Package manager: npm (packageManager field set; lockfiles: package-lock.json)",
+				"Uncommitted changes: M package.json, ?? package-lock.json",
+				"Backed up package.json, package-lock.json; installing with YARN_ENABLE_IMMUTABLE_INSTALLS=false.",
+				"Restored package.json.",
+				"Restored package-lock.json.",
+				"Removed npm-shrinkwrap.json, created by the failed install."
+			];
+			for (const detail of details) {
+				expect(Util.log).toHaveBeenCalledWith(detail, "gray");
+			}
+			expect(fs.existsSync("npm-shrinkwrap.json")).toBe(false);
+			expect(log()).toContain("package.json or a lockfile has uncommitted changes");
+			expect(log()).not.toContain(token);
+			expect(log()).not.toContain("registry.example.com");
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("says when git can't check for uncommitted changes, and where the framework came from", async () => {
+			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+			project({ dependencies: { [WC]: "~6.0.0", react: "^19.0.0" } });
+			plan();
+
+			await run({ verbose: true });
+
+			expect(Util.log).toHaveBeenCalledWith("Framework: react (detected from package.json)", "gray");
+			expect(Util.log).toHaveBeenCalledWith("Package manager: npm (packageManager field not set; lockfiles: none)", "gray");
+			expect(Util.log).toHaveBeenCalledWith("Uncommitted changes not checked: no git repository, or git not found.", "gray");
+		});
+	});
+
 	describe("angular", () => {
 		const ngBin = () => path.join(tempDir, "node_modules", "@angular", "cli", "bin", "ng.js");
 
@@ -402,6 +639,11 @@ describe("Unit - Update command", () => {
 
 		const hint = (igniteUI: string) => "If ng update reported incompatible peer dependencies, " +
 			`update Angular and Ignite UI together: ng update @angular/core @angular/cli ${igniteUI}`;
+		const forcedWarning = (igniteUI: string) => "--force let ng update continue despite incompatible peer dependencies; " +
+			"any it found are listed above. If it updated anything, Angular packages may now be on incompatible versions, " +
+			"for example @angular/core on a newer major than @angular/cli. Run your build and tests. If the build fails, " +
+			"update Angular and Ignite UI together (in a git repository, commit the changes first or add --allow-dirty): " +
+			`ng update @angular/core @angular/cli ${igniteUI}`;
 
 		beforeEach(() => {
 			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework: "angular" } });
@@ -418,7 +660,7 @@ describe("Unit - Update command", () => {
 			await run({ dryRun: true });
 
 			expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli @igniteui/angular-schematics" with the project's Angular CLI.`);
-			expect(log()).toContain("including new majors, applies their migrations and installs dependencies. It requires a clean git working tree.");
+			expect(log()).toContain("including new majors, applies their migrations and installs dependencies. In a git repository, it stops if the project has uncommitted changes.");
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(Util.spawnSync).not.toHaveBeenCalled();
 
@@ -541,22 +783,110 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		const results: [string, object, number, string[]][] = [
-			["success", { status: 0 }, 0, []],
-			["failure", { status: 2 }, 2, [hint("igniteui-angular")]],
-			["termination by a signal", { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
-			["spawn error", { status: null, error: new Error("spawnSync node ENOENT") }, 1, ["Unable to run the Angular CLI: spawnSync node ENOENT"]]
+		const forwarded: [Flags, string[]][] = [
+			[{ force: true }, ["--force"]],
+			[{ allowDirty: true }, ["--allow-dirty"]],
+			[{ verbose: true }, ["--verbose"]],
+			[{ verbose: true, allowDirty: true, force: true }, ["--force", "--allow-dirty", "--verbose"]]
 		];
-		for (const [name, result, exitCode, messages] of results) {
+		for (const [flags, options] of forwarded) {
+			it(`forwards ${options.join(" ")} to ng update, and previews the same command`, async () => {
+				angularProject({ dependencies: { "igniteui-angular": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
+				const getPlan = plan();
+
+				await run({ ...flags, dryRun: true });
+
+				expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli ${options.join(" ")}" with the project's Angular CLI.`);
+				expect(Util.spawnSync).not.toHaveBeenCalled();
+
+				await run(flags);
+
+				expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
+					[ngBin(), "update", "igniteui-angular", "igniteui-cli", ...options], { stdio: "inherit" });
+				expect(getPlan).not.toHaveBeenCalled();
+				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(process.exitCode).toBe(0);
+			});
+		}
+
+		it("states what --force and --allow-dirty change in the preview", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+
+			await run({ dryRun: true, force: true });
+
+			expect(log()).toContain("and installs dependencies. ng update doesn't stop on incompatible peer dependencies, " +
+				"so Angular packages can end up on incompatible versions. In a git repository, it stops if the project has uncommitted changes.");
+
+			await run({ dryRun: true, allowDirty: true });
+
+			expect(log()).toContain("and installs dependencies. It runs even with uncommitted changes.");
+			expect(output.slice(-2).join()).not.toContain("it stops if the project has uncommitted changes");
+		});
+
+		it("prints the Angular CLI it runs with --verbose, and still previews without one", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+
+			await run({ dryRun: true, verbose: true });
+
+			expect(log()).toContain(`Would run "ng update igniteui-angular --verbose"`);
+			expect(log()).not.toContain("Angular CLI:");
+			expect(process.exitCode).not.toBe(1);
+
+			installAngularCli(path.join(tempDir, "node_modules"));
+			await run({ verbose: true });
+
+			expect(Util.log).toHaveBeenCalledWith("Framework: angular (from the project config)", "gray");
+			expect(Util.log).toHaveBeenCalledWith(`Angular CLI: ${ngBin()}`, "gray");
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular", "--verbose"], { stdio: "inherit" });
+		});
+
+		it("still rejects --skip-install with the other flags, and keeps the failure hint with --force", async () => {
+			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+
+			await run({ skipInstall: true, force: true, allowDirty: true, verbose: true });
+
+			expect(log()).toContain("--skip-install is not supported for Angular projects");
+			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+
+			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 1 });
+			await run({ force: true });
+
+			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular", "--force"], { stdio: "inherit" });
+			expect(output).toContain(hint("igniteui-angular"));
+			expect(process.exitCode).toBe(1);
+		});
+
+		const results: [string, Flags, object, number, string[]][] = [
+			["success", {}, { status: 0 }, 0, []],
+			["failure", {}, { status: 2 }, 2, [hint("igniteui-angular")]],
+			["termination by a signal", {}, { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
+			["spawn error", {}, { status: null, error: new Error("spawnSync node ENOENT") }, 1, ["Unable to run the Angular CLI: spawnSync node ENOENT"]],
+			["success with --force", { force: true }, { status: 0 }, 0, [forcedWarning("igniteui-angular")]],
+			["failure with --force", { force: true }, { status: 2 }, 2, [hint("igniteui-angular")]],
+			["termination by a signal with --force", { force: true }, { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
+			["spawn error with --force", { force: true }, { status: null, error: new Error("spawnSync node ENOENT") }, 1,
+				["Unable to run the Angular CLI: spawnSync node ENOENT"]]
+		];
+		for (const [name, flags, result, exitCode, messages] of results) {
 			it(`passes the ng update exit code through (${name})`, async () => {
 				angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
 				(Util.spawnSync as jasmine.Spy).and.returnValue(result);
 
-				await run();
+				await run(flags);
 
 				expect(process.exitCode).toBe(exitCode);
 				expect(output.slice(1)).toEqual(messages);
 			});
 		}
+
+		it("names the licensed package in the recovery command after a forced update", async () => {
+			angularProject({ devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
+
+			await run({ force: true, allowDirty: true, verbose: true });
+
+			expect(output).toContain(forcedWarning("@infragistics/igniteui-angular"));
+			expect(process.exitCode).toBe(0);
+		});
 	});
 });

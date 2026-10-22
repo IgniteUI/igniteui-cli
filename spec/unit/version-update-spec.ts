@@ -421,6 +421,285 @@ describe("Unit - version update", () => {
 					"which is not checked because igniteui-webcomponents is skipped.", "yellow");
 			});
 		});
+
+		describe("--force", () => {
+			const charts = "igniteui-react-charts";
+			const core = "igniteui-react-core";
+			const pinnedByCharts = "19.6.0 (required by igniteui-react-charts@19.6.0)";
+			const summary = (plan: PackageUpdate[]) => plan.map(c => [c.name, c.target, c.newRange, c.conflict, c.forced]);
+			const entry = (plan: PackageUpdate[], name: string) => plan.find(c => c.name === name)!;
+
+			beforeEach(() => {
+				publish(charts, ["19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
+			});
+
+			it("moves a conflicted package to the newest version in its line, never a lower, prerelease or newer major one, in either order", () => {
+				publish(core, ["19.6.0", "19.7.0", "19.7.1", "19.8.0-beta.1", "20.0.0"], "20.0.0");
+				for (const dependencies of [{ [core]: "~19.7.0", [charts]: "~19.6.0" }, { [charts]: "~19.6.0", [core]: "~19.7.0" }]) {
+					mockProject({ dependencies }, { [core]: "19.7.0" });
+
+					const blocked = entry(getUpdatePlan(), core);
+					const forced = getUpdatePlan({ force: true });
+					const forcedCore = entry(forced, core);
+
+					expect([blocked.conflict, blocked.overridable]).toEqual([`no version in "^19.7.0" satisfies ${pinnedByCharts}`, true]);
+					expect(forcedCore).toEqual(jasmine.objectContaining({
+						target: "19.7.1", newRange: "~19.7.1", nextMajor: "20.0.0", forced: pinnedByCharts, manifest: { version: "19.7.1" }
+					}));
+					expect([forcedCore.conflict, forcedCore.overridable]).toEqual([undefined, undefined]);
+					expect(summary([entry(forced, charts)])).toEqual([[charts, "19.6.0", undefined, undefined, undefined]]);
+				}
+			});
+
+			it("keeps the declared range when the forced target is the baseline", () => {
+				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.1" } }, { [core]: "19.7.1" });
+				publish(core, ["19.7.1"], "19.7.1");
+
+				expect(summary(getUpdatePlan({ force: true }))).toEqual([
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[core, "19.7.1", undefined, undefined, pinnedByCharts]
+				]);
+			});
+
+			it("overrides incompatible ranges on a 0.x package within its minor line, leaving skipped packages skipped", () => {
+				mockProject({ dependencies: {
+					[NPM_REACT]: "~19.9.0", [NPM_WEBCOMPONENTS]: "~7.4.0", [NPM_GRID_LITE]: "~0.11.0", [NPM_DOCK_MANAGER]: "workspace:*"
+				} });
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { peerDependencies: { [NPM_GRID_LITE]: "0.11.0" } });
+				publish(NPM_WEBCOMPONENTS, ["7.4.1"], "7.4.1", { dependencies: { [NPM_GRID_LITE]: "0.11.2" } });
+				publish(NPM_GRID_LITE, ["0.11.0", "0.11.2", "0.11.4", "0.12.0"], "0.12.0");
+				const ranges = "0.11.0 (required by igniteui-react@19.9.0), 0.11.2 (required by igniteui-webcomponents@7.4.1)";
+
+				expect(summary(getUpdatePlan())).toEqual([
+					[NPM_REACT, "19.9.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.4.1", "~7.4.1", undefined, undefined],
+					[NPM_GRID_LITE, undefined, undefined, `no version in "^0.11.0" satisfies ${ranges}`, undefined],
+					[NPM_DOCK_MANAGER, undefined, undefined, undefined, undefined]
+				]);
+
+				const plan = getUpdatePlan({ force: true });
+
+				expect(summary(plan)).toEqual([
+					[NPM_REACT, "19.9.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.4.1", "~7.4.1", undefined, undefined],
+					[NPM_GRID_LITE, "0.11.4", "^0.11.4", undefined, ranges],
+					[NPM_DOCK_MANAGER, undefined, undefined, undefined, undefined]
+				]);
+				expect(entry(plan, NPM_GRID_LITE).nextMajor).toBe("0.12.0");
+				expect(entry(plan, NPM_DOCK_MANAGER).skipped).toContain('unsupported spec "workspace:*"');
+			});
+
+			it("reports the ranges a forced target puts on other packages, unmet by their target or written range, without changing their plan", () => {
+				mockProject(
+					{ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_WEBCOMPONENTS]: "^7.2.0", [NPM_GRID_LITE]: "~0.11.0" } },
+					{ [core]: "19.7.0", [NPM_WEBCOMPONENTS]: "7.4.1" }
+				);
+				publish(core, ["19.6.0", "19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1"
+					? { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" }, peerDependencies: { [NPM_GRID_LITE]: "0.11.0" } }
+					: {});
+				publish(NPM_WEBCOMPONENTS, ["7.4.1"], "7.4.1");
+				publish(NPM_GRID_LITE, ["0.11.0", "0.11.4"], "0.11.4");
+
+				expect(summary(getUpdatePlan())).toEqual([
+					[core, undefined, undefined, `no version in "^19.7.0" satisfies ${pinnedByCharts}`, undefined],
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.4.1", undefined, undefined, undefined],
+					[NPM_GRID_LITE, "0.11.4", "^0.11.4", undefined, undefined]
+				]);
+				// the WC target meets "~7.4.1", but its declared "^7.2.0" doesn't fit inside it
+				expect(summary(getUpdatePlan({ force: true }))).toEqual([
+					[core, "19.7.1", "~19.7.1", undefined, pinnedByCharts],
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.4.1", undefined, undefined, "~7.4.1 (required by igniteui-react-core@19.7.1)"],
+					[NPM_GRID_LITE, "0.11.4", "^0.11.4", undefined, "0.11.0 (required by igniteui-react-core@19.7.1)"]
+				]);
+			});
+
+			it("keeps blocking on ranges that aren't valid semver, including ones a forced target introduces", () => {
+				mockProject(
+					{ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_WEBCOMPONENTS]: "^7.2.0" } },
+					{ [core]: "19.7.0" }
+				);
+				publish(charts, ["19.6.0"], "19.6.0",
+					{ peerDependencies: { [core]: "19.6.0" }, dependencies: { [NPM_WEBCOMPONENTS]: "npm:other@1" } });
+				publish(core, ["19.6.0", "19.7.0"], "19.7.0");
+				publish(NPM_WEBCOMPONENTS, ["7.2.0"], "7.2.0");
+
+				const [blockedCore, , blockedWC] = getUpdatePlan();
+
+				// --force would still stop at the unsupported range, so it isn't suggested
+				expect([blockedCore.overridable, blockedWC.overridable]).toEqual([false, false]);
+				expect(summary(getUpdatePlan({ force: true }))).toEqual([
+					[core, "19.7.0", undefined, undefined, pinnedByCharts],
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[NPM_WEBCOMPONENTS, undefined, undefined, "--force can't override ranges that aren't valid versions: " +
+						"npm:other@1 (required by igniteui-react-charts@19.6.0)", undefined]
+				]);
+
+				// the lookahead keeps core on 19.7.0, so only the forced 19.7.1 puts the unsupported range on grid lite
+				mockProject({ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_GRID_LITE]: "~0.11.0" } }, { [core]: "19.7.0" });
+				publish(charts, ["19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
+				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { dependencies: { [NPM_GRID_LITE]: "workspace:*" } } : {});
+				publish(NPM_GRID_LITE, ["0.11.0"], "0.11.0");
+
+				const blocked = getUpdatePlan();
+
+				expect(entry(blocked, NPM_GRID_LITE).conflict).toBeUndefined();
+				expect(entry(blocked, core).overridable).toBe(false);
+				expect(summary(getUpdatePlan({ force: true }))).toEqual([
+					[core, "19.7.1", "~19.7.1", undefined, pinnedByCharts],
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[NPM_GRID_LITE, undefined, undefined, "--force can't override ranges that aren't valid versions: " +
+						"workspace:* (required by igniteui-react-core@19.7.1)", undefined]
+				]);
+			});
+
+			it("narrows a forced range to keep every requirement its target meets, also when the target is the baseline", () => {
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } });
+				publish(NPM_WEBCOMPONENTS, ["7.4.0", "7.4.3"], "7.4.3");
+				for (const installed of ["7.4.0", "7.4.3"]) {
+					mockProject({ dependencies: { [NPM_REACT]: "~19.9.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.4.0" } },
+						{ [NPM_WEBCOMPONENTS]: installed });
+
+					expect(entry(getUpdatePlan(), NPM_WEBCOMPONENTS).conflict).withContext(installed).toBeDefined();
+					// "^7.4.3" would let npm install 7.5 later, breaking the "~7.4.1" that 7.4.3 meets
+					expect(summary([entry(getUpdatePlan({ force: true }), NPM_WEBCOMPONENTS)])).withContext(installed).toEqual([
+						[NPM_WEBCOMPONENTS, "7.4.3", "~7.4.3", undefined, "7.4.0 (required by igniteui-dockmanager@1.17.0)"]
+					]);
+				}
+			});
+
+			it("suggests --force only when it would update package.json", () => {
+				publish(core, ["19.6.0", "19.7.0"], "19.7.0");
+				publish(NPM_REACT, ["19.6.0", "19.9.0"], "19.9.0");
+
+				// core is already the newest in its line, so --force would change nothing
+				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0" } }, { [core]: "19.7.0" });
+				const blocked = entry(getUpdatePlan(), core);
+
+				expect([blocked.target, blocked.conflict, blocked.overridable])
+					.toEqual([undefined, `no version in "^19.7.0" satisfies ${pinnedByCharts}`, false]);
+				expect(summary(getUpdatePlan({ force: true }))).toEqual([
+					[charts, "19.6.0", undefined, undefined, undefined],
+					[core, "19.7.0", undefined, undefined, pinnedByCharts]
+				]);
+
+				// the conflict also blocks an unrelated update, which --force would apply
+				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0", [NPM_REACT]: "~19.6.0" } }, { [core]: "19.7.0" });
+
+				expect(entry(getUpdatePlan(), core).overridable).toBe(true);
+			});
+
+			it("updates prerelease ranges within prerelease requirements, and forces an RC keeping the RC range it meets", () => {
+				mockProject({ dependencies: { [NPM_REACT]: "^19.9.0-rc.1", [NPM_WEBCOMPONENTS]: "^7.5.0-rc.0" } },
+					{ [NPM_REACT]: "19.9.0-rc.1", [NPM_WEBCOMPONENTS]: "7.5.0-rc.0" });
+				publish(NPM_REACT, ["19.9.0-rc.1", "19.9.0-rc.2"], "19.8.0", { dependencies: { [NPM_WEBCOMPONENTS]: "^7.5.0-rc.1" } });
+				publish(NPM_WEBCOMPONENTS, ["7.5.0-rc.0", "7.5.0-rc.1", "7.5.0-rc.2"], "7.4.1");
+
+				const plan = getUpdatePlan();
+
+				expect(summary(plan)).toEqual([
+					[NPM_REACT, "19.9.0-rc.2", "^19.9.0-rc.2", undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.5.0-rc.2", "^7.5.0-rc.2", undefined, undefined]
+				]);
+				expect(getUpdatePlan({ force: true })).toEqual(plan);
+
+				mockProject({ dependencies: { [NPM_REACT]: "^19.9.0-rc.1", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.5.0-rc.1" } },
+					{ [NPM_REACT]: "19.9.0-rc.1", [NPM_WEBCOMPONENTS]: "7.5.0-rc.2" });
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.5.0-rc.1" } });
+				publish(NPM_WEBCOMPONENTS, ["7.5.0-rc.1", "7.5.0-rc.2", "7.5.0-rc.3"], "7.4.1");
+
+				expect(entry(getUpdatePlan(), NPM_WEBCOMPONENTS).overridable).toBe(true);
+				expect(summary([entry(getUpdatePlan({ force: true }), NPM_WEBCOMPONENTS)])).toEqual([
+					[NPM_WEBCOMPONENTS, "7.5.0-rc.3", "^7.5.0-rc.3", undefined, "7.5.0-rc.1 (required by igniteui-dockmanager@1.17.0)"]
+				]);
+			});
+
+			it("returns the same plan with and without --force when nothing conflicts", () => {
+				mockProject(
+					{ dependencies: { [charts]: "~19.5.2", [core]: "~19.5.2", [NPM_REACT]: "~19.3.0", [NPM_WEBCOMPONENTS]: "^6.3.0" } },
+					{ [NPM_REACT]: "19.3.0", [NPM_WEBCOMPONENTS]: "6.3.3" }
+				);
+				publish(charts, ["19.5.2", "19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
+				publish(core, ["19.5.2", "19.6.0", "19.7.0"], "19.7.0");
+				const wcRanges: Record<string, string> = { "19.3.0": "~6.3.3", "19.4.0": "~6.3.6", "19.9.0": "~7.4.1" };
+				publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
+				publish(NPM_WEBCOMPONENTS, ["6.3.3", "6.3.6", "7.4.1"], "7.4.1");
+
+				const plan = getUpdatePlan();
+
+				expect(plan.filter(c => c.newRange).length).toBe(4);
+				expect(plan.some(c => c.conflict || c.forced)).toBe(false);
+				expect(getUpdatePlan({ force: true })).toEqual(plan);
+			});
+
+			it("names only the ranges its target meets as holding a package back with --force --verbose", () => {
+				spyOn(Util, "log");
+				mockProject(
+					{ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0", [NPM_REACT]: "~19.9.0", [NPM_WEBCOMPONENTS]: "^7.4.0" } },
+					{ [core]: "19.7.0", [NPM_WEBCOMPONENTS]: "7.4.0" }
+				);
+				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { dependencies: { [NPM_WEBCOMPONENTS]: "7.4.0" } } : {});
+				publish(NPM_REACT, ["19.9.0"], "19.9.0", { dependencies: { [NPM_WEBCOMPONENTS]: "~7.4.1" } });
+				publish(NPM_WEBCOMPONENTS, ["7.4.0", "7.4.1", "7.5.0"], "7.5.0");
+
+				const webcomponents = entry(getUpdatePlan({ force: true, verbose: true }), NPM_WEBCOMPONENTS);
+
+				expect(webcomponents.forced).toBe("7.4.0 (required by igniteui-react-core@19.7.1)");
+				expect(Util.log).toHaveBeenCalledWith('igniteui-webcomponents: target 7.4.1 (newest in "^7.4.0": 7.5.0), range ^7.4.0 -> ~7.4.1, ' +
+					"requirements: 7.4.0 (required by igniteui-react-core@19.7.1), ~7.4.1 (required by igniteui-react@19.9.0); " +
+					"held back by ~7.4.1 (required by igniteui-react@19.9.0)", "gray");
+			});
+		});
+
+		it("prints discovery, registry and alignment diagnostics only with --verbose", () => {
+			spyOn(Util, "log");
+			mockProject(
+				{ dependencies: { "igniteui-react-charts": "~19.5.2", "igniteui-react-core": "~19.5.2", "igniteui-webcomponents": "workspace:*" } },
+				{ "igniteui-react-charts": "19.5.2" }
+			);
+			publish("igniteui-react-charts", ["19.5.2", "19.6.0"], "19.6.0", { peerDependencies: { "igniteui-react-core": "19.6.0" } });
+			publish("igniteui-react-core", ["19.5.2", "19.6.0", "19.7.0", "20.0.0"], "20.0.0");
+
+			getUpdatePlan();
+
+			expect(Util.log).not.toHaveBeenCalled();
+
+			getUpdatePlan({ verbose: true });
+
+			expect((Util.log as jasmine.Spy).calls.allArgs()).toEqual([
+				"igniteui-react-charts (dependencies): declared ~19.5.2, installed 19.5.2, baseline 19.5.2 (installed version)",
+				"igniteui-react-core (dependencies): declared ~19.5.2, installed none, baseline 19.5.2 (declared minimum)",
+				'igniteui-webcomponents (dependencies): declared workspace:*, installed none, skipped: unsupported spec "workspace:*" ' +
+					"(only exact, ^, ~ and x-range versions are supported)",
+				'npm view "igniteui-react-charts" versions dist-tags',
+				'npm view "igniteui-react-charts@^19.5.2" version dependencies peerDependencies deprecated engines',
+				'igniteui-react-charts: 2 version(s) in "^19.5.2", latest 19.6.0',
+				'npm view "igniteui-react-core" versions dist-tags',
+				'npm view "igniteui-react-core@^19.5.2" version dependencies peerDependencies deprecated engines',
+				'igniteui-react-core: 3 version(s) in "^19.5.2", latest 20.0.0 (newer major, not applied)',
+				'igniteui-react-charts: target 19.6.0 (newest in "^19.5.2": 19.6.0), range ~19.5.2 -> ~19.6.0',
+				'igniteui-react-core: target 19.6.0 (newest in "^19.5.2": 19.7.0), range ~19.5.2 -> 19.6.0, ' +
+					"requirements: 19.6.0 (required by igniteui-react-charts@19.6.0); held back by 19.6.0 (required by igniteui-react-charts@19.6.0)"
+			].map(message => [message, "gray"]));
+		});
+
+		it("explains with --verbose why the lookahead kept an older target", () => {
+			spyOn(Util, "log");
+			mockProject({ dependencies: { [NPM_REACT]: "~19.3.0", [NPM_WEBCOMPONENTS]: "^6.3.0" } },
+				{ [NPM_REACT]: "19.3.0", [NPM_WEBCOMPONENTS]: "6.3.3" });
+			const wcRanges: Record<string, string> = { "19.3.0": "~6.3.3", "19.4.0": "~6.3.6", "19.9.0": "~7.4.1" };
+			publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
+			publish(NPM_WEBCOMPONENTS, ["6.3.3", "6.3.6", "7.4.1"], "7.4.1");
+
+			getUpdatePlan({ verbose: true });
+
+			expect(Util.log).toHaveBeenCalledWith('igniteui-react: target 19.4.0 (newest in "^19.3.0": 19.9.0), range ~19.3.0 -> ~19.4.0; ' +
+				'held back by 19.9.0 requires igniteui-webcomponents@~7.4.1, outside "^6.3.3"', "gray");
+			expect(Util.log).toHaveBeenCalledWith('igniteui-webcomponents: target 6.3.6 (newest in "^6.3.3": 6.3.6), range ^6.3.0 -> ~6.3.6, ' +
+				"requirements: ~6.3.6 (required by igniteui-react@19.4.0)", "gray");
+		});
 	});
 
 	describe("applyUpdatePlan", () => {
