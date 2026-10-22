@@ -2,6 +2,7 @@ import {
 	applyUpdatePlan, detectFrameworkFromPackageJson, FEED_ANGULAR, getUpdatePlan, GoogleAnalytics, NPM_ANGULAR, NPM_CLI,
 	PackageUpdate, ProjectConfig, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
+import { execSync } from "child_process";
 import * as fs from "fs";
 import * as resolve from "resolve";
 import * as semver from "semver";
@@ -149,7 +150,7 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 		if (forced) {
 			Util.warn(`Nothing to update. The version requirements listed above for ${forced} Ignite UI package(s) remain unmet.`, "yellow");
 		} else {
-			Util.log(plan.some(c => c.target) ? "Already up to date." : "Nothing to update.");
+			Util.log(plan.some(c => c.target) && !plan.some(c => c.newest) ? "Already up to date." : "Nothing to update.");
 		}
 		return;
 	}
@@ -294,9 +295,14 @@ function printPlan(plan: PackageUpdate[], title: string): void {
 		}
 	});
 
-	const upToDate = plan.filter(c => c.target && !c.newRange);
+	const upToDate = plan.filter(c => c.target && !c.newRange && !c.newest);
 	if (upToDate.length) {
 		Util.log(`Up to date: ${upToDate.map(c => `${c.name} ${c.target}`).join(", ")}`);
+	}
+	const heldBack = plan.filter(c => c.newest);
+	if (heldBack.length) {
+		Util.log("Held back by the version requirements between Ignite UI packages: " +
+			heldBack.map(c => `${c.name} ${c.target} (${c.newest} available)`).join(", "));
 	}
 	for (const c of plan.filter(c => c.skipped)) {
 		Util.warn(`Skipped ${c.name}: ${c.skipped}`, "yellow");
@@ -362,10 +368,11 @@ function install(pm: string, backup: Map<string, Buffer | undefined>, flags: Upd
 	Util.log(`Running "${installCommand}".`);
 	debug(flags.verbose, `Backed up ${[...backup.keys()].filter(file => backup.get(file)).join(", ")}; ` +
 		"installing with YARN_ENABLE_IMMUTABLE_INSTALLS=false.");
-	// Util.execSync exits the process when the install is interrupted, which must not report success
+	// an install that ends the process before it returns must not report success
 	process.exitCode = 1;
 	try {
-		Util.execSync(installCommand, { stdio: "inherit", env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
+		// not Util.execSync: it exits on statuses above 128, which npm also returns for system errors, skipping the rollback
+		execSync(installCommand, { stdio: "inherit", env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 		process.exitCode = 0;
 		return true;
 	} catch {

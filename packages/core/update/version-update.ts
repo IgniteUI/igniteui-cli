@@ -23,6 +23,8 @@ export interface PackageUpdate {
 	manifest?: PackageManifest;
 	/** `latest` dist-tag outside `^baseline`; reported, never applied */
 	nextMajor?: string;
+	/** Newest version in `^baseline` when the requirements between Ignite UI packages hold `target` below it; reported, never applied */
+	newest?: string;
 	/** Spec to write to package.json; unset when nothing changes */
 	newRange?: string;
 	/** Unresolvable constraint between Ignite UI packages; blocks the update */
@@ -153,6 +155,9 @@ export function getUpdatePlan({ force = false, verbose = false } = {}): PackageU
 
 	const updates = plan.filter(c => !c.skipped);
 	alignTargets(updates, lines, force);
+	for (const update of updates.filter(u => u.target && u.target !== lines.get(u)![0].version)) {
+		update.newest = lines.get(update)![0].version;
+	}
 	if (verbose) {
 		for (const update of updates.filter(u => u.target)) {
 			const newest = lines.get(update)![0];
@@ -253,7 +258,7 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 			update.conflict = `no version in "^${update.baseline}" satisfies ${formatConstraints(peers)}`;
 			update.target = update.manifest = undefined;
 		} else {
-			update.newRange = rangeToWrite(update, target, constraints);
+			update.newRange = rangeToWrite(update, target, constraints, lines.get(update)!);
 		}
 	}
 
@@ -291,7 +296,7 @@ function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, Pack
 	}
 	// chosen once every forced target is known, so the package order doesn't matter
 	for (const update of conflicted) {
-		update.newRange = rangeToWrite(update, update.target!, constraintsOn(update, updates));
+		update.newRange = rangeToWrite(update, update.target!, constraintsOn(update, updates), lines.get(update)!);
 	}
 
 	// collected before any package loses its target to a new conflict
@@ -307,10 +312,11 @@ function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, Pack
 	});
 }
 
-function rangeToWrite(update: PackageUpdate, target: string, constraints: { range: string }[]): string | undefined {
-	// npm may later install any version in the written range, so the range itself must fit every constraint the target meets
+function rangeToWrite(update: PackageUpdate, target: string, constraints: { range: string }[], line: PackageManifest[]): string | undefined {
+	// npm may later install any version in the range, so it must fit every constraint the target meets and allow no newer version
 	const met = constraints.filter(c => semver.satisfies(target, c.range));
-	const fitsAll = (range: string) => met.every(c => fits(range, c.range));
+	const versions = line.map(m => m.version);
+	const fitsAll = (range: string) => met.every(c => fits(range, c.range)) && semver.maxSatisfying(versions, range) === target;
 	if (target === update.baseline && fitsAll(update.declared)) {
 		return undefined;
 	}

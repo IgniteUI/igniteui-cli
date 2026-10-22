@@ -1,4 +1,5 @@
 import { App, GoogleAnalytics, PackageUpdate, ProjectConfig, Util } from "@igniteui/cli-core";
+import child_process from "child_process";
 import * as fs from "fs";
 import * as Module from "module";
 import * as os from "os";
@@ -43,7 +44,7 @@ describe("Unit - Update command", () => {
 		for (const method of ["log", "warn", "error"] as const) {
 			spyOn(Util, method).and.callFake((message: string) => { output.push(message); });
 		}
-		spyOn(Util, "execSync");
+		spyOn(child_process, "execSync");
 		spyOn(Util, "spawnSync").and.returnValue({ status: 128, stdout: "" } as any);
 		spyOn(GoogleAnalytics, "post");
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "webcomponents" } } as any);
@@ -125,7 +126,7 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain("Only the root package.json is updated");
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 		});
 
 		it("reports a project without Ignite UI packages", async () => {
@@ -135,7 +136,7 @@ describe("Unit - Update command", () => {
 			await run();
 
 			expect(log()).toContain("No Ignite UI packages found in package.json.");
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -148,7 +149,7 @@ describe("Unit - Update command", () => {
 
 			expect(log()).toContain("package.json changed after the update plan was made");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
@@ -193,7 +194,38 @@ describe("Unit - Update command", () => {
 
 			expect(log()).toContain("Already up to date.");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
+		});
+
+		it("reports a package held back by the requirements of other packages instead of calling it up to date", async () => {
+			project();
+			const original = read("package.json");
+			plan(
+				{ baseline: "6.1.0", target: "6.1.0", newRange: undefined, newest: "6.2.0" },
+				{ name: "igniteui-grid-lite", baseline: "0.11.0", target: "0.11.0", newRange: undefined }
+			);
+
+			await run();
+
+			expect(output).toContain("Up to date: igniteui-grid-lite 0.11.0");
+			expect(output).toContain("Held back by the version requirements between Ignite UI packages: igniteui-webcomponents 6.1.0 (6.2.0 available)");
+			expect(log()).toContain("Nothing to update.");
+			expect(log()).not.toContain("Already up to date.");
+			expect(read("package.json")).toBe(original);
+			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).not.toBe(1);
+		});
+
+		it("lists a package updated below the newest version of its line among the updates and as held back", async () => {
+			project();
+			plan({ newest: "6.2.0" });
+
+			await run({ dryRun: true });
+
+			expect(output).toContain("  igniteui-webcomponents  not installed -> 6.1.0  (~6.0.0 -> ~6.1.0)");
+			expect(output).toContain("Held back by the version requirements between Ignite UI packages: igniteui-webcomponents 6.1.0 (6.2.0 available)");
+			expect(log()).not.toContain("Up to date");
+			expect(log()).toContain("Dry run: no files were changed.");
 		});
 
 		it("warns about a nested copy without blocking when up to date", async () => {
@@ -217,7 +249,7 @@ describe("Unit - Update command", () => {
 
 			expect(log()).toContain("Conflict in igniteui-grid-lite: no version in \"^0.11.0\" satisfies ~0.12.0");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 	});
@@ -243,7 +275,7 @@ describe("Unit - Update command", () => {
 				await run({ force: true });
 
 				expect(getPlan).toHaveBeenCalledOnceWith({ force: true, verbose: false });
-				expect(Util.execSync).toHaveBeenCalledOnceWith(forcedCommand, installOptions());
+				expect(child_process.execSync).toHaveBeenCalledOnceWith(forcedCommand, installOptions());
 				expect(process.exitCode).toBe(0);
 			});
 
@@ -251,11 +283,11 @@ describe("Unit - Update command", () => {
 				project(packageManager ? { packageManager } : {}, lockfiles);
 				plan();
 				let installedFrom: string;
-				(Util.execSync as jasmine.Spy).and.callFake(() => { installedFrom = read("package.json"); });
+				(child_process.execSync as jasmine.Spy).and.callFake(() => { installedFrom = read("package.json"); });
 
 				await run();
 
-				expect(Util.execSync).toHaveBeenCalledOnceWith(installCommand, installOptions());
+				expect(child_process.execSync).toHaveBeenCalledOnceWith(installCommand, installOptions());
 				expect(installedFrom).toContain(`"${WC}": "~6.1.0"`);
 				expect(log()).toContain("Updated 1 package(s). Next: run your build and tests.");
 				expect(process.exitCode).not.toBe(1);
@@ -266,7 +298,7 @@ describe("Unit - Update command", () => {
 			project();
 			plan();
 			let exitCodeDuringInstall: typeof process.exitCode;
-			(Util.execSync as jasmine.Spy).and.callFake(() => { exitCodeDuringInstall = process.exitCode; });
+			(child_process.execSync as jasmine.Spy).and.callFake(() => { exitCodeDuringInstall = process.exitCode; });
 
 			await run();
 
@@ -281,7 +313,7 @@ describe("Unit - Update command", () => {
 
 			await run();
 
-			expect((Util.execSync as jasmine.Spy).calls.mostRecent().args[1].env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe("false");
+			expect((child_process.execSync as jasmine.Spy).calls.mostRecent().args[1].env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe("false");
 			expect(process.env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe(immutableInstalls);
 		});
 
@@ -292,7 +324,7 @@ describe("Unit - Update command", () => {
 			await run({ skipInstall: true });
 
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(log()).toContain(`Run "yarn install" to install them.`);
 		});
 
@@ -305,14 +337,14 @@ describe("Unit - Update command", () => {
 
 			expect(log()).toContain("Lockfiles of several package managers found (npm, yarn)");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 
 			process.exitCode = originalExitCode;
 			await run({ skipInstall: true });
 
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(log()).toContain("Run your package manager's install command to update the lockfile.");
 			expect(process.exitCode).not.toBe(1);
 		});
@@ -322,7 +354,7 @@ describe("Unit - Update command", () => {
 			project({}, { "bun.lockb": lockb });
 			const original = read("package.json");
 			plan();
-			(Util.execSync as jasmine.Spy).and.callFake(() => {
+			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("bun.lockb", "changed");
 				fs.writeFileSync("bun.lock", "created");
 				throw new Error("Command failed: bun install");
@@ -343,7 +375,7 @@ describe("Unit - Update command", () => {
 			project({}, { "bun.lockb": lockb });
 			const original = read("package.json");
 			plan();
-			(Util.execSync as jasmine.Spy).and.callFake(() => {
+			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.mkdirSync("bun.lock");
 				throw new Error("Command failed: bun install");
 			});
@@ -359,14 +391,14 @@ describe("Unit - Update command", () => {
 		it("recommends npm ci after a failed npm install with a lockfile, and npm install without one", async () => {
 			project({}, { "package-lock.json": "{}" });
 			plan();
-			(Util.execSync as jasmine.Spy).and.throwError("Command failed: npm install");
+			(child_process.execSync as jasmine.Spy).and.throwError("Command failed: npm install");
 
 			await run();
 			expect(read("package-lock.json")).toBe("{}");
 			expect(log()).toContain(`run "npm ci" to resync it`);
 
 			fs.rmSync("package-lock.json");
-			(Util.execSync as jasmine.Spy).and.callFake(() => {
+			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("package-lock.json", "created");
 				throw new Error("Command failed: npm install");
 			});
@@ -374,6 +406,30 @@ describe("Unit - Update command", () => {
 			await run();
 			expect(fs.existsSync("package-lock.json")).toBe(false);
 			expect(log()).toContain(`"npm install" failed. Restored package.json; node_modules may be partially updated, run "npm install"`);
+		});
+
+		it("rolls back a failed install whatever its exit status, including the statuses above 128 npm exits with on system errors", async () => {
+			const exit = spyOn(process, "exit");
+			plan();
+			// a regular failure, then npm's ENOENT on POSIX (errno -2) and on Windows (errno -4058)
+			for (const status of [1, 254, 4294963238]) {
+				project({}, { "package-lock.json": "{}" });
+				const original = read("package.json");
+				output = [];
+				process.exitCode = originalExitCode;
+				(child_process.execSync as jasmine.Spy).and.callFake(() => {
+					fs.writeFileSync("package-lock.json", "changed");
+					throw Object.assign(new Error("Command failed: npm install"), { status });
+				});
+
+				await run();
+
+				expect(read("package.json")).withContext(`status ${status}`).toBe(original);
+				expect(read("package-lock.json")).withContext(`status ${status}`).toBe("{}");
+				expect(log()).withContext(`status ${status}`).toContain(`"npm install" failed. Restored package.json and the lockfile;`);
+				expect(process.exitCode).withContext(`status ${status}`).toBe(1);
+			}
+			expect(exit).not.toHaveBeenCalled();
 		});
 
 		it("warns about uncommitted changes without blocking the update", async () => {
@@ -386,7 +442,7 @@ describe("Unit - Update command", () => {
 			expect(Util.spawnSync).toHaveBeenCalledWith("git", jasmine.arrayContaining(["status", "--porcelain", "package.json", "bun.lockb"]),
 				{ encoding: "utf8" });
 			expect(log()).toContain("package.json or a lockfile has uncommitted changes");
-			expect(Util.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
+			expect(child_process.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
 		});
 
 		it("suggests ig upgrade-packages for trial packages", async () => {
@@ -427,7 +483,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("--force overrides the version requirements of 2 Ignite UI package(s); " +
 				"the updated packages may not work together. Run your build and tests.");
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(Util.execSync).toHaveBeenCalledOnceWith("npm install --force", installOptions());
+			expect(child_process.execSync).toHaveBeenCalledOnceWith("npm install --force", installOptions());
 			expect(Util.log).not.toHaveBeenCalledWith(jasmine.any(String), "gray");
 			expect(process.exitCode).toBe(0);
 		});
@@ -444,7 +500,7 @@ describe("Unit - Update command", () => {
 			expect(log()).not.toContain("Already up to date");
 			expect(log()).not.toContain("--force overrides");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -484,7 +540,7 @@ describe("Unit - Update command", () => {
 				expect(output.filter(line => line.startsWith("Would run"))).toEqual(installLine ? [installLine] : []);
 				expect(log()).toContain("Dry run: no files were changed.");
 				expect(read("package.json")).toBe(original);
-				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(child_process.execSync).not.toHaveBeenCalled();
 				expect(Util.spawnSync).not.toHaveBeenCalled();
 				expect(process.exitCode).not.toBe(1);
 			});
@@ -505,7 +561,7 @@ describe("Unit - Update command", () => {
 
 				expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
 				expect(output).toContain(`Updated 1 package(s) in package.json. ${hint}`);
-				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(child_process.execSync).not.toHaveBeenCalled();
 			});
 		}
 
@@ -524,7 +580,7 @@ describe("Unit - Update command", () => {
 
 				expect(output.includes(forceHint)).toBe(hinted);
 				expect(read("package.json")).toBe(original);
-				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(child_process.execSync).not.toHaveBeenCalled();
 				expect(process.exitCode).toBe(1);
 			});
 		}
@@ -542,7 +598,7 @@ describe("Unit - Update command", () => {
 			expect(log()).not.toContain(forceHint);
 			expect(log()).not.toContain("--force overrides");
 			expect(read("package.json")).toBe(original);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
@@ -550,7 +606,7 @@ describe("Unit - Update command", () => {
 			project({}, { "package-lock.json": "{}" });
 			const original = read("package.json");
 			plan({ forced: overridden });
-			(Util.execSync as jasmine.Spy).and.callFake(() => {
+			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("package-lock.json", "changed");
 				throw new Error("Command failed: npm install --force");
 			});
@@ -576,7 +632,7 @@ describe("Unit - Update command", () => {
 			expect(Util.spawnSync).not.toHaveBeenCalled();
 			expect(log()).not.toContain("package.json or a lockfile has uncommitted changes");
 			expect(output).toContain("Uncommitted changes not checked (--allow-dirty).");
-			expect(Util.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
+			expect(child_process.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
 			expect(process.exitCode).toBe(0);
 		});
 
@@ -588,7 +644,7 @@ describe("Unit - Update command", () => {
 				{ "package-lock.json": "{}", ".npmrc": `//registry.example.com/:_authToken=${token}\n` });
 			const getPlan = plan();
 			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: " M package.json\n?? package-lock.json\n" });
-			(Util.execSync as jasmine.Spy).and.callFake(() => {
+			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("npm-shrinkwrap.json", "created");
 				throw new Error("Command failed: npm install");
 			});
@@ -682,7 +738,7 @@ describe("Unit - Update command", () => {
 			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
 				[ngBin(), "update", "igniteui-angular", "igniteui-cli", "@igniteui/angular-schematics"], { stdio: "inherit" });
 			expect(getPlan).not.toHaveBeenCalled();
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(0);
 		});
 
@@ -816,7 +872,7 @@ describe("Unit - Update command", () => {
 				expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
 					[ngBin(), "update", "igniteui-angular", "igniteui-cli", ...options], { stdio: "inherit" });
 				expect(getPlan).not.toHaveBeenCalled();
-				expect(Util.execSync).not.toHaveBeenCalled();
+				expect(child_process.execSync).not.toHaveBeenCalled();
 				expect(process.exitCode).toBe(0);
 			});
 		}

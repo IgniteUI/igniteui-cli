@@ -351,6 +351,63 @@ describe("Unit - version update", () => {
 				]);
 			});
 
+			it("writes a range excluding the newer versions the lookahead rejected for their dependencies, also at the baseline (real React 19.x / WC history)", () => {
+				const wcRanges: Record<string, string> = {
+					"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
+				};
+				publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
+				publish(NPM_WEBCOMPONENTS, ["6.3.0", "6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"], "7.4.1");
+
+				// updated to x19.4.0, or held at 19.4.0 as the installed or the declared minimum version
+				for (const [react, installed] of [
+					["^19.3.0", {}], ["^19.4.0", { [NPM_REACT]: "19.4.0", [NPM_WEBCOMPONENTS]: "6.3.6" }], ["^19.4.0", {}]
+				] as [string, Record<string, string>][]) {
+					mockProject({ dependencies: { [NPM_REACT]: react, [NPM_WEBCOMPONENTS]: "^6.3.0" } }, installed);
+
+					expect(summary(getUpdatePlan())).withContext(`${react} ${JSON.stringify(installed)}`).toEqual([
+						[NPM_REACT, "19.4.0", "~19.4.0", undefined],
+						[NPM_WEBCOMPONENTS, "6.3.6", "~6.3.6", undefined]
+					]);
+				}
+			});
+
+			it("writes a range excluding the newer versions the lookahead rejected for their peers, also at the baseline (real React 19.x / grid lite history)", () => {
+				publish(NPM_REACT, ["19.8.0", "19.8.1", "19.9.0"], "19.9.0",
+					version => ({ peerDependencies: { [NPM_GRID_LITE]: version === "19.9.0" ? "~0.11.0" : "~0.9.0" } }));
+				publish(NPM_GRID_LITE, ["0.9.0", "0.11.0"], "0.11.0");
+
+				// updated to 19.8.1, or held at 19.8.1 as the installed or the declared minimum version
+				for (const [react, installed] of [
+					["^19.8.0", {}], ["^19.8.0", { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.9.0" }], ["^19.8.1", {}]
+				] as [string, Record<string, string>][]) {
+					mockProject({ dependencies: { [NPM_REACT]: react, [NPM_GRID_LITE]: "~0.9.0" } }, installed);
+
+					expect(summary(getUpdatePlan())).withContext(`${react} ${JSON.stringify(installed)}`).toEqual([
+						[NPM_REACT, "19.8.1", "~19.8.1", undefined],
+						[NPM_GRID_LITE, "0.9.0", undefined, undefined]
+					]);
+				}
+			});
+
+			it("records the newest version in the line only for packages held back below it (real React 19.x / grid lite history)", () => {
+				publish(NPM_REACT, ["19.8.0", "19.8.1", "19.9.0"], "19.9.0",
+					version => ({ peerDependencies: { [NPM_GRID_LITE]: version === "19.9.0" ? "~0.11.0" : "~0.9.0" } }));
+				publish(NPM_GRID_LITE, ["0.9.0", "0.11.0"], "0.11.0");
+				const plan = () => getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.newest]);
+
+				// held at the installed version
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.1", [NPM_GRID_LITE]: "~0.9.0" } }, { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.9.0" });
+				expect(plan()).toEqual([[NPM_REACT, "19.8.1", undefined, "19.9.0"], [NPM_GRID_LITE, "0.9.0", undefined, undefined]]);
+
+				// updated, but still held below the newest version
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_GRID_LITE]: "~0.9.0" } });
+				expect(plan()).toEqual([[NPM_REACT, "19.8.1", "~19.8.1", "19.9.0"], [NPM_GRID_LITE, "0.9.0", undefined, undefined]]);
+
+				// not held back once grid lite is on the minor 19.9.0 requires
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.1", [NPM_GRID_LITE]: "~0.11.0" } }, { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.11.0" });
+				expect(plan()).toEqual([[NPM_REACT, "19.9.0", "~19.9.0", undefined], [NPM_GRID_LITE, "0.11.0", undefined, undefined]]);
+			});
+
 			it("updates past a dependency range no version in the line meets, reporting the nested copy instead of a conflict (real Dock Manager case)", () => {
 				publish(NPM_REACT_DOCK_MANAGER, ["19.8.1", "19.9.0"], "19.9.0",
 					version => ({ dependencies: { [NPM_DOCK_MANAGER]: version === "19.9.0" ? "~2.2.1" : "~2.1.2" } }));
