@@ -241,7 +241,7 @@ try {
 
 	console.log(`Running ng new with @angular/cli@${angularVersion} in ${tmp}`);
 	// zone.js stays until the templates are verified zoneless
-	ng(`new ${NAME} --style=scss --routing --ssr=false --zoneless=false --ai-config=none --skip-install --skip-git`, tmp);
+	ng(`new ${NAME} --style=scss --routing --ssr=false --zoneless=false --ai-config=none --package-manager=npm --skip-install --skip-git`, tmp);
 	const ngNewPackage = JSON.parse(read("package.json"));
 	// angular-eslint majors follow Angular's; its ng-add writes the newest release of that major
 	const angularMajor = ngNewPackage.dependencies["@angular/core"].match(/\d+/)[0];
