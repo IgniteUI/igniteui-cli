@@ -19,6 +19,7 @@ describe("Unit - Update command", () => {
 		for (const file of Object.keys(files)) {
 			fs.writeFileSync(file, files[file]);
 		}
+		return read("package.json");
 	}
 
 	function plan(...entries: Partial<PackageUpdate>[]) {
@@ -102,8 +103,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("prints updates, deprecations, Node engine mismatches, up-to-date, skipped packages and newer majors in a dry run", async () => {
-			project({ workspaces: ["packages/*"] });
-			const original = read("package.json");
+			const original = project({ workspaces: ["packages/*"] });
 			plan(
 				{ manifest: { version: "6.1.0", deprecated: "use 6.1.1", engines: { node: ">=999" } }, nextMajor: "7.4.1" },
 				{ name: "igniteui-cli", section: "devDependencies", declared: "~15.7.0", installed: "15.7.0", baseline: "15.7.0",
@@ -141,8 +141,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("doesn't install when package.json can't be updated as planned", async () => {
-			project({ dependencies: { [WC]: "~5.0.0" } });
-			const original = read("package.json");
+			const original = project({ dependencies: { [WC]: "~5.0.0" } });
 			plan();
 
 			await run();
@@ -173,8 +172,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("only warns about several lockfiles in a dry run", async () => {
-			project({}, { "yarn.lock": "", "bun.lock": "" });
-			const original = read("package.json");
+			const original = project({}, { "yarn.lock": "", "bun.lock": "" });
 			plan();
 
 			await run({ dryRun: true });
@@ -186,8 +184,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("changes nothing when up to date", async () => {
-			project();
-			const original = read("package.json");
+			const original = project();
 			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined });
 
 			await run();
@@ -198,8 +195,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("reports a package held back by the requirements of other packages instead of calling it up to date", async () => {
-			project();
-			const original = read("package.json");
+			const original = project();
 			plan(
 				{ baseline: "6.1.0", target: "6.1.0", newRange: undefined, newest: "6.2.0" },
 				{ name: "igniteui-grid-lite", baseline: "0.11.0", target: "0.11.0", newRange: undefined }
@@ -241,8 +237,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("blocks the update on conflicts", async () => {
-			project();
-			const original = read("package.json");
+			const original = project();
 			plan({}, { name: "igniteui-grid-lite", conflict: "no version in \"^0.11.0\" satisfies ~0.12.0", newRange: undefined });
 
 			await run();
@@ -329,8 +324,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("refuses to guess between several lockfiles, but updates package.json with --skip-install", async () => {
-			project({}, { "yarn.lock": "", "package-lock.json": "{}" });
-			const original = read("package.json");
+			const original = project({}, { "yarn.lock": "", "package-lock.json": "{}" });
 			plan();
 
 			await run();
@@ -351,8 +345,7 @@ describe("Unit - Update command", () => {
 
 		it("restores package.json and a binary bun.lockb byte for byte, and removes a lockfile created by the failed install", async () => {
 			const lockb = Buffer.from([0xff, 0x00, 0xfe, 0x80]);
-			project({}, { "bun.lockb": lockb });
-			const original = read("package.json");
+			const original = project({}, { "bun.lockb": lockb });
 			plan();
 			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("bun.lockb", "changed");
@@ -372,8 +365,7 @@ describe("Unit - Update command", () => {
 
 		it("names the files it couldn't restore, after restoring the others and reporting the failed install", async () => {
 			const lockb = Buffer.from([0xff, 0x00]);
-			project({}, { "bun.lockb": lockb });
-			const original = read("package.json");
+			const original = project({}, { "bun.lockb": lockb });
 			plan();
 			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.mkdirSync("bun.lock");
@@ -411,10 +403,8 @@ describe("Unit - Update command", () => {
 		it("rolls back a failed install whatever its exit status, including the statuses above 128 npm exits with on system errors", async () => {
 			const exit = spyOn(process, "exit");
 			plan();
-			// a regular failure, then npm's ENOENT on POSIX (errno -2) and on Windows (errno -4058)
 			for (const status of [1, 254, 4294963238]) {
-				project({}, { "package-lock.json": "{}" });
-				const original = read("package.json");
+				const original = project({}, { "package-lock.json": "{}" });
 				output = [];
 				process.exitCode = originalExitCode;
 				(child_process.execSync as jasmine.Spy).and.callFake(() => {
@@ -489,8 +479,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("says the requirements remain unmet, without claiming an update, when --force changes nothing", async () => {
-			project();
-			const original = read("package.json");
+			const original = project();
 			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined, forced: "6.0.0 (required by igniteui-react@19.9.0)" });
 
 			await run({ force: true });
@@ -531,8 +520,7 @@ describe("Unit - Update command", () => {
 		];
 		for (const [name, flags, lockfiles, installLine] of previews) {
 			it(`changes nothing in a dry run, naming the install only when --force changes it (${name})`, async () => {
-				project({}, lockfiles);
-				const original = read("package.json");
+				const original = project({}, lockfiles);
 				plan();
 
 				await run({ ...flags, dryRun: true });
@@ -572,8 +560,7 @@ describe("Unit - Update command", () => {
 		];
 		for (const [name, conflicts, hinted] of blocked) {
 			it(`blocks on conflicts, suggesting --force only when it can override all of them (${name})`, async () => {
-				project();
-				const original = read("package.json");
+				const original = project();
 				plan({}, ...conflicts.map(entry => ({ ...conflict, ...entry })));
 
 				await run();
@@ -586,8 +573,7 @@ describe("Unit - Update command", () => {
 		}
 
 		it("still blocks on a conflict --force can't override", async () => {
-			project();
-			const original = read("package.json");
+			const original = project();
 			plan({ forced: overridden },
 				{ ...conflict, conflict: "--force can't override ranges that aren't valid versions: npm:other@1 (required by igniteui-react@19.9.0)" });
 
@@ -603,8 +589,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("rolls back a failed npm install --force", async () => {
-			project({}, { "package-lock.json": "{}" });
-			const original = read("package.json");
+			const original = project({}, { "package-lock.json": "{}" });
 			plan({ forced: overridden });
 			(child_process.execSync as jasmine.Spy).and.callFake(() => {
 				fs.writeFileSync("package-lock.json", "changed");

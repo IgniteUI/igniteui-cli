@@ -98,7 +98,6 @@ describe("Unit - version update", () => {
 
 			expect(react).toEqual(jasmine.objectContaining({ installed: "19.5.2", baseline: "19.6.0" }));
 			expect(gridLite).toEqual(jasmine.objectContaining({ installed: "0.11.4", baseline: "0.11.4" }));
-			// plain ranges never match prereleases
 			expect([webcomponents, grids].map(c => [c.baseline, c.skipped])).toEqual([
 				[undefined, 'installed 7.4.1 is outside the declared range "^6.5.0"; update package.json or reinstall before updating'],
 				[undefined, 'installed 19.7.0-beta.1 is outside the declared range "^19.6.0"; update package.json or reinstall before updating']
@@ -147,7 +146,6 @@ describe("Unit - version update", () => {
 				overrides: {
 					"igniteui-webcomponents@7": "7.4.1",
 					"@infragistics/igniteui-react-charts@19": "19.6.0",
-					// must not match igniteui-react-grids / igniteui-react
 					"@infragistics/igniteui-react-grids": "19.6.0",
 					"igniteui-react-core": "19.6.0"
 				},
@@ -192,6 +190,15 @@ describe("Unit - version update", () => {
 			registry[name] = { versions, latest, manifest };
 		}
 
+		const REACT_WC_RANGES: Record<string, string> = {
+			"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
+		};
+
+		function publishReactWcHistory(reactVersions: string[], wcVersions: string[]) {
+			publish(NPM_REACT, reactVersions, "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: REACT_WC_RANGES[version] } }));
+			publish(NPM_WEBCOMPONENTS, wcVersions, "7.4.1");
+		}
+
 		beforeEach(() => {
 			registry = {};
 			(Util.execSync as jasmine.Spy).and.callFake((command: string) => {
@@ -207,7 +214,6 @@ describe("Unit - version update", () => {
 				if (!range) {
 					return JSON.stringify({ versions, "dist-tags": { latest } });
 				}
-				// like npm: one entry per matching version, a bare version string when it has none of the requested fields
 				const matches = ([] as string[]).concat(versions).filter(v => semver.satisfies(v, range)).map(version => {
 					const fields = typeof manifest === "function" ? manifest(version) : manifest;
 					return fields ? { version, ...fields } : version;
@@ -328,7 +334,6 @@ describe("Unit - version update", () => {
 				mockProject({ dependencies: { "igniteui-react-charts": "~19.5.2", "igniteui-react-core": "~19.5.2" } });
 				expect(summary(getUpdatePlan())).toEqual([charts, core]);
 
-				// core first: it takes 19.7.0 in the first pass and moves back to 19.6.0 once charts has a target
 				mockProject({ dependencies: { "igniteui-react-core": "~19.5.2", "igniteui-react-charts": "~19.5.2" } });
 				expect(summary(getUpdatePlan())).toEqual([core, charts]);
 			});
@@ -338,12 +343,7 @@ describe("Unit - version update", () => {
 					{ dependencies: { "igniteui-react": "~19.3.0", "igniteui-webcomponents": "^6.3.0" } },
 					{ "igniteui-react": "19.3.0", "igniteui-webcomponents": "6.3.3" }
 				);
-				const wcRanges: Record<string, string> = {
-					"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
-				};
-				publish("igniteui-react", Object.keys(wcRanges), "19.9.0",
-					version => ({ dependencies: { "igniteui-webcomponents": wcRanges[version] } }));
-				publish("igniteui-webcomponents", ["6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"], "7.4.1");
+				publishReactWcHistory(Object.keys(REACT_WC_RANGES), ["6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"]);
 
 				expect(summary(getUpdatePlan())).toEqual([
 					["igniteui-react", "19.4.0", "~19.4.0", undefined],
@@ -352,13 +352,8 @@ describe("Unit - version update", () => {
 			});
 
 			it("writes a range excluding the newer versions the lookahead rejected for their dependencies, also at the baseline (real React 19.x / WC history)", () => {
-				const wcRanges: Record<string, string> = {
-					"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
-				};
-				publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
-				publish(NPM_WEBCOMPONENTS, ["6.3.0", "6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"], "7.4.1");
+				publishReactWcHistory(Object.keys(REACT_WC_RANGES), ["6.3.0", "6.3.3", "6.3.6", "6.5.1", "7.0.0", "7.4.1"]);
 
-				// updated to x19.4.0, or held at 19.4.0 as the installed or the declared minimum version
 				for (const [react, installed] of [
 					["^19.3.0", {}], ["^19.4.0", { [NPM_REACT]: "19.4.0", [NPM_WEBCOMPONENTS]: "6.3.6" }], ["^19.4.0", {}]
 				] as [string, Record<string, string>][]) {
@@ -376,7 +371,6 @@ describe("Unit - version update", () => {
 					version => ({ peerDependencies: { [NPM_GRID_LITE]: version === "19.9.0" ? "~0.11.0" : "~0.9.0" } }));
 				publish(NPM_GRID_LITE, ["0.9.0", "0.11.0"], "0.11.0");
 
-				// updated to 19.8.1, or held at 19.8.1 as the installed or the declared minimum version
 				for (const [react, installed] of [
 					["^19.8.0", {}], ["^19.8.0", { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.9.0" }], ["^19.8.1", {}]
 				] as [string, Record<string, string>][]) {
@@ -395,15 +389,12 @@ describe("Unit - version update", () => {
 				publish(NPM_GRID_LITE, ["0.9.0", "0.11.0"], "0.11.0");
 				const plan = () => getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.newest]);
 
-				// held at the installed version
 				mockProject({ dependencies: { [NPM_REACT]: "~19.8.1", [NPM_GRID_LITE]: "~0.9.0" } }, { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.9.0" });
 				expect(plan()).toEqual([[NPM_REACT, "19.8.1", undefined, "19.9.0"], [NPM_GRID_LITE, "0.9.0", undefined, undefined]]);
 
-				// updated, but still held below the newest version
 				mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_GRID_LITE]: "~0.9.0" } });
 				expect(plan()).toEqual([[NPM_REACT, "19.8.1", "~19.8.1", "19.9.0"], [NPM_GRID_LITE, "0.9.0", undefined, undefined]]);
 
-				// not held back once grid lite is on the minor 19.9.0 requires
 				mockProject({ dependencies: { [NPM_REACT]: "~19.8.1", [NPM_GRID_LITE]: "~0.11.0" } }, { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.11.0" });
 				expect(plan()).toEqual([[NPM_REACT, "19.9.0", "~19.9.0", undefined], [NPM_GRID_LITE, "0.11.0", undefined, undefined]]);
 			});
@@ -422,7 +413,6 @@ describe("Unit - version update", () => {
 					[NPM_REACT_DOCK_MANAGER, "19.9.0", "19.9.0", undefined, undefined, undefined]
 				]);
 
-				// already updated: up to date, nothing blocked
 				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "^1.17.0", [NPM_REACT_DOCK_MANAGER]: "19.9.0" } },
 					{ [NPM_DOCK_MANAGER]: "1.19.0", [NPM_REACT_DOCK_MANAGER]: "19.9.0" });
 				expect(plan()).toEqual([
@@ -437,7 +427,6 @@ describe("Unit - version update", () => {
 				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.3.2", "7.4.1", "7.5.0"], "7.5.0");
 				const plan = () => getUpdatePlan().map(c => [c.name, c.target, c.newRange, c.conflict, c.nested]);
 
-				// whether dock manager requires WC as a dependency or as a peer
 				for (const field of ["dependencies", "peerDependencies"]) {
 					mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.3.0" } },
 						{ [NPM_REACT]: "19.8.0", [NPM_DOCK_MANAGER]: "1.17.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
@@ -509,7 +498,6 @@ describe("Unit - version update", () => {
 			});
 
 			it("reports a conflict instead of downgrading, clearing the stale target, and for unsupported constraint ranges", () => {
-				// core first, so it gets a target in the first pass that charts later rules out
 				mockProject(
 					{ dependencies: { "igniteui-react-core": "~19.7.0", "igniteui-react-charts": "~19.6.0", "igniteui-webcomponents": "^7.2.0" } },
 					{ "igniteui-react-core": "19.7.0" }
@@ -649,7 +637,6 @@ describe("Unit - version update", () => {
 					[NPM_WEBCOMPONENTS, "7.4.1", undefined, undefined, undefined],
 					[NPM_GRID_LITE, "0.11.4", "^0.11.4", undefined, undefined]
 				]);
-				// the WC target meets "~7.4.1", but its declared "^7.2.0" doesn't fit inside it
 				expect(summary(getUpdatePlan({ force: true }))).toEqual([
 					[core, "19.7.1", "~19.7.1", undefined, pinnedByCharts],
 					[charts, "19.6.0", undefined, undefined, undefined],
@@ -669,7 +656,6 @@ describe("Unit - version update", () => {
 
 				const [blockedCore, , blockedWC] = getUpdatePlan();
 
-				// --force would still stop at the unsupported range, so it isn't suggested
 				expect([blockedCore.overridable, blockedWC.overridable]).toEqual([false, false]);
 				expect(summary(getUpdatePlan({ force: true }))).toEqual([
 					[core, "19.7.0", undefined, undefined, pinnedByCharts],
@@ -678,7 +664,6 @@ describe("Unit - version update", () => {
 						"npm:other@1 (required by igniteui-react-charts@19.6.0)", undefined]
 				]);
 
-				// the lookahead keeps core on 19.7.0, so only the forced 19.7.1 puts the unsupported range on grid lite
 				mockProject({ dependencies: { [core]: "~19.7.0", [charts]: "~19.6.0", [NPM_GRID_LITE]: "~0.11.0" } }, { [core]: "19.7.0" });
 				publish(charts, ["19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
 				publish(core, ["19.7.0", "19.7.1"], "19.7.1", version => version === "19.7.1" ? { peerDependencies: { [NPM_GRID_LITE]: "workspace:*" } } : {});
@@ -705,7 +690,6 @@ describe("Unit - version update", () => {
 						{ [NPM_WEBCOMPONENTS]: installed });
 
 					expect(entry(getUpdatePlan(), NPM_WEBCOMPONENTS).conflict).withContext(installed).toBeDefined();
-					// "^7.4.3" would let npm install 7.5 later, breaking the "~7.4.1" that 7.4.3 meets
 					expect(summary([entry(getUpdatePlan({ force: true }), NPM_WEBCOMPONENTS)])).withContext(installed).toEqual([
 						[NPM_WEBCOMPONENTS, "7.4.3", "~7.4.3", undefined, "7.4.0 (required by igniteui-dockmanager@1.17.0)"]
 					]);
@@ -728,7 +712,6 @@ describe("Unit - version update", () => {
 				publish(core, ["19.6.0", "19.7.0"], "19.7.0");
 				publish(NPM_REACT, ["19.6.0", "19.9.0"], "19.9.0");
 
-				// core is already the newest in its line, so --force would change nothing
 				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0" } }, { [core]: "19.7.0" });
 				const blocked = entry(getUpdatePlan(), core);
 
@@ -739,7 +722,6 @@ describe("Unit - version update", () => {
 					[core, "19.7.0", undefined, undefined, pinnedByCharts]
 				]);
 
-				// the conflict also blocks an unrelated update, which --force would apply
 				mockProject({ dependencies: { [charts]: "~19.6.0", [core]: "~19.7.0", [NPM_REACT]: "~19.6.0" } }, { [core]: "19.7.0" });
 
 				expect(entry(getUpdatePlan(), core).overridable).toBe(true);
@@ -777,9 +759,7 @@ describe("Unit - version update", () => {
 				);
 				publish(charts, ["19.5.2", "19.6.0"], "19.6.0", { peerDependencies: { [core]: "19.6.0" } });
 				publish(core, ["19.5.2", "19.6.0", "19.7.0"], "19.7.0");
-				const wcRanges: Record<string, string> = { "19.3.0": "~6.3.3", "19.4.0": "~6.3.6", "19.9.0": "~7.4.1" };
-				publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
-				publish(NPM_WEBCOMPONENTS, ["6.3.3", "6.3.6", "7.4.1"], "7.4.1");
+				publishReactWcHistory(["19.3.0", "19.4.0", "19.9.0"], ["6.3.3", "6.3.6", "7.4.1"]);
 
 				const plan = getUpdatePlan();
 
@@ -843,9 +823,7 @@ describe("Unit - version update", () => {
 			spyOn(Util, "log");
 			mockProject({ dependencies: { [NPM_REACT]: "~19.3.0", [NPM_WEBCOMPONENTS]: "^6.3.0" } },
 				{ [NPM_REACT]: "19.3.0", [NPM_WEBCOMPONENTS]: "6.3.3" });
-			const wcRanges: Record<string, string> = { "19.3.0": "~6.3.3", "19.4.0": "~6.3.6", "19.9.0": "~7.4.1" };
-			publish(NPM_REACT, Object.keys(wcRanges), "19.9.0", version => ({ dependencies: { [NPM_WEBCOMPONENTS]: wcRanges[version] } }));
-			publish(NPM_WEBCOMPONENTS, ["6.3.3", "6.3.6", "7.4.1"], "7.4.1");
+			publishReactWcHistory(["19.3.0", "19.4.0", "19.9.0"], ["6.3.3", "6.3.6", "7.4.1"]);
 
 			getUpdatePlan({ verbose: true });
 

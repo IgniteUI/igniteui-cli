@@ -12,12 +12,11 @@ export interface PackageUpdate {
 	section: "dependencies" | "devDependencies";
 	/** Spec as written in package.json */
 	declared: string;
-	/** Version in node_modules */
 	installed?: string;
 	/** Version the update is computed from */
 	baseline?: string;
 	skipped?: string;
-	/** Newest version in `^baseline`; equals `baseline` when up to date */
+	/** Version to update to, within `^baseline`; equals `baseline` when up to date */
 	target?: string;
 	/** Registry metadata of `target` */
 	manifest?: PackageManifest;
@@ -46,12 +45,9 @@ export interface PackageManifest {
 }
 
 /** Trial <-> licensed name of the same package */
-const COUNTERPART = new Map<string, string>();
-for (const trial of Object.keys(UPGRADEABLE_PACKAGES) as (keyof typeof UPGRADEABLE_PACKAGES)[]) {
-	if (trial !== NPM_ANGULAR) {
-		COUNTERPART.set(trial, UPGRADEABLE_PACKAGES[trial]).set(UPGRADEABLE_PACKAGES[trial], trial);
-	}
-}
+const COUNTERPART = new Map(Object.entries(UPGRADEABLE_PACKAGES)
+	.filter(([trial]) => trial !== NPM_ANGULAR)
+	.flatMap(([trial, licensed]) => [[trial, licensed], [licensed, trial]] as const));
 
 /** Packages `ig update` may change; Angular goes through `ng update` instead. */
 export const UPDATABLE_PACKAGES: ReadonlySet<string> = new Set([
@@ -68,7 +64,6 @@ const SIMPLE_SPEC = /^[\^~]?\d+(\.(\d+|[xX*])){0,2}(-[0-9A-Za-z.-]+)?$/;
 /** Package an overrides/resolutions key targets: `parent/@scope/pkg@^1.0.0` -> `@scope/pkg` */
 const OVERRIDE_TARGET = /(?:^|\/)((?:@[^/@]+\/)?[^/@]+)(?:@[^/]*)?$/;
 
-/** @throws when `package.json` is missing or invalid */
 export function getUpdateCandidates(): PackageUpdate[] {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	if (!fs.fileExists("./package.json")) {
@@ -93,8 +88,7 @@ export function getUpdateCandidates(): PackageUpdate[] {
 			const manifestPath = `node_modules/${name}/package.json`;
 			const installed: string = fs.fileExists(manifestPath) ? JSON.parse(fs.readFile(manifestPath)).version : undefined;
 			const candidate: PackageUpdate = { name, section, declared, installed };
-			const range = SIMPLE_SPEC.test(declared) && semver.validRange(declared);
-			const minVersion = range && semver.minVersion(range);
+			const minVersion = SIMPLE_SPEC.test(declared) && semver.validRange(declared) && semver.minVersion(declared);
 
 			if (!minVersion) {
 				candidate.skipped = `unsupported spec "${declared}" (only exact, ^, ~ and x-range versions are supported)`;
@@ -183,10 +177,7 @@ export function getUpdatePlan({ force = false, verbose = false } = {}): PackageU
 	return plan;
 }
 
-/**
- * Writes each `newRange` to package.json as a value-only edit, keeping its formatting.
- * @throws when the plan has conflicts or can't be applied as planned; nothing is written then
- */
+/** Writes each `newRange` as a value-only edit that keeps the formatting; writes nothing when it throws */
 export function applyUpdatePlan(plan: PackageUpdate[]): void {
 	const conflicts = plan.filter(c => c.conflict).map(c => c.name);
 	if (conflicts.length) {
@@ -282,11 +273,7 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 	}
 }
 
-/**
- * Moves each conflicted package to the newest version in its line, then records on every package the peer ranges that its
- * target or written range doesn't meet; unmet dependency ranges are reported as `nested` instead.
- * Ranges that aren't valid semver can't be overridden and keep blocking.
- */
+/** Only peer ranges are overridden; unmet dependency ranges are reported as `nested` instead */
 function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>): void {
 	const conflicted = updates.filter(u => u.conflict);
 	for (const update of conflicted) {
@@ -323,7 +310,6 @@ function rangeToWrite(update: PackageUpdate, target: string, constraints: { rang
 	return [rangeOperator(update.declared) + target, `~${target}`, target].find(fitsAll);
 }
 
-/** Whether the target and the range npm may later install from both meet `range` */
 function meets(update: PackageUpdate, range: string): boolean {
 	return semver.satisfies(update.target!, range) && fits(update.newRange ?? update.declared, range);
 }
@@ -337,15 +323,9 @@ function formatConstraints(constraints: { range: string; from: string }[]): stri
 	return constraints.map(c => `${c.range} (required by ${c.from})`).join(", ");
 }
 
-/** Ranges the other targets put on `update` */
 function constraintsOn(update: PackageUpdate, updates: PackageUpdate[]): { range: string; peer: boolean; from: string }[] {
-	const constraints = [];
-	for (const other of updates) {
-		for (const { range, peer } of requirements(other.manifest, update.name)) {
-			constraints.push({ range, peer, from: `${other.name}@${other.target}` });
-		}
-	}
-	return constraints;
+	return updates.flatMap(other => requirements(other.manifest, update.name)
+		.map(({ range, peer }) => ({ range, peer, from: `${other.name}@${other.target}` })));
 }
 
 /** Ranges `manifest` depends on for `name`, by trial or licensed name, each flagged as a peer or not */
@@ -362,7 +342,6 @@ function rangeOperator(declared: string): string {
 	return ["^", "~"].find(op => semver.validRange(op + min) === semver.validRange(declared)) ?? "";
 }
 
-/** `npm view "<spec>" <fields> --json`, with registry errors turned into actionable messages */
 function npmView(spec: string, fields: string, verbose: boolean) {
 	debug(verbose, `npm view "${spec}" ${fields}`);
 	try {

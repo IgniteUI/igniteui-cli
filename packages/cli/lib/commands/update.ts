@@ -9,11 +9,6 @@ import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
 
-const FRAMEWORK_NAMES: Record<string, string> = {
-	react: "React",
-	webcomponents: "Web Components"
-};
-
 const LOCKFILES: Record<string, string[]> = {
 	npm: ["package-lock.json", "npm-shrinkwrap.json"],
 	yarn: ["yarn.lock"],
@@ -72,9 +67,7 @@ const command: UpdateCommandType = {
 		const configured = ProjectConfig.getConfig().project?.framework;
 		const framework = (configured ?? detectFrameworkFromPackageJson())?.toLowerCase();
 		if (!framework) {
-			Util.error("No valid package.json found in the current directory.", "red");
-			process.exitCode = 1;
-			return;
+			return fail("No valid package.json found in the current directory.");
 		}
 
 		GoogleAnalytics.post({
@@ -94,7 +87,7 @@ const command: UpdateCommandType = {
 		switch (framework) {
 			case "react":
 			case "webcomponents":
-				updatePackages(FRAMEWORK_NAMES[framework], flags);
+				updatePackages(framework === "react" ? "React" : "Web Components", flags);
 				break;
 			case "angular":
 				updateAngular(flags);
@@ -110,9 +103,7 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 	try {
 		plan = getUpdatePlan({ force: flags.force, verbose: flags.verbose });
 	} catch (error) {
-		Util.error(error.message, "red");
-		process.exitCode = 1;
-		return;
+		return fail(error.message);
 	}
 	if (!plan.length) {
 		Util.log("No Ignite UI packages found in package.json.");
@@ -137,11 +128,10 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 
 	const conflicts = plan.filter(c => c.conflict);
 	if (conflicts.length) {
-		Util.error("Nothing was updated because of the conflicts above.", "red");
+		fail("Nothing was updated because of the conflicts above.");
 		if (conflicts.every(c => c.overridable)) {
 			Util.log("Rerun with --force to override these conflicts; the updated packages may then not work together.");
 		}
-		process.exitCode = 1;
 		return;
 	}
 	const forced = plan.filter(c => c.forced).length;
@@ -155,9 +145,7 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 		return;
 	}
 	if (!pm && !flags.skipInstall && !flags.dryRun) {
-		Util.error("Nothing was updated: unable to choose a package manager to install with.", "red");
-		process.exitCode = 1;
-		return;
+		return fail("Nothing was updated: unable to choose a package manager to install with.");
 	}
 	if (forced) {
 		Util.warn(`--force overrides the version requirements of ${forced} Ignite UI package(s); ` +
@@ -176,13 +164,12 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 	} else {
 		warnUncommittedChanges(flags.verbose);
 	}
-	const backup = flags.skipInstall ? undefined : readFiles(["package.json", ...LOCKFILES[pm]]);
+	const backup = flags.skipInstall ? undefined : new Map(["package.json", ...LOCKFILES[pm]]
+		.map(file => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined] as const));
 	try {
 		applyUpdatePlan(plan);
 	} catch (error) {
-		Util.error(error.message, "red");
-		process.exitCode = 1;
-		return;
+		return fail(error.message);
 	}
 
 	if (flags.skipInstall) {
@@ -201,14 +188,11 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 	}
 }
 
-/** Delegates to the project's own `ng update`, which resolves versions, installs and runs the packages' migrations */
 function updateAngular(flags: UpdateFlags): void {
 	if (flags.skipInstall) {
 		const message = "--skip-install is not supported for Angular projects: ng update always installs dependencies.";
 		if (!flags.dryRun) {
-			Util.error(message, "red");
-			process.exitCode = 1;
-			return;
+			return fail(message);
 		}
 		Util.warn(message, "yellow");
 	}
@@ -218,9 +202,7 @@ function updateAngular(flags: UpdateFlags): void {
 		const pkgJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
 		deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
 	} catch {
-		Util.error("No valid package.json found in the current directory.", "red");
-		process.exitCode = 1;
-		return;
+		return fail("No valid package.json found in the current directory.");
 	}
 
 	const igniteUI = [NPM_ANGULAR, FEED_ANGULAR].filter(name => name in deps);
@@ -229,14 +211,11 @@ function updateAngular(flags: UpdateFlags): void {
 		return;
 	}
 	if (igniteUI.length > 1) {
-		Util.error(`Both ${NPM_ANGULAR} and ${FEED_ANGULAR} are listed in package.json. Remove one of them and rerun ig update.`, "red");
-		process.exitCode = 1;
-		return;
+		return fail(`Both ${NPM_ANGULAR} and ${FEED_ANGULAR} are listed in package.json. Remove one of them and rerun ig update.`);
 	}
 
 	const options = Object.entries({ "--force": flags.force, "--allow-dirty": flags.allowDirty, "--verbose": flags.verbose })
 		.filter(([, enabled]) => enabled).map(([option]) => option);
-	// these also ship ng-update migrations, so they move in the same ng update call
 	const ngArgs = ["update", ...igniteUI, ...[NPM_CLI, "@igniteui/angular-schematics"].filter(name => name in deps), ...options];
 	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` +
 		"It updates these packages to their latest versions, including new majors, applies their migrations " +
@@ -253,10 +232,8 @@ function updateAngular(flags: UpdateFlags): void {
 	try {
 		ngBin = resolve.sync("@angular/cli/bin/ng", { basedir: process.cwd() });
 	} catch {
-		Util.error("Angular CLI (@angular/cli) not found in this project. " +
-			"Install dependencies first (for example, npm install) and rerun ig update.", "red");
-		process.exitCode = 1;
-		return;
+		return fail("Angular CLI (@angular/cli) not found in this project. " +
+			"Install dependencies first (for example, npm install) and rerun ig update.");
 	}
 
 	debug(flags.verbose, `Angular CLI: ${ngBin}`);
@@ -324,7 +301,6 @@ function printPlan(plan: PackageUpdate[], title: string): void {
 	}
 }
 
-/** The manager named in the `packageManager` field, else every manager with a lockfile, else npm */
 function detectPackageManagers(packageManager: unknown): string[] {
 	const named = typeof packageManager === "string" && /^(npm|yarn|pnpm|bun)(@|$)/.exec(packageManager)?.[1];
 	if (named) {
@@ -335,9 +311,7 @@ function detectPackageManagers(packageManager: unknown): string[] {
 }
 
 function warnUncommittedChanges(verbose: boolean): void {
-	const files = ["package.json", ...Object.values(LOCKFILES).flat()];
-	const result = Util.spawnSync("git", ["status", "--porcelain", "--", ...files], { encoding: "utf8" });
-	// a non-zero status means no git or no repository, so there is nothing to protect
+	const result = Util.spawnSync("git", ["status", "--porcelain", "--", "package.json", ...Object.values(LOCKFILES).flat()], { encoding: "utf8" });
 	if (result.status !== 0) {
 		debug(verbose, "Uncommitted changes not checked: no git repository, or git not found.");
 		return;
@@ -347,11 +321,6 @@ function warnUncommittedChanges(verbose: boolean): void {
 	if (changes) {
 		Util.warn("package.json or a lockfile has uncommitted changes. Commit them first to review or revert the update easily.", "yellow");
 	}
-}
-
-/** File contents as bytes (a binary bun.lockb must survive), or undefined for files that don't exist yet */
-function readFiles(files: string[]): Map<string, Buffer | undefined> {
-	return new Map(files.map((file): [string, Buffer | undefined] => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined]));
 }
 
 /** npm is the only manager that fails on peer conflicts by default; the others' --force refetches or rebuilds instead */
@@ -398,6 +367,11 @@ function install(pm: string, backup: Map<string, Buffer | undefined>, flags: Upd
 		Util.error(`"${installCommand}" failed. ${restored}; node_modules may be partially updated, run "${resync}" to resync it.`, "red");
 		return false;
 	}
+}
+
+function fail(message: string): void {
+	Util.error(message, "red");
+	process.exitCode = 1;
 }
 
 /** `--verbose` diagnostic; only values computed here, never environment, configuration or registry details */
