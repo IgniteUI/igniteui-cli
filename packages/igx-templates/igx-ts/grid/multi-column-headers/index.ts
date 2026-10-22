@@ -24,7 +24,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [{
-			choices: ["Sorting", "Filtering", "Resizing", "Paging", "Column Pinning", "Moving"],
+			choices: ["Sorting", "Filtering", "Resizing", "Paging", "Moving"],
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-grid",
@@ -49,10 +49,12 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 					case "Sorting":
 					case "Filtering":
 					case "Resizing":
-					case "Moving":
 						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
 						columnFeatures.push(text);
 						columnBoolFeatures.push(text);
+						break;
+					case "Moving":
+						gridFeatures.push(`[moving]="true"`);
 						break;
 					case "Row Selection":
 						const gridFeatureText = `rowSelection="multiple"`;

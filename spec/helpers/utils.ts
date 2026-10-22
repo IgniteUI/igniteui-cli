@@ -47,3 +47,14 @@ export function filesDiff(
 export function resetSpy(spy: any) {
 	(spy as jasmine.Spy).calls.reset();
 }
+
+/**
+ * Loads a fresh copy of a module, bypassing the require cache.
+ * Use for modules that export a stateful singleton, like template instances.
+ * @param modulePath Absolute path to the module
+ */
+export function requireFresh<T>(modulePath: string): T {
+	const resolved = require.resolve(modulePath);
+	delete require.cache[resolved];
+	return require(resolved);
+}
