@@ -28,11 +28,11 @@ export abstract class BaseTemplateManager {
 		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.name);
 	}
 	/**  Returns framework found by its name or undefined. */
-	public getFrameworkByName(name: string): Framework {
+	public getFrameworkByName(name: string): Framework | undefined {
 		return this.frameworks.find(s => s.name === name);
 	}
 	/**  Returns framework found by its ID or undefined. */
-	public getFrameworkById(id: string): Framework {
+	public getFrameworkById(id: string): Framework | undefined {
 		return this.frameworks.find(f => f.id === id);
 	}
 
@@ -42,7 +42,7 @@ export abstract class BaseTemplateManager {
 	 * @returns Returns projectLibrary names array
 	 */
 	public getProjectLibraryNames(frameworkId: string): string[] {
-		let projects = [];
+		let projects: string[] = [];
 		const framework = this.frameworks.find(f => f.id === frameworkId);
 		if (framework) {
 			projects = framework.projectLibraries.map(x => x.name);
@@ -56,8 +56,8 @@ export abstract class BaseTemplateManager {
 	 * @param name
 	 * @returns Returns matching projectLibrary or undefined
 	 */
-	public getProjectLibraryByName(framework: Framework, name: string): ProjectLibrary {
-		let projectLib: ProjectLibrary;
+	public getProjectLibraryByName(framework: Framework, name: string): ProjectLibrary | undefined {
+		let projectLib: ProjectLibrary | undefined;
 		if (name) {
 			projectLib = framework.projectLibraries.find(x => x.name === name);
 		}
@@ -68,9 +68,9 @@ export abstract class BaseTemplateManager {
 	 * Get a specific project library
 	 * @param frameworkId
 	 * @param projectType
-	 * @returns Returns projectLibrary, or null.
+	 * @returns Returns projectLibrary, undefined for an unknown project type, or null for an unknown framework.
 	 */
-	public getProjectLibrary(frameworkId: string, projectType?: string): ProjectLibrary {
+	public getProjectLibrary(frameworkId: string, projectType?: string): ProjectLibrary | null | undefined {
 		const framework = this.frameworks.find(f => f.id === frameworkId);
 		if (framework) {
 			if (projectType) {
@@ -101,7 +101,7 @@ export abstract class BaseTemplateManager {
 	 * @param filePath Path to a json config file representing a template
 	 * @returns null if no proper file is found
 	 */
-	protected abstract loadFromConfig(filePath: string): Template;
+	protected abstract loadFromConfig(filePath: string): Template | null;
 
 	/** Read config and load custom templates based on type */
 	private loadExternalTemplates() {

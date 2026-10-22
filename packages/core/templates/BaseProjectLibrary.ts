@@ -3,11 +3,11 @@ import { Component, ComponentGroup, ProjectLibrary, ProjectTemplate, Template } 
 import { Util } from "../util";
 
 export class BaseProjectLibrary implements ProjectLibrary {
-	public projectType: string;
-	public framework: string;
+	public projectType!: string;
+	public framework!: string;
 	//templates: Template[];
-	public name: string;
-	public themes: string[];
+	public name!: string;
+	public themes!: string[];
 
 	/** Implementation, not part of the interface */
 	public groupDescriptions = new Map<string, string>();
@@ -18,7 +18,6 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
 
-	private _templates: Template[];
 	public get templates(): Template[] {
 		let list: Template[] = [];
 		for (const component of this.components) {
@@ -40,7 +39,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	private _projects: ProjectTemplate[] = [];
 	public get projects(): ProjectTemplate[] {
 		if (!this._projects.length) {
-			this._projects = this.projectIds.map(x => this.getProject(x));
+			// projectIds only lists existing project folders, so getProject always resolves
+			this._projects = this.projectIds.map(x => this.getProject(x)!);
 		}
 		return this._projects;
 	}
@@ -100,10 +100,10 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	 */
 	constructor(private rootPath: string) { }
 
-	public getTemplateById(id: string): Template {
+	public getTemplateById(id: string): Template | undefined {
 		return this.templates.find(x => x.id === id);
 	}
-	public getTemplateByName(name: string): Template {
+	public getTemplateByName(name: string): Template | undefined {
 		return this.templates.find(x => x.name === name);
 	}
 
@@ -124,7 +124,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			if (template.listInComponentTemplates) {
 				const currentComponents = template.components.filter(x => this.components.find(f => f.name === x));
 				for (const currentComponent of currentComponents) {
-					this.components.find(f => f.name === currentComponent).templates.push(template);
+					this.components.find(f => f.name === currentComponent)!.templates.push(template);
 				}
 			}
 			if (template.listInCustomTemplates) {
@@ -133,7 +133,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		}
 	}
 
-	public getComponentByName(name: string): Component {
+	public getComponentByName(name: string): Component | undefined {
 		return this.components.find(x => x.name === name);
 	}
 
@@ -149,7 +149,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		}
 		return cTemplates;
 	}
-	public getCustomTemplateByName(name: string): Template {
+	public getCustomTemplateByName(name: string): Template | undefined {
 		return this.customTemplates.find((x, y, z) => x.name === name);
 	}
 
@@ -160,7 +160,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 				prev.push(current.group);
 			}
 			return prev;
-		}, []);
+		}, [] as string[]);
 		return [...this.groupDescriptions.keys()].filter(item => groups.includes(item));
 	}
 
@@ -194,7 +194,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	 * Get project template
 	 * @param id ID of the project template.
 	 */
-	public getProject(id: string): ProjectTemplate {
+	public getProject(id: string): ProjectTemplate | null {
 		if (this.hasProject(id)) {
 			const projModule = require(path.join(this.rootPath, this._projectsPath, id));
 			return projModule.default || projModule as ProjectTemplate;

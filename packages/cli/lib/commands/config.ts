@@ -66,7 +66,7 @@ const command: ConfigCommandType = {
 			Util.error("No configuration file found in this folder!", "red");
 			return;
 		}
-		const config = ProjectConfig.getConfig(argv.global);
+		const config: Config & { [key: string]: any } = ProjectConfig.getConfig(argv.global);
 
 		GoogleAnalytics.post({
 			t: "event",
@@ -78,8 +78,8 @@ const command: ConfigCommandType = {
 			cd12: !!argv.global
 		});
 
-		if (config[argv.property] !== undefined) {
-			Util.log(config[argv.property]);
+		if (config[argv.property!] !== undefined) {
+			Util.log(config[argv.property!]);
 		} else {
 			Util.error(`No value found for "${argv.property}" property`, "red");
 		}
@@ -90,7 +90,7 @@ const command: ConfigCommandType = {
 			cd: "Config"
 		});
 
-		let config;
+		let config: Config & { [key: string]: any };
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
 		} else {
@@ -101,9 +101,9 @@ const command: ConfigCommandType = {
 			config = ProjectConfig.localConfig();
 		}
 
-		const validationResult = ProjectConfig.validateProperty(argv.property, argv.value);
+		const validationResult = ProjectConfig.validateProperty(argv.property!, argv.value as string);
 		if (!validationResult.valid) {
-			Util.error(validationResult.message, "red");
+			Util.error(validationResult.message!, "red");
 			return;
 		}
 
@@ -117,7 +117,7 @@ const command: ConfigCommandType = {
 			cd12: !!argv.global
 		});
 
-		config[argv.property] = validationResult.value;
+		config[argv.property!] = validationResult.value;
 		ProjectConfig.setConfig(config, argv.global);
 		Util.log(`Property "${argv.property}" set.`);
 	},
@@ -129,7 +129,7 @@ const command: ConfigCommandType = {
 			});
 		}
 
-		let config: Config;
+		let config: Config & { [key: string]: any };
 
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
@@ -141,19 +141,19 @@ const command: ConfigCommandType = {
 			config = ProjectConfig.localConfig();
 		}
 
-		if (!config[argv.property]) {
-			config[argv.property] = [];
-		} else if (!Array.isArray(config[argv.property])) {
+		if (!config[argv.property!]) {
+			config[argv.property!] = [];
+		} else if (!Array.isArray(config[argv.property!])) {
 			Util.error(`Configuration property "${argv.property}" is not an array, use config set instead.`, "red");
 			return;
 		}
 
-		if (config[argv.property].indexOf(argv.value) !== -1) {
+		if (config[argv.property!].indexOf(argv.value) !== -1) {
 			Util.log(`Value already exists in "${argv.property}".`);
 			return;
 		}
 
-		config[argv.property].push(argv.value);
+		config[argv.property!].push(argv.value);
 		ProjectConfig.setConfig(config, argv.global);
 
 		if (!argv.skipAnalytics) {

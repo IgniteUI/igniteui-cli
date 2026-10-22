@@ -38,7 +38,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
     if (_route.redirectTo) {
       this.requestImportForRouteLoader(_route);
     } else {
-      const routeName = Util.lowerDashed(_route.name || _route.path);
+      const routeName = Util.lowerDashed((_route.name || _route.path)!);
       const modulePath = `./${routeName}/${routeName}`;
       this.requestImportForRouteIdentifier(
         { ..._route, modulePath },
@@ -93,23 +93,23 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
         {
           name: RouteTarget.Path,
           value: ts.factory.createStringLiteral(
-            route.path,
-            this.formatSettings.singleQuotes
+            route.path!,
+            this.formatSettings!.singleQuotes
           ),
         },
         {
           name: ReactRouteTarget.Element,
           value: ts.factory.createJsxSelfClosingElement(
-            ts.factory.createIdentifier(route.element || route.identifierName),
+            ts.factory.createIdentifier((route.element || route.identifierName)!),
             undefined, // type arguments
-            undefined // jsx attributes
+            ts.factory.createJsxAttributes([]) // jsx attributes
           ),
         },
         {
           name: ReactRouteTarget.Text,
           value: ts.factory.createStringLiteral(
-            route.text || route.name,
-            this.formatSettings.singleQuotes
+            (route.text || route.name)!,
+            this.formatSettings!.singleQuotes
           ),
         },
       ];

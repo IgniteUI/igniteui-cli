@@ -10,7 +10,7 @@ describe("Unit - DotnetTemplateManager", () => {
 		spawnSpy = spyOn(Util, "spawnSync");
 	});
 
-	function mockResult(overrides: Partial<{ status: number; stdout: any; error: any }> = {}) {
+	function mockResult(overrides: Partial<{ status: number | null; stdout: any; error: any }> = {}) {
 		return { status: 0, stdout: "", error: undefined, ...overrides } as any;
 	}
 
@@ -90,7 +90,7 @@ describe("Unit - DotnetTemplateManager", () => {
 			});
 
 			expect(result).toBeTrue();
-			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor");
+			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor")!;
 			expect(createCall.args[1]).toEqual([
 				"new", "igb-blazor",
 				"-n", "my-blazor",
@@ -112,7 +112,7 @@ describe("Unit - DotnetTemplateManager", () => {
 
 			DotnetTemplateManager.scaffold({ name: "app", theme: "bootstrap" });
 
-			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor");
+			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor")!;
 			expect(createCall.args[1]).toContain("Server");
 			expect(createCall.args[1]).toContain("light");
 		});
@@ -126,7 +126,7 @@ describe("Unit - DotnetTemplateManager", () => {
 
 			DotnetTemplateManager.scaffold({ name: "my blazor app", theme: "bootstrap" });
 
-			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor");
+			const createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor")!;
 			expect(createCall.args[1]).toContain("my blazor app");
 		});
 
@@ -138,12 +138,12 @@ describe("Unit - DotnetTemplateManager", () => {
 			});
 
 			DotnetTemplateManager.scaffold({ name: "app", theme: "bootstrap", skipInstall: true });
-			let createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor");
+			let createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor")!;
 			expect(createCall.args[1]).toContain("--SkipRestore");
 
 			spawnSpy.calls.reset();
 			DotnetTemplateManager.scaffold({ name: "app", theme: "bootstrap" });
-			createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor");
+			createCall = spawnSpy.calls.all().find(c => c.args[1][0] === "new" && c.args[1][1] === "igb-blazor")!;
 			expect(createCall.args[1]).not.toContain("--SkipRestore");
 		});
 

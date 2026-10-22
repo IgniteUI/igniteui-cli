@@ -45,23 +45,23 @@ const command: CommandType = {
 			return listAllFrameworks();
 		}
 
-		const templatesByGroup = [];
+		const templatesByGroup: { [group: string]: { id: string, description: string }[] } = {};
 		const controlGroups: string[] = [];
 
 		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
-		const framework: Framework = templateManager.getFrameworkById(argv.framework);
+		const framework: Framework | undefined = templateManager.getFrameworkById(argv.framework!);
 		if (!framework) {
 			return Util.error("Wrong framework provided", "red");
 		}
 
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework!, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`, "red");
 			}
 		} else {
-			projectLib = templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework!) as ProjectLibrary;
 		}
 
 		let maxIdLength = 0;

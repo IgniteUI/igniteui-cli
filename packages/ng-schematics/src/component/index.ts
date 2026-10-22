@@ -76,7 +76,7 @@ export function component(options: ComponentOptions): Rule {
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		App.container.set(TEMPLATE_MANAGER, templateManager);
-		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
+		const projLib = templateManager.getProjectLibrary("angular", "igx-ts")!;
 		/**
 		 * MDNT
 		 * Once inside the chooseActionLoop, the projLibrary cannot properly get

@@ -5,7 +5,7 @@ import * as path from "path";
 const SHARED_DATA_ROOT = path.join(__dirname, "../../../shared-data");
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
+	private userExtraConfiguration: { [key: string]: unknown } = {};
 
 	constructor() {
 		super(__dirname);
@@ -31,7 +31,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
@@ -52,7 +52,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		const additionalElements = [""];
 		const toolbarActions = [];
 		const columnFeatures = [];
-		const columnBoolFeatures = [];
+		const columnBoolFeatures: string[] = [];
 		const treeGridFeatures = [];
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/treegrid/";
 
@@ -67,7 +67,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		let columnPinning = "";
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
-			const featuresUrls = [];
+			const featuresUrls: string[] = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":

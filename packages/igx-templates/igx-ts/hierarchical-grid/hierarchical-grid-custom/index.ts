@@ -3,8 +3,8 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration = {};
-	private usePinning: boolean;
+	private userExtraConfiguration: { [key: string]: unknown } = {};
+	private usePinning!: boolean;
 	/** starts with empty string to create a new line on join when something else is added */
 	private additionalElements = [""];
 	constructor() {
@@ -32,7 +32,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
@@ -51,8 +51,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		// the template instance is shared, so reset state left over from previous calls
 		this.usePinning = false;
 		this.additionalElements = [""];
-		const columnFeatures = [];
-		const gridFeatures = [];
+		const columnFeatures: string[] = [];
+		const gridFeatures: string[] = [];
 		const extraConfig = {
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
 
@@ -96,7 +96,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/";
 		const anchorWrapper = {
 			start: `<a href="`,
-			href: ``,
+			href: `` as string | undefined,
 			middle: `" target="_blank">`,
 			text: ``,
 			end: `</a>`
@@ -104,7 +104,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
-			const featuresUrls = [];
+			const featuresUrls: (string | undefined)[] = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":
@@ -199,7 +199,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		return selectedFeatures;
 	}
 
-	private getFeatureUrl(feature: string, featureUrl: string): string {
+	private getFeatureUrl(feature: string, featureUrl: string): string | undefined {
 		switch (feature) {
 			case "Sorting":
 			case "Filtering":

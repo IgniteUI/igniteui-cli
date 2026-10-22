@@ -10,7 +10,7 @@ export class IgbAiConfigPartial implements ProjectTemplate {
 	public description = "Ignite UI CLI AI config for Blazor partial project files";
 	public framework: string = "blazor";
 	public projectType: string = "igb";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = true;
 	public delimiters = defaultDelimiters;

@@ -60,7 +60,7 @@ class GoogleAnalytics {
 		const options = { host: "www.google-analytics.com", path: fullPath, method: "POST" };
 		const https = require("https");
 		const req = https.request(options);
-		req.on("error", e => {
+		req.on("error", (e: Error) => {
 			// TODO: save all the logs and send them later
 		});
 		req.end();

@@ -64,7 +64,7 @@ export class TypeScriptAstTransformer {
   public readonly transformations = new Map<string, ChangeRequest<ts.Node>>();
 
   /** The formatting service to use when printing the source file. */
-  public formatter: FormattingService;
+  public formatter?: FormattingService;
 
   /** A map of nodes with their parents. */
   public get flatNodeRelations() {
@@ -250,7 +250,7 @@ export class TypeScriptAstTransformer {
     const jsxElement = ts.factory.createJsxSelfClosingElement(
       ts.factory.createIdentifier(propertyValue),
       undefined, // type arguments
-      jsxAttributes
+      jsxAttributes ?? ts.factory.createJsxAttributes([])
     );
 
     this.requestNewMemberInObjectLiteral(
@@ -346,7 +346,7 @@ export class TypeScriptAstTransformer {
       ChangeType.NodeUpdate,
       transformerFactory,
       SyntaxKind.ArrayLiteralExpression,
-      null // assume the nodes of the matched array literal
+      undefined // assume the nodes of the matched array literal
     );
   }
 
@@ -427,12 +427,12 @@ export class TypeScriptAstTransformer {
     const identifiers = Array.isArray(importDeclarationMeta.identifiers)
       ? ts.factory.createNodeArray(
           importDeclarationMeta.identifiers.map((i) =>
-            ts.factory.createIdentifier(i.name || i.alias)
+            ts.factory.createIdentifier((i.name || i.alias)!)
           )
         )
       : ts.factory.createIdentifier(
-          importDeclarationMeta.identifiers.name ||
-            importDeclarationMeta.identifiers.alias
+          (importDeclarationMeta.identifiers.name ||
+            importDeclarationMeta.identifiers.alias)!
         );
 
     this.requestChange(

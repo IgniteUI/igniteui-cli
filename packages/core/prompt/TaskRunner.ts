@@ -11,7 +11,7 @@ export type Task<T> = (runner: TaskRunner<T>, context: T) => Promise<PromptInput
 export class TaskRunner<T> {
 	protected taskQueue: Array<PromptInputTask<T>> = [];
 	protected additions: Array<PromptInputTask<T>> = [];
-	protected currentTask: PromptInputTask<T>;
+	protected currentTask: PromptInputTask<T> | null = null;
 
 	public get done(): boolean {
 		return !this.taskQueue.filter(x => !x.done).length;

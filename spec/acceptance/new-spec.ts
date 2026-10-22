@@ -6,7 +6,7 @@ import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
-	let testFolder;
+	let testFolder: string;
 
 	beforeEach(() => {
 		spyOn(console, "log");

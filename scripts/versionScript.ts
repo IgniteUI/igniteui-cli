@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import { generateChangelog } from "./changelogScript";
 
-let version: string;
+let version!: string;
 let coreVersion: string;
 const packageFolders = ["cli", "core", "igx-templates", "ng-schematics", "igniteui-mcp/igniteui-doc-mcp"];
 const updatedPackages = ["@igniteui/angular-templates", "@igniteui/angular-schematics"];

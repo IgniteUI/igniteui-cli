@@ -60,7 +60,7 @@ const command: UpgradeCommandType = {
 				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
 					const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 					const projectLibrary = templateManager.getProjectLibrary(framework, projectType);
-					const project = resolveUpgradeableProject(projectLibrary, config.project?.projectTemplate);
+					const project = resolveUpgradeableProject(projectLibrary!, config.project?.projectTemplate);
 					if (!project) {
 						Util.error("No valid Ignite UI project template found to upgrade packages.", "red");
 						return;
@@ -73,7 +73,7 @@ const command: UpgradeCommandType = {
 							Util.log("npm packages installed.");
 						} catch (error) {
 							Util.error(`Error installing npm packages.`);
-							Util.log(error.message);
+							Util.log((error as Error).message);
 						}
 					}
 				} else if (framework.toLowerCase() === "angular") {

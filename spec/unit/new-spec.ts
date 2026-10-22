@@ -20,7 +20,7 @@ function createMockBaseTemplate(): BaseTemplate {
 		hasExtraConfiguration: true,
 		isHidden: false,
 		templatePaths: ["/path/to/template"],
-		generateConfig: null,
+		generateConfig: null as unknown as BaseTemplate["generateConfig"],
 		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
 		setExtraConfiguration: jasmine.createSpy()
     };
@@ -55,7 +55,7 @@ describe("Unit - New command", () => {
 
 	it("Should validate and trim name", async () => {
 		spyOn(Util, "error");
-		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 		const errorCombos = [
 			{ name: "1 is not valid", inError: "1 is not valid" },
@@ -135,7 +135,7 @@ describe("Unit - New command", () => {
 	});
 
 	it("Should start prompt session with missing arg", async () => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 		const mockProjLib = {};
 		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
@@ -480,7 +480,7 @@ describe("Unit - New command", () => {
 
 		it("does not call configure when project creation fails (bad name)", async () => {
 			spyOn(Util, "error");
-			spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+			spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 			await newCmd.handler({ name: "1invalid", _: ["new"], $0: "new" });
 

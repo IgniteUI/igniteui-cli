@@ -27,9 +27,9 @@ import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
  */
 export const newMemberInObjectLiteralTransformerFactory = (
   newProperty: ts.PropertyAssignment,
-  visitCondition: (node: ts.Node) => boolean,
+  visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
   expressionCollector: TypeScriptExpressionCollector,
-  options: ObjectLiteralExpressionEditOptions
+  options?: ObjectLiteralExpressionEditOptions
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -67,7 +67,7 @@ export const newMemberInObjectLiteralTransformerFactory = (
             existingProperty
           )
             ? existingProperty.initializer
-            : existingProperty.objectAssignmentInitializer;
+            : existingProperty.objectAssignmentInitializer!;
           if (ts.isArrayLiteralExpression(existingPropInitializer)) {
             return updatePropertyAssignmentWithArrayLiteral(
               newProperty,
@@ -75,8 +75,8 @@ export const newMemberInObjectLiteralTransformerFactory = (
               context,
               node,
               expressionCollector,
-              options?.multiline,
-              options?.override
+              options?.multiline ?? false,
+              options?.override ?? false
             );
           }
 
@@ -476,7 +476,7 @@ function updatePropertyAssignmentWithIdentifier(
 ): ts.ObjectLiteralExpression {
   const newPropInitializer = ts.isPropertyAssignment(newProperty)
     ? newProperty.initializer
-    : newProperty.objectAssignmentInitializer;
+    : newProperty.objectAssignmentInitializer!;
 
   return updateProperty(node, existingProperty, newPropInitializer, context);
 }
@@ -501,10 +501,10 @@ function updatePropertyAssignmentWithArrayLiteral(
 ): ts.ObjectLiteralExpression {
   const existingPropInitializer = ts.isPropertyAssignment(existingProperty)
     ? existingProperty.initializer
-    : existingProperty.objectAssignmentInitializer;
+    : existingProperty.objectAssignmentInitializer!;
   const newPropInitializer = ts.isPropertyAssignment(newProperty)
     ? newProperty.initializer
-    : newProperty.objectAssignmentInitializer;
+    : newProperty.objectAssignmentInitializer!;
 
   // at this point we know the initializer is an array literal expression, so it's safe to cast it
   const initializerAsArray =
@@ -639,8 +639,8 @@ function gatherImportDeclarations(
     const importClause = statement.importClause;
     if (!importClause.namedBindings) {
       // a default import declaration
-      allImportedIdentifiers.set(importClause.name.text, {
-        identifiers: { name: importClause.name.text },
+      allImportedIdentifiers.set(importClause.name!.text, {
+        identifiers: { name: importClause.name!.text },
         moduleName: getModuleSpecifierName(statement.moduleSpecifier),
       });
       continue;

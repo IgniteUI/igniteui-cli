@@ -11,7 +11,7 @@ import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
-	protected config: Config;
+	protected config!: Config;
 	private _newProjectName: string | null = null;
 
 	protected get templateManager(): BaseTemplateManager {
@@ -33,7 +33,7 @@ export abstract class BasePromptSession {
 		const defaultProjName = "IG Project";
 
 		if (ProjectConfig.hasLocalConfig() && !this.config.project.isShowcase) {
-			projLibrary = this.templateManager.getProjectLibrary(this.config.project.framework, this.config.project.projectType);
+			projLibrary = this.templateManager.getProjectLibrary(this.config.project.framework, this.config.project.projectType)!;
 			theme = this.config.project.theme;
 		} else {
 			Util.log(""); /* new line */
@@ -54,7 +54,7 @@ export abstract class BasePromptSession {
 				default: "Angular"
 			});
 
-			const framework = this.templateManager.getFrameworkByName(frameRes);
+			const framework = this.templateManager.getFrameworkByName(frameRes)!;
 			// app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
 
@@ -131,7 +131,7 @@ export abstract class BasePromptSession {
 	protected abstract complete(): Promise<void>;
 
 	/** Upgrade packages to use private Infragistics feed */
-	protected abstract upgradePackages();
+	protected abstract upgradePackages(): Promise<void>;
 
 	/** Configure Ignite UI AI tooling (MCP servers and AI coding skills) for the project */
 	protected abstract configureAI(frameworkId: string): Promise<void>;
@@ -252,7 +252,7 @@ export abstract class BasePromptSession {
 			message: "Choose the type of project:",
 			choices: projectLibraries
 		});
-		return this.templateManager.getProjectLibraryByName(framework, projectRes);
+		return this.templateManager.getProjectLibraryByName(framework, projectRes)!;
 	}
 
 	/**
@@ -551,7 +551,7 @@ export abstract class BasePromptSession {
 			type: "select",
 			name: "component",
 			message: "Choose a component:",
-			choices: Util.formatChoices(context.projectLibrary.getComponentsByGroup(context.group))
+			choices: Util.formatChoices(context.projectLibrary.getComponentsByGroup(context.group!))
 		}, true);
 
 		if (componentNameRes === WIZARD_BACK_OPTION) {
@@ -568,7 +568,7 @@ export abstract class BasePromptSession {
 	 * @param component to get template for
 	 */
 	private getTemplateTask: Task<PromptTaskContext> = async (_runner, context) => {
-		const templates: Template[] = context.component.templates;
+		const templates: Template[] = context.component!.templates;
 
 		const templateRes = await this.getUserInput({
 			type: "select",
