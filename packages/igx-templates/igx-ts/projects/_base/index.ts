@@ -1,6 +1,23 @@
-import { ControlExtraConfiguration, NPM_ANGULAR, ProjectTemplate, Util, updateWorkspace } from "@igniteui/cli-core";
+import {
+	ControlExtraConfiguration, NPM_ANGULAR, ProjectTemplate, ScaffoldOptions, Util, updateWorkspace
+} from "@igniteui/cli-core";
+import * as fs from "fs";
 import * as path from "path";
+import { CLI_PACKAGE, generateProject, npmInstall, patchAngularJson, patchPackageJson, updateJson } from "./scaffold";
 
+/** What a project's own files need on top of the generated project */
+export interface ProjectExtras {
+	/** Packages installed at their latest version, or at the version or range an entry names */
+	dependencies: string[];
+	devDependencies: string[];
+	/** Global types added to tsconfig.app.json and tsconfig.spec.json */
+	types: string[];
+}
+
+/**
+ * Projects are created by the Angular CLI (`ng new`, `ng add igniteui-angular`). `templatePaths` hold only
+ * the files laid over that; `scaffold` patches the generated angular.json, package.json and tsconfigs.
+ */
 export class BaseIgxProject implements ProjectTemplate {
 	public id: string = "base";
 	public name = "base";
@@ -37,11 +54,62 @@ $app-palette: palette($primary, $secondary, $surface);
 @include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include theme($app-palette);
 `;
-	private DEFAULT_THEME = `,
-              "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+
+	/** The extras for a project created with Angular `angularMajor`, which packages that follow Angular's majors match */
+	protected extras: (angularMajor: string) => ProjectExtras = () => ({ dependencies: [], devDependencies: [], types: [] });
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
+	}
+
+	/**
+	 * Creates the project with the Angular CLI and lays `templatePaths` over it.
+	 * `options.extraConfig` overrides template variables; its `cliPackage` names the package providing the
+	 * CLI commands (default `igniteui-cli`).
+	 */
+	public async scaffold(options: ScaffoldOptions): Promise<boolean> {
+		const { cliPackage = CLI_PACKAGE, ...variables } = options.extraConfig || {};
+		const config = { ...this.generateConfig(options.name, options.theme), ...variables };
+		const projectPath = path.join(process.cwd(), options.name);
+		if (fs.existsSync(projectPath)) {
+			Util.error(`Folder "${options.name}" already exists!`, "red");
+			return false;
+		}
+		if (options.skipInstall) {
+			Util.warn("--skip-install is ignored for Ignite UI for Angular projects: `ng add` installs the packages it adds.",
+				"yellow");
+		}
+
+		try {
+			const angularMajor = generateProject(config.dashName, projectPath);
+			const extras = this.extras(angularMajor);
+			for (const templatePath of this.templatePaths) {
+				await Util.processTemplates(templatePath, projectPath, config, this.delimiters, false);
+			}
+			updateJson(path.join(projectPath, "angular.json"), json => patchAngularJson(json, config));
+			updateJson(path.join(projectPath, "package.json"), pkg => patchPackageJson(pkg, cliPackage, config.cliVersion));
+			if (extras.types.length) {
+				for (const file of ["tsconfig.app.json", "tsconfig.spec.json"]) {
+					updateJson(path.join(projectPath, file), json => {
+						json.compilerOptions.types = [...(json.compilerOptions.types || []), ...extras.types];
+						return json;
+					});
+				}
+			}
+			// also installs the package.json changes above; playwright is the browser for @vitest/browser-playwright
+			npmInstall(projectPath, ["playwright", ...extras.devDependencies], true);
+			if (extras.dependencies.length) {
+				npmInstall(projectPath, extras.dependencies);
+			}
+		} catch (error) {
+			// the folder is this run's own (checked above), so a retry starts clean
+			fs.rmSync(projectPath, { recursive: true, force: true });
+			Util.error(`Project creation failed: ${error.message}`, "red");
+			return false;
+		}
+
+		Util.log(Util.greenCheck() + " Project Created");
+		return true;
 	}
 
 	public installModules(): void {
@@ -62,7 +130,6 @@ $app-palette: palette($primary, $secondary, $surface);
 			cliVersion: Util.version(),
 			CustomTheme: "",
 			dashName: Util.lowerDashed(name),
-			DefaultTheme: "",
 			dot: ".",
 			path: name,
 			projectTemplate: this.id,
@@ -78,7 +145,6 @@ $app-palette: palette($primary, $secondary, $surface);
 				break;
 			case "Default":
 			default:
-				config["DefaultTheme"] = this.DEFAULT_THEME;
 				config["themePath"] = "node_modules/igniteui-angular/styles/igniteui-angular.css";
 				break;
 		}

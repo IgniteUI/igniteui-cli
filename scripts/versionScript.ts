@@ -1,6 +1,7 @@
 
 import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../packages/igx-templates/constants";
 import { generateChangelog } from "./changelogScript";
 
 let version: string;
@@ -11,8 +12,8 @@ const coreVersionedPackages = ["@igniteui/cli-core", "@igniteui/mcp-server"];
 const DEP_RANGE_PREFIX = "~";
 
 function getVersion() {
-	const igxPackageJson = JSON.parse(readFileSync("packages/igx-templates/igx-ts/projects/_base/files/package.json", "utf-8"));
-	const versionIG = igxPackageJson.dependencies["igniteui-angular"].replace(/^[^0-9]+/, "");
+	// the igniteui-angular range the templates use, e.g. "igniteui-angular@~22.2.0"
+	const versionIG = IGNITEUI_ANGULAR_PACKAGE.split("@").pop()!.replace(/^[^0-9]+/, "");
 	const majorMinor = versionIG.split(".").slice(0, 2).join(".");
 	const versionCLI = JSON.parse(readFileSync("packages/core/package.json").toString());
 	coreVersion = versionCLI.version;

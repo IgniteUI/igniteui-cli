@@ -1,10 +1,6 @@
 import {
-	apply,
+	callRule,
 	chain,
-	empty,
-	MergeStrategy,
-	mergeWith,
-	move,
 	Rule,
 	schematic,
 	SchematicContext,
@@ -12,9 +8,10 @@ import {
 	TaskId,
 	Tree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RepositoryInitializerTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
+// not exported from the package root; start/index.ts imports it the same way
+import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
-import { defer, Observable } from "rxjs";
-import { NewProjectOptions } from "../app-projects/schema";
+import { defer, map, Observable } from "rxjs";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -25,6 +22,12 @@ interface IgxSchematicContext extends SchematicContext {
 	theme: string;
 }
 
+/** Runs a rule with the project folder as the root of the tree */
+function inProject(getName: () => string, rule: Rule): Rule {
+	return (tree: Tree, context: SchematicContext) =>
+		callRule(rule, new ScopedTree(tree, getName()), context).pipe(map(() => tree));
+}
+
 export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, _hostContext: IgxSchematicContext) => {
 		App.initialize("angular-cli");
@@ -33,7 +36,7 @@ export function newProject(options: OptionsSchema): Rule {
 			cd: "New"
 		});
 		let projLibrary: ProjectLibrary;
-		let projectOptions: NewProjectOptions;
+		let theme: string;
 		const templateManager = new SchematicsTemplateManager();
 		App.container.set(TEMPLATE_MANAGER, templateManager);
 		const prompt = new SchematicsPromptSession();
@@ -94,21 +97,12 @@ export function newProject(options: OptionsSchema): Rule {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
 					}
-					const theme = projLibrary.themes[themeIndex];
+					theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
-					// project options:
 					// cache available views and components, same as in component Schematic
 					const components = projLibrary.components;
 					const views = (projLibrary as any).customTemplates;
-
-					projectOptions = {
-						config: projTemplate.generateConfig(options.name, theme),
-						templateId: projTemplate.id,
-						templatePaths: [...projTemplate.templatePaths],
-						theme,
-						name: options.name
-					};
 
 					GoogleAnalytics.post({
 						t: "event",
@@ -125,42 +119,36 @@ export function newProject(options: OptionsSchema): Rule {
 					return tree;
 				});
 			},
-			mergeWith(
-				apply(empty(), [
-					// TODO: Task chain based on @schematics/angular ng-new schematic
-					// externalSchematic("@schematics/angular", "workspace", { name: options.name }),
-					// externalSchematic("@schematics/angular", "application", {
-					// 	projectRoot: "", name: options.name, skipInstall: true, routing: true, style: "scss"
-					// }),
-					(tree: Tree, _context: IgxSchematicContext) => {
-						setVirtual(tree);
-						// extend project entry point:
-						return schematic("app-projects", projectOptions);
-					},
-					(tree: Tree, _context: IgxSchematicContext) => {
-						// extend project entry point:
-						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
-						if (tree.exists("gitignore")) {
-							tree.rename("gitignore", ".gitignore");
-						}
-					},
-					// run full schematic for args/prompts
-					schematic("ai-config", {}),
-					(tree: Tree, context: IgxSchematicContext) => {
-						if (!nameProvided) {
-							return defer(async () => {
-								prompt.setContext(context, tree, options.name as string);
-								await prompt.chooseActionLoop(projLibrary);
-								return tree;
-							});
-						}
-					},
-					(_tree: Tree, _context: IgxSchematicContext) => {
-						// move late so name can be resolved before use
-						return move(options.name!);
+			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
+				// the same scaffold as `ig new`: the Angular CLI creates the project on disk, the tree reads it from there
+				return defer(async () => {
+					const schematicsPackage = require("../../package.json");
+					const success = await projTemplate.scaffold!({
+						name: options.name!,
+						theme,
+						skipInstall: options.skipInstall,
+						skipGit: true,
+						// `ng add igniteui-angular` adds this package to the project
+						extraConfig: { cliPackage: schematicsPackage.name, cliVersion: schematicsPackage.version }
+					});
+					if (!success) {
+						throw new SchematicsException("Project creation failed.");
 					}
-				]), MergeStrategy.Overwrite
-			),
+					return tree;
+				});
+			},
+			// run full schematic for args/prompts
+			inProject(() => options.name!, schematic("ai-config", {})),
+			inProject(() => options.name!, (projectTree: Tree, context: SchematicContext) => {
+				if (!nameProvided) {
+					return defer(async () => {
+						setVirtual(projectTree);
+						prompt.setContext(context, projectTree, options.name as string);
+						await prompt.chooseActionLoop(projLibrary);
+						return projectTree;
+					});
+				}
+			}),
 			(tree: Tree, _context: IgxSchematicContext) => {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {

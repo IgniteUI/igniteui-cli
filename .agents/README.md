@@ -24,7 +24,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 | [`igniteui-cli-ai-config-skills-refresh`](./skills/igniteui-cli-ai-config-skills-refresh/SKILL.md) | Workflow | Bundled `ai-config` skills | Mirror the framework repositories' `skills/` into the `ai-config` templates. In `dry-run` mode: what changed upstream and content issues |
 | [`igniteui-cli-mcp-tool`](./skills/igniteui-cli-mcp-tool/SKILL.md) | Workflow | MCP server `src/`, tests, tool docs | Add an MCP server tool or change an existing one. Its `scripts/call-tool.mjs` calls a tool on the built server over stdio |
 | [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
-| [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, the generated Angular base project, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
+| [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, how Angular projects are created from `ng new`, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
 
 The workflows triage their own smoke runs; use the smoke-test skill directly for a run you started by hand.
 
@@ -55,7 +55,6 @@ Each workflow runs on its own and does not call the others. You chain them.
 | See which pins are stale or conflicting | "dry-run template version update, all frameworks" |
 | Add a template | "add a Tile Manager component template for angular" |
 | See which templates are missing | "which component templates are missing per framework?" |
-| Move the Angular base project to a new Angular version | "regenerate the Angular base project for Angular ~22.3.0" |
 | Make sense of a failed smoke run | "triage output/smoke" |
 | Release notes for 15.9.0 | "draft the changelog for 15.9.0, 2026-10-15" |
 | Refresh the skills `ig ai-config` bundles | "refresh ai-config skills for all frameworks" |

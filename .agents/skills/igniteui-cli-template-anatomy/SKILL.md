@@ -1,6 +1,6 @@
 ---
 name: igniteui-cli-template-anatomy
-description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, the generated Angular base project, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, moving the Angular base to a new Angular version, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds, template specs or the smoke test (igniteui-cli-smoke-test)."
+description: "Template anatomy for Angular (igx-ts), React (igr-ts) and Web Components (igc-ts): folder layout, index.ts fields, placeholders, test files, groups, how Angular projects are created from `ng new`, and every place an Ignite UI version is pinned. WHEN TO USE: adding or changing a component template, changing what new Angular projects contain, locating version pins, auditing template parity across frameworks. WHEN NOT TO USE: running builds, template specs or the smoke test (igniteui-cli-smoke-test)."
 license: MIT
 ---
 
@@ -83,32 +83,30 @@ Angular has two styles. Pick the one the component library dictates:
 
 React imports components from `igniteui-react` (or `-grids`, `-charts`, `-gauges`) as `Igr*`. Web Components imports `Igc*Component` and calls `defineComponents(...)`.
 
-## Generated Angular Base Project
+## Angular Projects
 
-`scripts/generate-angular-base.mjs` rebuilds the Angular-owned files of `packages/igx-templates/igx-ts/projects/_base/files` from `ng new`, followed by `ng add angular-eslint` (at the Angular major) and `ng add igniteui-angular`. It needs network access and runs `npm install` in a temp folder, a few minutes.
+`ig new` and the `ng-new` schematic create an Angular project with the Angular CLI, through `scaffold()` on `BaseIgxProject` (`packages/igx-templates/igx-ts/projects/_base/index.ts`; the steps live in `_base/scaffold.ts`):
 
-| Goal | Command |
-|---|---|
-| New Angular minor | `node scripts/generate-angular-base.mjs --angular ~22.3.0` |
-| New Angular major (`igniteui-angular` moves with it) | `node scripts/generate-angular-base.mjs --angular ~23.0.0 --igniteui ~23.0.0` |
-| Is the base out of date? Writes nothing, exits 1 if a run would change something | `node scripts/generate-angular-base.mjs --check` |
+1. `ng new` (scss, routing, no SSR, zone.js), `ng add angular-eslint@<Angular major>`, `ng add igniteui-angular@<IGNITEUI_ANGULAR_PACKAGE range>`. `ng add` installs packages, so `--skip-install` only prints a warning. The AI config `ng add` writes is deleted; `ig new` and the schematic run their own. When a step fails, the project folder is removed.
+2. The project's `templatePaths` (`_base`, `_base_with_home`, the project's own `files/`) are laid over the generated project, placeholders substituted.
+3. `angular.json` and `package.json` get our deviations as patches (`patchAngularJson`, `patchPackageJson`, which also writes the `IGNITEUI_ANGULAR_PACKAGE` range over the `^<version>` that `ng add` saves); the tsconfigs get the types in the project's `extras`.
+4. `npm install` adds `playwright` and the packages in the project's `extras`: at their latest versions, or at the version an entry names.
 
-Without `--angular` / `--igniteui` it uses the `@angular/cli` and `igniteui-angular` pins in `_base/files/package.json`. A run at unchanged versions changes nothing.
+Project `files/` are an **overlay**: they hold only files we add or replace wholesale (app code, `README.md`, `ignite-ui-cli.json`, CI workflows, eslint config, `vitest-base.config.ts`, environments, `src/index.html`, `src/styles.scss`). The rest follows from that:
 
-- **Generated**: the files in the script's `COPIED` list, `_base/files/angular.json`, `_base/files/package.json` and `side-nav-auth/files/package.json` (the `_base` manifest plus the packages only `side-nav-auth` uses). Our deviations from `ng new` are patches in the script, so a change to them goes into the script; a hand edit is lost on the next run.
-- **Hand-maintained**: every other file in `_base/files` (`README.md`, `src/app/*`, `src/index.html`, `src/styles.scss`, CI workflows, eslint config, environments) and the overlays (`_base_with_home`, `empty`, `side-nav`, `side-nav-auth` tsconfigs, ...).
-- **Upstream changes**: the `ng new`/`ng add` versions of the hand-maintained files are fingerprinted in `scripts/generate-angular-base.upstream.json`. When one changed since the last run, the script lists it with a kept upstream copy: port what applies to our file by hand. The updated fingerprint file belongs in the same change as the run's other output.
-- **Pins**: `ng new` and `ng add` decide which packages exist. A package already in `_base` keeps its pin while that admits the version installed in the generated project, so a run moves only the pins the new project needs moved (never loosening the others), and the template version update workflow stays the owner of Ignite UI pins.
-- **`--igniteui`** sets `igniteui-angular` in the generated manifests only. The other `igniteui-angular` pins (`IGNITEUI_ANGULAR_PACKAGE` and the rest, "Where Ignite UI Versions Are Pinned") must move to the same range; `spec/templates/angular-spec.ts` checks it.
+- A change to a file `ng new` generates (`angular.json`, `package.json`, tsconfigs, `src/main.ts`) is a patch in `_base/scaffold.ts`, so the generated file keeps up with Angular. `spec/templates/angular-spec.ts` fails on a project `files/package.json`.
+- A package or global type a project's code needs goes in its `extras` (`side-nav-auth` declares `authExtras`; `side-nav-mini-auth` reuses it). `extras` receives the project's Angular major: a package whose majors follow Angular's (`@angular/*`, `angular-auth-oidc-client`) is pinned to it, since its latest version would outrun the project's Angular once a new major ships.
+- Packages the overlay files use without an `extras` entry (`minireset.css`, `@igniteui/material-icons-extended`) come from `ng add igniteui-angular`; the smoke build fails if it stops adding them.
+- `IGNITEUI_ANGULAR_PACKAGE` in `constants.ts` sets the versions: `igniteui-angular` at that range, Angular at the newest major that range's `peerDependencies` allow (resolved with `npm view` when the project is created). Minors and patches arrive on their own; moving to a new major is a change to that one constant, after which the smoke test below must pass.
 
-After a run, validate with the smoke test: `-f angular --all-projects`, plus `-p base`, `-p side-nav-auth` and `-p side-nav-mini-auth` (smoke-test skill).
+Jasmine never runs the real CLI: `spec/helpers/angular-cli-stub.ts` stands in for `ng` and `npm` and writes the project a real `ng new` + `ng add` produce, and `spec/templates/angular-scaffold-spec.ts` checks the command sequence and every patch. When the real output changes shape (a patch fails in a smoke run), update the stub with it. Only the smoke test runs the real CLI, with network access; a change here needs a run over every Angular project template, the hidden `base`, `side-nav-auth` and `side-nav-mini-auth` included (smoke-test skill).
 
 ## Where Ignite UI Versions Are Pinned
 
 Pins live in three kinds of places. **Always regenerate the list with a search; never trust a remembered list.**
 
 1. `constants.ts` per framework (exported `name@range` strings).
-2. Project-template manifests: `<root>/projects/*/files/package.json`. Several projects carry their own copy (e.g. Angular `_base` and `side-nav-auth`; Web Components `_base` and `_base_with_home`).
+2. Project-template manifests: `<root>/projects/*/files/package.json`, e.g. Web Components `_base` and `_base_with_home`. Angular projects have none: their versions follow `IGNITEUI_ANGULAR_PACKAGE` ("Angular Projects").
 3. Hard-coded `this.packages = ["name@range", ...]` in variant `index.ts` files, used where no constant exists (Angular charts/gauges/maps family, `igniteui-grid-lite`, wrapped `igniteui-webcomponents`; Web Components `igniteui-dockmanager`). Some build the name at runtime, e.g. Angular dock-manager: `` `${resolvePackage(NPM_DOCK_MANAGER)}@~2.1.1` ``.
 
 Run **both** search patterns (ripgrep) over `packages/cli/templates` and `packages/igx-templates`, `*.ts` and `*.json`:
