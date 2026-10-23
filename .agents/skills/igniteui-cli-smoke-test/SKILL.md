@@ -6,7 +6,7 @@ license: MIT
 
 # Ignite UI CLI: Build, Template Specs, Smoke Test
 
-`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages`, so a green Jasmine run says nothing about real npm resolution or TypeScript compilation of generated code. Run the build and the template specs first: they are fast and catch id and pin mistakes before a slow smoke run.
+`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages` and the Angular CLI (`ng new` / `ng add`, which create every Angular project), so a green Jasmine run says nothing about real npm resolution, what the current Angular CLI generates, or TypeScript compilation of generated code. Run the build and the template specs first: they are fast and catch id and pin mistakes before a slow smoke run.
 
 ## Build and Template Specs
 
@@ -20,7 +20,8 @@ license: MIT
 
 | Spec | Guards |
 |---|---|
-| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates and project `package.json` equals `IGNITEUI_ANGULAR_PACKAGE` |
+| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates equals `IGNITEUI_ANGULAR_PACKAGE`; project templates carry none of the files the Angular CLI generates and the scaffold patches (`angular.json`, `package.json`, tsconfigs, `src/main.ts`) |
+| `spec/templates/angular-scaffold-spec.ts` | The Angular project scaffold, against the stubbed Angular CLI: command sequence, every patch to the generated `angular.json`, `package.json` and tsconfigs, the projects' `extras`, cleanup on failure |
 | `spec/templates/react-spec.ts` | Same, for all four `IGNITEUI_REACT_*` constants |
 | `spec/templates/webcomponents-spec.ts` | Ids and collisions only. It does **not** check version pins against the constants |
 | `spec/templates/template-contracts-spec.ts` | Every jQuery, React, Web Components and Blazor project and component template: matches its framework and project type, its template paths exist, it generates a config |
@@ -30,7 +31,7 @@ license: MIT
 The template specs for a framework run in about 15 seconds, after `npm run build`:
 
 ```bash
-npx jasmine spec/templates/angular-spec.js
+npx jasmine spec/templates/angular-spec.js spec/templates/angular-scaffold-spec.js
 npx jasmine spec/templates/react-spec.js spec/templates/template-contracts-spec.js
 npx jasmine spec/templates/webcomponents-spec.js spec/templates/template-contracts-spec.js
 ```
@@ -51,7 +52,7 @@ Preconditions: `npm run build` has run (the script refuses otherwise); `node` an
 
 Defaults: angular, react, webcomponents; default project template; all component templates. jQuery and Blazor are opt-in (`-f jquery`, `-f blazor`): jQuery needs ProGet credentials for 13 templates and has no build; Blazor needs the .NET SDK and has no component templates.
 
-`--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own `files/package.json` (e.g. Angular `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`. Hidden projects can also reuse another project's `files/` through `templatePaths` (Angular `side-nav-mini-auth` includes `side-nav-auth/files`, manifest included), so a change there needs a `-p` run for each project that pulls it in.
+`--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own packages (a `files/package.json`, or Angular `extras` as in `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`. Hidden projects can also reuse another project's `files/` through `templatePaths` (Angular `side-nav-mini-auth` includes `side-nav-auth/files` and its packages), so a change there needs a `-p` run for each project that pulls it in.
 
 Runs longer than a few minutes: use a long command timeout, or run it in the background with output redirected to a file and wait for the process to exit. The `Results:` line is not the end: when nothing failed and `--keep` is not set, the script deletes the generated projects after printing it. The script **wipes its `--out` directory at start**, so give each run its own directory (e.g. `--out output/smoke-react`, `--out output/smoke-react-projects`) when you need more than one run's results, and never run two at once into the same directory.
 
@@ -115,7 +116,7 @@ The test runners use browser mode with Playwright Chromium. If one fails because
 
 ## Mapping an Install Error Back to Source
 
-A pin in an install error comes from one of: the template's variant `index.ts` (`this.packages`), the framework's `constants.ts`, or a project template's `files/package.json`. See the template-anatomy skill.
+A pin in an install error comes from one of: the template's variant `index.ts` (`this.packages`), the framework's `constants.ts`, or a project template's `files/package.json`. An Angular project's own packages follow `IGNITEUI_ANGULAR_PACKAGE`: `igniteui-angular` at that range, the rest at whatever `ng add` and the project's `extras` resolve, so an install error there is an upstream peer conflict (template-anatomy skill, "Angular Projects").
 
 ## Mapping a Build Error Back to Template Source
 

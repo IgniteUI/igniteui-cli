@@ -3,6 +3,7 @@ import {
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as cli from "../../packages/cli/lib/cli";
+import { stubAngularCli } from "../helpers/angular-cli-stub";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
@@ -13,6 +14,8 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
+		// Angular projects are created by the Angular CLI
+		stubAngularCli();
 		// isolate from the user's global config, e.g. custom templates that log errors (extra GA posts)
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 		spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]));
@@ -79,6 +82,8 @@ describe("New command", () => {
 		const packageText = fs.readFileSync("./Ignite UI for Angular/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("ignite-ui-for-angular");
 		expect(fs.existsSync("./Ignite UI for Angular/.gitignore")).toBeTruthy();
+		// the scaffold installs the packages
+		expect(JSON.parse(fs.readFileSync("./Ignite UI for Angular/ignite-ui-cli.json", "utf-8")).packagesInstalled).toBeTrue();
 		testFolder = "./Ignite UI for Angular";
 	});
 
@@ -144,13 +149,15 @@ describe("New command", () => {
 		testFolder = "./angularProj";
 	});
 
-	it("Skip Git/Install with command option", async () => {
+	it("Skip Git with command option; Angular projects install packages even with --skip-install", async () => {
 		spyOn(Util, "gitInit");
+		spyOn(console, "warn");
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 		expect(Util.gitInit).not.toHaveBeenCalled();
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
-		expect(PackageManager.installPackages).not.toHaveBeenCalled();
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install is ignored/));
+		expect(Util.execSync).toHaveBeenCalledWith(jasmine.stringMatching(/^npm install /), jasmine.anything());
 
 		testFolder = projectName;
 	});

@@ -38,29 +38,27 @@ describe("Angular templates", () => {
 		}
 	});
 
-	it("Igx templates and project package.json files should use the same igniteui-angular version as the const", async () => {
+	it("Igx templates should use the same igniteui-angular version as the const", async () => {
 		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
-		const [pkg, version] = IGNITEUI_ANGULAR_PACKAGE.split("@");
+		const [pkg] = IGNITEUI_ANGULAR_PACKAGE.split("@");
 
 		projLibrary.templates
 			.flatMap(t => t.packages || [])
 			.filter(p => typeof p === "string" && p.startsWith(`${pkg}@`))
 			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
+	});
 
-		const roots = [
-			...new Set(projLibrary.projects.flatMap(p => p.templatePaths))
-		];
+	it("Igx project templates should not carry the files the Angular CLI generates; the scaffold patches those", () => {
+		const angularFramework: Framework = require(templatesLocation);
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const generated = ["angular.json", "package.json", "tsconfig.json", "tsconfig.app.json", "tsconfig.spec.json", "src/main.ts"];
 
-		for (const root of roots) {
-			const file = path.resolve(process.cwd(), root, "package.json");
-			if (!fs.existsSync(file)) continue;
-
-			const { dependencies = {}, devDependencies = {} } = require(file);
-			const deps = { ...dependencies, ...devDependencies };
-
-			if (deps[pkg]) {
-				expect(deps[pkg]).toBe(version);
+		for (const root of new Set(projLibrary.projects.flatMap(p => p.templatePaths))) {
+			for (const file of generated) {
+				expect(fs.existsSync(path.join(root, file)))
+					.withContext(`${root}/${file} would replace the generated one`)
+					.toBeFalse();
 			}
 		}
 	});

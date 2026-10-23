@@ -66,7 +66,7 @@ ig new MyApp --framework=angular --type=igx-ts --template=side-nav
 | Flag | Description |
 |---|---|
 | `--skip-git` | Skip git repository initialization |
-| `--skip-install` | Skip npm package installation (useful in CI) |
+| `--skip-install` | Has no effect for Angular projects: `ng add igniteui-angular` installs the packages while the project is created |
  
 *For theming use igniteui-theming MCP*
  

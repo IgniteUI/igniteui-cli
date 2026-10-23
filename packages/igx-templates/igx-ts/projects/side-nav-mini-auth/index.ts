@@ -1,6 +1,7 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 import { SideNavMiniProject } from "../side-nav-mini";
+import { authExtras } from "../side-nav-auth";
 
 export class SideNavMiniAuthProject extends SideNavMiniProject implements ProjectTemplate {
 	public id: string = "side-nav-mini-auth";
@@ -11,6 +12,7 @@ export class SideNavMiniAuthProject extends SideNavMiniProject implements Projec
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration = false;
 	public isHidden = true;
+	protected extras = authExtras;
 
 	public get templatePaths() {
 		return [

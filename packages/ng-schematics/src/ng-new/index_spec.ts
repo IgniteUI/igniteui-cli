@@ -1,14 +1,54 @@
-import { SchematicContext, Tree } from "@angular-devkit/schematics";
+import { virtualFs } from "@angular-devkit/core";
+import { Tree } from "@angular-devkit/schematics";
 import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package-manager/options";
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
+import { NodeWorkflow } from "@angular-devkit/schematics/tools";
+import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, ScaffoldOptions, Template } from "@igniteui/cli-core";
 import * as path from "path";
-import * as AppProjectSchematic from "../app-projects/index";
+import { lastValueFrom } from "rxjs";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
 const collectionPath = path.join(__dirname, "../collection.json");
+
+/** Serves a library with a single project template, whose scaffold succeeds without creating anything */
+function mockProjectInLibrary(): Partial<ProjectTemplate> {
+	const mockProject: Partial<ProjectTemplate> = {
+		id: "mock-template-id",
+		framework: "angular",
+		projectType: "ts",
+		templatePaths: ["/path/to/template"],
+		generateConfig: jasmine.createSpy().and.returnValue({}),
+		upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true)),
+		scaffold: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+	};
+
+	const mockLibrary: Partial<ProjectLibrary> = {
+		name: "mock-library",
+		themes: ["mock-theme"],
+		components: [],
+		projectIds: ["another-mock"],
+		projects: [mockProject as ProjectTemplate],
+		templates: [],
+		projectType: "ts"
+	};
+
+	spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
+		.and.returnValue(Promise.resolve(mockLibrary as ProjectLibrary));
+	return mockProject;
+}
+
+/** The scaffold options the schematic passes for a project created through the schematics */
+function expectedScaffoldOptions(name: string, theme: string, skipInstall: boolean): ScaffoldOptions {
+	return {
+		name,
+		theme,
+		skipInstall,
+		skipGit: true,
+		extraConfig: { cliPackage: "@igniteui/angular-schematics", cliVersion: jasmine.any(String) }
+	};
+}
 
 describe("Schematics ng-new", () => {
 
@@ -43,7 +83,8 @@ describe("Schematics ng-new", () => {
 		const mockProjectTemplate: ProjectTemplate = {
 			...mockBaseTemplate,
 			installModules: jasmine.createSpy().and.callFake(() => {}),
-			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true)),
+			scaffold: jasmine.createSpy().and.returnValue(Promise.resolve(true))
 		};
 
 		const mockTemplate: Template = {
@@ -103,8 +144,7 @@ describe("Schematics ng-new", () => {
 		const mockSession = {
 			// regression: AI config (ai-config schematic) must run before the interactive
 			// setup/action loop, otherwise "Next Steps" prints before the AI-agents prompt.
-			// The project isn't moved into its named subdirectory until after the loop runs,
-			// so the file still sits at the tree root at this point.
+			// Both run with the project folder as the root of the tree.
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
 				.and.callFake(function (this: SchematicsPromptSession) {
 					expect(this.tree.exists(".mcp.json")).toBeTruthy();
@@ -128,18 +168,13 @@ describe("Schematics ng-new", () => {
 			set: () => void 0
 		});
 
-		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
-			currentTree.create("gitignore", "");
-			return currentTree;
-		});
-
 		const tree = await runner.runSchematic("ng-new", { version: "8.0.3" }, myTree);
 		for (const mockFunc of Object.entries(mockSession)) {
 			expect(mockFunc[1]).toHaveBeenCalled();
 		}
-		expect(AppProjectSchematic.default).toHaveBeenCalled();
+		expect(mockProjectTemplate.scaffold).toHaveBeenCalledOnceWith(expectedScaffoldOptions(workingDirectory, "mock-theme", false));
 		expect(tree.files.length).toBeGreaterThanOrEqual(2);
-		expect(tree.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
+		expect(tree.files.every(file => file.startsWith(`/${workingDirectory}/`))).toBeTrue();
 		const taskOptions = runner.tasks.map(task => task.options);
 		const expectedInstall: NodePackageTaskOptions = {
 			command: "install",
@@ -174,27 +209,7 @@ describe("Schematics ng-new", () => {
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
 
-		const mockProject: Partial<ProjectTemplate> = {
-			id: "mock-template-id",
-			framework: "angular",
-			projectType: "ts",
-			templatePaths: ["/path/to/template"],
-			generateConfig: jasmine.createSpy().and.returnValue({}),
-			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-		};
-
-		const mockLibrary: Partial<ProjectLibrary> = {
-			name: "mock-library",
-			themes: ["mock-theme"],
-			components: [],
-			projectIds: ["another-mock"],
-			projects: [mockProject as ProjectTemplate],
-			templates: [],
-			projectType: "ts"
-		};
-
-		spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
-				.and.returnValue((Promise.resolve(mockLibrary as ProjectLibrary)));
+		const mockProject = mockProjectInLibrary();
 
 		const userAnswers = new Map<string, any>();
 		userAnswers.set("upgradePackages", true);
@@ -204,15 +219,10 @@ describe("Schematics ng-new", () => {
 			set: () => void 0
 		});
 
-		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
-			currentTree.create("gitignore", "");
-			return currentTree;
-		});
-
 		const tree = await runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree);
-		expect(AppProjectSchematic.default).toHaveBeenCalled();
+		expect(mockProject.scaffold).toHaveBeenCalledOnceWith(expectedScaffoldOptions(workingDirectory, "mock-theme", false));
 		expect(tree.files.length).toBeGreaterThanOrEqual(2);
-		expect(tree.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
+		expect(tree.files.every(file => file.startsWith(`/${workingDirectory}/`))).toBeTrue();
 		const taskOptions = runner.tasks.map(task => task.options);
 		const expectedInstall: NodePackageTaskOptions = {
 			command: "install",
@@ -234,15 +244,35 @@ describe("Schematics ng-new", () => {
 		expect(taskOptions).toContain(expectedInit);
 	});
 
+	it("fails when the project cannot be created", async () => {
+		const runner = new SchematicTestRunner("schematics", collectionPath);
+		const mockProject = mockProjectInLibrary();
+		(mockProject.scaffold as jasmine.Spy).and.returnValue(Promise.resolve(false));
+
+		await expectAsync(runner.runSchematic("ng-new", { version: "8.0.3", name: "my-test-project" }, Tree.empty()))
+			.toBeRejectedWithError(/Project creation failed/);
+		expect(runner.tasks).withContext("no install, git or start tasks").toEqual([]);
+	});
+
+	it("rejects dry runs before creating the project", async () => {
+		const mockProject = mockProjectInLibrary();
+		// how `ng new --dry-run` runs the schematic
+		const workflow = new NodeWorkflow(new virtualFs.SimpleMemoryHost(), { dryRun: true });
+
+		await expectAsync(lastValueFrom(workflow.execute({
+			collection: collectionPath,
+			schematic: "ng-new",
+			options: { version: "8.0.3", name: "my-test-project" }
+		}), { defaultValue: undefined })).toBeRejectedWithError(/--dry-run is not supported/);
+		expect(mockProject.scaffold).not.toHaveBeenCalled();
+	});
+
 	describe("addAIConfig via ng-new", () => {
 		const workingDirectory = "my-test-project";
 		const mcpFilePath = `${workingDirectory}/.mcp.json`;
 
 		function setupAndRun(runner: SchematicTestRunner, myTree: Tree): Promise<UnitTestTree> {
-			spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
-				currentTree.create("gitignore", "");
-				return currentTree;
-			});
+			mockProjectInLibrary();
 
 			const userAnswers = new Map<string, any>();
 			userAnswers.set("upgradePackages", false);
