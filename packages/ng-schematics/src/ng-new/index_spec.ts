@@ -1,10 +1,13 @@
+import { virtualFs } from "@angular-devkit/core";
 import { Tree } from "@angular-devkit/schematics";
 import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package-manager/options";
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
+import { NodeWorkflow } from "@angular-devkit/schematics/tools";
 import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, ScaffoldOptions, Template } from "@igniteui/cli-core";
 import * as path from "path";
+import { lastValueFrom } from "rxjs";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
 const collectionPath = path.join(__dirname, "../collection.json");
@@ -249,6 +252,19 @@ describe("Schematics ng-new", () => {
 		await expectAsync(runner.runSchematic("ng-new", { version: "8.0.3", name: "my-test-project" }, Tree.empty()))
 			.toBeRejectedWithError(/Project creation failed/);
 		expect(runner.tasks).withContext("no install, git or start tasks").toEqual([]);
+	});
+
+	it("rejects dry runs before creating the project", async () => {
+		const mockProject = mockProjectInLibrary();
+		// how `ng new --dry-run` runs the schematic
+		const workflow = new NodeWorkflow(new virtualFs.SimpleMemoryHost(), { dryRun: true });
+
+		await expectAsync(lastValueFrom(workflow.execute({
+			collection: collectionPath,
+			schematic: "ng-new",
+			options: { version: "8.0.3", name: "my-test-project" }
+		}), { defaultValue: undefined })).toBeRejectedWithError(/--dry-run is not supported/);
+		expect(mockProject.scaffold).not.toHaveBeenCalled();
 	});
 
 	describe("addAIConfig via ng-new", () => {

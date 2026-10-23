@@ -28,8 +28,18 @@ function inProject(getName: () => string, rule: Rule): Rule {
 		callRule(rule, new ScopedTree(tree, getName()), context).pipe(map(() => tree));
 }
 
+/** Whether the workflow runs with `--dry-run`, which workflows keep to themselves: BaseWorkflow, which the Angular CLI's extends, in `_dryRun` */
+function isDryRun(context: SchematicContext): boolean {
+	return !!(context.engine.workflow as any)?._dryRun;
+}
+
 export function newProject(options: OptionsSchema): Rule {
-	return (_host: Tree, _hostContext: IgxSchematicContext) => {
+	return (_host: Tree, hostContext: IgxSchematicContext) => {
+		// the scaffold writes the project and installs its packages on disk, past the workflow's dry-run sink and task skipping
+		if (isDryRun(hostContext)) {
+			throw new SchematicsException("--dry-run is not supported: `ng new` and `ng add igniteui-angular` "
+				+ "create the project and install its packages on disk.");
+		}
 		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
