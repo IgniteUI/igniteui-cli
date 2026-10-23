@@ -241,6 +241,16 @@ describe("Schematics ng-new", () => {
 		expect(taskOptions).toContain(expectedInit);
 	});
 
+	it("fails when the project cannot be created", async () => {
+		const runner = new SchematicTestRunner("schematics", collectionPath);
+		const mockProject = mockProjectInLibrary();
+		(mockProject.scaffold as jasmine.Spy).and.returnValue(Promise.resolve(false));
+
+		await expectAsync(runner.runSchematic("ng-new", { version: "8.0.3", name: "my-test-project" }, Tree.empty()))
+			.toBeRejectedWithError(/Project creation failed/);
+		expect(runner.tasks).withContext("no install, git or start tasks").toEqual([]);
+	});
+
 	describe("addAIConfig via ng-new", () => {
 		const workingDirectory = "my-test-project";
 		const mcpFilePath = `${workingDirectory}/.mcp.json`;

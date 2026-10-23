@@ -20,7 +20,7 @@ license: MIT
 
 | Spec | Guards |
 |---|---|
-| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates equals `IGNITEUI_ANGULAR_PACKAGE`; project templates carry no `package.json` (the Angular CLI generates it) |
+| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates equals `IGNITEUI_ANGULAR_PACKAGE`; project templates carry none of the files the Angular CLI generates and the scaffold patches (`angular.json`, `package.json`, tsconfigs, `src/main.ts`) |
 | `spec/templates/angular-scaffold-spec.ts` | The Angular project scaffold, against the stubbed Angular CLI: command sequence, every patch to the generated `angular.json`, `package.json` and tsconfigs, the projects' `extras`, cleanup on failure |
 | `spec/templates/react-spec.ts` | Same, for all four `IGNITEUI_REACT_*` constants |
 | `spec/templates/webcomponents-spec.ts` | Ids and collisions only. It does **not** check version pins against the constants |

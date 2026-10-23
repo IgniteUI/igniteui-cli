@@ -72,7 +72,8 @@ describe("Help command", () => {
 													[string] [choices: "light", "dark"]
 				--skip-git, --sg      Do not initialize a git repository for the project
 																				[boolean]
-				--skip-install, --si  Do not install packages after scaffolding  [boolean]
+				--skip-install, --si  Do not install packages after scaffolding (Angular
+											projects install them anyway: \`ng add\` needs them)  [boolean]
 				--template            Project template                            [string]
 				--agents              AI agents/tools to generate configuration files for
 					[array] [choices: "generic", "claude", "copilot", "cursor", "codex",
