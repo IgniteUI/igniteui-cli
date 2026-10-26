@@ -3,6 +3,7 @@
   "mcpName": "io.github.IgniteUI/mcp-server",
   "version": "15.8.2",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/IgniteUI/igniteui-cli.git",
