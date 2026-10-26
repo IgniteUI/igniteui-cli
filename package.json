@@ -65,6 +65,7 @@
 		"handlebars": "4.7.10"
 	},
 	"devDependencies": {
+		"@cyclonedx/cyclonedx-npm": "^6.0.1",
 		"@inquirer/prompts": "^7.9.0",
 		"@types/jasmine": "^5.1.13",
 		"@types/minimatch": "^5.1.2",
