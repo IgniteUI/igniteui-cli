@@ -151,7 +151,7 @@ End with the PASS/FAIL/SKIP totals, whether the run as a whole is trustworthy (n
 
 ## Constraints When Editing the Script
 
-- Every `ig` call must happen **before** `npm install` in a generated project. After install, `bin/execute.js` delegates to the project-local *published* CLI, so later calls would test the published CLI, not your local build.
+- Call the CLI through `cli` (which loads `packages/cli/lib/cli.js`), never `bin/execute.js`. The wrapper hands off to a project-local `igniteui-cli` whenever one is installed, and Angular projects install one during `ig new`, so calls through it would test the published CLI, not this checkout.
 - Keep the three-way step judgement (exit code, log scan, artifact) intact.
 
 ## Related Skills
