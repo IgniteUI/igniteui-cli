@@ -34,11 +34,12 @@ jobs:
         with:
           persist-credentials: false
 
+      # No registry-url: this job never publishes, and the .npmrc it writes references
+      # ${NODE_AUTH_TOKEN}, which setup-node v7 no longer defaults and yarn 1 refuses to leave unset.
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install packages
         run: yarn install --frozen-lockfile
