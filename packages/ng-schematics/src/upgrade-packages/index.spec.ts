@@ -17,6 +17,19 @@ describe("Schematics upgrade-packages", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
+	it("reports a project type the Angular library doesn't have", async () => {
+		const runner = new SchematicTestRunner("schematics", collectionPath);
+		const mockConfig = {
+			customTemplates: [],
+			project: { framework: "angular", projectType: "igc-ts" }
+		} as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig);
+		spyOn(SchematicsTemplateManager.prototype, "getProjectLibrary").and.returnValue(undefined);
+
+		await expectAsync(runner.runSchematic(schematicName, {}, appTree))
+			.toBeRejectedWithError("No valid Ignite UI project template found to upgrade packages.");
+	});
+
 	it("calls project template upgradeIgniteUIPackages and schedules install accordingly", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 

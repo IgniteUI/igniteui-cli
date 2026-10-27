@@ -198,6 +198,20 @@ describe("Unit - Upgrade command", () => {
 		expect(mockProjTemplate.upgradeIgniteUIPackages).toHaveBeenCalledWith(process.cwd(), "");
 	});
 
+	it("Should log an error when the project type doesn't match the framework", async () => {
+		const config = { project: { framework: "angular", projectType: "igc-ts" } } as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => undefined
+		};
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
+
+		spyOn(Util, "error");
+		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
+		expect(Util.error).toHaveBeenCalledWith("No valid Ignite UI project template found to upgrade packages.", "red");
+		expect(Util.execSync).not.toHaveBeenCalled();
+	});
+
 	it("Should log a message when no framework can be detected", async () => {
 		const config = {} as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
