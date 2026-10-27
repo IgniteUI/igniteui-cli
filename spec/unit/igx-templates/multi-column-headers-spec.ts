@@ -70,6 +70,7 @@ describe("Unit - igx-ts Multi Column Headers template", () => {
 	});
 
 	it("adds a grid feature for row selection", () => {
+		// "Row Selection" is not among the offered choices; this covers the template's unused case
 		const config = generate(["Row Selection"]);
 
 		expect(config.gridFeatures).toBe(`rowSelection="multiple"`);

@@ -42,6 +42,7 @@ describe("Unit - igx-ts Custom Tree Grid template", () => {
 	});
 
 	it("generates empty feature variables when no features are selected", () => {
+		const baseDependencies = [...template.dependencies];
 		const config = generate();
 
 		expect(config).toEqual(jasmine.objectContaining({
@@ -54,7 +55,7 @@ describe("Unit - igx-ts Custom Tree Grid template", () => {
 			columnFeatures: "",
 			treeGridFeatures: ""
 		}));
-		expect(template.dependencies.length).toBe(2);
+		expect(template.dependencies).toEqual(baseDependencies);
 	});
 
 	it("adds column features for sorting, filtering and resizing", () => {
