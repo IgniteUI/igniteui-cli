@@ -42,14 +42,18 @@ describe("Unit - igx-ts Custom Hierarchical Grid template", () => {
 		expect(toolbarImports.length).toBe(1);
 	});
 
-	it("does not carry markup or pinning over to the next generated grid", () => {
-		const first = generate(["Column Hiding", "Paging", "Column Pinning"]);
+	it("does not carry markup, pinning or dependencies over to the next generated grid", () => {
+		const imports = () => template.dependencies.map(dep => (dep as { import?: string | string[] }).import);
+		const baseImports = imports();
+		const first = generate(["Column Hiding", "Paging", "Column Pinning", "Cell Editing"]);
 		expect(first.additionalMarkup).toContain("<igx-grid-toolbar>");
 		expect(first.albumPin).toBeDefined();
+		expect(imports()).toContain("IgxPaginatorComponent");
 
 		const second = generate([]);
 
 		expect(second.additionalMarkup).toBe("");
 		expect(second.albumPin).toBeUndefined();
+		expect(imports()).toEqual(baseImports);
 	});
 });
