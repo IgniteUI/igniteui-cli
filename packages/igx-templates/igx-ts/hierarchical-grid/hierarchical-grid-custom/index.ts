@@ -1,6 +1,19 @@
-import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
+import { ControlExtraConfigType, ControlExtraConfiguration, TemplateDependency } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
+
+const BASE_DEPENDENCIES: TemplateDependency[] = [
+	{
+		import: [
+			"IgxHierarchicalGridComponent",
+			"IgxRowIslandComponent",
+			"IgxColumnComponent",
+			"IgxIconComponent"
+		],
+		from: "<%=igxPackage%>",
+		standalone: true
+	}
+];
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: { [key: string]: unknown } = {};
@@ -16,18 +29,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Custom Hierarchical Grid";
 		this.description = "a customizable IgxHierarchicalGrid";
-		this.dependencies = [
-			{
-				import: [
-					"IgxHierarchicalGridComponent",
-					"IgxRowIslandComponent",
-					"IgxColumnComponent",
-					"IgxIconComponent"
-				],
-				from: "<%=igxPackage%>",
-				standalone: true
-			}
-		];
+		this.dependencies = [...BASE_DEPENDENCIES];
 		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
@@ -51,6 +53,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		// the template instance is shared, so reset state left over from previous calls
 		this.usePinning = false;
 		this.additionalElements = [""];
+		this.dependencies = [...BASE_DEPENDENCIES];
 		const columnFeatures: string[] = [];
 		const gridFeatures: string[] = [];
 		const extraConfig = {
