@@ -20,4 +20,13 @@ describe("createCliConfig", () => {
 			.toBeRejectedWithError(SchematicsException, "angular.json was not found in the project's root");
 		expect(tree.exists("ignite-ui-cli.json")).toBeFalse();
 	});
+
+	it("should report a missing angular.json when the root has other files", async () => {
+		tree.create("package.json", "{}");
+		const rule = createCliConfig() as (tree: UnitTestTree, context: SchematicContext) => Promise<void>;
+
+		await expectAsync(rule(tree, context))
+			.toBeRejectedWithError(SchematicsException, "angular.json was not found in the project's root");
+		expect(tree.exists("ignite-ui-cli.json")).toBeFalse();
+	});
 });
