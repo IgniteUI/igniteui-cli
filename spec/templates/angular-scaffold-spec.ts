@@ -2,7 +2,7 @@ import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
+import { IGNITEUI_ANGULAR_PACKAGE, SKIP_AI_CONFIG_ENV } from "../../packages/igx-templates/constants";
 import emptyProject from "../../packages/igx-templates/igx-ts/projects/empty";
 import authProject from "../../packages/igx-templates/igx-ts/projects/side-nav-auth";
 import { stubAngularCli } from "../helpers/angular-cli-stub";
@@ -142,6 +142,14 @@ describe("Angular project scaffold", () => {
 
 		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install is ignored/));
 		expect(commands()).toContain("npm install --save-dev playwright --no-audit --no-fund");
+	});
+
+	it("tells the Angular CLI calls to skip ng add's ai-config, which ig new and the ng-new schematic run themselves", async () => {
+		await emptyProject.scaffold({ name, theme: "Default" });
+
+		for (const [command, options] of execSync.calls.allArgs().filter(([command]) => command.startsWith("npx"))) {
+			expect(options.env[SKIP_AI_CONFIG_ENV]).withContext(command).toBe("true");
+		}
 	});
 
 	it("runs ng new outside the current folder, which may be inside an Angular workspace", async () => {

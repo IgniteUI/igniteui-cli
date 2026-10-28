@@ -87,7 +87,7 @@ React imports components from `igniteui-react` (or `-grids`, `-charts`, `-gauges
 
 `ig new` and the `ng-new` schematic create an Angular project with the Angular CLI, through `scaffold()` on `BaseIgxProject` (`packages/igx-templates/igx-ts/projects/_base/index.ts`; the steps live in `_base/scaffold.ts`):
 
-1. `ng new` (scss, routing, no SSR, zone.js), `ng add angular-eslint@<Angular major>`, `ng add igniteui-angular@<IGNITEUI_ANGULAR_PACKAGE range>`. `ng add` installs packages, so `--skip-install` only prints a warning. The AI config `ng add` writes is deleted; `ig new` and the schematic run their own. When a step fails, the project folder is removed.
+1. `ng new` (scss, routing, no SSR, zone.js), `ng add angular-eslint@<Angular major>`, `ng add igniteui-angular@<IGNITEUI_ANGULAR_PACKAGE range>`. `ng add` installs packages, so `--skip-install` only prints a warning. For the same reason the `ng-new` schematic rejects `--dry-run` (`isDryRun` in `packages/ng-schematics/src/ng-new/index.ts`, which reads the workflow's private `_dryRun`; re-check it after an Angular major). The AI config `ng add` writes is deleted; `ig new` and the schematic run their own. When a step fails, the project folder is removed.
 2. The project's `templatePaths` (`_base`, `_base_with_home`, the project's own `files/`) are laid over the generated project, placeholders substituted.
 3. `angular.json` and `package.json` get our deviations as patches (`patchAngularJson`, `patchPackageJson`, which also writes the `IGNITEUI_ANGULAR_PACKAGE` range over the `^<version>` that `ng add` saves); the tsconfigs get the types in the project's `extras`.
 4. `npm install` adds `playwright` and the packages in the project's `extras`: at their latest versions, or at the version an entry names.

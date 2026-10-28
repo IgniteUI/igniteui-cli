@@ -3,14 +3,17 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import * as ts from "typescript";
-import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
+import { IGNITEUI_ANGULAR_PACKAGE, SKIP_AI_CONFIG_ENV } from "../../../constants";
 
 /** Package that provides the `ig` commands in projects created by `ig new` */
 export const CLI_PACKAGE = "igniteui-cli";
 /** Added by `ng add igniteui-angular`; projects created through the schematics keep it instead of igniteui-cli */
 const SCHEMATICS_PACKAGE = "@igniteui/angular-schematics";
 
-/** AI config the ai-config step of `ng add igniteui-angular` writes; `ig new` and the ng-new schematic run their own */
+/**
+ * AI config the ai-config step of `ng add igniteui-angular` writes; `ig new` and the ng-new schematic run their own.
+ * `SKIP_AI_CONFIG_ENV` skips that step; these are removed for @igniteui/angular-schematics versions without the check.
+ */
 const NG_ADD_AI_CONFIG = [".agents", ".claude", "AGENTS.md", ".mcp.json"];
 
 /** Reads a field of the newest published version that matches `spec` (`name@range`) */
@@ -32,7 +35,7 @@ export function generateProject(dashName: string, projectPath: string): string {
 		Util.execSync(`npx -y @angular/cli@${angularMajor} ${command} --defaults --interactive=false`, {
 			cwd,
 			stdio: "inherit",
-			env: { ...process.env, NG_CLI_ANALYTICS: "false" }
+			env: { ...process.env, NG_CLI_ANALYTICS: "false", [SKIP_AI_CONFIG_ENV]: "true" }
 		});
 
 	// `ng new` refuses to run inside an Angular workspace, so it runs in a temp folder outside any

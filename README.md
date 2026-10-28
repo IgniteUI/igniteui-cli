@@ -106,6 +106,8 @@ To create a new project with Ignite UI for Angular use [ig new](https://github.c
 ```bash
 ig new "IG Project" --framework=angular --type=igx-ts --template=side-nav
 ```
+The project is created with the Angular CLI (`ng new`, then `ng add igniteui-angular`), so this needs network access and always installs the project's packages: `--skip-install` has no effect for Angular projects.
+
 #### Generate Ignite UI for React project
 
 To create a new project with Ignite UI for React use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) by specifying `react` as framework and `igr-ts` as project type:
@@ -287,12 +289,14 @@ yourself, if you hit that.
 
 Two things to know if you modify it:
 
-* **All `ig` calls must happen before `npm install`.** `packages/cli/bin/execute.js` delegates to
+* **Call the CLI through `cli`, never `packages/cli/bin/execute.js`.** The wrapper delegates to
   `node_modules/igniteui-cli` whenever one resolves inside the current directory, and every project
-  template lists `igniteui-cli` as a devDependency — so once a generated project has been installed,
-  `ig add` silently switches to the *published* CLI and its bundled templates. Scaffolding with
-  `--skip-install` keeps `PackageManager.queuePackage` from spawning installs, so dependencies are
-  written to `package.json` and installed once at the end.
+  template lists `igniteui-cli` as a devDependency. Angular projects install theirs during `ig new`
+  (`ng add` needs the packages), so through the wrapper `ig add` would silently switch to the
+  *published* CLI and its bundled templates. `cli` loads this checkout's `packages/cli/lib/cli.js`
+  instead. For the other frameworks, scaffolding with `--skip-install` still keeps
+  `PackageManager.queuePackage` from spawning installs, so dependencies are written to
+  `package.json` and installed once at the end.
 * **Exit codes are not sufficient.** `Util.error` logs and returns without setting one, so
   `ig add does-not-exist x` exits 0. Each step is judged on its exit code *and* an error scan of its
   log *and* an artifact check.
