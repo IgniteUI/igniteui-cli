@@ -43,4 +43,12 @@ describe("Unit - ProjectConfig", () => {
 		expect(ProjectConfig.hasLocalConfig()).toBeTruthy();
 		expect(fs.statSync).toHaveBeenCalledTimes(1);
 	});
+
+	it("validateProperty rejects properties that are not in the schema", () => {
+		const result = ProjectConfig.validateProperty("notAConfigProperty", "value");
+		expect(result.valid).toBeFalse();
+		expect(result.value).toBeUndefined();
+		expect(result.message)
+			.toBe(`Property "notAConfigProperty" is not allowed in the Ignite UI CLI configuration!`);
+	});
 });

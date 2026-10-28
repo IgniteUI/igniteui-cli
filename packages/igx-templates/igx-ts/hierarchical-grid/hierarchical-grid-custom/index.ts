@@ -1,6 +1,19 @@
-import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
+import { ControlExtraConfigType, ControlExtraConfiguration, TemplateDependency } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
+
+const BASE_DEPENDENCIES: TemplateDependency[] = [
+	{
+		import: [
+			"IgxHierarchicalGridComponent",
+			"IgxRowIslandComponent",
+			"IgxColumnComponent",
+			"IgxIconComponent"
+		],
+		from: "<%=igxPackage%>",
+		standalone: true
+	}
+];
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
@@ -16,18 +29,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Custom Hierarchical Grid";
 		this.description = "a customizable IgxHierarchicalGrid";
-		this.dependencies = [
-			{
-				import: [
-					"IgxHierarchicalGridComponent",
-					"IgxRowIslandComponent",
-					"IgxColumnComponent",
-					"IgxIconComponent"
-				],
-				from: "<%=igxPackage%>",
-				standalone: true
-			}
-		];
+		this.dependencies = [...BASE_DEPENDENCIES];
 		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
@@ -48,6 +50,10 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	}
 
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+		// the template instance is shared, so reset state left over from previous calls
+		this.usePinning = false;
+		this.additionalElements = [""];
+		this.dependencies = [...BASE_DEPENDENCIES];
 		const columnFeatures = [];
 		const gridFeatures = [];
 		const extraConfig = {
@@ -139,57 +145,57 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				}
 
 				featuresUrls.push(this.getFeatureUrl(feature, featureUrl));
-				selectedFeatures = features.map((e, i) => {
-					anchorWrapper.href = featuresUrls[i];
-					anchorWrapper.text = e;
-					return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
-						`${anchorWrapper.text}${anchorWrapper.end}`;
-				}).toString();
-				if (selectedFeatures.length > 0) {
-					selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
-				}
-				if (toolbarActions.length) {
-					this.dependencies = [
-						...this.dependencies,
-						...[
-							{
-								standalone: true,
-								import: "IgxGridToolbarComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarTitleComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarActionsComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarPinningComponent",
-								from: "<%=igxPackage%>"
-							},
-							{
-								standalone: true,
-								import: "IgxGridToolbarHidingComponent",
-								from: "<%=igxPackage%>"
-							},
-						],
-					];
+			}
+			selectedFeatures = features.map((e, i) => {
+				anchorWrapper.href = featuresUrls[i];
+				anchorWrapper.text = e;
+				return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
+					`${anchorWrapper.text}${anchorWrapper.end}`;
+			}).toString();
+			if (selectedFeatures.length > 0) {
+				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
+			}
+			if (toolbarActions.length) {
+				this.dependencies = [
+					...this.dependencies,
+					...[
+						{
+							standalone: true,
+							import: "IgxGridToolbarComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarTitleComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarActionsComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarPinningComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarHidingComponent",
+							from: "<%=igxPackage%>"
+						},
+					],
+				];
 
-					const parts = [
-						"  <igx-grid-toolbar>",
-						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
-						"    <igx-grid-toolbar-actions>",
-						...toolbarActions,
-						"    </igx-grid-toolbar-actions>",
-						"  </igx-grid-toolbar>"
-					];
-					this.additionalElements.splice(1, 0, parts.join("\n"));
-				}
+				const parts = [
+					"  <igx-grid-toolbar>",
+					"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
+					"    <igx-grid-toolbar-actions>",
+					...toolbarActions,
+					"    </igx-grid-toolbar-actions>",
+					"  </igx-grid-toolbar>"
+				];
+				this.additionalElements.splice(1, 0, parts.join("\n"));
 			}
 		}
 

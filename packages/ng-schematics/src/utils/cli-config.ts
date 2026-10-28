@@ -23,7 +23,9 @@ async function GetCliConfig(tree: Tree): Promise<Config> {
 	try {
 		({ workspace } = await workspaces.readWorkspace("/", createWorkspaceHost(tree)));
 	} catch (e) {
-		if (e.toString().includes("Could not find (undefined)")) {
+		const message = e.toString();
+		if (message.includes("Unable to determine format for workspace path") ||
+			message.includes("Unable to locate a workspace file")) {
 			throw new SchematicsException("angular.json was not found in the project's root");
 		}
 		throw new Error(e.message);
