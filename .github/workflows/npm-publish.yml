@@ -232,9 +232,11 @@ jobs:
           if-no-files-found: error
 
   # The only job that can publish to npm. It compiles nothing and never checks out the repository.
+  # TODO: re-enable once the release flow has been validated end to end with a dummy GitHub release.
   publish:
     name: Publish to npmjs.org
     needs: [build, attest, attest-sbom]
+    if: false
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -349,6 +351,7 @@ jobs:
   # without repeating the npm publish.
   # Skipped for prereleases — the MCP registry has no dist-tag equivalent,
   # so publishing an alpha/beta/rc would make it the current version.
+  # Skipped while the publish job is disabled: the registry validates the package against npm.
   mcp-registry:
     needs: publish
     if: ${{ !cancelled() && (github.event_name == 'workflow_dispatch' || (needs.publish.result == 'success' && !github.event.release.prerelease)) }}
