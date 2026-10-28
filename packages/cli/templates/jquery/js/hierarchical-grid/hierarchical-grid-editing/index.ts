@@ -4,7 +4,7 @@ import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
-	public userExtraConfiguration: {} = {};
+	public userExtraConfiguration: { [key: string]: unknown } = {};
 	public hasExtraConfiguration = true;
 
 	private gridHelper: GridHelper;
@@ -33,12 +33,12 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		this.gridHelper.addFeature("Updating", { enableAddRow: true });
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"] as string[], 5);
 		const config = { gridfeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}

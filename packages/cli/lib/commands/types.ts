@@ -46,7 +46,7 @@ export interface PositionalArgs {
 
 export interface CommandType extends CommandModule<{}, any> {
 	/** Handler function that will be called by yargs after the command line has been parsed. */
-	handler(/** do not use `this` in handler */this: void, argv: ArgumentsCamelCase<PositionalArgs>);
+	handler(/** do not use `this` in handler */this: void, argv: ArgumentsCamelCase<PositionalArgs>): void | Promise<void>;
 }
 
 export interface NewCommandType extends CommandType {
@@ -85,7 +85,7 @@ export interface ConfigCommandType extends CommandType {
 
 export interface DocCommandType extends CommandType {
 	/** Uses the `open` package to open a URL, file etc. */
-	open(string): void;
+	open(target: string): void;
 }
 
 export interface TestCommandType extends CommandType {

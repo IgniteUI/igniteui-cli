@@ -50,7 +50,7 @@ describe("Unit - Upgrade command", () => {
 		const mockProjTemplate: ProjectTemplate = {
 			...mockBaseTemplate,
 			installModules: jasmine.createSpy().and.callFake(() => {}),
-			upgradeIgniteUIPackages: null
+			upgradeIgniteUIPackages: null as unknown as ProjectTemplate["upgradeIgniteUIPackages"]
 		};
 
 		const mockTemplate: Template = {
@@ -101,13 +101,15 @@ describe("Unit - Upgrade command", () => {
 				description: "A mock component group"
 			}]),
 			getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
-			getProject: null,
+			getProject: null as unknown as ProjectLibrary["getProject"],
 			hasProject: jasmine.createSpy().and.returnValue(true),
 			hasTemplate: jasmine.createSpy().and.returnValue(false),
 			registerTemplate: jasmine.createSpy()
 		};
 
-		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => null as unknown as ProjectLibrary
+		};
 		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib);
 		spyOn(mockProjLib, "getProject").and.returnValue(mockProjTemplate);
@@ -184,7 +186,9 @@ describe("Unit - Upgrade command", () => {
 			hasProject: jasmine.createSpy().and.returnValue(false)
 		};
 
-		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => null as unknown as ProjectLibrary
+		};
 		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib as ProjectLibrary);
 
@@ -192,6 +196,20 @@ describe("Unit - Upgrade command", () => {
 		expect(detectFrameworkModule.detectFrameworkFromPackageJson).toHaveBeenCalled();
 		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("react", "igr-ts");
 		expect(mockProjTemplate.upgradeIgniteUIPackages).toHaveBeenCalledWith(process.cwd(), "");
+	});
+
+	it("Should log an error when the project type doesn't match the framework", async () => {
+		const config = { project: { framework: "angular", projectType: "igc-ts" } } as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
+		const mockTemplateManager: Pick<BaseTemplateManager, "getProjectLibrary"> = {
+			getProjectLibrary: () => undefined
+		};
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
+
+		spyOn(Util, "error");
+		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
+		expect(Util.error).toHaveBeenCalledWith("No valid Ignite UI project template found to upgrade packages.", "red");
+		expect(Util.execSync).not.toHaveBeenCalled();
 	});
 
 	it("Should log a message when no framework can be detected", async () => {

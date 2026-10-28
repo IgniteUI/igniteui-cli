@@ -6,9 +6,9 @@ import { Util } from "../util/Util";
 
 export class BaseComponent implements Component {
 	public templates: Template[];
-	public name: string;
-	public group: string;
-	public description: string;
+	public name!: string;
+	public group!: string;
+	public description!: string;
 	public groupPriority = 0;
 	private basePath: string = __dirname;
 

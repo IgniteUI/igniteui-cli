@@ -7,7 +7,7 @@ export class BaseIgrTsProject implements ProjectTemplate {
 	public description = "Ignite UI CLI project for React";
 	public framework: string = "react";
 	public projectType: string = "tsx";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = true;
 	public delimiters = defaultDelimiters;

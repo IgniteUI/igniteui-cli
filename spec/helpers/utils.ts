@@ -35,7 +35,7 @@ export function filesDiff(
 		files1 = files1.map(transform1);
 	}
 	if (transform2) {
-		files2 = files2.map(transform1);
+		files2 = files2.map(transform1!);
 	}
 	return files2.filter(x => files1.indexOf(x) === -1);
 }

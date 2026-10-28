@@ -20,13 +20,8 @@ import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
-interface IgxSchematicContext extends SchematicContext {
-	projectType: string;
-	theme: string;
-}
-
 export function newProject(options: OptionsSchema): Rule {
-	return (_host: Tree, _hostContext: IgxSchematicContext) => {
+	return (_host: Tree, _hostContext: SchematicContext) => {
 		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -44,7 +39,7 @@ export function newProject(options: OptionsSchema): Rule {
 		let projTemplate: ProjectTemplate;
 
 		return chain([
-			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
+			(tree: Tree, _context: SchematicContext): Observable<Tree> => {
 				return defer(async () => {
 					if (options.name) {
 						options.name = options.name.trim();
@@ -57,10 +52,10 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					}
 
-					if (Util.directoryExists(options.name)) {
+					if (options.name && Util.directoryExists(options.name)) {
 						throw new SchematicsException(`Folder "${options.name}" already exists!`);
 					}
-					const framework = templateManager.getFrameworkByName("angular");
+					const framework = templateManager.getFrameworkByName("angular")!;
 					projLibrary = await prompt.getProjectLibraryByType(framework, options.type);
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
@@ -80,19 +75,20 @@ export function newProject(options: OptionsSchema): Rule {
 
 					let themeIndex = 0;
 					if (options.theme) {
-						themeIndex = projLibrary.themes.findIndex(item => options.theme.toLowerCase() === item.toLowerCase());
+						themeIndex = projLibrary.themes.findIndex(item => options.theme!.toLowerCase() === item.toLowerCase());
 						if (themeIndex === -1) {
 							throw new SchematicsException(`Theme not supported`);
 						}
 					}
 
 					if (projTemplate === undefined) {
-						projTemplate = options.template
+						const project = options.template
 							? projLibrary.getProject(options.template)
 							: projLibrary.projects.filter(p => !p.isHidden)[0];
-						if (!projTemplate) {
+						if (!project) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
+						projTemplate = project;
 					}
 					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
@@ -132,12 +128,12 @@ export function newProject(options: OptionsSchema): Rule {
 					// externalSchematic("@schematics/angular", "application", {
 					// 	projectRoot: "", name: options.name, skipInstall: true, routing: true, style: "scss"
 					// }),
-					(tree: Tree, _context: IgxSchematicContext) => {
+					(tree: Tree, _context: SchematicContext) => {
 						setVirtual(tree);
 						// extend project entry point:
 						return schematic("app-projects", projectOptions);
 					},
-					(tree: Tree, _context: IgxSchematicContext) => {
+					(tree: Tree, _context: SchematicContext) => {
 						// extend project entry point:
 						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
 						if (tree.exists("gitignore")) {
@@ -146,7 +142,7 @@ export function newProject(options: OptionsSchema): Rule {
 					},
 					// run full schematic for args/prompts
 					schematic("ai-config", {}),
-					(tree: Tree, context: IgxSchematicContext) => {
+					(tree: Tree, context: SchematicContext) => {
 						if (!nameProvided) {
 							return defer(async () => {
 								prompt.setContext(context, tree, options.name as string);
@@ -155,13 +151,13 @@ export function newProject(options: OptionsSchema): Rule {
 							});
 						}
 					},
-					(_tree: Tree, _context: IgxSchematicContext) => {
+					(_tree: Tree, _context: SchematicContext) => {
 						// move late so name can be resolved before use
 						return move(options.name!);
 					}
 				]), MergeStrategy.Overwrite
 			),
-			(tree: Tree, _context: IgxSchematicContext) => {
+			(tree: Tree, _context: SchematicContext) => {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {
 						setVirtual(tree);
@@ -170,7 +166,7 @@ export function newProject(options: OptionsSchema): Rule {
 					});
 				}
 			},
-			(tree: Tree, context: IgxSchematicContext) => {
+			(tree: Tree, context: SchematicContext) => {
 				const installChain: TaskId[] = [];
 				if (!options.skipInstall) {
 					const installTask = context.addTask(

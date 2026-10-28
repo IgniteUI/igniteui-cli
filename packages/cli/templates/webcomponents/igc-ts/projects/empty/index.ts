@@ -8,7 +8,7 @@ export class EmptyPageTemplate extends BaseWithHomeIgcProject implements Project
 	public description = "Starter project with routing and a home page";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
-	public dependencies: string[];
+	public dependencies!: string[];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = false;
 

@@ -16,22 +16,22 @@ import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScript
 import { JsxEmit } from "typescript";
 
 export class IgniteUIForReactTemplate implements Template {
-	public components: string[];
-	public controlGroup: string;
+	public components!: string[];
+	public controlGroup!: string;
 	public listInComponentTemplates: boolean = true;
 	public listInCustomTemplates: boolean = false;
-	public id: string;
-	public name: string;
-	public description: string;
+	public id!: string;
+	public name!: string;
+	public description!: string;
 	public dependencies: string[] = [];
 	public framework: string = "react";
-	public projectType: string;
+	public projectType!: string;
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = false;
-	public packages = [];
+	public packages: string[] = [];
 	public delimiters = defaultDelimiters;
 	// non-standard template prop
-	protected widget: string;
+	protected widget?: string;
 
 	/**
 	 * Base ReactTemplate constructor
@@ -43,8 +43,8 @@ export class IgniteUIForReactTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
-	public generateConfig(name: string, options: {}): {[key: string]: any} {
-		let config = {};
+	public generateConfig(name: string, options: {[key: string]: any} = {}): {[key: string]: any} {
+		let config: {[key: string]: any} = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
 		}
@@ -65,7 +65,7 @@ export class IgniteUIForReactTemplate implements Template {
 		return config;
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
+	public registerInProject(projectPath: string, name: string, options: AddTemplateArgs = {}, defaultPath = false) {
 		if (!options.parentName) {
 			options.parentName = "app";
 		}
@@ -115,7 +115,7 @@ export class IgniteUIForReactTemplate implements Template {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		throw new Error("Method not implemented.");
 	}
 

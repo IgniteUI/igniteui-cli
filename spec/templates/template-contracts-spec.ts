@@ -87,6 +87,6 @@ function projects(library: ProjectLibrary): ProjectTemplate[] {
 	return library.projectIds.map(id => {
 		const project = library.getProject(id);
 		expect(project).withContext(`project ${id}`).toBeDefined();
-		return project;
+		return project!;
 	});
 }

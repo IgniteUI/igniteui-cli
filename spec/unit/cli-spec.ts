@@ -30,27 +30,27 @@ describe("Unit - Cli.ts", () => {
 		expect(add.check).toHaveBeenCalled();
 	});
 	it("Should fire properly - build", async () => {
-		spyOn(build , "handler").and.returnValue(true);
+		(spyOn(build , "handler") as jasmine.Spy).and.returnValue(true);
 		await run.run("build");
 		expect(build.handler).toHaveBeenCalled();
 	});
 	it("Should fire properly - doc", async () => {
-		spyOn(doc , "handler").and.returnValue(true);
+		(spyOn(doc , "handler") as jasmine.Spy).and.returnValue(true);
 		await run.run("doc");
 		expect(doc.handler).toHaveBeenCalled();
 	});
 	it("Should fire properly - test", async () => {
-		spyOn(test , "handler").and.returnValue(true);
+		(spyOn(test , "handler") as jasmine.Spy).and.returnValue(true);
 		await run.run("test");
 		expect(test.handler).toHaveBeenCalled();
 	});
 	it("Should fire properly - start", async () => {
-		spyOn(start , "handler").and.returnValue(true);
+		(spyOn(start , "handler") as jasmine.Spy).and.returnValue(true);
 		await run.run("start");
 		expect(start.handler).toHaveBeenCalled();
 	});
 	it("Should fire properly - list", async () => {
-		spyOn(list , "handler").and.returnValue(true);
+		(spyOn(list , "handler") as jasmine.Spy).and.returnValue(true);
 		await run.run("list");
 		expect(list.handler).toHaveBeenCalled();
 	});

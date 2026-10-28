@@ -6,18 +6,18 @@ import * as path from "path";
 import { WebComponentsTypeScriptFileUpdate } from "../../templates/webcomponents/WebComponentsTypeScriptFileUpdate";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
-	public components: string[];
-	public controlGroup: string;
+	public components!: string[];
+	public controlGroup!: string;
 	public listInComponentTemplates: boolean = true;
 	public listInCustomTemplates: boolean = false;
-	public id: string;
-	public name: string;
-	public description: string;
+	public id!: string;
+	public name!: string;
+	public description!: string;
 	public framework: string = "webcomponents";
 	public projectType = "igc-ts";
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = false;
-	public packages = [];
+	public packages: string[] = [];
 	public dependencies: TemplateDependency[] = [];
 	public delimiters = defaultDelimiters;
 
@@ -28,7 +28,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	constructor(private rootPath: string) {
 	}
 
-	public generateConfig(name: string, options: {}): { [key: string]: any } {
+	public generateConfig(name: string, options: { [key: string]: any } = {}): { [key: string]: any } {
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
 			return Promise.resolve(false);
@@ -37,7 +37,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
-	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs, defaultPath = false) {
+	public registerInProject(projectPath: string, fullName: string, options: AddTemplateArgs = {}, defaultPath = false) {
 		if (!options.parentName) {
 			options.parentName = "app";
 		}
@@ -91,19 +91,20 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		throw new Error("Method not implemented.");
 	}
 
 	protected getBaseVariables(name: string): { [key: string]: string } {
-		const config = {};
+		const config: { [key: string]: string } = {};
 		config["name"] = Util.nameFromPath(name);
 		config["ClassName"] = Util.className(Util.nameFromPath(name));
 		config["path"] = this.folderName(name);
 		config["filePrefix"] = this.fileName(name);
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
-		config["camelCaseName"] = Util.camelCase(name);
+		// component names are validated as non-empty before templates run
+		config["camelCaseName"] = Util.camelCase(name)!;
 		config["dockManagerPackage"] = resolvePackage(NPM_DOCK_MANAGER);
 
 		return config;
