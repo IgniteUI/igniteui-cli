@@ -65,7 +65,6 @@ jobs:
 
       # Packs every publishable package, then describes the exact tarballs it produced. Everything
       # downstream uses those files, so their digests, SBOMs, attestations and publication agree.
-      # License gaps (nothing declared, nothing on ClearlyDefined) are reported as warnings, not failures.
       - name: Generate delivered SBOMs (CycloneDX 1.6)
         run: node scripts/build-sbom.js --release="$VERSION" --out=artifacts
 

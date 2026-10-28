@@ -10,7 +10,6 @@ export interface BomComponent {
 	"version"?: string;
 	"bom-ref"?: string;
 	"purl"?: string;
-	"licenses"?: unknown[];
 	"properties"?: BomProperty[];
 	"components"?: BomComponent[];
 	[key: string]: unknown;

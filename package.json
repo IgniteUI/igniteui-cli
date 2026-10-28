@@ -19,7 +19,6 @@
 	},
 	"scripts": {
 		"release": "lerna version --conventional-commits --force-publish=* --yes --no-git-tag-version --no-push",
-		"deploy": "lerna exec 'npm publish --tag'",
 		"version": "node ./scripts/versionScript.js",
 		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema && npm run build:mcp",
 		"build:mcp": "cd packages/igniteui-mcp/igniteui-doc-mcp && npx tsc && npx tsx scripts/build.ts",

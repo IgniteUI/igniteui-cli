@@ -1,15 +1,12 @@
 import { execFileSync, spawnSync } from "child_process";
 import { createHash } from "crypto";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { createRequire } from "module";
 import * as path from "path";
 import { parseArgs } from "util";
 import {
 	assertDeliveredShape, Bom, npmPurl, PackedArtifact, promoteMainComponent, Supplier
 } from "./sbom-document";
-import {
-	applyLicenses, clearlyDefinedCoordinate, describeComponent, resolveLicenses, unlicensedComponents
-} from "./sbom-licenses";
 import { AuditResult, formatSupplyChainNotes, NpmTreeDiagnostics, PackageEvidence } from "./sbom-notes";
 
 const SPEC_VERSION = "1.6";
@@ -30,22 +27,9 @@ interface WorkspacePackage {
 	siblings: string[];
 }
 
-interface Delivery {
-	pkg: WorkspacePackage;
-	artifact: PackedArtifact;
-	workspaceDir: string;
-	bom: Bom;
-	componentCount: number;
-}
-
 function log(message: string) {
 	// eslint-disable-next-line no-console
 	console.log(`[sbom] ${message}`);
-}
-
-function warn(message: string) {
-	// eslint-disable-next-line no-console
-	console.warn(process.env.GITHUB_ACTIONS ? `::warning title=SBOM::${message}` : `[sbom] warning: ${message}`);
 }
 
 function readJson(file: string) {
@@ -321,8 +305,7 @@ const { values: args } = parseArgs({
 		"out": { type: "string", default: "artifacts" },
 		"release": { type: "string" },
 		"build-env": { type: "boolean", default: false },
-		"keep": { type: "boolean", default: false },
-		"skip-license-lookup": { type: "boolean", default: false }
+		"keep": { type: "boolean", default: false }
 	}
 });
 
@@ -351,7 +334,9 @@ async function deliveredSboms() {
 	log(`publishable packages: ${packages.map(pkg => `${pkg.name}@${pkg.version}`).join(", ")}`);
 
 	const artifacts = new Map(packages.map(pkg => [pkg.name, packArtifact(pkg, outDir)] as [string, PackedArtifact]));
-	const deliveries: Delivery[] = packages.map(pkg => {
+	const evidence: PackageEvidence[] = [];
+
+	for (const pkg of packages) {
 		const artifact = artifacts.get(pkg.name);
 		const workspaceDir = installDeliveredClosure(
 			pkg, artifacts, path.join(outDir, ".delivered", artifact.name.replace(/\.tgz$/, "")));
@@ -362,32 +347,6 @@ async function deliveredSboms() {
 		const componentCount = assertDeliveredShape(bom, { packageName: pkg.name, version: pkg.version });
 		log(`${pkg.name} SBOM covers ${componentCount} components`);
 
-		return { pkg, artifact, workspaceDir, bom, componentCount };
-	});
-
-	// One lookup for every document, so a component shared by several packages is queried once.
-	const coordinates = deliveries
-		.flatMap(delivery => unlicensedComponents(delivery.bom).map(clearlyDefinedCoordinate))
-		.filter(Boolean);
-	if (coordinates.length > 0 && !args["skip-license-lookup"]) {
-		const licenses = await resolveLicenses(coordinates, { log });
-		for (const delivery of deliveries) {
-			const applied = applyLicenses(delivery.bom, licenses);
-			if (applied > 0) {
-				log(`${delivery.pkg.name}: ${applied} licenses resolved from ClearlyDefined`);
-			}
-		}
-	}
-
-	const evidence: PackageEvidence[] = [];
-	for (const { pkg, artifact, workspaceDir, bom, componentCount } of deliveries) {
-		const unlicensed = unlicensedComponents(bom).map(describeComponent);
-		if (unlicensed.length > 0) {
-			// A gap in license data is reported, not fatal: the document is still a complete inventory.
-			warn(`${pkg.name}: ${unlicensed.length} of ${componentCount + 1} components have no resolved license ` +
-				`and are recorded without one: ${unlicensed.join(", ")}`);
-		}
-
 		const sbomFile = path.join(outDir, sbomFileOf(artifact));
 		writeBom(sbomFile, bom);
 		await assertValidCycloneDx(sbomFile);
@@ -395,13 +354,7 @@ async function deliveredSboms() {
 		writeFileSync(`${artifact.path}.sha256`, `${artifact.sha256}  ${artifact.name}\n`);
 		writeFileSync(`${artifact.path}.sha512`, `${artifact.sha512}  ${artifact.name}\n`);
 
-		evidence.push({
-			name: pkg.name,
-			version: pkg.version,
-			componentCount,
-			audit: captureDeliveredAudit(workspaceDir),
-			unlicensed
-		});
+		evidence.push({ name: pkg.name, version: pkg.version, audit: captureDeliveredAudit(workspaceDir) });
 	}
 
 	if (!args.keep) {
@@ -411,8 +364,10 @@ async function deliveredSboms() {
 	const supplyChainNotes = formatSupplyChainNotes({ packages: evidence, npmTree: captureNpmTreeDiagnostics() });
 	writeFileSync(path.join(outDir, fileNames.supplyChainNotesFile), supplyChainNotes);
 
+	const delivered = packages.map(pkg => ({ pkg, artifact: artifacts.get(pkg.name) }));
+
 	// Read by the release workflow to attest and publish each package in dependency order.
-	writeFileSync(path.join(outDir, "packages.json"), `${JSON.stringify(deliveries.map(({ pkg, artifact }) => ({
+	writeFileSync(path.join(outDir, "packages.json"), `${JSON.stringify(delivered.map(({ pkg, artifact }) => ({
 		name: pkg.name,
 		version: pkg.version,
 		id: artifact.name.replace(/\.tgz$/, ""),
@@ -425,19 +380,25 @@ async function deliveredSboms() {
 		...fileNames,
 		release,
 		generatedAt: new Date().toISOString().slice(0, 10),
-		documentRows: deliveries.map(({ pkg, artifact }) =>
+		documentRows: delivered.map(({ pkg, artifact }) =>
 			`| \`${sbomFileOf(artifact)}\` | CycloneDX ${SPEC_VERSION} JSON | Delivered - every component resolved by \`npm install ${pkg.name}\` |`
 		).join("\n"),
-		packageRows: deliveries.map(({ pkg, artifact }) =>
+		packageRows: delivered.map(({ pkg, artifact }) =>
 			`| \`${pkg.name}\` | \`${pkg.version}\` | \`${npmPurl(pkg.name, pkg.version)}\` | \`${artifact.name}\` | \`${artifact.sha256}\` |`
 		).join("\n"),
-		hashCommands: deliveries.map(({ artifact }) => `shasum -a 256 ${artifact.name}`).join("\n"),
-		validateCommands: [...deliveries.map(({ artifact }) => sbomFileOf(artifact)), fileNames.buildEnvCycloneDxFile]
+		hashCommands: delivered.flatMap(({ artifact }) =>
+			[`shasum -a 256 ${artifact.name}`, `shasum -a 512 ${artifact.name}`]
+		).join("\n"),
+		powerShellHashCommands: delivered.flatMap(({ artifact }) =>
+			[`Get-FileHash -Algorithm SHA256 ${artifact.name}`, `Get-FileHash -Algorithm SHA512 ${artifact.name}`]
+		).join("\n"),
+		validateCommands: [...delivered.map(({ artifact }) => sbomFileOf(artifact)), fileNames.buildEnvCycloneDxFile]
 			.map(file => `cyclonedx-cli validate --input-file ${file} --input-format json --input-version v1_6 --fail-on-errors`)
 			.join("\n"),
-		attestationCommands: deliveries.map(({ artifact }) =>
+		attestationCommands: delivered.flatMap(({ artifact }) => [
+			`gh attestation verify ${artifact.name} --repo ${repository}`,
 			`gh attestation verify ${artifact.name} --repo ${repository} --predicate-type https://cyclonedx.org/bom`
-		).join("\n"),
+		]).join("\n"),
 		cycloneDxToolVersion: cycloneDxToolVersion(),
 		nodeVersion: process.version,
 		repository,

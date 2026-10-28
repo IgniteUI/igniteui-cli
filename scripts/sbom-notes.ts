@@ -25,10 +25,7 @@ export interface NpmTreeDiagnostics {
 export interface PackageEvidence {
 	name: string;
 	version: string;
-	componentCount: number;
 	audit: AuditResult;
-	/** name@version of every component left without a license. */
-	unlicensed: string[];
 }
 
 /**
@@ -95,23 +92,6 @@ function vulnerabilityLines(audit: AuditResult): string[] {
 	];
 }
 
-function licenseLines(evidence: PackageEvidence): string[] {
-	// The package itself counts too: it is the document's main component.
-	const total = evidence.componentCount + 1;
-
-	if (evidence.unlicensed.length === 0) {
-		return [`All ${total} components carry a license.`];
-	}
-
-	const listed = evidence.unlicensed.slice(0, MAX_LISTED_PACKAGES).map(name => `\`${markdownText(name)}\``);
-	const more = evidence.unlicensed.length - listed.length;
-
-	return [
-		`${evidence.unlicensed.length} of ${total} components have no license: their packages declare none and ` +
-		`ClearlyDefined resolved none, so they are recorded without one: ${listed.join(", ")}${more > 0 ? ` and ${more} more` : ""}.`
-	];
-}
-
 /**
  * Render the supply-chain section published to the SBOM archive and the GitHub release notes.
  */
@@ -124,8 +104,6 @@ export function formatSupplyChainNotes(evidence: { packages: PackageEvidence[], 
 			`### \`${markdownText(entry.name)}\` ${markdownText(entry.version)}`,
 			"",
 			...vulnerabilityLines(entry.audit),
-			"",
-			...licenseLines(entry),
 			""
 		);
 	}
