@@ -140,7 +140,7 @@ describe("Angular project scaffold", () => {
 	it("installs packages even with skipInstall, and says so", async () => {
 		expect(await emptyProject.scaffold({ name, theme: "Default", skipInstall: true })).toBeTrue();
 
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install is ignored/));
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install does not apply to the initial setup/));
 		expect(commands()).toContain("npm install --save-dev playwright --no-audit --no-fund");
 	});
 
@@ -161,12 +161,46 @@ describe("Angular project scaffold", () => {
 		expect(fs.existsSync(filePath("angular.json"))).toBeTrue();
 	});
 
-	it("reports a failed command and removes the project folder", async () => {
-		execSync.withArgs(jasmine.stringMatching(/^npm install/), jasmine.anything()).and.throwError(new Error("Command failed: npm"));
+	it("reports a failed Angular CLI command and removes the project folder", async () => {
+		execSync.withArgs(jasmine.stringMatching(/ add igniteui-angular/), jasmine.anything())
+			.and.throwError(new Error("Command failed: ng add"));
 
 		expect(await emptyProject.scaffold({ name, theme: "Default" })).toBeFalse();
-		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Project creation failed: Command failed: npm/));
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Project creation failed: Command failed: ng add/));
 		expect(fs.existsSync(path.join(tmp, name))).withContext("a retry starts clean").toBeFalse();
+	});
+
+	it("reports a project folder it could not remove instead of throwing", async () => {
+		execSync.withArgs(jasmine.stringMatching(/ add igniteui-angular/), jasmine.anything())
+			.and.throwError(new Error("Command failed: ng add"));
+		// the module itself: `import * as fs` gives a read-only namespace
+		spyOn(require("fs"), "rmSync").and.callThrough()
+			.withArgs(path.join(process.cwd(), name), jasmine.anything()).and.throwError(new Error("EBUSY"));
+
+		expect(await emptyProject.scaffold({ name, theme: "Default" })).toBeFalse();
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/Could not remove "Test Project"/));
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Project creation failed: Command failed: ng add/));
+	});
+
+	it("keeps a project whose packages failed to install, with the installs left to run", async () => {
+		execSync.withArgs(jasmine.stringMatching(/^npm install --save-dev/), jasmine.anything())
+			.and.throwError(new Error("Command failed: npm"));
+
+		expect(await authProject.scaffold({ name, theme: "Default" })).toBeFalse();
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Project creation failed: Command failed: npm/));
+		expect(fs.existsSync(filePath("angular.json"))).toBeTrue();
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(
+			/"Test Project" is kept; .*npm install --save-dev playwright .* && npm install angular-auth-oidc-client@22 /));
+	});
+
+	it("leaves only the installs that failed or did not run to the user", async () => {
+		execSync.withArgs(jasmine.stringMatching(/^npm install angular-auth-oidc-client/), jasmine.anything())
+			.and.throwError(new Error("Command failed: npm"));
+
+		expect(await authProject.scaffold({ name, theme: "Default" })).toBeFalse();
+		const [message] = (console.warn as jasmine.Spy).calls.mostRecent().args;
+		expect(message).toContain("npm install angular-auth-oidc-client@22");
+		expect(message).not.toContain("--save-dev");
 	});
 
 	it("leaves an existing folder alone", async () => {

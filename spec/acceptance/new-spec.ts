@@ -156,7 +156,7 @@ describe("New command", () => {
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 		expect(Util.gitInit).not.toHaveBeenCalled();
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install is ignored/));
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install does not apply to the initial setup/));
 		expect(Util.execSync).toHaveBeenCalledWith(jasmine.stringMatching(/^npm install /), jasmine.anything());
 
 		testFolder = projectName;

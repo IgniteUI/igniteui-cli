@@ -59,12 +59,17 @@ export function generateProject(dashName: string, projectPath: string): string {
 	return angularMajor;
 }
 
+/** The `npm install` command `npmInstall` runs */
+export function npmInstallCommand(packages: string[], dev = false) {
+	return `npm install ${dev ? "--save-dev " : ""}${packages.join(" ")} --no-audit --no-fund`;
+}
+
 /**
  * Installs packages at their latest version, or at the version or range an entry names,
  * which also brings the lock file and node_modules in line with package.json
  */
 export function npmInstall(projectPath: string, packages: string[], dev = false) {
-	Util.execSync(`npm install ${dev ? "--save-dev " : ""}${packages.join(" ")} --no-audit --no-fund`, {
+	Util.execSync(npmInstallCommand(packages, dev), {
 		cwd: projectPath,
 		stdio: "inherit"
 	});

@@ -3,7 +3,9 @@ import {
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as path from "path";
-import { CLI_PACKAGE, generateProject, npmInstall, patchAngularJson, patchPackageJson, updateJson } from "./scaffold";
+import {
+	CLI_PACKAGE, generateProject, npmInstall, npmInstallCommand, patchAngularJson, patchPackageJson, updateJson
+} from "./scaffold";
 
 /** What a project's own files need on top of the generated project */
 export interface ProjectExtras {
@@ -76,10 +78,12 @@ $app-palette: palette($primary, $secondary, $surface);
 			return false;
 		}
 		if (options.skipInstall) {
-			Util.warn("--skip-install is ignored for Ignite UI for Angular projects: `ng add` installs the packages it adds.",
+			Util.warn("--skip-install does not apply to the initial setup: `ng add` installs the packages the project starts with.",
 				"yellow");
 		}
 
+		/** The installs not yet done, as `npmInstall` arguments; set once the project files are complete */
+		let installs: [string[], boolean][] = [];
 		try {
 			const angularMajor = generateProject(config.dashName, projectPath);
 			const extras = this.extras(angularMajor);
@@ -96,14 +100,27 @@ $app-palette: palette($primary, $secondary, $surface);
 					});
 				}
 			}
-			// also installs the package.json changes above; playwright is the browser for @vitest/browser-playwright
-			npmInstall(projectPath, ["playwright", ...extras.devDependencies], true);
-			if (extras.dependencies.length) {
-				npmInstall(projectPath, extras.dependencies);
+			// the first also installs the package.json changes above; playwright is the browser for @vitest/browser-playwright
+			installs = [[["playwright", ...extras.devDependencies], true], [extras.dependencies, false]];
+			installs = installs.filter(([packages]) => packages.length);
+			while (installs.length) {
+				npmInstall(projectPath, ...installs[0]);
+				installs.shift();
 			}
 		} catch (error) {
-			// the folder is this run's own (checked above), so a retry starts clean
-			fs.rmSync(projectPath, { recursive: true, force: true });
+			if (installs.length) {
+				// the project is complete but for its packages (a network error, an unpublished CLI version), so it is kept
+				const commands = installs.map(([packages, dev]) => npmInstallCommand(packages, dev)).join(" && ");
+				Util.warn(`"${options.name}" is kept; finish installing its packages there with: ${commands}`, "yellow");
+			} else {
+				// the folder is this run's own (checked above), so a retry starts clean
+				try {
+					fs.rmSync(projectPath, { recursive: true, force: true });
+				} catch {
+					// e.g. EBUSY/EPERM on Windows while npm still holds native binaries
+					Util.warn(`Could not remove "${options.name}"; delete it before retrying.`, "yellow");
+				}
+			}
 			Util.error(`Project creation failed: ${error.message}`, "red");
 			return false;
 		}
