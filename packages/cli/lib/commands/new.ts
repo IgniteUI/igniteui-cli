@@ -20,6 +20,18 @@ const _framework: {
 	choices: []
 };
 
+const IG_NEXT_STEPS = [
+	"ig add      start guided mode for adding views to the app",
+	"ig start    starts a web server and opens the app in the default browser"
+];
+
+function logNextSteps(name: string, steps: string[]) {
+	Util.log("");
+	Util.log("Next Steps:");
+	Util.log(`  cd ${Util.quoteIfNeeded(name)}`);
+	steps.forEach(step => Util.log(`  ${step}`));
+}
+
 const command: NewCommandType = {
 	command: "new [name]",
 	describe: "Creates a project",
@@ -62,7 +74,7 @@ const command: NewCommandType = {
 			})
 			.option("skip-install", {
 				alias: "si",
-				describe: "Do not install packages after scaffolding",
+				describe: "Do not install packages after scaffolding (Angular projects install them anyway: `ng add` needs them)",
 				type: "boolean"
 			})
 			.option("template", {
@@ -166,7 +178,8 @@ const command: NewCommandType = {
 		});
 
 		if (typeof projTemplate.scaffold === "function") {
-			if (!/^[a-zA-Z][a-zA-Z0-9-]*$/.test(argv.name)) {
+			const isBlazor = projTemplate.framework === "blazor";
+			if (isBlazor && !/^[a-zA-Z][a-zA-Z0-9-]*$/.test(argv.name)) {
 				Util.warn(`The project namespace will be derived from the name '${argv.name}'. ` +
 					"Use only letters, digits and dashes for a clean identifier.", "yellow");
 			}
@@ -191,6 +204,12 @@ const command: NewCommandType = {
 			}
 
 			process.chdir(argv.name);
+			if (!isBlazor) {
+				// the scaffold installed the packages, so `ig add` installs the ones it adds right away
+				const config = ProjectConfig.localConfig();
+				config.packagesInstalled = true;
+				ProjectConfig.setConfig(config);
+			}
 			await configure(argv.framework, {
 				agents: argv.agents as (AIAgentTarget | "none")[],
 				assistants: argv.assistants as (AiCodingAssistant | "none")[]
@@ -201,11 +220,7 @@ const command: NewCommandType = {
 				Util.gitInit(process.cwd(), argv.name);
 			}
 
-			const quotedName = Util.quoteIfNeeded(argv.name);
-			Util.log("");
-			Util.log("Next Steps:");
-			Util.log(`  cd ${quotedName}`);
-			Util.log(`  dotnet run --project ${quotedName}`);
+			logNextSteps(argv.name, isBlazor ? [`dotnet run --project ${Util.quoteIfNeeded(argv.name)}`] : IG_NEXT_STEPS);
 			return;
 		}
 
@@ -234,11 +249,7 @@ const command: NewCommandType = {
 			Util.gitInit(process.cwd(), argv.name);
 		}
 
-		Util.log("");
-		Util.log("Next Steps:");
-		Util.log(`  cd ${Util.quoteIfNeeded(argv.name)}`);
-		Util.log("  ig add      start guided mode for adding views to the app");
-		Util.log("  ig start    starts a web server and opens the app in the default browser");
+		logNextSteps(argv.name, IG_NEXT_STEPS);
 	},
 	addChoices(choices: string[]): void {
 		_framework.choices = choices;

@@ -3,7 +3,7 @@ import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { addClassToBody, addMcpServers, AIAgentTarget, AiCodingAssistant, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
-import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
+import { AngularTypeScriptFileUpdate, SKIP_AI_CONFIG_ENV } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
@@ -153,8 +153,10 @@ export function addAIConfig(options: { agents?: AIAgentTarget[]; assistants?: st
 export default function (): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		appInit(tree);
-		// queue ai-config with prompts:
-		context.addTask(new RunSchematicTask("ai-config", {}));
+		// queue ai-config with prompts, unless the project scaffold runs its own after `ng add`:
+		if (!process.env[SKIP_AI_CONFIG_ENV]) {
+			context.addTask(new RunSchematicTask("ai-config", {}));
+		}
 
 		return chain([
 			importStyles(),

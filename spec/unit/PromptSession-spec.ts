@@ -880,77 +880,41 @@ describe("Unit - PromptSession", () => {
 		expect(upgrade.upgrade).toHaveBeenCalledTimes(1);
 		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 	});
-	it("start - Should fire correctly with Angular Custom theme selected", async () => {
-		const mockProjectConfig =  {
-			customTemplates: [],
-			project: {
-				isShowcase: true
-			}
-		} as unknown as Config;
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		App.initialize();
-		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
-		const mockSession = new PromptSession();
-		spyOn(Util, "isAlphanumericExt").and.callThrough();
-		spyOn(Util, "gitInit");
-		spyOn(Util, "log");
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
-		spyOn(InquirerWrapper, "select").and.returnValues(
-			Promise.resolve("Angular"),
-			Promise.resolve("Side navigation default"),
-			Promise.resolve("Custom")
-		);
-		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
-		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
-		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
-		spyOn(process, "chdir");
-		await mockSession.start();
-		const CUSTOM_THEME = `
-		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
-		@use "igniteui-angular/theming" as *;
-		$primary: #09f !default;
-		$secondary: #4db8ff !default;
-		$surface: #fff !default;
-		$app-palette: palette($primary, $secondary, $surface);
-		/* autoprefixer grid: on */
-		@include core();
-		@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-		@include theme($app-palette);`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["CustomTheme"].replace(/\s/g, "");
-		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
-		expect(actualCall).toEqual(expectedCall);
-	});
-	it("start - Should fire correctly with Angular Default theme selected", async () => {
-		const mockProjectConfig =  {
-			customTemplates: [],
-			project: {
-				isShowcase: true
-			}
-		} as unknown as Config;
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		App.initialize();
-		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
-		const mockSession = new PromptSession();
-		spyOn(Util, "isAlphanumericExt").and.callThrough();
-		spyOn(Util, "gitInit");
-		spyOn(Util, "log");
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
-		spyOn(InquirerWrapper, "select").and.returnValues(
-			Promise.resolve("Angular"),
-			Promise.resolve("Side navigation default"),
-			Promise.resolve("Default"));
-		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
-		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
-		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
-		spyOn(process, "chdir");
-		await mockSession.start();
-		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
-		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
-		expect(actualCall).toEqual(expectedCall);
-	});
+	// what each theme produces is covered by the Angular project scaffold spec
+	for (const theme of ["Custom", "Default"]) {
+		it(`start - Should scaffold the Angular project with the ${theme} theme selected`, async () => {
+			const mockProjectConfig =  {
+				customTemplates: [],
+				project: {
+					isShowcase: true
+				}
+			} as unknown as Config;
+			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+			App.initialize();
+			const templateManager = new TemplateManager();
+			App.container.set(TEMPLATE_MANAGER, templateManager);
+			const sideNav = templateManager.getProjectLibrary("angular", "igx-ts").getProject("side-nav");
+			spyOn(sideNav, "scaffold").and.returnValue(Promise.resolve(true));
+			const mockSession = new PromptSession();
+			spyOn(Util, "isAlphanumericExt").and.callThrough();
+			spyOn(Util, "gitInit");
+			spyOn(Util, "log");
+			spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+			spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
+			spyOn(InquirerWrapper, "select").and.returnValues(
+				Promise.resolve("Angular"),
+				Promise.resolve("Side navigation default"),
+				Promise.resolve(theme)
+			);
+			spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
+			spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
+			spyOn(process, "chdir");
+			await mockSession.start();
+			expect(sideNav.scaffold).toHaveBeenCalledOnceWith(jasmine.objectContaining({ name: "Test1", theme }));
+			expect(Util.processTemplates).not.toHaveBeenCalled();
+		});
+	}
 	it("getProjectTemplate - should exclude isHidden templates from choices and resolve the selected visible one", async () => {
 		const mockBaseTemplate = createMockBaseTemplate();
 		const hiddenProject = createMockProjectTemplate({ ...mockBaseTemplate, name: "base", isHidden: true });

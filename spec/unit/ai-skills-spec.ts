@@ -24,7 +24,7 @@ function mockTemplateManager(templatePaths: string[]) {
 	return mockTm;
 }
 
-/** Creates a mock for the destination FS (injected via container, may be virtual Tree) */
+/** Creates a mock for the container FS (may be virtual Tree): the destination, and the source of package skills */
 function makeDestFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
 	return {
 		fileExists: jasmine.createSpy("destFs.fileExists").and.returnValue(false),
@@ -37,7 +37,7 @@ function makeDestFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
 }
 
 /**
- * Spies on FsFileSystem.prototype methods to mock the source FS (always real disk).
+ * Spies on FsFileSystem.prototype methods to mock the real disk, the source of bundled template skills.
  * Returns spies dict so tests can configure callFake / returnValue.
  */
 function spySrcFs(overrides: {
@@ -71,20 +71,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const mockSkillContent = "# Ignite UI for Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-					if (p === skillFilePath) return mockSkillContent;
-					return "";
-				})
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
+					if (p === skillFilePath) return mockSkillContent;
+					return "";
+				})
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -94,19 +91,39 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(result.details).toEqual([{ path: ".claude/skills/angular.md", action: "created" }]);
 		});
 
+		it("should read package skills through the container FS, which may not be rooted at the cwd", () => {
+			// Simulates `ng new`: the tree is scoped to the new project, the cwd is the folder it is created in
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const treeSkillFilePath = `/${skillFile("igniteui-angular", "angular.md")}`;
+			const content = "# Angular skills";
+
+			const srcSpies = spySrcFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [treeSkillFilePath] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) =>
+					p === treeSkillFilePath ? content : ""
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+
+			copyAISkillsToProject(["claude"], "angular");
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
+			expect(srcSpies.glob).not.toHaveBeenCalled();
+			expect(srcSpies.readFile).not.toHaveBeenCalled();
+		});
+
 		it("should prefer the licensed @infragistics/igniteui-angular package if installed", () => {
 			const licensedPkg = "@infragistics/igniteui-angular";
 			const angularSkillsDir = skillsDir(licensedPkg);
 			const skillFilePath = skillFile(licensedPkg, "angular.md");
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
-			});
-
-			// resolvePackage + directoryExists use the container FS (destFs)
+			// resolvePackage, directoryExists and the package skill reads use the container FS (destFs)
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -114,8 +131,12 @@ describe("Unit - copyAISkillsToProject", () => {
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === "./package.json"
 				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
 				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
 					if (p === "./package.json") return JSON.stringify({ dependencies: { [licensedPkg]: "^18.0.0" } });
+					if (p === skillFilePath) return "skill content";
 					return "";
 				})
 			});
@@ -131,11 +152,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const newContent = "# Updated Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([skillFilePath]),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(newContent)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -143,7 +159,10 @@ describe("Unit - copyAISkillsToProject", () => {
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === ".claude/skills/angular.md"
 				),
-				readFile: jasmine.createSpy("destFs.readFile").and.returnValue("") // older content
+				glob: jasmine.createSpy("destFs.glob").and.returnValue([skillFilePath]),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) =>
+					p === skillFilePath ? newContent : "" // older content
+				)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -158,19 +177,15 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const existingContent = "# Ignite UI for Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(existingContent)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
 				),
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === ".claude/skills/angular.md"
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
 				),
 				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(existingContent)
 			});
@@ -194,20 +209,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(reactPkg, "overview.md");
 			const content = "# React overview";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-					if (p === file) return content;
-					return "";
-				})
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
+					if (p === file) return content;
+					return "";
+				})
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -224,20 +236,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(wcPkg, "webcomponents.md");
 			const content = "# Ignite UI WebComponents skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-					if (p === file) return content;
-					return "";
-				})
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
+					if (p === file) return content;
+					return "";
+				})
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -270,14 +279,11 @@ describe("Unit - copyAISkillsToProject", () => {
 		it("should silently return when skills directory exists but is empty", () => {
 			const dir = skillsDir("igniteui-angular");
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([])
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.returnValue([])
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -293,17 +299,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const dir = skillsDir(pkg);
 			const file = skillFile(pkg, "angular.md");
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
 				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue("skill content"),
 				writeFile: jasmine.createSpy("destFs.writeFile").and.throwError("EACCES: permission denied")
 			});
 			App.container.set(FS_TOKEN, destFs);
@@ -322,13 +325,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(pkg, "angular.md");
 			const destFile = ".claude/skills/angular.md";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new content")
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
@@ -336,7 +332,12 @@ describe("Unit - copyAISkillsToProject", () => {
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === destFile
 				),
-				readFile: jasmine.createSpy("destFs.readFile").and.returnValue("old content"),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) =>
+					p === file ? "new content" : "old content"
+				),
 				writeFile: jasmine.createSpy("destFs.writeFile").and.throwError("EACCES: permission denied")
 			});
 			App.container.set(FS_TOKEN, destFs);
@@ -355,18 +356,15 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file1 = skillFile(pkg, "angular.md");
 			const file2 = skillFile(pkg, "components.md");
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file1, file2] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
-			});
-
 			let writeCallCount = 0;
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
 				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file1, file2] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue("skill content"),
 				writeFile: jasmine.createSpy("destFs.writeFile").and.callFake(() => {
 					writeCallCount++;
 					if (writeCallCount === 2) {
@@ -457,8 +455,8 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
 		});
 
-		it("should read skill sources from real disk FS even when destFs is virtual", () => {
-			// Simulates the schematics scenario: srcFs (FsFileSystem) reads from disk,
+		it("should read bundled skill sources from real disk FS even when destFs is virtual", () => {
+			// Simulates the schematics scenario: template files outside the project are read from disk,
 			// destFs (NgTreeFileSystem) writes into the virtual Tree.
 			const ABS_TEMPLATE_PATH = path.resolve("/usr/lib/node_modules/fake-templates/base/files");
 			const SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "skills");
@@ -483,7 +481,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(srcSpies.readFile).toHaveBeenCalledWith(skillFilePath);
 			// Dest writes go to the injected FS (virtual Tree)
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
-			// destFs.glob should NOT have been called — source ops use srcFs
+			// destFs.glob should NOT have been called — bundled source ops use srcFs
 			expect(destFs.glob).not.toHaveBeenCalled();
 		});
 	});
@@ -495,17 +493,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const nestedFile = skillFile(pkg, "grids/grid.md");
 			const content = "# Grid skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [nestedFile] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [nestedFile] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(content)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -521,17 +516,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const content = "# Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(content)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -545,17 +537,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const content = "# Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(content)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -570,17 +559,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(reactPkg, "overview.md");
 			const content = "# React overview";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === dir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(content)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -594,17 +580,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const content = "# Angular skills";
 
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
 			const destFs = makeDestFs({
 				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
-				)
+				),
+				glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(content)
 			});
 			App.container.set(FS_TOKEN, destFs);
 
@@ -634,22 +617,19 @@ describe("Unit - copyAISkillsToProject sources metadata", () => {
 		const angularSkillsDir = skillsDir("igniteui-angular");
 		const skillFilePath = skillFile("igniteui-angular", "angular.md");
 
-		spySrcFs({
-			glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			),
+			glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
 				dir === angularSkillsDir ? [skillFilePath] : []
 			),
-			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+			readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
 				if (p === "node_modules/igniteui-angular/package.json") {
 					return JSON.stringify({ name: "igniteui-angular", version: "18.2.0" });
 				}
 				return "# skill content";
 			})
-		});
-
-		const destFs = makeDestFs({
-			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-				p === angularSkillsDir
-			)
 		});
 		App.container.set(FS_TOKEN, destFs);
 
@@ -689,22 +669,19 @@ describe("Unit - copyAISkillsToProject sources metadata", () => {
 		const angularSkillsDir = skillsDir("igniteui-angular");
 		const skillFilePath = skillFile("igniteui-angular", "angular.md");
 
-		spySrcFs({
-			glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			),
+			glob: jasmine.createSpy("destFs.glob").and.callFake((dir: string) =>
 				dir === angularSkillsDir ? [skillFilePath] : []
 			),
-			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+			readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
 				if (p === "node_modules/igniteui-angular/package.json") {
 					throw new Error("ENOENT");
 				}
 				return "# skill content";
 			})
-		});
-
-		const destFs = makeDestFs({
-			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-				p === angularSkillsDir
-			)
 		});
 		App.container.set(FS_TOKEN, destFs);
 

@@ -7,11 +7,6 @@
       "schema": "./ng-new/schema.json",
       "hidden": true
     },
-    "app-projects": {
-      "description": "A schematic using a source and a schema to validate options.",
-      "factory": "./app-projects/index",
-      "hidden": true
-    },
     "start": {
       "description": "Run npm start",
       "factory": "./start/index",

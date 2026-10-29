@@ -22,7 +22,8 @@ If the scope is missing, or a scope or target is ambiguous, stop and ask. In `up
 
 Scope boundaries:
 - A framework scope covers only that framework's root. With scope `webcomponents`, the `igniteui-webcomponents` pins in Angular's wrapped-component templates (`packages/igx-templates/.../chat`, `rating`) are **out of scope**; report them as observations.
-- Packages shared by all frameworks' project templates (e.g. `@igniteui/material-icons-extended`) are updated only when the user names them or the scope covers all three frameworks, so the frameworks don't diverge. Otherwise list them as observations.
+- Angular project templates pin nothing: new projects take `igniteui-angular` at the `IGNITEUI_ANGULAR_PACKAGE` range and Angular at the newest major that range supports (anatomy skill, "Angular Projects"). Updating that constant therefore moves new projects too, including their Angular major when the new `igniteui-angular` requires one; Angular pins live only in `constants.ts` and component templates.
+- Packages shared by the React and Web Components project templates (e.g. `@igniteui/material-icons-extended`) are updated only when the user names them or the scope covers both frameworks, so the frameworks don't diverge. Otherwise list them as observations.
 
 ---
 
@@ -33,7 +34,7 @@ Your changes are Ignite UI version strings, applied as patch or minor updates. E
 - **Major** updates (see Step 3) are stop items, never applied.
 - Each pin keeps its range prefix (`~` or `^`); report inconsistent prefixes as observations.
 - Pins stay where they are: hard-coded pins stay hard-coded unless the user asked to move them into constants.
-- Non-Ignite UI dependencies in project templates (Angular, React, Vite, TypeScript, etc.) stay as they are. If a new Ignite UI version requires them to change, that is a stop item (Step 3).
+- Non-Ignite UI dependencies in project templates (React, Vite, TypeScript, etc.) stay as they are. If a new Ignite UI version requires them to change, that is a stop item (Step 3).
 - jQuery and Blazor templates are out of scope unless explicitly named.
 - `CHANGELOG.md` is written at release time: propose a line in your report.
 
@@ -98,7 +99,7 @@ For each distinct package:
    - **major** (or `0.x` minor change): **stop for that package**. Leave all of its pins unchanged.
    - **already current** (the existing range already resolves to the target): no change. This includes `^` pins whose range admits a newer minor (e.g. `^2.1.1` admits 2.2.1). Keep their minimum unless the user asks; list them under Observations as "minimum could be raised to `^<latest>`".
 4. For packages that proceed, check peers: `npm view <pkg>@<target> peerDependencies`.
-   - If a peer is a **non-Ignite UI** package (e.g. a new `igniteui-angular` needing a newer `@angular/core`) and the project templates don't satisfy it, **stop for that package** and report the required change.
+   - If a peer is a **non-Ignite UI** package (e.g. a new `igniteui-react` needing a newer `react`) and the project templates don't satisfy it, **stop for that package** and report the required change.
    - If a peer is another **Ignite UI** package pinned in templates (e.g. `igniteui-angular` → `igniteui-grid-lite ~0.11.0`), that pin must satisfy the peer range after your update. Treat bringing it into range as part of this update, subject to the same patch/minor/major rule; if that would be a major (or `0.x` minor) change, report it as a stop item with the peer range as the reason, so a human can approve it explicitly.
 
    Do this check also for the framework's **main package even when it is not changing**: existing pins can already be out of range.
@@ -130,7 +131,7 @@ Use the [`igniteui-cli-smoke-test`](../igniteui-cli-smoke-test/SKILL.md) skill f
 3. Smoke test, per framework in scope, each into its **own output directory** (a run wipes its `--out` at start, so a shared directory loses the earlier run's results). Scope the run to what changed:
    - The framework's main package changed (`igniteui-angular`, `igniteui-react`, `igniteui-webcomponents`), which nearly every template pulls in: `scripts/smoke-test.sh -f <fw> --out output/smoke-<fw>` (default project + every component template).
    - Otherwise, only the templates that pull in a changed package: search the framework's variant `index.ts` files for the package name or its constant, read each match's `this.id`, and run `scripts/smoke-test.sh -f <fw> --templates <id>,<id> --out output/smoke-<fw>`. For example, an `igniteui-dockmanager` update runs `--templates dock-manager`. The default project is always scaffolded, so a pin in its `package.json` is covered too.
-   - Additionally, when any `projects/*/files/package.json` changed: `scripts/smoke-test.sh -f <fw> --all-projects --out output/smoke-<fw>-projects`. `--all-projects` skips hidden projects, so for each changed manifest under a hidden project (`isHidden = true` in its `index.ts`, e.g. Angular `side-nav-auth`) also run `scripts/smoke-test.sh -f <fw> -p <project-id> --out output/smoke-<fw>-<project-id>`, and the same for every other hidden project whose `templatePaths` includes that `files/` folder (Angular `side-nav-mini-auth` reuses `side-nav-auth/files`). If a changed package appears only in project manifests (no template pulls it in, e.g. `@igniteui/material-icons-extended`), these runs alone cover it; skip the `--templates` run.
+   - Additionally, when any `projects/*/files/package.json` changed, or for Angular when `IGNITEUI_ANGULAR_PACKAGE` changed (it sets the versions of every Angular project, hidden ones included): `scripts/smoke-test.sh -f <fw> --all-projects --out output/smoke-<fw>-projects`. `--all-projects` skips hidden projects (`isHidden = true` in their `index.ts`), so also run `scripts/smoke-test.sh -f <fw> -p <project-id> --out output/smoke-<fw>-<project-id>` for each hidden project the change reaches: every hidden Angular project when `IGNITEUI_ANGULAR_PACKAGE` changed; for a changed manifest, the hidden project that owns it and every other hidden project whose `templatePaths` includes that `files/` folder. If a changed package appears only in project manifests (no template pulls it in, e.g. `@igniteui/material-icons-extended`), these runs alone cover it; skip the `--templates` run.
 
 A scoped run takes about a minute; a full run takes several. Use a long timeout or background execution and wait for completion. Run them one at a time. Classify any failure with the smoke-test skill. Environment failures (network, credentials) are re-run once, then reported; versions stay as they are for those.
 

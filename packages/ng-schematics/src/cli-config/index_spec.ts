@@ -4,6 +4,7 @@ import { DependencyNotFoundException } from "@angular-devkit/core";
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER } from "@igniteui/cli-core";
+import { SKIP_AI_CONFIG_ENV } from "@igniteui/angular-templates";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 describe("cli-config schematic", () => {
@@ -444,6 +445,18 @@ export const appConfig: ApplicationConfig = {
 
 		const taskOptions = runner.tasks.map(task => task.options);
 		expect(taskOptions).toContain(jasmine.objectContaining({ name: "ai-config" }));
+	});
+
+	it("should not schedule the ai-config schematic task when the project scaffold runs its own", async () => {
+		process.env[SKIP_AI_CONFIG_ENV] = "true";
+		try {
+			await runner.runSchematic("cli-config", {}, tree);
+		} finally {
+			delete process.env[SKIP_AI_CONFIG_ENV];
+		}
+
+		const taskOptions = runner.tasks.map(task => task.options);
+		expect(taskOptions).not.toContain(jasmine.objectContaining({ name: "ai-config" }));
 	});
 
 

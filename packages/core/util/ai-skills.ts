@@ -116,14 +116,13 @@ function resolveSkillsRoots(framework: string): SkillsSource[] {
 		candidates = new Set([...allPkgKeys, NPM_REACT, NPM_WEBCOMPONENTS]);
 	}
 
-	const srcFs = new FsFileSystem();
 	for (const pkg of candidates) {
 		const resolved = resolvePackage(pkg as keyof typeof UPGRADEABLE_PACKAGES);
 		const skillsRoot = `node_modules/${resolved}/${AI_SKILLS_DIR_NAME}`;
 		if (fs.directoryExists(skillsRoot) && !roots.some(r => r.path === skillsRoot)) {
 			let version = "unknown";
 			try {
-				const pkgJson = JSON.parse(srcFs.readFile(`node_modules/${resolved}/package.json`));
+				const pkgJson = JSON.parse(fs.readFile(`node_modules/${resolved}/package.json`));
 				version = pkgJson.version ?? "unknown";
 			} catch { /* version stays unknown */ }
 			roots.push({ type: "package", packageName: resolved, packageVersion: version, path: skillsRoot });
@@ -148,11 +147,10 @@ function resolveSkillsRoots(framework: string): SkillsSource[] {
  */
 export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string): AISkillsCopyResult {
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0, details: [], sources: [] };
-	// Source reads (glob + readFile) always use physical FS - skill files can
-	// come from sources outside the project virtual tree (external/global package):
-	const srcFs = new FsFileSystem();
 	// Destination writes respect the App FS (which may be virtual):
 	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
+	// Bundled skills are template files outside the project, read from the physical FS:
+	const physicalFs = new FsFileSystem();
 	const skillsSources = resolveSkillsRoots(framework);
 
 	if (!skillsSources.length) {
@@ -166,6 +164,8 @@ export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string
 		const outputDir = getSkillsDir(agent);
 
 		for (const source of skillsSources) {
+			// package skills are read through the App FS that found them, whose root may not be the cwd
+			const srcFs = source.type === "package" ? destFs : physicalFs;
 			const skillsRoot = source.path;
 			const rawPaths = srcFs.glob(skillsRoot, "**/*");
 			const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
