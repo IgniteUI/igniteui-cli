@@ -277,7 +277,21 @@ import { dockManagerLoader } from '@infragistics/igniteui-dockmanager/loader';
 
 export class HomeComponent {
 title = 'igniteui-angular example';
-}`},
+}`}, {
+				path: "src/app.component.ts",
+				content:
+`// docked panes come from igniteui-dockmanager
+import { IgxGridComponent } from 'igniteui-angular';`,
+				expected:
+`// docked panes come from igniteui-dockmanager
+import { IgxGridComponent } from '@infragistics/igniteui-angular';`}, {
+				path: "src/styles.scss",
+				content:
+`@use 'igniteui-angular/theming' as *;
+// igniteui-dockmanager themes are included separately`,
+				expected:
+`@use '@infragistics/igniteui-angular/theming' as *;
+// igniteui-dockmanager themes are included separately`},
 {
 				path: ".github/workflows/node.js.yml",
 				content:
@@ -329,8 +343,8 @@ title = 'igniteui-angular example';
 `}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
-				["src/home.component.ts", "src/app-module.ts"], // logic files
-				["src/home.component.scss"], [], [], // for each style extension
+				["src/home.component.ts", "src/app-module.ts", "src/app.component.ts"], // logic files
+				["src/home.component.scss", "src/styles.scss"], [], [], // for each style extension
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
@@ -561,6 +575,7 @@ title = 'igniteui-angular example';
       "igniteui-dockmanager": "^1.0.0",
       "igniteui-react": "^18.5.1",
       "igniteui-react-grids": "^18.5.1",
+      "igniteui-react-inputs": "^18.5.1",
       "some-package": "^0.0.0"
 	}
 }
@@ -570,6 +585,7 @@ title = 'igniteui-angular example';
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "@infragistics/igniteui-react-inputs": "^18.5.1",
     "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
@@ -585,6 +601,7 @@ import 'igniteui-react-grids/grids';
 import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import { IgcDockManager } from 'igniteui-dockmanager';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
+// form inputs come from igniteui-react-inputs
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -596,6 +613,7 @@ import '@infragistics/igniteui-react-grids/grids';
 import { IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css'
+// form inputs come from igniteui-react-inputs
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -665,6 +683,7 @@ export default function Home() {
 		<link rel="stylesheet" href="./styles.css" />
 		<link rel="stylesheet"
 		href="node_modules/igniteui-react-grids/grids/themes/light/bootstrap.css"
+		<!-- form inputs come from igniteui-react-inputs -->
 	</head>
 	<body>
 		<div id="root"></div>
@@ -686,6 +705,7 @@ export default function Home() {
 		<link rel="stylesheet" href="./styles.css" />
 		<link rel="stylesheet"
 		href="node_modules/@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css"
+		<!-- form inputs come from igniteui-react-inputs -->
 	</head>
 	<body>
 		<div id="root"></div>
@@ -1140,6 +1160,7 @@ export const GridComponent = () => {
     "igniteui-webcomponents": "^4.7.0",
     "igniteui-webcomponents-core": "^4.7.0",
     "igniteui-webcomponents-grids": "^4.7.0",
+    "igniteui-webcomponents-spreadsheet": "^4.7.0",
     "igniteui-dockmanager": "^1.0.0",
     "some-package": "^0.0.0"
   }
@@ -1151,6 +1172,7 @@ export const GridComponent = () => {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-webcomponents-core": "^4.7.0",
     "@infragistics/igniteui-webcomponents-grids": "^4.7.0",
+    "@infragistics/igniteui-webcomponents-spreadsheet": "^4.7.0",
     "igniteui-webcomponents": "^4.7.0",
     "some-package": "^0.0.0"
   }
@@ -1164,6 +1186,7 @@ export const GridComponent = () => {
 import { IgcDockManager } from 'igniteui-dockmanager';
 import { defineComponents, IgcLinearProgressComponent } from 'igniteui-webcomponents';
 import { ModuleManager } from 'igniteui-webcomponents-core';
+// the spreadsheet is configured in igniteui-webcomponents-spreadsheet
 
 export default class App extends LitElement {
 	const title = 'igniteui-webcomponents example';
@@ -1173,6 +1196,7 @@ export default class App extends LitElement {
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 import { defineComponents, IgcLinearProgressComponent } from 'igniteui-webcomponents';
 import { ModuleManager } from '@infragistics/igniteui-webcomponents-core';
+// the spreadsheet is configured in igniteui-webcomponents-spreadsheet
 
 export default class App extends LitElement {
 	const title = 'igniteui-webcomponents example';
@@ -1236,6 +1260,7 @@ export default class App extends LitElement {
 	<base href="/">
 	<title>Ignite UI for Web Components</title>
 	<link rel="stylesheet" href="./node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css">
+	<!-- the spreadsheet is configured in igniteui-webcomponents-spreadsheet -->
 	<link rel="stylesheet" href="./styles.css">
 </head>
 <body class="ig-scrollbar">
@@ -1253,6 +1278,7 @@ export default class App extends LitElement {
 	<base href="/">
 	<title>Ignite UI for Web Components</title>
 	<link rel="stylesheet" href="./node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css">
+	<!-- the spreadsheet is configured in igniteui-webcomponents-spreadsheet -->
 	<link rel="stylesheet" href="./styles.css">
 </head>
 <body class="ig-scrollbar">
