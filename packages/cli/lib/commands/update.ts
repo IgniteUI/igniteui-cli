@@ -1,13 +1,16 @@
 import {
-	applyUpdatePlan, detectFrameworkFromPackageJson, FEED_ANGULAR, getUpdatePlan, GoogleAnalytics, NPM_ANGULAR, NPM_CLI,
-	PackageUpdate, ProjectConfig, UPGRADEABLE_PACKAGES, Util
+	applyUpdatePlan, coerceVersionNumber, detectFrameworkFromPackageJson, FEED_ANGULAR, getMigrationsCollection, getUpdatePlan,
+	GoogleAnalytics, InquirerWrapper, Migration, NPM_ANGULAR, NPM_CLI, PackageUpdate, ProjectConfig, readMigrations, selectMigrations,
+	UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import { execSync } from "child_process";
 import * as fs from "fs";
+import * as path from "path";
 import * as resolve from "resolve";
 import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
+import { loadDevKit, runMigrations } from "./update-migrations";
 
 const LOCKFILES: Record<string, string[]> = {
 	npm: ["package-lock.json", "npm-shrinkwrap.json"],
@@ -16,13 +19,25 @@ const LOCKFILES: Record<string, string[]> = {
 	bun: ["bun.lock", "bun.lockb"]
 };
 
+/** npm's rules for new package names; names can't start with `-`, so they can't pass as options */
+const PACKAGE_NAME = /^(@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/;
+const DIST_TAG = /^[a-z][a-z0-9._-]*$/;
+const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
+
 type UpdateFlags = Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose", boolean>;
+type MigrateOptions = { migrateOnly: boolean; from?: string; to?: string; name?: string };
+type PackageRequest = { name: string; spec?: string };
 
 const command: UpdateCommandType = {
-	command: "update",
+	command: "update [packages..]",
 	describe: "Updates Ignite UI package versions",
 	builder: (yargs) => {
 		return yargs
+			.positional("packages", {
+				describe: "Packages to update: name, name@version, name@range or name@tag",
+				type: "string",
+				array: true
+			})
 			.option("dry-run", {
 				default: false,
 				describe: "Preview the update without changing any files",
@@ -41,7 +56,7 @@ const command: UpdateCommandType = {
 			})
 			.option("allow-dirty", {
 				default: false,
-				describe: "Allow uncommitted changes without a warning",
+				describe: "Proceed even if the project has uncommitted changes",
 				type: "boolean"
 			})
 			.option("verbose", {
@@ -49,11 +64,31 @@ const command: UpdateCommandType = {
 				describe: "Show version resolution and install details",
 				type: "boolean"
 			})
+			.option("migrate-only", {
+				describe: "Only run the migrations of an installed package, without changing versions",
+				type: "boolean"
+			})
+			.option("from", {
+				describe: "Version to run migrations from (requires --migrate-only)",
+				type: "string",
+				implies: ["migrate-only"]
+			})
+			.option("to", {
+				describe: "Version to run migrations up to (requires --from); defaults to the installed version",
+				type: "string",
+				implies: ["from", "migrate-only"]
+			})
+			.option("name", {
+				describe: "Run a single migration by name (implies --migrate-only)",
+				type: "string",
+				conflicts: ["from", "to"]
+			})
 			.epilog("React and Web Components:\n" +
-				"  Updates direct Ignite UI dependencies within their current major version. No migrations are applied.\n\n" +
+				"  Without packages, updates direct Ignite UI dependencies within their current major version.\n" +
+				"  With --migrate-only or --name, runs the migrations an installed package declares in \"ig-update\".\n\n" +
 				"Angular:\n" +
-				"  Runs the project's ng update for the Ignite UI packages: installs their latest versions,\n" +
-				"  including new majors, and applies migrations.");
+				"  Runs the project's ng update for the given packages, or for the Ignite UI packages when none are given:\n" +
+				"  installs their latest versions, including new majors, and applies migrations.");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -64,8 +99,9 @@ const command: UpdateCommandType = {
 		return command.update(argv);
 	},
 	async update(argv: ArgumentsCamelCase<PositionalArgs>) {
+		const migrateOnly = !!(argv.migrateOnly || argv.name);
 		const configured = ProjectConfig.getConfig().project?.framework;
-		const framework = (configured ?? detectFrameworkFromPackageJson())?.toLowerCase();
+		const framework = (configured ?? detectFrameworkFromPackageJson(!migrateOnly))?.toLowerCase();
 		if (!framework) {
 			return fail("No valid package.json found in the current directory.");
 		}
@@ -83,20 +119,220 @@ const command: UpdateCommandType = {
 			allowDirty: !!argv.allowDirty,
 			verbose: !!argv.verbose
 		};
-		debug(flags.verbose, `Framework: ${framework} (${configured ? "from the project config" : "detected from package.json"})`);
+		const packages = argv.packages ?? [];
+		const migrate: MigrateOptions = { migrateOnly, from: argv.from, to: argv.to, name: argv.name };
+		if (configured || !migrateOnly || framework !== "webcomponents") {
+			debug(flags.verbose, `Framework: ${framework} (${configured ? "from the project config" : "detected from package.json"})`);
+		}
+		if (migrate.migrateOnly && flags.skipInstall) {
+			return fail("--skip-install can't be combined with --migrate-only or --name.");
+		}
+		if (migrate.migrateOnly && packages.length !== 1) {
+			return fail("A single package must be specified when using --migrate-only or --name.");
+		}
 		switch (framework) {
 			case "react":
 			case "webcomponents":
+				if (packages.length) {
+					return updateSelected(packages, migrate, flags);
+				}
 				updatePackages(framework === "react" ? "React" : "Web Components", flags);
 				break;
 			case "angular":
-				updateAngular(flags);
+				updateAngular(flags, packages, migrate);
 				break;
 			default:
 				Util.log(`Updating ${framework} projects with ig update is not supported.`);
 		}
 	}
 };
+
+async function updateSelected(args: string[], migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
+	let packages: PackageRequest[];
+	try {
+		packages = parsePackages(args);
+	} catch (error) {
+		return fail(error.message);
+	}
+	if (!migrate.migrateOnly) {
+		// shortcut: selected-package updates need the new resolver; until it lands, fail instead of updating every package
+		return fail("Updating selected packages isn't supported yet for React and Web Components projects. " +
+			"Run ig update without packages, or use --migrate-only.");
+	}
+	return migrateOnly(packages[0], migrate, flags);
+}
+
+async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
+	if (spec) {
+		Util.warn(`The version "${spec}" has no effect with --migrate-only.`, "yellow");
+	}
+	if (!flags.dryRun && !checkGit(flags.allowDirty)) {
+		return;
+	}
+	const packageDir = path.join("node_modules", name);
+	const manifest = path.join(packageDir, "package.json");
+	if (!fs.existsSync(manifest)) {
+		return fail(`Package ${name} is not installed.`);
+	}
+	let pkgJson;
+	try {
+		pkgJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
+	} catch {
+		return fail("No valid package.json found in the current directory.");
+	}
+
+	const framework = identifyFramework(pkgJson);
+	let collection: string | undefined;
+	let migrations: Migration[];
+	try {
+		collection = getMigrationsCollection(packageDir, framework);
+		migrations = collection ? readMigrations(collection) : [];
+	} catch (error) {
+		return fail(`Unable to read the migrations of ${name}.`, error.message);
+	}
+	debug(flags.verbose, `Migrations: ${collection ?? "none"} (framework: ${framework ?? "not identified"})`);
+	if (!collection) {
+		return fail(`${name} doesn't provide migrations${framework ? ` for ${framework}` : ""}.`);
+	}
+
+	let required: Migration[];
+	let optional: Migration[] = [];
+	if (migrate.name) {
+		required = migrations.filter(m => m.name === migrate.name);
+		if (!required.length) {
+			return fail(`${name} has no migration named "${migrate.name}".`);
+		}
+	} else if (!migrate.from) {
+		return fail("--migrate-only needs --from <version>, or --name <migration>.");
+	} else {
+		const from = coerceVersionNumber(migrate.from);
+		const to = coerceVersionNumber(migrate.to ?? JSON.parse(fs.readFileSync(manifest, "utf8")).version);
+		if (!from || !to) {
+			return fail(`"${from ? migrate.to : migrate.from}" is not a valid version.`);
+		}
+		({ required, optional } = selectMigrations(migrations, from, to));
+		Util.log(`Migrations of ${name} from ${from} to ${to}:`);
+	}
+	if (!required.length && !optional.length) {
+		Util.log("No migrations to run.");
+		return;
+	}
+	if (flags.dryRun) {
+		for (const m of [...required, ...optional]) {
+			Util.log(`  ${m.name}${m.optional ? " (optional)" : ""}${m.description ? `: ${m.description}` : ""}`);
+		}
+		Util.log("Dry run: no files were changed.");
+		return;
+	}
+
+	const managers = detectPackageManagers(pkgJson.packageManager);
+	const pm = managers.length === 1 ? managers[0] : undefined;
+	if (!await runAndReport(name, collection, required, pm)) {
+		return;
+	}
+	const chosen = await chooseOptionalMigrations(name, optional);
+	if (await runAndReport(name, collection, chosen, pm) && (required.length || chosen.length)) {
+		Util.log("Migrations completed. Review the changes, then run your build and tests.");
+	}
+}
+
+/** Runs the migrations and reports a failure with the commands to run the rest; true when all of them succeed */
+async function runAndReport(name: string, collection: string, migrations: Migration[], pm: string | undefined): Promise<boolean> {
+	if (!migrations.length) {
+		return true;
+	}
+	try {
+		await loadDevKit();
+	} catch (error) {
+		fail("Unable to load @angular-devkit/schematics to run the migrations.", error.message);
+		return false;
+	}
+	const { completed, failed, notRun } = await runMigrations(collection, migrations, pm);
+	if (failed) {
+		const { name: failedName, version } = failed.migration;
+		fail(`Migration ${failedName}${version ? ` (${version})` : ""} failed, and its changes weren't written.`, failed.error);
+		for (const m of notRun) {
+			Util.log(`Not run: ${m.name}. Run it with: ig update ${name} --name ${m.name}`);
+		}
+		if (completed.length) {
+			Util.log("Review the changes of the completed migrations with git diff.");
+		}
+	}
+	return !failed;
+}
+
+/** Prompts for the optional migrations to run, pre-selecting the recommended ones; without a terminal, lists their commands */
+async function chooseOptionalMigrations(name: string, optional: Migration[]): Promise<Migration[]> {
+	if (!optional.length) {
+		return [];
+	}
+	if (!Util.canPrompt()) {
+		Util.log(`To run the optional migrations of ${name}, use:`);
+		for (const m of optional) {
+			Util.log(`  ig update ${name} --name ${m.name}`);
+		}
+		return [];
+	}
+	const chosen = await InquirerWrapper.checkbox({
+		message: `Select the optional migrations of ${name} to run`,
+		choices: optional.map(m => ({ value: m.name, name: m.description ? `${m.name}: ${m.description}` : m.name, checked: m.recommended }))
+	});
+	return optional.filter(m => chosen.includes(m.name));
+}
+
+/** `@scope/pkg@^3` -> `@scope/pkg` and `^3` */
+function splitPackage(arg: string): PackageRequest {
+	const at = arg.lastIndexOf("@");
+	return at > 0 ? { name: arg.slice(0, at), spec: arg.slice(at + 1) } : { name: arg };
+}
+
+/** Accepts registry versions, ranges and tags only, so aliases, files, links, workspaces, git and URLs are rejected */
+function parsePackages(args: string[]): PackageRequest[] {
+	const packages = args.map(splitPackage);
+	packages.forEach(({ name, spec }, i) => {
+		if (!PACKAGE_NAME.test(name) || name.length > 214) {
+			throw new Error(`Invalid package name "${name}".`);
+		}
+		if (spec !== undefined && !(spec && (semver.validRange(spec) || DIST_TAG.test(spec)))) {
+			throw new Error(`Unsupported version "${spec}" for ${name}: only registry versions, ranges and tags are supported.`);
+		}
+		if (packages.findIndex(p => p.name === name) !== i) {
+			throw new Error(`Duplicate package "${name}".`);
+		}
+	});
+	return packages;
+}
+
+/** The local config, else Angular, React, then Web Components dependencies; React apps depend on Web Components packages too */
+function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: object }): string | undefined {
+	const configured = ProjectConfig.hasLocalConfig() ? ProjectConfig.localConfig().project?.framework : undefined;
+	if (configured) {
+		return configured.toLowerCase();
+	}
+	const deps = Object.keys({ ...pkgJson.dependencies, ...pkgJson.devDependencies });
+	if (deps.includes("@angular/core")) {
+		return "angular";
+	}
+	if (deps.includes("react")) {
+		return "react";
+	}
+	return deps.some(dep => WEBCOMPONENTS_SIGNAL.test(dep)) ? "webcomponents" : undefined;
+}
+
+/** Stops on uncommitted changes in the project unless `allowDirty`; outside a git repository, only warns */
+function checkGit(allowDirty: boolean): boolean {
+	const status = Util.spawnSync("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
+	if (status.status !== 0) {
+		Util.warn("Not a Git repository: review and revert the update's changes manually.", "yellow");
+	} else if (status.stdout.toString().trim()) {
+		if (!allowDirty) {
+			fail("Uncommitted changes. Commit or stash them first, or rerun with --allow-dirty.");
+			return false;
+		}
+		Util.warn("Uncommitted changes: the update's changes will be mixed with them.", "yellow");
+	}
+	return true;
+}
 
 function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 	let plan: PackageUpdate[];
@@ -188,7 +424,7 @@ function updatePackages(frameworkName: string, flags: UpdateFlags): void {
 	}
 }
 
-function updateAngular(flags: UpdateFlags): void {
+function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateOptions): void {
 	if (flags.skipInstall) {
 		const message = "--skip-install is not supported for Angular projects: ng update always installs dependencies.";
 		if (!flags.dryRun) {
@@ -206,20 +442,31 @@ function updateAngular(flags: UpdateFlags): void {
 	}
 
 	const igniteUI = [NPM_ANGULAR, FEED_ANGULAR].filter(name => name in deps);
-	if (!igniteUI.length) {
+	if (!packages.length && !igniteUI.length) {
 		Util.log("No Ignite UI for Angular package found in package.json. Nothing to update.");
 		return;
 	}
-	if (igniteUI.length > 1) {
+	if (!packages.length && igniteUI.length > 1) {
 		return fail(`Both ${NPM_ANGULAR} and ${FEED_ANGULAR} are listed in package.json. Remove one of them and rerun ig update.`);
 	}
 
-	const options = Object.entries({ "--force": flags.force, "--allow-dirty": flags.allowDirty, "--verbose": flags.verbose })
-		.filter(([, enabled]) => enabled).map(([option]) => option);
-	const ngArgs = ["update", ...igniteUI, ...[NPM_CLI, "@igniteui/angular-schematics"].filter(name => name in deps), ...options];
+	const requested = packages.length ? packages : igniteUI;
+	const names = requested.map(arg => splitPackage(arg).name);
+	const igniteUIPackage = names.find(name => name === NPM_ANGULAR || name === FEED_ANGULAR);
+	// they ship the Angular templates, whose versions follow igniteui-angular
+	const companions = igniteUIPackage && !migrate.migrateOnly
+		? [NPM_CLI, "@igniteui/angular-schematics"].filter(name => name in deps && !names.includes(name))
+		: [];
+	const options = Object.entries({
+		"--force": flags.force, "--allow-dirty": flags.allowDirty, "--verbose": flags.verbose, "--migrate-only": migrate.migrateOnly
+	}).filter(([, enabled]) => enabled).map(([option]) => option);
+	const values = (["from", "to", "name"] as const).flatMap(key => migrate[key] ? [`--${key}`, migrate[key]] : []);
+	const ngArgs = ["update", ...requested, ...companions, ...options, ...values];
+	const versions = requested.some(arg => splitPackage(arg).spec) ? "the requested versions" : "their latest versions, including new majors";
 	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` +
-		"It updates these packages to their latest versions, including new majors, applies their migrations " +
-		"and installs dependencies." +
+		(migrate.migrateOnly
+			? "It runs the package's migrations without changing versions."
+			: `It updates these packages to ${versions}, applies their migrations and installs dependencies.`) +
 		(flags.force ? " ng update doesn't stop on incompatible peer dependencies, so Angular packages can end up on incompatible versions." : "") +
 		(flags.allowDirty ? " It runs even with uncommitted changes." : " In a git repository, it stops if the project has uncommitted changes.");
 	if (flags.dryRun) {
@@ -240,9 +487,11 @@ function updateAngular(flags: UpdateFlags): void {
 	Util.log(`Running ${description}`);
 	const result = Util.spawnSync("node", [ngBin, ...ngArgs], { stdio: "inherit" });
 	process.exitCode = result.status ?? 1;
-	const updateTogether = `ng update @angular/core @angular/cli ${igniteUI[0]}`;
+	const updateTogether = `ng update @angular/core @angular/cli ${igniteUIPackage}`;
 	if (result.error) {
 		Util.error(`Unable to run the Angular CLI: ${result.error.message}`, "red");
+	} else if (!igniteUIPackage || migrate.migrateOnly) {
+		return;
 	} else if (result.status !== 0) {
 		Util.warn(`If ng update reported incompatible peer dependencies, update Angular and Ignite UI together: ${updateTogether}`, "yellow");
 	} else if (flags.force) {
@@ -369,8 +618,11 @@ function install(pm: string, backup: Map<string, Buffer | undefined>, flags: Upd
 	}
 }
 
-function fail(message: string): void {
+function fail(message: string, details?: string): void {
 	Util.error(message, "red");
+	if (details) {
+		Util.warn(details, "red");
+	}
 	process.exitCode = 1;
 }
 

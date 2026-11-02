@@ -1,9 +1,29 @@
 import { Migration, Util } from "@igniteui/cli-core";
+import * as fs from "fs";
+import * as semver from "semver";
 
 export interface MigrationRun {
 	completed: Migration[];
 	failed?: { migration: Migration; error: string };
 	notRun: Migration[];
+}
+
+/** Preflight before anything changes: checks that DevKit is installed and supports the running Node.js, then loads it; throws otherwise */
+export async function loadDevKit(): Promise<void> {
+	let manifest: string;
+	try {
+		manifest = require.resolve("@angular-devkit/schematics/package.json");
+	} catch {
+		throw new Error("Running migrations requires @angular-devkit/schematics, an optional dependency of igniteui-cli that isn't installed. " +
+			"Package managers skip it on unsupported Node.js versions, or when optional dependencies are omitted. " +
+			"Reinstall igniteui-cli on a supported Node.js version.");
+	}
+	// Yarn Berry and bun install optional dependencies without checking their engines
+	const node: string | undefined = JSON.parse(fs.readFileSync(manifest, "utf8")).engines?.node;
+	if (node && !semver.satisfies(process.version, node)) {
+		throw new Error(`Running migrations requires Node.js ${node} (running ${process.version}).`);
+	}
+	await import("@angular-devkit/schematics/tools");
 }
 
 /** Runs the migrations of the collection at the absolute path `collection` on the current directory, in order, until one fails */

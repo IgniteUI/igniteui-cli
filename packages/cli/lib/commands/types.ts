@@ -42,6 +42,16 @@ export interface PositionalArgs {
 
 	/** Executes end-to-end tests. */
 	e2e?: boolean;
+
+	/** Packages to update, with an optional version, range or tag. */
+	packages?: string[];
+
+	/** Only run migrations, without changing versions. */
+	migrateOnly?: boolean;
+
+	/** Version range of the migrations to run. */
+	from?: string;
+	to?: string;
 }
 
 export interface CommandType extends CommandModule<{}, any> {

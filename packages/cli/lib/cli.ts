@@ -41,6 +41,7 @@ export async function run(args = null) {
 	];
 
 	const yargsModule = args ? yargs(args) : yargs;
+	let helpShown = false;
 	let chain = yargsModule
 		.scriptName("ig")
 		.usage("Usage: $0 [command] [options]\n\nRun without a command to start the interactive step-by-step project setup.")
@@ -92,7 +93,10 @@ export async function run(args = null) {
 			const message = err?.message ?? msg;
 			if (message) {
 				Util.error(message, "red");
-				yargs.showHelp();
+				if (!helpShown) {
+					helpShown = true;
+					yargs.showHelp();
+				}
 				process.exitCode = 1;
 			}
 		})

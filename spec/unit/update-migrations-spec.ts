@@ -3,7 +3,8 @@ import * as child_process from "child_process";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { runMigrations } from "../../packages/cli/lib/commands/update-migrations";
+import { loadDevKit, runMigrations } from "../../packages/cli/lib/commands/update-migrations";
+import Module = require("module");
 
 describe("Integration - update migrations runner", () => {
 	const APP = "export const App = () => <div />;\n";
@@ -112,5 +113,33 @@ exports.default = () => (tree, { logger }) => { logger.debug("hidden"); logger.w
 			`require(${JSON.stringify(runner)}); console.log(Object.keys(require.cache).filter(m => m.includes("@angular-devkit")).length);`
 		], { encoding: "utf8" });
 		expect(loaded.trim()).toBe("0");
+	});
+
+	describe("loadDevKit", () => {
+		/** Resolves DevKit's manifest with `resolve` instead */
+		function resolveDevKit(resolve: () => string) {
+			const original = (Module as any)._resolveFilename;
+			spyOn(Module as any, "_resolveFilename").and.callFake(function (this: unknown, request: string, ...rest: unknown[]) {
+				return request === "@angular-devkit/schematics/package.json" ? resolve() : original.call(this, request, ...rest);
+			});
+		}
+
+		it("loads DevKit when it's installed and supports the running Node.js", async () => {
+			await expectAsync(loadDevKit()).toBeResolved();
+		});
+
+		it("reports a DevKit that isn't installed", async () => {
+			resolveDevKit(() => { throw Object.assign(new Error("Cannot find module"), { code: "MODULE_NOT_FOUND" }); });
+
+			await expectAsync(loadDevKit()).toBeRejectedWithError(
+				/^Running migrations requires @angular-devkit\/schematics, an optional dependency of igniteui-cli that isn't installed\./);
+		});
+
+		it("reports a Node.js version outside DevKit's engines", async () => {
+			write("devkit/package.json", { engines: { node: ">=99" } });
+			resolveDevKit(() => path.join(tempDir, "devkit/package.json"));
+
+			await expectAsync(loadDevKit()).toBeRejectedWithError(`Running migrations requires Node.js >=99 (running ${process.version}).`);
+		});
 	});
 });

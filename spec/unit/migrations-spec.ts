@@ -39,12 +39,16 @@ describe("Unit - update migrations metadata", () => {
 			// only starts with dots, so it is inside the package
 			const dotted = write("..migrations/collection.json", "{}");
 			expect(collectionFor({ migrations: "..migrations/collection.json" })).toBe(dotted);
+			expect(getMigrationsCollection(packageDir, undefined)).withContext("framework not identified").toBe(dotted);
 		});
 
-		it("picks the framework's collection from a map, and none when the framework has no entry", () => {
+		it("picks the framework's collection from a map, none when the framework has no entry, and throws when it isn't identified", () => {
 			const react = write("migrations/react/collection.json", "{}");
 			expect(collectionFor({ migrations: { react: "./migrations/react/collection.json", webcomponents: "./missing.json" } })).toBe(react);
 			expect(collectionFor({ migrations: { react: "./migrations/react/collection.json" } }, "webcomponents")).toBeUndefined();
+			expect(() => getMigrationsCollection(packageDir, undefined)).toThrowError(
+				`Can't tell whether this is a React or Web Components project, and lib has migrations for each. ` +
+				`Set "project.framework" to "react" or "webcomponents" in ignite-ui-cli.json.`);
 		});
 
 		it("returns none for packages without ig-update migrations, including ng-update-only packages", () => {
@@ -74,7 +78,7 @@ describe("Unit - update migrations metadata", () => {
 				// migrations
 				"schematics": {
 					"full": { "version": "2.1.0", "description": "Full", "factory": "./full" },
-					"major": { "version": "3", "optional": true },
+					"major": { "version": "3", "optional": true, "recommended": true },
 					"minor": { "version": "3.1" },
 					"prerelease": { "version": "3.1-rc.1" },
 					"prefixed": { "version": "v3.2.0" },
@@ -82,7 +86,8 @@ describe("Unit - update migrations metadata", () => {
 					"none": {},
 				},
 			}`));
-			expect(migrations[0]).toEqual({ name: "full", version: "2.1.0", description: "Full", optional: false });
+			expect(migrations[0]).toEqual({ name: "full", version: "2.1.0", description: "Full", optional: false, recommended: false });
+			expect(migrations[1]).toEqual({ name: "major", version: "3.0.0", description: undefined, optional: true, recommended: true });
 			expect(names(migrations.filter(m => m.optional))).toEqual(["major"]);
 			expect(migrations.map(m => m.version)).toEqual(["2.1.0", "3.0.0", "3.1.0", "3.1.0-rc.1", undefined, undefined, undefined]);
 		});

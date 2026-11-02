@@ -9,10 +9,14 @@ export interface Migration {
 	version?: string;
 	description?: string;
 	optional?: boolean;
+	recommended?: boolean;
 }
 
-/** Absolute path of the collection that the package in `packageDir` declares in `ig-update` for `framework`; throws on invalid metadata */
-export function getMigrationsCollection(packageDir: string, framework: string): string | undefined {
+/**
+ * Absolute path of the collection that the package in `packageDir` declares in `ig-update` for `framework`; throws on invalid metadata,
+ * and for a per-framework map when the framework isn't identified
+ */
+export function getMigrationsCollection(packageDir: string, framework: string | undefined): string | undefined {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const pkg = JSON.parse(fs.readFile(path.join(packageDir, "package.json")));
 	const invalid = (reason: string) => new Error(`${pkg.name} has an invalid "ig-update" field: ${reason}.`);
@@ -23,7 +27,14 @@ export function getMigrationsCollection(packageDir: string, framework: string): 
 	if (!isObject(metadata)) {
 		throw invalid("expected an object");
 	}
-	const migrations = isObject(metadata.migrations) ? metadata.migrations[framework] : metadata.migrations;
+	let migrations = metadata.migrations;
+	if (isObject(migrations)) {
+		if (!framework) {
+			throw new Error(`Can't tell whether this is a React or Web Components project, and ${pkg.name} has migrations for each. ` +
+				`Set "project.framework" to "react" or "webcomponents" in ignite-ui-cli.json.`);
+		}
+		migrations = migrations[framework];
+	}
 	if (migrations === undefined) {
 		return undefined;
 	}
@@ -58,7 +69,13 @@ export function readMigrations(collectionPath: string): Migration[] {
 		if (entry?.version !== undefined && typeof entry.version !== "string") {
 			throw new Error(`${collectionPath}: the version of migration "${name}" must be a string.`);
 		}
-		return { name, version: coerceVersionNumber(entry?.version), description: entry?.description, optional: !!entry?.optional };
+		return {
+			name,
+			version: coerceVersionNumber(entry?.version),
+			description: entry?.description,
+			optional: !!entry?.optional,
+			recommended: !!entry?.recommended
+		};
 	});
 }
 
@@ -75,7 +92,7 @@ export function selectMigrations(migrations: Migration[], from: string, to: stri
 }
 
 /** Angular's `coerceVersionNumber`: completes `1` and `1.2` (prerelease kept) to valid versions */
-function coerceVersionNumber(version: string | undefined): string | undefined {
+export function coerceVersionNumber(version: string | undefined): string | undefined {
 	const numbers = version?.match(/^\d{1,30}(\.\d{1,30}){0,2}/)?.[0];
 	if (!numbers) {
 		return undefined;

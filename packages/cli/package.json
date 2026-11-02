@@ -79,9 +79,11 @@
     "typescript": "~5.5.4",
     "yargs": "^17.7.2"
   },
-  "devDependencies": {
+  "optionalDependencies": {
     "@angular-devkit/core": "^22.0.0",
-    "@angular-devkit/schematics": "^22.0.0",
+    "@angular-devkit/schematics": "^22.0.0"
+  },
+  "devDependencies": {
     "@schematics/angular": "^22.0.0",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",
