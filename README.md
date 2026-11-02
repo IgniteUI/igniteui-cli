@@ -190,7 +190,7 @@ For VS Code, the `ig ai-config` command handles configuration automatically (see
   "mcpServers": {
     "igniteui-cli": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli", "mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     },
     "igniteui-theming": {
       "command": "npx",
@@ -199,6 +199,10 @@ For VS Code, the `ig ai-config` command handles configuration automatically (see
   }
 }
 ```
+
+In a project that lists `igniteui-cli` as a dependency, `ig ai-config` writes `"args": ["-y", "igniteui-cli", "mcp"]` instead, which starts the server bundled with the project's CLI. Use that form there too when configuring manually: with pnpm, `npx -y @igniteui/mcp-server` cannot start inside such a project.
+
+The first start downloads the server into the npx cache, which can take 10 seconds or more, and npx downloads it again after each new release. If your MCP client has a short connection timeout, install the server globally (`npm install -g @igniteui/mcp-server`) and use `"command": "igniteui-mcp"` with no arguments, or pin a version (`"args": ["-y", "@igniteui/mcp-server@<version>"]`). Pinned and global installs don't update on their own, so the bundled documentation stays at that version until you change it.
 
 The MCP server exposes the following tools to AI assistants:
 
