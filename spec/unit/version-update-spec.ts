@@ -333,16 +333,32 @@ describe("Unit - version update", () => {
 			mockProject({ dependencies: { [licensed]: "~19.6.0" } });
 
 			spyOn(ProjectConfig, "getConfig").and.returnValue({ igPackageRegistry: "https://feed.example/npm/" } as Config);
+			const unableToGet = `Unable to get ${licensed} from the registry:`;
+			const login = "npm login --scope=@infragistics --registry=https://feed.example/npm/ --auth-type=legacy";
 
-			expect(() => getUpdatePlan()).toThrowError(`${licensed} was not found. Map the @infragistics scope to the ` +
-				"Infragistics feed in .npmrc:\n@infragistics:registry=https://feed.example/npm/");
+			registry[licensed] = npmError("E404", "Not Found - GET https://registry.npmjs.org/@infragistics%2figniteui-react-grids - Not found");
+			expect(() => getUpdatePlan()).toThrowError(
+				`${unableToGet} Not Found - GET https://registry.npmjs.org/@infragistics%2figniteui-react-grids - Not found\n` +
+				"npm may not be using the Infragistics feed for @infragistics packages. " +
+				'Check that .npmrc has "@infragistics:registry=https://feed.example/npm/" and that your account has access to this package.');
 
-			for (const code of ["E401", "E403", "ENEEDAUTH"]) {
+			for (const code of ["E401", "ENEEDAUTH"]) {
 				registry[licensed] = npmError(code);
-				expect(() => getUpdatePlan()).withContext(code).toThrowError(/^Not logged in to the Infragistics feed/);
+				expect(() => getUpdatePlan()).withContext(code).toThrowError(`${unableToGet} ${code} summary\n` +
+					`npm has no valid credentials for the Infragistics feed. Log in with your Infragistics account: ${login}`);
 			}
 
+			registry[licensed] = npmError("E403");
+			expect(() => getUpdatePlan()).toThrowError(`${unableToGet} E403 summary\nThe Infragistics feed denied access. ` +
+				`Check that your account has access to this package, and log in again if its credentials changed: ${login}`);
+
+			registry[licensed] = npmError("ETIMEDOUT", "network timeout");
+			expect(() => getUpdatePlan()).toThrowError(`${unableToGet} network timeout`);
+
 			mockProject({ dependencies: { "igniteui-react": "~19.6.0" } });
+			registry["igniteui-react"] = npmError("E401");
+			expect(() => getUpdatePlan()).toThrowError("Unable to get igniteui-react from the registry: E401 summary");
+
 			registry["igniteui-react"] = npmError("ETIMEDOUT", "network timeout");
 			expect(() => getUpdatePlan()).toThrowError("Unable to get igniteui-react from the registry: network timeout");
 
@@ -1204,6 +1220,23 @@ describe("Unit - version update", () => {
 				expect([blocked.newest, blocked.heldBackBy, forced.newest, forced.heldBackBy]).toEqual([undefined, undefined, undefined, undefined]);
 			});
 
+			it("names every installed peer requirement that holds a default target back, from a version they all accept", () => {
+				mockProject({ dependencies: { widget: "^1.5.0", "widget-grid": "^1.0.0", "widget-charts": "^1.0.0" } }, {
+					widget: "1.5.0",
+					"widget-grid": { version: "1.0.0", peerDependencies: { widget: ">=1.5.0 <2.0.0" } },
+					"widget-charts": { version: "1.0.0", peerDependencies: { widget: "^1.0.0" } }
+				});
+				publish("widget", ["1.0.0", "1.5.0", "1.8.0", "2.0.0"], "2.0.0");
+
+				const [widget] = request("widget");
+
+				expect([widget.target, widget.newRange, widget.newest, widget.conflict]).toEqual(["1.8.0", "^1.8.0", "2.0.0", undefined]);
+				expect(widget.heldBackBy).toEqual([
+					{ name: "widget-grid", reason: ">=1.5.0 <2.0.0 (required by widget-grid@1.0.0)" },
+					{ name: "widget-charts", reason: "^1.0.0 (required by widget-charts@1.0.0)" }
+				]);
+			});
+
 			it("doesn't let an ordinary dependency of an unchanged package hold an update back", () => {
 				mockProject({ dependencies: { typescript: "~5.5.0" }, devDependencies: { [NPM_CLI]: "~15.8.0" } },
 					{ typescript: "5.5.4", [NPM_CLI]: { version: "15.8.2", dependencies: { typescript: "~5.5.4" } } });
@@ -1287,6 +1320,12 @@ describe("Unit - version update", () => {
 
 				it("holds a target back to a version whose peers the installed packages outside the plan meet, or conflicts naming them", () => {
 					project({ "example-theme": "^1.2.0" }, { "example-theme": "1.2.0" });
+
+					publishUi(version => version === "3.0.0" ? {} : { "example-theme": version === "2.5.0" ? "^1.2.0" : "^1.0.0" });
+					const [compatible] = request("example-ui");
+
+					expect([compatible.target, compatible.newRange, compatible.newest]).toEqual(["2.5.0", "^2.5.0", "3.0.0"]);
+					expect(compatible.heldBackBy).toEqual([{ name: "example-pin", reason: requiredByPin }]);
 
 					publishUi(version => version === "3.0.0" ? {} : { "example-theme": version === "2.5.0" ? "^1.5.0" : "^1.0.0" });
 					const [heldBack] = request("example-ui");

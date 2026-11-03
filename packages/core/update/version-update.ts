@@ -524,17 +524,26 @@ function npmView(spec: string, fields: string[], verbose: boolean) {
 	}
 
 	const error: { code?: string; summary?: string } = json?.error ?? {};
-	const licensed = spec.startsWith("@infragistics/");
-	if (licensed && error.code === "E404") {
-		throw new Error(`${spec} was not found. Map the @infragistics scope to the Infragistics feed in .npmrc:\n` +
-			`@infragistics:registry=${ProjectConfig.getConfig().igPackageRegistry}`);
+	const message = `Unable to get ${spec} from the registry: ` +
+		(error.summary ?? result.error?.message ?? (result.stderr?.trim() || "unexpected output from npm"));
+	if (spec.startsWith("@infragistics/")) {
+		const feed = ProjectConfig.getConfig().igPackageRegistry;
+		const login = `npm login --scope=@infragistics --registry=${feed} --auth-type=legacy`;
+		const auth = `npm has no valid credentials for the Infragistics feed. Log in with your Infragistics account: ${login}`;
+		const hints: Record<string, string | undefined> = {
+			E404: "npm may not be using the Infragistics feed for @infragistics packages. " +
+				`Check that .npmrc has "@infragistics:registry=${feed}" and that your account has access to this package.`,
+			E401: auth,
+			ENEEDAUTH: auth,
+			E403: "The Infragistics feed denied access. Check that your account has access to this package, " +
+				`and log in again if its credentials changed: ${login}`
+		};
+		const hint = hints[error.code ?? ""];
+		if (hint) {
+			throw new Error(`${message}\n${hint}`);
+		}
 	}
-	if (licensed && /^(E401|E403|ENEEDAUTH)$/.test(error.code ?? "")) {
-		throw new Error(`Not logged in to the Infragistics feed, required for ${spec}. ` +
-			"Log in with your Infragistics account: npm login --scope=@infragistics --auth-type=legacy");
-	}
-	throw new Error(`Unable to get ${spec} from the registry: ` +
-		(error.summary ?? result.error?.message ?? (result.stderr?.trim() || "unexpected output from npm")));
+	throw new Error(message);
 }
 
 function runNpm(args: string[]): SpawnSyncReturns<string> {
