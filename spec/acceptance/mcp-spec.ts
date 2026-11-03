@@ -1,6 +1,9 @@
 import { spawn } from "child_process";
 
 const execLocation = "packages/cli/bin/execute.js";
+// shorter than the specs' Jasmine timeout, so a hung server is killed instead of outliving the spec
+const MCP_RUN_DEADLINE_MS = 20000;
+const SPEC_TIMEOUT_MS = 30000;
 
 interface McpRun {
 	response: any;
@@ -8,13 +11,23 @@ interface McpRun {
 	exitCode: number | null;
 }
 
-/** Starts `ig mcp`, sends `initialize`, and closes stdin once the server answers. */
+/**
+ * Starts `ig mcp`, sends `initialize`, and closes stdin once the server answers.
+ * Kills the server and rejects if it has not exited within {@link MCP_RUN_DEADLINE_MS}.
+ */
 function initializeMcpServer(args: string[]): Promise<McpRun> {
 	return new Promise((resolve, reject) => {
 		const child = spawn(process.execPath, [execLocation, "mcp", ...args], { stdio: ["pipe", "pipe", "pipe"] });
 		const nonProtocolLines: string[] = [];
 		let response: any;
 		let buffer = "";
+
+		const deadline = setTimeout(() => {
+			child.kill();
+			reject(new Error(response
+				? `MCP server did not exit within ${MCP_RUN_DEADLINE_MS} ms after stdin closed`
+				: `MCP server did not answer initialize within ${MCP_RUN_DEADLINE_MS} ms`));
+		}, MCP_RUN_DEADLINE_MS);
 
 		child.stdout.on("data", (data: Buffer) => {
 			buffer += data.toString();
@@ -34,8 +47,14 @@ function initializeMcpServer(args: string[]): Promise<McpRun> {
 				}
 			}
 		});
-		child.on("error", reject);
-		child.on("exit", exitCode => resolve({ response, nonProtocolLines, exitCode }));
+		child.on("error", err => {
+			clearTimeout(deadline);
+			reject(err);
+		});
+		child.on("exit", exitCode => {
+			clearTimeout(deadline);
+			resolve({ response, nonProtocolLines, exitCode });
+		});
 
 		child.stdin.write(JSON.stringify({
 			jsonrpc: "2.0",
@@ -53,12 +72,12 @@ describe("MCP command", () => {
 		expect(run.response?.result?.serverInfo?.name).toBe("igniteui-mcp-server");
 		expect(run.nonProtocolLines).toEqual([]);
 		expect(run.exitCode).toBe(0);
-	}, 30000);
+	}, SPEC_TIMEOUT_MS);
 
 	it("passes --remote=<url> to the server", async () => {
 		const run = await initializeMcpServer(["--remote=http://127.0.0.1:9"]);
 
 		expect(run.response?.result?.serverInfo?.name).toBe("igniteui-mcp-server");
 		expect(run.nonProtocolLines).toEqual([]);
-	}, 30000);
+	}, SPEC_TIMEOUT_MS);
 });
