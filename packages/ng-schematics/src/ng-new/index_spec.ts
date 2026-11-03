@@ -6,6 +6,8 @@ import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-sc
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { NodeWorkflow } from "@angular-devkit/schematics/tools";
 import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, ScaffoldOptions, Template } from "@igniteui/cli-core";
+import * as fs from "fs";
+import * as os from "os";
 import * as path from "path";
 import { lastValueFrom } from "rxjs";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -265,6 +267,56 @@ describe("Schematics ng-new", () => {
 			options: { version: "8.0.3", name: "my-test-project" }
 		}), { defaultValue: undefined })).toBeRejectedWithError(/--dry-run is not supported/);
 		expect(mockProject.scaffold).not.toHaveBeenCalled();
+	});
+
+	it("configures AI tooling in the project the scaffold creates on disk", async () => {
+		const name = "my-test-project";
+		const skill = "igniteui-angular-grids/SKILL.md";
+		const mockProject = mockProjectInLibrary();
+		// a minimal project, written to disk the way `ng new` + `ng add igniteui-angular` write it, past the workflow's tree
+		(mockProject.scaffold as jasmine.Spy).and.callFake(async () => {
+			const files: Record<string, string> = {
+				"package.json": JSON.stringify({ dependencies: { "igniteui-angular": "~21.0.0" } }),
+				[`node_modules/igniteui-angular/skills/${skill}`]: "# Grids",
+				".mcp.json": JSON.stringify({ mcpServers: { existing: { command: "existing", args: [] } } })
+			};
+			for (const [file, content] of Object.entries(files)) {
+				fs.mkdirSync(path.dirname(path.join(name, file)), { recursive: true });
+				fs.writeFileSync(path.join(name, file), content);
+			}
+			return true;
+		});
+		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+			configurable: true,
+			get: () => new Map<string, any>([["upgradePackages", false]]),
+			set: () => void 0
+		});
+
+		const cwd = process.cwd();
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "ng-new-spec-"));
+		try {
+			process.chdir(tmpDir);
+			// how `ng new` runs the schematic: the tree is backed by the file system, options get their schema defaults
+			const workflow = new NodeWorkflow(tmpDir, { schemaValidation: true });
+			await lastValueFrom(workflow.execute({
+				collection: collectionPath,
+				schematic: "ng-new",
+				options: { version: "8.0.3", name, skipInstall: true, skipGit: true }
+			}), { defaultValue: undefined });
+
+			const projectDir = path.join(tmpDir, name);
+			// ai-config read the installed package's skills from disk, and its writes were committed
+			for (const skillsDir of [".claude/skills", ".agents/skills"]) {
+				expect(fs.readFileSync(path.join(projectDir, skillsDir, skill), "utf8")).withContext(skillsDir).toBe("# Grids");
+			}
+			// the existing file was updated, not created over
+			const mcpServers = JSON.parse(fs.readFileSync(path.join(projectDir, ".mcp.json"), "utf8")).mcpServers;
+			expect(Object.keys(mcpServers)).toEqual(jasmine.arrayWithExactContents(
+				["existing", "angular-cli", "igniteui-cli", "igniteui-theming"]));
+		} finally {
+			process.chdir(cwd);
+			fs.rmSync(tmpDir, { recursive: true, force: true });
+		}
 	});
 
 	describe("addAIConfig via ng-new", () => {
