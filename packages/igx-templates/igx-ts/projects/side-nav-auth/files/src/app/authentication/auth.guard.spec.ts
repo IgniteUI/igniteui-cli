@@ -33,16 +33,13 @@ describe('AuthGuard', () => {
 
   it(`Should return true from 'canActivate' for authenticated user`, () => {
     const authGuard = TestBed.inject(AuthGuard);
-    const mockSpy = vi.fn();
-    expect(authGuard.canActivate(mockSpy as any, mockSpy as any)).toEqual(true);
+    expect(authGuard.canActivate()).toEqual(true);
   });
   it(`Should redirect and return false from 'canActivate' for unauthenticated user`, () => {
     const authGuard = TestBed.inject(AuthGuard);
-    const mockSpy = vi.fn();
     mockUserService.currentUser = false;
     vi.spyOn(mockRouter, 'navigate');
-    expect(authGuard.canActivate(mockSpy as any, { url: 'test' } as any)).toEqual(false);
-    expect(mockRouter.navigate).toHaveBeenCalled();
-    expect(mockRouter.navigate).toHaveBeenCalledWith([''], { queryParams: { returnUrl: 'test' } });
+    expect(authGuard.canActivate()).toEqual(false);
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
   });
 });
