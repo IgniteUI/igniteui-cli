@@ -2,6 +2,7 @@ import { Template, Util } from "@igniteui/cli-core";
 // default imports give the module objects themselves, so their functions can be spied on
 import child_process from "child_process";
 import fs from "fs";
+import os from "os";
 import * as path from "path";
 import { BaseComponent } from "../../packages/core/templates/BaseComponent";
 
@@ -379,6 +380,50 @@ describe("Unit - Util", () => {
 			const choices = Util.formatChoices([{ name: "Plain", description: "" }]);
 
 			expect(choices).toEqual([{ name: "Plain", short: "Plain", value: "Plain" }]);
+		});
+	});
+
+	describe("processTemplates", () => {
+		const originalCwd = process.cwd();
+		let tmp: string;
+
+		beforeEach(() => {
+			tmp = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "ig-templates-")));
+			process.chdir(tmp);
+			spyOn(Util, "error");
+		});
+
+		afterEach(() => {
+			process.chdir(originalCwd);
+			fs.rmSync(tmp, { recursive: true, force: true });
+		});
+
+		it("processes sources with glob characters and never overwrites the source", async () => {
+			const source = path.join(tmp, "src [1]");
+			const output = path.join(tmp, "out");
+			fs.mkdirSync(source);
+			fs.writeFileSync(path.join(source, "__name__.txt"), "$(name)");
+
+			expect(await Util.processTemplates(source, output, { name: "file" }, {})).toBeTrue();
+			expect(fs.readFileSync(path.join(output, "file.txt"), "utf8")).toBe("file");
+			expect(await Util.processTemplates(source, output, { name: "file" }, {})).toBeFalse();
+			expect(await Util.processTemplates(source, source, {}, {}, false)).toBeFalse();
+			expect(fs.readFileSync(path.join(source, "__name__.txt"), "utf8")).toBe("$(name)");
+		});
+
+		it("does not truncate the source when its drive letter case differs from glob output", async () => {
+			if (process.platform !== "win32") {
+				pending("Windows drive letter casing");
+			}
+			const source = path.join(tmp, "src");
+			const output = path.join(tmp, "out");
+			fs.mkdirSync(source);
+			fs.writeFileSync(path.join(source, "example.txt"), "$(name)");
+			const lowerDriveSource = source[0].toLowerCase() + source.slice(1);
+
+			expect(await Util.processTemplates(lowerDriveSource, output, { name: "file" }, {}, false)).toBeTrue();
+			expect(fs.readFileSync(path.join(source, "example.txt"), "utf8")).toBe("$(name)");
+			expect(fs.readFileSync(path.join(output, "example.txt"), "utf8")).toBe("file");
 		});
 	});
 });
