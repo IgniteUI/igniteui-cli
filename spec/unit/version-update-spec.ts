@@ -1,31 +1,37 @@
+import child_process from "child_process";
+import nodeFs from "fs";
+import * as path from "path";
 import * as semver from "semver";
 import { Config, IFileSystem } from "../../packages/core/types";
 import { App, ProjectConfig, Util } from "../../packages/core/util";
 import {
 	FEED_ANGULAR, FEED_REACT_GRIDS, FEED_WEBCOMPONENTS_GRIDS, NPM_ANGULAR, NPM_CLI, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_REACT,
-	NPM_REACT_DOCK_MANAGER, NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS
+	NPM_REACT_DOCK_MANAGER, NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, NPM_WEBCOMPONENTS_GRIDS, UPGRADEABLE_PACKAGES
 } from "../../packages/core/update/package-resolve";
 import { applyUpdatePlan, getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES } from "../../packages/core/update/version-update";
+
+const realSpawnSync = child_process.spawnSync;
 
 describe("Unit - version update", () => {
 	let fs: jasmine.SpyObj<IFileSystem>;
 
-	function mockProject(pkgJson: object | string, installed: Record<string, string> = {}) {
+	function mockProject(pkgJson: object | string, installed: Record<string, string | object> = {}) {
 		const files: Record<string, string> = {
 			"./package.json": typeof pkgJson === "string" ? pkgJson : JSON.stringify(pkgJson)
 		};
-		for (const name of Object.keys(installed)) {
-			files[`node_modules/${name}/package.json`] = JSON.stringify({ name, version: installed[name] });
+		for (const [name, manifest] of Object.entries(installed)) {
+			files[`node_modules/${name}/package.json`] = JSON.stringify({ name, ...typeof manifest === "string" ? { version: manifest } : manifest });
 		}
 		fs.fileExists.and.callFake(filePath => filePath in files);
 		fs.readFile.and.callFake(filePath => files[filePath]);
+		return files;
 	}
 
 	beforeEach(() => {
 		fs = jasmine.createSpyObj<IFileSystem>("fs", ["fileExists", "readFile", "writeFile", "directoryExists", "glob"]);
 		spyOn(App.container, "get").and.returnValue(fs);
 		spyOn(Util, "warn");
-		spyOn(Util, "execSync");
+		spyOn(child_process, "spawnSync");
 	});
 
 	it("UPDATABLE_PACKAGES includes React/WC trial and licensed names, OSS packages, grid lite and the CLI, but not Angular", () => {
@@ -33,13 +39,17 @@ describe("Unit - version update", () => {
 			FEED_WEBCOMPONENTS_GRIDS, NPM_DOCK_MANAGER, NPM_GRID_LITE, NPM_CLI]) {
 			expect(UPDATABLE_PACKAGES.has(name)).withContext(name).toBe(true);
 		}
+		for (const [trial, licensed] of Object.entries(UPGRADEABLE_PACKAGES).filter(([trial]) => trial !== NPM_ANGULAR)) {
+			expect([UPDATABLE_PACKAGES.has(trial), UPDATABLE_PACKAGES.has(licensed)]).withContext(trial).toEqual([true, true]);
+		}
+		expect(UPDATABLE_PACKAGES.size).toBe(54);
 		expect(UPDATABLE_PACKAGES.has(NPM_ANGULAR)).toBe(false);
 		expect(UPDATABLE_PACKAGES.has(FEED_ANGULAR)).toBe(false);
 	});
 
 	describe("getUpdateCandidates", () => {
 		afterEach(() => {
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.spawnSync).not.toHaveBeenCalled();
 			expect(fs.writeFile).not.toHaveBeenCalled();
 		});
 
@@ -171,6 +181,13 @@ describe("Unit - version update", () => {
 			expect(() => getUpdateCandidates()).toThrowError(/No package.json found/);
 		});
 
+		it("names an installed package.json it can't parse", () => {
+			mockProject({ dependencies: { "igniteui-react": "~19.6.0" } }, { "igniteui-react": "19.6.0" })["node_modules/igniteui-react/package.json"] = "{";
+
+			expect(() => getUpdateCandidates()).toThrowError(new RegExp("^Unable to parse node_modules/igniteui-react/package\\.json: .+\\. " +
+				"Reinstall the project's dependencies and run the update again\\.$"));
+		});
+
 		it("throws when package.json is invalid", () => {
 			mockProject("{ invalid");
 
@@ -180,15 +197,20 @@ describe("Unit - version update", () => {
 
 	describe("getUpdatePlan", () => {
 		type Manifest = object | ((version: string) => object);
-		let registry: Record<string, { versions: string | string[]; latest?: string; manifest?: Manifest } | string | Error>;
+		type Result = { status: number | null; stdout: string | null; stderr?: string | null; error?: Error };
+		type Published = { versions: string | string[]; latest?: string; manifest?: Manifest; tags?: Record<string, string> };
+		let registry: Record<string, Published | string | Result>;
 
-		function npmError(code: string, summary = `${code} summary`) {
-			return Object.assign(new Error("Command failed"), { stdout: JSON.stringify({ error: { code, summary } }) });
+		function npmError(code: string, summary = `${code} summary`): Result {
+			return { status: 1, stdout: JSON.stringify({ error: { code, summary } }) };
 		}
 
-		function publish(name: string, versions: string | string[], latest?: string, manifest?: Manifest) {
-			registry[name] = { versions, latest, manifest };
+		function publish(name: string, versions: string | string[], latest?: string, manifest?: Manifest, tags?: Record<string, string>) {
+			registry[name] = { versions, latest, manifest, tags };
 		}
+
+		const views = () => (child_process.spawnSync as jasmine.Spy).calls.allArgs()
+			.map(([, args]) => (args as string[]).slice(args.indexOf("view") + 1, -1).join(" "));
 
 		const REACT_WC_RANGES: Record<string, string> = {
 			"19.3.0": "~6.3.3", "19.3.2": "~6.3.6", "19.4.0": "~6.3.6", "19.5.0": "~7.0.0", "19.9.0": "~7.4.1"
@@ -201,24 +223,25 @@ describe("Unit - version update", () => {
 
 		beforeEach(() => {
 			registry = {};
-			(Util.execSync as jasmine.Spy).and.callFake((command: string) => {
-				const [, name, range] = /^npm view "(@?[^@"]+)(?:@([^"]+))?"/.exec(command)!;
+			(child_process.spawnSync as jasmine.Spy).and.callFake((_command: string, args: string[]) => {
+				const [, name, range] = /^(@?[^@]+)(?:@(.+))?$/.exec(args[args.indexOf("view") + 1])!;
 				const entry = registry[name] ?? npmError("E404");
-				if (entry instanceof Error) {
-					throw entry;
-				}
+				const ok = (stdout: string) => ({ status: 0, stdout, stderr: "" });
 				if (typeof entry === "string") {
-					return entry;
+					return ok(entry);
 				}
-				const { versions, latest, manifest } = entry;
+				if ("status" in entry) {
+					return { stderr: "", ...entry };
+				}
+				const { versions, latest, manifest, tags } = entry as Published;
 				if (!range) {
-					return JSON.stringify({ versions, "dist-tags": { latest } });
+					return ok(JSON.stringify({ versions, "dist-tags": { latest, ...tags } }));
 				}
 				const matches = ([] as string[]).concat(versions).filter(v => semver.satisfies(v, range)).map(version => {
 					const fields = typeof manifest === "function" ? manifest(version) : manifest;
 					return fields ? { version, ...fields } : version;
 				});
-				return JSON.stringify(matches.length === 1 ? matches[0] : matches);
+				return ok(JSON.stringify(matches.length === 1 ? matches[0] : matches));
 			});
 		});
 
@@ -244,6 +267,11 @@ describe("Unit - version update", () => {
 			publish("igniteui-grid-lite", ["0.11.0", "0.11.3", "0.12.0"], "0.12.0");
 
 			expect(getUpdatePlan()[0]).toEqual(jasmine.objectContaining({ target: "0.11.3", newRange: "^0.11.3", nextMajor: "0.12.0" }));
+
+			mockProject({ dependencies: { "igniteui-grid-lite": "0.x" } }, { "igniteui-grid-lite": "0.11.4" });
+			publish("igniteui-grid-lite", ["0.11.4", "0.12.0"], "0.12.0");
+
+			expect(getUpdatePlan()[0]).toEqual(jasmine.objectContaining({ target: "0.11.4", newRange: undefined, nextMajor: "0.12.0" }));
 		});
 
 		it("moves a prerelease baseline to later prereleases and the stable release", () => {
@@ -273,7 +301,7 @@ describe("Unit - version update", () => {
 				{ "igniteui-webcomponents": "7.4.1" });
 
 			expect(getUpdatePlan().every(c => c.skipped && !c.target)).toBe(true);
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.spawnSync).not.toHaveBeenCalled();
 		});
 
 		it("skips a package with no published version in its line", () => {
@@ -397,6 +425,64 @@ describe("Unit - version update", () => {
 
 				mockProject({ dependencies: { [NPM_REACT]: "~19.8.1", [NPM_GRID_LITE]: "~0.11.0" } }, { [NPM_REACT]: "19.8.1", [NPM_GRID_LITE]: "0.11.0" });
 				expect(plan()).toEqual([[NPM_REACT, "19.9.0", "~19.9.0", undefined], [NPM_GRID_LITE, "0.11.0", undefined, undefined]]);
+			});
+
+			it("records the packages whose requirements hold a package back, and nothing for packages that reach the newest version", () => {
+				const heldBack = (plan: PackageUpdate[]) => plan.map(c => [c.name, c.newest, c.heldBackBy]);
+
+				publish("igniteui-react-charts", ["19.5.2", "19.6.0"], "19.6.0", { peerDependencies: { "igniteui-react-core": "19.6.0" } });
+				publish("igniteui-react-core", ["19.5.2", "19.6.0", "19.7.0"], "19.7.0");
+				mockProject({ dependencies: { "igniteui-react-charts": "~19.5.2", "igniteui-react-core": "~19.5.2" } });
+				expect(heldBack(getUpdatePlan())).toEqual([
+					["igniteui-react-charts", undefined, undefined],
+					["igniteui-react-core", "19.7.0", [{ name: "igniteui-react-charts", reason: "19.6.0 (required by igniteui-react-charts@19.6.0)" }]]
+				]);
+
+				mockProject({ dependencies: { [NPM_REACT]: "~19.3.0", [NPM_WEBCOMPONENTS]: "^6.3.0" } }, { [NPM_REACT]: "19.3.0", [NPM_WEBCOMPONENTS]: "6.3.3" });
+				publishReactWcHistory(["19.3.0", "19.4.0", "19.9.0"], ["6.3.3", "6.3.6", "7.4.1"]);
+				expect(heldBack(getUpdatePlan())).toEqual([
+					[NPM_REACT, "19.9.0", [{ name: NPM_WEBCOMPONENTS, reason: '19.9.0 requires igniteui-webcomponents@~7.4.1, outside "^6.3.3"' }]],
+					[NPM_WEBCOMPONENTS, undefined, undefined]
+				]);
+
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_WEBCOMPONENTS]: version === "19.9.0" ? "~7.4.1" : "~7.3.0" } }));
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.3.2", "7.4.1", "7.5.0"], "7.5.0");
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "~7.3.0" } });
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_WEBCOMPONENTS]: "^7.3.0" } },
+					{ [NPM_REACT]: "19.8.0", [NPM_DOCK_MANAGER]: "1.17.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
+				expect(heldBack(getUpdatePlan())).toEqual([
+					[NPM_REACT, "19.9.0", [{ name: NPM_DOCK_MANAGER,
+						reason: "19.9.0 requires igniteui-webcomponents@~7.4.1, which conflicts with ~7.3.0 (required by igniteui-dockmanager@1.17.0)" }]],
+					[NPM_DOCK_MANAGER, undefined, undefined],
+					[NPM_WEBCOMPONENTS, "7.5.0", [
+						{ name: NPM_REACT, reason: "~7.3.0 (required by igniteui-react@19.8.0)" },
+						{ name: NPM_DOCK_MANAGER, reason: "~7.3.0 (required by igniteui-dockmanager@1.17.0)" }
+					]]
+				]);
+			});
+
+			it("names the smallest set of ranges that hold a package back only together, such as with || ranges", () => {
+				mockProject({ dependencies: {
+					[NPM_REACT]: "~19.8.0", [NPM_DOCK_MANAGER]: "~1.17.0", [NPM_GRID_LITE]: "~0.11.0", [NPM_REACT_DOCK_MANAGER]: "~19.9.0", [NPM_WEBCOMPONENTS]: "^7.3.0"
+				} }, { [NPM_REACT]: "19.8.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_WEBCOMPONENTS]: version === "19.9.0" ? ">=7.4.0" : "~7.3.0" } }));
+				publish(NPM_DOCK_MANAGER, ["1.17.0"], "1.17.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "<7.5.0" } });
+				publish(NPM_GRID_LITE, ["0.11.0"], "0.11.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "7.3.0 || 7.5.0" } });
+				publish(NPM_REACT_DOCK_MANAGER, ["19.9.0"], "19.9.0", { peerDependencies: { [NPM_WEBCOMPONENTS]: "^7.0.0" } });
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.4.0", "7.5.0"], "7.5.0");
+				const requires = "19.9.0 requires igniteui-webcomponents@>=7.4.0, which conflicts with";
+				const dock = "<7.5.0 (required by igniteui-dockmanager@1.17.0)";
+				const gridLite = "7.3.0 || 7.5.0 (required by igniteui-grid-lite@0.11.0)";
+
+				const [react] = getUpdatePlan();
+
+				expect([react.target, react.newest]).toEqual(["19.8.0", "19.9.0"]);
+				expect(react.heldBackBy).toEqual([
+					{ name: NPM_DOCK_MANAGER, reason: `${requires} ${dock} together with ${gridLite}` },
+					{ name: NPM_GRID_LITE, reason: `${requires} ${gridLite} together with ${dock}` }
+				]);
 			});
 
 			it("updates past a dependency range no version in the line meets, reporting the nested copy instead of a conflict (real Dock Manager case)", () => {
@@ -832,6 +918,400 @@ describe("Unit - version update", () => {
 			expect(Util.log).toHaveBeenCalledWith('igniteui-webcomponents: target 6.3.6 (newest in "^6.3.3": 6.3.6), range ^6.3.0 -> ~6.3.6, ' +
 				"requirements: ~6.3.6 (required by igniteui-react@19.4.0)", "gray");
 		});
+
+		it("adds no packages and checks no installed peers without requested packages", () => {
+			mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", react: "^18.2.0", "react-dom": "^18.2.0" } }, {
+				[NPM_REACT]: "19.8.0", react: "18.3.1", "react-dom": { version: "18.3.1", peerDependencies: { [NPM_REACT]: "19.8.0" } }
+			});
+			publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0", { peerDependencies: { react: "^19.0.0" } });
+
+			expect(getUpdatePlan().map(c => [c.name, c.target])).toEqual([[NPM_REACT, "19.9.0"]]);
+			expect(views()).toEqual([`${NPM_REACT} versions dist-tags`,
+				`${NPM_REACT}@^19.8.0 version dependencies peerDependencies deprecated engines`]);
+		});
+
+		describe("registry access", () => {
+			const platform = Object.getOwnPropertyDescriptor(process, "platform")!;
+			const script = path.join(path.dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
+			const manifestArgs = [`${NPM_REACT}@^19.6.0`, "version", "dependencies", "peerDependencies", "deprecated", "engines", "--json"];
+
+			beforeEach(() => {
+				mockProject({ dependencies: { [NPM_REACT]: "~19.6.0" } });
+				publish(NPM_REACT, ["19.6.0", "19.9.0"], "19.9.0");
+			});
+
+			afterEach(() => {
+				Object.defineProperty(process, "platform", platform);
+			});
+
+			it("runs npm with an argument array and no shell, on Windows as npm's CLI script with this Node.js", () => {
+				const options = jasmine.objectContaining({ encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+				const calls = () => (child_process.spawnSync as jasmine.Spy).calls.allArgs();
+				Object.defineProperty(process, "platform", { value: "linux" });
+
+				getUpdatePlan();
+
+				expect(calls()).toEqual([
+					["npm", ["view", NPM_REACT, "versions", "dist-tags", "--json"], options],
+					["npm", ["view", ...manifestArgs], options]
+				]);
+
+				(child_process.spawnSync as jasmine.Spy).calls.reset();
+				Object.defineProperty(process, "platform", { value: "win32" });
+				spyOn(nodeFs, "existsSync").and.callFake(file => file === script);
+
+				getUpdatePlan();
+
+				expect(calls()).toEqual([
+					[process.execPath, [script, "view", NPM_REACT, "versions", "dist-tags", "--json"], options],
+					[process.execPath, [script, "view", ...manifestArgs], options]
+				]);
+				expect(calls().some(([, , callOptions]) => "shell" in callOptions)).toBe(false);
+			});
+
+			it("quotes every argument for cmd.exe on Windows without npm next to node.exe", () => {
+				Object.defineProperty(process, "platform", { value: "win32" });
+				spyOn(nodeFs, "existsSync").and.returnValue(false);
+				(child_process.spawnSync as jasmine.Spy).and.callFake((command: string) => ({
+					status: 0, stderr: "", stdout: command.includes("@") ? '"19.9.0"' : JSON.stringify({ versions: ["19.6.0", "19.9.0"] })
+				}));
+
+				expect(getUpdatePlan()[0].target).toBe("19.9.0");
+				expect((child_process.spawnSync as jasmine.Spy).calls.allArgs()).toEqual([
+					['npm "view" "igniteui-react" "versions" "dist-tags" "--json"', jasmine.objectContaining({ shell: true })],
+					[`npm ${["view", ...manifestArgs].map(arg => `"${arg}"`).join(" ")}`, jasmine.objectContaining({ shell: true })]
+				]);
+			});
+
+			it("rejects invalid package names before running npm", () => {
+				for (const name of ["Uppercase", "a&calc", "$(touch x)", "\"quoted\""]) {
+					mockProject({ dependencies: { [name]: "^1.0.0" } });
+
+					expect(() => getUpdatePlan({ requests: [{ name }] })).withContext(name).toThrowError(`Invalid package "${name}".`);
+				}
+				expect(child_process.spawnSync).not.toHaveBeenCalled();
+			});
+
+			it("runs the installed npm, offline so that no network is needed", () => {
+				(child_process.spawnSync as jasmine.Spy).and.callFake((...args: any[]) => Reflect.apply(realSpawnSync, child_process,
+					[...args.slice(0, -1), { ...args[args.length - 1], env: { ...process.env, npm_config_offline: "true" } }]));
+				const name = "igniteui-cli-offline-spec-package";
+				mockProject({ dependencies: { [name]: "^1.0.0" } });
+
+				expect(() => getUpdatePlan({ requests: [{ name }] }))
+					.toThrowError(new RegExp(`^Unable to get ${name} from the registry: [\\s\\S]*only-if-cached`));
+			});
+
+			it("reports a missing npm and npm's own error output", () => {
+				registry[NPM_REACT] = { status: null, stdout: null, stderr: null, error: new Error("spawnSync npm ENOENT") };
+				expect(() => getUpdatePlan()).toThrowError("Unable to get igniteui-react from the registry: spawnSync npm ENOENT");
+
+				registry[NPM_REACT] = { status: 1, stdout: "", stderr: "npm error request failed\n" };
+				expect(() => getUpdatePlan()).toThrowError("Unable to get igniteui-react from the registry: npm error request failed");
+			});
+		});
+
+		describe("requested packages", () => {
+			const request = (name: string, spec?: string, force = false) => getUpdatePlan({ requests: [{ name, spec }], force });
+			const summary = (plan: PackageUpdate[]) => plan.map(c => [c.name, c.target, c.newRange]);
+
+			it("updates a third-party package to its latest version across majors, leaving the other dependencies alone", () => {
+				mockProject({ dependencies: { lit: "^2.8.0", react: "^19.0.0", [NPM_WEBCOMPONENTS]: "~7.4.0" } },
+					{ lit: "2.8.0", react: "19.0.0", [NPM_WEBCOMPONENTS]: "7.4.1" });
+				publish("lit", ["2.8.0", "3.0.0", "3.3.1", "4.0.0-rc.1"], "3.3.1");
+
+				const plan = request("lit");
+
+				expect(plan.length).toBe(1);
+				expect(plan[0]).toEqual(jasmine.objectContaining({ baseline: "2.8.0", line: '">=2.8.0 <=3.3.1"', target: "3.3.1", newRange: "^3.3.1" }));
+				expect(plan[0].nextMajor).toBeUndefined();
+				expect(views()).toEqual(["lit versions dist-tags", "lit@>=2.8.0 <=3.3.1 version dependencies peerDependencies deprecated engines ig-update"]);
+			});
+
+			it("respects an explicit version, range or tag, writing a range that can't install a newer version", () => {
+				mockProject({ dependencies: { lit: "^3.0.0" } }, { lit: "3.0.0" });
+				publish("lit", ["3.0.0", "3.1.0", "3.1.2", "3.2.0", "4.0.0", "5.0.0-rc.1"], "4.0.0", undefined, { next: "5.0.0-rc.1", lts: "3.1.2" });
+				const resolve = (spec: string) => request("lit", spec).map(c => [c.target, c.newRange, c.nextMajor])[0];
+
+				expect(resolve("3.1.0")).toEqual(["3.1.0", "3.1.0", "4.0.0"]);
+				expect(resolve("~3.1")).toEqual(["3.1.2", "~3.1.2", "4.0.0"]);
+				expect(resolve("^3")).toEqual(["3.2.0", "^3.2.0", "4.0.0"]);
+				expect(resolve("lts")).toEqual(["3.1.2", "~3.1.2", "4.0.0"]);
+				expect(resolve("next")).toEqual(["5.0.0-rc.1", "^5.0.0-rc.1", undefined]);
+				expect(resolve("latest")).toEqual(["4.0.0", "^4.0.0", undefined]);
+			});
+
+			it("writes a range that excludes a published version above latest", () => {
+				mockProject({ dependencies: { lit: "^3.0.0" } }, { lit: "3.0.0" });
+				publish("lit", ["3.0.0", "3.1.0", "3.2.0"], "3.1.0");
+
+				expect(summary(request("lit"))).toEqual([["lit", "3.1.0", "~3.1.0"]]);
+			});
+
+			it("never downgrades, and reports a spec that matches no version at or above the installed one", () => {
+				mockProject({ dependencies: { lit: "^3.1.0" } }, { lit: "3.1.0" });
+				publish("lit", ["2.8.0", "3.0.0", "3.1.0"], "3.1.0");
+
+				expect(request("lit", "^2")[0].skipped).toBe('no published version matches "^2" at or above 3.1.0');
+				expect(request("lit", "3.0.0")[0].skipped).toBe('no published version matches "3.0.0" at or above 3.1.0');
+				expect(request("lit", "beta")[0].skipped).toBe('"beta" is not a version, range or dist-tag of lit');
+				expect(summary(request("lit"))).toEqual([["lit", "3.1.0", undefined]]);
+			});
+
+			it("has no default update for an installed version at or above latest, keeping its declared range", () => {
+				for (const [declared, installed, versions, latest] of [
+					["^4.0.0-rc.1", "4.0.0-rc.1", ["3.3.1", "4.0.0-rc.1", "4.0.0-rc.2", "4.0.0"], "3.3.1"],
+					["^3.4.0", "3.4.0", ["3.3.1", "3.4.0", "3.5.0"], "3.3.1"],
+					["^3.3.1", "3.3.1", ["3.3.1", "3.4.0"], "3.3.1"],
+					["^1.0.0-rc.1", "1.0.0-rc.1", ["1.0.0-rc.1", "1.0.0-rc.2"], undefined]
+				] as [string, string, string[], string | undefined][]) {
+					mockProject({ dependencies: { lit: declared } }, { lit: installed });
+					publish("lit", versions, latest);
+
+					const [lit] = request("lit");
+
+					expect([lit.target, lit.newRange, lit.newest, lit.nextMajor, lit.skipped, lit.conflict])
+						.withContext(installed).toEqual([installed, undefined, undefined, undefined, undefined, undefined]);
+				}
+			});
+
+			it("writes an exact range for a package above latest when another package's requirement narrows it, so no newer version installs", () => {
+				mockProject({ dependencies: { lit: "^4.0.0-rc.1", "lit-extras": "^1.0.0" } }, { lit: "4.0.0-rc.1", "lit-extras": "1.0.0" });
+				publish("lit", ["3.3.1", "4.0.0-rc.1", "4.0.0-rc.2", "4.0.0"], "3.3.1");
+				publish("lit-extras", ["1.0.0", "1.1.0"], "1.1.0", { peerDependencies: { lit: "~4.0.0-rc.1" } });
+
+				expect(summary(getUpdatePlan({ requests: [{ name: "lit-extras" }, { name: "lit" }] })))
+					.toEqual([["lit", "4.0.0-rc.1", "4.0.0-rc.1"], ["lit-extras", "1.1.0", "^1.1.0"]]);
+			});
+
+			it("updates an installed version above latest only to an explicitly requested version, never below it", () => {
+				mockProject({ dependencies: { lit: "^4.0.0-rc.1" } }, { lit: "4.0.0-rc.1" });
+				publish("lit", ["3.3.1", "4.0.0-rc.1", "4.0.0-rc.2"], "3.3.1", undefined, { next: "4.0.0-rc.2" });
+
+				expect(summary(request("lit", "next"))).toEqual([["lit", "4.0.0-rc.2", "^4.0.0-rc.2"]]);
+				expect(summary(request("lit", "^4.0.0-rc.1"))).toEqual([["lit", "4.0.0-rc.2", "^4.0.0-rc.2"]]);
+				expect(request("lit", "latest")[0].skipped).toBe('no published version matches "latest" at or above 4.0.0-rc.1');
+			});
+
+			it("takes the newest stable version without a valid latest", () => {
+				mockProject({ dependencies: { lit: "^3.0.0" } }, { lit: "3.0.0" });
+				publish("lit", ["3.0.0", "3.1.0", "4.0.0-rc.1"], "not-a-version");
+
+				expect(summary(request("lit"))).toEqual([["lit", "3.1.0", "^3.1.0"]]);
+			});
+
+			it("names the installed package.json of another direct dependency it can't parse", () => {
+				mockProject({ dependencies: { lit: "^3.0.0", react: "^19.0.0" } }, { lit: "3.0.0", react: "19.0.0" })["node_modules/react/package.json"] = "{";
+				publish("lit", ["3.0.0", "3.1.0"], "3.1.0");
+
+				expect(() => request("lit")).toThrowError(/^Unable to parse node_modules\/react\/package\.json: .+\. Reinstall/);
+			});
+
+			it("rejects a package that isn't a direct dependency, naming its declared trial or licensed counterpart", () => {
+				mockProject({ dependencies: { [FEED_REACT_GRIDS]: "~19.6.0" } });
+
+				expect(() => request("lit")).toThrowError('Package "lit" is not a dependency.');
+				expect(() => request(NPM_REACT_GRIDS)).toThrowError(`Package "${NPM_REACT_GRIDS}" is not a dependency; the project uses ${FEED_REACT_GRIDS}.`);
+				expect(child_process.spawnSync).not.toHaveBeenCalled();
+			});
+
+			it("adds the direct dependencies in the fallback group, by trial or licensed name, aligned by their requirements", () => {
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_WEBCOMPONENTS]: "~7.3.0", [NPM_DOCK_MANAGER]: "~1.17.0", react: "^19.0.0" } },
+					{ [NPM_REACT]: "19.8.0", [NPM_WEBCOMPONENTS]: "7.3.0", [NPM_DOCK_MANAGER]: "1.17.0", react: "19.0.0" });
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0",
+					version => ({ dependencies: { [NPM_WEBCOMPONENTS]: version === "19.9.0" ? "~7.4.1" : "~7.3.0" } }));
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.4.1", "8.0.0"], "8.0.0");
+
+				expect(summary(request(NPM_REACT))).toEqual([[NPM_REACT, "19.9.0", "~19.9.0"], [NPM_WEBCOMPONENTS, "7.4.1", "~7.4.1"]]);
+
+				mockProject({ dependencies: { [NPM_REACT_GRIDS]: "~19.9.0", [FEED_WEBCOMPONENTS_GRIDS]: "~7.3.0" } });
+				publish(NPM_REACT_GRIDS, ["19.9.0", "19.10.0"], "19.10.0");
+				publish(FEED_WEBCOMPONENTS_GRIDS, ["7.3.0", "7.3.2"], "7.3.2");
+
+				expect(summary(request(NPM_REACT_GRIDS))).toEqual([[NPM_REACT_GRIDS, "19.10.0", "~19.10.0"], [FEED_WEBCOMPONENTS_GRIDS, "7.3.2", "~7.3.2"]]);
+			});
+
+			it("keeps a published package group on one version without pinning the written ranges", () => {
+				const group = { "ig-update": { packageGroup: ["example-lib", "example-lib-extras"] } };
+				mockProject({ dependencies: { "example-lib": "^2.0.0", "example-lib-extras": "^2.0.0", other: "^1.0.0" } },
+					{ "example-lib": "2.0.0", "example-lib-extras": "2.0.0", other: "1.0.0" });
+				publish("example-lib", ["2.0.0", "3.0.0", "3.1.0"], "3.1.0", group);
+				publish("example-lib-extras", ["2.0.0", "3.0.0", "3.1.0"], "3.1.0", group);
+
+				expect(summary(request("example-lib"))).toEqual([["example-lib", "3.1.0", "^3.1.0"], ["example-lib-extras", "3.1.0", "^3.1.0"]]);
+
+				publish("example-lib-extras", ["2.0.0", "3.0.0"], "3.0.0", group);
+				const plan = request("example-lib");
+
+				expect(summary(plan)).toEqual([["example-lib", "3.0.0", "~3.0.0"], ["example-lib-extras", "3.0.0", "^3.0.0"]]);
+				expect(plan[0].newest).toBe("3.1.0");
+			});
+
+			it("prefers a published package group to the fallback group, mapping its members to ranges, and ignores a malformed one", () => {
+				mockProject({ dependencies: { [NPM_REACT]: "~19.8.0", [NPM_WEBCOMPONENTS]: "~7.4.0", [NPM_DOCK_MANAGER]: "~1.17.0" } },
+					{ [NPM_REACT]: "19.8.0", [NPM_WEBCOMPONENTS]: "7.4.1", [NPM_DOCK_MANAGER]: "1.17.0" });
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0", { "ig-update": { packageGroup: { [NPM_DOCK_MANAGER]: "~1.18.0" } } });
+				publish(NPM_DOCK_MANAGER, ["1.17.0", "1.18.0", "1.18.2", "2.0.0"], "2.0.0");
+				publish(NPM_WEBCOMPONENTS, ["7.4.1", "7.5.0"], "7.5.0");
+
+				expect(summary(request(NPM_REACT))).toEqual([[NPM_REACT, "19.9.0", "~19.9.0"], [NPM_DOCK_MANAGER, "1.18.2", "~1.18.2"]]);
+				expect(Util.warn).not.toHaveBeenCalled();
+
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0", { "ig-update": { packageGroup: [1] } });
+
+				expect(summary(request(NPM_REACT))).toEqual([[NPM_REACT, "19.9.0", "~19.9.0"], [NPM_WEBCOMPONENTS, "7.5.0", "~7.5.0"]]);
+				expect(Util.warn).toHaveBeenCalledOnceWith('Ignoring the invalid "ig-update" packageGroup of igniteui-react.', "yellow");
+			});
+
+			it("adds a direct dependency the newest version needs as a peer, unless the installed version satisfies it", () => {
+				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "~1.17.0", lit: "^2.8.0" } }, { [NPM_DOCK_MANAGER]: "1.17.0", lit: "2.8.0" });
+				publish(NPM_DOCK_MANAGER, ["1.17.0", "2.0.0"], "2.0.0", version => version === "2.0.0" ? { peerDependencies: { lit: "^3.0.0" } } : {});
+				publish("lit", ["2.8.0", "3.0.0", "3.3.1", "4.0.0"], "4.0.0");
+
+				expect(summary(request(NPM_DOCK_MANAGER))).toEqual([[NPM_DOCK_MANAGER, "2.0.0", "~2.0.0"], ["lit", "3.3.1", "^3.3.1"]]);
+
+				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "~1.17.0", lit: "^3.1.0" } }, { [NPM_DOCK_MANAGER]: "1.17.0", lit: "3.1.0" });
+
+				expect(summary(request(NPM_DOCK_MANAGER))).toEqual([[NPM_DOCK_MANAGER, "2.0.0", "~2.0.0"]]);
+			});
+
+			it("repeats until no package joins, adding the group of a package that joined as a peer", () => {
+				mockProject({ dependencies: { [NPM_REACT_GRIDS]: "~19.9.0", [NPM_REACT]: "~19.8.0", [NPM_WEBCOMPONENTS]: "~7.3.0" } },
+					{ [NPM_REACT_GRIDS]: "19.9.0", [NPM_REACT]: "19.8.0", [NPM_WEBCOMPONENTS]: "7.3.0" });
+				publish(NPM_REACT_GRIDS, ["19.9.0", "19.10.0"], "19.10.0", { peerDependencies: { [NPM_REACT]: "^19.9.0" } });
+				publish(NPM_REACT, ["19.8.0", "19.9.0"], "19.9.0");
+				publish(NPM_WEBCOMPONENTS, ["7.3.0", "7.4.1"], "7.4.1");
+
+				expect(summary(request(NPM_REACT_GRIDS))).toEqual([
+					[NPM_REACT_GRIDS, "19.10.0", "~19.10.0"], [NPM_REACT, "19.9.0", "~19.9.0"], [NPM_WEBCOMPONENTS, "7.4.1", "~7.4.1"]
+				]);
+			});
+
+			it("holds a default target back for an installed peer requirement, conflicts on an explicit one, and --force overrides it", () => {
+				mockProject({ dependencies: { react: "^18.3.1", "react-dom": "^18.3.1" } },
+					{ react: "18.3.1", "react-dom": { version: "18.3.1", peerDependencies: { react: "^18.3.1" } } });
+				publish("react", ["18.2.0", "18.3.1", "19.0.0", "19.2.4"], "19.2.4");
+				const requiredByDom = "^18.3.1 (required by react-dom@18.3.1)";
+
+				const [heldBack] = request("react");
+				const [blocked] = request("react", "19");
+				const [forced] = request("react", "19", true);
+
+				expect([heldBack.target, heldBack.newest, heldBack.newRange, heldBack.conflict]).toEqual(["18.3.1", "19.2.4", undefined, undefined]);
+				expect(heldBack.heldBackBy).toEqual([{ name: "react-dom", reason: requiredByDom }]);
+				expect([blocked.target, blocked.conflict, blocked.overridable]).toEqual([undefined, `no version in "19" satisfies ${requiredByDom}`, true]);
+				expect([forced.target, forced.newRange, forced.conflict, forced.forced]).toEqual(["19.2.4", "^19.2.4", undefined, requiredByDom]);
+				expect([blocked.newest, blocked.heldBackBy, forced.newest, forced.heldBackBy]).toEqual([undefined, undefined, undefined, undefined]);
+			});
+
+			it("doesn't let an ordinary dependency of an unchanged package hold an update back", () => {
+				mockProject({ dependencies: { typescript: "~5.5.0" }, devDependencies: { [NPM_CLI]: "~15.8.0" } },
+					{ typescript: "5.5.4", [NPM_CLI]: { version: "15.8.2", dependencies: { typescript: "~5.5.4" } } });
+				publish("typescript", ["5.5.4", "5.9.3"], "5.9.3");
+
+				const [typescript] = request("typescript");
+
+				expect([typescript.target, typescript.newRange, typescript.newest, typescript.nested]).toEqual(["5.9.3", "~5.9.3", undefined, undefined]);
+			});
+
+			describe("with a package held back by an unchanged one", () => {
+				const requiredByPin = "^2.0.0 (required by example-pin@1.0.0)";
+				const project = (dependencies: Record<string, string>, installed: Record<string, string | object>) => mockProject(
+					{ dependencies: { "example-ui": "^2.0.0", "example-pin": "^1.0.0", ...dependencies } },
+					{ "example-ui": "2.0.0", "example-pin": { version: "1.0.0", peerDependencies: { "example-ui": "^2.0.0" } }, ...installed });
+				const publishUi = (peers: (version: string) => object) =>
+					publish("example-ui", ["2.0.0", "2.4.0", "2.5.0", "3.0.0"], "3.0.0", version => ({ peerDependencies: peers(version) }));
+
+				it("leaves a peer that joined for the newest version unchanged when the target accepts the installed one, unless requested or forced", () => {
+					project({ react: "^18.2.0" }, { react: "18.2.0" });
+					publish("react", ["18.2.0", "18.3.1", "19.2.0"], "19.2.0");
+
+					for (const range of ["^18.0.0 || ^19.0.0", "^18.0.0"]) {
+						publishUi(version => ({ react: version === "3.0.0" ? "^19.0.0" : range }));
+						const plan = request("example-ui");
+
+						expect(summary(plan)).withContext(range).toEqual([["example-ui", "2.5.0", "^2.5.0"]]);
+						expect(plan[0].heldBackBy).withContext(range).toEqual([{ name: "example-pin", reason: requiredByPin }]);
+					}
+					expect(summary(getUpdatePlan({ requests: [{ name: "example-ui" }, { name: "react" }] })))
+						.toEqual([["example-ui", "2.5.0", "^2.5.0"], ["react", "18.3.1", "^18.3.1"]]);
+					expect(summary(request("example-ui", "3.0.0"))).toEqual([["example-ui", undefined, undefined], ["react", "19.2.0", "^19.2.0"]]);
+					expect(summary(request("example-ui", "3.0.0", true))).toEqual([["example-ui", "3.0.0", "^3.0.0"], ["react", "19.2.0", "^19.2.0"]]);
+				});
+
+				it("checks such peers together, and keeps one moving when its installed peers reject a target", () => {
+					project({ react: "^18.2.0", "react-dom": "^18.2.0" }, { react: "18.2.0", "react-dom": { version: "18.2.0", peerDependencies: { react: "^18.2.0" } } });
+					publish("react", ["18.2.0", "19.2.0"], "19.2.0");
+					publish("react-dom", ["18.2.0", "19.2.0"], "19.2.0", version => ({ peerDependencies: { react: `^${version}` } }));
+					const peers = (react: string) => (version: string) =>
+						version === "3.0.0" ? { react: "^19.0.0", "react-dom": "^19.0.0" } : { react, "react-dom": "^18.0.0 || ^19.0.0" };
+
+					publishUi(peers("^18.0.0 || ^19.0.0"));
+					expect(summary(request("example-ui"))).toEqual([["example-ui", "2.5.0", "^2.5.0"]]);
+
+					publishUi(peers("^19.0.0"));
+					expect(summary(request("example-ui"))).toEqual([["example-ui", "2.5.0", "^2.5.0"], ["react", "19.2.0", "^19.2.0"], ["react-dom", "19.2.0", "^19.2.0"]]);
+				});
+
+				it("keeps updating a joined peer whose target holds the package back, so the reason stays reported", () => {
+					mockProject({ dependencies: { "example-ui": "^2.0.0", "example-theme": "^1.2.0" } }, { "example-ui": "2.0.0", "example-theme": "1.2.0" });
+					publishUi(version => ({ "example-theme": version === "3.0.0" ? "^2.0.0" : ">=1.0.0" }));
+					publish("example-theme", ["1.2.0", "2.5.0"], "2.5.0", version => version === "2.5.0" ? { peerDependencies: { "example-ui": "^2.0.0" } } : {});
+
+					const plan = request("example-ui");
+
+					expect(summary(plan)).toEqual([["example-ui", "2.5.0", "^2.5.0"], ["example-theme", "2.5.0", "^2.5.0"]]);
+					expect(plan[0].heldBackBy).toEqual([{ name: "example-theme", reason: "^2.0.0 (required by example-theme@2.5.0)" }]);
+				});
+
+				it("still names what holds a package back through a peer it leaves unchanged", () => {
+					mockProject({ dependencies: { "example-ui": "^2.0.0", react: "^18.3.1", "react-dom": "^18.3.1" } },
+						{ "example-ui": "2.0.0", react: "18.3.1", "react-dom": { version: "18.3.1", peerDependencies: { react: "^18.3.1" } } });
+					publish("react", ["18.3.1", "19.2.0"], "19.2.0");
+					publishUi(version => ({ react: version === "3.0.0" ? "^19.0.0" : "^18.0.0 || ^19.0.0" }));
+					const pinned = request("example-ui");
+
+					expect(summary(pinned)).toEqual([["example-ui", "2.5.0", "^2.5.0"]]);
+					expect(pinned[0].heldBackBy).toEqual([
+						{ name: "react-dom", reason: "3.0.0 requires react@^19.0.0, which conflicts with ^18.3.1 (required by react-dom@18.3.1)" }
+					]);
+
+					mockProject({ dependencies: { "example-ui": "^2.0.0", "example-theme": "^2.0.0" } }, { "example-ui": "2.0.0", "example-theme": "2.0.0" });
+					publish("example-theme", ["2.0.0", "2.9.0"], "2.9.0");
+					publishUi(version => ({ "example-theme": version === "3.0.0" ? "^3.0.0" : "^2.0.0" }));
+					const unpublished = request("example-ui");
+
+					expect(summary(unpublished)).toEqual([["example-ui", "2.5.0", "^2.5.0"]]);
+					expect(unpublished[0].heldBackBy).toEqual([{ name: "example-theme", reason: '3.0.0 requires example-theme@^3.0.0, outside ">=2.0.0 <=2.9.0"' }]);
+				});
+
+				it("holds a target back to a version whose peers the installed packages outside the plan meet, or conflicts naming them", () => {
+					project({ "example-theme": "^1.2.0" }, { "example-theme": "1.2.0" });
+
+					publishUi(version => version === "3.0.0" ? {} : { "example-theme": version === "2.5.0" ? "^1.5.0" : "^1.0.0" });
+					const [heldBack] = request("example-ui");
+
+					expect([heldBack.target, heldBack.newRange, heldBack.newest]).toEqual(["2.4.0", "~2.4.0", "3.0.0"]);
+					expect(heldBack.heldBackBy).toEqual([{ name: "example-pin", reason: requiredByPin }]);
+
+					publishUi(version => version === "3.0.0" ? {} : { "example-theme": "^1.5.0" });
+					const [blocked] = request("example-ui");
+					const [forced] = request("example-ui", undefined, true);
+
+					expect([blocked.target, blocked.overridable, blocked.conflict]).toEqual([undefined, true,
+						`no version in ">=2.0.0 <=3.0.0" satisfies ${requiredByPin} and works with the installed example-theme@1.2.0`]);
+					expect([forced.target, forced.newRange, forced.forced]).toEqual(["3.0.0", "^3.0.0", requiredByPin]);
+				});
+
+				it("doesn't hold a target back for a skipped peer, warning about it instead", () => {
+					project({ "example-theme": "latest" }, { "example-theme": "1.2.0" });
+					publishUi(version => ({ "example-theme": version === "2.0.0" ? "^1.0.0" : "^2.0.0" }));
+
+					expect(summary(request("example-ui"))).toEqual([["example-ui", "2.5.0", "^2.5.0"], ["example-theme", undefined, undefined]]);
+					expect(Util.warn).toHaveBeenCalledWith("example-ui@2.5.0 requires example-theme@^2.0.0, which is not checked because example-theme is skipped.", "yellow");
+				});
+			});
+		});
 	});
 
 	describe("applyUpdatePlan", () => {
@@ -851,7 +1331,7 @@ describe("Unit - version update", () => {
 		] as PackageUpdate[];
 
 		afterEach(() => {
-			expect(Util.execSync).not.toHaveBeenCalled();
+			expect(child_process.spawnSync).not.toHaveBeenCalled();
 		});
 
 		it("replaces only the planned version values, keeping indentation, line endings and everything else", () => {

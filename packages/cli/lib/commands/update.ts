@@ -1,7 +1,7 @@
 import {
 	applyUpdatePlan, coerceVersionNumber, detectFrameworkFromPackageJson, FEED_ANGULAR, getMigrationsCollection, getUpdatePlan,
-	GoogleAnalytics, InquirerWrapper, Migration, NPM_ANGULAR, NPM_CLI, PackageUpdate, ProjectConfig, readMigrations, selectMigrations,
-	UPGRADEABLE_PACKAGES, Util
+	GoogleAnalytics, InquirerWrapper, isPackageName, isRegistrySpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest, PackageUpdate,
+	ProjectConfig, readMigrations, selectMigrations, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import { execSync } from "child_process";
 import * as fs from "fs";
@@ -19,14 +19,10 @@ const LOCKFILES: Record<string, string[]> = {
 	bun: ["bun.lock", "bun.lockb"]
 };
 
-/** npm's rules for new package names; names can't start with `-`, so they can't pass as options */
-const PACKAGE_NAME = /^(@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/;
-const DIST_TAG = /^[a-z][a-z0-9._-]*$/;
 const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
 
 type UpdateFlags = Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose", boolean>;
 type MigrateOptions = { migrateOnly: boolean; from?: string; to?: string; name?: string };
-type PackageRequest = { name: string; spec?: string };
 
 const command: UpdateCommandType = {
 	command: "update [packages..]",
@@ -290,10 +286,10 @@ function splitPackage(arg: string): PackageRequest {
 function parsePackages(args: string[]): PackageRequest[] {
 	const packages = args.map(splitPackage);
 	packages.forEach(({ name, spec }, i) => {
-		if (!PACKAGE_NAME.test(name) || name.length > 214) {
+		if (!isPackageName(name)) {
 			throw new Error(`Invalid package name "${name}".`);
 		}
-		if (spec !== undefined && !(spec && (semver.validRange(spec) || DIST_TAG.test(spec)))) {
+		if (spec !== undefined && !isRegistrySpec(spec)) {
 			throw new Error(`Unsupported version "${spec}" for ${name}: only registry versions, ranges and tags are supported.`);
 		}
 		if (packages.findIndex(p => p.name === name) !== i) {
