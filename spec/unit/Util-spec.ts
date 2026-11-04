@@ -416,14 +416,17 @@ describe("Unit - Util", () => {
 				pending("Windows drive letter casing");
 			}
 			const source = path.join(tmp, "src");
-			const output = path.join(tmp, "out");
 			fs.mkdirSync(source);
 			fs.writeFileSync(path.join(source, "example.txt"), "$(name)");
 			const lowerDriveSource = source[0].toLowerCase() + source.slice(1);
 
-			expect(await Util.processTemplates(lowerDriveSource, output, { name: "file" }, {}, false)).toBeTrue();
-			expect(fs.readFileSync(path.join(source, "example.txt"), "utf8")).toBe("$(name)");
-			expect(fs.readFileSync(path.join(output, "example.txt"), "utf8")).toBe("file");
+			for (const validate of [true, false]) {
+				const output = path.join(tmp, `out-${validate}`);
+				expect(await Util.processTemplates(lowerDriveSource, output, { name: "file" }, {}, validate)).toBeTrue();
+				expect(fs.readFileSync(path.join(source, "example.txt"), "utf8")).toBe("$(name)");
+				expect(fs.readFileSync(path.join(output, "example.txt"), "utf8")).toBe("file");
+			}
+			expect(Util.error).not.toHaveBeenCalled();
 		});
 	});
 });
