@@ -28,7 +28,7 @@ describe("Help command", () => {
 		ig test                   Executes project tests
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
 		ig upgrade-packages       Switches trial Ignite UI packages to their licensed equivalents [aliases: upgrade]
-		ig update [packages..]    Updates Ignite UI package versions
+		ig update [packages..]    Updates packages and runs their migrations
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
 		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
 
@@ -263,7 +263,7 @@ describe("Help command", () => {
 		});
 
 		const originalHelpText: string = `
-		Updates Ignite UI package versions
+		Updates packages and runs their migrations
 		Positionals:
 		packages  Packages to update: name, name@version, name@range or name@tag  [array] [default: []]
 		Options:
@@ -271,7 +271,7 @@ describe("Help command", () => {
 		-h, --help                Show help                                  [boolean]
 		--dry-run                 Preview the update without changing any files [boolean] [default: false]
 		--skip-install, --si      Update package.json without installing (not supported for Angular) [boolean] [default: false]
-		--force                   Apply updates despite version conflicts between Ignite UI packages [boolean] [default: false]
+		--force                   Apply updates despite peer dependency conflicts [boolean] [default: false]
 		--allow-dirty             Proceed even if the project has uncommitted changes [boolean] [default: false]
 		--verbose                 Show version resolution and install details [boolean] [default: false]
 		--migrate-only            Only run the migrations of an installed package, without changing versions [boolean]
@@ -280,10 +280,13 @@ describe("Help command", () => {
 		--name                    Run a single migration by name (implies --migrate-only) [string]
 		React and Web Components:
 		  Without packages, lists the available updates of the packages that support ig update, changing nothing.
+		  With packages, updates them with their package group and the peer dependencies they need, installs,
+		  then runs the migrations they declare in "ig-update".
 		  With --migrate-only or --name, runs the migrations an installed package declares in "ig-update".
 		Angular:
 		  Runs the project's ng update. Without packages, it lists the available updates; with packages,
 		  it installs their latest versions, including new majors, and applies migrations.
+		To switch trial Ignite UI packages to their licensed equivalents, use ig upgrade-packages.
 		`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");

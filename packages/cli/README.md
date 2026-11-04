@@ -8,6 +8,7 @@ The `igniteui-cli` allows you to easily generate projects using `Ignite UI` comp
 - Add views with Ignite UI components (e.g. Combo, Grid or Chart)
 - Add scenario based templates with multiple components (e.g. a dashboard)
 - Build and install npm packages
+- Update npm packages and run their migrations
 - Select a theme, support for custom themes coming soon
 - Step by step guide
 
@@ -27,6 +28,7 @@ The `igniteui-cli` allows you to easily generate projects using `Ignite UI` comp
 	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
 	* [Adding components](#adding-components)
   * [Build and run](#build-and-run)
+  * [Update packages](#update-packages)
 * [Contribution](#contribution)
 
 ## Installation
@@ -114,6 +116,21 @@ Pass `-f <framework> [-t <projectType>]` to list component templates for a speci
 ig build
 ig start
 ```
+
+### Update packages
+In React and Web Components projects, running `ig update` without packages lists the available updates of the packages that support it, without changing anything:
+```bash
+ig update
+```
+Update packages to their latest versions, or to a specific version, range or tag:
+```bash
+ig update <package>[@<version>] [<package>[@<version>] ...]
+```
+The selected packages are updated together with their package group and the peer dependencies their new versions need, and then installed. If the install fails, `package.json` and the lockfile are restored. Afterwards, the command runs the migrations the updated packages declare in the `ig-update` field of their `package.json`. Use `--dry-run` to preview the update. In a Git repository, the project must have no uncommitted changes, unless `--allow-dirty` is passed.
+
+In Angular projects, `ig update` runs the project's `ng update` with the given packages and options.
+
+Run `ig update --help` for all options, including `--migrate-only` and `--name` to run migrations without changing versions. `ig update` changes package versions; to switch trial Ignite UI packages to their licensed equivalents, use `ig upgrade-packages`.
 
 ## Contribution
 

@@ -1,3 +1,9 @@
+# Unreleased
+
+## What's Changed
+* **feat(cli):** Added the `ig update` command. In Angular projects it runs the project's `ng update` with the given packages and options. In React and Web Components projects, `ig update` lists the available updates without changing anything, and `ig update <package>[@version]` updates the selected packages together with their package group and the peer dependencies they need, installs them, restoring `package.json` and the lockfile if the install fails, and runs the migrations the packages declare in the `ig-update` field of their `package.json`. `--migrate-only`, `--from`, `--to` and `--name` run migrations without changing versions, and `--dry-run`, `--skip-install`, `--force`, `--allow-dirty` and `--verbose` are supported. Migrations run with `@angular-devkit/schematics`.
+* **docs(cli):** `ig upgrade-packages` is now described as switching trial Ignite UI packages to their licensed equivalents, and points to `ig update` for version updates.
+
 # 15.8.2 (2026-10-12)
 
 ## What's Changed

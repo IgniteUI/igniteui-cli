@@ -26,7 +26,7 @@ type MigrateOptions = { migrateOnly: boolean; from?: string; to?: string; name?:
 
 const command: UpdateCommandType = {
 	command: "update [packages..]",
-	describe: "Updates Ignite UI package versions",
+	describe: "Updates packages and runs their migrations",
 	builder: (yargs) => {
 		return yargs
 			.positional("packages", {
@@ -47,7 +47,7 @@ const command: UpdateCommandType = {
 			})
 			.option("force", {
 				default: false,
-				describe: "Apply updates despite version conflicts between Ignite UI packages",
+				describe: "Apply updates despite peer dependency conflicts",
 				type: "boolean"
 			})
 			.option("allow-dirty", {
@@ -81,10 +81,13 @@ const command: UpdateCommandType = {
 			})
 			.epilog("React and Web Components:\n" +
 				"  Without packages, lists the available updates of the packages that support ig update, changing nothing.\n" +
+				"  With packages, updates them with their package group and the peer dependencies they need, installs,\n" +
+				"  then runs the migrations they declare in \"ig-update\".\n" +
 				"  With --migrate-only or --name, runs the migrations an installed package declares in \"ig-update\".\n\n" +
 				"Angular:\n" +
 				"  Runs the project's ng update. Without packages, it lists the available updates; with packages,\n" +
-				"  it installs their latest versions, including new majors, and applies migrations.");
+				"  it installs their latest versions, including new majors, and applies migrations.\n\n" +
+				"To switch trial Ignite UI packages to their licensed equivalents, use ig upgrade-packages.");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

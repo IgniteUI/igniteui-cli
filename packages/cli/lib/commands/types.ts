@@ -109,6 +109,6 @@ export interface UpgradeCommandType extends CommandType {
 }
 
 export interface UpdateCommandType extends CommandType {
-	/** Updates Ignite UI package versions of React & WC projects, and runs `ng update` for Angular projects. */
+	/** Updates packages and runs their migrations in React & WC projects, and runs `ng update` for Angular projects. */
 	update(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void>;
 }
