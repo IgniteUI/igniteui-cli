@@ -1,10 +1,11 @@
-import { SchematicContext, Tree } from "@angular-devkit/schematics";
+import { callRule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import type { FileSystemSchematicDescription } from "@angular-devkit/schematics/tools";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
 	BasePromptSession, Framework,
 	type UserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
 } from "@igniteui/cli-core";
-import { of } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { TemplateOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
@@ -84,7 +85,11 @@ export class SchematicsPromptSession extends BasePromptSession {
 				templateInst: context.template as IgniteUIForAngularTemplate
 			};
 			const schematic = this.context.schematic.collection.createSchematic("single-component");
-			await schematic.call(options, of(this.tree), this.context).toPromise();
+			// not `schematic.call`: from Angular CLI 22 its options transform copies the options with `structuredClone`,
+			// which leaves `templateInst` a plain object without the template's methods; the rule runs in the
+			// single-component schematic's own context, as `call` would, so its template `url`s resolve from there
+			const rule = (schematic.description as FileSystemSchematicDescription).factoryFn(options);
+			await lastValueFrom(callRule(rule, this.tree, this.context.engine.createContext(schematic, this.context)));
 			return true;
 		};
 	}

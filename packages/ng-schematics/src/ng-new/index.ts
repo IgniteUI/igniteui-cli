@@ -170,9 +170,12 @@ export function newProject(options: OptionsSchema): Rule {
 			},
 			(tree: Tree, context: IgxSchematicContext) => {
 				const installChain: TaskId[] = [];
-				if (!options.skipInstall) {
+				// the scaffold installed the packages; only the guided loop (no name) can add some or switch to the licensed feed after it
+				if (!options.skipInstall && !nameProvided) {
+					// with npm, as the scaffold created the project (package.json `packageManager`, angular.json `cli.packageManager`);
+					// the workflow's default is whichever manager the Angular CLI picked, e.g. yarn, which refuses such a project
 					const installTask = context.addTask(
-						new NodePackageInstallTask(options.name),
+						new NodePackageInstallTask({ workingDirectory: options.name, packageManager: "npm" }),
 						[...installChain]);
 					installChain.push(installTask);
 				}

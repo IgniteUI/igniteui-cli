@@ -59,9 +59,9 @@ export function generateProject(dashName: string, projectPath: string): string {
 	return angularMajor;
 }
 
-/** The `npm install` command `npmInstall` runs */
+/** The `npm install` command `npmInstall` runs; each package is quoted, as a range like `<=22` is a redirect to cmd and sh */
 export function npmInstallCommand(packages: string[], dev = false) {
-	return `npm install ${dev ? "--save-dev " : ""}${packages.join(" ")} --no-audit --no-fund`;
+	return `npm install ${dev ? "--save-dev " : ""}${packages.map(p => `"${p}"`).join(" ")} --no-audit --no-fund`;
 }
 
 /**

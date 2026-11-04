@@ -411,7 +411,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
-	it("start - Should call scaffold (not processTemplates) and run extra-config for Blazor", async () => {
+	/** A session that creates a Blazor project through a `scaffold` that resolves to `scaffoldResult` */
+	function blazorScaffoldSession(scaffoldResult: boolean) {
 		const mockProjectTemplate = {
 			name: "Blazor Web App",
 			framework: "blazor",
@@ -420,7 +421,7 @@ describe("Unit - PromptSession", () => {
 			isHidden: false,
 			templatePaths: [],
 			delimiters: {},
-			scaffold: jasmine.createSpy("scaffold").and.returnValue(Promise.resolve(true)),
+			scaffold: jasmine.createSpy("scaffold").and.returnValue(Promise.resolve(scaffoldResult)),
 			generateConfig: jasmine.createSpy("generateConfig"),
 			getExtraConfiguration: () => [
 				{ choices: ["Server", "Wasm", "Auto"], default: "Server", key: "Hosting", message: "h", type: ControlExtraConfigType.Choice },
@@ -458,6 +459,10 @@ describe("Unit - PromptSession", () => {
 		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
+		return { mockSession, mockProjectTemplate };
+	}
+	it("start - Should call scaffold (not processTemplates) and run extra-config for Blazor", async () => {
+		const { mockSession, mockProjectTemplate } = blazorScaffoldSession(true);
 
 		await mockSession.start();
 
@@ -472,6 +477,20 @@ describe("Unit - PromptSession", () => {
 		expect(mockProjectTemplate.generateConfig).not.toHaveBeenCalled();
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(aiConfig.configure).toHaveBeenCalledWith("blazor", { verbose: false });
+	});
+	it("start - Should exit with 1 and skip AI config and git when scaffold fails", async () => {
+		const { mockSession } = blazorScaffoldSession(false);
+
+		try {
+			await mockSession.start();
+
+			expect(process.exitCode).toBe(1);
+		} finally {
+			process.exitCode = undefined;
+		}
+		expect(process.chdir).not.toHaveBeenCalled();
+		expect(aiConfig.configure).not.toHaveBeenCalled();
+		expect(Util.gitInit).not.toHaveBeenCalled();
 	});
 	it("Complete & Run - with empty localConfig prints dotnet next-steps and skips completeAndRun", async () => {
 		App.container.set(TEMPLATE_MANAGER, {} as any);

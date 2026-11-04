@@ -200,6 +200,7 @@ const command: NewCommandType = {
 				extraConfig
 			});
 			if (!success) {
+				process.exitCode = 1;
 				return;
 			}
 

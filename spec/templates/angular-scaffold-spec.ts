@@ -46,7 +46,7 @@ describe("Angular project scaffold", () => {
 				"--zoneless=false --ai-config=none --skip-git --skip-install --package-manager=npm --defaults --interactive=false",
 			"npx -y @angular/cli@22 add angular-eslint@22 --skip-confirmation --defaults --interactive=false",
 			`npx -y @angular/cli@22 add ${IGNITEUI_ANGULAR_PACKAGE} --skip-confirmation --defaults --interactive=false`,
-			"npm install --save-dev playwright --no-audit --no-fund"
+			`npm install --save-dev "playwright" --no-audit --no-fund`
 		]);
 		for (const entry of [".agents", ".claude", "AGENTS.md", ".mcp.json"]) {
 			expect(fs.existsSync(filePath(entry))).withContext(`${entry} from ng add is left to ig new`).toBeFalse();
@@ -108,12 +108,13 @@ describe("Angular project scaffold", () => {
 		expect(readJson("ignite-ui-cli.json").project.themePath).toBe("Custom");
 	});
 
-	it("adds the packages and types the authentication templates use, at the project's Angular major where they follow it", async () => {
+	it("adds the packages and types the authentication templates use, up to the project's Angular major", async () => {
 		await authProject.scaffold({ name, theme: "Default" });
 
-		expect(commands())
-			.toContain("npm install --save-dev playwright @angular/language-service@22 @types/facebook-js-sdk --no-audit --no-fund");
-		expect(commands()).toContain("npm install angular-auth-oidc-client@22 --no-audit --no-fund");
+		expect(commands()).toContain(
+			`npm install --save-dev "playwright" "@angular/language-service@22" "@types/facebook-js-sdk" --no-audit --no-fund`);
+		expect(commands()).withContext("its majors ship after Angular's; an older one still fits the project")
+			.toContain(`npm install "angular-auth-oidc-client@<=22" --no-audit --no-fund`);
 		const tsconfig = (file: string) => {
 			const text = read(file);
 			expect(text).withContext(`${file} keeps its leading comments`).toMatch(/^\/\* To learn more/);
@@ -141,7 +142,7 @@ describe("Angular project scaffold", () => {
 		expect(await emptyProject.scaffold({ name, theme: "Default", skipInstall: true })).toBeTrue();
 
 		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/--skip-install does not apply to the initial setup/));
-		expect(commands()).toContain("npm install --save-dev playwright --no-audit --no-fund");
+		expect(commands()).toContain(`npm install --save-dev "playwright" --no-audit --no-fund`);
 	});
 
 	it("tells the Angular CLI calls to skip ng add's ai-config, which ig new and the ng-new schematic run themselves", async () => {
@@ -189,17 +190,19 @@ describe("Angular project scaffold", () => {
 		expect(await authProject.scaffold({ name, theme: "Default" })).toBeFalse();
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Project creation failed: Command failed: npm/));
 		expect(fs.existsSync(filePath("angular.json"))).toBeTrue();
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(
-			/"Test Project" is kept; .*npm install --save-dev playwright .* && npm install angular-auth-oidc-client@22 /));
+		const [message] = (console.warn as jasmine.Spy).calls.mostRecent().args;
+		expect(message).toContain(`"Test Project" is kept; finish installing its packages there with: ` +
+			`npm install --save-dev "playwright" "@angular/language-service@22" "@types/facebook-js-sdk" --no-audit --no-fund` +
+			` && npm install "angular-auth-oidc-client@<=22" --no-audit --no-fund`);
 	});
 
 	it("leaves only the installs that failed or did not run to the user", async () => {
-		execSync.withArgs(jasmine.stringMatching(/^npm install angular-auth-oidc-client/), jasmine.anything())
+		execSync.withArgs(jasmine.stringMatching(/^npm install "angular-auth-oidc-client/), jasmine.anything())
 			.and.throwError(new Error("Command failed: npm"));
 
 		expect(await authProject.scaffold({ name, theme: "Default" })).toBeFalse();
 		const [message] = (console.warn as jasmine.Spy).calls.mostRecent().args;
-		expect(message).toContain("npm install angular-auth-oidc-client@22");
+		expect(message).toContain(`npm install "angular-auth-oidc-client@<=22" --no-audit --no-fund`);
 		expect(message).not.toContain("--save-dev");
 	});
 

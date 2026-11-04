@@ -183,7 +183,8 @@ describe("Schematics ng-new", () => {
 			quiet: true,
 			workingDirectory,
 			packageName: undefined,
-			packageManager: undefined
+			// the scaffold created the project with npm, whatever manager the Angular CLI picked
+			packageManager: "npm"
 		};
 		const expectedInit: RepositoryInitializerTaskOptions = {
 			workingDirectory,
@@ -206,15 +207,15 @@ describe("Schematics ng-new", () => {
 		expect(taskOptions).toContain(expectedStart);
 	});
 
-	it("works with name provided", async () => {
+	it("works with name provided, without installing again after the scaffold", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
 
 		const mockProject = mockProjectInLibrary();
 
+		// only the guided loop, which a name skips, answers upgradePackages
 		const userAnswers = new Map<string, any>();
-		userAnswers.set("upgradePackages", true);
 		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
 			configurable: true,
 			get: () => userAnswers,
@@ -225,14 +226,6 @@ describe("Schematics ng-new", () => {
 		expect(mockProject.scaffold).toHaveBeenCalledOnceWith(expectedScaffoldOptions(workingDirectory, "mock-theme", false));
 		expect(tree.files.length).toBeGreaterThanOrEqual(2);
 		expect(tree.files.every(file => file.startsWith(`/${workingDirectory}/`))).toBeTrue();
-		const taskOptions = runner.tasks.map(task => task.options);
-		const expectedInstall: NodePackageTaskOptions = {
-			command: "install",
-			quiet: true,
-			workingDirectory,
-			packageName: undefined,
-			packageManager: undefined
-		};
 		const expectedInit: RepositoryInitializerTaskOptions = {
 			workingDirectory,
 			authorEmail: undefined,
@@ -240,10 +233,10 @@ describe("Schematics ng-new", () => {
 			commit: true,
 			message: `Initial commit for project`
 		};
-		expect(taskOptions.length).toBe(2);
-		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
-		expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
-		expect(taskOptions).toContain(expectedInit);
+		expect(mockProject.upgradeIgniteUIPackages).not.toHaveBeenCalled();
+		expect(runner.tasks.map(task => task.options))
+			.withContext("the scaffold installed the packages; the git init needs no install before it")
+			.toEqual([expectedInit]);
 	});
 
 	it("fails when the project cannot be created", async () => {
