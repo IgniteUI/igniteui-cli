@@ -54,8 +54,8 @@ export function npmPurl(packageName: string, version: string): string {
 	return `pkg:npm/${packageName.replace(/^@/, "%40")}@${version}`;
 }
 
-function replacePrefix(value: string | undefined, prefix: string): string | undefined {
-	return value?.startsWith(prefix) ? value.slice(prefix.length) : value;
+function replacePrefix(value: string, prefix: string): string {
+	return value.startsWith(prefix) ? value.slice(prefix.length) : value;
 }
 
 /**
@@ -73,12 +73,20 @@ export function promoteMainComponent(
 	}
 
 	const [main] = bom.components.splice(index, 1);
-	const workspaceRef = bom.metadata.component["bom-ref"];
+	const workspaceRef = bom.metadata.component?.["bom-ref"];
+
+	if (workspaceRef === undefined) {
+		throw new Error("The generated SBOM has no metadata.component bom-ref to replace.");
+	}
+
 	const workspacePrefix = `${workspaceRef}|`;
 	const normalizeRef = (value: string) => replacePrefix(value, workspacePrefix);
 
 	for (const component of [main, ...componentsIn(bom.components)]) {
-		component["bom-ref"] = normalizeRef(component["bom-ref"]);
+		const ref = component["bom-ref"];
+		if (ref !== undefined) {
+			component["bom-ref"] = normalizeRef(ref);
+		}
 	}
 
 	bom.metadata.component = {
@@ -150,14 +158,16 @@ export function assertDeliveredShape(bom: Bom, expected: { packageName: string, 
 		}
 	}
 
-	if (!dependencyGraph.has(main?.["bom-ref"])) {
+	const mainRef = main?.["bom-ref"];
+
+	if (mainRef === undefined || !dependencyGraph.has(mainRef)) {
 		failures.push("the main component is not the root of the dependency graph");
 	} else {
 		const reachable = new Set<string>();
-		const pending = [main["bom-ref"]];
+		const pending = [mainRef];
+		let ref: string | undefined;
 
-		while (pending.length > 0) {
-			const ref = pending.pop();
+		while ((ref = pending.pop()) !== undefined) {
 			if (reachable.has(ref)) {
 				continue;
 			}
@@ -166,7 +176,7 @@ export function assertDeliveredShape(bom: Bom, expected: { packageName: string, 
 		}
 
 		for (const ref of componentRefs) {
-			if (!reachable.has(ref)) {
+			if (ref === undefined || !reachable.has(ref)) {
 				failures.push(`component "${ref}" is unreachable from the main component`);
 			}
 		}

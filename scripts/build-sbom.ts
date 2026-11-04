@@ -32,6 +32,21 @@ function log(message: string) {
 	console.log(`[sbom] ${message}`);
 }
 
+/** Map lookup for keys the caller knows are present; a miss is a programming error. */
+function lookup<V>(map: Map<string, V>, key: string): V {
+	const value = map.get(key);
+
+	if (value === undefined) {
+		throw new Error(`No entry for ${key}.`);
+	}
+
+	return value;
+}
+
+function errorMessage(error: unknown): string {
+	return error instanceof Error ? error.message : String(error);
+}
+
 function readJson(file: string) {
 	return JSON.parse(readFileSync(file, "utf8"));
 }
@@ -136,7 +151,7 @@ function publishablePackages(): WorkspacePackage[] {
 		if (trail.includes(pkg.name)) {
 			throw new Error(`Workspace dependency cycle: ${[...trail, pkg.name].join(" -> ")}`);
 		}
-		pkg.siblings.forEach(name => visit(packages.get(name), [...trail, pkg.name]));
+		pkg.siblings.forEach(name => visit(lookup(packages, name), [...trail, pkg.name]));
 		ordered.push(pkg);
 	};
 	[...packages.values()].sort((a, b) => a.name.localeCompare(b.name)).forEach(pkg => visit(pkg, []));
@@ -171,7 +186,7 @@ function installDeliveredClosure(pkg: WorkspacePackage, artifacts: Map<string, P
 	ensureDir(workspaceDir);
 
 	const tarballSpec = (name: string) =>
-		`file:${path.relative(workspaceDir, artifacts.get(name).path).replace(/\\/g, "/")}`;
+		`file:${path.relative(workspaceDir, lookup(artifacts, name).path).replace(/\\/g, "/")}`;
 	// npm rejects an override for a direct dependency, so the package itself is left out.
 	const overrides = [...artifacts.keys()]
 		.filter(name => name !== pkg.name)
@@ -235,7 +250,7 @@ function captureNpmTreeDiagnostics(): NpmTreeDiagnostics {
 			pending.push(...Object.values(entry));
 		}
 	} catch (error) {
-		problems.push(`Could not parse npm ls JSON: ${error.message}`);
+		problems.push(`Could not parse npm ls JSON: ${errorMessage(error)}`);
 	}
 
 	return {
@@ -272,7 +287,7 @@ function captureDeliveredAudit(workspaceDir: string): AuditResult {
 			}))
 		};
 	} catch (error) {
-		return { available: false, reason: error.message };
+		return { available: false, reason: errorMessage(error) };
 	}
 }
 
@@ -337,7 +352,7 @@ async function deliveredSboms() {
 	const evidence: PackageEvidence[] = [];
 
 	for (const pkg of packages) {
-		const artifact = artifacts.get(pkg.name);
+		const artifact = lookup(artifacts, pkg.name);
 		const workspaceDir = installDeliveredClosure(
 			pkg, artifacts, path.join(outDir, ".delivered", artifact.name.replace(/\.tgz$/, "")));
 		const bom = promoteMainComponent(
@@ -364,7 +379,7 @@ async function deliveredSboms() {
 	const supplyChainNotes = formatSupplyChainNotes({ packages: evidence, npmTree: captureNpmTreeDiagnostics() });
 	writeFileSync(path.join(outDir, fileNames.supplyChainNotesFile), supplyChainNotes);
 
-	const delivered = packages.map(pkg => ({ pkg, artifact: artifacts.get(pkg.name) }));
+	const delivered = packages.map(pkg => ({ pkg, artifact: lookup(artifacts, pkg.name) }));
 
 	// Read by the release workflow to attest and publish each package in dependency order.
 	writeFileSync(path.join(outDir, "packages.json"), `${JSON.stringify(delivered.map(({ pkg, artifact }) => ({
