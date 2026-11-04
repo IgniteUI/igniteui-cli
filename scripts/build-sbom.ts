@@ -276,13 +276,19 @@ function captureDeliveredAudit(workspaceDir: string): AuditResult {
 			throw new Error(report.error?.summary ?? (result.stderr.trim() || "npm audit produced no report"));
 		}
 
+		const packageName = Object.keys(readJson(path.join(workspaceDir, "package.json")).dependencies)[0];
+		const manifest = readJson(path.join(workspaceDir, "node_modules", packageName, "package.json"));
+		const directDependencies = new Set(Object.keys({
+			...manifest.dependencies, ...manifest.peerDependencies, ...manifest.optionalDependencies
+		}));
+
 		return {
 			available: true,
 			counts: report.metadata.vulnerabilities,
 			packages: Object.values<any>(report.vulnerabilities ?? {}).map(entry => ({
 				name: entry.name,
 				severity: entry.severity,
-				direct: entry.isDirect === true,
+				direct: directDependencies.has(entry.name),
 				fixAvailable: entry.fixAvailable !== false
 			}))
 		};
