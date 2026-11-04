@@ -132,6 +132,15 @@ describe("Unit - Upgrade command", () => {
 		await upgradeCmd.handler({ skipInstall: false, _: ["upgrade"], $0: "upgrade" });
 		expect(mockProjTemplate.upgradeIgniteUIPackages).toHaveBeenCalledTimes(3);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install --quiet");
+
+		spyOn(Util, "error");
+		(Util.log as jasmine.Spy).calls.reset();
+		(Util.execSync as jasmine.Spy).and.throwError("npm install failed");
+		await upgradeCmd.handler({ skipInstall: false, _: ["upgrade"], $0: "upgrade" });
+		expect(mockProjTemplate.upgradeIgniteUIPackages).toHaveBeenCalledTimes(4);
+		expect(Util.error).toHaveBeenCalledWith("Error installing npm packages.");
+		expect(Util.log).toHaveBeenCalledWith("npm install failed");
+		expect(Util.log).not.toHaveBeenCalledWith("npm packages installed.");
 	});
 
 	it("Logs error for not supported framework", async () => {
