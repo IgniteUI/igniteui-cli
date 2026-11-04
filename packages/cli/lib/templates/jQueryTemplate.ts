@@ -6,19 +6,19 @@ import * as path from "path";
  * Template with specific implementation for jQuery projects
  */
 export class jQueryTemplate implements Template {
-	public components: string[];
-	public controlGroup: string;
+	public components!: string[];
+	public controlGroup!: string;
 	public listInComponentTemplates: boolean;
 	public listInCustomTemplates: boolean;
-	public id: string;
-	public name: string;
-	public description: string;
-	public dependencies: string[];
+	public id!: string;
+	public name!: string;
+	public description!: string;
+	public dependencies!: string[];
 	public framework: string = "jquery";
-	public projectType: string;
+	public projectType!: string;
 	public hasExtraConfiguration: boolean;
 	public isHidden: boolean = false;
-	public packages = [];
+	public packages: string[] = [];
 	public delimiters = defaultDelimiters;
 
 	private configFile: string = "ignite-cli-views.js";
@@ -34,13 +34,13 @@ export class jQueryTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
-	public generateConfig(name: string, options: {}): {[key: string]: any} {
-		let config = {};
+	public generateConfig(name: string, options: {[key: string]: any} = {}): {[key: string]: any} {
+		let config: {[key: string]: any} = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
 		}
 
-		const pathsConfig = {};
+		const pathsConfig: {[key: string]: string | undefined} = {};
 		const projectConfig = ProjectConfig.getConfig();
 		if (projectConfig != null) {
 			pathsConfig["igniteuiSource"] = projectConfig.project.igniteuiSource;
@@ -67,7 +67,7 @@ export class jQueryTemplate implements Template {
 			return;
 		}
 		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
-		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
+		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)![0]);
 		viewsArr.push({ name: Util.nameFromPath(name), path: this.getViewLink(name) });
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
@@ -77,7 +77,7 @@ export class jQueryTemplate implements Template {
 		return [];
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) { }
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void { }
 
 	//ms index
 	protected getJqueryDependenciesScriptTag(): string {

@@ -9,10 +9,10 @@ import { TemplateOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
-	public tree: Tree;
-	public context: SchematicContext;
-	public projectName: string;
-	public userAnswers: Map<string, any>;
+	public tree!: Tree;
+	public context!: SchematicContext;
+	public projectName!: string;
+	public userAnswers!: Map<string, any>;
 
 	constructor() {
 		super();

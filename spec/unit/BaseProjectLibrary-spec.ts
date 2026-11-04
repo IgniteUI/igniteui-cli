@@ -404,7 +404,7 @@ describe("Unit - Base project library ", () => {
 		});
 
 		it("ignores an empty template", () => {
-			library.registerTemplate(undefined);
+			library.registerTemplate(undefined as unknown as Template);
 
 			expect(library.templates).toEqual([]);
 			expect(library.components).toEqual([]);
@@ -429,8 +429,8 @@ describe("Unit - Base project library ", () => {
 			library.registerTemplate(second);
 
 			expect(library.components.length).toBe(2);
-			expect(library.getComponentByName("Grid").templates).toEqual([first, second]);
-			expect(library.getComponentByName("Editor").templates).toEqual([second]);
+			expect(library.getComponentByName("Grid")!.templates).toEqual([first, second]);
+			expect(library.getComponentByName("Editor")!.templates).toEqual([second]);
 		});
 
 		it("does not list templates in components when listInComponentTemplates is false", () => {
@@ -438,7 +438,7 @@ describe("Unit - Base project library ", () => {
 
 			library.registerTemplate(template);
 
-			expect(library.getComponentByName("Grid").templates).toEqual([]);
+			expect(library.getComponentByName("Grid")!.templates).toEqual([]);
 		});
 
 		it("lists custom templates when listInCustomTemplates is true", () => {
@@ -469,7 +469,7 @@ describe("Unit - Base project library ", () => {
 		it("gets component names by group sorted by priority", () => {
 			library.registerTemplate(createTemplate("a", ["Low", "High"], "Group"));
 			library.registerTemplate(createTemplate("b", ["Other"], "OtherGroup"));
-			library.getComponentByName("High").groupPriority = 10;
+			library.getComponentByName("High")!.groupPriority = 10;
 
 			expect(library.getComponentNamesByGroup("Group")).toEqual(["High", "Low"]);
 			expect(library.getComponentNamesByGroup("Missing")).toEqual([]);

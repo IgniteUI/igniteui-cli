@@ -193,7 +193,7 @@ async function promptForFrameworkId(): Promise<string> {
 		choices: tm.getFrameworkNames(true).filter(x => x !== "jQuery"),
 		default: "Angular"
 	});
-	return tm.getFrameworkByName(frameRes).id;
+	return tm.getFrameworkByName(frameRes)!.id;
 }
 
 const command: CommandModule = {

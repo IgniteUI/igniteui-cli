@@ -4,7 +4,7 @@ import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 
 class GridTemplatingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
-	public userExtraConfiguration: {} = {};
+	public userExtraConfiguration: { [key: string]: unknown } = {};
 	public hasExtraConfiguration = true;
 	private gridHelper: GridHelper;
 
@@ -29,11 +29,11 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"] as string[], 4);
 		const config = { gridfeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}
