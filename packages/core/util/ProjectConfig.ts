@@ -62,7 +62,7 @@ export class ProjectConfig {
 				localConfig = JSON.parse(fileSystem.readFile(this.configFile, "utf8"));
 			} catch (error) {
 				throw new Error(`The ${this.configFile} file is not parsed correctly. ` +
-					`The following error has occurred: ${error.message}`);
+					`The following error has occurred: ${(error as Error).message}`);
 			}
 		}
 		return localConfig as Config;
@@ -83,13 +83,13 @@ export class ProjectConfig {
 		return globalConfig as Config;
 	}
 	/*** Validates if provided value could be set to provided property against provided schema */
-	public static validateProperty(property, value): {message: string, valid: boolean, value: string} {
+	public static validateProperty(property: string, value: string): {message?: string, valid: boolean, value?: any} {
 		const schema = this.getSchema();
 		if (typeof schema !== "object" && schema.properties) {
 			throw new Error("Incorrect schema provided. Schema should be object");
 		}
 
-		const result = { message: undefined, valid: false, value: undefined };
+		const result: {message?: string, valid: boolean, value?: any} = { message: undefined, valid: false, value: undefined };
 		if (!schema.properties.hasOwnProperty(property)) {
 			result.message = `Property "${property}" is not allowed in the Ignite UI CLI configuration!`;
 			return  result;

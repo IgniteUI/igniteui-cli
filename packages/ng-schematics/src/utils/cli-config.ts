@@ -23,12 +23,12 @@ async function GetCliConfig(tree: Tree): Promise<Config> {
 	try {
 		({ workspace } = await workspaces.readWorkspace("/", createWorkspaceHost(tree)));
 	} catch (e) {
-		const message = e.toString();
+		const message = (e as Error).toString();
 		if (message.includes("Unable to determine format for workspace path") ||
 			message.includes("Unable to locate a workspace file")) {
 			throw new SchematicsException("angular.json was not found in the project's root");
 		}
-		throw new Error(e.message);
+		throw new Error((e as Error).message);
 	}
 	const cliConfig: Config = require("../cli-config/files/ignite-ui-cli.json");
 	cliConfig.version = Util.version();
@@ -40,7 +40,7 @@ async function GetCliConfig(tree: Tree): Promise<Config> {
 	return cliConfig;
 }
 
-function getPort(project: ProjectDefinition) {
+function getPort(project: ProjectDefinition | undefined) {
 	const projectServe = project?.targets.get("serve")?.options;
 
 	if (projectServe) {

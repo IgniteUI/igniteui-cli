@@ -26,4 +26,4 @@ jasmineInst.loadConfig({
 	]
 });
 
-jasmineInst.execute([], null);
+jasmineInst.execute([], null as unknown as string);

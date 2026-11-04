@@ -257,7 +257,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Example");
-			err["status"] = 1;
+			(err as Error & { status?: number })["status"] = 1;
 			throw err;
 		});
 		spyOn(ProjectConfig, "setConfig");
@@ -296,7 +296,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(process, "exit");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
-			err["status"] = 3221225786; // ctl + c while child install is running
+			(err as Error & { status?: number })["status"] = 3221225786; // ctl + c while child install is running
 			throw err;
 		});
 		await PackageManager.installPackages(true);
@@ -311,7 +311,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
-			err["status"] = 1;
+			(err as Error & { status?: number })["status"] = 1;
 			throw err;
 		});
 		PackageManager.removePackage("example-package", true);
@@ -335,7 +335,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
-			err["status"] = 1;
+			(err as Error & { status?: number })["status"] = 1;
 			throw err;
 		});
 		PackageManager.addPackage("example-package", true);

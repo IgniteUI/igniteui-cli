@@ -46,7 +46,7 @@ describe("Unit - Doc command", () => {
 		const openSpy = jasmine.createSpy("open").and.returnValue(Promise.resolve());
 		const moduleLoader = require("module");
 		const originalLoad = moduleLoader._load;
-		spyOn(moduleLoader, "_load").and.callFake(function (request: string, ...args: unknown[]) {
+		spyOn(moduleLoader, "_load").and.callFake(function (this: unknown, request: string, ...args: unknown[]) {
 			if (request === "open") {
 				return { __esModule: true, default: openSpy };
 			}

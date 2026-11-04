@@ -2,7 +2,7 @@ import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
+	private userExtraConfiguration: { [key: string]: unknown } = {};
 
 	constructor() {
 		super(__dirname);
@@ -39,7 +39,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
@@ -78,7 +78,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
-			const featuresUrls = [];
+			const featuresUrls: string[] = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Filtering":

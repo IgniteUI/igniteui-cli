@@ -3,7 +3,7 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
+	private userExtraConfiguration: { [key: string]: unknown } = {};
 
 	constructor() {
 		super(__dirname);
@@ -18,7 +18,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
