@@ -12,11 +12,11 @@ export function addClassToBody(host: Tree, className: string) {
 	const classRegex = /class=["']([^"']*?)["']/;
 
 	if (host.exists(indexHtml)) {
-		let content = host.read(indexHtml).toString();
+		let content = host.read(indexHtml)!.toString();
 		if (!bodyTagRegex.test(content)) {
 			return;
 		}
-		const bodyTag = bodyTagRegex.exec(content).pop();
+		const bodyTag = bodyTagRegex.exec(content)!.pop()!;
 
 		if (!classRegex.test(bodyTag)) {
 			content = content.replace(
@@ -24,7 +24,7 @@ export function addClassToBody(host: Tree, className: string) {
 				bodyTag.replace(/>$/, ` class="${className}">`)
 			);
 		} else {
-			const classes = classRegex.exec(bodyTag).pop();
+			const classes = classRegex.exec(bodyTag)!.pop();
 			const classList = classes ? classes.split(" ") : [];
 			if (classList.indexOf(className) !== -1) {
 				return;
@@ -44,7 +44,8 @@ export const createWorkspaceHost = (tree: Tree): workspaces.WorkspaceHost => ({
 	readFile: async (path: string): Promise<string> => {
 		const data = tree.read(path);
 		// can use fileBufferToString
-		return data?.toString();
+		// the devkit only reads files it found, keep returning undefined for missing ones as before
+		return data?.toString() as string;
 	},
 	writeFile: async (path: string, data: string): Promise<void> => {
 		tree.overwrite(path, data);

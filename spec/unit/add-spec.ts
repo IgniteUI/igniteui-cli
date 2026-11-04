@@ -265,7 +265,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		const mockVirtFs = {
-			fileExists: (file: string): boolean => {
+			fileExists: (file: string): boolean | undefined => {
 				return false;
 			}
 		};

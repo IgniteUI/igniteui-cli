@@ -19,7 +19,8 @@ export default function(options: UpgradeOptions): Rule {
 		const templateManager = new SchematicsTemplateManager();
 		const config = ProjectConfig.getConfig();
 		const library = templateManager.getProjectLibrary('angular', config.project?.projectType || 'igx-ts');
-		const project = resolveUpgradeableProject(library, config.project?.projectTemplate);
+		// a project type the Angular library doesn't have resolves to no library
+		const project = library ? resolveUpgradeableProject(library, config.project?.projectTemplate) : null;
 		if (!project) {
 			throw new SchematicsException("No valid Ignite UI project template found to upgrade packages.");
 		}

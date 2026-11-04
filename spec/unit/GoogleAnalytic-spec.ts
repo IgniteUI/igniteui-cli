@@ -7,9 +7,9 @@ import * as process from "process";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Google Analytic", () => {
-	let request;
+	let request: jasmine.SpyObj<any>;
 	let testFolder = path.parse(__filename).name;
-	let serviceSpy;
+	let serviceSpy: jasmine.Spy;
 
 	class GATestClass extends GoogleAnalytics {
 		public static userDataFolder = path.join(process.cwd(), `./output/${testFolder}`);

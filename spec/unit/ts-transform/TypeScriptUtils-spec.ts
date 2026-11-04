@@ -8,7 +8,7 @@ describe("Unit - TypeScriptUtils", () => {
 			App.initialize();
 		});
 
-		const newLines = {
+		const newLines: { [key: string]: string } = {
 			CRLF: "\r\n",
 			LF: "\n"
 		};

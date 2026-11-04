@@ -20,7 +20,7 @@ class EditorsComponent extends MultiTemplateComponent<EditorsJQueryTemplate> {
 
 class EditorsJQueryTemplate extends jQueryTemplate {
 
-	public mapItem: { name: string; widget: string; };
+	public mapItem!: { name: string; widget: string; };
 	constructor() {
 		super(__dirname);
 		this.components = ["Editors"];

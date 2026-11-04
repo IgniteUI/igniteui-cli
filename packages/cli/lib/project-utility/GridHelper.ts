@@ -17,14 +17,14 @@ export class GridHelper {
 	public space = "\t";
 
 	private features: any[];
-	private featureProps = {
+	private featureProps: { [name: string]: { [key: string]: unknown } } = {
 		Paging: { type: "local", pageSize: 5 },
 		RowSelectors: {
 			enableRowNumbering: true,
 			rowSelectorColumnWidth: 80
 		}
 	};
-	private treeGridFeatureProps = {
+	private treeGridFeatureProps: { [name: string]: { [key: string]: unknown } } = {
 		Paging: { mode: "allLevels" },
 		RowSelectors: { rowSelectorNumberingMode: "hierarchical" }
 	};
@@ -57,7 +57,7 @@ export class GridHelper {
 		return result;
 	}
 
-	public addFeature(name, overrideOptions = null) {
+	public addFeature(name: string, overrideOptions: { [key: string]: unknown } | null = null): void {
 		const feature = this.getFeature(name);
 
 		if (overrideOptions) {
@@ -76,7 +76,7 @@ export class GridHelper {
 		}
 	}
 
-	public updateFeature(name, overrideOptions) {
+	public updateFeature(name: string, overrideOptions: { [key: string]: unknown }): void {
 		const feature = this.features.find(x => x.name === name);
 
 		if (feature) {
@@ -89,7 +89,7 @@ export class GridHelper {
 	 * @param name Feature name
 	 */
 	private getFeature(name: string): object {
-		const feature = { name };
+		const feature: { [key: string]: unknown } = { name };
 		if (this.featureProps[name]) {
 			Object.assign(feature, this.featureProps[name]);
 		}

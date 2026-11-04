@@ -9,12 +9,12 @@ const packageNames = {
 	"ng-schematics": "igniteui/angular-schematics"
 };
 
-function changeVersion(text: string, version?: string) {
+function changeVersion(text: string, version?: string | null) {
 	if (version) {
 		return text.replace(/(#\s.+)(?=\(2)/m, `${version} `);
 	} else {
 		const match = text.match(/(\s.+)(?=\(2)/m);
-		return text.replace(/(#\s.+)(?=\(2)/m, `${match[1].trim()} `);
+		return text.replace(/(#\s.+)(?=\(2)/m, `${match![1].trim()} `);
 	}
 }
 
@@ -38,7 +38,7 @@ export function generateChangelog(version: string) {
 		changelog = changelog.toString().replace(/(# Change Log)(\s*[^#])+/g, "");
 		changelog = changelog.replace(/(###)/g, "####");
 		changelog = changeVersion(changelog, folder === "igx-templates" || folder === "ng-schematics" ? version : null);
-		changelog = `## ${packageNames[folder]}@${changelog}\n`;
+		changelog = `## ${packageNames[folder as keyof typeof packageNames]}@${changelog}\n`;
 		addedLog += changelog;
 		unlinkSync(changelogPath);
 	}
