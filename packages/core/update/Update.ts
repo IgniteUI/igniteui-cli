@@ -33,6 +33,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "webcomponents":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing";
 			logicFilesExtension = "ts";
+			styleExtensions = ["css", "scss", "sass"];
 			shouldUpgradeHTML = true;
 			break;
 		default:
