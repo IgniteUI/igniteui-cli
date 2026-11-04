@@ -11,13 +11,13 @@ import { GoogleAnalytics } from "./GoogleAnalytics";
 
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
-	return through2((data, enc, cb) => {
+	return through2((data: Buffer, _enc: BufferEncoding, cb: through2.TransformCallback) => {
 		cb(null, Buffer.from(Util.applyConfigTransformation(data.toString(), configuration)));
 	});
 };
 
 const noop = () => through2.obj();
-export const defaultDelimiters: TemplateDelimiters = {
+export const defaultDelimiters: Required<TemplateDelimiters> = {
 	content: {
 		start: `$(`,
 		end: `)`
@@ -35,23 +35,23 @@ export class Util {
 		return path.basename(process.cwd());
 	}
 
-	public static directoryExists(dirPath) {
+	public static directoryExists(dirPath: string) {
 		return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
 	}
 
-	public static fileExists(filePath) {
+	public static fileExists(filePath: string) {
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 	}
 
-	public static isDirectory(dirPath): boolean {
+	public static isDirectory(dirPath: string): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}
 
-	public static isFile(filePath): boolean {
+	public static isFile(filePath: string): boolean {
 		return fs.lstatSync(filePath).isFile();
 	}
 
-	public static ensureDirectoryExists(dirPath) {
+	public static ensureDirectoryExists(dirPath: string) {
 		if (!this.directoryExists(dirPath)) {
 			fs.mkdirSync(dirPath);
 		}
@@ -117,7 +117,7 @@ export class Util {
 		return data;
 	}
 
-	public static escapeRegExp(str): string {
+	public static escapeRegExp(str: string): string {
 		return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 	}
 
@@ -181,7 +181,10 @@ export class Util {
 			json.dependencies =
 			Object.keys(json.dependencies)
 				.sort()
-				.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+				.reduce((result, key) => {
+					result[key] = json.dependencies[key];
+					return result;
+				}, {} as { [key: string]: string });
 		}
 		return JSON.stringify(json, null, 2) + "\n";
 	}
@@ -207,7 +210,7 @@ export class Util {
 		return configuration.version;
 	}
 
-	public static showVersion(filePath) {
+	public static showVersion(filePath: string) {
 		const logo = fs.readFileSync(filePath);
 		logo.toString().split("\n").forEach(line => {
 			this.log(line);
@@ -349,7 +352,8 @@ export class Util {
 	public static execSync(command: string, options?: ExecSyncOptions) {
 		try {
 			return execSync(command, options);
-		} catch (error) {
+		} catch (e) {
+			const error = e as { stderr?: Buffer | string, status?: number | null };
 			// execSync may throw an error during process interruption
 			// if this happens - stderr will end with "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
@@ -363,7 +367,7 @@ export class Util {
 			// 128 - bash - invalid argument to exit
 			// 130 - bash - Ctrl+C
 			// 255 - bash - exit status out of range
-			if (error.status === 3221225786 || error.status > 128) {
+			if (error.status === 3221225786 || (error.status ?? 0) > 128) {
 				return process.exit();
 			}
 
@@ -392,7 +396,7 @@ export class Util {
 	 * @param parentRoot Parent directory root of the project.
 	 * @param projectName Project name.
 	 */
-	public static gitInit(parentRoot, projectName) {
+	public static gitInit(parentRoot: string, projectName: string) {
 		try {
 			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.execSync("git init", options);
@@ -445,7 +449,7 @@ export class Util {
 		const baseLength = defaultName.length;
 		let specificPath = "";
 
-		if (["angular", "react", "webcomponents"].includes(framework)) {
+		if (framework && ["angular", "react", "webcomponents"].includes(framework)) {
 			specificPath = path.join("src", "app");
 		}
 
@@ -481,11 +485,11 @@ export class Util {
 				fs.mkdirSync(curDir);
 			} catch (err) {
 				// reuse catch rather than another one from `this.directoryExists`
-				if (err.code === "EEXIST") {
+				if ((err as NodeJS.ErrnoException).code === "EEXIST") {
 					return;
 				}
 				this.error(`Failed to create ${curDir}`, "red");
-				this.error(err.message, "red");
+				this.error((err as Error).message, "red");
 				throw err;
 			}
 		});
@@ -575,7 +579,7 @@ export class Util {
 	}
 
 	public static applyDelimiters(config: {[key: string]: string }, delimiter: Delimiter) {
-		const obj = {};
+		const obj: { [key: string]: string } = {};
 		for (const key of Object.keys(config)) {
 			obj[`${delimiter.start}${key}${delimiter.end}`] = config[key];
 		}

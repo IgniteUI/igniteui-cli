@@ -1,9 +1,9 @@
 import { Component, Template } from "@igniteui/cli-core";
 
 export abstract class MultiTemplateComponent<T extends Template> implements Component {
-	public name: string;
-	public group: string;
-	public description: string;
+	public name!: string;
+	public group!: string;
+	public description!: string;
 	public groupPriority = 0;
 
 	get templates(): T[] {
@@ -17,7 +17,7 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 		return templates;
 	}
 
-	constructor(private testType, private templatesMap: Map<string, { name: string, widget: string }>) {
+	constructor(private testType: new () => T, private templatesMap: Map<string, { name: string, widget: string }>) {
 	}
 
 	private create(c: new () => T): T {
@@ -34,10 +34,10 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 			widget: string;
 		};
 
-		let result;
+		let result: (T & { mapItem?: { name: string, widget: string } }) | undefined;
 
 		if (this.templatesMap.has(template)) {
-			mapItem = this.templatesMap.get(template);
+			mapItem = this.templatesMap.get(template)!;
 
 			result = this.create(this.testType);
 

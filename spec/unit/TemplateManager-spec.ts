@@ -9,13 +9,13 @@ import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Template manager", () => {
-	let mockProjLibs;
-	let customRequire;
+	let mockProjLibs: { [framework: string]: any[] };
+	let customRequire: { require: (modulePath: string) => unknown, test: (modulePath: string) => boolean } | undefined;
 	beforeEach(() => {
 		mockProjLibs = {};
 		customRequire = undefined;
 
-		const isTemplatesPath = modulePath => {
+		const isTemplatesPath = (modulePath: string) => {
 			return modulePath.startsWith(path.join(__dirname, "../../packages/cli/templates"));
 		};
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -44,7 +44,7 @@ describe("Unit - Template manager", () => {
 				{ projectType: folder + "type2",  name: folder + 2 }
 			];
 			return obj;
-		}, {});
+		}, {} as { [framework: string]: any[] });
 		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
 		const mockProjectConfig = { } as unknown as Config;
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
@@ -57,7 +57,7 @@ describe("Unit - Template manager", () => {
 		expect(manager.getProjectLibraryNames(frameworkIds[0])).toEqual([frameworkIds[0] + 1, frameworkIds[0] + 2]);
 
 		// get project
-		const framework = manager.getFrameworkById(frameworkIds[1]);
+		const framework = manager.getFrameworkById(frameworkIds[1])!;
 		expect(framework.id).toBe(frameworkIds[1]);
 
 		// by name
@@ -199,7 +199,7 @@ describe("Unit - Template manager", () => {
 		// load:
 		const manager = new TemplateManager();
 
-		const template = (frameworkId, proj) => ({
+		const template = (frameworkId: string, proj: string) => ({
 			framework: frameworkId,
 			id: `/template/${frameworkId}/${proj}/template.json`.replace(/\//g, path.sep),
 			projectType: proj,

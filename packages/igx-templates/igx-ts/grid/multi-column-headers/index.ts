@@ -3,7 +3,7 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
+	private userExtraConfiguration: { [key: string]: unknown } = {};
 
 	constructor() {
 		super(__dirname);
@@ -18,13 +18,13 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 		this.hasExtraConfiguration = true;
 	}
 
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [{
-			choices: ["Sorting", "Filtering", "Resizing", "Paging", "Column Pinning", "Moving"],
+			choices: ["Sorting", "Filtering", "Resizing", "Paging", "Moving"],
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-grid",
@@ -49,10 +49,12 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 					case "Sorting":
 					case "Filtering":
 					case "Resizing":
-					case "Moving":
 						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
 						columnFeatures.push(text);
 						columnBoolFeatures.push(text);
+						break;
+					case "Moving":
+						gridFeatures.push(`[moving]="true"`);
 						break;
 					case "Row Selection":
 						const gridFeatureText = `rowSelection="multiple"`;

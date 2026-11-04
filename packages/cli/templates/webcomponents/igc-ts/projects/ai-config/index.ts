@@ -10,7 +10,7 @@ export class IgcTsAiConfigPartial implements ProjectTemplate {
 	public description = "Ignite UI CLI AI config for Web Components partial project files";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = true;
 	public delimiters = defaultDelimiters;
