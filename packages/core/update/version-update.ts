@@ -53,7 +53,7 @@ export interface PackageManifest {
 	peerDependencies?: Record<string, string>;
 	engines?: Record<string, string>;
 	deprecated?: string;
-	"ig-update"?: { packageGroup?: unknown };
+	"ig-update"?: { packageGroup?: unknown; migrations?: unknown };
 }
 
 type Requirement = { range: string; peer: boolean; group?: boolean };
