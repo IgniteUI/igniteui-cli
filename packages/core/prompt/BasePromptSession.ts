@@ -90,8 +90,10 @@ export abstract class BasePromptSession {
 				Util.log("  Generating project structure.");
 				const config = projTemplate.generateConfig(projectName, theme);
 				for (const templatePath of projTemplate.templatePaths) {
-					await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-					config, projTemplate.delimiters, false);
+					if (!await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
+					config, projTemplate.delimiters, false)) {
+						return Util.error("Project generation failed!", "red");
+					}
 				}
 
 				Util.log(Util.greenCheck() + " Project structure generated.");
