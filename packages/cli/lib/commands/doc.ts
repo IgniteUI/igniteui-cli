@@ -15,7 +15,7 @@ const doc: DocCommandType = {
 	},
 	open: async (target) => {
 		const open = await import("open");
-		open.default.call(target);
+		await open.default(target);
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

@@ -29,7 +29,7 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 		prepend: boolean = true,
 		anchorElement: PropertyAssignment = WC_ANCHOR_ELEMENT
 	): void {
-		const routeName = Util.lowerDashed(route.name || route.path);
+		const routeName = Util.lowerDashed((route.name || route.path)!);
 		this.requestSideEffectsImportForModule(`./${routeName}/${routeName}`);
 		if (!route.lazyload) {
 			this.requestImportForRouteIdentifier(route);
@@ -61,22 +61,22 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 			{
 				name: RouteTarget.Path,
 				value: ts.factory.createStringLiteral(
-					route.path,
-					this.formatSettings.singleQuotes
+					route.path!,
+					this.formatSettings!.singleQuotes
 				),
 			},
 			{
 				name: RouteTarget.Component,
 				value: ts.factory.createStringLiteral(
-					route.aliasName || route.identifierName,
-					this.formatSettings.singleQuotes
+					(route.aliasName || route.identifierName)!,
+					this.formatSettings!.singleQuotes
 				),
 			},
 			{
 				name: RouteTarget.Name,
 				value: ts.factory.createStringLiteral(
-					route.name,
-					this.formatSettings.singleQuotes
+					route.name!,
+					this.formatSettings!.singleQuotes
 				),
 			},
 		];
@@ -88,7 +88,7 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 					name: RouteTarget.Path,
 					value: ts.factory.createStringLiteral(
 						route.path || '',
-						this.formatSettings.singleQuotes
+						this.formatSettings!.singleQuotes
 					),
 				},
 				{
@@ -96,14 +96,14 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 					name: RouteTarget.Component,
 					value: ts.factory.createStringLiteral(
 						route.redirectTo,
-						this.formatSettings.singleQuotes
+						this.formatSettings!.singleQuotes
 					),
 				},
 				{
 					name: RouteTarget.Name,
 					value: ts.factory.createStringLiteral(
-						route.name,
-						this.formatSettings.singleQuotes
+						route.name!,
+						this.formatSettings!.singleQuotes
 					),
 				},
 			];

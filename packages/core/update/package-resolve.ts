@@ -134,7 +134,7 @@ export function getUpgradeablePackages(): PackageDefinition[] {
 			if (dependencies[packageEntry]) {
 				upgradeable.push({
 					trial: packageEntry,
-					licensed: UPGRADEABLE_PACKAGES[packageEntry]
+					licensed: UPGRADEABLE_PACKAGES[packageEntry as keyof typeof UPGRADEABLE_PACKAGES]
 				});
 			}
 		}

@@ -34,7 +34,7 @@ export class NgTreeFileSystem implements IFileSystem {
 		const dir = this.tree.getDir(dirPath);
 		const entries: string[] = [];
 
-		const visitor = (_fullPath: string, entry?: Readonly<FileEntry>): void => {
+		const visitor = (_fullPath: string, entry?: Readonly<FileEntry> | null): void => {
 			if (entry && minimatch(entry.path, pattern)) {
 				entries.push(entry.path);
 			}

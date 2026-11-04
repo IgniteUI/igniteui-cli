@@ -18,8 +18,8 @@ export class TemplateManager extends BaseTemplateManager {
 	 * @param filePath Path to a json config file representing a template
 	 * @returns null if no proper file is found
 	 */
-	protected loadFromConfig(filePath: string): Template {
-		let template: Template = null;
+	protected loadFromConfig(filePath: string): Template | null {
+		let template: Template | null = null;
 		if (Util.fileExists(filePath)) {
 			const rootPath = path.dirname(filePath);
 			const settings = require(filePath) as Template;
