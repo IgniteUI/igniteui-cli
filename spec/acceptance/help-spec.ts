@@ -279,11 +279,11 @@ describe("Help command", () => {
 		--to                      Version to run migrations up to (requires --from); defaults to the installed version [string]
 		--name                    Run a single migration by name (implies --migrate-only) [string]
 		React and Web Components:
-		  Without packages, updates direct Ignite UI dependencies within their current major version.
+		  Without packages, lists the available updates of the packages that support ig update, changing nothing.
 		  With --migrate-only or --name, runs the migrations an installed package declares in "ig-update".
 		Angular:
-		  Runs the project's ng update for the given packages, or for the Ignite UI packages when none are given:
-		  installs their latest versions, including new majors, and applies migrations.
+		  Runs the project's ng update. Without packages, it lists the available updates; with packages,
+		  it installs their latest versions, including new majors, and applies migrations.
 		`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");

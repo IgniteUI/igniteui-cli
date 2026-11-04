@@ -1,5 +1,5 @@
 import {
-	applyUpdatePlan, coerceVersionNumber, detectFrameworkFromPackageJson, FEED_ANGULAR, getMigrationsCollection, getUpdatePlan,
+	applyUpdatePlan, coerceVersionNumber, detectFrameworkFromPackageJson, discoverUpdates, FEED_ANGULAR, getMigrationsCollection, getUpdatePlan,
 	GoogleAnalytics, InquirerWrapper, isPackageName, isRegistrySpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest, PackageUpdate,
 	ProjectConfig, readMigrations, selectMigrations, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
@@ -80,11 +80,11 @@ const command: UpdateCommandType = {
 				conflicts: ["from", "to"]
 			})
 			.epilog("React and Web Components:\n" +
-				"  Without packages, updates direct Ignite UI dependencies within their current major version.\n" +
+				"  Without packages, lists the available updates of the packages that support ig update, changing nothing.\n" +
 				"  With --migrate-only or --name, runs the migrations an installed package declares in \"ig-update\".\n\n" +
 				"Angular:\n" +
-				"  Runs the project's ng update for the given packages, or for the Ignite UI packages when none are given:\n" +
-				"  installs their latest versions, including new majors, and applies migrations.");
+				"  Runs the project's ng update. Without packages, it lists the available updates; with packages,\n" +
+				"  it installs their latest versions, including new majors, and applies migrations.");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -130,7 +130,7 @@ const command: UpdateCommandType = {
 			case "react":
 			case "webcomponents": {
 				const frameworkName = framework === "react" ? "React" : "Web Components";
-				return packages.length ? updateSelected(frameworkName, packages, migrate, flags) : updatePackages(frameworkName, flags);
+				return packages.length ? updateSelected(frameworkName, packages, migrate, flags) : listUpdates(flags.verbose);
 			}
 			case "angular":
 				updateAngular(flags, packages, migrate);
@@ -332,22 +332,40 @@ function checkGit(allowDirty: boolean): boolean {
 	return true;
 }
 
-/** Updates the `requests` with their groups and needed peers, then runs their migrations; without `requests`, Wave 1's update */
-async function updatePackages(frameworkName: string, flags: UpdateFlags, requests?: PackageRequest[]): Promise<void> {
-	if (requests && !flags.dryRun && !checkGit(flags.allowDirty)) {
+/** Lists the packages that support ig update and have a newer version, without changing anything */
+async function listUpdates(verbose: boolean): Promise<void> {
+	const found = await discoverUpdates(verbose).catch((error: Error) => fail("Unable to check for updates.", error.message));
+	if (!found) {
+		return;
+	}
+	const { updates, failures } = found;
+	if (updates.length) {
+		const versions = updates.map(u => `${u.baseline} -> ${u.latest}`);
+		const nameWidth = Math.max(...updates.map(u => u.name.length));
+		const versionWidth = Math.max(...versions.map(v => v.length));
+		Util.log("Updates available:");
+		updates.forEach(({ name }, i) => Util.log(`  ${name.padEnd(nameWidth)}  ${versions[i].padEnd(versionWidth)}  ig update ${name}`));
+	} else {
+		Util.log(failures.length ? "No updates found among the packages that could be checked." : "No updates available for the packages that support ig update.");
+	}
+	Util.log("There might be additional outdated packages that don't provide ig update support. Update them with your package manager.");
+	if (failures.length) {
+		fail("Unable to check some packages for updates.", failures.join("\n"));
+	}
+}
+
+/** Updates the `requests` with their groups and needed peers, then runs their migrations */
+async function updatePackages(frameworkName: string, flags: UpdateFlags, requests: PackageRequest[]): Promise<void> {
+	if (!flags.dryRun && !checkGit(flags.allowDirty)) {
 		return;
 	}
 	let plan: PackageUpdate[];
 	try {
 		plan = getUpdatePlan({ requests, force: flags.force, verbose: flags.verbose });
 	} catch (error) {
-		return requests ? fail("Nothing was updated: unable to plan the update.", error.message) : fail(error.message);
+		return fail("Nothing was updated: unable to plan the update.", error.message);
 	}
-	if (!plan.length) {
-		Util.log("No Ignite UI packages found in package.json.");
-		return;
-	}
-	const unusable = plan.filter(c => c.skipped && requests?.some(r => r.name === c.name));
+	const unusable = plan.filter(c => c.skipped && requests.some(r => r.name === c.name));
 	if (unusable.length) {
 		return fail("Nothing was updated: a requested package can't be updated.",
 			unusable.map(c => `Unable to update ${c.name}: ${c.skipped}.`).join("\n"));
@@ -363,16 +381,14 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	debug(flags.verbose, `Package manager: ${managers.join(", ")} (packageManager field ${pkgJson.packageManager ? "set" : "not set"}; ` +
 		`lockfiles: ${lockfiles.join(", ") || "none"})`);
 
-	const framework = requests && identifyFramework(pkgJson);
+	const framework = identifyFramework(pkgJson);
 	const changes = plan.filter(c => c.newRange);
 	// request order, then the packages that joined; once per name, as a package can be in both dependency sections
-	const migrating = requests ? [...new Set([...requests.map(r => r.name), ...changes.map(c => c.name)])]
+	const migrating = [...new Set([...requests.map(r => r.name), ...changes.map(c => c.name)])]
 		.map(name => changes.find(c => c.name === name))
-		.filter((c): c is PackageUpdate => !!c && declaredMigrations(c, framework) === "declared") : [];
-	const packages = requests ? "package(s)" : "Ignite UI package(s)";
+		.filter((c): c is PackageUpdate => !!c && declaredMigrations(c, framework) === "declared");
 
-	printPlan(plan, `${requests ? "Update plan" : "Ignite UI dependency update plan"} (${frameworkName}, ${pm ?? "package manager unknown"})`,
-		requests, framework);
+	printPlan(plan, `Update plan (${frameworkName}, ${pm ?? "package manager unknown"})`, requests, framework);
 	if (!pm) {
 		Util.warn(`Lockfiles of several package managers found (${managers.join(", ")}). ` +
 			`Remove the stale ones or set "packageManager" in package.json.`, "yellow");
@@ -389,7 +405,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	const forced = plan.filter(c => c.forced).length;
 	if (!changes.length) {
 		if (forced) {
-			Util.warn(`Nothing to update. The version requirements listed above for ${forced} ${packages} remain unmet.`, "yellow");
+			Util.warn(`Nothing to update. The version requirements listed above for ${forced} package(s) remain unmet.`, "yellow");
 		} else {
 			Util.log(plan.some(c => c.target) && !plan.some(c => c.newest) ? "Already up to date." : "Nothing to update.");
 		}
@@ -399,7 +415,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 		return fail("Nothing was updated: unable to choose a package manager to install with.");
 	}
 	if (forced) {
-		Util.warn(`--force overrides the version requirements of ${forced} ${packages}; ` +
+		Util.warn(`--force overrides the version requirements of ${forced} package(s); ` +
 			"the updated packages may not work together. Run your build and tests.", "yellow");
 	}
 	if (flags.dryRun) {
@@ -410,25 +426,19 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 		return;
 	}
 
-	if (requests) {
-		if (migrating.length && !flags.skipInstall) {
-			try {
-				await loadDevKit();
-			} catch (error) {
-				return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", error.message);
-			}
+	if (migrating.length && !flags.skipInstall) {
+		try {
+			await loadDevKit();
+		} catch (error) {
+			return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", error.message);
 		}
-	} else if (flags.allowDirty) {
-		debug(flags.verbose, "Uncommitted changes not checked (--allow-dirty).");
-	} else {
-		warnUncommittedChanges(flags.verbose);
 	}
 	const backup = flags.skipInstall ? undefined : new Map(["package.json", ...LOCKFILES[pm]]
 		.map(file => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined] as const));
 	try {
 		applyUpdatePlan(plan);
 	} catch (error) {
-		return requests ? fail("Nothing was updated: unable to update package.json.", error.message) : fail(error.message);
+		return fail("Nothing was updated: unable to update package.json.", error.message);
 	}
 
 	if (flags.skipInstall) {
@@ -517,17 +527,7 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 		return fail("No valid package.json found in the current directory.");
 	}
 
-	const igniteUI = [NPM_ANGULAR, FEED_ANGULAR].filter(name => name in deps);
-	if (!packages.length && !igniteUI.length) {
-		Util.log("No Ignite UI for Angular package found in package.json. Nothing to update.");
-		return;
-	}
-	if (!packages.length && igniteUI.length > 1) {
-		return fail(`Both ${NPM_ANGULAR} and ${FEED_ANGULAR} are listed in package.json. Remove one of them and rerun ig update.`);
-	}
-
-	const requested = packages.length ? packages : igniteUI;
-	const names = requested.map(arg => splitPackage(arg).name);
+	const names = packages.map(arg => splitPackage(arg).name);
 	const igniteUIPackage = names.find(name => name === NPM_ANGULAR || name === FEED_ANGULAR);
 	// they ship the Angular templates, whose versions follow igniteui-angular
 	const companions = igniteUIPackage && !migrate.migrateOnly
@@ -537,14 +537,15 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 		"--force": flags.force, "--allow-dirty": flags.allowDirty, "--verbose": flags.verbose, "--migrate-only": migrate.migrateOnly
 	}).filter(([, enabled]) => enabled).map(([option]) => option);
 	const values = (["from", "to", "name"] as const).flatMap(key => migrate[key] ? [`--${key}`, migrate[key]] : []);
-	const ngArgs = ["update", ...requested, ...companions, ...options, ...values];
-	const versions = requested.some(arg => splitPackage(arg).spec) ? "the requested versions" : "their latest versions, including new majors";
-	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` +
-		(migrate.migrateOnly
+	const ngArgs = ["update", ...packages, ...companions, ...options, ...values];
+	const versions = packages.some(arg => splitPackage(arg).spec) ? "the requested versions" : "their latest versions, including new majors";
+	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` + (!packages.length
+		? "It lists the available updates without changing anything."
+		: (migrate.migrateOnly
 			? "It runs the package's migrations without changing versions."
 			: `It updates these packages to ${versions}, applies their migrations and installs dependencies.`) +
 		(flags.force ? " ng update doesn't stop on incompatible peer dependencies, so Angular packages can end up on incompatible versions." : "") +
-		(flags.allowDirty ? " It runs even with uncommitted changes." : " In a git repository, it stops if the project has uncommitted changes.");
+		(flags.allowDirty ? " It runs even with uncommitted changes." : " In a git repository, it stops if the project has uncommitted changes."));
 	if (flags.dryRun) {
 		Util.log(`Would run ${description}`);
 		Util.log("Dry run: no files were changed.");
@@ -578,19 +579,15 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 	}
 }
 
-/** With `requests`, notes whether each package declares migrations for `framework`, and what holds packages back */
-function printPlan(plan: PackageUpdate[], title: string, requests?: PackageRequest[], framework?: string): void {
+/** Notes whether each package declares migrations for `framework`, and what holds packages back */
+function printPlan(plan: PackageUpdate[], title: string, requests: PackageRequest[], framework: string | undefined): void {
 	Util.log(title);
-	if (!requests) {
-		Util.log("No code migrations are applied. Minor and patch releases can still change behavior or deprecate APIs. " +
-			"Review the changelogs, then run your build and tests.");
-	}
 
 	const changes = plan.filter(c => c.newRange);
 	const labels = changes.map(c => c.section === "devDependencies" ? `${c.name} (dev)` : c.name);
 	const width = Math.max(...labels.map(label => label.length));
 	changes.forEach((c, i) => {
-		const migrations = requests ? declaredMigrations(c, framework) : undefined;
+		const migrations = declaredMigrations(c, framework);
 		Util.log(`  ${labels[i].padEnd(width)}  ${c.installed ?? "not installed"} -> ${c.target}  (${c.declared} -> ${c.newRange})` +
 			(migrations === "declared" ? "  migrations declared" : migrations === "none" ? "  no migrations declared" : ""));
 		if (c.manifest?.deprecated) {
@@ -610,12 +607,7 @@ function printPlan(plan: PackageUpdate[], title: string, requests?: PackageReque
 	if (upToDate.length) {
 		Util.log(`Up to date: ${upToDate.map(c => `${c.name} ${c.target}`).join(", ")}`);
 	}
-	const heldBack = plan.filter(c => c.newest);
-	if (!requests && heldBack.length) {
-		Util.log("Held back by the version requirements between Ignite UI packages: " +
-			heldBack.map(c => `${c.name} ${c.target} (${c.newest} available)`).join(", "));
-	}
-	for (const { name, target, newest, heldBackBy = [] } of requests ? heldBack : []) {
+	for (const { name, target, newest, heldBackBy = [] } of plan.filter(c => c.newest)) {
 		const reasons = heldBackBy.map(b => b.reason).join("; ");
 		const blockers = [...new Set(heldBackBy.map(b => b.name))].filter(blocker => !plan.some(c => c.name === blocker));
 		const spec = requests.find(r => r.name === name)?.spec;
@@ -639,9 +631,7 @@ function printPlan(plan: PackageUpdate[], title: string, requests?: PackageReque
 	}
 	const majors = plan.filter(c => c.nextMajor);
 	if (majors.length) {
-		Util.log((requests ? "Newer version outside the requested range (not applied): "
-			: "Newer major available (not applied; breaking changes are not migrated automatically): ") +
-			majors.map(c => `${c.name} ${c.nextMajor}`).join(", "));
+		Util.log("Newer version outside the requested range (not applied): " + majors.map(c => `${c.name} ${c.nextMajor}`).join(", "));
 	}
 }
 
@@ -669,19 +659,6 @@ function detectPackageManagers(packageManager: unknown): string[] {
 	}
 	const found = Object.keys(LOCKFILES).filter(pm => LOCKFILES[pm].some(file => fs.existsSync(file)));
 	return found.length ? found : ["npm"];
-}
-
-function warnUncommittedChanges(verbose: boolean): void {
-	const result = Util.spawnSync("git", ["status", "--porcelain", "--", "package.json", ...Object.values(LOCKFILES).flat()], { encoding: "utf8" });
-	if (result.status !== 0) {
-		debug(verbose, "Uncommitted changes not checked: no git repository, or git not found.");
-		return;
-	}
-	const changes = result.stdout.toString().trim();
-	debug(verbose, `Uncommitted changes: ${changes.split(/\s*\n\s*/).join(", ") || "none"}`);
-	if (changes) {
-		Util.warn("package.json or a lockfile has uncommitted changes. Commit them first to review or revert the update easily.", "yellow");
-	}
 }
 
 /** npm is the only manager that fails on peer conflicts by default; the others' --force refetches or rebuilds instead */
