@@ -91,7 +91,7 @@ export class ProjectConfig {
 
 		const result = { message: undefined, valid: false, value: undefined };
 		if (!schema.properties.hasOwnProperty(property)) {
-			result.message = `Property "${property}" is not allowed in "${schema.title}" type!`;
+			result.message = `Property "${property}" is not allowed in the Ignite UI CLI configuration!`;
 			return  result;
 		}
 
