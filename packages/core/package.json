@@ -22,6 +22,7 @@
     "typescript": "~5.5.4"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^22.0.0"
+    "@angular-devkit/schematics": "^22.0.0",
+    "@types/through2": "^2.0.41"
   }
 }
