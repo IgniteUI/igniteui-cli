@@ -208,7 +208,7 @@ function updateFileImports(
 					...createExpressions(RegularExpressionType.STYLE, packageDef.trial)
 				]
 				const newContent = updateFileContent(fileContent, regExpressions, packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}
@@ -223,7 +223,7 @@ function updateFileImports(
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
 					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}
@@ -321,7 +321,7 @@ function updateHTMLImports(htmlFiles: string[], packageDefs: PackageDefinition[]
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
 					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}
