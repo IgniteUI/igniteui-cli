@@ -348,10 +348,10 @@ import { IgxGridComponent } from '@infragistics/igniteui-angular';`}, {
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry!.content;
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
@@ -458,12 +458,12 @@ import { IgxGridComponent } from '@infragistics/igniteui-angular';`}, {
 				if (filePath.indexOf("package.json") < 0 && filePath.indexOf("angular.json") < 0) {
 					return;
 				} else if (filePath === "package.json" || filePath === "./package.json") {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				} else if (filePath === "angular.json") {
 					return mockAngularJson;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry!.content;
 			});
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			spyOn(Util, "log");
@@ -721,10 +721,10 @@ export default function Home() {
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry!.content;
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			// Mock directoryExists to return false for projects directory to avoid extra glob calls
@@ -852,7 +852,7 @@ export default function Home() {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
 				} else if (filePath === "package.json" || filePath === "./package.json") {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
 				return fileEntry ? fileEntry.content : "";
@@ -940,7 +940,7 @@ export default defineConfig({
 				["vite.config.ts"]); // vite config files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
 				return fileEntry ? fileEntry.content : "";
@@ -1045,7 +1045,7 @@ export const GridComponent = () => {
 
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
 				return fileEntry ? fileEntry.content : "";
@@ -1297,10 +1297,10 @@ export default class App extends LitElement {
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry!.content;
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			// Mock directoryExists to return false for projects directory to avoid extra glob calls
@@ -1414,10 +1414,10 @@ export default class App extends LitElement {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
 				} else if (filePath === "package.json" || filePath === "./package.json") {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry!.content;
 			});
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			spyOn(Util, "log");
@@ -1504,7 +1504,7 @@ export default defineConfig(({ mode }) => {
 				["vite.config.ts"]); // vite config files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
-					return mockFileArray.find(entry => entry.path === "package.json").content;
+					return mockFileArray.find(entry => entry.path === "package.json")!.content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
 				return fileEntry ? fileEntry.content : "";

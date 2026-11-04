@@ -32,11 +32,11 @@ export interface ProjectLibrary {
 	getCustomTemplateNames(): string[];
 
 	/** Returns custom template with a specified name */
-	getTemplateByName(name: string): Template;
+	getTemplateByName(name: string): Template | undefined;
 
-	getTemplateById(id: string): Template;
+	getTemplateById(id: string): Template | undefined;
 
-	getComponentByName(name: string): Component;
+	getComponentByName(name: string): Component | undefined;
 
 	/** Get names for all the component **groups** available for the framework */
 	getComponentGroupNames(): string[];
@@ -50,7 +50,7 @@ export interface ProjectLibrary {
 	/** Get all custom Templates  */
 	getCustomTemplates(): Template[];
 
-	getProject(name?: string): ProjectTemplate;
+	getProject(name?: string): ProjectTemplate | null;
 
 	/** Returns true is the framework contains project with a specific name */
 	hasProject(name: string): boolean;

@@ -4,7 +4,7 @@ import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 
 class FileExplorerTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
-	public userExtraConfiguration: {} = {};
+	public userExtraConfiguration: { [key: string]: unknown } = {};
 	private gridHelper: GridHelper;
 
 	constructor() {
@@ -30,7 +30,7 @@ class FileExplorerTemplate extends jQueryTemplate {
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
@@ -53,7 +53,7 @@ class FileExplorerTemplate extends jQueryTemplate {
 			}]
 		});
 		this.gridHelper.addFeature("Paging", { pageSize: 4, mode: "rootLevelOnly" });
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"] as string[], 4);
 		const config = { treeGridFeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}
