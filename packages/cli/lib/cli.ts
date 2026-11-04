@@ -27,7 +27,7 @@ function logHelp() {
 	});
 }
 
-export async function run(args = null) {
+export async function run(args: string | string[]) {
 	App.initialize();
 
 	const templateManager = new TemplateManager();

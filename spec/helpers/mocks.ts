@@ -5,7 +5,7 @@
  * @param components Components to return Defaults to `["Grid"]`
  */
 export function mockProLibFactory(
-	type,
+	type: string,
 	groups = [{ name: "Grids", description: "Grids description" }],
 	groupNames = ["Grids"],
 	components = ["Grid"]) {
