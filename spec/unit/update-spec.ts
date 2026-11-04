@@ -1127,6 +1127,7 @@ export const GridComponent = () => {
 				([ "package.json" ], // root package.json
 				[], //index.html
 				[], // logic files
+				[], [], [], // for each style extension
 				[ "./project/package.json" ]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
@@ -1147,7 +1148,7 @@ export const GridComponent = () => {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -1201,6 +1202,24 @@ import { ModuleManager } from '@infragistics/igniteui-webcomponents-core';
 export default class App extends LitElement {
 	const title = 'igniteui-webcomponents example';
 }`},
+{
+				path: "src/styles.css",
+				content:
+`@import "igniteui-webcomponents-grids/grids/themes/light/fluent.css";`,
+				expected:
+`@import "@infragistics/igniteui-webcomponents-grids/grids/themes/light/fluent.css";`},
+{
+				path: "src/app.scss",
+				content:
+`@use "igniteui-webcomponents-grids/grids/themes/light/bootstrap.css";`,
+				expected:
+`@use "@infragistics/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css";`},
+{
+				path: "src/app.sass",
+				content:
+`@import "igniteui-webcomponents-grids/grids/themes/dark/material.css"`,
+				expected:
+`@import "@infragistics/igniteui-webcomponents-grids/grids/themes/dark/material.css"`},
 {
 				path: ".github/workflows/node.js.yml",
 				content:
@@ -1294,6 +1313,7 @@ export default class App extends LitElement {
 				([ "package.json" ], // root package.json
 				["index.html"], // html file
 				["src/app.ts"], // logic files
+				["src/styles.css"], ["src/app.scss"], ["src/app.sass"], // for each style extension
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
@@ -1310,7 +1330,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1407,8 +1427,10 @@ export default class App extends LitElement {
 				([ "package.json" ], // root package.json
 				[], //index.html
 				[], // projectA logic files
+				[], [], [], // projectA for each style extension
 				[ "./projectA/package.json" ], // projectA package.json
 				[], // projectB logic files
+				[], [], [], // projectB for each style extension
 				[ "./projectB/package.json" ]); // projectB package.json
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") < 0) {
@@ -1425,7 +1447,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(13);
 		});
 
 		it("Should update vite.config.ts file correctly", async () => {
@@ -1500,6 +1522,7 @@ export default defineConfig(({ mode }) => {
 				([ "package.json" ], // root package.json
 				[], // html file
 				["src/app.ts"], // logic files
+				[], [], [], // for each style extension
 				[], // inner package.json files
 				["vite.config.ts"]); // vite config files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
@@ -1517,7 +1540,7 @@ export default defineConfig(({ mode }) => {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
 		});
 	});
 });
