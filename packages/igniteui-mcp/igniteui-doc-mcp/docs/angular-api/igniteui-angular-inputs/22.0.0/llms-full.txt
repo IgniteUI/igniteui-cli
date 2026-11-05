@@ -1,22 +1,22 @@
-# Ignite UI for Angular Inputs vlatest — Full API Reference
+# Ignite UI for Angular Inputs v22.0.0 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Inputs package (latest). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Inputs package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-inputs
-Version: latest
+Version: 22.0.0
 
 ## Classes
 
-### [IgxButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxButtonClickEventArgs)
+### [IgxButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxButtonClickEventArgs)
 
 - **constructor**(): IgxButtonClickEventArgs
 
-### [IgxButtonGroupSelectionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxButtonGroupSelectionChangedEventArgs)
+### [IgxButtonGroupSelectionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxButtonGroupSelectionChangedEventArgs)
 
 - **constructor**(): IgxButtonGroupSelectionChangedEventArgs
 
-### [IgxCheckboxChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxCheckboxChangeEventArgs)
+### [IgxCheckboxChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxCheckboxChangeEventArgs)
 
 - **constructor**(): IgxCheckboxChangeEventArgs
 - static **ngAcceptInputType_isChecked**: `string | boolean`
@@ -24,23 +24,23 @@ Version: latest
 - **isChecked**: `boolean`
 - **isIndeterminate**: `boolean`
 
-### [IgxColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorComponent)
+### [IgxColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxColorEditorComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxColorEditorComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
 - static **ngAcceptInputType_allowTextInput**: `string | boolean`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_isDisabled**: `string | boolean`
 - static **ngAcceptInputType_isFixed**: `string | boolean`
 - static **ngAcceptInputType_openAsChild**: `string | boolean`
 - static **ngAcceptInputType_openOnFocus**: `string | boolean`
 - static **ngAcceptInputType_showClearButton**: `string | boolean`
 - static **ngAcceptInputType_useTopLayer**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxColorEditorComponent, "igx-color-editor", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorComponent, never>`
 - **allowTextInput**: `boolean` — Gets or sets the AllowTextInput property to detirmine if entering text into the input is allowed
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the date picker.
 - **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the date pcicker.
@@ -61,39 +61,53 @@ Version: latest
 - **value**: `string` — Gets or Sets color value of the editor.
 - **valueChanged**: `EventEmitter<any>` — Called when color is selected.
 - **valueChanging**: `EventEmitter<any>` — Called when color is selected.
+- **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
+- **exportVisualModel**(): any — Exports visual information about the current state of the color editor.
 - **findByName**(name: string): any
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **select**(): void
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxColorEditorComponent
 
-### [IgxColorEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorGotFocusEventArgs)
+### [IgxColorEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorDynamicModule)
+
+- **constructor**(): IgxColorEditorDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxColorEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorGotFocusEventArgs)
 
 - **constructor**(): IgxColorEditorGotFocusEventArgs
 
-### [IgxColorEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorLostFocusEventArgs)
+### [IgxColorEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorLostFocusEventArgs)
 
 - **constructor**(): IgxColorEditorLostFocusEventArgs
 
-### [IgxColorEditorPanelClosedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorPanelClosedEventArgs)
+### [IgxColorEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorModule)
+
+- **constructor**(): IgxColorEditorModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorModule, never, [any, any, any], [any, any]>`
+
+### [IgxColorEditorPanelClosedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelClosedEventArgs)
 
 - **constructor**(): IgxColorEditorPanelClosedEventArgs
 
-### [IgxColorEditorPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorPanelComponent)
+### [IgxColorEditorPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxColorEditorPanelComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxColorEditorPanelComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
 - static **ngAcceptInputType_actualPixelScalingRatio**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_pixelScalingRatio**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxColorEditorPanelComponent, "igx-color-editor-panel", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorPanelComponent, never>`
 - **actualPixelScalingRatio**: `number`
 - **backgroundColor**: `string` — Gets or Sets the selected color background color
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the ColorEditorPanel.
@@ -111,35 +125,47 @@ to appear blurry.
 - **valueChanged**: `EventEmitter<any>` — Called when date is selected.
 - **valueChanging**: `EventEmitter<any>` — Called when date is selected.
 - **findByName**(name: string): any
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxColorEditorPanelComponent
 
-### [IgxColorEditorPanelSelectedValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxColorEditorPanelSelectedValueChangedEventArgs)
+### [IgxColorEditorPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelDynamicModule)
+
+- **constructor**(): IgxColorEditorPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorPanelDynamicModule, never, [any, any, any, any, any, any, any], [any, any, any, any, any, any]>`
+
+### [IgxColorEditorPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelModule)
+
+- **constructor**(): IgxColorEditorPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorPanelModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
+
+### [IgxColorEditorPanelSelectedValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelSelectedValueChangedEventArgs)
 
 - **constructor**(): IgxColorEditorPanelSelectedValueChangedEventArgs
 - **newValue**: `string`
 - **oldValue**: `string`
 
-### [IgxGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxGotFocusEventArgs)
+### [IgxGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxGotFocusEventArgs)
 
 - **constructor**(): IgxGotFocusEventArgs
 
-### [IgxInputChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxInputChangeEventArgs)
+### [IgxInputChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxInputChangeEventArgs)
 
 - **constructor**(): IgxInputChangeEventArgs
 - static **ngAcceptInputType_isCompositionInProgress**: `string | boolean`
 - **isCompositionInProgress**: `boolean`
 - **value**: `string`
 
-### [IgxLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxLostFocusEventArgs)
+### [IgxLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxLostFocusEventArgs)
 
 - **constructor**(): IgxLostFocusEventArgs
 
-### [IgxMultiSliderComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderComponent)
+### [IgxMultiSliderComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderComponent)
 
 - **constructor**(): IgxMultiSliderComponent
 - static **ngAcceptInputType_actualPixelScalingRatio**: `string | number`
@@ -165,15 +191,15 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_thumbWidth**: `string | number`
 - static **ngAcceptInputType_trackEndInset**: `string | number`
 - static **ngAcceptInputType_trackStartInset**: `string | number`
-- static **ngAcceptInputType_windowRect**: `string | IgRect`
+- static **ngAcceptInputType_windowRect**: `any`
 - static **ngAcceptInputType_yMax**: `string | number`
 - static **ngAcceptInputType_yMin**: `string | number`
 - static **ngAcceptInputType_yStep**: `string | number`
 - static **ngAcceptInputType_yTrackEndInset**: `string | number`
 - static **ngAcceptInputType_yTrackStartInset**: `string | number`
 - static **ngAcceptInputType_yValue**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxMultiSliderComponent, "igx-multi-slider", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderComponent, never>`
 - **actualPixelScalingRatio**: `number`
 - **areThumbCalloutsEnabled**: `boolean`
 - **barBrush**: `string`
@@ -226,78 +252,108 @@ to appear blurry.
 - **findByName**(name: string): any
 - **flush**(): void
 - **hide**(): void — Hides the ZoomSlider.
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **provideContainer**(container: any): void — Called by the UI framework to provide a UI container for rendering this control.
 - **show**(): void — Shows the ZoomSlider.
 - **trackDirty**(): void
 - static **_createFromInternal**(internal: any): IgxMultiSliderComponent
+- static **register**(): void
 
-### [IgxMultiSliderResolvingToolTipValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderResolvingToolTipValueEventArgs)
+### [IgxMultiSliderDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderDynamicModule)
+
+- **constructor**(): IgxMultiSliderDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxMultiSliderModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderModule)
+
+- **constructor**(): IgxMultiSliderModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderModule, never, [any, any], [any]>`
+
+### [IgxMultiSliderResolvingToolTipValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderResolvingToolTipValueEventArgs)
 
 - **constructor**(): IgxMultiSliderResolvingToolTipValueEventArgs
 - static **ngAcceptInputType_position**: `string | number`
 - **position**: `number`
 - **value**: `any`
 
-### [IgxMultiSliderThumb](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderThumb)
+### [IgxMultiSliderThumbCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbCollection)
 
-- **constructor**(): IgxMultiSliderThumb
+- **constructor**(list?: IgxMultiSliderThumbComponent[]): IgxMultiSliderThumbCollection
+
+### [IgxMultiSliderThumbComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbComponent)
+
+- **constructor**(): IgxMultiSliderThumbComponent
 - static **ngAcceptInputType_rangePosition**: `string | MultiSliderThumbRangePosition`
 - static **ngAcceptInputType_value**: `string | number`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxMultiSliderThumbComponent, "igx-multi-slider-thumb", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderThumbComponent, never>`
 - **propertyUpdated**: `EventEmitter<any>`
 - **range**: `IgxMultiSliderTrackThumbRange`
 - **rangePosition**: `MultiSliderThumbRangePosition`
 - **value**: `number`
 - **findByName**(name: string): any
+- **ngOnInit**(): void
 - **push**(amount: number): number
+- static **_createFromInternal**(internal: any): IgxMultiSliderThumbComponent
+- static **register**(): void
 
-### [IgxMultiSliderThumbCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderThumbCollection)
+### [IgxMultiSliderThumbDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbDynamicModule)
 
-- **constructor**(list?: IgxMultiSliderThumb[]): IgxMultiSliderThumbCollection
+- **constructor**(): IgxMultiSliderThumbDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderThumbDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderThumbDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderThumbDynamicModule, never, [any, any, any], [any]>`
 
-### [IgxMultiSliderThumbValueChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderThumbValueChangingEventArgs)
+### [IgxMultiSliderThumbModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbModule)
+
+- **constructor**(): IgxMultiSliderThumbModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderThumbModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderThumbModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderThumbModule, never, [any, any], [any]>`
+
+### [IgxMultiSliderThumbValueChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbValueChangingEventArgs)
 
 - **constructor**(): IgxMultiSliderThumbValueChangingEventArgs
 - static **ngAcceptInputType_value**: `string | number`
-- **thumb**: `IgxMultiSliderThumb`
+- **thumb**: `IgxMultiSliderThumbComponent`
 - **value**: `number`
 
-### [IgxMultiSliderTrackThumbRange](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderTrackThumbRange)
+### [IgxMultiSliderTrackThumbRange](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderTrackThumbRange)
 
 - **constructor**(): IgxMultiSliderTrackThumbRange
 - static **ngAcceptInputType_maxWidth**: `string | number`
 - static **ngAcceptInputType_minWidth**: `string | number`
 - static **ngAcceptInputType_position**: `string | number`
 - static **ngAcceptInputType_width**: `string | number`
-- **higherThumb**: `IgxMultiSliderThumb`
-- **lowerThumb**: `IgxMultiSliderThumb`
+- **higherThumb**: `IgxMultiSliderThumbComponent`
+- **lowerThumb**: `IgxMultiSliderThumbComponent`
 - **maxWidth**: `number`
 - **minWidth**: `number`
 - **position**: `number`
 - **width**: `number`
 - **findByName**(name: string): any
 
-### [IgxMultiSliderYValueChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxMultiSliderYValueChangingEventArgs)
+### [IgxMultiSliderYValueChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderYValueChangingEventArgs)
 
 - **constructor**(): IgxMultiSliderYValueChangingEventArgs
 - static **ngAcceptInputType_value**: `string | number`
 - **value**: `number`
 
-### [IgxSelectedValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxSelectedValueChangedEventArgs)
+### [IgxSelectedValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxSelectedValueChangedEventArgs)
 
 - **constructor**(): IgxSelectedValueChangedEventArgs
 - **newValue**: `Date`
 - **oldValue**: `Date`
 
-### [IgxXButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXButtonComponent)
+### [IgxXButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXButtonComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXButtonComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
@@ -306,14 +362,14 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_actualCornerRadiusBottomRight**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopRight**: `string | number`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualDisabledElevation**: `string | number`
 - static **ngAcceptInputType_actualDisableRipple**: `string | boolean`
-- static **ngAcceptInputType_actualElevationMode**: `string | ElevationMode`
+- static **ngAcceptInputType_actualElevationMode**: `any`
 - static **ngAcceptInputType_actualFocusElevation**: `string | number`
 - static **ngAcceptInputType_actualHoverElevation**: `string | number`
 - static **ngAcceptInputType_actualRestingElevation**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_borderWidth**: `string | number`
 - static **ngAcceptInputType_clickTunneling**: `string | boolean`
 - static **ngAcceptInputType_contentPaddingBottom**: `string | number`
@@ -324,7 +380,7 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_cornerRadiusBottomRight**: `string | number`
 - static **ngAcceptInputType_cornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_cornerRadiusTopRight**: `string | number`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_disabledElevation**: `string | number`
 - static **ngAcceptInputType_disableHover**: `string | boolean`
@@ -332,7 +388,7 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_disableRipple**: `string | boolean`
 - static **ngAcceptInputType_disableTransitions**: `string | boolean`
 - static **ngAcceptInputType_displayType**: `string | ButtonDisplayStyle`
-- static **ngAcceptInputType_elevationMode**: `string | ElevationMode`
+- static **ngAcceptInputType_elevationMode**: `any`
 - static **ngAcceptInputType_fabBorderWidth**: `string | number`
 - static **ngAcceptInputType_fabCornerRadiusBottomLeft**: `string | number`
 - static **ngAcceptInputType_fabCornerRadiusBottomRight**: `string | number`
@@ -354,7 +410,7 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_flatRestingElevation**: `string | number`
 - static **ngAcceptInputType_focused**: `string | boolean`
 - static **ngAcceptInputType_focusElevation**: `string | number`
-- static **ngAcceptInputType_horizontalContentAlignment**: `string | HorizontalAlignment`
+- static **ngAcceptInputType_horizontalContentAlignment**: `any`
 - static **ngAcceptInputType_hoverElevation**: `string | number`
 - static **ngAcceptInputType_iconBorderWidth**: `string | number`
 - static **ngAcceptInputType_iconCornerRadiusBottomLeft**: `string | number`
@@ -390,9 +446,9 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_restingElevation**: `string | number`
 - static **ngAcceptInputType_stopPropagation**: `string | boolean`
 - static **ngAcceptInputType_tabIndex**: `string | number`
-- static **ngAcceptInputType_verticalContentAlignment**: `string | VerticalAlignment`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ngAcceptInputType_verticalContentAlignment**: `any`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXButtonComponent, "igx-x-button", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonComponent, never>`
 - **actualAmbientShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
 - **actualBackgroundColor**: `string` — Gets the color to use for the actual background.
 - **actualBorderColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
@@ -587,22 +643,27 @@ will use an intrinsic size.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxXButtonComponent
 
-### [IgxXButtonGroupButtonCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXButtonGroupButtonCollection)
+### [IgxXButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonDynamicModule)
+
+- **constructor**(): IgxXButtonDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxXButtonGroupButtonCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupButtonCollection)
 
 - **constructor**(list?: IgxXButtonComponent[]): IgxXButtonGroupButtonCollection
 
-### [IgxXButtonGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXButtonGroupComponent)
+### [IgxXButtonGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXButtonGroupComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXButtonGroupComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **actualButtons**: `IgxXButtonComponent[]` — The style mappings actually present in the chart. Do not directly modify this array.
@@ -610,11 +671,11 @@ This array's contents can be modified by causing Angular to reproject the child 
 Or adding and removing stye mappings from the manual style mapping collection on the styleMappings property.
 - **container**: `Element`
 - **contentButtons**: `QueryList<IgxXButtonComponent>`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualItemBorderWidth**: `string | number`
 - static **ngAcceptInputType_actualItemCornerRadius**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_displayType**: `string | ButtonGroupDisplayStyle`
 - static **ngAcceptInputType_flatItemBorderWidth**: `string | number`
@@ -626,8 +687,8 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_outlinedItemBorderWidth**: `string | number`
 - static **ngAcceptInputType_outlinedItemCornerRadius**: `string | number`
 - static **ngAcceptInputType_selectedIndices**: `string | number[]`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXButtonGroupComponent, "igx-x-button-group", never, any, any, ["contentButtons"], ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonGroupComponent, never>`
 - **actualDensity**: `ControlDisplayDensity` — Gets the actual display density to use for the button group.
 - **actualItemBackgroundColor**: `string` — Gets the actual item background color.
 - **actualItemBorderColor**: `string` — Gets the actual item border color.
@@ -699,31 +760,47 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXCalendarComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXCalendarComponent)
+### [IgxXButtonGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXCalendarComponent
+- **constructor**(): IgxXButtonGroupDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonGroupDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonGroupDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonGroupDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxXButtonGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupModule)
+
+- **constructor**(): IgxXButtonGroupModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonGroupModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonGroupModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonGroupModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonModule)
+
+- **constructor**(): IgxXButtonModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXCalendarComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXCalendarComponent
 - **_calendarContainer**: `ElementRef`
 - **container**: `Element`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_firstDayOfWeek**: `string | DayOfWeek`
 - static **ngAcceptInputType_firstWeekOfYear**: `string | FirstWeek`
 - static **ngAcceptInputType_showTodayButton**: `string | boolean`
 - static **ngAcceptInputType_showWeekNumbers**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXCalendarComponent, "igx-x-calendar", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarComponent, never>`
 - **backgroundColor**: `string` — Gets or Sets the selected date background color
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the calendar.
 - **currentDateBorderColor**: `string` — Gets or Sets the current date text color
@@ -752,22 +829,41 @@ It is invoked only once when the view is instantiated.
 - **width**: `string`
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **updateStyle**(): void
 
-### [IgxXCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXCheckboxComponent)
+### [IgxXCalendarDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXCheckboxComponent
+- **constructor**(): IgxXCalendarDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxXCalendarLocaleEnModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarLocaleEnModule)
+
+- **constructor**(): IgxXCalendarLocaleEnModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarLocaleEnModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarLocaleEnModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarLocaleEnModule, never, [any], never>`
+
+### [IgxXCalendarModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarModule)
+
+- **constructor**(): IgxXCalendarModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXCheckboxComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
 - static **ngAcceptInputType_actualBorderWidth**: `string | number`
 - static **ngAcceptInputType_actualCornerRadius**: `string | number`
 - static **ngAcceptInputType_actualTickStrokeWidth**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_borderWidth**: `string | number`
 - static **ngAcceptInputType_checked**: `string | boolean`
 - static **ngAcceptInputType_cornerRadius**: `string | number`
@@ -780,8 +876,8 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_required**: `string | number`
 - static **ngAcceptInputType_tabIndex**: `string | number`
 - static **ngAcceptInputType_tickStrokeWidth**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXCheckboxComponent, "igx-x-checkbox", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCheckboxComponent, never>`
 - **actualBorderWidth**: `number` — Gets or sets the Width to use for the check mark when the checkbox is checked.
 - **actualCheckedBackgroundColor**: `string` — Gets or sets the color to use for the actual background when the checkbox is checked.
 - **actualCheckedBorderColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
@@ -820,23 +916,35 @@ It is invoked only once when the view is instantiated.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXDatePickerComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXDatePickerComponent)
+### [IgxXCheckboxDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXDatePickerComponent
+- **constructor**(): IgxXCheckboxDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCheckboxDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCheckboxDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCheckboxDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxXCheckboxModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxModule)
+
+- **constructor**(): IgxXCheckboxModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCheckboxModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCheckboxModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCheckboxModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXDatePickerComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXDatePickerComponent
 - **_datePickerContainer**: `ElementRef`
 - **container**: `Element`
 - static **ngAcceptInputType_allowTextInput**: `string | boolean`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_dateFormat**: `string | DateFormats`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_firstDayOfWeek**: `string | DayOfWeek`
 - static **ngAcceptInputType_firstWeekOfYear**: `string | FirstWeek`
 - static **ngAcceptInputType_isDisabled**: `string | boolean`
@@ -847,8 +955,8 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_showTodayButton**: `string | boolean`
 - static **ngAcceptInputType_showWeekNumbers**: `string | boolean`
 - static **ngAcceptInputType_useTopLayer**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXDatePickerComponent, "igx-x-date-picker", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXDatePickerComponent, never>`
 - **allowTextInput**: `boolean` — Gets or sets the AllowTextInput property to detirmine if entering text into the input is allowed
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the date picker.
 - **changing**: `EventEmitter<any>`
@@ -886,16 +994,28 @@ It is invoked only once when the view is instantiated.
 - **width**: `string`
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **select**(): void
 - **updateStyle**(): void
 
-### [IgxXIconComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXIconComponent)
+### [IgxXDatePickerDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXIconComponent
+- **constructor**(): IgxXDatePickerDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXDatePickerDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXDatePickerDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXDatePickerDynamicModule, never, [any, any, any, any, any, any, any], [any, any, any, any, any, any]>`
+
+### [IgxXDatePickerModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerModule)
+
+- **constructor**(): IgxXDatePickerModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXDatePickerModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXDatePickerModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXDatePickerModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
+
+### [IgxXIconComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXIconComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
@@ -904,7 +1024,7 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_actualViewBoxLeft**: `string | number`
 - static **ngAcceptInputType_actualViewBoxTop**: `string | number`
 - static **ngAcceptInputType_actualViewBoxWidth**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_fillColors**: `string | string[]`
 - static **ngAcceptInputType_height**: `string | number`
@@ -920,8 +1040,8 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_viewBoxTop**: `string | number`
 - static **ngAcceptInputType_viewBoxWidth**: `string | number`
 - static **ngAcceptInputType_width**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXIconComponent, "igx-x-icon", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXIconComponent, never>`
 - **actualFill**: `string` — Gets the fill color currently used by the icon.
 - **actualStroke**: `string` — Gets the stroke color currently used by the icon.
 - **actualStrokeWidth**: `number` — Gets the stroke width currently used by the icon.
@@ -989,23 +1109,35 @@ class where # is a number from 0 to count - 1.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXInputComponent)
+### [IgxXIconDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXInputComponent
+- **constructor**(): IgxXIconDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXIconDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXIconDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXIconDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXIconModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconModule)
+
+- **constructor**(): IgxXIconModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXIconModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXIconModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXIconModule, never, [any, any, any], [any, any]>`
+
+### [IgxXInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXInputComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_hasValue**: `string | boolean`
 - static **ngAcceptInputType_includeLiterals**: `string | boolean`
@@ -1015,9 +1147,9 @@ It is invoked only once when the view is instantiated.
 - static **ngAcceptInputType_selectionStart**: `string | number`
 - static **ngAcceptInputType_showSpinner**: `string | boolean`
 - static **ngAcceptInputType_tabIndex**: `string | number`
-- static **ngAcceptInputType_textAlignment**: `string | HorizontalAlignment`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ngAcceptInputType_textAlignment**: `any`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXInputComponent, "igx-x-input", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputComponent, never>`
 - **actualDensity**: `ControlDisplayDensity` — Gets the actual display density to use for the label.
 - **actualHoverTextColor**: `string` — Gets the actual hover color to use for the text.
 - **actualTextColor**: `string` — Gets the actual color to use for the text color.
@@ -1053,9 +1185,7 @@ It is invoked only once when the view is instantiated.
 - **blur**(): void
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
@@ -1063,9 +1193,16 @@ It is invoked only once when the view is instantiated.
 - **setSelectionRange**(selectionStart: number, selectionEnd: number): void
 - **updateStyle**(): void
 
-### [IgxXInputGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXInputGroupComponent)
+### [IgxXInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXInputGroupComponent
+- **constructor**(): IgxXInputDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXInputGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXInputGroupComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **actualInputs**: `IgxXInputGroupItemComponent[]` — The style mappings actually present in the chart. Do not directly modify this array.
@@ -1082,7 +1219,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_actualCornerRadiusBottomRight**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopRight**: `string | number`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualFocusBorderWidth**: `string | number`
 - static **ngAcceptInputType_actualFocusUnderlineOpacity**: `string | number`
 - static **ngAcceptInputType_actualFocusUnderlineRippleOpacity**: `string | number`
@@ -1093,7 +1230,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_actualUnderlineRippleOpacity**: `string | number`
 - static **ngAcceptInputType_actualUnderlineRippleWidth**: `string | number`
 - static **ngAcceptInputType_actualUnderlineWidth**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_borderTypeBorderWidth**: `string | number`
 - static **ngAcceptInputType_borderTypeContentPaddingBottom**: `string | number`
 - static **ngAcceptInputType_borderTypeContentPaddingLeft**: `string | number`
@@ -1139,7 +1276,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_cornerRadiusBottomRight**: `string | number`
 - static **ngAcceptInputType_cornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_cornerRadiusTopRight**: `string | number`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_displayType**: `string | InputGroupDisplayType`
 - static **ngAcceptInputType_focusBorderWidth**: `string | number`
@@ -1191,8 +1328,8 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_underlineRippleOpacity**: `string | number`
 - static **ngAcceptInputType_underlineRippleWidth**: `string | number`
 - static **ngAcceptInputType_underlineWidth**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXInputGroupComponent, "igx-x-input-group", never, any, any, ["contentInputs"], ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupComponent, never>`
 - **actualBackgroundColor**: `string` — Gets the actual opacity to use for the underline ripple element.
 - **actualBorderColor**: `string` — Gets the actual item background color.
 - **actualBorderWidth**: `number` — Gets the actual item border width.
@@ -1371,51 +1508,63 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXInputGroupInputCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXInputGroupInputCollection)
+### [IgxXInputGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupDynamicModule)
+
+- **constructor**(): IgxXInputGroupDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputGroupDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputGroupDynamicModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
+
+### [IgxXInputGroupInputCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupInputCollection)
 
 - **constructor**(list?: IgxXInputGroupItemComponent[]): IgxXInputGroupInputCollection
 
-### [IgxXInputGroupItemComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXInputGroupItemComponent)
+### [IgxXInputGroupItemComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupItemComponent)
 
 - **constructor**(): IgxXInputGroupItemComponent
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXInputGroupItemComponent, "ng-component", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupItemComponent, never>`
 - **name**: `string` — Gets or sets name to use for the button.
 - **findByName**(name: string): any
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxXInputGroupItemComponent
 
-### [IgxXLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXLabelComponent)
+### [IgxXInputGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXLabelComponent
+- **constructor**(): IgxXInputGroupModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputGroupModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputGroupModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxXInputModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputModule)
+
+- **constructor**(): IgxXInputModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputModule, never, [any, any, any], [any, any]>`
+
+### [IgxXLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXLabelComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_isHover**: `string | boolean`
 - static **ngAcceptInputType_tabIndex**: `string | number`
 - static **ngAcceptInputType_value**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXLabelComponent, "igx-x-label", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXLabelComponent, never>`
 - **actualDensity**: `ControlDisplayDensity` — Gets the actual display density to use for the label.
 - **actualHighlightTextColor**: `string` — Gets the actual color to use for the text color.
 - **actualHoverHighlightTextColor**: `string` — Gets the actual color to use for the text color when highlighted and hovered.
@@ -1443,48 +1592,72 @@ It is invoked only once when the directive is instantiated.
 - **value**: `boolean` — Gets or sets the value for the label.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXPrefixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXPrefixComponent)
+### [IgxXLabelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXPrefixComponent
+- **constructor**(): IgxXLabelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXLabelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXLabelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXLabelDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXLabelModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelModule)
+
+- **constructor**(): IgxXLabelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXLabelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXLabelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXLabelModule, never, [any, any, any], [any, any]>`
+
+### [IgxXPrefixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXPrefixComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_isHover**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXPrefixComponent, "igx-x-prefix", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXPrefixComponent, never>`
 - **ariaLabel**: `string` — Gets or sets the value of the aria-label attribute.
 - **disabled**: `boolean` — Gets or sets whether the checkbox is disabled.
 - **id**: `string` — Gets or sets the id to use for the checkbox.
 - **isHover**: `boolean` — Gets or sets whether the prefix is hovered.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXRippleComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXRippleComponent)
+### [IgxXPrefixDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXRippleComponent
+- **constructor**(): IgxXPrefixDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXPrefixDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXPrefixDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXPrefixDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxXPrefixModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixModule)
+
+- **constructor**(): IgxXPrefixModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXPrefixModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXPrefixModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXPrefixModule, never, [any, any, any], [any, any]>`
+
+### [IgxXRippleComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXRippleComponent
 - **container**: `Element`
 - static **ngAcceptInputType_isCentered**: `string | boolean`
 - static **ngAcceptInputType_isDisabled**: `string | boolean`
 - static **ngAcceptInputType_isHoverEnabled**: `string | boolean`
 - static **ngAcceptInputType_rippleDuration**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXRippleComponent, "igx-x-ripple", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXRippleComponent, never>`
 - **actualHoverColor**: `string` — Gets or sets the actual color to use for the background when the ripple is hovered.
 - **actualRippleColor**: `string` — Gets or sets the color to use for the actual background when the checkbox is unchecked.
 - **eventSource**: `any` — Gets or sets the target element to inject ripples into.
@@ -1503,40 +1676,49 @@ It is invoked only once when the view is instantiated.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXSuffixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/IgxXSuffixComponent)
+### [IgxXRippleDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXSuffixComponent
+- **constructor**(): IgxXRippleDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXRippleDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXRippleDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXRippleDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxXRippleModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleModule)
+
+- **constructor**(): IgxXRippleModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXRippleModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXRippleModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXRippleModule, never, [any, any], [any]>`
+
+### [IgxXSuffixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXSuffixComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXSuffixComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **container**: `Element`
 - static **ngAcceptInputType_disabled**: `string | boolean`
 - static **ngAcceptInputType_isHover**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXSuffixComponent, "igx-x-suffix", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXSuffixComponent, never>`
 - **ariaLabel**: `string` — Gets or sets the value of the aria-label attribute.
 - **disabled**: `boolean` — Gets or sets whether the checkbox is disabled.
 - **id**: `string` — Gets or sets the id to use for the checkbox.
 - **isHover**: `boolean` — Gets or sets whether the suffix is hovered.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
+- **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [XCalendarLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/classes/XCalendarLocaleEn)
+### [XCalendarLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/XCalendarLocaleEn)
 
 - **constructor**(): XCalendarLocaleEn
 - **April_Full**: `string`
@@ -1588,18 +1770,18 @@ It is invoked only once when the view is instantiated.
 
 ## Enumerations
 
-### [ButtonGroupOrientation](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/ButtonGroupOrientation)
+### [ButtonGroupOrientation](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/ButtonGroupOrientation)
 
 - **Horizontal** = 0
 - **Vertical** = 1
 
-### [DateFormats](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/DateFormats)
+### [DateFormats](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/DateFormats)
 Indicates some simple date formats to be used.
 
 - **DateLong** = 1 — A standard long date format is used.
 - **DateShort** = 0 — A standard short date format is used.
 
-### [DayOfWeek](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/DayOfWeek)
+### [DayOfWeek](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/DayOfWeek)
 Indicates some simple date formats to be used.
 
 - **Friday** = 5 — First Day of Week is Friday
@@ -1610,51 +1792,146 @@ Indicates some simple date formats to be used.
 - **Tuesday** = 2 — First Day of Week is Tuesday
 - **Wednesday** = 3 — First Day of Week is Wednesday
 
-### [FirstWeek](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/FirstWeek)
+### [FirstWeek](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/FirstWeek)
 Indicates some simple date formats to be used.
 
 - **FirstDay** = 0 — First Day of Year is Start of First Week
 - **FirstFourDayWeek** = 2 — First Four Day Week in year is First Week
 - **FirstFullWeek** = 1 — First Full Week in year is First Week
 
-### [InputGroupDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/InputGroupDisplayType)
+### [InputGroupDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/InputGroupDisplayType)
 
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
 - **Search** = 3
 
-### [InputShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/InputShiftType)
+### [InputShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/InputShiftType)
 
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
 
-### [LabelShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/LabelShiftType)
+### [LabelShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/LabelShiftType)
 
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
 
-### [MultiSliderOrientation](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/MultiSliderOrientation)
+### [MultiSliderOrientation](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/MultiSliderOrientation)
 
 - **Horizontal** = 0
 - **TwoDimensional** = 2
 - **Vertical** = 1
 
-### [MultiSliderThumbRangePosition](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/MultiSliderThumbRangePosition)
+### [MultiSliderThumbRangePosition](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/MultiSliderThumbRangePosition)
 
 - **PinnedHigher** = 1
 - **PinnedLower** = 0
 
-### [PrefixShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/PrefixShiftType)
+### [PrefixShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/PrefixShiftType)
 
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
 
-### [SuffixShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/latest/enums/SuffixShiftType)
+### [SuffixShiftType](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/enums/SuffixShiftType)
 
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
+
+## Functions
+
+### [provideIgxColorEditor](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditor)
+`provideIgxColorEditor(): EnvironmentProviders`
+
+### [provideIgxColorEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorDynamic)
+`provideIgxColorEditorDynamic(): EnvironmentProviders`
+
+### [provideIgxColorEditorPanel](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorPanel)
+`provideIgxColorEditorPanel(): EnvironmentProviders`
+
+### [provideIgxColorEditorPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorPanelDynamic)
+`provideIgxColorEditorPanelDynamic(): EnvironmentProviders`
+
+### [provideIgxMultiSlider](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSlider)
+`provideIgxMultiSlider(): EnvironmentProviders`
+
+### [provideIgxMultiSliderDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderDynamic)
+`provideIgxMultiSliderDynamic(): EnvironmentProviders`
+
+### [provideIgxMultiSliderThumb](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderThumb)
+`provideIgxMultiSliderThumb(): EnvironmentProviders`
+
+### [provideIgxMultiSliderThumbDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderThumbDynamic)
+`provideIgxMultiSliderThumbDynamic(): EnvironmentProviders`
+
+### [provideIgxXButton](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButton)
+`provideIgxXButton(): EnvironmentProviders`
+
+### [provideIgxXButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonDynamic)
+`provideIgxXButtonDynamic(): EnvironmentProviders`
+
+### [provideIgxXButtonGroup](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonGroup)
+`provideIgxXButtonGroup(): EnvironmentProviders`
+
+### [provideIgxXButtonGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonGroupDynamic)
+`provideIgxXButtonGroupDynamic(): EnvironmentProviders`
+
+### [provideIgxXCalendar](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendar)
+`provideIgxXCalendar(): EnvironmentProviders`
+
+### [provideIgxXCalendarDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendarDynamic)
+`provideIgxXCalendarDynamic(): EnvironmentProviders`
+
+### [provideIgxXCalendarLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendarLocaleEn)
+`provideIgxXCalendarLocaleEn(): EnvironmentProviders`
+
+### [provideIgxXCheckbox](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCheckbox)
+`provideIgxXCheckbox(): EnvironmentProviders`
+
+### [provideIgxXCheckboxDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCheckboxDynamic)
+`provideIgxXCheckboxDynamic(): EnvironmentProviders`
+
+### [provideIgxXDatePicker](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXDatePicker)
+`provideIgxXDatePicker(): EnvironmentProviders`
+
+### [provideIgxXDatePickerDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXDatePickerDynamic)
+`provideIgxXDatePickerDynamic(): EnvironmentProviders`
+
+### [provideIgxXIcon](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXIcon)
+`provideIgxXIcon(): EnvironmentProviders`
+
+### [provideIgxXIconDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXIconDynamic)
+`provideIgxXIconDynamic(): EnvironmentProviders`
+
+### [provideIgxXInput](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInput)
+`provideIgxXInput(): EnvironmentProviders`
+
+### [provideIgxXInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputDynamic)
+`provideIgxXInputDynamic(): EnvironmentProviders`
+
+### [provideIgxXInputGroup](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputGroup)
+`provideIgxXInputGroup(): EnvironmentProviders`
+
+### [provideIgxXInputGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputGroupDynamic)
+`provideIgxXInputGroupDynamic(): EnvironmentProviders`
+
+### [provideIgxXLabel](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXLabel)
+`provideIgxXLabel(): EnvironmentProviders`
+
+### [provideIgxXLabelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXLabelDynamic)
+`provideIgxXLabelDynamic(): EnvironmentProviders`
+
+### [provideIgxXPrefix](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXPrefix)
+`provideIgxXPrefix(): EnvironmentProviders`
+
+### [provideIgxXPrefixDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXPrefixDynamic)
+`provideIgxXPrefixDynamic(): EnvironmentProviders`
+
+### [provideIgxXRipple](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXRipple)
+`provideIgxXRipple(): EnvironmentProviders`
+
+### [provideIgxXRippleDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXRippleDynamic)
+`provideIgxXRippleDynamic(): EnvironmentProviders`
