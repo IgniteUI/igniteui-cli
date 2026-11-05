@@ -1,7 +1,6 @@
 
 import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
-import { generateChangelog } from "./changelogScript";
 
 let version!: string;
 let coreVersion: string;
@@ -68,5 +67,19 @@ function main() {
 		path.join("packages", "igniteui-mcp", "igniteui-doc-mcp", "server.json"),
 	);
 }
+function printChangelogReminder() {
+	const cliVersion = JSON.parse(readFileSync(path.join("packages", "cli", "package.json")).toString()).version;
+	const lines = [
+		"",
+		`Versions updated: igniteui-cli ${cliVersion}, Angular templates/schematics ${version}.`,
+		"CHANGELOG.md was NOT updated. Ask an agent to write the release section, e.g.:",
+		`  "Use the igniteui-cli-changelog skill to write the CHANGELOG.md section for ${cliVersion} (<release date>)."`,
+		"Review that section before committing the release cut.",
+		""
+	];
+	// eslint-disable-next-line no-console
+	console.log(lines.join("\n"));
+}
+
 main();
-generateChangelog(version);
+printChangelogReminder();
