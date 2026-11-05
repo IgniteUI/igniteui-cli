@@ -121,7 +121,7 @@ $app-palette: palette($primary, $secondary, $surface);
 					Util.warn(`Could not remove "${options.name}"; delete it before retrying.`, "yellow");
 				}
 			}
-			Util.error(`Project creation failed: ${error.message}`, "red");
+			Util.error(`Project creation failed: ${(error as Error).message}`, "red");
 			return false;
 		}
 

@@ -912,8 +912,8 @@ describe("Unit - PromptSession", () => {
 			App.initialize();
 			const templateManager = new TemplateManager();
 			App.container.set(TEMPLATE_MANAGER, templateManager);
-			const sideNav = templateManager.getProjectLibrary("angular", "igx-ts").getProject("side-nav");
-			spyOn(sideNav, "scaffold").and.returnValue(Promise.resolve(true));
+			const sideNav = templateManager.getProjectLibrary("angular", "igx-ts")!.getProject("side-nav")!;
+			spyOn<any>(sideNav, "scaffold").and.returnValue(Promise.resolve(true));
 			const mockSession = new PromptSession();
 			spyOn(Util, "isAlphanumericExt").and.callThrough();
 			spyOn(Util, "gitInit");

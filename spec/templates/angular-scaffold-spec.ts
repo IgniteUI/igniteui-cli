@@ -156,7 +156,7 @@ describe("Angular project scaffold", () => {
 	it("runs ng new outside the current folder, which may be inside an Angular workspace", async () => {
 		await emptyProject.scaffold({ name, theme: "Default" });
 
-		const [, options] = execSync.calls.allArgs().find(([command]) => / new /.test(command));
+		const [, options] = execSync.calls.allArgs().find(([command]) => / new /.test(command))!;
 		expect(options.cwd).not.toBe(process.cwd());
 		expect(fs.existsSync(options.cwd)).withContext("the temp folder is removed").toBeFalse();
 		expect(fs.existsSync(filePath("angular.json"))).toBeTrue();
