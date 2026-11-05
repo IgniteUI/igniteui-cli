@@ -5,7 +5,9 @@ import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tas
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { NodeWorkflow } from "@angular-devkit/schematics/tools";
-import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, ScaffoldOptions, Template } from "@igniteui/cli-core";
+import {
+	App, BaseTemplate, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectLibrary, ProjectTemplate, ScaffoldOptions, Template
+} from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
@@ -306,6 +308,52 @@ describe("Schematics ng-new", () => {
 			const mcpServers = JSON.parse(fs.readFileSync(path.join(projectDir, ".mcp.json"), "utf8")).mcpServers;
 			expect(Object.keys(mcpServers)).toEqual(jasmine.arrayWithExactContents(
 				["existing", "angular-cli", "igniteui-cli", "igniteui-theming"]));
+		} finally {
+			process.chdir(cwd);
+			fs.rmSync(tmpDir, { recursive: true, force: true });
+		}
+	});
+
+	it("runs the guided loop and the licensed-feed upgrade in the project the scaffold creates on disk", async () => {
+		const name = "my-test-project";
+		const mockProject = mockProjectInLibrary();
+		(mockProject.scaffold as jasmine.Spy).and.callFake(async () => {
+			fs.mkdirSync(name);
+			fs.writeFileSync(path.join(name, "package.json"), JSON.stringify({ dependencies: { "igniteui-angular": "~21.0.0" } }));
+			return true;
+		});
+		spyOn(SchematicsPromptSession.prototype, "getUserInput").and.returnValue(Promise.resolve(name));
+		spyOn(SchematicsPromptSession.prototype, "getProjectTemplate").and.returnValue(Promise.resolve(mockProject as ProjectTemplate));
+		spyOn(SchematicsPromptSession.prototype, "getTheme").and.returnValue(Promise.resolve("mock-theme"));
+		spyOn(SchematicsPromptSession.prototype, "chooseActionLoop").and.callFake(function (this: SchematicsPromptSession) {
+			expect(this.tree.exists("package.json")).withContext("guided loop reads the project").toBeTrue();
+			this.tree.create("added.txt", "added");
+			return Promise.resolve();
+		});
+		(mockProject.upgradeIgniteUIPackages as jasmine.Spy).and.callFake(async () => {
+			expect(App.container.get<IFileSystem>(FS_TOKEN).fileExists("./package.json"))
+				.withContext("upgrade reads the project's package.json").toBeTrue();
+			return true;
+		});
+		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+			configurable: true,
+			get: () => new Map<string, any>([["upgradePackages", true]]),
+			set: () => void 0
+		});
+
+		const cwd = process.cwd();
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "ng-new-spec-"));
+		try {
+			process.chdir(tmpDir);
+			const workflow = new NodeWorkflow(tmpDir, { schemaValidation: true });
+			await lastValueFrom(workflow.execute({
+				collection: collectionPath,
+				schematic: "ng-new",
+				options: { version: "8.0.3", skipInstall: true, skipGit: true }
+			}), { defaultValue: undefined });
+
+			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalledOnceWith("", "");
+			expect(fs.readFileSync(path.join(tmpDir, name, "added.txt"), "utf8")).toBe("added");
 		} finally {
 			process.chdir(cwd);
 			fs.rmSync(tmpDir, { recursive: true, force: true });

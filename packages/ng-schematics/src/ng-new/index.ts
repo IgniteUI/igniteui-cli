@@ -155,15 +155,15 @@ export function newProject(options: OptionsSchema): Rule {
 					});
 				}
 			}),
-			(tree: Tree, _context: SchematicContext) => {
+			inProject(() => options.name!, (projectTree: Tree, _context: SchematicContext) => {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {
-						setVirtual(tree);
-						await projTemplate.upgradeIgniteUIPackages(options.name || "", "");
-						return tree;
+						setVirtual(projectTree);
+						await projTemplate.upgradeIgniteUIPackages("", "");
+						return projectTree;
 					});
 				}
-			},
+			}),
 			(tree: Tree, context: SchematicContext) => {
 				const installChain: TaskId[] = [];
 				// the scaffold installed the packages; only the guided loop (no name) can add some or switch to the licensed feed after it
