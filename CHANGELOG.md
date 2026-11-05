@@ -15,7 +15,7 @@
 * **chore(angular):** Updated the Angular Grid Lite template to `igniteui-grid-lite` `~0.11.0`. [#1872](https://github.com/IgniteUI/igniteui-cli/pull/1872)
 * **docs(cli):** Added agent skills under `.agents/skills/` for changelog drafting, component templates, smoke testing, template anatomy, template version updates, AI config skill refresh, and MCP tool changes. [#1840](https://github.com/IgniteUI/igniteui-cli/pull/1840)
 * **docs(cli):** Added a security policy with supported versions and the vulnerability reporting and disclosure process. [#1848](https://github.com/IgniteUI/igniteui-cli/pull/1848)
-* **build(deps):** Updated workspace dependencies, including `glob` 14.0.2, `minimatch` 11.0.1, `zod` 4.6.6, `@modelcontextprotocol/sdk` 1.32.0, `handlebars` 4.7.10, `hono` 4.13.13, and `@hono/node-server` 2.1.6. [#1877](https://github.com/IgniteUI/igniteui-cli/pull/1877), [#1876](https://github.com/IgniteUI/igniteui-cli/pull/1876), [#1861](https://github.com/IgniteUI/igniteui-cli/pull/1861), [#1856](https://github.com/IgniteUI/igniteui-cli/pull/1856), [#1855](https://github.com/IgniteUI/igniteui-cli/pull/1855), [#1853](https://github.com/IgniteUI/igniteui-cli/pull/1853), [#1842](https://github.com/IgniteUI/igniteui-cli/pull/1842)
+* **build(deps):** Updated workspace dependencies, including `glob` 14.0.2, `minimatch` 11.0.1, `zod` 4.6.6, `@modelcontextprotocol/sdk` 1.32.0, `handlebars` 4.7.10, `hono` 4.13.13, and `@hono/node-server` 2.1.6.
 
 # 15.8.2 (2026-10-12)
 
