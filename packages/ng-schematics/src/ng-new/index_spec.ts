@@ -263,7 +263,8 @@ describe("Schematics ng-new", () => {
 
 			expect(e.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(e.readContent(mcpFilePath));
-			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			// ng-new projects list @igniteui/angular-schematics instead of igniteui-cli, so the server package is started directly
+			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 			expect(content.mcpServers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 	});

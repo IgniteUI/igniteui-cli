@@ -11,7 +11,8 @@ import { PassThrough, Writable } from "stream";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
-const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli", "mcp"] };
+const igniteuiServer = { command: "npx", args: ["-y", "@igniteui/mcp-server"] };
+const igniteuiCliServer = { command: "npx", args: ["-y", "igniteui-cli", "mcp"] };
 const igniteuiThemingServer = { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] };
 
 function createMockFs(existingContent?: string): IFileSystem {
@@ -24,6 +25,21 @@ function createMockFs(existingContent?: string): IFileSystem {
 		directoryExists: jasmine.createSpy("directoryExists"),
 		glob: jasmine.createSpy("glob").and.returnValue([])
 	};
+}
+
+function createProjectMockFs(packageJson: object, existingContent?: string): IFileSystem {
+	const mockFs = createMockFs(existingContent);
+	(mockFs.fileExists as jasmine.Spy).and.callFake((p: string) => p === "./package.json");
+	(mockFs.readFile as jasmine.Spy).and.callFake((p: string) => {
+		if (p === "./package.json") {
+			return JSON.stringify(packageJson);
+		}
+		if (existingContent) {
+			return existingContent;
+		}
+		throw new Error("ENOENT");
+	});
+	return mockFs;
 }
 
 describe("Unit - ai-config command", () => {
@@ -156,6 +172,102 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("starts the server through the project's CLI when package.json lists igniteui-cli in devDependencies", () => {
+			const mockFs = createProjectMockFs({ devDependencies: { "igniteui-cli": "~15.8.2" } });
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiCliServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("starts the server through the project's CLI when package.json lists igniteui-cli in dependencies", () => {
+			const mockFs = createProjectMockFs({ dependencies: { "igniteui-cli": "~15.8.2" } });
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiCliServer);
+		});
+
+		it("starts the server package when package.json does not list igniteui-cli", () => {
+			const mockFs = createProjectMockFs({ devDependencies: { "typescript": "~5.9.0" } });
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+		});
+
+		it("starts the server package when package.json cannot be parsed", () => {
+			const mockFs = createMockFs();
+			(mockFs.fileExists as jasmine.Spy).and.callFake((p: string) => p === "./package.json");
+			(mockFs.readFile as jasmine.Spy).and.callFake((p: string) => {
+				if (p === "./package.json") {
+					return "{ not json";
+				}
+				throw new Error("ENOENT");
+			});
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+		});
+
+		it("replaces the igniteui-cli mcp entry of earlier versions when the project does not list igniteui-cli", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: igniteuiCliServer,
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}, null, 2));
+			App.container.set(FS_TOKEN, mockFs);
+
+			const result = addMcpServers("vscode");
+
+			expect(result).toBe(true);
+			const config = writtenConfig(mockFs);
+			expect(Object.keys(config.servers as object)).toEqual([IGNITEUI_SERVER_KEY, IGNITEUI_THEMING_SERVER_KEY]);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+		});
+
+		it("keeps user-added fields of an existing entry when updating it", () => {
+			const env = { IGNITEUI_MCP_DOCS_BACKEND_URL: "https://example.com" };
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: { type: "stdio", ...igniteuiCliServer, env },
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}, null, 2));
+			App.container.set(FS_TOKEN, mockFs);
+
+			addMcpServers("vscode");
+
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual({ type: "stdio", ...igniteuiServer, env });
+		});
+
+		it("does not rewrite a configured file whose formatting differs from the CLI's", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: igniteuiServer,
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}));
+			App.container.set(FS_TOKEN, mockFs);
+
+			const result = addMcpServers("vscode");
+
+			expect(result).toBe(false);
+			expect(mockFs.writeFile).not.toHaveBeenCalled();
 		});
 	});
 
