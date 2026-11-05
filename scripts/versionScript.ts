@@ -67,14 +67,20 @@ function main() {
 		path.join("packages", "igniteui-mcp", "igniteui-doc-mcp", "server.json"),
 	);
 }
+const useColor = !!process.stdout.isTTY && !process.env.NO_COLOR;
+const ansi = (code: string) => (text: string) => useColor ? `\x1b[${code}m${text}\x1b[0m` : text;
+const green = ansi("32");
+const boldYellow = ansi("1;33");
+const cyan = ansi("36");
+
 function printChangelogReminder() {
 	const cliVersion = JSON.parse(readFileSync(path.join("packages", "cli", "package.json")).toString()).version;
 	const lines = [
 		"",
-		`Versions updated: igniteui-cli ${cliVersion}, Angular templates/schematics ${version}.`,
-		"CHANGELOG.md was NOT updated. Ask an agent to write the release section, e.g.:",
-		`  "Use the igniteui-cli-changelog skill to write the CHANGELOG.md section for ${cliVersion} (<release date>)."`,
-		"Review that section before committing the release cut.",
+		green(`Versions updated: igniteui-cli ${cliVersion}, Angular templates/schematics ${version}.`),
+		boldYellow("CHANGELOG.md was NOT updated. Ask an agent to write the release section, e.g.:"),
+		cyan(`  "Use the igniteui-cli-changelog skill to write the CHANGELOG.md section for ${cliVersion} (<release date>)."`),
+		boldYellow("Review that section before committing the release cut."),
 		""
 	];
 	// eslint-disable-next-line no-console
