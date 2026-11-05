@@ -3,7 +3,7 @@ import { EventEmitter } from "events";
 import fs = require("fs");
 import * as path from "path";
 import yargs from "yargs";
-import mcp from "../../packages/cli/lib/commands/mcp";
+import mcp, { getMcpServerArgs, resolveMcpServerEntry } from "../../packages/cli/lib/commands/mcp";
 
 function createFakeChildProcess(): EventEmitter {
 	return new EventEmitter();
@@ -188,6 +188,50 @@ describe("Unit - MCP CLI command", () => {
 			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
 			expect(message).toContain("Failed to start MCP server");
 			expect(message).toContain("boom");
+		});
+	});
+
+	describe("getMcpServerArgs", () => {
+		it("returns no arguments when none are given", () => {
+			expect(getMcpServerArgs([])).toEqual([]);
+		});
+
+		it("passes --remote <url> and --debug through", () => {
+			expect(getMcpServerArgs(["--remote", "https://docs.example.test", "--debug"]))
+				.toEqual(["--remote", "https://docs.example.test", "--debug"]);
+		});
+
+		it("splits --remote=<url>, which the server does not parse", () => {
+			expect(getMcpServerArgs(["--debug", "--remote=https://docs.example.test"]))
+				.toEqual(["--debug", "--remote", "https://docs.example.test"]);
+		});
+
+		it("leaves help, version, incomplete and other options to the CLI", () => {
+			for (const args of [["--help"], ["-h"], ["--version"], ["-v"], ["--remote"], ["--remote", "--debug"],
+				["--remote="], ["--debug=false"], ["--no-debug"], ["extra"]]) {
+				expect(getMcpServerArgs(args)).withContext(args.join(" ")).toBeNull();
+			}
+		});
+	});
+
+	describe("resolveMcpServerEntry", () => {
+		const cliDir = path.join(process.cwd(), "packages", "cli", "lib");
+
+		it("returns the built server entry installed with the CLI", () => {
+			expect(resolveMcpServerEntry(cliDir)).toBe(fs.realpathSync(mcpEntry));
+		});
+
+		it("returns null when the server package cannot be resolved", () => {
+			mockMcpPackageResolution(undefined, true);
+
+			expect(resolveMcpServerEntry(cliDir)).toBeNull();
+		});
+
+		it("returns null when the server is not built", () => {
+			mockMcpPackageResolution(mcpPackageJson);
+			spyOn(fs, "existsSync").and.returnValue(false);
+
+			expect(resolveMcpServerEntry(cliDir)).toBeNull();
 		});
 	});
 });
