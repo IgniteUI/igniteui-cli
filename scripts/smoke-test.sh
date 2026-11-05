@@ -136,13 +136,17 @@ scaffold() {
 	run_cli "$OUT" "$log" "${args[@]}"
 	rc=$?
 
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -f "$OUT/$dir/ignite-ui-cli.json" ]; then
+	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
+	local marker="$OUT/$dir/ignite-ui-cli.json"
+	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
+	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
 		record "$fw" "new" "${proj:-default}" "FAIL" "$((SECONDS - start))"
 		echo "  ✗ new $dir  (see $log)"
 		return 1
 	fi
 	record "$fw" "new" "${proj:-default}" "PASS" "$((SECONDS - start))"
 	echo "  ✓ new $dir"
+	[ "$fw" = "blazor" ] && return 0
 
 	# project scoped, so the user's global config is left alone
 	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
@@ -183,7 +187,9 @@ install_and_build() {
 
 	if [ "$fw" = "blazor" ]; then
 		start=$SECONDS
-		(cd "$OUT/$dir" && dotnet build) >"$LOGS/$dir-build.log" 2>&1
+		# Server hosting has no root .sln; the .csproj sits in <dir>/<dir>/
+		(cd "$OUT/$dir" && if ls *.sln >/dev/null 2>&1; then dotnet build; else dotnet build "$dir"; fi) \
+			>"$LOGS/$dir-build.log" 2>&1
 		rc=$?
 		[ $rc -eq 0 ] && record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))" \
 			|| record "$fw" "build" "$dir" "FAIL" "$((SECONDS - start))"

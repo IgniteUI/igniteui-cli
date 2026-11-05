@@ -4,6 +4,7 @@ import {
 import path from "path";
 import * as fs from "fs";
 import { EmptyIgbProject } from "../../packages/cli/templates/blazor/igb/projects/empty";
+import { WebAppIgbProject } from "../../packages/cli/templates/blazor/igb/projects/web-app";
 
 const templatesLocation = "../../packages/cli/templates/blazor";
 describe("Blazor templates", () => {
@@ -33,13 +34,15 @@ describe("Blazor templates", () => {
 		expect(projLibrary.themes).toEqual(["bootstrap", "material", "fluent", "indigo"]);
 	});
 
-	it("empty project template should be registered and visible", () => {
+	it("empty and web-app project templates should be registered and visible", () => {
 		const blazorFramework: Framework = require(templatesLocation);
 		const projLibrary = blazorFramework.projectLibraries.find(x => x.projectType === "igb")!;
-		const emptyProject = projLibrary.getProject("empty")!;
-		expect(emptyProject).toBeDefined();
-		expect(emptyProject.isHidden).toBeFalse();
-		expect(typeof emptyProject.scaffold).toBe("function");
+		expect(projLibrary.projects.filter(p => !p.isHidden).map(p => p.id)).toEqual(["empty", "web-app"]);
+		for (const id of ["empty", "web-app"]) {
+			const project = projLibrary.getProject(id)!;
+			expect(project).withContext(id).toBeDefined();
+			expect(typeof project.scaffold).withContext(id).toBe("function");
+		}
 	});
 
 	describe("ai-config template file presence", () => {
@@ -64,12 +67,12 @@ describe("Blazor templates", () => {
 		});
 	});
 
-	describe("empty project", () => {
-		let project: EmptyIgbProject;
+	describe("dotnet-scaffolded project", () => {
+		let project: WebAppIgbProject;
 		let scaffoldSpy: jasmine.Spy;
 
 		beforeEach(() => {
-			project = new EmptyIgbProject();
+			project = new WebAppIgbProject();
 			scaffoldSpy = spyOn(DotnetTemplateManager, "scaffold").and.returnValue(true);
 		});
 
@@ -121,6 +124,29 @@ describe("Blazor templates", () => {
 			expect(() => project.generateConfig("app", "bootstrap")).toThrowError("Method not implemented.");
 			expect(() => project.installModules()).toThrowError("Method not implemented.");
 			expect(() => project.upgradeIgniteUIPackages("", "")).toThrowError("Method not implemented.");
+		});
+	});
+
+	describe("empty project", () => {
+		let scaffoldSpy: jasmine.Spy;
+
+		beforeEach(() => {
+			scaffoldSpy = spyOn(DotnetTemplateManager, "scaffold").and.returnValue(true);
+		});
+
+		it("asks the same questions as the web app", () => {
+			expect(new EmptyIgbProject().getExtraConfiguration()).toEqual(new WebAppIgbProject().getExtraConfiguration());
+		});
+
+		it("requests the template's Empty option on top of the user's answers", async () => {
+			const project = new EmptyIgbProject();
+			project.setExtraConfiguration(["Wasm", "dark"]);
+
+			await project.scaffold({ name: "app", theme: "material", extraConfig: { Empty: false } });
+
+			expect(scaffoldSpy).toHaveBeenCalledWith({
+				name: "app", theme: "material", extraConfig: { Hosting: "Wasm", Variant: "dark", Empty: true }
+			});
 		});
 	});
 });
