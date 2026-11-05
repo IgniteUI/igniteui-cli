@@ -4,6 +4,43 @@ import { spawn } from "child_process";
 import { CommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
+/**
+ * Resolves the built MCP server entry installed with the CLI copy in `cliDir`.
+ * @returns the entry path, or `null` when the server package is missing or not built
+ */
+export function resolveMcpServerEntry(cliDir: string): string | null {
+	try {
+		// resolve from the real folder: pnpm links packages and keeps their dependencies next to the link target
+		const mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json", { paths: [fs.realpathSync(cliDir)] });
+		const mcpEntry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
+		return fs.existsSync(mcpEntry) ? mcpEntry : null;
+	} catch {
+		return null;
+	}
+}
+
+/**
+ * Maps the options of `ig mcp` to the server's own command line, which reads only `--remote <url>` and `--debug`.
+ * @param args the arguments after `mcp`
+ * @returns the server arguments, or `null` when the CLI must parse them (help, version, other or incomplete options)
+ */
+export function getMcpServerArgs(args: string[]): string[] | null {
+	const serverArgs: string[] = [];
+	for (let i = 0; i < args.length; i++) {
+		const arg = args[i];
+		if (arg === "--debug") {
+			serverArgs.push(arg);
+		} else if (arg === "--remote" && args[i + 1] && !args[i + 1].startsWith("-")) {
+			serverArgs.push(arg, args[++i]);
+		} else if (arg.startsWith("--remote=") && arg.length > "--remote=".length) {
+			serverArgs.push("--remote", arg.slice("--remote=".length));
+		} else {
+			return null;
+		}
+	}
+	return serverArgs;
+}
+
 const command: CommandType = {
 	command: "mcp",
 	describe: "Starts the Ignite UI MCP server for AI assistant integration",

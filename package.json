@@ -44,7 +44,7 @@
 			"**/*.d.ts",
 			"output/",
 			"packages/cli/templates/**/files/",
-			"packages/igx-templates/",
+			"packages/igx-templates/**/files/",
 			"packages/igniteui-mcp/"
 		],
 		"reporter": [

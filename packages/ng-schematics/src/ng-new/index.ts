@@ -17,11 +17,6 @@ import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
-interface IgxSchematicContext extends SchematicContext {
-	projectType: string;
-	theme: string;
-}
-
 /** Runs a rule with the project folder as the root of the tree */
 function inProject(getName: () => string, rule: Rule): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -34,7 +29,7 @@ function isDryRun(context: SchematicContext): boolean {
 }
 
 export function newProject(options: OptionsSchema): Rule {
-	return (_host: Tree, hostContext: IgxSchematicContext) => {
+	return (_host: Tree, hostContext: SchematicContext) => {
 		// the scaffold writes the project and installs its packages on disk, past the workflow's dry-run sink and task skipping
 		if (isDryRun(hostContext)) {
 			throw new SchematicsException("--dry-run is not supported: `ng new` and `ng add igniteui-angular` "
@@ -57,7 +52,7 @@ export function newProject(options: OptionsSchema): Rule {
 		let projTemplate: ProjectTemplate;
 
 		return chain([
-			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
+			(tree: Tree, _context: SchematicContext): Observable<Tree> => {
 				return defer(async () => {
 					if (options.name) {
 						options.name = options.name.trim();
@@ -70,10 +65,10 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					}
 
-					if (Util.directoryExists(options.name)) {
+					if (options.name && Util.directoryExists(options.name)) {
 						throw new SchematicsException(`Folder "${options.name}" already exists!`);
 					}
-					const framework = templateManager.getFrameworkByName("angular");
+					const framework = templateManager.getFrameworkByName("angular")!;
 					projLibrary = await prompt.getProjectLibraryByType(framework, options.type);
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
@@ -93,19 +88,20 @@ export function newProject(options: OptionsSchema): Rule {
 
 					let themeIndex = 0;
 					if (options.theme) {
-						themeIndex = projLibrary.themes.findIndex(item => options.theme.toLowerCase() === item.toLowerCase());
+						themeIndex = projLibrary.themes.findIndex(item => options.theme!.toLowerCase() === item.toLowerCase());
 						if (themeIndex === -1) {
 							throw new SchematicsException(`Theme not supported`);
 						}
 					}
 
 					if (projTemplate === undefined) {
-						projTemplate = options.template
+						const project = options.template
 							? projLibrary.getProject(options.template)
 							: projLibrary.projects.filter(p => !p.isHidden)[0];
-						if (!projTemplate) {
+						if (!project) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
+						projTemplate = project;
 					}
 					theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
@@ -129,7 +125,7 @@ export function newProject(options: OptionsSchema): Rule {
 					return tree;
 				});
 			},
-			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
+			(tree: Tree, _context: SchematicContext): Observable<Tree> => {
 				// the same scaffold as `ig new`: the Angular CLI creates the project on disk, the tree reads it from there
 				return defer(async () => {
 					const schematicsPackage = require("../../package.json");
@@ -159,7 +155,7 @@ export function newProject(options: OptionsSchema): Rule {
 					});
 				}
 			}),
-			(tree: Tree, _context: IgxSchematicContext) => {
+			(tree: Tree, _context: SchematicContext) => {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {
 						setVirtual(tree);
@@ -168,7 +164,7 @@ export function newProject(options: OptionsSchema): Rule {
 					});
 				}
 			},
-			(tree: Tree, context: IgxSchematicContext) => {
+			(tree: Tree, context: SchematicContext) => {
 				const installChain: TaskId[] = [];
 				// the scaffold installed the packages; only the guided loop (no name) can add some or switch to the licensed feed after it
 				if (!options.skipInstall && !nameProvided) {

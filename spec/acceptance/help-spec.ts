@@ -255,6 +255,24 @@ describe("Help command", () => {
 		expect(actualNewText).toContain(replacedNewHelpText);
 	});
 
+	it("should show help for the mcp command", async () => {
+		const child = Util.spawnSync("node", [execLocation, "mcp", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalHelpText: string = `
+		Options:
+		-v, --version  Show current Ignite UI CLI version                                [boolean]
+		-h, --help     Show help                                                         [boolean]
+			--remote   Backend URL for remote mode (uses HTTP instead of local SQLite)   [string]
+			--debug    Enable debug logging to mcp-server.log                 [boolean] [default: false]`;
+
+		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedHelpText);
+	});
+
 	it("should show help for the ai-config command", async () => {
 		const child = Util.spawnSync("node", [execLocation, "ai-config", "-h"], {
 			encoding: "utf-8"

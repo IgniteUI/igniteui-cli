@@ -7,7 +7,7 @@ import { stubAngularCli } from "../helpers/angular-cli-stub";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
-	let testFolder;
+	let testFolder: string;
 
 	beforeEach(() => {
 		spyOn(console, "log");

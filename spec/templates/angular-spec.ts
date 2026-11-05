@@ -1,4 +1,4 @@
-import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
+import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Template, Util } from "@igniteui/cli-core";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
 import path from "path";
 import * as fs from "fs";
@@ -23,11 +23,11 @@ describe("Angular templates", () => {
 
 	it("Igx templates should have no internal collisions", async () => {
 		const angularFramework: Framework = require(templatesLocation);
-		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts")!;
 		for (let i = 0; i < projLibrary.templates.length; i++) {
-			const element = projLibrary.templates[i];
+			const element = projLibrary.templates[i] as Template & { rootPath: string };
 			for (let j = i + 1; j < projLibrary.templates.length; j++) {
-				const target = projLibrary.templates[j];
+				const target = projLibrary.templates[j] as Template & { rootPath: string };
 				// pass some __path__ so those won't match
 				expect(
 					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
@@ -40,7 +40,7 @@ describe("Angular templates", () => {
 
 	it("Igx templates should use the same igniteui-angular version as the const", async () => {
 		const angularFramework: Framework = require(templatesLocation);
-		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts")!;
 		const [pkg] = IGNITEUI_ANGULAR_PACKAGE.split("@");
 
 		projLibrary.templates
@@ -51,7 +51,7 @@ describe("Angular templates", () => {
 
 	it("Igx project templates should not carry the files the Angular CLI generates; the scaffold patches those", () => {
 		const angularFramework: Framework = require(templatesLocation);
-		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts")!;
 		const generated = ["angular.json", "package.json", "tsconfig.json", "tsconfig.app.json", "tsconfig.spec.json", "src/main.ts"];
 
 		for (const root of new Set(projLibrary.projects.flatMap(p => p.templatePaths))) {
@@ -66,7 +66,7 @@ describe("Angular templates", () => {
 	describe("ai-config template file presence", () => {
 		it("ai-config project template must be registered", () => {
 			const angularFramework: Framework = require(templatesLocation);
-			const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+			const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts")!;
 			expect(projLibrary.getProject(AI_CONFIG_PROJECT_ID)).toBeDefined();
 		});
 

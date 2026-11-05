@@ -2,7 +2,7 @@ import { ProjectLibrary, ProjectTemplate } from "../types";
 
 /** Returns true if the given project template is safe to use for upgrade operations,
  * i.e. it's not hidden/partial-only and actually implements `upgradeIgniteUIPackages`. */
-function isUpgradeableProject(project: ProjectTemplate): boolean {
+function isUpgradeableProject(project: ProjectTemplate | null): project is ProjectTemplate {
 	return !!project && !project.isHidden && typeof project.upgradeIgniteUIPackages === "function";
 }
 

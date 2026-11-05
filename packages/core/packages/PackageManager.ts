@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+import { exec, ExecException } from "child_process";
 import * as path from "path";
 import { BaseTemplateManager } from "../templates";
 import { Config, FS_TOKEN, IFileSystem } from "../types";
@@ -8,6 +8,16 @@ import componentsConfig = require("./components");
 
 /** @internal */
 export const REGISTRY_ATTEMPT_LOGIN = false;
+
+interface InstallResult {
+	packageName: string;
+	error: ExecException | null;
+	stdout: string;
+	stderr: string;
+}
+
+/** Queued install task, tagged with the package name (without version) */
+type InstallTask = Promise<InstallResult> & { packageName?: string };
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
@@ -20,7 +30,7 @@ export class PackageManager {
 		return path.join(process.cwd(), "package.json");
 	}
 
-	private static installQueue: Array<Promise<{ packageName, error, stdout, stderr }>> = [];
+	private static installQueue: InstallTask[] = [];
 
 	/**
 	 * Specific for Ignite UI packages handling:
@@ -109,9 +119,10 @@ export class PackageManager {
 				// ignore stdout and stderr as they will output unnecessary text onto the console
 				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
-			} catch (error) {
+			} catch (e) {
+				const error = e as Error & { status?: number | null };
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
-				if (error.status === 3221225786 || error.status > 128) {
+				if (error.status === 3221225786 || (error.status ?? 0) > 128) {
 					// drop process on user interrupt
 					process.exit();
 					return; // just for tests
@@ -142,7 +153,7 @@ export class PackageManager {
 		} catch (error) {
 			Util.log(`Error uninstalling package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
-				Util.log(error.message);
+				Util.log((error as Error).message);
 			}
 			return false;
 		}
@@ -160,7 +171,7 @@ export class PackageManager {
 		} catch (error) {
 			Util.log(`Error installing package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
-				Util.log(error.message);
+				Util.log((error as Error).message);
 			}
 			return false;
 		}
@@ -176,7 +187,7 @@ export class PackageManager {
 		if (!packageJSON.dependencies) {
 			packageJSON.dependencies = {};
 		}
-		if (packageJSON.dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
+		if (packageJSON.dependencies[packName] || this.installQueue.find(x => x.packageName === packName)) {
 			return;
 		}
 		packageJSON.dependencies[packName] = version;
@@ -195,7 +206,7 @@ export class PackageManager {
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
-		const task = new Promise<{ packageName, error, stdout, stderr }>((resolve, reject) => {
+		const task: InstallTask = new Promise<InstallResult>((resolve, reject) => {
 			const child = exec(
 				command, {},
 				(error, stdout, stderr) => {
@@ -203,7 +214,7 @@ export class PackageManager {
 				}
 			);
 		});
-		task["packageName"] = packName;
+		task.packageName = packName;
 		this.installQueue.push(task);
 	}
 
@@ -287,7 +298,7 @@ export class PackageManager {
 		return "npm";
 	}
 
-	private static isOSSPackage(original): boolean {
+	private static isOSSPackage(original: string | undefined): boolean {
 		return original === `./node_modules/${this.ossPackage}`;
 	}
 }

@@ -11,7 +11,7 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 	});
 
 	// trim
-	argv.name = argv.name.trim();
+	argv.name = argv.name!.trim();
 
 	// letter+alphanumeric check
 	if (!Util.isAlphanumericExt(argv.name)) {
@@ -28,18 +28,18 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 	}
 
 	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
-	if (templateManager.getFrameworkById(argv.framework) === undefined) {
+	if (templateManager.getFrameworkById(argv.framework!) === undefined) {
 		return Util.error("Framework not supported", "red");
 	}
 
 	let projectLib: ProjectLibrary;
 	if (argv.type) {
-		projectLib = templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+		projectLib = templateManager.getProjectLibrary(argv.framework!, argv.type) as ProjectLibrary;
 		if (!projectLib) {
 			return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`);
 		}
 	} else {
-		projectLib = templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+		projectLib = templateManager.getProjectLibrary(argv.framework!) as ProjectLibrary;
 		argv.type = projectLib.projectType;
 	}
 
@@ -47,7 +47,7 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		projectLib.generateTemplateFolderPath,
 		outDir,
 		{
-			templateFramework: argv.framework,
+			templateFramework: argv.framework!,
 			templateName: argv.name,
 			templateType: argv.type
 		},

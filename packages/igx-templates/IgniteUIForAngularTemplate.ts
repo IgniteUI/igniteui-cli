@@ -6,15 +6,15 @@ import type { AngularTypeScriptFileUpdate } from "./AngularTypeScriptFileUpdate"
 import * as path from "path";
 
 export class IgniteUIForAngularTemplate implements Template {
-	public components: string[];
-	public controlGroup: string;
+	public components!: string[];
+	public controlGroup!: string;
 	public listInComponentTemplates: boolean = true;
 	public addAsNgModuleDeclaration: boolean = false;
 	public addAsNgModuleImport: boolean = true;
 	public listInCustomTemplates: boolean = false;
-	public id: string;
-	public name: string;
-	public description: string;
+	public id!: string;
+	public name!: string;
+	public description!: string;
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
@@ -41,7 +41,7 @@ export class IgniteUIForAngularTemplate implements Template {
 	constructor(private rootPath: string) {
 	}
 
-	public generateConfig(name: string, options: {}): { [key: string]: any } {
+	public generateConfig(name: string, options: { [key: string]: any } = {}): { [key: string]: any } {
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
 			return Promise.resolve(false);
@@ -161,21 +161,22 @@ export class IgniteUIForAngularTemplate implements Template {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) { }
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void { }
 
 	public fileExists(filePath: string): boolean {
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 	}
 
 	protected getBaseVariables(name: string): { [key: string]: string } {
-		const config = {};
+		const config: { [key: string]: string } = {};
 		config["name"] = Util.nameFromPath(name);
 		config["ClassName"] = Util.className(Util.nameFromPath(name));
 		config["path"] = this.folderName(name);
 		config["filePrefix"] = this.fileName(name);
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
-		config["camelCaseName"] = Util.camelCase(name);
+		// component names are validated as non-empty before templates run
+		config["camelCaseName"] = Util.camelCase(name)!;
 		config["igxPackage"] = resolvePackage(NPM_ANGULAR);
 		config["dockManagerPackage"] = resolvePackage(NPM_DOCK_MANAGER);
 

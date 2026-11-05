@@ -18,6 +18,7 @@
 				"./packages/cli"
 			]
 		},
+		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 	},

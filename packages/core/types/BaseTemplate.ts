@@ -39,5 +39,5 @@ export interface BaseTemplate {
 	getExtraConfiguration(): ControlExtraConfiguration[];
 
 	/** This method is used when the user selects extra configuration and it should be passed to the template */
-	setExtraConfiguration(extraConfigKeys: {});
+	setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void;
 }
