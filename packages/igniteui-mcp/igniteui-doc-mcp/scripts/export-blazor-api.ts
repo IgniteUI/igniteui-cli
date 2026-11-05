@@ -12,6 +12,7 @@
  *   5. npm run build:IgniteUI.Blazor (×5 packages)  — docfx → JSON
  *   6. npm run build:blazor:en  — Astro SSG → dist/en/api/blazor/**
  *   7. Copy dist/en/api/blazor/{pkg}/{ver}/llms-full.txt → docs/blazor-api/{pkg}/{ver}/llms-full.txt
+ *      (newest {ver} only; older exported versions are removed)
  */
 
 import {
@@ -23,6 +24,7 @@ import {
 } from 'fs';
 import { join, resolve } from 'path';
 import { execSync } from 'child_process';
+import { newestVersionDir, pruneOtherVersions } from './lib/api-export.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
@@ -92,21 +94,16 @@ for (const pkgName of readdirSync(ASTRO_DIST)) {
   const pkgSrc = join(ASTRO_DIST, pkgName);
   if (!statSync(pkgSrc).isDirectory()) continue;
 
-  for (const versionName of readdirSync(pkgSrc)) {
-    const versionSrc = join(pkgSrc, versionName);
-    if (!statSync(versionSrc).isDirectory()) continue;
+  const versionName = newestVersionDir(pkgSrc);
+  if (!versionName) continue;
 
-    const srcFile = join(versionSrc, 'llms-full.txt');
-    if (!existsSync(srcFile)) continue;
+  pruneOtherVersions(join(OUTPUT_DIR, pkgName), versionName);
+  const destDir = join(OUTPUT_DIR, pkgName, versionName);
+  mkdirSync(destDir, { recursive: true });
 
-    const destDir = join(OUTPUT_DIR, pkgName, versionName);
-    mkdirSync(destDir, { recursive: true });
-
-    const destFile = join(destDir, 'llms-full.txt');
-    copyFileSync(srcFile, destFile);
-    console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
-    copied++;
-  }
+  copyFileSync(join(pkgSrc, versionName, 'llms-full.txt'), join(destDir, 'llms-full.txt'));
+  console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
+  copied++;
 }
 
 if (copied === 0) {
