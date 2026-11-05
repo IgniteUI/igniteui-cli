@@ -46,11 +46,8 @@ describe("Unit - execute.js", () => {
 		fs.rmSync(tempRoot, { recursive: true, force: true });
 	});
 
-	it("delegates commands to the project-local CLI", async () => {
+	it("delegates commands to the project-local CLI, except update and ai-config, which run with the invoked CLI", async () => {
 		expect(await runExecute("add", "grid")).toBe("local");
-	});
-
-	it("runs update and ai-config with the invoked CLI, even when an older one is installed locally", async () => {
 		expect(await runExecute("update")).toBe("invoked");
 		expect(await runExecute("ai-config")).toBe("invoked");
 	});

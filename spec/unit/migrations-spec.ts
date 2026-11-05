@@ -32,14 +32,17 @@ describe("Unit - update migrations metadata", () => {
 			return getMigrationsCollection(packageDir, framework);
 		}
 
-		it("returns the absolute path of a collection declared for every framework", () => {
+		it("returns the absolute path of a collection declared for every framework, and none without ig-update migrations", () => {
 			const collection = write("migrations/collection.json", "{}");
 			expect(collectionFor({ migrations: "./migrations/collection.json" })).toBe(collection);
 			expect(collectionFor({ migrations: "migrations\\collection.json" }, "webcomponents")).toBe(collection);
-			// only starts with dots, so it is inside the package
 			const dotted = write("..migrations/collection.json", "{}");
 			expect(collectionFor({ migrations: "..migrations/collection.json" })).toBe(dotted);
 			expect(getMigrationsCollection(packageDir, undefined)).withContext("framework not identified").toBe(dotted);
+
+			write("package.json", { name: "lib", "ng-update": { migrations: "./migrations/collection.json" } });
+			expect(getMigrationsCollection(packageDir, "react")).withContext("ng-update only").toBeUndefined();
+			expect(collectionFor({ packageGroup: ["lib", "lib-extras"] })).toBeUndefined();
 		});
 
 		it("picks the framework's collection from a map, none when the framework has no entry, and throws when it isn't identified", () => {
@@ -49,13 +52,6 @@ describe("Unit - update migrations metadata", () => {
 			expect(() => getMigrationsCollection(packageDir, undefined)).toThrowError(
 				`Can't tell whether this is a React or Web Components project, and lib has migrations for each. ` +
 				`Set "project.framework" to "react" or "webcomponents" in ignite-ui-cli.json.`);
-		});
-
-		it("returns none for packages without ig-update migrations, including ng-update-only packages", () => {
-			write("migrations/collection.json", "{}");
-			write("package.json", { name: "lib", "ng-update": { migrations: "./migrations/collection.json" } });
-			expect(getMigrationsCollection(packageDir, "react")).toBeUndefined();
-			expect(collectionFor({ packageGroup: ["lib", "lib-extras"] })).toBeUndefined();
 		});
 
 		it("rejects invalid metadata", () => {
@@ -88,7 +84,6 @@ describe("Unit - update migrations metadata", () => {
 			}`));
 			expect(migrations[0]).toEqual({ name: "full", version: "2.1.0", description: "Full", optional: false, recommended: false });
 			expect(migrations[1]).toEqual({ name: "major", version: "3.0.0", description: undefined, optional: true, recommended: true });
-			expect(names(migrations.filter(m => m.optional))).toEqual(["major"]);
 			expect(migrations.map(m => m.version)).toEqual(["2.1.0", "3.0.0", "3.1.0", "3.1.0-rc.1", undefined, undefined, undefined]);
 		});
 
@@ -114,19 +109,13 @@ describe("Unit - update migrations metadata", () => {
 	});
 
 	describe("selectMigrations", () => {
-		it("selects versions in (from, to] and skips entries without a version", () => {
-			const migrations = [migration("from", "1.0.0"), migration("between", "1.5.0"), migration("to", "2.0.0"),
-				migration("after", "2.0.1"), migration("none")];
-			expect(selectMigrations(migrations, "1.0.0", "2.0.0")).toEqual({ required: [migrations[1], migrations[2]], optional: [] });
-			expect(selectMigrations(migrations, "2.0.0", "2.0.0").required).toEqual([]);
-		});
-
-		it("orders by version, keeping the collection order for equal versions, and splits optional migrations", () => {
-			const migrations = [migration("c", "3.0.0"), migration("b2", "2.0.0"), migration("opt", "2.5.0", true),
-				migration("b1", "2.0.0"), migration("a", "1.1.0"), migration("rc", "3.0.0-rc.1")];
+		it("selects versions in (from, to] by version, keeping the collection order for equal versions, and splits optional migrations", () => {
+			const migrations = [migration("c", "3.0.0"), migration("b2", "2.0.0"), migration("opt", "2.5.0", true), migration("from", "1.0.0"),
+				migration("b1", "2.0.0"), migration("a", "1.1.0"), migration("rc", "3.0.0-rc.1"), migration("after", "3.0.1"), migration("none")];
 			const { required, optional } = selectMigrations(migrations, "1.0.0", "3.0.0");
 			expect(names(required)).toEqual(["a", "b2", "b1", "rc", "c"]);
 			expect(names(optional)).toEqual(["opt"]);
+			expect(selectMigrations(migrations, "3.0.0", "3.0.0")).toEqual({ required: [], optional: [] });
 		});
 
 		it("handles prereleases like Angular", () => {

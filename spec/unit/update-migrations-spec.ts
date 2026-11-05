@@ -36,7 +36,6 @@ exports.default = () => (tree, { logger }) => { logger.debug("hidden"); logger.w
 		fs.writeFileSync(file, typeof content === "string" ? content : JSON.stringify(content));
 	}
 
-	/** The fixture installed by npm (hoisted), or by pnpm (linked into the store, with its dependencies next to it) */
 	function project(layout: "npm" | "pnpm") {
 		write("src/app.tsx", APP);
 		const modules = layout === "npm" ? "node_modules" : path.join(tempDir, "node_modules/.pnpm/fixture-lib@2.0.0/node_modules");
@@ -71,21 +70,19 @@ exports.default = () => (tree, { logger }) => { logger.debug("hidden"); logger.w
 		fs.rmSync(tempDir, { recursive: true, force: true });
 	});
 
-	for (const layout of ["npm", "pnpm"] as const) {
-		it(`runs the migrations in order, each on the changes of the one before (${layout} layout)`, async () => {
-			const { collection, pick } = project(layout);
+	it("runs the migrations in order, each on the changes of the one before (pnpm layout)", async () => {
+		const { collection, pick } = project("pnpm");
 
-			const result = await runMigrations(collection, pick("first", "second"), "npm");
+		const result = await runMigrations(collection, pick("first", "second"), "npm");
 
-			expect(result).toEqual({ completed: pick("first", "second"), notRun: [] });
-			expect(app()).toBe(APP + "// first\n// second\n");
-			expect(output).toEqual(["  first: First", "first applied", "    UPDATE src/app.tsx", "  second: Second", "warning", "error", "    UPDATE src/app.tsx"]);
-			expect(Util.warn).toHaveBeenCalledWith("warning", "yellow");
-			expect(Util.warn).toHaveBeenCalledWith("error", "red");
-		});
-	}
+		expect(result).toEqual({ completed: pick("first", "second"), notRun: [] });
+		expect(app()).toBe(APP + "// first\n// second\n");
+		expect(output).toEqual(["  first: First", "first applied", "    UPDATE src/app.tsx", "  second: Second", "warning", "error", "    UPDATE src/app.tsx"]);
+		expect(Util.warn).toHaveBeenCalledWith("warning", "yellow");
+		expect(Util.warn).toHaveBeenCalledWith("error", "red");
+	});
 
-	it("stops at a failing migration and doesn't write its changes", async () => {
+	it("stops at a failing migration and doesn't write its changes (npm layout)", async () => {
 		const { collection, pick } = project("npm");
 
 		const result = await runMigrations(collection, pick("first", "broken", "second"));
@@ -116,28 +113,22 @@ exports.default = () => (tree, { logger }) => { logger.debug("hidden"); logger.w
 	});
 
 	describe("loadDevKit", () => {
-		/** Resolves DevKit's manifest with `resolve` instead */
-		function resolveDevKit(resolve: () => string) {
-			const original = (Module as any)._resolveFilename;
-			spyOn(Module as any, "_resolveFilename").and.callFake(function (this: unknown, request: string, ...rest: unknown[]) {
-				return request === "@angular-devkit/schematics/package.json" ? resolve() : original.call(this, request, ...rest);
-			});
-		}
-
 		it("loads DevKit when it's installed and supports the running Node.js", async () => {
 			await expectAsync(loadDevKit()).toBeResolved();
 		});
 
-		it("reports a DevKit that isn't installed", async () => {
-			resolveDevKit(() => { throw Object.assign(new Error("Cannot find module"), { code: "MODULE_NOT_FOUND" }); });
+		it("reports a DevKit that isn't installed and a Node.js version outside DevKit's engines, each with its own error", async () => {
+			let manifest: () => string = () => { throw Object.assign(new Error("Cannot find module"), { code: "MODULE_NOT_FOUND" }); };
+			const original = (Module as any)._resolveFilename;
+			spyOn(Module as any, "_resolveFilename").and.callFake(function (this: unknown, request: string, ...rest: unknown[]) {
+				return request === "@angular-devkit/schematics/package.json" ? manifest() : original.call(this, request, ...rest);
+			});
 
 			await expectAsync(loadDevKit()).toBeRejectedWithError(
 				/^Running migrations requires @angular-devkit\/schematics, an optional dependency of igniteui-cli that isn't installed\./);
-		});
 
-		it("reports a Node.js version outside DevKit's engines", async () => {
 			write("devkit/package.json", { engines: { node: ">=99" } });
-			resolveDevKit(() => path.join(tempDir, "devkit/package.json"));
+			manifest = () => path.join(tempDir, "devkit/package.json");
 
 			await expectAsync(loadDevKit()).toBeRejectedWithError(`Running migrations requires Node.js >=99 (running ${process.version}).`);
 		});

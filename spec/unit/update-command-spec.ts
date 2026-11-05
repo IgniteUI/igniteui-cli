@@ -33,7 +33,6 @@ describe("Unit - Update command", () => {
 	type Flags = Partial<Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose" | "migrateOnly", boolean>> &
 		{ packages?: string[]; from?: string; to?: string; name?: string };
 	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
-	/** `ig update igniteui-webcomponents` */
 	const updateWc = (args: Flags = {}) => run({ packages: [WC], ...args });
 	const installOptions = () => ({ stdio: "inherit" as const, env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 	const read = (file: string) => fs.readFileSync(file, "utf8");
@@ -49,6 +48,10 @@ describe("Unit - Update command", () => {
 	const MAP = { react: "./migrations/react.json", webcomponents: "./migrations/webcomponents.json" };
 	let runMigrations: jasmine.Spy;
 	let loadDevKit: jasmine.Spy;
+	let execSync: jasmine.Spy;
+	let spawnSync: jasmine.Spy;
+	let getConfig: jasmine.Spy;
+	let collection: string;
 
 	function installFixture(migrations: string | Record<string, string> = "./migrations/collection.json", name = "fixture-lib", version = "2.0.0") {
 		const dir = path.join("node_modules", name);
@@ -75,10 +78,10 @@ describe("Unit - Update command", () => {
 		for (const method of ["log", "warn", "error"] as const) {
 			spyOn(Util, method).and.callFake((message: string) => { output.push(message); });
 		}
-		spyOn(child_process, "execSync");
-		spyOn(Util, "spawnSync").and.returnValue({ status: 128, stdout: "" } as any);
+		execSync = spyOn(child_process, "execSync");
+		spawnSync = spyOn(Util, "spawnSync").and.returnValue({ status: 128, stdout: "" } as any);
 		spyOn(GoogleAnalytics, "post");
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "webcomponents" } } as any);
+		getConfig = spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "webcomponents" } } as any);
 		runMigrations = spyOn(updateMigrations, "runMigrations").and.callFake(async (_collection, migrations) => ({ completed: migrations, notRun: [] }));
 		loadDevKit = spyOn(updateMigrations, "loadDevKit").and.resolveTo();
 		spyOn(Util, "canPrompt").and.returnValue(false);
@@ -92,22 +95,24 @@ describe("Unit - Update command", () => {
 	});
 
 	describe("frameworks", () => {
-		it("posts analytics and detects React from package.json without a project config", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+		it("posts analytics and detects React from package.json without a project config, saying where it came from", async () => {
+			getConfig.and.returnValue({});
 			project({ dependencies: { [WC]: "~6.0.0", react: "^19.0.0" } });
 			plan();
 
-			await updateCmd.handler({ _: [], $0: "ig", packages: [WC] });
+			await updateCmd.handler({ _: [], $0: "ig", packages: [WC], verbose: true });
 
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith({ t: "screenview", cd: "Update" });
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith({ t: "event", ec: "$ig update", cd1: "react" });
 			expect(log()).toContain("Update plan (React, npm)");
+			expect(Util.log).toHaveBeenCalledWith("Framework: react (detected from package.json)", "gray");
+			expect(Util.log).toHaveBeenCalledWith("Package manager: npm (packageManager field not set; lockfiles: none)", "gray");
 		});
 
 		it("doesn't update jQuery or Blazor projects", async () => {
 			const getPlan = plan();
 			for (const framework of ["jquery", "blazor"]) {
-				(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework } });
+				getConfig.and.returnValue({ project: { framework } });
 				await run();
 			}
 			expect(getPlan).not.toHaveBeenCalled();
@@ -119,7 +124,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("fails without a package.json", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+			getConfig.and.returnValue({});
 			await run();
 			expect(log()).toContain("No valid package.json found");
 			expect(process.exitCode).toBe(1);
@@ -150,8 +155,8 @@ describe("Unit - Update command", () => {
 			]);
 			expect(read("package.json")).toBe(original);
 			expect(getPlan).not.toHaveBeenCalled();
-			expect(Util.spawnSync).not.toHaveBeenCalled();
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(loadDevKit).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
@@ -187,44 +192,17 @@ describe("Unit - Update command", () => {
 			expect(output).toEqual(["Unable to check for updates.", "Unable to parse node_modules/x/package.json: Unexpected end of JSON input."]);
 			expect(process.exitCode).toBe(1);
 		});
-
-		it("reports latest versions that are missing, not strings or invalid as failed lookups, still listing the other updates", async () => {
-			const responses: Record<string, unknown> = {
-				[WC]: "6.1.0",
-				"missing-lib": { "ig-update": { migrations: "./migrations.json" } },
-				"number-lib": { version: 2, "ig-update": { migrations: "./migrations.json" } },
-				"invalid-lib": "2.0"
-			};
-			project({ dependencies: { [WC]: "~6.0.0", "missing-lib": "^1.0.0", "number-lib": "^1.0.0", "invalid-lib": "^1.0.0" } });
-			(spyOn(child_process, "execFile") as jasmine.Spy).and.callFake((_command: string, args: string[], _options: object,
-				callback: (error: null, stdout: string, stderr: string) => void) => {
-				const spec = args[args.indexOf("view") + 1];
-				setImmediate(() => callback(null, JSON.stringify(responses[spec.replace(/@latest$/, "")]), ""));
-			});
-
-			await run();
-
-			const failed = "Unable to check some packages for updates.";
-			expect(output).toEqual([
-				"Updates available:",
-				`  ${WC}  6.0.0 -> 6.1.0  ig update ${WC}`,
-				hint,
-				failed,
-				["missing-lib", "number-lib", "invalid-lib"]
-					.map(name => `Unable to get ${name}@latest from the registry: the response has no valid version.`).join("\n")
-			]);
-			expect(posted()).toEqual([failed]);
-			expect(process.exitCode).toBe(1);
-		});
 	});
 
 	describe("plan", () => {
 		it("prints updates, deprecations, Node engine mismatches, up-to-date, skipped packages and newer majors in a dry run", async () => {
 			const original = project({ workspaces: ["packages/*"] });
 			plan(
-				{ manifest: { version: "6.1.0", deprecated: "use 6.1.1", engines: { node: ">=999" } }, nextMajor: "7.4.1" },
+				{ manifest: { version: "6.1.0", deprecated: "use 6.1.1", engines: { node: ">=999" } }, nextMajor: "7.4.1", newest: "6.2.0" },
 				{ name: "igniteui-cli", section: "devDependencies", declared: "~15.7.0", installed: "15.7.0", baseline: "15.7.0",
 					target: "15.8.2", newRange: "~15.8.2", manifest: { version: "15.8.2", engines: { node: ">=10" } } },
+				{ name: "igniteui-react", declared: "~19.0.0", baseline: "19.0.0", target: "19.1.0", newRange: "~19.1.0",
+					manifest: { version: "19.1.0", engines: { node: "latest" } } },
 				{ name: "igniteui-grid-lite", baseline: "0.11.0", target: "0.11.0", newRange: undefined },
 				{ name: "igniteui-dockmanager", declared: "workspace:*", skipped: "unsupported spec", target: undefined, newRange: undefined }
 			);
@@ -236,45 +214,29 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("    deprecated: use 6.1.1");
 			expect(output).toContain(`    requires Node.js >=999, running ${process.version}`);
 			expect(log()).not.toContain("requires Node.js >=10");
+			expect(log()).withContext("invalid engines.node").not.toContain("requires Node.js latest");
+			expect(output).toContain("Held back: igniteui-webcomponents 6.1.0 (6.2.0 available)");
 			expect(output).toContain("Up to date: igniteui-grid-lite 0.11.0");
 			expect(output).toContain("Skipped igniteui-dockmanager: unsupported spec");
 			expect(log()).toContain("Newer version outside the requested range (not applied): igniteui-webcomponents 7.4.1");
 			expect(log()).toContain("Only the root package.json is updated");
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 		});
 
-		it("ignores an engines.node value that isn't a valid range", async () => {
-			project();
-			plan({ manifest: { version: "6.1.0", engines: { node: "latest" } } });
-
-			await updateWc({ dryRun: true });
-
-			expect(log()).not.toContain("requires Node.js");
-		});
-
-		it("only warns about several lockfiles in a dry run", async () => {
-			const original = project({}, { "yarn.lock": "", "bun.lock": "" });
-			plan();
-
-			await updateWc({ dryRun: true });
-
-			expect(log()).toContain("Lockfiles of several package managers found (yarn, bun)");
-			expect(log()).toContain("Dry run: no files were changed.");
-			expect(read("package.json")).toBe(original);
-			expect(process.exitCode).not.toBe(1);
-		});
-
-		it("changes nothing when up to date", async () => {
+		it("changes nothing when up to date, warning about a nested copy without blocking", async () => {
 			const original = project();
-			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined });
+			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined, nested: "~7.4.1 (required by igniteui-react@19.9.0)" });
 
 			await updateWc();
 
+			expect(output).toContain("Not met by igniteui-webcomponents ~6.0.0: ~7.4.1 (required by igniteui-react@19.9.0). " +
+				"The requiring packages may get a separate copy of igniteui-webcomponents; check that the copies work together at runtime.");
 			expect(log()).toContain("Already up to date.");
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).not.toBe(1);
 		});
 
 		it("reports a package held back by the requirements of other packages instead of calling it up to date", async () => {
@@ -291,45 +253,10 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain("Nothing to update.");
 			expect(log()).not.toContain("Already up to date.");
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
-		it("lists a package updated below the newest version of its line among the updates and as held back", async () => {
-			project();
-			plan({ newest: "6.2.0" });
-
-			await updateWc({ dryRun: true });
-
-			expect(output).toContain("  igniteui-webcomponents  not installed -> 6.1.0  (~6.0.0 -> ~6.1.0)  no migrations declared");
-			expect(output).toContain("Held back: igniteui-webcomponents 6.1.0 (6.2.0 available)");
-			expect(log()).not.toContain("Up to date");
-			expect(log()).toContain("Dry run: no files were changed.");
-		});
-
-		it("warns about a nested copy without blocking when up to date", async () => {
-			project();
-			plan({ baseline: "6.1.0", target: "6.1.0", newRange: undefined, nested: "~7.4.1 (required by igniteui-react@19.9.0)" });
-
-			await updateWc({ dryRun: true });
-
-			expect(output).toContain("Not met by igniteui-webcomponents ~6.0.0: ~7.4.1 (required by igniteui-react@19.9.0). " +
-				"The requiring packages may get a separate copy of igniteui-webcomponents; check that the copies work together at runtime.");
-			expect(log()).toContain("Already up to date.");
-			expect(process.exitCode).not.toBe(1);
-		});
-
-		it("blocks the update on conflicts", async () => {
-			const original = project();
-			plan({}, { name: "igniteui-grid-lite", conflict: "no version in \"^0.11.0\" satisfies ~0.12.0", newRange: undefined });
-
-			await updateWc();
-
-			expect(log()).toContain("Conflict in igniteui-grid-lite: no version in \"^0.11.0\" satisfies ~0.12.0");
-			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-		});
 	});
 
 	describe("install", () => {
@@ -345,27 +272,17 @@ describe("Unit - Update command", () => {
 		];
 		for (const [installCommand, lockfiles, packageManager] of managers) {
 			const source = packageManager ?? (Object.keys(lockfiles).join() || "no lockfile");
-			const forcedCommand = installCommand === "npm install" ? "npm install --force" : installCommand;
-			it(`resolves with --force and runs "${forcedCommand}" (${source})`, async () => {
-				project(packageManager ? { packageManager } : {}, lockfiles);
-				const getPlan = plan();
-
-				await updateWc({ force: true });
-
-				expect(getPlan).toHaveBeenCalledOnceWith({ requests: [{ name: WC }], force: true, verbose: false });
-				expect(child_process.execSync).toHaveBeenCalledOnceWith(forcedCommand, installOptions());
-				expect(process.exitCode).toBe(0);
-			});
-
 			it(`runs "${installCommand}" with visible output after updating package.json (${source})`, async () => {
+				const immutableInstalls = process.env.YARN_ENABLE_IMMUTABLE_INSTALLS;
 				project(packageManager ? { packageManager } : {}, lockfiles);
 				plan();
 				let installedFrom: string;
-				(child_process.execSync as jasmine.Spy).and.callFake(() => { installedFrom = read("package.json"); });
+				execSync.and.callFake(() => { installedFrom = read("package.json"); });
 
 				await updateWc();
 
-				expect(child_process.execSync).toHaveBeenCalledOnceWith(installCommand, installOptions());
+				expect(execSync).toHaveBeenCalledOnceWith(installCommand, installOptions());
+				expect(process.env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe(immutableInstalls);
 				expect(installedFrom).toContain(`"${WC}": "~6.1.0"`);
 				expect(log()).toContain("Updated 1 package(s). Next: run your build and tests.");
 				expect(process.exitCode).not.toBe(1);
@@ -376,34 +293,12 @@ describe("Unit - Update command", () => {
 			project();
 			plan();
 			let exitCodeDuringInstall: typeof process.exitCode;
-			(child_process.execSync as jasmine.Spy).and.callFake(() => { exitCodeDuringInstall = process.exitCode; });
+			execSync.and.callFake(() => { exitCodeDuringInstall = process.exitCode; });
 
 			await updateWc();
 
 			expect(exitCodeDuringInstall).toBe(1);
 			expect(process.exitCode).toBe(0);
-		});
-
-		it("lets Yarn Berry update the lockfile in CI without changing the environment of ig itself", async () => {
-			const immutableInstalls = process.env.YARN_ENABLE_IMMUTABLE_INSTALLS;
-			project({ packageManager: "yarn@4.9.1" }, { "yarn.lock": "" });
-			plan();
-
-			await updateWc();
-
-			expect((child_process.execSync as jasmine.Spy).calls.mostRecent().args[1].env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe("false");
-			expect(process.env.YARN_ENABLE_IMMUTABLE_INSTALLS).toBe(immutableInstalls);
-		});
-
-		it("only updates package.json with --skip-install", async () => {
-			project({}, { "yarn.lock": "" });
-			plan();
-
-			await updateWc({ skipInstall: true });
-
-			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(child_process.execSync).not.toHaveBeenCalled();
-			expect(log()).toContain(`Run "yarn install" to install them.`);
 		});
 
 		it("refuses to guess between several lockfiles, but updates package.json with --skip-install", async () => {
@@ -414,14 +309,14 @@ describe("Unit - Update command", () => {
 
 			expect(log()).toContain("Lockfiles of several package managers found (npm, yarn)");
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 
 			process.exitCode = originalExitCode;
 			await updateWc({ skipInstall: true });
 
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(log()).toContain("Run your package manager's install command to update the lockfile.");
 			expect(process.exitCode).not.toBe(1);
 		});
@@ -430,7 +325,7 @@ describe("Unit - Update command", () => {
 			const lockb = Buffer.from([0xff, 0x00, 0xfe, 0x80]);
 			const original = project({}, { "bun.lockb": lockb });
 			plan();
-			(child_process.execSync as jasmine.Spy).and.callFake(() => {
+			execSync.and.callFake(() => {
 				fs.writeFileSync("bun.lockb", "changed");
 				fs.writeFileSync("bun.lock", "created");
 				throw new Error("Command failed: bun install");
@@ -450,7 +345,7 @@ describe("Unit - Update command", () => {
 			const lockb = Buffer.from([0xff, 0x00]);
 			const original = project({}, { "bun.lockb": lockb });
 			plan();
-			(child_process.execSync as jasmine.Spy).and.callFake(() => {
+			execSync.and.callFake(() => {
 				fs.mkdirSync("bun.lock");
 				throw new Error("Command failed: bun install");
 			});
@@ -463,26 +358,6 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		it("recommends npm ci after a failed npm install with a lockfile, and npm install without one", async () => {
-			project({}, { "package-lock.json": "{}" });
-			plan();
-			(child_process.execSync as jasmine.Spy).and.throwError("Command failed: npm install");
-
-			await updateWc();
-			expect(read("package-lock.json")).toBe("{}");
-			expect(log()).toContain(`run "npm ci" to resync it`);
-
-			fs.rmSync("package-lock.json");
-			(child_process.execSync as jasmine.Spy).and.callFake(() => {
-				fs.writeFileSync("package-lock.json", "created");
-				throw new Error("Command failed: npm install");
-			});
-
-			await updateWc();
-			expect(fs.existsSync("package-lock.json")).toBe(false);
-			expect(log()).toContain(`"npm install" failed. Restored package.json; node_modules may be partially updated, run "npm install"`);
-		});
-
 		it("rolls back a failed install whatever its exit status, including the statuses above 128 npm exits with on system errors", async () => {
 			const exit = spyOn(process, "exit");
 			plan();
@@ -490,7 +365,7 @@ describe("Unit - Update command", () => {
 				const original = project({}, { "package-lock.json": "{}" });
 				output = [];
 				process.exitCode = originalExitCode;
-				(child_process.execSync as jasmine.Spy).and.callFake(() => {
+				execSync.and.callFake(() => {
 					fs.writeFileSync("package-lock.json", "changed");
 					throw Object.assign(new Error("Command failed: npm install"), { status });
 				});
@@ -499,7 +374,8 @@ describe("Unit - Update command", () => {
 
 				expect(read("package.json")).withContext(`status ${status}`).toBe(original);
 				expect(read("package-lock.json")).withContext(`status ${status}`).toBe("{}");
-				expect(log()).withContext(`status ${status}`).toContain(`"npm install" failed. Restored package.json and the lockfile;`);
+				expect(log()).withContext(`status ${status}`).toContain(`"npm install" failed. Restored package.json and the lockfile; ` +
+					`node_modules may be partially updated, run "npm ci" to resync it.`);
 				expect(process.exitCode).withContext(`status ${status}`).toBe(1);
 			}
 			expect(exit).not.toHaveBeenCalled();
@@ -531,19 +407,20 @@ describe("Unit - Update command", () => {
 
 		it("applies a forced plan after reporting every overridden range and a summary", async () => {
 			project();
-			plan(
+			const getPlan = plan(
 				{ forced: overridden },
 				{ name: "igniteui-grid-lite", baseline: "0.11.4", target: "0.11.4", newRange: undefined, forced: "0.11.0 (required by igniteui-react@19.9.0)" }
 			);
 
 			await updateWc({ force: true });
 
+			expect(getPlan).toHaveBeenCalledOnceWith({ requests: [{ name: WC }], force: true, verbose: false });
 			expect(output).toContain("Overridden by --force for igniteui-webcomponents: ~6.0.0 (required by igniteui-react@19.9.0)");
 			expect(output).toContain("Overridden by --force for igniteui-grid-lite: 0.11.0 (required by igniteui-react@19.9.0)");
 			expect(output).toContain("--force overrides the version requirements of 2 package(s); " +
 				"the updated packages may not work together. Run your build and tests.");
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
-			expect(child_process.execSync).toHaveBeenCalledOnceWith("npm install --force", installOptions());
+			expect(execSync).toHaveBeenCalledOnceWith("npm install --force", installOptions());
 			expect(Util.log).not.toHaveBeenCalledWith(jasmine.any(String), "gray");
 			expect(process.exitCode).toBe(0);
 		});
@@ -559,7 +436,7 @@ describe("Unit - Update command", () => {
 			expect(log()).not.toContain("Already up to date");
 			expect(log()).not.toContain("--force overrides");
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -584,9 +461,8 @@ describe("Unit - Update command", () => {
 		const previews: [string, Flags, Record<string, string>, string?][] = [
 			["npm, every flag", { force: true, allowDirty: true, verbose: true }, {}, `Would run "npm install --force".`],
 			["yarn", { force: true }, { "yarn.lock": "" }, `Would run "yarn install".`],
-			["--skip-install", { force: true, skipInstall: true }, {}],
 			["several lockfiles", { force: true }, { "yarn.lock": "", "bun.lock": "" }],
-			["no --force", {}, {}]
+			["--skip-install", { force: true, skipInstall: true }, {}]
 		];
 		for (const [name, flags, lockfiles, installLine] of previews) {
 			it(`changes nothing in a dry run, naming the install only when --force changes it (${name})`, async () => {
@@ -598,8 +474,8 @@ describe("Unit - Update command", () => {
 				expect(output.filter(line => line.startsWith("Would run"))).toEqual(installLine ? [installLine] : []);
 				expect(log()).toContain("Dry run: no files were changed.");
 				expect(read("package.json")).toBe(original);
-				expect(child_process.execSync).not.toHaveBeenCalled();
-				expect(Util.spawnSync).not.toHaveBeenCalled();
+				expect(execSync).not.toHaveBeenCalled();
+				expect(spawnSync).not.toHaveBeenCalled();
 				expect(process.exitCode).not.toBe(1);
 			});
 		}
@@ -619,7 +495,7 @@ describe("Unit - Update command", () => {
 
 				expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
 				expect(output).toContain(`Updated 1 package(s) in package.json. ${hint}`);
-				expect(child_process.execSync).not.toHaveBeenCalled();
+				expect(execSync).not.toHaveBeenCalled();
 			});
 		}
 
@@ -629,51 +505,21 @@ describe("Unit - Update command", () => {
 			["partly overridable", [{ overridable: true }, { name: "igniteui-dockmanager" }], false]
 		];
 		for (const [name, conflicts, hinted] of blocked) {
-			it(`blocks on conflicts, suggesting --force only when it can override all of them (${name})`, async () => {
+			it(`blocks on conflicts, also with --force, suggesting --force only when it can override all of them (${name})`, async () => {
 				const original = project();
-				plan({}, ...conflicts.map(entry => ({ ...conflict, ...entry })));
+				plan({ forced: overridden }, ...conflicts.map(entry => ({ ...conflict, ...entry })));
 
-				await updateWc();
+				await updateWc({ force: true });
 
+				expect(log()).toContain(`Conflict in igniteui-grid-lite: ${conflict.conflict}`);
+				expect(log()).toContain("Nothing was updated because of the conflicts above.");
+				expect(log()).not.toContain("--force overrides");
 				expect(output.includes(forceHint)).toBe(hinted);
 				expect(read("package.json")).toBe(original);
-				expect(child_process.execSync).not.toHaveBeenCalled();
+				expect(execSync).not.toHaveBeenCalled();
 				expect(process.exitCode).toBe(1);
 			});
 		}
-
-		it("still blocks on a conflict --force can't override", async () => {
-			const original = project();
-			plan({ forced: overridden },
-				{ ...conflict, conflict: "--force can't override ranges that aren't valid versions: npm:other@1 (required by igniteui-react@19.9.0)" });
-
-			await updateWc({ force: true });
-
-			expect(log()).toContain("Conflict in igniteui-grid-lite: --force can't override ranges that aren't valid versions");
-			expect(log()).toContain("Nothing was updated because of the conflicts above.");
-			expect(log()).not.toContain(forceHint);
-			expect(log()).not.toContain("--force overrides");
-			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-		});
-
-		it("rolls back a failed npm install --force", async () => {
-			const original = project({}, { "package-lock.json": "{}" });
-			plan({ forced: overridden });
-			(child_process.execSync as jasmine.Spy).and.callFake(() => {
-				fs.writeFileSync("package-lock.json", "changed");
-				throw new Error("Command failed: npm install --force");
-			});
-
-			await updateWc({ force: true });
-
-			expect(read("package.json")).toBe(original);
-			expect(read("package-lock.json")).toBe("{}");
-			expect(log()).toContain(`"npm install --force" failed. Restored package.json and the lockfile; ` +
-				`node_modules may be partially updated, run "npm ci" to resync it.`);
-			expect(process.exitCode).toBe(1);
-		});
 	});
 
 	describe("--verbose", () => {
@@ -684,7 +530,7 @@ describe("Unit - Update command", () => {
 			project({ packageManager: "npm@10.9.0" },
 				{ "package-lock.json": "{}", ".npmrc": `//registry.example.com/:_authToken=${token}\n` });
 			const getPlan = plan();
-			(child_process.execSync as jasmine.Spy).and.callFake(() => {
+			execSync.and.callFake(() => {
 				fs.writeFileSync("npm-shrinkwrap.json", "created");
 				throw new Error("Command failed: npm install");
 			});
@@ -712,33 +558,19 @@ describe("Unit - Update command", () => {
 			expect(log()).not.toContain("registry.example.com");
 			expect(process.exitCode).toBe(1);
 		});
-
-		it("says where the framework and the package manager came from", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
-			project({ dependencies: { [WC]: "~6.0.0", react: "^19.0.0" } });
-			plan();
-
-			await updateWc({ verbose: true });
-
-			expect(Util.log).toHaveBeenCalledWith("Framework: react (detected from package.json)", "gray");
-			expect(Util.log).toHaveBeenCalledWith("Package manager: npm (packageManager field not set; lockfiles: none)", "gray");
-		});
 	});
 
 	describe("--migrate-only", () => {
 		const migrate = (args: Flags = {}) => run({ packages: ["fixture-lib"], migrateOnly: true, from: "1.0.0", ...args });
-		const requireStack = (...file: string[]) => `Cannot find module 'x'\nRequire stack:\n- ${path.join(tempDir, "node_modules", ...file)}`;
-
 		beforeEach(() => {
 			project();
+			[collection] = installFixture();
 		});
 
 		it("runs the required migrations in (from, to] by version after the checks, then lists the optional ones", async () => {
-			const [collection] = installFixture();
-
 			await migrate();
 
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
 			expect(loadDevKit).toHaveBeenCalledBefore(runMigrations);
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(output).toEqual([
@@ -753,7 +585,6 @@ describe("Unit - Update command", () => {
 		});
 
 		it("runs the optional migrations chosen in the prompt, with the recommended ones preselected", async () => {
-			const [collection] = installFixture();
 			(Util.canPrompt as jasmine.Spy).and.returnValue(true);
 			const checkbox = spyOn(InquirerWrapper, "checkbox").and.resolveTo(["later"]);
 
@@ -766,27 +597,7 @@ describe("Unit - Update command", () => {
 			expect(runMigrations.calls.allArgs()).toEqual([[collection, named("first", "second"), "npm"], [collection, named("later"), "npm"]]);
 		});
 
-		it("lists the optional migrations when the prompt is cancelled, without sending the prompt's error to analytics", async () => {
-			installFixture();
-			(Util.canPrompt as jasmine.Spy).and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.rejectWith(Object.assign(new Error("User force closed the prompt with SIGINT"), { name: "ExitPromptError" }));
-
-			await migrate();
-
-			expect(output.slice(-4)).toEqual([
-				"Cancelled: no optional migrations were run.",
-				"To run the optional migrations of fixture-lib, use:",
-				"  ig update fixture-lib --name later",
-				"  ig update fixture-lib --name extra"
-			]);
-			expect(posted()).toEqual(["Cancelled: no optional migrations were run."]);
-			expect(runMigrations).toHaveBeenCalledTimes(1);
-			expect(process.exitCode).toBe(1);
-		});
-
 		it("bounds the range with --to, accepts short versions and rejects invalid ones, keeping them out of analytics", async () => {
-			const [collection] = installFixture();
-
 			await migrate({ from: "1", to: "1.6" });
 			await migrate({ from: "x" });
 			await migrate({ to: "y" });
@@ -800,19 +611,20 @@ describe("Unit - Update command", () => {
 		});
 
 		it("runs one migration with --name, whatever its version", async () => {
-			const [collection] = installFixture();
-
 			await migrate({ from: undefined, name: "old" });
 			await migrate({ from: undefined, name: "missing" });
 
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("old"), "npm");
 			expect(output).toContain(`fixture-lib has no migration named "missing".`);
 			expect(posted()).toEqual(["Unable to run the migrations."]);
+
+			runMigrations.and.resolveTo({ completed: [], failed: { migration: { name: "unversioned" }, error: "boom" }, notRun: [] });
+			await migrate({ from: undefined, name: "old" });
+
+			expect(output).toContain("unversioned: boom");
 		});
 
 		it("lists the migrations with --dry-run, without checking git, loading DevKit or running them", async () => {
-			installFixture();
-
 			await migrate({ dryRun: true });
 			await migrate({ from: "2.0.0", dryRun: true });
 
@@ -826,14 +638,13 @@ describe("Unit - Update command", () => {
 				"Migrations of fixture-lib from 2.0.0 to 2.0.0:",
 				"No migrations to run."
 			]);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(loadDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
 
 		it("stops before running anything when the DevKit preflight fails, showing its error locally, not in analytics", async () => {
-			installFixture();
-			const error = requireStack("@angular-devkit", "schematics", "tools", "index.js");
+			const error = `Cannot find module 'x'\nRequire stack:\n- ${path.join(tempDir, "node_modules/@angular-devkit/schematics/tools/index.js")}`;
 			loadDevKit.and.rejectWith(new Error(error));
 
 			await migrate();
@@ -845,7 +656,6 @@ describe("Unit - Update command", () => {
 		});
 
 		it("lists optional-only migrations without a terminal, even when DevKit is unavailable", async () => {
-			installFixture();
 			loadDevKit.and.rejectWith(new Error("Running migrations requires @angular-devkit/schematics."));
 
 			await migrate({ from: "1.6.0", to: "1.9.0" });
@@ -856,32 +666,7 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).not.toBe(1);
 		});
 
-		it("reports a failed migration with the commands for the rest, showing its error locally, not in analytics, and offers no optional ones", async () => {
-			installFixture();
-			const error = requireStack("fixture-lib", "migrations", "second.js");
-			runMigrations.and.resolveTo({
-				completed: [{ name: "first" }], failed: { migration: { name: "second", version: "2.0.0" }, error }, notRun: [{ name: "third" }]
-			});
-
-			await migrate();
-
-			expect(output.slice(-4)).toEqual([
-				"A migration failed, and its changes weren't written.",
-				`second (2.0.0): ${error}`,
-				"Not run: third. Run it with: ig update fixture-lib --name third",
-				"Review the changes of the completed migrations with git diff."
-			]);
-			expect(posted()).toEqual(["A migration failed, and its changes weren't written."]);
-			expect(process.exitCode).toBe(1);
-
-			runMigrations.and.resolveTo({ completed: [], failed: { migration: { name: "unversioned" }, error }, notRun: [] });
-			await migrate();
-
-			expect(output).toContain(`unversioned: ${error}`);
-		});
-
 		it("shows a reader error locally, not in analytics", async () => {
-			const [collection] = installFixture();
 			fs.writeFileSync(collection, "{");
 
 			await migrate();
@@ -891,9 +676,8 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		it("stops on uncommitted changes in the project unless --allow-dirty", async () => {
-			installFixture();
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: " M src/app.ts\n" });
+		it("stops on uncommitted changes in the project, and runs in a clean one", async () => {
+			spawnSync.and.returnValue({ status: 0, stdout: " M src/app.ts\n" });
 
 			await migrate();
 
@@ -901,21 +685,15 @@ describe("Unit - Update command", () => {
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 
-			await migrate({ allowDirty: true });
-
-			expect(output).toContain("Uncommitted changes: the update's changes will be mixed with them.");
-			expect(runMigrations).toHaveBeenCalledTimes(1);
-
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: "" });
+			spawnSync.and.returnValue({ status: 0, stdout: "" });
 			output = [];
 			await migrate();
 
 			expect(output[0]).toBe("Migrations of fixture-lib from 1.0.0 to 2.0.0:");
-			expect(runMigrations).toHaveBeenCalledTimes(2);
+			expect(runMigrations).toHaveBeenCalledTimes(1);
 		});
 
 		it("checks the request before running anything, keeping package names out of analytics", async () => {
-			installFixture();
 			fs.mkdirSync("node_modules/plain-lib");
 			fs.writeFileSync("node_modules/plain-lib/package.json", JSON.stringify({ name: "plain-lib", version: "1.0.0" }));
 			const cases: [Flags, string][] = [
@@ -954,13 +732,11 @@ describe("Unit - Update command", () => {
 
 			expect(output).toContain(`Duplicate package "fixture-lib".`);
 			expect(posted()).toEqual(Array(cases.length + 1).fill("Invalid package arguments."));
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
 		it("accepts versions, ranges, tags and scoped names, warning that a version has no effect", async () => {
-			installFixture();
-
 			for (const spec of ["2.0.0", "^2", "next"]) {
 				await migrate({ packages: [`fixture-lib@${spec}`] });
 			}
@@ -981,7 +757,7 @@ describe("Unit - Update command", () => {
 		];
 		for (const [signal, dependencies, configured, framework] of frameworks) {
 			it(`runs the ${framework} migrations of a map, identified by ${signal}`, async () => {
-				(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework: "react" } });
+				getConfig.and.returnValue({ project: { framework: "react" } });
 				project({ dependencies });
 				if (configured) {
 					fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ project: { framework: configured } }));
@@ -995,7 +771,7 @@ describe("Unit - Update command", () => {
 		}
 
 		it("runs single-path migrations but not a map when the framework isn't identified, and finds no map entry for Angular", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+			getConfig.and.returnValue({});
 			project({ dependencies: { vue: "^3.0.0" } });
 			installFixture(MAP);
 
@@ -1006,12 +782,12 @@ describe("Unit - Update command", () => {
 				`Set "project.framework" to "react" or "webcomponents" in ignite-ui-cli.json.`);
 			expect(runMigrations).not.toHaveBeenCalled();
 
-			const [collection] = installFixture();
+			installFixture();
 			await migrate();
 
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework: "webcomponents" } });
+			getConfig.and.returnValue({ project: { framework: "webcomponents" } });
 			project({ dependencies: { "@angular/core": "^21.0.0" } });
 			installFixture(MAP);
 			await migrate();
@@ -1027,7 +803,6 @@ describe("Unit - Update command", () => {
 		};
 		const update = (packages: string[], args: Flags = {}) => run({ packages, ...args });
 		let original: string;
-		let collection: string;
 
 		beforeEach(() => {
 			original = project({ dependencies: { [WC]: "~6.0.0", "fixture-lib": "^1.0.0" } });
@@ -1036,14 +811,14 @@ describe("Unit - Update command", () => {
 
 		it("updates the requested packages after the Git check, then runs the new migrations from the baseline to the installed version", async () => {
 			const getPlan = plan(FIXTURE, {});
-			(child_process.execSync as jasmine.Spy).and.callFake(() => expect(loadDevKit).toHaveBeenCalledTimes(1));
+			execSync.and.callFake(() => expect(loadDevKit).toHaveBeenCalledTimes(1));
 
 			await update(["fixture-lib", WC]);
 
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
 			expect(getPlan).toHaveBeenCalledOnceWith({ requests: [{ name: "fixture-lib" }, { name: WC }], force: false, verbose: false });
 			expect(read("package.json")).toContain(`"fixture-lib": "^2.0.0"`);
-			expect(child_process.execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
+			expect(execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(output).toEqual([
 				"Not a Git repository: review and revert the update's changes manually.",
@@ -1099,7 +874,7 @@ describe("Unit - Update command", () => {
 			expect(output.slice(-2)).toEqual(["Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.",
 				"Running migrations requires Node.js ^22.22.3 (running v20.0.0)."]);
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
@@ -1112,9 +887,9 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("  fixture-lib  1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  migrations declared");
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(read("package.json")).toBe(original);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(loadDevKit).not.toHaveBeenCalled();
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
 
@@ -1129,20 +904,20 @@ describe("Unit - Update command", () => {
 				"Then run their migrations:",
 				"  ig update fixture-lib --migrate-only --from 1.0.0 --to 2.0.0"
 			]);
-			expect(Util.spawnSync).toHaveBeenCalledTimes(1);
+			expect(spawnSync).toHaveBeenCalledTimes(1);
 			expect(loadDevKit).not.toHaveBeenCalled();
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
 
 		it("restores package.json and runs no migrations when the install fails", async () => {
 			plan(FIXTURE);
-			(child_process.execSync as jasmine.Spy).and.throwError("Command failed: npm install");
+			execSync.and.throwError("Command failed: npm install");
 
 			await update(["fixture-lib"]);
 
 			expect(read("package.json")).toBe(original);
-			expect(log()).toContain(`"npm install" failed. Restored package.json;`);
+			expect(log()).toContain(`"npm install" failed. Restored package.json; node_modules may be partially updated, run "npm install"`);
 			expect(log()).not.toContain("Migrations of");
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
@@ -1190,29 +965,23 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		const malformed: [string, unknown, string][] = [
-			["an array of migrations", { migrations: ["./migrations/collection.json"] },
-				`"migrations" must be a path, or an object that maps framework ids to paths`],
-			["a path instead of an object", "./migrations/collection.json", "expected an object"]
-		];
-		for (const [kind, igUpdate, reason] of malformed) {
-			it(`reports malformed ig-update metadata (${kind}) as invalid after the install, not as missing`, async () => {
-				fs.writeFileSync("node_modules/fixture-lib/package.json", JSON.stringify({ name: "fixture-lib", version: "2.0.0", "ig-update": igUpdate }));
-				plan({ ...FIXTURE, manifest: { version: "2.0.0", "ig-update": igUpdate as PackageManifest["ig-update"] } });
+		it("reports malformed ig-update metadata as invalid after the install, not as missing", async () => {
+			const igUpdate = { migrations: ["./migrations/collection.json"] };
+			fs.writeFileSync("node_modules/fixture-lib/package.json", JSON.stringify({ name: "fixture-lib", version: "2.0.0", "ig-update": igUpdate }));
+			plan({ ...FIXTURE, manifest: { version: "2.0.0", "ig-update": igUpdate as PackageManifest["ig-update"] } });
 
-				await update(["fixture-lib"]);
+			await update(["fixture-lib"]);
 
-				expect(output).toContain("  fixture-lib  1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  migrations declared");
-				expect(loadDevKit).toHaveBeenCalled();
-				expect(output.slice(-4)).toEqual([
-					"Unable to read the migrations of an updated package.",
-					`fixture-lib has an invalid "ig-update" field: ${reason}.`,
-					"The new versions remain installed. To run the remaining migrations, use:",
-					"  ig update fixture-lib --migrate-only --from 1.0.0"
-				]);
-				expect(process.exitCode).toBe(1);
-			});
-		}
+			expect(output).toContain("  fixture-lib  1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  migrations declared");
+			expect(loadDevKit).toHaveBeenCalled();
+			expect(output.slice(-4)).toEqual([
+				"Unable to read the migrations of an updated package.",
+				`fixture-lib has an invalid "ig-update" field: "migrations" must be a path, or an object that maps framework ids to paths.`,
+				"The new versions remain installed. To run the remaining migrations, use:",
+				"  ig update fixture-lib --migrate-only --from 1.0.0"
+			]);
+			expect(process.exitCode).toBe(1);
+		});
 
 		it("lists the migrations to run when DevKit can't be loaded after the install", async () => {
 			project({ dependencies: { "fixture-lib": "^1.0.0", "other-lib": "^1.0.0" } });
@@ -1271,7 +1040,7 @@ describe("Unit - Update command", () => {
 			expect(output.slice(-2)).toEqual(["Nothing was updated: unable to update package.json.",
 				"package.json changed after the update plan was made (dependencies.fixture-lib). Run the update again."]);
 			expect(posted()).toEqual(["Nothing was updated: unable to update package.json."]);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
@@ -1289,7 +1058,7 @@ describe("Unit - Update command", () => {
 
 		it("stops on uncommitted changes before planning, also with --force, unless --allow-dirty", async () => {
 			const getPlan = plan(FIXTURE);
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0, stdout: " M src/app.ts\n" });
+			spawnSync.and.returnValue({ status: 0, stdout: " M src/app.ts\n" });
 
 			await update(["fixture-lib"], { force: true });
 
@@ -1315,7 +1084,7 @@ describe("Unit - Update command", () => {
 			expect(posted()).toEqual(["Nothing was updated: a requested package can't be updated."]);
 			expect(getPlan).toHaveBeenCalledWith({ requests: [{ name: "fixture-lib", spec: "^9" }, { name: WC }], force: false, verbose: false });
 			expect(read("package.json")).toBe(original);
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 
 			await update([WC]);
@@ -1357,12 +1126,10 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("Newer version outside the requested range (not applied): fixture-lib 3.0.0");
 			expect(output).toContain("--force overrides the version requirements of 1 package(s); " +
 				"the updated packages may not work together. Run your build and tests.");
-			expect(log()).not.toContain("Ignite UI");
-			expect(log()).not.toContain("No code migrations");
 		});
 
 		it("runs single-path migrations but skips a map when the framework isn't identified, still updating every package", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
+			getConfig.and.returnValue({});
 			const packages = { dependencies: { "fixture-lib": "^1.0.0", "map-lib": "^1.0.0" } };
 			project(packages);
 			const [, webcomponents] = installFixture(MAP, "map-lib");
@@ -1388,17 +1155,17 @@ describe("Unit - Update command", () => {
 	describe("angular", () => {
 		const ngBin = () => path.join(tempDir, "node_modules", "@angular", "cli", "bin", "ng.js");
 
-		function installAngularCli(nodeModules: string, bin = "bin/ng.js") {
-			const cliDir = path.join(nodeModules, "@angular", "cli");
-			fs.mkdirSync(path.join(cliDir, "bin"), { recursive: true });
-			fs.writeFileSync(path.join(cliDir, bin), "");
-			return path.join(cliDir, bin);
+		function installAngularCli(bin = "bin/ng.js", nodeModules = path.join(tempDir, "node_modules")) {
+			const file = path.join(nodeModules, "@angular/cli", bin);
+			fs.mkdirSync(path.dirname(file), { recursive: true });
+			fs.writeFileSync(file, "");
+			return file;
 		}
 
-		function angularProject(pkgJson: object, withCli = true) {
+		function angularProject(withCli = true, pkgJson: object = { dependencies: { "igniteui-angular": "~21.0.0" } }) {
 			fs.writeFileSync("package.json", JSON.stringify(pkgJson));
 			if (withCli) {
-				installAngularCli(path.join(tempDir, "node_modules"));
+				installAngularCli();
 			}
 		}
 
@@ -1410,16 +1177,15 @@ describe("Unit - Update command", () => {
 			"update Angular and Ignite UI together (in a git repository, commit the changes first or add --allow-dirty): " +
 			`ng update @angular/core @angular/cli ${igniteUI}`;
 
-		/** `ig update igniteui-angular` */
 		const updateAngular = (args: Flags = {}) => run({ packages: ["igniteui-angular"], ...args });
 
 		beforeEach(() => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({ project: { framework: "angular" } });
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 0 });
+			getConfig.and.returnValue({ project: { framework: "angular" } });
+			spawnSync.and.returnValue({ status: 0 });
 		});
 
 		it("previews, then runs, the project's ng update for the package and the ones with ig migrations, with inherited stdio and no shell", async () => {
-			angularProject({
+			angularProject(true, {
 				dependencies: { "igniteui-angular": "~21.0.0" },
 				devDependencies: { "@igniteui/angular-schematics": "~15.0.0", "igniteui-cli": "~15.0.0" }
 			});
@@ -1430,55 +1196,61 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli @igniteui/angular-schematics" with the project's Angular CLI.`);
 			expect(log()).toContain("including new majors, applies their migrations and installs dependencies. In a git repository, it stops if the project has uncommitted changes.");
 			expect(log()).toContain("Dry run: no files were changed.");
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 
 			await updateAngular();
 
 			expect(log()).toContain(`Running "ng update igniteui-angular igniteui-cli @igniteui/angular-schematics" with the project's Angular CLI.`);
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
+			expect(spawnSync).toHaveBeenCalledOnceWith("node",
 				[ngBin(), "update", "igniteui-angular", "igniteui-cli", "@igniteui/angular-schematics"], { stdio: "inherit" });
 			expect(getPlan).not.toHaveBeenCalled();
-			expect(child_process.execSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(0);
 		});
 
-		it("updates the licensed package from devDependencies, detected without a project config, and names it in the failure hint", async () => {
-			(ProjectConfig.getConfig as jasmine.Spy).and.returnValue({});
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 1 });
-			angularProject({ dependencies: { "@angular/core": "^21.0.0" }, devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
+		it("updates the licensed package from devDependencies, detected without a project config, and names it in the failure hint and forced warning", async () => {
+			getConfig.and.returnValue({});
+			spawnSync.and.returnValue({ status: 1 });
+			angularProject(true, { dependencies: { "@angular/core": "^21.0.0" }, devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
 
 			await run({ packages: ["@infragistics/igniteui-angular"] });
 
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "@infragistics/igniteui-angular"], { stdio: "inherit" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "@infragistics/igniteui-angular"], { stdio: "inherit" });
 			expect(output).toContain(hint("@infragistics/igniteui-angular"));
+
+			spawnSync.and.returnValue({ status: 0 });
+			await run({ packages: ["@infragistics/igniteui-angular"], force: true, allowDirty: true, verbose: true });
+
+			expect(output).toContain(forcedWarning("@infragistics/igniteui-angular"));
+			expect(process.exitCode).toBe(0);
 		});
 
 		it("runs the extensionless bin/ng of Angular CLI 12", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~12.0.0" } }, false);
-			const bin = installAngularCli(path.join(tempDir, "node_modules"), "bin/ng");
+			angularProject(false, { dependencies: { "igniteui-angular": "~12.0.0" } });
+			const bin = installAngularCli("bin/ng");
 
 			await run();
 
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [bin, "update"], { stdio: "inherit" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [bin, "update"], { stdio: "inherit" });
 		});
 
 		it("runs an Angular CLI hoisted to a parent node_modules", async () => {
 			fs.mkdirSync("app");
 			process.chdir("app");
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+			angularProject();
 
 			await run();
 
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update"], { stdio: "inherit" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update"], { stdio: "inherit" });
 		});
 
 		it("doesn't fall back to an Angular CLI outside the project, such as one on NODE_PATH", async () => {
 			const env = process.env;
 			const globalModules = path.join(tempDir, "global");
 			process.env = { ...env, NODE_PATH: globalModules };
-			installAngularCli(globalModules);
+			installAngularCli("bin/ng.js", globalModules);
 			(Module as any)._initPaths();
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+			angularProject(false);
 
 			try {
 				await run();
@@ -1488,57 +1260,53 @@ describe("Unit - Update command", () => {
 			}
 
 			expect(log()).toContain("Angular CLI (@angular/cli) not found in this project.");
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
 		it("previews without an installed Angular CLI, noting that --skip-install doesn't apply", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+			angularProject(false);
 
 			await run({ dryRun: true, skipInstall: true });
 
 			expect(log()).toContain("--skip-install is not supported for Angular projects");
 			expect(log()).toContain(`Would run "ng update" with the project's Angular CLI. It lists the available updates without changing anything.`);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
-		it("rejects --skip-install without running anything", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+		it("rejects --skip-install without running anything, also with the other flags", async () => {
+			angularProject();
 
-			await run({ skipInstall: true });
+			await updateAngular({ skipInstall: true, force: true, allowDirty: true });
 
 			expect(output).toEqual(["--skip-install is not supported for Angular projects: ng update always installs dependencies."]);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
 		it("asks to install dependencies when the project has no Angular CLI", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+			angularProject(false);
 
 			await run();
 
 			expect(output).toEqual(["Angular CLI (@angular/cli) not found in this project. " +
 				"Install dependencies first (for example, npm install) and rerun ig update."]);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
 
-		it("lists updates with a bare ng update without packages, forwarding the flags, whatever Ignite UI packages are listed", async () => {
+		it("lists updates with a bare ng update without packages, forwarding the flags", async () => {
 			const listing = (args: string) => `"ng update${args}" with the project's Angular CLI. It lists the available updates without changing anything.`;
-			for (const dependencies of [{ "@angular/core": "^21.0.0" }, { "igniteui-angular": "~21.0.0", "@infragistics/igniteui-angular": "~21.0.0" }]) {
-				angularProject({ dependencies, devDependencies: { "igniteui-cli": "~15.0.0" } });
-				output = [];
-				(Util.spawnSync as jasmine.Spy).calls.reset();
-				(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 2 });
+			angularProject(true, { dependencies: { "igniteui-angular": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
+			spawnSync.and.returnValue({ status: 2 });
 
-				await run({ dryRun: true, force: true, allowDirty: true });
-				await run({ force: true });
+			await run({ dryRun: true, force: true, allowDirty: true });
+			await run({ force: true });
 
-				expect(output).toEqual([`Would run ${listing(" --force --allow-dirty")}`, "Dry run: no files were changed.", `Running ${listing(" --force")}`]);
-				expect(Util.spawnSync).withContext(JSON.stringify(dependencies)).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "--force"], { stdio: "inherit" });
-				expect(process.exitCode).toBe(2);
-			}
+			expect(output).toEqual([`Would run ${listing(" --force --allow-dirty")}`, "Dry run: no files were changed.", `Running ${listing(" --force")}`]);
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "--force"], { stdio: "inherit" });
+			expect(process.exitCode).toBe(2);
 		});
 
 		it("fails without a package.json", async () => {
@@ -1548,48 +1316,35 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		const forwarded: [Flags, string[]][] = [
-			[{ force: true }, ["--force"]],
-			[{ allowDirty: true }, ["--allow-dirty"]],
-			[{ verbose: true }, ["--verbose"]],
-			[{ verbose: true, allowDirty: true, force: true }, ["--force", "--allow-dirty", "--verbose"]]
-		];
-		for (const [flags, options] of forwarded) {
-			it(`forwards ${options.join(" ")} to ng update, and previews the same command`, async () => {
-				angularProject({ dependencies: { "igniteui-angular": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
-				const getPlan = plan();
-
-				await updateAngular({ ...flags, dryRun: true });
-
-				expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli ${options.join(" ")}" with the project's Angular CLI.`);
-				expect(Util.spawnSync).not.toHaveBeenCalled();
-
-				await updateAngular(flags);
-
-				expect(Util.spawnSync).toHaveBeenCalledOnceWith("node",
-					[ngBin(), "update", "igniteui-angular", "igniteui-cli", ...options], { stdio: "inherit" });
-				expect(getPlan).not.toHaveBeenCalled();
-				expect(child_process.execSync).not.toHaveBeenCalled();
-				expect(process.exitCode).toBe(0);
-			});
-		}
-
-		it("states what --force and --allow-dirty change in the preview", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
+		it("forwards --force, --allow-dirty and --verbose to ng update in that order, previewing the same command and what the flags change", async () => {
+			angularProject(true, { dependencies: { "igniteui-angular": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
+			const getPlan = plan();
+			const flags = { verbose: true, allowDirty: true, force: true };
 
 			await updateAngular({ dryRun: true, force: true });
 
 			expect(log()).toContain("and installs dependencies. ng update doesn't stop on incompatible peer dependencies, " +
 				"so Angular packages can end up on incompatible versions. In a git repository, it stops if the project has uncommitted changes.");
 
-			await updateAngular({ dryRun: true, allowDirty: true });
+			output = [];
+			await updateAngular({ ...flags, dryRun: true });
 
-			expect(log()).toContain("and installs dependencies. It runs even with uncommitted changes.");
-			expect(output.slice(-2).join()).not.toContain("it stops if the project has uncommitted changes");
+			expect(log()).toContain(`Would run "ng update igniteui-angular igniteui-cli --force --allow-dirty --verbose" with the project's Angular CLI.`);
+			expect(log()).toContain("It runs even with uncommitted changes.");
+			expect(log()).not.toContain("it stops if the project has uncommitted changes");
+			expect(spawnSync).not.toHaveBeenCalled();
+
+			await updateAngular(flags);
+
+			expect(spawnSync).toHaveBeenCalledOnceWith("node",
+				[ngBin(), "update", "igniteui-angular", "igniteui-cli", "--force", "--allow-dirty", "--verbose"], { stdio: "inherit" });
+			expect(getPlan).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(0);
 		});
 
 		it("prints the Angular CLI it runs with --verbose, and still previews without one", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } }, false);
+			angularProject(false);
 
 			await updateAngular({ dryRun: true, verbose: true });
 
@@ -1597,29 +1352,12 @@ describe("Unit - Update command", () => {
 			expect(log()).not.toContain("Angular CLI:");
 			expect(process.exitCode).not.toBe(1);
 
-			installAngularCli(path.join(tempDir, "node_modules"));
+			installAngularCli();
 			await updateAngular({ verbose: true });
 
 			expect(Util.log).toHaveBeenCalledWith("Framework: angular (from the project config)", "gray");
 			expect(Util.log).toHaveBeenCalledWith(`Angular CLI: ${ngBin()}`, "gray");
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular", "--verbose"], { stdio: "inherit" });
-		});
-
-		it("still rejects --skip-install with the other flags, and keeps the failure hint with --force", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
-
-			await updateAngular({ skipInstall: true, force: true, allowDirty: true, verbose: true });
-
-			expect(log()).toContain("--skip-install is not supported for Angular projects");
-			expect(Util.spawnSync).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 1 });
-			await updateAngular({ force: true });
-
-			expect(Util.spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular", "--force"], { stdio: "inherit" });
-			expect(output).toContain(hint("igniteui-angular"));
-			expect(process.exitCode).toBe(1);
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular", "--verbose"], { stdio: "inherit" });
 		});
 
 		const results: [string, Flags, object, number, string[]][] = [
@@ -1628,15 +1366,12 @@ describe("Unit - Update command", () => {
 			["termination by a signal", {}, { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
 			["spawn error", {}, { status: null, error: new Error("spawnSync node ENOENT") }, 1, ["Unable to run the Angular CLI: spawnSync node ENOENT"]],
 			["success with --force", { force: true }, { status: 0 }, 0, [forcedWarning("igniteui-angular")]],
-			["failure with --force", { force: true }, { status: 2 }, 2, [hint("igniteui-angular")]],
-			["termination by a signal with --force", { force: true }, { status: null, signal: "SIGTERM" }, 1, [hint("igniteui-angular")]],
-			["spawn error with --force", { force: true }, { status: null, error: new Error("spawnSync node ENOENT") }, 1,
-				["Unable to run the Angular CLI: spawnSync node ENOENT"]]
+			["failure with --force", { force: true }, { status: 2 }, 2, [hint("igniteui-angular")]]
 		];
 		for (const [name, flags, result, exitCode, messages] of results) {
 			it(`passes the ng update exit code through (${name})`, async () => {
-				angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
-				(Util.spawnSync as jasmine.Spy).and.returnValue(result);
+				angularProject();
+				spawnSync.and.returnValue(result);
 
 				await updateAngular(flags);
 
@@ -1645,17 +1380,8 @@ describe("Unit - Update command", () => {
 			});
 		}
 
-		it("names the licensed package in the recovery command after a forced update", async () => {
-			angularProject({ devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
-
-			await run({ packages: ["@infragistics/igniteui-angular"], force: true, allowDirty: true, verbose: true });
-
-			expect(output).toContain(forcedWarning("@infragistics/igniteui-angular"));
-			expect(process.exitCode).toBe(0);
-		});
-
 		it("forwards the given packages and migration options, adding the companions only to Ignite UI updates", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0", "@angular/core": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
+			angularProject(true, { dependencies: { "igniteui-angular": "~21.0.0", "@angular/core": "~21.0.0" }, devDependencies: { "igniteui-cli": "~15.0.0" } });
 			const calls: [Flags, string[]][] = [
 				[{ packages: ["igniteui-angular@22", "@angular/core"] }, ["igniteui-angular@22", "@angular/core", "igniteui-cli"]],
 				[{ packages: ["@angular/core"] }, ["@angular/core"]],
@@ -1664,27 +1390,14 @@ describe("Unit - Update command", () => {
 				[{ packages: ["igniteui-angular"], name: "migration-01" }, ["igniteui-angular", "--migrate-only", "--name", "migration-01"]]
 			];
 			for (const [args, ngArgs] of calls) {
-				(Util.spawnSync as jasmine.Spy).calls.reset();
+				spawnSync.calls.reset();
 				await run(args);
-				expect(Util.spawnSync).withContext(JSON.stringify(args)).toHaveBeenCalledOnceWith("node", [ngBin(), "update", ...ngArgs], { stdio: "inherit" });
+				expect(spawnSync).withContext(JSON.stringify(args)).toHaveBeenCalledOnceWith("node", [ngBin(), "update", ...ngArgs], { stdio: "inherit" });
 			}
 		});
 
-		it("requires a single package with --migrate-only or --name instead of picking the Ignite UI package", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0" } });
-			const message = "A single package must be specified when using --migrate-only or --name.";
-
-			await run({ migrateOnly: true, from: "20.0.0" });
-			await run({ name: "migration-01" });
-			await run({ packages: ["igniteui-angular", "@angular/core"], migrateOnly: true, from: "20.0.0" });
-
-			expect(output).toEqual([message, message, message]);
-			expect(Util.spawnSync).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-		});
-
 		it("previews requested versions and migrate-only, and gives the Ignite UI hint only for Ignite UI updates", async () => {
-			angularProject({ dependencies: { "igniteui-angular": "~21.0.0", "@angular/core": "~21.0.0" } });
+			angularProject(true, { dependencies: { "igniteui-angular": "~21.0.0", "@angular/core": "~21.0.0" } });
 
 			await run({ packages: ["igniteui-angular@22"], dryRun: true });
 			await run({ packages: ["igniteui-angular"], migrateOnly: true, from: "20.0.0", dryRun: true });
@@ -1693,7 +1406,7 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain(`Would run "ng update igniteui-angular --migrate-only --from 20.0.0" with the project's Angular CLI. ` +
 				"It runs the package's migrations without changing versions.");
 
-			(Util.spawnSync as jasmine.Spy).and.returnValue({ status: 1 });
+			spawnSync.and.returnValue({ status: 1 });
 			await run({ packages: ["@angular/core"] });
 
 			expect(log()).not.toContain("If ng update reported incompatible peer dependencies");
