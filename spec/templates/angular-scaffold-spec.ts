@@ -153,6 +153,16 @@ describe("Angular project scaffold", () => {
 		}
 	});
 
+	it("keeps the Angular CLI calls from asking to set up autocompletion, which --interactive=false does not stop", async () => {
+		await emptyProject.scaffold({ name, theme: "Default" });
+
+		const ngCalls = execSync.calls.allArgs().filter(([command]) => command.startsWith("npx"));
+		expect(ngCalls.length).toBeGreaterThan(0);
+		for (const [command, options] of ngCalls) {
+			expect(options.env.NG_FORCE_AUTOCOMPLETE).withContext(command).toBe("false");
+		}
+	});
+
 	it("runs ng new outside the current folder, which may be inside an Angular workspace", async () => {
 		await emptyProject.scaffold({ name, theme: "Default" });
 

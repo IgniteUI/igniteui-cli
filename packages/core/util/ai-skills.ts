@@ -172,8 +172,9 @@ export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string
 
 			for (const p of rawPaths) {
 				result.found++;
-				// native path.relative: case-insensitive on Windows, where glob upper-cases the drive letter
-				const rel = path.relative(skillsRoot, p).replace(/\\/g, "/");
+				// Strip the leading '/' of tree-rooted paths (NgTreeFileSystem) so both sides resolve against
+				// the same base; native path.relative is case-insensitive on Windows, where glob upper-cases the drive letter
+				const rel = path.relative(skillsRoot.replace(/^\//, ""), p.replace(/^\//, "")).replace(/\\/g, "/");
 				const dest = multiRoot
 					? `${outputDir}/${pkgDirName}/${rel}`
 					: `${outputDir}/${rel}`;

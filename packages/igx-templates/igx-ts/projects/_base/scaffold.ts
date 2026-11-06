@@ -35,7 +35,9 @@ export function generateProject(dashName: string, projectPath: string): string {
 		Util.execSync(`npx -y @angular/cli@${angularMajor} ${command} --defaults --interactive=false`, {
 			cwd,
 			stdio: "inherit",
-			env: { ...process.env, NG_CLI_ANALYTICS: "false", [SKIP_AI_CONFIG_ENV]: "true" }
+			// NG_FORCE_AUTOCOMPLETE: `--interactive=false` does not stop the one-time autocompletion question,
+			// which would stop the scaffold for an answer; the CLI checks it before anything else
+			env: { ...process.env, NG_CLI_ANALYTICS: "false", NG_FORCE_AUTOCOMPLETE: "false", [SKIP_AI_CONFIG_ENV]: "true" }
 		});
 
 	// `ng new` refuses to run inside an Angular workspace, so it runs in a temp folder outside any
