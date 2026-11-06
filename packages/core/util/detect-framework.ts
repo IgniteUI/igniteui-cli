@@ -35,7 +35,6 @@ export function detectFramework():  Framework | null {
  *  - "react"        → `react` is present
  *  - "webcomponents"→ fallback when neither of the above is found
  *  - `null` if `package.json` is absent or cannot be parsed.
- * @param logFallback Whether to log the Web Components fallback.
  */
 export function detectFrameworkFromPackageJson(logFallback = true): Exclude<Framework, "jquery"> | null {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);

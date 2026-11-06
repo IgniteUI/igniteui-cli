@@ -483,6 +483,7 @@ describe("Unit - Update command", () => {
 		const hints: [string, Record<string, string>, string][] = [
 			["npm", {}, `Run "npm install --force" to install them.`],
 			["yarn", { "yarn.lock": "" }, `Run "yarn install" to install them.`],
+			["pnpm", { "pnpm-lock.yaml": "" }, `Run "pnpm install --no-frozen-lockfile" to install them.`],
 			["several lockfiles", { "yarn.lock": "", "bun.lock": "" },
 				"Run your package manager's install command to update the lockfile. With npm, add --force."]
 		];
@@ -577,8 +578,8 @@ describe("Unit - Update command", () => {
 				"Not a Git repository: review and revert the update's changes manually.",
 				"Migrations of fixture-lib from 1.0.0 to 2.0.0:",
 				"To run the optional migrations of fixture-lib, use:",
-				"  ig update fixture-lib --name later",
-				"  ig update fixture-lib --name extra",
+				"  ig update fixture-lib --name later --allow-dirty",
+				"  ig update fixture-lib --name extra --allow-dirty",
 				"Migrations completed. Review the changes, then run your build and tests."
 			]);
 			expect(process.exitCode).not.toBe(1);
@@ -607,6 +608,17 @@ describe("Unit - Update command", () => {
 			expect(output).toContain(`"x" is not a valid version.`);
 			expect(output).toContain(`"y" is not a valid version.`);
 			expect(posted()).toEqual(["Unable to run the migrations.", "Unable to run the migrations."]);
+			expect(process.exitCode).toBe(1);
+		});
+
+		it("asks for --to when the installed version can't be determined", async () => {
+			installFixture(undefined, "fixture-lib", "next");
+
+			await migrate();
+
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(output).toContain("Unable to determine the installed version of fixture-lib. Specify it with --to <version>.");
+			expect(output).not.toContain("is not a valid version");
 			expect(process.exitCode).toBe(1);
 		});
 
@@ -660,7 +672,7 @@ describe("Unit - Update command", () => {
 
 			await migrate({ from: "1.6.0", to: "1.9.0" });
 
-			expect(output.slice(-2)).toEqual(["To run the optional migrations of fixture-lib, use:", "  ig update fixture-lib --name later"]);
+			expect(output.slice(-2)).toEqual(["To run the optional migrations of fixture-lib, use:", "  ig update fixture-lib --name later --allow-dirty"]);
 			expect(loadDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
@@ -829,8 +841,8 @@ describe("Unit - Update command", () => {
 				"Updated 2 package(s).",
 				"Migrations of fixture-lib from 1.0.0 to 2.0.0:",
 				"To run the optional migrations of fixture-lib, use:",
-				"  ig update fixture-lib --name later",
-				"  ig update fixture-lib --name extra",
+				"  ig update fixture-lib --name later --allow-dirty",
+				"  ig update fixture-lib --name extra --allow-dirty",
 				"Migrations completed. Review the changes, then run your build and tests."
 			]);
 			expect(process.exitCode).toBe(0);
@@ -902,7 +914,7 @@ describe("Unit - Update command", () => {
 			expect(output.slice(-3)).toEqual([
 				`Updated 2 package(s) in package.json. Run "npm install" to install them.`,
 				"Then run their migrations:",
-				"  ig update fixture-lib --migrate-only --from 1.0.0 --to 2.0.0"
+				"  ig update fixture-lib --migrate-only --from 1.0.0 --to 2.0.0 --allow-dirty"
 			]);
 			expect(spawnSync).toHaveBeenCalledTimes(1);
 			expect(loadDevKit).not.toHaveBeenCalled();
@@ -939,10 +951,10 @@ describe("Unit - Update command", () => {
 				"Migrations of fixture-lib from 1.0.0 to 2.0.0:",
 				"A migration failed, and its changes weren't written.",
 				"second (2.0.0): boom",
-				"Not run: third. Run it with: ig update fixture-lib --name third",
+				"Not run: third. Run it with: ig update fixture-lib --name third --allow-dirty",
 				"Review the changes of the completed migrations with git diff.",
 				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update other-lib --migrate-only --from 1.0.0"
+				"  ig update other-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
 			expect(read("package.json")).toContain(`"other-lib": "^2.0.0"`);
 			expect(process.exitCode).toBe(1);
@@ -958,7 +970,7 @@ describe("Unit - Update command", () => {
 				"Unable to read the migrations of an updated package.",
 				`${collection} is not a valid migrations collection.`,
 				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update fixture-lib --migrate-only --from 1.0.0"
+				"  ig update fixture-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
 			expect(posted()).toEqual(["Unable to read the migrations of an updated package."]);
 			expect(runMigrations).not.toHaveBeenCalled();
@@ -978,7 +990,7 @@ describe("Unit - Update command", () => {
 				"Unable to read the migrations of an updated package.",
 				`fixture-lib has an invalid "ig-update" field: "migrations" must be a path, or an object that maps framework ids to paths.`,
 				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update fixture-lib --migrate-only --from 1.0.0"
+				"  ig update fixture-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
 			expect(process.exitCode).toBe(1);
 		});
@@ -1001,8 +1013,8 @@ describe("Unit - Update command", () => {
 				"Unable to load @angular-devkit/schematics to run the migrations.",
 				error,
 				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update fixture-lib --migrate-only --from 1.0.0",
-				"  ig update other-lib --migrate-only --from 1.0.0"
+				"  ig update fixture-lib --migrate-only --from 1.0.0 --allow-dirty",
+				"  ig update other-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
 			expect(posted()).toEqual(["Unable to load @angular-devkit/schematics to run the migrations."]);
 			expect(runMigrations).not.toHaveBeenCalled();
@@ -1022,10 +1034,10 @@ describe("Unit - Update command", () => {
 			expect(output.slice(-6)).toEqual([
 				"Cancelled: no optional migrations were run.",
 				"To run the optional migrations of fixture-lib, use:",
-				"  ig update fixture-lib --name later",
-				"  ig update fixture-lib --name extra",
+				"  ig update fixture-lib --name later --allow-dirty",
+				"  ig update fixture-lib --name extra --allow-dirty",
 				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update other-lib --migrate-only --from 1.0.0"
+				"  ig update other-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
 			expect(posted()).toEqual(["Cancelled: no optional migrations were run."]);
 			expect(process.exitCode).toBe(1);
@@ -1053,7 +1065,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("Installed fixture-lib 1.8.0 instead of the planned 1.6.0.");
 			expect(output).toContain("Migrations of fixture-lib from 1.0.0 to 1.8.0:");
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first"), "npm");
-			expect(output).toContain("  ig update fixture-lib --name later");
+			expect(output).toContain("  ig update fixture-lib --name later --allow-dirty");
 		});
 
 		it("stops on uncommitted changes before planning, also with --force, unless --allow-dirty", async () => {
@@ -1138,7 +1150,7 @@ describe("Unit - Update command", () => {
 			await update(["fixture-lib", "map-lib"]);
 
 			expect(output).toContain("    Skipped map-lib migrations: can't tell whether this is a React or Web Components project. " +
-				`Set "project.framework" in ignite-ui-cli.json, then run ig update map-lib --migrate-only --from 1.0.0`);
+				`Set "project.framework" in ignite-ui-cli.json, then run ig update map-lib --migrate-only --from 1.0.0 --allow-dirty`);
 			expect(read("package.json")).toContain(`"map-lib": "^2.0.0"`);
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(process.exitCode).toBe(0);

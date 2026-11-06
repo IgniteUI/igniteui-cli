@@ -8,7 +8,7 @@ export interface MigrationRun {
 	notRun: Migration[];
 }
 
-/** Preflight before anything changes: checks that DevKit is installed and supports the running Node.js, then loads it; throws otherwise */
+/** Preflight: throws unless DevKit is installed, supports the running Node.js and loads */
 export async function loadDevKit(): Promise<void> {
 	let manifest: string;
 	try {
@@ -26,7 +26,7 @@ export async function loadDevKit(): Promise<void> {
 	await import("@angular-devkit/schematics/tools");
 }
 
-/** Runs the migrations of the collection at the absolute path `collection` on the current directory, in order, until one fails */
+/** Runs the migrations in order on the current directory, until one fails; `collection` is an absolute path */
 export async function runMigrations(collection: string, migrations: Migration[], packageManager?: string): Promise<MigrationRun> {
 	// loaded only here: DevKit is slow to load and needs a newer Node.js than the rest of the CLI
 	const { logging } = await import("@angular-devkit/core");
@@ -39,7 +39,6 @@ export async function runMigrations(collection: string, migrations: Migration[],
 		if (level === "info") {
 			Util.log(message);
 		} else if (level !== "debug") {
-			// not Util.error, which would post the migration's message to analytics
 			Util.warn(message, level === "warn" ? "yellow" : "red");
 		}
 	});
@@ -47,7 +46,6 @@ export async function runMigrations(collection: string, migrations: Migration[],
 	for (const [index, migration] of migrations.entries()) {
 		Util.log(`  ${migration.name}${migration.description ? `: ${migration.description}` : ""}`);
 		try {
-			// execute() throws synchronously when the factory can't be loaded, so it runs inside the executor
 			await new Promise<void>((resolve, reject) => workflow.execute({ collection, schematic: migration.name, options: {}, logger })
 				.subscribe({ complete: resolve, error: reject }));
 		} catch (error) {

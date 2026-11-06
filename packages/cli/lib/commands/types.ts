@@ -109,6 +109,6 @@ export interface UpgradeCommandType extends CommandType {
 }
 
 export interface UpdateCommandType extends CommandType {
-	/** Updates packages and runs their migrations in React & WC projects, and runs `ng update` for Angular projects. */
+	/** Updates packages and runs their migrations; runs `ng update` for Angular. */
 	update(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void>;
 }

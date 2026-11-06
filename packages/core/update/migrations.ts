@@ -12,10 +12,7 @@ export interface Migration {
 	recommended?: boolean;
 }
 
-/**
- * Absolute path of the collection that the package in `packageDir` declares in `ig-update` for `framework`; throws on invalid metadata,
- * and for a per-framework map when the framework isn't identified
- */
+/** Absolute path of the `ig-update` collection for `framework`; throws on invalid metadata, or on a framework map without a framework */
 export function getMigrationsCollection(packageDir: string, framework: string | undefined): string | undefined {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const pkg = JSON.parse(fs.readFile(path.join(packageDir, "package.json")));
@@ -57,7 +54,6 @@ export function getMigrationsCollection(packageDir: string, framework: string | 
 export function readMigrations(collectionPath: string): Migration[] {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const errors: jsonc.ParseError[] = [];
-	// trailing commas allowed, as DevKit allows them
 	const collection = jsonc.parse(fs.readFile(collectionPath), errors, { allowTrailingComma: true });
 	if (errors.length || !isObject(collection) || !isObject(collection.schematics)) {
 		throw new Error(`${collectionPath} is not a valid migrations collection.`);
@@ -79,10 +75,7 @@ export function readMigrations(collectionPath: string): Migration[] {
 	});
 }
 
-/**
- * Angular's selection of the migrations in `(from, to]`: a prerelease `from` also selects the earlier prereleases of its version,
- * and a prerelease `to` its whole version. Sorted by version; equal versions keep the collection order.
- */
+/** Angular's `(from, to]` selection: a prerelease `from` also selects earlier prereleases of its version, a prerelease `to` its whole version */
 export function selectMigrations(migrations: Migration[], from: string, to: string): { required: Migration[]; optional: Migration[] } {
 	const range = new semver.Range(`>${semver.prerelease(from) ? from.split("-")[0] + "-0" : from} <=${to.split("-")[0]}`);
 	const selected = migrations
@@ -101,6 +94,6 @@ export function coerceVersionNumber(version: string | undefined): string | undef
 	return semver.valid(numbers + padding + version!.slice(numbers.length)) ?? undefined;
 }
 
-function isObject(value: unknown): value is Record<string, any> {
+export function isObject(value: unknown): value is Record<string, any> {
 	return typeof value === "object" && value !== null && !Array.isArray(value);
 }

@@ -5,9 +5,9 @@ import * as path from "path";
 import * as semver from "semver";
 import { FS_TOKEN, IFileSystem } from "../types";
 import { App, ProjectConfig, Util } from "../util";
+import { isObject } from "./migrations";
 import { NPM_ANGULAR, UPDATE_GROUPS, UPGRADEABLE_PACKAGES } from "./package-resolve";
 
-/** A package to update, with an optional version, range or dist-tag */
 export interface PackageRequest {
 	name: string;
 	spec?: string;
@@ -17,13 +17,12 @@ export interface PackageRequest {
 export interface PackageUpdate {
 	name: string;
 	section: "dependencies" | "devDependencies";
-	/** Spec as written in package.json */
 	declared: string;
 	installed?: string;
 	/** Version the update is computed from */
 	baseline?: string;
 	skipped?: string;
-	/** Versions `target` is chosen from, for messages: `"^19.6.0"`, or `"^3" at or above 3.2.0` */
+	/** Versions `target` is chosen from, for messages */
 	line?: string;
 	/** Version to update to, within `line`; equals `baseline` when up to date */
 	target?: string;
@@ -31,9 +30,9 @@ export interface PackageUpdate {
 	manifest?: PackageManifest;
 	/** `latest` dist-tag above the requested range; reported, never applied */
 	nextMajor?: string;
-	/** Newest version in `line` when the requirements of other packages hold `target` below it; reported, never applied */
+	/** Newest version in `line` when other packages hold `target` below it; reported, never applied */
 	newest?: string;
-	/** Set with `newest`: each package to update along so `newest` fits, with the requirement that holds `target` below it */
+	/** Set with `newest`: the packages and requirements that hold `target` below it */
 	heldBackBy?: { name: string; reason: string }[];
 	/** Spec to write to package.json; unset when nothing changes */
 	newRange?: string;
@@ -56,7 +55,6 @@ export interface PackageManifest {
 	"ig-update"?: { packageGroup?: unknown; migrations?: unknown };
 }
 
-/** A direct dependency whose `latest` version is newer than its baseline */
 export interface AvailableUpdate {
 	name: string;
 	baseline: string;
@@ -67,17 +65,14 @@ type Requirement = { range: string; peer: boolean; group?: boolean };
 type Constraint = Requirement & { requiredBy: string; from: string };
 type Requirer = Pick<PackageUpdate, "name" | "target" | "manifest">;
 
-/** Trial <-> licensed name of the same package */
 const COUNTERPART = new Map(Object.entries(UPGRADEABLE_PACKAGES)
 	.filter(([trial]) => trial !== NPM_ANGULAR)
 	.flatMap(([trial, licensed]) => [[trial, licensed], [licensed, trial]] as const));
 
 const withCounterpart = (name: string): string[] => COUNTERPART.has(name) ? [name, COUNTERPART.get(name)!] : [name];
 
-/** Members of the fallback groups, which discovery lists like packages that declare `ig-update`; Angular uses `ng update` instead. */
 export const UPDATABLE_PACKAGES: ReadonlySet<string> = new Set(UPDATE_GROUPS.flat().flatMap(withCounterpart));
 
-/** Exact, `^`, `~` and x-range specs; complex ranges, tags and urls have no usable baseline. */
 const SIMPLE_SPEC = /^[\^~]?\d+(\.(\d+|[xX*])){0,2}(-[0-9A-Za-z.-]+)?$/;
 
 /** Package an overrides/resolutions key targets: `parent/@scope/pkg@^1.0.0` -> `@scope/pkg` */
@@ -94,6 +89,11 @@ export function isPackageName(name: string): boolean {
 /** Registry versions, ranges and tags; aliases, files, links, workspaces, git and URLs aren't */
 export function isRegistrySpec(spec: string): boolean {
 	return !!spec && (!!semver.validRange(spec) || DIST_TAG.test(spec));
+}
+
+export function splitPackage(arg: string): PackageRequest {
+	const at = arg.lastIndexOf("@");
+	return at > 0 ? { name: arg.slice(0, at), spec: arg.slice(at + 1) } : { name: arg };
 }
 
 /** The direct dependencies in `names`; throws for a name that isn't a direct dependency */
@@ -147,15 +147,11 @@ export function getUpdateCandidates(names: string[]): PackageUpdate[] {
 	return candidates;
 }
 
-/**
- * Plans the `requests` with their groups and the peers they need.
- * @throws when the registry can't be queried
- */
+/** Plans the `requests` with their groups and needed peers; throws when the registry can't be queried */
 export function getUpdatePlan({ requests, force = false, verbose = false }:
 	{ requests: PackageRequest[]; force?: boolean; verbose?: boolean }): PackageUpdate[] {
 	const fields = ["version", "dependencies", "peerDependencies", "deprecated", "engines", "ig-update"];
 	const lines = new Map<PackageUpdate, PackageManifest[]>();
-	/** By package name, the versions a written range is checked against, so it can't allow one above the target */
 	const published = new Map<string, string[]>();
 
 	const resolveLines = (candidates: PackageUpdate[]) => {
@@ -205,15 +201,14 @@ export function getUpdatePlan({ requests, force = false, verbose = false }:
 
 	const plan = getUpdateCandidates(requests.map(r => r.name));
 	resolveLines(plan);
-	const installed = new Map<string, PackageManifest | undefined>();
+	const pkgJson = readPackageJson();
+	const direct = Object.keys({ ...pkgJson.dependencies, ...pkgJson.devDependencies });
+	const installed = new Map(direct.map(name => [name, readInstalled(name)] as const));
 	const asUnchanged = (name: string): Requirer => {
 		const { version, peerDependencies } = installed.get(name)!;
 		return { name, target: version, manifest: { version, peerDependencies } };
 	};
 	const required = new Set(requests.map(r => r.name));
-	const pkgJson = readPackageJson();
-	const direct = Object.keys({ ...pkgJson.dependencies, ...pkgJson.devDependencies });
-	direct.forEach(name => installed.set(name, readInstalled(name)));
 	// like ng update: group members join, and so do the peers the newest versions need that the installed versions don't satisfy
 	for (let added = plan; added.length;) {
 		const planned = plan.map(c => c.name);
@@ -274,10 +269,6 @@ export function getUpdatePlan({ requests, force = false, verbose = false }:
 	return plan;
 }
 
-/**
- * The direct dependencies whose `latest` version is newer and declares `ig-update` or is in a fallback group, once per group,
- * and the failed lookups, which don't hide the other updates
- */
 export async function discoverUpdates(verbose = false): Promise<{ updates: AvailableUpdate[]; failures: string[] }> {
 	const pkgJson = readPackageJson();
 	const direct = Object.keys({ ...pkgJson.dependencies, ...pkgJson.devDependencies });
@@ -285,7 +276,7 @@ export async function discoverUpdates(verbose = false): Promise<{ updates: Avail
 		Util.warn(`Skipped "${name}": not a valid package name.`, "yellow");
 	}
 	const failures: string[] = [];
-	// one package at a time, so that a broken install doesn't hide the others; the first entry, as a package can be in both sections
+	// one at a time, so a broken install doesn't hide the others; first entry only, as a package can be in both sections
 	const candidates = direct.filter(isPackageName).flatMap(name => {
 		try {
 			return getUpdateCandidates([name]).slice(0, 1);
@@ -304,7 +295,6 @@ export async function discoverUpdates(verbose = false): Promise<{ updates: Avail
 	await Promise.all(Array.from({ length: Math.min(8, checked.length) }, async () => {
 		while (next < checked.length) {
 			const i = next++;
-			// a version without `ig-update` comes back as a plain string
 			latest[i] = await npmViewAsync(`${checked[i].name}@latest`, ["version", "ig-update"], verbose)
 				.then(m => typeof m === "string" ? { version: m } : m, (error: Error) => error);
 		}
@@ -327,7 +317,6 @@ export async function discoverUpdates(verbose = false): Promise<{ updates: Avail
 	return { updates: updates.sort((a, b) => a.name.localeCompare(b.name)), failures };
 }
 
-/** Writes each `newRange` as a value-only edit that keeps the formatting; writes nothing when it throws */
 export function applyUpdatePlan(plan: PackageUpdate[]): void {
 	const conflicts = plan.filter(c => c.conflict).map(c => c.name);
 	if (conflicts.length) {
@@ -357,12 +346,7 @@ export function applyUpdatePlan(plan: PackageUpdate[]): void {
 	}
 }
 
-/**
- * Picks each target as the newest version in its line that satisfies the other targets' dependencies and peers,
- * and whose peers the installed `unplanned` packages meet, repeating until stable since targets depend on each other.
- * Only peers conflict: when no version meets every range, the versions meeting the most are kept,
- * and the dependency ranges they miss get a separate copy, reported as `nested`.
- */
+/** Picks each target as the newest version meeting every peer range and the most dependency ranges, until stable */
 function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>, fixed: Requirer[], unplanned: Requirer[]): void {
 	const sources = [...updates, ...fixed];
 	let changed = true;
@@ -392,7 +376,6 @@ function alignTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packag
 	}
 }
 
-/** Sets each aligned target's `newRange`, or a `conflict` when it misses a peer, and the `nested` copies */
 function settleTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>, published: Map<string, string[]>,
 	fixed: Requirer[], unplanned: Requirer[], force: boolean): void {
 	const sources = [...updates, ...fixed];
@@ -432,20 +415,14 @@ function settleTargets(updates: PackageUpdate[], lines: Map<PackageUpdate, Packa
 	}
 }
 
-/** Peers on `update`, and the dependency ranges a version in its line meets; any other gets a separate copy anyway */
 function lookaheadConstraints(update: PackageUpdate, sources: Requirer[], lines: Map<PackageUpdate, PackageManifest[]>): Constraint[] {
 	return constraintsOn(update, sources).filter(c => c.peer || lines.get(update)!.some(m => semver.satisfies(m.version, c.range)));
 }
 
-/** The `unchanged` packages whose installed version misses a (non-group) peer of `manifest` */
 function missedPeers(manifest: PackageManifest, unchanged: Requirer[]): Requirer[] {
 	return unchanged.filter(f => requirements(manifest, f.name).some(r => r.peer && !r.group && !semver.satisfies(f.target!, r.range)));
 }
 
-/**
- * What holds `update` below its newest version, as `alignTargets` judged it: ranges it misses, and its requirements the lookahead can't meet,
- * also on the `unchanged` peers left out of the plan
- */
 function heldBackBy(update: PackageUpdate, updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>,
 	fixed: Requirer[], unchanged: PackageUpdate[]): { name: string; reason: string }[] {
 	const newest = lines.get(update)![0];
@@ -466,12 +443,11 @@ function heldBackBy(update: PackageUpdate, updates: PackageUpdate[], lines: Map<
 			const together = alone.length || satisfiable(constraints) ? []
 				: constraints.reduce((set, c) => satisfiable(set.filter(s => s !== c)) ? set : set.filter(s => s !== c), constraints);
 			return [...alone, ...together].map(c => ({ name: c.requiredBy, reason: `${requires}, which conflicts with ${formatConstraints([c])}` +
-				(together.length ? ` together with ${formatConstraints(together.filter(other => other !== c))}` : "") }));
+				(together.length ? ` together with ${formatConstraints(together.filter(t => t !== c))}` : "") }));
 		}))
 	];
 }
 
-/** Only peer ranges are overridden; unmet dependency ranges are reported as `nested` instead */
 function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, PackageManifest[]>, published: Map<string, string[]>,
 	fixed: Requirer[]): void {
 	const sources = [...updates, ...fixed];
@@ -501,8 +477,7 @@ function forceConflicts(updates: PackageUpdate[], lines: Map<PackageUpdate, Pack
 
 function rangeToWrite(update: PackageUpdate, target: string, constraints: Constraint[], versions: string[],
 	line: PackageManifest[]): string | undefined {
-	// npm may later install any published version in the range, so it must fit every constraint the target meets and allow no newer
-	// version; package groups only align the targets, as npm doesn't enforce them
+	// npm may install any version in the range: it must fit every met constraint and allow nothing newer; groups only align targets
 	const met = constraints.filter(c => !c.group && semver.satisfies(target, c.range));
 	const fitsAll = (range: string, among: string[]) => met.every(c => fits(range, c.range)) && semver.maxSatisfying(among, range) === target;
 	if (target === update.baseline && fitsAll(update.declared, line.map(m => m.version))) {
@@ -529,10 +504,6 @@ function constraintsOn(update: PackageUpdate, sources: Requirer[]): Constraint[]
 		.map(requirement => ({ ...requirement, requiredBy: other.name, from: `${other.name}@${other.target}` })));
 }
 
-/**
- * Ranges `manifest` depends on for `name`, by trial or licensed name, each flagged as a peer or not;
- * its `ig-update.packageGroup` requires the members like peers
- */
 function requirements(manifest: PackageManifest | undefined, name: string): Requirement[] {
 	const peers = manifest?.peerDependencies ?? {};
 	const deps: Record<string, string> = { ...manifest?.dependencies, ...peers };
@@ -544,15 +515,12 @@ function requirements(manifest: PackageManifest | undefined, name: string): Requ
 	];
 }
 
-/** `ig-update.packageGroup` as member -> range, where a list means the version of `manifest`; unset when missing or malformed */
 function packageGroup(manifest: PackageManifest | undefined): Record<string, string> | undefined {
 	const group = manifest?.["ig-update"]?.packageGroup;
 	const members = Array.isArray(group) && group.every(m => typeof m === "string") ? Object.fromEntries(group.map(m => [m, manifest!.version])) : group;
-	return members && typeof members === "object" && !Array.isArray(members) && Object.values(members).every(r => typeof r === "string")
-		? members as Record<string, string> : undefined;
+	return isObject(members) && Object.values(members).every(r => typeof r === "string") ? members : undefined;
 }
 
-/** The members of the package's `ig-update.packageGroup`, else of its fallback group, by trial and licensed name */
 function groupOf(name: string, manifest: PackageManifest): string[] {
 	const metadata = packageGroup(manifest);
 	if (!metadata && manifest["ig-update"]?.packageGroup !== undefined) {
@@ -562,7 +530,6 @@ function groupOf(name: string, manifest: PackageManifest): string[] {
 	return members.flatMap(withCounterpart);
 }
 
-/** `^`, `~` or `""` (exact): the operator whose range equals `declared`, so `19.x` -> `^` and `19.6.x` -> `~` */
 function rangeOperator(declared: string): string {
 	const min = semver.minVersion(declared)!.version;
 	return ["^", "~"].find(op => semver.validRange(op + min) === semver.validRange(declared)) ?? "";
@@ -572,7 +539,6 @@ function npmView(spec: string, fields: string[], verbose: boolean) {
 	return parseView(spec, spawnSync(...npmViewCommand(spec, fields, verbose)));
 }
 
-/** `npmView` without blocking, so that several lookups run at once */
 async function npmViewAsync(spec: string, fields: string[], verbose: boolean) {
 	return parseView(spec, await new Promise<NpmResult>(resolve => execFile(...npmViewCommand(spec, fields, verbose), (error, stdout, stderr) =>
 		resolve(typeof error?.code === "number" ? { status: error.code, stdout, stderr } : { status: error ? null : 0, stdout, stderr, error }))));
@@ -612,11 +578,10 @@ function parseView(spec: string, result: NpmResult) {
 	throw new Error(message);
 }
 
-/** Validates `spec`, then the command, arguments and options of `npm view`, without a shell where possible */
 function npmViewCommand(spec: string, fields: string[], verbose: boolean): [string, string[], { encoding: "utf8"; maxBuffer: number; shell?: boolean }] {
 	debug(verbose, `npm view "${spec}" ${fields.join(" ")}`);
-	const at = spec.lastIndexOf("@");
-	if (!isPackageName(at > 0 ? spec.slice(0, at) : spec) || at > 0 && !isRegistrySpec(spec.slice(at + 1))) {
+	const request = splitPackage(spec);
+	if (!isPackageName(request.name) || request.spec !== undefined && !isRegistrySpec(request.spec)) {
 		throw new Error(`Invalid package "${spec}".`);
 	}
 	const args = ["view", spec, ...fields, "--json"];
@@ -630,8 +595,7 @@ function npmViewCommand(spec: string, fields: string[], verbose: boolean): [stri
 	if (existsSync(script)) {
 		return [process.execPath, [script, ...args], options];
 	}
-	// every argument is a validated package spec or a constant; quoted, as cmd.exe treats `^`, `<` and `>` specially,
-	// and joined into the command, as Node.js deprecates arguments with `shell`
+	// arguments are validated specs or constants, quoted for cmd.exe (`^`, `<`, `>`); joined, as Node.js deprecates args with `shell`
 	return [["npm", ...args.map(arg => `"${arg}"`)].join(" "), [], { ...options, shell: true }];
 }
 
@@ -647,7 +611,6 @@ function readPackageJson() {
 	}
 }
 
-/** The manifest of an installed dependency, also through pnpm's links; unset when not installed */
 function readInstalled(name: string): PackageManifest | undefined {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const manifestPath = `node_modules/${name}/package.json`;
@@ -661,8 +624,8 @@ function readInstalled(name: string): PackageManifest | undefined {
 	}
 }
 
-/** `--verbose` diagnostic; only values computed here, never configuration or registry output */
-function debug(verbose: boolean, message: string): void {
+/** `--verbose` output: only computed values, never environment, configuration or registry details */
+export function debug(verbose: boolean, message: string): void {
 	if (verbose) {
 		Util.log(message, "gray");
 	}

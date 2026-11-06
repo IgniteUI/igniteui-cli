@@ -1,7 +1,7 @@
 import {
-	applyUpdatePlan, coerceVersionNumber, detectFrameworkFromPackageJson, discoverUpdates, FEED_ANGULAR, getMigrationsCollection, getUpdatePlan,
-	GoogleAnalytics, InquirerWrapper, isPackageName, isRegistrySpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest, PackageUpdate,
-	ProjectConfig, readMigrations, selectMigrations, UPGRADEABLE_PACKAGES, Util
+	applyUpdatePlan, coerceVersionNumber, debug, detectFrameworkFromPackageJson, discoverUpdates, FEED_ANGULAR, getMigrationsCollection,
+	getUpdatePlan, GoogleAnalytics, InquirerWrapper, isObject, isPackageName, isRegistrySpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest,
+	PackageUpdate, ProjectConfig, readMigrations, selectMigrations, splitPackage, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import { execSync } from "child_process";
 import * as fs from "fs";
@@ -98,9 +98,9 @@ const command: UpdateCommandType = {
 		return command.update(argv);
 	},
 	async update(argv: ArgumentsCamelCase<PositionalArgs>) {
-		const migrateOnly = !!(argv.migrateOnly || argv.name);
+		const migrate: MigrateOptions = { migrateOnly: !!(argv.migrateOnly || argv.name), from: argv.from, to: argv.to, name: argv.name };
 		const configured = ProjectConfig.getConfig().project?.framework;
-		const framework = (configured ?? detectFrameworkFromPackageJson(!migrateOnly))?.toLowerCase();
+		const framework = (configured ?? detectFrameworkFromPackageJson(!migrate.migrateOnly))?.toLowerCase();
 		if (!framework) {
 			return fail("No valid package.json found in the current directory.");
 		}
@@ -119,8 +119,7 @@ const command: UpdateCommandType = {
 			verbose: !!argv.verbose
 		};
 		const packages = argv.packages ?? [];
-		const migrate: MigrateOptions = { migrateOnly, from: argv.from, to: argv.to, name: argv.name };
-		if (configured || !migrateOnly || framework !== "webcomponents") {
+		if (configured || !migrate.migrateOnly || framework !== "webcomponents") {
 			debug(flags.verbose, `Framework: ${framework} (${configured ? "from the project config" : "detected from package.json"})`);
 		}
 		if (migrate.migrateOnly && flags.skipInstall) {
@@ -132,27 +131,26 @@ const command: UpdateCommandType = {
 		switch (framework) {
 			case "react":
 			case "webcomponents": {
-				const frameworkName = framework === "react" ? "React" : "Web Components";
-				return packages.length ? updateSelected(frameworkName, packages, migrate, flags) : listUpdates(flags.verbose);
+				if (!packages.length) {
+					return listUpdates(flags.verbose);
+				}
+				let requests: PackageRequest[];
+				try {
+					requests = parsePackages(packages);
+				} catch (error) {
+					return fail("Invalid package arguments.", error.message);
+				}
+				return migrate.migrateOnly
+					? migrateOnly(requests[0], migrate, flags)
+					: updatePackages(framework === "react" ? "React" : "Web Components", flags, requests);
 			}
 			case "angular":
-				updateAngular(flags, packages, migrate);
-				break;
+				return updateAngular(flags, packages, migrate);
 			default:
 				Util.log(`Updating ${framework} projects with ig update is not supported.`);
 		}
 	}
 };
-
-async function updateSelected(frameworkName: string, args: string[], migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
-	let packages: PackageRequest[];
-	try {
-		packages = parsePackages(args);
-	} catch (error) {
-		return fail("Invalid package arguments.", error.message);
-	}
-	return migrate.migrateOnly ? migrateOnly(packages[0], migrate, flags) : updatePackages(frameworkName, flags, packages);
-}
 
 async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
 	if (spec) {
@@ -200,7 +198,9 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		const from = coerceVersionNumber(migrate.from);
 		const to = coerceVersionNumber(migrate.to ?? JSON.parse(fs.readFileSync(manifest, "utf8")).version);
 		if (!from || !to) {
-			return fail("Unable to run the migrations.", `"${from ? migrate.to : migrate.from}" is not a valid version.`);
+			const invalid = from ? migrate.to : migrate.from;
+			return fail("Unable to run the migrations.", invalid !== undefined ? `"${invalid}" is not a valid version.`
+				: `Unable to determine the installed version of ${name}. Specify it with --to <version>.`);
 		}
 		({ required, optional } = selectMigrations(migrations, from, to));
 		Util.log(`Migrations of ${name} from ${from} to ${to}:`);
@@ -219,44 +219,42 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 
 	const managers = detectPackageManagers(pkgJson.packageManager);
 	const pm = managers.length === 1 ? managers[0] : undefined;
-	if (!await runAndReport(name, collection, required, pm)) {
-		return;
-	}
-	const chosen = await chooseOptionalMigrations(name, optional);
-	if (chosen && await runAndReport(name, collection, chosen, pm) && (required.length || chosen.length)) {
+	if (await runAndReport(name, collection, { required, optional }, pm)) {
 		Util.log("Migrations completed. Review the changes, then run your build and tests.");
 	}
 }
 
-/** Runs the migrations and reports a failure with the commands to run the rest; true when all of them succeed */
-async function runAndReport(name: string, collection: string, migrations: Migration[], pm: string | undefined): Promise<boolean> {
-	if (!migrations.length) {
-		return true;
-	}
-	try {
-		await loadDevKit();
-	} catch (error) {
-		fail("Unable to load @angular-devkit/schematics to run the migrations.", error.message);
-		return false;
-	}
-	const { completed, failed, notRun } = await runMigrations(collection, migrations, pm);
-	if (failed) {
-		const { name: failedName, version } = failed.migration;
-		fail("A migration failed, and its changes weren't written.", `${failedName}${version ? ` (${version})` : ""}: ${failed.error}`);
-		for (const m of notRun) {
-			Util.log(`Not run: ${m.name}. Run it with: ig update ${name} --name ${m.name}`);
+/** Runs the required, then the chosen optional migrations; the number run, or undefined on a failure or a cancelled prompt */
+async function runAndReport(name: string, collection: string, { required, optional }: { required: Migration[]; optional: Migration[] },
+	pm: string | undefined): Promise<number | undefined> {
+	const run = async (migrations: Migration[]): Promise<boolean> => {
+		if (!migrations.length) {
+			return true;
 		}
-		if (completed.length) {
-			Util.log("Review the changes of the completed migrations with git diff.");
+		try {
+			await loadDevKit();
+		} catch (error) {
+			fail("Unable to load @angular-devkit/schematics to run the migrations.", error.message);
+			return false;
 		}
-	}
-	return !failed;
+		const { completed, failed, notRun } = await runMigrations(collection, migrations, pm);
+		if (failed) {
+			const { name: failedName, version } = failed.migration;
+			fail("A migration failed, and its changes weren't written.", `${failedName}${version ? ` (${version})` : ""}: ${failed.error}`);
+			for (const m of notRun) {
+				Util.log(`Not run: ${m.name}. Run it with: ig update ${name} --name ${m.name} --allow-dirty`);
+			}
+			if (completed.length) {
+				Util.log("Review the changes of the completed migrations with git diff.");
+			}
+		}
+		return !failed;
+	};
+	const chosen = await run(required) ? await chooseOptionalMigrations(name, optional) : undefined;
+	return chosen && await run(chosen) ? required.length + chosen.length : undefined;
 }
 
-/**
- * Prompts for the optional migrations to run, pre-selecting the recommended ones; without a terminal, lists their commands,
- * and also when the prompt is cancelled, which returns nothing so that the caller stops
- */
+/** Prompts for the optional migrations, else lists their commands; undefined when the prompt is cancelled, so the caller stops */
 async function chooseOptionalMigrations(name: string, optional: Migration[]): Promise<Migration[] | undefined> {
 	if (!optional.length) {
 		return [];
@@ -276,18 +274,11 @@ async function chooseOptionalMigrations(name: string, optional: Migration[]): Pr
 	}
 	Util.log(`To run the optional migrations of ${name}, use:`);
 	for (const m of optional) {
-		Util.log(`  ig update ${name} --name ${m.name}`);
+		Util.log(`  ig update ${name} --name ${m.name} --allow-dirty`);
 	}
 	return cancelled ? undefined : [];
 }
 
-/** `@scope/pkg@^3` -> `@scope/pkg` and `^3` */
-function splitPackage(arg: string): PackageRequest {
-	const at = arg.lastIndexOf("@");
-	return at > 0 ? { name: arg.slice(0, at), spec: arg.slice(at + 1) } : { name: arg };
-}
-
-/** Accepts registry versions, ranges and tags only, so aliases, files, links, workspaces, git and URLs are rejected */
 function parsePackages(args: string[]): PackageRequest[] {
 	const packages = args.map(splitPackage);
 	packages.forEach(({ name, spec }, i) => {
@@ -304,7 +295,7 @@ function parsePackages(args: string[]): PackageRequest[] {
 	return packages;
 }
 
-/** The local config, else Angular, React, then Web Components dependencies; React apps depend on Web Components packages too */
+/** React before Web Components: React apps depend on Web Components packages too */
 function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: object }): string | undefined {
 	const configured = ProjectConfig.hasLocalConfig() ? ProjectConfig.localConfig().project?.framework : undefined;
 	if (configured) {
@@ -320,7 +311,6 @@ function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: o
 	return deps.some(dep => WEBCOMPONENTS_SIGNAL.test(dep)) ? "webcomponents" : undefined;
 }
 
-/** Stops on uncommitted changes in the project unless `allowDirty`; outside a git repository, only warns */
 function checkGit(allowDirty: boolean): boolean {
 	const status = Util.spawnSync("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
 	if (status.status !== 0) {
@@ -335,7 +325,6 @@ function checkGit(allowDirty: boolean): boolean {
 	return true;
 }
 
-/** Lists the packages that support ig update and have a newer version, without changing anything */
 async function listUpdates(verbose: boolean): Promise<void> {
 	const found = await discoverUpdates(verbose).catch((error: Error) => fail("Unable to check for updates.", error.message));
 	if (!found) {
@@ -357,7 +346,6 @@ async function listUpdates(verbose: boolean): Promise<void> {
 	}
 }
 
-/** Updates the `requests` with their groups and needed peers, then runs their migrations */
 async function updatePackages(frameworkName: string, flags: UpdateFlags, requests: PackageRequest[]): Promise<void> {
 	if (!flags.dryRun && !checkGit(flags.allowDirty)) {
 		return;
@@ -386,7 +374,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 
 	const framework = identifyFramework(pkgJson);
 	const changes = plan.filter(c => c.newRange);
-	// request order, then the packages that joined; once per name, as a package can be in both dependency sections
+	// request order, then the joined packages; once per name, as a package can be in both sections
 	const migrating = [...new Set([...requests.map(r => r.name), ...changes.map(c => c.name)])]
 		.map(name => changes.find(c => c.name === name))
 		.filter((c): c is PackageUpdate => !!c && declaredMigrations(c, framework) === "declared");
@@ -446,13 +434,13 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 
 	if (flags.skipInstall) {
 		const next = pm
-			? `Run "${pm} install${pm === "npm" && flags.force ? " --force" : ""}" to install them.`
+			? `Run "${getInstallCommand(pm, flags.force)}" to install them.`
 			: `Run your package manager's install command to update the lockfile.${flags.force ? " With npm, add --force." : ""}`;
 		Util.log(`Updated ${changes.length} package(s) in package.json. ${next}`);
 		if (migrating.length) {
 			Util.log("Then run their migrations:");
 			for (const c of migrating) {
-				Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline} --to ${c.target}`);
+				Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline} --to ${c.target} --allow-dirty`);
 			}
 		}
 	} else {
@@ -469,11 +457,11 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	}
 }
 
-/** Runs the migrations of each updated package from its baseline to its installed version, until one fails; true when all succeed */
+/** Runs each package's migrations from its baseline to its installed version, until one fails; true when all succeed */
 async function migratePackages(updates: PackageUpdate[], framework: string | undefined, pm: string): Promise<boolean> {
 	const stop = (rest: PackageUpdate[]) => {
 		Util.log(`The new versions remain installed.${rest.length ? " To run the remaining migrations, use:" : ""}`);
-		rest.forEach(c => Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline}`));
+		rest.forEach(c => Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline} --allow-dirty`));
 		return false;
 	};
 	try {
@@ -498,14 +486,12 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 		if (installed !== target) {
 			Util.warn(`Installed ${name} ${installed} instead of the planned ${target}.`, "yellow");
 		}
-		const { required, optional } = selected;
 		Util.log(`Migrations of ${name} from ${baseline} to ${installed}:`);
-		if (!required.length && !optional.length) {
+		if (!selected.required.length && !selected.optional.length) {
 			Util.log("No migrations to run.");
 			continue;
 		}
-		const chosen = await runAndReport(name, collection, required, pm) ? await chooseOptionalMigrations(name, optional) : undefined;
-		if (!chosen || !await runAndReport(name, collection, chosen, pm)) {
+		if (await runAndReport(name, collection, selected, pm) === undefined) {
 			return stop(updates.slice(index + 1));
 		}
 	}
@@ -530,9 +516,9 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 		return fail("No valid package.json found in the current directory.");
 	}
 
-	const names = packages.map(arg => splitPackage(arg).name);
+	const requests = packages.map(splitPackage);
+	const names = requests.map(r => r.name);
 	const igniteUIPackage = names.find(name => name === NPM_ANGULAR || name === FEED_ANGULAR);
-	// they ship the Angular templates, whose versions follow igniteui-angular
 	const companions = igniteUIPackage && !migrate.migrateOnly
 		? [NPM_CLI, "@igniteui/angular-schematics"].filter(name => name in deps && !names.includes(name))
 		: [];
@@ -541,7 +527,7 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 	}).filter(([, enabled]) => enabled).map(([option]) => option);
 	const values = (["from", "to", "name"] as const).flatMap(key => migrate[key] ? [`--${key}`, migrate[key]] : []);
 	const ngArgs = ["update", ...packages, ...companions, ...options, ...values];
-	const versions = packages.some(arg => splitPackage(arg).spec) ? "the requested versions" : "their latest versions, including new majors";
+	const versions = requests.some(r => r.spec) ? "the requested versions" : "their latest versions, including new majors";
 	const description = `"ng ${ngArgs.join(" ")}" with the project's Angular CLI. ` + (!packages.length
 		? "It lists the available updates without changing anything."
 		: (migrate.migrateOnly
@@ -582,7 +568,6 @@ function updateAngular(flags: UpdateFlags, packages: string[], migrate: MigrateO
 	}
 }
 
-/** Notes whether each package declares migrations for `framework`, and what holds packages back */
 function printPlan(plan: PackageUpdate[], title: string, requests: PackageRequest[], framework: string | undefined): void {
 	Util.log(title);
 
@@ -602,7 +587,7 @@ function printPlan(plan: PackageUpdate[], title: string, requests: PackageReques
 		}
 		if (migrations === "unidentified") {
 			Util.warn(`    Skipped ${c.name} migrations: can't tell whether this is a React or Web Components project. ` +
-				`Set "project.framework" in ignite-ui-cli.json, then run ig update ${c.name} --migrate-only --from ${c.baseline}`, "yellow");
+				`Set "project.framework" in ignite-ui-cli.json, then run ig update ${c.name} --migrate-only --from ${c.baseline} --allow-dirty`, "yellow");
 		}
 	});
 
@@ -638,15 +623,14 @@ function printPlan(plan: PackageUpdate[], title: string, requests: PackageReques
 	}
 }
 
-/** From its registry metadata, whether the new version of `c` declares migrations for `framework`, which are checked after the install */
+/** Whether the registry metadata of `c`'s target declares migrations for `framework`; checked again after the install */
 function declaredMigrations(c: PackageUpdate, framework: string | undefined): "declared" | "none" | "unidentified" | undefined {
 	if (c.target === c.baseline) {
 		return undefined;
 	}
-	const isMap = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 	const metadata = c.manifest?.["ig-update"];
-	const migrations = isMap(metadata) ? metadata.migrations : metadata;
-	if (!isMap(migrations)) {
+	const migrations = isObject(metadata) ? metadata.migrations : metadata;
+	if (!isObject(migrations)) {
 		return migrations === undefined ? "none" : "declared";
 	}
 	if (!framework) {
@@ -678,10 +662,9 @@ function install(pm: string, backup: Map<string, Buffer | undefined>, flags: Upd
 	Util.log(`Running "${installCommand}".`);
 	debug(flags.verbose, `Backed up ${[...backup.keys()].filter(file => backup.get(file)).join(", ")}; ` +
 		"installing with YARN_ENABLE_IMMUTABLE_INSTALLS=false.");
-	// an install that ends the process before it returns must not report success
 	process.exitCode = 1;
 	try {
-		// not Util.execSync: it exits on statuses above 128, which npm also returns for system errors, skipping the rollback
+		// not Util.execSync: it exits on statuses above 128 (npm system errors), skipping the rollback
 		execSync(installCommand, { stdio: "inherit", env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 		process.exitCode = 0;
 		return true;
@@ -716,13 +699,6 @@ function fail(message: string, details?: string): void {
 		Util.warn(details, "red");
 	}
 	process.exitCode = 1;
-}
-
-/** `--verbose` diagnostic; only values computed here, never environment, configuration or registry details */
-function debug(verbose: boolean, message: string): void {
-	if (verbose) {
-		Util.log(message, "gray");
-	}
 }
 
 export default command;
