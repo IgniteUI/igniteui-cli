@@ -61,7 +61,7 @@ export function readMigrations(collectionPath: string): Migration[] {
 	if (collection.extends !== undefined) {
 		throw new Error(`${collectionPath}: "extends" is not supported in migrations collections.`);
 	}
-	return Object.entries(collection.schematics).map(([name, entry]) => {
+	return Object.entries(collection.schematics).filter(([, entry]) => !entry?.private && !entry?.hidden).map(([name, entry]) => {
 		if (entry?.version !== undefined && typeof entry.version !== "string") {
 			throw new Error(`${collectionPath}: the version of migration "${name}" must be a string.`);
 		}

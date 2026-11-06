@@ -87,6 +87,18 @@ describe("Unit - update migrations metadata", () => {
 			expect(migrations.map(m => m.version)).toEqual(["2.1.0", "3.0.0", "3.1.0", "3.1.0-rc.1", undefined, undefined, undefined]);
 		});
 
+		it("excludes private and hidden entries, like Angular, even with valid versions", () => {
+			const migrations = readMigrations(write("collection.json", { schematics: {
+				"public": { version: "2.0.0" },
+				"private-helper": { version: "2.0.0", private: true },
+				"hidden-helper": { version: "2.0.0", hidden: true },
+				"optional": { version: "2.0.0", optional: true }
+			} }));
+			expect(names(migrations)).toEqual(["public", "optional"]);
+			const { required, optional } = selectMigrations(migrations, "1.0.0", "2.0.0");
+			expect([names(required), names(optional)]).toEqual([["public"], ["optional"]]);
+		});
+
 		it("rejects invalid collections, extends and versions that aren't strings", () => {
 			for (const content of ["{ \"schematics\": ", "[]", "{}", "{ \"schematics\": [] }"]) {
 				expect(() => readMigrations(write("collection.json", content))).withContext(content)

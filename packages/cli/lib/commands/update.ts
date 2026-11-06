@@ -99,7 +99,7 @@ const command: UpdateCommandType = {
 	},
 	async update(argv: ArgumentsCamelCase<PositionalArgs>) {
 		const migrate: MigrateOptions = { migrateOnly: !!(argv.migrateOnly || argv.name), from: argv.from, to: argv.to, name: argv.name };
-		const configured = ProjectConfig.getConfig().project?.framework;
+		const configured = localFramework();
 		const framework = (configured ?? detectFrameworkFromPackageJson(!migrate.migrateOnly))?.toLowerCase();
 		if (!framework) {
 			return fail("No valid package.json found in the current directory.");
@@ -237,16 +237,14 @@ async function runAndReport(name: string, collection: string, { required, option
 			fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 			return false;
 		}
-		const { completed, failed, notRun } = await runMigrations(collection, migrations, pm);
+		const { failed, notRun } = await runMigrations(collection, migrations, pm);
 		if (failed) {
 			const { name: failedName, version } = failed.migration;
-			fail("A migration failed, and its changes weren't written.", `${failedName}${version ? ` (${version})` : ""}: ${failed.error}`);
+			fail("A migration failed, and some of its changes may have been written.", `${failedName}${version ? ` (${version})` : ""}: ${failed.error}`);
 			for (const m of notRun) {
 				Util.log(`Not run: ${m.name}. Run it with: ig update ${name} --name ${m.name} --allow-dirty`);
 			}
-			if (completed.length) {
-				Util.log("Review the changes of the completed migrations with git diff.");
-			}
+			Util.log("Review all project changes before rerunning migrations (use git status and git diff when available).");
 		}
 		return !failed;
 	};
@@ -295,9 +293,13 @@ function parsePackages(args: string[]): PackageRequest[] {
 	return packages;
 }
 
+function localFramework(): string | undefined {
+	return ProjectConfig.hasLocalConfig() ? ProjectConfig.localConfig().project?.framework : undefined;
+}
+
 /** React before Web Components: React apps depend on Web Components packages too */
 function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: object }): string | undefined {
-	const configured = ProjectConfig.hasLocalConfig() ? ProjectConfig.localConfig().project?.framework : undefined;
+	const configured = localFramework();
 	if (configured) {
 		return configured.toLowerCase();
 	}
@@ -312,9 +314,19 @@ function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: o
 }
 
 function checkGit(allowDirty: boolean): boolean {
-	const status = Util.spawnSync("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
-	if (status.status !== 0) {
+	const status = Util.spawnSync("git", ["status", "--porcelain", "--", "."], { encoding: "utf8", env: { ...process.env, LC_ALL: "C" } });
+	const gitMissing = (status.error as NodeJS.ErrnoException | undefined)?.code === "ENOENT";
+	const noRepository = !status.error && !status.signal && status.status !== 0 &&
+		/^fatal: not a git repository\b/mi.test(status.stderr?.toString() ?? "");
+	if (gitMissing || noRepository) {
 		Util.warn("Not a Git repository: review and revert the update's changes manually.", "yellow");
+	} else if (status.error || status.signal || status.status !== 0) {
+		if (!allowDirty) {
+			fail("Unable to check for uncommitted changes. Fix the problem, or rerun with --allow-dirty.",
+				status.error?.message ?? (status.stderr?.toString().trim() || `git status ended with ${status.signal ?? `exit code ${status.status}`}`));
+			return false;
+		}
+		Util.warn("Unable to check for uncommitted changes: the update's changes may be mixed with existing ones.", "yellow");
 	} else if (status.stdout.toString().trim()) {
 		if (!allowDirty) {
 			fail("Uncommitted changes. Commit or stash them first, or rerun with --allow-dirty.");

@@ -23,6 +23,14 @@ describe("Unit - Update command", () => {
 		return read("package.json");
 	}
 
+	function configure(framework?: string) {
+		if (framework) {
+			fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ project: { framework } }));
+		} else {
+			fs.rmSync("ignite-ui-cli.json", { force: true });
+		}
+	}
+
 	function plan(...entries: Partial<PackageUpdate>[]) {
 		return spyOn(versionUpdate, "getUpdatePlan").and.returnValue((entries.length ? entries : [{}]).map(entry => ({
 			name: WC, section: "dependencies", declared: "~6.0.0", baseline: "6.0.0",
@@ -35,6 +43,14 @@ describe("Unit - Update command", () => {
 	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
 	const updateWc = (args: Flags = {}) => run({ packages: [WC], ...args });
 	const installOptions = () => ({ stdio: "inherit" as const, env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
+	const gitOptions = () => ({ encoding: "utf8", env: { ...process.env, LC_ALL: "C" } });
+	const NOT_A_REPOSITORY = "fatal: not a git repository (or any of the parent directories): .git\n";
+	const GIT_FAILURES: [string, object][] = [
+		["an output overflow", { status: null, signal: "SIGTERM", error: Object.assign(new Error("spawnSync git ENOBUFS"), { code: "ENOBUFS" }), stdout: " M src/app.ts" }],
+		["dubious ownership", { status: 128, stdout: "", stderr: "fatal: detected dubious ownership in repository at 'C:/secret/app'\n" }],
+		["an execution error, even with git's non-repository message", { status: null, error: Object.assign(new Error("spawnSync git EACCES"), { code: "EACCES" }), stderr: NOT_A_REPOSITORY }],
+		["a signal", { status: null, signal: "SIGKILL", stdout: "", stderr: "" }]
+	];
 	const read = (file: string) => fs.readFileSync(file, "utf8");
 	const log = () => output.join("\n");
 
@@ -79,9 +95,10 @@ describe("Unit - Update command", () => {
 			spyOn(Util, method).and.callFake((message: string) => { output.push(message); });
 		}
 		execSync = spyOn(child_process, "execSync");
-		spawnSync = spyOn(Util, "spawnSync").and.returnValue({ status: 128, stdout: "" } as any);
+		spawnSync = spyOn(Util, "spawnSync").and.returnValue({ status: 128, stdout: "", stderr: NOT_A_REPOSITORY } as any);
 		spyOn(GoogleAnalytics, "post");
-		getConfig = spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "webcomponents" } } as any);
+		getConfig = spyOn(ProjectConfig, "getConfig").and.returnValue({} as any);
+		configure("webcomponents");
 		runMigrations = spyOn(updateMigrations, "runMigrations").and.callFake(async (_collection, migrations) => ({ completed: migrations, notRun: [] }));
 		loadDevKit = spyOn(updateMigrations, "loadDevKit").and.resolveTo();
 		spyOn(Util, "canPrompt").and.returnValue(false);
@@ -96,7 +113,7 @@ describe("Unit - Update command", () => {
 
 	describe("frameworks", () => {
 		it("posts analytics and detects React from package.json without a project config, saying where it came from", async () => {
-			getConfig.and.returnValue({});
+			configure();
 			project({ dependencies: { [WC]: "~6.0.0", react: "^19.0.0" } });
 			plan();
 
@@ -112,7 +129,7 @@ describe("Unit - Update command", () => {
 		it("doesn't update jQuery or Blazor projects", async () => {
 			const getPlan = plan();
 			for (const framework of ["jquery", "blazor"]) {
-				getConfig.and.returnValue({ project: { framework } });
+				configure(framework);
 				await run();
 			}
 			expect(getPlan).not.toHaveBeenCalled();
@@ -124,10 +141,26 @@ describe("Unit - Update command", () => {
 		});
 
 		it("fails without a package.json", async () => {
-			getConfig.and.returnValue({});
+			configure();
 			await run();
 			expect(log()).toContain("No valid package.json found");
 			expect(process.exitCode).toBe(1);
+		});
+
+		it("ignores a global framework setting, also with a local config that sets none", async () => {
+			getConfig.and.returnValue({ project: { framework: "angular" } });
+			project({ dependencies: { [WC]: "~6.0.0", react: "^19.0.0" } });
+			plan();
+			for (const local of [undefined, "{}"]) {
+				configure();
+				if (local) {
+					fs.writeFileSync("ignite-ui-cli.json", local);
+				}
+				output = [];
+				await updateWc({ dryRun: true });
+				expect(log()).withContext(`local config: ${local}`).toContain("Update plan (React, npm)");
+			}
+			expect(spawnSync).not.toHaveBeenCalled();
 		});
 	});
 
@@ -571,7 +604,7 @@ describe("Unit - Update command", () => {
 		it("runs the required migrations in (from, to] by version after the checks, then lists the optional ones", async () => {
 			await migrate();
 
-			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], gitOptions());
 			expect(loadDevKit).toHaveBeenCalledBefore(runMigrations);
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(output).toEqual([
@@ -634,6 +667,11 @@ describe("Unit - Update command", () => {
 			await migrate({ from: undefined, name: "old" });
 
 			expect(output).toContain("unversioned: boom");
+			expect(output.slice(-3)).toEqual([
+				"A migration failed, and some of its changes may have been written.",
+				"unversioned: boom",
+				"Review all project changes before rerunning migrations (use git status and git diff when available)."
+			]);
 		});
 
 		it("lists the migrations with --dry-run, without checking git, loading DevKit or running them", async () => {
@@ -705,6 +743,16 @@ describe("Unit - Update command", () => {
 			expect(runMigrations).toHaveBeenCalledTimes(1);
 		});
 
+		it("stops when Git can't check the project for uncommitted changes", async () => {
+			spawnSync.and.returnValue(GIT_FAILURES[0][1]);
+
+			await migrate();
+
+			expect(output).toEqual(["Unable to check for uncommitted changes. Fix the problem, or rerun with --allow-dirty.", "spawnSync git ENOBUFS"]);
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+		});
+
 		it("checks the request before running anything, keeping package names out of analytics", async () => {
 			fs.mkdirSync("node_modules/plain-lib");
 			fs.writeFileSync("node_modules/plain-lib/package.json", JSON.stringify({ name: "plain-lib", version: "1.0.0" }));
@@ -771,9 +819,7 @@ describe("Unit - Update command", () => {
 			it(`runs the ${framework} migrations of a map, identified by ${signal}`, async () => {
 				getConfig.and.returnValue({ project: { framework: "react" } });
 				project({ dependencies });
-				if (configured) {
-					fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ project: { framework: configured } }));
-				}
+				configure(configured);
 				const [react, webcomponents] = installFixture(MAP);
 
 				await migrate();
@@ -782,8 +828,8 @@ describe("Unit - Update command", () => {
 			});
 		}
 
-		it("runs single-path migrations but not a map when the framework isn't identified, and finds no map entry for Angular", async () => {
-			getConfig.and.returnValue({});
+		it("runs single-path migrations but not a map when the framework isn't identified, and finds no map entry for the framework", async () => {
+			configure();
 			project({ dependencies: { vue: "^3.0.0" } });
 			installFixture(MAP);
 
@@ -799,12 +845,11 @@ describe("Unit - Update command", () => {
 
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 
-			getConfig.and.returnValue({ project: { framework: "webcomponents" } });
-			project({ dependencies: { "@angular/core": "^21.0.0" } });
-			installFixture(MAP);
+			configure("react");
+			installFixture({ webcomponents: MAP.webcomponents });
 			await migrate();
 
-			expect(output).toContain("fixture-lib doesn't provide migrations for angular.");
+			expect(output).toContain("fixture-lib doesn't provide migrations for react.");
 		});
 	});
 
@@ -827,7 +872,7 @@ describe("Unit - Update command", () => {
 
 			await update(["fixture-lib", WC]);
 
-			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], { encoding: "utf8" });
+			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], gitOptions());
 			expect(getPlan).toHaveBeenCalledOnceWith({ requests: [{ name: "fixture-lib" }, { name: WC }], force: false, verbose: false });
 			expect(read("package.json")).toContain(`"fixture-lib": "^2.0.0"`);
 			expect(execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
@@ -946,13 +991,13 @@ describe("Unit - Update command", () => {
 			await update(["fixture-lib", "other-lib"]);
 
 			expect(runMigrations).toHaveBeenCalledTimes(1);
-			expect(posted()).toEqual(["A migration failed, and its changes weren't written."]);
+			expect(posted()).toEqual(["A migration failed, and some of its changes may have been written."]);
 			expect(output.slice(-7)).toEqual([
 				"Migrations of fixture-lib from 1.0.0 to 2.0.0:",
-				"A migration failed, and its changes weren't written.",
+				"A migration failed, and some of its changes may have been written.",
 				"second (2.0.0): boom",
 				"Not run: third. Run it with: ig update fixture-lib --name third --allow-dirty",
-				"Review the changes of the completed migrations with git diff.",
+				"Review all project changes before rerunning migrations (use git status and git diff when available).",
 				"The new versions remain installed. To run the remaining migrations, use:",
 				"  ig update other-lib --migrate-only --from 1.0.0 --allow-dirty"
 			]);
@@ -1086,6 +1131,46 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(0);
 		});
 
+		for (const [failure, result] of GIT_FAILURES) {
+			it(`stops when Git can't check for uncommitted changes because of ${failure}, keeping the details out of analytics, unless --allow-dirty`, async () => {
+				const getPlan = plan(FIXTURE);
+				spawnSync.and.returnValue(result);
+
+				await update(["fixture-lib"]);
+
+				expect(output[0]).toBe("Unable to check for uncommitted changes. Fix the problem, or rerun with --allow-dirty.");
+				expect(posted()).toEqual(["Unable to check for uncommitted changes. Fix the problem, or rerun with --allow-dirty."]);
+				expect(getPlan).not.toHaveBeenCalled();
+				expect(read("package.json")).toBe(original);
+				expect(process.exitCode).toBe(1);
+
+				output = [];
+				await update(["fixture-lib"], { allowDirty: true });
+
+				expect(output[0]).toBe("Unable to check for uncommitted changes: the update's changes may be mixed with existing ones.");
+				expect(runMigrations).toHaveBeenCalledTimes(1);
+				expect(process.exitCode).toBe(0);
+			});
+		}
+
+		it("warns and continues outside a Git repository and without Git", async () => {
+			plan(FIXTURE);
+			for (const result of [
+				{ status: 128, stdout: "", stderr: NOT_A_REPOSITORY },
+				{ status: 128, stdout: "", stderr: "fatal: Not a git repository (or any of the parent directories): .git\n" },
+				{ status: null, error: Object.assign(new Error("spawnSync git ENOENT"), { code: "ENOENT" }) }
+			]) {
+				spawnSync.and.returnValue(result);
+				project({ dependencies: { [WC]: "~6.0.0", "fixture-lib": "^1.0.0" } });
+				output = [];
+				await update(["fixture-lib"]);
+
+				expect(output[0]).withContext(JSON.stringify(result)).toBe("Not a Git repository: review and revert the update's changes manually.");
+			}
+			expect(runMigrations).toHaveBeenCalledTimes(3);
+			expect(process.exitCode).toBe(0);
+		});
+
 		it("fails without changes when a requested package can't be updated, keeping its spec out of analytics, and only warns about one that joined", async () => {
 			const reason = `unsupported spec "git+https://token@github.com/acme/lib.git" (only exact, ^, ~ and x-range versions are supported)`;
 			const getPlan = plan({ ...FIXTURE, skipped: reason, target: undefined, newRange: undefined }, {});
@@ -1141,7 +1226,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("runs single-path migrations but skips a map when the framework isn't identified, still updating every package", async () => {
-			getConfig.and.returnValue({});
+			configure();
 			const packages = { dependencies: { "fixture-lib": "^1.0.0", "map-lib": "^1.0.0" } };
 			project(packages);
 			const [, webcomponents] = installFixture(MAP, "map-lib");
@@ -1155,7 +1240,7 @@ describe("Unit - Update command", () => {
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(process.exitCode).toBe(0);
 
-			fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ project: { framework: "webcomponents" } }));
+			configure("webcomponents");
 			project(packages);
 			runMigrations.calls.reset();
 			await update(["fixture-lib", "map-lib"]);
@@ -1192,7 +1277,7 @@ describe("Unit - Update command", () => {
 		const updateAngular = (args: Flags = {}) => run({ packages: ["igniteui-angular"], ...args });
 
 		beforeEach(() => {
-			getConfig.and.returnValue({ project: { framework: "angular" } });
+			configure("angular");
 			spawnSync.and.returnValue({ status: 0 });
 		});
 
@@ -1221,7 +1306,7 @@ describe("Unit - Update command", () => {
 		});
 
 		it("updates the licensed package from devDependencies, detected without a project config, and names it in the failure hint and forced warning", async () => {
-			getConfig.and.returnValue({});
+			configure();
 			spawnSync.and.returnValue({ status: 1 });
 			angularProject(true, { dependencies: { "@angular/core": "^21.0.0" }, devDependencies: { "@infragistics/igniteui-angular": "~21.0.0" } });
 
@@ -1237,6 +1322,21 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(0);
 		});
 
+		it("runs ng update for an Angular project without a local framework, whatever the global config says", async () => {
+			configure();
+			getConfig.and.returnValue({ project: { framework: "react" } });
+			angularProject(true, { dependencies: { "@angular/core": "^21.0.0", "igniteui-angular": "~21.0.0" } });
+			const getPlan = plan();
+
+			await updateAngular();
+
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin(), "update", "igniteui-angular"], { stdio: "inherit" });
+			expect(getPlan).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
+			expect(log()).not.toContain("Update plan");
+			expect(process.exitCode).toBe(0);
+		});
+
 		it("runs the extensionless bin/ng of Angular CLI 12", async () => {
 			angularProject(false, { dependencies: { "igniteui-angular": "~12.0.0" } });
 			const bin = installAngularCli("bin/ng");
@@ -1249,6 +1349,7 @@ describe("Unit - Update command", () => {
 		it("runs an Angular CLI hoisted to a parent node_modules", async () => {
 			fs.mkdirSync("app");
 			process.chdir("app");
+			configure("angular");
 			angularProject();
 
 			await run();
