@@ -1138,6 +1138,14 @@ describe("Unit - version update", () => {
 					expect(summary(request("example-ui", "3.0.0", true))).toEqual([["example-ui", "3.0.0", "^3.0.0"], ["react", "19.2.0", "^19.2.0"]]);
 				});
 
+				it("keeps a joined peer whose declared range allows versions the targets reject, so its range is narrowed", () => {
+					project({ "example-theme": "^1.0.0" }, { "example-theme": "1.0.0" });
+					publishUi(version => ({ "example-theme": version === "3.0.0" ? "^2.0.0" : version === "2.5.0" ? "1.0.0" : "^1.0.0" }));
+					publish("example-theme", ["1.0.0", "1.1.0", "2.0.0"], "2.0.0");
+
+					expect(summary(request("example-ui"))).toEqual([["example-ui", "2.5.0", "^2.5.0"], ["example-theme", "1.0.0", "1.0.0"]]);
+				});
+
 				it("checks such peers together, and keeps one moving when its installed peers reject a target", () => {
 					project({ react: "^18.2.0", "react-dom": "^18.2.0" }, { react: "18.2.0", "react-dom": { version: "18.2.0", peerDependencies: { react: "^18.2.0" } } });
 					publish("react", ["18.2.0", "19.2.0"], "19.2.0");

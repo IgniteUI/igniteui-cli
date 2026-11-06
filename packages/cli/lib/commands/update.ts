@@ -98,6 +98,9 @@ const command: UpdateCommandType = {
 		return command.update(argv);
 	},
 	async update(argv: ArgumentsCamelCase<PositionalArgs>) {
+		if (typeof argv.name === "string" && !argv.name.trim()) {
+			return fail("--name needs a migration name.");
+		}
 		const migrate: MigrateOptions = { migrateOnly: !!(argv.migrateOnly || argv.name), from: argv.from, to: argv.to, name: argv.name };
 		const configured = localFramework();
 		const framework = (configured ?? detectFrameworkFromPackageJson(!migrate.migrateOnly))?.toLowerCase();

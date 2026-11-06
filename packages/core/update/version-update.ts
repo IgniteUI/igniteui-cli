@@ -236,7 +236,8 @@ export function getUpdatePlan({ requests, force = false, verbose = false }:
 			size = unneeded.length;
 			const moving = updates.filter(u => !unneeded.includes(u));
 			const sources = [...moving, ...fixed, ...unneeded.map(peer => asUnchanged(peer.name))];
-			unneeded = unneeded.filter(peer => constraintsOn(peer, sources).every(c => semver.satisfies(peer.installed!, c.range)) &&
+			unneeded = unneeded.filter(peer => constraintsOn(peer, sources).every(c =>
+				semver.satisfies(peer.installed!, c.range) && (c.group || fits(peer.declared, c.range))) &&
 				moving.every(u => constraintsOn(u, [asUnchanged(peer.name)]).every(c => semver.satisfies(u.target!, c.range)) &&
 					constraintsOn(u, [peer]).every(c => semver.satisfies(lines.get(u)![0].version, c.range))));
 		}

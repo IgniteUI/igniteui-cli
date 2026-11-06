@@ -674,6 +674,23 @@ describe("Unit - Update command", () => {
 			]);
 		});
 
+		it("rejects an empty or blank --name before checking Git or updating anything", async () => {
+			const getPlan = plan();
+			for (const name of ["", "   "]) {
+				await run({ packages: ["fixture-lib"], name });
+			}
+
+			expect(output).toEqual(["--name needs a migration name.", "--name needs a migration name."]);
+			expect(spawnSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
+			expect(getPlan).not.toHaveBeenCalled();
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
+
+			await run({ packages: ["fixture-lib"], name: ["old", "extra"] as unknown as string });
+			expect(output).toContain(`fixture-lib has no migration named "old,extra".`);
+		});
+
 		it("lists the migrations with --dry-run, without checking git, loading DevKit or running them", async () => {
 			await migrate({ dryRun: true });
 			await migrate({ from: "2.0.0", dryRun: true });
