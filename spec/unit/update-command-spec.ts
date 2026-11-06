@@ -276,7 +276,7 @@ describe("Unit - Update command", () => {
 				const immutableInstalls = process.env.YARN_ENABLE_IMMUTABLE_INSTALLS;
 				project(packageManager ? { packageManager } : {}, lockfiles);
 				plan();
-				let installedFrom: string;
+				let installedFrom: string | undefined;
 				execSync.and.callFake(() => { installedFrom = read("package.json"); });
 
 				await updateWc();

@@ -49,7 +49,7 @@ export async function runMigrations(collection: string, migrations: Migration[],
 			await new Promise<void>((resolve, reject) => workflow.execute({ collection, schematic: migration.name, options: {}, logger })
 				.subscribe({ complete: resolve, error: reject }));
 		} catch (error) {
-			const failed = { migration, error: error?.message ?? String(error) };
+			const failed = { migration, error: (error as Error | undefined)?.message ?? String(error) };
 			return { completed: migrations.slice(0, index), failed, notRun: migrations.slice(index + 1) };
 		}
 	}

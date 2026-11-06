@@ -138,7 +138,7 @@ const command: UpdateCommandType = {
 				try {
 					requests = parsePackages(packages);
 				} catch (error) {
-					return fail("Invalid package arguments.", error.message);
+					return fail("Invalid package arguments.", (error as Error).message);
 				}
 				return migrate.migrateOnly
 					? migrateOnly(requests[0], migrate, flags)
@@ -178,7 +178,7 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		collection = getMigrationsCollection(packageDir, framework);
 		migrations = collection ? readMigrations(collection) : [];
 	} catch (error) {
-		return fail("Unable to run the migrations.", error.message);
+		return fail("Unable to run the migrations.", (error as Error).message);
 	}
 	debug(flags.verbose, `Migrations: ${collection ?? "none"} (framework: ${framework ?? "not identified"})`);
 	if (!collection) {
@@ -234,7 +234,7 @@ async function runAndReport(name: string, collection: string, { required, option
 		try {
 			await loadDevKit();
 		} catch (error) {
-			fail("Unable to load @angular-devkit/schematics to run the migrations.", error.message);
+			fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 			return false;
 		}
 		const { completed, failed, notRun } = await runMigrations(collection, migrations, pm);
@@ -354,7 +354,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	try {
 		plan = getUpdatePlan({ requests, force: flags.force, verbose: flags.verbose });
 	} catch (error) {
-		return fail("Nothing was updated: unable to plan the update.", error.message);
+		return fail("Nothing was updated: unable to plan the update.", (error as Error).message);
 	}
 	const unusable = plan.filter(c => c.skipped && requests.some(r => r.name === c.name));
 	if (unusable.length) {
@@ -421,15 +421,15 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 		try {
 			await loadDevKit();
 		} catch (error) {
-			return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", error.message);
+			return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 		}
 	}
-	const backup = flags.skipInstall ? undefined : new Map(["package.json", ...LOCKFILES[pm]]
+	const backup = flags.skipInstall || !pm ? undefined : new Map(["package.json", ...LOCKFILES[pm]]
 		.map(file => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined] as const));
 	try {
 		applyUpdatePlan(plan);
 	} catch (error) {
-		return fail("Nothing was updated: unable to update package.json.", error.message);
+		return fail("Nothing was updated: unable to update package.json.", (error as Error).message);
 	}
 
 	if (flags.skipInstall) {
@@ -443,7 +443,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 				Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline} --to ${c.target} --allow-dirty`);
 			}
 		}
-	} else {
+	} else if (pm && backup) {
 		if (!install(pm, backup, flags)) {
 			return;
 		}
@@ -467,7 +467,7 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 	try {
 		await loadDevKit();
 	} catch (error) {
-		fail("Unable to load @angular-devkit/schematics to run the migrations.", error.message);
+		fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 		return stop(updates);
 	}
 	for (const [index, { name, baseline, target }] of updates.entries()) {
@@ -478,16 +478,16 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 		try {
 			installed = JSON.parse(fs.readFileSync(path.join(packageDir, "package.json"), "utf8")).version;
 			collection = getMigrationsCollection(packageDir, framework);
-			selected = selectMigrations(collection ? readMigrations(collection) : [], baseline, installed);
+			selected = selectMigrations(collection ? readMigrations(collection) : [], baseline!, installed);
 		} catch (error) {
-			fail("Unable to read the migrations of an updated package.", error.message);
+			fail("Unable to read the migrations of an updated package.", (error as Error).message);
 			return stop(updates.slice(index));
 		}
 		if (installed !== target) {
 			Util.warn(`Installed ${name} ${installed} instead of the planned ${target}.`, "yellow");
 		}
 		Util.log(`Migrations of ${name} from ${baseline} to ${installed}:`);
-		if (!selected.required.length && !selected.optional.length) {
+		if (!collection || (!selected.required.length && !selected.optional.length)) {
 			Util.log("No migrations to run.");
 			continue;
 		}
