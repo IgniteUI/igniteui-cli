@@ -26,6 +26,7 @@ license: MIT
 | `spec/templates/template-contracts-spec.ts` | Every jQuery, React, Web Components and Blazor project and component template: matches its framework and project type, its template paths exist, it generates a config |
 | `spec/unit/TemplateManager-spec.ts`, `spec/unit/list-spec.ts` | Template discovery and `ig list` output |
 | `spec/acceptance/*` | `ig new`, `ig add`, `ig generate` end to end, with package install stubbed |
+| `spec/acceptance/wizard-spec.ts` | The interactive `ig new` wizard for every answer combination of every framework (scenarios from `spec/helpers/wizard-matrix.ts`): the exact prompts asked, the generated config and template files, the `dotnet new` arguments for Blazor, and the AI config files. Answers are scripted through `inquirerWrapperTesting.promptDelegates`; install, git and `dotnet` are stubbed |
 
 The template specs for a framework run in about 15 seconds, after `npm run build`:
 
@@ -47,9 +48,12 @@ Preconditions: `npm run build` has run (the script refuses otherwise); `node` an
 | All component templates, one framework | `scripts/smoke-test.sh -f webcomponents` | a few min |
 | Every project template, one framework | `scripts/smoke-test.sh -f angular --all-projects` | ~2 min for Web Components; Angular is slowest |
 | Bisect which template breaks a build | `scripts/smoke-test.sh -f angular --isolate --templates a,b,c` | slow |
+| Create projects through the interactive wizard | `scripts/smoke-test.sh -f blazor --wizard pairs` | ~10 s per Blazor project; npm frameworks ~1-3 min each |
 | Keep generated projects for inspection | add `--keep` | |
 
 Defaults: angular, react, webcomponents; default project template; all component templates. jQuery and Blazor are opt-in (`-f jquery`, `-f blazor`): jQuery needs ProGet credentials for 13 templates and has no build; Blazor needs the .NET SDK and has no component templates.
+
+`--wizard each|pairs|all` creates each project through the interactive `ig new` wizard instead of `ig new <name>`: `scripts/smoke-wizard.mjs` sends arrow keys and Enter over a pipe and fails on any unexpected prompt, an answer the prompt does not offer, or a prompt sequence that differs from `spec/helpers/wizard-matrix.ts`. The scenarios come from the registered templates; `each` covers every answer at least once, `pairs` every pair of answers, `all` every combination. Without a TTY the CLI skips the AI config prompts and Blazor's "Run the app now", so those are covered only by `wizard-spec.ts`. The wizard runs `npm install` itself (its "Complete and Install packages" step), then the usual `install`/`build` steps run. Results rows use the step `wizard` and the scenario id; logs are `<fw-short>-w-<scenario>-wizard.log`.
 
 `--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own `files/package.json` (e.g. Angular `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`. Hidden projects can also reuse another project's `files/` through `templatePaths` (Angular `side-nav-mini-auth` includes `side-nav-auth/files`, manifest included), so a change there needs a `-p` run for each project that pulls it in.
 
@@ -59,7 +63,7 @@ In a cloud agent session (time-limited, see `AGENTS.md`), the build is already d
 
 ## Results
 
-- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `add`, `install`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
+- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `wizard`, `add`, `install`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
 - `output/smoke/logs/<dir>-<step>[-<id>].log`, where `<dir>` is `<fw-short>-<project>` (or `<fw-short>-<id>` with `--isolate`) and `<fw-short>` is `ng`, `rc`, `wc`, `jq`, `bz`. Examples: `rc-default-add-rating.log`, `wc-default-install.log`, `ng-default-build.log`.
 - Generated projects are deleted on full success unless `--keep`; on any failure they are kept under `output/smoke/<dir>/`.
 
