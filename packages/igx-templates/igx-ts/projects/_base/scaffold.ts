@@ -16,10 +16,14 @@ const SCHEMATICS_PACKAGE = "@igniteui/angular-schematics";
  */
 const NG_ADD_AI_CONFIG = [".agents", ".claude", "AGENTS.md", ".mcp.json"];
 
-/** Reads a field of the newest published version that matches `spec` (`name@range`) */
-function npmView(spec: string, field: string) {
+/**
+ * Reads a field of every published version that matches `spec` (`name@range`). npm lists them in publish order,
+ * which is not version order: a patch to an older major can follow the newest major's latest release.
+ */
+function npmView(spec: string, field: string): any[] {
 	const result = JSON.parse(Util.execSync(`npm view "${spec}" ${field} --json`, { encoding: "utf8" }) as string);
-	return Array.isArray(result) ? result[result.length - 1] : result;
+	// a single matching version gives the value itself
+	return Array.isArray(result) ? result : [result];
 }
 
 /**
@@ -29,8 +33,10 @@ function npmView(spec: string, field: string) {
  * Returns that Angular major.
  */
 export function generateProject(dashName: string, projectPath: string): string {
-	const angularMajor = npmView(`@angular/core@${npmView(IGNITEUI_ANGULAR_PACKAGE, "peerDependencies")["@angular/core"]}`,
-		"version").split(".")[0];
+	// the last published igniteui-angular in the range, a `~` range whose patches ship in version order
+	const igxPeers = npmView(IGNITEUI_ANGULAR_PACKAGE, "peerDependencies").pop();
+	const angularVersions: string[] = npmView(`@angular/core@${igxPeers["@angular/core"]}`, "version");
+	const angularMajor = String(Math.max(...angularVersions.map(version => parseInt(version, 10))));
 	const ng = (command: string, cwd: string) =>
 		Util.execSync(`npx -y @angular/cli@${angularMajor} ${command} --defaults --interactive=false`, {
 			cwd,

@@ -61,6 +61,35 @@ describe("Angular project scaffold", () => {
 		}));
 	});
 
+	it("takes the newest Angular major a peer range spanning majors allows, though npm lists versions in publish order", async () => {
+		execSync.withArgs(jasmine.stringMatching(/^npm view "igniteui-angular@/), jasmine.anything())
+			.and.returnValue(JSON.stringify([{ "@angular/core": "21" }, { "@angular/core": "21 || 22" }]));
+		// a patch to the older major, published after the newest major's latest release
+		execSync.withArgs(jasmine.stringMatching(/^npm view "@angular\/core@/), jasmine.anything())
+			.and.returnValue(JSON.stringify(["21.2.25", "22.2.4", "21.2.26"]));
+
+		expect(await emptyProject.scaffold({ name, theme: "Default" })).toBeTrue();
+
+		expect(commands()).toContain(`npm view "@angular/core@21 || 22" version --json`);
+		const ngCommands = commands().filter(command => command.startsWith("npx"));
+		expect(ngCommands.length).toBeGreaterThan(0);
+		for (const command of ngCommands) {
+			expect(command).toMatch(/^npx -y @angular\/cli@22 /);
+		}
+		expect(commands()).toContain("npx -y @angular/cli@22 add angular-eslint@22 --skip-confirmation --defaults --interactive=false");
+	});
+
+	it("takes the Angular major from the one version npm returns as a plain value", async () => {
+		execSync.withArgs(jasmine.stringMatching(/^npm view "igniteui-angular@/), jasmine.anything())
+			.and.returnValue(JSON.stringify({ "@angular/core": "22" }));
+		execSync.withArgs(jasmine.stringMatching(/^npm view "@angular\/core@/), jasmine.anything())
+			.and.returnValue(JSON.stringify("22.2.4"));
+
+		expect(await emptyProject.scaffold({ name, theme: "Default" })).toBeTrue();
+
+		expect(commands()).toContain("npx -y @angular/cli@22 add angular-eslint@22 --skip-confirmation --defaults --interactive=false");
+	});
+
 	it("patches the generated angular.json", async () => {
 		await emptyProject.scaffold({ name, theme: "Default" });
 
