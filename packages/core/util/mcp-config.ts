@@ -31,16 +31,50 @@ export const AI_ASSISTANT_MCP_CONFIGS: Record<AiCodingAssistant, AssistantMcpCon
 	"junie":	{ mcpFilePath: ".junie/mcp/mcp.json",    rootKey: "mcpServers" },
 };
 
+// The key stays "igniteui-cli" so re-running ai-config updates configs written by earlier versions
+const IGNITEUI_DOCS_SERVER_KEY = "igniteui-cli";
+
 const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
-	"igniteui-cli": {
+	[IGNITEUI_DOCS_SERVER_KEY]: {
 		command: "npx",
-		args: ["-y", "igniteui-cli", "mcp"]
+		args: ["-y", "@igniteui/mcp-server"]
 	},
 	"igniteui-theming": {
 		command: "npx",
 		args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
 	}
 };
+
+/**
+ * Docs server entry for projects that list `igniteui-cli`: npx runs the project's own CLI copy, which starts
+ * its bundled server. Starting `@igniteui/mcp-server` directly fails there under pnpm, because npx finds the
+ * server as a transitive dependency but pnpm doesn't link its `igniteui-mcp` bin into `node_modules/.bin`.
+ */
+const IGNITEUI_CLI_DOCS_SERVER: McpServerEntry = {
+	command: "npx",
+	args: ["-y", "igniteui-cli", "mcp"]
+};
+
+function projectListsIgniteUICli(fileSystem: IFileSystem): boolean {
+	if (!fileSystem.fileExists("./package.json")) {
+		return false;
+	}
+	try {
+		const packageJson = JSON.parse(fileSystem.readFile("./package.json"));
+		return !!(packageJson.dependencies?.["igniteui-cli"] || packageJson.devDependencies?.["igniteui-cli"]);
+	} catch {
+		return false;
+	}
+}
+
+function getIgniteUIMcpServers(fileSystem: IFileSystem): Record<string, McpServerEntry> {
+	if (projectListsIgniteUICli(fileSystem)) {
+		return { ...IGNITEUI_MCP_SERVERS, [IGNITEUI_DOCS_SERVER_KEY]: IGNITEUI_CLI_DOCS_SERVER };
+	}
+	return IGNITEUI_MCP_SERVERS;
+}
+
+type Update = [path: jsonc.JSONPath, value: unknown, currentValue: unknown];
 
 /**
  * Reads the assistant-specific MCP config file, ensures all IgniteUI MCP servers are present,
@@ -55,7 +89,7 @@ export function addMcpServers(
 ): boolean {
 	const { mcpFilePath, rootKey } = AI_ASSISTANT_MCP_CONFIGS[assistant];
 	const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
-	const servers = { ...additionalServers, ...IGNITEUI_MCP_SERVERS };
+	const servers = { ...additionalServers, ...getIgniteUIMcpServers(fileSystem) };
 
 	let existingContent: string | undefined;
 	try {
@@ -80,11 +114,21 @@ export function addMcpServers(
 	let modified = false;
 
 	for (const [key, value] of Object.entries(servers)) {
-		const edits = jsonc.modify(text, [rootKey, key], value, { formattingOptions });
-		const newText = jsonc.applyEdits(text, edits);
-		if (newText !== text) {
-			text = newText;
-			modified = true;
+		const current = existing[key];
+		// Update only the fields we write, so user-added ones (env, type, ...) survive a re-run
+		const updates: Update[] = current && typeof current === "object" && !Array.isArray(current)
+			? Object.entries(value).map(([field, fieldValue]): Update => [[rootKey, key, field], fieldValue, current[field]])
+			: [[[rootKey, key], value, current]];
+		for (const [path, update, currentValue] of updates) {
+			if (JSON.stringify(update) === JSON.stringify(currentValue)) {
+				continue;
+			}
+			const edits = jsonc.modify(text, path, update, { formattingOptions });
+			const newText = jsonc.applyEdits(text, edits);
+			if (newText !== text) {
+				text = newText;
+				modified = true;
+			}
 		}
 	}
 

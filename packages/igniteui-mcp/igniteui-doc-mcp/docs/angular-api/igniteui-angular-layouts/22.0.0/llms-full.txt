@@ -1,21 +1,21 @@
-# Ignite UI for Angular Layouts vlatest — Full API Reference
+# Ignite UI for Angular Layouts v22.0.0 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Layouts package (latest). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Layouts package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-layouts
-Version: latest
+Version: 22.0.0
 
 ## Classes
 
-### [IgxComboEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorComponent)
+### [IgxComboEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxComboEditorComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxComboEditorComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **_mainDiv**: `Element`
 - **_mainDivRef**: `ElementRef`
-- static **ngAcceptInputType_actualBaseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_actualBaseTheme**: `any`
 - static **ngAcceptInputType_actualBorderWidth**: `string | number`
 - static **ngAcceptInputType_actualContentPaddingBottom**: `string | number`
 - static **ngAcceptInputType_actualContentPaddingLeft**: `string | number`
@@ -25,7 +25,7 @@ Version: latest
 - static **ngAcceptInputType_actualCornerRadiusBottomRight**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_actualCornerRadiusTopRight**: `string | number`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualFocusBorderWidth**: `string | number`
 - static **ngAcceptInputType_actualFocusUnderlineOpacity**: `string | number`
 - static **ngAcceptInputType_actualFocusUnderlineRippleOpacity**: `string | number`
@@ -38,7 +38,7 @@ Version: latest
 - static **ngAcceptInputType_actualUnderlineWidth**: `string | number`
 - static **ngAcceptInputType_actualValueField**: `string | string[]`
 - static **ngAcceptInputType_allowFilter**: `string | boolean`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_baseTheme**: `any`
 - static **ngAcceptInputType_borderWidth**: `string | number`
 - static **ngAcceptInputType_contentPaddingBottom**: `string | number`
 - static **ngAcceptInputType_contentPaddingLeft**: `string | number`
@@ -49,7 +49,7 @@ Version: latest
 - static **ngAcceptInputType_cornerRadiusTopLeft**: `string | number`
 - static **ngAcceptInputType_cornerRadiusTopRight**: `string | number`
 - static **ngAcceptInputType_dataSourceDesiredProperties**: `string | string[]`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_dropDownButtonVisible**: `string | boolean`
 - static **ngAcceptInputType_fields**: `string | string[]`
 - static **ngAcceptInputType_focusBorderWidth**: `string | number`
@@ -65,8 +65,8 @@ Version: latest
 - static **ngAcceptInputType_underlineWidth**: `string | number`
 - static **ngAcceptInputType_useTopLayer**: `string | boolean`
 - static **ngAcceptInputType_valueField**: `string | string[]`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxComboEditorComponent, "igx-combo-editor", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComboEditorComponent, never>`
 - **actualBackgroundColor**: `string` — Gets the actual opacity to use for the underline ripple element.
 - **actualBaseTheme**: `BaseControlTheme` — Gets the actual display baseTheme to use for the component.
 - **actualBorderColor**: `string` — Gets the actual item background color.
@@ -179,10 +179,7 @@ If a primary key cannot be inferred from the data source, you may need to provid
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **select**(): void — Selects all the text in the combo input area.
@@ -190,27 +187,41 @@ It is invoked only once when the directive is instantiated.
 - **updateStyle**(): void
 - **verifyDisplayText**(): void
 
-### [IgxComboEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorGotFocusEventArgs)
+### [IgxComboEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorDynamicModule)
+
+- **constructor**(): IgxComboEditorDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComboEditorDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComboEditorDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComboEditorDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxComboEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorGotFocusEventArgs)
 
 - **constructor**(): IgxComboEditorGotFocusEventArgs
 
-### [IgxComboEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorLostFocusEventArgs)
+### [IgxComboEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorLostFocusEventArgs)
 
 - **constructor**(): IgxComboEditorLostFocusEventArgs
 
-### [IgxComboEditorTextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorTextChangedEventArgs)
+### [IgxComboEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorModule)
+
+- **constructor**(): IgxComboEditorModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComboEditorModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComboEditorModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComboEditorModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxComboEditorTextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorTextChangedEventArgs)
 
 - **constructor**(): IgxComboEditorTextChangedEventArgs
 - **newText**: `string`
 - **oldText**: `string`
 
-### [IgxComboEditorValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorValueChangedEventArgs)
+### [IgxComboEditorValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorValueChangedEventArgs)
 
 - **constructor**(): IgxComboEditorValueChangedEventArgs
 - **newValue**: `any`
 - **oldValue**: `any`
 
-### [IgxLayoutPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutPrimaryKeyValue)
+### [IgxLayoutPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutPrimaryKeyValue)
 A primary key value.
 
 - **constructor**(): IgxLayoutPrimaryKeyValue
@@ -221,15 +232,29 @@ A primary key value.
 - **equals**(other: any): boolean — Determines if two primary key values are equal.
 - **findByName**(name: string): any
 
-### [IgxLayoutSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutSelectedItemsCollection)
+### [IgxLayoutPrimaryKeyValueDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutPrimaryKeyValueDynamicModule)
+
+- **constructor**(): IgxLayoutPrimaryKeyValueDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLayoutPrimaryKeyValueDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLayoutPrimaryKeyValueDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLayoutPrimaryKeyValueDynamicModule, never, [any, any], [any]>`
+
+### [IgxLayoutPrimaryKeyValueModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutPrimaryKeyValueModule)
+
+- **constructor**(): IgxLayoutPrimaryKeyValueModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLayoutPrimaryKeyValueModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLayoutPrimaryKeyValueModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLayoutPrimaryKeyValueModule, never, [any], never>`
+
+### [IgxLayoutSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutSelectedItemsCollection)
 
 - **constructor**(list?: any[]): IgxLayoutSelectedItemsCollection
 
-### [IgxLayoutSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutSelectedKeysCollection)
+### [IgxLayoutSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutSelectedKeysCollection)
 
 - **constructor**(list?: IgxLayoutPrimaryKeyValue[]): IgxLayoutSelectedKeysCollection
 
-### [IgxListPanelActiveRowChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelActiveRowChangedEventArgs)
+### [IgxListPanelActiveRowChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelActiveRowChangedEventArgs)
 Information about the change to the selected cells in the grid.
 
 - **constructor**(): IgxListPanelActiveRowChangedEventArgs
@@ -238,9 +263,9 @@ Information about the change to the selected cells in the grid.
 - **newActiveRow**: `number` — The new active row.
 - **oldActiveRow**: `number` — The old active row.
 
-### [IgxListPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelComponent)
+### [IgxListPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxListPanelComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef): IgxListPanelComponent
 - **_mainDiv**: `Element`
 - **_mainDivRef**: `ElementRef`
 - static **ngAcceptInputType_activationBorderBottomWidth**: `string | number`
@@ -260,13 +285,13 @@ Information about the change to the selected cells in the grid.
 - static **ngAcceptInputType_primaryKey**: `string | string[]`
 - static **ngAcceptInputType_rowHeight**: `string | number`
 - static **ngAcceptInputType_schemaIncludedProperties**: `string | string[]`
-- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_scrollbarStyle**: `any`
 - static **ngAcceptInputType_selectedItems**: `string | IgxListPanelSelectedItemsCollection`
 - static **ngAcceptInputType_selectedKeys**: `string | IgxListPanelSelectedKeysCollection`
 - static **ngAcceptInputType_selectionBehavior**: `string | ListPanelSelectionBehavior`
 - static **ngAcceptInputType_selectionMode**: `string | ListPanelSelectionMode`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxListPanelComponent, "igx-list-panel", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelComponent, never>`
 - **activationBorder**: `string` — Gets or sets the activation border color to use.
 - **activationBorderBottomWidth**: `number` — Gets or sets the amount of bottom activation border to use for the cell content of this column.
 - **activationBorderLeftWidth**: `number` — Gets or sets the amount of left activation border to use for the cell content for this column.
@@ -325,10 +350,7 @@ If a primary key cannot be inferred from the data source, you may need to provid
 - **getRowKey**(primaryKey: string[], rowIndex: number): IgxListPanelPrimaryKeyValue
 - **invalidateVisibleItems**(): void — Invalidates the bound data for the rows currently visible.
 - **moveViewportTo**(x: number, y: number): void
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **notifyClearItems**(): void — Manually notifies the grid's data source that the data it has bound to has been cleared and needs to be re-examined.
@@ -349,23 +371,30 @@ This should not be called if the data that the grid is bound to is already obser
 - **setScrollbarStyle**(style: ScrollbarStyle): void
 - **updateStyle**(): void
 
-### [IgxListPanelContentRebindEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRebindEventArgs)
+### [IgxListPanelContentRebindEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelContentRebindEventArgs)
 Information about list item content that was just rebound.
 
 - **constructor**(): IgxListPanelContentRebindEventArgs
 - **rowObject**: `any` — The model that is rebinding.
 
-### [IgxListPanelContentRecycledEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRecycledEventArgs)
+### [IgxListPanelContentRecycledEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelContentRecycledEventArgs)
 Information about list item content that was just recycled.
 
 - **constructor**(): IgxListPanelContentRecycledEventArgs
 - **rowObject**: `any` — The model that was recycled.
 
-### [IgxListPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRefreshedEventArgs)
+### [IgxListPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelContentRefreshedEventArgs)
 
 - **constructor**(): IgxListPanelContentRefreshedEventArgs
 
-### [IgxListPanelItemEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelItemEventArgs)
+### [IgxListPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelDynamicModule)
+
+- **constructor**(): IgxListPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxListPanelItemEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelItemEventArgs)
 Event arguments for the SelectionChanged event.
 
 - **constructor**(): IgxListPanelItemEventArgs
@@ -376,7 +405,7 @@ Event arguments for the SelectionChanged event.
 - **itemInfo**: `IgxListPanelItemModel`
 - **listPanel**: `IgxListPanelComponent`
 
-### [IgxListPanelItemModel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelItemModel)
+### [IgxListPanelItemModel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelItemModel)
 
 - **constructor**(): IgxListPanelItemModel
 - static **ngAcceptInputType_dataRow**: `string | number`
@@ -398,7 +427,14 @@ Event arguments for the SelectionChanged event.
 - **top**: `number`
 - **findByName**(name: string): any
 
-### [IgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelPrimaryKeyValue)
+### [IgxListPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelModule)
+
+- **constructor**(): IgxListPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelModule, never, [any, any], [any]>`
+
+### [IgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValue)
 A primary key value.
 
 - **constructor**(): IgxListPanelPrimaryKeyValue
@@ -409,7 +445,21 @@ A primary key value.
 - **equals**(other: any): boolean — Determines if two primary key values are equal.
 - **findByName**(name: string): any
 
-### [IgxListPanelSelectedItemsChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedItemsChangedEventArgs)
+### [IgxListPanelPrimaryKeyValueDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValueDynamicModule)
+
+- **constructor**(): IgxListPanelPrimaryKeyValueDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelPrimaryKeyValueDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelPrimaryKeyValueDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelPrimaryKeyValueDynamicModule, never, [any, any], [any]>`
+
+### [IgxListPanelPrimaryKeyValueModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValueModule)
+
+- **constructor**(): IgxListPanelPrimaryKeyValueModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelPrimaryKeyValueModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelPrimaryKeyValueModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelPrimaryKeyValueModule, never, [any], never>`
+
+### [IgxListPanelSelectedItemsChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectedItemsChangedEventArgs)
 Information about the changing selected items in the grid.
 
 - **constructor**(): IgxListPanelSelectedItemsChangedEventArgs
@@ -420,11 +470,11 @@ Information about the changing selected items in the grid.
 - **currentItems**: `IgxListPanelSelectedItemsCollection` — The items added to the selection.
 - **removedItems**: `IgxListPanelSelectedItemsCollection` — The items removed from the selection.
 
-### [IgxListPanelSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedItemsCollection)
+### [IgxListPanelSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectedItemsCollection)
 
 - **constructor**(list?: any[]): IgxListPanelSelectedItemsCollection
 
-### [IgxListPanelSelectedKeysChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedKeysChangedEventArgs)
+### [IgxListPanelSelectedKeysChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectedKeysChangedEventArgs)
 Information about the change to the selected keys in the grid.
 
 - **constructor**(): IgxListPanelSelectedKeysChangedEventArgs
@@ -435,16 +485,16 @@ Information about the change to the selected keys in the grid.
 - **currentKeys**: `IgxListPanelSelectedKeysCollection` — All keys in the selection.
 - **removedKeys**: `IgxListPanelSelectedKeysCollection` — The keys removed from the selection.
 
-### [IgxListPanelSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedKeysCollection)
+### [IgxListPanelSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectedKeysCollection)
 
 - **constructor**(list?: IgxListPanelPrimaryKeyValue[]): IgxListPanelSelectedKeysCollection
 
-### [IgxListPanelSelectionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectionChangedEventArgs)
+### [IgxListPanelSelectionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectionChangedEventArgs)
 Event arguments for the SelectionChanged event.
 
 - **constructor**(): IgxListPanelSelectionChangedEventArgs
 
-### [IgxListPanelTemplateHeightRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateHeightRequestedEventArgs)
+### [IgxListPanelTemplateHeightRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelTemplateHeightRequestedEventArgs)
 
 - **constructor**(): IgxListPanelTemplateHeightRequestedEventArgs
 - static **ngAcceptInputType_dataRow**: `string | number`
@@ -453,7 +503,7 @@ Event arguments for the SelectionChanged event.
 - **dataRow**: `number`
 - **height**: `number`
 
-### [IgxListPanelTemplateItemUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateItemUpdatingEventArgs)
+### [IgxListPanelTemplateItemUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelTemplateItemUpdatingEventArgs)
 
 - **constructor**(): IgxListPanelTemplateItemUpdatingEventArgs
 - static **ngAcceptInputType_availableWidth**: `string | number`
@@ -461,7 +511,7 @@ Event arguments for the SelectionChanged event.
 - **content**: `any`
 - **model**: `IgxListPanelItemModel`
 
-### [IgxListPanelTemplateWidthRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateWidthRequestedEventArgs)
+### [IgxListPanelTemplateWidthRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelTemplateWidthRequestedEventArgs)
 
 - **constructor**(): IgxListPanelTemplateWidthRequestedEventArgs
 - static **ngAcceptInputType_dataRow**: `string | number`
@@ -470,22 +520,22 @@ Event arguments for the SelectionChanged event.
 - **dataRow**: `number`
 - **width**: `number`
 
-### [IgxOnCollapsedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxOnCollapsedEventArgs)
+### [IgxOnCollapsedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxOnCollapsedEventArgs)
 
 - **constructor**(): IgxOnCollapsedEventArgs
 
-### [IgxOnExpandedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxOnExpandedEventArgs)
+### [IgxOnExpandedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxOnExpandedEventArgs)
 
 - **constructor**(): IgxOnExpandedEventArgs
 
-### [IgxPropertyEditorDataSource](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDataSource)
+### [IgxPropertyEditorDataSource](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorDataSource)
 
 - **constructor**(): IgxPropertyEditorDataSource
 - **context**: `TypeDescriptionContext`
 - **descriptionType**: `string`
 - **findByName**(name: string): any
 
-### [IgxPropertyEditorDescriptionObject](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDescriptionObject)
+### [IgxPropertyEditorDescriptionObject](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorDescriptionObject)
 
 - **constructor**(): IgxPropertyEditorDescriptionObject
 - static **ngAcceptInputType_properties**: `string | IgxPropertyEditorPropertyDescriptionCollection`
@@ -493,13 +543,13 @@ Event arguments for the SelectionChanged event.
 - **properties**: `IgxPropertyEditorPropertyDescriptionCollection`
 - **findByName**(name: string): any
 
-### [IgxPropertyEditorDescriptionObjectCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDescriptionObjectCollection)
+### [IgxPropertyEditorDescriptionObjectCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorDescriptionObjectCollection)
 
 - **constructor**(list?: IgxPropertyEditorDescriptionObject[]): IgxPropertyEditorDescriptionObjectCollection
 
-### [IgxPropertyEditorPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPanelComponent)
+### [IgxPropertyEditorPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPanelComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxPropertyEditorPanelComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef): IgxPropertyEditorPanelComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **_mainDiv**: `Element`
@@ -515,8 +565,8 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_isWrappingEnabled**: `string | boolean`
 - static **ngAcceptInputType_rowHeight**: `string | number`
 - static **ngAcceptInputType_updateMode**: `string | PropertyEditorPanelUpdateMode`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxPropertyEditorPanelComponent, "igx-property-editor-panel", never, any, any, ["contentProperties"], ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPanelComponent, never>`
 - **actualDataSource**: `IgxPropertyEditorPropertyDescriptionCollection` — Gets the actaul data or data source instance to which to bind the grid.
 - **actualDescriptionContext**: `TypeDescriptionContext`
 - **actualRowHeight**: `number`
@@ -537,10 +587,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **updateMode**: `PropertyEditorPanelUpdateMode` — Gets or Sets the property name that contains the values.
 - **width**: `string`
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **notifyClearItems**(): void — Manually notifies the checkboxlist's grid that the data it has bound to has been cleared and needs to be re-examined.
@@ -550,16 +597,30 @@ This should not be called if the data that the grid is bound to is already obser
 - **notifySetItem**(index: number, oldItem: any, newItem: any): void
 - **updateStyle**(): void
 
-### [IgxPropertyEditorPropertyDescriptionButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionButtonClickEventArgs)
+### [IgxPropertyEditorPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPanelDynamicModule)
+
+- **constructor**(): IgxPropertyEditorPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPanelDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxPropertyEditorPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPanelModule)
+
+- **constructor**(): IgxPropertyEditorPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPanelModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxPropertyEditorPropertyDescriptionButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionButtonClickEventArgs)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionButtonClickEventArgs
 
-### [IgxPropertyEditorPropertyDescriptionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionChangedEventArgs)
+### [IgxPropertyEditorPropertyDescriptionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionChangedEventArgs)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionChangedEventArgs
 - **newValue**: `any`
 
-### [IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs)
+### [IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs
 - static **ngAcceptInputType_complexValues**: `string | IgxPropertyEditorDescriptionObjectCollection`
@@ -567,11 +628,11 @@ This should not be called if the data that the grid is bound to is already obser
 - **complexValues**: `IgxPropertyEditorDescriptionObjectCollection`
 - **value**: `any`
 
-### [IgxPropertyEditorPropertyDescriptionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionCollection)
+### [IgxPropertyEditorPropertyDescriptionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionCollection)
 
 - **constructor**(list?: IgxPropertyEditorPropertyDescriptionComponent[]): IgxPropertyEditorPropertyDescriptionCollection
 
-### [IgxPropertyEditorPropertyDescriptionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionComponent)
+### [IgxPropertyEditorPropertyDescriptionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionComponent)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionComponent
 - static **ngAcceptInputType_coercedComplexValues**: `string | IgxPropertyEditorDescriptionObjectCollection`
@@ -588,8 +649,8 @@ This should not be called if the data that the grid is bound to is already obser
 - static **ngAcceptInputType_step**: `string | number`
 - static **ngAcceptInputType_useCoercedValue**: `string | boolean`
 - static **ngAcceptInputType_valueType**: `string | PropertyEditorValueType`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxPropertyEditorPropertyDescriptionComponent, "igx-property-editor-property-description", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPropertyDescriptionComponent, never>`
 - **buttonClicked**: `EventEmitter<any>`
 - **changed**: `EventEmitter<any>`
 - **coercedComplexValue**: `IgxPropertyEditorDescriptionObject`
@@ -619,33 +680,60 @@ This should not be called if the data that the grid is bound to is already obser
 - **useCoercedValue**: `boolean`
 - **valueType**: `PropertyEditorValueType`
 - **findByName**(name: string): any
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxPropertyEditorPropertyDescriptionComponent
+- static **register**(): void
 
-### [IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs)
+### [IgxPropertyEditorPropertyDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionDynamicModule)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxPropertyEditorPropertyDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionModule)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPropertyDescriptionModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPropertyDescriptionModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPropertyDescriptionModule, never, [any, any], [any]>`
+
+### [IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs
 - **propertyPath**: `string`
 - **target**: `any`
 - **value**: `any`
 
-### [IgxToolActionButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionButtonComponent)
+### [IgxToolActionButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionButtonComponent
 - static **ngAcceptInputType_cornerRadius**: `string | number`
 - static **ngAcceptInputType_displayType**: `string | ToolActionButtonDisplayType`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionButtonComponent, "igx-tool-action-button", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonComponent, never>`
 - **cornerRadius**: `number` — Gets or sets the button corner radius.
 - **displayType**: `ToolActionButtonDisplayType` — Gets or sets the display type for the button.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionButtonPairComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionButtonPairComponent)
+### [IgxToolActionButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonDynamicModule)
+
+- **constructor**(): IgxToolActionButtonDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonModule)
+
+- **constructor**(): IgxToolActionButtonModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonModule, never, [any, any], [any]>`
+
+### [IgxToolActionButtonPairComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionButtonPairComponent
@@ -670,8 +758,8 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_rightIconViewBoxWidth**: `string | number`
 - static **ngAcceptInputType_rightIsDisabled**: `string | boolean`
 - static **ngAcceptInputType_rightIsSelected**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionButtonPairComponent, "igx-tool-action-button-pair", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonPairComponent, never>`
 - **actualLeftIconFill**: `string` — Gets the actual LeftIcon fill color.
 - **actualLeftIconStroke**: `string` — Gets the actual LeftIcon stroke color.
 - **actualRightIconFill**: `string` — Gets the actual RightIcon fill color.
@@ -709,15 +797,31 @@ Represents base class for all tool actions in toolbar
 - **rightIsDisabled**: `boolean`
 - **rightIsSelected**: `boolean`
 - **rightTitle**: `string` — Gets or sets the title of the Right button.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCheckboxComponent)
+### [IgxToolActionButtonPairDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairDynamicModule)
+
+- **constructor**(): IgxToolActionButtonPairDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonPairDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonPairDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonPairDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionButtonPairModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairModule)
+
+- **constructor**(): IgxToolActionButtonPairModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonPairModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonPairModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonPairModule, never, [any, any], [any]>`
+
+### [IgxToolActionCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionCheckboxComponent
 - static **ngAcceptInputType_isChecked**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionCheckboxComponent, "igx-tool-action-checkbox", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxComponent, never>`
 - **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the checked state.
 - **actualCheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the checked state.
 - **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the unchecked state.
@@ -725,11 +829,53 @@ Represents base class for all tool actions in toolbar
 - **checkedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the checked state.
 - **checkedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the checked state.
 - **isChecked**: `boolean` — Gets or sets if the tool action is checked.
+- **shorthandTitle**: `string` — Gets or sets a shorthand display text for this checkbox option. Used by
+ToolActionCheckboxGroup to
+show the selected option if it is set. If your title is long consider setting this to a shorter version
+for more compact display.
 - **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the unchecked state.
 - **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionCheckboxListComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCheckboxListComponent)
+### [IgxToolActionCheckboxDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxDynamicModule)
+
+- **constructor**(): IgxToolActionCheckboxDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionCheckboxGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionCheckboxGroupComponent
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionCheckboxGroupComponent, "igx-tool-action-checkbox-group", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxGroupComponent, never>`
+- **actualSelectedTextColor**: `string` — Gets the resolved color for the selected checkbox display text.
+- **selectedTextColor**: `string` — Gets or sets the color for the selected checkbox display text.
+When null, defaults to a lightened version of the ToolPanel's text color.
+- **selectedTextStyle**: `string` — Gets or sets the font for the selected checkbox display text.
+When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
+- **exportVisualData**(): any
+- **ngAfterContentInit**(): void
+- static **register**(): void
+
+### [IgxToolActionCheckboxGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupDynamicModule)
+
+- **constructor**(): IgxToolActionCheckboxGroupDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxGroupDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxGroupDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxGroupDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionCheckboxGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupModule)
+
+- **constructor**(): IgxToolActionCheckboxGroupModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxGroupModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxGroupModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxGroupModule, never, [any, any], [any]>`
+
+### [IgxToolActionCheckboxListComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionCheckboxListComponent
@@ -737,8 +883,14 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_primaryKey**: `string | string[]`
 - static **ngAcceptInputType_selectedKeys**: `string | IgxLayoutSelectedKeysCollection`
 - static **ngAcceptInputType_showSelectAll**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionCheckboxListComponent, "igx-tool-action-checkbox-list", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxListComponent, never>`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the unchecked state.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the checked state.
 - **dataMemberPath**: `string` — Gets or sets if the tool action is checked.
 - **dataSource**: `any` — Gets or sets if the tool action is checked.
 - **indexType**: `ToolActionCheckboxListIndexType`
@@ -746,42 +898,99 @@ Represents base class for all tool actions in toolbar
 - **selectedKeys**: `IgxLayoutSelectedKeysCollection`
 - **selectedMemberPath**: `string` — Gets or sets if the tool action is checked.
 - **showSelectAll**: `boolean` — Gets or sets if the select all row is shown.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
+- **exportVisualData**(): any
 - **findByName**(name: string): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCollection)
+### [IgxToolActionCheckboxListDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListDynamicModule)
+
+- **constructor**(): IgxToolActionCheckboxListDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxListDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxListDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxListDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionCheckboxListModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListModule)
+
+- **constructor**(): IgxToolActionCheckboxListModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxListModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxListModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxListModule, never, [any, any], [any]>`
+
+### [IgxToolActionCheckboxModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxModule)
+
+- **constructor**(): IgxToolActionCheckboxModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxModule, never, [any, any], [any]>`
+
+### [IgxToolActionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCollection)
 
 - **constructor**(list?: IgxToolActionComponent[]): IgxToolActionCollection
 
-### [IgxToolActionColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionColorEditorComponent)
+### [IgxToolActionColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionColorEditorComponent
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionColorEditorComponent, "igx-tool-action-color-editor", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionColorEditorComponent, never>`
 - **value**: `string` — Gets or sets the value for the input.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionComboComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionComboComponent)
+### [IgxToolActionColorEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorDynamicModule)
+
+- **constructor**(): IgxToolActionColorEditorDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionColorEditorDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionColorEditorDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionColorEditorDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionColorEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorModule)
+
+- **constructor**(): IgxToolActionColorEditorModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionColorEditorModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionColorEditorModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionColorEditorModule, never, [any, any], [any]>`
+
+### [IgxToolActionComboComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionComboComponent
 - static **ngAcceptInputType_selectedValues**: `string | IgxLayoutSelectedItemsCollection`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionComboComponent, "igx-tool-action-combo", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComboComponent, never>`
 - **dataSource**: `any` — Gets or sets if the tool action is checked.
 - **displayMemberPath**: `string` — Gets or sets the field to use to get the displayed values.
 - **selectedValues**: `IgxLayoutSelectedItemsCollection`
 - **valueMemberPath**: `string` — Gets or sets the field to use to get the values to use.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionComponent)
+### [IgxToolActionComboDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboDynamicModule)
+
+- **constructor**(): IgxToolActionComboDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComboDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionComboDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionComboDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionComboModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboModule)
+
+- **constructor**(): IgxToolActionComboModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComboModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionComboModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionComboModule, never, [any, any], [any]>`
+
+### [IgxToolActionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionComponent
 - **contentActions**: `QueryList<IgxToolActionComponent>`
 - static **ngAcceptInputType_actions**: `string | IgxToolActionCollection`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualHighlightRadius**: `string | number`
 - static **ngAcceptInputType_actualHighlightWidth**: `string | number`
 - static **ngAcceptInputType_actualIconHeight**: `string | number`
@@ -790,9 +999,10 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_actualPaddingLeft**: `string | number`
 - static **ngAcceptInputType_actualPaddingRight**: `string | number`
 - static **ngAcceptInputType_actualPaddingTop**: `string | number`
+- static **ngAcceptInputType_actualSubPanelRowHeight**: `string | number`
 - static **ngAcceptInputType_closeOnExecute**: `string | boolean`
 - static **ngAcceptInputType_contextBindings**: `string | IgxToolContextBindingCollection`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_height**: `string | number`
 - static **ngAcceptInputType_highlightRadius**: `string | number`
 - static **ngAcceptInputType_highlightWidth**: `string | number`
@@ -813,13 +1023,15 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_paddingRight**: `string | number`
 - static **ngAcceptInputType_paddingTop**: `string | number`
 - static **ngAcceptInputType_subPanelRowHeight**: `string | number`
-- static **ngAcceptInputType_titleHorizontalAlignment**: `string | HorizontalAlignment`
-- static **ngAcceptInputType_visibility**: `string | Visibility`
+- static **ngAcceptInputType_titleHorizontalAlignment**: `any`
+- static **ngAcceptInputType_visibility**: `any`
 - static **ngAcceptInputType_width**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionComponent, "ng-component", never, any, any, ["contentActions"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComponent, never>`
+- **accentColor**: `string`
 - **actionId**: `string`
 - **actions**: `IgxToolActionCollection` — Gets the sub actions associated with this tool action.
+- **actualAccentColor**: `string`
 - **actualActions**: `IgxToolActionComponent[]`
 - **actualBackground**: `string` — Gets the actual background used by the tool action.
 - **actualDensity**: `ControlDisplayDensity` — Gets the resolved display density to use for the action.
@@ -836,6 +1048,7 @@ Represents base class for all tool actions in toolbar
 - **actualPaddingLeft**: `number`
 - **actualPaddingRight**: `number`
 - **actualPaddingTop**: `number`
+- **actualSubPanelRowHeight**: `number`
 - **actualSubtitleTextColor**: `string` — Gets the actual label text color.
 - **actualSubtitleTextStyle**: `FontInfo` — Gets the actual font used.
 - **actualTextColor**: `string` — Gets the actual label text color.
@@ -912,18 +1125,14 @@ overlaid onto the generated actions.
 - **exportVisualData**(): any
 - **findByName**(name: string): any
 - **ngAfterContentInit**(): void
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - **openSubMenu**(): void
 - static **_createFromInternal**(internal: any): IgxToolActionComponent
 
-### [IgxToolActionEventDetail](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionEventDetail)
+### [IgxToolActionEventDetail](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionEventDetail)
 
 - **constructor**(): IgxToolActionEventDetail
-- static **ngAcceptInputType_actionType**: `string | ToolActionType`
+- static **ngAcceptInputType_actionType**: `any`
 - static **ngAcceptInputType_boolValue**: `string | boolean`
 - static **ngAcceptInputType_isModified**: `string | boolean`
 - static **ngAcceptInputType_numberValue**: `string | number`
@@ -937,24 +1146,38 @@ It is invoked only once when the directive is instantiated.
 - **untypedValue**: `any`
 - **findByName**(name: string): any
 
-### [IgxToolActionEventDetailCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionEventDetailCollection)
+### [IgxToolActionEventDetailCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionEventDetailCollection)
 
 - **constructor**(list?: IgxToolActionEventDetail[]): IgxToolActionEventDetailCollection
 
-### [IgxToolActionFieldSelectorAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorAggregation)
+### [IgxToolActionFieldSelectorAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregation)
 
 - **constructor**(): IgxToolActionFieldSelectorAggregation
-- static **ngAcceptInputType_operand**: `string | DataSourceSummaryOperand`
+- static **ngAcceptInputType_operand**: `any`
 - **label**: `string`
 - **name**: `string`
 - **operand**: `DataSourceSummaryOperand`
 - **findByName**(name: string): any
 
-### [IgxToolActionFieldSelectorAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorAggregationsCollection)
+### [IgxToolActionFieldSelectorAggregationDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationDynamicModule)
+
+- **constructor**(): IgxToolActionFieldSelectorAggregationDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule, never, [any, any], [any]>`
+
+### [IgxToolActionFieldSelectorAggregationModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationModule)
+
+- **constructor**(): IgxToolActionFieldSelectorAggregationModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorAggregationModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorAggregationModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorAggregationModule, never, [any], never>`
+
+### [IgxToolActionFieldSelectorAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationsCollection)
 
 - **constructor**(list?: IgxToolActionFieldSelectorAggregation[]): IgxToolActionFieldSelectorAggregationsCollection
 
-### [IgxToolActionFieldSelectorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorComponent)
+### [IgxToolActionFieldSelectorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionFieldSelectorComponent
@@ -971,8 +1194,8 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_selectedAggregations**: `string | IgxToolActionFieldSelectorSelectedAggregationsCollection`
 - static **ngAcceptInputType_singleSelection**: `string | boolean`
 - static **ngAcceptInputType_updateDataSource**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionFieldSelectorComponent, "igx-tool-action-field-selector", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorComponent, never>`
 - **actualPaddingBottom**: `number`
 - **actualPaddingLeft**: `number`
 - **actualPaddingRight**: `number`
@@ -991,31 +1214,76 @@ If list provided has custom aggregations the data source is never updated.
 - **updateDataSource**: `boolean` — Gets or sets if the data source has to be updated when changes are made.
 - **findByName**(name: string): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorSelectedAggregation)
+### [IgxToolActionFieldSelectorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorDynamicModule)
+
+- **constructor**(): IgxToolActionFieldSelectorDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionFieldSelectorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorModule)
+
+- **constructor**(): IgxToolActionFieldSelectorModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorModule, never, [any, any], [any]>`
+
+### [IgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregation)
 
 - **constructor**(): IgxToolActionFieldSelectorSelectedAggregation
-- static **ngAcceptInputType_aggregationOperand**: `string | DataSourceSummaryOperand`
+- static **ngAcceptInputType_aggregationOperand**: `any`
 - **aggregationName**: `string`
 - **aggregationOperand**: `DataSourceSummaryOperand`
 - **field**: `string`
 - **findByName**(name: string): any
 
-### [IgxToolActionFieldSelectorSelectedAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorSelectedAggregationsCollection)
+### [IgxToolActionFieldSelectorSelectedAggregationDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationDynamicModule)
+
+- **constructor**(): IgxToolActionFieldSelectorSelectedAggregationDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule, never, [any, any], [any]>`
+
+### [IgxToolActionFieldSelectorSelectedAggregationModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationModule)
+
+- **constructor**(): IgxToolActionFieldSelectorSelectedAggregationModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule, never, [any], never>`
+
+### [IgxToolActionFieldSelectorSelectedAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationsCollection)
 
 - **constructor**(list?: IgxToolActionFieldSelectorSelectedAggregation[]): IgxToolActionFieldSelectorSelectedAggregationsCollection
 
-### [IgxToolActionGroupHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionGroupHeaderComponent)
+### [IgxToolActionGroupHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionGroupHeaderComponent
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionGroupHeaderComponent, "igx-tool-action-group-header", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionGroupHeaderComponent, never>`
 - **actualBackIconColor**: `string` — Gets the actual back icon color.
 - **backIconColor**: `string` — Gets or sets the icon color for the back button.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionIconButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionIconButtonComponent)
+### [IgxToolActionGroupHeaderDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderDynamicModule)
+
+- **constructor**(): IgxToolActionGroupHeaderDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionGroupHeaderDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionGroupHeaderDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionGroupHeaderDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionGroupHeaderModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderModule)
+
+- **constructor**(): IgxToolActionGroupHeaderModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionGroupHeaderModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionGroupHeaderModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionGroupHeaderModule, never, [any, any], [any]>`
+
+### [IgxToolActionIconButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionIconButtonComponent
@@ -1030,8 +1298,8 @@ Represents base class for all tool actions in toolbar
 - static **ngAcceptInputType_contentPaddingTop**: `string | number`
 - static **ngAcceptInputType_isOpen**: `string | boolean`
 - static **ngAcceptInputType_tooltipDelay**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionIconButtonComponent, "igx-tool-action-icon-button", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconButtonComponent, never>`
 - **actualContentPaddingBottom**: `number`
 - **actualContentPaddingLeft**: `number`
 - **actualContentPaddingRight**: `number`
@@ -1048,39 +1316,101 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
 - **openSubMenu**(): void
+- static **register**(): void
 
-### [IgxToolActionIconMenuComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionIconMenuComponent)
+### [IgxToolActionIconButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonDynamicModule)
+
+- **constructor**(): IgxToolActionIconButtonDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconButtonDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconButtonDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconButtonDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionIconButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonModule)
+
+- **constructor**(): IgxToolActionIconButtonModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconButtonModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconButtonModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconButtonModule, never, [any, any], [any]>`
+
+### [IgxToolActionIconMenuComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionIconMenuComponent
 - static **ngAcceptInputType_showArrowIcon**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionIconMenuComponent, "igx-tool-action-icon-menu", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconMenuComponent, never>`
 - **actualArrowStroke**: `string` — Gets the actual stroke color of the arrow icon.
 - **arrowStroke**: `string` — Gets or sets the stroke color of the arrow icon.
 - **showArrowIcon**: `boolean` — Gets or sets whether the arrow icon should be shown.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionLabelComponent)
+### [IgxToolActionIconMenuDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuDynamicModule)
+
+- **constructor**(): IgxToolActionIconMenuDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconMenuDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconMenuDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconMenuDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionIconMenuModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuModule)
+
+- **constructor**(): IgxToolActionIconMenuModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconMenuModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconMenuModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconMenuModule, never, [any, any], [any]>`
+
+### [IgxToolActionLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionLabelComponent
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionLabelComponent, "igx-tool-action-label", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelComponent, never>`
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionNumberInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionNumberInputComponent)
+### [IgxToolActionLabelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelDynamicModule)
+
+- **constructor**(): IgxToolActionLabelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionLabelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionLabelDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionLabelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelModule)
+
+- **constructor**(): IgxToolActionLabelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionLabelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionLabelModule, never, [any, any], [any]>`
+
+### [IgxToolActionNumberInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionNumberInputComponent
 - static **ngAcceptInputType_value**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionNumberInputComponent, "igx-tool-action-number-input", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionNumberInputComponent, never>`
 - **value**: `number` — Gets or sets the value for the input.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionPerformedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionPerformedEventArgs)
+### [IgxToolActionNumberInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputDynamicModule)
+
+- **constructor**(): IgxToolActionNumberInputDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionNumberInputDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionNumberInputDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionNumberInputDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionNumberInputModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputModule)
+
+- **constructor**(): IgxToolActionNumberInputModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionNumberInputModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionNumberInputModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionNumberInputModule, never, [any, any], [any]>`
+
+### [IgxToolActionPerformedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionPerformedEventArgs)
 
 - **constructor**(): IgxToolActionPerformedEventArgs
 - static **ngAcceptInputType_detailCollection**: `string | IgxToolActionEventDetailCollection`
@@ -1089,21 +1419,22 @@ Represents base class for all tool actions in toolbar
 - **detailCollection**: `IgxToolActionEventDetailCollection`
 - **isAggregate**: `boolean`
 
-### [IgxToolActionPopupOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionPopupOpeningEventArgs)
+### [IgxToolActionPopupOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionPopupOpeningEventArgs)
 
 - **constructor**(): IgxToolActionPopupOpeningEventArgs
 - static **ngAcceptInputType_cancel**: `string | boolean`
 - **cancel**: `boolean`
 - **sourceAction**: `IgxToolActionComponent`
 
-### [IgxToolActionRadioComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionRadioComponent)
+### [IgxToolActionRadioComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionRadioComponent
 - static **ngAcceptInputType_isChecked**: `string | boolean`
 - static **ngAcceptInputType_isManual**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ngAcceptInputType_isToggleable**: `string | boolean`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionRadioComponent, "igx-tool-action-radio", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioComponent, never>`
 - **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
 - **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
 - **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the unchecked state.
@@ -1114,44 +1445,145 @@ Represents base class for all tool actions in toolbar
 - **isChecked**: `boolean` — Gets or sets if the tool action is checked.
 - **isManual**: `boolean` — Gets or sets if the checked state of the radio is handled manually by the user. The radio
 well not become selected when clicked if this property is true.
+- **isToggleable**: `boolean` — Gets or sets whether the radio can be unchecked by clicking it again. When true, the radio
+behaves like a checkbox for the on-state — clicking a checked radio will uncheck it, leaving
+the channel with no selection. Channel exclusivity is still enforced when the radio is checked
+(siblings in the same channel will be deselected). Defaults to false.
+- **shorthandTitle**: `string` — Gets or sets a shorthand title for this radio option. Used by
+ToolActionRadioGroup to
+show the selected option if it is set. If your title is long consider setting this to a shorter version
+for more compact display.
 - **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
 - **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionSeparatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionSeparatorComponent)
+### [IgxToolActionRadioDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioDynamicModule)
+
+- **constructor**(): IgxToolActionRadioDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionRadioGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionRadioGroupComponent
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionRadioGroupComponent, "igx-tool-action-radio-group", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioGroupComponent, never>`
+- **actualSelectedTextColor**: `string` — Gets the resolved color for the selected radio display text.
+- **selectedTextColor**: `string` — Gets or sets the color for the selected radio display text.
+When null, defaults to a lightened version of the ToolPanel's text color.
+- **selectedTextStyle**: `string` — Gets or sets the font for the selected radio display text.
+When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
+- **exportVisualData**(): any
+- **ngAfterContentInit**(): void
+- static **register**(): void
+
+### [IgxToolActionRadioGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupDynamicModule)
+
+- **constructor**(): IgxToolActionRadioGroupDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioGroupDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioGroupDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioGroupDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionRadioGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupModule)
+
+- **constructor**(): IgxToolActionRadioGroupModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioGroupModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioGroupModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioGroupModule, never, [any, any], [any]>`
+
+### [IgxToolActionRadioModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioModule)
+
+- **constructor**(): IgxToolActionRadioModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioModule, never, [any, any], [any]>`
+
+### [IgxToolActionSeparatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionSeparatorComponent
 - static **ngAcceptInputType_isGroupHeaderSeparator**: `string | boolean`
 - static **ngAcceptInputType_size**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionSeparatorComponent, "igx-tool-action-separator", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSeparatorComponent, never>`
 - **isGroupHeaderSeparator**: `boolean` — Gets or sets whether to use group header styling or regular styling on this separator.
 - **size**: `number` — Gets or sets the size of the separator.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionSubPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionSubPanelComponent)
+### [IgxToolActionSeparatorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorDynamicModule)
+
+- **constructor**(): IgxToolActionSeparatorDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSeparatorDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSeparatorDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSeparatorDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionSeparatorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorModule)
+
+- **constructor**(): IgxToolActionSeparatorModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSeparatorModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSeparatorModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSeparatorModule, never, [any, any], [any]>`
+
+### [IgxToolActionSubPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionSubPanelComponent
 - static **ngAcceptInputType_itemSpacing**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionSubPanelComponent, "igx-tool-action-sub-panel", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSubPanelComponent, never>`
 - **itemSpacing**: `number` — Gets or sets the spacing between items.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolActionTextInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionTextInputComponent)
+### [IgxToolActionSubPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelDynamicModule)
+
+- **constructor**(): IgxToolActionSubPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSubPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSubPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSubPanelDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionSubPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelModule)
+
+- **constructor**(): IgxToolActionSubPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSubPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSubPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSubPanelModule, never, [any, any], [any]>`
+
+### [IgxToolActionTextInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputComponent)
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionTextInputComponent
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolActionTextInputComponent, "igx-tool-action-text-input", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionTextInputComponent, never>`
 - **value**: `string` — Gets or sets the value for the input.
+- **exportVisualData**(): any
 - **ngAfterContentInit**(): void
+- static **register**(): void
 
-### [IgxToolbarComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarComponent)
+### [IgxToolActionTextInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxToolbarComponent
+- **constructor**(): IgxToolActionTextInputDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionTextInputDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionTextInputDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionTextInputDynamicModule, never, [any, any, any], [any]>`
+
+### [IgxToolActionTextInputModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputModule)
+
+- **constructor**(): IgxToolActionTextInputModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionTextInputModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionTextInputModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionTextInputModule, never, [any, any], [any]>`
+
+### [IgxToolbarComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef): IgxToolbarComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **_mainDiv**: `Element`
@@ -1162,16 +1594,15 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **contentActions**: `QueryList<IgxToolActionComponent>`
 - static **ngAcceptInputType_actualActions**: `string | IgxToolActionCollection`
 - static **ngAcceptInputType_autoGeneratedActions**: `string | IgxToolActionCollection`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_dropdownClickBuffer**: `string | number`
 - static **ngAcceptInputType_dropdownDelay**: `string | number`
 - static **ngAcceptInputType_highlightRadius**: `string | number`
 - static **ngAcceptInputType_highlightWidth**: `string | number`
-- static **ngAcceptInputType_isOpen**: `string | boolean`
 - static **ngAcceptInputType_orientation**: `string | ToolbarOrientation`
 - static **ngAcceptInputType_rowHeight**: `string | number`
-- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_scrollbarStyle**: `any`
 - static **ngAcceptInputType_separatorHorizontalPaddingBottom**: `string | number`
 - static **ngAcceptInputType_separatorHorizontalPaddingLeft**: `string | number`
 - static **ngAcceptInputType_separatorHorizontalPaddingRight**: `string | number`
@@ -1183,16 +1614,21 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_showOnHover**: `string | boolean`
 - static **ngAcceptInputType_showTooltipOnHover**: `string | boolean`
 - static **ngAcceptInputType_stopPropagation**: `string | boolean`
+- static **ngAcceptInputType_subPanelRowHeight**: `string | number`
 - static **ngAcceptInputType_toolTipCornerRadius**: `string | number`
 - static **ngAcceptInputType_toolTipElevation**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolbarComponent, "igx-toolbar", never, any, any, ["contentActions"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolbarComponent, never>`
+- **accentColor**: `string`
 - **actions**: `IgxToolActionCollection` — A collection or manually added axes for the chart.
 - **actualActions**: `IgxToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
 - **autoGeneratedActions**: `IgxToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
 - **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
 - **cellTextStyle**: `string` — Gets or sets the text style.
+- **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this toolbar's sub-menus.
+- **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this toolbar's sub-menus.
+- **checkboxListScrollbarHoverBackground**: `string` — Gets or sets the scrollbar thumb hover background color for checkbox lists hosted in this toolbar's sub-menus.
 - **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
 - **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
 - **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
@@ -1213,7 +1649,6 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **i**: `Toolbar`
 - **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
 - **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
-- **isOpen**: `boolean`
 - **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
 - **onCommand**: `EventEmitter<any>` — Event raised when a command is triggered in the toolbar.
 - **orientation**: `ToolbarOrientation` — Gets or sets the orientation of the toolbar.
@@ -1234,6 +1669,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
 - **subMenuClosing**: `EventEmitter<any>` — Event raised when a submenu is closed on the toolbar
 - **subMenuOpening**: `EventEmitter<any>` — Event raised when a submenu is opened on the toolbar.
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel rows if different than default.
 - **subtitleTextColor**: `string` — Gets or sets the text color for subtitles.
 - **subtitleTextStyle**: `string` — Gets or sets the text style for subtitles.
 - **target**: `any` — Gets or sets a target component which the toolbar can request actions from.
@@ -1266,13 +1702,11 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **getIntContextItem**(key: string): number
 - **getMultiPathSVGFromCache**(iconCollection: string, iconName: string): string[]
 - **getStringContextItem**(key: string): string
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **isOpen**(): boolean — Is a dropdown menu or tooltip currently open.
+- **ngAfterContentInit**(): void
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
-- **onCommandStateChanged**(id: string, type: string | ToolCommandStateType, value: any): void
+- **onCommandStateChanged**(id: string, type: any, value: any): void
 - **registerIconFromDataURL**(iconCollection: string, iconName: string, dataURL: string): void
 - **registerIconFromText**(iconCollection: string, iconName: string, iconText: string): void
 - **registerIconSource**(iconCollection: string, iconName: string, source: any): void
@@ -1290,38 +1724,52 @@ It is invoked only once when the directive is instantiated.
 - **setStringContextItem**(key: string, value: string): void
 - **updateStyle**(): void
 
-### [IgxToolbarSubMenuClosingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarSubMenuClosingEventArgs)
+### [IgxToolbarDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarDynamicModule)
+
+- **constructor**(): IgxToolbarDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolbarDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolbarDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolbarDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxToolbarModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarModule)
+
+- **constructor**(): IgxToolbarModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolbarModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolbarModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolbarModule, never, [any, any, any], [any, any]>`
+
+### [IgxToolbarSubMenuClosingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarSubMenuClosingEventArgs)
 
 - **constructor**(): IgxToolbarSubMenuClosingEventArgs
 
-### [IgxToolbarSubMenuOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarSubMenuOpeningEventArgs)
+### [IgxToolbarSubMenuOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarSubMenuOpeningEventArgs)
 
 - **constructor**(): IgxToolbarSubMenuOpeningEventArgs
 
-### [IgxToolCommandEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolCommandEventArgs)
+### [IgxToolCommandEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolCommandEventArgs)
 
 - **constructor**(): IgxToolCommandEventArgs
 - static **ngAcceptInputType_closeOnExecute**: `string | boolean`
 - **closeOnExecute**: `boolean`
 - **command**: `ToolCommand`
 
-### [IgxToolContextBinding](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolContextBinding)
+### [IgxToolContextBinding](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolContextBinding)
 
 - **constructor**(): IgxToolContextBinding
-- static **ngAcceptInputType_bindingMode**: `string | ToolContextBindingMode`
+- static **ngAcceptInputType_bindingMode**: `any`
 - **bindingMode**: `ToolContextBindingMode`
 - **contextKey**: `string`
 - **propertyName**: `string`
 - **propertyUpdated**: `EventEmitter<any>`
 - **findByName**(name: string): any
 
-### [IgxToolContextBindingCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolContextBindingCollection)
+### [IgxToolContextBindingCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolContextBindingCollection)
 
 - **constructor**(list?: IgxToolContextBinding[]): IgxToolContextBindingCollection
 
-### [IgxToolPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelComponent)
+### [IgxToolPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelComponent)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxToolPanelComponent
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef): IgxToolPanelComponent
 - **_childTemplateRef**: `TemplateRef<any>`
 - **_dynamicContent**: `ViewContainerRef`
 - **_mainDiv**: `Element`
@@ -1330,7 +1778,7 @@ It is invoked only once when the directive is instantiated.
 This array's contents can be modified by causing Angular to reproject the child content.
 Or adding and removing stye mappings from the manual style mapping collection on the actions property.
 - **contentActions**: `QueryList<IgxToolActionComponent>`
-- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDensity**: `any`
 - static **ngAcceptInputType_actualDropdownDelay**: `string | number`
 - static **ngAcceptInputType_actualHighlightRadius**: `string | number`
 - static **ngAcceptInputType_actualHighlightWidth**: `string | number`
@@ -1345,8 +1793,8 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_actualSeparatorVerticalPaddingTop**: `string | number`
 - static **ngAcceptInputType_actualToolTipCornerRadius**: `string | number`
 - static **ngAcceptInputType_actualToolTipElevation**: `string | number`
-- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
-- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_baseTheme**: `any`
+- static **ngAcceptInputType_density**: `any`
 - static **ngAcceptInputType_dropdownClickBuffer**: `string | number`
 - static **ngAcceptInputType_dropdownDelay**: `string | number`
 - static **ngAcceptInputType_highlightRadius**: `string | number`
@@ -1356,7 +1804,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_nestedActionMode**: `string | NestedActionMode`
 - static **ngAcceptInputType_orientation**: `string | ToolPanelOrientation`
 - static **ngAcceptInputType_rowHeight**: `string | number`
-- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_scrollbarStyle**: `any`
 - static **ngAcceptInputType_separatorHorizontalPaddingBottom**: `string | number`
 - static **ngAcceptInputType_separatorHorizontalPaddingLeft**: `string | number`
 - static **ngAcceptInputType_separatorHorizontalPaddingRight**: `string | number`
@@ -1368,11 +1816,14 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **ngAcceptInputType_showOnHover**: `string | boolean`
 - static **ngAcceptInputType_showTooltipOnHover**: `string | boolean`
 - static **ngAcceptInputType_stopPropagation**: `string | boolean`
+- static **ngAcceptInputType_subPanelRowHeight**: `string | number`
 - static **ngAcceptInputType_toolTipCornerRadius**: `string | number`
 - static **ngAcceptInputType_toolTipElevation**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxToolPanelComponent, "igx-tool-panel", never, any, any, ["contentActions"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolPanelComponent, never>`
+- **accentColor**: `string`
 - **actions**: `IgxToolActionCollection` — A collection or manually added axes for the chart.
+- **actualAccentColor**: `string`
 - **actualBackgroundColor**: `string`
 - **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
 - **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
@@ -1412,6 +1863,9 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
 - **cellTextStyle**: `string` — Gets or sets the text style for the panel.
+- **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this tool panel's actions.
+- **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this tool panel's actions.
+- **checkboxListScrollbarHoverBackground**: `string` — Gets or sets the scrollbar thumb hover background color for checkbox lists hosted in this tool panel's actions.
 - **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
 - **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
 - **contentRefreshed**: `EventEmitter<any>`
@@ -1455,6 +1909,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
 - **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
 - **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel rows if different than default.
 - **subtitleTextColor**: `string` — Gets or sets the color to use for the subtitle of the component.
 - **subtitleTextStyle**: `string` — Gets or sets the subtitle text style for the panel.
 - **textColor**: `string` — Gets or sets the color to use for the text of the component.
@@ -1479,10 +1934,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **getDoubleContextItem**(key: string): number
 - **getIntContextItem**(key: string): number
 - **getStringContextItem**(key: string): string
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **refresh**(): void
@@ -1496,24 +1948,38 @@ It is invoked only once when the directive is instantiated.
 - **setStringContextItem**(key: string, value: string): void
 - **updateStyle**(): void
 
-### [IgxToolPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContentRefreshedEventArgs)
+### [IgxToolPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelContentRefreshedEventArgs)
 
 - **constructor**(): IgxToolPanelContentRefreshedEventArgs
 
-### [IgxToolPanelContextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContextChangedEventArgs)
+### [IgxToolPanelContextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelContextChangedEventArgs)
 
 - **constructor**(): IgxToolPanelContextChangedEventArgs
 - **contextKey**: `string`
 - **newValue**: `any`
 - **oldValue**: `any`
 
-### [IgxToolPanelContextSwappedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContextSwappedEventArgs)
+### [IgxToolPanelContextSwappedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelContextSwappedEventArgs)
 
 - **constructor**(): IgxToolPanelContextSwappedEventArgs
 
-### [IgxXExpansionPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxXExpansionPanelComponent)
+### [IgxToolPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelDynamicModule)
 
-- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXExpansionPanelComponent
+- **constructor**(): IgxToolPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolPanelDynamicModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
+
+### [IgxToolPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelModule)
+
+- **constructor**(): IgxToolPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolPanelModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
+
+### [IgxXExpansionPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXExpansionPanelComponent
 - **_contentInner**: `ElementRef`
 - **_contentOuter**: `ElementRef`
 - **_dynamicContent**: `ViewContainerRef`
@@ -1523,8 +1989,8 @@ It is invoked only once when the directive is instantiated.
 - static **ngAcceptInputType_actualElevation**: `string | number`
 - static **ngAcceptInputType_elevation**: `string | number`
 - static **ngAcceptInputType_expanded**: `string | boolean`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxXExpansionPanelComponent, "igx-x-expansion-panel", never, any, any, never, ["*"], true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXExpansionPanelComponent, never>`
 - **actualAmbientShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
 - **actualCaptionTextColor**: `string` — Gets or sets the color to use for the actual header caption text.
 - **actualDescriptionTextColor**: `string` — Gets or sets the color to use for the actual header description text.
@@ -1536,9 +2002,9 @@ It is invoked only once when the directive is instantiated.
 - **captionCollapsedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is collapsed.
 - **captionExpandedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is expanded.
 - **captionTextColor**: `string` — Gets or sets the color to use for the header caption text.
-- **description**: `string` — Gets / sets the description to display in the header area.
 - **descriptionCollapsedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is collapsed.
 - **descriptionExpandedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is expanded.
+- **descriptionText**: `string` — Gets / sets the description to display in the header area.
 - **descriptionTextColor**: `string` — Gets or sets the color to use for the header description text.
 - **elevation**: `number` — Gets or sets the elevation to use for the button regardless of type.
 - **expanded**: `boolean` — Gets / sets the expanded state of the panel.
@@ -1553,66 +2019,77 @@ It is invoked only once when the directive is instantiated.
 - **collapse**(): void — Collapses the contents of the expansion panel.
 - **expand**(): void — Expands the contents of the expansion panel.
 - **findByName**(name: string): any
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
+- **ngAfterContentInit**(): void
 - **ngOnDestroy**(): void
 - **toggle**(): void — Toggles the expanded state of the expansion panel.
 - **updateStyle**(): void
 
+### [IgxXExpansionPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelDynamicModule)
+
+- **constructor**(): IgxXExpansionPanelDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXExpansionPanelDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXExpansionPanelDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXExpansionPanelDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxXExpansionPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelModule)
+
+- **constructor**(): IgxXExpansionPanelModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXExpansionPanelModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXExpansionPanelModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXExpansionPanelModule, never, [any, any], [any]>`
+
 ## Enumerations
 
-### [ComboEditorCloneDataSourceFilterOperation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ComboEditorCloneDataSourceFilterOperation)
+### [ComboEditorCloneDataSourceFilterOperation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ComboEditorCloneDataSourceFilterOperation)
 Indicates the current operation underway for the cloned data source.
 
 - **None** = 0
 - **TextToValue** = 2
 - **ValueToText** = 1
 
-### [ComboEditorSelectedItemChangeType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ComboEditorSelectedItemChangeType)
+### [ComboEditorSelectedItemChangeType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ComboEditorSelectedItemChangeType)
 Indicates what type of operation is taking place when the selected row, value, or text in the combo box changes.
 
 - **Row** = 2
 - **Text** = 1
 - **Value** = 0
 
-### [ListPanelActivationMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelActivationMode)
+### [ListPanelActivationMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ListPanelActivationMode)
 Indicates the activation mode to use for the grid.
 
 - **Cell** = 1 — A single cell is permitted to be activated at a time.
 - **None** = 0 — No activation should be peformed based on interaction.
 
-### [ListPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelOrientation)
+### [ListPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ListPanelOrientation)
 
 - **Horizontal** = 1
 - **HorizontalWrapped** = 2
 - **Vertical** = 0
 
-### [ListPanelSelectionBehavior](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelSelectionBehavior)
+### [ListPanelSelectionBehavior](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ListPanelSelectionBehavior)
 Indicates the selection mode to use for the grid.
 
 - **ModifierBased** = 1 — Only one row or cell is selected at a time and modifier keys are required to multi-select them.
 - **Toggle** = 0 — Rows and cells are selected using a toggleable behavior. Modifier selection is ignored (CTRL and SHIFT).
 
-### [ListPanelSelectionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelSelectionMode)
+### [ListPanelSelectionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ListPanelSelectionMode)
 Indicates the selection mode to use for the grid.
 
 - **MultipleRow** = 2 — Multiple rows are permitted to be selected at a time from interaction.
 - **None** = 0 — No selection should be peformed based on interaction.
 - **SingleRow** = 1 — A single row is permitted to be selected at a time from interaction.
 
-### [NestedActionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/NestedActionMode)
+### [NestedActionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/NestedActionMode)
 
 - **Replace** = 0 — Replaces the current tool action view with the nested view.
 
-### [PropertyEditorPanelUpdateMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/PropertyEditorPanelUpdateMode)
+### [PropertyEditorPanelUpdateMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/PropertyEditorPanelUpdateMode)
 
 - **Auto** = 0
 - **ComponentRendererOverlay** = 1
 - **DataSeriesToDescriptionCustomizations** = 2
 
-### [PropertyEditorValueType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/PropertyEditorValueType)
+### [PropertyEditorValueType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/PropertyEditorValueType)
 
 - **Array** = 10
 - **boolean1** = 7
@@ -1641,42 +2118,218 @@ Indicates the selection mode to use for the grid.
 - **TimeSpan** = 19
 - **Unhandled** = 0
 
-### [ToolActionButtonDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionButtonDisplayType)
+### [ToolActionButtonDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolActionButtonDisplayType)
 Different display types for the button.
 
 - **Flat** = 1
 - **Outlined** = 2
 - **Raised** = 0
 
-### [ToolActionButtonGroupDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionButtonGroupDisplayType)
+### [ToolActionButtonGroupDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolActionButtonGroupDisplayType)
 Different display types for the button.
 
 - **Flat** = 0
 - **Outlined** = 1
 
-### [ToolActionCheckboxListIndexType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionCheckboxListIndexType)
+### [ToolActionCheckboxListIndexType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolActionCheckboxListIndexType)
 
 - **DeSelected** = 1
 - **Selected** = 0
 
-### [ToolActionFieldSelectorEventType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionFieldSelectorEventType)
+### [ToolActionFieldSelectorEventType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolActionFieldSelectorEventType)
 
 - **AggregationChange** = 1
 - **Change** = 0
 
-### [ToolActionFieldSelectorType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionFieldSelectorType)
+### [ToolActionFieldSelectorType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolActionFieldSelectorType)
 
 - **Label** = 0
 - **Value** = 1
 
-### [ToolbarOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolbarOrientation)
+### [ToolbarOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolbarOrientation)
 
 - **Horizontal** = 1
 - **HorizontalWrapped** = 2
 - **Vertical** = 0
 
-### [ToolPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolPanelOrientation)
+### [ToolPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/enums/ToolPanelOrientation)
 
 - **Horizontal** = 1
 - **HorizontalWrapped** = 2
 - **Vertical** = 0
+
+## Functions
+
+### [provideIgxComboEditor](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxComboEditor)
+`provideIgxComboEditor(): EnvironmentProviders`
+
+### [provideIgxComboEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxComboEditorDynamic)
+`provideIgxComboEditorDynamic(): EnvironmentProviders`
+
+### [provideIgxLayoutPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxLayoutPrimaryKeyValue)
+`provideIgxLayoutPrimaryKeyValue(): EnvironmentProviders`
+
+### [provideIgxLayoutPrimaryKeyValueDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxLayoutPrimaryKeyValueDynamic)
+`provideIgxLayoutPrimaryKeyValueDynamic(): EnvironmentProviders`
+
+### [provideIgxListPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanel)
+`provideIgxListPanel(): EnvironmentProviders`
+
+### [provideIgxListPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelDynamic)
+`provideIgxListPanelDynamic(): EnvironmentProviders`
+
+### [provideIgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelPrimaryKeyValue)
+`provideIgxListPanelPrimaryKeyValue(): EnvironmentProviders`
+
+### [provideIgxListPanelPrimaryKeyValueDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelPrimaryKeyValueDynamic)
+`provideIgxListPanelPrimaryKeyValueDynamic(): EnvironmentProviders`
+
+### [provideIgxPropertyEditorPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPanel)
+`provideIgxPropertyEditorPanel(): EnvironmentProviders`
+
+### [provideIgxPropertyEditorPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPanelDynamic)
+`provideIgxPropertyEditorPanelDynamic(): EnvironmentProviders`
+
+### [provideIgxPropertyEditorPropertyDescription](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPropertyDescription)
+`provideIgxPropertyEditorPropertyDescription(): EnvironmentProviders`
+
+### [provideIgxPropertyEditorPropertyDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPropertyDescriptionDynamic)
+`provideIgxPropertyEditorPropertyDescriptionDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionButton](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButton)
+`provideIgxToolActionButton(): EnvironmentProviders`
+
+### [provideIgxToolActionButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonDynamic)
+`provideIgxToolActionButtonDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionButtonPair](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonPair)
+`provideIgxToolActionButtonPair(): EnvironmentProviders`
+
+### [provideIgxToolActionButtonPairDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonPairDynamic)
+`provideIgxToolActionButtonPairDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckbox](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckbox)
+`provideIgxToolActionCheckbox(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckboxDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxDynamic)
+`provideIgxToolActionCheckboxDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckboxGroup](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxGroup)
+`provideIgxToolActionCheckboxGroup(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckboxGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxGroupDynamic)
+`provideIgxToolActionCheckboxGroupDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckboxList](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxList)
+`provideIgxToolActionCheckboxList(): EnvironmentProviders`
+
+### [provideIgxToolActionCheckboxListDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxListDynamic)
+`provideIgxToolActionCheckboxListDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionColorEditor](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionColorEditor)
+`provideIgxToolActionColorEditor(): EnvironmentProviders`
+
+### [provideIgxToolActionColorEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionColorEditorDynamic)
+`provideIgxToolActionColorEditorDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionCombo](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCombo)
+`provideIgxToolActionCombo(): EnvironmentProviders`
+
+### [provideIgxToolActionComboDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionComboDynamic)
+`provideIgxToolActionComboDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelector](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelector)
+`provideIgxToolActionFieldSelector(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelectorAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorAggregation)
+`provideIgxToolActionFieldSelectorAggregation(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelectorAggregationDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorAggregationDynamic)
+`provideIgxToolActionFieldSelectorAggregationDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelectorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorDynamic)
+`provideIgxToolActionFieldSelectorDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorSelectedAggregation)
+`provideIgxToolActionFieldSelectorSelectedAggregation(): EnvironmentProviders`
+
+### [provideIgxToolActionFieldSelectorSelectedAggregationDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorSelectedAggregationDynamic)
+`provideIgxToolActionFieldSelectorSelectedAggregationDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionGroupHeader](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionGroupHeader)
+`provideIgxToolActionGroupHeader(): EnvironmentProviders`
+
+### [provideIgxToolActionGroupHeaderDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionGroupHeaderDynamic)
+`provideIgxToolActionGroupHeaderDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionIconButton](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconButton)
+`provideIgxToolActionIconButton(): EnvironmentProviders`
+
+### [provideIgxToolActionIconButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconButtonDynamic)
+`provideIgxToolActionIconButtonDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionIconMenu](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconMenu)
+`provideIgxToolActionIconMenu(): EnvironmentProviders`
+
+### [provideIgxToolActionIconMenuDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconMenuDynamic)
+`provideIgxToolActionIconMenuDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionLabel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionLabel)
+`provideIgxToolActionLabel(): EnvironmentProviders`
+
+### [provideIgxToolActionLabelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionLabelDynamic)
+`provideIgxToolActionLabelDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionNumberInput](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionNumberInput)
+`provideIgxToolActionNumberInput(): EnvironmentProviders`
+
+### [provideIgxToolActionNumberInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionNumberInputDynamic)
+`provideIgxToolActionNumberInputDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionRadio](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadio)
+`provideIgxToolActionRadio(): EnvironmentProviders`
+
+### [provideIgxToolActionRadioDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioDynamic)
+`provideIgxToolActionRadioDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionRadioGroup](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioGroup)
+`provideIgxToolActionRadioGroup(): EnvironmentProviders`
+
+### [provideIgxToolActionRadioGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioGroupDynamic)
+`provideIgxToolActionRadioGroupDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionSeparator](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSeparator)
+`provideIgxToolActionSeparator(): EnvironmentProviders`
+
+### [provideIgxToolActionSeparatorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSeparatorDynamic)
+`provideIgxToolActionSeparatorDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionSubPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSubPanel)
+`provideIgxToolActionSubPanel(): EnvironmentProviders`
+
+### [provideIgxToolActionSubPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSubPanelDynamic)
+`provideIgxToolActionSubPanelDynamic(): EnvironmentProviders`
+
+### [provideIgxToolActionTextInput](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionTextInput)
+`provideIgxToolActionTextInput(): EnvironmentProviders`
+
+### [provideIgxToolActionTextInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionTextInputDynamic)
+`provideIgxToolActionTextInputDynamic(): EnvironmentProviders`
+
+### [provideIgxToolbar](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolbar)
+`provideIgxToolbar(): EnvironmentProviders`
+
+### [provideIgxToolbarDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolbarDynamic)
+`provideIgxToolbarDynamic(): EnvironmentProviders`
+
+### [provideIgxToolPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolPanel)
+`provideIgxToolPanel(): EnvironmentProviders`
+
+### [provideIgxToolPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolPanelDynamic)
+`provideIgxToolPanelDynamic(): EnvironmentProviders`
+
+### [provideIgxXExpansionPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxXExpansionPanel)
+`provideIgxXExpansionPanel(): EnvironmentProviders`
+
+### [provideIgxXExpansionPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxXExpansionPanelDynamic)
+`provideIgxXExpansionPanelDynamic(): EnvironmentProviders`

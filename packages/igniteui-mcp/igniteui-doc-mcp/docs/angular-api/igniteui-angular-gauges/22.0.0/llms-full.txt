@@ -1,14 +1,14 @@
-# Ignite UI for Angular Gauges vlatest — Full API Reference
+# Ignite UI for Angular Gauges v22.0.0 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Gauges package (latest). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Gauges package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-gauges
-Version: latest
+Version: 22.0.0
 
 ## Classes
 
-### [IgxAlignLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxAlignLinearGraphLabelEventArgs)
+### [IgxAlignLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxAlignLinearGraphLabelEventArgs)
 Represents event argument for AlignLinearGraphLabel.
 
 - **constructor**(): IgxAlignLinearGraphLabelEventArgs
@@ -18,7 +18,7 @@ Represents event argument for AlignLinearGraphLabel.
 - **offsetY**: `number`
 - **width**: `number`
 
-### [IgxAlignRadialGaugeLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxAlignRadialGaugeLabelEventArgs)
+### [IgxAlignRadialGaugeLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxAlignRadialGaugeLabelEventArgs)
 Represents event argument for AlignRadialGaugeLabel.
 
 - **constructor**(): IgxAlignRadialGaugeLabelEventArgs
@@ -28,16 +28,16 @@ Represents event argument for AlignRadialGaugeLabel.
 - **offsetY**: `number`
 - **width**: `number`
 
-### [IgxBulletGraphComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxBulletGraphComponent)
+### [IgxBulletGraphComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphComponent)
 Represents a bullet graph.
 
-- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _componentFactoryResolver: ComponentFactoryResolver, _injector: Injector): IgxBulletGraphComponent
+- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _injector: Injector): IgxBulletGraphComponent
 - **_dynamicContent**: `ViewContainerRef`
 - **actualRanges**: `IgxLinearGraphRangeComponent[]` — The ranges actually present in the chart. Do not directly modify this array.
 This array's contents can be modified by causing Angular to reproject the child content.
 Or adding and removing ranges from the manual ranges collection on the ranges property.
 - **contentRanges**: `QueryList<IgxLinearGraphRangeComponent>`
-- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_actualHighlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_actualMaximumValue**: `string | number`
 - static **ngAcceptInputType_actualMinimumValue**: `string | number`
@@ -47,7 +47,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_backingOuterExtent**: `string | number`
 - static **ngAcceptInputType_backingStrokeThickness**: `string | number`
 - static **ngAcceptInputType_highlightValue**: `string | number`
-- static **ngAcceptInputType_highlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_highlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_highlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_interval**: `string | number`
 - static **ngAcceptInputType_isScaleInverted**: `string | boolean`
@@ -91,8 +91,8 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_valueInnerExtent**: `string | number`
 - static **ngAcceptInputType_valueOuterExtent**: `string | number`
 - static **ngAcceptInputType_valueStrokeThickness**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxBulletGraphComponent, "igx-bullet-graph", never, any, any, ["contentRanges"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphComponent, never>`
 - **actualHighlightValueDisplayMode**: `HighlightedValueDisplayMode` — Gets whether and how to display the highlighted value.
 - **actualHighlightValueOpacity**: `number` — Gets the actual opacity of the primary needle while highlighting
 - **actualMaximumValue**: `number` — Gets the resolved maximum value of the scale.
@@ -211,21 +211,43 @@ Values further from zero than 1 can be used to make this extend further than the
 This should only be called if the visual of the bullet graph needs to be synchronously saved or evaluated.
 Calling this method too often will hinder the performance of the bullet graph.
 - **getValueForPoint**(point: IgPoint): number — Gets the value for the main scale of the bullet graph for a given point within the bounds of the bullet graph.
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
-- **ngOnDestroy**(): void — A callback method that performs custom clean-up, invoked immediately
-before a directive, pipe, or service instance is destroyed.
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
 - **provideContainer**(container: any): void — Provide a container for the bullet graph.
 - **styleUpdated**(): void — Notify that the bullet graph styling has updated.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxBulletGraphComponent
 
-### [IgxFormatLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxFormatLinearGraphLabelEventArgs)
+### [IgxBulletGraphCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphCoreDynamicModule)
+
+- **constructor**(): IgxBulletGraphCoreDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphCoreDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphCoreDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxBulletGraphCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphCoreModule)
+
+- **constructor**(): IgxBulletGraphCoreModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphCoreModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphCoreModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphCoreModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxBulletGraphDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphDynamicModule)
+
+- **constructor**(): IgxBulletGraphDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxBulletGraphModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphModule)
+
+- **constructor**(): IgxBulletGraphModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphModule, never, [any, any, any], [any, any]>`
+
+### [IgxFormatLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxFormatLinearGraphLabelEventArgs)
 Represents event argument for FormatLinearGraphLabel.
 
 - **constructor**(): IgxFormatLinearGraphLabelEventArgs
@@ -235,7 +257,7 @@ Represents event argument for FormatLinearGraphLabel.
 - **label**: `string`
 - **value**: `number`
 
-### [IgxFormatRadialGaugeLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxFormatRadialGaugeLabelEventArgs)
+### [IgxFormatRadialGaugeLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxFormatRadialGaugeLabelEventArgs)
 Represents event argument for FormatRadialGaugeLabel.
 
 - **constructor**(): IgxFormatRadialGaugeLabelEventArgs
@@ -248,16 +270,16 @@ Represents event argument for FormatRadialGaugeLabel.
 - **startAngle**: `number`
 - **value**: `number`
 
-### [IgxLinearGaugeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxLinearGaugeComponent)
+### [IgxLinearGaugeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeComponent)
 A linear gauge for displaying a single value on a defined scale.
 
-- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _componentFactoryResolver: ComponentFactoryResolver, _injector: Injector): IgxLinearGaugeComponent
+- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _injector: Injector): IgxLinearGaugeComponent
 - **_dynamicContent**: `ViewContainerRef`
 - **actualRanges**: `IgxLinearGraphRangeComponent[]` — The ranges actually present in the chart. Do not directly modify this array.
 This array's contents can be modified by causing Angular to reproject the child content.
 Or adding and removing ranges from the manual ranges collection on the ranges property.
 - **contentRanges**: `QueryList<IgxLinearGraphRangeComponent>`
-- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_actualHighlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_actualMaximumValue**: `string | number`
 - static **ngAcceptInputType_actualMinimumValue**: `string | number`
@@ -267,7 +289,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_backingOuterExtent**: `string | number`
 - static **ngAcceptInputType_backingStrokeThickness**: `string | number`
 - static **ngAcceptInputType_highlightValue**: `string | number`
-- static **ngAcceptInputType_highlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_highlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_highlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_interval**: `string | number`
 - static **ngAcceptInputType_isHighlightNeedleDraggingEnabled**: `string | boolean`
@@ -318,8 +340,8 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_transitionDuration**: `string | number`
 - static **ngAcceptInputType_transitionProgress**: `string | number`
 - static **ngAcceptInputType_value**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxLinearGaugeComponent, "igx-linear-gauge", never, any, any, ["contentRanges"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeComponent, never>`
 - **actualHighlightValueDisplayMode**: `HighlightedValueDisplayMode` — Gets whether and how to display the highlighted value.
 - **actualHighlightValueOpacity**: `number` — Gets the actual opacity of the primary needle while highlighting
 - **actualMaximumValue**: `number` — Gets the resolved maximum value of the scale.
@@ -446,25 +468,47 @@ Calling this method too often will hinder the performance of the linear gauge.
 - **getValueForPoint**(point: IgPoint): number — Gets the value for the main scale of the gauge for a given point within the bounds of the gauge.
 - **highlightNeedleContainsPoint**(point: IgPoint, isFinger: boolean): boolean
 - **needleContainsPoint**(point: IgPoint, isFinger: boolean): boolean
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
-- **ngOnDestroy**(): void — A callback method that performs custom clean-up, invoked immediately
-before a directive, pipe, or service instance is destroyed.
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
 - **provideContainer**(container: any): void — Called by the UI framework to provide a UI container for rendering this control.
 - **styleUpdated**(): void
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxLinearGaugeComponent
 
-### [IgxLinearGraphRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxLinearGraphRangeCollection)
+### [IgxLinearGaugeCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeCoreDynamicModule)
+
+- **constructor**(): IgxLinearGaugeCoreDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeCoreDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeCoreDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxLinearGaugeCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeCoreModule)
+
+- **constructor**(): IgxLinearGaugeCoreModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeCoreModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeCoreModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeCoreModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxLinearGaugeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeDynamicModule)
+
+- **constructor**(): IgxLinearGaugeDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxLinearGaugeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeModule)
+
+- **constructor**(): IgxLinearGaugeModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeModule, never, [any, any, any], [any, any]>`
+
+### [IgxLinearGraphRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeCollection)
 
 - **constructor**(list?: IgxLinearGraphRangeComponent[]): IgxLinearGraphRangeCollection
 
-### [IgxLinearGraphRangeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxLinearGraphRangeComponent)
+### [IgxLinearGraphRangeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeComponent)
 
 - **constructor**(): IgxLinearGraphRangeComponent
 - static **ngAcceptInputType_endValue**: `string | number`
@@ -474,8 +518,8 @@ before a directive, pipe, or service instance is destroyed.
 - static **ngAcceptInputType_outerStartExtent**: `string | number`
 - static **ngAcceptInputType_startValue**: `string | number`
 - static **ngAcceptInputType_strokeThickness**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxLinearGraphRangeComponent, "igx-linear-graph-range", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGraphRangeComponent, never>`
 - **brush**: `string` — Gets or sets the brush to use to fill the range.
 - **endValue**: `number` — Gets or sets the value at which the range ends along the scale.
 - **i**: `XamLinearGraphRange`
@@ -493,23 +537,33 @@ Values further from zero than 1 can be used to make this extend further than the
 - **startValue**: `number` — Gets or sets the value at which the range starts along the scale.
 - **strokeThickness**: `number` — Gets or sets the stroke thickness to use when rendering this range's outline.
 - **findByName**(name: string): any
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxLinearGraphRangeComponent
 
-### [IgxRadialGaugeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxRadialGaugeComponent)
+### [IgxLinearGraphRangeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeDynamicModule)
+
+- **constructor**(): IgxLinearGraphRangeDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGraphRangeDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGraphRangeDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGraphRangeDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxLinearGraphRangeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeModule)
+
+- **constructor**(): IgxLinearGraphRangeModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGraphRangeModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGraphRangeModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGraphRangeModule, never, [any, any], [any]>`
+
+### [IgxRadialGaugeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeComponent)
 A radial gauge for displaying a single value on a defined scale.
 
-- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _componentFactoryResolver: ComponentFactoryResolver, _injector: Injector): IgxRadialGaugeComponent
+- **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _injector: Injector): IgxRadialGaugeComponent
 - **_dynamicContent**: `ViewContainerRef`
 - **actualRanges**: `IgxRadialGaugeRangeComponent[]` — The ranges actually present in the chart. Do not directly modify this array.
 This array's contents can be modified by causing Angular to reproject the child content.
 Or adding and removing ranges from the manual ranges collection on the ranges property.
 - **contentRanges**: `QueryList<IgxRadialGaugeRangeComponent>`
-- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_actualHighlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_actualHighlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_actualMaximumValue**: `string | number`
 - static **ngAcceptInputType_actualMinimumValue**: `string | number`
@@ -530,7 +584,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_highlightLabelFormatSpecifiers**: `string | any[]`
 - static **ngAcceptInputType_highlightLabelSnapsToNeedlePivot**: `string | boolean`
 - static **ngAcceptInputType_highlightValue**: `string | number`
-- static **ngAcceptInputType_highlightValueDisplayMode**: `string | HighlightedValueDisplayMode`
+- static **ngAcceptInputType_highlightValueDisplayMode**: `any`
 - static **ngAcceptInputType_highlightValueOpacity**: `string | number`
 - static **ngAcceptInputType_interval**: `string | number`
 - static **ngAcceptInputType_isHighlightNeedleDraggingConstrained**: `string | boolean`
@@ -573,7 +627,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_scaleOversweepShape**: `string | RadialGaugeScaleOversweepShape`
 - static **ngAcceptInputType_scaleStartAngle**: `string | number`
 - static **ngAcceptInputType_scaleStartExtent**: `string | number`
-- static **ngAcceptInputType_scaleSweepDirection**: `string | SweepDirection`
+- static **ngAcceptInputType_scaleSweepDirection**: `any`
 - static **ngAcceptInputType_subtitleAngle**: `string | number`
 - static **ngAcceptInputType_subtitleDisplaysValue**: `string | boolean`
 - static **ngAcceptInputType_subtitleExtent**: `string | number`
@@ -590,8 +644,8 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **ngAcceptInputType_transitionDuration**: `string | number`
 - static **ngAcceptInputType_transitionProgress**: `string | number`
 - static **ngAcceptInputType_value**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxRadialGaugeComponent, "igx-radial-gauge", never, any, any, ["contentRanges"], never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeComponent, never>`
 - **actualHighlightValueDisplayMode**: `HighlightedValueDisplayMode` — Gets whether and how to display the highlighted value.
 - **actualHighlightValueOpacity**: `number` — Gets the actual opacity of the primary needle while highlighting
 - **actualMaximumValue**: `number` — Gets the resolved maximum value of the scale.
@@ -822,15 +876,9 @@ Calling this method too often will hinder the performance of the radial gauge.
 - **getValueForPoint**(point: IgPoint): number — Gets the value for the main scale of the gauge for a given point within the bounds of the gauge.
 - **highlightNeedleContainsPoint**(point: IgPoint, isFinger: boolean): boolean
 - **needleContainsPoint**(point: IgPoint, isFinger: boolean): boolean
-- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of all of the directive's
-content.
-It is invoked only once when the directive is instantiated.
-- **ngAfterViewInit**(): void — A callback method that is invoked immediately after
-Angular has completed initialization of a component's view.
-It is invoked only once when the view is instantiated.
-- **ngOnDestroy**(): void — A callback method that performs custom clean-up, invoked immediately
-before a directive, pipe, or service instance is destroyed.
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
 - **provideContainer**(container: any): void — Called by the UI framework to provide a UI container for rendering this control.
 - **scaleValue**(value: number): number — Scales a value on the gauge's main scale to an angle around the center point of the gauge, in radians.
 - **styleUpdated**(): void
@@ -838,11 +886,39 @@ before a directive, pipe, or service instance is destroyed.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxRadialGaugeComponent
 
-### [IgxRadialGaugeRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxRadialGaugeRangeCollection)
+### [IgxRadialGaugeCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeCoreDynamicModule)
+
+- **constructor**(): IgxRadialGaugeCoreDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeCoreDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeCoreDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
+
+### [IgxRadialGaugeCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeCoreModule)
+
+- **constructor**(): IgxRadialGaugeCoreModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeCoreModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeCoreModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeCoreModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxRadialGaugeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeDynamicModule)
+
+- **constructor**(): IgxRadialGaugeDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeDynamicModule, never, [any, any, any, any], [any, any, any]>`
+
+### [IgxRadialGaugeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeModule)
+
+- **constructor**(): IgxRadialGaugeModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeModule, never, [any, any, any], [any, any]>`
+
+### [IgxRadialGaugeRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeCollection)
 
 - **constructor**(list?: IgxRadialGaugeRangeComponent[]): IgxRadialGaugeRangeCollection
 
-### [IgxRadialGaugeRangeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/classes/IgxRadialGaugeRangeComponent)
+### [IgxRadialGaugeRangeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeComponent)
 
 - **constructor**(): IgxRadialGaugeRangeComponent
 - static **ngAcceptInputType_endValue**: `string | number`
@@ -852,8 +928,8 @@ before a directive, pipe, or service instance is destroyed.
 - static **ngAcceptInputType_outerStartExtent**: `string | number`
 - static **ngAcceptInputType_startValue**: `string | number`
 - static **ngAcceptInputType_strokeThickness**: `string | number`
-- static **ɵcmp**: `unknown`
-- static **ɵfac**: `unknown`
+- static **ɵcmp**: `ɵɵComponentDeclaration<IgxRadialGaugeRangeComponent, "igx-radial-gauge-range", never, any, any, never, never, true, never>`
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeRangeComponent, never>`
 - **brush**: `string` — Gets or sets the brush to use to fill the range.
 - **endValue**: `number` — Gets or sets the value at which the range ends along the scale.
 - **i**: `XamRadialGaugeRange`
@@ -871,16 +947,26 @@ Values further from zero than 1 can be used to make this extend further than the
 - **startValue**: `number` — Gets or sets the value at which the range starts along the scale.
 - **strokeThickness**: `number` — Gets or sets the stroke thickness to use when rendering this range's outline.
 - **findByName**(name: string): any
-- **ngOnInit**(): void — A callback method that is invoked immediately after the
-default change detector has checked the directive's
-data-bound properties for the first time,
-and before any of the view or content children have been checked.
-It is invoked only once when the directive is instantiated.
+- **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxRadialGaugeRangeComponent
+
+### [IgxRadialGaugeRangeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeDynamicModule)
+
+- **constructor**(): IgxRadialGaugeRangeDynamicModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeRangeDynamicModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeRangeDynamicModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeRangeDynamicModule, never, [any, any, any], [any, any]>`
+
+### [IgxRadialGaugeRangeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeModule)
+
+- **constructor**(): IgxRadialGaugeRangeModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeRangeModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeRangeModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeRangeModule, never, [any, any], [any]>`
 
 ## Enumerations
 
-### [LinearGraphNeedleShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/LinearGraphNeedleShape)
+### [LinearGraphNeedleShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/LinearGraphNeedleShape)
 Enumeration of preset needle shapes.
 
 - **Custom** = 0 — A custom user defined needle shape.
@@ -889,19 +975,19 @@ Enumeration of preset needle shapes.
 - **Trapezoid** = 4 — A needle shaped like a trapezoid.
 - **Triangle** = 2 — A needle shaped like a triangle.
 
-### [LinearScaleOrientation](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/LinearScaleOrientation)
+### [LinearScaleOrientation](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/LinearScaleOrientation)
 Describes the orientation of a linear scale.
 
 - **Horizontal** = 0 — The scale has a horizontal orientation.
 - **Vertical** = 1 — The scale has a vertical orientation.
 
-### [RadialGaugeBackingShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/RadialGaugeBackingShape)
+### [RadialGaugeBackingShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/RadialGaugeBackingShape)
 Enum specifying shapes that can be used by the backing area of the radial gauge.
 
 - **Circular** = 0 — A circular backing shape.
 - **Fitted** = 1 — A fitted backing shape.
 
-### [RadialGaugeDuplicateLabelOmissionStrategy](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/RadialGaugeDuplicateLabelOmissionStrategy)
+### [RadialGaugeDuplicateLabelOmissionStrategy](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/RadialGaugeDuplicateLabelOmissionStrategy)
 Enum specifying multiple strategies for omitting labels.
 
 - **OmitBoth** = 3 — Omit both labels.
@@ -909,7 +995,7 @@ Enum specifying multiple strategies for omitting labels.
 - **OmitLast** = 0 — Omit the last label.
 - **OmitNeither** = 2 — Omit no labels.
 
-### [RadialGaugeNeedleShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/RadialGaugeNeedleShape)
+### [RadialGaugeNeedleShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/RadialGaugeNeedleShape)
 Enum specifying various preset needle shapes.
 
 - **Needle** = 3 — A needle shape.
@@ -922,7 +1008,7 @@ Enum specifying various preset needle shapes.
 - **Triangle** = 2 — A triangle shape.
 - **TriangleWithBulb** = 6 — A triangle shape with a bulb at the end.
 
-### [RadialGaugePivotShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/RadialGaugePivotShape)
+### [RadialGaugePivotShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/RadialGaugePivotShape)
 Enum specifying shapes for the needle pivot.
 
 - **Circle** = 1 — A circle shaped pivot.
@@ -933,26 +1019,76 @@ Enum specifying shapes for the needle pivot.
 - **CircleWithHole** = 2 — A circle pivot with a hole in it.
 - **None** = 0 — No pivot shape.
 
-### [RadialGaugeScaleOversweepShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/RadialGaugeScaleOversweepShape)
+### [RadialGaugeScaleOversweepShape](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/RadialGaugeScaleOversweepShape)
 Enum specifying oversweep shapes.
 
 - **Auto** = 0 — A default oversweep shape.
 - **Circular** = 1 — A circular oversweep shape.
 - **Fitted** = 2 — A fitted oversweep shape.
 
-### [TitlesPosition](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/enums/TitlesPosition)
+### [TitlesPosition](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/enums/TitlesPosition)
 Enum specifying the position of the titles relative to scale's start/end.
 
 - **ScaleEnd** = 1 — The titles are placed at the scale's end (maximum value).
 - **ScaleStart** = 0 — The titles are placed at scale's start (minimum value).
 
+## Functions
+
+### [provideIgxBulletGraph](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraph)
+`provideIgxBulletGraph(): EnvironmentProviders`
+
+### [provideIgxBulletGraphCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphCore)
+`provideIgxBulletGraphCore(): EnvironmentProviders`
+
+### [provideIgxBulletGraphCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphCoreDynamic)
+`provideIgxBulletGraphCoreDynamic(): EnvironmentProviders`
+
+### [provideIgxBulletGraphDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphDynamic)
+`provideIgxBulletGraphDynamic(): EnvironmentProviders`
+
+### [provideIgxLinearGauge](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGauge)
+`provideIgxLinearGauge(): EnvironmentProviders`
+
+### [provideIgxLinearGaugeCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeCore)
+`provideIgxLinearGaugeCore(): EnvironmentProviders`
+
+### [provideIgxLinearGaugeCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeCoreDynamic)
+`provideIgxLinearGaugeCoreDynamic(): EnvironmentProviders`
+
+### [provideIgxLinearGaugeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeDynamic)
+`provideIgxLinearGaugeDynamic(): EnvironmentProviders`
+
+### [provideIgxLinearGraphRange](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGraphRange)
+`provideIgxLinearGraphRange(): EnvironmentProviders`
+
+### [provideIgxLinearGraphRangeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGraphRangeDynamic)
+`provideIgxLinearGraphRangeDynamic(): EnvironmentProviders`
+
+### [provideIgxRadialGauge](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGauge)
+`provideIgxRadialGauge(): EnvironmentProviders`
+
+### [provideIgxRadialGaugeCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeCore)
+`provideIgxRadialGaugeCore(): EnvironmentProviders`
+
+### [provideIgxRadialGaugeCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeCoreDynamic)
+`provideIgxRadialGaugeCoreDynamic(): EnvironmentProviders`
+
+### [provideIgxRadialGaugeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeDynamic)
+`provideIgxRadialGaugeDynamic(): EnvironmentProviders`
+
+### [provideIgxRadialGaugeRange](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeRange)
+`provideIgxRadialGaugeRange(): EnvironmentProviders`
+
+### [provideIgxRadialGaugeRangeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeRangeDynamic)
+`provideIgxRadialGaugeRangeDynamic(): EnvironmentProviders`
+
 ## Variables
 
-### [BulletGraphStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/variables/BulletGraphStylingDefaults)
+### [BulletGraphStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/variables/BulletGraphStylingDefaults)
 `any`
 
-### [LinearGaugeStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/variables/LinearGaugeStylingDefaults)
+### [LinearGaugeStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/variables/LinearGaugeStylingDefaults)
 `any`
 
-### [RadialGaugeStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/latest/variables/RadialGaugeStylingDefaults)
+### [RadialGaugeStylingDefaults](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/variables/RadialGaugeStylingDefaults)
 `any`

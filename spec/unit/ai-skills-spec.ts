@@ -455,6 +455,30 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
 		});
 
+		it("should copy template skills when the drive letter case differs from glob output", () => {
+			if (process.platform !== "win32") {
+				pending("Windows drive letter casing");
+			}
+			const content = "# skill";
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === "c:\\tpl\\files\\skills"
+						? ["C:\\tpl\\files\\skills\\README.md", "C:\\tpl\\files\\skills\\grids\\SKILL.md"]
+						: []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+			const destFs = makeDestFs();
+			App.container.set(FS_TOKEN, destFs);
+			mockTemplateManager(["c:\\tpl\\files"]);
+
+			const result = copyAISkillsToProject(["claude"], "webcomponents");
+
+			expect(result.failed).toBe(0);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/README.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/SKILL.md", content);
+		});
+
 		it("should read bundled skill sources from real disk FS even when destFs is virtual", () => {
 			// Simulates the schematics scenario: template files outside the project are read from disk,
 			// destFs (NgTreeFileSystem) writes into the virtual Tree.

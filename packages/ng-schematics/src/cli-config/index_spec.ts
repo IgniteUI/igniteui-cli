@@ -476,9 +476,21 @@ export const appConfig: ApplicationConfig = {
 
 			expect(tree.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+		});
+
+		it("should start the docs server through the project's CLI when package.json lists igniteui-cli", async () => {
+			const pkgJson = JSON.parse(tree.readContent("/package.json"));
+			pkgJson.devDependencies["igniteui-cli"] = "~15.8.2";
+			tree.overwrite("/package.json", JSON.stringify(pkgJson));
+
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 
 		it("should add all three servers to existing .vscode/mcp.json that has no servers", async () => {
@@ -487,7 +499,7 @@ export const appConfig: ApplicationConfig = {
 			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 		});
@@ -495,14 +507,14 @@ export const appConfig: ApplicationConfig = {
 		it("should add missing servers when only some are already present", async () => {
 			tree.create(mcpFilePath, JSON.stringify({
 				servers: {
-					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] }
+					"igniteui-cli": { command: "npx", args: ["-y", "@igniteui/mcp-server"] }
 				}
 			}));
 
 			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 		});
@@ -510,7 +522,7 @@ export const appConfig: ApplicationConfig = {
 		it("should not modify .vscode/mcp.json if all servers are already present", async () => {
 			const existing = {
 				servers: {
-					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] },
+					"igniteui-cli": { command: "npx", args: ["-y", "@igniteui/mcp-server"] },
 					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] },
 					"angular-cli": { command: "npx", args: ["-y", "@angular/cli", "mcp"] }
 				}
@@ -575,7 +587,7 @@ export const appConfig: ApplicationConfig = {
 			expect(tree.exists(filePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(filePath));
 			expect(content.servers).toBeDefined();
-			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 		});
 
 		it("should write to .cursor/mcp.json with mcpServers key when assistant is cursor", async () => {
@@ -585,7 +597,7 @@ export const appConfig: ApplicationConfig = {
 			expect(tree.exists(filePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(filePath));
 			expect(content.mcpServers).toBeDefined();
-			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "@igniteui/mcp-server"] });
 			expect(content.mcpServers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 			expect(content.servers).toBeUndefined();
 		});

@@ -1,0 +1,410 @@
+# Ignite UI for Angular Spreadsheet Chart Adapter v22.0.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for Angular Spreadsheet Chart Adapter package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Angular
+Package: igniteui-angular-spreadsheet-chart-adapter
+Version: 22.0.0
+
+## Classes
+
+### [IgxSpreadsheetChartAdapterLocaleBgModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleBgModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleBgModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleBgModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleBgModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleBgModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleCsModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleCsModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleCsModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleCsModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleCsModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleCsModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleDaModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleDaModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleDaModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleDaModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleDaModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleDaModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleDeModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleDeModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleDeModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleDeModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleDeModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleDeModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleEnModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleEnModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleEnModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleEnModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleEnModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleEnModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleEsModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleEsModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleEsModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleEsModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleEsModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleEsModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleFrModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleFrModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleFrModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleFrModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleFrModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleFrModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleHuModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleHuModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleHuModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleHuModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleHuModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleHuModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleItModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleItModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleItModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleItModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleItModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleItModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleJaModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleJaModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleJaModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleJaModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleJaModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleJaModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleNbModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleNbModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleNbModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleNbModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleNbModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleNbModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleNlModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleNlModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleNlModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleNlModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleNlModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleNlModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocalePlModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocalePlModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocalePlModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocalePlModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocalePlModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocalePlModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocalePtModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocalePtModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocalePtModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocalePtModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocalePtModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocalePtModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleRoModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleRoModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleRoModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleRoModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleRoModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleRoModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleRuModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleRuModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleRuModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleRuModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleRuModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleRuModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleSvModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleSvModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleSvModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleSvModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleSvModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleSvModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleTrModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleTrModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleTrModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleTrModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleTrModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleTrModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleZhHansModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleZhHansModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleZhHansModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleZhHansModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleZhHansModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleZhHansModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterLocaleZhHantModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterLocaleZhHantModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterLocaleZhHantModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterLocaleZhHantModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterLocaleZhHantModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterLocaleZhHantModule, never, [any], never>`
+
+### [IgxSpreadsheetChartAdapterModule](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/IgxSpreadsheetChartAdapterModule)
+
+- **constructor**(): IgxSpreadsheetChartAdapterModule
+- static **ɵfac**: `ɵɵFactoryDeclaration<IgxSpreadsheetChartAdapterModule, never>`
+- static **ɵinj**: `ɵɵInjectorDeclaration<IgxSpreadsheetChartAdapterModule>`
+- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxSpreadsheetChartAdapterModule, never, [any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any], never>`
+
+### [SpreadsheetChartAdapter](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapter)
+Creates and initializes chart elements for the spreadsheet based on a [[WorksheetChart]] instance.
+
+- **constructor**(): SpreadsheetChartAdapter
+- static **$t**: `Type`
+
+### [SpreadsheetChartAdapterLocaleBg](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleBg)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleBg
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleCs](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleCs)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleCs
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleDa](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleDa)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleDa
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleDe](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleDe)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleDe
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleEn)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleEn
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleEs](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleEs)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleEs
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleFr](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleFr)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleFr
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleHu](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleHu)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleHu
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleIt](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleIt)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleIt
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleJa](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleJa)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleJa
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleNb](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleNb)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleNb
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleNl](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleNl)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleNl
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocalePl](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocalePl)
+
+- **constructor**(): SpreadsheetChartAdapterLocalePl
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocalePt](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocalePt)
+
+- **constructor**(): SpreadsheetChartAdapterLocalePt
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleRo](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleRo)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleRo
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleRu](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleRu)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleRu
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleSv](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleSv)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleSv
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleTr](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleTr)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleTr
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleZhHans](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleZhHans)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleZhHans
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleZhHant](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/classes/SpreadsheetChartAdapterLocaleZhHant)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleZhHant
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+## Functions
+
+### [provideIgxSpreadsheetChartAdapter](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapter)
+`provideIgxSpreadsheetChartAdapter(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleBg](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleBg)
+`provideIgxSpreadsheetChartAdapterLocaleBg(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleCs](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleCs)
+`provideIgxSpreadsheetChartAdapterLocaleCs(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleDa](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleDa)
+`provideIgxSpreadsheetChartAdapterLocaleDa(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleDe](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleDe)
+`provideIgxSpreadsheetChartAdapterLocaleDe(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleEn)
+`provideIgxSpreadsheetChartAdapterLocaleEn(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleEs](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleEs)
+`provideIgxSpreadsheetChartAdapterLocaleEs(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleFr](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleFr)
+`provideIgxSpreadsheetChartAdapterLocaleFr(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleHu](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleHu)
+`provideIgxSpreadsheetChartAdapterLocaleHu(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleIt](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleIt)
+`provideIgxSpreadsheetChartAdapterLocaleIt(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleJa](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleJa)
+`provideIgxSpreadsheetChartAdapterLocaleJa(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleNb](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleNb)
+`provideIgxSpreadsheetChartAdapterLocaleNb(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleNl](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleNl)
+`provideIgxSpreadsheetChartAdapterLocaleNl(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocalePl](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocalePl)
+`provideIgxSpreadsheetChartAdapterLocalePl(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocalePt](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocalePt)
+`provideIgxSpreadsheetChartAdapterLocalePt(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleRo](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleRo)
+`provideIgxSpreadsheetChartAdapterLocaleRo(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleRu](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleRu)
+`provideIgxSpreadsheetChartAdapterLocaleRu(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleSv](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleSv)
+`provideIgxSpreadsheetChartAdapterLocaleSv(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleTr](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleTr)
+`provideIgxSpreadsheetChartAdapterLocaleTr(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleZhHans](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleZhHans)
+`provideIgxSpreadsheetChartAdapterLocaleZhHans(): EnvironmentProviders`
+
+### [provideIgxSpreadsheetChartAdapterLocaleZhHant](https://www.infragistics.com/api/angular/igniteui-angular-spreadsheet-chart-adapter/22.0.0/functions/provideIgxSpreadsheetChartAdapterLocaleZhHant)
+`provideIgxSpreadsheetChartAdapterLocaleZhHant(): EnvironmentProviders`

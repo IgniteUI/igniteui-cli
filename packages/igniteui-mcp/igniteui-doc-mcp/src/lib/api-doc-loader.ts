@@ -19,6 +19,23 @@ export function stripGenerics(name: string): string {
   return name.replace(/<[^>]*>/g, '').trim();
 }
 
+/**
+ * Orders snapshot folder names by version: "9.0.x" < "15.1.x" < "22.0.0" < "latest".
+ * An "x" segment counts as 0.
+ */
+export function compareVersionNames(a: string, b: string): number {
+  if (a === b) return 0;
+  if (a === 'latest') return 1;
+  if (b === 'latest') return -1;
+  const pa = a.split('.').map(s => Number.parseInt(s, 10) || 0);
+  const pb = b.split('.').map(s => Number.parseInt(s, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return a.localeCompare(b);
+}
+
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
@@ -57,6 +74,7 @@ export class ApiDocLoader {
   /**
    * Loads API docs from pre-built llms-full.txt files.
    * Expected layout: docs/{platform}-api/{package}/{version}/llms-full.txt
+   * Only the newest {version} of each package is loaded.
    * Each file is split on "### [" headings — one DocEntry per component.
    */
   private parseLlmsFullTxt(config: PlatformConfig): void {
@@ -82,12 +100,10 @@ export class ApiDocLoader {
       const pkgDir = join(docsPath, pkgName);
       if (!statSync(pkgDir).isDirectory()) continue;
 
-      for (const versionName of readdirSync(pkgDir)) {
-        const versionDir = join(pkgDir, versionName);
-        if (!statSync(versionDir).isDirectory()) continue;
-
-        const llmsFile = join(versionDir, 'llms-full.txt');
-        if (!existsSync(llmsFile)) continue;
+      // Only the newest snapshot is served; older ones would shadow or add stale names.
+      const versionName = this.newestVersion(pkgDir);
+      if (versionName) {
+        const llmsFile = join(pkgDir, versionName, 'llms-full.txt');
 
         let content: string;
         try {
@@ -159,6 +175,14 @@ export class ApiDocLoader {
     }
 
     console.error(`   ${config.displayName}: ${count} entries (from llms-full.txt)`);
+  }
+
+  private newestVersion(pkgDir: string): string | undefined {
+    const versions = readdirSync(pkgDir).filter(name => {
+      const dir = join(pkgDir, name);
+      return statSync(dir).isDirectory() && existsSync(join(dir, 'llms-full.txt'));
+    });
+    return versions.sort(compareVersionNames).at(-1);
   }
 
   private inferComponentType(chunk: string, platform: string): string {
