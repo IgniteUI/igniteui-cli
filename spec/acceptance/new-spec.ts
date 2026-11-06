@@ -62,6 +62,7 @@ describe("New command", () => {
 
 		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
 
+		expect(console.error).not.toHaveBeenCalled();
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
 		expect(filesDiff("../templates/react/igr-ts/projects/empty/files", "./React Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");

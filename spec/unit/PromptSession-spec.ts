@@ -207,6 +207,38 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
+	it("start - Should stop and not report success when template processing fails", async () => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { isShowcase: true } } as unknown as Config);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		const mockProjectLibrary = {
+			themes: ["infragistics"],
+			projects: [{ name: "Project 1", generateConfig: () => ({}), templatePaths: ["first", "second"] }],
+			getProject: jasmine.createSpy().and.returnValue(undefined)
+		};
+		const mockFramework = { id: "jquery", name: "Custom Framework 1", projectLibraries: ["jQuery"] };
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("mockTemplate", {
+			getFrameworkByName: mockFramework,
+			getFrameworkNames: [mockFramework.name],
+			getProjectLibraryNames: mockFramework.projectLibraries,
+			getProjectLibraryByName: mockProjectLibrary
+		}));
+		const mockSession = new PromptSession();
+		spyOn(Util, "log");
+		spyOn(Util, "error");
+		spyOn(Util, "gitInit");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(false));
+		spyOn(Util, "getAvailableName").and.returnValue("IG Project");
+		spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("Test Project"));
+		spyOn(process, "chdir");
+		spyOn(mockSession, "chooseActionLoop");
+
+		await mockSession.start();
+
+		expect(Util.processTemplates).toHaveBeenCalledTimes(1);
+		expect(Util.error).toHaveBeenCalledWith("Project generation failed!", "red");
+		expect(Util.log).not.toHaveBeenCalledWith(jasmine.stringMatching("Project structure generated"));
+		expect(mockSession.chooseActionLoop).not.toHaveBeenCalled();
+	});
 	it("start - Should go into chooseActionLoop if project has local config", async () => {
 		const mockBaseTemplate = createMockBaseTemplate();
         const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
@@ -374,6 +406,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("Dummy name"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Custom Framework 1"),

@@ -1,5 +1,4 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
-import * as path from "path";
 import { BaseWithHomeIgcProject } from "../_base_with_home";
 
 export class EmptyPageTemplate extends BaseWithHomeIgcProject implements ProjectTemplate {
@@ -11,9 +10,5 @@ export class EmptyPageTemplate extends BaseWithHomeIgcProject implements Project
 	public dependencies!: string[];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = false;
-
-	public get templatePaths(): string[] {
-		return [...super.templatePaths, path.join(__dirname, "files")];
-	}
 }
 export default new EmptyPageTemplate();
