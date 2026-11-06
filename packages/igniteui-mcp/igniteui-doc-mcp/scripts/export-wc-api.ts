@@ -10,7 +10,7 @@
  *   2. npm install inside blazor/api-docs
  *   3. (skipped) fetch:tools:wc / fetch:wc-grids — tool data download not working
  *   4. npm run build:wc:en    — Astro SSG → dist/en/api/webcomponents/**
- *   5. Copy dist/en/api/webcomponents/{pkg}/{ver}/llms-full.txt
+ *   5. Copy dist/en/api/webcomponents/{pkg}/{ver}/llms-full.txt  (newest {ver} only; older exported versions are removed)
  *        → docs/webcomponents-api/{pkg}/{ver}/llms-full.txt
  */
 
@@ -23,6 +23,7 @@ import {
 } from 'fs';
 import { join, resolve } from 'path';
 import { execSync } from 'child_process';
+import { newestVersionDir, pruneOtherVersions } from './lib/api-export.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
@@ -74,21 +75,16 @@ for (const pkgName of readdirSync(ASTRO_DIST)) {
   const pkgSrc = join(ASTRO_DIST, pkgName);
   if (!statSync(pkgSrc).isDirectory()) continue;
 
-  for (const versionName of readdirSync(pkgSrc)) {
-    const versionSrc = join(pkgSrc, versionName);
-    if (!statSync(versionSrc).isDirectory()) continue;
+  const versionName = newestVersionDir(pkgSrc);
+  if (!versionName) continue;
 
-    const srcFile = join(versionSrc, 'llms-full.txt');
-    if (!existsSync(srcFile)) continue;
+  pruneOtherVersions(join(OUTPUT_DIR, pkgName), versionName);
+  const destDir = join(OUTPUT_DIR, pkgName, versionName);
+  mkdirSync(destDir, { recursive: true });
 
-    const destDir = join(OUTPUT_DIR, pkgName, versionName);
-    mkdirSync(destDir, { recursive: true });
-
-    const destFile = join(destDir, 'llms-full.txt');
-    copyFileSync(srcFile, destFile);
-    console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
-    copied++;
-  }
+  copyFileSync(join(pkgSrc, versionName, 'llms-full.txt'), join(destDir, 'llms-full.txt'));
+  console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
+  copied++;
 }
 
 if (copied === 0) {

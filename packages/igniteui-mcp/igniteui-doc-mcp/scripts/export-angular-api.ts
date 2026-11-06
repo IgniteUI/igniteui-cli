@@ -11,7 +11,7 @@
  *   3. (skipped) fetch:tools:angular — Angular TypeDoc JSONs are pre-bundled
  *      in blazor/api-docs/src/data/angular/ so no download is needed.
  *   4. npm run build:angular:en  — Astro SSG → dist/en/api/angular/**
- *   5. Copy dist/en/api/angular/{pkg}/{ver}/llms-full.txt
+ *   5. Copy dist/en/api/angular/{pkg}/{ver}/llms-full.txt  (newest {ver} only; older exported versions are removed)
  *        → docs/angular-api/{pkg}/{ver}/llms-full.txt
  */
 
@@ -25,6 +25,7 @@ import {
 } from 'fs';
 import { join, resolve } from 'path';
 import { execSync } from 'child_process';
+import { newestVersionDir, pruneOtherVersions } from './lib/api-export.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
@@ -103,23 +104,17 @@ for (const pkgName of readdirSync(ASTRO_DIST)) {
   const pkgSrc = join(ASTRO_DIST, pkgName);
   if (!statSync(pkgSrc).isDirectory()) continue;
 
-  for (const versionName of readdirSync(pkgSrc)) {
-    const versionSrc = join(pkgSrc, versionName);
-    if (!statSync(versionSrc).isDirectory()) continue;
+  const versionName = newestVersionDir(pkgSrc);
+  if (!versionName) continue;
 
-    const srcFile = join(versionSrc, 'llms-full.txt');
-    if (!existsSync(srcFile)) continue;
+  pruneOtherVersions(join(OUTPUT_DIR, pkgName), versionName);
+  const destDir = join(OUTPUT_DIR, pkgName, versionName);
+  mkdirSync(destDir, { recursive: true });
 
-    const destDir = join(OUTPUT_DIR, pkgName, versionName);
-    mkdirSync(destDir, { recursive: true });
-
-    const destFile = join(destDir, 'llms-full.txt');
-    const raw = readFileSync(srcFile, 'utf-8');
-    const deduped = deduplicateLlmsFull(raw);
-    writeFileSync(destFile, deduped, 'utf-8');
-    console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
-    copied++;
-  }
+  const raw = readFileSync(join(pkgSrc, versionName, 'llms-full.txt'), 'utf-8');
+  writeFileSync(join(destDir, 'llms-full.txt'), deduplicateLlmsFull(raw), 'utf-8');
+  console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
+  copied++;
 }
 
 if (copied === 0) {

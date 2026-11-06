@@ -67,6 +67,15 @@ describe("Igx templates - package resolve", () => {
 			result = resolvePackage(NPM_DOCK_MANAGER);
 			expect(result).toEqual(FEED_DOCK_MANAGER);
 		});
+
+		it("should return npm package if package.json has no dependencies field", () => {
+			const mockFs = new MockFileSystem();
+			spyOn(mockFs, "fileExists").and.returnValue(true);
+			spyOn(mockFs, "readFile").and.returnValue(`{ "devDependencies": { "typescript": "*" } }`);
+			spyOn(App.container, "get").and.returnValue(mockFs);
+
+			expect(resolvePackage(NPM_DOCK_MANAGER)).toEqual(NPM_DOCK_MANAGER);
+		});
 	});
 
 	describe("getUpgradeablePackages", () => {
@@ -84,6 +93,15 @@ describe("Igx templates - package resolve", () => {
 					"kek": "1.0.1"
 				}
 			}));
+
+			expect(getUpgradeablePackages()).toEqual([]);
+		});
+
+		it("should return an empty array if package.json has no dependencies field", () => {
+			const mockFs = new MockFileSystem();
+			spyOn(mockFs, "fileExists").and.returnValue(true);
+			spyOn(mockFs, "readFile").and.returnValue(`{ "devDependencies": { "igniteui-angular": "*" } }`);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 
 			expect(getUpgradeablePackages()).toEqual([]);
 		});

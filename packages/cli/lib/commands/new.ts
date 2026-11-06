@@ -113,27 +113,27 @@ const command: NewCommandType = {
 			Util.error(`Folder "${argv.name}" already exists!`, "red");
 			return;
 		}
-		if (templateManager?.getFrameworkById(argv.framework) === undefined) {
+		if (templateManager?.getFrameworkById(argv.framework!) === undefined) {
 			return Util.error("Framework not supported", "red");
 		}
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = templateManager?.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = templateManager?.getProjectLibrary(argv.framework!, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
 			}
 		} else {
-			projectLib = templateManager?.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = templateManager?.getProjectLibrary(argv.framework!) as ProjectLibrary;
 		}
 
-		if (templateManager?.getFrameworkById(argv.framework).id === "angular" && projectLib.projectType === "igx-ts") {
+		if (templateManager?.getFrameworkById(argv.framework!)!.id === "angular" && projectLib.projectType === "igx-ts") {
 			Util.warn("Psst! Did you know you can use our schematics package with Angular CLI to create and modify your projects?", "yellow");
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview", "yellow");
 		}
 
 		let themeIndex = 0;
 		if (argv.theme) {
-			themeIndex = projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item.toLowerCase());
+			themeIndex = projectLib.themes.findIndex(item => argv.theme!.toLowerCase() === item.toLowerCase());
 			if (themeIndex === -1) {
 				return Util.error("Theme not supported");
 			}
@@ -191,7 +191,7 @@ const command: NewCommandType = {
 			}
 
 			process.chdir(argv.name);
-			await configure(argv.framework, {
+			await configure(argv.framework!, {
 				agents: argv.agents as (AIAgentTarget | "none")[],
 				assistants: argv.assistants as (AiCodingAssistant | "none")[]
 			});
@@ -211,12 +211,14 @@ const command: NewCommandType = {
 
 		const config = projTemplate.generateConfig(argv.name, theme);
 		for (const templatePath of projTemplate.templatePaths) {
-			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
-				config, projTemplate.delimiters, false);
+			if (!await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
+				config, projTemplate.delimiters, false)) {
+				return Util.error("Project generation failed!", "red");
+			}
 		}
 
 		process.chdir(argv.name);
-		await configure(argv.framework, {
+		await configure(argv.framework!, {
 			agents: argv.agents as (AIAgentTarget | "none")[],
 			assistants: argv.assistants as (AiCodingAssistant | "none")[]
 		});

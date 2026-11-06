@@ -20,7 +20,7 @@ function createMockBaseTemplate(): BaseTemplate {
 		hasExtraConfiguration: true,
 		isHidden: false,
 		templatePaths: ["/path/to/template"],
-		generateConfig: null,
+		generateConfig: null as unknown as BaseTemplate["generateConfig"],
 		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
 		setExtraConfiguration: jasmine.createSpy()
     };
@@ -38,6 +38,7 @@ describe("Unit - New command", () => {
 		spyOn(PackageManager, "installPackages");
 		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve({ agents: [], assistants: [] }));
 		spyOn(Util, "directoryExists").and.returnValue(false);
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 	});
 
 	afterEach(() => {
@@ -55,7 +56,7 @@ describe("Unit - New command", () => {
 
 	it("Should validate and trim name", async () => {
 		spyOn(Util, "error");
-		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 		const errorCombos = [
 			{ name: "1 is not valid", inError: "1 is not valid" },
@@ -135,7 +136,7 @@ describe("Unit - New command", () => {
 	});
 
 	it("Should start prompt session with missing arg", async () => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 		const mockProjLib = {};
 		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
@@ -203,7 +204,6 @@ describe("Unit - New command", () => {
 		//spyOn(newCmd.template, "getProjectLibrary").and.returnValue(mockProjLib);
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -249,7 +249,6 @@ describe("Unit - New command", () => {
 		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -270,6 +269,28 @@ describe("Unit - New command", () => {
 		expect(process.chdir).toHaveBeenCalledWith("..");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
+	});
+
+	it("Should stop and not report success when template processing fails", async () => {
+		const mockTemplate = {
+			delimiters: {},
+			generateConfig: () => ({}),
+			templatePaths: ["first", "second", "third"]
+		};
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: { getProject: () => mockTemplate, projectIds: ["empty"], projectType: "type", themes: ["ig"] }
+		}));
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(Util, "error");
+		(Util.processTemplates as jasmine.Spy).and.returnValues(Promise.resolve(true), Promise.resolve(false));
+
+		await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
+
+		expect(Util.processTemplates).toHaveBeenCalledTimes(2);
+		expect(Util.error).toHaveBeenCalledWith("Project generation failed!", "red");
+		expect(Util.log).not.toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
+		expect(aiConfig.configure).not.toHaveBeenCalled();
 	});
 
 	it("Git initialization", async () => {
@@ -480,7 +501,7 @@ describe("Unit - New command", () => {
 
 		it("does not call configure when project creation fails (bad name)", async () => {
 			spyOn(Util, "error");
-			spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+			spyOn(ProjectConfig, "getConfig").and.returnValue(null as unknown as Config);
 
 			await newCmd.handler({ name: "1invalid", _: ["new"], $0: "new" });
 
@@ -512,7 +533,6 @@ describe("Unit - New command", () => {
 				getFrameworkById: { id: "blazor" },
 				getProjectLibrary: mockProjLib
 			}));
-			spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 			spyOn(Util, "gitInit");
 		}
 

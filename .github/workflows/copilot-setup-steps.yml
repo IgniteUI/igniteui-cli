@@ -1,0 +1,34 @@
+name: Copilot Setup Steps
+
+# Prepares the Copilot cloud agent environment. Takes effect only from the default branch.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: npm run build
+      # Generated projects run their tests in Chromium; the browser download and OS packages are outside the agent firewall only here
+      - name: Install Playwright Chromium
+        run: npx -y playwright@1 install --with-deps chromium

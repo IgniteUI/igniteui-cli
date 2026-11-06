@@ -12,7 +12,7 @@ enum RegularExpressionType {
 export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	let guideLink = "";
 	let logicFilesExtension = "";
-	let styleExtensions = [];
+	let styleExtensions: string[] = [];
 	let shouldUpgradeHTML = false;
 
 	const config = ProjectConfig.getConfig();
@@ -33,6 +33,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "webcomponents":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing";
 			logicFilesExtension = "ts";
+			styleExtensions = ["css", "scss", "sass"];
 			shouldUpgradeHTML = true;
 			break;
 		default:
@@ -96,7 +97,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "react":
 		case "webcomponents":
 			if (pkgJSON.workspaces) {
-				pkgJSON.workspaces.forEach(w => {
+				pkgJSON.workspaces.forEach((w: string) => {
 					// Handle workspace patterns that may contain globs
 					if (w.includes("*")) {
 						// Use glob to expand the workspace pattern
@@ -207,7 +208,7 @@ function updateFileImports(
 					...createExpressions(RegularExpressionType.STYLE, packageDef.trial)
 				]
 				const newContent = updateFileContent(fileContent, regExpressions, packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}
@@ -222,7 +223,7 @@ function updateFileImports(
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
 					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}
@@ -320,7 +321,7 @@ function updateHTMLImports(htmlFiles: string[], packageDefs: PackageDefinition[]
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
 					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
-				fileChange = fileContent !== newContent;
+				fileChange = fileChange || fileContent !== newContent;
 				fileContent = newContent;
 			}
 		}

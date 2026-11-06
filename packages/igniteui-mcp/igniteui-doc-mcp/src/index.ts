@@ -2,7 +2,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { appendFileSync, mkdirSync } from "fs";
+import { appendFileSync, mkdirSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -64,8 +64,11 @@ const FRAMEWORK_ENUM = z
 
 const DEPRECATION_INSTRUCTIONS = formatDeprecationInstructions();
 
+// Report the published version so clients can tell which release runs (dist/ and src/ both sit one level below package.json)
+const { version: SERVER_VERSION } = JSON.parse(readFileSync(join(__dirname, "..", "package.json"), "utf8"));
+
 const server = new McpServer(
-  { name: "igniteui-mcp-server", version: "1.0.0" },
+  { name: "igniteui-mcp-server", version: SERVER_VERSION },
   {
     instructions:
       "Unified Ignite UI MCP server — documentation, API reference, and CLI scaffolding for 4 frameworks. " +

@@ -6,7 +6,7 @@ describe("Unit - ProjectConfig", () => {
 	it("hasLocalConfig returns correct values", async () => {
 		const cwdSpy = spyOn(process, "cwd");
 		spyOn(os, "homedir").and.returnValues("rootDir");
-		spyOn(fs, "statSync").and.returnValue({
+		(spyOn(fs, "statSync") as jasmine.Spy).and.returnValue({
 			isFile: () => true,
 			isDirectory: () => false,
 			isBlockDevice: () => false,
@@ -42,5 +42,13 @@ describe("Unit - ProjectConfig", () => {
 		cwdSpy.and.returnValue("rootDir/somePath");
 		expect(ProjectConfig.hasLocalConfig()).toBeTruthy();
 		expect(fs.statSync).toHaveBeenCalledTimes(1);
+	});
+
+	it("validateProperty rejects properties that are not in the schema", () => {
+		const result = ProjectConfig.validateProperty("notAConfigProperty", "value");
+		expect(result.valid).toBeFalse();
+		expect(result.value).toBeUndefined();
+		expect(result.message)
+			.toBe(`Property "notAConfigProperty" is not allowed in the Ignite UI CLI configuration!`);
 	});
 });

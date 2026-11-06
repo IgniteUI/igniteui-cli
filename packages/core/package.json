@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "15.8.2",
+  "version": "15.9.0",
   "description": "Base types and functionality for Ignite UI CLI",
   "repository": {
     "type": "git",
@@ -16,13 +16,14 @@
     "@inquirer/prompts": "^7.9.0",
     "@inquirer/type": "^3.0.0",
     "chalk": "^2.3.2",
-    "glob": "^11.0.0",
+    "glob": "^14.0.2",
     "jsonc-parser": "3.3.1",
     "semver": "^7.7.2",
     "through2": "^2.0.3",
     "typescript": "~5.5.4"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^22.0.0"
+    "@angular-devkit/schematics": "^22.0.0",
+    "@types/through2": "^2.0.41"
   }
 }

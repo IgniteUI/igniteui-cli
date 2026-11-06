@@ -13,7 +13,7 @@ vi.mock('fs', async () => {
 });
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
-import { ApiDocLoader, ApiDocsInitializationError } from '../../lib/api-doc-loader.js';
+import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames } from '../../lib/api-doc-loader.js';
 import type { PlatformConfig } from '../../config/platforms.js';
 
 const mockExistsSync = vi.mocked(existsSync);
@@ -324,6 +324,38 @@ describe('ApiDocLoader', () => {
       const cause = new Error('underlying');
       const err = new ApiDocsInitializationError('test', { cause });
       expect(err.cause).toBe(cause);
+    });
+  });
+
+  describe('version snapshots', () => {
+    it('orders version folder names semantically, with latest last', () => {
+      const sorted = ['latest', '9.0.x', '22.0.0', '15.1.x', '21.0.x'].sort(compareVersionNames);
+      expect(sorted).toEqual(['9.0.x', '15.1.x', '21.0.x', '22.0.0', 'latest']);
+    });
+
+    it('loads only the newest snapshot of a package', () => {
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return ['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('igniteui-angular')) {
+          return ['15.1.x', '22.0.0', '9.0.x'] as unknown as ReturnType<typeof readdirSync>;
+        }
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      mockReadFileSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.includes('22.0.0')) return '### [IgxTabsComponent](https://example.com/22.0.0)\nCurrent tabs.\n- **tabAlignment**: `string`\n';
+        if (s.includes('9.0.x')) return '### [IgxTabsComponent](https://example.com/9.0.x)\nOld tabs.\n\n### [IgxTabsGroupComponent](https://example.com/9.0.x)\nRemoved.\n';
+        return '### [IgxOldOnlyComponent](https://example.com/15.1.x)\nOld.\n';
+      });
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+
+      expect(loader.get('angular', 'IgxTabsComponent')?.content).toContain('tabAlignment');
+      expect(loader.get('angular', 'IgxTabsGroupComponent')).toBeUndefined();
+      expect(loader.get('angular', 'IgxOldOnlyComponent')).toBeUndefined();
+      expect(mockReadFileSync).toHaveBeenCalledTimes(1);
     });
   });
 

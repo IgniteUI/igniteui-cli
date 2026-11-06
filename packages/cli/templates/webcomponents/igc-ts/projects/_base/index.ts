@@ -26,7 +26,7 @@ export class BaseIgcProject implements ProjectTemplate {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
-	public setExtraConfiguration(extraConfigKeys: any[]) { }
+	public setExtraConfiguration(extraConfigKeys: { [key: string]: unknown }): void { }
 	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 		const config = {
 			name,

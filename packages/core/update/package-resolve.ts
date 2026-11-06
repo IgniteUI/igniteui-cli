@@ -129,7 +129,7 @@ export function resolvePackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
 	if (fs.fileExists("./package.json")) {
 		const fileContent = fs.readFile("./package.json");
 		const packageJson = JSON.parse(fileContent);
-		const dependencies = packageJson["dependencies"];
+		const dependencies = packageJson["dependencies"] ?? {};
 		const licensed = UPGRADEABLE_PACKAGES[packageName];
 		if (dependencies[licensed]) {
 			return licensed;
@@ -146,12 +146,12 @@ export function getUpgradeablePackages(): PackageDefinition[] {
 	if (fs.fileExists("./package.json")) {
 		const fileContent = fs.readFile("./package.json");
 		const packageJson = JSON.parse(fileContent);
-		const dependencies = packageJson["dependencies"];
+		const dependencies = packageJson["dependencies"] ?? {};
 		for (const packageEntry in UPGRADEABLE_PACKAGES) {
 			if (dependencies[packageEntry]) {
 				upgradeable.push({
 					trial: packageEntry,
-					licensed: UPGRADEABLE_PACKAGES[packageEntry]
+					licensed: UPGRADEABLE_PACKAGES[packageEntry as keyof typeof UPGRADEABLE_PACKAGES]
 				});
 			}
 		}

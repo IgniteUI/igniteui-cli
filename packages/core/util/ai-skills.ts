@@ -172,11 +172,8 @@ export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string
 
 			for (const p of rawPaths) {
 				result.found++;
-				// Normalize to posix and strip leading '/' so path.posix.relative works
-				// across both FsFileSystem (relative paths) and NgTreeFileSystem (tree-rooted paths)
-				const normP = p.replace(/\\/g, "/").replace(/^\//, "");
-				const normRoot = skillsRoot.replace(/\\/g, "/").replace(/^\//, "");
-				const rel = path.posix.relative(normRoot, normP);
+				// native path.relative: case-insensitive on Windows, where glob upper-cases the drive letter
+				const rel = path.relative(skillsRoot, p).replace(/\\/g, "/");
 				const dest = multiRoot
 					? `${outputDir}/${pkgDirName}/${rel}`
 					: `${outputDir}/${rel}`;
