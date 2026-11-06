@@ -8,7 +8,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CLI_ENTRY="$ROOT/packages/cli/bin/execute.js"
+CLI_LIB="$ROOT/packages/cli/lib/cli.js"
 
 FRAMEWORKS="angular,react,webcomponents"
 PROJECT=""
@@ -100,21 +100,28 @@ count_src_files() {
 	[ -d "$1/src" ] && find "$1/src" -type f | wc -l | tr -d ' ' || echo 0
 }
 
+# Runs this checkout's CLI. bin/execute.js is skipped on purpose: it hands off to a
+# project-local igniteui-cli when one is installed, and Angular projects get one at `new`.
+cli() {
+	node -e 'require(process.argv[1]).run(process.argv.slice(2)).catch(e => { console.error("Error: " + (e.message || e)); process.exit(1); })' \
+		"$CLI_LIB" "$@"
+}
+
 # run_cli <cwd> <logfile> <args...>
 run_cli() {
 	local cwd="$1" log="$2"; shift 2
-	(cd "$cwd" && node "$CLI_ENTRY" "$@") >"$log" 2>&1
+	(cd "$cwd" && cli "$@") >"$log" 2>&1
 }
 
 list_component_ids() {
 	local dir="$1"
 	# a row is one tab then the id; wrapped description lines are indented deeper
-	(cd "$dir" && node "$CLI_ENTRY" list 2>/dev/null) | strip_ansi | awk '/^\t[^\t]/ {print $1}'
+	(cd "$dir" && cli list 2>/dev/null) | strip_ansi | awk '/^\t[^\t]/ {print $1}'
 }
 
 list_project_ids() {
 	local fw="$1"
-	(cd "$OUT" && node "$CLI_ENTRY" list 2>/dev/null) | strip_ansi | awk -v fw="($fw)" '
+	(cd "$OUT" && cli list 2>/dev/null) | strip_ansi | awk -v fw="($fw)" '
 		$0 ~ /^[A-Za-z]/ && index($0, fw) { grab = 1; next }
 		/^[A-Za-z]/ { grab = 0 }
 		grab && /^\t\t/ { sub(/\.\.+.*$/, "", $1); print $1 }
@@ -276,7 +283,7 @@ run_framework() {
 
 # --- preflight ---------------------------------------------------------------
 
-if [ ! -f "$ROOT/packages/cli/lib/cli.js" ]; then
+if [ ! -f "$CLI_LIB" ]; then
 	echo "CLI is not built. Run 'npm run build' in $ROOT first." >&2
 	exit 1
 fi
@@ -318,7 +325,7 @@ mkdir -p "$LOGS"
 : >"$SENTINEL"
 printf 'framework\tstep\ttemplate\tstatus\tseconds\n' >"$RESULTS"
 
-echo "CLI:  $CLI_ENTRY"
+echo "CLI:  $CLI_LIB"
 echo "Out:  $OUT"
 
 # --- run ---------------------------------------------------------------------
