@@ -42,6 +42,16 @@ export interface PositionalArgs {
 
 	/** Executes end-to-end tests. */
 	e2e?: boolean;
+
+	/** Packages to update, with an optional version, range or tag. */
+	packages?: string[];
+
+	/** Only run migrations, without changing versions. */
+	migrateOnly?: boolean;
+
+	/** Version range of the migrations to run. */
+	from?: string;
+	to?: string;
 }
 
 export interface CommandType extends CommandModule<{}, any> {
@@ -96,4 +106,9 @@ export interface TestCommandType extends CommandType {
 export interface UpgradeCommandType extends CommandType {
 	/** Upgrades packages for Angular, React & WC projects. */
 	upgrade(argv: ArgumentsCamelCase<PositionalArgs>): void;
+}
+
+export interface UpdateCommandType extends CommandType {
+	/** Updates packages and runs their migrations; runs `ng update` for Angular. */
+	update(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void>;
 }

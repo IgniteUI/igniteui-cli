@@ -27,11 +27,12 @@ describe("Help command", () => {
 		ig doc [term]             Opens the Infragistics search for the given term
 		ig test                   Executes project tests
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
-		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
+		ig upgrade-packages       Switches trial Ignite UI packages to their licensed equivalents [aliases: upgrade]
+		ig update [packages..]    Updates packages and runs their migrations
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
 		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
 
-	  Options:
+	    Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]
 		
@@ -242,16 +243,67 @@ describe("Help command", () => {
 		});
 
 		const originalNewHelpText: string = `
+		Switches trial Ignite UI packages to their licensed equivalents
 		Options:
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
-		--skip-install, --si  Run upgrade without installing packages [boolean] [default: false]
+		--skip-install, --si  Switch the packages without running npm install [boolean] [default: false]
+		Version ranges are kept. To update package versions, use ig update.
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
+	});
+
+	it("should show help for the update command", async () => {
+		const child = Util.spawnSync("node", [execLocation, "update", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalHelpText: string = `
+		Updates packages and runs their migrations
+		Positionals:
+		packages  Packages to update: name, name@version, name@range or name@tag  [array] [default: []]
+		Options:
+		-v, --version             Show current Ignite UI CLI version         [boolean]
+		-h, --help                Show help                                  [boolean]
+		--dry-run                 Preview the update without changing any files [boolean] [default: false]
+		--skip-install, --si      Update package.json without installing (not supported for Angular) [boolean] [default: false]
+		--force                   Apply updates despite peer dependency conflicts [boolean] [default: false]
+		--allow-dirty             Proceed even if the project has uncommitted changes [boolean] [default: false]
+		--verbose                 Show version resolution and install details [boolean] [default: false]
+		--migrate-only            Only run the migrations of an installed package, without changing versions [boolean]
+		--from                    Version to run migrations from (requires --migrate-only) [string]
+		--to                      Version to run migrations up to (requires --from); defaults to the installed version [string]
+		--name                    Run a single migration by name (implies --migrate-only) [string]
+		React and Web Components:
+		  Without packages, lists the available updates of the packages that support ig update, changing nothing.
+		  With packages, updates them with their package group and the peer dependencies they need, installs,
+		  then runs the migrations they declare in "ig-update".
+		  With --migrate-only or --name, runs the migrations an installed package declares in "ig-update".
+		Angular:
+		  Runs the project's ng update. Without packages, it lists the available updates; with packages,
+		  it installs their latest versions, including new majors, and applies migrations.
+		To switch trial Ignite UI packages to their licensed equivalents, use ig upgrade-packages.
+		`;
+
+		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
+		const actualText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualText).toContain(replacedHelpText);
+	});
+
+	it("should show help once for multiple update validation errors", async () => {
+		const child = Util.spawnSync("node", [execLocation, "update", "pkg", "--name", "first", "--from", "0.9.0"], {
+			encoding: "utf-8"
+		});
+
+		expect(child.status).toBe(1);
+		expect(child.stderr.toString()).toContain("from -> migrate-only");
+		expect(child.stderr.toString().match(/mutually exclusive/g)).toEqual(["mutually exclusive"]);
+		expect(child.stdout.toString().match(/ig update \[packages\.\.\]/g)).toEqual(["ig update [packages..]"]);
 	});
 
 	it("should show help for the mcp command", async () => {

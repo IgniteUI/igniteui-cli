@@ -13,6 +13,7 @@ import {
 	newCommand,
 	start,
 	test,
+	update,
 	upgrade,
 } from './commands';
 import { PromptSession } from "./PromptSession";
@@ -36,10 +37,11 @@ export async function run(args: string | string[]) {
 	newCommand.addChoices(templateManager.getFrameworkIds());
 
 	const registeredCommands: CommandType[] = [
-		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig
+		newCommand, add, build, start, generate, config, doc, test, list, upgrade, update, mcp, aiConfig
 	];
 
 	const yargsModule = args ? yargs(args) : yargs;
+	let helpShown = false;
 	let chain = yargsModule
 		.scriptName("ig")
 		.usage("Usage: $0 [command] [options]\n\nRun without a command to start the interactive step-by-step project setup.")
@@ -91,7 +93,10 @@ export async function run(args: string | string[]) {
 			const message = err?.message ?? msg;
 			if (message) {
 				Util.error(message, "red");
-				yargs.showHelp();
+				if (!helpShown) {
+					helpShown = true;
+					yargs.showHelp();
+				}
 				process.exitCode = 1;
 			}
 		})
