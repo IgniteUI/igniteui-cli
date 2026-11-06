@@ -392,13 +392,21 @@ export class Util {
 	}
 
 	/**
+	 * stdin for child processes: the terminal when there is one. On Windows, a child that inherits a piped
+	 * stdin the prompts are still reading blocks on startup (e.g. when the wizard is driven through a pipe).
+	 */
+	public static childStdin(): "inherit" | "ignore" {
+		return process.stdin.isTTY ? "inherit" : "ignore";
+	}
+
+	/**
 	 * Initialize git for a project, located in the provided directory and commit it.
 	 * @param parentRoot Parent directory root of the project.
 	 * @param projectName Project name.
 	 */
 	public static gitInit(parentRoot: string, projectName: string) {
 		try {
-			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
+			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [Util.childStdin(), "ignore", "ignore"] };
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
 			Util.execSync("git commit -m " + "\"Initial commit for project\"", options);

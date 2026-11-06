@@ -115,9 +115,9 @@ export class PackageManager {
 			await this.flushQueue(false);
 			Util.log(`Installing ${managerCommand} packages`);
 			try {
-				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
+				// inherit the terminal's stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
-				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
+				Util.execSync(command, { stdio: [Util.childStdin()], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (e) {
 				const error = e as Error & { status?: number | null };

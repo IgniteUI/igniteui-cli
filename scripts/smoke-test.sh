@@ -14,6 +14,7 @@ FRAMEWORKS="angular,react,webcomponents"
 PROJECT=""
 TEMPLATES=""
 ALL_PROJECTS=0
+WIZARD=""
 ISOLATE=0
 SKIP_BUILD=0
 KEEP=0
@@ -28,6 +29,9 @@ Usage: scripts/smoke-test.sh [options]
                           jquery and blazor are opt-in, see NOTES
   -p, --project ID        project template to scaffold (default: the framework's own default)
       --all-projects      scaffold+build every project template, skip component adds
+      --wizard COVERAGE   create projects through the interactive wizard (ig new without a name)
+                          instead, one per answer combination, skip component adds; COVERAGE is
+                          each (every answer at least once), pairs (every pair of answers) or all
       --templates LIST    only these component template ids (fast path)
       --isolate           one project per component template (slow, for bisecting)
       --skip-build        scaffold and add only, no install/build
@@ -40,11 +44,15 @@ NOTES
   jquery  13 of its templates pull ignite-ui-full from the Infragistics ProGet feed and
           need credentials; it also has no build script, so only scaffold+add+install run.
   blazor  needs the .NET SDK and has no component templates; only scaffold+dotnet build.
+  wizard  scripts/smoke-wizard.mjs answers the prompts over a pipe, so the CLI sees no TTY and
+          skips the AI config prompts (defaults apply) and Blazor's "Run the app now";
+          spec/acceptance/wizard-spec.ts covers those. The wizard itself runs npm install.
 
 EXAMPLES
   scripts/smoke-test.sh -f angular --templates grid,combo,dock-manager
   scripts/smoke-test.sh
   scripts/smoke-test.sh -f angular --isolate
+  scripts/smoke-test.sh -f angular,react,webcomponents,jquery,blazor --wizard each
 EOF
 }
 
@@ -53,6 +61,9 @@ while [ $# -gt 0 ]; do
 		-f|--frameworks) FRAMEWORKS="$2"; shift 2;;
 		-p|--project) PROJECT="$2"; shift 2;;
 		--all-projects) ALL_PROJECTS=1; shift;;
+		--wizard)
+			case "${2:-}" in each|pairs|all) WIZARD="$2";; *) echo "--wizard needs each, pairs or all" >&2; exit 2;; esac
+			shift 2;;
 		--templates) TEMPLATES="$2"; shift 2;;
 		--isolate) ISOLATE=1; shift;;
 		--skip-build) SKIP_BUILD=1; shift;;
@@ -136,15 +147,45 @@ scaffold() {
 	run_cli "$OUT" "$log" "${args[@]}"
 	rc=$?
 
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -f "$OUT/$dir/ignite-ui-cli.json" ]; then
+	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
+	local marker="$OUT/$dir/ignite-ui-cli.json"
+	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
+	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
 		record "$fw" "new" "${proj:-default}" "FAIL" "$((SECONDS - start))"
 		echo "  ✗ new $dir  (see $log)"
 		return 1
 	fi
 	record "$fw" "new" "${proj:-default}" "PASS" "$((SECONDS - start))"
 	echo "  ✓ new $dir"
+	[ "$fw" = "blazor" ] && return 0
 
 	# project scoped, so the user's global config is left alone
+	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
+	return 0
+}
+
+# wizard_scaffold <framework> <scenarioId> <dirName> -> 0 ok
+# Creates the project through the interactive wizard (scripts/smoke-wizard.mjs drives the prompts).
+wizard_scaffold() {
+	local fw="$1" id="$2" dir="$3"
+	local log start rc
+	log="$LOGS/$dir-wizard.log"
+	rm -rf "$OUT/$dir"
+	start=$SECONDS
+
+	node "$ROOT/scripts/smoke-wizard.mjs" run "$fw" "$id" "$OUT" "$dir" >"$log" 2>&1
+	rc=$?
+
+	local marker="$OUT/$dir/ignite-ui-cli.json"
+	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
+	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
+		record "$fw" "wizard" "$id" "FAIL" "$((SECONDS - start))"
+		echo "  ✗ wizard $id  (see $log)"
+		return 1
+	fi
+	record "$fw" "wizard" "$id" "PASS" "$((SECONDS - start))"
+	echo "  ✓ wizard $id"
+	[ "$fw" = "blazor" ] && return 0
 	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
 	return 0
 }
@@ -183,7 +224,9 @@ install_and_build() {
 
 	if [ "$fw" = "blazor" ]; then
 		start=$SECONDS
-		(cd "$OUT/$dir" && dotnet build) >"$LOGS/$dir-build.log" 2>&1
+		# Server hosting has no root .sln; the .csproj sits in <dir>/<dir>/
+		(cd "$OUT/$dir" && if ls *.sln >/dev/null 2>&1; then dotnet build; else dotnet build "$dir"; fi) \
+			>"$LOGS/$dir-build.log" 2>&1
 		rc=$?
 		[ $rc -eq 0 ] && record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))" \
 			|| record "$fw" "build" "$dir" "FAIL" "$((SECONDS - start))"
@@ -228,6 +271,15 @@ run_framework() {
 
 	echo ""
 	echo "=== $fw ($type) ==="
+
+	if [ -n "$WIZARD" ]; then
+		for id in $(node "$ROOT/scripts/smoke-wizard.mjs" list "$fw" "$WIZARD"); do
+			dir="$short-w-$id"
+			wizard_scaffold "$fw" "$id" "$dir" || { failed=1; continue; }
+			install_and_build "$fw" "$dir" || failed=1
+		done
+		return $failed
+	fi
 
 	if [ "$ALL_PROJECTS" -eq 1 ]; then
 		for proj in $(list_project_ids "$fw"); do
@@ -278,6 +330,10 @@ run_framework() {
 
 if [ ! -f "$ROOT/packages/cli/lib/cli.js" ]; then
 	echo "CLI is not built. Run 'npm run build' in $ROOT first." >&2
+	exit 1
+fi
+if [ -n "$WIZARD" ] && [ ! -f "$ROOT/spec/helpers/wizard-matrix.js" ]; then
+	echo "spec/helpers/wizard-matrix.js is missing. Run 'npm run build' in $ROOT first." >&2
 	exit 1
 fi
 for bin in node npm; do
