@@ -140,7 +140,7 @@ describe("Unit - version update", () => {
 			expect(Util.warn).not.toHaveBeenCalled();
 		});
 
-		it("uses the declared minimum when the installed version is older, and skips it when above the declared range", () => {
+		it("skips a package installed outside its declared range, older or newer, as no baseline is known to be migrated", () => {
 			mockProject(
 				{ dependencies: {
 					"igniteui-react": "^19.6.0", "igniteui-webcomponents": "^6.5.0", "igniteui-grid-lite": "~0.11.0", "igniteui-react-grids": "^19.6.0"
@@ -150,13 +150,13 @@ describe("Unit - version update", () => {
 
 			const [react, webcomponents, gridLite, grids] = getUpdateCandidates(directDependencies());
 
-			expect(react).toEqual(jasmine.objectContaining({ installed: "19.5.2", baseline: "19.6.0" }));
 			expect(gridLite).toEqual(jasmine.objectContaining({ installed: "0.11.4", baseline: "0.11.4" }));
-			expect([webcomponents, grids].map(c => [c.baseline, c.skipped])).toEqual([
+			expect([react, webcomponents, grids].map(c => [c.baseline, c.skipped])).toEqual([
+				[undefined, 'installed 19.5.2 is outside the declared range "^19.6.0"; update package.json or reinstall before updating'],
 				[undefined, 'installed 7.4.1 is outside the declared range "^6.5.0"; update package.json or reinstall before updating'],
 				[undefined, 'installed 19.7.0-beta.1 is outside the declared range "^19.6.0"; update package.json or reinstall before updating']
 			]);
-			expect(Util.warn).toHaveBeenCalledOnceWith(jasmine.stringMatching(/out of sync.*igniteui-react .*19\.5\.2/), "yellow");
+			expect(Util.warn).not.toHaveBeenCalled();
 		});
 
 		it("supports exact, ^, ~ and x-range specs, using the declared minimum when not installed", () => {

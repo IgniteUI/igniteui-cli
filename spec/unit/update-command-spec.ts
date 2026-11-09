@@ -1195,7 +1195,7 @@ describe("Unit - Update command", () => {
 			await update(["fixture-lib@^9", WC]);
 
 			expect(output).toContain(`Unable to update fixture-lib: ${reason}.`);
-			expect(posted()).toEqual(["Nothing was updated: a requested package can't be updated."]);
+			expect(posted()).toEqual(["Nothing was updated: a package in the update can't be updated."]);
 			expect(getPlan).toHaveBeenCalledWith({ requests: [{ name: "fixture-lib", spec: "^9" }, { name: WC }], force: false, verbose: false });
 			expect(read("package.json")).toBe(original);
 			expect(execSync).not.toHaveBeenCalled();
@@ -1206,6 +1206,24 @@ describe("Unit - Update command", () => {
 			expect(output).toContain(`Skipped fixture-lib: ${reason}`);
 			expect(read("package.json")).toContain(`"${WC}": "~6.1.0"`);
 			expect(process.exitCode).toBe(0);
+		});
+
+		it("refuses to update a package installed below its declared range, without querying the registry, installing or migrating", async () => {
+			original = project({ dependencies: { "fixture-lib": "^2.0.0" } });
+			installFixture(undefined, "fixture-lib", "1.0.0");
+			const registry = spyOn(child_process, "spawnSync");
+
+			await update(["fixture-lib"]);
+
+			expect(output).toContain(`Unable to update fixture-lib: installed 1.0.0 is outside the declared range "^2.0.0"; ` +
+				"update package.json or reinstall before updating.");
+			expect(posted()).toEqual(["Nothing was updated: a package in the update can't be updated."]);
+			expect(registry).not.toHaveBeenCalled();
+			expect(read("package.json")).toBe(original);
+			expect(execSync).not.toHaveBeenCalled();
+			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
 		});
 
 		it("keeps registry errors, which can name private packages and registries, out of analytics", async () => {

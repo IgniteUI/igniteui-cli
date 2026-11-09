@@ -91,6 +91,11 @@ export function isRegistrySpec(spec: string): boolean {
 	return !!spec && (!!semver.validRange(spec) || DIST_TAG.test(spec));
 }
 
+/** Declared specs `ig update` computes baselines and ranges for: exact, ^, ~ and x-range versions */
+export function isSupportedSpec(spec: string): boolean {
+	return SIMPLE_SPEC.test(spec) && !!semver.validRange(spec);
+}
+
 export function splitPackage(arg: string): PackageRequest {
 	const at = arg.lastIndexOf("@");
 	return at > 0 ? { name: arg.slice(0, at), spec: arg.slice(at + 1) } : { name: arg };
@@ -117,7 +122,7 @@ export function getUpdateCandidates(names: string[]): PackageUpdate[] {
 			const declared = deps[name];
 			const installed = readInstalled(name)?.version;
 			const candidate: PackageUpdate = { name, section, declared, installed };
-			const minVersion = SIMPLE_SPEC.test(declared) && semver.validRange(declared) && semver.minVersion(declared);
+			const minVersion = isSupportedSpec(declared) && semver.minVersion(declared);
 
 			if (!minVersion) {
 				candidate.skipped = `unsupported spec "${declared}" (only exact, ^, ~ and x-range versions are supported)`;
@@ -126,14 +131,11 @@ export function getUpdateCandidates(names: string[]): PackageUpdate[] {
 					"Reinstall the project's dependencies and run the update again.");
 			} else if (installed && semver.satisfies(installed, declared)) {
 				candidate.baseline = installed;
-			} else if (installed && semver.gt(installed, minVersion)) {
+			} else if (installed) {
+				// the code may or may not be migrated past the installed version, so no baseline is safe
 				candidate.skipped = `installed ${installed} is outside the declared range "${declared}"; ` +
 					"update package.json or reinstall before updating";
 			} else {
-				if (installed) {
-					Util.warn(`node_modules is out of sync with package.json for ${name} ` +
-						`(installed ${installed}, declared ${declared}).`, "yellow");
-				}
 				candidate.baseline = minVersion.version;
 			}
 

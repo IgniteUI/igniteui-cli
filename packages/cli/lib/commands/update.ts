@@ -1,6 +1,6 @@
 import {
 	applyUpdatePlan, coerceVersionNumber, debug, detectFrameworkFromPackageJson, discoverUpdates, FEED_ANGULAR, getMigrationsCollection,
-	getUpdatePlan, GoogleAnalytics, InquirerWrapper, isObject, isPackageName, isRegistrySpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest,
+	getUpdatePlan, GoogleAnalytics, InquirerWrapper, isObject, isPackageName, isRegistrySpec, isSupportedSpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest,
 	PackageUpdate, ProjectConfig, readMigrations, selectMigrations, splitPackage, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import { execSync } from "child_process";
@@ -158,6 +158,10 @@ const command: UpdateCommandType = {
 async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
 	if (spec) {
 		Util.warn(`The version "${spec}" has no effect with --migrate-only.`, "yellow");
+	}
+	if (fs.existsSync(".pnp.cjs")) {
+		return fail("Unable to run the migrations: they aren't supported in Yarn Plug'n'Play projects.",
+			`Set "nodeLinker: node-modules" in .yarnrc.yml and reinstall.`);
 	}
 	if (!flags.dryRun && !checkGit(flags.allowDirty)) {
 		return;
@@ -371,9 +375,10 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	} catch (error) {
 		return fail("Nothing was updated: unable to plan the update.", (error as Error).message);
 	}
-	const unusable = plan.filter(c => c.skipped && requests.some(r => r.name === c.name));
+	const unusable = plan.filter(c => c.skipped && (requests.some(r => r.name === c.name) ||
+		!!c.installed && isSupportedSpec(c.declared) && !semver.satisfies(c.installed, c.declared)));
 	if (unusable.length) {
-		return fail("Nothing was updated: a requested package can't be updated.",
+		return fail("Nothing was updated: a package in the update can't be updated.",
 			unusable.map(c => `Unable to update ${c.name}: ${c.skipped}.`).join("\n"));
 	}
 
@@ -432,6 +437,10 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 		return;
 	}
 
+	if (migrating.length && fs.existsSync(".pnp.cjs")) {
+		return fail("Nothing was updated: migrations aren't supported in Yarn Plug'n'Play projects.",
+			`Set "nodeLinker: node-modules" in .yarnrc.yml and reinstall, or update only packages without migrations.`);
+	}
 	if (migrating.length && !flags.skipInstall) {
 		try {
 			await loadDevKit();
