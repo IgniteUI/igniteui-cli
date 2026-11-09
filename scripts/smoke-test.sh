@@ -139,7 +139,8 @@ scaffold() {
 	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
 	local marker="$OUT/$dir/ignite-ui-cli.json"
 	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
+	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ] ||
+		{ [ "$fw" = "blazor" ] && ! grep -qF "Project Created" "$log"; }; then
 		record "$fw" "new" "${proj:-default}" "FAIL" "$((SECONDS - start))"
 		echo "  ✗ new $dir  (see $log)"
 		return 1
