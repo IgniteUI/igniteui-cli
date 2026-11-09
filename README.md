@@ -270,6 +270,7 @@ Options:
 | `--all-projects` | scaffold and build every project template, skip component adds |
 | `--templates LIST` | only these component template ids — the fast path when iterating |
 | `--isolate` | one project per component template; slow, use to bisect a failure |
+| `--wizard each\|pairs\|all` | create the projects through the interactive `ig new` wizard instead: every answer (`each`), every pair of answers (`pairs`) or every combination (`all`) |
 | `--skip-build` | scaffold and add only |
 | `--keep` | keep the generated projects even when everything passes |
 | `-o, --out DIR` | work directory (default `output/smoke`, which is gitignored) — **wiped on each run**, see below |

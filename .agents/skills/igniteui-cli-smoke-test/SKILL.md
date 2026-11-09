@@ -94,7 +94,7 @@ The test runners use browser mode with Playwright Chromium. If one fails because
 
 ## Judging a Step
 
-**Exit codes alone are not trustworthy**: `Util.error` logs and returns without setting a code. The script already judges each step on exit code **plus** a log scan (`doesn't exist|is not valid|not supported|not found|^Error: |Error installing|npm error`) **plus** an artifact check (`ignite-ui-cli.json` after `new`; more files under `src/` after `add`). Trust `results.tsv`, then read the log for the reason.
+**Exit codes alone are not trustworthy**: `Util.error` logs and returns without setting a code. The script already judges each step on exit code **plus** a log scan (`doesn't exist|is not valid|not supported|not found|^Error: |Error installing|npm error`) **plus** an artifact check (`ignite-ui-cli.json` after `new` and `wizard`, or the project folder for Blazor, which has no `ignite-ui-cli.json`; more files under `src/` after `add`). Trust `results.tsv`, then read the log for the reason.
 
 ## Classifying Failures
 

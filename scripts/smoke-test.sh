@@ -139,10 +139,31 @@ list_project_ids() {
 	'
 }
 
+# finish_scaffold <framework> <dirName> <step> <label> <rc> <log> <start> -> 0 ok
+# Judges a `new` or `wizard` step, records it, and turns off analytics in the new project.
+finish_scaffold() {
+	local fw="$1" dir="$2" step="$3" label="$4" rc="$5" log="$6" start="$7"
+	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
+	local marker="$OUT/$dir/ignite-ui-cli.json"
+	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
+	if [ "$rc" -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
+		record "$fw" "$step" "$label" "FAIL" "$((SECONDS - start))"
+		echo "  ✗ $step $dir  (see $log)"
+		return 1
+	fi
+	record "$fw" "$step" "$label" "PASS" "$((SECONDS - start))"
+	echo "  ✓ $step $dir"
+	[ "$fw" = "blazor" ] && return 0
+
+	# project scoped, so the user's global config is left alone
+	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
+	return 0
+}
+
 # scaffold <framework> <projectTemplate|""> <dirName> -> 0 ok
 scaffold() {
 	local fw="$1" proj="$2" dir="$3"
-	local type log start rc
+	local type log start
 	type="$(fw_type "$fw")"
 	log="$LOGS/$dir-new.log"
 	rm -rf "$OUT/$dir"
@@ -152,49 +173,20 @@ scaffold() {
 	[ -n "$proj" ] && args+=(--template "$proj")
 
 	run_cli "$OUT" "$log" "${args[@]}"
-	rc=$?
-
-	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
-	local marker="$OUT/$dir/ignite-ui-cli.json"
-	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
-		record "$fw" "new" "${proj:-default}" "FAIL" "$((SECONDS - start))"
-		echo "  ✗ new $dir  (see $log)"
-		return 1
-	fi
-	record "$fw" "new" "${proj:-default}" "PASS" "$((SECONDS - start))"
-	echo "  ✓ new $dir"
-	[ "$fw" = "blazor" ] && return 0
-
-	# project scoped, so the user's global config is left alone
-	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
-	return 0
+	finish_scaffold "$fw" "$dir" "new" "${proj:-default}" $? "$log" "$start"
 }
 
 # wizard_scaffold <framework> <scenarioId> <dirName> -> 0 ok
 # Creates the project through the interactive wizard (scripts/smoke-wizard.mjs drives the prompts).
 wizard_scaffold() {
 	local fw="$1" id="$2" dir="$3"
-	local log start rc
+	local log start
 	log="$LOGS/$dir-wizard.log"
 	rm -rf "$OUT/$dir"
 	start=$SECONDS
 
 	node "$ROOT/scripts/smoke-wizard.mjs" run "$fw" "$id" "$OUT" "$dir" >"$log" 2>&1
-	rc=$?
-
-	local marker="$OUT/$dir/ignite-ui-cli.json"
-	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
-		record "$fw" "wizard" "$id" "FAIL" "$((SECONDS - start))"
-		echo "  ✗ wizard $id  (see $log)"
-		return 1
-	fi
-	record "$fw" "wizard" "$id" "PASS" "$((SECONDS - start))"
-	echo "  ✓ wizard $id"
-	[ "$fw" = "blazor" ] && return 0
-	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
-	return 0
+	finish_scaffold "$fw" "$dir" "wizard" "$id" $? "$log" "$start"
 }
 
 # add_template <framework> <dirName> <templateId> -> 0 ok
