@@ -31,7 +31,7 @@ describe("Template contracts", () => {
 						}
 						// scaffold-based projects (blazor) generate files externally
 						if (!project.scaffold) {
-							expect(project.templatePaths.some(p => fs.existsSync(p)))
+							expect(project.templatePaths.every(p => fs.existsSync(p)))
 								.withContext(`project ${project.id} paths ${project.templatePaths}`).toBeTrue();
 						}
 					}

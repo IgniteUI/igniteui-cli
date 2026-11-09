@@ -1,5 +1,4 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
-import * as path from "path";
 import { BaseIgrTsProject } from "../_base";
 
 export class BasePageIgrTsProject extends BaseIgrTsProject implements ProjectTemplate {
@@ -11,9 +10,5 @@ export class BasePageIgrTsProject extends BaseIgrTsProject implements ProjectTem
 	public projectType: string = "igr-ts";
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = true;
-
-	public get templatePaths(): string[] {
-		return [...super.templatePaths, path.join(__dirname, "files")];
-	}
 }
 export default new BasePageIgrTsProject();

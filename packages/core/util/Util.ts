@@ -79,17 +79,22 @@ export class Util {
 		}
 
 		return new Promise((resolve, reject) => {
-			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true })
+			const filePaths: string[] = glob.sync("**/*", { cwd: sourcePath, nodir: true })
 				.map(filePath => filePath.replace(/\\/g, "/"));
 			let fileCount = filePaths.length;
 			// if no files should be created, resolve
 			if (fileCount === 0) {
 				resolve(false);
 			}
-			for (const filePath of filePaths) {
-				let targetPath = filePath.replace(sourcePath, destinationPath);
+			for (const relativePath of filePaths) {
+				const filePath = path.join(sourcePath, relativePath);
+				let targetPath = path.join(destinationPath, relativePath);
 				targetPath = Util.applyConfigTransformation(targetPath, Util.applyDelimiters(configuration,
 					delimiters.path || defaultDelimiters.path));
+				if (!path.relative(filePath, targetPath)) {
+					Util.error(`${filePath} cannot overwrite its own template source!`, "red");
+					return resolve(false);
+				}
 				Util.createDirectory(path.dirname(targetPath));
 				const writeStream = fs.createWriteStream(targetPath);
 				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
@@ -600,15 +605,15 @@ export class Util {
 		sourcePath = sourcePath.replace(/\\/g, "/");
 		destinationPath = destinationPath.replace(/\\/g, "/");
 
-		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true })
+		let paths: string[] = glob.sync("**/*", { cwd: sourcePath, nodir: true })
 			.map(filePath => filePath.replace(/\\/g, "/"));
 		// TODO: D.P Temporary ignoring asset files
-		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true })
+		const ignorePaths: string[] = glob.sync("**/+(assets|data)/**/*", { cwd: sourcePath, nodir: true })
 			.map(filePath => filePath.replace(/\\/g, "/"));
 		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
 
 		for (let filePath of paths) {
-			filePath = filePath.replace(sourcePath, destinationPath);
+			filePath = path.join(destinationPath, filePath);
 			filePath = Util.applyConfigTransformation(filePath, Util.applyDelimiters(configuration,
 				delimiters.path || defaultDelimiters.path));
 			if (fs.existsSync(filePath)) {
