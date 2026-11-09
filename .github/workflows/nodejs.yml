@@ -23,21 +23,19 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6 # Inbuilt cache for npm and yarn packages installation
+        uses: actions/setup-node@v6 # Inbuilt cache for npm packages installation
         with:
            node-version: ${{ matrix.node-version }}
-           cache: 'yarn'
+           cache: 'npm'
       - name: Install packages
-        run: yarn --frozen-lockfile
+        run: npm ci
       - name: Lint
-        run: yarn lint
+        run: npm run lint
       - name: Test
-        run: |
-          yarn config set scripts-prepend-node-path auto
-          yarn test
+        run: npm test
       - name: Generate coverage
         if: matrix.node-version == '24.x'
-        run: yarn coverage
+        run: npm run coverage
       - name: Publish to coveralls.io
         if: matrix.node-version == '24.x'
         uses: coverallsapp/github-action@cfd0633edbd2411b532b808ba7a8b5e04f76d2c8 # corresponds to v2.3.4

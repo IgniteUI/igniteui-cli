@@ -24,9 +24,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24.x
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install packages
-        run: yarn --frozen-lockfile
+        run: npm ci
       - name: Build
         run: npm run build
       # Generated projects run their tests in Chromium; the browser download and OS packages are outside the agent firewall only here

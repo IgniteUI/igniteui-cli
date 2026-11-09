@@ -65,7 +65,7 @@ const command: CommandType = {
 		} catch {
 			process.stderr.write(
 				"MCP server package not found. Install it first:\n" +
-				"  yarn install\n"
+				"  npm install\n"
 			);
 			process.exitCode = 1;
 			return;

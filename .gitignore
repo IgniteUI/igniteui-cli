@@ -34,8 +34,9 @@ packages/core/config/Config.schema.json
 
 # Misc
 npm-debug.log*
-yarn-error.log*
 package-lock.json
+# the root lockfile is the repository's lockfile
+!/package-lock.json
 
 # Mac OSX Finder files.
 **/.DS_Store

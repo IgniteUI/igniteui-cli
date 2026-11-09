@@ -82,7 +82,7 @@ describe("Unit - MCP CLI command", () => {
 			expect(stderrWriteSpy).toHaveBeenCalled();
 			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
 			expect(message).toContain("MCP server package not found");
-			expect(message).toContain("yarn install");
+			expect(message).toContain("npm install");
 		});
 
 		it("shows a build message when the MCP server entry does not exist", async () => {

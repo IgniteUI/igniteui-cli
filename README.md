@@ -26,10 +26,9 @@ Quickly create projects, including [Ignite UI for Angular](https://www.infragist
  * jQuery
 
 ### Prerequisites
-The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces).
 
-In order to build the repository locally, you need to have `yarn` installed on your machine.
-For installation instructions, please visit their [official page](https://yarnpkg.com/lang/en/docs/install/)
+To build the repository locally you only need Node.js (CI uses 24.x and 26.x) and the npm that ships with it. Install the dependencies with `npm install`, or `npm ci` for an exact install from `package-lock.json`.
 
 ### Packages
 This monorepo contains several packages that combine into the `igniteui-cli`:
@@ -231,11 +230,10 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 
 ### Run locally
 1. Clone the repository
-2. Install dependencies with `yarn install`
+2. Install dependencies with `npm install` (npm workspaces install every package, the MCP server included)
 3. Build the MCP server and bundle it into the CLI:
     ```bash
     cd packages/igniteui-mcp/igniteui-doc-mcp
-    npm install
     npm run build
     cd ../../..
     npm run build:mcp
@@ -312,7 +310,7 @@ The MCP server at `packages/igniteui-mcp/igniteui-doc-mcp` has its own build pip
 **Build the MCP server:**
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
-npm install          # Install MCP-specific dependencies (separate from yarn workspaces)
+npm install          # Installs the whole workspace from the repo root, MCP dependencies included
 npm run build        # Compile TypeScript + copy SQLite DB to dist/
 ```
 
@@ -348,12 +346,11 @@ node packages/cli/mcp/dist/index.js       # Start the bundled server
 The CLI package includes the MCP server as a bundled build artifact (not an npm dependency). To produce a complete CLI package with full MCP functionality, follow these steps:
 
 ```bash
-# 1. Install monorepo dependencies
-yarn install
+# 1. Install monorepo dependencies (MCP server included)
+npm install
 
 # 2. Build the MCP server
 cd packages/igniteui-mcp/igniteui-doc-mcp
-npm install
 npm run build                              # Compile TypeScript + copy SQLite DB
 
 # 3. Build API reference docs (optional but recommended for full functionality)
