@@ -50,7 +50,7 @@ export class DotnetTemplateManager {
 			return null;
 		}
 		const output = result.stdout.toString();
-		const pkg = TEMPLATE_PACKAGE.replace(/\./g, "\\.");
+		const pkg = TEMPLATE_PACKAGE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 		const row = output.match(new RegExp(`^\\s*${pkg}\\s+(\\S+)\\s+(\\S+)\\s*$`, "mi"));
 		if (row) {
 			return { current: row[1], latest: row[2] };
