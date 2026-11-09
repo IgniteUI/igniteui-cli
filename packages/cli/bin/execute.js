@@ -5,6 +5,9 @@ const path = require("path");
 const { pathToFileURL } = require("url");
 const { hideBin } = require("yargs/helpers");
 
+// the first release with `ig update`
+const RUNNER_MIN_VERSION = "16.0.0";
+
 const args = hideBin(process.argv);
 
 //execute -g igniteui-cli in case there is no project installed, else resolve to the local one
@@ -17,7 +20,7 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 			// stderr, because stdout carries the protocol messages when `ig mcp` runs the MCP server
 			console.error("Different igniteui-cli global and local version");
 		}
-		if (args[0] !== "ai-config" && args[0] !== "update") {
+		if (args[0] === "update" ? localRunsUpdate(localVersion, globalVersion) : args[0] !== "ai-config") {
 			cliPath = res;
 		}
 	}
@@ -30,6 +33,19 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 		process.exit(1);
 	});
 });
+
+/**
+ * Whether `update` runs with the local CLI: a release of at least 16.0.0 that isn't older than the invoked one, unless
+ * IG_DISABLE_VERSION_CHECK is 1 or true, or the invoked CLI is a repository build (its TypeScript source is next to it)
+ */
+function localRunsUpdate(localVersion, globalVersion) {
+	if (/^(1|true)$/i.test(process.env.IG_DISABLE_VERSION_CHECK || "") || fs.existsSync(path.join(__dirname, "../lib/cli.ts"))) {
+		return false;
+	}
+	const semver = require("semver");
+	return semver.valid(localVersion) && semver.valid(globalVersion) &&
+		semver.gte(localVersion, RUNNER_MIN_VERSION) && semver.gte(localVersion, globalVersion);
+}
 
 /**
  * Starts the MCP server bundled with the CLI copy in `cliDir` in this process, before the CLI loads, so a session
