@@ -19,7 +19,7 @@
 	},
 	"scripts": {
 		"release": "lerna version --conventional-commits --no-changelog --force-publish=* --yes --no-git-tag-version --no-push",
-		"version": "node ./scripts/versionScript.js && npm install --package-lock-only --ignore-scripts",
+		"version": "node ./scripts/versionScript.js",
 		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema && npm run build:mcp",
 		"build:mcp": "cd packages/igniteui-mcp/igniteui-doc-mcp && npx tsc && npx tsx scripts/build.ts",
 		"build:update-skills": "npx tsx scripts/update-skills.ts",
@@ -96,6 +96,7 @@
 	"allowScripts": {
 		"better-sqlite3": true,
 		"esbuild": true,
+		"fsevents": true,
 		"libxmljs2": true,
 		"nx": true
 	}

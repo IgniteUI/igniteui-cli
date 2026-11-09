@@ -29,9 +29,8 @@ jobs:
            cache: 'npm'
       - name: Install packages
         run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Test
+      # pretest runs lint and build, so lint is not repeated as its own step
+      - name: Lint, build and test
         run: npm test
       - name: Generate coverage
         if: matrix.node-version == '24.x'

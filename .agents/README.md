@@ -86,7 +86,7 @@ Every limit on the workflows (the git rules, the "Maintenance Workflows" rules i
 
 ### Cloud Agent
 
-Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. Its environment comes from `.github/workflows/copilot-setup-steps.yml` (install, build, Playwright Chromium), which takes effect only once it is on `master`. The agent's firewall allows the npm and yarn registries and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
+Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. Its environment comes from `.github/workflows/copilot-setup-steps.yml` (install, build, Playwright Chromium), which takes effect only once it is on `master`. The agent's firewall allows the npm registry (all the repository installs from) and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
 
 ---
 

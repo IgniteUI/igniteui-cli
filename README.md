@@ -230,16 +230,9 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 
 ### Run locally
 1. Clone the repository
-2. Install dependencies with `npm install` (npm workspaces install every package, the MCP server included)
-3. Build the MCP server and bundle it into the CLI:
-    ```bash
-    cd packages/igniteui-mcp/igniteui-doc-mcp
-    npm run build
-    cd ../../..
-    npm run build:mcp
-    ```
-4. Build the monorepo packages: `npm run build`
-5. Open in Visual Studio Code
+2. Install dependencies from the repository root with `npm install` (npm workspaces install every package, the MCP server included)
+3. Build everything from the repository root: `npm run build` (compiles the monorepo packages, then builds the MCP server via `build:mcp`)
+4. Open in Visual Studio Code
     
     There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, create new project for a particular framework or add components.
 
@@ -309,8 +302,8 @@ The MCP server at `packages/igniteui-mcp/igniteui-doc-mcp` has its own build pip
 
 **Build the MCP server:**
 ```bash
+npm install          # from the repo root: installs every workspace, MCP dependencies included
 cd packages/igniteui-mcp/igniteui-doc-mcp
-npm install          # Installs the whole workspace from the repo root, MCP dependencies included
 npm run build        # Compile TypeScript + copy SQLite DB to dist/
 ```
 
@@ -334,8 +327,7 @@ npm run build:mcp    # Compiles MCP server TypeScript and copies SQLite DB into 
 
 **Test the MCP server locally:**
 ```bash
-npm run build:mcp
-npm run build
+npm run build                             # includes build:mcp
 node packages/cli/lib/cli.js mcp          # Start via CLI
 # or directly:
 node packages/cli/mcp/dist/index.js       # Start the bundled server
