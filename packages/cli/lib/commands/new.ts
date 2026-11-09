@@ -211,8 +211,10 @@ const command: NewCommandType = {
 
 		const config = projTemplate.generateConfig(argv.name, theme);
 		for (const templatePath of projTemplate.templatePaths) {
-			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
-				config, projTemplate.delimiters, false);
+			if (!await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
+				config, projTemplate.delimiters, false)) {
+				return Util.error("Project generation failed!", "red");
+			}
 		}
 
 		process.chdir(argv.name);
