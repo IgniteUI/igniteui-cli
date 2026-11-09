@@ -5,7 +5,7 @@ const path = require("path");
 const { pathToFileURL } = require("url");
 const { hideBin } = require("yargs/helpers");
 
-// the first release with `ig update`
+// the first release with `ig update`; keep in sync with lib/commands/update-runner.ts
 const RUNNER_MIN_VERSION = "16.0.0";
 
 const args = hideBin(process.argv);
