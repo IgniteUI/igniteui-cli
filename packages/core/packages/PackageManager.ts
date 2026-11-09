@@ -117,7 +117,7 @@ export class PackageManager {
 			try {
 				// inherit the terminal's stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
-				Util.execSync(command, { stdio: [Util.childStdin()], killSignal: "SIGINT" });
+				Util.execSync(command, { stdio: [Util.childStdin(), "ignore", "ignore"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (e) {
 				const error = e as Error & { status?: number | null };
