@@ -152,7 +152,7 @@ export function getUpdateCandidates(names: string[]): PackageUpdate[] {
 /** Plans the `requests` with their groups and needed peers; throws when the registry can't be queried */
 export function getUpdatePlan({ requests, force = false, verbose = false }:
 	{ requests: PackageRequest[]; force?: boolean; verbose?: boolean }): PackageUpdate[] {
-	const fields = ["version", "dependencies", "peerDependencies", "deprecated", "engines", "ig-update"];
+	const fields = ["version", "dependencies", "peerDependencies", "deprecated", "engines", "ig-update", "name"];
 	const lines = new Map<PackageUpdate, PackageManifest[]>();
 	const published = new Map<string, string[]>();
 
@@ -189,7 +189,7 @@ export function getUpdatePlan({ requests, force = false, verbose = false }:
 			if (spec !== undefined && latest && semver.gtr(latest, range)) {
 				candidate.nextMajor = latest;
 			}
-			// versions with none of the fields come back as plain strings
+			// one match comes back unwrapped; plain version strings only if npm returns no field besides "version"
 			const manifests: (PackageManifest | string)[] = [].concat(npmView(`${candidate.name}@${range}`, fields, verbose));
 			lines.set(candidate, manifests
 				.map(m => typeof m === "string" ? { version: m } : m)

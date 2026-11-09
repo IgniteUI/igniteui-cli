@@ -79,11 +79,14 @@ describe("Unit - version update", () => {
 			return ok(JSON.stringify({ versions, "dist-tags": { latest, ...tags } }));
 		}
 		const range = ({ latest, ...tags } as Record<string, string | undefined>)[spec] ?? spec;
-		const matches = ([] as string[]).concat(versions).filter(v => semver.satisfies(v, range)).map(version => {
-			const fields = typeof manifest === "function" ? manifest(version) : manifest;
-			return fields ? { version, ...fields } : version;
-		});
-		return ok(JSON.stringify(matches.length === 1 ? matches[0] : matches));
+		const matches: Record<string, unknown>[] = ([] as string[]).concat(versions).filter(v => semver.satisfies(v, range)).map(version => ({
+			...args.includes("name") ? { name } : {},
+			version,
+			...typeof manifest === "function" ? manifest(version) : manifest
+		}));
+		const first = Object.keys(matches[0] ?? {});
+		const json = first.length === 1 ? matches.map(m => m[first[0]]) : matches;
+		return ok(JSON.stringify(json.length === 1 ? json[0] : json));
 	}
 
 	function directDependencies(): string[] {
@@ -602,7 +605,7 @@ describe("Unit - version update", () => {
 
 					expect([blocked.conflict, blocked.overridable]).toEqual([`no version in "^19.7.0" satisfies ${pinnedByCharts}`, true]);
 					expect(forcedCore).toEqual(jasmine.objectContaining({
-						target: "19.7.1", newRange: "~19.7.1", nextMajor: "20.0.0", forced: pinnedByCharts, manifest: { version: "19.7.1" }
+						target: "19.7.1", newRange: "~19.7.1", nextMajor: "20.0.0", forced: pinnedByCharts, manifest: { name: core, version: "19.7.1" }
 					}));
 					expect([forcedCore.conflict, forcedCore.overridable]).toEqual([undefined, undefined]);
 					expect(summary([entry(forced, charts)])).toEqual([[charts, "19.6.0", undefined, undefined, undefined]]);
@@ -810,10 +813,10 @@ describe("Unit - version update", () => {
 				'igniteui-webcomponents (dependencies): declared workspace:*, installed none, skipped: unsupported spec "workspace:*" ' +
 					"(only exact, ^, ~ and x-range versions are supported)",
 				'npm view "igniteui-react-charts" versions dist-tags',
-				'npm view "igniteui-react-charts@^19.5.2" version dependencies peerDependencies deprecated engines ig-update',
+				'npm view "igniteui-react-charts@^19.5.2" version dependencies peerDependencies deprecated engines ig-update name',
 				'igniteui-react-charts: 2 version(s) in "^19.5.2", latest 19.6.0',
 				'npm view "igniteui-react-core" versions dist-tags',
-				'npm view "igniteui-react-core@^19.5.2" version dependencies peerDependencies deprecated engines ig-update',
+				'npm view "igniteui-react-core@^19.5.2" version dependencies peerDependencies deprecated engines ig-update name',
 				'igniteui-react-core: 3 version(s) in "^19.5.2", latest 20.0.0 (outside the requested range, not applied)',
 				"Peer dependencies not checked, not installed: igniteui-webcomponents",
 				'igniteui-react-charts: target 19.6.0 (newest in "^19.5.2": 19.6.0), range ~19.5.2 -> ~19.6.0',
@@ -824,7 +827,7 @@ describe("Unit - version update", () => {
 
 		describe("registry access", () => {
 			const script = path.join(path.dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
-			const manifestArgs = [`${NPM_REACT}@^19.6.0`, "version", "dependencies", "peerDependencies", "deprecated", "engines", "ig-update", "--json"];
+			const manifestArgs = [`${NPM_REACT}@^19.6.0`, "version", "dependencies", "peerDependencies", "deprecated", "engines", "ig-update", "name", "--json"];
 
 			beforeEach(() => {
 				mockProject({ dependencies: { [NPM_REACT]: "~19.6.0" } });
@@ -904,7 +907,7 @@ describe("Unit - version update", () => {
 				expect(plan.length).toBe(1);
 				expect(plan[0]).toEqual(jasmine.objectContaining({ baseline: "2.8.0", line: '">=2.8.0 <=3.3.1"', target: "3.3.1", newRange: "^3.3.1" }));
 				expect(plan[0].nextMajor).toBeUndefined();
-				expect(spawnSync.calls.allArgs().map(([, args]) => args.slice(args.indexOf("view") + 1, -1).join(" "))).toEqual(["lit versions dist-tags", "lit@>=2.8.0 <=3.3.1 version dependencies peerDependencies deprecated engines ig-update"]);
+				expect(spawnSync.calls.allArgs().map(([, args]) => args.slice(args.indexOf("view") + 1, -1).join(" "))).toEqual(["lit versions dist-tags", "lit@>=2.8.0 <=3.3.1 version dependencies peerDependencies deprecated engines ig-update name"]);
 			});
 
 			it("respects an explicit version, range or tag, writing a range that can't install a newer version", () => {
@@ -1055,6 +1058,19 @@ describe("Unit - version update", () => {
 				mockProject({ dependencies: { [NPM_DOCK_MANAGER]: "~1.17.0", lit: "^3.1.0" } }, { [NPM_DOCK_MANAGER]: "1.17.0", lit: "3.1.0" });
 
 				expect(summary(request(NPM_DOCK_MANAGER))).toEqual([[NPM_DOCK_MANAGER, "2.0.0", "~2.0.0"]]);
+			});
+
+			it("keeps the peers and migrations of later versions when the first version in the range declares none of the fields", () => {
+				const igUpdate = { migrations: "./migrations/collection.json" };
+				mockProject({ dependencies: { "fixture-lib": "~1.0.0", "peer-lib": "^1.0.0" } }, { "fixture-lib": "1.0.0", "peer-lib": "1.0.0" });
+				publish("fixture-lib", ["1.0.0", "2.0.0"], "2.0.0",
+					version => version === "2.0.0" ? { peerDependencies: { "peer-lib": "^2.0.0" }, "ig-update": igUpdate } : {});
+				publish("peer-lib", ["1.0.0", "2.0.0"], "2.0.0");
+
+				const plan = request("fixture-lib");
+
+				expect(summary(plan)).toEqual([["fixture-lib", "2.0.0", "~2.0.0"], ["peer-lib", "2.0.0", "^2.0.0"]]);
+				expect(plan[0].manifest?.["ig-update"]).toEqual(igUpdate);
 			});
 
 			it("repeats until no package joins, adding the group of a package that joined as a peer", () => {
