@@ -5,7 +5,7 @@ Guidance for AI coding agents working in this repository.
 ## Build, Test, Lint
 
 ```bash
-npm ci                          # install from package-lock.json (npm workspaces; no yarn)
+npm ci                          # install from root package-lock.json (npm workspaces)
 npm run build                   # tsc + config schema generation + MCP server build
 npm run test                    # lint + build + tests with coverage (via pretest hook)
 npm run jasmine                 # tests only — no lint/build/coverage
