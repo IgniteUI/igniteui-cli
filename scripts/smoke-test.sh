@@ -117,6 +117,14 @@ run_cli() {
 	(cd "$cwd" && node "$CLI_ENTRY" "$@") >"$log" 2>&1
 }
 
+# Like run_cli, but skips bin/execute.js, which hands off to a project-local igniteui-cli once one is installed.
+run_checkout_cli() {
+	local cwd="$1" log="$2"; shift 2
+	(cd "$cwd" && node -e \
+		'require(process.argv[1]).run(process.argv.slice(2)).catch(e => { console.error("Error: " + (e.message || e)); process.exit(1); })' \
+		"$ROOT/packages/cli/lib/cli.js" "$@") >"$log" 2>&1
+}
+
 list_component_ids() {
 	local dir="$1"
 	# a row is one tab then the id; wrapped description lines are indented deeper
@@ -186,7 +194,7 @@ wizard_scaffold() {
 	record "$fw" "wizard" "$id" "PASS" "$((SECONDS - start))"
 	echo "  ✓ wizard $id"
 	[ "$fw" = "blazor" ] && return 0
-	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
+	run_checkout_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
 	return 0
 }
 
@@ -273,7 +281,13 @@ run_framework() {
 	echo "=== $fw ($type) ==="
 
 	if [ -n "$WIZARD" ]; then
-		for id in $(node "$ROOT/scripts/smoke-wizard.mjs" list "$fw" "$WIZARD"); do
+		local ids
+		if ! ids="$(node "$ROOT/scripts/smoke-wizard.mjs" list "$fw" "$WIZARD")" || [ -z "$ids" ]; then
+			echo "  ✗ no wizard scenarios listed for $fw" >&2
+			record "$fw" "wizard" "list" "FAIL" 0
+			return 1
+		fi
+		for id in $ids; do
 			dir="$short-w-$id"
 			wizard_scaffold "$fw" "$id" "$dir" || { failed=1; continue; }
 			install_and_build "$fw" "$dir" || failed=1
