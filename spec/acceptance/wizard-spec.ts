@@ -8,6 +8,7 @@ import * as os from "os";
 import * as path from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
+import { stubAngularCli } from "../helpers/angular-cli-stub";
 import { answerFor, buildWizardScenarios, expectedPrompts, PROMPTS, WizardScenario } from "../helpers/wizard-matrix";
 
 const PROJECT_NAME = "wizard-app";
@@ -107,6 +108,7 @@ describe("Wizard (ig new, interactive)", () => {
 		spyOn(Util, "canPrompt").and.returnValue(true);
 		spyOn(Util, "error").and.callThrough();
 		fakeDotnet();
+		stubAngularCli();
 	});
 
 	afterEach(() => {

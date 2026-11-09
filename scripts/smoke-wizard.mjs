@@ -14,7 +14,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const CLI_ENTRY = path.join(ROOT, "packages/cli/bin/execute.js");
+const CLI_LIB = path.join(ROOT, "packages/cli/lib/cli.js");
+const RUN_CLI = "require(process.argv[1]).run(process.argv.slice(2)).catch(e => { console.error(\"Error: \" + (e.message || e)); process.exit(1); })";
 const require = createRequire(import.meta.url);
 
 const QUIET_MS = 250;
@@ -87,7 +88,7 @@ async function runScenario(framework, scenarioId, workDir, projectName) {
 	const known = [...new Set([...Object.values(matrix.PROMPTS), ...s.extra.map(e => e.message)])]
 		.sort((a, b) => b.length - a.length);
 
-	const child = spawn(process.execPath, [CLI_ENTRY, "new"], {
+	const child = spawn(process.execPath, ["-e", RUN_CLI, CLI_LIB, "new"], {
 		cwd: workDir,
 		stdio: ["pipe", "pipe", "pipe"],
 		env: { ...process.env, FORCE_COLOR: "0", NO_COLOR: "1" }
