@@ -72,7 +72,7 @@ Adding or changing an MCP tool (schema, handler, description, tests, every doc t
 
 ## Key Conventions
 
-- **npm only** — the repository does not use yarn; `package-lock.json` is the lockfile
+- **use npm** - follow/update the `package-lock.json` lockfile
 - CI runs on Node 24.x and 26.x with `npm ci`; Copilot cloud agent sessions are prepared by `.github/workflows/copilot-setup-steps.yml` (Node 24, install, build, Playwright Chromium)
 - ESLint: `no-var`, `no-eval`, `prefer-const`, `no-console` (off in test files), `no-duplicate-imports`
 - Test files match pattern `*[sS]pec.ts` — found in `spec/`, `packages/cli/migrations/`, `packages/igx-templates/`, `packages/ng-schematics/`
