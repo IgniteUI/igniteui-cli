@@ -11,6 +11,7 @@ import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
 import { loadDevKit, runMigrations } from "./update-migrations";
+import { runTemporaryCli, selectRunner } from "./update-runner";
 
 const LOCKFILES: Record<string, string[]> = {
 	npm: ["package-lock.json", "npm-shrinkwrap.json"],
@@ -142,6 +143,11 @@ const command: UpdateCommandType = {
 					requests = parsePackages(packages);
 				} catch (error) {
 					return fail("Invalid package arguments.", (error as Error).message);
+				}
+				const runner = selectRunner(flags.verbose);
+				if (runner) {
+					process.exitCode = runTemporaryCli(runner, flags.verbose);
+					return;
 				}
 				return migrate.migrateOnly
 					? migrateOnly(requests[0], migrate, flags)
