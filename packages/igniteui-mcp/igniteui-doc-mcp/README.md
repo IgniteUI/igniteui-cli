@@ -239,8 +239,9 @@ The bundled database, the pre-built API reference data, and the import maps are 
 
 ```bash
 git clone https://github.com/IgniteUI/igniteui-cli.git
-cd igniteui-cli/packages/igniteui-mcp/igniteui-doc-mcp
-npm install
+cd igniteui-cli
+npm ci            # from the repository root: this package is an npm workspace
+cd packages/igniteui-mcp/igniteui-doc-mcp
 npm run build     # tsc + copy db/igniteui-docs.db and setup guides into dist/
 npm start         # local mode
 ```

@@ -26,14 +26,14 @@ describe("Unit - MCP CLI command", () => {
 		process.exitCode = undefined;
 	});
 
-	function mockMcpPackageResolution(resolvedPath?: string, shouldThrow = false): void {
+	function mockMcpPackageResolution(resolvedPath?: string, shouldThrow = false, errorCode = "MODULE_NOT_FOUND"): void {
 		const moduleApi = require("module");
 		const originalResolveFilename = moduleApi._resolveFilename;
 
 		spyOn(moduleApi, "_resolveFilename").and.callFake((request: string, ...args: any[]) => {
 			if (request === "@igniteui/mcp-server/package.json") {
 				if (shouldThrow) {
-					throw new Error("Cannot find module");
+					throw Object.assign(new Error("Cannot find module"), { code: errorCode });
 				}
 				return resolvedPath;
 			}
@@ -82,7 +82,20 @@ describe("Unit - MCP CLI command", () => {
 			expect(stderrWriteSpy).toHaveBeenCalled();
 			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
 			expect(message).toContain("@igniteui/mcp-server not found");
-			expect(message).toContain("Reinstall igniteui-cli");
+			expect(message).toContain("reinstall igniteui-cli");
+			expect(message).toContain("npm ci");
+		});
+
+		it("reports other resolution errors instead of calling the package missing", async () => {
+			mockMcpPackageResolution(undefined, true, "ERR_PACKAGE_PATH_NOT_EXPORTED");
+
+			await mcp.handler({ _: ["mcp"], $0: "ig" } as any);
+
+			expect(process.exitCode).toBe(1);
+			expect(spawnSpy).not.toHaveBeenCalled();
+			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
+			expect(message).toContain("Could not load the MCP server package");
+			expect(message).not.toContain("not found");
 		});
 
 		it("shows a build message when the MCP server entry does not exist", async () => {
@@ -97,7 +110,8 @@ describe("Unit - MCP CLI command", () => {
 
 			expect(stderrWriteSpy).toHaveBeenCalled();
 			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
-			expect(message).toContain("MCP server not built");
+			expect(message).toContain("MCP server is not built");
+			expect(message).toContain("reinstall igniteui-cli");
 			expect(message).toContain("build:mcp");
 		});
 	});
