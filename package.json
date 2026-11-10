@@ -94,10 +94,6 @@
 		"packages/igniteui-mcp/igniteui-doc-mcp"
 	],
 	"allowScripts": {
-		"better-sqlite3": true,
-		"esbuild": true,
-		"fsevents": true,
-		"libxmljs2": true,
-		"nx": true
+		"better-sqlite3": true
 	}
 }
