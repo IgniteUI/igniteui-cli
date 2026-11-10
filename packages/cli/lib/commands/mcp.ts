@@ -63,9 +63,9 @@ const command: CommandType = {
 			const mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json");
 			mcpEntry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
 		} catch {
+			// @igniteui/mcp-server is a dependency of igniteui-cli, so this only happens with a broken install
 			process.stderr.write(
-				"MCP server package not found. Install it first:\n" +
-				"  npm install\n"
+				"MCP server package @igniteui/mcp-server not found. Reinstall igniteui-cli, which depends on it.\n"
 			);
 			process.exitCode = 1;
 			return;

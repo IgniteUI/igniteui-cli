@@ -81,8 +81,8 @@ describe("Unit - MCP CLI command", () => {
 
 			expect(stderrWriteSpy).toHaveBeenCalled();
 			const message = stderrWriteSpy.calls.allArgs().map(args => args[0]).join("");
-			expect(message).toContain("MCP server package not found");
-			expect(message).toContain("npm install");
+			expect(message).toContain("@igniteui/mcp-server not found");
+			expect(message).toContain("Reinstall igniteui-cli");
 		});
 
 		it("shows a build message when the MCP server entry does not exist", async () => {
