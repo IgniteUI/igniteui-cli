@@ -81,6 +81,13 @@ SENTINEL_NAME=".smoke-test-workdir"
 
 die() { echo "$*" >&2; exit 2; }
 
+if [ -n "$WIZARD" ]; then
+	[ -n "$PROJECT" ] && die "--wizard picks the project templates itself; drop -p/--project"
+	[ -n "$TEMPLATES" ] && die "--wizard adds no component templates; drop --templates"
+	[ "$ALL_PROJECTS" -eq 1 ] && die "--wizard and --all-projects cannot be combined"
+	[ "$ISOLATE" -eq 1 ] && die "--wizard and --isolate cannot be combined"
+fi
+
 strip_ansi() { sed $'s/\033\\[[0-9;]*[a-zA-Z]//g'; }
 
 fw_type() {
@@ -143,10 +150,14 @@ list_project_ids() {
 # Judges a `new` or `wizard` step, records it, and turns off analytics in the new project.
 finish_scaffold() {
 	local fw="$1" dir="$2" step="$3" label="$4" rc="$5" log="$6" start="$7"
-	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
-	local marker="$OUT/$dir/ignite-ui-cli.json"
-	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
-	if [ "$rc" -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ]; then
+	local created=0
+	if [ "$fw" = "blazor" ]; then
+		# dotnet new writes no ignite-ui-cli.json; the .csproj sits at the root or in <dir>/<dir>/
+		[ -d "$OUT/$dir" ] && [ -n "$(find "$OUT/$dir" -maxdepth 2 -name '*.csproj' -print -quit)" ] && created=1
+	else
+		[ -f "$OUT/$dir/ignite-ui-cli.json" ] && created=1
+	fi
+	if [ "$rc" -ne 0 ] || log_has_error "$log" || [ "$created" -ne 1 ]; then
 		record "$fw" "$step" "$label" "FAIL" "$((SECONDS - start))"
 		echo "  ✗ $step $dir  (see $log)"
 		return 1
@@ -223,8 +234,9 @@ install_and_build() {
 
 	if [ "$fw" = "blazor" ]; then
 		start=$SECONDS
-		# Server hosting has no root .sln; the .csproj sits in <dir>/<dir>/
-		(cd "$OUT/$dir" && if ls *.sln >/dev/null 2>&1; then dotnet build; else dotnet build "$dir"; fi) \
+		# Server hosting has no root .sln/.slnx; the .csproj sits in <dir>/<dir>/
+		(cd "$OUT/$dir" && if [ -n "$(find . -maxdepth 1 \( -name '*.sln' -o -name '*.slnx' \) -print -quit)" ]; then
+			dotnet build; else dotnet build "$dir"; fi) \
 			>"$LOGS/$dir-build.log" 2>&1
 		rc=$?
 		[ $rc -eq 0 ] && record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))" \
@@ -272,7 +284,6 @@ run_framework() {
 	echo "=== $fw ($type) ==="
 
 	if [ -n "$WIZARD" ]; then
-		local ids
 		if ! ids="$(node "$ROOT/scripts/smoke-wizard.mjs" list "$fw" "$WIZARD")" || [ -z "$ids" ]; then
 			echo "  ✗ no wizard scenarios listed for $fw" >&2
 			record "$fw" "wizard" "list" "FAIL" 0

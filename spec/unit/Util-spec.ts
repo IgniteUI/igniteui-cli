@@ -289,28 +289,19 @@ describe("Unit - Util", () => {
 
 	describe("childStdin", () => {
 		it("inherits stdin only from a terminal", () => {
-			const stdin: any = process.stdin as any;
-
-			// isTTY may be non-writable or defined on the prototype in some runtimes.
-			// Capture the existing descriptor (own or inherited) so we can restore reliably.
-			const ownDesc = Object.getOwnPropertyDescriptor(stdin, "isTTY");
-			const proto = Object.getPrototypeOf(stdin);
-			const protoDesc = proto ? Object.getOwnPropertyDescriptor(proto, "isTTY") : undefined;
-			const hadOwn = !!ownDesc;
-			const originalDesc = ownDesc || protoDesc;
-
+			const original = Object.getOwnPropertyDescriptor(process.stdin, "isTTY");
+			const setTTY = (value: boolean | undefined) =>
+				Object.defineProperty(process.stdin, "isTTY", { value, configurable: true, writable: true });
 			try {
-				Object.defineProperty(stdin, "isTTY", { value: true, configurable: true, writable: true });
+				setTTY(true);
 				expect(Util.childStdin()).toBe("inherit");
-
-				Object.defineProperty(stdin, "isTTY", { value: undefined, configurable: true, writable: true });
+				setTTY(undefined);
 				expect(Util.childStdin()).toBe("ignore");
 			} finally {
-				if (hadOwn && originalDesc) {
-					Object.defineProperty(stdin, "isTTY", originalDesc);
+				if (original) {
+					Object.defineProperty(process.stdin, "isTTY", original);
 				} else {
-					// If isTTY was inherited (or absent), remove our override to fall back to original behavior.
-					delete stdin.isTTY;
+					delete (process.stdin as any).isTTY;
 				}
 			}
 		});
