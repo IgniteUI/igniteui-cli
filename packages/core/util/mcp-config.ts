@@ -74,6 +74,32 @@ function getIgniteUIMcpServers(fileSystem: IFileSystem): Record<string, McpServe
 	return IGNITEUI_MCP_SERVERS;
 }
 
+export interface McpConfigStatus {
+	mcpFilePath: string;
+	/** Ignite UI servers the file doesn't list. */
+	missingServers: string[];
+}
+
+/** Reports the Ignite UI servers of every assistant MCP config file found in the project. */
+export function getMcpConfigStatus(): McpConfigStatus[] {
+	const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
+	const result: McpConfigStatus[] = [];
+	for (const { mcpFilePath, rootKey } of Object.values(AI_ASSISTANT_MCP_CONFIGS)) {
+		if (!fileSystem.fileExists(mcpFilePath)) {
+			continue;
+		}
+		let servers: Record<string, unknown> = {};
+		try {
+			servers = jsonc.parse(fileSystem.readFile(mcpFilePath))?.[rootKey] ?? {};
+		} catch { /* an unreadable file lists no servers */ }
+		result.push({
+			mcpFilePath,
+			missingServers: Object.keys(IGNITEUI_MCP_SERVERS).filter(key => !servers[key])
+		});
+	}
+	return result;
+}
+
 type Update = [path: jsonc.JSONPath, value: unknown, currentValue: unknown];
 
 /**

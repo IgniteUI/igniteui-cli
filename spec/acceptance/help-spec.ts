@@ -24,12 +24,13 @@ describe("Help command", () => {
 		ig start                  Starts the project
 		ig generate               Generates custom templates (see subcommands) [aliases: g]
 		ig config                 Gets, sets or adds a configuration property (see subcommands)
-		ig doc [term]             Opens the Infragistics search for the given term
+		ig doc [term]             Searches the Ignite UI docs for the given term
 		ig test                   Executes project tests
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
 		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
 		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
+		ig doctor                 Checks the environment and the current project for common problems
 
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
@@ -192,6 +193,15 @@ describe("Help command", () => {
 		const originalNewHelpText: string = `
 		Positionals:
 		term  Term to search for                                              [string]
+
+		Options:
+		-v, --version    Show current Ignite UI CLI version                  [boolean]
+		-h, --help       Show help                                           [boolean]
+		-o, --open       Open the Infragistics website search in the browser [boolean]
+			--read       Print a doc by the name listed in the search results [string]
+		-f, --framework  Framework docs to search (detected from the project by default)
+			[string] [choices: "angular", "react", "webcomponents", "blazor"]
+			--limit      Number of results to print             [number] [default: 10]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");

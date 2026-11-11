@@ -9,9 +9,10 @@ type Framework = "angular" | "react" | "webcomponents" | "blazor" | "jquery";
  * Attempt to detect project framework by first checking for local cli-config,
  * then falling back to .csproj / package.json analysis.
  * Logs the detection source when a framework is found.
+ * @param log pass `false` to detect without logging
  * @returns The detected framework Id or `null` if no framework could be detected.
  */
-export function detectFramework():  Framework | null {
+export function detectFramework(log = true):  Framework | null {
 	let framework: Framework | null = null;
 	try {
 		if (ProjectConfig.hasLocalConfig()) {
@@ -19,8 +20,8 @@ export function detectFramework():  Framework | null {
 		}
 	} catch { /* fall through */ }
 
-	framework ??= detectBlazorFromCsproj() ? "blazor" : null;
-	framework ??= detectFrameworkFromPackageJson();
+	framework ??= detectBlazorFromCsproj(log) ? "blazor" : null;
+	framework ??= detectFrameworkFromPackageJson(log);
 
 	return framework;
 }
@@ -36,7 +37,7 @@ export function detectFramework():  Framework | null {
  *  - "webcomponents"→ fallback when neither of the above is found
  *  - `null` if `package.json` is absent or cannot be parsed.
  */
-export function detectFrameworkFromPackageJson(): Exclude<Framework, "jquery"> | null {
+export function detectFrameworkFromPackageJson(log = true): Exclude<Framework, "jquery"> | null {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	if (!fs.fileExists("./package.json")) {
 		return null;
@@ -55,16 +56,16 @@ export function detectFrameworkFromPackageJson(): Exclude<Framework, "jquery"> |
 	]);
 
 	if (deps.has("@angular/core")) {
-		Util.log("Detected Angular project (from package.json)");
+		if (log) Util.log("Detected Angular project (from package.json)");
 		return "angular";
 	}
 	if (deps.has("react")) {
-		Util.log("Detected React project (from package.json)");
+		if (log) Util.log("Detected React project (from package.json)");
 		return "react";
 	}
 
 	// for now assume webcomponents as default fallback
-	Util.log("Assuming Web Components (no Angular/React deps found in package.json)");
+	if (log) Util.log("Assuming Web Components (no Angular/React deps found in package.json)");
 	return "webcomponents";
 }
 
@@ -120,7 +121,7 @@ function parseCsprojPathsFromSolution(content: string): string[] {
  *     extract referenced `.csproj` paths.
  *  3. Verify at least one `.csproj` is a Blazor project via {@link isBlazorProject}.
  */
-export function detectBlazorFromCsproj(): boolean {
+export function detectBlazorFromCsproj(log = true): boolean {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 
 	const csprojFiles = fs.glob(".", "*.csproj");
@@ -140,7 +141,7 @@ export function detectBlazorFromCsproj(): boolean {
 	}
 
 	const detected = csprojFiles.some(csproj => isBlazorProject(fs, csproj));
-	if (detected) {
+	if (detected && log) {
 		Util.log("Detected Blazor project (from .csproj)");
 	}
 	return detected;
