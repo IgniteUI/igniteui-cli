@@ -40,7 +40,7 @@ export function generateProject(dashName: string, projectPath: string): string {
 	const ng = (command: string, cwd: string) =>
 		Util.execSync(`npx -y @angular/cli@${angularMajor} ${command} --defaults --interactive=false`, {
 			cwd,
-			stdio: "inherit",
+			stdio: [Util.childStdin(), "inherit", "inherit"],
 			// NG_FORCE_AUTOCOMPLETE: `--interactive=false` does not stop the one-time autocompletion question,
 			// which would stop the scaffold for an answer; the CLI checks it before anything else
 			env: { ...process.env, NG_CLI_ANALYTICS: "false", NG_FORCE_AUTOCOMPLETE: "false", [SKIP_AI_CONFIG_ENV]: "true" }
@@ -79,7 +79,7 @@ export function npmInstallCommand(packages: string[], dev = false) {
 export function npmInstall(projectPath: string, packages: string[], dev = false) {
 	Util.execSync(npmInstallCommand(packages, dev), {
 		cwd: projectPath,
-		stdio: "inherit"
+		stdio: [Util.childStdin(), "inherit", "inherit"]
 	});
 }
 

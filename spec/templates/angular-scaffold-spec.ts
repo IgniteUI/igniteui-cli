@@ -192,6 +192,18 @@ describe("Angular project scaffold", () => {
 		}
 	});
 
+	it("gives the Angular CLI and npm install calls the stdin from childStdin", async () => {
+		spyOn(Util, "childStdin").and.returnValue("ignore");
+		await emptyProject.scaffold({ name, theme: "Default" });
+
+		const calls = execSync.calls.allArgs().filter(([command]) => /^(npx|npm install) /.test(command));
+		expect(calls.some(([command]) => command.startsWith("npx"))).toBeTrue();
+		expect(calls.some(([command]) => command.startsWith("npm install"))).toBeTrue();
+		for (const [command, options] of calls) {
+			expect(options.stdio).withContext(command).toEqual(["ignore", "inherit", "inherit"]);
+		}
+	});
+
 	it("runs ng new outside the current folder, which may be inside an Angular workspace", async () => {
 		await emptyProject.scaffold({ name, theme: "Default" });
 
