@@ -43,6 +43,8 @@ ig start
 ```bash
 ng new <ProjectName> --collection="@igniteui/angular-schematics"
 ```
+
+Both options run `ng new` and `ng add igniteui-angular`, which install packages while the project is created. Do not pass `--dry-run` to Option B: it is not supported and stops with an error.
  
 Or to add Ignite UI to an existing Angular project:
  
@@ -66,7 +68,7 @@ ig new MyApp --framework=angular --type=igx-ts --template=side-nav
 | Flag | Description |
 |---|---|
 | `--skip-git` | Skip git repository initialization |
-| `--skip-install` | Skip npm package installation (useful in CI) |
+| `--skip-install` | Has no effect for Angular projects: `ng add igniteui-angular` installs the packages while the project is created |
  
 *For theming use igniteui-theming MCP*
  
