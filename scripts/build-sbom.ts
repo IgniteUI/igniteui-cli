@@ -106,7 +106,7 @@ function resolveCycloneDxCli(): string {
 	const cli = path.join(cycloneDxDir, "bin", "cyclonedx-npm-cli.js");
 
 	if (!existsSync(cli)) {
-		throw new Error(`@cyclonedx/cyclonedx-npm CLI not found at ${cli}. Run "yarn install" first.`);
+		throw new Error(`@cyclonedx/cyclonedx-npm CLI not found at ${cli}. Run "npm ci" first.`);
 	}
 
 	return cli;
@@ -341,7 +341,7 @@ const fileNames = {
 
 /** The repository tree, dev dependencies included: an inventory of the toolchain, not the product. */
 async function buildEnvironmentSbom() {
-	// Tolerates npm-ls complaints about the yarn-installed dev tree; the delivered documents never do.
+	// Tolerates npm-ls complaints about the dev tree (e.g. unmet optional peer ranges); the delivered documents never do.
 	const bom = generateCycloneDx(repoRoot, ["--mc-type", "application", "--ignore-npm-errors"]);
 	bom.metadata.supplier = SUPPLIER;
 

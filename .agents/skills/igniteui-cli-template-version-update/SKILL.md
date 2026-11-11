@@ -42,7 +42,7 @@ Your changes are Ignite UI version strings, applied as patch or minor updates. E
 
 ## Script
 
-Steps 2-5 are backed by [`scripts/template-pins.mjs`](./scripts/template-pins.mjs) (Node, uses the repo's `semver`; run `yarn install` first):
+Steps 2-5 are backed by [`scripts/template-pins.mjs`](./scripts/template-pins.mjs) (Node, uses the repo's `semver`; run `npm ci` first):
 
 ```bash
 node .agents/skills/igniteui-cli-template-version-update/scripts/template-pins.mjs \
