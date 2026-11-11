@@ -17,7 +17,7 @@ describe("Unit - update runner", () => {
 	function select(running: string, published: unknown, verbose = false) {
 		version.and.returnValue(running);
 		npmView.and.returnValue(published);
-		return selectRunner(verbose);
+		return selectRunner(verbose, [], false);
 	}
 
 	beforeEach(() => {
@@ -40,7 +40,7 @@ describe("Unit - update runner", () => {
 		expect(select("16.0.0", manifests("16.0.0", "16.2.1", "16.1.0"))).toBe("16.2.1");
 		const cache: string = npmView.calls.mostRecent().args[3][3];
 		expect(npmView).toHaveBeenCalledOnceWith("igniteui-cli@16", ["name", "version", "engines"], false,
-			["--fetch-retries=0", "--fetch-timeout=15000", "--cache", cache]);
+			["--fetch-retries=0", "--fetch-timeout=15000", "--cache", cache, "--no-update-notifier"]);
 		expect(cache.startsWith(path.join(os.tmpdir(), "igniteui-cli-lookup-"))).toBeTrue();
 		expect(fs.statSync(cache, { throwIfNoEntry: false })).toBeUndefined();
 	});
@@ -75,17 +75,61 @@ describe("Unit - update runner", () => {
 		Object.defineProperty(process, "version", nodeVersion);
 	});
 
+	it("selects from the major an explicit igniteui-cli request resolves to, unless only migrating", () => {
+		const registry: Record<string, unknown> = {
+			"igniteui-cli@latest": "17.0.0",
+			"igniteui-cli@next": "18.0.0-rc.1",
+			"igniteui-cli@16.1.0": "16.1.0",
+			"igniteui-cli@^16": ["16.4.0", "16.10.0"],
+			"igniteui-cli@>=16": ["16.4.0", "17.0.0", "16.10.0"],
+			"igniteui-cli@16": manifests("16.1.0", "16.4.0", "16.10.0"),
+			"igniteui-cli@17": manifests("17.0.0")
+		};
+		npmView.and.callFake((name: string) => {
+			if (!(name in registry)) {
+				throw new Error(`Unable to get ${name} from the registry: 404 Not Found.`);
+			}
+			return registry[name];
+		});
+		const cases: [string, string | undefined, boolean, string | undefined, string[]][] = [
+			["16.2.0", undefined, false, "17.0.0", ["igniteui-cli@latest", "igniteui-cli@17"]],
+			["16.0.0", "16.1.0", false, "16.10.0", ["igniteui-cli@16.1.0", "igniteui-cli@16"]],
+			["16.2.0", ">=16", false, "17.0.0", ["igniteui-cli@>=16", "igniteui-cli@17"]],
+			["16.2.0", "next", false, undefined, ["igniteui-cli@next", "igniteui-cli@18"]],
+			["17.1.0", "^16", false, undefined, ["igniteui-cli@^16", "igniteui-cli@16"]],
+			["16.2.0", "17", true, "16.10.0", ["igniteui-cli@16"]]
+		];
+		for (const [running, spec, migrateOnly, runner, lookups] of cases) {
+			npmView.calls.reset();
+			version.and.returnValue(running);
+
+			const context = `running ${running}, igniteui-cli@${spec}${migrateOnly ? " --migrate-only" : ""}`;
+			expect(selectRunner(false, [{ name: "igniteui-react" }, { name: "igniteui-cli", spec }], migrateOnly)).withContext(context).toBe(runner);
+			expect(npmView.calls.allArgs().map(([name]) => name)).withContext(context).toEqual(lookups);
+		}
+		expect(Util.warn).toHaveBeenCalledOnceWith("Unable to get igniteui-cli@18 from the registry: 404 Not Found. Continuing with igniteui-cli 16.2.0.", "yellow");
+
+		npmView.calls.reset();
+		selectRunner(true, [{ name: "igniteui-cli" }], false);
+
+		const npmArgs = npmView.calls.first().args[3];
+		expect(npmView.calls.allArgs()).toEqual([
+			["igniteui-cli@latest", ["version"], true, npmArgs],
+			["igniteui-cli@17", ["name", "version", "engines"], true, npmArgs]
+		]);
+	});
+
 	it("warns and continues with the running version when the lookup or its temporary cache fails", () => {
 		version.and.returnValue("16.0.0");
 		npmView.and.throwError("Unable to get igniteui-cli@16 from the registry: request failed.");
 
-		expect(selectRunner(false)).toBeUndefined();
+		expect(selectRunner(false, [], false)).toBeUndefined();
 		expect(Util.warn).toHaveBeenCalledOnceWith("Unable to get igniteui-cli@16 from the registry: request failed. Continuing with igniteui-cli 16.0.0.", "yellow");
 		expect(fs.statSync(npmView.calls.mostRecent().args[3][3], { throwIfNoEntry: false })).toBeUndefined();
 
 		spyOn(fs, "mkdtempSync").and.throwError("EACCES: permission denied");
 
-		expect(selectRunner(false)).toBeUndefined();
+		expect(selectRunner(false, [], false)).toBeUndefined();
 		expect(Util.warn).toHaveBeenCalledWith("EACCES: permission denied Continuing with igniteui-cli 16.0.0.", "yellow");
 		expect(npmView).toHaveBeenCalledTimes(1);
 		expect(Util.error).not.toHaveBeenCalled();
@@ -166,7 +210,8 @@ describe("Unit - update runner", () => {
 			expect(dir().startsWith(path.join(os.tmpdir(), "igniteui-cli-update-"))).toBeTrue();
 			expect(spawnSync.calls.allArgs()).toEqual([
 				["npm", ["install", "igniteui-cli@16.2.1", "--prefix", dir(), "--no-save", "--no-package-lock", "--no-audit", "--no-fund",
-					"--ignore-scripts", "--include=optional", "--loglevel=error"], { shell: true, stdio: ["ignore", "ignore", "inherit"] }],
+					"--ignore-scripts", "--include=optional", "--prefer-offline=false", "--prefer-online", "--loglevel=error"],
+					{ shell: true, stdio: ["ignore", "ignore", "inherit"] }],
 				[process.execPath, [path.join(dir(), "node_modules", "igniteui-cli", "bin", "execute.js"), "update", "igniteui-react", "--dry-run"],
 					{ stdio: "inherit", env: jasmine.objectContaining({ IG_DISABLE_VERSION_CHECK: "1", IG_CLI_ANALYTICS: "false" }) }]
 			]);

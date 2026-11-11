@@ -144,7 +144,10 @@ const command: UpdateCommandType = {
 				} catch (error) {
 					return fail("Invalid package arguments.", (error as Error).message);
 				}
-				const runner = selectRunner(flags.verbose);
+				if (migrate.migrateOnly && !migrate.name && !migrate.from) {
+					return fail("--migrate-only needs --from <version>, or --name <migration>.");
+				}
+				const runner = selectRunner(flags.verbose, requests, migrate.migrateOnly);
 				if (runner) {
 					process.exitCode = runTemporaryCli(runner, flags.verbose);
 					return;
@@ -205,8 +208,6 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		if (!required.length) {
 			return fail("Unable to run the migrations.", `${name} has no migration named "${migrate.name}".`);
 		}
-	} else if (!migrate.from) {
-		return fail("--migrate-only needs --from <version>, or --name <migration>.");
 	} else {
 		const from = coerceVersionNumber(migrate.from);
 		const to = coerceVersionNumber(migrate.to ?? JSON.parse(fs.readFileSync(manifest, "utf8")).version);

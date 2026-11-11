@@ -1577,11 +1577,11 @@ describe("Unit - Update command", () => {
 			const getPlan = plan();
 			const cases: [string, Flags][] = [
 				["webcomponents", {}],
-				["react", { packages: ["igniteui-react@^19", WC] }],
+				["react", { packages: ["igniteui-react@^19", "igniteui-cli@17", WC] }],
 				["webcomponents", { dryRun: true }],
 				["webcomponents", { skipInstall: true }],
 				["webcomponents", { force: true, allowDirty: true, verbose: true }],
-				["webcomponents", { migrateOnly: true, from: "1.0.0" }],
+				["webcomponents", { packages: ["igniteui-cli@17"], migrateOnly: true, from: "1.0.0" }],
 				["webcomponents", { name: "later" }]
 			];
 			for (const [framework, args] of cases) {
@@ -1591,7 +1591,8 @@ describe("Unit - Update command", () => {
 				expect(process.exitCode).withContext(JSON.stringify(args)).toBe(3);
 			}
 
-			expect(selectRunner.calls.allArgs()).toEqual(cases.map(([, args]) => [!!args.verbose]));
+			expect(selectRunner.calls.allArgs()).toEqual(cases.map(([, args]) =>
+				[!!args.verbose, (args.packages ?? [WC]).map(versionUpdate.splitPackage), !!(args.migrateOnly || args.name)]));
 			expect(runTemporaryCli.calls.allArgs()).toEqual(cases.map(([, args]) => ["16.2.1", !!args.verbose]));
 			expect(getPlan).not.toHaveBeenCalled();
 			expect(spawnSync).not.toHaveBeenCalled();
@@ -1621,7 +1622,7 @@ describe("Unit - Update command", () => {
 
 			await updateWc({ dryRun: true });
 
-			expect(selectRunner).toHaveBeenCalledOnceWith(false);
+			expect(selectRunner).toHaveBeenCalledOnceWith(false, [{ name: WC }], false);
 			expect(runTemporaryCli).not.toHaveBeenCalled();
 			expect(getPlan).toHaveBeenCalled();
 			expect(log()).toContain("Dry run: no files were changed.");
@@ -1633,6 +1634,7 @@ describe("Unit - Update command", () => {
 			await run();
 			await run({ packages: ["Fixture-lib"] });
 			await updateWc({ migrateOnly: true, skipInstall: true });
+			await updateWc({ migrateOnly: true });
 			configure("jquery");
 			await updateWc();
 			configure("angular");
@@ -1648,6 +1650,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("No updates available for the packages that support ig update.");
 			expect(output).toContain(`Invalid package name "Fixture-lib".`);
 			expect(output).toContain("--skip-install can't be combined with --migrate-only or --name.");
+			expect(output).toContain("--migrate-only needs --from <version>, or --name <migration>.");
 			expect(output).toContain("Updating jquery projects with ig update is not supported.");
 			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin, "update", "igniteui-angular"], { stdio: "inherit" });
 		});

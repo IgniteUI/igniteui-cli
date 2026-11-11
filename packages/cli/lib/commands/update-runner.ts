@@ -1,4 +1,4 @@
-import { debug, npmCommand, npmView, PackageManifest, Util } from "@igniteui/cli-core";
+import { debug, NPM_CLI, npmCommand, npmView, PackageManifest, PackageRequest, Util } from "@igniteui/cli-core";
 import { spawnSync } from "child_process";
 import * as fs from "fs";
 import * as os from "os";
@@ -9,7 +9,7 @@ import * as semver from "semver";
 const RUNNER_MIN_VERSION = "16.0.0";
 const PACKAGE_JSON = path.join(__dirname, "../../package.json");
 
-export function selectRunner(verbose: boolean): string | undefined {
+export function selectRunner(verbose: boolean, requests: PackageRequest[], migrateOnly: boolean): string | undefined {
 	if (/^(1|true)$/i.test(process.env.IG_DISABLE_VERSION_CHECK || "")) {
 		debug(verbose, "Skipped the igniteui-cli version check: IG_DISABLE_VERSION_CHECK is set.");
 		return undefined;
@@ -19,12 +19,15 @@ export function selectRunner(verbose: boolean): string | undefined {
 		return undefined;
 	}
 	const running = Util.version(PACKAGE_JSON);
+	const cli = migrateOnly ? undefined : requests.find(r => r.name === NPM_CLI);
 	let cache: string | undefined;
 	let found: PackageManifest[];
 	try {
 		cache = fs.mkdtempSync(path.join(os.tmpdir(), "igniteui-cli-lookup-"));
-		found = [].concat(npmView(`igniteui-cli@${semver.major(running)}`, ["name", "version", "engines"], verbose,
-			["--fetch-retries=0", "--fetch-timeout=15000", "--cache", cache]));
+		const npmArgs = ["--fetch-retries=0", "--fetch-timeout=15000", "--cache", cache, "--no-update-notifier"];
+		const requested: string[] = cli ? [].concat(npmView(`${NPM_CLI}@${cli.spec ?? "latest"}`, ["version"], verbose, npmArgs)) : [];
+		const major = semver.major(semver.rsort(requested.filter(v => semver.valid(v)))[0] ?? running);
+		found = [].concat(npmView(`igniteui-cli@${major}`, ["name", "version", "engines"], verbose, npmArgs));
 	} catch (error) {
 		Util.warn(`${(error as Error).message} Continuing with igniteui-cli ${running}.`, "yellow");
 		return undefined;
@@ -57,7 +60,7 @@ export function runTemporaryCli(version: string, verbose: boolean): number {
 		dir = fs.mkdtempSync(path.join(os.tmpdir(), "igniteui-cli-update-"));
 		fs.writeFileSync(path.join(dir, "package.json"), JSON.stringify({ name: "igniteui-cli-update-runner", private: true }));
 		const args = ["install", `igniteui-cli@${version}`, "--prefix", dir, "--no-save", "--no-package-lock", "--no-audit", "--no-fund",
-			"--ignore-scripts", "--include=optional", "--loglevel=error"];
+			"--ignore-scripts", "--include=optional", "--prefer-offline=false", "--prefer-online", "--loglevel=error"];
 		const [command, commandArgs, shellOptions] = npmCommand(args);
 		debug(verbose, `npm ${args.join(" ")}`);
 		const npmrc = path.join(dir, ".npmrc");
