@@ -118,13 +118,13 @@
     "@modelcontextprotocol/sdk": "^1.30.0",
     "dotenv": "^17.2.4",
     "sql.js": "^1.14.1",
-    "zod": "^4.6.6"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
-    "@types/node": "^25.2.2",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.6",
     "@types/tmp": "^0.2.6",
-    "better-sqlite3": "^12.11.1",
+    "better-sqlite3": "^13.0.3",
     "js-tiktoken": "^1.0.21",
     "octokit": "^5.0.5",
     "openai": "^6.22.0",
@@ -132,7 +132,7 @@
     "typedoc": "^0.28.6",
     "typedoc-plugin-markdown": "^4.4.1",
     "typescript": "^5.8.3",
-    "vite": "^7.3.6",
-    "vitest": "^5.0.1"
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
   }
 }
