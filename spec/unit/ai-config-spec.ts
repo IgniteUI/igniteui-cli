@@ -660,11 +660,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			// srcFs reads (FsFileSystem.prototype) for source content
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 
 			configureSkills(["claude"], "angular");
 
@@ -693,11 +688,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			// srcFs reads (FsFileSystem.prototype) for source content
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 
 			configureSkills(["claude"], "angular");
 
@@ -722,11 +712,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			// srcFs reads (FsFileSystem.prototype) for source content
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 
 			configureSkills(["claude"], "angular");
 
@@ -751,10 +736,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 
 			configureSkills(["claude"], "angular");
 
@@ -768,7 +749,9 @@ describe("Unit - ai-config command", () => {
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
 					p === "ignite-ui-cli.json" || p === destFile
 				),
-				readFile: jasmine.createSpy("readFile").and.returnValue("old content"),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) =>
+					p === skillFile ? "new content" : "old content"
+				),
 				writeFile: jasmine.createSpy("writeFile"),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -779,10 +762,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new content");
 
 			configureSkills(["claude"], "angular");
 
@@ -808,10 +787,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 
 			configureSkills(["claude"], "angular");
 
@@ -826,7 +801,12 @@ describe("Unit - ai-config command", () => {
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
 					p === "ignite-ui-cli.json"
 				),
-				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === "node_modules/igniteui-angular/package.json") {
+						return JSON.stringify({ version: "18.2.0" });
+					}
+					return "skill content";
+				}),
 				writeFile: jasmine.createSpy("writeFile"),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -837,15 +817,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-				if (p === "node_modules/igniteui-angular/package.json") {
-					return JSON.stringify({ version: "18.2.0" });
-				}
-				return "skill content";
-			});
 
 			configureSkills(["claude"], "angular");
 
@@ -887,7 +858,12 @@ describe("Unit - ai-config command", () => {
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
 					p === "ignite-ui-cli.json"
 				),
-				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === "node_modules/igniteui-angular/package.json") {
+						return JSON.stringify({ version: "18.2.0" });
+					}
+					return "skill content";
+				}),
 				writeFile: jasmine.createSpy("writeFile"),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -898,15 +874,6 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
-			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-				d === angularSkillsDir ? [skillFile] : []
-			);
-			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-				if (p === "node_modules/igniteui-angular/package.json") {
-					return JSON.stringify({ version: "18.2.0" });
-				}
-				return "skill content";
-			});
 
 			configureSkills(["claude"], "angular", false);
 
