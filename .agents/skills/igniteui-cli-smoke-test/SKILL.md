@@ -90,7 +90,7 @@ Run the smoke test with `--keep`, then in the kept project (`<out>/<dir>/`) chec
 | React | covered by `tsc -b` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
 | Web Components | `npx tsc --noEmit` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
 
-The test runners use browser mode with Playwright Chromium. If one fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
+The test runners use browser mode with Playwright Chromium. If one fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect. In a cloud agent session the firewall blocks that download: report the test step as an environment failure instead.
 
 ## Judging a Step
 
