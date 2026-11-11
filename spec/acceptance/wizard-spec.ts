@@ -175,7 +175,8 @@ describe("Wizard (ig new, interactive)", () => {
 						const extra = Object.fromEntries(s.extra.map(e => [e.key, e.value]));
 						expect(dotnetNewArgs).toEqual([
 							"new", "igb-blazor", "-n", PROJECT_NAME, "-o", PROJECT_NAME,
-							"--Hosting", extra.Hosting, "--Theme", s.theme, "--Variant", extra.Variant
+							"--Hosting", extra.Hosting, "--Theme", s.theme, "--Variant", extra.Variant,
+							...(s.projectId === "empty" ? ["--Empty"] : [])
 						]);
 						expect(PackageManager.installPackages).not.toHaveBeenCalled();
 					} else {
