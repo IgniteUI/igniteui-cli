@@ -39,7 +39,7 @@ const MINI_BREAKPOINT = 1024;
 export class App implements OnInit, AfterViewInit {
   // Start open on wide screens, collapsed (mini) on narrow screens
   public readonly initiallyOpen = window.innerWidth > MINI_BREAKPOINT;
-  public topNavLinks: Array<{ path: string; name: string; icon: string }> = [];
+  public topNavLinks: { path: string; name: string; icon: string }[] = [];
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
 

@@ -21,7 +21,7 @@
       }
     },
     "skipInstall": {
-      "description": "Do not automatically install packages.",
+      "description": "Do not install packages after the project is set up. `ng add igniteui-angular` still installs the packages the new project starts with.",
       "type": "boolean",
       "default": false,
       "alias": "si"

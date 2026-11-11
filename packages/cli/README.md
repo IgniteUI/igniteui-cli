@@ -74,6 +74,7 @@ To create a new project with Ignite UI for Angular use [ig new](https://github.c
 ```bash
 ig new "IG Project" --framework=angular --type=igx-ts --template=side-nav
 ```
+The project is created with the Angular CLI (`ng new`, then `ng add igniteui-angular`), so this needs network access and always installs the project's packages: `--skip-install` has no effect for Angular projects.
 
 The `igniteui-cli` makes full use of the component definitions provided by [`igniteui/angular-templates`](../ng-schematics) package. You can find all of the available component templates in the [official documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/component-templates).
 

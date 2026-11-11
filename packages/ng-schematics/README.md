@@ -18,6 +18,10 @@ If you want to use Ignite UI for Angular controls right off the bat, you can gen
 ng new --collection="@igniteui/angular-schematics"
 ```
 
+The project is created with the Angular CLI's own `ng new` and `ng add igniteui-angular`, so this needs network access and always installs the packages the project starts with. `--skip-install` only skips the final install, which picks up packages the guided setup adds afterwards, and starting the app.
+
+`--dry-run` is not supported: the project is created and installed on disk, which a dry run cannot hold back, so the command stops with an error before creating anything.
+
 ### Add to existing project
 
 You can add the `@igniteui/angular-schematics` collection to an existing Angular project by running:
