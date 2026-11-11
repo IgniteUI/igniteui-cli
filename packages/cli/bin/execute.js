@@ -14,13 +14,14 @@ const args = hideBin(process.argv);
 resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 	let cliPath = "../lib/cli";
 	if (res && res.indexOf(process.cwd()) > -1) {
-		const localVersion = require(path.join(process.cwd(), "node_modules/igniteui-cli/package.json"))["version"];
+		const localPackage = require(path.join(process.cwd(), "node_modules/igniteui-cli/package.json"));
+		const localVersion = localPackage["version"];
 		const globalVersion = require(path.join(__dirname, "../package.json"))["version"];
 		if (globalVersion !== localVersion) {
 			// stderr, because stdout carries the protocol messages when `ig mcp` runs the MCP server
 			console.error("Different igniteui-cli global and local version");
 		}
-		if (args[0] === "update" ? localRunsUpdate(localVersion, globalVersion) : args[0] !== "ai-config") {
+		if (args[0] === "update" ? localRunsUpdate(localVersion, globalVersion, localPackage.engines) : args[0] !== "ai-config") {
 			cliPath = res;
 		}
 	}
@@ -35,16 +36,19 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 });
 
 /**
- * Whether `update` runs with the local CLI: a release of at least 16.0.0 that isn't older than the invoked one, unless
- * IG_DISABLE_VERSION_CHECK is 1 or true, or the invoked CLI is a repository build (its TypeScript source is next to it)
+ * Whether `update` runs with the local CLI: a release of at least 16.0.0 that isn't older than the invoked one and supports
+ * the running Node.js, unless IG_DISABLE_VERSION_CHECK is 1 or true, or the invoked CLI is a repository build (its
+ * TypeScript source is next to it)
  */
-function localRunsUpdate(localVersion, globalVersion) {
+function localRunsUpdate(localVersion, globalVersion, engines) {
 	if (/^(1|true)$/i.test(process.env.IG_DISABLE_VERSION_CHECK || "") || fs.existsSync(path.join(__dirname, "../lib/cli.ts"))) {
 		return false;
 	}
 	const semver = require("semver");
+	const node = engines && engines.node;
 	return semver.valid(localVersion) && semver.valid(globalVersion) &&
-		semver.gte(localVersion, RUNNER_MIN_VERSION) && semver.gte(localVersion, globalVersion);
+		semver.gte(localVersion, RUNNER_MIN_VERSION) && semver.gte(localVersion, globalVersion) &&
+		(!node || semver.satisfies(process.version, node, { includePrerelease: true }));
 }
 
 /**

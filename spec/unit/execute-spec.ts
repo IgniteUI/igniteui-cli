@@ -31,8 +31,8 @@ describe("Unit - execute.js", () => {
 		});
 	}
 
-	function setLocal(version: string) {
-		fs.writeFileSync(localPackage, JSON.stringify({ name: "igniteui-cli", version }));
+	function setLocal(version: string, engines?: object) {
+		fs.writeFileSync(localPackage, JSON.stringify({ name: "igniteui-cli", version, engines }));
 		delete require.cache[localPackage];
 	}
 
@@ -95,6 +95,22 @@ describe("Unit - execute.js", () => {
 
 				expect(await runExecute("update", "igniteui-react")).withContext(`local ${local}, invoked ${invoked}`).toBe(results[i]);
 			}
+		}
+	});
+
+	it("runs update with the local CLI only when it declares no Node.js requirement or one the running Node.js meets", async () => {
+		const expected: [string, object | undefined, string][] = [
+			["16.0.0", undefined, "local"],
+			["16.0.0", { node: ">=0.0.0" }, "local"],
+			["16.0.0", { node: ">=999" }, "invoked"],
+			["16.0.0", { node: "not a range" }, "invoked"],
+			["16.2.0", { node: ">=999" }, "invoked"]
+		];
+		for (const [invoked, engines, result] of expected) {
+			setLocal("16.2.0", engines);
+			publishInvoked(invoked);
+
+			expect(await runExecute("update")).withContext(`invoked ${invoked}, engines ${JSON.stringify(engines)}`).toBe(result);
 		}
 	});
 
