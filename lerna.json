@@ -4,9 +4,5 @@
 		"packages/igniteui-mcp/igniteui-doc-mcp"
 	],
 	"npmClient": "npm",
-	"version": "independent",
-	"changelog": {
-		"repo": "igniteui-cli-repo",
-		"cacheDir": ".changelog"
-	}
+	"version": "independent"
 }
