@@ -576,19 +576,19 @@ describe("Unit - New command", () => {
 			expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
 		});
 
-		it("skips gitInit and next-steps and fails the command when scaffold fails", async () => {
+		it("skips gitInit and next-steps and exits with 1 when scaffold fails", async () => {
 			createScaffoldMocks(false);
 
 			try {
 				await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
 
 				expect(process.exitCode).toBe(1);
-				expect(aiConfig.configure as jasmine.Spy).not.toHaveBeenCalled();
-				expect(Util.gitInit).not.toHaveBeenCalled();
-				expect(Util.log).not.toHaveBeenCalledWith("  dotnet run --project my-blazor");
 			} finally {
 				process.exitCode = undefined;
 			}
+			expect(aiConfig.configure as jasmine.Spy).not.toHaveBeenCalled();
+			expect(Util.gitInit).not.toHaveBeenCalled();
+			expect(Util.log).not.toHaveBeenCalledWith("  dotnet run --project my-blazor");
 		});
 
 		it("honors skip-install (→ SkipRestore) and skip-git", async () => {

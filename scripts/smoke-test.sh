@@ -8,12 +8,13 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CLI_ENTRY="$ROOT/packages/cli/bin/execute.js"
+CLI_LIB="$ROOT/packages/cli/lib/cli.js"
 
 FRAMEWORKS="angular,react,webcomponents"
 PROJECT=""
 TEMPLATES=""
 ALL_PROJECTS=0
+WIZARD=""
 ISOLATE=0
 SKIP_BUILD=0
 KEEP=0
@@ -28,6 +29,9 @@ Usage: scripts/smoke-test.sh [options]
                           jquery and blazor are opt-in, see NOTES
   -p, --project ID        project template to scaffold (default: the framework's own default)
       --all-projects      scaffold+build every project template, skip component adds
+      --wizard COVERAGE   create projects through the interactive wizard (ig new without a name)
+                          instead, one per answer combination, skip component adds; COVERAGE is
+                          each (every answer at least once), pairs (every pair of answers) or all
       --templates LIST    only these component template ids (fast path)
       --isolate           one project per component template (slow, for bisecting)
       --skip-build        scaffold and add only, no install/build
@@ -40,11 +44,15 @@ NOTES
   jquery  13 of its templates pull ignite-ui-full from the Infragistics ProGet feed and
           need credentials; it also has no build script, so only scaffold+add+install run.
   blazor  needs the .NET SDK and has no component templates; only scaffold+dotnet build.
+  wizard  scripts/smoke-wizard.mjs answers the prompts over a pipe, so the CLI sees no TTY and
+          skips the AI config prompts (defaults apply) and Blazor's "Run the app now";
+          spec/acceptance/wizard-spec.ts covers those. The wizard itself runs npm install.
 
 EXAMPLES
   scripts/smoke-test.sh -f angular --templates grid,combo,dock-manager
   scripts/smoke-test.sh
   scripts/smoke-test.sh -f angular --isolate
+  scripts/smoke-test.sh -f angular,react,webcomponents,jquery,blazor --wizard each
 EOF
 }
 
@@ -53,6 +61,9 @@ while [ $# -gt 0 ]; do
 		-f|--frameworks) FRAMEWORKS="$2"; shift 2;;
 		-p|--project) PROJECT="$2"; shift 2;;
 		--all-projects) ALL_PROJECTS=1; shift;;
+		--wizard)
+			case "${2:-}" in each|pairs|all) WIZARD="$2";; *) echo "--wizard needs each, pairs or all" >&2; exit 2;; esac
+			shift 2;;
 		--templates) TEMPLATES="$2"; shift 2;;
 		--isolate) ISOLATE=1; shift;;
 		--skip-build) SKIP_BUILD=1; shift;;
@@ -69,6 +80,13 @@ RESULTS="$OUT/results.tsv"
 SENTINEL_NAME=".smoke-test-workdir"
 
 die() { echo "$*" >&2; exit 2; }
+
+if [ -n "$WIZARD" ]; then
+	[ -n "$PROJECT" ] && die "--wizard picks the project templates itself; drop -p/--project"
+	[ -n "$TEMPLATES" ] && die "--wizard adds no component templates; drop --templates"
+	[ "$ALL_PROJECTS" -eq 1 ] && die "--wizard and --all-projects cannot be combined"
+	[ "$ISOLATE" -eq 1 ] && die "--wizard and --isolate cannot be combined"
+fi
 
 strip_ansi() { sed $'s/\033\\[[0-9;]*[a-zA-Z]//g'; }
 
@@ -100,31 +118,63 @@ count_src_files() {
 	[ -d "$1/src" ] && find "$1/src" -type f | wc -l | tr -d ' ' || echo 0
 }
 
+# Runs this checkout's CLI. bin/execute.js is skipped on purpose: it hands off to a
+# project-local igniteui-cli when one is installed, and Angular projects get one at `new`.
+cli() {
+	node -e 'require(process.argv[1]).run(process.argv.slice(2)).catch(e => { console.error("Error: " + (e.message || e)); process.exit(1); })' \
+		"$CLI_LIB" "$@"
+}
+
 # run_cli <cwd> <logfile> <args...>
 run_cli() {
 	local cwd="$1" log="$2"; shift 2
-	(cd "$cwd" && node "$CLI_ENTRY" "$@") >"$log" 2>&1
+	(cd "$cwd" && cli "$@") >"$log" 2>&1
 }
 
 list_component_ids() {
 	local dir="$1"
 	# a row is one tab then the id; wrapped description lines are indented deeper
-	(cd "$dir" && node "$CLI_ENTRY" list 2>/dev/null) | strip_ansi | awk '/^\t[^\t]/ {print $1}'
+	(cd "$dir" && cli list 2>/dev/null) | strip_ansi | awk '/^\t[^\t]/ {print $1}'
 }
 
 list_project_ids() {
 	local fw="$1"
-	(cd "$OUT" && node "$CLI_ENTRY" list 2>/dev/null) | strip_ansi | awk -v fw="($fw)" '
+	(cd "$OUT" && cli list 2>/dev/null) | strip_ansi | awk -v fw="($fw)" '
 		$0 ~ /^[A-Za-z]/ && index($0, fw) { grab = 1; next }
 		/^[A-Za-z]/ { grab = 0 }
 		grab && /^\t\t/ { sub(/\.\.+.*$/, "", $1); print $1 }
 	'
 }
 
+# finish_scaffold <framework> <dirName> <step> <label> <rc> <log> <start> -> 0 ok
+# Judges a `new` or `wizard` step, records it, and turns off analytics in the new project.
+finish_scaffold() {
+	local fw="$1" dir="$2" step="$3" label="$4" rc="$5" log="$6" start="$7"
+	local created=0
+	if [ "$fw" = "blazor" ]; then
+		# dotnet new writes no ignite-ui-cli.json; the .csproj sits at the root or in <dir>/<dir>/
+		[ -d "$OUT/$dir" ] && [ -n "$(find "$OUT/$dir" -maxdepth 2 -name '*.csproj' -print -quit)" ] && created=1
+	else
+		[ -f "$OUT/$dir/ignite-ui-cli.json" ] && created=1
+	fi
+	if [ "$rc" -ne 0 ] || log_has_error "$log" || [ "$created" -ne 1 ]; then
+		record "$fw" "$step" "$label" "FAIL" "$((SECONDS - start))"
+		echo "  ✗ $step $dir  (see $log)"
+		return 1
+	fi
+	record "$fw" "$step" "$label" "PASS" "$((SECONDS - start))"
+	echo "  ✓ $step $dir"
+	[ "$fw" = "blazor" ] && return 0
+
+	# project scoped, so the user's global config is left alone
+	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
+	return 0
+}
+
 # scaffold <framework> <projectTemplate|""> <dirName> -> 0 ok
 scaffold() {
 	local fw="$1" proj="$2" dir="$3"
-	local type log start rc
+	local type log start
 	type="$(fw_type "$fw")"
 	log="$LOGS/$dir-new.log"
 	rm -rf "$OUT/$dir"
@@ -134,24 +184,20 @@ scaffold() {
 	[ -n "$proj" ] && args+=(--template "$proj")
 
 	run_cli "$OUT" "$log" "${args[@]}"
-	rc=$?
+	finish_scaffold "$fw" "$dir" "new" "${proj:-default}" $? "$log" "$start"
+}
 
-	# Blazor projects come from dotnet new and have no ignite-ui-cli.json
-	local marker="$OUT/$dir/ignite-ui-cli.json"
-	[ "$fw" = "blazor" ] && marker="$OUT/$dir"
-	if [ $rc -ne 0 ] || log_has_error "$log" || [ ! -e "$marker" ] ||
-		{ [ "$fw" = "blazor" ] && ! grep -qF "Project Created" "$log"; }; then
-		record "$fw" "new" "${proj:-default}" "FAIL" "$((SECONDS - start))"
-		echo "  ✗ new $dir  (see $log)"
-		return 1
-	fi
-	record "$fw" "new" "${proj:-default}" "PASS" "$((SECONDS - start))"
-	echo "  ✓ new $dir"
-	[ "$fw" = "blazor" ] && return 0
+# wizard_scaffold <framework> <scenarioId> <dirName> -> 0 ok
+# Creates the project through the interactive wizard (scripts/smoke-wizard.mjs drives the prompts).
+wizard_scaffold() {
+	local fw="$1" id="$2" dir="$3"
+	local log start
+	log="$LOGS/$dir-wizard.log"
+	rm -rf "$OUT/$dir"
+	start=$SECONDS
 
-	# project scoped, so the user's global config is left alone
-	run_cli "$OUT/$dir" "$LOGS/$dir-config.log" config set disableAnalytics true
-	return 0
+	node "$ROOT/scripts/smoke-wizard.mjs" run "$fw" "$id" "$OUT" "$dir" >"$log" 2>&1
+	finish_scaffold "$fw" "$dir" "wizard" "$id" $? "$log" "$start"
 }
 
 # add_template <framework> <dirName> <templateId> -> 0 ok
@@ -188,8 +234,9 @@ install_and_build() {
 
 	if [ "$fw" = "blazor" ]; then
 		start=$SECONDS
-		# Server hosting has no root .sln; the .csproj sits in <dir>/<dir>/
-		(cd "$OUT/$dir" && if ls *.sln >/dev/null 2>&1; then dotnet build; else dotnet build "$dir"; fi) \
+		# Server hosting has no root .sln/.slnx; the .csproj sits in <dir>/<dir>/
+		(cd "$OUT/$dir" && if [ -n "$(find . -maxdepth 1 \( -name '*.sln' -o -name '*.slnx' \) -print -quit)" ]; then
+			dotnet build; else dotnet build "$dir"; fi) \
 			>"$LOGS/$dir-build.log" 2>&1
 		rc=$?
 		[ $rc -eq 0 ] && record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))" \
@@ -235,6 +282,20 @@ run_framework() {
 
 	echo ""
 	echo "=== $fw ($type) ==="
+
+	if [ -n "$WIZARD" ]; then
+		if ! ids="$(node "$ROOT/scripts/smoke-wizard.mjs" list "$fw" "$WIZARD")" || [ -z "$ids" ]; then
+			echo "  ✗ no wizard scenarios listed for $fw" >&2
+			record "$fw" "wizard" "list" "FAIL" 0
+			return 1
+		fi
+		for id in $ids; do
+			dir="$short-w-$id"
+			wizard_scaffold "$fw" "$id" "$dir" || { failed=1; continue; }
+			install_and_build "$fw" "$dir" || failed=1
+		done
+		return $failed
+	fi
 
 	if [ "$ALL_PROJECTS" -eq 1 ]; then
 		for proj in $(list_project_ids "$fw"); do
@@ -283,8 +344,12 @@ run_framework() {
 
 # --- preflight ---------------------------------------------------------------
 
-if [ ! -f "$ROOT/packages/cli/lib/cli.js" ]; then
+if [ ! -f "$CLI_LIB" ]; then
 	echo "CLI is not built. Run 'npm run build' in $ROOT first." >&2
+	exit 1
+fi
+if [ -n "$WIZARD" ] && [ ! -f "$ROOT/spec/helpers/wizard-matrix.js" ]; then
+	echo "spec/helpers/wizard-matrix.js is missing. Run 'npm run build' in $ROOT first." >&2
 	exit 1
 fi
 for bin in node npm; do
@@ -325,7 +390,7 @@ mkdir -p "$LOGS"
 : >"$SENTINEL"
 printf 'framework\tstep\ttemplate\tstatus\tseconds\n' >"$RESULTS"
 
-echo "CLI:  $CLI_ENTRY"
+echo "CLI:  $CLI_LIB"
 echo "Out:  $OUT"
 
 # --- run ---------------------------------------------------------------------
