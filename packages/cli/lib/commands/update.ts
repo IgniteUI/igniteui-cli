@@ -147,9 +147,9 @@ const command: UpdateCommandType = {
 				if (migrate.migrateOnly && !migrate.name && !migrate.from) {
 					return fail("--migrate-only needs --from <version>, or --name <migration>.");
 				}
-				const runner = selectRunner(flags.verbose, requests, migrate.migrateOnly);
+				const runner = argv.rawArgs && selectRunner(flags.verbose, requests, migrate.migrateOnly);
 				if (runner) {
-					process.exitCode = runTemporaryCli(runner, flags.verbose);
+					process.exitCode = runTemporaryCli(runner, argv.rawArgs!, flags.verbose);
 					return;
 				}
 				return migrate.migrateOnly

@@ -49,7 +49,7 @@ export function selectRunner(verbose: boolean, requests: PackageRequest[], migra
 	return semver.valid(runner?.version) ?? undefined;
 }
 
-export function runTemporaryCli(version: string, verbose: boolean): number {
+export function runTemporaryCli(version: string, cliArgs: string[], verbose: boolean): number {
 	const running = Util.version(PACKAGE_JSON);
 	Util.log(`igniteui-cli ${version} is available (running ${running}). Installing it temporarily to run this update…`);
 	// Ctrl+C reaches npm or the new CLI, which end; this process stays to clean up
@@ -77,7 +77,7 @@ export function runTemporaryCli(version: string, verbose: boolean): number {
 		if (typeof bin !== "string") {
 			throw new Error(`igniteui-cli ${version} has no "ig" command.`);
 		}
-		const child = spawnSync(process.execPath, [path.join(packageDir, bin), ...process.argv.slice(2)],
+		const child = spawnSync(process.execPath, [path.join(packageDir, bin), ...cliArgs],
 			{ stdio: "inherit", env: { ...process.env, IG_DISABLE_VERSION_CHECK: "1", IG_CLI_ANALYTICS: "false" } });
 		if (child.error) {
 			return fail(`Couldn't start igniteui-cli ${version}.`, child.error.message, running);

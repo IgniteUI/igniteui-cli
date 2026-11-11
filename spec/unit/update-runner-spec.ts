@@ -155,6 +155,7 @@ describe("Unit - update runner", () => {
 	describe("runTemporaryCli", () => {
 		const RECOVERY = "To run this update with igniteui-cli 16.0.0 instead, set IG_DISABLE_VERSION_CHECK=1 and rerun the command.";
 		const INSTALLED = { bin: { ig: "bin/execute.js" } };
+		const ARGS = ["update", "igniteui-react@>=19 <20", "--dry-run"];
 		let originalCwd: string;
 		let originalArgv: string[];
 		let project: string;
@@ -174,7 +175,7 @@ describe("Unit - update runner", () => {
 			originalArgv = process.argv;
 			project = fs.mkdtempSync(path.join(os.tmpdir(), "igniteui-runner-project-"));
 			process.chdir(project);
-			process.argv = [process.execPath, "execute.js", "update", "igniteui-react", "--dry-run"];
+			process.argv = [process.execPath, "host.js", "new", "my-app"];
 			existsSync.and.callThrough();
 			version.and.returnValue("16.0.0");
 			mkdtemp = spyOn(fs, "mkdtempSync").and.callThrough();
@@ -203,16 +204,16 @@ describe("Unit - update runner", () => {
 			fs.rmSync(project, { recursive: true, force: true });
 		});
 
-		it("installs the version into a temporary directory and reruns the command with it, returning its exit code", () => {
+		it("installs the version into a temporary directory and reruns the given arguments with it, not the process's, returning its exit code", () => {
 			const sigint = process.listenerCount("SIGINT");
 
-			expect(runTemporaryCli("16.2.1", false)).toBe(3);
+			expect(runTemporaryCli("16.2.1", ARGS, false)).toBe(3);
 			expect(dir().startsWith(path.join(os.tmpdir(), "igniteui-cli-update-"))).toBeTrue();
 			expect(spawnSync.calls.allArgs()).toEqual([
 				["npm", ["install", "igniteui-cli@16.2.1", "--prefix", dir(), "--no-save", "--no-package-lock", "--no-audit", "--no-fund",
 					"--ignore-scripts", "--include=optional", "--prefer-offline=false", "--prefer-online", "--loglevel=error"],
 					{ shell: true, stdio: ["ignore", "ignore", "inherit"] }],
-				[process.execPath, [path.join(dir(), "node_modules", "igniteui-cli", "bin", "execute.js"), "update", "igniteui-react", "--dry-run"],
+				[process.execPath, [path.join(dir(), "node_modules", "igniteui-cli", "bin", "execute.js"), ...ARGS],
 					{ stdio: "inherit", env: jasmine.objectContaining({ IG_DISABLE_VERSION_CHECK: "1", IG_CLI_ANALYTICS: "false" }) }]
 			]);
 			expect(seen).toEqual([{ npmrc: undefined, sigint: sigint + 1 }, { npmrc: undefined, sigint: sigint + 1 }]);
@@ -224,7 +225,7 @@ describe("Unit - update runner", () => {
 		it("copies the project .npmrc for the install only, without printing it", () => {
 			fs.writeFileSync(".npmrc", "//registry.example/:_authToken=SECRET\n");
 
-			expect(runTemporaryCli("16.2.1", true)).toBe(3);
+			expect(runTemporaryCli("16.2.1", ARGS, true)).toBe(3);
 			expect(seen.map(s => s.npmrc)).toEqual(["//registry.example/:_authToken=SECRET\n", undefined]);
 			expect(JSON.stringify((Util.log as jasmine.Spy).calls.allArgs())).not.toContain("SECRET");
 		});
@@ -234,13 +235,13 @@ describe("Unit - update runner", () => {
 			for (const [result, code] of results) {
 				child = result;
 
-				expect(runTemporaryCli("16.2.1", false)).withContext(JSON.stringify(result)).toBe(code);
+				expect(runTemporaryCli("16.2.1", ARGS, false)).withContext(JSON.stringify(result)).toBe(code);
 			}
 			expect(Util.error).not.toHaveBeenCalled();
 
 			child = { status: null, error: new Error("spawnSync node EACCES") };
 
-			expect(runTemporaryCli("16.2.1", false)).toBe(1);
+			expect(runTemporaryCli("16.2.1", ARGS, false)).toBe(1);
 			expect(Util.error).toHaveBeenCalledOnceWith("Couldn't start igniteui-cli 16.2.1.", "red");
 			expect(Util.warn).toHaveBeenCalledOnceWith("spawnSync node EACCES", "red");
 			expect(Util.log).toHaveBeenCalledWith(RECOVERY);
@@ -260,7 +261,7 @@ describe("Unit - update runner", () => {
 				install = result;
 				installed = manifest;
 
-				expect(runTemporaryCli("16.2.1", false)).withContext(JSON.stringify(result)).toBe(1);
+				expect(runTemporaryCli("16.2.1", ARGS, false)).withContext(JSON.stringify(result)).toBe(1);
 				expect(spawnSync.calls.allArgs().map(([command]) => command)).toEqual(["npm"]);
 				expect(Util.warn).toHaveBeenCalledWith(details, "red");
 				expect(fs.existsSync(dir())).toBeFalse();
@@ -269,7 +270,7 @@ describe("Unit - update runner", () => {
 			spawnSync.calls.reset();
 			npmCommand.and.throwError('Unable to run npm through cmd.exe with the argument "C:\\a%b".');
 
-			expect(runTemporaryCli("16.2.1", false)).toBe(1);
+			expect(runTemporaryCli("16.2.1", ARGS, false)).toBe(1);
 			expect(spawnSync).not.toHaveBeenCalled();
 			expect(Util.warn).toHaveBeenCalledWith('Unable to run npm through cmd.exe with the argument "C:\\a%b".', "red");
 			expect(fs.existsSync(dir())).toBeFalse();
@@ -290,7 +291,7 @@ describe("Unit - update runner", () => {
 				rmSync(file, options);
 			});
 
-			expect(runTemporaryCli("16.2.1", true)).toBe(3);
+			expect(runTemporaryCli("16.2.1", ARGS, true)).toBe(3);
 			expect(sigintWhileRemoving).toBe(sigint + 1);
 			expect(process.listenerCount("SIGINT")).toBe(sigint);
 			expect(Util.log).toHaveBeenCalledWith(`Unable to remove ${dir()}: EBUSY`, "gray");

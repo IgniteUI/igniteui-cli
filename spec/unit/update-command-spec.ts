@@ -5,6 +5,7 @@ import * as Module from "module";
 import * as os from "os";
 import * as path from "path";
 import * as versionUpdate from "../../packages/core/update/version-update";
+import * as cli from "../../packages/cli/lib/cli";
 import { default as updateCmd } from "../../packages/cli/lib/commands/update";
 import * as updateMigrations from "../../packages/cli/lib/commands/update-migrations";
 import * as updateRunner from "../../packages/cli/lib/commands/update-runner";
@@ -40,8 +41,9 @@ describe("Unit - Update command", () => {
 	}
 
 	type Flags = Partial<Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose" | "migrateOnly", boolean>> &
-		{ packages?: string[]; from?: string; to?: string; name?: string };
-	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
+		{ packages?: string[]; from?: string; to?: string; name?: string; rawArgs?: string[] };
+	const RAW_ARGS = ["update", "<as typed>"];
+	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", rawArgs: RAW_ARGS, ...args });
 	const updateWc = (args: Flags = {}) => run({ packages: [WC], ...args });
 	const installOptions = () => ({ stdio: "inherit" as const, env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 	const gitOptions = () => ({ encoding: "utf8", env: { ...process.env, LC_ALL: "C" } });
@@ -1593,7 +1595,7 @@ describe("Unit - Update command", () => {
 
 			expect(selectRunner.calls.allArgs()).toEqual(cases.map(([, args]) =>
 				[!!args.verbose, (args.packages ?? [WC]).map(versionUpdate.splitPackage), !!(args.migrateOnly || args.name)]));
-			expect(runTemporaryCli.calls.allArgs()).toEqual(cases.map(([, args]) => ["16.2.1", !!args.verbose]));
+			expect(runTemporaryCli.calls.allArgs()).toEqual(cases.map(([, args]) => ["16.2.1", RAW_ARGS, !!args.verbose]));
 			expect(getPlan).not.toHaveBeenCalled();
 			expect(spawnSync).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
@@ -1606,7 +1608,7 @@ describe("Unit - Update command", () => {
 		it("posts one screenview and one event when delegating", async () => {
 			project();
 
-			await updateCmd.handler({ _: [], $0: "ig", packages: [WC] });
+			await updateCmd.handler({ _: [], $0: "ig", packages: [WC], rawArgs: RAW_ARGS });
 
 			expect((GoogleAnalytics.post as jasmine.Spy).calls.allArgs()).toEqual([
 				[{ t: "screenview", cd: "Update" }],
@@ -1625,6 +1627,26 @@ describe("Unit - Update command", () => {
 			expect(selectRunner).toHaveBeenCalledOnceWith(false, [{ name: WC }], false);
 			expect(runTemporaryCli).not.toHaveBeenCalled();
 			expect(getPlan).toHaveBeenCalled();
+			expect(log()).toContain("Dry run: no files were changed.");
+		});
+
+		it("reruns the exact arguments of run() with the temporary CLI, not the process's, and updates in-process for a string", async () => {
+			project();
+			const getPlan = plan();
+			getConfig.and.returnValue({ customTemplates: [] } as any);
+			const originalArgv = process.argv;
+			const args = ["update", `${WC}@>=6 <7`, "--dry-run", "--si", "--verbose"];
+			process.argv = [process.execPath, "host.js", "new", "my-app"];
+			try {
+				await cli.run(args);
+				await cli.run(`update ${WC} --dry-run`);
+			} finally {
+				process.argv = originalArgv;
+			}
+
+			expect(runTemporaryCli).toHaveBeenCalledOnceWith("16.2.1", args, true);
+			expect(selectRunner).toHaveBeenCalledTimes(1);
+			expect(getPlan).toHaveBeenCalledTimes(1);
 			expect(log()).toContain("Dry run: no files were changed.");
 		});
 
