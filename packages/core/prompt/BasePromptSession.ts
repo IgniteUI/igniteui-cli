@@ -75,6 +75,7 @@ export abstract class BasePromptSession {
 					skipGit: this.config.skipGit
 				});
 				if (!success) {
+					process.exitCode = 1;
 					return;
 				}
 				// move cwd to project folder

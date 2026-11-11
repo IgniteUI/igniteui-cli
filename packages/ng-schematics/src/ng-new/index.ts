@@ -1,10 +1,6 @@
 import {
-	apply,
+	callRule,
 	chain,
-	empty,
-	MergeStrategy,
-	mergeWith,
-	move,
 	Rule,
 	schematic,
 	SchematicContext,
@@ -12,23 +8,40 @@ import {
 	TaskId,
 	Tree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RepositoryInitializerTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
+// not exported from the package root; start/index.ts imports it the same way
+import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
-import { defer, Observable } from "rxjs";
-import { NewProjectOptions } from "../app-projects/schema";
+import { defer, map, Observable } from "rxjs";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
+/** Runs a rule with the project folder as the root of the tree */
+function inProject(getName: () => string, rule: Rule): Rule {
+	return (tree: Tree, context: SchematicContext) =>
+		callRule(rule, new ScopedTree(tree, getName()), context).pipe(map(() => tree));
+}
+
+/** Whether the workflow runs with `--dry-run`, which workflows keep to themselves: BaseWorkflow, which the Angular CLI's extends, in `_dryRun` */
+function isDryRun(context: SchematicContext): boolean {
+	return !!(context.engine.workflow as any)?._dryRun;
+}
+
 export function newProject(options: OptionsSchema): Rule {
-	return (_host: Tree, _hostContext: SchematicContext) => {
+	return (_host: Tree, hostContext: SchematicContext) => {
+		// the scaffold writes the project and installs its packages on disk, past the workflow's dry-run sink and task skipping
+		if (isDryRun(hostContext)) {
+			throw new SchematicsException("--dry-run is not supported: `ng new` and `ng add igniteui-angular` "
+				+ "create the project and install its packages on disk.");
+		}
 		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "New"
 		});
 		let projLibrary: ProjectLibrary;
-		let projectOptions: NewProjectOptions;
+		let theme: string;
 		const templateManager = new SchematicsTemplateManager();
 		App.container.set(TEMPLATE_MANAGER, templateManager);
 		const prompt = new SchematicsPromptSession();
@@ -90,21 +103,12 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 						projTemplate = project;
 					}
-					const theme = projLibrary.themes[themeIndex];
+					theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
-					// project options:
 					// cache available views and components, same as in component Schematic
 					const components = projLibrary.components;
 					const views = (projLibrary as any).customTemplates;
-
-					projectOptions = {
-						config: projTemplate.generateConfig(options.name, theme),
-						templateId: projTemplate.id,
-						templatePaths: [...projTemplate.templatePaths],
-						theme,
-						name: options.name
-					};
 
 					GoogleAnalytics.post({
 						t: "event",
@@ -121,56 +125,53 @@ export function newProject(options: OptionsSchema): Rule {
 					return tree;
 				});
 			},
-			mergeWith(
-				apply(empty(), [
-					// TODO: Task chain based on @schematics/angular ng-new schematic
-					// externalSchematic("@schematics/angular", "workspace", { name: options.name }),
-					// externalSchematic("@schematics/angular", "application", {
-					// 	projectRoot: "", name: options.name, skipInstall: true, routing: true, style: "scss"
-					// }),
-					(tree: Tree, _context: SchematicContext) => {
-						setVirtual(tree);
-						// extend project entry point:
-						return schematic("app-projects", projectOptions);
-					},
-					(tree: Tree, _context: SchematicContext) => {
-						// extend project entry point:
-						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
-						if (tree.exists("gitignore")) {
-							tree.rename("gitignore", ".gitignore");
-						}
-					},
-					// run full schematic for args/prompts
-					schematic("ai-config", {}),
-					(tree: Tree, context: SchematicContext) => {
-						if (!nameProvided) {
-							return defer(async () => {
-								prompt.setContext(context, tree, options.name as string);
-								await prompt.chooseActionLoop(projLibrary);
-								return tree;
-							});
-						}
-					},
-					(_tree: Tree, _context: SchematicContext) => {
-						// move late so name can be resolved before use
-						return move(options.name!);
+			(tree: Tree, _context: SchematicContext): Observable<Tree> => {
+				// the same scaffold as `ig new`: the Angular CLI creates the project on disk, the tree reads it from there
+				return defer(async () => {
+					const schematicsPackage = require("../../package.json");
+					const success = await projTemplate.scaffold!({
+						name: options.name!,
+						theme,
+						skipInstall: options.skipInstall,
+						skipGit: true,
+						// `ng add igniteui-angular` adds this package to the project
+						extraConfig: { cliPackage: schematicsPackage.name, cliVersion: schematicsPackage.version }
+					});
+					if (!success) {
+						throw new SchematicsException("Project creation failed.");
 					}
-				]), MergeStrategy.Overwrite
-			),
-			(tree: Tree, _context: SchematicContext) => {
-				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
+					return tree;
+				});
+			},
+			// run full schematic for args/prompts
+			inProject(() => options.name!, schematic("ai-config", {})),
+			inProject(() => options.name!, (projectTree: Tree, context: SchematicContext) => {
+				if (!nameProvided) {
 					return defer(async () => {
-						setVirtual(tree);
-						await projTemplate.upgradeIgniteUIPackages(options.name || "", "");
-						return tree;
+						setVirtual(projectTree);
+						prompt.setContext(context, projectTree, options.name as string);
+						await prompt.chooseActionLoop(projLibrary);
+						return projectTree;
 					});
 				}
-			},
+			}),
+			inProject(() => options.name!, (projectTree: Tree, _context: SchematicContext) => {
+				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
+					return defer(async () => {
+						setVirtual(projectTree);
+						await projTemplate.upgradeIgniteUIPackages("", "");
+						return projectTree;
+					});
+				}
+			}),
 			(tree: Tree, context: SchematicContext) => {
 				const installChain: TaskId[] = [];
-				if (!options.skipInstall) {
+				// the scaffold installed the packages; only the guided loop (no name) can add some or switch to the licensed feed after it
+				if (!options.skipInstall && !nameProvided) {
+					// with npm, as the scaffold created the project (package.json `packageManager`, angular.json `cli.packageManager`);
+					// the workflow's default is whichever manager the Angular CLI picked, e.g. yarn, which refuses such a project
 					const installTask = context.addTask(
-						new NodePackageInstallTask(options.name),
+						new NodePackageInstallTask({ workingDirectory: options.name, packageManager: "npm" }),
 						[...installChain]);
 					installChain.push(installTask);
 				}
