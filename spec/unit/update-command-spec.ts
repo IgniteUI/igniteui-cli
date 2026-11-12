@@ -5,8 +5,10 @@ import * as Module from "module";
 import * as os from "os";
 import * as path from "path";
 import * as versionUpdate from "../../packages/core/update/version-update";
+import * as cli from "../../packages/cli/lib/cli";
 import { default as updateCmd } from "../../packages/cli/lib/commands/update";
 import * as updateMigrations from "../../packages/cli/lib/update/migration-runner";
+import * as updateRunner from "../../packages/cli/lib/update/update-runner";
 
 describe("Unit - Update command", () => {
 	const WC = "igniteui-webcomponents";
@@ -39,8 +41,9 @@ describe("Unit - Update command", () => {
 	}
 
 	type Flags = Partial<Record<"dryRun" | "skipInstall" | "force" | "allowDirty" | "verbose" | "migrateOnly", boolean>> &
-		{ packages?: string[]; from?: string; to?: string; name?: string };
-	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", ...args });
+		{ packages?: string[]; from?: string; to?: string; name?: string; rawArgs?: string[] };
+	const RAW_ARGS = ["update", "<as typed>"];
+	const run = (args: Flags = {}) => updateCmd.update({ _: [], $0: "ig", rawArgs: RAW_ARGS, ...args });
 	const updateWc = (args: Flags = {}) => run({ packages: [WC], ...args });
 	const installOptions = () => ({ stdio: "inherit" as const, env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "false" } });
 	const gitOptions = () => ({ encoding: "utf8", env: { ...process.env, LC_ALL: "C" } });
@@ -1592,6 +1595,119 @@ describe("Unit - Update command", () => {
 
 			expect(log()).not.toContain("If ng update reported incompatible peer dependencies");
 			expect(process.exitCode).toBe(1);
+		});
+	});
+
+	describe("temporary runner", () => {
+		let selectRunner: jasmine.Spy;
+		let runTemporaryCli: jasmine.Spy;
+
+		beforeEach(() => {
+			selectRunner = spyOn(updateRunner, "selectRunner").and.returnValue("16.2.1");
+			runTemporaryCli = spyOn(updateRunner, "runTemporaryCli").and.returnValue(3);
+		});
+
+		it("delegates React and Web Components updates with packages whatever the flags, doing nothing else but setting the exit code", async () => {
+			const original = project();
+			const getPlan = plan();
+			const cases: [string, Flags][] = [
+				["webcomponents", {}],
+				["react", { packages: ["igniteui-react@^19", "igniteui-cli@17", WC] }],
+				["webcomponents", { dryRun: true }],
+				["webcomponents", { skipInstall: true }],
+				["webcomponents", { force: true, allowDirty: true, verbose: true }],
+				["webcomponents", { packages: ["igniteui-cli@17"], migrateOnly: true, from: "1.0.0" }],
+				["webcomponents", { name: "later" }]
+			];
+			for (const [framework, args] of cases) {
+				configure(framework);
+				process.exitCode = originalExitCode;
+				await updateWc(args);
+				expect(process.exitCode).withContext(JSON.stringify(args)).toBe(3);
+			}
+
+			expect(selectRunner.calls.allArgs()).toEqual(cases.map(([, args]) =>
+				[!!args.verbose, (args.packages ?? [WC]).map(versionUpdate.splitPackage), !!(args.migrateOnly || args.name)]));
+			expect(runTemporaryCli.calls.allArgs()).toEqual(cases.map(([, args]) => ["16.2.1", RAW_ARGS, !!args.verbose]));
+			expect(getPlan).not.toHaveBeenCalled();
+			expect(spawnSync).not.toHaveBeenCalled();
+			expect(execSync).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(posted()).toEqual([]);
+			expect(read("package.json")).toBe(original);
+		});
+
+		it("posts one screenview and one event when delegating", async () => {
+			project();
+
+			await updateCmd.handler({ _: [], $0: "ig", packages: [WC], rawArgs: RAW_ARGS });
+
+			expect((GoogleAnalytics.post as jasmine.Spy).calls.allArgs()).toEqual([
+				[{ t: "screenview", cd: "Update" }],
+				[{ t: "event", ec: "$ig update", cd1: "webcomponents" }]
+			]);
+			expect(runTemporaryCli).toHaveBeenCalledTimes(1);
+		});
+
+		it("updates in-process when no runner is selected", async () => {
+			selectRunner.and.returnValue(undefined);
+			project();
+			const getPlan = plan();
+
+			await updateWc({ dryRun: true });
+
+			expect(selectRunner).toHaveBeenCalledOnceWith(false, [{ name: WC }], false);
+			expect(runTemporaryCli).not.toHaveBeenCalled();
+			expect(getPlan).toHaveBeenCalled();
+			expect(log()).toContain("Dry run: no files were changed.");
+		});
+
+		it("reruns the exact arguments of run() with the temporary CLI, not the process's, and updates in-process for a string", async () => {
+			project();
+			const getPlan = plan();
+			getConfig.and.returnValue({ customTemplates: [] } as any);
+			const originalArgv = process.argv;
+			const args = ["update", `${WC}@>=6 <7`, "--dry-run", "--si", "--verbose"];
+			process.argv = [process.execPath, "host.js", "new", "my-app"];
+			try {
+				await cli.run(args);
+				await cli.run(`update ${WC} --dry-run`);
+			} finally {
+				process.argv = originalArgv;
+			}
+
+			expect(runTemporaryCli).toHaveBeenCalledOnceWith("16.2.1", args, true);
+			expect(selectRunner).toHaveBeenCalledTimes(1);
+			expect(getPlan).toHaveBeenCalledTimes(1);
+			expect(log()).toContain("Dry run: no files were changed.");
+		});
+
+		it("doesn't select a runner for discovery, invalid arguments, other frameworks or Angular", async () => {
+			project();
+			spyOn(versionUpdate, "discoverUpdates").and.resolveTo({ updates: [], failures: [] });
+			await run();
+			await run({ packages: ["Fixture-lib"] });
+			await updateWc({ migrateOnly: true, skipInstall: true });
+			await updateWc({ migrateOnly: true });
+			configure("jquery");
+			await updateWc();
+			configure("angular");
+			const ngBin = path.join(tempDir, "node_modules", "@angular", "cli", "bin", "ng.js");
+			fs.mkdirSync(path.dirname(ngBin), { recursive: true });
+			fs.writeFileSync(ngBin, "");
+			project({ dependencies: { "igniteui-angular": "~21.0.0" } });
+			spawnSync.and.returnValue({ status: 0 });
+			await run({ packages: ["igniteui-angular"] });
+
+			expect(selectRunner).not.toHaveBeenCalled();
+			expect(runTemporaryCli).not.toHaveBeenCalled();
+			expect(output).toContain("No updates available for the packages that support ig update.");
+			expect(output).toContain(`Invalid package name "Fixture-lib".`);
+			expect(output).toContain("--skip-install can't be combined with --migrate-only or --name.");
+			expect(output).toContain("--migrate-only needs --from <version>, or --name <migration>.");
+			expect(output).toContain("Updating jquery projects with ig update is not supported.");
+			expect(spawnSync).toHaveBeenCalledOnceWith("node", [ngBin, "update", "igniteui-angular"], { stdio: "inherit" });
 		});
 	});
 });

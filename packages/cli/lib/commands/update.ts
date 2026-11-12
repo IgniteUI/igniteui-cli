@@ -11,6 +11,7 @@ import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
 import { checkDevKit, runMigrations } from "../update/migration-runner";
+import { runTemporaryCli, selectRunner } from "../update/update-runner";
 
 const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
 
@@ -136,6 +137,14 @@ const command: UpdateCommandType = {
 				} catch (error) {
 					return fail("Invalid package arguments.", (error as Error).message);
 				}
+				if (migrate.migrateOnly && !migrate.name && !migrate.from) {
+					return fail("--migrate-only needs --from <version>, or --name <migration>.");
+				}
+				const runner = argv.rawArgs && selectRunner(flags.verbose, requests, migrate.migrateOnly);
+				if (runner) {
+					process.exitCode = runTemporaryCli(runner, argv.rawArgs!, flags.verbose);
+					return;
+				}
 				const identified = identifyFramework(framework, configured);
 				return migrate.migrateOnly
 					? migrateOnly(requests[0], migrate, flags, identified)
@@ -192,8 +201,6 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		if (!required.length) {
 			return fail("Unable to run the migrations.", `${name} has no migration named "${migrate.name}".`);
 		}
-	} else if (!migrate.from) {
-		return fail("--migrate-only needs --from <version>, or --name <migration>.");
 	} else {
 		const from = coerceVersionNumber(migrate.from);
 		const to = coerceVersionNumber(migrate.to ?? JSON.parse(fs.readFileSync(manifest, "utf8")).version);

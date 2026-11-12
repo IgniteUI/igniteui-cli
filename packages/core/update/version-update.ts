@@ -538,8 +538,8 @@ function rangeOperator(declared: string): string {
 	return ["^", "~"].find(op => semver.validRange(op + min) === semver.validRange(declared)) ?? "";
 }
 
-function npmView(spec: string, fields: string[], verbose: boolean) {
-	return parseView(spec, spawnSync(...npmViewCommand(spec, fields, verbose)));
+export function npmView(spec: string, fields: string[], verbose: boolean, npmArgs: string[] = []) {
+	return parseView(spec, spawnSync(...npmViewCommand(spec, fields, verbose, npmArgs)));
 }
 
 async function npmViewAsync(spec: string, fields: string[], verbose: boolean) {
@@ -581,25 +581,35 @@ function parseView(spec: string, result: NpmResult) {
 	throw new Error(message);
 }
 
-function npmViewCommand(spec: string, fields: string[], verbose: boolean): [string, string[], { encoding: "utf8"; maxBuffer: number; shell?: boolean }] {
+function npmViewCommand(spec: string, fields: string[], verbose: boolean, npmArgs: string[] = []):
+	[string, string[], { encoding: "utf8"; maxBuffer: number; shell?: boolean }] {
 	debug(verbose, `npm view "${spec}" ${fields.join(" ")}`);
 	const request = splitPackage(spec);
 	if (!isPackageName(request.name) || request.spec !== undefined && !isRegistrySpec(request.spec)) {
 		throw new Error(`Invalid package "${spec}".`);
 	}
-	const args = ["view", spec, ...fields, "--json"];
+	const [command, args, shellOptions] = npmCommand(["view", spec, ...fields, "--json", ...npmArgs]);
 	// a large package's version line can exceed the 1 MiB default
-	const options = { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 } as const;
+	return [command, args, { encoding: "utf8", maxBuffer: 64 * 1024 * 1024, ...shellOptions }];
+}
+
+/** npm with `args`, run without a shell unless npm's CLI script isn't next to this Node.js on Windows */
+export function npmCommand(args: string[]): [string, string[], { shell?: boolean }] {
 	if (process.platform !== "win32") {
-		return ["npm", args, options];
+		return ["npm", args, {}];
 	}
 	// npm.cmd only runs in a shell, so run npm's CLI script with this Node.js
 	const script = path.join(path.dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
 	if (existsSync(script)) {
-		return [process.execPath, [script, ...args], options];
+		return [process.execPath, [script, ...args], {}];
 	}
-	// arguments are validated specs or constants, quoted for cmd.exe (`^`, `<`, `>`); joined, as Node.js deprecates args with `shell`
-	return [["npm", ...args.map(arg => `"${arg}"`)].join(" "), [], { ...options, shell: true }];
+	// quoted for cmd.exe (`^`, `<`, `>`), which still expands `%` and `!` and can't take `"` or line breaks;
+	// joined, as Node.js deprecates args with `shell`
+	const unsafe = args.find(arg => /["%!\r\n]/.test(arg));
+	if (unsafe !== undefined) {
+		throw new Error(`Unable to run npm through cmd.exe with the argument "${unsafe}".`);
+	}
+	return [["npm", ...args.map(arg => `"${arg}"`)].join(" "), [], { shell: true }];
 }
 
 function readPackageJson() {

@@ -1,5 +1,6 @@
 import { App, GoogleAnalytics, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 import {
 	add,
 	aiConfig,
@@ -41,6 +42,7 @@ export async function run(args: string | string[]) {
 	];
 
 	const yargsModule = args ? yargs(args) : yargs;
+	const rawArgs = !args ? hideBin(process.argv) : Array.isArray(args) ? args : undefined;
 	let helpShown = false;
 	let chain = yargsModule
 		.scriptName("ig")
@@ -104,7 +106,7 @@ export async function run(args: string | string[]) {
 		.help().alias("help", "h")
 		.parseAsync(
 			args, // the args to parse to argv
-			{}, // docs say context to pass in to handlers, but nuh-uh, it's just garbage
+			{ rawArgs }, // context, merged into the argv every handler receives
 			async (err, argv, output) => {
 				// `argv._` are the positional arguments passed in to the script
 				const command = argv._[0];
