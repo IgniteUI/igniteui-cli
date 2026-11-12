@@ -15,7 +15,7 @@ scripts/smoke-test.sh           # scaffold + add every template + install + buil
 
 Tests are Jasmine specs under `spec/` (unit + acceptance) and within individual packages.
 
-`scripts/smoke-test.sh` is the only check that a generated project actually installs and builds — the Jasmine specs stub `PackageManager.installPackages`. Run it after touching anything under `packages/cli/templates/` or `packages/igx-templates/`. Running one spec file, the specs that guard templates, running the smoke test, reading its results and editing the script: `igniteui-cli-smoke-test` skill.
+`scripts/smoke-test.sh` is the only check that a generated project actually installs and builds — the Jasmine specs stub `PackageManager.installPackages` and the Angular CLI. Run it after touching anything under `packages/cli/templates/` or `packages/igx-templates/`. Running one spec file, the specs that guard templates, running the smoke test, reading its results and editing the script: `igniteui-cli-smoke-test` skill.
 
 ### MCP Server (`packages/igniteui-mcp/igniteui-doc-mcp`)
 
@@ -57,6 +57,7 @@ Adding or changing an MCP tool (schema, handler, description, tests, every doc t
 
 - Placeholders are substituted by the CLI, not a template engine: `<%=ClassName%>` style in Angular templates, `$(ClassName)` style in React and Web Components templates
 - Templates in `packages/cli/templates/**/files/` and `packages/igx-templates/`
+- Angular projects are created by `ng new` + `ng add igniteui-angular` at the `IGNITEUI_ANGULAR_PACKAGE` range (`ig new` and the `ng-new` schematic alike); igx-ts project `files/` are an overlay on that, and changes to generated files are patches in `packages/igx-templates/igx-ts/projects/_base/scaffold.ts` (`igniteui-cli-template-anatomy` skill)
 - Component/template IDs (e.g., "grid", "combo") used by `ig add` command
 - Default framework is **jQuery** when not specified
 

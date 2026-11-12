@@ -287,6 +287,26 @@ describe("Unit - Util", () => {
 		});
 	});
 
+	describe("childStdin", () => {
+		it("inherits stdin only from a terminal", () => {
+			const original = Object.getOwnPropertyDescriptor(process.stdin, "isTTY");
+			const setTTY = (value: boolean | undefined) =>
+				Object.defineProperty(process.stdin, "isTTY", { value, configurable: true, writable: true });
+			try {
+				setTTY(true);
+				expect(Util.childStdin()).toBe("inherit");
+				setTTY(undefined);
+				expect(Util.childStdin()).toBe("ignore");
+			} finally {
+				if (original) {
+					Object.defineProperty(process.stdin, "isTTY", original);
+				} else {
+					delete (process.stdin as any).isTTY;
+				}
+			}
+		});
+	});
+
 	describe("gitInit", () => {
 		it("initializes and commits the project", () => {
 			const execSpy = spyOn(Util, "execSync");
@@ -301,6 +321,18 @@ describe("Unit - Util", () => {
 				["git commit -m \"Initial commit for project\"", options]
 			]);
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(/Git Initialized and Project 'proj' Committed/));
+		});
+
+		it("passes git the stdin from childStdin", () => {
+			const execSpy = spyOn(Util, "execSync");
+			spyOn(Util, "log");
+			spyOn(Util, "childStdin").and.returnValue("ignore");
+
+			Util.gitInit("parent", "proj");
+
+			for (const call of execSpy.calls.all()) {
+				expect((call.args[1] as any).stdio).toEqual(["ignore", "ignore", "ignore"]);
+			}
 		});
 
 		it("logs an error when git fails", () => {

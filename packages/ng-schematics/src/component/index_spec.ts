@@ -168,4 +168,30 @@ describe("component", () => {
 		expect(mockTemplate.registerInProject).not.toHaveBeenCalled();
 		expect(runner.tasks.map(t => t.name)).toEqual(["run-schematic"]);
 	});
+
+	it("generates a template chosen in the prompt session, keeping its prototype methods", async () => {
+		createMocks([]);
+		// like the real templates: methods on the prototype, which a `structuredClone` of the schematic options drops
+		class ClassTemplate {
+			public id = "grid";
+			public name = "Grid";
+			public hasExtraConfiguration = false;
+			public templatePaths: string[] = [];
+			public packages = ["igniteui-angular-charts@~19.0.0"];
+			public generateConfig(_name: string, _options: {}) { return {}; }
+			public registerInProject(_path: string, _name: string, _options: {}) { }
+		}
+		const generateSpy = spyOn(ClassTemplate.prototype, "generateConfig").and.callThrough();
+		const registerSpy = spyOn(ClassTemplate.prototype, "registerInProject");
+		spyOn(SchematicsPromptSession.prototype, "chooseActionLoop").and.callFake(async function (this: any) {
+			spyOn(this, "chooseTemplateName").and.resolveTo("my-grid");
+			expect(await this.templateSelectedTask()(undefined, { template: new ClassTemplate() })).toBe(true);
+		});
+
+		const state = await runner.runSchematic("component", { name: "my-grid" }, createTree());
+
+		expect(generateSpy).toHaveBeenCalledWith("my-grid", {});
+		expect(registerSpy).toHaveBeenCalledWith("", "my-grid", { skipRoute: false, modulePath: undefined });
+		expect(JSON.parse(state.readContent("/package.json")).dependencies).toEqual({ "igniteui-angular-charts": "~19.0.0" });
+	});
 });

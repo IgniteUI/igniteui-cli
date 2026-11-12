@@ -6,7 +6,7 @@ license: MIT
 
 # Ignite UI CLI: Build, Template Specs, Smoke Test
 
-`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages`, so a green Jasmine run says nothing about real npm resolution or TypeScript compilation of generated code. Run the build and the template specs first: they are fast and catch id and pin mistakes before a slow smoke run.
+`scripts/smoke-test.sh` is the **only** check that a generated project actually installs and builds. Jasmine stubs `PackageManager.installPackages` and the Angular CLI (`ng new` / `ng add`, which create every Angular project), so a green Jasmine run says nothing about real npm resolution, what the current Angular CLI generates, or TypeScript compilation of generated code. Run the build and the template specs first: they are fast and catch id and pin mistakes before a slow smoke run.
 
 ## Build and Template Specs
 
@@ -20,17 +20,19 @@ license: MIT
 
 | Spec | Guards |
 |---|---|
-| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates and project `package.json` equals `IGNITEUI_ANGULAR_PACKAGE` |
+| `spec/templates/angular-spec.ts` | Template ids exist; no file collisions between templates; every `igniteui-angular` pin in templates equals `IGNITEUI_ANGULAR_PACKAGE`; project templates carry none of the files the Angular CLI generates and the scaffold patches (`angular.json`, `package.json`, tsconfigs, `src/main.ts`) |
+| `spec/templates/angular-scaffold-spec.ts` | The Angular project scaffold, against the stubbed Angular CLI: command sequence, every patch to the generated `angular.json`, `package.json` and tsconfigs, the projects' `extras`, cleanup on failure |
 | `spec/templates/react-spec.ts` | Same, for all four `IGNITEUI_REACT_*` constants |
 | `spec/templates/webcomponents-spec.ts` | Ids and collisions only. It does **not** check version pins against the constants |
 | `spec/templates/template-contracts-spec.ts` | Every jQuery, React, Web Components and Blazor project and component template: matches its framework and project type, its template paths exist, it generates a config |
 | `spec/unit/TemplateManager-spec.ts`, `spec/unit/list-spec.ts` | Template discovery and `ig list` output |
 | `spec/acceptance/*` | `ig new`, `ig add`, `ig generate` end to end, with package install stubbed |
+| `spec/acceptance/wizard-spec.ts` | The interactive `ig new` wizard for every answer combination of every framework (scenarios from `spec/helpers/wizard-matrix.ts`): the exact prompts asked, the generated config and template files, the `dotnet new` arguments for Blazor, and the AI config files. Answers are scripted through `inquirerWrapperTesting.promptDelegates`; install, git and `dotnet` are stubbed |
 
 The template specs for a framework run in about 15 seconds, after `npm run build`:
 
 ```bash
-npx jasmine spec/templates/angular-spec.js
+npx jasmine spec/templates/angular-spec.js spec/templates/angular-scaffold-spec.js
 npx jasmine spec/templates/react-spec.js spec/templates/template-contracts-spec.js
 npx jasmine spec/templates/webcomponents-spec.js spec/templates/template-contracts-spec.js
 ```
@@ -47,11 +49,14 @@ Preconditions: `npm run build` has run (the script refuses otherwise); `node` an
 | All component templates, one framework | `scripts/smoke-test.sh -f webcomponents` | a few min |
 | Every project template, one framework | `scripts/smoke-test.sh -f angular --all-projects` | ~2 min for Web Components; Angular is slowest |
 | Bisect which template breaks a build | `scripts/smoke-test.sh -f angular --isolate --templates a,b,c` | slow |
+| Create projects through the interactive wizard | `scripts/smoke-test.sh -f blazor --wizard pairs` | ~10 s per Blazor project; npm frameworks ~1-3 min each |
 | Keep generated projects for inspection | add `--keep` | |
 
 Defaults: angular, react, webcomponents; default project template; all component templates. jQuery and Blazor are opt-in (`-f jquery`, `-f blazor`): jQuery needs ProGet credentials for 13 templates and has no build; Blazor needs the .NET SDK and has no component templates.
 
-`--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own `files/package.json` (e.g. Angular `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`. Hidden projects can also reuse another project's `files/` through `templatePaths` (Angular `side-nav-mini-auth` includes `side-nav-auth/files`, manifest included), so a change there needs a `-p` run for each project that pulls it in.
+`--wizard each|pairs|all` creates each project through the interactive `ig new` wizard instead of `ig new <name>`: `scripts/smoke-wizard.mjs` sends arrow keys and Enter over a pipe and fails on any unexpected prompt, an answer the prompt does not offer, or a prompt sequence that differs from `spec/helpers/wizard-matrix.ts`. The scenarios come from the registered templates; `each` covers every answer at least once, `pairs` every pair of answers, `all` every combination. Without a TTY the CLI skips the AI config prompts and Blazor's "Run the app now", so those are covered only by `wizard-spec.ts`. The wizard runs `npm install` itself (its "Complete and Install packages" step), then the usual `install`/`build` steps run. Results rows use the step `wizard` and the scenario id; logs are `<fw-short>-w-<scenario>-wizard.log`.
+
+`--all-projects` takes its list from `ig list`, so **hidden project templates** (`isHidden = true` in the project's `index.ts`, e.g. `base`, `side-nav-auth`, `ai-config`) are not scaffolded. Most reuse the `_base` / `_base_with_home` files; a hidden project with its own packages (a `files/package.json`, or Angular `extras` as in `side-nav-auth`) is covered only by `scripts/smoke-test.sh -f <fw> -p <project-id>`. Hidden projects can also reuse another project's `files/` through `templatePaths` (Angular `side-nav-mini-auth` includes `side-nav-auth/files` and its packages), so a change there needs a `-p` run for each project that pulls it in.
 
 Runs longer than a few minutes: use a long command timeout, or run it in the background with output redirected to a file and wait for the process to exit. The `Results:` line is not the end: when nothing failed and `--keep` is not set, the script deletes the generated projects after printing it. The script **wipes its `--out` directory at start**, so give each run its own directory (e.g. `--out output/smoke-react`, `--out output/smoke-react-projects`) when you need more than one run's results, and never run two at once into the same directory.
 
@@ -59,7 +64,7 @@ In a cloud agent session (time-limited, see `AGENTS.md`), the build is already d
 
 ## Results
 
-- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `add`, `install`, `doctor`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
+- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `wizard`, `add`, `install`, `doctor`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
 - `output/smoke/logs/<dir>-<step>[-<id>].log`, where `<dir>` is `<fw-short>-<project>` (or `<fw-short>-<id>` with `--isolate`) and `<fw-short>` is `ng`, `rc`, `wc`, `jq`, `bz`. Examples: `rc-default-add-rating.log`, `wc-default-install.log`, `ng-default-doctor.log`, `ng-default-build.log`.
 - Generated projects are deleted on full success unless `--keep`; on any failure they are kept under `output/smoke/<dir>/`.
 
@@ -89,7 +94,7 @@ The test runners use browser mode with Playwright Chromium. If one fails because
 
 ## Judging a Step
 
-**Exit codes alone are not trustworthy**: `Util.error` logs and returns without setting a code. The script already judges each step on exit code **plus** a log scan (`doesn't exist|is not valid|not supported|not found|^Error: |Error installing|npm error`) **plus** an artifact check (`ignite-ui-cli.json` after `new`; more files under `src/` after `add`). Trust `results.tsv`, then read the log for the reason.
+**Exit codes alone are not trustworthy**: `Util.error` logs and returns without setting a code. The script already judges each step on exit code **plus** a log scan (`doesn't exist|is not valid|not supported|not found|^Error: |Error installing|npm error`) **plus** an artifact check (`ignite-ui-cli.json` after `new` and `wizard`, or the project folder for Blazor, which has no `ignite-ui-cli.json`; more files under `src/` after `add`). Trust `results.tsv`, then read the log for the reason.
 
 ## Classifying Failures
 
@@ -116,7 +121,7 @@ The test runners use browser mode with Playwright Chromium. If one fails because
 
 ## Mapping an Install Error Back to Source
 
-A pin in an install error comes from one of: the template's variant `index.ts` (`this.packages`), the framework's `constants.ts`, or a project template's `files/package.json`. See the template-anatomy skill.
+A pin in an install error comes from one of: the template's variant `index.ts` (`this.packages`), the framework's `constants.ts`, or a project template's `files/package.json`. An Angular project's own packages follow `IGNITEUI_ANGULAR_PACKAGE`: `igniteui-angular` at that range, the rest at whatever `ng add` and the project's `extras` resolve, so an install error there is an upstream peer conflict (template-anatomy skill, "Angular Projects").
 
 ## Mapping a Build Error Back to Template Source
 
@@ -151,7 +156,7 @@ End with the PASS/FAIL/SKIP totals, whether the run as a whole is trustworthy (n
 
 ## Constraints When Editing the Script
 
-- Every `ig` call must happen **before** `npm install` in a generated project. After install, `bin/execute.js` delegates to the project-local *published* CLI, so later calls would test the published CLI, not your local build.
+- Call the CLI through `cli` (which loads `packages/cli/lib/cli.js`), never `bin/execute.js`. The wrapper hands off to a project-local `igniteui-cli` whenever one is installed, and Angular projects install one during `ig new`, so calls through it would test the published CLI, not this checkout.
 - Keep the three-way step judgement (exit code, log scan, artifact) intact.
 
 ## Related Skills
