@@ -465,6 +465,24 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith("stderr");
 	});
 
+	it("detects the package managers from the packageManager field, else from the lockfiles, else npm", () => {
+		let files: string[] = [];
+		const mockFs: Partial<IFileSystem> = { fileExists: (file: string) => files.includes(file) };
+		spyOn(App.container, "get").and.returnValue(mockFs);
+		const detect = (packageManager: unknown, lockfiles: string[]) => {
+			files = lockfiles;
+			return PackageManager.detectManagers(packageManager);
+		};
+
+		expect(detect("pnpm@9.12.0", ["package-lock.json"])).toEqual(["pnpm"]);
+		expect(detect("yarn", ["package-lock.json"])).toEqual(["yarn"]);
+		expect(detect("cnpm@9.0.0", ["yarn.lock"])).toEqual(["yarn"]);
+		expect(detect(undefined, ["npm-shrinkwrap.json"])).toEqual(["npm"]);
+		expect(detect(undefined, ["bun.lockb"])).toEqual(["bun"]);
+		expect(detect(undefined, ["bun.lock", "pnpm-lock.yaml", "yarn.lock", "package-lock.json"])).toEqual(["npm", "yarn", "pnpm", "bun"]);
+		expect(detect(undefined, [])).toEqual(["npm"]);
+	});
+
 	describe("ensureIgniteUISource upgrade edge cases", () => {
 		class TestPackageManager extends PackageManager {
 			public static ensureRegistryUser(_config: Config): boolean { return true; }
