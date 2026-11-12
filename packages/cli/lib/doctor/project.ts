@@ -24,8 +24,15 @@ export function checkConfig(): CheckResult {
 		return { id, group: GROUP, status: "fail", detail: (error as Error).message, fix: `Fix the JSON in ${file}` };
 	}
 
+	if (!framework) {
+		return {
+			id, group: GROUP, status: "skip",
+			detail: `${file} sets no project.framework; the framework is detected from the project files`
+		};
+	}
+
 	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
-	const library = framework ? templateManager.getProjectLibrary(framework.toLowerCase(), projectType) : null;
+	const library = templateManager.getProjectLibrary(framework.toLowerCase(), projectType);
 	if (!library) {
 		return {
 			id, group: GROUP, status: "fail",

@@ -154,13 +154,22 @@ describe("Unit - Doc command", () => {
 			expect((Util.error as jasmine.Spy).calls.mostRecent().args[0]).toContain("--open");
 			expect(loadDocs).not.toHaveBeenCalled();
 		});
-		it("Should point jQuery projects to the browser search", async () => {
+		it("Should open the browser search for jQuery projects", async () => {
+			const loadDocs = stubDocs();
+			detectSpy.and.returnValue("jquery");
+			spyOn(doc, "open");
+			spyOn(Util, "log");
+			await doc.handler({ term: "grid", _: ["doc"], $0: "doc" });
+			expect((Util.log as jasmine.Spy).calls.first().args[0]).toContain("no bundled docs for jquery");
+			expect(doc.open).toHaveBeenCalledWith("https://www.infragistics.com/search?q=grid");
+			expect(loadDocs).not.toHaveBeenCalled();
+		});
+		it("Should report jQuery projects that ask to read a doc", async () => {
 			const loadDocs = stubDocs();
 			detectSpy.and.returnValue("jquery");
 			spyOn(Util, "error");
-			await doc.handler({ term: "grid", _: ["doc"], $0: "doc" });
+			await doc.handler({ read: "grid", _: ["doc"], $0: "doc" });
 			expect((Util.error as jasmine.Spy).calls.mostRecent().args[0]).toContain("no bundled docs for jquery");
-			expect((Util.error as jasmine.Spy).calls.mostRecent().args[0]).toContain("--open");
 			expect(loadDocs).not.toHaveBeenCalled();
 		});
 		it("Should report when the docs database is not available", async () => {

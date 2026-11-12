@@ -11,6 +11,15 @@ export const shell = {
 		} catch {
 			return null;
 		}
+	},
+	/** Runs a command; `output` is its stdout on success and its stderr on failure. */
+	attempt(command: string, timeout = 10000): { ok: boolean, output: string } {
+		try {
+			const output = execSync(command, { stdio: ["ignore", "pipe", "pipe"], encoding: "utf8", timeout }).trim();
+			return { ok: true, output };
+		} catch (error) {
+			return { ok: false, output: String((error as { stderr?: unknown }).stderr ?? "") };
+		}
 	}
 };
 
@@ -26,7 +35,7 @@ export function compareVersions(a: Version, b: Version): number {
 }
 
 /**
- * Checks a version against the common range forms: exact, `^`, `~` and `>=`.
+ * Checks a version against the common range forms: exact, partial (`22`, `22.2`), `^`, `~` and `>=`.
  * @returns `null` for anything else (tags, URLs, compound ranges), which is not evaluated
  */
 export function satisfies(version: string, range: string): boolean | null {
@@ -48,6 +57,12 @@ export function satisfies(version: string, range: string): boolean | null {
 		case "~":
 			return notOlder && actual[0] === base[0] && (match[3] === undefined || actual[1] === base[1]);
 		default:
+			if (match[3] === undefined) {
+				return actual[0] === base[0];
+			}
+			if (match[4] === undefined) {
+				return actual[0] === base[0] && actual[1] === base[1];
+			}
 			return compareVersions(actual, base) === 0;
 	}
 }

@@ -78,6 +78,10 @@ describe("Unit - Doctor", () => {
 			expect(satisfies("7.3.2", "7.3.2")).toBeTrue();
 			expect(satisfies("7.3.3", "7.3.2")).toBeFalse();
 			expect(satisfies("7.3.3", ">=7.0.0")).toBeTrue();
+			expect(satisfies("22.2.1", "22")).toBeTrue();
+			expect(satisfies("23.0.0", "22")).toBeFalse();
+			expect(satisfies("22.2.1", "22.2")).toBeTrue();
+			expect(satisfies("22.3.0", "22.2")).toBeFalse();
 		});
 		it("does not evaluate other ranges", () => {
 			expect(satisfies("1.0.0", "latest")).toBeNull();
@@ -158,6 +162,11 @@ describe("Unit - Doctor", () => {
 			localConfig.and.returnValue({ project: { framework: "angular", projectType: "igr-ts" } } as any);
 			expect(checkConfig().status).toBe("fail");
 		});
+		it("skips a config file that sets no framework", () => {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ customTemplates: [] } as any);
+			expect(checkConfig().status).toBe("skip");
+		});
 		it("reports a package.json that doesn't parse", () => {
 			expect(checkPackageJson(context()).status).toBe("ok");
 			expect(checkPackageJson(context({ hasPackageJson: false, packageJson: null })).status).toBe("skip");
@@ -236,27 +245,36 @@ describe("Unit - Doctor", () => {
 			expect(results[0].fix).toContain("npm config set @infragistics:registry");
 		});
 		it("fails when not logged in to the registry", () => {
-			spyOn(shell, "run").and.callFake((command: string) =>
-				command.startsWith("npm config") ? "https://packages.infragistics.com/npm/js-licensed/" : null);
+			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
+			spyOn(shell, "attempt").and.returnValue({ ok: false, output: "npm error code ENEEDAUTH" });
 			const results = feedChecks(context({ packageJson }));
 			expect(results.map(x => x.status)).toEqual(["ok", "fail"]);
 			expect(results[1].fix)
 				.toBe("Run: npm login --registry=https://packages.infragistics.com/npm/js-licensed/ --scope=@infragistics");
 		});
+		it("warns when the login cannot be checked", () => {
+			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
+			spyOn(shell, "attempt").and.returnValue({ ok: false, output: "" });
+			const results = feedChecks(context({ packageJson }));
+			expect(results.map(x => x.status)).toEqual(["ok", "warn"]);
+			expect(results[1].detail).toContain("Could not check the login");
+		});
 		it("passes when logged in", () => {
-			const run = spyOn(shell, "run").and.callFake((command: string) =>
-				command.startsWith("npm config") ? "https://packages.infragistics.com/npm/js-licensed/" : "jane");
+			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
+			const attempt = spyOn(shell, "attempt").and.returnValue({ ok: true, output: "jane" });
 			const results = feedChecks(context({ packageJson }));
 			expect(results.map(x => x.status)).toEqual(["ok", "ok"]);
 			expect(results[1].detail).toBe("Logged in as jane");
-			expect(run).toHaveBeenCalledWith(
+			expect(attempt).toHaveBeenCalledWith(
 				"npm whoami --registry=https://packages.infragistics.com/npm/js-licensed/", jasmine.any(Number));
 		});
 		it("does not check the login when offline", () => {
 			const run = spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
+			const attempt = spyOn(shell, "attempt");
 			const results = feedChecks(context({ packageJson, offline: true }));
 			expect(results.map(x => x.status)).toEqual(["ok", "skip"]);
 			expect(run).toHaveBeenCalledTimes(1);
+			expect(attempt).not.toHaveBeenCalled();
 		});
 	});
 

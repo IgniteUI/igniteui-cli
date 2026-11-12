@@ -2,6 +2,7 @@ import { detectFramework, GoogleAnalytics, InquirerWrapper, Util } from "@ignite
 import { formatSearchResults, parseSearchResults, formatDoc } from "../doc-format";
 import { PromptSession } from "../PromptSession";
 import { DocCommandType, DocsProvider, PositionalArgs } from "./types";
+import { pathToFileURL } from "url";
 import { ArgumentsCamelCase } from "yargs";
 
 const DOC_FRAMEWORKS = [
@@ -133,9 +134,10 @@ const doc: DocCommandType = {
 		await open.default(target);
 	},
 	loadDocs: async () => {
-		// resolved at runtime only: the ESM package exposes this subpath through its `exports` map
-		const entry = "@igniteui/mcp-server/docs";
-		return import(entry);
+		// tsc turns import() into require() here, which older Node versions refuse for an ESM package
+		const entry = pathToFileURL(require.resolve("@igniteui/mcp-server/docs")).href;
+		// eslint-disable-next-line no-new-func
+		return new Function("specifier", "return import(specifier)")(entry);
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -158,7 +160,9 @@ const doc: DocCommandType = {
 			return doc.handler(argv);
 		}
 
-		if (argv.open && !Util.isAlphanumericExt(argv.term)) {
+		const detected = argv.framework ? null : detectFramework();
+		const noBundledDocs = !!detected && !DOC_FRAMEWORKS.some(x => x.value === detected);
+		if ((argv.open || noBundledDocs) && !Util.isAlphanumericExt(argv.term)) {
 			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
 			"Name should start with a letter and can also contain numbers, dashes and spaces.",
 			"red");
@@ -172,6 +176,10 @@ const doc: DocCommandType = {
 		});
 
 		if (argv.open) {
+			return openInBrowser(argv.term);
+		}
+		if (noBundledDocs) {
+			Util.log(`There are no bundled docs for ${detected}, searching the Infragistics website instead.`);
 			return openInBrowser(argv.term);
 		}
 		return searchLocal(argv);
