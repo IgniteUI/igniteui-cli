@@ -252,6 +252,7 @@ describe("Unit - Package Manager", () => {
 	});
 
 	it("Should run installPackages properly with error code", async () => {
+		spyOn(Util, "childStdin").and.returnValue("ignore");
 		const mockProjectConfig = { packagesInstalled: false } as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -268,11 +269,12 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: ["inherit"], killSignal: "SIGINT" });
+			{ stdio: ["ignore", "ignore", "pipe"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 	});
 	it("Should run installPackages properly without error code", async () => {
+		spyOn(Util, "childStdin").and.returnValue("ignore");
 		const mockProjectConfig = { packagesInstalled: false } as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -284,11 +286,12 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: ["inherit"], killSignal: "SIGINT" });
+			{ stdio: ["ignore", "ignore", "pipe"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 	});
 	it("Should exit on installPackages if child install is terminated", async () => {
+		spyOn(Util, "childStdin").and.returnValue("ignore");
 		const mockProjectConfig = { packagesInstalled: false, disableAnalytics: true } as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -303,7 +306,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: ["inherit"], killSignal: "SIGINT" });
+			{ stdio: ["ignore", "ignore", "pipe"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 	});

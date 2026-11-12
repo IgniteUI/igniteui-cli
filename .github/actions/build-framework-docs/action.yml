@@ -62,11 +62,11 @@ runs:
     - uses: actions/setup-node@v6
       with:
         node-version: 24.x
-        cache: yarn
+        cache: npm
 
     - name: Install packages
       shell: bash
-      run: yarn --frozen-lockfile
+      run: npm ci
 
     - name: Move submodules to ${{ inputs.submodule-branch }}
       shell: bash

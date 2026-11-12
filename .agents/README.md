@@ -24,7 +24,7 @@ Each procedure is written once, as a skill in `.agents/skills/` ([Agent Skills](
 | [`igniteui-cli-ai-config-skills-refresh`](./skills/igniteui-cli-ai-config-skills-refresh/SKILL.md) | Workflow | Bundled `ai-config` skills | Mirror the framework repositories' `skills/` into the `ai-config` templates. In `dry-run` mode: what changed upstream and content issues |
 | [`igniteui-cli-mcp-tool`](./skills/igniteui-cli-mcp-tool/SKILL.md) | Workflow | MCP server `src/`, tests, tool docs | Add an MCP server tool or change an existing one. Its `scripts/call-tool.mjs` calls a tool on the built server over stdio |
 | [`igniteui-cli-smoke-test`](./skills/igniteui-cli-smoke-test/SKILL.md) | Reference | — | Build, running one spec file, specs that guard templates, running the smoke test, checking kept projects, triaging failures ("Triaging a Run"), editing the script |
-| [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
+| [`igniteui-cli-template-anatomy`](./skills/igniteui-cli-template-anatomy/SKILL.md) | Reference | — | Template layout per framework, model templates, how Angular projects are created from `ng new`, every place versions are pinned, parity auditing ("Auditing Parity Across Frameworks") |
 
 The workflows triage their own smoke runs; use the smoke-test skill directly for a run you started by hand.
 
@@ -86,7 +86,7 @@ Every limit on the workflows (the git rules, the "Maintenance Workflows" rules i
 
 ### Cloud Agent
 
-Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. Its environment comes from `.github/workflows/copilot-setup-steps.yml` (install, build, Playwright Chromium), which takes effect only once it is on `master`. The agent's firewall allows the npm and yarn registries and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
+Copilot cloud agent reads `AGENTS.md` and the skills in `.agents/skills/` on its own. The repository has no custom setup steps, so a session starts from a plain checkout: it runs `npm ci` and `npm run build` itself, and cannot download Playwright's Chromium, so generated projects' browser tests do not run there. The agent's firewall allows the npm registry (all the repository installs from) and `raw.githubusercontent.com`. `igniteui-cli-ai-config-skills-refresh` also calls `api.github.com` (two requests per framework); if that host is blocked, add it to the repository's Copilot firewall allowlist. Sessions end after 59 minutes, so ask for one framework or a scoped smoke run per task.
 
 ---
 

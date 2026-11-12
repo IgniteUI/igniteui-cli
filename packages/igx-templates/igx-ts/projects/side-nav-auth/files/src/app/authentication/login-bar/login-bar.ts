@@ -46,9 +46,7 @@ export class LoginBar {
   private externalAuth = inject(ExternalAuth);
   private router = inject(Router);
 
-  public get isProfileRoute() {
-    return false;
-  }
+  public readonly isProfileRoute = false;
 
   openDialog() {
     this.loginDialog().open();
