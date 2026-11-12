@@ -21,14 +21,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
+        package-manager-cache: false # automatic caching needs a committed lock file
         # cache: 'npm' # enable after committing lock file from first install
     - run: npm i # replace with 'npm ci' after committing lock file from first install
     - name: Set environment variable for basename
@@ -43,8 +44,9 @@ jobs:
     - name: SPA routing handling
       run: cp ./dist/index.html ./dist/404.html
     - name: Upload build artifact to GitHub Pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v5
       with:
         path: ./dist
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+      id: deployment
+      uses: actions/deploy-pages@v5
