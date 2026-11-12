@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="control-item fintech-play-controls">
-      <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 [multiSelection]="false"
+      <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 selectionMode="single"
         [values]="controls" (selected)="onButtonAction($event)"></igx-buttongroup>
     </div>
   </div>
@@ -104,7 +104,7 @@
     </igx-column>
     <igx-column field="Chart" width="60px" [hidden]="false" [filterable]="false">
       <ng-template igxCell let-cell="cell" class="center-text">
-        <button class="button-icon" igxButton="icon" igxRippleCentered="true" tabindex="-1">
+        <button class="button-icon" igxIconButton="flat" igxRippleCentered="true" tabindex="-1">
           <igx-icon family="material" (click)="openSingleRowChart(cell)">insert_chart_outlined</igx-icon>
         </button>
       </ng-template>
