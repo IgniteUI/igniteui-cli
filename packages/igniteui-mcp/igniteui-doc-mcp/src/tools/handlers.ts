@@ -2,9 +2,16 @@ import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { ApiDocLoader } from '../lib/api-doc-loader.js';
 import { searchApiDocs, extractSection, extractMember } from '../lib/api-doc-search.js';
 import type { ImportResolver, ResolvedImport } from '../lib/import-resolver.js';
+import type { DocEntry } from '../lib/types/docs.types.js';
 import type { GetApiReferenceParams, ResolveImportParams, SearchApiParams } from './schemas.js';
 import { getPlatformConfig, PLATFORMS, type Platform } from '../config/platforms.js';
 import { findDeprecation, formatDeprecationNotice, withDeprecationNotices, type Deprecation } from '../config/deprecations.js';
+
+// Answers look the same for every release, so each one names the release it describes.
+function withPackage(docLoader: ApiDocLoader, entry: DocEntry, text: string): string {
+  const packages = docLoader.getPackageVersions(entry);
+  return packages.length > 0 ? `Package: ${packages.join(', ')}\n\n${text}` : text;
+}
 
 export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
@@ -67,7 +74,7 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       const match = extractMember(content, member);
       if (match) {
         const text = `${entry.component}.${match.name} (${match.section}):\n${match.line}`;
-        return { content: [{ type: "text", text }] };
+        return { content: [{ type: "text", text: withPackage(docLoader, entry, text) }] };
       }
       return {
         content: [{
@@ -83,11 +90,11 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       const extracted = extractSection(content, section);
       if (extracted) {
         const header = `# ${entry.component} (${entry.platform}) - ${section}\n\n`;
-        return { content: [{ type: "text", text: header + extracted }] };
+        return { content: [{ type: "text", text: withPackage(docLoader, entry, header + extracted) }] };
       }
     }
 
-    return { content: [{ type: "text", text: content }] };
+    return { content: [{ type: "text", text: withPackage(docLoader, entry, content) }] };
   };
 }
 
@@ -111,10 +118,12 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
     const lines = hits.map(h => {
       const platformTag = `[${h.entry.platform}]`;
       const typeTag = `[${h.entry.type}]`;
+      const packages = docLoader.getPackageVersions(h.entry);
+      const pkgTag = packages.length > 0 ? ` [${packages.join(', ')}]` : "";
       const kwTag = h.entry.keywords.length
         ? `\nKeywords: ${h.entry.keywords.join(", ")}`
         : "";
-      return `**${h.entry.component}** ${platformTag} ${typeTag} (${h.matches} matches)${kwTag}\n${h.excerpt}`;
+      return `**${h.entry.component}** ${platformTag} ${typeTag}${pkgTag} (${h.matches} matches)${kwTag}\n${h.excerpt}`;
     });
 
     const frameworks = new Set(hits.map(h => h.entry.platform));

@@ -544,11 +544,11 @@ npx @modelcontextprotocol/inspector ig mcp           # via CLI (after build:mcp-
 | Tool | Parameters | Description |
 |------|-----------|-------------|
 | `list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
-| `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
+| `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension. The frontmatter has a `package` line with the package and version of the doc's components in the bundled API reference |
 | `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
 | `get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
-| `get_api_reference` | `platform` (required), `component` (required), `section?`, `member?` | Retrieve API reference for a component or class. With no optional args, returns the full entry. Pass `section="properties\|methods\|events"` for one section, or `member="<name>"` to return just one property/method/event line. `member` takes precedence over `section`. Also tolerates `component="Name#member"` shorthand. |
-| `search_api` | `framework` (required), `query` (required) | Search API entries by keyword, feature, or partial component name. Returns up to 10 results ranked by match count |
+| `get_api_reference` | `platform` (required), `component` (required), `section?`, `member?` | Retrieve API reference for a component or class. With no optional args, returns the full entry. Pass `section="properties\|methods\|events"` for one section, or `member="<name>"` to return just one property/method/event line. `member` takes precedence over `section`. Also tolerates `component="Name#member"` shorthand. Every response starts with a `Package: <name>@<version>` line. |
+| `search_api` | `framework` (required), `query` (required) | Search API entries by keyword, feature, or partial component name. Returns up to 10 results ranked by match count, each tagged with the package and version it describes (e.g. `igniteui-react-grids@19.9.1`) |
 
 #### get_project_setup_guide
 

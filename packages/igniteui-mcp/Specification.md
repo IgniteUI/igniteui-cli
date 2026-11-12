@@ -76,6 +76,7 @@ The server exposes six core tools built using the `@modelcontextprotocol/sdk` an
 - On HTTP 404: does **not** throw or propagate an exception — returns a structured MCP tool-level error response (see Error Response Contract below)
 - On any other HTTP error status: throws, which the MCP transport surfaces as an unhandled tool error
 - In local mode, successful responses reconstruct YAML frontmatter including `component`, `toc_name`, `keywords`, `summary`, and `premium` when present
+- In both modes, adds a `package` line after `component` with the package and version of the doc's components in the bundled API reference (e.g. `package: igniteui-react-grids@19.9.1`); omitted when none of them is in the API reference
 
 **Schema**:
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
@@ -157,7 +158,7 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 - Output is text, not structured JSON
 - Returns an empty-query message immediately if the input is blank
 
-**Return**: Up to 10 ranked text results. Use the exact `component` name and `platform` from a result to call `get_api_reference`.
+**Return**: Up to 10 ranked text results, each tagged with the package and version it describes (e.g. `igniteui-react-grids@19.9.1`). Use the exact `component` name and `platform` from a result to call `get_api_reference`.
 
 ### **get_api_reference**
 **Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, Web Components, and Blazor. Component name matching is case-insensitive.
@@ -173,7 +174,7 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 - `platform`: Enum (angular|react|webcomponents|blazor) — required
 - `section`: Enum (all|properties|methods|events) — optional; defaults to `all`
 
-**Return**: Formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
+**Return**: A `Package: <name>@<version>` line naming the release the entry describes, then formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
 
 #### Error Response Contract
 
