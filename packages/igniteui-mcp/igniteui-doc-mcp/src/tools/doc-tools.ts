@@ -1,4 +1,7 @@
 import type { DocsProvider } from '../providers/DocsProvider.js';
+import type { ApiDocLoader } from '../lib/api-doc-loader.js';
+import { inferPlatform } from '../lib/import-resolver.js';
+import type { Platform } from '../config/platforms.js';
 import { BLAZOR_DOTNET_GUIDE, SETUP_DOCS, SETUP_MD } from './constants.js';
 
 export const MISSING_FRAMEWORK_MESSAGE =
@@ -428,4 +431,27 @@ export async function buildProjectSetupGuide(
     SETUP_MD[framework] ??
     `No setup guide available for framework: ${framework}`
   );
+}
+
+/**
+ * Adds a `package:` line to a doc's frontmatter naming the package and release
+ * of each component the doc lists, taken from the bundled API reference.
+ * Docs whose components are not in the API reference are returned unchanged.
+ */
+export function addPackageVersions(text: string, framework: Platform, docLoader: ApiDocLoader): string {
+  const frontmatter = text.match(/^---\r?\n[\s\S]*?\r?\n---/)?.[0];
+  const componentLine = frontmatter?.match(/^component:[ \t]*(.+)$/m);
+  if (!componentLine) return text;
+
+  const packages = new Set<string>();
+  for (const name of componentLine[1].split(',').map(n => n.trim()).filter(Boolean)) {
+    // A doc can list another framework's components: Angular breadcrumbs uses the Igc web components.
+    const entry = docLoader.get(inferPlatform(name) ?? framework, name);
+    for (const pkg of entry ? docLoader.getPackageVersions(entry) : []) packages.add(pkg);
+  }
+  if (packages.size === 0) return text;
+
+  const line = componentLine[0].trimEnd();
+  const eol = frontmatter?.includes('\r\n') ? '\r\n' : '\n';
+  return text.replace(line, () => `${line}${eol}package: ${[...packages].join(', ')}`);
 }

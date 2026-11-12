@@ -1,10 +1,10 @@
-# Ignite UI for Angular Dashboards v22.0.0 — Full API Reference
+# Ignite UI for Angular Dashboards v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Dashboards package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Dashboards package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-dashboards
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -186,28 +186,6 @@ The value provided should be an array of CSS color strings or JavaScript objects
 - **findByName**(name: string): any
 - **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxDashboardTileCustomizationComponent
-- static **register**(): void
-
-### [IgxDashboardTileCustomizationDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileCustomizationDynamicModule)
-
-- **constructor**(): IgxDashboardTileCustomizationDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileCustomizationDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileCustomizationDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileCustomizationDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxDashboardTileCustomizationModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileCustomizationModule)
-
-- **constructor**(): IgxDashboardTileCustomizationModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileCustomizationModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileCustomizationModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileCustomizationModule, never, [any, any], [any]>`
-
-### [IgxDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileDynamicModule)
-
-- **constructor**(): IgxDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileDynamicModule, never, [any, any, any, any, any, any, any, any, any, any, any, any, any, any], [any, any, any, any, any, any, any, any, any, any, any, any, any]>`
 
 ### [IgxDashboardTileFilterStringErrorsParsingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileFilterStringErrorsParsingEventArgs)
 Represents event arguments for when there are errors parsing the filter string
@@ -233,27 +211,6 @@ Represents a collection of grouping elements that are applied to a data source o
 - **remove**(item: IgxDashboardTileGroupDescription): boolean
 - **removeAt**(index: number): IgxDashboardTileGroupDescription
 
-### [IgxDashboardTileGroupDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileGroupDescriptionDynamicModule)
-
-- **constructor**(): IgxDashboardTileGroupDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileGroupDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileGroupDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileGroupDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDashboardTileGroupDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileGroupDescriptionModule)
-
-- **constructor**(): IgxDashboardTileGroupDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileGroupDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileGroupDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileGroupDescriptionModule, never, [any], never>`
-
-### [IgxDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileModule)
-
-- **constructor**(): IgxDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileModule, never, [any, any, any, any, any, any, any, any, any, any, any, any, any], [any, any, any, any, any, any, any, any, any, any, any, any]>`
-
 ### [IgxDashboardTileSortDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSortDescription)
 Represents an element in the current sort applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
@@ -277,20 +234,6 @@ Represents a collection of sort elements that are applied to a data source or pr
 - **insert**(index: number, item: IgxDashboardTileSortDescription): void
 - **remove**(item: IgxDashboardTileSortDescription): boolean
 - **removeAt**(index: number): IgxDashboardTileSortDescription
-
-### [IgxDashboardTileSortDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSortDescriptionDynamicModule)
-
-- **constructor**(): IgxDashboardTileSortDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileSortDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileSortDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileSortDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDashboardTileSortDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSortDescriptionModule)
-
-- **constructor**(): IgxDashboardTileSortDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileSortDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileSortDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileSortDescriptionModule, never, [any], never>`
 
 ### [IgxDashboardTileSummaryDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSummaryDescription)
 Represents a summary that is applied to a datasource. Changes to this object are not observed or expected after it is initially assigned to a collection.
@@ -317,90 +260,6 @@ Represents a summary that is applied to a datasource. Changes to this object are
 - **insert**(index: number, item: IgxDashboardTileSummaryDescription): void
 - **remove**(item: IgxDashboardTileSummaryDescription): boolean
 - **removeAt**(index: number): IgxDashboardTileSummaryDescription
-
-### [IgxDashboardTileSummaryDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSummaryDescriptionDynamicModule)
-
-- **constructor**(): IgxDashboardTileSummaryDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileSummaryDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileSummaryDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileSummaryDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDashboardTileSummaryDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileSummaryDescriptionModule)
-
-- **constructor**(): IgxDashboardTileSummaryDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDashboardTileSummaryDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDashboardTileSummaryDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDashboardTileSummaryDescriptionModule, never, [any], never>`
-
-### [IgxDataChartDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDataChartDashboardTileDynamicModule)
-
-- **constructor**(): IgxDataChartDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataChartDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataChartDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataChartDashboardTileDynamicModule, never, [any, any, any, any, any, any, any, any, any, any, any, any, any, any], [any, any, any, any, any, any, any, any, any, any, any, any, any]>`
-
-### [IgxDataChartDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDataChartDashboardTileModule)
-
-- **constructor**(): IgxDataChartDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataChartDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataChartDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataChartDashboardTileModule, never, [any, any, any, any, any, any, any, any, any, any, any, any, any], [any, any, any, any, any, any, any, any, any, any, any, any]>`
-
-### [IgxGeographicMapDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxGeographicMapDashboardTileDynamicModule)
-
-- **constructor**(): IgxGeographicMapDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapDashboardTileDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxGeographicMapDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxGeographicMapDashboardTileModule)
-
-- **constructor**(): IgxGeographicMapDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapDashboardTileModule, never, [any, any, any], [any, any]>`
-
-### [IgxLinearGaugeDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxLinearGaugeDashboardTileDynamicModule)
-
-- **constructor**(): IgxLinearGaugeDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeDashboardTileDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxLinearGaugeDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxLinearGaugeDashboardTileModule)
-
-- **constructor**(): IgxLinearGaugeDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeDashboardTileModule, never, [any, any, any], [any, any]>`
-
-### [IgxPieChartDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxPieChartDashboardTileDynamicModule)
-
-- **constructor**(): IgxPieChartDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPieChartDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPieChartDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPieChartDashboardTileDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxPieChartDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxPieChartDashboardTileModule)
-
-- **constructor**(): IgxPieChartDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPieChartDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPieChartDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPieChartDashboardTileModule, never, [any, any, any], [any, any]>`
-
-### [IgxRadialGaugeDashboardTileDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxRadialGaugeDashboardTileDynamicModule)
-
-- **constructor**(): IgxRadialGaugeDashboardTileDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeDashboardTileDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeDashboardTileDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeDashboardTileDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxRadialGaugeDashboardTileModule](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxRadialGaugeDashboardTileModule)
-
-- **constructor**(): IgxRadialGaugeDashboardTileModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeDashboardTileModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeDashboardTileModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeDashboardTileModule, never, [any, any, any], [any, any]>`
 
 ## Enumerations
 
@@ -442,65 +301,3 @@ Represents a summary that is applied to a datasource. Changes to this object are
 - **TextView** = 33
 - **TimeSeriesChart** = 34
 - **Treemap** = 35
-
-## Functions
-
-### [provideIgxDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTile)
-`provideIgxDashboardTile(): EnvironmentProviders`
-
-### [provideIgxDashboardTileCustomization](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileCustomization)
-`provideIgxDashboardTileCustomization(): EnvironmentProviders`
-
-### [provideIgxDashboardTileCustomizationDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileCustomizationDynamic)
-`provideIgxDashboardTileCustomizationDynamic(): EnvironmentProviders`
-
-### [provideIgxDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileDynamic)
-`provideIgxDashboardTileDynamic(): EnvironmentProviders`
-
-### [provideIgxDashboardTileGroupDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileGroupDescription)
-`provideIgxDashboardTileGroupDescription(): EnvironmentProviders`
-
-### [provideIgxDashboardTileGroupDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileGroupDescriptionDynamic)
-`provideIgxDashboardTileGroupDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDashboardTileSortDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileSortDescription)
-`provideIgxDashboardTileSortDescription(): EnvironmentProviders`
-
-### [provideIgxDashboardTileSortDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileSortDescriptionDynamic)
-`provideIgxDashboardTileSortDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDashboardTileSummaryDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileSummaryDescription)
-`provideIgxDashboardTileSummaryDescription(): EnvironmentProviders`
-
-### [provideIgxDashboardTileSummaryDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDashboardTileSummaryDescriptionDynamic)
-`provideIgxDashboardTileSummaryDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDataChartDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDataChartDashboardTile)
-`provideIgxDataChartDashboardTile(): EnvironmentProviders`
-
-### [provideIgxDataChartDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxDataChartDashboardTileDynamic)
-`provideIgxDataChartDashboardTileDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicMapDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxGeographicMapDashboardTile)
-`provideIgxGeographicMapDashboardTile(): EnvironmentProviders`
-
-### [provideIgxGeographicMapDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxGeographicMapDashboardTileDynamic)
-`provideIgxGeographicMapDashboardTileDynamic(): EnvironmentProviders`
-
-### [provideIgxLinearGaugeDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxLinearGaugeDashboardTile)
-`provideIgxLinearGaugeDashboardTile(): EnvironmentProviders`
-
-### [provideIgxLinearGaugeDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxLinearGaugeDashboardTileDynamic)
-`provideIgxLinearGaugeDashboardTileDynamic(): EnvironmentProviders`
-
-### [provideIgxPieChartDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxPieChartDashboardTile)
-`provideIgxPieChartDashboardTile(): EnvironmentProviders`
-
-### [provideIgxPieChartDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxPieChartDashboardTileDynamic)
-`provideIgxPieChartDashboardTileDynamic(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeDashboardTile](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxRadialGaugeDashboardTile)
-`provideIgxRadialGaugeDashboardTile(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeDashboardTileDynamic](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/functions/provideIgxRadialGaugeDashboardTileDynamic)
-`provideIgxRadialGaugeDashboardTileDynamic(): EnvironmentProviders`

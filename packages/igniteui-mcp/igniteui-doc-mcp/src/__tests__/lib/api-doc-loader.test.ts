@@ -13,7 +13,7 @@ vi.mock('fs', async () => {
 });
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
-import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames } from '../../lib/api-doc-loader.js';
+import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames, snapshotVersion } from '../../lib/api-doc-loader.js';
 import type { PlatformConfig } from '../../config/platforms.js';
 
 const mockExistsSync = vi.mocked(existsSync);
@@ -159,6 +159,49 @@ describe('ApiDocLoader', () => {
       loader.load();
       const entry = loader.get('angular', 'IgxGridComponent')!;
       expect(loader.getPackages(entry).sort()).toEqual(['pkg-full', 'pkg-lite']);
+    });
+  });
+
+  describe('snapshotVersion', () => {
+    it('prefers the Version: header over the folder name', () => {
+      expect(snapshotVersion('Package: igniteui-webcomponents\nVersion: 7.4.1\n', '7.4.0')).toBe('7.4.1');
+    });
+
+    it('falls back to the folder name when there is no header', () => {
+      expect(snapshotVersion('### [IgxGridComponent](url)', '22.2.0')).toBe('22.2.0');
+    });
+
+    it('uses the folder name when the header is not a version', () => {
+      expect(snapshotVersion('Version: latest\n', '25.1.x')).toBe('25.1.x');
+    });
+
+    it('is undefined when neither names a version', () => {
+      expect(snapshotVersion('Version: latest\n', 'latest')).toBeUndefined();
+    });
+
+    it('is stored on every entry of the snapshot', () => {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue(`Package: igniteui-angular\nVersion: 22.2.6\n\n${FIXTURE_LLMS_CONTENT}`);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      expect(loader.get('angular', 'IgxGridComponent')?.version).toBe('22.2.6');
+    });
+
+    it('getPackageVersions lists the package the entry was read from first, then the others', () => {
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return ['pkg-full', 'pkg-lite'] as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-full')) return ['26.1.98'] as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-lite')) return ['latest'] as unknown as ReturnType<typeof readdirSync>;
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      const entry = loader.get('angular', 'IgxGridComponent')!;
+      // pkg-lite is loaded last, so its definition is the one served.
+      expect(entry.package).toBe('pkg-lite');
+      expect(loader.getPackageVersions(entry)).toEqual(['pkg-lite', 'pkg-full@26.1.98']);
     });
   });
 

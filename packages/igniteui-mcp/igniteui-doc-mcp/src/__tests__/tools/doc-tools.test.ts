@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  addPackageVersions,
   applyCompactGridPrefix,
   applyDocAlias,
   formatSubstitutionNotice,
@@ -9,6 +10,7 @@ import {
   sanitizeSearchDocsQuery,
 } from '../../tools/doc-tools.js';
 import type { DocsProvider } from '../../providers/DocsProvider.js';
+import type { ApiDocLoader } from '../../lib/api-doc-loader.js';
 
 describe('sanitizeSearchDocsQuery', () => {
   it('quotes plain terms with AND (implicit in FTS4)', () => {
@@ -491,5 +493,51 @@ describe('parseDocNames', () => {
   it('returns an empty list for a no-results message', () => {
     expect(parseDocNames('No results found for "xyz".')).toEqual([]);
     expect(parseDocNames('No results')).toEqual([]);
+  });
+});
+
+describe('addPackageVersions', () => {
+  const entries: Record<string, { package?: string; version?: string }> = {
+    IgrGrid: { package: 'igniteui-react-grids', version: '19.9.1' },
+    IgrPaginator: { package: 'igniteui-react-grids', version: '19.9.1' },
+    IgrButton: { package: 'igniteui-react', version: '19.9.1' },
+    IgrLegacy: { package: 'igniteui-react-legacy' },
+    'webcomponents:IgcBreadcrumbsComponent': { package: 'igniteui-webcomponents', version: '7.4.1' },
+  };
+  const loader = {
+    get: (platform: string, name: string) => entries[name] ?? entries[`${platform}:${name}`],
+    getPackageVersions: (e: { package: string; version?: string }) => [e.version ? `${e.package}@${e.version}` : e.package],
+  } as unknown as ApiDocLoader;
+  const doc = (component: string) => `---\ncomponent: ${component}\nkeywords: grid\n---\n\n# Title\n`;
+
+  it('adds one package line after the component line, without duplicates', () => {
+    expect(addPackageVersions(doc('IgrGrid, IgrPaginator, IgrButton'), 'react', loader)).toBe(
+      '---\ncomponent: IgrGrid, IgrPaginator, IgrButton\npackage: igniteui-react-grids@19.9.1, igniteui-react@19.9.1\nkeywords: grid\n---\n\n# Title\n'
+    );
+  });
+
+  it('names the bare package when its version is unknown', () => {
+    expect(addPackageVersions(doc('IgrLegacy'), 'react', loader)).toContain('\npackage: igniteui-react-legacy\n');
+  });
+
+  it('keeps CRLF line endings', () => {
+    expect(addPackageVersions('---\r\ncomponent: IgrGrid\r\nkeywords: grid\r\n---\r\n', 'react', loader)).toBe(
+      '---\r\ncomponent: IgrGrid\r\npackage: igniteui-react-grids@19.9.1\r\nkeywords: grid\r\n---\r\n'
+    );
+  });
+
+  it("looks a component up in the framework its prefix names, not the doc's", () => {
+    expect(addPackageVersions(doc('IgcBreadcrumbsComponent'), 'angular', loader)).toContain(
+      '\npackage: igniteui-webcomponents@7.4.1\n'
+    );
+  });
+
+  it('returns the doc unchanged when no component is in the API reference', () => {
+    expect(addPackageVersions(doc('Unknown'), 'react', loader)).toBe(doc('Unknown'));
+  });
+
+  it('returns the doc unchanged when there is no frontmatter', () => {
+    const text = '# Title\n\ncomponent: IgrGrid\n';
+    expect(addPackageVersions(text, 'react', loader)).toBe(text);
   });
 });

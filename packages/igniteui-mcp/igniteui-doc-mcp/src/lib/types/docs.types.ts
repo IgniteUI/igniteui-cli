@@ -11,6 +11,8 @@ export interface DocEntry {
   platform: Platform;
   /** Package the entry ships in (llms-full.txt "Package:" header), e.g. "igniteui-react-grids". */
   package?: string;
+  /** Release the entry was generated from (llms-full.txt "Version:" header), e.g. "19.9.1". */
+  version?: string;
 }
 
 export interface SearchHit {

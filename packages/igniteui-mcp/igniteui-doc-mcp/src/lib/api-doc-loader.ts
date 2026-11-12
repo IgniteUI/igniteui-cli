@@ -36,6 +36,16 @@ export function compareVersionNames(a: string, b: string): number {
   return a.localeCompare(b);
 }
 
+/**
+ * The release a snapshot was generated from. The "Version:" header is the real
+ * one ("7.4.1"); the folder is only a URL segment ("7.4.0", "7.3"). Older
+ * snapshots carry no usable version at all ("latest").
+ */
+export function snapshotVersion(content: string, folderName: string): string | undefined {
+  const header = content.match(/^Version:\s*(\S+)/m)?.[1];
+  return [header, folderName].find(v => v && /^\d/.test(v));
+}
+
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
@@ -43,6 +53,7 @@ export class ApiDocLoader {
   private docsByBaseName = new Map<string, DocEntry>();
   // Every package a name appears in; the exact-name map keeps only the last one loaded.
   private packagesByKey = new Map<string, Set<string>>();
+  private versionsByPackage = new Map<string, string>();
   private platformConfigs: PlatformConfig[];
 
   constructor(platformConfigs: PlatformConfig[]) {
@@ -116,6 +127,8 @@ export class ApiDocLoader {
         }
 
         const packageName = content.match(/^Package:\s*(\S+)/m)?.[1] ?? pkgName;
+        const packageVersion = snapshotVersion(content, versionName);
+        if (packageVersion) this.versionsByPackage.set(`${config.key}:${packageName}`, packageVersion);
 
         // Split on "### [ComponentName](url)" headings
         // Each chunk starts with the heading line and contains the member list
@@ -158,6 +171,7 @@ export class ApiDocLoader {
             summary: summaryLine.trim(),
             platform: config.key,
             package: packageName,
+            version: packageVersion,
           };
           this.docs.set(key, entry);
           this.indexBaseName(config.key, componentName, entry);
@@ -239,6 +253,20 @@ export class ApiDocLoader {
     const packages = this.packagesByKey.get(`${entry.platform}:${entry.component}`);
     if (packages) return [...packages];
     return entry.package ? [entry.package] : [];
+  }
+
+  /**
+   * Packages that ship the entry's symbol, each with the release its snapshot describes,
+   * e.g. ["IgniteUI.Blazor.Lite@1.0.1", "IgniteUI.Blazor@26.1.98"]. The first is the
+   * package the entry's content was read from; the others ship the same name, with a
+   * definition that can differ. A package whose snapshot names no version is listed bare.
+   */
+  getPackageVersions(entry: DocEntry): string[] {
+    const others = this.getPackages(entry).filter(pkg => pkg !== entry.package);
+    return [...(entry.package ? [entry.package] : []), ...others].map(pkg => {
+      const version = pkg === entry.package ? entry.version : this.versionsByPackage.get(`${entry.platform}:${pkg}`);
+      return version ? `${pkg}@${version}` : pkg;
+    });
   }
 
   search(options: {

@@ -1,10 +1,10 @@
-# Ignite UI for Angular v22.2.0 — Full API Reference
+# Ignite UI for Angular v22.2.6 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular package (22.2.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular package (22.2.6). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular
-Version: 22.2.0
+Version: 22.2.6
 
 ## Classes
 
@@ -133,7 +133,6 @@ If not set, disableRipple will have value false.
 - **id**: `string` — Sets/gets the id of the checkbox component.
 If not set, the id of the first checkbox component will be "igx-checkbox-0".
 - **indeterminate**: `boolean`
-- **invalid**: `boolean`
 - **labelId**: `string` — Sets/gets the id of the label element.
 If not set, the id of the label in the first checkbox component will be "igx-checkbox-0-label".
 - **labelPosition**: `string` — Sets/gets the position of the label.
@@ -153,6 +152,7 @@ let labelPlaceholder =  this.component.placeholderLabel;
 - **tabindex**: `number` — Sets/gets the value of the tabindex attribute.
 - **value**: `any` — Sets/gets the value attribute.
 - **checked**: `boolean`
+- **invalid**: `boolean`
 - **nativeElement**: `any` — Returns reference to the nativeElement of the igx-checkbox/igx-switch.
 - **required**: `boolean` — Sets/gets whether the checkbox is required.
 If not set, required will have value false.
@@ -277,9 +277,9 @@ let returnFields = gridExpressionsTree.returnFields;
 gridExpressionTree.type = FilteringExpressionsTree.Advanced;
 
 let type = expressionTree.type;
-- **find**(fieldName: string): IFilteringExpression | IFilteringExpressionsTree — Returns the filtering expression for a column with the provided fieldName.
+- **find**(fieldName: string): IFilteringExpression | IFilteringExpressionsTree — **Deprecated:** in version 18.2.0. Use ExpressionsTreeUtil.find instead. Returns the filtering expression for a column with the provided fieldName.
 let filteringExpression = gridExpressionTree.find('Column Field');
-- **findIndex**(fieldName: string): number — Returns the index of the filtering expression for a column with the provided fieldName.
+- **findIndex**(fieldName: string): number — **Deprecated:** in version 18.2.0. Use ExpressionsTreeUtil.findIndex instead. Returns the index of the filtering expression for a column with the provided fieldName.
 let filteringExpressionIndex = gridExpressionTree.findIndex('Column Field');
 - static **empty**(expressionTree: IFilteringExpressionsTree): boolean — Checks if filtering expressions tree is empty.
 
@@ -502,8 +502,8 @@ Avatar provides a way to display an image, icon or initials to the user.
 
 - **constructor**(): IgxAvatarComponent
 - **ariaLabel**: `string` — Returns the aria-label attribute of the avatar.
-- **bgColor**: `string` — Sets the background color of the avatar.
-- **color**: `string` — Sets the color of the avatar's initials or icon.
+- **bgColor**: `string` — **Deprecated:** in version 17.2.0. Sets the background color of the avatar.
+- **color**: `string` — **Deprecated:** in version 17.2.0. Sets the color of the avatar's initials or icon.
 - **elementRef**: `ElementRef<any>`
 - **icon**: `string` — Sets an icon to the avatar. All icons from the material icon set are supported.
 - **id**: `string` — Sets the id of the avatar. If not set, the first avatar component will have id = "igx-avatar-0".
@@ -1196,11 +1196,11 @@ Default value is false.
 Default value is false.
 - **indeterminate**: `boolean` — Sets/gets the checkbox indeterminate visual state.
 Default value is false;
-- **invalid**: `boolean` — Sets/gets whether the checkbox is invalid.
-Default value is false.
 - **readonly**: `boolean` — Sets/gets whether the checkbox is readonly.
 Default value is false.
 - **checked**: `boolean`
+- **invalid**: `boolean` — Sets/gets whether the checkbox is invalid.
+Default value is false.
 
 ### [IgxChipComponent](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxChipComponent)
 Chip is compact visual component that displays information in an obround.
@@ -1388,7 +1388,7 @@ styles = {
 }
 
 <igx-column [cellStyles]="styles"></igx-column>
-- **children**: `QueryList<IgxColumnComponent>` — Sets/gets the children columns.
+- **children**: `QueryList<IgxColumnComponent>` — **Deprecated:** in version 18.1.0. Use the childColumns property instead. Sets/gets the children columns.
 let columnChildren = this.column.children;
 - **colEnd**: `number` — Column index where the current field should end.
 The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field
@@ -1623,7 +1623,7 @@ let success = this.column.unpin();
 **Ignite UI for Angular Column Group**
 
 - **constructor**(): IgxColumnGroupComponent
-- **children**: `QueryList<IgxColumnComponent>`
+- **children**: `QueryList<IgxColumnComponent>` — **Deprecated:** in version 18.1.0. Use the childColumns property instead.
 - **collapsibleIndicatorTemplate**: `TemplateRef<IgxColumnTemplateContext>` — Allows you to define a custom template for expand/collapse indicator
 - **searchable**: `boolean` — Sets/gets whether the column group is searchable.
 Default value is true.
@@ -2039,7 +2039,7 @@ Represents a drop-down list that provides editable functionalities, allowing use
 - **constructor**(): IgxComboComponent
 - **autoFocusSearch**: `boolean` — Whether the combo's search box should be focused after the dropdown is opened.
 When false, the combo's list item container will be focused instead
-- **searchPlaceholder**: `string` — Defines the placeholder value for the combo dropdown search field
+- **searchPlaceholder**: `string` — **Deprecated:** in version 18.2.0. Replaced with values in the localization resource strings. Defines the placeholder value for the combo dropdown search field
 - **selectionChanged**: `EventEmitter<IComboSelectionChangedEventArgs>` — Emitted when item selection is changed, after the selection completes
 
 <igx-combo (selectionChanged)='handleSelection()'></igx-combo>
@@ -3730,7 +3730,7 @@ It contains the search text (the user has entered), the match and some settings 
 - **locale**: `string` — Represents the locale of the grid: USD, EUR, GBP, CNY, JPY, etc.
 - **mergeStrategy**: `IGridMergeStrategy` — Gets/Sets the merge strategy of the grid.
 - **nativeElement**: `HTMLElement` — Represents the native HTML element itself
-- **outlet**: `IgxOverlayOutletDirective`
+- **outlet**: `IgxOverlayOutletDirective` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead or use container property instead.
 - **pagingMode**: `GridPagingMode` — Represents the paging of the grid. It can be either 'Local' or 'Remote'
 - Local: Default value; The grid will paginate the data source based on the page
 - **pinnedColumns**: `IgxColumnComponent[]` — An array of columns, but it counts only the ones that are pinned
@@ -3758,7 +3758,7 @@ It is of type TemplateRef, which represents an embedded template, used to instan
 It is of type TemplateRef, which represents an embedded template, used to instantiate embedded views
 - **selectedRows**: `any[]`
 - **selectRowOnClick**: `boolean` — Gets/Sets whether clicking over a row should select/deselect it
-- **shouldGenerate**: `boolean` — Gets/Sets whether the columns should be auto-generated once again after the initialization of the grid
+- **shouldGenerate**: `boolean` — **Deprecated:** in version 18.2.0. Column re-creation now relies on autoGenerate instead. Gets/Sets whether the columns should be auto-generated once again after the initialization of the grid
 - **showSummaryOnCollapse**: `boolean` — Controls whether the summary row is visible when groupBy/parent row is collapsed.
 - **sortAscendingHeaderIconTemplate**: `TemplateRef<IgxGridHeaderTemplateContext>` — The template for ascending sort header icons.
 It is of type TemplateRef, which represents an embedded template, used to instantiate embedded views
@@ -3803,7 +3803,7 @@ It is of type TemplateRef, which represents an embedded template, used to instan
 - **expandAll**(): void — Expands all rows.
 - **expandRow**(rowID: any): void — Expands the row by its id.
 - **filter**(name: string, value: any, conditionOrExpressionTree?: IFilteringOperation | IFilteringExpressionsTree, ignoreCase?: boolean): void — Filters a single column.
-- **filterGlobal**(value: any, condition: IFilteringOperation, ignoreCase?: boolean): void — Filters all the column in the grid with the same condition.
+- **filterGlobal**(value: any, condition: IFilteringOperation, ignoreCase?: boolean): void — **Deprecated:** in version 19.0.0. Filters all the column in the grid with the same condition.
 - **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the next occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
 - **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the previous occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
 - **getColumnByName**(name: string): IgxColumnComponent — Returns the column by field name.
@@ -4174,7 +4174,7 @@ have been applied.
 - **filter**(config: IgxGridLiteFilteringExpression<any> | IgxGridLiteFilteringExpression<any>[]): void — Performs a filter operation in the grid based on the passed expression(s).
 - **getColumn**(id: number | Keys<T>): IgxGridLiteColumnConfiguration<T> | undefined — Returns a IgxGridLiteColumnConfiguration for a given column.
 - **navigateTo**(row: number, options?: IgxGridLiteNavigateToOptions<T>): Promise<void> — Navigates to a position in the grid based on provided row index and column field.
-- **navigateTo**(row: number, column?: Keys<T>, activate?: boolean): Promise<void> — Navigates to a position in the grid based on provided row index and column field.
+- **navigateTo**(row: number, column?: Keys<T>, activate?: boolean): Promise<void> — **Deprecated:** Use navigateTo(row, options) instead. Navigates to a position in the grid based on provided row index and column field.
 - **sort**(expressions: IgxGridLiteSortingExpression<T> | IgxGridLiteSortingExpression<T>[]): void — Performs a sort operation in the grid based on the passed expression(s).
 
 ### [IgxGridLiteHeaderTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxGridLiteHeaderTemplateDirective)
@@ -4333,7 +4333,7 @@ Provides a context-aware container component for UI operations for the grid comp
 
 - **constructor**(): IgxGridToolbarComponent
 - **showProgress**: `boolean` — When enabled, shows the indeterminate progress bar.
-- **grid**: `GridType` — Gets/sets the grid component for the toolbar component.
+- **grid**: `GridType` — **Deprecated:** since version 17.1.0. No longer required to be set for the Hierarchical Grid child grid template. Gets/sets the grid component for the toolbar component.
 - **nativeElement**: `HTMLElement` — Returns the native DOM element of the toolbar component
 
 ### [IgxGridToolbarDirective](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxGridToolbarDirective)
@@ -4546,7 +4546,7 @@ through a HTTP request.
   const svgIcon = this.iconService.getSvgIcon('aruba', 'svg-flags');
 - **isSvgIconCached**(name: string, family: string): boolean — Returns whether a given SVG image is present in the cache.
   const isSvgCached = this.iconService.isSvgIconCached('aruba', 'svg-flags');
-- **registerFamilyAlias**(alias: string, className: string, type: IconType): this — Registers a custom class to be applied to icon for a given font-family.
+- **registerFamilyAlias**(alias: string, className: string, type: IconType): this — **Deprecated:** in version 18.1.0. Use setFamily instead. Registers a custom class to be applied to icon for a given font-family.
   this.iconService.registerFamilyAlias('material', 'material-icons');
 - **setFamily**(name: string, meta: FamilyMeta): void — Creates a family to className relationship that is applied to the icon
   whenever that family name is used.
@@ -5182,7 +5182,7 @@ Default value is true.
 - **displayTime**: `number` — Sets/gets the duration of time span (in milliseconds) which the element will be visible
 after it is being shown.
 Default value is 4000.
-- **outlet**: `IgxOverlayOutletDirective | ElementRef<HTMLElement>` — Gets/Sets the container used for the element.
+- **outlet**: `IgxOverlayOutletDirective | ElementRef<HTMLElement>` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the component in the intended DOM tree position instead and use positioning property as needed. Gets/Sets the container used for the element.
 - **positioning**: `"container" | "viewport"` — Controls whether positioning is relative to the viewport or to the nearest positioned container.
 - **isVisible**: `boolean` — Enables/Disables the visibility of the element.
 If not set, the isVisible attribute will have value false.
@@ -5295,7 +5295,7 @@ this.overlay.hideAll();
 - **setOffset**(id: string, deltaX: number, deltaY: number, offsetMode?: OffsetMode): void — Offsets the content along the corresponding axis by the provided amount with optional offsetMode that determines whether to add (by default) or set the offset values
 - **show**(id: string, settings?: OverlaySettings): void — Shows the overlay for provided id.
 - static **createAbsoluteOverlaySettings**(position?: AbsolutePosition, useContainerStrategy?: boolean): OverlaySettings — Creates overlay settings with global or container position strategy and preset position settings.
-- static **createAbsoluteOverlaySettings**(position?: AbsolutePosition, outlet?: IgxOverlayOutletDirective | ElementRef<any>): OverlaySettings
+- static **createAbsoluteOverlaySettings**(position?: AbsolutePosition, outlet?: IgxOverlayOutletDirective | ElementRef<any>): OverlaySettings — **Deprecated:** in version 21.2.0. The outlet parameter is deprecated. Please provide the container or outlet element through the createAbsoluteOverlaySettings method when calling attach method. Creates overlay settings with global or container position strategy and preset position settings.
 - static **createRelativeOverlaySettings**(target: HTMLElement | Point, position?: RelativePosition, strategy?: RelativePositionStrategy): OverlaySettings — Creates overlay settings with auto, connected or elastic position strategy and preset position settings
 
 ### [IgxPageNavigationComponent](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxPageNavigationComponent)
@@ -5659,7 +5659,7 @@ An entity can optionally have child entities, allowing nested sub-queries.
 ### [IgxQueryBuilderHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxQueryBuilderHeaderComponent)
 
 - **constructor**(): IgxQueryBuilderHeaderComponent
-- **showLegend**: `boolean` — Show/hide the legend.
+- **showLegend**: `boolean` — **Deprecated:** in version 19.1.0. Show/hide the legend.
 - **title**: `string` — Sets the title of the query builder header.
 - **resourceStrings**: `IQueryBuilderResourceStrings` — Returns the resource strings.
 
@@ -5689,17 +5689,17 @@ Default value is false.
 this.radio.focus = true;
 
 let isFocused =  this.radio.focused;
-- **invalid**: `boolean` — Sets/gets whether the radio button is invalid.
-Default value is false.
-<igx-radio invalid></igx-radio>
-
-let isInvalid =  this.radio.invalid;
 - **checked**: `boolean`
 - **disabled**: `boolean` — Sets/gets  the disabled attribute.
 Default value is false.
 <igx-radio disabled></igx-radio>
 
 let isDisabled =  this.radio.disabled;
+- **invalid**: `boolean` — Sets/gets whether the radio button is invalid.
+Default value is false.
+<igx-radio invalid></igx-radio>
+
+let isInvalid =  this.radio.invalid;
 - **deselect**(): void — Deselects the current radio button.
 this.radio.deselect();
 - **select**(): void — Selects the current radio button.
@@ -5894,6 +5894,13 @@ const expanded = this.rowIsland.expandChildren;
 - **resourceStrings**: `IGridResourceStrings` — Gets/Sets the resource strings.
 - **toolbarTemplate**: `TemplateRef<IgxGridToolbarTemplateContext>` — Sets/Gets the toolbar template for each child grid created from this row island.
 
+### [IgxRowLoadingIndicatorTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxRowLoadingIndicatorTemplateDirective)
+Marks an ng-template as the row loading indicator of an igx-tree-grid that loads its child rows on demand.
+The template is displayed in place of the expand indicator while the children of a row are being loaded.
+
+- **constructor**(): IgxRowLoadingIndicatorTemplateDirective
+- **template**: `TemplateRef<any>` — The template reference of the row loading indicator.
+
 ### [IgxSelectComponent](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxSelectComponent)
 **Ignite UI for Angular Select** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/select)
@@ -6072,7 +6079,7 @@ Two-way data binding.
 <igx-carousel>
 - **nativeElement**: `any` — Returns a reference to the carousel element in the DOM.
 let nativeElement =  this.slide.nativeElement;
-- **tabIndex**: `0 | null` — Returns the tabIndex of the slide component.
+- **tabIndex**: `0 | null` — **Deprecated:** in version 19.2.0. Returns the tabIndex of the slide component.
 let tabIndex =  this.carousel.tabIndex;
 - **ngAfterContentChecked**(): void — A callback method that is invoked immediately after the
 default change detector has completed checking all of the directive's
@@ -6477,6 +6484,9 @@ Provides filtering operations for strings
 - **register**(id: symbol, css: string): void — Registers a stylesheet identified by id. Subsequent calls with the same
 id (against the same document) are no-ops, so it is safe to call from every
 component instance.
+- **retain**(components: Type<unknown>[]): void — Keeps the components' styles in the document for the application's lifetime, through a
+detached instance of each. Otherwise Angular removes them with the last instance and
+re-inserts them with the next one, restyling the page each time.
 
 ### [IgxSummaryDataPipe](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxSummaryDataPipe)
 
@@ -6566,9 +6576,9 @@ The Switch component is a binary choice selection component.
 Default value is false.
 - **focused**: `boolean` — Sets/gets whether the switch component is on focus.
 Default value is false.
+- **checked**: `boolean`
 - **invalid**: `boolean` — Sets/gets whether the switch component is invalid.
 Default value is false.
-- **checked**: `boolean`
 
 ### [IgxTabContentComponent](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxTabContentComponent)
 
@@ -6861,7 +6871,7 @@ this.toast.toggle();
 ### [IgxToggleActionDirective](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/classes/IgxToggleActionDirective)
 
 - **constructor**(): IgxToggleActionDirective
-- **outlet**: `IgxOverlayOutletDirective | ElementRef<any>` — Determines where the toggle element overlay should be attached.
+- **outlet**: `IgxOverlayOutletDirective | ElementRef<any>` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead or use container property instead. Determines where the toggle element overlay should be attached.
 
 <!--set-->
 <div igxToggleAction [igxToggleOutlet]="outlet"></div>
@@ -7587,7 +7597,7 @@ Common interface for Components with show and collapse functionality
 - **mode**: `PickerInteractionMode` — Can be dropdown with editable input field or dialog with readonly input field.
 - **opened**: `EventEmitter<IBaseEventArgs>` — Emitted after the calendar has opened.
 - **opening**: `EventEmitter<IBaseCancelableBrowserEventArgs>` — Emitted when the calendar has started opening, cancelable.
-- **outlet**: `IgxOverlayOutletDirective | ElementRef<any>` — The container used for the pop-up element.
+- **outlet**: `IgxOverlayOutletDirective | ElementRef<any>` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead. The container used for the pop-up element.
 - **overlaySettings**: `OverlaySettings` — Overlay settings used to display the pop-up element.
 - **placeholder**: `string` — Sets the placeholder of the picker's input.
 - **tabIndex**: `string | number` — Gets/Sets the default template editor's tabindex.
@@ -7737,7 +7747,7 @@ the view port (calculating a different start point) in case the element is parti
 
 ### [AutocompleteOverlaySettings](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/AutocompleteOverlaySettings)
 
-- **outlet?**: `IgxOverlayOutletDirective | ElementRef<any>` — Set the outlet container to attach the overlay to
+- **outlet?**: `IgxOverlayOutletDirective | ElementRef<any>` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead or use container property instead. Set the outlet container to attach the overlay to
 - **positionStrategy?**: `IPositionStrategy` — Position strategy to use with this settings
 - **scrollStrategy?**: `IScrollStrategy` — Scroll strategy to use with this settings
 
@@ -7815,7 +7825,7 @@ Contains definitions of properties and methods, relevant to a column
 - **applySelectableClass**: `boolean`
 - **calcWidth**: `string | number | null` — Custom CSS styling, applied to every column
 calcWidth, minWidthPx, maxWidthPx, minWidth, maxWidth, minWidthPercent, maxWidthPercent, resolvedWidth
-- **children**: `QueryList<ColumnType>` — A list containing all the child columns under this column (if any).
+- **children**: `QueryList<ColumnType>` — **Deprecated:** in version 18.1.0. Use the childColumns property instead. A list containing all the child columns under this column (if any).
 - **colEnd**: `number`
 - **collapsible?**: `boolean` — Optional
 Indicated whether the column can be collapsed. If the value is true, the column can be collapsed
@@ -8189,7 +8199,7 @@ It contains the search text (the user has entered), the match and some settings 
 - **nativeElement**: `HTMLElement` — Represents the native HTML element itself
 - **navigation**: `any`
 - **outerWidth**: `number`
-- **outlet**: `any`
+- **outlet**: `any` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead or use container property instead.
 - **pagingMode**: `GridPagingMode` — Represents the paging of the grid. It can be either 'Local' or 'Remote'
 - Local: Default value; The grid will paginate the data source based on the page
 - **parent?**: `GridType`
@@ -8672,7 +8682,7 @@ Represents the state of the columns in the grid.
 - **hidden**: `boolean`
 - **key**: `string`
 - **maxWidth**: `string`
-- **parent?**: `any`
+- **parent?**: `any` — **Deprecated.**
 - **parentKey**: `string`
 - **pinned**: `boolean`
 - **resizable**: `boolean`
@@ -8934,8 +8944,8 @@ Represents filtering expressions.
 ### [IFilteringExpressionsTree](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IFilteringExpressionsTree)
 
 - **filteringOperands**: `IFilteringExpression | IFilteringExpressionsTree[]`
-- **find?**: `any`
-- **findIndex?**: `any`
+- **find?**: `any` — **Deprecated:** in version 18.2.0. Use ExpressionsTreeUtil.find instead.
+- **findIndex?**: `any` — **Deprecated:** in version 18.2.0. Use ExpressionsTreeUtil.findIndex instead.
 - **type?**: `FilteringExpressionsTreeType`
 
 ### [IFilteringOperation](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IFilteringOperation)
@@ -8979,9 +8989,11 @@ Interface describing filtering operations
 - **year?**: `boolean`
 
 ### [IForOfDataChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IForOfDataChangeEventArgs)
+**Deprecated:** in 19.2.7. Use IForOfDataChangeEventArgs instead.
 
 
 ### [IForOfDataChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IForOfDataChangingEventArgs)
+**Deprecated:** in 19.2.7. Use IForOfDataChangeEventArgs instead.
 
 - **containerSize**: `number`
 - **state**: `IForOfState`
@@ -9043,10 +9055,10 @@ When there is no newValue and the event has ended, the value of the cell returns
 It's used when the event has been stopped/exited.
 - **owner?**: `GridType` — Optional
 Represents the grid instance that owns the edit event.
-- **primaryKey**: `any`
+- **primaryKey**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead.
 - **rowData**: `any` — rowData represents the updated/committed data of the row after the edit (newValue)
 The only case rowData (of the current object) is used directly, is when there is no rowEditing or transactions enabled
-- **rowID**: `any`
+- **rowID**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead.
 - **rowKey**: `any`
 - **valid?**: `boolean` — Optional
 Indicates if the new value would be valid.
@@ -9231,7 +9243,7 @@ Interface representing the event arguments for the grid validation status change
 - **asChild**: `boolean`
 - **index**: `number`
 - **isPinned**: `boolean`
-- **rowID**: `string`
+- **rowID**: `string` — **Deprecated:** since version 17.1.0. Use rowKey instead.
 - **rowKey**: `any`
 
 ### [IgxCellTemplateContext](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IgxCellTemplateContext)
@@ -9384,7 +9396,7 @@ a HTTP request.
 - **deselect?**: `any`
 - **index**: `number`
 - **key**: `any`
-- **rowID**: `any`
+- **rowID**: `any` — **Deprecated:** in version 15.1.0. Use the key property instead.
 - **select?**: `any`
 - **selected**: `boolean`
 
@@ -9514,7 +9526,7 @@ Interface for the panStateChange igxList event arguments
 ### [IPathSegment](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IPathSegment)
 Interface representing a segment of a path in a hierarchical grid.
 
-- **rowID**: `any` — The unique identifier of the row within the segment.
+- **rowID**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead. The unique identifier of the row within the segment.
 - **rowIslandKey**: `string` — The key representing the row's 'hierarchical level.
 - **rowKey**: `any`
 
@@ -9554,7 +9566,7 @@ The event is cancelable
 - **insertAtIndex?**: `number` — The index at which to pin the row in the pinned rows collection.
 - **isPinned**: `boolean` — Whether or not the row is pinned or unpinned.
 - **row?**: `RowType`
-- **rowID**: `any` — The ID of the row, that was pinned/unpinned.
+- **rowID**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead. The ID of the row, that was pinned/unpinned.
 ID is either the primaryKey value or the data record instance.
 - **rowKey**: `any`
 
@@ -9734,19 +9746,19 @@ Interface representing the validation state of a record in the grid.
 Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
-- **cellID?**: `any`
-- **isAddRow?**: `boolean`
-- **newValue?**: `any`
-- **oldValue**: `any`
+- **cellID?**: `any` — **Deprecated.**
+- **isAddRow?**: `boolean` — **Deprecated.**
+- **newValue?**: `any` — **Deprecated.**
+- **oldValue**: `any` — **Deprecated.**
 - **owner**: `GridType` — Represents the grid instance that owns the edit event.
 
 ### [IRowDataEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IRowDataEventArgs)
 Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
-- **data**: `any`
+- **data**: `any` — **Deprecated:** since version 17.1.0. Use the rowData property instead.
 - **owner**: `GridType` — Represents the grid instance that owns the edit event.
-- **primaryKey**: `any` — Represents the unique key, the row can be associated with.
+- **primaryKey**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead. Represents the unique key, the row can be associated with.
 Available if primaryKey exists
 - **rowData**: `any`
 - **rowKey**: `any`
@@ -9802,7 +9814,7 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 Represents the original event, that has triggered the expansion/collapse
 - **expanded**: `boolean` — Returns the state of the row after the operation has ended
 Indicating whether the row is being expanded (true) or collapsed (false)
-- **rowID**: `any` — Represents the ID of the row that emitted the event (which state is changed)
+- **rowID**: `any` — **Deprecated:** since version 17.1.0. Use the rowKey property instead. Represents the ID of the row that emitted the event (which state is changed)
 - **rowKey**: `any`
 
 ### [IScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/22.2.0/interfaces/IScrollStrategy)
@@ -10049,7 +10061,7 @@ Event emitted when values list is changed.
 - **closeOnEscape?**: `boolean` — Set if the overlay should close when Esc key is pressed
 - **closeOnOutsideClick?**: `boolean` — Set if the overlay should close on outside click
 - **modal?**: `boolean` — Set if the overlay should be in modal mode
-- **outlet?**: `IgxOverlayOutletDirective | ElementRef<any>` — Set the outlet container to attach the overlay to
+- **outlet?**: `IgxOverlayOutletDirective | ElementRef<any>` — **Deprecated:** in version 21.2.0. Overlays now use the HTML Popover API and no longer move to the document body by default, so using outlet is also no longer needed - just define the overlay in the intended DOM tree position instead. Set the outlet container to attach the overlay to
 - **positionStrategy?**: `IPositionStrategy` — Position strategy to use with these settings
 - **scrollStrategy?**: `IScrollStrategy` — Scroll strategy to use with these settings
 - **target?**: `HTMLElement | Point` — Attaching target for the component to show

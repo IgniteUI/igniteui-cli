@@ -1,0 +1,1466 @@
+# Ignite UI for Web Components Layouts v7.1.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for Web Components Layouts package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Web Components
+Package: igniteui-webcomponents-layouts
+Version: 7.1.0
+
+## Classes
+
+### [IgcComboEditorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcComboEditorComponent)
+
+- **constructor**(): IgcComboEditorComponent
+- static **htmlTagName**: `string`
+- **actualBackgroundColor**: `string` — Gets the actual opacity to use for the underline ripple element.
+- **actualBaseTheme**: `BaseControlTheme` — Gets the actual display baseTheme to use for the component.
+- **actualBorderColor**: `string` — Gets the actual item background color.
+- **actualBorderWidth**: `number` — Gets the actual item border width.
+- **actualContentPaddingBottom**: `number`
+- **actualContentPaddingLeft**: `number`
+- **actualContentPaddingRight**: `number`
+- **actualContentPaddingTop**: `number`
+- **actualCornerRadiusBottomLeft**: `number`
+- **actualCornerRadiusBottomRight**: `number`
+- **actualCornerRadiusTopLeft**: `number`
+- **actualCornerRadiusTopRight**: `number`
+- **actualDataSource**: `IDataSource` — Gets the actual data source that is being used by the combo box list. If a collection was provided for the combo box data, an implicit LocalDataSource has been created, and this is available via this property.
+- **actualDensity**: `ControlDisplayDensity` — Gets the actual display Density to use for the component.
+- **actualFocusBorderColor**: `string` — Gets the actual item border color.
+- **actualFocusBorderWidth**: `number` — Gets the actual item border width.
+- **actualFocusUnderlineColor**: `string` — Gets the actual color to use for the underline element when focused.
+- **actualFocusUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element when focused.
+- **actualFocusUnderlineRippleOpacity**: `number` — Gets the actual opacity to use for the underline ripple element when focused.
+- **actualHoverUnderlineColor**: `string` — Gets the actual color to use for the underline element.
+- **actualHoverUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element when hovered.
+- **actualHoverUnderlineWidth**: `number` — Gets the width to use for the underline element when hovered.
+- **actualLabelTextColor**: `string` — Gets the actual color to use for the text color.
+- **actualLabelVisible**: `boolean` — Gets or sets the visibility of the label.
+- **actualNoMatchesFoundLabel**: `string` — Gets the actual text to display on the list when no suggested matches are found.
+- **actualNoMatchesFoundLabelBackgroundColor**: `string` — Gets the actual color to use for the "no matches found" label.
+- **actualNoMatchesFoundLabelTextColor**: `string` — Gets the actual color to use for the "no matches found" label.
+- **actualTextColor**: `string` — Gets the actual color to use for the text color.
+- **actualUnderlineColor**: `string` — Gets the actual color to use for the underline element.
+- **actualUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element.
+- **actualUnderlineRippleColor**: `string` — Gets the actual color to use for the underline ripple element.
+- **actualUnderlineRippleOpacity**: `number` — Gets the actual opacity to use for the underline ripple element.
+- **actualUnderlineRippleWidth**: `number` — Gets the actual width to use for the underline element.
+- **actualUnderlineWidth**: `number` — Gets the actual width to use for the underline element.
+- **actualValueField**: `string[]` — Gets the actual name of the field in the data source will be used as the Value of the ComboEditor.
+- **allowFilter**: `boolean` — Whether to allow filtering of the combo
+- **backgroundColor**: `string` — Gets or sets the background color to use for the input group.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the component.
+- **borderColor**: `string` — Gets or sets the color to use the border of the input group.
+- **borderWidth**: `number` — Gets or sets the border width to use for the border of the item group.
+- **change**: `any`
+- **changing**: `any`
+- **contentPaddingBottom**: `number`
+- **contentPaddingLeft**: `number`
+- **contentPaddingRight**: `number`
+- **contentPaddingTop**: `number`
+- **cornerRadiusBottomLeft**: `number`
+- **cornerRadiusBottomRight**: `number`
+- **cornerRadiusTopLeft**: `number`
+- **cornerRadiusTopRight**: `number`
+- **dataSource**: `any` — Gets or sets the data to which to bind the combo box list. This can be some type of array or list, or it can
+be an IDataSource instance.
+- **dataSourceDesiredProperties**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
+- **density**: `ControlDisplayDensity` — Gets or sets the display Density to use for the buttons and dropdown grid.
+- **dropDownButtonVisible**: `boolean` — Gets or sets the visibility of the drop down button.
+- **fields**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
+- **focusBorderColor**: `string` — Gets or sets the color to use the hovered background of the inputs in the group.
+- **focusBorderWidth**: `number` — Gets or sets the border width to use for the border of the item group when focused.
+- **focusUnderlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **focusUnderlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **focusUnderlineRippleOpacity**: `number` — Gets or sets the opacity to use for the underline ripple element when focused.
+- **gotFocus**: `any`
+- **height**: `string`
+- **hoverUnderlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **hoverUnderlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **hoverUnderlineWidth**: `number` — Gets or sets the width to use for the underline element when hovered.
+- **i**: `ComboEditor`
+- **isFixed**: `boolean` — Indicates that the dropdown will position itself relative to the window instead of the document.
+- **keyDown**: `any`
+- **label**: `string` — The text displayed in the label portion of the control.
+- **labelTextColor**: `string` — Gets or sets the color to use for the text.
+- **labelTextStyle**: `string` — Gets or sets the font to use for the combobox.
+- **lostFocus**: `any`
+- **noMatchesFoundLabel**: `string` — Gets or sets the text to display on the list when no suggested matches are found.
+- **noMatchesFoundLabelBackgroundColor**: `string` — Gets or sets the color to use for the "no matches found" label.
+- **noMatchesFoundLabelTextColor**: `string` — Gets or sets the color to use for the "no matches found" label.
+- **noMatchesFoundLabelTextStyle**: `string` — Gets or sets the font to use for the combobox.
+- **openAsChild**: `boolean` — Indicates that the dropdown should open as a child of the combobox.
+- **placeholder**: `string` — Placeholder text which gives the user a hint about what kind of text is expected.
+- **selectedValueChanged**: `any`
+- **text**: `string` — The text displayed in the edit portion of the control.
+- **textChange**: `any`
+- **textColor**: `string` — Gets or sets the color to use for the text.
+- **textField**: `string` — Determines the name of the field in the data source will be used as the Text of the ComboEditor.
+- **textStyle**: `string` — Gets or sets the font to use for the combobox.
+- **textValueChanged**: `any`
+- **underlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **underlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **underlineRippleColor**: `string` — Gets or sets the color to use for the underline ripple element.
+- **underlineRippleOpacity**: `number` — Gets or sets the opacity to use for the underline ripple element.
+- **underlineRippleWidth**: `number` — Gets or sets the width to use for the underline element.
+- **underlineWidth**: `number` — Gets or sets the width to use for the underline element.
+- **useTopLayer**: `boolean` — Indicates that the dropdown will place itself into the browser top layer.
+- **value**: `any` — Gets or sets the Value of the combo.
+When the user selects an item from, the value is set based on the specified ValueField field. If not ValueField is specified, then the first field in the data source is used.
+When the user enters text into the combo, the list is searched based on the TextField field. If a matching string is found, the Value of the combo is the value of the ValueField field in the same row.
+If the text entered in the combo does not match any item on the list, then the value will return null.
+- **valueChange**: `any`
+- **valueField**: `string[]` — Sets or gets the user provided primary key to assume for the data. Certain functionality of the combo (such as the the current Value) requires
+a way to uniquely identify items in order to work correctly.
+If a primary key cannot be inferred from the data source, you may need to provide one here.
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **closeUp**(): void — Programmatically closes the list.
+- **connectedCallback**(): void
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **dropDown**(): void — Programmatically drops down the list.
+- **enableDisableFiltering**(allowFilter: boolean): void
+- **ensureActualContentPadding**(): void
+- **ensureActualCornerRadius**(): void
+- **ensureContentPadding**(): void
+- **ensureCornerRadius**(): void
+- **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
+- **exportVisualModel**(): any — Exports visual information about the current state of the grid.
+- **findByName**(name: string): any
+- **select**(): void — Selects all the text in the combo input area.
+- **selectGridRow**(index: number): void
+- **updateStyle**(): void
+- **verifyDisplayText**(): void
+- static **register**(): void
+
+### [IgcComboEditorGotFocusEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcComboEditorGotFocusEventArgs)
+
+- **constructor**(): IgcComboEditorGotFocusEventArgs
+
+### [IgcComboEditorLostFocusEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcComboEditorLostFocusEventArgs)
+
+- **constructor**(): IgcComboEditorLostFocusEventArgs
+
+### [IgcComboEditorTextChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcComboEditorTextChangedEventArgs)
+
+- **constructor**(): IgcComboEditorTextChangedEventArgs
+- **newText**: `string`
+- **oldText**: `string`
+
+### [IgcComboEditorValueChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcComboEditorValueChangedEventArgs)
+
+- **constructor**(): IgcComboEditorValueChangedEventArgs
+- **newValue**: `any`
+- **oldValue**: `any`
+
+### [IgcLayoutPrimaryKeyValue](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcLayoutPrimaryKeyValue)
+A primary key value.
+
+- **constructor**(): IgcLayoutPrimaryKeyValue
+- **key**: `string[]` — The primary key associated with this value.
+- **value**: `any[]` — The value of the keys for this primary key value.
+- **equals**(other: any): boolean — Determines if two primary key values are equal.
+- **findByName**(name: string): any
+
+### [IgcLayoutSelectedItemsCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcLayoutSelectedItemsCollection)
+
+- **constructor**(list?: any[]): IgcLayoutSelectedItemsCollection
+
+### [IgcLayoutSelectedKeysCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcLayoutSelectedKeysCollection)
+
+- **constructor**(list?: IgcLayoutPrimaryKeyValue[]): IgcLayoutSelectedKeysCollection
+
+### [IgcListPanelActiveRowChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelActiveRowChangedEventArgs)
+Information about the change to the selected cells in the grid.
+
+- **constructor**(): IgcListPanelActiveRowChangedEventArgs
+- **newActiveRow**: `number` — The new active row.
+- **oldActiveRow**: `number` — The old active row.
+
+### [IgcListPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelComponent)
+
+- **constructor**(): IgcListPanelComponent
+- static **htmlTagName**: `string`
+- **activationBorder**: `string` — Gets or sets the activation border color to use.
+- **activationBorderBottomWidth**: `number` — Gets or sets the amount of bottom activation border to use for the cell content of this column.
+- **activationBorderLeftWidth**: `number` — Gets or sets the amount of left activation border to use for the cell content for this column.
+- **activationBorderRightWidth**: `number` — Gets or sets the amount of right activation border to use for the cell content of this column.
+- **activationBorderTopWidth**: `number` — Gets or sets the amount of top activation border to use for the cell content for this column.
+- **activationMode**: `ListPanelActivationMode` — Sets or gets the grid selection mode.
+- **activeRow**: `number` — Gets or sets the position of the active row.
+- **activeRowChanged**: `any` — Called when the active row changes.
+- **actualPrimaryKey**: `string[]` — Gets either the inferred primary key from the data source, or the user provided primary key, if present. Represents the actual primary key that the grid will use in operations that require it.
+- **actualPrimaryKeyChange**: `any`
+- **actualRowHeight**: `number`
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **cellTextStyle**: `string` — Gets or Sets the property name that contains the values.
+- **contentRefreshed**: `any`
+- **dataSource**: `any`
+- **hasUnevenSizes**: `boolean`
+- **height**: `string`
+- **i**: `ListPanel`
+- **isActiveRowStyleEnabled**: `boolean` — Gets or sets whether the active row style will be applied to rows when made active.
+- **isCustomRowHeightEnabled**: `boolean` — Gets or sets the color to use for the background of the component.
+- **itemClicked**: `any`
+- **itemHeightRequested**: `any`
+- **itemRebind**: `any` — Called when item content is rebound.
+- **itemRecycled**: `any` — Called when item content is recycled.
+- **itemSpacing**: `number` — Gets or sets the spacing between items.
+- **itemWidthRequested**: `any`
+- **normalBackground**: `string` — Gets or sets the background color to use.
+- **notifyOnAllSelectionChanges**: `boolean` — Gets or sets if the grid should notify on programmatic selection changes as well as changes from the UI.
+- **orientation**: `ListPanelOrientation` — Gets or sets the color to use for the background of the component.
+- **primaryKey**: `string[]` — Sets or gets the user provided primary key to assume for the data. Certain functionality of the grid requires a way to uniquely identify items in order to work correctly.
+If a primary key cannot be inferred from the data source, you may need to provide one here.
+- **rowHeight**: `number` — Gets or Sets the property name that contains the values.
+- **rowUpdating**: `any`
+- **schemaIncludedProperties**: `string[]` — Gets either the filtered properties to include in the schema of the data source.
+- **scrollbarBackground**: `string` — Gets or sets the scrollbar background color.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **selectedBackground**: `string` — Gets or sets the background color to use for the cells when they are selected
+- **selectedItems**: `IgcListPanelSelectedItemsCollection` — Gets which items are currently selected in the grid. Collection can be updated to programatically select items.
+- **selectedItemsChanged**: `any` — Called when the selected items change.
+- **selectedKeys**: `IgcListPanelSelectedKeysCollection` — Gets which primary key values are currently selected in the grid. Collection can be updated to programatically select items.
+- **selectedKeysChanged**: `any` — Called when the selected keys change.
+- **selectionBehavior**: `ListPanelSelectionBehavior` — Sets or gets how selection behaves in the grid.
+- **selectionChanged**: `any` — Called when an individual selection operation has been made.
+- **selectionMode**: `ListPanelSelectionMode` — Sets or gets the grid selection mode.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **_scrollTo**(x: number, y: number): void
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **connectedCallback**(): void
+- **createLocalDataSource**(itemsSource: any, schemaIncludedProperties: string[]): IDataSource
+- **dataIndexOfItem**(item: any): number — Returns the data index of an item within the bound data source.
+- **dataIndexOfPrimaryKey**(key: any[]): number
+- **deselectAllRows**(): void — Deselects all currently selected rows.
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **getFirstVisibleIndex**(): number — Gets the first visible index in the grid.
+- **getItemKey**(primaryKey: string[], item_: any): IgcListPanelPrimaryKeyValue
+- **getLastVisibleIndex**(): number — Gets the last visible index in the grid.
+- **getRowKey**(primaryKey: string[], rowIndex: number): IgcListPanelPrimaryKeyValue
+- **invalidateVisibleItems**(): void — Invalidates the bound data for the rows currently visible.
+- **moveViewportTo**(x: number, y: number): void
+- **notifyClearItems**(): void — Manually notifies the grid's data source that the data it has bound to has been cleared and needs to be re-examined.
+This should not be called if the data that the grid is bound to is already observable.
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **notifySizeChanged**(): void
+- **onContentSizeChanged**(): void
+- **onScroll**(): void
+- **onScrollStart**(): void
+- **onScrollStop**(): void
+- **scrollToLastRowByIndex**(rowNumber: number): void — Scrolls the grid so that a row is the last visible, by index.
+- **scrollToRowByIndex**(rowNumber: number): void — Scrolls the grid to given row, by index
+- **selectAllRows**(): void — Selects all of the rows in the grid.
+- **setScrollbarColor**(color: any): void
+- **setScrollbarStyle**(style: ScrollbarStyle): void
+- **updateStyle**(): void
+- static **register**(): void
+
+### [IgcListPanelContentRebindEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelContentRebindEventArgs)
+Information about list item content that was just rebound.
+
+- **constructor**(): IgcListPanelContentRebindEventArgs
+- **rowObject**: `any` — The model that is rebinding.
+
+### [IgcListPanelContentRecycledEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelContentRecycledEventArgs)
+Information about list item content that was just recycled.
+
+- **constructor**(): IgcListPanelContentRecycledEventArgs
+- **rowObject**: `any` — The model that was recycled.
+
+### [IgcListPanelContentRefreshedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelContentRefreshedEventArgs)
+
+- **constructor**(): IgcListPanelContentRefreshedEventArgs
+
+### [IgcListPanelItemEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelItemEventArgs)
+Event arguments for the SelectionChanged event.
+
+- **constructor**(): IgcListPanelItemEventArgs
+- **isDoubleClick**: `boolean`
+- **isLeftButton**: `boolean`
+- **itemInfo**: `IgcListPanelItemModel`
+- **listPanel**: `IgcListPanelComponent`
+
+### [IgcListPanelItemModel](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelItemModel)
+
+- **constructor**(): IgcListPanelItemModel
+- **dataRow**: `number`
+- **isActivated**: `boolean`
+- **isActivationSupported**: `boolean`
+- **isModelDirty**: `boolean`
+- **isSelected**: `boolean`
+- **left**: `number`
+- **rowHeight**: `number`
+- **rowObject**: `any`
+- **top**: `number`
+- **findByName**(name: string): any
+
+### [IgcListPanelPrimaryKeyValue](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelPrimaryKeyValue)
+A primary key value.
+
+- **constructor**(): IgcListPanelPrimaryKeyValue
+- **key**: `string[]` — The primary key associated with this value.
+- **value**: `any[]` — The value of the keys for this primary key value.
+- **equals**(other: any): boolean — Determines if two primary key values are equal.
+- **findByName**(name: string): any
+
+### [IgcListPanelSelectedItemsChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelSelectedItemsChangedEventArgs)
+Information about the changing selected items in the grid.
+
+- **constructor**(): IgcListPanelSelectedItemsChangedEventArgs
+- **addedItems**: `IgcListPanelSelectedItemsCollection` — The items added to the selection.
+- **currentItems**: `IgcListPanelSelectedItemsCollection` — The items added to the selection.
+- **removedItems**: `IgcListPanelSelectedItemsCollection` — The items removed from the selection.
+
+### [IgcListPanelSelectedItemsCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelSelectedItemsCollection)
+
+- **constructor**(list?: any[]): IgcListPanelSelectedItemsCollection
+
+### [IgcListPanelSelectedKeysChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelSelectedKeysChangedEventArgs)
+Information about the change to the selected keys in the grid.
+
+- **constructor**(): IgcListPanelSelectedKeysChangedEventArgs
+- **addedKeys**: `IgcListPanelSelectedKeysCollection` — The keys added to the selection.
+- **currentKeys**: `IgcListPanelSelectedKeysCollection` — All keys in the selection.
+- **removedKeys**: `IgcListPanelSelectedKeysCollection` — The keys removed from the selection.
+
+### [IgcListPanelSelectedKeysCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelSelectedKeysCollection)
+
+- **constructor**(list?: IgcListPanelPrimaryKeyValue[]): IgcListPanelSelectedKeysCollection
+
+### [IgcListPanelSelectionChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelSelectionChangedEventArgs)
+Event arguments for the SelectionChanged event.
+
+- **constructor**(): IgcListPanelSelectionChangedEventArgs
+
+### [IgcListPanelTemplateHeightRequestedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelTemplateHeightRequestedEventArgs)
+
+- **constructor**(): IgcListPanelTemplateHeightRequestedEventArgs
+- **dataItem**: `any`
+- **dataRow**: `number`
+- **height**: `number`
+
+### [IgcListPanelTemplateItemUpdatingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelTemplateItemUpdatingEventArgs)
+
+- **constructor**(): IgcListPanelTemplateItemUpdatingEventArgs
+- **availableWidth**: `number`
+- **content**: `any`
+- **model**: `IgcListPanelItemModel`
+
+### [IgcListPanelTemplateWidthRequestedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcListPanelTemplateWidthRequestedEventArgs)
+
+- **constructor**(): IgcListPanelTemplateWidthRequestedEventArgs
+- **dataItem**: `any`
+- **dataRow**: `number`
+- **width**: `number`
+
+### [IgcOnCollapsedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcOnCollapsedEventArgs)
+
+- **constructor**(): IgcOnCollapsedEventArgs
+
+### [IgcOnExpandedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcOnExpandedEventArgs)
+
+- **constructor**(): IgcOnExpandedEventArgs
+
+### [IgcPropertyEditorDataSource](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorDataSource)
+
+- **constructor**(): IgcPropertyEditorDataSource
+- **context**: `TypeDescriptionContext`
+- **descriptionType**: `string`
+- **findByName**(name: string): any
+
+### [IgcPropertyEditorDescriptionObject](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorDescriptionObject)
+
+- **constructor**(): IgcPropertyEditorDescriptionObject
+- **descriptionType**: `string`
+- **properties**: `IgcPropertyEditorPropertyDescriptionCollection`
+- **findByName**(name: string): any
+
+### [IgcPropertyEditorDescriptionObjectCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorDescriptionObjectCollection)
+
+- **constructor**(list?: IgcPropertyEditorDescriptionObject[]): IgcPropertyEditorDescriptionObjectCollection
+
+### [IgcPropertyEditorPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPanelComponent)
+
+- **constructor**(): IgcPropertyEditorPanelComponent
+- **actualProperties**: `IgcPropertyEditorPropertyDescriptionComponent[]` — The properties actually present in the editor. Do not directly modify this array.
+This array's contents can be modified by using the properties property or providing child content.
+- **contentProperties**: `IgcPropertyEditorPropertyDescriptionComponent[]`
+- static **htmlTagName**: `string`
+- **actualDataSource**: `IgcPropertyEditorPropertyDescriptionCollection` — Gets the actaul data or data source instance to which to bind the grid.
+- **actualDescriptionContext**: `TypeDescriptionContext`
+- **actualRowHeight**: `number`
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **cellTextStyle**: `string` — Gets or Sets the property name that contains the values.
+- **componentRenderer**: `ComponentRenderer`
+- **descriptionContext**: `TypeDescriptionContext`
+- **descriptionType**: `string`
+- **height**: `string`
+- **i**: `PropertyEditorPanel`
+- **isHorizontal**: `boolean`
+- **isIndirectModeEnabled**: `boolean`
+- **isWrappingEnabled**: `boolean`
+- **properties**: `IgcPropertyEditorPropertyDescriptionCollection` — A collection of manually added properties for the editor.
+- **rowHeight**: `number` — Gets or Sets the property name that contains the values.
+- **target**: `any`
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **updateMode**: `PropertyEditorPanelUpdateMode` — Gets or Sets the property name that contains the values.
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **connectedCallback**(): void
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- **notifyClearItems**(): void — Manually notifies the checkboxlist's grid that the data it has bound to has been cleared and needs to be re-examined.
+This should not be called if the data that the grid is bound to is already observable.
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **updateStyle**(): void
+- static **register**(): void
+
+### [IgcPropertyEditorPropertyDescriptionButtonClickEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionButtonClickEventArgs)
+
+- **constructor**(): IgcPropertyEditorPropertyDescriptionButtonClickEventArgs
+
+### [IgcPropertyEditorPropertyDescriptionChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionChangedEventArgs)
+
+- **constructor**(): IgcPropertyEditorPropertyDescriptionChangedEventArgs
+- **newValue**: `any`
+
+### [IgcPropertyEditorPropertyDescriptionCoercingValueEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionCoercingValueEventArgs)
+
+- **constructor**(): IgcPropertyEditorPropertyDescriptionCoercingValueEventArgs
+- **complexValue**: `IgcPropertyEditorDescriptionObject`
+- **complexValues**: `IgcPropertyEditorDescriptionObjectCollection`
+- **value**: `any`
+
+### [IgcPropertyEditorPropertyDescriptionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionCollection)
+
+- **constructor**(list?: IgcPropertyEditorPropertyDescriptionComponent[]): IgcPropertyEditorPropertyDescriptionCollection
+
+### [IgcPropertyEditorPropertyDescriptionComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionComponent)
+
+- **constructor**(): IgcPropertyEditorPropertyDescriptionComponent
+- static **htmlTagName**: `string`
+- **buttonClicked**: `any`
+- **changed**: `any`
+- **coercedComplexValue**: `IgcPropertyEditorDescriptionObject`
+- **coercedComplexValues**: `IgcPropertyEditorDescriptionObjectCollection`
+- **coercedPrimitiveValue**: `any`
+- **coercedValueType**: `PropertyEditorValueType`
+- **coercingValue**: `any`
+- **complexValue**: `IgcPropertyEditorDescriptionObject`
+- **complexValues**: `IgcPropertyEditorDescriptionObjectCollection`
+- **dropDownNames**: `string[]`
+- **dropDownValues**: `string[]`
+- **editorWidth**: `number`
+- **elementDescriptionType**: `string`
+- **label**: `string`
+- **labelWidth**: `number`
+- **max**: `number`
+- **min**: `number`
+- **name**: `string` — Gets or sets the unique name of the mapping.
+- **primitiveValue**: `any`
+- **properties**: `IgcPropertyEditorPropertyDescriptionCollection`
+- **propertyDescriptionType**: `string`
+- **propertyPath**: `string`
+- **shouldOverrideDefaultEditor**: `boolean`
+- **step**: `number`
+- **subtitle**: `string`
+- **targetPropertyUpdating**: `any`
+- **useCoercedValue**: `boolean`
+- **valueType**: `PropertyEditorValueType`
+- static **observedAttributes**: `string[]`
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **_createFromInternal**(internal: any): IgcPropertyEditorPropertyDescriptionComponent
+- static **register**(): void
+
+### [IgcPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs)
+
+- **constructor**(): IgcPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs
+- **propertyPath**: `string`
+- **target**: `any`
+- **value**: `any`
+
+### [IgcToolActionButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionButtonComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionButtonComponent
+- static **htmlTagName**: `string`
+- **cornerRadius**: `number` — Gets or sets the button corner radius.
+- **displayType**: `ToolActionButtonDisplayType` — Gets or sets the display type for the button.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionButtonPairComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionButtonPairComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionButtonPairComponent
+- static **htmlTagName**: `string`
+- **actualLeftIconFill**: `string` — Gets the actual LeftIcon fill color.
+- **actualLeftIconStroke**: `string` — Gets the actual LeftIcon stroke color.
+- **actualRightIconFill**: `string` — Gets the actual RightIcon fill color.
+- **actualRightIconStroke**: `string` — Gets the actual RightIcon stroke color.
+- **cornerRadius**: `number` — Gets or sets the button corner radius.
+- **displayType**: `ToolActionButtonGroupDisplayType` — Gets or sets the display type for the button.
+- **isToggleDisabled**: `boolean`
+- **leftCommandArgument**: `string`
+- **leftIconCollectionName**: `string`
+- **leftIconFill**: `string` — Gets or sets the LeftIcon fill color.
+- **leftIconFillColors**: `string[]` — Gets or sets the LeftIcon fill colors.
+- **leftIconName**: `string`
+- **leftIconStroke**: `string` — Gets or sets the LeftIcon stroke color.
+- **leftIconStrokeColors**: `string[]` — Gets or sets the LeftIcon stroke colors.
+- **leftIconStrokeWidth**: `number` — Gets or sets the LeftIcon viewbox width.
+- **leftIconViewBoxHeight**: `number` — Gets or sets the LeftIcon viewbox height.
+- **leftIconViewBoxLeft**: `number` — Gets or sets the LeftIcon viewbox left.
+- **leftIconViewBoxTop**: `number` — Gets or sets the LeftIcon viewbox top.
+- **leftIconViewBoxWidth**: `number` — Gets or sets the LeftIcon viewbox width.
+- **leftIsDisabled**: `boolean`
+- **leftIsSelected**: `boolean`
+- **leftTitle**: `string` — Gets or sets the title of the left button.
+- **rightCommandArgument**: `string`
+- **rightIconCollectionName**: `string`
+- **rightIconFill**: `string` — Gets or sets the RightIcon fill color.
+- **rightIconFillColors**: `string[]` — Gets or sets the RightIcon fill colors.
+- **rightIconName**: `string`
+- **rightIconStroke**: `string` — Gets or sets the RightIcon stroke color.
+- **rightIconStrokeColors**: `string[]` — Gets or sets the RightIcon stroke colors.
+- **rightIconStrokeWidth**: `number` — Gets or sets the RightIcon viewbox width.
+- **rightIconViewBoxHeight**: `number` — Gets or sets the RightIcon viewbox height.
+- **rightIconViewBoxLeft**: `number` — Gets or sets the RightIcon viewbox left.
+- **rightIconViewBoxTop**: `number` — Gets or sets the RightIcon viewbox top.
+- **rightIconViewBoxWidth**: `number` — Gets or sets the RightIcon viewbox width.
+- **rightIsDisabled**: `boolean`
+- **rightIsSelected**: `boolean`
+- **rightTitle**: `string` — Gets or sets the title of the Right button.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionCheckboxComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionCheckboxComponent
+- static **htmlTagName**: `string`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the unchecked state.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the checked state.
+- **isChecked**: `boolean` — Gets or sets if the tool action is checked.
+- **shorthandTitle**: `string` — Gets or sets a shorthand display text for this checkbox option. Used by
+ToolActionCheckboxGroup to
+show the selected option if it is set. If your title is long consider setting this to a shorter version
+for more compact display.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionCheckboxGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxGroupComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionCheckboxGroupComponent
+- static **htmlTagName**: `string`
+- **actualSelectedTextColor**: `string` — Gets the resolved color for the selected checkbox display text.
+- **selectedTextColor**: `string` — Gets or sets the color for the selected checkbox display text.
+When null, defaults to a lightened version of the ToolPanel's text color.
+- **selectedTextStyle**: `string` — Gets or sets the font for the selected checkbox display text.
+When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionCheckboxListComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxListComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionCheckboxListComponent
+- static **htmlTagName**: `string`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the unchecked state.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the checked state.
+- **dataMemberPath**: `string` — Gets or sets if the tool action is checked.
+- **dataSource**: `any` — Gets or sets if the tool action is checked.
+- **indexType**: `ToolActionCheckboxListIndexType`
+- **primaryKey**: `string[]` — Gets or sets if the tool action is checked.
+- **selectedKeys**: `IgcLayoutSelectedKeysCollection`
+- **selectedMemberPath**: `string` — Gets or sets if the tool action is checked.
+- **showSelectAll**: `boolean` — Gets or sets if the select all row is shown.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- static **register**(): void
+
+### [IgcToolActionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCollection)
+
+- **constructor**(list?: IgcToolActionComponent[]): IgcToolActionCollection
+
+### [IgcToolActionColorEditorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionColorEditorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionColorEditorComponent
+- static **htmlTagName**: `string`
+- **value**: `string` — Gets or sets the value for the input.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionComboComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionComboComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionComboComponent
+- static **htmlTagName**: `string`
+- **dataSource**: `any` — Gets or sets if the tool action is checked.
+- **displayMemberPath**: `string` — Gets or sets the field to use to get the displayed values.
+- **selectedValues**: `IgcLayoutSelectedItemsCollection`
+- **valueMemberPath**: `string` — Gets or sets the field to use to get the values to use.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionComponent
+- **accentColor**: `string`
+- **actionId**: `string`
+- **actions**: `IgcToolActionCollection` — Gets the sub actions associated with this tool action.
+- **actualAccentColor**: `string`
+- **actualActions**: `IgcToolActionComponent[]`
+- **actualBackground**: `string` — Gets the actual background used by the tool action.
+- **actualDensity**: `ControlDisplayDensity` — Gets the resolved display density to use for the action.
+- **actualDisabledTextColor**: `string` — Gets the actual label text color when the tool is disabled.
+- **actualHighlightColor**: `string`
+- **actualHighlightRadius**: `number`
+- **actualHighlightWidth**: `number`
+- **actualHoverBackground**: `string` — Gets the actual hover background used by the tool action.
+- **actualIconFill**: `string` — Gets the actual icon fill color.
+- **actualIconHeight**: `number` — Gets the actual icon height used.
+- **actualIconStroke**: `string` — Gets the actual icon stroke color.
+- **actualIconWidth**: `number` — Gets the actual icon width used.
+- **actualPaddingBottom**: `number`
+- **actualPaddingLeft**: `number`
+- **actualPaddingRight**: `number`
+- **actualPaddingTop**: `number`
+- **actualSubPanelRowHeight**: `number`
+- **actualSubtitleTextColor**: `string` — Gets the actual label text color.
+- **actualSubtitleTextStyle**: `FontInfo` — Gets the actual font used.
+- **actualTextColor**: `string` — Gets the actual label text color.
+- **actualTextStyle**: `FontInfo` — Gets the actual font used.
+- **afterId**: `string` — Gets or sets the Id of the action that this action will be inserted after.
+Subsequent actions will continue to insert after the target action, following
+the original action that set this property. If using this property do not use the
+BeforeId property.
+This property is only relevant during initial insertion into the toolbar. Changing the property
+after the action has already been added will have no effect.
+- **background**: `string` — Gets or sets the background color of the tool action.
+- **beforeId**: `string` — Gets or sets the Id of the action that this action will be inserted before.
+Subsequent actions will continue to insert before the target action, following
+the original action that set this property. If using this property do not use the
+AfterId property.
+This property is only relevant during initial insertion into the toolbar. Changing the property
+after the action has already been added will have no effect.
+- **closeOnExecute**: `boolean` — Gets or sets if the tool action will close its parent dropdown when executed by the user.
+- **commandArgument**: `string`
+- **commandArgumentValue**: `any`
+- **commandId**: `string`
+- **contentActions**: `IgcToolActionComponent[]`
+- **contextBindings**: `IgcToolContextBindingCollection` — Gets the context bindings for this tool action.
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the action.
+- **disabledTextColor**: `string` — Gets or sets the label text color when the tool is disabled.
+- **height**: `number` — Gets or sets the height to use for this tool action.
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackground**: `string` — Gets or sets the hover background for this tool action.
+- **iconCollectionName**: `string`
+- **iconFill**: `string` — Gets or sets the icon fill color.
+- **iconFillColors**: `string[]` — Gets or sets the icon fill colors.
+- **iconHeight**: `number` — Gets or sets the height of the icon.
+- **iconName**: `string`
+- **iconStroke**: `string` — Gets or sets the icon stroke color.
+- **iconStrokeColors**: `string[]` — Gets or sets the icon stroke colors.
+- **iconStrokeWidth**: `number` — Gets or sets the icon viewbox width.
+- **iconViewBoxHeight**: `number` — Gets or sets the icon viewbox height.
+- **iconViewBoxLeft**: `number` — Gets or sets the icon viewbox left.
+- **iconViewBoxTop**: `number` — Gets or sets the icon viewbox top.
+- **iconViewBoxWidth**: `number` — Gets or sets the icon viewbox width.
+- **iconWidth**: `number` — Gets or sets the width of the icon.
+- **isDisabled**: `boolean`
+- **isHighlighted**: `boolean`
+- **isOpen**: `boolean`
+- **name**: `string`
+- **onCommand**: `any`
+- **overlayId**: `string` — Sets to the Id of the action that this action will overlay itself on to.
+The purpose of this property is to allow users to override actions automatically generated by
+toolbar targets such as the DataChart. These generated actions all have unique Ids associated
+with them that can be used for the OverlayId.
+These overlaid actions will
+not
+replace the generated one but will have its properties
+overlaid onto the generated actions.
+- **paddingBottom**: `number`
+- **paddingLeft**: `number`
+- **paddingRight**: `number`
+- **paddingTop**: `number`
+- **parentId**: `string`
+- **performed**: `any`
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel if different than default
+- **subtitle**: `string` — Gets or sets the subtitle of the tool.
+- **subtitleTextColor**: `string` — Gets or sets the label text color.
+- **subtitleTextStyle**: `string` — Gets or sets the font to use.
+- **textColor**: `string` — Gets or sets the label text color.
+- **textStyle**: `string` — Gets or sets the font to use.
+- **title**: `string` — Gets or sets the title of the tool.
+- **titleHorizontalAlignment**: `HorizontalAlignment` — Gets or sets the title horizontal alignment.
+- **visibility**: `Visibility` — Gets or sets the tool action visibility.
+- **width**: `number` — Gets or sets the width to use for this tool action.
+- static **observedAttributes**: `string[]`
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **closeSubmenu**(): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **openSubMenu**(): void
+- static **_createFromInternal**(internal: any): IgcToolActionComponent
+
+### [IgcToolActionEventDetail](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionEventDetail)
+
+- **constructor**(): IgcToolActionEventDetail
+- **actionId**: `string`
+- **actionType**: `ToolActionType`
+- **boolValue**: `boolean`
+- **dateTimeValue**: `Date`
+- **isModified**: `boolean`
+- **numberValue**: `number`
+- **stringValue**: `string`
+- **untypedValue**: `any`
+- **findByName**(name: string): any
+
+### [IgcToolActionEventDetailCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionEventDetailCollection)
+
+- **constructor**(list?: IgcToolActionEventDetail[]): IgcToolActionEventDetailCollection
+
+### [IgcToolActionFieldSelectorAggregation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorAggregation)
+
+- **constructor**(): IgcToolActionFieldSelectorAggregation
+- **label**: `string`
+- **name**: `string`
+- **operand**: `DataSourceSummaryOperand`
+- **findByName**(name: string): any
+
+### [IgcToolActionFieldSelectorAggregationsCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorAggregationsCollection)
+
+- **constructor**(list?: IgcToolActionFieldSelectorAggregation[]): IgcToolActionFieldSelectorAggregationsCollection
+
+### [IgcToolActionFieldSelectorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionFieldSelectorComponent
+- static **htmlTagName**: `string`
+- **actualPaddingBottom**: `number`
+- **actualPaddingLeft**: `number`
+- **actualPaddingRight**: `number`
+- **actualPaddingTop**: `number`
+- **aggregations**: `IgcToolActionFieldSelectorAggregationsCollection` — Gets or sets a list of aggregations to use, if null a default list is used instead.
+If list provided has custom aggregations the data source is never updated.
+- **dataSource**: `IDataSource` — Gets or sets if the tool action is checked.
+- **fieldType**: `ToolActionFieldSelectorType` — Gets or sets if the tool action is checked.
+- **legendTarget**: `any`
+- **paddingBottom**: `number`
+- **paddingLeft**: `number`
+- **paddingRight**: `number`
+- **paddingTop**: `number`
+- **selectedAggregations**: `IgcToolActionFieldSelectorSelectedAggregationsCollection` — Used to set default values when using custom aggregations, will be overriden otherwise
+- **singleSelection**: `boolean` — Gets or sets if the list only takes one selection at a time.
+- **updateDataSource**: `boolean` — Gets or sets if the data source has to be updated when changes are made.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
+### [IgcToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorSelectedAggregation)
+
+- **constructor**(): IgcToolActionFieldSelectorSelectedAggregation
+- **aggregationName**: `string`
+- **aggregationOperand**: `DataSourceSummaryOperand`
+- **field**: `string`
+- **findByName**(name: string): any
+
+### [IgcToolActionFieldSelectorSelectedAggregationsCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorSelectedAggregationsCollection)
+
+- **constructor**(list?: IgcToolActionFieldSelectorSelectedAggregation[]): IgcToolActionFieldSelectorSelectedAggregationsCollection
+
+### [IgcToolActionGroupHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionGroupHeaderComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionGroupHeaderComponent
+- static **htmlTagName**: `string`
+- **actualBackIconColor**: `string` — Gets the actual back icon color.
+- **backIconColor**: `string` — Gets or sets the icon color for the back button.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionIconButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionIconButtonComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionIconButtonComponent
+- static **htmlTagName**: `string`
+- **actualContentPaddingBottom**: `number`
+- **actualContentPaddingLeft**: `number`
+- **actualContentPaddingRight**: `number`
+- **actualContentPaddingTop**: `number`
+- **actualTooltipDelay**: `number` — Gets the actual delay before the tooltip is displayed (in milliseconds).
+- **contentPaddingBottom**: `number`
+- **contentPaddingLeft**: `number`
+- **contentPaddingRight**: `number`
+- **contentPaddingTop**: `number`
+- **isOpen**: `boolean`
+- **popupOpening**: `any`
+- **tooltipDelay**: `number` — Gets or sets how long it takes before the tooltip is displayed (in milliseconds).
+- static **observedAttributes**: `string[]`
+- **closeSubmenu**(): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- **openSubMenu**(): void
+- static **register**(): void
+
+### [IgcToolActionIconMenuComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionIconMenuComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionIconMenuComponent
+- static **htmlTagName**: `string`
+- **actualArrowStroke**: `string` — Gets the actual stroke color of the arrow icon.
+- **arrowStroke**: `string` — Gets or sets the stroke color of the arrow icon.
+- **showArrowIcon**: `boolean` — Gets or sets whether the arrow icon should be shown.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionLabelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionLabelComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionLabelComponent
+- static **htmlTagName**: `string`
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionNumberInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionNumberInputComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionNumberInputComponent
+- static **htmlTagName**: `string`
+- **value**: `number` — Gets or sets the value for the input.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionPerformedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionPerformedEventArgs)
+
+- **constructor**(): IgcToolActionPerformedEventArgs
+- **detail**: `IgcToolActionEventDetail`
+- **detailCollection**: `IgcToolActionEventDetailCollection`
+- **isAggregate**: `boolean`
+
+### [IgcToolActionPopupOpeningEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionPopupOpeningEventArgs)
+
+- **constructor**(): IgcToolActionPopupOpeningEventArgs
+- **cancel**: `boolean`
+- **sourceAction**: `IgcToolActionComponent`
+
+### [IgcToolActionRadioComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionRadioComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionRadioComponent
+- static **htmlTagName**: `string`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the radio when in the unchecked state.
+- **channel**: `string` — Gets or sets the channel this radio button belongs to.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **isChecked**: `boolean` — Gets or sets if the tool action is checked.
+- **isManual**: `boolean` — Gets or sets if the checked state of the radio is handled manually by the user. The radio
+well not become selected when clicked if this property is true.
+- **isToggleable**: `boolean` — Gets or sets whether the radio can be unchecked by clicking it again. When true, the radio
+behaves like a checkbox for the on-state — clicking a checked radio will uncheck it, leaving
+the channel with no selection. Channel exclusivity is still enforced when the radio is checked
+(siblings in the same channel will be deselected). Defaults to false.
+- **shorthandTitle**: `string` — Gets or sets a shorthand title for this radio option. Used by
+ToolActionRadioGroup to
+show the selected option if it is set. If your title is long consider setting this to a shorter version
+for more compact display.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionRadioGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionRadioGroupComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionRadioGroupComponent
+- static **htmlTagName**: `string`
+- **actualSelectedTextColor**: `string` — Gets the resolved color for the selected radio display text.
+- **selectedTextColor**: `string` — Gets or sets the color for the selected radio display text.
+When null, defaults to a lightened version of the ToolPanel's text color.
+- **selectedTextStyle**: `string` — Gets or sets the font for the selected radio display text.
+When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionSeparatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSeparatorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionSeparatorComponent
+- static **htmlTagName**: `string`
+- **isGroupHeaderSeparator**: `boolean` — Gets or sets whether to use group header styling or regular styling on this separator.
+- **size**: `number` — Gets or sets the size of the separator.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionSubPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSubPanelComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionSubPanelComponent
+- static **htmlTagName**: `string`
+- **itemSpacing**: `number` — Gets or sets the spacing between items.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionTextInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionTextInputComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgcToolActionTextInputComponent
+- static **htmlTagName**: `string`
+- **value**: `string` — Gets or sets the value for the input.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolbarComponent)
+
+- **constructor**(): IgcToolbarComponent
+- **combinedActions**: `IgcToolActionComponent[]` — The actions actually present in the editor. Do not directly modify this array.
+This array's contents can be modified by using the actions property or providing child content.
+- **contentActions**: `IgcToolActionComponent[]`
+- static **htmlTagName**: `string`
+- **accentColor**: `string`
+- **actions**: `IgcToolActionCollection` — A collection of manually added actions for the editor.
+- **actualActions**: `IgcToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
+- **autoGeneratedActions**: `IgcToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cellTextStyle**: `string` — Gets or sets the text style.
+- **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this toolbar's sub-menus.
+- **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this toolbar's sub-menus.
+- **checkboxListScrollbarHoverBackground**: `string` — Gets or sets the scrollbar thumb hover background color for checkbox lists hosted in this toolbar's sub-menus.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
+- **disabledTextColor**: `string` — Gets or sets the color to use for the text in disabled tool actions.
+- **dropdownClickBuffer**: `number` — Gets or sets the amount of time to wait when clicking on the icon menu button while the dropdown is opening. If a click was
+executed within this buffer window the dropdown will be left open. Otherwise it will close it. Setting a negative value will
+always keep the dropdown open during a hover open and will require an extra click to close.
+- **dropdownDelay**: `number` — Gets or sets the dropdown delay time in milliseconds.
+- **groupHeaderBackgroundColor**: `string` — Gets or sets the group header background color.
+- **groupHeaderSubtitleTextColor**: `string` — Gets or sets the text color for group header subtitles.
+- **groupHeaderTextColor**: `string` — Gets or sets the text color for group header tool actions.
+- **groupHeaderTextStyle**: `string` — Gets or sets the text style.
+- **height**: `string`
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackgroundColor**: `string` — Gets or sets the hover background color.
+- **i**: `Toolbar`
+- **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
+- **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
+- **onCommand**: `any` — Event raised when a command is triggered in the toolbar.
+- **orientation**: `ToolbarOrientation` — Gets or sets the orientation of the toolbar.
+- **rowHeight**: `number` — Gets or sets the row height that should be used.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **separatorBackgroundColor**: `string` — Gets or sets the separator background color.
+- **separatorHorizontalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingLeft**: `number` — Gets or sets the left padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingRight**: `number` — Gets or sets the right padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingTop**: `number` — Gets or sets the top padding for separators in the horizontal orientation.
+- **separatorVerticalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the vertical orientation.
+- **separatorVerticalPaddingLeft**: `number` — Gets or sets the left padding for separators in the vertical orientation.
+- **separatorVerticalPaddingRight**: `number` — Gets or sets the right padding for separators in the vertical orientation.
+- **separatorVerticalPaddingTop**: `number` — Gets or sets the top padding for separators in the vertical orientation.
+- **showOnHover**: `boolean` — Gets or sets if the tool actions should display their submenus on mouse hover.
+- **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
+- **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
+- **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
+- **subMenuClosing**: `any` — Event raised when a submenu is closed on the toolbar
+- **subMenuOpening**: `any` — Event raised when a submenu is opened on the toolbar.
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel rows if different than default.
+- **subtitleTextColor**: `string` — Gets or sets the text color for subtitles.
+- **subtitleTextStyle**: `string` — Gets or sets the text style for subtitles.
+- **target**: `any` — Gets or sets a target component which the toolbar can request actions from.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
+- **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
+- **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
+- **toolTipTextColor**: `string` — Gets or sets the tooltip text color.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **closeSubmenus**(): void — Forces any open sub menus to close.
+- **connectedCallback**(): void
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **exportSerializedVisualData**(): string — Returns a serialized copy of the exported visual model
+- **exportVisualData**(): any — Exports visual information about the current state of the grid.
+- **findByName**(name: string): any
+- **flushRefresh**(): void
+- **getBoolContextItem**(key: string): boolean
+- **getBrushCollectionContextItem**(key: string): string[]
+- **getBrushContextItem**(key: string): string
+- **getColorContextItem**(key: string): string
+- **getDataContextItem**(key: string): any
+- **getDataURLFromCache**(iconCollection: string, iconName: string): string
+- **getDesiredSize**(): IgSize — Get the desired size the toolbar wants to be.
+- **getDoubleContextItem**(key: string): number
+- **getExternalDataContextItem**(key: string): any
+- **getExternalDoubleContextItem**(key: string): number
+- **getExternalIntContextItem**(key: string): number
+- **getIconFromCache**(iconCollection: string, iconName: string): string
+- **getIconSource**(iconCollection: string, iconName: string): any
+- **getIntContextItem**(key: string): number
+- **getMultiPathSVGFromCache**(iconCollection: string, iconName: string): string[]
+- **getStringContextItem**(key: string): string
+- **isOpen**(): boolean — Is a dropdown menu or tooltip currently open.
+- **onCommandStateChanged**(id: string, type: any, value: any): void
+- **registerIconFromDataURL**(iconCollection: string, iconName: string, dataURL: string): void
+- **registerIconFromText**(iconCollection: string, iconName: string, iconText: string): void
+- **registerIconSource**(iconCollection: string, iconName: string, source: any): void
+- **registerMultiPathSVG**(iconCollection: string, iconName: string, multiPathSVG: string[]): void
+- **setBoolContextItem**(key: string, value: boolean): void
+- **setBrushCollectionContextItem**(key: string, value: string[]): void
+- **setBrushContextItem**(key: string, value: string): void
+- **setColorContextItem**(key: string, value: string): void
+- **setDataContextItem**(key: string, value: any): void
+- **setDoubleContextItem**(key: string, value: number): void
+- **setExternalDataContextItem**(key: string, value: any): void
+- **setExternalDoubleContextItem**(key: string, value: any): void
+- **setExternalIntContextItem**(key: string, value: any): void
+- **setIntContextItem**(key: string, value: number): void
+- **setStringContextItem**(key: string, value: string): void
+- **updateStyle**(): void
+- static **register**(): void
+
+### [IgcToolbarSubMenuClosingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolbarSubMenuClosingEventArgs)
+
+- **constructor**(): IgcToolbarSubMenuClosingEventArgs
+
+### [IgcToolbarSubMenuOpeningEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolbarSubMenuOpeningEventArgs)
+
+- **constructor**(): IgcToolbarSubMenuOpeningEventArgs
+
+### [IgcToolCommandEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolCommandEventArgs)
+
+- **constructor**(): IgcToolCommandEventArgs
+- **closeOnExecute**: `boolean`
+- **command**: `ToolCommand`
+
+### [IgcToolContextBinding](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolContextBinding)
+
+- **constructor**(): IgcToolContextBinding
+- **bindingMode**: `ToolContextBindingMode`
+- **contextKey**: `string`
+- **propertyName**: `string`
+- **propertyUpdated**: `any`
+- **findByName**(name: string): any
+
+### [IgcToolContextBindingCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolContextBindingCollection)
+
+- **constructor**(list?: IgcToolContextBinding[]): IgcToolContextBindingCollection
+
+### [IgcToolPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolPanelComponent)
+
+- **constructor**(): IgcToolPanelComponent
+- **actualActions**: `IgcToolActionComponent[]` — The actions actually present in the editor. Do not directly modify this array.
+This array's contents can be modified by using the actions property or providing child content.
+- **contentActions**: `IgcToolActionComponent[]`
+- static **htmlTagName**: `string`
+- **accentColor**: `string`
+- **actions**: `IgcToolActionCollection` — A collection of manually added actions for the editor.
+- **actualAccentColor**: `string`
+- **actualBackgroundColor**: `string`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
+- **actualDensity**: `ControlDisplayDensity` — Gets the resolved display density to use for the toolbar.
+- **actualDisabledTextColor**: `string`
+- **actualDropdownDelay**: `number` — Gets the actual dropdown delay.
+- **actualGroupHeaderBackgroundColor**: `string`
+- **actualGroupHeaderSeparatorBackgroundColor**: `string`
+- **actualGroupHeaderSubtitleTextColor**: `string`
+- **actualGroupHeaderTextColor**: `string`
+- **actualHighlightColor**: `string`
+- **actualHighlightRadius**: `number`
+- **actualHighlightWidth**: `number`
+- **actualHoverBackgroundColor**: `string`
+- **actualIconFill**: `string` — Gets the actual icon fill color.
+- **actualIconStroke**: `string` — Gets the actual icon stroke color.
+- **actualMenuArrowStroke**: `string` — Gets the actual stroke color for all icon menu dropdown arrows.
+- **actualRowHeight**: `number` — Gets the actual row height used by the panel.
+- **actualSeparatorBackgroundColor**: `string`
+- **actualSeparatorHorizontalPaddingBottom**: `number`
+- **actualSeparatorHorizontalPaddingLeft**: `number`
+- **actualSeparatorHorizontalPaddingRight**: `number`
+- **actualSeparatorHorizontalPaddingTop**: `number`
+- **actualSeparatorVerticalPaddingBottom**: `number`
+- **actualSeparatorVerticalPaddingLeft**: `number`
+- **actualSeparatorVerticalPaddingRight**: `number`
+- **actualSeparatorVerticalPaddingTop**: `number`
+- **actualSubmenuBackgroundColor**: `string`
+- **actualSubtitleTextColor**: `string`
+- **actualTextColor**: `string`
+- **actualToolTipBackgroundColor**: `string` — Gets the actual tooltip background color.
+- **actualToolTipCornerRadius**: `number` — Gets the actual tooltip corner radius.
+- **actualToolTipElevation**: `number` — Gets the actual shadow elevation used by the tooltip.
+- **actualToolTipTextColor**: `string`
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the radio when in the unchecked state.
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cellTextStyle**: `string` — Gets or sets the text style for the panel.
+- **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this tool panel's actions.
+- **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this tool panel's actions.
+- **checkboxListScrollbarHoverBackground**: `string` — Gets or sets the scrollbar thumb hover background color for checkbox lists hosted in this tool panel's actions.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **contentRefreshed**: `any`
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
+- **disabledTextColor**: `string` — Gets or sets the color to use for the text in disabled tool actions.
+- **dropdownClickBuffer**: `number` — Gets or sets the amount of time to wait when clicking on the icon menu button while the dropdown is opening. If a click was
+executed within this buffer window the dropdown will be left open. Otherwise it will close it. Setting a negative value will
+always keep the dropdown open during a hover open and will require an extra click to close.
+- **dropdownDelay**: `number` — Gets or sets the dropdown delay time in milliseconds.
+- **groupHeaderBackgroundColor**: `string` — Gets or sets the group header background color.
+- **groupHeaderSeparatorBackgroundColor**: `string` — Gets or sets the group header separator background color.
+- **groupHeaderSubtitleTextColor**: `string` — Gets or sets the text color for group header subtitle.
+- **groupHeaderTextColor**: `string` — Gets or sets the text color for group header tool actions.
+- **groupHeaderTextStyle**: `string` — Gets or sets the text style.
+- **height**: `string`
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackgroundColor**: `string` — Gets or sets the hover background color.
+- **i**: `ToolPanel`
+- **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
+- **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **isOpen**: `boolean`
+- **itemSpacing**: `number` — Gets or sets the spacing between items
+- **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
+- **nestedActionMode**: `NestedActionMode` — Gets or sets the mode used when displaying nested actions.
+- **onCommand**: `any`
+- **orientation**: `ToolPanelOrientation` — Gets or sets the color to use for the background of the component.
+- **rowHeight**: `number` — Gets or sets the row height for the panel.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **separatorBackgroundColor**: `string` — Gets or sets the separator background color.
+- **separatorHorizontalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingLeft**: `number` — Gets or sets the left padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingRight**: `number` — Gets or sets the right padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingTop**: `number` — Gets or sets the top padding for separators in the horizontal orientation.
+- **separatorVerticalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the vertical orientation.
+- **separatorVerticalPaddingLeft**: `number` — Gets or sets the left padding for separators in the vertical orientation.
+- **separatorVerticalPaddingRight**: `number` — Gets or sets the right padding for separators in the vertical orientation.
+- **separatorVerticalPaddingTop**: `number` — Gets or sets the top padding for separators in the vertical orientation.
+- **showOnHover**: `boolean` — Gets or sets if the tool actions should display their submenus on mouse hover.
+- **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
+- **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
+- **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel rows if different than default.
+- **subtitleTextColor**: `string` — Gets or sets the color to use for the subtitle of the component.
+- **subtitleTextStyle**: `string` — Gets or sets the subtitle text style for the panel.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
+- **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
+- **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
+- **toolTipTextColor**: `string` — Gets or sets the tooltip text color.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **closeSubmenus**(): void — Forces any open sub menus to close.
+- **connectedCallback**(): void
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **flushRefresh**(): void
+- **getBoolContextItem**(key: string): boolean
+- **getBrushCollectionContextItem**(key: string): string[]
+- **getBrushContextItem**(key: string): string
+- **getColorContextItem**(key: string): string
+- **getDataContextItem**(key: string): any
+- **getDesiredSize**(): IgSize
+- **getDoubleContextItem**(key: string): number
+- **getIntContextItem**(key: string): number
+- **getStringContextItem**(key: string): string
+- **refresh**(): void
+- **setBoolContextItem**(key: string, value: boolean): void
+- **setBrushCollectionContextItem**(key: string, value: string[]): void
+- **setBrushContextItem**(key: string, value: string): void
+- **setColorContextItem**(key: string, value: string): void
+- **setDataContextItem**(key: string, value: any): void
+- **setDoubleContextItem**(key: string, value: number): void
+- **setIntContextItem**(key: string, value: number): void
+- **setStringContextItem**(key: string, value: string): void
+- **updateStyle**(): void
+- static **register**(): void
+
+### [IgcToolPanelContentRefreshedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolPanelContentRefreshedEventArgs)
+
+- **constructor**(): IgcToolPanelContentRefreshedEventArgs
+
+### [IgcToolPanelContextChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolPanelContextChangedEventArgs)
+
+- **constructor**(): IgcToolPanelContextChangedEventArgs
+- **contextKey**: `string`
+- **newValue**: `any`
+- **oldValue**: `any`
+
+### [IgcToolPanelContextSwappedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolPanelContextSwappedEventArgs)
+
+- **constructor**(): IgcToolPanelContextSwappedEventArgs
+
+### [IgcXExpansionPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcXExpansionPanelComponent)
+
+- **constructor**(): IgcXExpansionPanelComponent
+- static **htmlTagName**: `string`
+- **actualAmbientShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **actualCaptionTextColor**: `string` — Gets or sets the color to use for the actual header caption text.
+- **actualDescriptionTextColor**: `string` — Gets or sets the color to use for the actual header description text.
+- **actualElevation**: `number` — Gets or sets the elevation of the border shadow
+- **actualHeaderBackgroundColor**: `string` — Gets or sets the color to use for the actual background of the header.
+- **actualPenumbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **actualUmbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **caption**: `string` — Gets / sets the caption to display in the header area.
+- **captionCollapsedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is collapsed.
+- **captionExpandedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is expanded.
+- **captionTextColor**: `string` — Gets or sets the color to use for the header caption text.
+- **descriptionCollapsedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is collapsed.
+- **descriptionExpandedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is expanded.
+- **descriptionText**: `string` — Gets / sets the description to display in the header area.
+- **descriptionTextColor**: `string` — Gets or sets the color to use for the header description text.
+- **elevation**: `number` — Gets or sets the elevation to use for the button regardless of type.
+- **expanded**: `boolean` — Gets / sets the expanded state of the panel.
+- **headerBackgroundColor**: `string` — Gets or sets the color to use for the background of the header.
+- **headerCollapsedBackgroundColor**: `string` — Gets or sets the color to use for the background of the header when the panel is expanded.
+- **headerExpandedBackgroundColor**: `string` — Gets or sets the color to use for the background of the header when the panel is expanded.
+- **height**: `string`
+- **i**: `XExpansionPanel`
+- **onCollapsed**: `any` — Fires when the expansion panel is collapsed.
+- **onExpanded**: `any`
+- **width**: `string`
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **collapse**(): void — Collapses the contents of the expansion panel.
+- **connectedCallback**(): void
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **expand**(): void — Expands the contents of the expansion panel.
+- **findByName**(name: string): any
+- **toggle**(): void — Toggles the expanded state of the expansion panel.
+- **updateStyle**(): void
+- static **register**(): void
+
+## Enumerations
+
+### [ComboEditorCloneDataSourceFilterOperation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ComboEditorCloneDataSourceFilterOperation)
+Indicates the current operation underway for the cloned data source.
+
+- **None** = 0
+- **TextToValue** = 2
+- **ValueToText** = 1
+
+### [ComboEditorSelectedItemChangeType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ComboEditorSelectedItemChangeType)
+Indicates what type of operation is taking place when the selected row, value, or text in the combo box changes.
+
+- **Row** = 2
+- **Text** = 1
+- **Value** = 0
+
+### [ListPanelActivationMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ListPanelActivationMode)
+Indicates the activation mode to use for the grid.
+
+- **Cell** = 1 — A single cell is permitted to be activated at a time.
+- **None** = 0 — No activation should be peformed based on interaction.
+
+### [ListPanelOrientation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ListPanelOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0
+
+### [ListPanelSelectionBehavior](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ListPanelSelectionBehavior)
+Indicates the selection mode to use for the grid.
+
+- **ModifierBased** = 1 — Only one row or cell is selected at a time and modifier keys are required to multi-select them.
+- **Toggle** = 0 — Rows and cells are selected using a toggleable behavior. Modifier selection is ignored (CTRL and SHIFT).
+
+### [ListPanelSelectionMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ListPanelSelectionMode)
+Indicates the selection mode to use for the grid.
+
+- **MultipleRow** = 2 — Multiple rows are permitted to be selected at a time from interaction.
+- **None** = 0 — No selection should be peformed based on interaction.
+- **SingleRow** = 1 — A single row is permitted to be selected at a time from interaction.
+
+### [NestedActionMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/NestedActionMode)
+
+- **Replace** = 0 — Replaces the current tool action view with the nested view.
+
+### [PropertyEditorPanelUpdateMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/PropertyEditorPanelUpdateMode)
+
+- **Auto** = 0
+- **ComponentRendererOverlay** = 1
+- **DataSeriesToDescriptionCustomizations** = 2
+
+### [PropertyEditorValueType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/PropertyEditorValueType)
+
+- **Array** = 10
+- **boolean1** = 7
+- **Brush** = 4
+- **BrushCollection** = 6
+- **Button** = 20
+- **Collection** = 9
+- **Color** = 5
+- **ColorCollection** = 14
+- **DataRef** = 18
+- **Date** = 3
+- **DoubleCollection** = 23
+- **EnumValue** = 15
+- **EventRef** = 17
+- **Header** = 25
+- **MethodRef** = 16
+- **Number** = 1
+- **Point** = 11
+- **Rect** = 13
+- **Separator** = 24
+- **Size** = 12
+- **Slider** = 21
+- **StringValue** = 2
+- **SubType** = 8
+- **TemplateRef** = 22
+- **TimeSpan** = 19
+- **Unhandled** = 0
+
+### [ToolActionButtonDisplayType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolActionButtonDisplayType)
+Different display types for the button.
+
+- **Flat** = 1
+- **Outlined** = 2
+- **Raised** = 0
+
+### [ToolActionButtonGroupDisplayType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolActionButtonGroupDisplayType)
+Different display types for the button.
+
+- **Flat** = 0
+- **Outlined** = 1
+
+### [ToolActionCheckboxListIndexType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolActionCheckboxListIndexType)
+
+- **DeSelected** = 1
+- **Selected** = 0
+
+### [ToolActionFieldSelectorEventType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolActionFieldSelectorEventType)
+
+- **AggregationChange** = 1
+- **Change** = 0
+
+### [ToolActionFieldSelectorType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolActionFieldSelectorType)
+
+- **Label** = 0
+- **Value** = 1
+
+### [ToolbarOrientation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolbarOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0
+
+### [ToolPanelOrientation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ToolPanelOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0

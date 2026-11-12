@@ -1,10 +1,10 @@
-# Ignite UI for Angular Core v22.0.0 — Full API Reference
+# Ignite UI for Angular Core v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Core package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Core package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-core
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -2577,20 +2577,6 @@ The base class for generic data sources.
 - **markChanged**(): void
 - static **register**(): void
 
-### [IgxChildContentDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxChildContentDynamicModule)
-
-- **constructor**(): IgxChildContentDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxChildContentDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxChildContentDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxChildContentDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxChildContentModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxChildContentModule)
-
-- **constructor**(): IgxChildContentModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxChildContentModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxChildContentModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxChildContentModule, never, [any, any], [any]>`
-
 ### [IgxComponentRendererContainerComponent](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxComponentRendererContainerComponent)
 
 - **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, changeDetector: ChangeDetectorRef, _injector: Injector): IgxComponentRendererContainerComponent
@@ -2608,20 +2594,6 @@ The base class for generic data sources.
 - **replaceRootItem**(t: any, deferAttach: boolean, continueActions: any): void
 - static **isEvent**(ev: any): boolean
 - static **register**(): void
-
-### [IgxComponentRendererContainerDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxComponentRendererContainerDynamicModule)
-
-- **constructor**(): IgxComponentRendererContainerDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComponentRendererContainerDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComponentRendererContainerDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComponentRendererContainerDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxComponentRendererContainerModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxComponentRendererContainerModule)
-
-- **constructor**(): IgxComponentRendererContainerModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComponentRendererContainerModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComponentRendererContainerModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComponentRendererContainerModule, never, [any, any], [any]>`
 
 ### [IgxContentChildCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxContentChildCollection)
 
@@ -2736,27 +2708,18 @@ Provides information about a schema change event.
 ### [IgxDataSourceGroupDescriptionCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceGroupDescriptionCollection)
 
 - **constructor**(): IgxDataSourceGroupDescriptionCollection
+- **count**: `number`
+- **i**: `DataSourceGroupDescriptionCollection`
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgxDataSourceGroupDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgxDataSourceGroupDescription): number
 - **insert**(index: number, item: IgxDataSourceGroupDescription): void
+- **item**(index: number, value?: IgxDataSourceGroupDescription): IgxDataSourceGroupDescription
 - **remove**(item: IgxDataSourceGroupDescription): boolean
 - **removeAt**(index: number): IgxDataSourceGroupDescription
-
-### [IgxDataSourceGroupDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceGroupDescriptionDynamicModule)
-
-- **constructor**(): IgxDataSourceGroupDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceGroupDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceGroupDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceGroupDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDataSourceGroupDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceGroupDescriptionModule)
-
-- **constructor**(): IgxDataSourceGroupDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceGroupDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceGroupDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceGroupDescriptionModule, never, [any], never>`
+- **toArray**(): IgxDataSourceGroupDescription[]
 
 ### [IgxDataSourcePropertiesRequestedChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourcePropertiesRequestedChangedEventArgs)
 Provides information about a properties requested changed event.
@@ -2800,28 +2763,19 @@ Provides information about a schema change event that has occurred.
 
 - **constructor**(): IgxDataSourceSortDescriptionCollection
 - static **ngAcceptInputType_shouldDetachOnTargetChange**: `string | boolean`
+- **count**: `number`
+- **i**: `DataSourceSortDescriptionCollection`
 - **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgxDataSourceSortDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgxDataSourceSortDescription): number
 - **insert**(index: number, item: IgxDataSourceSortDescription): void
+- **item**(index: number, value?: IgxDataSourceSortDescription): IgxDataSourceSortDescription
 - **remove**(item: IgxDataSourceSortDescription): boolean
 - **removeAt**(index: number): IgxDataSourceSortDescription
-
-### [IgxDataSourceSortDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceSortDescriptionDynamicModule)
-
-- **constructor**(): IgxDataSourceSortDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceSortDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceSortDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceSortDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDataSourceSortDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceSortDescriptionModule)
-
-- **constructor**(): IgxDataSourceSortDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceSortDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceSortDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceSortDescriptionModule, never, [any], never>`
+- **toArray**(): IgxDataSourceSortDescription[]
 
 ### [IgxDataSourceSummaryDescription](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceSummaryDescription)
 
@@ -2839,161 +2793,19 @@ Provides information about a schema change event that has occurred.
 
 - **constructor**(): IgxDataSourceSummaryDescriptionCollection
 - static **ngAcceptInputType_shouldDetachOnTargetChange**: `string | boolean`
+- **count**: `number`
+- **i**: `DataSourceSummaryDescriptionCollection`
 - **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgxDataSourceSummaryDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgxDataSourceSummaryDescription): number
 - **insert**(index: number, item: IgxDataSourceSummaryDescription): void
+- **item**(index: number, value?: IgxDataSourceSummaryDescription): IgxDataSourceSummaryDescription
 - **remove**(item: IgxDataSourceSummaryDescription): boolean
 - **removeAt**(index: number): IgxDataSourceSummaryDescription
-
-### [IgxDataSourceSummaryDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceSummaryDescriptionDynamicModule)
-
-- **constructor**(): IgxDataSourceSummaryDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceSummaryDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceSummaryDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceSummaryDescriptionDynamicModule, never, [any, any], [any]>`
-
-### [IgxDataSourceSummaryDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceSummaryDescriptionModule)
-
-- **constructor**(): IgxDataSourceSummaryDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataSourceSummaryDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataSourceSummaryDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataSourceSummaryDescriptionModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleCsModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleCsModule)
-
-- **constructor**(): IgxDataVisualizationLocaleCsModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleCsModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleCsModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleCsModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleDaModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleDaModule)
-
-- **constructor**(): IgxDataVisualizationLocaleDaModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleDaModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleDaModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleDaModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleDeModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleDeModule)
-
-- **constructor**(): IgxDataVisualizationLocaleDeModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleDeModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleDeModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleDeModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleEnModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleEnModule)
-
-- **constructor**(): IgxDataVisualizationLocaleEnModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleEnModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleEnModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleEnModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleEsModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleEsModule)
-
-- **constructor**(): IgxDataVisualizationLocaleEsModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleEsModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleEsModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleEsModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleFrModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleFrModule)
-
-- **constructor**(): IgxDataVisualizationLocaleFrModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleFrModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleFrModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleFrModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleHuModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleHuModule)
-
-- **constructor**(): IgxDataVisualizationLocaleHuModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleHuModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleHuModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleHuModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleItModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleItModule)
-
-- **constructor**(): IgxDataVisualizationLocaleItModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleItModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleItModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleItModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleJaModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleJaModule)
-
-- **constructor**(): IgxDataVisualizationLocaleJaModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleJaModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleJaModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleJaModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleKoModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleKoModule)
-
-- **constructor**(): IgxDataVisualizationLocaleKoModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleKoModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleKoModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleKoModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleNbModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleNbModule)
-
-- **constructor**(): IgxDataVisualizationLocaleNbModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleNbModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleNbModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleNbModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleNlModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleNlModule)
-
-- **constructor**(): IgxDataVisualizationLocaleNlModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleNlModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleNlModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleNlModule, never, [any], never>`
-
-### [IgxDataVisualizationLocalePlModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocalePlModule)
-
-- **constructor**(): IgxDataVisualizationLocalePlModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocalePlModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocalePlModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocalePlModule, never, [any], never>`
-
-### [IgxDataVisualizationLocalePtModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocalePtModule)
-
-- **constructor**(): IgxDataVisualizationLocalePtModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocalePtModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocalePtModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocalePtModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleRoModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleRoModule)
-
-- **constructor**(): IgxDataVisualizationLocaleRoModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleRoModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleRoModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleRoModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleSvModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleSvModule)
-
-- **constructor**(): IgxDataVisualizationLocaleSvModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleSvModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleSvModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleSvModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleTrModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleTrModule)
-
-- **constructor**(): IgxDataVisualizationLocaleTrModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleTrModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleTrModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleTrModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleZhHansModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleZhHansModule)
-
-- **constructor**(): IgxDataVisualizationLocaleZhHansModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleZhHansModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleZhHansModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleZhHansModule, never, [any], never>`
-
-### [IgxDataVisualizationLocaleZhHantModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataVisualizationLocaleZhHantModule)
-
-- **constructor**(): IgxDataVisualizationLocaleZhHantModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataVisualizationLocaleZhHantModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDataVisualizationLocaleZhHantModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDataVisualizationLocaleZhHantModule, never, [any], never>`
+- **toArray**(): IgxDataSourceSummaryDescription[]
 
 ### [IgxDateTimeFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDateTimeFormatSpecifier)
 
@@ -3021,20 +2833,6 @@ Provides information about a schema change event that has occurred.
 - **weekDay**: `string`
 - **year**: `string`
 
-### [IgxDateTimeFormatSpecifierDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDateTimeFormatSpecifierDynamicModule)
-
-- **constructor**(): IgxDateTimeFormatSpecifierDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDateTimeFormatSpecifierDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDateTimeFormatSpecifierDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDateTimeFormatSpecifierDynamicModule, never, [any, any], [any]>`
-
-### [IgxDateTimeFormatSpecifierModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDateTimeFormatSpecifierModule)
-
-- **constructor**(): IgxDateTimeFormatSpecifierModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDateTimeFormatSpecifierModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDateTimeFormatSpecifierModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDateTimeFormatSpecifierModule, never, [any], never>`
-
 ### [IgxDoubleValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDoubleValueChangedEventArgs)
 Provides data for double value change events.
 
@@ -3050,20 +2848,6 @@ Provides data for double value change events.
 - **i**: `DownloadingMultiScaleImageEventArgs`
 - **image**: `HTMLImageElement`
 - **uri**: `string`
-
-### [IgxDVInteractivityDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDVInteractivityDynamicModule)
-
-- **constructor**(): IgxDVInteractivityDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDVInteractivityDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDVInteractivityDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDVInteractivityDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxDVInteractivityModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDVInteractivityModule)
-
-- **constructor**(): IgxDVInteractivityModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxDVInteractivityModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxDVInteractivityModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxDVInteractivityModule, never, [any, any, any], [any, any]>`
 
 ### [IgxFilterExpressionCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxFilterExpressionCollection)
 Represents a colleciton of filter expressions.
@@ -3104,25 +2888,13 @@ Represents a colleciton of filter expressions.
 
 - **constructor**(list?: IgxFormatSpecifier[]): IgxFormatSpecifierCollection
 
-### [IgxFormatSpecifierDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxFormatSpecifierDynamicModule)
-
-- **constructor**(): IgxFormatSpecifierDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxFormatSpecifierDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxFormatSpecifierDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxFormatSpecifierDynamicModule, never, [any, any], [any]>`
-
-### [IgxFormatSpecifierModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxFormatSpecifierModule)
-
-- **constructor**(): IgxFormatSpecifierModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxFormatSpecifierModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxFormatSpecifierModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxFormatSpecifierModule, never, [any], never>`
-
 ### [IgxGenericVirtualDataSource](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxGenericVirtualDataSource)
 The base class for generic data sources.
 
 - **constructor**(): IgxGenericVirtualDataSource
+- static **ngAcceptInputType_pageSizeRequested**: `string | number`
 - **pageRequested**: `EventEmitter<any>` — Raised when the datasource requests page data.
+- **pageSizeRequested**: `number` — Gets or sets the desired page size for the virtual data source.
 - **addSchemaProperty**(propertyName: string, propertyType: string | GenericDataSourceSchemaPropertyType): void
 - **addSummaryDate**(propertyName: string, operand: string | DataSourceSummaryOperand, value: Date): void
 - **addSummaryDouble**(propertyName: string, operand: string | DataSourceSummaryOperand, value: number): void
@@ -3143,20 +2915,7 @@ after FillPageStart.
 - **fillGroupValueString**(propertyName: string, value: string): void
 - **fillPageEnd**(): void — Ends the current page. Must be called after FillPageStart.
 - **fillPageStart**(requestId: number): void — Starts filling a page for the specified request. Must later be followed by FillPageEnd to complete the request.
-
-### [IgxGenericVirtualDataSourceDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxGenericVirtualDataSourceDynamicModule)
-
-- **constructor**(): IgxGenericVirtualDataSourceDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGenericVirtualDataSourceDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGenericVirtualDataSourceDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGenericVirtualDataSourceDynamicModule, never, [any, any], [any]>`
-
-### [IgxGenericVirtualDataSourceModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxGenericVirtualDataSourceModule)
-
-- **constructor**(): IgxGenericVirtualDataSourceModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGenericVirtualDataSourceModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGenericVirtualDataSourceModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGenericVirtualDataSourceModule, never, [any], never>`
+- **fillPageStartForSource**(dataSourceId: number, requestId: number): void
 
 ### [IgxGetTileImageUriArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxGetTileImageUriArgs)
 Event arguments for GetTileImageUri event
@@ -3222,20 +2981,6 @@ weighted percentage relative to other Star sized definitions.
 - **destroy**(): void
 - **findByName**(name: string): any
 - **getTile**(z: number, x: number, y: number, onCreated: any, onCreating: any, zoomChanging: any, existingImage: HTMLImageElement): void
-
-### [IgxHeatTileGeneratorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxHeatTileGeneratorDynamicModule)
-
-- **constructor**(): IgxHeatTileGeneratorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxHeatTileGeneratorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxHeatTileGeneratorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxHeatTileGeneratorDynamicModule, never, [any, any], [any]>`
-
-### [IgxHeatTileGeneratorModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxHeatTileGeneratorModule)
-
-- **constructor**(): IgxHeatTileGeneratorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxHeatTileGeneratorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxHeatTileGeneratorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxHeatTileGeneratorModule, never, [any], never>`
 
 ### [IgxHighlightingInfo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxHighlightingInfo)
 Contains contextual information about a highlighting.
@@ -3338,20 +3083,6 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **preventDefault**(): void — Tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.
 - **stopPropagation**(): void — Prevent the event from bubbling up.
 
-### [IgxLocalDataSourceDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxLocalDataSourceDynamicModule)
-
-- **constructor**(): IgxLocalDataSourceDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLocalDataSourceDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLocalDataSourceDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLocalDataSourceDynamicModule, never, [any, any], [any]>`
-
-### [IgxLocalDataSourceModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxLocalDataSourceModule)
-
-- **constructor**(): IgxLocalDataSourceModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLocalDataSourceModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLocalDataSourceModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLocalDataSourceModule, never, [any], never>`
-
 ### [IgxNumberFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxNumberFormatSpecifier)
 
 - **constructor**(): IgxNumberFormatSpecifier
@@ -3381,20 +3112,6 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **unitDisplay**: `string`
 - **useGrouping**: `boolean`
 
-### [IgxNumberFormatSpecifierDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxNumberFormatSpecifierDynamicModule)
-
-- **constructor**(): IgxNumberFormatSpecifierDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxNumberFormatSpecifierDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxNumberFormatSpecifierDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxNumberFormatSpecifierDynamicModule, never, [any, any], [any]>`
-
-### [IgxNumberFormatSpecifierModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxNumberFormatSpecifierModule)
-
-- **constructor**(): IgxNumberFormatSpecifierModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxNumberFormatSpecifierModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxNumberFormatSpecifierModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxNumberFormatSpecifierModule, never, [any], never>`
-
 ### [IgxObjectCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxObjectCollection)
 
 - **constructor**(list?: any[]): IgxObjectCollection
@@ -3412,15 +3129,46 @@ Information about the requested page.
 
 - **constructor**(): IgxPageRequestedEventArgs
 - static **ngAcceptInputType_dataSourceId**: `string | number`
+- static **ngAcceptInputType_isFilterExpressionsDirty**: `string | boolean`
+- static **ngAcceptInputType_isGroupDescriptionsDirty**: `string | boolean`
 - static **ngAcceptInputType_isSchemaRequest**: `string | boolean`
+- static **ngAcceptInputType_isSortDescriptionsDirty**: `string | boolean`
+- static **ngAcceptInputType_isSummaryDescriptionsDirty**: `string | boolean`
+- static **ngAcceptInputType_isSummaryScopeDirty**: `string | boolean`
 - static **ngAcceptInputType_pageIndex**: `string | number`
 - static **ngAcceptInputType_pageSize**: `string | number`
 - static **ngAcceptInputType_requestId**: `string | number`
+- static **ngAcceptInputType_summaryScope**: `string | DataSourceSummaryScope`
 - **dataSourceId**: `number` — The Unique ID for the data source making the request.
+- **filterExpressions**: `IgxFilterExpressionCollection` — Snapshot of the data source's FilterExpressions at the time PageRequested
+was raised.
+- **groupDescriptions**: `IgxDataSourceGroupDescriptionCollection` — Snapshot of the data source's GroupDescriptions at the time PageRequested
+was raised.
+- **isFilterExpressionsDirty**: `boolean` — True if the data source's FilterExpressions collection changed since
+it last raised PageRequested.
+- **isGroupDescriptionsDirty**: `boolean` — True if the data source's GroupDescriptions collection changed since
+it last raised PageRequested.
 - **isSchemaRequest**: `boolean` — The data source is requesting the schema for the data.
+- **isSortDescriptionsDirty**: `boolean` — True if the data source's SortDescriptions collection changed since
+it last raised PageRequested. Any *Dirty flag being true signals the
+data source's pipeline state changed (sort/group/filter/summary/scope)
+and consumers should promote pending future state.
+- **isSummaryDescriptionsDirty**: `boolean` — True if the data source's SummaryDescriptions collection changed since
+it last raised PageRequested.
+- **isSummaryScopeDirty**: `boolean` — True if the data source's SummaryScope property changed since it last
+raised PageRequested.
 - **pageIndex**: `number` — The page index being requested.
 - **pageSize**: `number` — The page size being requested.
 - **requestId**: `number` — The unique ID for the page request.
+- **sortDescriptions**: `IgxDataSourceSortDescriptionCollection` — Snapshot of the data source's SortDescriptions at the time PageRequested
+was raised. Populated from the originating data source (clone or original);
+the values cross the wire by-value so consumers see the exact pipeline state
+the page was requested under.
+- **sourceName**: `string` — The name of the data source the page request originated from. This corresponds to the SourceName of the
+originating data source (clone or original) and can be used to determine where the request came from.
+- **summaryDescriptions**: `IgxDataSourceSummaryDescriptionCollection` — Snapshot of the data source's SummaryDescriptions at the time PageRequested
+was raised.
+- **summaryScope**: `DataSourceSummaryScope` — The data source's SummaryScope at the time PageRequested was raised.
 
 ### [IgxPopupComponent](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxPopupComponent)
 
@@ -3488,23 +3236,9 @@ Information about the requested page.
 - **showRelativeToExclusionRect**(exclusionRect: IgRect, popupDirection: string | PopupDirection, popupAlignment: string | PopupAlignment): void
 - **updateStyle**(): void
 
-### [IgxPopupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxPopupDynamicModule)
-
-- **constructor**(): IgxPopupDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPopupDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPopupDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPopupDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
 ### [IgxPopupMeasuringContentSizeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxPopupMeasuringContentSizeEventArgs)
 
 - **constructor**(): IgxPopupMeasuringContentSizeEventArgs
-
-### [IgxPopupModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxPopupModule)
-
-- **constructor**(): IgxPopupModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPopupModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPopupModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPopupModule, never, [any, any, any], [any, any]>`
 
 ### [IgxPropertyUpdatedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxPropertyUpdatedEventArgs)
 EventArgs class for property updated events.
@@ -3569,20 +3303,6 @@ Class used to convert Shapefiles into CLR objects.
 - **setWorldBounds**(setComputed: boolean, bounds: IgRect): void
 - **shiftAllShapes**(offsetX: number, offsetY: number): void
 - **shiftShapes**(recordIndex: number, offsetX: number, offsetY: number): void
-
-### [IgxShapeDataSourceDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxShapeDataSourceDynamicModule)
-
-- **constructor**(): IgxShapeDataSourceDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxShapeDataSourceDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxShapeDataSourceDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxShapeDataSourceDynamicModule, never, [any, any], [any]>`
-
-### [IgxShapeDataSourceModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxShapeDataSourceModule)
-
-- **constructor**(): IgxShapeDataSourceModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxShapeDataSourceModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxShapeDataSourceModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxShapeDataSourceModule, never, [any], never>`
 
 ### [IgxShapefileRecord](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxShapefileRecord)
 Represents a record of data from a Shapefile (.shp and .dbf).
@@ -3650,20 +3370,6 @@ A class that exposes style realted properties.
 - **markChanged**(): void
 - static **register**(): void
 
-### [IgxTemplateContentDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxTemplateContentDynamicModule)
-
-- **constructor**(): IgxTemplateContentDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTemplateContentDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTemplateContentDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTemplateContentDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxTemplateContentModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxTemplateContentModule)
-
-- **constructor**(): IgxTemplateContentModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTemplateContentModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTemplateContentModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTemplateContentModule, never, [any, any], [any]>`
-
 ### [IgxToolCommandArgumentCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxToolCommandArgumentCollection)
 
 - **constructor**(list?: ToolCommandArgument[]): IgxToolCommandArgumentCollection
@@ -3677,20 +3383,6 @@ A class that exposes style realted properties.
 - **context**: `any`
 - **template**: `TemplateRef<any>`
 - static **register**(): void
-
-### [IgxTooltipContainerDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxTooltipContainerDynamicModule)
-
-- **constructor**(): IgxTooltipContainerDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTooltipContainerDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTooltipContainerDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTooltipContainerDynamicModule, never, [any, any, any, any], [any, any]>`
-
-### [IgxTooltipContainerModule](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxTooltipContainerModule)
-
-- **constructor**(): IgxTooltipContainerModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTooltipContainerModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTooltipContainerModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTooltipContainerModule, never, [any, any, any], [any, any]>`
 
 ### [IgxTransactionState](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxTransactionState)
 Represents the final state of items with all transactions combined.
@@ -5094,6 +4786,13 @@ Describes available modes for displaying empty values in chart legend.
 - **AlwaysVisible** = 1 — Always show legend items for zero values even when the Others Category is present.
 - **ShowWhenNoOthersCategory** = 2 — Show legend items for zero values only when the Others Category is not present.
 
+### [LegendItemBadgeMarkerSizeScaling](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/enums/LegendItemBadgeMarkerSizeScaling)
+Describes how marker series legend badges scale with the series' MarkerSize when the badge shape is Marker (or Line in MatchSeries mode)
+
+- **Auto** = 0 — Linearly interpolates from MarkerSize at the platform default up to 32 onto a 1x..2x badge scale, clamped at the bounds
+- **Linear** = 2 — Scales the legend badge linearly with MarkerSize relative to the platform default (e.g. MarkerSize == 2*default yields a 2x badge).
+- **None** = 1 — Disables scaling; the legend badge keeps its default size regardless of MarkerSize
+
 ### [LegendItemBadgeMode](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/enums/LegendItemBadgeMode)
 Describes mode of legend badges that represent all series in a legend
 
@@ -6191,159 +5890,6 @@ Specifies the current xml:space scope
 ### [pointToString](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/pointToString)
 `pointToString(v: Point): string`
 
-### [provideIgxChildContent](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxChildContent)
-`provideIgxChildContent(): EnvironmentProviders`
-
-### [provideIgxChildContentDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxChildContentDynamic)
-`provideIgxChildContentDynamic(): EnvironmentProviders`
-
-### [provideIgxComponentRendererContainer](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxComponentRendererContainer)
-`provideIgxComponentRendererContainer(): EnvironmentProviders`
-
-### [provideIgxComponentRendererContainerDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxComponentRendererContainerDynamic)
-`provideIgxComponentRendererContainerDynamic(): EnvironmentProviders`
-
-### [provideIgxDataSourceGroupDescription](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceGroupDescription)
-`provideIgxDataSourceGroupDescription(): EnvironmentProviders`
-
-### [provideIgxDataSourceGroupDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceGroupDescriptionDynamic)
-`provideIgxDataSourceGroupDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDataSourceSortDescription](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceSortDescription)
-`provideIgxDataSourceSortDescription(): EnvironmentProviders`
-
-### [provideIgxDataSourceSortDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceSortDescriptionDynamic)
-`provideIgxDataSourceSortDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDataSourceSummaryDescription](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceSummaryDescription)
-`provideIgxDataSourceSummaryDescription(): EnvironmentProviders`
-
-### [provideIgxDataSourceSummaryDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataSourceSummaryDescriptionDynamic)
-`provideIgxDataSourceSummaryDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleCs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleCs)
-`provideIgxDataVisualizationLocaleCs(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleDa](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleDa)
-`provideIgxDataVisualizationLocaleDa(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleDe](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleDe)
-`provideIgxDataVisualizationLocaleDe(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleEn)
-`provideIgxDataVisualizationLocaleEn(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleEs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleEs)
-`provideIgxDataVisualizationLocaleEs(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleFr](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleFr)
-`provideIgxDataVisualizationLocaleFr(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleHu](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleHu)
-`provideIgxDataVisualizationLocaleHu(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleIt](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleIt)
-`provideIgxDataVisualizationLocaleIt(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleJa](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleJa)
-`provideIgxDataVisualizationLocaleJa(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleKo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleKo)
-`provideIgxDataVisualizationLocaleKo(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleNb](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleNb)
-`provideIgxDataVisualizationLocaleNb(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleNl](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleNl)
-`provideIgxDataVisualizationLocaleNl(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocalePl](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocalePl)
-`provideIgxDataVisualizationLocalePl(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocalePt](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocalePt)
-`provideIgxDataVisualizationLocalePt(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleRo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleRo)
-`provideIgxDataVisualizationLocaleRo(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleSv](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleSv)
-`provideIgxDataVisualizationLocaleSv(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleTr](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleTr)
-`provideIgxDataVisualizationLocaleTr(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleZhHans](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleZhHans)
-`provideIgxDataVisualizationLocaleZhHans(): EnvironmentProviders`
-
-### [provideIgxDataVisualizationLocaleZhHant](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDataVisualizationLocaleZhHant)
-`provideIgxDataVisualizationLocaleZhHant(): EnvironmentProviders`
-
-### [provideIgxDateTimeFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDateTimeFormatSpecifier)
-`provideIgxDateTimeFormatSpecifier(): EnvironmentProviders`
-
-### [provideIgxDateTimeFormatSpecifierDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDateTimeFormatSpecifierDynamic)
-`provideIgxDateTimeFormatSpecifierDynamic(): EnvironmentProviders`
-
-### [provideIgxDVInteractivity](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDVInteractivity)
-`provideIgxDVInteractivity(): EnvironmentProviders`
-
-### [provideIgxDVInteractivityDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxDVInteractivityDynamic)
-`provideIgxDVInteractivityDynamic(): EnvironmentProviders`
-
-### [provideIgxFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxFormatSpecifier)
-`provideIgxFormatSpecifier(): EnvironmentProviders`
-
-### [provideIgxFormatSpecifierDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxFormatSpecifierDynamic)
-`provideIgxFormatSpecifierDynamic(): EnvironmentProviders`
-
-### [provideIgxGenericVirtualDataSource](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxGenericVirtualDataSource)
-`provideIgxGenericVirtualDataSource(): EnvironmentProviders`
-
-### [provideIgxGenericVirtualDataSourceDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxGenericVirtualDataSourceDynamic)
-`provideIgxGenericVirtualDataSourceDynamic(): EnvironmentProviders`
-
-### [provideIgxHeatTileGenerator](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxHeatTileGenerator)
-`provideIgxHeatTileGenerator(): EnvironmentProviders`
-
-### [provideIgxHeatTileGeneratorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxHeatTileGeneratorDynamic)
-`provideIgxHeatTileGeneratorDynamic(): EnvironmentProviders`
-
-### [provideIgxLocalDataSource](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxLocalDataSource)
-`provideIgxLocalDataSource(): EnvironmentProviders`
-
-### [provideIgxLocalDataSourceDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxLocalDataSourceDynamic)
-`provideIgxLocalDataSourceDynamic(): EnvironmentProviders`
-
-### [provideIgxNumberFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxNumberFormatSpecifier)
-`provideIgxNumberFormatSpecifier(): EnvironmentProviders`
-
-### [provideIgxNumberFormatSpecifierDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxNumberFormatSpecifierDynamic)
-`provideIgxNumberFormatSpecifierDynamic(): EnvironmentProviders`
-
-### [provideIgxPopup](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxPopup)
-`provideIgxPopup(): EnvironmentProviders`
-
-### [provideIgxPopupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxPopupDynamic)
-`provideIgxPopupDynamic(): EnvironmentProviders`
-
-### [provideIgxShapeDataSource](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxShapeDataSource)
-`provideIgxShapeDataSource(): EnvironmentProviders`
-
-### [provideIgxShapeDataSourceDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxShapeDataSourceDynamic)
-`provideIgxShapeDataSourceDynamic(): EnvironmentProviders`
-
-### [provideIgxTemplateContent](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxTemplateContent)
-`provideIgxTemplateContent(): EnvironmentProviders`
-
-### [provideIgxTemplateContentDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxTemplateContentDynamic)
-`provideIgxTemplateContentDynamic(): EnvironmentProviders`
-
-### [provideIgxTooltipContainer](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxTooltipContainer)
-`provideIgxTooltipContainer(): EnvironmentProviders`
-
-### [provideIgxTooltipContainerDynamic](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/provideIgxTooltipContainerDynamic)
-`provideIgxTooltipContainerDynamic(): EnvironmentProviders`
-
 ### [rectFromLiteral](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/functions/rectFromLiteral)
 `rectFromLiteral(r: IgRect): Rect`
 
@@ -6770,7 +6316,7 @@ Specifies the current xml:space scope
 `Type`
 
 ### [DayOfWeek_$type](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/variables/DayOfWeek_$type)
-`igniteui_angular_core.Type`
+`Type`
 
 ### [Delegate_$type](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/variables/Delegate_$type)
 `Type`

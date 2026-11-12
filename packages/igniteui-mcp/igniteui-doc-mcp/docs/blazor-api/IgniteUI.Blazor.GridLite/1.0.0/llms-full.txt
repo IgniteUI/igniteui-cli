@@ -1,0 +1,156 @@
+# Ignite UI for Blazor GridLite v1.0.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for Blazor GridLite package (1.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Blazor
+Package: IgniteUI.Blazor.GridLite
+Version: 1.0.0
+
+## Classes
+
+### [IgbGridLite<TItem>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLite<TItem>)
+IgbGridLite is a component for displaying data in a tabular format quick and easy.
+
+- **constructor**(): void
+- **AdditionalAttributes**: `Dictionary<string, object>` — Additional attributes for the component's HTML element element.
+- **AdoptRootStyles**: `bool` — Whether the grid will adopt document-level styles into its shadow DOM. Useful when using cell and header templates that rely on styles defined at the document level.
+- **AutoGenerate**: `bool` — Whether the grid will try to "resolve" its column configuration based on the passed data source. This is usually executed on initial rendering in the DOM.
+- **ChildContent**: `RenderFragment` — Child content for declarative column definitions
+- **Data**: `IEnumerable<TItem>` — The data to display in the grid
+- **FilterExpressions**: `IEnumerable<IgbGridLiteFilterExpression>` — Initial filter expressions to apply when the grid is rendered
+- **Filtered**: `EventCallback<IgbGridLiteFilteredEventArgs>` — Fires when a filter operation initiated through the UI has completed. Returns the filter state for the affected column.
+- **Filtering**: `EventCallback<IgbGridLiteFilteringEventArgs>` — Fires when filtering is initiated through the UI.
+- **Rendered**: `EventCallback` — Fires once, when the grid has rendered on the client for the first time.
+- **Sorted**: `EventCallback<IgbGridLiteSortedEventArgs>` — Fires when a sort operation initiated through the UI has completed. Returns the sort expression used for the operation.
+- **Sorting**: `EventCallback<IgbGridLiteSortingEventArgs>` — Fires when sorting is initiated through the UI. Returns the sort expression which will be used for the operation.
+- **SortingExpressions**: `IEnumerable<IgbGridLiteSortingExpression>` — Initial sort expressions to apply when the grid is rendered
+- **SortingOptions**: `IgbGridLiteSortingOptions` — Sort options property for the grid.
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+- **ClearFilterAsync**(key: string): Task — Resets the current filter state of the grid.
+- **ClearSortAsync**(key: string): Task — Resets the current sort state of the grid.
+- **DisposeAsync**(): ValueTask
+- **FilterAsync**(expression: IgbGridLiteFilterExpression): Task — Performs a filter operation in the grid based on the passed expression(s).
+- **FilterAsync**(expressions: IEnumerable<IgbGridLiteFilterExpression>): Task — Performs a filter operation in the grid based on the passed expression(s).
+- **GetColumnsAsync**(): Task<IgbGridLiteColumnConfiguration[]> — Returns the current column configuration list.
+- **NavigateToAsync**(row: int, field: string, activate: bool): Task — Navigates to a position in the grid based on provided row index and column field.
+- **OnAfterRenderAsync**(firstRender: bool): Task
+- **SetParametersAsync**(parameters: ParameterView): Task
+- **SortAsync**(expression: IgbGridLiteSortingExpression): Task — Performs a sort operation in the grid based on the passed expression(s).
+- **SortAsync**(expressions: IEnumerable<IgbGridLiteSortingExpression>): Task — Performs a sort operation in the grid based on the passed expression(s).
+
+### [IgbGridLiteColumn](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteColumn)
+Column component for IgbGridLite. Used declaratively to define columns.
+
+- **constructor**(): void
+- **DataType**: `GridLiteColumnDataType?` — The data type of the column's values.
+- **Field**: `string` — The field from the data that the column references.
+- **Filterable**: `bool` — Whether the column is filterable.
+- **FilteringCaseSensitive**: `bool` — Whether filtering should be case sensitive for this column.
+- **Header**: `string` — The header text of the column.
+- **Hidden**: `bool` — Whether the column is hidden.
+- **Resizable**: `bool` — Whether the column is resizable.
+- **Sortable**: `bool` — Whether the column is sortable.
+- **SortingCaseSensitive**: `bool` — Whether sorting should be case sensitive for this column.
+- **Width**: `string` — The width of the column (CSS value).
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+
+### [IgbGridLiteColumnConfiguration](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteColumnConfiguration)
+A column's configuration as the grid reports it, returned by .
+
+- **constructor**(): void
+- **DataType**: `GridLiteColumnDataType?` — The data type of the column's values; the grid treats a column without one as .
+- **Field**: `string` — The field from the data that the column references.
+- **Filterable**: `bool` — Whether the column is filterable.
+- **FilteringCaseSensitive**: `bool` — Whether filtering is case sensitive for this column.
+- **Header**: `string` — The header text of the column; the grid shows the field when it is not set.
+- **Hidden**: `bool` — Whether the column is hidden.
+- **Resizable**: `bool` — Whether the column is resizable.
+- **Sortable**: `bool` — Whether the column is sortable.
+- **SortingCaseSensitive**: `bool` — Whether sorting is case sensitive for this column.
+- **Width**: `string` — The width of the column (CSS value); when not set, the column shares the grid's width with the other columns.
+
+### [IgbGridLiteFilteredEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteFilteredEventArgs)
+Event object for the filtered event of the grid.
+
+- **constructor**(): void
+- **Key**: `string` — The target column for the filter operation.
+- **State**: `IReadOnlyList<IgbGridLiteFilterExpression>` — The filter state of the column after the operation.
+
+### [IgbGridLiteFilterExpression](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteFilterExpression)
+Represents a filter operation for a given column.
+
+- **constructor**(): void
+- **CaseSensitive**: `bool?` — Whether the filter operation should be case sensitive. If not provided, the value is resolved based on the column filter configuration.
+- **Condition**: `string` — The name of the filter condition to apply. The valid names depend on the column's ; a column without one counts as .
+- **Criteria**: `GridLiteFilterCriteria?` — How this expression resolves in relation to the column's other expressions.
+- **Key**: `string` — The target column for the filter operation.
+- **SearchTerm**: `object` — The filtering value used in the filter condition function. Optional for unary conditions.
+
+### [IgbGridLiteFilteringEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteFilteringEventArgs)
+Event object for the filtering event of the grid.
+
+- **constructor**(): void
+- **Expressions**: `IReadOnlyList<IgbGridLiteFilterExpression>` — The filter expression(s) to apply.
+- **Key**: `string` — The target column for the filter operation.
+- **Type**: `GridLiteFilteringType` — The type of modification which will be applied to the filter state of the column.
+
+### [IgbGridLiteSortedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteSortedEventArgs)
+Event object for the sorted event of the grid.
+
+- **constructor**(): void
+- **Expression**: `IgbGridLiteSortingExpression` — The sort expression used for the operation.
+
+### [IgbGridLiteSortingEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteSortingEventArgs)
+Event object for the sorting event of the grid.
+
+- **constructor**(): void
+- **Expression**: `IgbGridLiteSortingExpression` — The sort expression which will be used for the operation.
+
+### [IgbGridLiteSortingExpression](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteSortingExpression)
+Represents a sort operation for a given column.
+
+- **constructor**(): void
+- **CaseSensitive**: `bool?` — Whether the sort operation should be case sensitive. If not provided, the value is resolved based on the column sort configuration.
+- **Direction**: `GridLiteSortingDirection` — Sort direction for this operation.
+- **Key**: `string` — The target column.
+
+### [IgbGridLiteSortingOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/classes/IgbGridLiteSortingOptions)
+Configures the sort behavior for the grid.
+
+- **constructor**(): void
+- **Mode**: `GridLiteSortingMode` — Whether the grid sorts by one column at a time or by several.
+
+## Enumerations
+
+### [GridLiteColumnDataType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/enums/GridLiteColumnDataType)
+The data type for a column.
+
+- **Boolean** — true/false values.
+- **Number** — Numeric values.
+- **String** — Text values.
+
+### [GridLiteFilterCriteria](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/enums/GridLiteFilterCriteria)
+How a filter expression resolves in relation to the column's other expressions.
+
+- **And** — The record must pass all the conditions.
+- **Or** — The record must pass at least one condition.
+
+### [GridLiteFilteringType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/enums/GridLiteFilteringType)
+The type of modification a filter operation applies to the filter state of a column.
+
+- **Add** — A new filter expression will be added to the state of the column.
+- **Modify** — An existing filter expression will be modified.
+- **Remove** — The expression(s) will be removed from the state of the column.
+
+### [GridLiteSortingDirection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/enums/GridLiteSortingDirection)
+Sort direction for a given sort expression.
+
+- **Ascending** — Ascending order.
+- **Descending** — Descending order.
+- **None** — No sorting; the grid removes the column's sort expression.
+
+### [GridLiteSortingMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/1.0.0/enums/GridLiteSortingMode)
+How many columns the grid sorts by at a time.
+
+- **Multiple** — Sorting by a column adds to the existing sort expressions.
+- **Single** — Sorting by a column replaces the existing sort expression.

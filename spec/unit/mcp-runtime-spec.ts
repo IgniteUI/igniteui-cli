@@ -217,7 +217,8 @@ describe("Unit - MCP runtime", () => {
 					platform: "react",
 					content: apiContent
 				}),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -240,7 +241,8 @@ describe("Unit - MCP runtime", () => {
 					platform: "webcomponents",
 					content: "# IgcGridComponent\n\n## Properties\n- height: string"
 				}),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -260,7 +262,8 @@ describe("Unit - MCP runtime", () => {
 			const apiContent = "# IgrGrid\n\n## Properties\n- height: string\n\n## Methods\n- refresh(): void";
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue({ component: "IgrGrid", platform: "react", content: apiContent }),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 			const handler = createGetApiReferenceHandler(docLoader);
 
@@ -274,7 +277,8 @@ describe("Unit - MCP runtime", () => {
 		it("returns an error when an API reference is not found", async () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue(undefined),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -295,7 +299,8 @@ describe("Unit - MCP runtime", () => {
 					platform: "webcomponents",
 					content: ""
 				}),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -327,7 +332,8 @@ describe("Unit - MCP runtime", () => {
 						"- rowSelectionChanging"
 					].join("\n")
 				}),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -354,7 +360,8 @@ describe("Unit - MCP runtime", () => {
 						summary: "Grid component",
 						content: "The grid supports row selection and keyboard navigation."
 					}
-				])
+				]),
+				getPackageVersions: () => ["igniteui-webcomponents@7.4.1"]
 			};
 
 			const handler = createSearchApiHandler(docLoader);
@@ -364,14 +371,15 @@ describe("Unit - MCP runtime", () => {
 			});
 
 			expect(result.isError).toBeUndefined();
-			expect(result.content[0].text).toContain("**IgcGridComponent** [webcomponents] [class]");
+			expect(result.content[0].text).toContain("**IgcGridComponent** [webcomponents] [class] [igniteui-webcomponents@7.4.1]");
 			expect(result.content[0].text).toContain("Keywords: selection, grid");
 			expect(result.content[0].text).toContain("row selection");
 		});
 
 		it("returns a no-results response when API search finds nothing", async () => {
 			const docLoader = {
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createSearchApiHandler(docLoader);
@@ -394,7 +402,8 @@ describe("Unit - MCP runtime", () => {
 					platform: "webcomponents",
 					content: fullContent
 				}),
-				search: jasmine.createSpy().and.returnValue([])
+				search: jasmine.createSpy().and.returnValue([]),
+				getPackageVersions: () => []
 			};
 
 			const handler = createGetApiReferenceHandler(docLoader);

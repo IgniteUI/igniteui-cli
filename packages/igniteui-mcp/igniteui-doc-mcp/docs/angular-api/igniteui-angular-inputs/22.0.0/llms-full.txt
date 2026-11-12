@@ -1,10 +1,10 @@
-# Ignite UI for Angular Inputs v22.0.0 — Full API Reference
+# Ignite UI for Angular Inputs v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Inputs package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Inputs package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-inputs
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -70,13 +70,6 @@ Version: 22.0.0
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxColorEditorComponent
 
-### [IgxColorEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorDynamicModule)
-
-- **constructor**(): IgxColorEditorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
 ### [IgxColorEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorGotFocusEventArgs)
 
 - **constructor**(): IgxColorEditorGotFocusEventArgs
@@ -84,13 +77,6 @@ Version: 22.0.0
 ### [IgxColorEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorLostFocusEventArgs)
 
 - **constructor**(): IgxColorEditorLostFocusEventArgs
-
-### [IgxColorEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorModule)
-
-- **constructor**(): IgxColorEditorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorModule, never, [any, any, any], [any, any]>`
 
 ### [IgxColorEditorPanelClosedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelClosedEventArgs)
 
@@ -129,20 +115,6 @@ to appear blurry.
 - **ngOnDestroy**(): void
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxColorEditorPanelComponent
-
-### [IgxColorEditorPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelDynamicModule)
-
-- **constructor**(): IgxColorEditorPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorPanelDynamicModule, never, [any, any, any, any, any, any, any], [any, any, any, any, any, any]>`
-
-### [IgxColorEditorPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelModule)
-
-- **constructor**(): IgxColorEditorPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxColorEditorPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxColorEditorPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxColorEditorPanelModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
 
 ### [IgxColorEditorPanelSelectedValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxColorEditorPanelSelectedValueChangedEventArgs)
 
@@ -259,21 +231,6 @@ to appear blurry.
 - **show**(): void — Shows the ZoomSlider.
 - **trackDirty**(): void
 - static **_createFromInternal**(internal: any): IgxMultiSliderComponent
-- static **register**(): void
-
-### [IgxMultiSliderDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderDynamicModule)
-
-- **constructor**(): IgxMultiSliderDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderDynamicModule, never, [any, any, any], [any, any]>`
-
-### [IgxMultiSliderModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderModule)
-
-- **constructor**(): IgxMultiSliderModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderModule, never, [any, any], [any]>`
 
 ### [IgxMultiSliderResolvingToolTipValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderResolvingToolTipValueEventArgs)
 
@@ -301,21 +258,6 @@ to appear blurry.
 - **ngOnInit**(): void
 - **push**(amount: number): number
 - static **_createFromInternal**(internal: any): IgxMultiSliderThumbComponent
-- static **register**(): void
-
-### [IgxMultiSliderThumbDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbDynamicModule)
-
-- **constructor**(): IgxMultiSliderThumbDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderThumbDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderThumbDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderThumbDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxMultiSliderThumbModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbModule)
-
-- **constructor**(): IgxMultiSliderThumbModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxMultiSliderThumbModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxMultiSliderThumbModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxMultiSliderThumbModule, never, [any, any], [any]>`
 
 ### [IgxMultiSliderThumbValueChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxMultiSliderThumbValueChangingEventArgs)
 
@@ -650,13 +592,6 @@ will use an intrinsic size.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxXButtonComponent
 
-### [IgxXButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonDynamicModule)
-
-- **constructor**(): IgxXButtonDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
 ### [IgxXButtonGroupButtonCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupButtonCollection)
 
 - **constructor**(list?: IgxXButtonComponent[]): IgxXButtonGroupButtonCollection
@@ -767,27 +702,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXButtonGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupDynamicModule)
-
-- **constructor**(): IgxXButtonGroupDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonGroupDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonGroupDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonGroupDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxXButtonGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonGroupModule)
-
-- **constructor**(): IgxXButtonGroupModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonGroupModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonGroupModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonGroupModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxXButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXButtonModule)
-
-- **constructor**(): IgxXButtonModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXButtonModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXButtonModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXButtonModule, never, [any, any, any, any], [any, any, any]>`
-
 ### [IgxXCalendarComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarComponent)
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXCalendarComponent
@@ -832,27 +746,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **ngAfterViewInit**(): void
 - **ngOnDestroy**(): void
 - **updateStyle**(): void
-
-### [IgxXCalendarDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarDynamicModule)
-
-- **constructor**(): IgxXCalendarDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxXCalendarLocaleEnModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarLocaleEnModule)
-
-- **constructor**(): IgxXCalendarLocaleEnModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarLocaleEnModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarLocaleEnModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarLocaleEnModule, never, [any], never>`
-
-### [IgxXCalendarModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCalendarModule)
-
-- **constructor**(): IgxXCalendarModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCalendarModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCalendarModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCalendarModule, never, [any, any, any, any], [any, any, any]>`
 
 ### [IgxXCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxComponent)
 
@@ -922,20 +815,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXCheckboxDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxDynamicModule)
-
-- **constructor**(): IgxXCheckboxDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCheckboxDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCheckboxDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCheckboxDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxXCheckboxModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXCheckboxModule)
-
-- **constructor**(): IgxXCheckboxModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXCheckboxModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXCheckboxModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXCheckboxModule, never, [any, any, any, any], [any, any, any]>`
-
 ### [IgxXDatePickerComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerComponent)
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXDatePickerComponent
@@ -998,20 +877,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **ngOnDestroy**(): void
 - **select**(): void
 - **updateStyle**(): void
-
-### [IgxXDatePickerDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerDynamicModule)
-
-- **constructor**(): IgxXDatePickerDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXDatePickerDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXDatePickerDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXDatePickerDynamicModule, never, [any, any, any, any, any, any, any], [any, any, any, any, any, any]>`
-
-### [IgxXDatePickerModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXDatePickerModule)
-
-- **constructor**(): IgxXDatePickerModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXDatePickerModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXDatePickerModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXDatePickerModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
 
 ### [IgxXIconComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconComponent)
 
@@ -1115,20 +980,6 @@ class where # is a number from 0 to count - 1.
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXIconDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconDynamicModule)
-
-- **constructor**(): IgxXIconDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXIconDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXIconDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXIconDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxXIconModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXIconModule)
-
-- **constructor**(): IgxXIconModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXIconModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXIconModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXIconModule, never, [any, any, any], [any, any]>`
-
 ### [IgxXInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputComponent)
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXInputComponent
@@ -1192,13 +1043,6 @@ class where # is a number from 0 to count - 1.
 - **select**(): void
 - **setSelectionRange**(selectionStart: number, selectionEnd: number): void
 - **updateStyle**(): void
-
-### [IgxXInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputDynamicModule)
-
-- **constructor**(): IgxXInputDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputDynamicModule, never, [any, any, any, any], [any, any, any]>`
 
 ### [IgxXInputGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupComponent)
 
@@ -1515,13 +1359,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXInputGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupDynamicModule)
-
-- **constructor**(): IgxXInputGroupDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputGroupDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputGroupDynamicModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
-
 ### [IgxXInputGroupInputCollection](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupInputCollection)
 
 - **constructor**(list?: IgxXInputGroupItemComponent[]): IgxXInputGroupInputCollection
@@ -1535,20 +1372,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **findByName**(name: string): any
 - **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxXInputGroupItemComponent
-
-### [IgxXInputGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputGroupModule)
-
-- **constructor**(): IgxXInputGroupModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputGroupModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputGroupModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputGroupModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxXInputModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputModule)
-
-- **constructor**(): IgxXInputModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXInputModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXInputModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXInputModule, never, [any, any, any], [any, any]>`
 
 ### [IgxXLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelComponent)
 
@@ -1598,20 +1421,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
 
-### [IgxXLabelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelDynamicModule)
-
-- **constructor**(): IgxXLabelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXLabelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXLabelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXLabelDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxXLabelModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelModule)
-
-- **constructor**(): IgxXLabelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXLabelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXLabelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXLabelModule, never, [any, any, any], [any, any]>`
-
 ### [IgxXPrefixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixComponent)
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXPrefixComponent
@@ -1633,20 +1442,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
-
-### [IgxXPrefixDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixDynamicModule)
-
-- **constructor**(): IgxXPrefixDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXPrefixDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXPrefixDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXPrefixDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxXPrefixModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixModule)
-
-- **constructor**(): IgxXPrefixModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXPrefixModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXPrefixModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXPrefixModule, never, [any, any, any], [any, any]>`
 
 ### [IgxXRippleComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleComponent)
 
@@ -1681,20 +1476,6 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
 - **updateStyle**(): void
-
-### [IgxXRippleDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleDynamicModule)
-
-- **constructor**(): IgxXRippleDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXRippleDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXRippleDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXRippleDynamicModule, never, [any, any, any], [any, any]>`
-
-### [IgxXRippleModule](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXRippleModule)
-
-- **constructor**(): IgxXRippleModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXRippleModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXRippleModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXRippleModule, never, [any, any], [any]>`
 
 ### [IgxXSuffixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXSuffixComponent)
 
@@ -1840,98 +1621,3 @@ Indicates some simple date formats to be used.
 - **Border** = 2
 - **Box** = 1
 - **Line** = 0
-
-## Functions
-
-### [provideIgxColorEditor](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditor)
-`provideIgxColorEditor(): EnvironmentProviders`
-
-### [provideIgxColorEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorDynamic)
-`provideIgxColorEditorDynamic(): EnvironmentProviders`
-
-### [provideIgxColorEditorPanel](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorPanel)
-`provideIgxColorEditorPanel(): EnvironmentProviders`
-
-### [provideIgxColorEditorPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxColorEditorPanelDynamic)
-`provideIgxColorEditorPanelDynamic(): EnvironmentProviders`
-
-### [provideIgxMultiSlider](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSlider)
-`provideIgxMultiSlider(): EnvironmentProviders`
-
-### [provideIgxMultiSliderDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderDynamic)
-`provideIgxMultiSliderDynamic(): EnvironmentProviders`
-
-### [provideIgxMultiSliderThumb](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderThumb)
-`provideIgxMultiSliderThumb(): EnvironmentProviders`
-
-### [provideIgxMultiSliderThumbDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxMultiSliderThumbDynamic)
-`provideIgxMultiSliderThumbDynamic(): EnvironmentProviders`
-
-### [provideIgxXButton](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButton)
-`provideIgxXButton(): EnvironmentProviders`
-
-### [provideIgxXButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonDynamic)
-`provideIgxXButtonDynamic(): EnvironmentProviders`
-
-### [provideIgxXButtonGroup](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonGroup)
-`provideIgxXButtonGroup(): EnvironmentProviders`
-
-### [provideIgxXButtonGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXButtonGroupDynamic)
-`provideIgxXButtonGroupDynamic(): EnvironmentProviders`
-
-### [provideIgxXCalendar](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendar)
-`provideIgxXCalendar(): EnvironmentProviders`
-
-### [provideIgxXCalendarDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendarDynamic)
-`provideIgxXCalendarDynamic(): EnvironmentProviders`
-
-### [provideIgxXCalendarLocaleEn](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCalendarLocaleEn)
-`provideIgxXCalendarLocaleEn(): EnvironmentProviders`
-
-### [provideIgxXCheckbox](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCheckbox)
-`provideIgxXCheckbox(): EnvironmentProviders`
-
-### [provideIgxXCheckboxDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXCheckboxDynamic)
-`provideIgxXCheckboxDynamic(): EnvironmentProviders`
-
-### [provideIgxXDatePicker](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXDatePicker)
-`provideIgxXDatePicker(): EnvironmentProviders`
-
-### [provideIgxXDatePickerDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXDatePickerDynamic)
-`provideIgxXDatePickerDynamic(): EnvironmentProviders`
-
-### [provideIgxXIcon](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXIcon)
-`provideIgxXIcon(): EnvironmentProviders`
-
-### [provideIgxXIconDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXIconDynamic)
-`provideIgxXIconDynamic(): EnvironmentProviders`
-
-### [provideIgxXInput](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInput)
-`provideIgxXInput(): EnvironmentProviders`
-
-### [provideIgxXInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputDynamic)
-`provideIgxXInputDynamic(): EnvironmentProviders`
-
-### [provideIgxXInputGroup](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputGroup)
-`provideIgxXInputGroup(): EnvironmentProviders`
-
-### [provideIgxXInputGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXInputGroupDynamic)
-`provideIgxXInputGroupDynamic(): EnvironmentProviders`
-
-### [provideIgxXLabel](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXLabel)
-`provideIgxXLabel(): EnvironmentProviders`
-
-### [provideIgxXLabelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXLabelDynamic)
-`provideIgxXLabelDynamic(): EnvironmentProviders`
-
-### [provideIgxXPrefix](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXPrefix)
-`provideIgxXPrefix(): EnvironmentProviders`
-
-### [provideIgxXPrefixDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXPrefixDynamic)
-`provideIgxXPrefixDynamic(): EnvironmentProviders`
-
-### [provideIgxXRipple](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXRipple)
-`provideIgxXRipple(): EnvironmentProviders`
-
-### [provideIgxXRippleDynamic](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/functions/provideIgxXRippleDynamic)
-`provideIgxXRippleDynamic(): EnvironmentProviders`
