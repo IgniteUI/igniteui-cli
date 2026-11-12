@@ -14,56 +14,132 @@ class GoogleAnalytics {
 	protected static userSettings: string = "user-settings.json";
 	protected static appVersion: string;
 	protected static npmVersion: string;
-	protected static trackingID = "UA-392932-23";
+	protected static measurementID = "G-N2K2PWRTLP";
+	/** Measurement Protocol API secret of the GA4 data stream. Nothing is sent while this is empty. */
+	protected static apiSecret = "";
+	protected static sessionID = Math.floor(Date.now() / 1000).toString();
+	protected static readonly maxParamLength = 100;
+	protected static readonly maxUserPropertyLength = 36;
+
+	protected static readonly customDimensions: { [key: string]: string } = {
+		cd1: "framework",
+		cd2: "project_type",
+		cd3: "project_name",
+		cd4: "action",
+		cd5: "component_group",
+		cd6: "component_name",
+		cd7: "template_id",
+		cd8: "template_name",
+		cd9: "extra_configuration",
+		cd10: "skip_config",
+		cd11: "skip_git",
+		cd12: "global",
+		cd13: "search_term",
+		cd14: "theme"
+	};
 
 	/**
-	 * Generates http post request with provided parameters and sends it to GA
+	 * Generates http post request with provided parameters and sends it to GA4
 	 * @param parameters Object containing all the parameters to send
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
-		if (config.disableAnalytics) {
+		if (config.disableAnalytics || !this.apiSecret) {
 			return;
 		}
 
-		// set GA protocol version. This should be 1
-		parameters.v = 1;
-
-		// set the Tracking ID
-		parameters.tid = this.trackingID;
-
-		// set application version if not set beforehand
-		if (!parameters.av) {
-			if (!this.appVersion) {
-				this.appVersion = Util.version();
-			}
-
-			parameters.av = this.appVersion;
+		if (!this.appVersion) {
+			this.appVersion = Util.version();
 		}
 
-		// set application name
-		parameters.an = App.appName;
+		const payload = {
+			client_id: this.getUUID(),
+			user_properties: this.toUserProperties({
+				app_name: App.appName,
+				app_version: parameters.av || this.appVersion,
+				node_version: process.version,
+				npm_version: this.getNpmVersion(),
+				os: this.getOsForUserAgent()
+			}),
+			events: [this.toEvent(parameters)]
+		};
 
-		//	set user agent string. We are using this for detecting the user's OS.
-		//	as well as node version. The latest is set as browser version.
-		const nodeVersion = process.version;
-		const os = this.getOsForUserAgent();
-		const npmVersion = this.getNpmVersion();
-		parameters.ua = `node/${nodeVersion} (${os}) npm/${npmVersion}`;
-
-		//	set user ID
-		parameters.uid = this.getUUID();
-
-		//	generate http request and sent it to GA
-		const queryString = qs.stringify(parameters as {});
-		const fullPath = "/collect?" + queryString;
-		const options = { host: "www.google-analytics.com", path: fullPath, method: "POST" };
+		const body = JSON.stringify(payload);
+		const query = qs.stringify({ measurement_id: this.measurementID, api_secret: this.apiSecret });
+		const options = {
+			host: "www.google-analytics.com",
+			path: "/mp/collect?" + query,
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Content-Length": Buffer.byteLength(body)
+			}
+		};
 		const https = require("https");
 		const req = https.request(options);
 		req.on("error", (e: Error) => {
 			// TODO: save all the logs and send them later
 		});
-		req.end();
+		req.end(body);
+	}
+
+	/** Maps the Universal Analytics style hit parameters to a GA4 event */
+	protected static toEvent(parameters: GoogleAnalyticsParameters): { name: string, params: { [key: string]: string | number } } {
+		const params: { [key: string]: string | number } = {
+			session_id: this.sessionID,
+			engagement_time_msec: 1
+		};
+		const add = (name: string, value: unknown) => {
+			if (value === undefined || value === null || value === "") {
+				return;
+			}
+			params[name] = String(value).substring(0, this.maxParamLength);
+		};
+
+		let name: string;
+		switch (parameters.t) {
+			case "screenview":
+				// screen_view is accepted for app streams only
+				name = "page_view";
+				add("page_title", parameters.cd);
+				break;
+			case "exception":
+				name = "exception";
+				add("description", parameters.exd);
+				break;
+			default:
+				name = this.toEventName(parameters.ec);
+				add("event_category", parameters.ec);
+				add("event_action", parameters.ea);
+				add("event_label", parameters.el);
+				break;
+		}
+
+		for (const key of Object.keys(this.customDimensions)) {
+			add(this.customDimensions[key], parameters[key as keyof GoogleAnalyticsParameters]);
+		}
+
+		return { name, params };
+	}
+
+	/** Turns an event category like '$ig upgrade-packages' into a valid GA4 event name - 'ig_upgrade_packages' */
+	protected static toEventName(category?: string): string {
+		const name = (category || "")
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, "_")
+			.replace(/^[^a-z]+|_+$/g, "")
+			.substring(0, 40);
+		return name || "cli_event";
+	}
+
+	protected static toUserProperties(properties: { [key: string]: string }): { [key: string]: { value: string } } {
+		const result: { [key: string]: { value: string } } = {};
+		for (const key of Object.keys(properties)) {
+			if (properties[key]) {
+				result[key] = { value: properties[key].substring(0, this.maxUserPropertyLength) };
+			}
+		}
+		return result;
 	}
 
 	protected static getUUID(): string {

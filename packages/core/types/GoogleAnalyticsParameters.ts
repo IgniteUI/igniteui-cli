@@ -1,30 +1,31 @@
+/**
+ * Parameters of a single analytics hit. The names follow the Universal Analytics
+ * Measurement Protocol and are mapped to a GA4 event when sent.
+ */
 export interface GoogleAnalyticsParameters {
-	/**
-	 * The tracking ID / web property ID. The format is UA-XXXX-Y.
-	 *  All collected data is associated by this ID.
-	 */
+	/** @deprecated Not used. The GA4 measurement ID is set internally. */
 	tid?: string;
 
-	/** Application name. Should be always 'igniteui-cli'. */
+	/** @deprecated Not used. Application name is set internally. */
 	an?: string;
 
-	/** igniteui-cli application version. */
+	/** igniteui-cli application version. Sent as the 'app_version' user property. */
 	av?: string;
 
-	/** User Agent. We will provide here node version as browser version and the user OS. */
+	/** @deprecated Not used. Node, npm and OS are sent as user properties. */
 	ua?: string;
 
-	/** User unique ID. */
+	/** @deprecated Not used. The anonymous client ID is set internally. */
 	uid?: string;
 
-	/** The Protocol version. The current value is '1'. */
+	/** @deprecated Not used. */
 	v?: number;
 
 	/**
 	 * The type of hit. Must be 'screenview', 'event' or 'exception'.
-	 * Use 'screenview' for each command.
-	 * Use 'event' for each user input.
-	 * Use 'exception' for exceptions.
+	 * Use 'screenview' for each command. Sent as GA4 'page_view' event.
+	 * Use 'event' for each user input. Sent as GA4 event named after the category.
+	 * Use 'exception' for exceptions. Sent as GA4 'exception' event.
 	 */
 	t?: string;
 
@@ -34,7 +35,7 @@ export interface GoogleAnalyticsParameters {
 	/** Specifies the description of an exception. */
 	exd?: string;
 
-	/** Command in which the event happens. */
+	/** Command in which the event happens, e.g. '$ig new' - sent as event 'ig_new'. */
 	ec?: string;
 
 	/**
