@@ -34,10 +34,13 @@ export function checkMcpConfig(): CheckResult {
 	}
 	const complete = configs.filter(x => !x.missingServers.length);
 	if (!complete.length) {
+		const invalid = configs.filter(x => x.invalid);
 		return {
 			id, group: GROUP, status: "warn",
-			detail: configs.map(x => `${x.mcpFilePath} lacks ${x.missingServers.join(", ")}`).join("; "),
-			fix: AI_CONFIG_FIX
+			detail: configs
+				.map(x => x.invalid ? `${x.mcpFilePath} is not valid JSON` : `${x.mcpFilePath} lacks ${x.missingServers.join(", ")}`)
+				.join("; "),
+			fix: invalid.length ? `Fix the JSON in ${invalid.map(x => x.mcpFilePath).join(", ")}` : AI_CONFIG_FIX
 		};
 	}
 	return {

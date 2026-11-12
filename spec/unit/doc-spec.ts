@@ -128,7 +128,7 @@ describe("Unit - Doc command", () => {
 			const output = (Util.log as jasmine.Spy).calls.mostRecent().args[0] as string;
 			expect(output).toContain(`Found 2 results for "row editing" in the angular docs:`);
 			expect(output).toContain("grid-row-editing");
-			expect(output).toContain("ig doc --read <name>");
+			expect(output).toContain("ig doc --read <name> --framework angular");
 			expect(output).toContain(`ig doc "row editing" --open`);
 		});
 		it("Should prefer the framework option over detection", async () => {
@@ -136,6 +136,7 @@ describe("Unit - Doc command", () => {
 			spyOn(Util, "log");
 			await doc.handler({ term: "grid", framework: "react", _: ["doc"], $0: "doc" });
 			expect(searchDocs).toHaveBeenCalledWith("react", `"grid"`);
+			expect((Util.log as jasmine.Spy).calls.mostRecent().args[0]).toContain("ig doc --read <name> --framework react");
 		});
 		it("Should limit the number of results", async () => {
 			stubDocs();

@@ -1,4 +1,5 @@
 import { App, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import * as cli from "../../packages/cli/lib/cli";
 import { default as doc } from "../../packages/cli/lib/commands/doc";
 import { default as doctor } from "../../packages/cli/lib/commands/doctor";
 import * as doctorRunner from "../../packages/cli/lib/doctor";
@@ -223,6 +224,11 @@ describe("Unit - Doctor", () => {
 			}));
 			expect(result).toEqual(jasmine.objectContaining({ status: "ok", detail: "2 Ignite UI package(s) installed" }));
 		});
+		it("checks the jQuery ignite-ui package", () => {
+			mockFileSystem();
+			const result = checkInstalledPackages(context({ packageJson: { dependencies: { "ignite-ui": "~23.1" } } }));
+			expect(result).toEqual(jasmine.objectContaining({ status: "fail", detail: "ignite-ui is not installed" }));
+		});
 		it("skips the package checks without Ignite UI packages", () => {
 			mockFileSystem({ "package.json": { dependencies: { rxjs: "^7.0.0" } } });
 			const packageJson = { dependencies: { rxjs: "^7.0.0" } };
@@ -382,6 +388,16 @@ describe("Unit - Doctor", () => {
 				status: "ok", detail: "Ignite UI MCP servers configured in .mcp.json"
 			}));
 		});
+		it("warns about a configuration with syntax errors", () => {
+			mockFileSystem({ ".mcp.json": `{ "mcpServers": ${JSON.stringify(MCP_SERVERS)}` });
+			expect(checkMcpConfig()).toEqual(jasmine.objectContaining({
+				status: "warn", detail: ".mcp.json is not valid JSON", fix: "Fix the JSON in .mcp.json"
+			}));
+		});
+		it("accepts trailing commas in a configuration", () => {
+			mockFileSystem({ ".mcp.json": `{ "mcpServers": ${JSON.stringify(MCP_SERVERS)}, }` });
+			expect(checkMcpConfig().status).toBe("ok");
+		});
 		it("looks for instruction files and skills folders", () => {
 			mockFileSystem();
 			expect(checkInstructions().status).toBe("warn");
@@ -489,6 +505,32 @@ describe("Unit - Doctor", () => {
 			await doctor.handler({ json: true, _: ["doctor"], $0: "ig" });
 			expect(process.exitCode).toBe(1);
 			expect(JSON.parse((Util.log as jasmine.Spy).calls.mostRecent().args[0]).ok).toBeFalse();
+		});
+		it("sends no analytics offline", async () => {
+			spyOn(doctorRunner, "runDoctor").and.resolveTo(results);
+			await doctor.handler({ offline: true, _: ["doctor"], $0: "ig" });
+			expect(GoogleAnalytics.post).not.toHaveBeenCalled();
+			await doctor.handler({ _: ["doctor"], $0: "ig" });
+			expect(GoogleAnalytics.post).toHaveBeenCalledTimes(1);
+		});
+		it("reports even when analytics throws", async () => {
+			(GoogleAnalytics.post as jasmine.Spy).and.throwError("npm not found");
+			spyOn(doctorRunner, "runDoctor").and.resolveTo(results);
+			await doctor.handler({ _: ["doctor"], $0: "ig" });
+			expect((Util.log as jasmine.Spy).calls.mostRecent().args[0]).toContain("1 ok, 1 warning(s)");
+		});
+		it("reports a config file that doesn't parse when run through the CLI", async () => {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.throwError("The ignite-ui-cli.json file is not parsed correctly.");
+			spyOn(shell, "run").and.resolveTo(null);
+			spyOn(shell, "attempt").and.resolveTo({ ok: false, output: "" });
+			stubDocs();
+			process.exitCode = 0;
+			await cli.run(["doctor", "--json", "--offline"]);
+			const report = JSON.parse((Util.log as jasmine.Spy).calls.all()
+				.map(x => x.args[0]).find(x => typeof x === "string" && x.trimStart().startsWith("{")));
+			expect(report.checks).toContain(jasmine.objectContaining({ id: "cli-config", status: "fail" }));
+			expect(process.exitCode).toBe(1);
 		});
 	});
 });

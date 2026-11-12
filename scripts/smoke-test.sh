@@ -131,14 +131,6 @@ run_cli() {
 	(cd "$cwd" && cli "$@") >"$log" 2>&1
 }
 
-# run_local_cli <cwd> <logfile> <args...>
-# Once a project is installed, the entry script hands over to the project's own igniteui-cli copy.
-# This loads the local build directly, for steps that run after install.
-run_local_cli() {
-	local cwd="$1" log="$2"; shift 2
-	(cd "$cwd" && node -e 'require(process.argv[1]).run(process.argv.slice(2))' "$ROOT/packages/cli/lib/cli.js" "$@") >"$log" 2>&1
-}
-
 list_component_ids() {
 	local dir="$1"
 	# a row is one tab then the id; wrapped description lines are indented deeper
@@ -265,7 +257,7 @@ install_and_build() {
 
 	# a freshly scaffolded and installed project must have no failing checks; warnings are fine
 	start=$SECONDS
-	if run_local_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor --offline; then
+	if run_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor --offline; then
 		record "$fw" "doctor" "$dir" "PASS" "$((SECONDS - start))"
 		echo "  ✓ ig doctor"
 	else

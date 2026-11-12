@@ -20,10 +20,14 @@ const command: CommandType = {
 			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
-		GoogleAnalytics.post({
-			t: "screenview",
-			cd: "Doctor"
-		});
+		if (!argv.offline) {
+			try {
+				GoogleAnalytics.post({
+					t: "screenview",
+					cd: "Doctor"
+				});
+			} catch { /* reads the config and runs npm, either of which the checks may report as broken */ }
+		}
 
 		const results = await runDoctor(!!argv.offline);
 		Util.log(argv.json ? formatJson(results) : formatText(results));

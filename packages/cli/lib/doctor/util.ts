@@ -1,15 +1,24 @@
 import { App, FS_TOKEN, IFileSystem } from "@igniteui/cli-core";
-import { ChildProcess, exec, spawn } from "child_process";
+import { ChildProcess, spawn } from "child_process";
 import * as path from "path";
 import * as semver from "semver";
 import { ProjectPackageJson } from "./types";
 
+const WINDOWS = process.platform === "win32";
+
 function killTree(child: ChildProcess): void {
-	if (process.platform === "win32" && child.pid) {
+	if (!child.pid) {
+		child.kill();
+	} else if (WINDOWS) {
 		spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], { stdio: "ignore", windowsHide: true })
 			.on("error", () => child.kill());
 	} else {
-		child.kill();
+		try {
+			// the shell leads its own process group, so this reaches what it started as well
+			process.kill(-child.pid);
+		} catch {
+			child.kill();
+		}
 	}
 }
 
@@ -17,11 +26,20 @@ export const shell = {
 	/** Runs a command; `output` is its stdout on success and its stderr on failure or timeout. */
 	attempt(command: string, timeout = 10000): Promise<{ ok: boolean, output: string }> {
 		return new Promise(resolve => {
-			const child = exec(command, { encoding: "utf8", windowsHide: true }, (error, stdout, stderr) => {
-				clearTimeout(timer);
-				resolve(error ? { ok: false, output: stderr } : { ok: true, output: stdout.trim() });
+			let stdout = "";
+			let stderr = "";
+			const child = spawn(command, {
+				shell: true, windowsHide: true, detached: !WINDOWS, stdio: ["ignore", "pipe", "pipe"]
 			});
-			// exec's own timeout kills only the shell on Windows and then waits for what the shell started
+			child.stdout!.setEncoding("utf8").on("data", chunk => stdout += chunk);
+			child.stderr!.setEncoding("utf8").on("data", chunk => stderr += chunk);
+			const done = (ok: boolean) => {
+				clearTimeout(timer);
+				resolve(ok ? { ok: true, output: stdout.trim() } : { ok: false, output: stderr });
+			};
+			child.on("error", () => done(false));
+			child.on("close", code => done(code === 0));
+			// killing only the shell would leave what it started running and holding the output pipes
 			const timer = setTimeout(() => {
 				killTree(child);
 				resolve({ ok: false, output: "" });
@@ -48,7 +66,7 @@ export function satisfies(version: string, range: string): boolean | null {
 	return semver.satisfies(version, range);
 }
 
-export const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui-)/;
+export const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui(-|$))/;
 
 export function allDependencies(packageJson: ProjectPackageJson): Record<string, string> {
 	return { ...packageJson.devDependencies, ...packageJson.dependencies };

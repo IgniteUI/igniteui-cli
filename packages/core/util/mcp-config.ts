@@ -78,6 +78,8 @@ export interface McpConfigStatus {
 	mcpFilePath: string;
 	/** Ignite UI servers the file doesn't list. */
 	missingServers: string[];
+	/** The file can't be read or has syntax errors; its servers are not trusted. */
+	invalid: boolean;
 }
 
 /** Reports the Ignite UI servers of every assistant MCP config file found in the project. */
@@ -89,12 +91,20 @@ export function getMcpConfigStatus(): McpConfigStatus[] {
 			continue;
 		}
 		let servers: Record<string, unknown> = {};
+		let invalid = false;
 		try {
-			servers = jsonc.parse(fileSystem.readFile(mcpFilePath))?.[rootKey] ?? {};
-		} catch { /* an unreadable file lists no servers */ }
+			// jsonc recovers from syntax errors instead of throwing
+			const errors: jsonc.ParseError[] = [];
+			const parsed = jsonc.parse(fileSystem.readFile(mcpFilePath), errors, { allowTrailingComma: true });
+			invalid = errors.length > 0;
+			servers = (!invalid && parsed?.[rootKey]) || {};
+		} catch {
+			invalid = true;
+		}
 		result.push({
 			mcpFilePath,
-			missingServers: Object.keys(IGNITEUI_MCP_SERVERS).filter(key => !servers[key])
+			missingServers: Object.keys(IGNITEUI_MCP_SERVERS).filter(key => !servers[key]),
+			invalid
 		});
 	}
 	return result;

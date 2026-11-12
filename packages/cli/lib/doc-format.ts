@@ -20,7 +20,7 @@ export function formatSearchResults(results: DocSearchEntry[], term: string, fra
 		lines.push("");
 	});
 
-	lines.push("Read a result:      ig doc --read <name>");
+	lines.push(`Read a result:      ig doc --read <name> --framework ${framework}`);
 	lines.push(`Search the website: ig doc ${Util.quoteIfNeeded(term)} --open`);
 	return lines.join("\n");
 }
