@@ -98,9 +98,17 @@ export interface ConfigCommandType extends CommandType {
 	addHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
 }
 
+export interface DocSearchEntry {
+	title: string;
+	name: string;
+	summary?: string;
+	/** Hits sit between `>>>` and `<<<`. */
+	excerpt?: string;
+}
+
 export interface DocsProvider {
 	init(): Promise<void>;
-	searchDocs(framework: string, query: string): Promise<string>;
+	searchDocEntries(framework: string, query: string): Promise<DocSearchEntry[]>;
 	getDoc(framework: string, name: string): Promise<{ text: string; found: boolean }>;
 }
 

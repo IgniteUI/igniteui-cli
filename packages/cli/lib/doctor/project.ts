@@ -1,11 +1,10 @@
 import {
-	App, BaseTemplateManager, FEED_ANGULAR, getUpgradeablePackages, NPM_ANGULAR, ProjectConfig, TEMPLATE_MANAGER
+	App, BaseTemplateManager, FEED_ANGULAR, NPM_ANGULAR, ProjectConfig, TEMPLATE_MANAGER, UPGRADEABLE_PACKAGES
 } from "@igniteui/cli-core";
 import { CheckResult, DoctorContext } from "./types";
-import { allDependencies, installedVersion, majorOf, satisfies } from "./util";
+import { allDependencies, IGNITEUI_PACKAGE, installedVersion, majorOf, satisfies } from "./util";
 
 const GROUP = "Project";
-const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui-)/;
 
 export function checkConfig(): CheckResult {
 	const id = "cli-config";
@@ -14,7 +13,7 @@ export function checkConfig(): CheckResult {
 		return { id, group: GROUP, status: "skip", detail: `No ${file}; the framework is detected from the project files` };
 	}
 
-	let framework: string | undefined;
+	let framework: unknown;
 	let projectType: string | undefined;
 	try {
 		const project = ProjectConfig.localConfig().project;
@@ -30,8 +29,15 @@ export function checkConfig(): CheckResult {
 			detail: `${file} sets no project.framework; the framework is detected from the project files`
 		};
 	}
+	if (typeof framework !== "string") {
+		return {
+			id, group: GROUP, status: "fail",
+			detail: `${file} has a project.framework that is not a string`,
+			fix: `Set project.framework to a framework listed by "ig list"`
+		};
+	}
 
-	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	const templateManager =App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 	const library = templateManager.getProjectLibrary(framework.toLowerCase(), projectType);
 	if (!library) {
 		return {
@@ -81,8 +87,9 @@ export function checkInstalledPackages(context: DoctorContext): CheckResult {
 
 export function checkMixedPackages(context: DoctorContext): CheckResult {
 	const id = "packages-mixed";
-	const licensed = Object.keys(allDependencies(context.packageJson!)).filter(name => name.startsWith("@infragistics/"));
-	const trial = getUpgradeablePackages().map(x => x.trial);
+	const dependencies = allDependencies(context.packageJson!);
+	const licensed = Object.keys(dependencies).filter(name => name.startsWith("@infragistics/"));
+	const trial = Object.keys(UPGRADEABLE_PACKAGES).filter(name => dependencies[name]);
 	if (licensed.length && trial.length) {
 		return {
 			id, group: GROUP, status: "warn",
@@ -122,7 +129,7 @@ export function checkAngularMajor(context: DoctorContext): CheckResult | null {
 
 export function projectChecks(context: DoctorContext): CheckResult[] {
 	if (!context.inProject) {
-		return [{ id: "project", group: GROUP, status: "skip", detail: "Not in a project folder" }];
+		return [{ id: "project", group: GROUP, status: "skip", detail: "Not in an Ignite UI project" }];
 	}
 
 	const results = [checkConfig(), checkPackageJson(context)];

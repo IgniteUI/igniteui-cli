@@ -243,11 +243,12 @@ import { LocalDocsProvider, resolveDoc, sanitizeSearchDocsQuery } from "@igniteu
 const docs = new LocalDocsProvider();
 await docs.init();
 const results = await docs.searchDocs("angular", sanitizeSearchDocsQuery("row editing"));
+const entries = await docs.searchDocEntries("angular", sanitizeSearchDocsQuery("row editing"));
 const { text, found } = await docs.getDoc("angular", "grid-row-editing");
 const doc = await resolveDoc(docs, "angular", "IgxGrid");
 ```
 
-`searchDocs` and `getDoc` return markdown text. `getDoc` takes the exact doc name; `resolveDoc` also accepts component class names and near matches, as the `get_doc` tool does, and reports the doc it served in `servedName`.
+`searchDocs` and `getDoc` return markdown text; `searchDocEntries` returns the same ranked results as `{ name, title, summary?, excerpt? }` objects, with the matched words in `excerpt` between `>>>` and `<<<`. `getDoc` takes the exact doc name; `resolveDoc` also accepts component class names and near matches, as the `get_doc` tool does, and reports the doc it served in `servedName`.
 
 ## Building From Source
 

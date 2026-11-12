@@ -1,7 +1,10 @@
 import { App, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { default as doc } from "../../packages/cli/lib/commands/doc";
 import { default as doctor } from "../../packages/cli/lib/commands/doctor";
 import * as doctorRunner from "../../packages/cli/lib/doctor";
-import { aiChecks, checkInstructions, checkMcpConfig, checkSkills } from "../../packages/cli/lib/doctor/ai";
+import {
+	aiChecks, checkBundledServer, checkInstructions, checkMcpConfig, checkSkills
+} from "../../packages/cli/lib/doctor/ai";
 import {
 	checkCliVersion, checkGit, checkNode, checkNpm, environmentChecks
 } from "../../packages/cli/lib/doctor/environment";
@@ -59,6 +62,12 @@ function context(overrides: Partial<DoctorContext> = {}): DoctorContext {
 		packageJson: {},
 		...overrides
 	};
+}
+
+function stubDocs() {
+	return spyOn(doc, "loadDocs").and.resolveTo({
+		LocalDocsProvider: class { public init = () => Promise.resolve(); }
+	} as any);
 }
 
 function installed(name: string, version: string): Record<string, object> {
@@ -230,6 +239,43 @@ describe("Unit - Doctor", () => {
 			expect(result.detail).toContain("igniteui-dockmanager");
 			expect(result.fix).toBe("Run: ig upgrade-packages");
 		});
+		it("finds trial packages in devDependencies", () => {
+			const packageJson = {
+				dependencies: { "@infragistics/igniteui-angular": "~22.2.0" },
+				devDependencies: { "igniteui-dockmanager": "^2.0.0" }
+			};
+			mockFileSystem({ "package.json": packageJson });
+			const result = checkMixedPackages(context({ packageJson }));
+			expect(result.status).toBe("warn");
+			expect(result.detail).toContain("igniteui-dockmanager");
+		});
+		it("fails on a framework that is not a string", () => {
+			mockFileSystem();
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ project: { framework: 1 } } as any);
+			const result = checkConfig();
+			expect(result.status).toBe("fail");
+			expect(result.detail).toContain("not a string");
+		});
+		it("is in a project only when the folder uses Ignite UI", () => {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+			const files: Record<string, string | object> = { "package.json": { dependencies: { express: "^5.0.0" } } };
+			mockFileSystem(files);
+			expect(doctorRunner.createContext(true).inProject).toBeFalse();
+
+			files["package.json"] = { devDependencies: { "igniteui-webcomponents": "^6.0.0" } };
+			expect(doctorRunner.createContext(true).inProject).toBeTrue();
+
+			files["package.json"] = "{ broken";
+			expect(doctorRunner.createContext(true).inProject).toBeTrue();
+		});
+		it("reports a package.json that is not an object", () => {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+			mockFileSystem({ "package.json": "null" });
+			const result = checkPackageJson(doctorRunner.createContext(true));
+			expect(result.status).toBe("fail");
+			expect(result.detail).toBe("package.json doesn't parse: the content is not a JSON object");
+		});
 		it("accepts trial only and licensed only projects", () => {
 			const trial = { dependencies: { "igniteui-angular": "~22.2.0" } };
 			mockFileSystem({ "package.json": trial });
@@ -305,6 +351,13 @@ describe("Unit - Doctor", () => {
 			expect(await shell.run("node --version")).toBe(process.version);
 			expect(await shell.run("node --no-such-option")).toBeNull();
 		});
+		it("stops waiting for a command that outlives the timeout", async () => {
+			const start = Date.now();
+			const result = await shell.attempt(`node -e "setTimeout(() => {}, 60000)"`, 500);
+			expect(result).toEqual({ ok: false, output: "" });
+			expect(Date.now() - start).toBeLessThan(10000);
+			expect(await shell.run(`node -e "setTimeout(() => {}, 60000)"`, 500)).toBeNull();
+		});
 		it("returns the error output of a failed command", async () => {
 			const result = await shell.attempt("node --no-such-option");
 			expect(result.ok).toBeFalse();
@@ -339,17 +392,42 @@ describe("Unit - Doctor", () => {
 			expect(checkInstructions()).toEqual(jasmine.objectContaining({ status: "ok", detail: "Instructions: .claude/CLAUDE.md" }));
 			expect(checkSkills()).toEqual(jasmine.objectContaining({ status: "ok", detail: "Skills: .claude/skills" }));
 		});
-		it("checks only the bundled server outside a project and for jQuery", () => {
-			mockFileSystem();
-			expect(aiChecks(context({ inProject: false })).map(x => x.id)).toEqual(["mcp-server", "ai-project"]);
-			expect(aiChecks(context({ framework: "jquery" })).map(x => x.id)).toEqual(["mcp-server", "ai-project"]);
-			expect(aiChecks(context()).map(x => x.id))
-				.toEqual(["mcp-server", "mcp-config", "ai-instructions", "ai-skills"]);
+		it("passes when one configuration is complete and another is not", () => {
+			mockFileSystem({
+				".vscode/mcp.json": { servers: MCP_SERVERS },
+				".gemini/settings.json": { theme: "dark" }
+			});
+			expect(checkMcpConfig()).toEqual(jasmine.objectContaining({
+				status: "ok", detail: "Ignite UI MCP servers configured in .vscode/mcp.json"
+			}));
 		});
-		it("fails when the bundled server is missing", () => {
+		it("checks only the bundled server outside a project and for jQuery", async () => {
 			mockFileSystem();
-			const result = aiChecks(context({ cliDir: "does/not/exist", inProject: false }))[0];
+			stubDocs();
+			const ids = async (overrides: Partial<DoctorContext>) => (await aiChecks(context(overrides))).map(x => x.id);
+			expect(await ids({ inProject: false })).toEqual(["mcp-server", "ai-project"]);
+			expect(await ids({ framework: "jquery" })).toEqual(["mcp-server", "ai-project"]);
+			expect(await ids({})).toEqual(["mcp-server", "mcp-config", "ai-instructions", "ai-skills"]);
+		});
+		it("fails when the bundled server is missing", async () => {
+			const loadDocs = stubDocs();
+			const result = await checkBundledServer(context({ cliDir: "does/not/exist" }));
 			expect(result).toEqual(jasmine.objectContaining({ id: "mcp-server", status: "fail" }));
+			expect(loadDocs).not.toHaveBeenCalled();
+		});
+		it("opens the docs database the way ig doc does", async () => {
+			const init = stubDocs();
+			expect((await checkBundledServer(context())).status).toBe("ok");
+
+			init.and.returnValue({
+				LocalDocsProvider: class { public init = () => Promise.reject(new Error("Database not found at x.db")); }
+			} as any);
+			const result = await checkBundledServer(context());
+			expect(result.status).toBe("fail");
+			expect(result.detail).toContain("Database not found at x.db");
+
+			init.and.rejectWith(new Error("Cannot find module"));
+			expect((await checkBundledServer(context())).status).toBe("fail");
 		});
 	});
 
@@ -366,13 +444,15 @@ describe("Unit - Doctor", () => {
 			exitCode = process.exitCode;
 			spyOn(GoogleAnalytics, "post");
 			spyOn(Util, "log");
+			spyOn(Util, "style").and.callFake((text: string, style: string) => `<${style}>${text}</${style}>`);
 		});
 		afterEach(() => {
 			process.exitCode = exitCode;
 		});
 
 		it("prints grouped results with fix hints and a summary", () => {
-			expect(formatText(results, false)).toBe([
+			(Util.style as jasmine.Spy).and.callFake((text: string) => text);
+			expect(formatText(results)).toBe([
 				"Environment",
 				"  ok    Node.js 24.0.0",
 				"  warn  git not found",
@@ -384,9 +464,9 @@ describe("Unit - Doctor", () => {
 				"1 ok, 1 warning(s), 0 failed, 1 skipped"
 			].join("\n"));
 		});
-		it("colours the status only when asked", () => {
-			expect(formatText([failed], true)).toContain("\u001b[31mfail\u001b[39m  npm not found");
-			expect(formatText([failed], false)).not.toContain("\u001b[");
+		it("styles the status by its outcome", () => {
+			expect(formatText([failed])).toContain("<red>fail</red>  npm not found");
+			expect(formatText(results)).toContain("<green>ok  </green>  Node.js 24.0.0");
 		});
 		it("prints JSON with a summary and every check", () => {
 			expect(JSON.parse(formatJson([...results, failed]))).toEqual({

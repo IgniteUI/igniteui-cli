@@ -1,58 +1,21 @@
 import { Util } from "@igniteui/cli-core";
-import { paint } from "./color";
+import { DocSearchEntry } from "./commands/types";
 
-export interface DocSearchResult {
-	title: string;
-	name: string;
-	summary?: string;
-	excerpt?: string;
-}
-
-const RESULT_HEADER = /^- \*\*(.+)\*\* \(`([^`]+)`\)$/;
 const HIT = />>>([\s\S]*?)<<</g;
 
-/** Reads the result list out of the markdown the docs provider returns for a search. */
-export function parseSearchResults(markdown: string): DocSearchResult[] {
-	const results: DocSearchResult[] = [];
-	let current: DocSearchResult | undefined;
-
-	for (const line of markdown.split(/\r?\n/)) {
-		const header = RESULT_HEADER.exec(line);
-		if (header) {
-			current = { title: header[1], name: header[2] };
-			results.push(current);
-		} else if (!current) {
-			continue;
-		} else if (current.excerpt !== undefined) {
-			// an excerpt keeps the line breaks of the doc it was cut from
-			current.excerpt += " " + line;
-		} else if (line.startsWith("  > ")) {
-			current.excerpt = line.slice(4);
-		} else if (line.trim()) {
-			current.summary = line.trim();
-		}
-	}
-
-	for (const result of results) {
-		result.excerpt = result.excerpt?.replace(/\s+/g, " ").trim() || undefined;
-	}
-	return results;
-}
-
-export function formatSearchResults(
-	results: DocSearchResult[], term: string, framework: string, color: boolean
-): string {
+export function formatSearchResults(results: DocSearchEntry[], term: string, framework: string): string {
 	const lines = [`Found ${results.length} result${results.length === 1 ? "" : "s"} for "${term}" in the ${framework} docs:`, ""];
 
 	results.forEach((result, index) => {
 		const indent = " ".repeat(String(index + 1).length + 2);
-		lines.push(`${index + 1}. ${paint(result.title, "bold", color)}  ${paint(result.name, "cyan", color)}`);
-		if (result.summary) {
-			lines.push(indent + result.summary);
+		lines.push(`${index + 1}. ${Util.style(result.title, "bold")}  ${Util.style(result.name, "cyan")}`);
+		if (result.summary?.trim()) {
+			lines.push(indent + result.summary.replace(/\s+/g, " ").trim());
 		}
-		if (result.excerpt) {
-			const excerpt = result.excerpt.replace(HIT, (_match, hit: string) => paint(hit, "yellow", color));
-			lines.push(indent + paint("> ", "dim", color) + excerpt);
+		// an excerpt keeps the line breaks of the doc it was cut from
+		const excerpt = result.excerpt?.replace(/\s+/g, " ").trim();
+		if (excerpt) {
+			lines.push(indent + Util.style("> ", "dim") + excerpt.replace(HIT, (_match, hit: string) => Util.style(hit, "yellow")));
 		}
 		lines.push("");
 	});

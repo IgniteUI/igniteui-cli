@@ -1,20 +1,19 @@
 import * as coreDetect from "../../packages/core/util/detect-framework";
 import { GoogleAnalytics, InquirerWrapper, Util } from "@igniteui/cli-core";
 import { default as doc } from "../../packages/cli/lib/commands/doc";
-import { DocsApi, DocsProvider } from "../../packages/cli/lib/commands/types";
-import { formatDoc, formatSearchResults, parseSearchResults } from "../../packages/cli/lib/doc-format";
+import { DocsApi, DocSearchEntry, DocsProvider } from "../../packages/cli/lib/commands/types";
+import { formatDoc, formatSearchResults } from "../../packages/cli/lib/doc-format";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 
-const SEARCH_RESULT = [
-	`Found 2 results for "row editing" in **angular**:`,
-	"",
-	"- **Row Editing** (`grid-row-editing`)",
-	"  Enable inline row editing in the Grid.",
-	"  > ...exits >>>edit<<< mode.",
-	"continues on a new line...",
-	"- **Editing** (`grid-editing`)",
-	"  > ...>>>row<<< changes..."
-].join("\n");
+const SEARCH_RESULT: DocSearchEntry[] = [
+	{
+		title: "Row Editing",
+		name: "grid-row-editing",
+		summary: "Enable inline row editing in the Grid.",
+		excerpt: "...exits >>>edit<<< mode.\n- **Fake** (`not-a-doc`)\ncontinues on a new line..."
+	},
+	{ title: "Editing", name: "grid-editing", excerpt: "...>>>row<<< changes..." }
+];
 
 describe("Unit - Doc command", () => {
 	let searchDocs: jasmine.Spy;
@@ -25,7 +24,7 @@ describe("Unit - Doc command", () => {
 	let exitCode: typeof process.exitCode;
 
 	function stubDocs(): jasmine.Spy {
-		searchDocs = jasmine.createSpy("searchDocs").and.resolveTo(SEARCH_RESULT);
+		searchDocs = jasmine.createSpy("searchDocEntries").and.resolveTo(SEARCH_RESULT);
 		getDoc = jasmine.createSpy("getDoc").and.resolveTo({ text: "---\ncomponent: Grid\n---\n# Grid Editing", found: true });
 		init = jasmine.createSpy("init").and.resolveTo();
 		resolveDoc = jasmine.createSpy("resolveDoc").and.callFake(async (provider: DocsProvider, framework: string, name: string) =>
@@ -33,7 +32,7 @@ describe("Unit - Doc command", () => {
 		const api: DocsApi = {
 			LocalDocsProvider: class {
 				public init = init;
-				public searchDocs = searchDocs;
+				public searchDocEntries = searchDocs;
 				public getDoc = getDoc;
 			},
 			sanitizeSearchDocsQuery: (query: string) => query.trim() ? `"${query.trim()}"` : null,
@@ -146,6 +145,37 @@ describe("Unit - Doc command", () => {
 			expect(output).toContain(`Found 1 result for "row editing"`);
 			expect(output).not.toContain("grid-editing");
 		});
+		it("Should reject a limit that is not a positive whole number", async () => {
+			const loadDocs = stubDocs();
+			spyOn(Util, "error");
+			for (const limit of [0, -1, 0.5, NaN]) {
+				process.exitCode = 0;
+				await doc.handler({ term: "grid", limit, _: ["doc"], $0: "doc" });
+				expect((Util.error as jasmine.Spy).calls.mostRecent().args[0]).toContain("--limit takes a whole number from 1 to 20");
+				expect(process.exitCode).toBe(1);
+			}
+			expect(loadDocs).not.toHaveBeenCalled();
+		});
+		it("Should cap the limit at the number of results the docs return", async () => {
+			stubDocs();
+			spyOn(Util, "log");
+			await doc.handler({ term: "row editing", limit: 500, _: ["doc"], $0: "doc" });
+			expect((Util.log as jasmine.Spy).calls.mostRecent().args[0]).toContain("Found 2 results");
+		});
+		it("Should detect the framework once per run", async () => {
+			stubDocs();
+			spyOn(Util, "log");
+			await doc.handler({ term: "grid", _: ["doc"], $0: "doc" });
+			expect(detectSpy).toHaveBeenCalledTimes(1);
+
+			detectSpy.calls.reset();
+			await doc.handler({ read: "grid-editing", _: ["doc"], $0: "doc" });
+			expect(detectSpy).toHaveBeenCalledTimes(1);
+
+			detectSpy.calls.reset();
+			await doc.handler({ term: "grid", framework: "react", _: ["doc"], $0: "doc" });
+			expect(detectSpy).not.toHaveBeenCalled();
+		});
 		it("Should prompt for the framework when it is not detected", async () => {
 			stubDocs();
 			detectSpy.and.returnValue(null);
@@ -204,7 +234,7 @@ describe("Unit - Doc command", () => {
 		});
 		it("Should report when nothing is found", async () => {
 			stubDocs();
-			searchDocs.and.resolveTo(`No results found for "nothing" in angular docs.`);
+			searchDocs.and.resolveTo([]);
 			spyOn(Util, "log");
 			await doc.handler({ term: "nothing", _: ["doc"], $0: "doc" });
 			const output = (Util.log as jasmine.Spy).calls.mostRecent().args[0] as string;
@@ -246,26 +276,20 @@ describe("Unit - Doc command", () => {
 	});
 
 	describe("formatting", () => {
-		it("Should parse the provider search results", () => {
-			expect(parseSearchResults(SEARCH_RESULT)).toEqual([
-				{
-					title: "Row Editing",
-					name: "grid-row-editing",
-					summary: "Enable inline row editing in the Grid.",
-					excerpt: "...exits >>>edit<<< mode. continues on a new line..."
-				},
-				{ title: "Editing", name: "grid-editing", excerpt: "...>>>row<<< changes..." }
-			]);
+		it("Should print one result per entry, with a multi-line excerpt on one line", () => {
+			spyOn(Util, "style").and.callFake((text: string) => text);
+			const output = formatSearchResults(SEARCH_RESULT, "row editing", "angular");
+			expect(output).toContain("1. Row Editing  grid-row-editing\n   Enable inline row editing in the Grid.\n" +
+				"   > ...exits edit mode. - **Fake** (`not-a-doc`) continues on a new line...\n");
+			expect(output).toContain("2. Editing  grid-editing\n   > ...row changes...\n");
+			expect(output).not.toContain("3. ");
 		});
-		it("Should drop the hit markers and colour hits only when asked", () => {
-			const results = parseSearchResults(SEARCH_RESULT);
-			const plain = formatSearchResults(results, "row editing", "angular", false);
-			expect(plain).toContain("> ...exits edit mode.");
-			expect(plain).not.toContain("\u001b[");
-
-			const coloured = formatSearchResults(results, "row editing", "angular", true);
-			expect(coloured).toContain("\u001b[33medit\u001b[39m");
-			expect(coloured).not.toContain(">>>");
+		it("Should style the hits in place of their markers", () => {
+			spyOn(Util, "style").and.callFake((text: string, style: string) => `<${style}>${text}</${style}>`);
+			const output = formatSearchResults(SEARCH_RESULT, "row editing", "angular");
+			expect(output).toContain("<yellow>edit</yellow>");
+			expect(output).toContain("<bold>Row Editing</bold>  <cyan>grid-row-editing</cyan>");
+			expect(output).not.toContain(">>>");
 		});
 		it("Should drop frontmatter and mcp link targets from a doc", () => {
 			const text = "---\ncomponent: Grid\n---\n# Grid\n\nUse [`IgxGrid`](mcp:get_api_reference?component=IgxGrid) and [docs](https://example.com).";

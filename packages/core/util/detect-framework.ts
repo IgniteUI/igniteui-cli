@@ -49,6 +49,9 @@ export function detectFrameworkFromPackageJson(log = true): Exclude<Framework, "
 	} catch {
 		return null;
 	}
+	if (!pkg || typeof pkg !== "object") {
+		return null;
+	}
 
 	const deps = new Set([
 		...Object.keys(pkg.dependencies ?? {}),

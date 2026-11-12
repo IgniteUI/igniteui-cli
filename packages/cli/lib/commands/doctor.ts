@@ -1,6 +1,5 @@
 import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase } from "yargs";
-import { useColor } from "../color";
 import { formatJson, formatText, runDoctor, summarize } from "../doctor";
 import { CommandType, PositionalArgs } from "./types";
 
@@ -27,7 +26,7 @@ const command: CommandType = {
 		});
 
 		const results = await runDoctor(!!argv.offline);
-		Util.log(argv.json ? formatJson(results) : formatText(results, useColor()));
+		Util.log(argv.json ? formatJson(results) : formatText(results));
 
 		if (summarize(results).fail > 0) {
 			process.exitCode = 1;

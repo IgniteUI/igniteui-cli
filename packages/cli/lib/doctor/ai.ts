@@ -1,25 +1,29 @@
 import {
 	AI_AGENT_CHOICES, App, FS_TOKEN, getInstructionFilePath, getMcpConfigStatus, getSkillsDir, IFileSystem
 } from "@igniteui/cli-core";
-import * as fs from "fs";
-import * as path from "path";
+import { default as doc } from "../commands/doc";
 import { resolveMcpServerEntry } from "../commands/mcp";
 import { CheckResult, DoctorContext } from "./types";
 
 const GROUP = "AI setup";
 const AI_CONFIG_FIX = "Run: ig ai-config";
 
-export function checkBundledServer(context: DoctorContext): CheckResult {
+export async function checkBundledServer(context: DoctorContext): Promise<CheckResult> {
 	const id = "mcp-server";
 	const fix = "Reinstall igniteui-cli";
-	const entry = resolveMcpServerEntry(context.cliDir);
-	if (!entry) {
+	if (!resolveMcpServerEntry(context.cliDir)) {
 		return { id, group: GROUP, status: "fail", detail: "The bundled MCP server was not found", fix };
 	}
-	if (!fs.existsSync(path.join(path.dirname(entry), "igniteui-docs.db"))) {
-		return { id, group: GROUP, status: "fail", detail: "The bundled MCP server has no docs database", fix };
+	try {
+		const api = await doc.loadDocs();
+		await new api.LocalDocsProvider().init();
+	} catch (error) {
+		return {
+			id, group: GROUP, status: "fail",
+			detail: `The bundled docs database can't be opened: ${(error as Error).message}`, fix
+		};
 	}
-	return { id, group: GROUP, status: "ok", detail: "Bundled MCP server and docs database found" };
+	return { id, group: GROUP, status: "ok", detail: "Bundled MCP server found and docs database opens" };
 }
 
 export function checkMcpConfig(): CheckResult {
@@ -28,17 +32,17 @@ export function checkMcpConfig(): CheckResult {
 	if (!configs.length) {
 		return { id, group: GROUP, status: "warn", detail: "No MCP configuration file found", fix: AI_CONFIG_FIX };
 	}
-	const incomplete = configs.filter(x => x.missingServers.length);
-	if (incomplete.length) {
+	const complete = configs.filter(x => !x.missingServers.length);
+	if (!complete.length) {
 		return {
 			id, group: GROUP, status: "warn",
-			detail: incomplete.map(x => `${x.mcpFilePath} lacks ${x.missingServers.join(", ")}`).join("; "),
+			detail: configs.map(x => `${x.mcpFilePath} lacks ${x.missingServers.join(", ")}`).join("; "),
 			fix: AI_CONFIG_FIX
 		};
 	}
 	return {
 		id, group: GROUP, status: "ok",
-		detail: `Ignite UI MCP servers configured in ${configs.map(x => x.mcpFilePath).join(", ")}`
+		detail: `Ignite UI MCP servers configured in ${complete.map(x => x.mcpFilePath).join(", ")}`
 	};
 }
 
@@ -58,10 +62,10 @@ export function checkSkills(): CheckResult {
 		: { id: "ai-skills", group: GROUP, status: "warn", detail: "No agent skills folder found", fix: AI_CONFIG_FIX };
 }
 
-export function aiChecks(context: DoctorContext): CheckResult[] {
-	const results = [checkBundledServer(context)];
+export async function aiChecks(context: DoctorContext): Promise<CheckResult[]> {
+	const results = [await checkBundledServer(context)];
 	if (!context.inProject) {
-		results.push({ id: "ai-project", group: GROUP, status: "skip", detail: "Not in a project folder" });
+		results.push({ id: "ai-project", group: GROUP, status: "skip", detail: "Not in an Ignite UI project" });
 	} else if (context.framework === "jquery") {
 		results.push({ id: "ai-project", group: GROUP, status: "skip", detail: "Not available for jQuery projects" });
 	} else {

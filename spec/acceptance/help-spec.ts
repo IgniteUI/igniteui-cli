@@ -202,7 +202,7 @@ describe("Help command", () => {
 			--read       Print a doc by the name listed in the search results [string]
 		-f, --framework  Framework docs to search (detected from the project by default)
 			[string] [choices: "angular", "react", "webcomponents", "blazor"]
-			--limit      Number of results to print             [number] [default: 10]
+			--limit      Number of results to print, up to 20   [number] [default: 10]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");

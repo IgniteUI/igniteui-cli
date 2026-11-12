@@ -5,6 +5,7 @@ import { environmentChecks } from "./environment";
 import { feedChecks } from "./feed";
 import { projectChecks } from "./project";
 import { CheckResult, DoctorContext } from "./types";
+import { allDependencies, IGNITEUI_PACKAGE } from "./util";
 
 export * from "./report";
 export * from "./types";
@@ -21,12 +22,19 @@ export function createContext(offline: boolean): DoctorContext {
 	};
 	if (context.hasPackageJson) {
 		try {
-			context.packageJson = JSON.parse(fileSystem.readFile("./package.json"));
+			const parsed = JSON.parse(fileSystem.readFile("./package.json"));
+			if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+				throw new Error("the content is not a JSON object");
+			}
+			context.packageJson = parsed;
 		} catch (error) {
 			context.packageJsonError = (error as Error).message;
 		}
 	}
-	context.inProject = context.hasPackageJson || ProjectConfig.hasLocalConfig() || context.framework === "blazor";
+	// a package.json that doesn't parse still counts, so the project checks get to report it
+	const usesIgniteUI = context.hasPackageJson && (!context.packageJson
+		|| Object.keys(allDependencies(context.packageJson)).some(name => IGNITEUI_PACKAGE.test(name)));
+	context.inProject = usesIgniteUI || ProjectConfig.hasLocalConfig() || context.framework === "blazor";
 	return context;
 }
 

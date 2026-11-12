@@ -1,15 +1,31 @@
 import { App, FS_TOKEN, IFileSystem } from "@igniteui/cli-core";
-import { exec } from "child_process";
+import { ChildProcess, exec, spawn } from "child_process";
 import * as path from "path";
 import * as semver from "semver";
 import { ProjectPackageJson } from "./types";
+
+function killTree(child: ChildProcess): void {
+	if (process.platform === "win32" && child.pid) {
+		spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], { stdio: "ignore", windowsHide: true })
+			.on("error", () => child.kill());
+	} else {
+		child.kill();
+	}
+}
 
 export const shell = {
 	/** Runs a command; `output` is its stdout on success and its stderr on failure or timeout. */
 	attempt(command: string, timeout = 10000): Promise<{ ok: boolean, output: string }> {
 		return new Promise(resolve => {
-			exec(command, { encoding: "utf8", timeout, windowsHide: true }, (error, stdout, stderr) =>
-				resolve(error ? { ok: false, output: stderr } : { ok: true, output: stdout.trim() }));
+			const child = exec(command, { encoding: "utf8", windowsHide: true }, (error, stdout, stderr) => {
+				clearTimeout(timer);
+				resolve(error ? { ok: false, output: stderr } : { ok: true, output: stdout.trim() });
+			});
+			// exec's own timeout kills only the shell on Windows and then waits for what the shell started
+			const timer = setTimeout(() => {
+				killTree(child);
+				resolve({ ok: false, output: "" });
+			}, timeout);
 		});
 	},
 	/** Runs a command and returns its trimmed output, or `null` when it fails or times out. */
@@ -31,6 +47,8 @@ export function satisfies(version: string, range: string): boolean | null {
 	}
 	return semver.satisfies(version, range);
 }
+
+export const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui-)/;
 
 export function allDependencies(packageJson: ProjectPackageJson): Record<string, string> {
 	return { ...packageJson.devDependencies, ...packageJson.dependencies };

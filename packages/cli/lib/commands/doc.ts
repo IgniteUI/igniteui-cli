@@ -1,8 +1,7 @@
 import { detectFramework, GoogleAnalytics, InquirerWrapper, Util } from "@igniteui/cli-core";
-import { useColor } from "../color";
-import { formatSearchResults, parseSearchResults, formatDoc } from "../doc-format";
+import { formatSearchResults, formatDoc } from "../doc-format";
 import { PromptSession } from "../PromptSession";
-import { DocCommandType, DocsApi, DocsProvider, PositionalArgs } from "./types";
+import { DocCommandType, DocsApi, DocSearchEntry, DocsProvider, PositionalArgs } from "./types";
 import { pathToFileURL } from "url";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -12,6 +11,7 @@ const DOC_FRAMEWORKS = [
 	{ value: "webcomponents", name: "Web Components" },
 	{ value: "blazor", name: "Blazor" }
 ];
+const DEFAULT_RESULTS = 10;
 const MAX_RESULTS = 20;
 const OPEN_HINT = `Use "ig doc <term> --open" to search the Infragistics website instead.`;
 
@@ -20,8 +20,12 @@ function fail(message: string): void {
 	process.exitCode = 1;
 }
 
-async function resolveFramework(argv: ArgumentsCamelCase<PositionalArgs>): Promise<string | null> {
-	let framework: string | null | undefined = argv.framework?.toLowerCase() ?? detectFramework();
+function requestedFramework(argv: ArgumentsCamelCase<PositionalArgs>): string | null {
+	return argv.framework?.toLowerCase() ?? detectFramework();
+}
+
+/** @param framework the `--framework` option or the detected one; prompts when there is neither */
+async function resolveFramework(framework: string | null): Promise<string | null> {
 	if (!framework) {
 		if (!Util.canPrompt()) {
 			fail("Could not detect the project framework. Pass it with --framework. " + OPEN_HINT);
@@ -52,9 +56,13 @@ async function getProvider(): Promise<{ api: DocsApi, provider: DocsProvider } |
 	}
 }
 
-async function searchLocal(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void> {
+async function searchLocal(argv: ArgumentsCamelCase<PositionalArgs>, requested: string | null): Promise<void> {
 	const term = argv.term!.trim();
-	const framework = await resolveFramework(argv);
+	const limit = argv.limit ?? DEFAULT_RESULTS;
+	if (!Number.isInteger(limit) || limit < 1) {
+		return fail(`--limit takes a whole number from 1 to ${MAX_RESULTS}.`);
+	}
+	const framework = await resolveFramework(requested);
 	if (!framework) {
 		return;
 	}
@@ -68,23 +76,22 @@ async function searchLocal(argv: ArgumentsCamelCase<PositionalArgs>): Promise<vo
 		return fail(`The search term '${term}' is not valid.`);
 	}
 
-	let found: string;
+	let found: DocSearchEntry[];
 	try {
-		found = await docs.provider.searchDocs(framework, query);
+		found = await docs.provider.searchDocEntries(framework, query);
 	} catch (error) {
 		return fail(`The search for '${term}' failed: ${(error as Error).message}` + "\n" + OPEN_HINT);
 	}
-	const limit = Math.min(Math.max(Math.floor(Number(argv.limit)) || 10, 1), MAX_RESULTS);
-	const results = parseSearchResults(found).slice(0, limit);
+	const results = found.slice(0, Math.min(limit, MAX_RESULTS));
 	if (!results.length) {
 		return Util.log(`No results found for "${term}" in the ${framework} docs. ` + OPEN_HINT);
 	}
-	Util.log(formatSearchResults(results, term, framework, useColor()));
+	Util.log(formatSearchResults(results, term, framework));
 }
 
 async function readDoc(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void> {
 	const name = argv.read!.trim();
-	const framework = await resolveFramework(argv);
+	const framework = await resolveFramework(requestedFramework(argv));
 	if (!framework) {
 		return;
 	}
@@ -135,9 +142,9 @@ const doc: DocCommandType = {
 				type: "string"
 			})
 			.option("limit", {
-				describe: "Number of results to print",
+				describe: `Number of results to print, up to ${MAX_RESULTS}`,
 				type: "number",
-				default: 10
+				default: DEFAULT_RESULTS
 			});
 	},
 	open: async (target) => {
@@ -171,7 +178,8 @@ const doc: DocCommandType = {
 			return doc.handler(argv);
 		}
 
-		const detected = argv.framework ? null : detectFramework();
+		const requested = requestedFramework(argv);
+		const detected = argv.framework ? null : requested;
 		const noBundledDocs = !!detected && !DOC_FRAMEWORKS.some(x => x.value === detected);
 		if ((argv.open || noBundledDocs) && !Util.isAlphanumericExt(argv.term)) {
 			return fail(`The search term '${argv.term}' is not valid.` + "\n" +
@@ -192,7 +200,7 @@ const doc: DocCommandType = {
 			Util.log(`There are no bundled docs for ${detected}, searching the Infragistics website instead.`);
 			return openInBrowser(argv.term);
 		}
-		return searchLocal(argv);
+		return searchLocal(argv, requested);
 	}
 };
 export default doc;

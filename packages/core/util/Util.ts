@@ -456,6 +456,11 @@ export class Util {
 		return color(text);
 	}
 
+	/** Styles text when the terminal supports it and `NO_COLOR` is not set. */
+	public static style(text: string, style: "bold" | "dim" | "cyan" | "yellow" | "green" | "red") {
+		return process.env.NO_COLOR ? text : chalk[style](text);
+	}
+
 	public static getAvailableName(
 		defaultName: string, isApp: boolean, framework?: string, _projectType?: string): string {
 

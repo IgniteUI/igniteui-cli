@@ -1,7 +1,7 @@
-import { paint, Style } from "../color";
+import { Util } from "@igniteui/cli-core";
 import { CheckResult, CheckStatus } from "./types";
 
-const STYLES: Record<CheckStatus, Style> = { ok: "green", warn: "yellow", fail: "red", skip: "dim" };
+const STYLES = { ok: "green", warn: "yellow", fail: "red", skip: "dim" } as const;
 
 export function summarize(results: CheckResult[]): Record<CheckStatus, number> {
 	const summary: Record<CheckStatus, number> = { ok: 0, warn: 0, fail: 0, skip: 0 };
@@ -11,7 +11,7 @@ export function summarize(results: CheckResult[]): Record<CheckStatus, number> {
 	return summary;
 }
 
-export function formatText(results: CheckResult[], color: boolean): string {
+export function formatText(results: CheckResult[]): string {
 	const lines: string[] = [];
 	let group = "";
 	for (const result of results) {
@@ -19,7 +19,7 @@ export function formatText(results: CheckResult[], color: boolean): string {
 			group = result.group;
 			lines.push("", group);
 		}
-		lines.push(`  ${paint(result.status.padEnd(4), STYLES[result.status], color)}  ${result.detail}`);
+		lines.push(`  ${Util.style(result.status.padEnd(4), STYLES[result.status])}  ${result.detail}`);
 		if (result.fix) {
 			lines.push(`        ${result.fix}`);
 		}
