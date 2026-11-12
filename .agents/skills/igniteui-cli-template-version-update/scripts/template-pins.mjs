@@ -12,7 +12,7 @@ let semver;
 try {
 	semver = createRequire(join(root, "package.json"))("semver");
 } catch {
-	console.error("semver not found in the repository's node_modules; run `yarn install` first.");
+	console.error("semver not found in the repository's node_modules; run `npm ci` first.");
 	process.exit(1);
 }
 

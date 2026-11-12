@@ -4,19 +4,38 @@ import { spawn } from "child_process";
 import { CommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
+export type McpServerLocation =
+	| { status: "found"; entry: string }
+	| { status: "not-built"; entry: string }
+	| { status: "missing" }
+	| { status: "error"; error: Error };
+
 /**
- * Resolves the built MCP server entry installed with the CLI copy in `cliDir`.
- * @returns the entry path, or `null` when the server package is missing or not built
+ * Locates the MCP server installed with the CLI copy in `cliDir`.
+ * `@igniteui/mcp-server` is a dependency of igniteui-cli, so "missing" and "not-built" mean a broken
+ * install, or a source checkout that has not been installed or built yet.
  */
-export function resolveMcpServerEntry(cliDir: string): string | null {
+export function locateMcpServer(cliDir: string): McpServerLocation {
+	let mcpPkgJson: string;
 	try {
 		// resolve from the real folder: pnpm links packages and keeps their dependencies next to the link target
-		const mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json", { paths: [fs.realpathSync(cliDir)] });
-		const mcpEntry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
-		return fs.existsSync(mcpEntry) ? mcpEntry : null;
-	} catch {
-		return null;
+		mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json", { paths: [fs.realpathSync(cliDir)] });
+	} catch (err) {
+		return (err as NodeJS.ErrnoException).code === "MODULE_NOT_FOUND"
+			? { status: "missing" }
+			: { status: "error", error: err as Error };
 	}
+	const entry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
+	return fs.existsSync(entry) ? { status: "found", entry } : { status: "not-built", entry };
+}
+
+/**
+ * Resolves the built MCP server entry installed with the CLI copy in `cliDir`.
+ * @returns the entry path, or `null` when the server package is missing, not built or cannot be resolved
+ */
+export function resolveMcpServerEntry(cliDir: string): string | null {
+	const location = locateMcpServer(cliDir);
+	return location.status === "found" ? location.entry : null;
 }
 
 /**
@@ -41,6 +60,19 @@ export function getMcpServerArgs(args: string[]): string[] | null {
 	return serverArgs;
 }
 
+function mcpServerProblem(location: Exclude<McpServerLocation, { status: "found" }>): string {
+	switch (location.status) {
+		case "missing":
+			return "MCP server package @igniteui/mcp-server not found. It is a dependency of igniteui-cli:\n" +
+				"reinstall igniteui-cli, or in a source checkout run `npm ci` at the repository root.\n";
+		case "not-built":
+			return `MCP server is not built (${location.entry} is missing). Published packages ship it built:\n` +
+				"reinstall igniteui-cli, or in a source checkout run `npm run build:mcp` at the repository root.\n";
+		case "error":
+			return `Could not load the MCP server package @igniteui/mcp-server: ${location.error.message}\n`;
+	}
+}
+
 const command: CommandType = {
 	command: "mcp",
 	describe: "Starts the Ignite UI MCP server for AI assistant integration",
@@ -58,27 +90,13 @@ const command: CommandType = {
 			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
-		let mcpEntry: string;
-		try {
-			const mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json");
-			mcpEntry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
-		} catch {
-			process.stderr.write(
-				"MCP server package not found. Install it first:\n" +
-				"  yarn install\n"
-			);
+		const location = locateMcpServer(__dirname);
+		if (location.status !== "found") {
+			process.stderr.write(mcpServerProblem(location));
 			process.exitCode = 1;
 			return;
 		}
-
-		if (!fs.existsSync(mcpEntry)) {
-			process.stderr.write(
-				"MCP server not built. Build it first:\n" +
-				"  npm run build:mcp\n"
-			);
-			process.exitCode = 1;
-			return;
-		}
+		const mcpEntry = location.entry;
 
 		const args: string[] = [];
 		if (argv.remote) {

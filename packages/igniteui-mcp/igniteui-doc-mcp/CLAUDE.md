@@ -80,7 +80,7 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 ## Build & Run
 
 ```bash
-npm install        # install dependencies
+npm ci             # run at the repository root: this package is an npm workspace with no lockfile of its own
 npm run build:db   # build SQLite database from compressed docs → dist/igniteui-docs.db
 npm run build      # compile TypeScript (tsc) → outputs to ./dist/
 npm start          # run MCP server in local mode (default, uses bundled SQLite DB)
