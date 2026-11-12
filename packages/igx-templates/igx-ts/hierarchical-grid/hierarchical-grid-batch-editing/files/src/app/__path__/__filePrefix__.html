@@ -5,7 +5,7 @@
   <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/batch-editing"
     target="_blank">official documentation</a>.</p>
 <br />
-<button igxButton="raised" (click)="dialogAddSinger.open()" class="addSingerBtn">Add Singer</button>
+<button igxButton="contained" (click)="dialogAddSinger.open()" class="addSingerBtn">Add Singer</button>
 
 <igx-hierarchical-grid igxPreventDocumentScroll  #hierarchicalGrid class="hgrid" [batchEditing]="true" [data]="localdata" primaryKey="Artist"
   [rowEditable]="true" height="580px" width="100%">

@@ -5,7 +5,7 @@ Guidance for AI coding agents working in this repository.
 ## Build, Test, Lint
 
 ```bash
-yarn install                    # REQUIRED — must use yarn (not npm) for workspace resolution
+npm ci                          # install from root package-lock.json (npm workspaces)
 npm run build                   # tsc + config schema generation + MCP server build
 npm run test                    # lint + build + tests with coverage (via pretest hook)
 npm run jasmine                 # tests only — no lint/build/coverage
@@ -19,7 +19,7 @@ Tests are Jasmine specs under `spec/` (unit + acceptance) and within individual 
 
 ### MCP Server (`packages/igniteui-mcp/igniteui-doc-mcp`)
 
-Workspace package — part of yarn workspaces and lerna. Built automatically by `npm run build` via the `build:mcp` script. Has its own `tsconfig.json` (ES2022/ESM, separate from root CJS config).
+Workspace package — part of npm workspaces and lerna. Built automatically by `npm run build` via the `build:mcp` script. Has its own `tsconfig.json` (ES2022/ESM, separate from root CJS config).
 
 ```bash
 npm run build:mcp               # build MCP server (also runs as part of npm run build)
@@ -34,7 +34,7 @@ Adding or changing an MCP tool (schema, handler, description, tests, every doc t
 
 ## Architecture
 
-**Monorepo** managed with lerna + yarn workspaces. Five packages:
+**Monorepo** managed with lerna + npm workspaces. Five packages:
 
 | Package | npm | Path |
 |---------|-----|------|
@@ -73,8 +73,8 @@ Adding or changing an MCP tool (schema, handler, description, tests, every doc t
 
 ## Key Conventions
 
-- **yarn for install, npm for scripts**
-- CI runs on Node 24.x and 26.x with `yarn --frozen-lockfile`; Copilot cloud agent sessions are prepared by `.github/workflows/copilot-setup-steps.yml` (Node 24, install, build, Playwright Chromium)
+- **use npm** - follow/update the `package-lock.json` lockfile (update it only when the task itself changes dependencies; workflow skill runs leave it untouched, see Maintenance Workflows)
+- CI runs on Node 24.x and 26.x with `npm ci`
 - ESLint: `no-var`, `no-eval`, `prefer-const`, `no-console` (off in test files), `no-duplicate-imports`
 - Test files match pattern `*[sS]pec.ts` — found in `spec/`, `packages/cli/migrations/`, `packages/igx-templates/`, `packages/ng-schematics/`
 
@@ -90,7 +90,7 @@ These rules bind every run of a workflow skill, whether from the main session or
   - **Never, in either mode**: push to `master`, release branches or any branch other than the session's own; force-push, rebase or otherwise rewrite pushed history; merge, approve or close pull requests; create tags or releases; change other pull requests or issues; commit submodule pointer changes.
 - Temporary files (e.g. `npm pack` output for checking a package's type declarations) go in a temporary directory **outside the repository**. The one exception is `output/` (gitignored), which belongs to `scripts/smoke-test.sh`: smoke runs and commands inside a kept smoke project write there; files under `output/` change only through those runs.
 - Edit the `.ts` source and rebuild; compiled output (`*.js`, `*.js.map` next to a `.ts`) is never edited by hand.
-- Leave the repository's own manifests and lockfiles untouched: root `package.json`, `packages/*/package.json`, `packages/igniteui-mcp/igniteui-doc-mcp/package.json` and `server.json`, `yarn.lock`, any `package-lock.json`. Project-template manifests under `**/files/package.json` are template content and may be edited when the task calls for it.
+- Leave the repository's own manifests and lockfiles untouched: root `package.json`, `packages/*/package.json`, `packages/igniteui-mcp/igniteui-doc-mcp/package.json` and `server.json`, any `package-lock.json`. Project-template manifests under `**/files/package.json` are template content and may be edited when the task calls for it.
 - Leave the CLI's own version alone: do not run `lerna`, and do not edit `lerna.json` or `scripts/versionScript.ts`. Leave anything under `.git/`, `coverage/` or any `node_modules/` untouched.
 - Leave secrets unread, at any depth: `.env`, `.env.*`, `.npmrc`, `secrets/`, `*.pem`, `*.key`, `*.pfx`. When a task seems to need one, stop and ask.
 - When something is ambiguous or out of scope, stop and report instead of guessing. In a cloud agent session, "stop and ask" means writing the question into the PR description and leaving the PR as a draft.

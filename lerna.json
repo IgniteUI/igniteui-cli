@@ -3,10 +3,6 @@
 		"packages/*",
 		"packages/igniteui-mcp/igniteui-doc-mcp"
 	],
-	"npmClient": "yarn",
-	"version": "independent",
-	"changelog": {
-		"repo": "igniteui-cli-repo",
-		"cacheDir": ".changelog"
-	}
+	"npmClient": "npm",
+	"version": "independent"
 }

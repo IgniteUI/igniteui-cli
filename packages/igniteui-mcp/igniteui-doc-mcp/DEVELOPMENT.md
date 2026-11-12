@@ -5,9 +5,9 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 ## Setup
 
 ```bash
+npm ci                                      # from the repository root: this package is an npm workspace
 cd packages/igniteui-mcp/igniteui-doc-mcp
 git submodule update --init blazor/api-docs
-npm install
 ```
 
 Create a `.env` file with your OpenAI API key (required for compress and validate steps):

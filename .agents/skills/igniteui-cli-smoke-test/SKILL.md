@@ -10,7 +10,7 @@ license: MIT
 
 ## Build and Template Specs
 
-- Dependencies are installed with **yarn**, scripts run with **npm**. Run `yarn install` or `yarn add` only when asked: either rewrites `yarn.lock`, which agents leave untouched. A build that fails on dependencies is reported, not "fixed" by reinstalling.
+- Dependencies are installed with `npm ci` from `package-lock.json`; the repository does not use yarn. Run `npm install` or `npm install <pkg>` only when asked: either can rewrite `package-lock.json`, which agents leave untouched. A build that fails on dependencies is reported, not "fixed" by reinstalling.
 - `npm run build` after any `.ts` change. Jasmine and the smoke test run the **compiled** `.js`, so without a build they test stale code.
 - `npm run lint` skips `packages/cli/templates/**` and every `**/files/**` (ignored in `eslint.config.mjs`). React, Web Components and jQuery template code is therefore only linted inside a generated project (see "Checking a Kept Project").
 - `npm run jasmine` ignores arguments and always runs every spec. To run one file, pass the compiled spec to the Jasmine CLI: `npx jasmine spec/templates/react-spec.js`. Leave `spec/jasmine-runner.ts` as it is.
@@ -90,7 +90,7 @@ Run the smoke test with `--keep`, then in the kept project (`<out>/<dir>/`) chec
 | React | covered by `tsc -b` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
 | Web Components | `npx tsc --noEmit` | `npx eslint src/app/<id>` | `npx vitest run src/app/<id>` |
 
-The test runners use browser mode with Playwright Chromium. If one fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect.
+The test runners use browser mode with Playwright Chromium. If one fails because the browser is missing, run `npx playwright install chromium` once and retry; that is environment setup, not a template defect. In a cloud agent session the firewall blocks that download: report the test step as an environment failure instead.
 
 ## Judging a Step
 

@@ -35,6 +35,7 @@ import {
   IgxCellTemplateDirective,
   IgxIconComponent,
   IgxButtonDirective,
+  IgxIconButtonDirective,
   IgxDialogTitleDirective,
   IgxDialogActionsDirective,
 } from '<%=igxPackage%>';
@@ -75,6 +76,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxCellTemplateDirective,
     IgxIconComponent,
     IgxButtonDirective,
+    IgxIconButtonDirective,
     IgxDialogComponent,
     IgxDialogTitleDirective,
     IgxCategoryChartCoreModule,
