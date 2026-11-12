@@ -64,8 +64,8 @@ In a cloud agent session (time-limited, see `AGENTS.md`), the build is already d
 
 ## Results
 
-- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `wizard`, `add`, `install`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
-- `output/smoke/logs/<dir>-<step>[-<id>].log`, where `<dir>` is `<fw-short>-<project>` (or `<fw-short>-<id>` with `--isolate`) and `<fw-short>` is `ng`, `rc`, `wc`, `jq`, `bz`. Examples: `rc-default-add-rating.log`, `wc-default-install.log`, `ng-default-build.log`.
+- `output/smoke/results.tsv`: one row per step, columns `framework  step  template  status  seconds`. Steps: `new`, `wizard`, `add`, `install`, `doctor`, `build`. Status: `PASS`, `FAIL`, `SKIP`.
+- `output/smoke/logs/<dir>-<step>[-<id>].log`, where `<dir>` is `<fw-short>-<project>` (or `<fw-short>-<id>` with `--isolate`) and `<fw-short>` is `ng`, `rc`, `wc`, `jq`, `bz`. Examples: `rc-default-add-rating.log`, `wc-default-install.log`, `ng-default-doctor.log`, `ng-default-build.log`.
 - Generated projects are deleted on full success unless `--keep`; on any failure they are kept under `output/smoke/<dir>/`.
 
 ## What a PASS Proves, Per Framework
@@ -104,6 +104,7 @@ The test runners use browser mode with Playwright Chromium. If one fails because
 | `add` FAIL, "Template doesn't exist", but the folder exists | Template defect | `id` field differs from what was passed, template not discovered, missing `index.ts`, or stale build |
 | `install` FAIL with `ETARGET` / `No matching version` / `404` | Version pin | A pin names a version that is not published |
 | `install` FAIL with `ERESOLVE` / peer dependency conflict | Version pin | A pin is outside a peer range of another installed package. `peerOptional` conflicts **also** fail install once both packages are present |
+| `doctor` FAIL | Version pin or CLI defect | `ig doctor` reported a `fail` row on the installed project (the log names the check): an Ignite UI package missing or outside its declared range, or a config the CLI wrote and cannot resolve. `warn` rows do not fail the step |
 | `build` FAIL with `TS2305` / `TS2724` "has no exported member" | Template defect or version pin | Template imports a symbol that does not exist in the pinned version |
 | `build` FAIL with `TS2322` / `TS2339` on a component prop | Template defect or version pin | Prop renamed/removed, or invented |
 | `build` FAIL pointing into a project file (`main.ts`, `app.config.ts`, `App.tsx`) | Project-template defect | Not caused by a component template |

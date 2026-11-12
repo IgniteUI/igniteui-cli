@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # End-to-end smoke test: scaffold a project with the locally built CLI, add every
-# component template into it, install, and build.
+# component template into it, install, run `ig doctor`, and build.
 #
 #   scripts/smoke-test.sh --help
 #
@@ -225,7 +225,7 @@ add_template() {
 # install_and_build <framework> <dirName> -> 0 ok
 install_and_build() {
 	local fw="$1" dir="$2"
-	local start rc
+	local start rc doctor_failed=0
 
 	if [ "$SKIP_BUILD" -eq 1 ]; then
 		record "$fw" "build" "$dir" "SKIP" "0"
@@ -255,10 +255,21 @@ install_and_build() {
 	record "$fw" "install" "$dir" "PASS" "$((SECONDS - start))"
 	echo "  ✓ npm install"
 
+	# a freshly scaffolded and installed project must have no failing checks; warnings are fine
+	start=$SECONDS
+	if run_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor --offline; then
+		record "$fw" "doctor" "$dir" "PASS" "$((SECONDS - start))"
+		echo "  ✓ ig doctor"
+	else
+		doctor_failed=1
+		record "$fw" "doctor" "$dir" "FAIL" "$((SECONDS - start))"
+		echo "  ✗ ig doctor  (see $LOGS/$dir-doctor.log)"
+	fi
+
 	if ! (cd "$OUT/$dir" && node -e "process.exit(require('./package.json').scripts.build ? 0 : 1)") 2>/dev/null; then
 		record "$fw" "build" "$dir" "SKIP" "0"
 		echo "  - build (no build script)"
-		return 0
+		return $doctor_failed
 	fi
 
 	start=$SECONDS
@@ -271,7 +282,7 @@ install_and_build() {
 	fi
 	record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))"
 	echo "  ✓ npm run build"
-	return 0
+	return $doctor_failed
 }
 
 run_framework() {

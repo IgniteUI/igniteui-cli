@@ -45,6 +45,15 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 			expect(Util.log).toHaveBeenCalledWith("Detected Angular project (from package.json)");
 		});
 
+		it("does not log the detection when asked not to", () => {
+			spyOn(App.container, "get").and.returnValue(
+				makeFs({ dependencies: { "@angular/core": "^17.0.0" } })
+			);
+			expect(detectFrameworkFromPackageJson(false)).toBe("angular");
+			expect(detectFramework(false)).toBe("angular");
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
 		it("detects angular when @angular/core is in devDependencies", () => {
 			spyOn(App.container, "get").and.returnValue(
 				makeFs({ devDependencies: { "@angular/core": "^17.0.0" } })

@@ -61,6 +61,8 @@ describe('sanitizeSearchDocsQuery', () => {
 
   it('keeps prefix term but drops bare asterisk', () => {
     expect(sanitizeSearchDocsQuery('grid* *')).toBe('grid*');
+    expect(sanitizeSearchDocsQuery('row-edit*')).toBe('"row-edit*"');
+    expect(sanitizeSearchDocsQuery('-foo*')).toBe('"-foo*"');
   });
 
   it('returns null for empty input', () => {

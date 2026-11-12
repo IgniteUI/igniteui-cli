@@ -40,6 +40,21 @@ export interface PositionalArgs {
 	/** The term to search for. */
 	term?: string;
 
+	/** Opens the search in the browser instead of printing results. */
+	open?: boolean;
+
+	/** Name of a doc to print in full. */
+	read?: string;
+
+	/** Maximum number of search results to print. */
+	limit?: number;
+
+	/** Prints the doctor results as JSON. */
+	json?: boolean;
+
+	/** Skips the doctor checks that need the network. */
+	offline?: boolean;
+
 	/** Executes end-to-end tests. */
 	e2e?: boolean;
 }
@@ -83,9 +98,35 @@ export interface ConfigCommandType extends CommandType {
 	addHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
 }
 
+export interface DocSearchEntry {
+	title: string;
+	name: string;
+	summary?: string;
+	/** Hits sit between `>>>` and `<<<`. */
+	excerpt?: string;
+}
+
+export interface DocsProvider {
+	init(): Promise<void>;
+	searchDocEntries(framework: string, query: string): Promise<DocSearchEntry[]>;
+	getDoc(framework: string, name: string): Promise<{ text: string; found: boolean }>;
+}
+
+/** The `@igniteui/mcp-server/docs` entry. */
+export interface DocsApi {
+	LocalDocsProvider: new () => DocsProvider;
+	sanitizeSearchDocsQuery(queryText: string): string | null;
+	/** Finds a doc by its name, a component class name or the closest match (`fuzzy`). */
+	resolveDoc(provider: DocsProvider, framework: string, name: string):
+		Promise<{ text: string; found: boolean; servedName: string; fuzzy: boolean }>;
+}
+
 export interface DocCommandType extends CommandType {
 	/** Uses the `open` package to open a URL, file etc. */
 	open(target: string): void;
+
+	/** Loads the docs database access bundled with the MCP server package. */
+	loadDocs(): Promise<DocsApi>;
 }
 
 export interface TestCommandType extends CommandType {
