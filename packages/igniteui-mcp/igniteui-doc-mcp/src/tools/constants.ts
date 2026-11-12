@@ -59,7 +59,7 @@ Query must be non-empty.
 
 Use this when you already know the exact component name — from the user's code (e.g. IgxGridComponent, IgrGrid, IgcSelect) or from a previous search_api result. If you only have a keyword or partial name, call search_api first to discover the exact name.
 
-Returns a \`Package: <name>@<version>\` line (e.g. "Package: igniteui-angular@22.2.6") naming the release the entry describes, then formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Compare that version with the one the project depends on: members can be missing from an older release. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
+Returns a \`Package: <name>@<version>\` line (e.g. "Package: igniteui-angular@22.2.6") naming the release the entry was read from (followed by an \`Also in:\` line when other packages ship the same name with a definition that can differ), then formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Compare that version with the one the project depends on: members can be missing from an older release. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
 
 Supply member="<name>" (e.g. "checked", "click", "igcChange") to return only a single property/method/event line instead of the full entry — useful when the user is asking about one specific member. Takes precedence over section when both are supplied.
 

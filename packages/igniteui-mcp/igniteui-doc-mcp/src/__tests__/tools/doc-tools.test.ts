@@ -502,9 +502,10 @@ describe('addPackageVersions', () => {
     IgrPaginator: { package: 'igniteui-react-grids', version: '19.9.1' },
     IgrButton: { package: 'igniteui-react', version: '19.9.1' },
     IgrLegacy: { package: 'igniteui-react-legacy' },
+    'webcomponents:IgcBreadcrumbsComponent': { package: 'igniteui-webcomponents', version: '7.4.1' },
   };
   const loader = {
-    get: (_platform: string, name: string) => entries[name],
+    get: (platform: string, name: string) => entries[name] ?? entries[`${platform}:${name}`],
     getPackageVersions: (e: { package: string; version?: string }) => [e.version ? `${e.package}@${e.version}` : e.package],
   } as unknown as ApiDocLoader;
   const doc = (component: string) => `---\ncomponent: ${component}\nkeywords: grid\n---\n\n# Title\n`;
@@ -522,6 +523,12 @@ describe('addPackageVersions', () => {
   it('keeps CRLF line endings', () => {
     expect(addPackageVersions('---\r\ncomponent: IgrGrid\r\nkeywords: grid\r\n---\r\n', 'react', loader)).toBe(
       '---\r\ncomponent: IgrGrid\r\npackage: igniteui-react-grids@19.9.1\r\nkeywords: grid\r\n---\r\n'
+    );
+  });
+
+  it("looks a component up in the framework its prefix names, not the doc's", () => {
+    expect(addPackageVersions(doc('IgcBreadcrumbsComponent'), 'angular', loader)).toContain(
+      '\npackage: igniteui-webcomponents@7.4.1\n'
     );
   });
 

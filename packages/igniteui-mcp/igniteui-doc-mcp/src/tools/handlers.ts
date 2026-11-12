@@ -9,8 +9,10 @@ import { findDeprecation, formatDeprecationNotice, withDeprecationNotices, type 
 
 // Answers look the same for every release, so each one names the release it describes.
 function withPackage(docLoader: ApiDocLoader, entry: DocEntry, text: string): string {
-  const packages = docLoader.getPackageVersions(entry);
-  return packages.length > 0 ? `Package: ${packages.join(', ')}\n\n${text}` : text;
+  const [source, ...others] = docLoader.getPackageVersions(entry);
+  if (!source) return text;
+  const alsoIn = others.length > 0 ? `\nAlso in: ${others.join(', ')} (the entry there can differ)` : '';
+  return `Package: ${source}${alsoIn}\n\n${text}`;
 }
 
 export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
@@ -118,8 +120,9 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
     const lines = hits.map(h => {
       const platformTag = `[${h.entry.platform}]`;
       const typeTag = `[${h.entry.type}]`;
-      const packages = docLoader.getPackageVersions(h.entry);
-      const pkgTag = packages.length > 0 ? ` [${packages.join(', ')}]` : "";
+      const [source, ...others] = docLoader.getPackageVersions(h.entry);
+      const alsoIn = others.length > 0 ? `; also in ${others.join(', ')}` : "";
+      const pkgTag = source ? ` [${source}${alsoIn}]` : "";
       const kwTag = h.entry.keywords.length
         ? `\nKeywords: ${h.entry.keywords.join(", ")}`
         : "";

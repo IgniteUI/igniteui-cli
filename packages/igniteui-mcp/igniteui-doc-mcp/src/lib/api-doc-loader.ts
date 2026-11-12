@@ -256,13 +256,15 @@ export class ApiDocLoader {
   }
 
   /**
-   * Every package that ships the entry's symbol with the release its snapshot describes,
-   * e.g. ["IgniteUI.Blazor@26.1.98", "IgniteUI.Blazor.Lite@1.0.1"]. A package whose
-   * snapshot names no version is listed bare.
+   * Packages that ship the entry's symbol, each with the release its snapshot describes,
+   * e.g. ["IgniteUI.Blazor.Lite@1.0.1", "IgniteUI.Blazor@26.1.98"]. The first is the
+   * package the entry's content was read from; the others ship the same name, with a
+   * definition that can differ. A package whose snapshot names no version is listed bare.
    */
   getPackageVersions(entry: DocEntry): string[] {
-    return this.getPackages(entry).map(pkg => {
-      const version = this.versionsByPackage.get(`${entry.platform}:${pkg}`);
+    const others = this.getPackages(entry).filter(pkg => pkg !== entry.package);
+    return [...(entry.package ? [entry.package] : []), ...others].map(pkg => {
+      const version = pkg === entry.package ? entry.version : this.versionsByPackage.get(`${entry.platform}:${pkg}`);
       return version ? `${pkg}@${version}` : pkg;
     });
   }

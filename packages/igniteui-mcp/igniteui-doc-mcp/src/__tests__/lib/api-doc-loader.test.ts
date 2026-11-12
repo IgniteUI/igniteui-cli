@@ -187,7 +187,7 @@ describe('ApiDocLoader', () => {
       expect(loader.get('angular', 'IgxGridComponent')?.version).toBe('22.2.6');
     });
 
-    it('getPackageVersions pairs every package that ships a name with its own version', () => {
+    it('getPackageVersions lists the package the entry was read from first, then the others', () => {
       setupFsMocks();
       mockReaddirSync.mockImplementation((p) => {
         const s = String(p);
@@ -199,7 +199,9 @@ describe('ApiDocLoader', () => {
       const loader = new ApiDocLoader([FIXTURE_CONFIG]);
       loader.load();
       const entry = loader.get('angular', 'IgxGridComponent')!;
-      expect(loader.getPackageVersions(entry).sort()).toEqual(['pkg-full@26.1.98', 'pkg-lite']);
+      // pkg-lite is loaded last, so its definition is the one served.
+      expect(entry.package).toBe('pkg-lite');
+      expect(loader.getPackageVersions(entry)).toEqual(['pkg-lite', 'pkg-full@26.1.98']);
     });
   });
 

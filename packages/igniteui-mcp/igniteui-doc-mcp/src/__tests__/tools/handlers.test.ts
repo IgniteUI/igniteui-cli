@@ -357,13 +357,19 @@ describe('package version in API results', () => {
     expect(result.content[0].text).not.toContain('Package:');
   });
 
-  it('lists every package that ships the symbol', async () => {
+  it('attributes the entry to its source package and lists the others separately', async () => {
     const loader = makeLoader({
       get: vi.fn().mockReturnValue(versioned()),
-      getPackageVersions: () => ['IgniteUI.Blazor@26.1.98', 'IgniteUI.Blazor.Lite@1.0.1'],
+      search: vi.fn().mockReturnValue([versioned()]),
+      getPackageVersions: () => ['IgniteUI.Blazor.Lite@1.0.1', 'IgniteUI.Blazor@26.1.98'],
     });
     const result = await createGetApiReferenceHandler(loader)({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
-    expect(result.content[0].text).toMatch(/^Package: IgniteUI\.Blazor@26\.1\.98, IgniteUI\.Blazor\.Lite@1\.0\.1\n\n/);
+    expect(result.content[0].text).toMatch(
+      /^Package: IgniteUI\.Blazor\.Lite@1\.0\.1\nAlso in: IgniteUI\.Blazor@26\.1\.98 \(the entry there can differ\)\n\n### /
+    );
+
+    const search = await createSearchApiHandler(loader)({ query: 'rowSelection' });
+    expect(search.content[0].text).toContain('[class] [IgniteUI.Blazor.Lite@1.0.1; also in IgniteUI.Blazor@26.1.98] (');
   });
 
   it('search_api tags each hit with its package and version', async () => {

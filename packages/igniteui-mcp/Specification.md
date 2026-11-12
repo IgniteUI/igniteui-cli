@@ -76,7 +76,7 @@ The server exposes six core tools built using the `@modelcontextprotocol/sdk` an
 - On HTTP 404: does **not** throw or propagate an exception — returns a structured MCP tool-level error response (see Error Response Contract below)
 - On any other HTTP error status: throws, which the MCP transport surfaces as an unhandled tool error
 - In local mode, successful responses reconstruct YAML frontmatter including `component`, `toc_name`, `keywords`, `summary`, and `premium` when present
-- In both modes, adds a `package` line after `component` with the package and version of the doc's components in the bundled API reference (e.g. `package: igniteui-react-grids@19.9.1`); omitted when none of them is in the API reference
+- In local mode, adds a `package` line after `component` with the package and version of the doc's components in the bundled API reference (e.g. `package: igniteui-react-grids@19.9.1`); omitted when none of them is in the API reference. Remote-mode responses carry no `package` line, because the backend returns the doc body without frontmatter
 
 **Schema**:
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
@@ -174,7 +174,7 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 - `platform`: Enum (angular|react|webcomponents|blazor) — required
 - `section`: Enum (all|properties|methods|events) — optional; defaults to `all`
 
-**Return**: A `Package: <name>@<version>` line naming the release the entry describes, then formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
+**Return**: A `Package: <name>@<version>` line naming the release the entry was read from, an `Also in:` line when other packages ship the same name (their definition can differ), then formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
 
 #### Error Response Contract
 
