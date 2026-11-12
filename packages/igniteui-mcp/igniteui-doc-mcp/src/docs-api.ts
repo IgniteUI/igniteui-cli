@@ -3,4 +3,4 @@
  * Importing this entry must not start the MCP server.
  */
 export { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
-export { sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+export { resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";

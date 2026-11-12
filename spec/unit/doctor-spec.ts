@@ -83,10 +83,17 @@ describe("Unit - Doctor", () => {
 			expect(satisfies("22.2.1", "22.2")).toBeTrue();
 			expect(satisfies("22.3.0", "22.2")).toBeFalse();
 		});
-		it("does not evaluate other ranges", () => {
+		it("evaluates compound ranges and prereleases as npm does", () => {
+			expect(satisfies("1.5.0", ">=1.0.0 <2.0.0")).toBeTrue();
+			expect(satisfies("2.0.0", ">=1.0.0 <2.0.0")).toBeFalse();
+			expect(satisfies("1.5.0", "^1.0.0 || ^3.0.0")).toBeTrue();
+			expect(satisfies("22.0.0-rc.0", "^22.0.0")).toBeFalse();
+			expect(satisfies("22.0.0-rc.1", "^22.0.0-rc.0")).toBeTrue();
+		});
+		it("does not evaluate what is not a range", () => {
 			expect(satisfies("1.0.0", "latest")).toBeNull();
 			expect(satisfies("1.0.0", "file:../pkg")).toBeNull();
-			expect(satisfies("1.0.0", ">=1.0.0 <2.0.0")).toBeNull();
+			expect(satisfies("1.0.0", "workspace:*")).toBeNull();
 		});
 	});
 
@@ -97,40 +104,55 @@ describe("Unit - Doctor", () => {
 			expect(checkNode("24.1.0").status).toBe("ok");
 			expect(checkNode("26.0.0").fix).toBeUndefined();
 		});
-		it("fails without npm and warns without git", () => {
-			spyOn(shell, "run").and.returnValue(null);
-			expect(checkNpm().status).toBe("fail");
-			expect(checkGit().status).toBe("warn");
+		it("fails without npm and warns without git", async () => {
+			spyOn(shell, "run").and.resolveTo(null);
+			expect((await checkNpm()).status).toBe("fail");
+			expect((await checkGit()).status).toBe("warn");
 		});
-		it("reports the npm and git versions", () => {
-			spyOn(shell, "run").and.callFake((command: string) => command.startsWith("npm") ? "11.0.0" : "git version 2.50.0");
-			expect(checkNpm()).toEqual(jasmine.objectContaining({ status: "ok", detail: "npm 11.0.0" }));
-			expect(checkGit()).toEqual(jasmine.objectContaining({ status: "ok", detail: "git version 2.50.0" }));
+		it("reports the npm and git versions", async () => {
+			spyOn(shell, "run").and.callFake(async (command: string) =>
+				command.startsWith("npm") ? "11.0.0" : "git version 2.50.0");
+			expect(await checkNpm()).toEqual(jasmine.objectContaining({ status: "ok", detail: "npm 11.0.0" }));
+			expect(await checkGit()).toEqual(jasmine.objectContaining({ status: "ok", detail: "git version 2.50.0" }));
 		});
-		it("checks dotnet for Blazor projects only", () => {
-			spyOn(shell, "run").and.returnValue(null);
-			const ids = (framework: string) => environmentChecks(context({ framework, offline: true })).map(x => x.id);
-			expect(ids("angular")).not.toContain("dotnet");
-			expect(ids("blazor")).toContain("dotnet");
-			expect(environmentChecks(context({ framework: "blazor", offline: true })).find(x => x.id === "dotnet")!.status)
-				.toBe("fail");
+		it("checks dotnet for Blazor projects only", async () => {
+			spyOn(shell, "run").and.resolveTo(null);
+			const angular = await environmentChecks(context({ framework: "angular", offline: true }));
+			expect(angular.map(x => x.id)).toEqual(["node", "npm", "git", "cli-version"]);
+			const blazor = await environmentChecks(context({ framework: "blazor", offline: true }));
+			expect(blazor.map(x => x.id)).toEqual(["node", "npm", "git", "dotnet", "cli-version"]);
+			expect(blazor.find(x => x.id === "dotnet")!.status).toBe("fail");
 		});
-		it("compares the CLI version with the latest on npm", () => {
-			const run = spyOn(shell, "run").and.returnValue("999.0.0");
-			const outdated = checkCliVersion(context());
+		it("compares the CLI version with the latest on npm", async () => {
+			const run = spyOn(shell, "run").and.resolveTo("999.0.0");
+			const outdated = await checkCliVersion(context());
 			expect(outdated.status).toBe("warn");
 			expect(outdated.detail).toContain("latest is 999.0.0");
 			expect(run).toHaveBeenCalledWith("npm view igniteui-cli version", jasmine.any(Number));
 
-			run.and.returnValue("0.0.1");
-			expect(checkCliVersion(context()).status).toBe("ok");
+			run.and.resolveTo("0.0.1");
+			expect((await checkCliVersion(context())).status).toBe("ok");
 
-			run.and.returnValue(null);
-			expect(checkCliVersion(context()).status).toBe("skip");
+			run.and.resolveTo(null);
+			expect((await checkCliVersion(context())).status).toBe("skip");
 		});
-		it("does not query npm when offline", () => {
+		it("treats a prerelease as older than its release", async () => {
+			const cliDir = "prerelease-cli";
+			const moduleLoader = require("module");
+			const originalLoad = moduleLoader._load;
+			spyOn(moduleLoader, "_load").and.callFake(function (this: unknown, request: string, ...args: unknown[]) {
+				return request === path.join(cliDir, "package.json")
+					? { version: "15.9.0-beta.1" }
+					: originalLoad.call(this, request, ...args);
+			});
+			spyOn(shell, "run").and.resolveTo("15.9.0");
+			const result = await checkCliVersion(context({ cliDir }));
+			expect(result.status).toBe("warn");
+			expect(result.detail).toBe("Ignite UI CLI 15.9.0-beta.1 (latest is 15.9.0)");
+		});
+		it("does not query npm when offline", async () => {
 			const run = spyOn(shell, "run");
-			expect(checkCliVersion(context({ offline: true })).status).toBe("skip");
+			expect((await checkCliVersion(context({ offline: true }))).status).toBe("skip");
 			expect(run).not.toHaveBeenCalled();
 		});
 	});
@@ -231,50 +253,62 @@ describe("Unit - Doctor", () => {
 	describe("licensed feed", () => {
 		const packageJson = { dependencies: { "@infragistics/igniteui-angular": "~22.2.0" } };
 
-		it("skips projects without licensed packages", () => {
+		it("skips projects without licensed packages", async () => {
 			const run = spyOn(shell, "run");
-			expect(feedChecks(context({ packageJson: { dependencies: { "igniteui-angular": "~22.2.0" } } })))
+			expect(await feedChecks(context({ packageJson: { dependencies: { "igniteui-angular": "~22.2.0" } } })))
 				.toEqual([jasmine.objectContaining({ id: "feed", status: "skip" })]);
 			expect(run).not.toHaveBeenCalled();
 		});
-		it("fails when the scope has no registry", () => {
-			spyOn(shell, "run").and.returnValue("undefined");
-			const results = feedChecks(context({ packageJson }));
+		it("fails when the scope has no registry", async () => {
+			spyOn(shell, "run").and.resolveTo("undefined");
+			const results = await feedChecks(context({ packageJson }));
 			expect(results.length).toBe(1);
 			expect(results[0].status).toBe("fail");
 			expect(results[0].fix).toContain("npm config set @infragistics:registry");
 		});
-		it("fails when not logged in to the registry", () => {
-			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
-			spyOn(shell, "attempt").and.returnValue({ ok: false, output: "npm error code ENEEDAUTH" });
-			const results = feedChecks(context({ packageJson }));
+		it("fails when not logged in to the registry", async () => {
+			spyOn(shell, "run").and.resolveTo("https://packages.infragistics.com/npm/js-licensed/");
+			spyOn(shell, "attempt").and.resolveTo({ ok: false, output: "npm error code ENEEDAUTH" });
+			const results = await feedChecks(context({ packageJson }));
 			expect(results.map(x => x.status)).toEqual(["ok", "fail"]);
 			expect(results[1].fix)
 				.toBe("Run: npm login --registry=https://packages.infragistics.com/npm/js-licensed/ --scope=@infragistics");
 		});
-		it("warns when the login cannot be checked", () => {
-			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
-			spyOn(shell, "attempt").and.returnValue({ ok: false, output: "" });
-			const results = feedChecks(context({ packageJson }));
+		it("warns when the login cannot be checked", async () => {
+			spyOn(shell, "run").and.resolveTo("https://packages.infragistics.com/npm/js-licensed/");
+			spyOn(shell, "attempt").and.resolveTo({ ok: false, output: "" });
+			const results = await feedChecks(context({ packageJson }));
 			expect(results.map(x => x.status)).toEqual(["ok", "warn"]);
 			expect(results[1].detail).toContain("Could not check the login");
 		});
-		it("passes when logged in", () => {
-			spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
-			const attempt = spyOn(shell, "attempt").and.returnValue({ ok: true, output: "jane" });
-			const results = feedChecks(context({ packageJson }));
+		it("passes when logged in", async () => {
+			spyOn(shell, "run").and.resolveTo("https://packages.infragistics.com/npm/js-licensed/");
+			const attempt = spyOn(shell, "attempt").and.resolveTo({ ok: true, output: "jane" });
+			const results = await feedChecks(context({ packageJson }));
 			expect(results.map(x => x.status)).toEqual(["ok", "ok"]);
 			expect(results[1].detail).toBe("Logged in as jane");
 			expect(attempt).toHaveBeenCalledWith(
 				"npm whoami --registry=https://packages.infragistics.com/npm/js-licensed/", jasmine.any(Number));
 		});
-		it("does not check the login when offline", () => {
-			const run = spyOn(shell, "run").and.returnValue("https://packages.infragistics.com/npm/js-licensed/");
+		it("does not check the login when offline", async () => {
+			const run = spyOn(shell, "run").and.resolveTo("https://packages.infragistics.com/npm/js-licensed/");
 			const attempt = spyOn(shell, "attempt");
-			const results = feedChecks(context({ packageJson, offline: true }));
+			const results = await feedChecks(context({ packageJson, offline: true }));
 			expect(results.map(x => x.status)).toEqual(["ok", "skip"]);
 			expect(run).toHaveBeenCalledTimes(1);
 			expect(attempt).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("shell", () => {
+		it("returns the output of a command, or null when it fails", async () => {
+			expect(await shell.run("node --version")).toBe(process.version);
+			expect(await shell.run("node --no-such-option")).toBeNull();
+		});
+		it("returns the error output of a failed command", async () => {
+			const result = await shell.attempt("node --no-such-option");
+			expect(result.ok).toBeFalse();
+			expect(result.output).toContain("--no-such-option");
 		});
 	});
 
@@ -350,6 +384,10 @@ describe("Unit - Doctor", () => {
 				"1 ok, 1 warning(s), 0 failed, 1 skipped"
 			].join("\n"));
 		});
+		it("colours the status only when asked", () => {
+			expect(formatText([failed], true)).toContain("\u001b[31mfail\u001b[39m  npm not found");
+			expect(formatText([failed], false)).not.toContain("\u001b[");
+		});
 		it("prints JSON with a summary and every check", () => {
 			expect(JSON.parse(formatJson([...results, failed]))).toEqual({
 				ok: false,
@@ -358,7 +396,7 @@ describe("Unit - Doctor", () => {
 			});
 		});
 		it("exits with 0 when nothing fails", async () => {
-			const runDoctor = spyOn(doctorRunner, "runDoctor").and.returnValue(results);
+			const runDoctor = spyOn(doctorRunner, "runDoctor").and.resolveTo(results);
 			process.exitCode = 0;
 			await doctor.handler({ offline: true, _: ["doctor"], $0: "ig" });
 			expect(runDoctor).toHaveBeenCalledWith(true);
@@ -366,7 +404,7 @@ describe("Unit - Doctor", () => {
 			expect((Util.log as jasmine.Spy).calls.mostRecent().args[0]).toContain("1 ok, 1 warning(s), 0 failed, 1 skipped");
 		});
 		it("exits with 1 when a check fails and prints JSON on request", async () => {
-			spyOn(doctorRunner, "runDoctor").and.returnValue([...results, failed]);
+			spyOn(doctorRunner, "runDoctor").and.resolveTo([...results, failed]);
 			process.exitCode = 0;
 			await doctor.handler({ json: true, _: ["doctor"], $0: "ig" });
 			expect(process.exitCode).toBe(1);

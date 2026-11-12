@@ -21,10 +21,10 @@ vi.mock("@modelcontextprotocol/sdk/server/stdio.js", () => ({
 }));
 
 describe("docs-api entry", () => {
-  it("exposes the docs provider and the query sanitizer", async () => {
+  it("exposes the docs provider, the doc name resolver and the query sanitizer", async () => {
     const api = await import("../docs-api.js");
 
-    expect(Object.keys(api).sort()).toEqual(["LocalDocsProvider", "sanitizeSearchDocsQuery"]);
+    expect(Object.keys(api).sort()).toEqual(["LocalDocsProvider", "resolveDoc", "sanitizeSearchDocsQuery"]);
     expect(api.sanitizeSearchDocsQuery("row editing")).toBe('"row" "editing"');
   });
 

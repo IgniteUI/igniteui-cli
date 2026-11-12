@@ -108,6 +108,9 @@ export interface DocsProvider {
 export interface DocsApi {
 	LocalDocsProvider: new () => DocsProvider;
 	sanitizeSearchDocsQuery(queryText: string): string | null;
+	/** Finds a doc by its name, a component class name or the closest match (`fuzzy`). */
+	resolveDoc(provider: DocsProvider, framework: string, name: string):
+		Promise<{ text: string; found: boolean; servedName: string; fuzzy: boolean }>;
 }
 
 export interface DocCommandType extends CommandType {

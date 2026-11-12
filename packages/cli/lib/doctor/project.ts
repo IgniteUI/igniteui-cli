@@ -2,7 +2,7 @@ import {
 	App, BaseTemplateManager, FEED_ANGULAR, getUpgradeablePackages, NPM_ANGULAR, ProjectConfig, TEMPLATE_MANAGER
 } from "@igniteui/cli-core";
 import { CheckResult, DoctorContext } from "./types";
-import { allDependencies, installedVersion, parseVersion, satisfies } from "./util";
+import { allDependencies, installedVersion, majorOf, satisfies } from "./util";
 
 const GROUP = "Project";
 const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui-)/;
@@ -103,7 +103,7 @@ export function checkAngularMajor(context: DoctorContext): CheckResult | null {
 		return null;
 	}
 
-	const major = (name: string) => parseVersion(installedVersion(name) ?? dependencies[name])?.[0];
+	const major = (name: string) => majorOf(installedVersion(name) ?? dependencies[name]);
 	const igniteuiMajor = major(igniteui);
 	const angularMajor = major("@angular/core");
 	const id = "angular-major";

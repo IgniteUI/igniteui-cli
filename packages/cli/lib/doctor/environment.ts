@@ -1,13 +1,14 @@
 import * as path from "path";
+import * as semver from "semver";
 import { CheckResult, DoctorContext } from "./types";
-import { compareVersions, parseVersion, shell } from "./util";
+import { majorOf, shell } from "./util";
 
 const GROUP = "Environment";
 const NODE_MINIMUM = 20;
 const NODE_RECOMMENDED = 24;
 
 export function checkNode(version = process.versions.node): CheckResult {
-	const major = parseVersion(version)?.[0] ?? 0;
+	const major = majorOf(version) ?? 0;
 	const result: CheckResult = { id: "node", group: GROUP, status: "ok", detail: `Node.js ${version}` };
 	if (major < NODE_MINIMUM) {
 		result.status = "fail";
@@ -19,15 +20,15 @@ export function checkNode(version = process.versions.node): CheckResult {
 	return result;
 }
 
-export function checkNpm(): CheckResult {
-	const version = shell.run("npm --version");
+export async function checkNpm(): Promise<CheckResult> {
+	const version = await shell.run("npm --version");
 	return version
 		? { id: "npm", group: GROUP, status: "ok", detail: `npm ${version}` }
 		: { id: "npm", group: GROUP, status: "fail", detail: "npm not found", fix: "Install npm (it ships with Node.js)" };
 }
 
-export function checkGit(): CheckResult {
-	const version = shell.run("git --version");
+export async function checkGit(): Promise<CheckResult> {
+	const version = await shell.run("git --version");
 	return version
 		? { id: "git", group: GROUP, status: "ok", detail: version }
 		: {
@@ -36,8 +37,8 @@ export function checkGit(): CheckResult {
 		};
 }
 
-export function checkDotnet(): CheckResult {
-	const version = shell.run("dotnet --version");
+export async function checkDotnet(): Promise<CheckResult> {
+	const version = await shell.run("dotnet --version");
 	return version
 		? { id: "dotnet", group: GROUP, status: "ok", detail: `.NET SDK ${version}` }
 		: {
@@ -46,20 +47,18 @@ export function checkDotnet(): CheckResult {
 		};
 }
 
-export function checkCliVersion(context: DoctorContext): CheckResult {
+export async function checkCliVersion(context: DoctorContext): Promise<CheckResult> {
 	const current: string = require(path.join(context.cliDir, "package.json")).version;
 	const result: CheckResult = { id: "cli-version", group: GROUP, status: "ok", detail: `Ignite UI CLI ${current}` };
 	if (context.offline) {
 		return { ...result, status: "skip", detail: `${result.detail} (latest version not checked: --offline)` };
 	}
 
-	const latest = shell.run("npm view igniteui-cli version", 15000);
-	const latestVersion = latest && parseVersion(latest);
-	const currentVersion = parseVersion(current);
-	if (!latest || !latestVersion || !currentVersion) {
+	const latest = await shell.run("npm view igniteui-cli version", 15000);
+	if (!latest || !semver.valid(latest) || !semver.valid(current)) {
 		return { ...result, status: "skip", detail: `${result.detail} (could not read the latest version from npm)` };
 	}
-	if (compareVersions(currentVersion, latestVersion) < 0) {
+	if (semver.lt(current, latest)) {
 		return {
 			...result, status: "warn", detail: `${result.detail} (latest is ${latest})`,
 			fix: "Update with: npm install -g igniteui-cli@latest"
@@ -68,12 +67,12 @@ export function checkCliVersion(context: DoctorContext): CheckResult {
 	return { ...result, detail: `${result.detail} (latest)` };
 }
 
-export function environmentChecks(context: DoctorContext): CheckResult[] {
-	return [
+export function environmentChecks(context: DoctorContext): Promise<CheckResult[]> {
+	return Promise.all([
 		checkNode(),
 		checkNpm(),
 		checkGit(),
 		...(context.framework === "blazor" ? [checkDotnet()] : []),
 		checkCliVersion(context)
-	];
+	]);
 }

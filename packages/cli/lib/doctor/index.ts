@@ -30,12 +30,13 @@ export function createContext(offline: boolean): DoctorContext {
 	return context;
 }
 
-export function runDoctor(offline: boolean): CheckResult[] {
+export async function runDoctor(offline: boolean): Promise<CheckResult[]> {
 	const context = createContext(offline);
-	return [
-		...environmentChecks(context),
-		...projectChecks(context),
-		...feedChecks(context),
-		...aiChecks(context)
-	];
+	const groups = await Promise.all([
+		environmentChecks(context),
+		projectChecks(context),
+		feedChecks(context),
+		aiChecks(context)
+	]);
+	return ([] as CheckResult[]).concat(...groups);
 }

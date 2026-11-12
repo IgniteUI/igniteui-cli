@@ -1,4 +1,5 @@
 import { Util } from "@igniteui/cli-core";
+import { paint } from "./color";
 
 export interface DocSearchResult {
 	title: string;
@@ -9,17 +10,6 @@ export interface DocSearchResult {
 
 const RESULT_HEADER = /^- \*\*(.+)\*\* \(`([^`]+)`\)$/;
 const HIT = />>>([\s\S]*?)<<</g;
-
-const STYLES = {
-	bold: ["\u001b[1m", "\u001b[22m"],
-	dim: ["\u001b[2m", "\u001b[22m"],
-	cyan: ["\u001b[36m", "\u001b[39m"],
-	yellow: ["\u001b[33m", "\u001b[39m"]
-};
-
-function paint(text: string, style: keyof typeof STYLES, color: boolean): string {
-	return color ? STYLES[style][0] + text + STYLES[style][1] : text;
-}
 
 /** Reads the result list out of the markdown the docs provider returns for a search. */
 export function parseSearchResults(markdown: string): DocSearchResult[] {

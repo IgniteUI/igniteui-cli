@@ -265,7 +265,7 @@ install_and_build() {
 
 	# a freshly scaffolded and installed project must have no failing checks; warnings are fine
 	start=$SECONDS
-	if run_local_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor; then
+	if run_local_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor --offline; then
 		record "$fw" "doctor" "$dir" "PASS" "$((SECONDS - start))"
 		echo "  ✓ ig doctor"
 	else

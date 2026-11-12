@@ -238,15 +238,16 @@ igniteui-mcp --debug
 The `@igniteui/mcp-server/docs` entry gives Node code the bundled docs search without starting the server. `ig doc` uses it.
 
 ```js
-import { LocalDocsProvider, sanitizeSearchDocsQuery } from "@igniteui/mcp-server/docs";
+import { LocalDocsProvider, resolveDoc, sanitizeSearchDocsQuery } from "@igniteui/mcp-server/docs";
 
 const docs = new LocalDocsProvider();
 await docs.init();
 const results = await docs.searchDocs("angular", sanitizeSearchDocsQuery("row editing"));
 const { text, found } = await docs.getDoc("angular", "grid-row-editing");
+const doc = await resolveDoc(docs, "angular", "IgxGrid");
 ```
 
-Both calls return markdown text.
+`searchDocs` and `getDoc` return markdown text. `getDoc` takes the exact doc name; `resolveDoc` also accepts component class names and near matches, as the `get_doc` tool does, and reports the doc it served in `servedName`.
 
 ## Building From Source
 

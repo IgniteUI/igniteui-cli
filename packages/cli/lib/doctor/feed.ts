@@ -6,14 +6,14 @@ const GROUP = "Licensed feed";
 const NOT_LOGGED_IN = /ENEEDAUTH|E401|E403/;
 const LICENSED_REGISTRY = "https://packages.infragistics.com/npm/js-licensed/";
 
-export function feedChecks(context: DoctorContext): CheckResult[] {
+export async function feedChecks(context: DoctorContext): Promise<CheckResult[]> {
 	const usesFeed = !!context.packageJson &&
 		Object.keys(allDependencies(context.packageJson)).some(name => name.startsWith("@infragistics/"));
 	if (!usesFeed) {
 		return [{ id: "feed", group: GROUP, status: "skip", detail: "The project uses no @infragistics packages" }];
 	}
 
-	const configured = shell.run("npm config get @infragistics:registry");
+	const configured = await shell.run("npm config get @infragistics:registry");
 	const registry = configured && configured !== "undefined" ? Util.sanitizeShellArg(configured) : null;
 	if (!registry) {
 		return [{
@@ -31,7 +31,7 @@ export function feedChecks(context: DoctorContext): CheckResult[] {
 		return results;
 	}
 
-	const login = shell.attempt(`npm whoami --registry=${registry}`, 15000);
+	const login = await shell.attempt(`npm whoami --registry=${registry}`, 15000);
 	if (login.ok && login.output) {
 		results.push({ id: "feed-login", group: GROUP, status: "ok", detail: `Logged in as ${login.output}` });
 	} else if (NOT_LOGGED_IN.test(login.output)) {

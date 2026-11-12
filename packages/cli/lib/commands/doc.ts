@@ -1,7 +1,8 @@
 import { detectFramework, GoogleAnalytics, InquirerWrapper, Util } from "@igniteui/cli-core";
+import { useColor } from "../color";
 import { formatSearchResults, parseSearchResults, formatDoc } from "../doc-format";
 import { PromptSession } from "../PromptSession";
-import { DocCommandType, DocsProvider, PositionalArgs } from "./types";
+import { DocCommandType, DocsApi, DocsProvider, PositionalArgs } from "./types";
 import { pathToFileURL } from "url";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -14,11 +15,16 @@ const DOC_FRAMEWORKS = [
 const MAX_RESULTS = 20;
 const OPEN_HINT = `Use "ig doc <term> --open" to search the Infragistics website instead.`;
 
+function fail(message: string): void {
+	Util.error(message, "red");
+	process.exitCode = 1;
+}
+
 async function resolveFramework(argv: ArgumentsCamelCase<PositionalArgs>): Promise<string | null> {
 	let framework: string | null | undefined = argv.framework?.toLowerCase() ?? detectFramework();
 	if (!framework) {
 		if (!Util.canPrompt()) {
-			Util.error("Could not detect the project framework. Pass it with --framework. " + OPEN_HINT, "red");
+			fail("Could not detect the project framework. Pass it with --framework. " + OPEN_HINT);
 			return null;
 		}
 		framework = await InquirerWrapper.select({
@@ -28,20 +34,20 @@ async function resolveFramework(argv: ArgumentsCamelCase<PositionalArgs>): Promi
 		});
 	}
 	if (!DOC_FRAMEWORKS.some(x => x.value === framework)) {
-		Util.error(`There are no bundled docs for ${framework}. ` + OPEN_HINT, "red");
+		fail(`There are no bundled docs for ${framework}. ` + OPEN_HINT);
 		return null;
 	}
 	return framework;
 }
 
-async function getProvider(): Promise<{ provider: DocsProvider, sanitize: (query: string) => string | null } | null> {
+async function getProvider(): Promise<{ api: DocsApi, provider: DocsProvider } | null> {
 	try {
 		const api = await doc.loadDocs();
 		const provider = new api.LocalDocsProvider();
 		await provider.init();
-		return { provider, sanitize: api.sanitizeSearchDocsQuery };
+		return { api, provider };
 	} catch (error) {
-		Util.error(`The bundled docs are not available: ${(error as Error).message}` + "\n" + OPEN_HINT, "red");
+		fail(`The bundled docs are not available: ${(error as Error).message}` + "\n" + OPEN_HINT);
 		return null;
 	}
 }
@@ -57,13 +63,19 @@ async function searchLocal(argv: ArgumentsCamelCase<PositionalArgs>): Promise<vo
 		return;
 	}
 
-	const query = docs.sanitize(term);
+	const query = docs.api.sanitizeSearchDocsQuery(term);
 	if (!query) {
-		return Util.error(`The search term '${term}' is not valid.`, "red");
+		return fail(`The search term '${term}' is not valid.`);
 	}
 
+	let found: string;
+	try {
+		found = await docs.provider.searchDocs(framework, query);
+	} catch (error) {
+		return fail(`The search for '${term}' failed: ${(error as Error).message}` + "\n" + OPEN_HINT);
+	}
 	const limit = Math.min(Math.max(Math.floor(Number(argv.limit)) || 10, 1), MAX_RESULTS);
-	const results = parseSearchResults(await docs.provider.searchDocs(framework, query)).slice(0, limit);
+	const results = parseSearchResults(found).slice(0, limit);
 	if (!results.length) {
 		return Util.log(`No results found for "${term}" in the ${framework} docs. ` + OPEN_HINT);
 	}
@@ -81,10 +93,13 @@ async function readDoc(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void> 
 		return;
 	}
 
-	const result = await docs.provider.getDoc(framework, name);
+	const result = await docs.api.resolveDoc(docs.provider, framework, name);
 	if (!result.found) {
-		return Util.error(`Doc "${name}" not found in the ${framework} docs. ` +
-			`Run "ig doc <term>" to list doc names.`, "red");
+		return fail(`Doc "${name}" not found in the ${framework} docs. ` +
+			`Run "ig doc <term>" to list doc names.`);
+	}
+	if (result.fuzzy) {
+		Util.warn(`No doc is named "${name}"; showing the closest match, "${result.servedName}".`, "yellow");
 	}
 	Util.log(formatDoc(result.text));
 }
@@ -92,10 +107,6 @@ async function readDoc(argv: ArgumentsCamelCase<PositionalArgs>): Promise<void> 
 async function openInBrowser(term: string): Promise<void> {
 	Util.log(`Review your search results in the browser`, "green");
 	await doc.open(`https://www.infragistics.com/search?q=${encodeURIComponent(term.trim())}`);
-}
-
-function useColor(): boolean {
-	return !!process.stdout.isTTY && !process.env.NO_COLOR;
 }
 
 const doc: DocCommandType = {
@@ -163,9 +174,8 @@ const doc: DocCommandType = {
 		const detected = argv.framework ? null : detectFramework();
 		const noBundledDocs = !!detected && !DOC_FRAMEWORKS.some(x => x.value === detected);
 		if ((argv.open || noBundledDocs) && !Util.isAlphanumericExt(argv.term)) {
-			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
-			"Name should start with a letter and can also contain numbers, dashes and spaces.",
-			"red");
+			return fail(`The search term '${argv.term}' is not valid.` + "\n" +
+			"Name should start with a letter and can also contain numbers, dashes and spaces.");
 		}
 
 		GoogleAnalytics.post({
