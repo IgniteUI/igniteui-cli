@@ -7,7 +7,7 @@ import * as path from "path";
 import * as versionUpdate from "../../packages/core/update/version-update";
 import * as cli from "../../packages/cli/lib/cli";
 import { default as updateCmd } from "../../packages/cli/lib/commands/update";
-import * as updateMigrations from "../../packages/cli/lib/commands/update-migrations";
+import * as updateMigrations from "../../packages/cli/lib/update/migration-runner";
 import * as updateRunner from "../../packages/cli/lib/commands/update-runner";
 
 describe("Unit - Update command", () => {
@@ -66,7 +66,7 @@ describe("Unit - Update command", () => {
 	};
 	const MAP = { react: "./migrations/react.json", webcomponents: "./migrations/webcomponents.json" };
 	let runMigrations: jasmine.Spy;
-	let loadDevKit: jasmine.Spy;
+	let checkDevKit: jasmine.Spy;
 	let execSync: jasmine.Spy;
 	let spawnSync: jasmine.Spy;
 	let getConfig: jasmine.Spy;
@@ -103,7 +103,7 @@ describe("Unit - Update command", () => {
 		getConfig = spyOn(ProjectConfig, "getConfig").and.returnValue({} as any);
 		configure("webcomponents");
 		runMigrations = spyOn(updateMigrations, "runMigrations").and.callFake(async (_collection, migrations) => ({ completed: migrations, notRun: [] }));
-		loadDevKit = spyOn(updateMigrations, "loadDevKit").and.resolveTo();
+		checkDevKit = spyOn(updateMigrations, "checkDevKit").and.resolveTo();
 		spyOn(Util, "canPrompt").and.returnValue(false);
 	});
 
@@ -193,7 +193,7 @@ describe("Unit - Update command", () => {
 			expect(getPlan).not.toHaveBeenCalled();
 			expect(spawnSync).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -608,7 +608,7 @@ describe("Unit - Update command", () => {
 			await migrate();
 
 			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], gitOptions());
-			expect(loadDevKit).toHaveBeenCalledBefore(runMigrations);
+			expect(checkDevKit).toHaveBeenCalledBefore(runMigrations);
 			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
 			expect(output).toEqual([
 				"Not a Git repository: review and revert the update's changes manually.",
@@ -632,6 +632,7 @@ describe("Unit - Update command", () => {
 				choices: [{ value: "later", name: "later", checked: false }, { value: "extra", name: "extra: Extra", checked: true }]
 			});
 			expect(runMigrations.calls.allArgs()).toEqual([[collection, named("first", "second"), "npm"], [collection, named("later"), "npm"]]);
+			expect(checkDevKit).toHaveBeenCalledTimes(1);
 		});
 
 		it("bounds the range with --to, accepts short versions and rejects invalid ones, keeping them out of analytics", async () => {
@@ -709,13 +710,13 @@ describe("Unit - Update command", () => {
 				"No migrations to run."
 			]);
 			expect(spawnSync).not.toHaveBeenCalled();
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
 
 		it("stops before running anything when the DevKit preflight fails, showing its error locally, not in analytics", async () => {
 			const error = `Cannot find module 'x'\nRequire stack:\n- ${path.join(tempDir, "node_modules/@angular-devkit/schematics/tools/index.js")}`;
-			loadDevKit.and.rejectWith(new Error(error));
+			checkDevKit.and.rejectWith(new Error(error));
 
 			await migrate();
 
@@ -726,12 +727,12 @@ describe("Unit - Update command", () => {
 		});
 
 		it("lists optional-only migrations without a terminal, even when DevKit is unavailable", async () => {
-			loadDevKit.and.rejectWith(new Error("Running migrations requires @angular-devkit/schematics."));
+			checkDevKit.and.rejectWith(new Error("Running migrations requires @angular-devkit/schematics."));
 
 			await migrate({ from: "1.6.0", to: "1.9.0" });
 
 			expect(output.slice(-2)).toEqual(["To run the optional migrations of fixture-lib, use:", "  ig update fixture-lib --name later --allow-dirty"]);
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
@@ -888,7 +889,7 @@ describe("Unit - Update command", () => {
 
 		it("updates the requested packages after the Git check, then runs the new migrations from the baseline to the installed version", async () => {
 			const getPlan = plan(FIXTURE, {});
-			execSync.and.callFake(() => expect(loadDevKit).toHaveBeenCalledTimes(1));
+			execSync.and.callFake(() => expect(checkDevKit).toHaveBeenCalledTimes(1));
 
 			await update(["fixture-lib", WC]);
 
@@ -924,7 +925,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("  fixture-lib             1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  no migrations declared");
 			expect(output).toContain("  igniteui-grid-lite      0.11.0 -> 0.11.0  (~0.11.0 -> 0.11.0)");
 			expect(output).toContain("Updated 3 package(s). Next: run your build and tests.");
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(0);
 		});
@@ -944,7 +945,7 @@ describe("Unit - Update command", () => {
 
 		it("changes nothing when the DevKit preflight fails", async () => {
 			plan(FIXTURE);
-			loadDevKit.and.rejectWith(new Error("Running migrations requires Node.js ^22.22.3 (running v20.0.0)."));
+			checkDevKit.and.rejectWith(new Error("Running migrations requires Node.js ^22.22.3 (running v20.0.0)."));
 
 			await update(["fixture-lib"]);
 
@@ -965,7 +966,7 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(read("package.json")).toBe(original);
 			expect(spawnSync).not.toHaveBeenCalled();
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
@@ -982,7 +983,7 @@ describe("Unit - Update command", () => {
 				"  ig update fixture-lib --migrate-only --from 1.0.0 --to 2.0.0 --allow-dirty"
 			]);
 			expect(spawnSync).toHaveBeenCalledTimes(1);
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
@@ -1050,7 +1051,7 @@ describe("Unit - Update command", () => {
 			await update(["fixture-lib"]);
 
 			expect(output).toContain("  fixture-lib  1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  migrations declared");
-			expect(loadDevKit).toHaveBeenCalled();
+			expect(checkDevKit).toHaveBeenCalled();
 			expect(output.slice(-4)).toEqual([
 				"Unable to read the migrations of an updated package.",
 				`fixture-lib has an invalid "ig-update" field: "migrations" must be a path, or an object that maps framework ids to paths.`,
@@ -1065,7 +1066,7 @@ describe("Unit - Update command", () => {
 			installFixture(undefined, "other-lib");
 			const error = "Cannot find module '@angular-devkit/schematics/package.json'";
 			let loads = 0;
-			loadDevKit.and.callFake(async () => {
+			checkDevKit.and.callFake(async () => {
 				if (loads++) {
 					throw new Error(error);
 				}
@@ -1084,6 +1085,21 @@ describe("Unit - Update command", () => {
 			expect(posted()).toEqual(["Unable to load @angular-devkit/schematics to run the migrations."]);
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
+		});
+
+		it("checks DevKit once before changing anything and once after the install, however many migrations run", async () => {
+			project({ dependencies: { "fixture-lib": "^1.0.0", "other-lib": "^1.0.0" } });
+			installFixture(undefined, "other-lib");
+			plan(FIXTURE, { ...FIXTURE, name: "other-lib" });
+			(Util.canPrompt as jasmine.Spy).and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.resolveTo(["extra"]);
+			execSync.and.callFake(() => expect(checkDevKit).toHaveBeenCalledTimes(1));
+
+			await update(["fixture-lib", "other-lib"]);
+
+			expect(runMigrations).toHaveBeenCalledTimes(4);
+			expect(checkDevKit).toHaveBeenCalledTimes(2);
+			expect(process.exitCode).toBe(0);
 		});
 
 		it("stops when the optional-migrations prompt is cancelled, with the commands for the rest", async () => {
@@ -1224,7 +1240,7 @@ describe("Unit - Update command", () => {
 			expect(registry).not.toHaveBeenCalled();
 			expect(read("package.json")).toBe(original);
 			expect(execSync).not.toHaveBeenCalled();
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
@@ -1285,6 +1301,23 @@ describe("Unit - Update command", () => {
 
 			expect(runMigrations.calls.allArgs().map(args => args[0])).toEqual([collection, webcomponents]);
 		});
+
+		const detected: [string, Record<string, string>, string][] = [
+			["react, also with Web Components packages", { react: "^19.0.0", lit: "^3.0.0" }, "react"],
+			["lit", { lit: "^3.0.0" }, "webcomponents"]
+		];
+		for (const [signal, dependencies, framework] of detected) {
+			it(`runs the ${framework} migrations of a map, detected from package.json by ${signal}`, async () => {
+				configure();
+				project({ dependencies: { "map-lib": "^1.0.0", ...dependencies } });
+				const [react, webcomponents] = installFixture(MAP, "map-lib");
+				plan({ ...FIXTURE, name: "map-lib", manifest: { version: "2.0.0", "ig-update": { migrations: MAP } } });
+
+				await update(["map-lib"]);
+
+				expect(runMigrations).toHaveBeenCalledOnceWith(framework === "react" ? react : webcomponents, named("first", "second"), "npm");
+			});
+		}
 	});
 
 	describe("angular", () => {
@@ -1599,7 +1632,7 @@ describe("Unit - Update command", () => {
 			expect(getPlan).not.toHaveBeenCalled();
 			expect(spawnSync).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
-			expect(loadDevKit).not.toHaveBeenCalled();
+			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(posted()).toEqual([]);
 			expect(read("package.json")).toBe(original);

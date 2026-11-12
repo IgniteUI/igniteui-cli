@@ -8,8 +8,8 @@ export interface MigrationRun {
 	notRun: Migration[];
 }
 
-/** Preflight: throws unless DevKit is installed, supports the running Node.js and loads */
-export async function loadDevKit(): Promise<void> {
+/** Preflight: throws unless DevKit is installed, supports the running Node.js and loads; `runMigrations` then reuses the loaded module */
+export async function checkDevKit(): Promise<void> {
 	let manifest: string;
 	try {
 		manifest = require.resolve("@angular-devkit/schematics/package.json");
@@ -18,12 +18,17 @@ export async function loadDevKit(): Promise<void> {
 			"Package managers skip it on unsupported Node.js versions, or when optional dependencies are omitted. " +
 			"Reinstall igniteui-cli on a supported Node.js version.");
 	}
-	// Yarn Berry and bun install optional dependencies without checking their engines
-	const node: string | undefined = JSON.parse(fs.readFileSync(manifest, "utf8")).engines?.node;
+	const { version, engines } = JSON.parse(fs.readFileSync(manifest, "utf8"));
+	const node: string | undefined = engines?.node;
 	if (node && !semver.satisfies(process.version, node)) {
 		throw new Error(`Running migrations requires Node.js ${node} (running ${process.version}).`);
 	}
-	await import("@angular-devkit/schematics/tools");
+	try {
+		await import("@angular-devkit/schematics/tools");
+	} catch (error) {
+		throw new Error(`@angular-devkit/schematics ${version} is installed but can't be loaded (${(error as Error).message}). ` +
+			"It may be an incompatible version or a damaged install; reinstall igniteui-cli.");
+	}
 }
 
 /** Runs the migrations in order on the current directory, until one fails; `collection` is an absolute path */

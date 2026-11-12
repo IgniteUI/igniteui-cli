@@ -1,7 +1,7 @@
 import {
 	applyUpdatePlan, coerceVersionNumber, debug, detectFrameworkFromPackageJson, discoverUpdates, FEED_ANGULAR, getMigrationsCollection,
-	getUpdatePlan, GoogleAnalytics, InquirerWrapper, isObject, isPackageName, isRegistrySpec, isSupportedSpec, Migration, NPM_ANGULAR, NPM_CLI, PackageRequest,
-	PackageUpdate, ProjectConfig, readMigrations, selectMigrations, splitPackage, UPGRADEABLE_PACKAGES, Util
+	getUpdatePlan, GoogleAnalytics, InquirerWrapper, isObject, isPackageName, isRegistrySpec, isSupportedSpec, Migration, NPM_ANGULAR, NPM_CLI, PackageManager,
+	PackageRequest, PackageUpdate, ProjectConfig, readMigrations, selectMigrations, splitPackage, UPGRADEABLE_PACKAGES, Util
 } from "@igniteui/cli-core";
 import { execSync } from "child_process";
 import * as fs from "fs";
@@ -10,15 +10,8 @@ import * as resolve from "resolve";
 import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
-import { loadDevKit, runMigrations } from "./update-migrations";
+import { checkDevKit, runMigrations } from "../update/migration-runner";
 import { runTemporaryCli, selectRunner } from "./update-runner";
-
-const LOCKFILES: Record<string, string[]> = {
-	npm: ["package-lock.json", "npm-shrinkwrap.json"],
-	yarn: ["yarn.lock"],
-	pnpm: ["pnpm-lock.yaml"],
-	bun: ["bun.lock", "bun.lockb"]
-};
 
 const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
 
@@ -152,9 +145,10 @@ const command: UpdateCommandType = {
 					process.exitCode = runTemporaryCli(runner, argv.rawArgs!, flags.verbose);
 					return;
 				}
+				const identified = identifyFramework(framework, configured);
 				return migrate.migrateOnly
-					? migrateOnly(requests[0], migrate, flags)
-					: updatePackages(framework === "react" ? "React" : "Web Components", flags, requests);
+					? migrateOnly(requests[0], migrate, flags, identified)
+					: updatePackages(framework === "react" ? "React" : "Web Components", flags, requests, identified);
 			}
 			case "angular":
 				return updateAngular(flags, packages, migrate);
@@ -164,7 +158,7 @@ const command: UpdateCommandType = {
 	}
 };
 
-async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptions, flags: UpdateFlags): Promise<void> {
+async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptions, flags: UpdateFlags, framework: string | undefined): Promise<void> {
 	if (spec) {
 		Util.warn(`The version "${spec}" has no effect with --migrate-only.`, "yellow");
 	}
@@ -187,7 +181,6 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		return fail("No valid package.json found in the current directory.");
 	}
 
-	const framework = identifyFramework(pkgJson);
 	let collection: string | undefined;
 	let migrations: Migration[];
 	try {
@@ -231,25 +224,31 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		return;
 	}
 
-	const managers = detectPackageManagers(pkgJson.packageManager);
+	const managers = PackageManager.detectManagers(pkgJson.packageManager);
 	const pm = managers.length === 1 ? managers[0] : undefined;
-	if (await runAndReport(name, collection, { required, optional }, pm)) {
+	if (await runAndReport(name, collection, { required, optional }, pm, false)) {
 		Util.log("Migrations completed. Review the changes, then run your build and tests.");
 	}
 }
 
-/** Runs the required, then the chosen optional migrations; the number run, or undefined on a failure or a cancelled prompt */
+/**
+ * Runs the required, then the chosen optional migrations, checking DevKit before the first run unless `devKitChecked`;
+ * the number run, or undefined on a failure or a cancelled prompt
+ */
 async function runAndReport(name: string, collection: string, { required, optional }: { required: Migration[]; optional: Migration[] },
-	pm: string | undefined): Promise<number | undefined> {
+	pm: string | undefined, devKitChecked: boolean): Promise<number | undefined> {
 	const run = async (migrations: Migration[]): Promise<boolean> => {
 		if (!migrations.length) {
 			return true;
 		}
-		try {
-			await loadDevKit();
-		} catch (error) {
-			fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
-			return false;
+		if (!devKitChecked) {
+			try {
+				await checkDevKit();
+			} catch (error) {
+				fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
+				return false;
+			}
+			devKitChecked = true;
 		}
 		const { failed, notRun } = await runMigrations(collection, migrations, pm);
 		if (failed) {
@@ -311,20 +310,13 @@ function localFramework(): string | undefined {
 	return ProjectConfig.hasLocalConfig() ? ProjectConfig.localConfig().project?.framework : undefined;
 }
 
-/** React before Web Components: React apps depend on Web Components packages too */
-function identifyFramework(pkgJson: { dependencies?: object; devDependencies?: object }): string | undefined {
-	const configured = localFramework();
-	if (configured) {
-		return configured.toLowerCase();
+/** Framework of per-framework migrations: the configured or detected one, but not detectFrameworkFromPackageJson's Web Components fallback */
+function identifyFramework(framework: string, configured: string | undefined): string | undefined {
+	if (configured || framework !== "webcomponents") {
+		return framework;
 	}
-	const deps = Object.keys({ ...pkgJson.dependencies, ...pkgJson.devDependencies });
-	if (deps.includes("@angular/core")) {
-		return "angular";
-	}
-	if (deps.includes("react")) {
-		return "react";
-	}
-	return deps.some(dep => WEBCOMPONENTS_SIGNAL.test(dep)) ? "webcomponents" : undefined;
+	const { dependencies, devDependencies } = JSON.parse(fs.readFileSync("package.json", "utf8"));
+	return Object.keys({ ...dependencies, ...devDependencies }).some(dep => WEBCOMPONENTS_SIGNAL.test(dep)) ? framework : undefined;
 }
 
 function checkGit(allowDirty: boolean): boolean {
@@ -372,7 +364,7 @@ async function listUpdates(verbose: boolean): Promise<void> {
 	}
 }
 
-async function updatePackages(frameworkName: string, flags: UpdateFlags, requests: PackageRequest[]): Promise<void> {
+async function updatePackages(frameworkName: string, flags: UpdateFlags, requests: PackageRequest[], framework: string | undefined): Promise<void> {
 	if (!flags.dryRun && !checkGit(flags.allowDirty)) {
 		return;
 	}
@@ -393,13 +385,12 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	if (pkgJson.workspaces) {
 		Util.warn("package.json defines workspaces. Only the root package.json is updated.", "yellow");
 	}
-	const managers = detectPackageManagers(pkgJson.packageManager);
+	const managers = PackageManager.detectManagers(pkgJson.packageManager);
 	const pm = managers.length === 1 ? managers[0] : undefined;
-	const lockfiles = Object.values(LOCKFILES).flat().filter(file => fs.existsSync(file));
+	const lockfiles = Object.values(PackageManager.lockfiles).flat().filter(file => fs.existsSync(file));
 	debug(flags.verbose, `Package manager: ${managers.join(", ")} (packageManager field ${pkgJson.packageManager ? "set" : "not set"}; ` +
 		`lockfiles: ${lockfiles.join(", ") || "none"})`);
 
-	const framework = identifyFramework(pkgJson);
 	const changes = plan.filter(c => c.newRange);
 	// request order, then the joined packages; once per name, as a package can be in both sections
 	const migrating = [...new Set([...requests.map(r => r.name), ...changes.map(c => c.name)])]
@@ -450,12 +441,12 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 	}
 	if (migrating.length && !flags.skipInstall) {
 		try {
-			await loadDevKit();
+			await checkDevKit();
 		} catch (error) {
 			return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 		}
 	}
-	const backup = flags.skipInstall || !pm ? undefined : new Map(["package.json", ...LOCKFILES[pm]]
+	const backup = flags.skipInstall || !pm ? undefined : new Map(["package.json", ...PackageManager.lockfiles[pm]]
 		.map(file => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined] as const));
 	try {
 		applyUpdatePlan(plan);
@@ -496,7 +487,7 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 		return false;
 	};
 	try {
-		await loadDevKit();
+		await checkDevKit();
 	} catch (error) {
 		fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
 		return stop(updates);
@@ -522,7 +513,7 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 			Util.log("No migrations to run.");
 			continue;
 		}
-		if (await runAndReport(name, collection, selected, pm) === undefined) {
+		if (await runAndReport(name, collection, selected, pm, true) === undefined) {
 			return stop(updates.slice(index + 1));
 		}
 	}
@@ -670,15 +661,6 @@ function declaredMigrations(c: PackageUpdate, framework: string | undefined): "d
 	return migrations[framework] === undefined ? "none" : "declared";
 }
 
-function detectPackageManagers(packageManager: unknown): string[] {
-	const named = typeof packageManager === "string" && /^(npm|yarn|pnpm|bun)(@|$)/.exec(packageManager)?.[1];
-	if (named) {
-		return [named];
-	}
-	const found = Object.keys(LOCKFILES).filter(pm => LOCKFILES[pm].some(file => fs.existsSync(file)));
-	return found.length ? found : ["npm"];
-}
-
 /** npm is the only manager that fails on peer conflicts by default; the others' --force refetches or rebuilds instead */
 function getInstallCommand(pm: string, force: boolean): string {
 	if (pm === "pnpm") {
@@ -714,7 +696,7 @@ function install(pm: string, backup: Map<string, Buffer | undefined>, flags: Upd
 				notRestored.push(file);
 			}
 		}
-		const hadLockfile = LOCKFILES[pm].some(file => backup.get(file));
+		const hadLockfile = PackageManager.lockfiles[pm].some(file => backup.get(file));
 		const restored = notRestored.length
 			? `Could not restore ${notRestored.join(", ")}; restore them from version control`
 			: `Restored package.json${hadLockfile ? " and the lockfile" : ""}`;
