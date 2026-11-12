@@ -3,7 +3,7 @@ import * as child_process from "child_process";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { loadDevKit, runMigrations } from "../../packages/cli/lib/commands/update-migrations";
+import { checkDevKit, runMigrations } from "../../packages/cli/lib/update/migration-runner";
 import Module = require("module");
 
 describe("Integration - update migrations runner", () => {
@@ -105,32 +105,44 @@ exports.default = () => (tree, { logger }) => { logger.debug("hidden"); logger.w
 	});
 
 	it("doesn't load DevKit until migrations run", () => {
-		const runner = require.resolve("../../packages/cli/lib/commands/update-migrations");
+		const runner = require.resolve("../../packages/cli/lib/update/migration-runner");
 		const loaded = child_process.execFileSync(process.execPath, ["-e",
 			`require(${JSON.stringify(runner)}); console.log(Object.keys(require.cache).filter(m => m.includes("@angular-devkit")).length);`
 		], { encoding: "utf8" });
 		expect(loaded.trim()).toBe("0");
 	});
 
-	describe("loadDevKit", () => {
+	describe("checkDevKit", () => {
 		it("loads DevKit when it's installed and supports the running Node.js", async () => {
-			await expectAsync(loadDevKit()).toBeResolved();
+			await expectAsync(checkDevKit()).toBeResolved();
 		});
 
-		it("reports a DevKit that isn't installed and a Node.js version outside DevKit's engines, each with its own error", async () => {
+		it("reports a DevKit that isn't installed, a Node.js version outside DevKit's engines and a DevKit that doesn't load, each with its own error", async () => {
 			let manifest: () => string = () => { throw Object.assign(new Error("Cannot find module"), { code: "MODULE_NOT_FOUND" }); };
 			const original = (Module as any)._resolveFilename;
 			spyOn(Module as any, "_resolveFilename").and.callFake(function (this: unknown, request: string, ...rest: unknown[]) {
 				return request === "@angular-devkit/schematics/package.json" ? manifest() : original.call(this, request, ...rest);
 			});
 
-			await expectAsync(loadDevKit()).toBeRejectedWithError(
+			await expectAsync(checkDevKit()).toBeRejectedWithError(
 				/^Running migrations requires @angular-devkit\/schematics, an optional dependency of igniteui-cli that isn't installed\./);
 
 			write("devkit/package.json", { engines: { node: ">=99" } });
 			manifest = () => path.join(tempDir, "devkit/package.json");
 
-			await expectAsync(loadDevKit()).toBeRejectedWithError(`Running migrations requires Node.js >=99 (running ${process.version}).`);
+			await expectAsync(checkDevKit()).toBeRejectedWithError(`Running migrations requires Node.js >=99 (running ${process.version}).`);
+
+			write("devkit/package.json", { version: "19.0.0" });
+			const originalRequire = Module.prototype.require;
+			spyOn(Module.prototype, "require").and.callFake(function (this: NodeModule, id: string) {
+				if (id === "@angular-devkit/schematics/tools") {
+					throw new Error("Cannot find module 'rxjs'");
+				}
+				return originalRequire.call(this, id);
+			} as typeof originalRequire);
+
+			await expectAsync(checkDevKit()).toBeRejectedWithError("@angular-devkit/schematics 19.0.0 is installed but can't be loaded " +
+				"(Cannot find module 'rxjs'). It may be an incompatible version or a damaged install; reinstall igniteui-cli.");
 		});
 	});
 });
