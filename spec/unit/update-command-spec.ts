@@ -8,7 +8,7 @@ import * as versionUpdate from "../../packages/core/update/version-update";
 import * as cli from "../../packages/cli/lib/cli";
 import { default as updateCmd } from "../../packages/cli/lib/commands/update";
 import * as updateMigrations from "../../packages/cli/lib/update/migration-runner";
-import * as updateRunner from "../../packages/cli/lib/commands/update-runner";
+import * as updateRunner from "../../packages/cli/lib/update/update-runner";
 
 describe("Unit - Update command", () => {
 	const WC = "igniteui-webcomponents";

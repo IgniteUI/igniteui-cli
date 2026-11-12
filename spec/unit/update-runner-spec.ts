@@ -3,7 +3,7 @@ import child_process from "child_process";
 import fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { runTemporaryCli, selectRunner } from "../../packages/cli/lib/commands/update-runner";
+import { runTemporaryCli, selectRunner } from "../../packages/cli/lib/update/update-runner";
 import * as versionUpdate from "../../packages/core/update/version-update";
 
 describe("Unit - update runner", () => {

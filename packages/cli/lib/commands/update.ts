@@ -11,7 +11,7 @@ import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
 import { checkDevKit, runMigrations } from "../update/migration-runner";
-import { runTemporaryCli, selectRunner } from "./update-runner";
+import { runTemporaryCli, selectRunner } from "../update/update-runner";
 
 const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
 
