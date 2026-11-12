@@ -1,0 +1,354 @@
+# Ignite UI Dashboards for React v19.6.0 — Full API Reference
+
+> Complete API reference for the Ignite UI Dashboards for React package (19.6.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: React
+Package: igniteui-react-dashboards
+Version: 19.6.0
+
+## Classes
+
+### [IgrDashboardTile](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTile)
+
+- **constructor**(props: IIgrDashboardTileProps): IgrDashboardTile
+- **actualBrushes**: `string[]` — Gets the actual palette of brushes to use for coloring the chart series.
+- **actualCustomizations**: `IgrDashboardTileCustomization<IIgrDashboardTileCustomizationProps>[]`
+- **actualOutlines**: `string[]` — Gets the actual palette of brushes to use for outlines on the chart series.
+- **autoCalloutsVisible**: `boolean` — Gets or sets if the auto value callouts should be displayed.
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **brushes**: `string[]` — Gets or sets the palette of brushes to use for coloring the dashboard tile.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **categoryAxisMajorStroke**: `string` — Gets the brush to use for the Category axis major strokes, if applicable.
+- **changingContent**: `any`
+- **contentCustomizations**: `IgrDashboardTileCustomization<IIgrDashboardTileCustomizationProps>[]`
+- **crosshairsAnnotationEnabled**: `boolean` — Gets or sets whether annotations are shown along the axis for crosshair values
+- **crosshairsDisplayMode**: `CrosshairsDisplayMode` — Gets or sets the crosshairs to be displayed.
+- **customizations**: `IgrDashboardTileCustomizationCollection` — Gets a collection where you can add customization that will be applied to the generated visualizations.
+- **dataSource**: `any` — Gets or sets a collection of data items used to generate the dashboard tile.
+The ItemsSource of this dashboard tile can be a list of objects containing one or more numeric properties.
+Additionally, if the objects in the list implement an enumerable interface,
+the dashboard tile will attempt to delve into the sub-collections when reading through the data source.
+Data binding can be further configured by attributing the data item classes
+with the data intent feature.
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
+- **excludedProperties**: `string[]` — Gets or sets a set of property paths that should be excluded from consideration by the category chart.
+- **filterExpressions**: `IgrFilterExpressionCollection` — Gets the current filter that is applied to the chart. Collection can be updated to modify the filter for the chart. Once filter expressions are in this collection, the chart will no longer listen for changes on their properties.
+- **filterStringErrorsParsing**: `any`
+- **finalValueAnnotationsVisible**: `boolean` — Gets or sets whether annotations for the final value of each series is displayed on the axis.
+- **groupDescriptions**: `IgrDashboardTileSortDescriptionCollection` — Gets the current grouping that is applied to the grid. Collection can be updated to modify the grouping for the grid. Once grouping descriptions are in this collection, the grid will no longer listen for changes on their properties.
+- **groupSortDescriptions**: `IgrDashboardTileSortDescriptionCollection`
+- **groupSorts**: `string` — Gets or sets the sorts to apply after grouping has been applied.
+- **height**: `string`
+- **highlightedDataSource**: `any` — Gets or sets a collection of data items used to generate the dashboard tile.
+The HighlightedItemsSource of this dashboard tile can be a list of objects containing one or more numeric properties.
+Additionally, if the objects in the list implement an enumerable interface,
+the dashboard tile will attempt to delve into the sub-collections when reading through the data source.
+Data binding can be further configured by attributing the data item classes
+with the data intent feature.
+- **highlightedValuesDisplayMode**: `SeriesHighlightedValuesDisplayMode` — Gets or sets whether and how to display highlighted values for the series. Note, this is distinct from the highlighting feature that indicates what is closest or under the mouse.
+This property applies to Category Chart and Financial Chart controls.
+- **highlightFilterExpressions**: `IgrFilterExpressionCollection` — Gets the current highlight filter that is applied to the chart. Collection can be updated to modify the highlight filter for the chart. Once filter expressions are in this collection, the chart will no longer listen for changes on their properties.
+- **includedProperties**: `string[]` — Gets or sets a set of property paths that should be included for consideration by the category chart, leaving the remainder excluded. If null, all properties will be considered.
+- **initialFilter**: `string` — Gets or sets the filter to apply to the chart. This property will become ignored if the filter is changed outside of this property.
+- **initialFilterExpressions**: `IgrFilterExpressionCollection` — Gets the initial filters that are applied to the chart.
+- **initialGroupDescriptions**: `IgrDashboardTileSortDescriptionCollection` — Gets the initial groupings that are applied to the chart.
+- **initialGroups**: `string` — Gets or sets the groupings to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **initialGroupSortDescriptions**: `IgrDashboardTileSortDescriptionCollection` — Gets the initial sorts that are applied to the chart after groupings and summaries are applied.
+- **initialHighlightFilter**: `string` — Gets or sets the filter to apply to the chart. This property will become ignored if the filter is changed outside of this property.
+- **initialHighlightFilterExpressions**: `IgrFilterExpressionCollection` — Gets the initial highlight filters that are applied to the chart.
+- **initialSortDescriptions**: `IgrDashboardTileSortDescriptionCollection` — Gets the initial sorts that are applied to the chart.
+- **initialSorts**: `string` — Gets or sets the sorts to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **initialSummaries**: `string` — Gets or sets the summaries to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **initialSummaryDescriptions**: `IgrDashboardTileSummaryDescriptionCollection` — Gets the initial summaries that are applied to the chart.
+- **isUserAnnotationsEnabled**: `boolean` — Gets or sets whether initiating user annotations from the toolbar is enabled.
+- **isVisTypeRadial**: `boolean`
+- **isVisTypeStacked**: `boolean`
+- **nativeElement**: `HTMLElement`
+- **outlines**: `string[]` — Gets or sets the palette of brushes to use for outlines on the dashboard tile.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **selectedSeriesItems**: `IgrChartSelectedItemCollection` — Gets the currently selected data items.  Adding or removing data items from this collection will
+select or deselect the visuals associated with those items.
+- **shouldAvoidAxisAnnotationCollisions**: `boolean` — Gets or sets whether annotations for the final value of each series is displayed on the axis.
+- **shouldDisplayMockData**: `boolean` — Gets or sets whether the dashboard tile should display mock data when the data source has not been provided, if supported for this type of chart.
+- **shouldUseSkeletonStyleForMockData**: `boolean` — Gets or sets whether the dashboard tile should use a faded skeleton style for mock data.
+- **sortDescriptions**: `IgrDashboardTileSortDescriptionCollection` — Gets the current sort that is applied to the grid. Collection can be updated to modify the sort for the grid. Once sort descriptions are in this collection, the grid will no longer listen for changes on their properties.
+- **summaryDescriptions**: `IgrDashboardTileSummaryDescriptionCollection` — Gets the current summaries that are applied to the grid.
+- **tileTitle**: `string` — Gets or sets text to display above the plot area.
+- **trendLineBrushes**: `string[]` — Gets or sets the palette of brushes to used for coloring trend lines in this chart.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **trendLineType**: `TrendLineType` — Gets or sets the formula used for calculating trend lines in this chart.
+This property applies only to these chart types: point, line, spline, and bubble
+- **trendLineTypes**: `IgrTrendLineTypeCollection` — Gets or sets what trendlines to use in the chart.
+- **userAnnotationInformationRequested**: `any` — Occurs to request additional information for an annotation being added.
+- **userAnnotationToolTipContentUpdating**: `any` — Occurs to request additional information for an annotation being added.
+- **validVisualizationTypePriorityThreshold**: `number` — Gets or sets the crosshairs to be displayed.
+- **validVisualizationTypes**: `DashboardTileVisualizationType[]` — Gets the current set of valid visualization types for the data.
+- **valueLines**: `IgrValueModeCollection` — Gets or sets what value lines to use in the chart.
+- **valueLinesBrushes**: `string[]` — Gets or sets the palette of brushes to use for coloring the value lines present in the ValueLines property.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **valueLinesGlobalAverageBrush**: `string` — Gets or sets the color for GlobalAverage value lines.
+- **valueLinesGlobalMaximumBrush**: `string` — Gets or sets the color for GlobalMaximum value lines.
+- **valueLinesGlobalMinimumBrush**: `string` — Gets or sets the color for GlobalMinimum value lines.
+- **visualizationType**: `DashboardTileVisualizationType` — Gets or sets the crosshairs to be displayed.
+- **width**: `string`
+- **addCommandAvailabilityListener**(listener: ICommandAvailabilityListener): void
+- **addCommandStateChangedListener**(listener: ICommandStateChangedListener): void
+- **cancelAnnotationFlow**(annotationFlowId: string): void
+- **clearSettings**(): void
+- **componentDidMount**(): void
+- **componentWillUnmount**(): void
+- **destroy**(): void
+- **findByName**(name: string): any
+- **finishAnnotationFlow**(flowInformation: IgrUserAnnotationInformation): void
+- **getDesiredToolbarActions**(): ToolActionInfo[]
+- **getSettingsValue**(key: string): any
+- **hasModifiedSettings**(): boolean
+- **initializeContent**(): void
+- **loadAnnotationsFromJson**(jsonString: string): void
+- **onUIReady**(): void
+- **removeCommandAvailabilityListener**(listener: ICommandAvailabilityListener): void
+- **removeCommandStateChangedListener**(listener: ICommandStateChangedListener): void
+- **removeSettingsValue**(key: string): void
+- **render**(): DetailedReactHTMLElement<any, any>
+- **resetAnnotations**(): void
+- **resetZoom**(): void — Resets the zoom level to default.
+- **saveAnnotationsToJson**(): string
+- **shouldComponentUpdate**(nextProps: any, nextState: any): boolean
+- **startCreatingAnnotation**(): void
+- **startDeletingAnnotation**(): void
+- **updateSettingsValue**(key: string, value: any): void
+- **updateStyle**(): void
+- **zoomIn**(percentage: number): void
+- **zoomOut**(percentage: number): void — Performs zoom out action on the chart by specified percentage of current window rect
+- static **_createFromInternal**(internal: any): IgrDashboardTile
+
+### [IgrDashboardTileChangingContentEventArgs](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileChangingContentEventArgs)
+
+- **constructor**(): IgrDashboardTileChangingContentEventArgs
+- **contentJson**: `string`
+- **nativeElement**: `HTMLElement`
+
+### [IgrDashboardTileCustomization](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileCustomization)
+
+- **constructor**(props: P): IgrDashboardTileCustomization<P>
+- **collectionIndex**: `number`
+- **isCollectionInsertionAtEnd**: `boolean`
+- **isCollectionInsertionAtIndex**: `boolean`
+- **isCollectionInsertionAtStart**: `boolean`
+- **isCollectionRemovaltIndex**: `boolean`
+- **matchParentIndex**: `number`
+- **matchType**: `string`
+- **nativeElement**: `HTMLElement`
+- **order**: `number`
+- **propertyName**: `string`
+- **propertyValue**: `any`
+- **componentDidMount**(): void
+- **findByName**(name: string): any
+- **render**(): any
+- **shouldComponentUpdate**(nextProps: any, nextState: any): boolean
+- static **_createFromInternal**(internal: any): IgrDashboardTileCustomization
+
+### [IgrDashboardTileCustomizationCollection](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileCustomizationCollection)
+
+- **constructor**(list?: IgrDashboardTileCustomization<IIgrDashboardTileCustomizationProps>[]): IgrDashboardTileCustomizationCollection
+
+### [IgrDashboardTileFilterStringErrorsParsingEventArgs](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileFilterStringErrorsParsingEventArgs)
+Represents event arguments for when there are errors parsing the filter string
+
+- **constructor**(): IgrDashboardTileFilterStringErrorsParsingEventArgs
+- **errors**: `string` — Gets the errors from parsing the filter string.
+- **nativeElement**: `HTMLElement`
+- **propertyName**: `string`
+
+### [IgrDashboardTileGroupDescription](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileGroupDescription)
+Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
+
+- **constructor**(): IgrDashboardTileGroupDescription
+
+### [IgrDashboardTileGroupDescriptionCollection](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileGroupDescriptionCollection)
+Represents a collection of grouping elements that are applied to a data source or provider.
+
+- **constructor**(): IgrDashboardTileGroupDescriptionCollection
+- **nativeElement**: `HTMLElement`
+- **add**(item: IgrDashboardTileGroupDescription): boolean
+- **clear**(): void
+- **findByName**(name: string): any
+- **indexOf**(item: IgrDashboardTileGroupDescription): number
+- **insert**(index: number, item: IgrDashboardTileGroupDescription): void
+- **remove**(item: IgrDashboardTileGroupDescription): boolean
+- **removeAt**(index: number): IgrDashboardTileGroupDescription
+
+### [IgrDashboardTileSortDescription](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileSortDescription)
+Represents an element in the current sort applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
+
+- **constructor**(): IgrDashboardTileSortDescription
+- **field**: `string` — Gets or sets the property being sorted.
+- **nativeElement**: `HTMLElement`
+- **sortDirection**: `ListSortDirection` — Gets or sets the direction to sort based on the property.
+- **equals**(other: any): boolean — Returns if the SortDescription is equal to another.
+- **findByName**(name: string): any
+
+### [IgrDashboardTileSortDescriptionCollection](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileSortDescriptionCollection)
+Represents a collection of sort elements that are applied to a data source or provider.
+
+- **constructor**(): IgrDashboardTileSortDescriptionCollection
+- **nativeElement**: `HTMLElement`
+- **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **add**(item: IgrDashboardTileSortDescription): boolean
+- **clear**(): void
+- **findByName**(name: string): any
+- **indexOf**(item: IgrDashboardTileSortDescription): number
+- **insert**(index: number, item: IgrDashboardTileSortDescription): void
+- **remove**(item: IgrDashboardTileSortDescription): boolean
+- **removeAt**(index: number): IgrDashboardTileSortDescription
+
+### [IgrDashboardTileSummaryDescription](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileSummaryDescription)
+Represents a summary that is applied to a datasource. Changes to this object are not observed or expected after it is initially assigned to a collection.
+
+- **constructor**(): IgrDashboardTileSummaryDescription
+- **alias**: `string` — Gets or sets an alias for the summary. Currently only used in aggregated data situations.
+- **calculatorDisplayName**: `string` — Gets or sets the name to use when displaying the calculator name.
+- **field**: `string`
+- **nativeElement**: `HTMLElement`
+- **operand**: `DataSourceSummaryOperand`
+- **provideCalculator**: `any` — Called when the summary calculator is required.
+- **equals**(other: any): boolean
+- **findByName**(name: string): any
+
+### [IgrDashboardTileSummaryDescriptionCollection](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileSummaryDescriptionCollection)
+
+- **constructor**(): IgrDashboardTileSummaryDescriptionCollection
+- **nativeElement**: `HTMLElement`
+- **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **add**(item: IgrDashboardTileSummaryDescription): boolean
+- **clear**(): void
+- **findByName**(name: string): any
+- **indexOf**(item: IgrDashboardTileSummaryDescription): number
+- **insert**(index: number, item: IgrDashboardTileSummaryDescription): void
+- **remove**(item: IgrDashboardTileSummaryDescription): boolean
+- **removeAt**(index: number): IgrDashboardTileSummaryDescription
+
+## Interfaces
+
+### [IIgrDashboardTileCustomizationProps](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/interfaces/IIgrDashboardTileCustomizationProps)
+
+- **children?**: `any`
+- **collectionIndex?**: `string | number`
+- **isCollectionInsertionAtEnd?**: `string | boolean`
+- **isCollectionInsertionAtIndex?**: `string | boolean`
+- **isCollectionInsertionAtStart?**: `string | boolean`
+- **isCollectionRemovaltIndex?**: `string | boolean`
+- **matchParentIndex?**: `string | number`
+- **matchType?**: `string`
+- **order?**: `string | number`
+- **propertyName?**: `string`
+- **propertyValue?**: `any`
+
+### [IIgrDashboardTileProps](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/interfaces/IIgrDashboardTileProps)
+
+- **actualBrushes?**: `string | string[]` — Gets the actual palette of brushes to use for coloring the chart series.
+- **actualOutlines?**: `string | string[]` — Gets the actual palette of brushes to use for outlines on the chart series.
+- **autoCalloutsVisible?**: `string | boolean` — Gets or sets if the auto value callouts should be displayed.
+- **backgroundColor?**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme?**: `any` — Gets or sets the base built in theme to use for the checkbox.
+- **brushes?**: `string | string[]` — Gets or sets the palette of brushes to use for coloring the dashboard tile.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **categoryAxisMajorStroke?**: `string` — Gets the brush to use for the Category axis major strokes, if applicable.
+- **changingContent?**: `any`
+- **children?**: `any`
+- **crosshairsAnnotationEnabled?**: `string | boolean` — Gets or sets whether annotations are shown along the axis for crosshair values
+- **crosshairsDisplayMode?**: `any` — Gets or sets the crosshairs to be displayed.
+- **dataSource?**: `any` — Gets or sets a collection of data items used to generate the dashboard tile.
+The ItemsSource of this dashboard tile can be a list of objects containing one or more numeric properties.
+Additionally, if the objects in the list implement an enumerable interface,
+the dashboard tile will attempt to delve into the sub-collections when reading through the data source.
+Data binding can be further configured by attributing the data item classes
+with the data intent feature.
+- **density?**: `any` — Gets or sets the display density to use for the toolbar.
+- **excludedProperties?**: `string[]` — Gets or sets a set of property paths that should be excluded from consideration by the category chart.
+- **filterStringErrorsParsing?**: `any`
+- **finalValueAnnotationsVisible?**: `string | boolean` — Gets or sets whether annotations for the final value of each series is displayed on the axis.
+- **groupSorts?**: `string` — Gets or sets the sorts to apply after grouping has been applied.
+- **height?**: `string`
+- **highlightedDataSource?**: `any` — Gets or sets a collection of data items used to generate the dashboard tile.
+The HighlightedItemsSource of this dashboard tile can be a list of objects containing one or more numeric properties.
+Additionally, if the objects in the list implement an enumerable interface,
+the dashboard tile will attempt to delve into the sub-collections when reading through the data source.
+Data binding can be further configured by attributing the data item classes
+with the data intent feature.
+- **highlightedValuesDisplayMode?**: `any` — Gets or sets whether and how to display highlighted values for the series. Note, this is distinct from the highlighting feature that indicates what is closest or under the mouse.
+This property applies to Category Chart and Financial Chart controls.
+- **includedProperties?**: `string[]` — Gets or sets a set of property paths that should be included for consideration by the category chart, leaving the remainder excluded. If null, all properties will be considered.
+- **initialFilter?**: `string` — Gets or sets the filter to apply to the chart. This property will become ignored if the filter is changed outside of this property.
+- **initialGroups?**: `string` — Gets or sets the groupings to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **initialHighlightFilter?**: `string` — Gets or sets the filter to apply to the chart. This property will become ignored if the filter is changed outside of this property.
+- **initialSorts?**: `string` — Gets or sets the sorts to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **initialSummaries?**: `string` — Gets or sets the summaries to apply to the chart. This property will become ignored if sorts are changed outside of this property.
+- **isUserAnnotationsEnabled?**: `string | boolean` — Gets or sets whether initiating user annotations from the toolbar is enabled.
+- **outlines?**: `string | string[]` — Gets or sets the palette of brushes to use for outlines on the dashboard tile.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **selectedSeriesItems?**: `any` — Gets the currently selected data items.  Adding or removing data items from this collection will
+select or deselect the visuals associated with those items.
+- **shouldAvoidAxisAnnotationCollisions?**: `string | boolean` — Gets or sets whether annotations for the final value of each series is displayed on the axis.
+- **shouldDisplayMockData?**: `string | boolean` — Gets or sets whether the dashboard tile should display mock data when the data source has not been provided, if supported for this type of chart.
+- **shouldUseSkeletonStyleForMockData?**: `string | boolean` — Gets or sets whether the dashboard tile should use a faded skeleton style for mock data.
+- **tileTitle?**: `string` — Gets or sets text to display above the plot area.
+- **trendLineBrushes?**: `string | string[]` — Gets or sets the palette of brushes to used for coloring trend lines in this chart.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **trendLineType?**: `any` — Gets or sets the formula used for calculating trend lines in this chart.
+This property applies only to these chart types: point, line, spline, and bubble
+- **trendLineTypes?**: `any` — Gets or sets what trendlines to use in the chart.
+- **userAnnotationInformationRequested?**: `any` — Occurs to request additional information for an annotation being added.
+- **userAnnotationToolTipContentUpdating?**: `any` — Occurs to request additional information for an annotation being added.
+- **validVisualizationTypePriorityThreshold?**: `string | number` — Gets or sets the crosshairs to be displayed.
+- **validVisualizationTypes?**: `DashboardTileVisualizationType[]` — Gets the current set of valid visualization types for the data.
+- **valueLines?**: `any` — Gets or sets what value lines to use in the chart.
+- **valueLinesBrushes?**: `string | string[]` — Gets or sets the palette of brushes to use for coloring the value lines present in the ValueLines property.
+The value provided should be an array of CSS color strings or JavaScript objects defining gradients. Optionally the first element can be a string reading "RGB" or "HSV" to specify the interpolation mode of the collection
+- **valueLinesGlobalAverageBrush?**: `string` — Gets or sets the color for GlobalAverage value lines.
+- **valueLinesGlobalMaximumBrush?**: `string` — Gets or sets the color for GlobalMaximum value lines.
+- **valueLinesGlobalMinimumBrush?**: `string` — Gets or sets the color for GlobalMinimum value lines.
+- **visualizationType?**: `string | DashboardTileVisualizationType` — Gets or sets the crosshairs to be displayed.
+- **width?**: `string`
+
+## Enumerations
+
+### [DashboardTileVisualizationType](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/enums/DashboardTileVisualizationType)
+
+- **AreaChart** = 1
+- **Auto** = 0
+- **BarChart** = 2
+- **BubbleChart** = 3
+- **BulletGraph** = 4
+- **CandlestickChart** = 5
+- **ChoroplethMap** = 6
+- **ColumnChart** = 8
+- **DoughnutChart** = 9
+- **FunnelChart** = 10
+- **Grid** = 11
+- **HeatmapMap** = 12
+- **HighDensityMap** = 13
+- **KPI** = 14
+- **LinearGauge** = 15
+- **LineChart** = 16
+- **Map** = 17
+- **OHLCChart** = 18
+- **PieChart** = 19
+- **PolarChart** = 20
+- **RadialGauge** = 7
+- **RadialLineChart** = 21
+- **ScatterChart** = 23
+- **ScatterMap** = 22
+- **SparklineChart** = 24
+- **SplineAreaChart** = 25
+- **SplineChart** = 26
+- **StackedAreaChart** = 27
+- **StackedBarChart** = 28
+- **StackedColumnChart** = 29
+- **StepAreaChart** = 30
+- **StepLineChart** = 31
+- **TextGauge** = 32
+- **TextView** = 33
+- **TimeSeriesChart** = 34
+- **Treemap** = 35

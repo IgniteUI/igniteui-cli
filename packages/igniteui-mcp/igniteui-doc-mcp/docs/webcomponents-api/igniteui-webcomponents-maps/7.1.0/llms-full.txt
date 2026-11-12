@@ -1,0 +1,543 @@
+# Ignite UI for Web Components Maps v7.1.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for Web Components Maps package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Web Components
+Package: igniteui-webcomponents-maps
+Version: 7.1.0
+
+## Classes
+
+### [IgcArcGISOnlineMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcArcGISOnlineMapImagery)
+UI element class used to display ArcGIS Online Map imagery in the IgxGeographicMap.Component
+
+- **constructor**(): IgcArcGISOnlineMapImagery
+- **defaultTokenTimeout**: `number` — Gets or Sets the Default Token Timeout before the Token Expires, this value is in Minutes
+- **isMapPublic**: `boolean` — Gets or sets the IsMapPublic variable.  A value of false requires authentication parameters.
+- **mapServerUri**: `string` — Gets or sets the map tile server uri.
+- **password**: `string` — Gets or sets the Password.
+- **refererUri**: `string` — Contains the User Supplied Referer Uri to be used in Token Generation.
+- **tokenGenerationEndPoint**: `string` — Gets or Sets the current endpoint to retrieve the token.
+- **userName**: `string` — Gets or sets the UserName.
+- **userToken**: `string` — Gets or sets the UserToken.
+- **acquireNewToken**(): void — Retreives a new token based on the preconfigured parameters and updates the UserToken field, Normal this is called automatically.
+The is provided to the end-user to allow them to reteive tokens on their onw.
+
+### [IgcAzureMapsImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcAzureMapsImagery)
+UI element class used to display AzureMaps imagery in the GeographicMap.
+
+- **constructor**(): IgcAzureMapsImagery
+- **apiKey**: `string` — Gets or sets a subscription key required by the Azure Maps imagery service.
+For more information see https://learn.microsoft.com/en-us/azure/azure-maps/azure-maps-authentication#shared-key-authentication.
+- **apiVersion**: `string` — Gets or sets the API version used by the Azure Maps imagery service.
+For more information see Render API version in https://learn.microsoft.com/en-us/azure/azure-maps/rest-api-azure-maps#latest-release.
+- **cultureName**: `string` — Gets or sets the culture name for this tile source.
+- **imageryStyle**: `AzureMapsImageryStyle` — Gets or sets a map style of the Azure Maps imagery tiles.
+For example: Road map style.
+- **localizedView**: `string` — Gets or sets a string that specifies which maps to show for geopolitically disputed regions.
+For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#localizedmapview.
+- **timestamp**: `Date` — Gets or sets a specific date and time for the map.
+Note that not all tilesets support this option and those that do might have restrictions.
+For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#uri-parameters.
+
+### [IgcBingMapsMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcBingMapsMapImagery)
+UI element class used to display BingMapsMap imagery in the IgxGeographicMap.Component
+
+- **constructor**(): IgcBingMapsMapImagery
+- **actualBingImageryRestUri**: `string` — Gets or sets the Actual Bing Imagery Rest Uri.
+- **actualSubDomains**: `IgcSubDomainsCollection` — Gets or sets the actual collection of image uri subdomains.
+- **actualTilePath**: `string` — Gets or sets the actual map tile image uri.
+- **apiKey**: `string` — Gets or sets an API key required by the Bing Maps imagery service.
+This key must be obtained from the http://www.bingmapsportal.com website.
+- **bingImageryRestUri**: `string` — Gets or sets the Bing Imagery Rest Uri.
+- **cultureName**: `string` — Gets or sets the culture name for this tile source.
+- **imageryStyle**: `BingMapsImageryStyle` — Gets or sets a map style of the Bing Maps imagery tiles.
+For example: Aerial, AerialWithLabels, or Road map style.
+- **isDeferredLoad**: `boolean` — Gets or sets whether the Bing Maps service should be auto-initialized upon valid property values.
+- **isInitialized**: `boolean` — Gets a status whether the Bing Maps service is initialized.
+- **subDomains**: `IgcSubDomainsCollection` — Gets or sets the collection of image uri subdomains.
+- **tilePath**: `string` — Gets or sets the map tile image uri.
+- **requestMapSettings**(): void — Will Connect to the Bing Rest API and retrieve the required TilePath and Subdomains from the service.  This requires a valid API key to already be set.
+
+### [IgcCustomMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcCustomMapImagery)
+Represents a CustomMapImagery MapImagery
+
+- **constructor**(): IgcCustomMapImagery
+- **getTileImageUri**: `any` — Raised when URI for tiles should be provided
+
+### [IgcGeographicContourLineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicContourLineSeriesComponent)
+Represents a class for Geographic Contour Series displayed on a map.
+
+- **constructor**(): IgcGeographicContourLineSeriesComponent
+- static **htmlTagName**: `string`
+- **actualFillScale**: `IgcValueBrushScaleComponent` — Gets actual fill scale that is set on the FillScale property or default FillScale
+- **fillScale**: `IgcValueBrushScaleComponent` — The ValueBrushScale to use when determining Brushes for each contour line, based on the values found in ValueMemberPath.
+- **isLineContour**: `boolean` — Gets whether the current series shows a line contour shape.
+- **triangulationStatusChanged**: `any` — Raised when the status of an ongoing Triangulation has changed.
+- **valueMemberPath**: `string` — The name of the property from which to retrieve the numeric values from the ItemsSource items.
+- **valueResolver**: `IgcContourValueResolverComponent` — The ContourValueResolver used to determine the numeric values of contours.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
+### [IgcGeographicHighDensityScatterSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicHighDensityScatterSeriesComponent)
+Series class for a geographic map with points marked at given locations.
+This is the geographic equivalent of a HighDensityScatterSeries.
+
+- **constructor**(): IgcGeographicHighDensityScatterSeriesComponent
+- static **htmlTagName**: `string`
+- **heatMaximum**: `number` — Gets or sets the value that maps to the maximum heat color.
+- **heatMaximumColor**: `string` — Gets or sets the color to use for the maximum end of the scale.
+- **heatMinimum**: `number` — Gets or sets the density value that maps to the minimum heat color.
+- **heatMinimumColor**: `string` — Gets or sets the color to use for the minimum end of the scale.
+- **isPixel**: `boolean` — Gets whether the current series shows pixels.
+- **latitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the latitude coordinate of the symbol.
+- **longitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the longitude coordinate of the symbol.
+- **mouseOverEnabled**: `boolean` — Gets or sets the whether the chart reacts to mouse move events.
+- **pointExtent**: `number` — Gets or sets the the pixel extent of the square data points that are rendered.
+- **progressiveLoad**: `boolean` — Gets or sets the whether to progressively load the data into the chart.
+- **progressiveLoadStatusChanged**: `any` — Raised when the progressive loading state of the series has changed.
+- **progressiveStatus**: `number` — Represents the current status of the progressive load of the series. It will range from 0 to 100, where 100 is fully loaded.
+- **useBruteForce**: `boolean` — Gets or sets the whether to use use brute force mode.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcGeographicMapComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMapComponent)
+
+- **constructor**(): IgcGeographicMapComponent
+- **actualSeries**: `IgcSeriesComponent[]` — The series actually present in the chart. Do not directly modify this array.
+This array's contents can be modified by causing Angular to reproject the child content.
+Or adding and removing series from the manual series collection on the series property.
+- **contentSeries**: `IgcSeriesComponent[]`
+- static **htmlTagName**: `string`
+- **actualWindowScale**: `number` — A number between 0 and 1 determining the scale of the horizontal/vertical zoom.
+This property is effectively a shortcut to the Width/Height of the ActualWindowRect property.
+- **actualWorldRect**: `IgRect` — Gets the actual value of the WorldRect.
+- **backgroundContent**: `IgcGeographicMapImagery` — An imagery to display behind all series, inside the viewport of the IgxGeographicMapComponent control.
+- **backgroundTilingMode**: `MapBackgroundTilingMode` — Gets or sets if the map should horizontally wrap.
+- **dataSource**: `any`
+- **height**: `string`
+- **imageTilesReady**: `any` — This event is fired whenever the image tiles transition from a loading state (e.g. some are fading in) to a loaded state.
+- **isHorizontalWrappingEnabled**: `boolean` — Gets or sets if the map should horizontally wrap.
+- **isMap**: `boolean` — Indicates if this SeriesViewer is a map.
+- **legend**: `any` — Gets or sets the legend used for the current chart.
+- **resizeBehavior**: `MapResizeBehavior` — Gets or sets the behavior to use during resize.
+- **series**: `IgcSeriesCollection` — A collection or manually added series for the chart.
+- **suppressZoomResetOnWorldRectChange**: `boolean` — Gets or sets whether skip resetting the zoom when the world rect changes.
+- **useWorldRectForZoomBounds**: `boolean` — Gets or sets whether to use the uncoerced world rect to constrain the zoom bounds.
+- **width**: `string`
+- **windowScale**: `number` — A number between 0 and 1 determining the scale of the horizontal/vertical zoom.
+This property is effectively a shortcut to the Width/Height of the WindowRect property.
+- **worldRect**: `IgRect` — Gets or sets the world bounding rectangle.
+- **xAxis**: `IgcNumericXAxisComponent` — The X-axis for this IgxGeographicMap.Component
+Under normal circumstances, this property should not be set in application code.  By default, it will be set to a numeric axis with a spherical mercator scaler.
+- **yAxis**: `IgcNumericYAxisComponent` — The Y-axis for this IgxGeographicMap.Component
+Under normal circumstances, this property should not be set in application code.  By default, it will be set to a numeric axis with a spherical mercator scaler.
+- **zoomable**: `boolean` — Gets or sets zoomability of the current control
+- **zoomIsReady**: `boolean` — Gets whether or not the control is ready for zooming
+- static **observedAttributes**: `string[]`
+- **afterContentInit**(): void
+- **bindData**(): void
+- **clearTileCache**(): void — Removes all cached tile images from the map imagery assigned to the map's background content.
+- **connectedCallback**(): void
+- **convertGeographicToZoom**(geographic: IgRect, extraPixelPadding: number): IgRect
+- **deferredRefresh**(): void — Calls for a deferred refresh to the GeographicMap's background.
+- **destroy**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any — Returns the chart visuals expressed as a ChartVisualData object.
+- **findByName**(name: string): any
+- **getActualWindowScaleHorizontal**(): number — Gets actual window scale for horizontal dimension of the control
+- **getActualWindowScaleVertical**(): number — Gets actual window scale for vertical dimension of the control
+- **getCurrentActualWorldRect**(): IgRect — Gets current world rect in geographic coordinates
+- **getGeographicFromZoom**(windowRect: IgRect): IgRect — Given a WindowRect and the current plot area, get the geographic region represented by that WindowRect.
+- **getGeographicPoint**(pixelCoordinate: IgPoint): IgPoint — Convert a pixel-based coordinate to a geographic coordinate.
+- **getPixelPoint**(geographicCoordinate: IgPoint): IgPoint — Convert a geographic coordinate to a pixel-based coordinate.
+- **getWindowPoint**(geographicCoordinate: IgPoint): IgPoint — Convert a geographic coordinate to a pixel-based coordinate.
+- **getZoomFromGeographicPoints**(northWest: IgPoint, southEast: IgPoint): IgRect
+- **getZoomFromGeographicRect**(geographic: IgRect): IgRect — Given the current plot area of the control and a geographic region, get the WindowRect that would encompass that geographic region.
+- **getZoomRectFromGeoRect**(geographic: IgRect): IgRect — Given the current plot area of the control and a geographic region, get the WindowRect that would encompass that geographic region.
+- **notifyContainerResized**(): void
+- **styleUpdated**(): void — Notifies the chart that the CSS styles in effect have been updated.
+- **updateWorldRect**(worldRect: IgRect): void — Updates world rect in geographic coordinates
+- **updateZoomWindow**(zoomWindow: IgRect): void — Updates zoom window using window coordinates
+- **zoomToGeographic**(geographic: IgRect): void — Zoom in to the geographic region specified, when possible (may need to wait for map to be initialized).
+- static **register**(): void
+
+### [IgcGeographicMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMapImagery)
+Control class used for displaying multi-scale TileSource imagery.  Designed to be used for background imagery in the IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicMapImagery
+- **cancellingImage**: `any` — Event raised when an image is being downloaded.
+- **deferralHandler**: `IMapRenderDeferralHandler` — The deferral handler to use for deferred refreshes.
+- **downloadingImage**: `any` — Event raised when an image is being downloaded.
+- **geographicMap**: `IgcGeographicMapComponent` — The IgxGeographicMapComponent which is hosting this GeographicMapImagery control.
+- **imagesChanged**: `any` — Event raised when tile images have changed.
+- **imageTilesReady**: `any` — Event raised when the image tiles have been downloaded.
+- **isHorizontalWrappingEnabled**: `boolean` — Gets or sets if horizontal wrapping is enabled for the imagery.
+- **opacity**: `number`
+- **referer**: `string` — Gets or sets the referer sent in the headers of the tile request.
+- **userAgent**: `string` — Gets or sets the UserAgent sent in the headers of the tile request.
+- **windowRect**: `IgRect` — A rectangle representing the portion of the map imagery currently in view.
+A rectangle at X=0, Y=0 with a Height and Width of 1 implies the entire plotting area is in view.  A Height and Width of .5 would imply that the view is halfway zoomed in.
+- **clearTileCache**(): void — Removes all cached tile Imagery from the
+- **findByName**(name: string): any
+- static **_createFromInternal**(internal: any): IgcGeographicMapImagery
+
+### [IgcGeographicMapSeriesHostComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMapSeriesHostComponent)
+Base class for hosting chart series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicMapSeriesHostComponent
+- **coercionMethods**: `any` — Gets or sets the coercion methods to use when loading data from data sources.
+Should be specified before setting any member paths, if being used. Setting it later
+will not cause data to be reimported into the chart.
+- **hasMarkers**: `boolean` — Gets whether this series supports markers
+- **isGeographic**: `boolean` — Checks if this control is geographic coordinate system
+- **visibleFromScale**: `number` — The minimum scale at which this series becomes visible.
+The default value for this property is 1.0, which means the series will always be visible.  At a VisibleFromScale setting of 0.0, the series will never be visible.  At a VisibleFromScale setting of 0.5, the series will be visible as long as the map is zoomed in to at least 200%.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **getItem**(world: IgPoint): any — Gets the item that is the best match for the specified world coordinates.
+- **getItemSpan**(): number — For a category plotted series, returns the current width of the items within the categories. This only returns a value if the items have some form of width (e.g. columns, bars, etc.) otherwise 0 is returned.
+- **getItemValue**(item: any, memberPathName: string): any
+- **getMemberPathValue**(memberPathName: string): string — Gets the value of a requested member path from the series.
+- **getNextOrExactIndex**(world: IgPoint, skipUnknowns: boolean): number
+- **getPreviousOrExactIndex**(world: IgPoint, skipUnknowns: boolean): number
+- **getSeriesHighValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
+- **getSeriesHighValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
+- **getSeriesLowValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
+- **getSeriesLowValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
+- **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
+- **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
+- **getSeriesValueFromSeriesPixel**(mouse: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
+- **getSeriesValueMarkerBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value marker bounding box within the series that has the best value match for the world position provided.
+- **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
+- **getSeriesValuePositionFromSeriesPixel**(mouse: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
+- **notifyIndexedPropertiesChanged**(): void — Called to notify about changes to indexed-based properties, e.g. Brushes, Outlines, MarkerBrushes, MarkerOutlines and refresh series
+- **renderSeries**(animate: boolean): void — Renders the series.
+- **styleUpdated**(): void — Called when this series' Style is updated.
+
+### [IgcGeographicMarkerSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMarkerSeriesBaseComponent)
+Base class for creating marker series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicMarkerSeriesBaseComponent
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicMarkerSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMarkerSeriesComponent)
+Base class for creating marker series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicMarkerSeriesComponent
+- **actualMarkerBrush**: `string` — Gets the effective marker brush for the current series object.
+- **actualMarkerOutline**: `string` — Gets the effective marker outline for the current series object.
+- **actualMarkerTemplate**: `IgDataTemplate` — Gets the effective marker template for the current series object.
+- **markerBrush**: `string` — Gets or sets the brush that specifies how the current series object's marker interiors are painted.
+- **markerFillMode**: `MarkerFillMode` — Gets or sets whether the marker fill is based on the marker outline of the series rather than the marker brushes collection.
+- **markerOutline**: `string` — Gets or sets the brush that specifies how the current series object's marker outlines are painted.
+- **markerOutlineMode**: `MarkerOutlineMode` — Gets or sets whether the marker outline is based on the marker brush of the series rather than the marker outlines collection.
+- **markerTemplate**: `IgDataTemplate` — Gets or sets the MarkerTemplate for the current series object.
+- **markerThickness**: `number` — Gets or sets thickness of the marker outline
+- **markerType**: `MarkerType` — Gets or sets the marker type for the current series object.
+If the MarkerTemplate property is set, the setting of the MarkerType property will be ignored.
+- **maximumMarkers**: `number` — Gets or sets the maximum number of markerItems displayed by the current series.
+If more than the specified number of markerItems are visible, the series will automatically
+choose a representative set.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicPolylineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicPolylineSeriesComponent)
+Series class used for displaying multiple polylines, in a geographic context, for datasources which contain multiple lists of points.
+
+- **constructor**(): IgcGeographicPolylineSeriesComponent
+- static **htmlTagName**: `string`
+- **isPolyline**: `boolean` — Gets whether the current series shows a polyline shape.
+- **shapeFill**: `string` — Gets or sets the fill brush.
+- **shapeOpacity**: `number` — Gets or sets the opacity.
+- **shapeStroke**: `string` — Gets or sets the stroke brush.
+- **shapeStrokeThickness**: `number` — Gets or sets the stroke thickness.
+- **styleShape**: `any`
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **ensureShapeStyle**(): void
+- static **register**(): void
+
+### [IgcGeographicProportionalSymbolSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicProportionalSymbolSeriesBaseComponent)
+Base class for creating marker series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicProportionalSymbolSeriesBaseComponent
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicProportionalSymbolSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicProportionalSymbolSeriesComponent)
+Series class for a geographic map with points marked at given locations.
+This is the geographic equivalent of a ScatterSeries.
+
+- **constructor**(): IgcGeographicProportionalSymbolSeriesComponent
+- static **htmlTagName**: `string`
+- **assigningScatterMarkerStyle**: `any` — Event raised when Assigning Scatter Marker Style
+- **assigningScatterStyle**: `any` — Event raised when Assigning Category Style
+- **fillMemberPath**: `string` — Gets or sets the fill mapping property for the current series object.
+- **fillScale**: `IgcBrushScaleComponent` — Gets or sets the brush scale for the marker brush.
+- **fillScaleUseGlobalValues**: `boolean` — Gets or sets the whether or not the FillScale uses global values of FillMemberPath of multiple series.
+This setting applies only if multiple series are using the same FillScale.
+- **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
+- **isCustomScatterMarkerStyleAllowed**: `boolean` — Gets or sets whether this Scatter series should allow custom style overrides of its individual marker visuals.
+- **isCustomScatterStyleAllowed**: `boolean` — Gets or sets whether this Scatter series should allow custom style overrides of its individual visuals.
+- **itemSearchMode**: `ScatterItemSearchMode` — Gets or sets the mode the series will use to find the closest point to the cursor.
+- **itemSearchThreshold**: `number` — Gets or sets the threshold to use when searching for items using ItemSearchMode.
+- **labelMemberPath**: `string` — Gets or sets the Label mapping property for the current series object.
+- **latitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the latitude coordinate of the symbol.
+- **longitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the longitude coordinate of the symbol.
+- **markerBrushBrightness**: `number` — Gets or sets brightness of the marker fill. Using negative value will change marker fill to darker color and positive value will change marker fill to brighter color
+Note you can use any values between minimum value of -1 (darkest fill) and maximum value of 1 (brightest fill)
+- **markerOutlineBrightness**: `number` — Gets or sets brightness of the marker outline. Using negative value will change marker outline to darker color and positive value will change marker outline to brighter color
+Note you can use any values between minimum value of -1 (darkest outline) and maximum value of 1 (brightest outline)
+- **markerOutlineUsesFillScale**: `boolean` — Gets or sets whether or not the marker outline should use FillScale like the marker fill does.
+This setting applies only if the current series has a FillScale set and it overrides MarkerOutline setting.
+- **radiusMemberPath**: `string` — Gets or sets the radius mapping property for the current series object.
+- **radiusScale**: `IgcSizeScaleComponent` — Gets or sets the radius size scale for the bubbles.
+- **radiusScaleUseGlobalValues**: `boolean` — Gets or sets the whether or not the RadiusScale uses global values of RadiusMemberPath of multiple series.
+This setting applies only if multiple series are using the same RadiusScale.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
+### [IgcGeographicScatterAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicScatterAreaSeriesComponent)
+Series class which draws a colored 2D surface, in a geographic context, based on a triangulation of XY data with numeric values assigned to each point.
+
+- **constructor**(): IgcGeographicScatterAreaSeriesComponent
+- static **htmlTagName**: `string`
+- **actualColorScale**: `IgcColorScaleComponent` — Gets actual color scale that is set on ColorScale property or default ColorScale
+- **colorMemberPath**: `string` — The name of the property on each data item containing a numeric value which can be converted to a color by the ColorScale.
+- **colorScale**: `IgcColorScaleComponent` — The ColorScale used to resolve the color values of points in the series.
+- **isArea**: `boolean` — Gets whether the current series shows an area shape.
+- **triangulationStatusChanged**: `any` — Raised when the status of an ongoing Triangulation has changed.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- **updateActualColorScale**(): void — Updates ActualColorScale properties using HostedSeries's ColorScale properties
+- static **register**(): void
+
+### [IgcGeographicShapeSeriesBaseBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesBaseBaseComponent)
+Base class for hosting chart series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicShapeSeriesBaseBaseComponent
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicShapeSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesBaseComponent)
+Base class for series which render polygons on a map.
+
+- **constructor**(): IgcGeographicShapeSeriesBaseComponent
+- **assigningShapeMarkerStyle**: `any` — Event raised when Assigning Shape Marker Style
+- **assigningShapeStyle**: `any` — Event raised when Assigning Shape Style. Note, if using this event, or highlighting, its best to avoid use of ShapeStyle/StyleShape/ShapeStyleSelector.
+- **databaseSource**: `string`
+- **fillMemberPath**: `string` — Gets or sets the fill mapping property for the current series object.
+- **fillScale**: `IgcBrushScaleComponent` — Gets or sets the brush scale for the fill brush of markers.
+- **fillScaleUseGlobalValues**: `boolean` — Gets or sets whether or not the FillScale uses global min/max values of FillMemberPath from multiple series.
+This setting applies only if multiple series are using the same FillScale.
+- **isCustomShapeMarkerStyleAllowed**: `boolean` — Gets or sets whether this Shape series should allow custom style overrides of its individual marker visuals.
+- **isCustomShapeStyleAllowed**: `boolean` — Gets or sets whether this Shape series should allow custom style overrides of its individual visuals.
+- **itemSearchMode**: `ShapeItemSearchMode` — Gets or sets the mode the series will use to find the closest point to the cursor.
+- **itemSearchPointsThreshold**: `number` — Gets or sets the points threshold to use when searching for items using ItemSearchMode.
+- **itemSearchThreshold**: `number` — Gets or sets the threshold to use when searching for items using ItemSearchMode.
+- **shapeDataSource**: `string`
+- **shapefileDataSource**: `IgcShapeDataSource` — Set a shapefile datasource to use with the series.
+- **shapeFilterResolution**: `number` — The resolution at which to filter out shapes in the series.  For example, if the ShapeFilterResolution is set to 3, then elements with a bounding rectangle smaller than 3 X 3 pixels will be filtered out.
+In the case of GeographicPolylineSeries, the resolution is compared to either dimension, rather than both.  In other words, a polyline will not be filtered if its height or its width exceeds the value of this property.  Whereas with a ShapeSeries, both the height and the width must exceed the value of this property.
+- **shapeMemberPath**: `string` — The name of the property on ItemsSource items which, for each shape, contains a list of points to be converted to a polygon.
+To be consistent with the Shapefile technical description, it is expected that each list of points is defined as an IEnumerable of IEnumerable of Point, or in other words, a list of lists of points.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+
+### [IgcGeographicShapeSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesComponent)
+Series class which renders polygons as Paths, in a geographic context, based on lists of points in the ItemsSource.
+
+- **constructor**(): IgcGeographicShapeSeriesComponent
+- static **htmlTagName**: `string`
+- **actualMarkerBrush**: `string` — Gets the effective marker brush for the current series object.
+- **actualMarkerOutline**: `string` — Gets the effective marker outline for the current series object.
+- **actualMarkerTemplate**: `IgDataTemplate` — Gets the effective marker template for the current series object.
+- **isPolygon**: `boolean` — Gets whether the current series shows a polygon shape.
+- **markerBrush**: `string` — Gets or sets the brush that specifies how the current series object's marker interiors are painted.
+- **markerCollisionAvoidance**: `CollisionAvoidanceType` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
+- **markerFillMode**: `MarkerFillMode` — Gets or sets whether the marker brush is based on the marker outline of the series rather than the marker brushes collection.
+- **markerOutline**: `string` — Gets or sets the brush that specifies how the current series object's marker outlines are painted.
+- **markerOutlineMode**: `MarkerOutlineMode` — Gets or sets whether the marker outline is based on the marker brush of the series rather than the marker outlines collection.
+- **markerTemplate**: `IgDataTemplate` — Gets or sets the MarkerTemplate for the current series object.
+- **markerThickness**: `number` — Gets or sets thickness of the marker outline
+- **markerType**: `MarkerType` — Gets or sets the marker type for the current series object.
+If the MarkerTemplate property is set, the setting of the MarkerType property will be ignored.
+- **shapeFill**: `string` — Gets or sets the fill brush.
+- **shapeOpacity**: `number` — Gets or sets the opacity.
+- **shapeStroke**: `string` — Gets or sets the stroke brush.
+- **shapeStrokeThickness**: `number` — Gets or sets the stroke thickness.
+- **styleShape**: `any`
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **ensureShapeStyle**(): void
+- static **register**(): void
+
+### [IgcGeographicSymbolSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicSymbolSeriesBaseComponent)
+Base class for creating marker series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicSymbolSeriesBaseComponent
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicSymbolSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicSymbolSeriesComponent)
+Series class for a geographic map with points marked at given locations.
+This is the geographic equivalent of a ScatterSeries.
+
+- **constructor**(): IgcGeographicSymbolSeriesComponent
+- static **htmlTagName**: `string`
+- **assigningScatterMarkerStyle**: `any` — Event raised when Assigning Scatter Marker Style
+- **assigningScatterStyle**: `any` — Event raised when Assigning Category Style
+- **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
+- **isCustomScatterMarkerStyleAllowed**: `boolean` — Gets or sets whether this Scatter series should allow custom style overrides of its individual marker visuals.
+- **isCustomScatterStyleAllowed**: `boolean` — Gets or sets whether this Scatter series should allow custom style overrides of its individual visuals.
+- **itemSearchMode**: `ScatterItemSearchMode` — Gets or sets the mode the series will use to find the closest point to the cursor.
+- **itemSearchThreshold**: `number` — Gets or sets the threshold to use when searching for items using ItemSearchMode.
+- **latitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the latitude coordinate of the symbol.
+- **longitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the longitude coordinate of the symbol.
+- **markerCollisionAvoidance**: `CollisionAvoidanceType` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcGeographicTileSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicTileSeriesComponent)
+Series class used for displaying a tile set, and using shapes to define the areas that should be rendered.
+
+- **constructor**(): IgcGeographicTileSeriesComponent
+- static **htmlTagName**: `string`
+- **imageTilesReady**: `any` — This event is fired whenever the image tiles transition from a loading state (e.g. some are fading in) to a loaded state.
+- **isTile**: `boolean` — Gets whether the current series shows a tile imagery.
+- **tileImagery**: `IgcGeographicMapImagery` — The MapImagery which is used to provide the tiles for display.
+- static **observedAttributes**: `string[]`
+- **clearTileCache**(): void — Removes all cached tile Imagery from the
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
+### [IgcGeographicXYTriangulatingSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicXYTriangulatingSeriesBaseComponent)
+Base class for hosting chart series in a IgxGeographicMap.Component
+
+- **constructor**(): IgcGeographicXYTriangulatingSeriesBaseComponent
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcGeographicXYTriangulatingSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicXYTriangulatingSeriesComponent)
+Base class for geographic series which triangulate XY data prior to rendering.
+
+- **constructor**(): IgcGeographicXYTriangulatingSeriesComponent
+- **latitudeMemberPath**: `string` — The name of the property from which to extract the Latitude for each item in the ItemsSource.
+- **longitudeMemberPath**: `string` — The name of the property from which to extract the Longitude for each item in the ItemsSource.
+- **trianglesSource**: `any[]` — The source of triangulation data.
+This property is optional.  If it is left as null, the triangulation will be created based on the items in the ItemsSource.  Triangulation is a demanding operation, so the runtime performance will be better when specifying a TriangulationSource, especially when a large number of data items are present.
+- **triangleVertexMemberPath1**: `string` — The name of the property of the TrianglesSource items which, for each triangle, contains the index of the first vertex point in the ItemsSource.
+- **triangleVertexMemberPath2**: `string` — The name of the property of the TrianglesSource items which, for each triangle, contains the index of the second vertex point in the ItemsSource.
+- **triangleVertexMemberPath3**: `string` — The name of the property of the TrianglesSource items which, for each triangle, contains the index of the third vertex point in the ItemsSource.
+- **triangulationDataSource**: `string`
+- static **observedAttributes**: `string[]`
+
+### [IgcImagesChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcImagesChangedEventArgs)
+
+- **constructor**(): IgcImagesChangedEventArgs
+
+### [IgcImageTilesReadyEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcImageTilesReadyEventArgs)
+
+- **constructor**(): IgcImageTilesReadyEventArgs
+
+### [IgcOpenStreetMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcOpenStreetMapImagery)
+UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.Component
+
+- **constructor**(): IgcOpenStreetMapImagery
+- **tilePath**: `string` — Gets or sets the tile path URL.
+
+### [IgcSubDomainsCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcSubDomainsCollection)
+
+- **constructor**(list?: string[]): IgcSubDomainsCollection
+
+### [IgcTileGeneratorMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcTileGeneratorMapImagery)
+Represents a CustomMapImagery MapImagery
+
+- **constructor**(): IgcTileGeneratorMapImagery
+- **tileGenerator**: `ITileGenerator` — Gets or sets the culture name for this tile source.
+
+### [IgcTileSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcTileSeriesComponent)
+Represents a tile series class that can render imagery tiles
+
+- **constructor**(): IgcTileSeriesComponent
+- static **htmlTagName**: `string`
+- **isTile**: `boolean` — Gets whether the current series shows a tile imagery.
+- **tileImagery**: `IgcGeographicMapImagery` — The MapImagery which is used to provide the tiles for display.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **deferredRefresh**(): void — Defers rendering of the series
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
+## Enumerations
+
+### [AzureMapsImageryStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/enums/AzureMapsImageryStyle)
+Describes available map styles for the Azure Maps imagery.
+
+- **DarkGrey** = 2
+- **HybridDarkGreyOverlay** = 6
+- **HybridRoadOverlay** = 5
+- **LabelsDarkGreyOverlay** = 4
+- **LabelsRoadOverlay** = 3
+- **Road** = 0
+- **Satellite** = 1
+- **TerraOverlay** = 7
+- **TrafficAbsoluteOverlay** = 10
+- **TrafficDelayOverlay** = 13
+- **TrafficReducedOverlay** = 14
+- **TrafficRelativeDarkOverlay** = 12
+- **TrafficRelativeOverlay** = 11
+- **WeatherInfraredOverlay** = 9
+- **WeatherRadarOverlay** = 8
+
+### [BingMapsImageryStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/enums/BingMapsImageryStyle)
+Describes available map styles for the Bing Maps imagery.
+
+- **Aerial** = 0 — Specifies the Aerial map style without road or labels overlay.
+- **AerialWithLabels** = 1 — Specifies the Aerial map style with road and labels overlay.
+- **CanvasDark** = 3 — Specifies a dark version of the Roads maps.
+- **CanvasGray** = 5 — Specifies a grayscale version of the Roads maps.
+- **CanvasLight** = 4 — Specifies a lighter version of the Roads maps.
+- **Road** = 2 — Specifies the Roads map style without aerial overlay.
+
+### [MapBackgroundTilingMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/enums/MapBackgroundTilingMode)
+Indicates the desired behavior for the map on resizing.
+
+- **Auto** = 0 — Indicates that the map should decide the desired tiling mode automatically.
+- **NonWrapped** = 1 — Map will not wrap tiles around the origin.
+- **Wrapped** = 2 — Map will wrap tiles around the origin.
+
+### [MapResizeBehavior](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/enums/MapResizeBehavior)
+Indicates the desired behavior for the map on resizing.
+
+- **Auto** = 0 — Indicates that the map should decide the desired resize mode automatically.
+- **MaintainCenterPosition** = 2 — Map will attempt to keep the center position static during resize.
+- **MaintainTopLeftPosition** = 1 — Map will attempt to keep the top left position static during resize.

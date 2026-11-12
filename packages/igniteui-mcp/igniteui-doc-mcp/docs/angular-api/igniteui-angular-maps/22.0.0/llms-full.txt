@@ -1,10 +1,10 @@
-# Ignite UI for Angular Maps v22.0.0 — Full API Reference
+# Ignite UI for Angular Maps v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Maps package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Maps package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-maps
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -25,20 +25,6 @@ UI element class used to display ArcGIS Online Map imagery in the IgxGeographicM
 - **acquireNewToken**(): void — Retreives a new token based on the preconfigured parameters and updates the UserToken field, Normal this is called automatically.
 The is provided to the end-user to allow them to reteive tokens on their onw.
 
-### [IgxArcGISOnlineMapImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxArcGISOnlineMapImageryDynamicModule)
-
-- **constructor**(): IgxArcGISOnlineMapImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxArcGISOnlineMapImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxArcGISOnlineMapImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxArcGISOnlineMapImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxArcGISOnlineMapImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxArcGISOnlineMapImageryModule)
-
-- **constructor**(): IgxArcGISOnlineMapImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxArcGISOnlineMapImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxArcGISOnlineMapImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxArcGISOnlineMapImageryModule, never, [any], never>`
-
 ### [IgxAzureMapsImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxAzureMapsImagery)
 UI element class used to display AzureMaps imagery in the GeographicMap.
 
@@ -56,20 +42,6 @@ For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/
 - **timestamp**: `Date` — Gets or sets a specific date and time for the map.
 Note that not all tilesets support this option and those that do might have restrictions.
 For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#uri-parameters.
-
-### [IgxAzureMapsImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxAzureMapsImageryDynamicModule)
-
-- **constructor**(): IgxAzureMapsImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxAzureMapsImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxAzureMapsImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxAzureMapsImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxAzureMapsImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxAzureMapsImageryModule)
-
-- **constructor**(): IgxAzureMapsImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxAzureMapsImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxAzureMapsImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxAzureMapsImageryModule, never, [any], never>`
 
 ### [IgxBingMapsMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxBingMapsMapImagery)
 UI element class used to display BingMapsMap imagery in the IgxGeographicMap.Component
@@ -95,39 +67,11 @@ For example: Aerial, AerialWithLabels, or Road map style.
 - **tilePath**: `string` — Gets or sets the map tile image uri.
 - **requestMapSettings**(): void — Will Connect to the Bing Rest API and retrieve the required TilePath and Subdomains from the service.  This requires a valid API key to already be set.
 
-### [IgxBingMapsMapImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxBingMapsMapImageryDynamicModule)
-
-- **constructor**(): IgxBingMapsMapImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBingMapsMapImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBingMapsMapImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBingMapsMapImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxBingMapsMapImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxBingMapsMapImageryModule)
-
-- **constructor**(): IgxBingMapsMapImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBingMapsMapImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBingMapsMapImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBingMapsMapImageryModule, never, [any], never>`
-
 ### [IgxCustomMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxCustomMapImagery)
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgxCustomMapImagery
 - **getTileImageUri**: `EventEmitter<any>` — Raised when URI for tiles should be provided
-
-### [IgxCustomMapImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxCustomMapImageryDynamicModule)
-
-- **constructor**(): IgxCustomMapImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxCustomMapImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxCustomMapImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxCustomMapImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxCustomMapImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxCustomMapImageryModule)
-
-- **constructor**(): IgxCustomMapImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxCustomMapImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxCustomMapImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxCustomMapImageryModule, never, [any], never>`
 
 ### [IgxGeographicContourLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicContourLineSeriesComponent)
 Represents a class for Geographic Contour Series displayed on a map.
@@ -143,21 +87,6 @@ Represents a class for Geographic Contour Series displayed on a map.
 - **valueMemberPath**: `string` — The name of the property from which to retrieve the numeric values from the ItemsSource items.
 - **valueResolver**: `IgxContourValueResolverComponent` — The ContourValueResolver used to determine the numeric values of contours.
 - **findByName**(name: string): any
-- static **register**(): void
-
-### [IgxGeographicContourLineSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicContourLineSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicContourLineSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicContourLineSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicContourLineSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicContourLineSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicContourLineSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicContourLineSeriesModule)
-
-- **constructor**(): IgxGeographicContourLineSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicContourLineSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicContourLineSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicContourLineSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicHighDensityScatterSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicHighDensityScatterSeriesComponent)
 Series class for a geographic map with points marked at given locations.
@@ -187,21 +116,6 @@ This is the geographic equivalent of a HighDensityScatterSeries.
 - **progressiveLoadStatusChanged**: `EventEmitter<any>` — Raised when the progressive loading state of the series has changed.
 - **progressiveStatus**: `number` — Represents the current status of the progressive load of the series. It will range from 0 to 100, where 100 is fully loaded.
 - **useBruteForce**: `boolean` — Gets or sets the whether to use use brute force mode.
-- static **register**(): void
-
-### [IgxGeographicHighDensityScatterSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicHighDensityScatterSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicHighDensityScatterSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicHighDensityScatterSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicHighDensityScatterSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicHighDensityScatterSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicHighDensityScatterSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicHighDensityScatterSeriesModule)
-
-- **constructor**(): IgxGeographicHighDensityScatterSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicHighDensityScatterSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicHighDensityScatterSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicHighDensityScatterSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicMapComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapComponent)
 Represents the Infragistics IgxGeographicMapComponent control.
@@ -274,27 +188,6 @@ Under normal circumstances, this property should not be set in application code.
 - **updateZoomWindow**(zoomWindow: IgRect): void — Updates zoom window using window coordinates
 - **zoomToGeographic**(geographic: IgRect): void — Zoom in to the geographic region specified, when possible (may need to wait for map to be initialized).
 
-### [IgxGeographicMapCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapCoreDynamicModule)
-
-- **constructor**(): IgxGeographicMapCoreDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapCoreDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapCoreDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapCoreDynamicModule, never, [any, any, any, any, any, any, any], [any, any, any, any, any, any]>`
-
-### [IgxGeographicMapCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapCoreModule)
-
-- **constructor**(): IgxGeographicMapCoreModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapCoreModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapCoreModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapCoreModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
-
-### [IgxGeographicMapDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapDynamicModule)
-
-- **constructor**(): IgxGeographicMapDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
 ### [IgxGeographicMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapImagery)
 Control class used for displaying multi-scale TileSource imagery.  Designed to be used for background imagery in the IgxGeographicMap.Component
 
@@ -317,13 +210,6 @@ A rectangle at X=0, Y=0 with a Height and Width of 1 implies the entire plotting
 - **clearTileCache**(): void — Removes all cached tile Imagery from the
 - **findByName**(name: string): any
 - static **_createFromInternal**(internal: any): IgxGeographicMapImagery
-
-### [IgxGeographicMapModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapModule)
-
-- **constructor**(): IgxGeographicMapModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMapModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicMapModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicMapModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
 
 ### [IgxGeographicMapSeriesHostComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMapSeriesHostComponent)
 Base class for hosting chart series in a IgxGeographicMap.Component
@@ -410,21 +296,6 @@ Series class used for displaying multiple polylines, in a geographic context, fo
 - **shapeStrokeThickness**: `number` — Gets or sets the stroke thickness.
 - **styleShape**: `EventEmitter<any>`
 - **ensureShapeStyle**(): void
-- static **register**(): void
-
-### [IgxGeographicPolylineSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicPolylineSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicPolylineSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicPolylineSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicPolylineSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicPolylineSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicPolylineSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicPolylineSeriesModule)
-
-- **constructor**(): IgxGeographicPolylineSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicPolylineSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicPolylineSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicPolylineSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicProportionalSymbolSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicProportionalSymbolSeriesBaseComponent)
 Base class for creating marker series in a IgxGeographicMap.Component
@@ -475,21 +346,6 @@ This setting applies only if the current series has a FillScale set and it overr
 - **radiusScaleUseGlobalValues**: `boolean` — Gets or sets the whether or not the RadiusScale uses global values of RadiusMemberPath of multiple series.
 This setting applies only if multiple series are using the same RadiusScale.
 - **findByName**(name: string): any
-- static **register**(): void
-
-### [IgxGeographicProportionalSymbolSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicProportionalSymbolSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicProportionalSymbolSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicProportionalSymbolSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicProportionalSymbolSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicProportionalSymbolSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicProportionalSymbolSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicProportionalSymbolSeriesModule)
-
-- **constructor**(): IgxGeographicProportionalSymbolSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicProportionalSymbolSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicProportionalSymbolSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicProportionalSymbolSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicScatterAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicScatterAreaSeriesComponent)
 Series class which draws a colored 2D surface, in a geographic context, based on a triangulation of XY data with numeric values assigned to each point.
@@ -505,21 +361,6 @@ Series class which draws a colored 2D surface, in a geographic context, based on
 - **triangulationStatusChanged**: `EventEmitter<any>` — Raised when the status of an ongoing Triangulation has changed.
 - **findByName**(name: string): any
 - **updateActualColorScale**(): void — Updates ActualColorScale properties using HostedSeries's ColorScale properties
-- static **register**(): void
-
-### [IgxGeographicScatterAreaSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicScatterAreaSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicScatterAreaSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicScatterAreaSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicScatterAreaSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicScatterAreaSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicScatterAreaSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicScatterAreaSeriesModule)
-
-- **constructor**(): IgxGeographicScatterAreaSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicScatterAreaSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicScatterAreaSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicScatterAreaSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicShapeSeriesBaseBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesBaseBaseComponent)
 Base class for hosting chart series in a IgxGeographicMap.Component
@@ -594,21 +435,6 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **shapeStrokeThickness**: `number` — Gets or sets the stroke thickness.
 - **styleShape**: `EventEmitter<any>`
 - **ensureShapeStyle**(): void
-- static **register**(): void
-
-### [IgxGeographicShapeSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicShapeSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicShapeSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicShapeSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicShapeSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicShapeSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesModule)
-
-- **constructor**(): IgxGeographicShapeSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicShapeSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicShapeSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicShapeSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicSymbolSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicSymbolSeriesBaseComponent)
 Base class for creating marker series in a IgxGeographicMap.Component
@@ -640,21 +466,6 @@ This is the geographic equivalent of a ScatterSeries.
 - **latitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the latitude coordinate of the symbol.
 - **longitudeMemberPath**: `string` — The name of the property of ItemsSource items which contains the longitude coordinate of the symbol.
 - **markerCollisionAvoidance**: `CollisionAvoidanceType` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
-- static **register**(): void
-
-### [IgxGeographicSymbolSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicSymbolSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicSymbolSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicSymbolSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicSymbolSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicSymbolSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicSymbolSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicSymbolSeriesModule)
-
-- **constructor**(): IgxGeographicSymbolSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicSymbolSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicSymbolSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicSymbolSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicTileSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicTileSeriesComponent)
 Series class used for displaying a tile set, and using shapes to define the areas that should be rendered.
@@ -668,21 +479,6 @@ Series class used for displaying a tile set, and using shapes to define the area
 - **tileImagery**: `IgxGeographicMapImagery` — The MapImagery which is used to provide the tiles for display.
 - **clearTileCache**(): void — Removes all cached tile Imagery from the
 - **findByName**(name: string): any
-- static **register**(): void
-
-### [IgxGeographicTileSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicTileSeriesDynamicModule)
-
-- **constructor**(): IgxGeographicTileSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicTileSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicTileSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicTileSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxGeographicTileSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicTileSeriesModule)
-
-- **constructor**(): IgxGeographicTileSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicTileSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxGeographicTileSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxGeographicTileSeriesModule, never, [any, any, any], [any, any]>`
 
 ### [IgxGeographicXYTriangulatingSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicXYTriangulatingSeriesBaseComponent)
 Base class for hosting chart series in a IgxGeographicMap.Component
@@ -720,20 +516,6 @@ UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.C
 - **constructor**(): IgxOpenStreetMapImagery
 - **tilePath**: `string` — Gets or sets the tile path URL.
 
-### [IgxOpenStreetMapImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxOpenStreetMapImageryDynamicModule)
-
-- **constructor**(): IgxOpenStreetMapImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxOpenStreetMapImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxOpenStreetMapImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxOpenStreetMapImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxOpenStreetMapImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxOpenStreetMapImageryModule)
-
-- **constructor**(): IgxOpenStreetMapImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxOpenStreetMapImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxOpenStreetMapImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxOpenStreetMapImageryModule, never, [any], never>`
-
 ### [IgxSubDomainsCollection](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxSubDomainsCollection)
 
 - **constructor**(list?: string[]): IgxSubDomainsCollection
@@ -743,20 +525,6 @@ Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgxTileGeneratorMapImagery
 - **tileGenerator**: `ITileGenerator` — Gets or sets the culture name for this tile source.
-
-### [IgxTileGeneratorMapImageryDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileGeneratorMapImageryDynamicModule)
-
-- **constructor**(): IgxTileGeneratorMapImageryDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTileGeneratorMapImageryDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTileGeneratorMapImageryDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTileGeneratorMapImageryDynamicModule, never, [any, any], [any]>`
-
-### [IgxTileGeneratorMapImageryModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileGeneratorMapImageryModule)
-
-- **constructor**(): IgxTileGeneratorMapImageryModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTileGeneratorMapImageryModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTileGeneratorMapImageryModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTileGeneratorMapImageryModule, never, [any], never>`
 
 ### [IgxTileSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileSeriesComponent)
 Represents a tile series class that can render imagery tiles
@@ -769,21 +537,6 @@ Represents a tile series class that can render imagery tiles
 - **tileImagery**: `IgxGeographicMapImagery` — The MapImagery which is used to provide the tiles for display.
 - **deferredRefresh**(): void — Defers rendering of the series
 - **findByName**(name: string): any
-- static **register**(): void
-
-### [IgxTileSeriesDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileSeriesDynamicModule)
-
-- **constructor**(): IgxTileSeriesDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTileSeriesDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTileSeriesDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTileSeriesDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxTileSeriesModule](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileSeriesModule)
-
-- **constructor**(): IgxTileSeriesModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxTileSeriesModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxTileSeriesModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxTileSeriesModule, never, [any, any], [any]>`
 
 ## Enumerations
 
@@ -829,107 +582,3 @@ Indicates the desired behavior for the map on resizing.
 - **Auto** = 0 — Indicates that the map should decide the desired resize mode automatically.
 - **MaintainCenterPosition** = 2 — Map will attempt to keep the center position static during resize.
 - **MaintainTopLeftPosition** = 1 — Map will attempt to keep the top left position static during resize.
-
-## Functions
-
-### [provideIgxArcGISOnlineMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxArcGISOnlineMapImagery)
-`provideIgxArcGISOnlineMapImagery(): EnvironmentProviders`
-
-### [provideIgxArcGISOnlineMapImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxArcGISOnlineMapImageryDynamic)
-`provideIgxArcGISOnlineMapImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxAzureMapsImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxAzureMapsImagery)
-`provideIgxAzureMapsImagery(): EnvironmentProviders`
-
-### [provideIgxAzureMapsImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxAzureMapsImageryDynamic)
-`provideIgxAzureMapsImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxBingMapsMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxBingMapsMapImagery)
-`provideIgxBingMapsMapImagery(): EnvironmentProviders`
-
-### [provideIgxBingMapsMapImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxBingMapsMapImageryDynamic)
-`provideIgxBingMapsMapImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxCustomMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxCustomMapImagery)
-`provideIgxCustomMapImagery(): EnvironmentProviders`
-
-### [provideIgxCustomMapImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxCustomMapImageryDynamic)
-`provideIgxCustomMapImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicContourLineSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicContourLineSeries)
-`provideIgxGeographicContourLineSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicContourLineSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicContourLineSeriesDynamic)
-`provideIgxGeographicContourLineSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicHighDensityScatterSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicHighDensityScatterSeries)
-`provideIgxGeographicHighDensityScatterSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicHighDensityScatterSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicHighDensityScatterSeriesDynamic)
-`provideIgxGeographicHighDensityScatterSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicMap](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicMap)
-`provideIgxGeographicMap(): EnvironmentProviders`
-
-### [provideIgxGeographicMapCore](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicMapCore)
-`provideIgxGeographicMapCore(): EnvironmentProviders`
-
-### [provideIgxGeographicMapCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicMapCoreDynamic)
-`provideIgxGeographicMapCoreDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicMapDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicMapDynamic)
-`provideIgxGeographicMapDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicPolylineSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicPolylineSeries)
-`provideIgxGeographicPolylineSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicPolylineSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicPolylineSeriesDynamic)
-`provideIgxGeographicPolylineSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicProportionalSymbolSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicProportionalSymbolSeries)
-`provideIgxGeographicProportionalSymbolSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicProportionalSymbolSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicProportionalSymbolSeriesDynamic)
-`provideIgxGeographicProportionalSymbolSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicScatterAreaSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicScatterAreaSeries)
-`provideIgxGeographicScatterAreaSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicScatterAreaSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicScatterAreaSeriesDynamic)
-`provideIgxGeographicScatterAreaSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicShapeSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicShapeSeries)
-`provideIgxGeographicShapeSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicShapeSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicShapeSeriesDynamic)
-`provideIgxGeographicShapeSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicSymbolSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicSymbolSeries)
-`provideIgxGeographicSymbolSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicSymbolSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicSymbolSeriesDynamic)
-`provideIgxGeographicSymbolSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxGeographicTileSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicTileSeries)
-`provideIgxGeographicTileSeries(): EnvironmentProviders`
-
-### [provideIgxGeographicTileSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxGeographicTileSeriesDynamic)
-`provideIgxGeographicTileSeriesDynamic(): EnvironmentProviders`
-
-### [provideIgxOpenStreetMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxOpenStreetMapImagery)
-`provideIgxOpenStreetMapImagery(): EnvironmentProviders`
-
-### [provideIgxOpenStreetMapImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxOpenStreetMapImageryDynamic)
-`provideIgxOpenStreetMapImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxTileGeneratorMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxTileGeneratorMapImagery)
-`provideIgxTileGeneratorMapImagery(): EnvironmentProviders`
-
-### [provideIgxTileGeneratorMapImageryDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxTileGeneratorMapImageryDynamic)
-`provideIgxTileGeneratorMapImageryDynamic(): EnvironmentProviders`
-
-### [provideIgxTileSeries](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxTileSeries)
-`provideIgxTileSeries(): EnvironmentProviders`
-
-### [provideIgxTileSeriesDynamic](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/functions/provideIgxTileSeriesDynamic)
-`provideIgxTileSeriesDynamic(): EnvironmentProviders`

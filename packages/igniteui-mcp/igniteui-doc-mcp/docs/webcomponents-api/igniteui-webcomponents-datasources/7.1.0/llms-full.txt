@@ -1,0 +1,324 @@
+# Ignite UI for Web Components Data Sources v7.1.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for Web Components Data Sources package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Web Components
+Package: igniteui-webcomponents-datasources
+Version: 7.1.0
+
+## Classes
+
+### [Entity](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/Entity)
+
+- **constructor**(name: string, entityNode: XElement): Entity
+- **name**: `string`
+- **primaryKey**: `string[]`
+- **properties**: `Map<string, EntityProperty>`
+
+### [EntityProperty](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/EntityProperty)
+
+- **constructor**(name: string, schemaType: string): EntityProperty
+- **isNullable**: `boolean`
+- **name**: `string`
+- **type**: `string`
+
+### [EntitySet](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/EntitySet)
+
+- **constructor**(name: string, entityType: string): EntitySet
+- **entityName**: `string`
+- **entityNamespace**: `string`
+- **entityType**: `string`
+- **name**: `string`
+
+### [LinkedList](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/LinkedList)
+
+- **constructor**(): LinkedList<T>
+- **first**: `LinkedListNode<T>`
+- **last**: `LinkedListNode<T>`
+- **addFirst**(item: T): void
+- **addLast**(item: T): void
+- **clear**(): void
+- **contains**(value: T): boolean
+- **remove**(node: LinkedListNode<T>): void
+- **removeFirst**(): void
+- **removeValue**(value: T): void
+
+### [LinkedListNode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/LinkedListNode)
+
+- **constructor**(item?: T): LinkedListNode<T>
+- **next**: `LinkedListNode<T>`
+- **prev**: `LinkedListNode<T>`
+- **value**: `T`
+
+### [ODataDataSourcePage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataDataSourcePage)
+
+- **constructor**(sourceData_: any, schema: IDataSourceSchema, groupInformation: ISectionInformation[], summaryInformation: ISummaryResult[], pageIndex: number): ODataDataSourcePage
+- **count**(): number
+- **getGroupInformation**(): ISectionInformation[]
+- **getItemAtIndex**(index: number): any
+- **getItemValueAtIndex**(index: number, valueName: string): any
+- **getSummaryInformation**(): ISummaryResult[]
+- **pageIndex**(): number
+- **schema**(): IDataSourceSchema
+
+### [ODataSchemaProvider](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataSchemaProvider)
+
+- **constructor**(metadataDocument: string): ODataSchemaProvider
+- static **nS**: `XNamespace`
+- **getODataDataSourceSchema**(entitySet: string): IDataSourceSchema
+
+### [ODataVirtualDataSource](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataVirtualDataSource)
+
+- **constructor**(): ODataVirtualDataSource
+- **baseUri**: `string`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **isAggregationSupportedByServer**: `boolean`
+- **isFilteringSupportedOverride**: `boolean`
+- **isGroupingSupportedOverride**: `boolean`
+- **isSortingSupportedOverride**: `boolean`
+- **timeoutMilliseconds**: `number`
+- **clone**(): IDataSource
+
+### [ODataVirtualDataSourceDataProvider](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataVirtualDataSourceDataProvider)
+
+- **constructor**(): ODataVirtualDataSourceDataProvider
+- **_autoRefreshQueued**: `boolean`
+- **_schemaFetchQueued**: `boolean`
+- **schemaChanged**: `any`
+- static **$t**: `Type`
+- **actualCount**: `number`
+- **actualSchema**: `IDataSourceSchema`
+- **baseUri**: `string`
+- **batchCompleted**: `any`
+- **deferAutoRefresh**: `boolean`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **executionContext**: `IDataSourceExecutionContext`
+- **filterExpressions**: `FilterExpressionCollection`
+- **groupDescriptions**: `SortDescriptionCollection`
+- **isAggregationSupported**: `boolean`
+- **isFilteringSupported**: `boolean`
+- **isGroupingSupported**: `boolean`
+- **isItemIndexLookupSupported**: `boolean`
+- **isKeyIndexLookupSupported**: `boolean`
+- **isSortingSupported**: `boolean`
+- **notifyUsingSourceIndexes**: `boolean`
+- **pageLoaded**: `any`
+- **pageSizeRequested**: `number`
+- **propertiesRequested**: `string[]`
+- **schemaIncludedProperties**: `string[]`
+- **sortDescriptions**: `SortDescriptionCollection`
+- **summaryDescriptions**: `SummaryDescriptionCollection`
+- **summaryScope**: `DataSourceSummaryScope`
+- **timeoutMilliseconds**: `number`
+- **updateNotifier**: `IDataSourceDataProviderUpdateNotifier`
+- **addItem**(item: any): void
+- **addPageRequest**(pageIndex: number, priority: DataSourcePageRequestPriority): void
+- **close**(): void
+- **createBatchRequest**(changes: TransactionState[]): void
+- **doRefreshInternal**(): void
+- **doSchemaFetchInternal**(): void
+- **flushAutoRefresh**(): void
+- **getItemValue**(item: any, valueName: string): any
+- **indexOfItem**(item: any): number
+- **indexOfKey**(key: any[]): number
+- **notifyClearItems**(): void
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **queueAutoRefresh**(): void
+- **queueSchemaFetch**(): void
+- **refresh**(): void
+- **refreshInternal**(): void
+- **removeAllPageRequests**(): void
+- **removeItem**(item: any): void
+- **removePageRequest**(pageIndex: number): void
+- **resolveSchemaPropertyType**(propertyPath: string): DataSourceSchemaPropertyType
+- **schemaFetchInternal**(): void
+- **setItemValue**(item: any, valueName: string, value: any): void
+
+### [ODataVirtualDataSourceDataProviderWorker](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataVirtualDataSourceDataProviderWorker)
+
+- **constructor**(settings: ODataVirtualDataSourceDataProviderWorkerSettings): ODataVirtualDataSourceDataProviderWorker
+- static readonly **schemaRequestIndex**: `number`
+- **createBatchRequest**(changes: TransactionState[]): void
+
+### [ODataVirtualDataSourceDataProviderWorkerSettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataVirtualDataSourceDataProviderWorkerSettings)
+
+- **constructor**(): ODataVirtualDataSourceDataProviderWorkerSettings
+- static **$t**: `Type`
+- **baseUri**: `string`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **filterExpressions**: `FilterExpressionCollection`
+- **groupDescriptions**: `SortDescriptionCollection`
+- **isAggregationSupported**: `boolean`
+- **propertiesRequested**: `string[]`
+- **schemaIncludedProperties**: `string[]`
+- **sortDescriptions**: `SortDescriptionCollection`
+- **summaryDescriptions**: `SummaryDescriptionCollection`
+- **summaryScope**: `DataSourceSummaryScope`
+
+### [ODataVirtualDataSourceProviderTaskDataHolder](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/ODataVirtualDataSourceProviderTaskDataHolder)
+
+- **constructor**(): ODataVirtualDataSourceProviderTaskDataHolder
+- static **$t**: `Type`
+
+### [RestVirtualDataSource](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSource)
+
+- **constructor**(): RestVirtualDataSource
+- **baseUri**: `string`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **fixedFullCount**: `number`
+- **isAggregationSupportedByServer**: `boolean`
+- **isFilteringSupportedByServer**: `boolean`
+- **isFilteringSupportedOverride**: `boolean`
+- **isGroupingSupportedOverride**: `boolean`
+- **isSortingSupportedOverride**: `boolean`
+- **performFetch**: `any`
+- **provideAggregatedCount**: `any`
+- **provideAggregationParameter**: `any`
+- **provideDesiredPropertiesParameter**: `any`
+- **provideFilterParameter**: `any`
+- **provideFullCount**: `any`
+- **provideItems**: `any`
+- **provideOrderByParameter**: `any`
+- **providePagingParameter**: `any`
+- **provideUri**: `any`
+- **timeoutMilliseconds**: `number`
+- **clone**(): IDataSource
+
+### [RestVirtualDataSourceDataProvider](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSourceDataProvider)
+
+- **constructor**(): RestVirtualDataSourceDataProvider
+- **_autoRefreshQueued**: `boolean`
+- **_schemaFetchQueued**: `boolean`
+- **schemaChanged**: `any`
+- static **$t**: `Type`
+- **actualCount**: `number`
+- **actualSchema**: `IDataSourceSchema`
+- **baseUri**: `string`
+- **batchCompleted**: `any`
+- **deferAutoRefresh**: `boolean`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **executionContext**: `IDataSourceExecutionContext`
+- **filterExpressions**: `FilterExpressionCollection`
+- **fixedFullCount**: `number`
+- **groupDescriptions**: `SortDescriptionCollection`
+- **isAggregationSupported**: `boolean`
+- **isFilteringSupported**: `boolean`
+- **isGroupingSupported**: `boolean`
+- **isItemIndexLookupSupported**: `boolean`
+- **isKeyIndexLookupSupported**: `boolean`
+- **isSortingSupported**: `boolean`
+- **notifyUsingSourceIndexes**: `boolean`
+- **pageLoaded**: `any`
+- **pageSizeRequested**: `number`
+- **performFetch**: `any`
+- **propertiesRequested**: `string[]`
+- **provideAggregatedCount**: `any`
+- **provideAggregationParameter**: `any`
+- **provideDesiredPropertiesParameter**: `any`
+- **provideFilterParameter**: `any`
+- **provideFullCount**: `any`
+- **provideItems**: `any`
+- **provideOrderByParameter**: `any`
+- **providePagingParameter**: `any`
+- **provideUri**: `any`
+- **schemaIncludedProperties**: `string[]`
+- **sortDescriptions**: `SortDescriptionCollection`
+- **summaryDescriptions**: `SummaryDescriptionCollection`
+- **summaryScope**: `DataSourceSummaryScope`
+- **timeoutMilliseconds**: `number`
+- **updateNotifier**: `IDataSourceDataProviderUpdateNotifier`
+- **addItem**(item: any): void
+- **addPageRequest**(pageIndex: number, priority: DataSourcePageRequestPriority): void
+- **close**(): void
+- **createBatchRequest**(changes: TransactionState[]): void
+- **doRefreshInternal**(): void
+- **doSchemaFetchInternal**(): void
+- **flushAutoRefresh**(): void
+- **getItemValue**(item: any, valueName: string): any
+- **indexOfItem**(item: any): number
+- **indexOfKey**(key: any[]): number
+- **notifyClearItems**(): void
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **queueAutoRefresh**(): void
+- **queueSchemaFetch**(): void
+- **refresh**(): void
+- **refreshInternal**(): void
+- **removeAllPageRequests**(): void
+- **removeItem**(item: any): void
+- **removePageRequest**(pageIndex: number): void
+- **resolveSchemaPropertyType**(propertyPath: string): DataSourceSchemaPropertyType
+- **schemaFetchInternal**(): void
+- **setItemValue**(item: any, valueName: string, value: any): void
+
+### [RestVirtualDataSourceDataProviderWorker](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSourceDataProviderWorker)
+
+- **constructor**(settings: RestVirtualDataSourceDataProviderWorkerSettings): RestVirtualDataSourceDataProviderWorker
+- static readonly **schemaRequestIndex**: `number`
+- **createBatchRequest**(changes: TransactionState[]): void
+
+### [RestVirtualDataSourceDataProviderWorkerSettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSourceDataProviderWorkerSettings)
+
+- **constructor**(): RestVirtualDataSourceDataProviderWorkerSettings
+- static **$t**: `Type`
+- **baseUri**: `string`
+- **enableJsonp**: `boolean`
+- **entitySet**: `string`
+- **filterExpressions**: `FilterExpressionCollection`
+- **fixedFullCount**: `number`
+- **groupDescriptions**: `SortDescriptionCollection`
+- **isAggregationSupported**: `boolean`
+- **performFetch**: `any`
+- **propertiesRequested**: `string[]`
+- **provideAggregatedCount**: `any`
+- **provideAggregationParameter**: `any`
+- **provideDesiredPropertiesParameter**: `any`
+- **provideFilterParameter**: `any`
+- **provideFullCount**: `any`
+- **provideItems**: `any`
+- **provideOrderByParameter**: `any`
+- **providePagingParameter**: `any`
+- **provideUri**: `any`
+- **schemaIncludedProperties**: `string[]`
+- **sortDescriptions**: `SortDescriptionCollection`
+- **summaryDescriptions**: `SummaryDescriptionCollection`
+- **summaryScope**: `DataSourceSummaryScope`
+
+### [RestVirtualDataSourcePage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSourcePage)
+
+- **constructor**(sourceData_: any, schema: IDataSourceSchema, groupInformation: ISectionInformation[], summaryInformation: ISummaryResult[], pageIndex: number): RestVirtualDataSourcePage
+- **count**(): number
+- **getGroupInformation**(): ISectionInformation[]
+- **getItemAtIndex**(index: number): any
+- **getItemValueAtIndex**(index: number, valueName: string): any
+- **getSummaryInformation**(): ISummaryResult[]
+- **pageIndex**(): number
+- **schema**(): IDataSourceSchema
+
+### [RestVirtualDataSourceProviderTaskDataHolder](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/RestVirtualDataSourceProviderTaskDataHolder)
+
+- **constructor**(): RestVirtualDataSourceProviderTaskDataHolder
+- static **$t**: `Type`
+
+### [Schema](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/classes/Schema)
+
+- **constructor**(namespace: string, entityTypeElements: XElement[], entitySetElements: XElement[]): Schema
+- **entities**: `Map<string, Entity>`
+- **entitySets**: `Map<string, EntitySet>`
+- **namespace**: `string`
+
+## Functions
+
+### [first](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/functions/first)
+`first(iter: Iterable<T>): T`
+
+### [toArray](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-datasources/7.1.0/functions/toArray)
+`toArray(en: any): T[]`

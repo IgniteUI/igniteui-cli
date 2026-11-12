@@ -1,10 +1,10 @@
-# Ignite UI for Angular Layouts v22.0.0 — Full API Reference
+# Ignite UI for Angular Layouts v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Layouts package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Layouts package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-layouts
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -187,13 +187,6 @@ If a primary key cannot be inferred from the data source, you may need to provid
 - **updateStyle**(): void
 - **verifyDisplayText**(): void
 
-### [IgxComboEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorDynamicModule)
-
-- **constructor**(): IgxComboEditorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComboEditorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComboEditorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComboEditorDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
 ### [IgxComboEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorGotFocusEventArgs)
 
 - **constructor**(): IgxComboEditorGotFocusEventArgs
@@ -201,13 +194,6 @@ If a primary key cannot be inferred from the data source, you may need to provid
 ### [IgxComboEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorLostFocusEventArgs)
 
 - **constructor**(): IgxComboEditorLostFocusEventArgs
-
-### [IgxComboEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorModule)
-
-- **constructor**(): IgxComboEditorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxComboEditorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxComboEditorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxComboEditorModule, never, [any, any, any, any], [any, any, any]>`
 
 ### [IgxComboEditorTextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxComboEditorTextChangedEventArgs)
 
@@ -231,20 +217,6 @@ A primary key value.
 - **value**: `any[]` — The value of the keys for this primary key value.
 - **equals**(other: any): boolean — Determines if two primary key values are equal.
 - **findByName**(name: string): any
-
-### [IgxLayoutPrimaryKeyValueDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutPrimaryKeyValueDynamicModule)
-
-- **constructor**(): IgxLayoutPrimaryKeyValueDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLayoutPrimaryKeyValueDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLayoutPrimaryKeyValueDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLayoutPrimaryKeyValueDynamicModule, never, [any, any], [any]>`
-
-### [IgxLayoutPrimaryKeyValueModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutPrimaryKeyValueModule)
-
-- **constructor**(): IgxLayoutPrimaryKeyValueModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLayoutPrimaryKeyValueModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLayoutPrimaryKeyValueModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLayoutPrimaryKeyValueModule, never, [any], never>`
 
 ### [IgxLayoutSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxLayoutSelectedItemsCollection)
 
@@ -387,13 +359,6 @@ Information about list item content that was just recycled.
 
 - **constructor**(): IgxListPanelContentRefreshedEventArgs
 
-### [IgxListPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelDynamicModule)
-
-- **constructor**(): IgxListPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelDynamicModule, never, [any, any, any], [any, any]>`
-
 ### [IgxListPanelItemEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelItemEventArgs)
 Event arguments for the SelectionChanged event.
 
@@ -427,13 +392,6 @@ Event arguments for the SelectionChanged event.
 - **top**: `number`
 - **findByName**(name: string): any
 
-### [IgxListPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelModule)
-
-- **constructor**(): IgxListPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelModule, never, [any, any], [any]>`
-
 ### [IgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValue)
 A primary key value.
 
@@ -444,20 +402,6 @@ A primary key value.
 - **value**: `any[]` — The value of the keys for this primary key value.
 - **equals**(other: any): boolean — Determines if two primary key values are equal.
 - **findByName**(name: string): any
-
-### [IgxListPanelPrimaryKeyValueDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValueDynamicModule)
-
-- **constructor**(): IgxListPanelPrimaryKeyValueDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelPrimaryKeyValueDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelPrimaryKeyValueDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelPrimaryKeyValueDynamicModule, never, [any, any], [any]>`
-
-### [IgxListPanelPrimaryKeyValueModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelPrimaryKeyValueModule)
-
-- **constructor**(): IgxListPanelPrimaryKeyValueModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxListPanelPrimaryKeyValueModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxListPanelPrimaryKeyValueModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxListPanelPrimaryKeyValueModule, never, [any], never>`
 
 ### [IgxListPanelSelectedItemsChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxListPanelSelectedItemsChangedEventArgs)
 Information about the changing selected items in the grid.
@@ -597,20 +541,6 @@ This should not be called if the data that the grid is bound to is already obser
 - **notifySetItem**(index: number, oldItem: any, newItem: any): void
 - **updateStyle**(): void
 
-### [IgxPropertyEditorPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPanelDynamicModule)
-
-- **constructor**(): IgxPropertyEditorPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPanelDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxPropertyEditorPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPanelModule)
-
-- **constructor**(): IgxPropertyEditorPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPanelModule, never, [any, any, any, any], [any, any, any]>`
-
 ### [IgxPropertyEditorPropertyDescriptionButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionButtonClickEventArgs)
 
 - **constructor**(): IgxPropertyEditorPropertyDescriptionButtonClickEventArgs
@@ -682,21 +612,6 @@ This should not be called if the data that the grid is bound to is already obser
 - **findByName**(name: string): any
 - **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxPropertyEditorPropertyDescriptionComponent
-- static **register**(): void
-
-### [IgxPropertyEditorPropertyDescriptionDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionDynamicModule)
-
-- **constructor**(): IgxPropertyEditorPropertyDescriptionDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPropertyDescriptionDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxPropertyEditorPropertyDescriptionModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionModule)
-
-- **constructor**(): IgxPropertyEditorPropertyDescriptionModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxPropertyEditorPropertyDescriptionModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxPropertyEditorPropertyDescriptionModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxPropertyEditorPropertyDescriptionModule, never, [any, any], [any]>`
 
 ### [IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs)
 
@@ -717,21 +632,6 @@ Represents base class for all tool actions in toolbar
 - **displayType**: `ToolActionButtonDisplayType` — Gets or sets the display type for the button.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonDynamicModule)
-
-- **constructor**(): IgxToolActionButtonDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonModule)
-
-- **constructor**(): IgxToolActionButtonModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonModule, never, [any, any], [any]>`
 
 ### [IgxToolActionButtonPairComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairComponent)
 Represents base class for all tool actions in toolbar
@@ -799,21 +699,6 @@ Represents base class for all tool actions in toolbar
 - **rightTitle**: `string` — Gets or sets the title of the Right button.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionButtonPairDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairDynamicModule)
-
-- **constructor**(): IgxToolActionButtonPairDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonPairDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonPairDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonPairDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionButtonPairModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairModule)
-
-- **constructor**(): IgxToolActionButtonPairModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionButtonPairModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionButtonPairModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionButtonPairModule, never, [any, any], [any]>`
 
 ### [IgxToolActionCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxComponent)
 Represents base class for all tool actions in toolbar
@@ -837,14 +722,6 @@ for more compact display.
 - **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionCheckboxDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxDynamicModule)
-
-- **constructor**(): IgxToolActionCheckboxDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxDynamicModule, never, [any, any, any], [any]>`
 
 ### [IgxToolActionCheckboxGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupComponent)
 Represents base class for all tool actions in toolbar
@@ -859,21 +736,6 @@ When null, defaults to a lightened version of the ToolPanel's text color.
 When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionCheckboxGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupDynamicModule)
-
-- **constructor**(): IgxToolActionCheckboxGroupDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxGroupDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxGroupDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxGroupDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionCheckboxGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupModule)
-
-- **constructor**(): IgxToolActionCheckboxGroupModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxGroupModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxGroupModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxGroupModule, never, [any, any], [any]>`
 
 ### [IgxToolActionCheckboxListComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListComponent)
 Represents base class for all tool actions in toolbar
@@ -903,28 +765,6 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 - **findByName**(name: string): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionCheckboxListDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListDynamicModule)
-
-- **constructor**(): IgxToolActionCheckboxListDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxListDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxListDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxListDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionCheckboxListModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListModule)
-
-- **constructor**(): IgxToolActionCheckboxListModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxListModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxListModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxListModule, never, [any, any], [any]>`
-
-### [IgxToolActionCheckboxModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxModule)
-
-- **constructor**(): IgxToolActionCheckboxModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionCheckboxModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionCheckboxModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionCheckboxModule, never, [any, any], [any]>`
 
 ### [IgxToolActionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCollection)
 
@@ -939,21 +779,6 @@ Represents base class for all tool actions in toolbar
 - **value**: `string` — Gets or sets the value for the input.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionColorEditorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorDynamicModule)
-
-- **constructor**(): IgxToolActionColorEditorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionColorEditorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionColorEditorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionColorEditorDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionColorEditorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorModule)
-
-- **constructor**(): IgxToolActionColorEditorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionColorEditorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionColorEditorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionColorEditorModule, never, [any, any], [any]>`
 
 ### [IgxToolActionComboComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboComponent)
 Represents base class for all tool actions in toolbar
@@ -968,21 +793,6 @@ Represents base class for all tool actions in toolbar
 - **valueMemberPath**: `string` — Gets or sets the field to use to get the values to use.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionComboDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboDynamicModule)
-
-- **constructor**(): IgxToolActionComboDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComboDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionComboDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionComboDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionComboModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboModule)
-
-- **constructor**(): IgxToolActionComboModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionComboModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionComboModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionComboModule, never, [any, any], [any]>`
 
 ### [IgxToolActionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComponent)
 Represents base class for all tool actions in toolbar
@@ -1159,20 +969,6 @@ overlaid onto the generated actions.
 - **operand**: `DataSourceSummaryOperand`
 - **findByName**(name: string): any
 
-### [IgxToolActionFieldSelectorAggregationDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationDynamicModule)
-
-- **constructor**(): IgxToolActionFieldSelectorAggregationDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorAggregationDynamicModule, never, [any, any], [any]>`
-
-### [IgxToolActionFieldSelectorAggregationModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationModule)
-
-- **constructor**(): IgxToolActionFieldSelectorAggregationModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorAggregationModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorAggregationModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorAggregationModule, never, [any], never>`
-
 ### [IgxToolActionFieldSelectorAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorAggregationsCollection)
 
 - **constructor**(list?: IgxToolActionFieldSelectorAggregation[]): IgxToolActionFieldSelectorAggregationsCollection
@@ -1214,21 +1010,6 @@ If list provided has custom aggregations the data source is never updated.
 - **updateDataSource**: `boolean` — Gets or sets if the data source has to be updated when changes are made.
 - **findByName**(name: string): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionFieldSelectorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorDynamicModule)
-
-- **constructor**(): IgxToolActionFieldSelectorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionFieldSelectorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorModule)
-
-- **constructor**(): IgxToolActionFieldSelectorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorModule, never, [any, any], [any]>`
 
 ### [IgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregation)
 
@@ -1238,20 +1019,6 @@ If list provided has custom aggregations the data source is never updated.
 - **aggregationOperand**: `DataSourceSummaryOperand`
 - **field**: `string`
 - **findByName**(name: string): any
-
-### [IgxToolActionFieldSelectorSelectedAggregationDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationDynamicModule)
-
-- **constructor**(): IgxToolActionFieldSelectorSelectedAggregationDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorSelectedAggregationDynamicModule, never, [any, any], [any]>`
-
-### [IgxToolActionFieldSelectorSelectedAggregationModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationModule)
-
-- **constructor**(): IgxToolActionFieldSelectorSelectedAggregationModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionFieldSelectorSelectedAggregationModule, never, [any], never>`
 
 ### [IgxToolActionFieldSelectorSelectedAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorSelectedAggregationsCollection)
 
@@ -1267,21 +1034,6 @@ Represents base class for all tool actions in toolbar
 - **backIconColor**: `string` — Gets or sets the icon color for the back button.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionGroupHeaderDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderDynamicModule)
-
-- **constructor**(): IgxToolActionGroupHeaderDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionGroupHeaderDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionGroupHeaderDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionGroupHeaderDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionGroupHeaderModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderModule)
-
-- **constructor**(): IgxToolActionGroupHeaderModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionGroupHeaderModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionGroupHeaderModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionGroupHeaderModule, never, [any, any], [any]>`
 
 ### [IgxToolActionIconButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonComponent)
 Represents base class for all tool actions in toolbar
@@ -1316,21 +1068,6 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
 - **openSubMenu**(): void
-- static **register**(): void
-
-### [IgxToolActionIconButtonDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonDynamicModule)
-
-- **constructor**(): IgxToolActionIconButtonDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconButtonDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconButtonDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconButtonDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionIconButtonModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonModule)
-
-- **constructor**(): IgxToolActionIconButtonModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconButtonModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconButtonModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconButtonModule, never, [any, any], [any]>`
 
 ### [IgxToolActionIconMenuComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuComponent)
 Represents base class for all tool actions in toolbar
@@ -1344,21 +1081,6 @@ Represents base class for all tool actions in toolbar
 - **showArrowIcon**: `boolean` — Gets or sets whether the arrow icon should be shown.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionIconMenuDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuDynamicModule)
-
-- **constructor**(): IgxToolActionIconMenuDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconMenuDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconMenuDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconMenuDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionIconMenuModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuModule)
-
-- **constructor**(): IgxToolActionIconMenuModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionIconMenuModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionIconMenuModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionIconMenuModule, never, [any, any], [any]>`
 
 ### [IgxToolActionLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelComponent)
 Represents base class for all tool actions in toolbar
@@ -1368,21 +1090,6 @@ Represents base class for all tool actions in toolbar
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelComponent, never>`
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionLabelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelDynamicModule)
-
-- **constructor**(): IgxToolActionLabelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionLabelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionLabelDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionLabelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelModule)
-
-- **constructor**(): IgxToolActionLabelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionLabelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionLabelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionLabelModule, never, [any, any], [any]>`
 
 ### [IgxToolActionNumberInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputComponent)
 Represents base class for all tool actions in toolbar
@@ -1394,21 +1101,6 @@ Represents base class for all tool actions in toolbar
 - **value**: `number` — Gets or sets the value for the input.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionNumberInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputDynamicModule)
-
-- **constructor**(): IgxToolActionNumberInputDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionNumberInputDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionNumberInputDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionNumberInputDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionNumberInputModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputModule)
-
-- **constructor**(): IgxToolActionNumberInputModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionNumberInputModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionNumberInputModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionNumberInputModule, never, [any, any], [any]>`
 
 ### [IgxToolActionPerformedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionPerformedEventArgs)
 
@@ -1457,14 +1149,6 @@ for more compact display.
 - **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionRadioDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioDynamicModule)
-
-- **constructor**(): IgxToolActionRadioDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioDynamicModule, never, [any, any, any], [any]>`
 
 ### [IgxToolActionRadioGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupComponent)
 Represents base class for all tool actions in toolbar
@@ -1479,28 +1163,6 @@ When null, defaults to a lightened version of the ToolPanel's text color.
 When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionRadioGroupDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupDynamicModule)
-
-- **constructor**(): IgxToolActionRadioGroupDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioGroupDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioGroupDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioGroupDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionRadioGroupModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupModule)
-
-- **constructor**(): IgxToolActionRadioGroupModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioGroupModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioGroupModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioGroupModule, never, [any, any], [any]>`
-
-### [IgxToolActionRadioModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioModule)
-
-- **constructor**(): IgxToolActionRadioModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionRadioModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionRadioModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionRadioModule, never, [any, any], [any]>`
 
 ### [IgxToolActionSeparatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorComponent)
 Represents base class for all tool actions in toolbar
@@ -1514,21 +1176,6 @@ Represents base class for all tool actions in toolbar
 - **size**: `number` — Gets or sets the size of the separator.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionSeparatorDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorDynamicModule)
-
-- **constructor**(): IgxToolActionSeparatorDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSeparatorDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSeparatorDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSeparatorDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionSeparatorModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorModule)
-
-- **constructor**(): IgxToolActionSeparatorModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSeparatorModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSeparatorModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSeparatorModule, never, [any, any], [any]>`
 
 ### [IgxToolActionSubPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelComponent)
 Represents base class for all tool actions in toolbar
@@ -1540,21 +1187,6 @@ Represents base class for all tool actions in toolbar
 - **itemSpacing**: `number` — Gets or sets the spacing between items.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionSubPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelDynamicModule)
-
-- **constructor**(): IgxToolActionSubPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSubPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSubPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSubPanelDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionSubPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelModule)
-
-- **constructor**(): IgxToolActionSubPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionSubPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionSubPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionSubPanelModule, never, [any, any], [any]>`
 
 ### [IgxToolActionTextInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputComponent)
 Represents base class for all tool actions in toolbar
@@ -1565,21 +1197,6 @@ Represents base class for all tool actions in toolbar
 - **value**: `string` — Gets or sets the value for the input.
 - **exportVisualData**(): any
 - **ngAfterContentInit**(): void
-- static **register**(): void
-
-### [IgxToolActionTextInputDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputDynamicModule)
-
-- **constructor**(): IgxToolActionTextInputDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionTextInputDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionTextInputDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionTextInputDynamicModule, never, [any, any, any], [any]>`
-
-### [IgxToolActionTextInputModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputModule)
-
-- **constructor**(): IgxToolActionTextInputModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolActionTextInputModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolActionTextInputModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolActionTextInputModule, never, [any, any], [any]>`
 
 ### [IgxToolbarComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarComponent)
 
@@ -1723,20 +1340,6 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **setIntContextItem**(key: string, value: number): void
 - **setStringContextItem**(key: string, value: string): void
 - **updateStyle**(): void
-
-### [IgxToolbarDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarDynamicModule)
-
-- **constructor**(): IgxToolbarDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolbarDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolbarDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolbarDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxToolbarModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarModule)
-
-- **constructor**(): IgxToolbarModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolbarModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolbarModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolbarModule, never, [any, any, any], [any, any]>`
 
 ### [IgxToolbarSubMenuClosingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolbarSubMenuClosingEventArgs)
 
@@ -1963,20 +1566,6 @@ always keep the dropdown open during a hover open and will require an extra clic
 
 - **constructor**(): IgxToolPanelContextSwappedEventArgs
 
-### [IgxToolPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelDynamicModule)
-
-- **constructor**(): IgxToolPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolPanelDynamicModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
-
-### [IgxToolPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolPanelModule)
-
-- **constructor**(): IgxToolPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxToolPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxToolPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxToolPanelModule, never, [any, any, any, any, any, any], [any, any, any, any, any]>`
-
 ### [IgxXExpansionPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelComponent)
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXExpansionPanelComponent
@@ -2023,20 +1612,6 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **ngOnDestroy**(): void
 - **toggle**(): void — Toggles the expanded state of the expansion panel.
 - **updateStyle**(): void
-
-### [IgxXExpansionPanelDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelDynamicModule)
-
-- **constructor**(): IgxXExpansionPanelDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXExpansionPanelDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXExpansionPanelDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXExpansionPanelDynamicModule, never, [any, any, any], [any, any]>`
-
-### [IgxXExpansionPanelModule](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxXExpansionPanelModule)
-
-- **constructor**(): IgxXExpansionPanelModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxXExpansionPanelModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxXExpansionPanelModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxXExpansionPanelModule, never, [any, any], [any]>`
 
 ## Enumerations
 
@@ -2157,179 +1732,3 @@ Different display types for the button.
 - **Horizontal** = 1
 - **HorizontalWrapped** = 2
 - **Vertical** = 0
-
-## Functions
-
-### [provideIgxComboEditor](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxComboEditor)
-`provideIgxComboEditor(): EnvironmentProviders`
-
-### [provideIgxComboEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxComboEditorDynamic)
-`provideIgxComboEditorDynamic(): EnvironmentProviders`
-
-### [provideIgxLayoutPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxLayoutPrimaryKeyValue)
-`provideIgxLayoutPrimaryKeyValue(): EnvironmentProviders`
-
-### [provideIgxLayoutPrimaryKeyValueDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxLayoutPrimaryKeyValueDynamic)
-`provideIgxLayoutPrimaryKeyValueDynamic(): EnvironmentProviders`
-
-### [provideIgxListPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanel)
-`provideIgxListPanel(): EnvironmentProviders`
-
-### [provideIgxListPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelDynamic)
-`provideIgxListPanelDynamic(): EnvironmentProviders`
-
-### [provideIgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelPrimaryKeyValue)
-`provideIgxListPanelPrimaryKeyValue(): EnvironmentProviders`
-
-### [provideIgxListPanelPrimaryKeyValueDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxListPanelPrimaryKeyValueDynamic)
-`provideIgxListPanelPrimaryKeyValueDynamic(): EnvironmentProviders`
-
-### [provideIgxPropertyEditorPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPanel)
-`provideIgxPropertyEditorPanel(): EnvironmentProviders`
-
-### [provideIgxPropertyEditorPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPanelDynamic)
-`provideIgxPropertyEditorPanelDynamic(): EnvironmentProviders`
-
-### [provideIgxPropertyEditorPropertyDescription](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPropertyDescription)
-`provideIgxPropertyEditorPropertyDescription(): EnvironmentProviders`
-
-### [provideIgxPropertyEditorPropertyDescriptionDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxPropertyEditorPropertyDescriptionDynamic)
-`provideIgxPropertyEditorPropertyDescriptionDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionButton](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButton)
-`provideIgxToolActionButton(): EnvironmentProviders`
-
-### [provideIgxToolActionButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonDynamic)
-`provideIgxToolActionButtonDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionButtonPair](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonPair)
-`provideIgxToolActionButtonPair(): EnvironmentProviders`
-
-### [provideIgxToolActionButtonPairDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionButtonPairDynamic)
-`provideIgxToolActionButtonPairDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckbox](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckbox)
-`provideIgxToolActionCheckbox(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckboxDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxDynamic)
-`provideIgxToolActionCheckboxDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckboxGroup](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxGroup)
-`provideIgxToolActionCheckboxGroup(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckboxGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxGroupDynamic)
-`provideIgxToolActionCheckboxGroupDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckboxList](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxList)
-`provideIgxToolActionCheckboxList(): EnvironmentProviders`
-
-### [provideIgxToolActionCheckboxListDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCheckboxListDynamic)
-`provideIgxToolActionCheckboxListDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionColorEditor](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionColorEditor)
-`provideIgxToolActionColorEditor(): EnvironmentProviders`
-
-### [provideIgxToolActionColorEditorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionColorEditorDynamic)
-`provideIgxToolActionColorEditorDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionCombo](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionCombo)
-`provideIgxToolActionCombo(): EnvironmentProviders`
-
-### [provideIgxToolActionComboDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionComboDynamic)
-`provideIgxToolActionComboDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelector](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelector)
-`provideIgxToolActionFieldSelector(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelectorAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorAggregation)
-`provideIgxToolActionFieldSelectorAggregation(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelectorAggregationDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorAggregationDynamic)
-`provideIgxToolActionFieldSelectorAggregationDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelectorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorDynamic)
-`provideIgxToolActionFieldSelectorDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorSelectedAggregation)
-`provideIgxToolActionFieldSelectorSelectedAggregation(): EnvironmentProviders`
-
-### [provideIgxToolActionFieldSelectorSelectedAggregationDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionFieldSelectorSelectedAggregationDynamic)
-`provideIgxToolActionFieldSelectorSelectedAggregationDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionGroupHeader](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionGroupHeader)
-`provideIgxToolActionGroupHeader(): EnvironmentProviders`
-
-### [provideIgxToolActionGroupHeaderDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionGroupHeaderDynamic)
-`provideIgxToolActionGroupHeaderDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionIconButton](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconButton)
-`provideIgxToolActionIconButton(): EnvironmentProviders`
-
-### [provideIgxToolActionIconButtonDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconButtonDynamic)
-`provideIgxToolActionIconButtonDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionIconMenu](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconMenu)
-`provideIgxToolActionIconMenu(): EnvironmentProviders`
-
-### [provideIgxToolActionIconMenuDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionIconMenuDynamic)
-`provideIgxToolActionIconMenuDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionLabel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionLabel)
-`provideIgxToolActionLabel(): EnvironmentProviders`
-
-### [provideIgxToolActionLabelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionLabelDynamic)
-`provideIgxToolActionLabelDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionNumberInput](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionNumberInput)
-`provideIgxToolActionNumberInput(): EnvironmentProviders`
-
-### [provideIgxToolActionNumberInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionNumberInputDynamic)
-`provideIgxToolActionNumberInputDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionRadio](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadio)
-`provideIgxToolActionRadio(): EnvironmentProviders`
-
-### [provideIgxToolActionRadioDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioDynamic)
-`provideIgxToolActionRadioDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionRadioGroup](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioGroup)
-`provideIgxToolActionRadioGroup(): EnvironmentProviders`
-
-### [provideIgxToolActionRadioGroupDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionRadioGroupDynamic)
-`provideIgxToolActionRadioGroupDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionSeparator](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSeparator)
-`provideIgxToolActionSeparator(): EnvironmentProviders`
-
-### [provideIgxToolActionSeparatorDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSeparatorDynamic)
-`provideIgxToolActionSeparatorDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionSubPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSubPanel)
-`provideIgxToolActionSubPanel(): EnvironmentProviders`
-
-### [provideIgxToolActionSubPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionSubPanelDynamic)
-`provideIgxToolActionSubPanelDynamic(): EnvironmentProviders`
-
-### [provideIgxToolActionTextInput](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionTextInput)
-`provideIgxToolActionTextInput(): EnvironmentProviders`
-
-### [provideIgxToolActionTextInputDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolActionTextInputDynamic)
-`provideIgxToolActionTextInputDynamic(): EnvironmentProviders`
-
-### [provideIgxToolbar](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolbar)
-`provideIgxToolbar(): EnvironmentProviders`
-
-### [provideIgxToolbarDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolbarDynamic)
-`provideIgxToolbarDynamic(): EnvironmentProviders`
-
-### [provideIgxToolPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolPanel)
-`provideIgxToolPanel(): EnvironmentProviders`
-
-### [provideIgxToolPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxToolPanelDynamic)
-`provideIgxToolPanelDynamic(): EnvironmentProviders`
-
-### [provideIgxXExpansionPanel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxXExpansionPanel)
-`provideIgxXExpansionPanel(): EnvironmentProviders`
-
-### [provideIgxXExpansionPanelDynamic](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/functions/provideIgxXExpansionPanelDynamic)
-`provideIgxXExpansionPanelDynamic(): EnvironmentProviders`

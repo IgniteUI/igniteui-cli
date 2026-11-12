@@ -1,0 +1,198 @@
+# Ignite UI Spreadsheet Chart Adapter for React v19.6.0 — Full API Reference
+
+> Complete API reference for the Ignite UI Spreadsheet Chart Adapter for React package (19.6.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: React
+Package: igniteui-react-spreadsheet-chart-adapter
+Version: 19.6.0
+
+## Classes
+
+### [SpreadsheetChartAdapter](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapter)
+Creates and initializes chart elements for the spreadsheet based on a [[WorksheetChart]] instance.
+
+- **constructor**(): SpreadsheetChartAdapter
+- static **$t**: `Type`
+
+### [SpreadsheetChartAdapterLocaleBg](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleBg)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleBg
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleCs](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleCs)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleCs
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleDa](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleDa)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleDa
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleDe](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleDe)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleDe
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleEn](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleEn)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleEn
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleEs](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleEs)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleEs
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleFr](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleFr)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleFr
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleHu](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleHu)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleHu
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleIt](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleIt)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleIt
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleJa](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleJa)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleJa
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleNb](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleNb)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleNb
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleNl](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleNl)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleNl
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocalePl](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocalePl)
+
+- **constructor**(): SpreadsheetChartAdapterLocalePl
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocalePt](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocalePt)
+
+- **constructor**(): SpreadsheetChartAdapterLocalePt
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleRo](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleRo)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleRo
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleRu](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleRu)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleRu
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+- **LIT_DefaultChartTitle**: `string`
+
+### [SpreadsheetChartAdapterLocaleSv](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleSv)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleSv
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleTr](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleTr)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleTr
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleZhHans](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleZhHans)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleZhHans
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`
+
+### [SpreadsheetChartAdapterLocaleZhHant](https://www.infragistics.com/api/react/igniteui-react-spreadsheet-chart-adapter/19.6.0/classes/SpreadsheetChartAdapterLocaleZhHant)
+
+- **constructor**(): SpreadsheetChartAdapterLocaleZhHant
+- **Error_CannotDetermineSeriesForChartType**: `string`
+- **Error_ChartTypeNotSupportedForRendering**: `string`
+- **Error_ErrorSettingAxesForSeries**: `string`
+- **Error_InvalidAxesCountOrTypeForChartType**: `string`
+- **Error_UnsupportedSeriesType**: `string`

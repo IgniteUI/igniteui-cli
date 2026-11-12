@@ -1,10 +1,10 @@
-# Ignite UI for Angular Gauges v22.0.0 — Full API Reference
+# Ignite UI for Angular Gauges v22.0.1 — Full API Reference
 
-> Complete API reference for the Ignite UI for Angular Gauges package (22.0.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Angular Gauges package (22.0.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Angular
 Package: igniteui-angular-gauges
-Version: 22.0.0
+Version: 22.0.1
 
 ## Classes
 
@@ -218,34 +218,6 @@ Calling this method too often will hinder the performance of the bullet graph.
 - **styleUpdated**(): void — Notify that the bullet graph styling has updated.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxBulletGraphComponent
-
-### [IgxBulletGraphCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphCoreDynamicModule)
-
-- **constructor**(): IgxBulletGraphCoreDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphCoreDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphCoreDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxBulletGraphCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphCoreModule)
-
-- **constructor**(): IgxBulletGraphCoreModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphCoreModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphCoreModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphCoreModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxBulletGraphDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphDynamicModule)
-
-- **constructor**(): IgxBulletGraphDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxBulletGraphModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxBulletGraphModule)
-
-- **constructor**(): IgxBulletGraphModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxBulletGraphModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxBulletGraphModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxBulletGraphModule, never, [any, any, any], [any, any]>`
 
 ### [IgxFormatLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxFormatLinearGraphLabelEventArgs)
 Represents event argument for FormatLinearGraphLabel.
@@ -476,34 +448,6 @@ Calling this method too often will hinder the performance of the linear gauge.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxLinearGaugeComponent
 
-### [IgxLinearGaugeCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeCoreDynamicModule)
-
-- **constructor**(): IgxLinearGaugeCoreDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeCoreDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeCoreDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxLinearGaugeCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeCoreModule)
-
-- **constructor**(): IgxLinearGaugeCoreModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeCoreModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeCoreModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeCoreModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxLinearGaugeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeDynamicModule)
-
-- **constructor**(): IgxLinearGaugeDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxLinearGaugeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGaugeModule)
-
-- **constructor**(): IgxLinearGaugeModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGaugeModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGaugeModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGaugeModule, never, [any, any, any], [any, any]>`
-
 ### [IgxLinearGraphRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeCollection)
 
 - **constructor**(list?: IgxLinearGraphRangeComponent[]): IgxLinearGraphRangeCollection
@@ -539,20 +483,6 @@ Values further from zero than 1 can be used to make this extend further than the
 - **findByName**(name: string): any
 - **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxLinearGraphRangeComponent
-
-### [IgxLinearGraphRangeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeDynamicModule)
-
-- **constructor**(): IgxLinearGraphRangeDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGraphRangeDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGraphRangeDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGraphRangeDynamicModule, never, [any, any, any], [any, any]>`
-
-### [IgxLinearGraphRangeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxLinearGraphRangeModule)
-
-- **constructor**(): IgxLinearGraphRangeModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxLinearGraphRangeModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxLinearGraphRangeModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxLinearGraphRangeModule, never, [any, any], [any]>`
 
 ### [IgxRadialGaugeComponent](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeComponent)
 A radial gauge for displaying a single value on a defined scale.
@@ -886,34 +816,6 @@ Calling this method too often will hinder the performance of the radial gauge.
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgxRadialGaugeComponent
 
-### [IgxRadialGaugeCoreDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeCoreDynamicModule)
-
-- **constructor**(): IgxRadialGaugeCoreDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeCoreDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeCoreDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeCoreDynamicModule, never, [any, any, any, any, any], [any, any, any, any]>`
-
-### [IgxRadialGaugeCoreModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeCoreModule)
-
-- **constructor**(): IgxRadialGaugeCoreModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeCoreModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeCoreModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeCoreModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxRadialGaugeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeDynamicModule)
-
-- **constructor**(): IgxRadialGaugeDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeDynamicModule, never, [any, any, any, any], [any, any, any]>`
-
-### [IgxRadialGaugeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeModule)
-
-- **constructor**(): IgxRadialGaugeModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeModule, never, [any, any, any], [any, any]>`
-
 ### [IgxRadialGaugeRangeCollection](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeCollection)
 
 - **constructor**(list?: IgxRadialGaugeRangeComponent[]): IgxRadialGaugeRangeCollection
@@ -949,20 +851,6 @@ Values further from zero than 1 can be used to make this extend further than the
 - **findByName**(name: string): any
 - **ngOnInit**(): void
 - static **_createFromInternal**(internal: any): IgxRadialGaugeRangeComponent
-
-### [IgxRadialGaugeRangeDynamicModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeDynamicModule)
-
-- **constructor**(): IgxRadialGaugeRangeDynamicModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeRangeDynamicModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeRangeDynamicModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeRangeDynamicModule, never, [any, any, any], [any, any]>`
-
-### [IgxRadialGaugeRangeModule](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxRadialGaugeRangeModule)
-
-- **constructor**(): IgxRadialGaugeRangeModule
-- static **ɵfac**: `ɵɵFactoryDeclaration<IgxRadialGaugeRangeModule, never>`
-- static **ɵinj**: `ɵɵInjectorDeclaration<IgxRadialGaugeRangeModule>`
-- static **ɵmod**: `ɵɵNgModuleDeclaration<IgxRadialGaugeRangeModule, never, [any, any], [any]>`
 
 ## Enumerations
 
@@ -1031,56 +919,6 @@ Enum specifying the position of the titles relative to scale's start/end.
 
 - **ScaleEnd** = 1 — The titles are placed at the scale's end (maximum value).
 - **ScaleStart** = 0 — The titles are placed at scale's start (minimum value).
-
-## Functions
-
-### [provideIgxBulletGraph](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraph)
-`provideIgxBulletGraph(): EnvironmentProviders`
-
-### [provideIgxBulletGraphCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphCore)
-`provideIgxBulletGraphCore(): EnvironmentProviders`
-
-### [provideIgxBulletGraphCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphCoreDynamic)
-`provideIgxBulletGraphCoreDynamic(): EnvironmentProviders`
-
-### [provideIgxBulletGraphDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxBulletGraphDynamic)
-`provideIgxBulletGraphDynamic(): EnvironmentProviders`
-
-### [provideIgxLinearGauge](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGauge)
-`provideIgxLinearGauge(): EnvironmentProviders`
-
-### [provideIgxLinearGaugeCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeCore)
-`provideIgxLinearGaugeCore(): EnvironmentProviders`
-
-### [provideIgxLinearGaugeCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeCoreDynamic)
-`provideIgxLinearGaugeCoreDynamic(): EnvironmentProviders`
-
-### [provideIgxLinearGaugeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGaugeDynamic)
-`provideIgxLinearGaugeDynamic(): EnvironmentProviders`
-
-### [provideIgxLinearGraphRange](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGraphRange)
-`provideIgxLinearGraphRange(): EnvironmentProviders`
-
-### [provideIgxLinearGraphRangeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxLinearGraphRangeDynamic)
-`provideIgxLinearGraphRangeDynamic(): EnvironmentProviders`
-
-### [provideIgxRadialGauge](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGauge)
-`provideIgxRadialGauge(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeCore](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeCore)
-`provideIgxRadialGaugeCore(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeCoreDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeCoreDynamic)
-`provideIgxRadialGaugeCoreDynamic(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeDynamic)
-`provideIgxRadialGaugeDynamic(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeRange](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeRange)
-`provideIgxRadialGaugeRange(): EnvironmentProviders`
-
-### [provideIgxRadialGaugeRangeDynamic](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/functions/provideIgxRadialGaugeRangeDynamic)
-`provideIgxRadialGaugeRangeDynamic(): EnvironmentProviders`
 
 ## Variables
 
