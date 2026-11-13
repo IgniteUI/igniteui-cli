@@ -52,6 +52,22 @@ jobs:
       - name: Validate MCP package contents
         run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
 
+      # Scaffolds a project per framework with the CLI built above, adds every template, installs and builds.
+      - name: Smoke test generated projects
+        timeout-minutes: 20
+        run: bash scripts/smoke-test.sh --frameworks angular,react,webcomponents --jobs 3
+
+      - name: Upload smoke test logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: smoke-test-logs
+          path: |
+            output/smoke/results.tsv
+            output/smoke/logs/
+          retention-days: 30
+          if-no-files-found: ignore
+
       - name: Define npm tag
         id: npm-tag
         run: |
