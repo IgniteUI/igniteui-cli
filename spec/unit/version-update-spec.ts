@@ -9,7 +9,7 @@ import {
 	NPM_REACT_DOCK_MANAGER, NPM_REACT_GRIDS, NPM_WEBCOMPONENTS, UPGRADEABLE_PACKAGES
 } from "../../packages/core/update/package-resolve";
 import {
-	applyUpdatePlan, discoverUpdates, getUpdateCandidates, getUpdatePlan, PackageUpdate, UPDATABLE_PACKAGES
+	applyUpdatePlan, discoverUpdates, getUpdateCandidates, getUpdatePlan, npmCommand, npmView, PackageUpdate, UPDATABLE_PACKAGES
 } from "../../packages/core/update/version-update";
 
 const realSpawnSync = child_process.spawnSync;
@@ -871,6 +871,32 @@ describe("Unit - version update", () => {
 					['npm "view" "igniteui-react" "versions" "dist-tags" "--json"', [], jasmine.objectContaining({ shell: true })],
 					[`npm ${["view", ...manifestArgs].map(arg => `"${arg}"`).join(" ")}`, [], jasmine.objectContaining({ shell: true })]
 				]);
+			});
+
+			it("builds npm commands for other callers the same way, rejecting arguments cmd.exe would change", () => {
+				const args = ["install", "a@>=1 <2 || ^3", "--prefix", "C:\\Temp dir\\a&b"];
+				Object.defineProperty(process, "platform", { value: "linux" });
+				expect(npmCommand(args)).toEqual(["npm", args, {}]);
+
+				Object.defineProperty(process, "platform", { value: "win32" });
+				const existsSync = spyOn(nodeFs, "existsSync").and.returnValue(true);
+				expect(npmCommand(args)).toEqual([process.execPath, [script, ...args], {}]);
+
+				existsSync.and.returnValue(false);
+				expect(npmCommand(args)).toEqual([`npm ${args.map(arg => `"${arg}"`).join(" ")}`, [], { shell: true }]);
+				for (const char of ['"', "%", "!", "\r", "\n"]) {
+					const arg = `C:\\Temp\\a${char}b`;
+					expect(() => npmCommand(["install", arg])).withContext(JSON.stringify(char))
+						.toThrowError(`Unable to run npm through cmd.exe with the argument "${arg}".`);
+				}
+				expect(spawnSync).not.toHaveBeenCalled();
+			});
+
+			it("passes extra npm arguments after --json", () => {
+				Object.defineProperty(process, "platform", { value: "linux" });
+
+				expect(npmView(`${NPM_REACT}@19`, ["version"], false, ["--fetch-retries=0"])).toEqual(["19.6.0", "19.9.0"]);
+				expect(spawnSync).toHaveBeenCalledOnceWith("npm", ["view", `${NPM_REACT}@19`, "version", "--json", "--fetch-retries=0"], jasmine.anything());
 			});
 
 			it("rejects invalid package names before running npm", () => {

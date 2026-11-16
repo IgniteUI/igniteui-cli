@@ -22,7 +22,7 @@ class GoogleAnalytics {
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
-		if (config.disableAnalytics) {
+		if (config.disableAnalytics || process.env.IG_CLI_ANALYTICS === "false") {
 			return;
 		}
 

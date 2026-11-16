@@ -52,6 +52,9 @@ export interface PositionalArgs {
 	/** Version range of the migrations to run. */
 	from?: string;
 	to?: string;
+
+	/** The arguments `run()` parses, to rerun the command with; unset when they were given as a string. */
+	rawArgs?: string[];
 }
 
 export interface CommandType extends CommandModule<{}, any> {

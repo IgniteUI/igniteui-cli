@@ -73,6 +73,25 @@ describe("Unit - Google Analytic", () => {
 		expect(request.end).toHaveBeenCalledTimes(0);
 	});
 
+	it("Should not post if IG_CLI_ANALYTICS is 'false'", async () => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ disableAnalytics: false } as unknown as Config);
+		const original = process.env.IG_CLI_ANALYTICS;
+
+		process.env.IG_CLI_ANALYTICS = "false";
+		GATestClass.post({});
+		expect(https.request).toHaveBeenCalledTimes(0);
+
+		process.env.IG_CLI_ANALYTICS = "true";
+		GATestClass.post({});
+		expect(https.request).toHaveBeenCalledTimes(1);
+
+		if (original === undefined) {
+			delete process.env.IG_CLI_ANALYTICS;
+		} else {
+			process.env.IG_CLI_ANALYTICS = original;
+		}
+	});
+
 	it("Random Guid is generated if the platform check fails", () => {
 		serviceSpy.and.throwError("Error!");
 		const value = GATestClass.getUserID();
