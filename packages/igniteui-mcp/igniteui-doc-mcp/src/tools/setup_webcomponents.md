@@ -61,6 +61,19 @@ Once the project is running:
 3. Call `get_api_reference` or `search_api` to look up properties, methods, and events.
 4. Apply theming via the **igniteui-theming MCP** before or after adding components.
 
+**Use the next paragraph only if the user explicitly asks to update packages to newer versions.**
+
+## Update Packages
+
+Use `ig update`, not `ig upgrade-packages`, to update package versions:
+
+```bash
+ig update                    # list the available updates without changing anything
+ig update <package>          # update and install the package, then run any migrations it declares
+```
+
+Add `--dry-run` to preview. In a Git repository, the project must have no uncommitted changes, unless `--allow-dirty` is passed.
+
 **Use the next paragraph only if the user explicitly asks to upgrade to licensed packages or switch from trial to licensed.**
 
 ## Upgrade to Licensed Packages

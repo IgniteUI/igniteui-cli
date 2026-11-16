@@ -12,15 +12,16 @@ const FRAMEWORK_PROJECT_TYPE_MAP: Record<string, string> = {
 const command: UpgradeCommandType = {
 	command: "upgrade-packages",
 	aliases: ["upgrade"],
-	describe: "Upgrades Ignite UI packages",
+	describe: "Switches trial Ignite UI packages to their licensed equivalents",
 	builder: (yargs) => {
 		return yargs
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "Run upgrade without installing packages",
+				describe: "Switch the packages without running npm install",
 				type: "boolean"
-			});
+			})
+			.epilog("Version ranges are kept. To update package versions, use ig update.");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

@@ -17,7 +17,7 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 			// stderr, because stdout carries the protocol messages when `ig mcp` runs the MCP server
 			console.error("Different igniteui-cli global and local version");
 		}
-		if (args[0] !== "ai-config") {
+		if (args[0] !== "ai-config" && args[0] !== "update") {
 			cliPath = res;
 		}
 	}

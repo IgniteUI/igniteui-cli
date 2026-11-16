@@ -237,6 +237,22 @@ export class PackageManager {
 		}
 	}
 
+	public static readonly lockfiles: Readonly<Record<string, readonly string[]>> = {
+		npm: ["package-lock.json", "npm-shrinkwrap.json"],
+		yarn: ["yarn.lock"],
+		pnpm: ["pnpm-lock.yaml"],
+		bun: ["bun.lock", "bun.lockb"]
+	};
+
+	public static detectManagers(packageManager: unknown): string[] {
+		const named = typeof packageManager === "string" && /^(npm|yarn|pnpm|bun)(@|$)/.exec(packageManager)?.[1];
+		if (named) {
+			return [named];
+		}
+		const found = Object.keys(this.lockfiles).filter(pm => this.lockfiles[pm].some(file => this.fs.fileExists(file)));
+		return found.length ? found : ["npm"];
+	}
+
 	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = Util.sanitizeShellArg(config.igPackageRegistry);
 		try {
