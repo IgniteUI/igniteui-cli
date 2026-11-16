@@ -1,0 +1,3043 @@
+# Ignite UI for React v19.11.0-rc.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for React package (19.11.0-rc.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: React
+Package: igniteui-react
+Version: 19.11.0-rc.0
+
+## Classes
+
+### [IgrAccordion](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrAccordion)
+The Accordion is a container-based component that can house multiple expansion panels
+and offers keyboard navigation.
+
+- **singleExpand**: `boolean` — Whether only one panel can be expanded at a time. When the user expands a
+panel, the other panels collapse.
+- **panels**: `any` — The direct expansion panel children of the accordion.
+- **hideAll**(): Promise<void> — Hides all of the child expansion panels' contents.
+- **showAll**(): Promise<void> — Shows all of the child expansion panels' contents.
+
+### [IgrAvatar](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrAvatar)
+Shows the identity of a user, for example in a user profile.
+
+- **alt**: `string | undefined` — Alternative text for the image.
+- **initials**: `string | undefined` — Initials to use as a fallback when no image is available.
+- **shape**: `AvatarShape` — The shape of the avatar.
+- **src**: `string | undefined` — The image source to use.
+
+### [IgrBadge](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrBadge)
+Shows a status on a related item, or marks an area that needs attention.
+
+- **dot**: `boolean` — Whether the badge renders as a small dot without content.
+- **outlined**: `boolean` — Whether the badge has an outline.
+- **shape**: `BadgeShape` — The shape of the badge.
+- **variant**: `StyleVariant` — The type (style variant) of the badge.
+
+### [IgrBanner](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrBanner)
+A non-modal notification banner that displays important, concise messages
+requiring user acknowledgement.
+
+The banner slides into view with an animated grow transition and renders
+inline, pushing the surrounding page content rather than overlaying it.
+
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
+
+- **open**: `boolean` — Whether the banner is open.
+
+Setting it skips the animation and the close events. Use the show(),
+hide() and toggle() methods for an animated transition.
+- **hide**(): Promise<boolean> — Closes the banner with an animated grow-out transition.
+
+Returns true when the banner was successfully closed, or false if it
+was already closed or closing, the transition was superseded by a newer
+one, or open was set to false and then to true during it.
+- **show**(): Promise<boolean> — Opens the banner with an animated grow-in transition.
+
+Returns true when the banner was successfully opened, or false if it
+was already open or opening, the transition was superseded by a newer one,
+or open was set to false during it.
+- **toggle**(): Promise<boolean> — Toggles the banner open or closed depending on its current state.
+
+Equivalent to calling show() when closed and hide() when open.
+Returns true when the transition completed successfully, with the same
+false cases as these methods.
+
+### [IgrBreadcrumb](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrBreadcrumb)
+A single item within a breadcrumb navigation trail.
+
+- **current**: `boolean` — Whether the breadcrumb represents the current page.
+Sets aria-current="page" on the element when true.
+- **disabled**: `boolean` — Whether the breadcrumb is disabled.
+Sets aria-disabled="true" on the element and removes the slotted
+content from the tab sequence while true.
+
+### [IgrBreadcrumbs](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrBreadcrumbs)
+A breadcrumb navigation component that renders an ordered list of breadcrumb items.
+
+- **separator**: `string` — The icon name used as the default separator between breadcrumb items.
+Can be overridden per-item using the separator slot on an individual breadcrumb item.
+
+### [IgrButton](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrButton)
+Represents a clickable button, used to submit forms or anywhere in a
+document for accessible, standard button functionality.
+
+The button has several visual variants. It renders as an anchor (<a>)
+element when the href attribute is set. It is form-associated and can
+act as a native submit or reset control.
+
+- **command**: `string | undefined` — The command to invoke on the target element specified by commandfor.
+Part of the [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) API.
+Custom commands must start with two dashes (e.g. '--my-command').
+- **commandfor**: `string | null` — The ID of the target element for the invoker command.
+Part of the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+- **commandForElement**: `Element | null` — The target element for the invoker command. Resolved from the `commandfor` ID.
+- **disabled**: `boolean` — Whether the button is disabled. A disabled button ignores user interaction.
+- **download**: `string | undefined` — Prompts the browser to download the linked resource rather than navigating
+to it. The optional value is used as the suggested file name.
+Only effective when href is set.
+- **href**: `string | undefined` — The URL the button points to. When set, the component renders as an
+<a> element instead of a <button>, enabling navigation on click.
+Use together with target, download, and rel for full anchor semantics.
+A disabled link renders a disabled <button> with the link role, because an
+anchor has no disabled state.
+- **rel**: `string | undefined` — The relationship between the current document and the linked URL.
+Accepts a space-separated list of link types (e.g. 'noopener noreferrer').
+Only effective when href is set. When target="_blank" is used,
+setting rel="noopener noreferrer" is strongly recommended for security.
+- **target**: `"_blank" | "_parent" | "_self" | "_top" | undefined` — Where to open the linked document. Only effective when href is set.
+- '_self' – current browsing context (default browser behavior).
+- '_blank' – new tab or window.
+- '_parent' – parent browsing context; falls back to _self if none.
+- '_top' – top-level browsing context; falls back to _self if none.
+- **type**: `"reset" | "submit" | "button"` — The type of the button, which determines its behavior and semantics.
+- 'button' – no default action; useful for custom JavaScript handlers.
+- 'submit' – submits the associated form when clicked.
+- 'reset' – resets the associated form fields to their initial values.
+
+Ignored when the button is rendered as a link (i.e. href is set).
+- **variant**: `ButtonVariant` — The variant of the button which determines its visual appearance.
+- contained – filled background; highest visual emphasis (default).
+- outlined – transparent background with a visible border.
+- flat – no background or border; lowest visual emphasis.
+- fab – floating action button shape; typically used for primary actions.
+- **form**: `any` — The `<form>` element the button is associated with.
+Resolved through the standard form-association mechanism - either the
+closest ancestor `<form>` or the form referenced by the button's `form`
+attribute. Returns `null` when no form is associated.
+Relevant only when `type` is `'submit'` or `'reset'`.
+- **blur**(): void — Removes focus from the button.
+- **click**(): void — Simulates a mouse click on the button, triggering its click handler and any associated form action.
+- **focus**(options?: FocusOptions): void — Sets focus on the button.
+
+### [IgrButtonGroup](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrButtonGroup)
+Groups a series of toggle buttons together, exposing features such as layout and selection.
+
+- **alignment**: `ContentOrientation` — The orientation of the buttons in the group.
+- **disabled**: `boolean` — Whether all buttons in the group are disabled.
+- **selectedItems**: `string[]` — The values of the selected buttons. A button without a value is not in
+the list.
+
+When set, selects the buttons with these values. A single selection mode
+selects only the first matching button.
+- **selection**: `ButtonGroupSelection` — The selection mode of the group. A change of the mode clears the selection.
+
+### [IgrCalendar](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCalendar)
+A calendar that lets the user select a single date, multiple dates or a date range.
+
+- **activeDate**: `Date` — The date that the calendar shows and highlights. It changes when the user navigates.
+Without it, the calendar starts at its value, or at the current date when there is no value.
+- **activeView**: `CalendarActiveView` — The active view of the calendar: days, months or years.
+- **disabledDates**: `DateRangeDescriptor[] | undefined` — The date ranges that the user cannot select.
+- **formatOptions**: `Pick<DateTimeFormatOptions, "month" | "weekday">` — The options used to format the months and the weekdays in the calendar views.
+- **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header.
+- **hideHeader**: `boolean` — Whether the calendar hides its header.
+In multiple selection mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
+- **locale**: `string`
+- **orientation**: `ContentOrientation` — The orientation of the calendar months when more than one month
+is being shown.
+- **resourceStrings**: `TGet`
+- **selection**: `CalendarSelection` — The selection mode of the calendar: single, multiple or range.
+A change after the first render clears the value and the values.
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
+- **specialDates**: `DateRangeDescriptor[] | undefined` — The date ranges that the calendar marks as special.
+- **value**: `Date | null` — The value of the calendar in `single` selection mode.
+- **values**: `Date[]` — The values of the calendar in `multiple` and `range` selection modes.
+- **visibleMonths**: `number` — The number of months displayed in the days view.
+- **weekStart**: `WeekDays` — The first day of the week.
+
+### [IgrCard](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCard)
+A container component that wraps different elements related to a single subject.
+The card component provides a flexible container for organizing content such as headers,
+media, text content, and actions.
+
+- **elevated**: `boolean` — Whether the card has an elevated appearance with a shadow.
+When false, the card uses an outlined style with a border.
+
+### [IgrCardActions](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCardActions)
+A container component for card action items such as buttons or icon buttons.
+Actions can be positioned at the start, center, or end of the container.
+
+- **orientation**: `ContentOrientation` — The orientation of the actions layout.
+
+### [IgrCardContent](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCardContent)
+A container component for the card's main text content.
+Use it in a card for the primary content.
+
+
+### [IgrCardHeader](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCardHeader)
+A container component for the card's header section.
+Displays header content including an optional thumbnail, title, subtitle, and additional content.
+
+
+### [IgrCardMedia](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCardMedia)
+A container component for card media content such as images, GIFs, or videos.
+Use it in a card for visual content.
+
+
+### [IgrCarousel](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCarousel)
+The carousel presents a set of slides by sequentially displaying a subset of one or more.
+
+- **animationType**: `HorizontalTransitionAnimation` — The animation type.
+- **disableLoop**: `boolean` — Whether the carousel stops at the first and the last slide instead of looping.
+- **disablePauseOnInteraction**: `boolean` — Whether the carousel keeps playing when the user hovers over it or moves the
+focus into it.
+- **hideIndicators**: `boolean` — Whether the indicator controls (dots) are hidden.
+- **hideNavigation**: `boolean` — Whether the navigation buttons are hidden.
+- **indicatorsLabelFormat**: `string` — The format of the `aria-label` of the carousel indicators.
+Each `{0}` changes to the number of the corresponding slide.
+- **indicatorsOrientation**: `CarouselIndicatorsOrientation` — The position of the indicator controls (dots).
+- **interval**: `number | undefined` — The duration in milliseconds between changing the active slide.
+A positive value starts the automatic rotation.
+- **locale**: `string`
+- **maximumIndicatorsCount**: `number` — The maximum number of indicator controls (dots) that can be shown. With more slides,
+a label shows instead of the dots.
+- **resourceStrings**: `TGet`
+- **slidesLabelFormat**: `string` — The format of the `aria-label` of the carousel slides, and of the label that
+shows when the number of slides is greater than `maximumIndicatorsCount`.
+Each `{0}` changes to the number of the slide, and each `{1}` to the total number of slides.
+- **vertical**: `boolean` — Whether the carousel has vertical alignment.
+- **current**: `any` — The index of the current active slide.
+- **isPaused**: `any` — Whether the carousel is in paused state.
+- **isPlaying**: `any` — Whether the carousel is in playing state.
+- **slides**: `any` — The slides of the carousel.
+- **total**: `any` — Total number of slides.
+- **blur**(): void — Removes focus from the carousel.
+- **focus**(options?: FocusOptions): void — Sets focus on the carousel.
+- **next**(): Promise<boolean> — Switches to the next slide, runs any animations, and returns whether the operation
+was successful.
+- **pause**(): void — Pauses the rotation of the carousel slides.
+- **play**(): void — Resumes playing of the carousel slides.
+- **prev**(): Promise<boolean> — Switches to the previous slide, runs any animations, and returns whether the operation
+was successful.
+- **select**(slide: IgcCarouselSlideComponent, animationDirection?: "next" | "prev"): Promise<boolean> — Switches to the passed-in slide, runs any animations, and returns whether the operation
+was successful.
+- **select**(index: number, animationDirection?: "next" | "prev"): Promise<boolean> — Switches to slide by index, runs any animations, and returns whether the operation
+was successful.
+
+### [IgrCarouselIndicator](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCarouselIndicator)
+Used when a custom indicator needs to be passed to the carousel component.
+
+- **active**: `boolean` — Whether the indicator is in its active state. The carousel sets this value.
+- **index**: `number` — The zero-based position of the indicator in the set. The carousel sets this value.
+
+### [IgrCarouselSlide](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCarouselSlide)
+A single content container within a set of containers used in the context of a carousel.
+
+- **active**: `boolean` — Whether the slide is the active slide of the carousel.
+- **previous**: `boolean` — Whether the slide is the outgoing slide of a running transition.
+The carousel sets this value.
+
+### [IgrChat](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrChat)
+A chat UI component for displaying messages, attachments, and input interaction.
+
+- **draftMessage**: `IgcChatDraftMessage` — The chat message currently being composed but not yet sent.
+Includes the draft text and any attachments.
+- **locale**: `string`
+- **messages**: `IgcChatMessage[]` — The list of chat messages currently displayed.
+Use this property to set or update the message history.
+- **options**: `IgcChatOptions | undefined` — The configuration object of the chat: behavior and appearance options,
+suggestions and custom renderers.
+- **resourceStrings**: `IgcChatResourceStrings & IChatResourceStrings` — The resource strings of the chat.
+- **resourceStrings**: `TGet`
+- **focusInput**(options?: FocusOptions): Promise<void> — Moves the focus to the text area of the chat input, after the first render
+of a new chat. The promise resolves when the focus moves. A disconnected
+chat does not wait. Does nothing when a custom input renderer replaces
+the text area.
+- **scrollToMessage**(messageId: string): void — Scrolls the view to a specific message by id.
+
+### [IgrCheckbox](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCheckbox)
+A check box allowing single values to be selected/deselected.
+
+- **checked**: `boolean` — Whether the control is checked.
+- **indeterminate**: `boolean` — Whether the checkbox is in the indeterminate state. A user click clears it.
+- **labelPosition**: `ToggleLabelPosition` — The label position of the control.
+- **value**: `string` — The value of the control, submitted when the control is checked.
+- **blur**(): void — Removes focus from the control.
+- **click**(): void — Simulates a click on the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+
+### [IgrChip](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrChip)
+Chips help people enter information, make selections, filter content, or trigger actions.
+
+- **disabled**: `boolean` — Whether the chip is disabled.
+- **locale**: `string`
+- **outlined**: `boolean` — Whether the chip is outlined.
+- **removable**: `boolean` — Whether the chip shows a remove control. A disabled chip hides it.
+- **resourceStrings**: `TGet`
+- **selectable**: `boolean` — Whether the chip can be selected.
+- **selected**: `boolean` — Whether the chip is selected.
+- **variant**: `StyleVariant | undefined` — The color variant of the chip.
+- **blur**(): void — Removes focus from the chip.
+- **focus**(options?: FocusOptions): void — Sets focus on the chip.
+
+### [IgrCircularGradient](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCircularGradient)
+Defines a gradient stop for the fill of the circular progress.
+Put it in the gradient slot of the circular progress. Each one becomes an SVG <stop> element.
+The color, offset and opacity values go to the
+stop-color, offset and stop-opacity of that element without validation.
+
+- **color**: `string` — The color of the stop.
+- **offset**: `string` — Where the stop sits along the gradient vector.
+- **opacity**: `number` — The opacity of the stop.
+
+### [IgrCircularProgress](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCircularProgress)
+A circular progress indicator used to express unspecified wait time or display
+the length of a process.
+
+- **animationDuration**: `number` — The duration of the fill animation in milliseconds.
+- **hideLabel**: `boolean` — Whether the default label is hidden.
+- **indeterminate**: `boolean` — Whether the progress is indeterminate. An indeterminate progress has no
+value and does not show the default label.
+- **labelFormat**: `string` — Format string for the default label of the control.
+Placeholders:
+ {0} - current value of the control.
+ {1} - max value of the control.
+- **max**: `number` — The maximum value of the control.
+- **value**: `number` — The value of the control.
+- **variant**: `StyleVariant` — The variant of the control.
+
+### [IgrColorPicker](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrColorPicker)
+Color input component.
+
+The user picks a color with the HSV saturation/value canvas, the hue slider
+and the optional alpha slider. The user can also type a color string: hex,
+rgb(a), hsl(a) or a named CSS color.
+
+The component supports pre-defined swatches and the native EyeDropper API,
+where the browser provides one. The anchor is a trigger button
+(mode="default") or an editable text field (mode="input").
+
+- **format**: `ColorFormat` — The color format of the string value.
+
+A format change renders value in the new notation. The color does not
+change, so the component emits no igcInput or igcChange.
+- **hideFormats**: `boolean` — Whether the format select is hidden.
+- **label**: `string | undefined` — The label of the component.
+
+In mode="input" the component forwards the label to the anchor input.
+In mode="default" it renders the label as a separate element.
+- **locale**: `string`
+- **mode**: `ColorPickerMode` — The mode of the color picker.
+
+In "default" mode the anchor is a trigger button. In "input" mode the
+anchor is an editable text field with a color swatch prefix. The prefix
+also opens the picker.
+- **open**: `boolean` — Whether the component is open.
+- **resourceStrings**: `TGet`
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
+- **showAlpha**: `boolean` — Whether to show the alpha slider and input.
+- **swatches**: `string[]` — Pre-defined color strings. The component renders them as clickable
+swatches below the picker controls. A click on a swatch sets its color as
+the value.
+- **value**: `string` — The value of the component as a CSS color string. Accepts hex, rgb(a),
+hsl(a) and named colors.
+
+An empty, whitespace-only or invalid string clears the value.
+- **blur**(): void — Removes focus from the color picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the color picker.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
+
+### [IgrCombo](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrCombo)
+The combo lets the user select one or more options from a list. Unlike the select, it shows the options in a
+virtualized list, so the list can hold thousands of options.
+The combo supports custom item templates, case-sensitive filtering, grouping and binding to complex data.
+
+- **autofocus**: `boolean` — Whether the control takes the focus automatically.
+- **autofocusList**: `boolean` — Whether the list of options, not the search input, takes the focus when
+the list opens. It has no effect in single selection mode.
+- **caseSensitiveIcon**: `boolean` — Whether the search input shows the icon that toggles case-sensitive
+filtering. In remote filtering mode, read filteringOptions.caseSensitive
+when you send the search to the server.
+- **data**: `T[]` — The data source used to generate the list of options. A new data source
+keeps the selection, also the selected items that it does not hold.
+- **disableClear**: `boolean` — Whether the clear button is hidden.
+- **disableFiltering**: `boolean` — Whether the filtering of the list of options is disabled. In multiple
+selection mode, it also hides the search input.
+- **displayKey**: `any | undefined` — The key in the data source used to display items in the list. Falls back
+to `valueKey`.
+- **filteringOptions**: `FilteringOptions<T>` — An object that configures the filtering of the combo.
+- **groupHeaderTemplate**: `ComboGroupHeaderTemplate<T>` — The template used for the content of each combo group header.
+- **groupKey**: `string | any | undefined` — The key in the data source used to group items in the list.
+- **groupSelection**: `boolean` — Whether a group header is an option that selects the items of its group
+that the list shows, or deselects them when all of them are selected.
+Only in multiple selection mode with groupKey.
+- **groupSorting**: `GroupingDirection` — The sort order of the groups, by their group value. With none, the
+groups keep the order of the data source.
+- **itemTemplate**: `ComboItemTemplate<T>` — The template used for the content of each combo item.
+- **label**: `string | undefined` — The label of the control.
+- **loading**: `boolean` — Whether the combo loads options. A spinner, which the loading slot can
+replace, then takes the place of the toggle icon, and an empty list shows
+a loading message instead of the empty message.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string | undefined` — The placeholder text of the control.
+- **placeholderSearch**: `string` — The placeholder text of the search input.
+- **selectionCommit**: `ComboSelectionCommit` — When the user's changes of the selection apply in multiple selection
+mode. With confirm, they change a pending selection while the list is
+open, and Enter or the Apply button applies it with one igcChange. Any
+other close drops it. While it exists, the selection methods change it too.
+- **showSelectAll**: `boolean` — Whether the list starts with an option that selects all the items that it
+shows, or deselects them when all of them are selected. Only in multiple
+selection mode.
+- **singleSelect**: `boolean` — Whether only one item can be selected. In this mode, the main input
+filters the list of options.
+- **totalItemCount**: `number | undefined` — The number of all the items of a remote source, when the source knows it.
+In remote filtering mode, the list shows a placeholder for each item that
+data does not hold yet, so the scrollbar shows the full list.
+- **value**: `ComboValue<T>[]` — The values of the selected items. With a `valueKey`, each value is that
+field of an item. Without it, each value is the item itself.
+
+The `value` attribute takes a JSON array. For a data source of objects,
+set `valueKey` to select items through the attribute.
+- **valueKey**: `any | undefined` — The key in the data source used when selecting items.
+- **pendingValue**: `any` — The values of the pending selection in the confirm mode of
+`selectionCommit`, which Enter, the Apply button or `commitSelection()`
+applies. Without a pending selection, the same as `value`.
+- **selection**: `any` — Returns the current selection as an array of objects as provided in the `data` source.
+- **blur**(): void — Removes focus from the component.
+- **cancelSelection**(): void — Puts value back as the pending selection of the confirm mode. It does
+not close the list.
+- **commitSelection**(): void — Applies the pending selection of the confirm mode to value. It does not
+emit igcChange or close the list.
+- **deselect**(items?: Item<T> | Item<T>[]): void — Deselects options in the list by reference or by valueKey value. It
+does not emit igcChange. Without an argument, it deselects all items.
+- **deselectAllItems**(ignoreFilter?: boolean): void — Deselects all the items that the list shows. It does not emit igcChange.
+- **focus**(options?: FocusOptions): void — Sets focus on the component.
+- **select**(items?: Item<T> | Item<T>[]): void — Selects options in the list by reference or by valueKey value. It does
+not emit igcChange. An object that data does not hold is selected as
+it is. Without an argument, it selects all the items of data, or clears
+the selection in single selection mode.
+- **selectAllItems**(ignoreFilter?: boolean): void — Selects all the items that the list shows. It does not emit igcChange,
+and does nothing in single selection mode.
+
+### [IgrDatePicker](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDatePicker)
+A date field where the user types a date or selects one in a calendar.
+The calendar opens in a dropdown or in a dialog.
+
+- **activeDate**: `Date` — The date that the calendar shows and highlights.
+Without it, the calendar starts at the value, or at the current date when there is no value.
+- **disabledDates**: `DateRangeDescriptor[]` — The date ranges that the user cannot select in the calendar.
+A value that includes one of these dates is invalid.
+- **displayFormat**: `string` — The format of the value while the input does not have focus.
+Without it, the input uses `inputFormat` when set, else the display format of the locale.
+- **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header. It applies only in dialog mode.
+- **hideHeader**: `boolean` — Whether the calendar hides its header. In dropdown mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
+- **inputFormat**: `string` — The date format of the input while the user edits the value.
+Without it, the input uses the input format of the locale.
+- **label**: `string` — The label of the picker.
+- **locale**: `string`
+- **max**: `Date | null` — The maximum value required for the picker to remain valid.
+The calendar disables the dates after it.
+- **min**: `Date | null` — The minimum value required for the picker to remain valid.
+The calendar disables the dates before it.
+- **mode**: `PickerMode` — Whether the calendar opens in a dropdown or in a modal dialog.
+In dialog mode, the user cannot type in the input.
+- **nonEditable**: `boolean` — Whether the user cannot type in the input. The user can still select a date in the calendar.
+- **orientation**: `ContentOrientation` — The orientation of the multiple months displayed in the calendar's days view.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **prompt**: `string` — The prompt symbol to use for unfilled parts of the mask.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change the value or open the calendar.
+- **resourceStrings**: `TGet`
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
+- **specialDates**: `DateRangeDescriptor[]` — The date ranges that the calendar marks as special.
+- **value**: `Date | null` — The value of the picker.
+
+Only ever holds a committed value. While the user is typing in the input, the
+intermediate state stays in the editor and is committed - together with an
+`igcChange` event - when the edit is committed on blur. Use the `igcInput` event
+to observe the value as it is being typed.
+- **visibleMonths**: `number` — The number of months displayed in the calendar.
+- **weekStart**: `WeekDays` — The first day of the week in the calendar.
+- **selectionEnd**: `any` — The offset of the end of the text selection in the input, in UTF-16 code
+units.
+- **selectionStart**: `any` — The offset of the start of the text selection in the input, in UTF-16
+code units. Equals `selectionEnd` when no text is selected.
+- **blur**(): void — Removes focus from the picker.
+- **clear**(): void — Clears the value and the input text of the picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the picker.
+- **select**(): void — Selects the text in the input of the component.
+- **setRangeText**(replacement: string, start?: number, end?: number, mode?: RangeTextSelectMode): void — Replaces the text from start to end in the input and re-applies the
+mask. Without start and end, replaces the selected text.
+- **setSelectionRange**(start: number, end: number, direction?: SelectionRangeDirection): void — Sets the text selection range in the input of the component.
+- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date part by delta, or by 1. Without datePart, it changes the
+part at the cursor or a default part.
+- **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date part by delta, or by 1. Without datePart, it changes the
+part at the cursor or a default part.
+
+### [IgrDateRangePicker](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDateRangePicker)
+A date range field where the user types a start and an end date or selects a range in a calendar.
+The calendar opens in a dropdown or in a dialog.
+
+- **activeDate**: `Date` — The date that the calendar shows and highlights.
+Without it, the calendar starts at the value, or at the current date when there is no value.
+- **customRanges**: `CustomDateRange[]` — The custom date ranges that the picker shows as chips. A click on a chip selects its range.
+- **disabledDates**: `DateRangeDescriptor[]` — The date ranges that the user cannot select in the calendar.
+A value that includes one of these dates is invalid.
+- **displayFormat**: `string` — The format of the value while the input does not have focus.
+Without it, the input uses `inputFormat` when set, else the display format of the locale.
+- **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header. It applies only in dialog mode.
+- **hideHeader**: `boolean` — Whether the calendar hides its header. In dropdown mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
+- **inputFormat**: `string` — The date format of the input while the user edits the value.
+Without it, the input uses the input format of the locale.
+- **label**: `string` — The label of the picker.
+- **labelEnd**: `string` — The label of the end input.
+- **labelStart**: `string` — The label of the start input.
+- **locale**: `string`
+- **max**: `Date | null` — The maximum value required for the picker to remain valid.
+The calendar disables the dates after it.
+- **min**: `Date | null` — The minimum value required for the picker to remain valid.
+The calendar disables the dates before it.
+- **mode**: `PickerMode` — Whether the calendar opens in a dropdown or in a modal dialog.
+In dialog mode, the user cannot type in the input.
+- **nonEditable**: `boolean` — Whether the user cannot type in the input. The user can still select a date in the calendar.
+- **orientation**: `ContentOrientation` — The orientation of the multiple months displayed in the calendar's days view.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control (single input).
+- **placeholderEnd**: `string` — The placeholder text of the end input.
+- **placeholderStart**: `string` — The placeholder text of the start input.
+- **prompt**: `string` — The prompt symbol to use for unfilled parts of the mask.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change the value or open the calendar.
+- **resourceStrings**: `TGet`
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
+- **specialDates**: `DateRangeDescriptor[]` — The date ranges that the calendar marks as special.
+- **usePredefinedRanges**: `boolean` — Whether the picker shows chips with predefined ranges.
+- **useTwoInputs**: `boolean` — Whether the picker shows the start and the end date in two separate inputs.
+- **value**: `DateRangeValue | null` — The value of the picker: a range with a `start` and an `end` date.
+- **visibleMonths**: `number` — The number of months displayed in the calendar: 1 or 2.
+- **visibleMonths**: `number` — The number of months displayed in the calendar.
+- **weekStart**: `WeekDays` — The first day of the week in the calendar.
+- **blur**(): void — Removes focus from the picker.
+- **clear**(): void — Clears the value and the input text of the picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the picker.
+- **select**(value: DateRangeValue | null): void — Sets the value of the picker to value. It does not emit events.
+
+### [IgrDateTimeInput](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDateTimeInput)
+An input field to enter and edit a date and time value, with configurable input and display formats.
+
+- **displayFormat**: `string` — The format of the value while the input does not have focus.
+Without it, the input uses `inputFormat` when set, else the display format of the locale.
+- **inputFormat**: `string` — The date format of the input while the user edits the value.
+Without it, the input uses the input format of the locale.
+- **label**: `string` — The label for the control.
+- **locale**: `string` — The locale used to format the display value. Without it, the input takes
+its own `lang`, else the locale of the nearest ancestor that has a
+`locale` (a component) or a `lang`, and then the global locale.
+- **max**: `Date | null` — The maximum value required for the input to remain valid.
+- **min**: `Date | null` — The minimum value required for the input to remain valid.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **spinDelta**: `DatePartDeltas | undefined` — The amount by which a step action increments or decrements each date part.
+All values default to 1.
+- **spinLoop**: `boolean` — Whether a spun date part wraps around at its limits.
+When false, the part stops at its minimum or maximum.
+- **value**: `Date | null` — The value of the input.
+
+Only ever holds a committed value. While the user is typing, the intermediate
+state lives in the masked text and is committed - together with an `igcChange`
+event - when the edit is committed on blur. Use the `igcInput` event to observe
+the value as it is being typed.
+- **blur**(): void — Removes focus from the control.
+- **clear**(): void — Clears the value and the text of the input.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **hasDateParts**(): boolean — Returns whether the input format has a date part: day, month or year.
+- **hasTimeParts**(): boolean — Returns whether the input format has a time part: hours, minutes or seconds.
+- **select**(): void — Selects all the text inside the input.
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode?: RangeTextSelectMode): void — Replaces the text from start to end in the input and re-applies the mask.
+Without start and end, replaces the selected text. The value updates at once.
+- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
+- **stepDown**(datePart?: P, delta?: number): void — Decrements a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
+- **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
+- **stepUp**(datePart?: P, delta?: number): void — Increments a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
+
+### [IgrDialog](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDialog)
+A modal dialog component built on the native <dialog> element.
+
+The dialog traps focus while open and blocks interaction with the rest
+of the page (modal semantics). It supports animated open/close
+transitions, a backdrop overlay, and multiple content areas
+through named slots.
+
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a commandfor
+that points to this element calls the matching method.
+
+- **closeOnOutsideClick**: `boolean` — Whether a click on the backdrop, outside the dialog surface, closes the
+dialog. The close emits the close events.
+
+Has no effect when the dialog is not yet open.
+- **hideDefaultAction**: `boolean` — Whether the default action button in the footer is hidden.
+
+Has no effect when content is projected into the footer slot, because
+the slot content replaces the default button.
+- **keepOpenOnEscape**: `boolean` — Whether the dialog stays open when the user presses the Escape key.
+
+Use it when the dialog guards unsaved work and needs an explicit user
+action to close.
+- **locale**: `string`
+- **open**: `boolean` — Whether the dialog is open.
+
+Setting it skips the animation and the close events. Use the show(),
+hide() and toggle() methods for an animated transition.
+- **resourceStrings**: `TGet`
+- **returnValue**: `string | undefined` — The return value of the dialog.
+
+Automatically set to the value of the submitter element when a
+<form method="dialog"> inside the dialog is submitted. Can also
+be set programmatically before calling hide().
+- **title**: `string` — The title displayed in the dialog header.
+
+Overridden by any content projected into the title slot.
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **hide**(): Promise<boolean> — Closes the dialog with an animated fade-out transition.
+
+Returns true when the dialog was successfully closed, or false if it
+was already closed or closing, the transition was superseded by a newer
+one, or open was set to false and then to true during it.
+- **show**(): Promise<boolean> — Opens the dialog with an animated fade-in transition.
+
+Returns true when the dialog was successfully opened, or false if it
+was already open or opening, the transition was superseded by a newer one,
+or open was set to false during it.
+- **toggle**(): Promise<boolean> — Toggles the dialog open or closed depending on its current state.
+
+Equivalent to calling show() when closed and hide() when open.
+Returns true when the transition completed successfully, with the same
+false cases as these methods.
+
+### [IgrDivider](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDivider)
+Shows a horizontal or vertical rule as a break between content on a page.
+
+- **middle**: `boolean` — Whether the --inset value shrinks the line from both sides, not only from the start.
+- **type**: `DividerType` — The style of the divider line: solid or dashed.
+- **vertical**: `boolean` — Whether to render a vertical divider line.
+
+### [IgrDropdown](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDropdown)
+Shows a list of items in a popup next to a target element. The user
+selects one item from the list.
+
+- **distance**: `number` — The distance from the target element.
+- **flip**: `boolean` — Whether the dropdown flips to the opposite side of the target when it does not fit in the visible area.
+It flips back when its preferred side has enough space again.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
+- **open**: `boolean` — Whether the component is open.
+- **placement**: `PopoverPlacement` — The preferred placement of the component around the target element.
+- **sameWidth**: `boolean` — Whether the dropdown has the same width as the target.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
+- **groups**: `any` — Returns the group items of the dropdown.
+- **items**: `any` — Returns the items of the dropdown.
+- **selectedItem**: `any` — Returns the selected item from the dropdown or null.
+- **clearSelection**(): void — Clears the current selection of the dropdown.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **navigateTo**(value: string): IgcDropdownItemComponent | null — Navigates to the item with the specified value. If it exists, returns the found item, otherwise - null.
+- **navigateTo**(index: number): IgcDropdownItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **select**(value: string): IgcDropdownItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
+- **select**(index: number): IgcDropdownItemComponent | null — Selects the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **show**(target?: string | HTMLElement): Promise<boolean> — Opens the dropdown. It does not emit events. The optional target is the
+anchor element, or its ID. The promise resolves to false when the
+dropdown is already open or has no anchor, or when a later call replaces
+this one.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(target?: string | HTMLElement): Promise<boolean> — Opens the dropdown when it is closed, and closes it when it is open. It
+does not emit events. The optional target is the anchor element for
+the open, or its ID. The promise resolves to true when the state
+changes.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
+
+### [IgrDropdownGroup](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDropdownGroup)
+A container for a group of dropdown items.
+
+- **items**: `IgcDropdownItemComponent[]` — All child dropdown items.
+
+### [IgrDropdownHeader](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDropdownHeader)
+Represents a header item in a dropdown list.
+
+
+### [IgrDropdownItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrDropdownItem)
+Represents an item in a dropdown list.
+
+- **active**: `boolean` — Whether the item is active. The active item has the visual focus during
+keyboard navigation.
+- **disabled**: `boolean` — Whether the item is disabled.
+- **selected**: `boolean` — Whether the item is selected. A change also sets active to the same
+value.
+- **value**: `string` — The value of the item. Falls back to the text content of the element.
+
+### [IgrExpansionPanel](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrExpansionPanel)
+Shows a header with a title and a subtitle, and content that the user can
+expand and collapse. Find-in-page, a text fragment or a link to an element in
+the content opens a collapsed panel that is not disabled.
+
+- **disabled**: `boolean` — Whether the panel is disabled. A disabled panel does not respond to user
+interaction.
+- **indicatorPosition**: `ExpansionPanelIndicatorPosition` — The indicator position of the expansion panel.
+- **open**: `boolean` — Whether the panel is expanded and its content is visible.
+- **hide**(): Promise<boolean> — Hides the panel content.
+- **show**(): Promise<boolean> — Shows the panel content.
+- **toggle**(): Promise<boolean> — Toggles the panel open/close state.
+
+### [IgrFileInput](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrFileInput)
+A form control that lets the user select one or more files, or a folder.
+
+- **accept**: `string` — The file types the control accepts, as a comma-separated list.
+- **autofocus**: `boolean` — Whether the control receives focus automatically.
+- **directory**: `boolean` — Whether the user selects a folder instead of files. The selection then holds
+every file in the folder and its subfolders, and the webkitRelativePath of
+each file gives its path from the folder.
+- **label**: `string` — The label for the control.
+- **locale**: `string`
+- **multiple**: `boolean` — Whether the control allows the user to select more than one file.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **resourceStrings**: `TGet`
+- **value**: `string` — The value of the control: the name of the first selected file, as the native file input gives it.
+As for the native file input, only an empty string can be set. It clears the selection.
+- **files**: `any` — The list of selected files.
+- **blur**(): void — Removes focus from the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **select**(): void — Selects all the text inside the input.
+
+### [IgrGridLite](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrGridLite)
+IgcGridLite is a web component for displaying data in a tabular format quick and easy.
+
+Out of the box it provides row virtualization, sort and filter operations (client and server side),
+the ability to template cells and headers and column hiding.
+
+- **adoptRootStyles**: `boolean`
+- **autoGenerate**: `boolean` — Whether the grid will try to "resolve" its column configuration based on the passed
+data source.
+- **columns**: `ColumnConfiguration<T>[]` — Sets the column configuration for the grid.
+- **data**: `T[]` — The data source for the grid.
+- **dataPipelineConfiguration**: `DataPipelineConfiguration<T>` — Configuration object which controls remote data operations for the grid.
+- **filterExpressions**: `FilterExpression<T>[]` — Set the filter state for the grid.
+- **sortingExpressions**: `SortingExpression<T>[]` — Set the sort state for the grid.
+- **sortingOptions**: `GridLiteSortingOptions` — Sort configuration property for the grid.
+- **dataView**: `any` — Returns the state of the data source after sort/filter operations
+have been applied.
+- **rows**: `any` — Returns the collection of rendered row elements in the grid.
+- **totalItems**: `any` — The total number of items in the dataView collection.
+- **clearFilter**(key?: Keys<T>): void — Resets the current filter state of the control.
+- **clearSort**(key?: Keys<T>): void — Resets the current sort state of the control.
+- **filter**(config: FilterExpression<T> | FilterExpression<T>[]): void — Performs a filter operation in the grid based on the passed expression(s).
+- **getColumn**(id: number | Keys<T>): ColumnConfiguration<T> | undefined — Returns a ColumnConfiguration for a given column.
+- **navigateTo**(row: number, options?: NavigateToOptions<T>): Promise<void> — Navigates to a position in the grid based on provided row index and column field.
+- **navigateTo**(row: number, column?: Keys<T>, activate?: boolean): Promise<void> — **Deprecated:** Use navigateTo(row, options) instead. Navigates to a position in the grid based on provided row index and column field.
+- **sort**(expressions: SortingExpression<T> | SortingExpression<T>[]): void — Performs a sort operation in the grid based on the passed expression(s).
+
+### [IgrGridLiteColumn](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrGridLiteColumn)
+
+- **cellTemplate**: `any | undefined` — Custom cell template for the column.
+- **dataType**: `DataType | undefined` — The data type of the column's values.
+- **field**: `Keys<T>` — The field from the data for this column.
+- **filterable**: `boolean` — Indicates whether the column is filterable.
+- **filteringCaseSensitive**: `boolean` — Whether filter operations will be case sensitive.
+- **header**: `string | undefined` — The header text of the column.
+- **headerTemplate**: `any | undefined` — Custom header template for the column.
+- **hidden**: `boolean` — Indicates whether the column is hidden.
+- **resizable**: `boolean` — Indicates whether the column is resizable.
+- **sortable**: `boolean` — Indicates whether the column is sortable.
+- **sortConfiguration**: `ColumnSortConfiguration<T> | undefined` — Sort configuration for the column (e.g., custom comparer).
+- **sortingCaseSensitive**: `boolean` — Whether sort operations will be case sensitive.
+- **width**: `string | undefined` — The width of the column.
+
+### [IgrHighlight](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrHighlight)
+Searches the text projected into its default slot and highlights the matches.
+It uses the native CSS Custom Highlight API, so it does not change the DOM.
+
+The component supports case-sensitive matching and programmatic navigation between
+matches. Navigation scrolls the active match into view. When the content changes,
+the component searches it again and keeps the active match where it can.
+
+- **caseSensitive**: `boolean` — Whether the matching distinguishes upper and lower case.
+When true, only exact-case occurrences of searchText are highlighted.
+- **searchText**: `string` — The string to search and highlight in the DOM content of the component.
+A change of this property starts a new search.
+An empty string clears all highlights.
+- **current**: `any` — The zero-based index of the active match. Returns `0` when there are no matches.
+- **size**: `any` — The total number of matches found for the current `searchText`. Returns `0` when there are no matches or `searchText` is empty.
+- **next**(options?: HighlightNavigation): void — Moves the active highlight to the next match.
+Wraps around to the first match after the last one.
+- **previous**(options?: HighlightNavigation): void — Moves the active highlight to the previous match.
+Wraps around to the last match when going back from the first one.
+- **search**(): void — Re-runs the highlight search based on the current searchText and caseSensitive values,
+and makes the first match active.
+
+The component also searches again by itself after its content changes.
+- **setActive**(index: number, options?: HighlightNavigation): void — Moves the active highlight to the match at the specified zero-based index.
+
+### [IgrIcon](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrIcon)
+Shows an SVG icon from a collection of registered icons.
+
+- **collection**: `string` — The registered collection to look the icon up in.
+- **mirrored**: `boolean` — Whether the icon is flipped horizontally, for example for RTL layouts.
+- **name**: `string` — The name of the icon glyph to draw.
+
+### [IgrIconButton](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrIconButton)
+A button that displays a single icon, designed for compact, icon-only
+interactions such as toolbar actions, floating action buttons, or inline
+controls.
+
+The icon is sourced from the icon registry via the name and collection
+attributes. Like the normal button, it can render as an anchor element when
+href is set and is fully form-associated.
+
+- **collection**: `string | undefined` — The collection the icon belongs to.
+- **command**: `string | undefined` — The command to invoke on the target element specified by commandfor.
+Part of the [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) API.
+Custom commands must start with two dashes (e.g. '--my-command').
+- **commandfor**: `string | null` — The ID of the target element for the invoker command.
+Part of the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+- **commandForElement**: `Element | null` — The target element for the invoker command. Resolved from the `commandfor` ID.
+- **disabled**: `boolean` — Whether the button is disabled. A disabled button ignores user interaction.
+- **download**: `string | undefined` — Prompts the browser to download the linked resource rather than navigating
+to it. The optional value is used as the suggested file name.
+Only effective when href is set.
+- **href**: `string | undefined` — The URL the button points to. When set, the component renders as an
+<a> element instead of a <button>, enabling navigation on click.
+Use together with target, download, and rel for full anchor semantics.
+A disabled link renders a disabled <button> with the link role, because an
+anchor has no disabled state.
+- **mirrored**: `boolean` — Whether the icon is flipped horizontally. Use it for a directional icon
+in a right-to-left layout.
+- **name**: `string | undefined` — The name of the icon to display.
+- **rel**: `string | undefined` — The relationship between the current document and the linked URL.
+Accepts a space-separated list of link types (e.g. 'noopener noreferrer').
+Only effective when href is set. When target="_blank" is used,
+setting rel="noopener noreferrer" is strongly recommended for security.
+- **target**: `"_blank" | "_parent" | "_self" | "_top" | undefined` — Where to open the linked document. Only effective when href is set.
+- '_self' – current browsing context (default browser behavior).
+- '_blank' – new tab or window.
+- '_parent' – parent browsing context; falls back to _self if none.
+- '_top' – top-level browsing context; falls back to _self if none.
+- **type**: `"reset" | "submit" | "button"` — The type of the button, which determines its behavior and semantics.
+- 'button' – no default action; useful for custom JavaScript handlers.
+- 'submit' – submits the associated form when clicked.
+- 'reset' – resets the associated form fields to their initial values.
+
+Ignored when the button is rendered as a link (i.e. href is set).
+- **variant**: `IconButtonVariant` — The variant of the button which determines its visual appearance.
+- contained – filled background; highest visual emphasis (default).
+- outlined – transparent background with a visible border.
+- flat – no background or border; lowest visual emphasis.
+- **form**: `any` — The `<form>` element the button is associated with.
+Resolved through the standard form-association mechanism - either the
+closest ancestor `<form>` or the form referenced by the button's `form`
+attribute. Returns `null` when no form is associated.
+Relevant only when `type` is `'submit'` or `'reset'`.
+- **blur**(): void — Removes focus from the button.
+- **click**(): void — Simulates a mouse click on the button, triggering its click handler and any associated form action.
+- **focus**(options?: FocusOptions): void — Sets focus on the button.
+
+### [IgrInput](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrInput)
+A single-line text field to enter and edit data. It supports prefix and
+suffix content, helper text, form integration and built-in validation.
+
+- **autocomplete**: `string` — A hint for the browser on how to autofill the control.
+- **autofocus**: `boolean` — Whether the control receives focus automatically.
+- **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
+See [relevant MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
+- **label**: `string` — The label for the control.
+- **max**: `number | undefined` — The maximum value the control accepts.
+- **maxLength**: `number | undefined` — The maximum string length of the control.
+- **min**: `number | undefined` — The minimum value the control accepts.
+- **minLength**: `number | undefined` — The minimum string length required by the control.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **pattern**: `string | undefined` — The regular expression the value is validated against.
+- **placeholder**: `string` — The placeholder text of the control.
+- **readOnly**: `boolean` — Whether the control is read-only.
+- **step**: `number | undefined` — The granularity the value must adhere to.
+- **type**: `InputType` — The type of the control.
+- **validateOnly**: `boolean` — Whether the validation rules apply without restricting user input. The user can type past maxLength,
+and the spin buttons of a number input can go past min and max.
+- **value**: `string` — The value of the control.
+- **selectionEnd**: `any` — The offset of the end of the text selection, in UTF-16 code units.
+`null` before the first render and for the `email` and `number` types.
+- **selectionStart**: `any` — The offset of the start of the text selection, in UTF-16 code units.
+Equals `selectionEnd` when no text is selected. `null` before the first
+render and for the `email` and `number` types, which have no selection.
+- **blur**(): void — Removes focus from the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **select**(): void — Selects all the text inside the input.
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode?: RangeTextSelectMode): void — Replaces the text from start to end in the input. Without start and
+end, replaces the selected text.
+- **setSelectionRange**(start?: number, end?: number, direction?: SelectionRangeDirection): void — Sets the text selection range of the control.
+- **stepDown**(n?: number): void — Decrements the numeric value of the input by one or more steps.
+- **stepUp**(n?: number): void — Increments the numeric value of the input by one or more steps.
+
+### [IgrLinearProgress](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrLinearProgress)
+A linear progress indicator used to express unspecified wait time or display
+the length of a process.
+
+- **animationDuration**: `number` — The duration of the fill animation in milliseconds.
+- **hideLabel**: `boolean` — Whether the default label is hidden.
+- **indeterminate**: `boolean` — Whether the progress is indeterminate. An indeterminate progress has no
+value and does not show the default label.
+- **labelAlign**: `LinearProgressLabelAlign` — The position for the default label of the control.
+- **labelFormat**: `string` — Format string for the default label of the control.
+Placeholders:
+ {0} - current value of the control.
+ {1} - max value of the control.
+- **max**: `number` — The maximum value of the control.
+- **striped**: `boolean` — Whether the fill of the control is striped.
+- **value**: `number` — The value of the control.
+- **variant**: `StyleVariant` — The variant of the control.
+
+### [IgrList](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrList)
+Displays a collection of data items in a templatable list format.
+
+
+### [IgrListHeader](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrListHeader)
+Header list item.
+
+
+### [IgrListItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrListItem)
+The list-item component is a container
+intended for row items in the list component.
+
+- **selected**: `boolean` — Whether the list item is selected. It changes only the visual style of the
+item.
+
+### [IgrMaskInput](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrMaskInput)
+An input field that restricts user input to a mask pattern and formats the visible value.
+
+- **label**: `string` — The label for the control.
+- **mask**: `string` — The mask pattern of the control.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **prompt**: `string` — The prompt symbol to use for unfilled parts of the mask pattern.
+- **value**: `string` — The value of the control. Its format depends on `valueMode`.
+
+An empty value is always an empty string, regardless of the value mode.
+- **valueMode**: `MaskInputValueMode` — The format of the value and of the submitted form value:
+
+- raw: The input without the mask literals and prompts (e.g. "5551234567")
+- withFormatting: The input with the mask formatting (e.g. "(555) 123-4567")
+
+An empty value is always an empty string, regardless of the value mode.
+- **blur**(): void — Removes focus from the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **isValidMaskPattern**(): boolean — Returns whether the current masked input is valid according to the mask pattern.
+An empty control is valid. The required validator checks it.
+- **select**(): void — Selects all the text inside the input.
+
+### [IgrNavbar](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrNavbar)
+A navigation bar component is used to facilitate navigation through
+a series of hierarchical screens within an app.
+
+
+### [IgrNavDrawer](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrNavDrawer)
+A side navigation container that provides
+quick access between views within an application.
+
+The edge positions (start, end, top, bottom) render a modal <dialog>
+with a focus trap and a backdrop. The relative position renders an inline
+<nav> landmark.
+
+Content in the mini slot renders a compact variant, which shows while the
+drawer is closed.
+
+The component integrates with the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
+an Ignite button or a native <button> with command="--show" / "--hide" / "--toggle"
+and commandfor pointing to this element calls the corresponding method
+declaratively without any JavaScript.
+
+- **keepOpenOnEscape**: `boolean` — Whether the drawer stays open when the user presses Escape. Applies only to the
+edge positions, because Escape does not close a relative drawer.
+- **label**: `string | undefined` — The accessible label of the <dialog>, or of the <nav> landmark in the relative
+position, and of the mini variant. Give each navigation landmark on a page a distinct label.
+- **open**: `boolean` — Whether the drawer is open.
+- **position**: `NavDrawerPosition` — The position of the drawer.
+
+- start - anchored to the inline-start edge (default).
+- end - anchored to the inline-end edge.
+- top - anchored to the block-start edge.
+- bottom - anchored to the block-end edge.
+- relative - rendered inline within the page flow; no modal backdrop.
+- **hide**(): Promise<boolean> — Closes the drawer. Returns true after the exit, or false when it is already closed or a
+reopen ends the exit.
+- **show**(): Promise<boolean> — Opens the drawer. Returns true on success, or false when it is already open.
+- **toggle**(): Promise<boolean> — Toggles the open state of the drawer.
+
+### [IgrNavDrawerHeaderItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrNavDrawerHeaderItem)
+Represents a navigation drawer header item.
+
+
+### [IgrNavDrawerItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrNavDrawerItem)
+Represents a navigation drawer item.
+
+- **active**: `boolean` — Whether the drawer item is active.
+- **disabled**: `boolean` — Whether the drawer item is disabled.
+
+### [IgrQrCode](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrQrCode)
+Generates a QR code from a value and renders it as an SVG image.
+Properties set the size, the shapes, the error correction level and an optional logo.
+
+- **dotStyle**: `QrDotStyle` — The style of the data modules (dots) in the QR code, and of the inner dot of each finder-pattern
+corner. This can be 'square', 'circle', or 'rounded'.
+- **errorLevel**: `QrErrorCorrectionLevel` — The error correction level for the QR code, which determines the QR code's ability to be read if it is partially obscured or damaged.
+Valid values are 'L', 'M', 'Q', and 'H', where 'L' provides the lowest level of error correction and 'H' provides the highest level.
+
+When the level is not set, the code uses 'M'. A logo that is larger than the safe area of 'M'
+raises the level to the smallest level that holds the logo. To restore this behavior, set
+`undefined` or remove the attribute.
+- **logoMargin**: `number | undefined` — The margin around the logo in pixels. This is the whitespace area surrounding the logo within the QR code,
+which helps ensure that the logo does not interfere with the QR code's scannability.
+- **logoSize**: `number` — The size of the logo, as a ratio of the maximum area that can safely be obscured by a logo
+while the QR code remains scannable (up to 9% of the code's area, at the highest error
+correction level). The value is a number from 0 to 1, where 0 means no logo and 1
+means the logo covers the full safe area (not the entire QR code). Other values are clamped.
+The default value is 0.4, meaning the logo covers 40% of that safe area (~3.6% of the QR code).
+
+When error-level is not set and the logo is larger than the safe area of level 'M', the
+component uses the smallest error correction level that holds the logo. When error-level
+is set, the logo does not grow past the safe area of that level.
+- **logoSrc**: `string | undefined` — The source URL of an optional logo image at the center of the QR code.
+The component does not render a logo that fails to load, a javascript: or vbscript: URL,
+or a data URI that is not an image.
+- **margin**: `number` — The margin (quiet zone) around the QR code, expressed as a number of QR code modules rather
+than pixels. This is the blank border area surrounding the code, which helps ensure that it
+can be properly scanned.
+- **size**: `number` — The size of the QR code in pixels. This determines the width and height of the generated QR code. The default value is 128 pixels.
+- **squareStyle**: `QrCornerSquareStyle` — The style of the corner squares in the QR code. This can be 'square', 'circle', or 'rounded'.
+- **value**: `string | undefined` — The value to encode in the QR code. This can be any string, such as a URL, text, or other data.
+Without a value, the component renders nothing.
+- **version**: `number | undefined` — The version of the QR code to generate, which determines the size and data capacity of the QR code.
+Valid values are integers from 1 to 40, where each version corresponds to a specific module size and data capacity.
+
+When it is not set, or it is not an integer from 1 to 40, the component selects the smallest
+version that holds the value. When the value does not fit the version, the component renders nothing.
+- **copyToClipboard**(options?: QrCodeCopyOptions): Promise<QrCodeCopyFormat> — Copies the QR code to the clipboard as an image and resolves to the format that the clipboard
+received. A browser that cannot copy SVG gets only the PNG.
+
+Browsers accept a clipboard write only in a focused document during a user action, so call
+the method directly from the event handler, with no await before it.
+
+Rejects when there is no value or it does not fit the version, when format is not
+supported, when scale is not a positive finite number, when the image exceeds the maximum
+canvas size, when the Clipboard API is not available, or when the browser refuses the write.
+- **toBlob**(): Promise<Blob> — Serializes the QR code to an image/svg+xml blob.
+
+Theme colors are resolved to plain fill attributes and a logo that is not a data URI
+is fetched and inlined, so the blob renders identically outside the component.
+A logo that cannot be fetched (for example a cross-origin URL without CORS headers) is omitted.
+
+Rejects when there is no value or it does not fit the version.
+- **toImage**(options?: QrCodeExportOptions): Promise<File> — Exports the QR code as an image file.
+
+The scale option multiplies the size of the component: a 256px QR code exported
+with scale: 2 produces a 512x512 image. When download is true the browser
+download dialog opens for the file.
+
+Rejects when there is no value or it does not fit the version, when format is not
+supported, when scale is not a positive finite number, or when the resulting image
+exceeds the maximum canvas size.
+
+### [IgrRadio](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRadio)
+Lets the user select one option from a set. Radios with the same name
+form a group, and only one radio of the group is checked.
+
+- **checked**: `boolean` — Whether the control is checked. A checked radio clears the other radios
+of its group.
+- **labelPosition**: `ToggleLabelPosition` — The label position of the radio control.
+- **required**: `boolean` — Whether the group of the radio is required. A required group fails
+validation while none of its radios is checked.
+- **value**: `string` — The value of the control, submitted when the control is checked.
+- **blur**(): void — Removes focus from the radio control.
+- **checkValidity**(): boolean — Checks the validity of the whole group. Each invalid radio of the group
+emits invalid.
+- **click**(): void — Simulates a click on the radio control.
+- **focus**(options?: FocusOptions): void — Sets focus on the radio control.
+- **reportValidity**(): boolean — Checks the validity of the group. An invalid radio emits invalid and
+takes the focus. It shows its own validation messages, not the message of
+the browser.
+- **setCustomValidity**(message: string): void — Sets a custom validation message on every radio of the group. The radios
+are invalid while message is not empty.
+
+### [IgrRadioGroup](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRadioGroup)
+Unifies one or more radio components into a single group.
+
+- **alignment**: `ContentOrientation` — Alignment of the radio controls inside this group.
+- **defaultValue**: `string` — The value of the radio that is checked by default. A form reset checks
+the radio with this value.
+- **name**: `string` — The name applied to all radio buttons in the group.
+- **value**: `string` — The value of the group, reflecting the value of the currently checked radio button.
+Setting it checks the radio button in the group with a matching value.
+
+### [IgrRangeSlider](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRangeSlider)
+A range slider component used to select two numeric values within a range.
+
+- **disabled**: `boolean` — Whether the slider is disabled. A disabled slider ignores user interaction.
+- **discreteTrack**: `boolean` — Whether the track shows the steps. It has no effect when step is 0.
+- **hidePrimaryLabels**: `boolean` — Whether the labels of the primary ticks are hidden.
+- **hideSecondaryLabels**: `boolean` — Whether the labels of the secondary ticks are hidden.
+- **hideTooltip**: `boolean` — Whether the thumb tooltip is hidden.
+- **locale**: `string` — The locale used to format the thumb and tick label values in the slider.
+- **lower**: `number` — The current value of the lower thumb.
+- **lowerBound**: `number` — The lower bound of the slider value. If not set, the `min` value is applied.
+- **max**: `number` — The maximum value of the slider scale. Defaults to 100.
+
+If `max` is less than `min`, the update keeps the previous `max`. The
+update checks the values after all of them are set, so the order of the
+attributes has no effect.
+
+With slider labels in the default slot, `max` is always the number of
+labels minus one.
+
+If `upperBound` is greater than `max`, the slider uses `max` as the upper bound.
+- **min**: `number` — The minimum value of the slider scale. Defaults to 0.
+
+If `min` is greater than `max`, the update keeps the previous `min`. The
+update checks the values after all of them are set, so the order of the
+attributes has no effect.
+
+With slider labels in the default slot, `min` is always 0.
+
+If `lowerBound` is less than `min`, the slider uses `min` as the lower bound.
+- **primaryTicks**: `number` — The number of primary ticks. It defaults to 0 which means no primary ticks are displayed.
+- **secondaryTicks**: `number` — The number of secondary ticks between two primary ticks. Without primary
+ticks, it is the total number of ticks. The default 0 shows no secondary ticks.
+- **step**: `number` — The interval between two valid values, counted from `min`.
+
+If set to 0 no stepping is implied and any value in the range is allowed.
+A negative step is not valid, so the previous step stays.
+With slider labels in the default slot, the step is always 1.
+- **thumbLabelLower**: `string` — The accessible name of the lower thumb.
+- **thumbLabelUpper**: `string` — The accessible name of the upper thumb.
+- **tickLabelRotation**: `SliderTickLabelRotation` — The degrees for the rotation of the tick labels. Defaults to 0.
+- **tickOrientation**: `SliderTickOrientation` — Where the ticks are drawn: before the track (start), after it (end),
+or on both sides (mirror).
+- **upper**: `number` — The current value of the upper thumb. Until it is set, and after the
+attribute is removed, it follows `upperBound`.
+- **upperBound**: `number` — The upper bound of the slider value. If not set, the `max` value is applied.
+- **valueFormat**: `string | undefined` — String format used for the thumb and tick label values in the slider.
+The {0} placeholder holds the formatted number.
+- **valueFormatOptions**: `NumberFormatOptions | undefined` — Number format options used for the thumb and tick label values in the slider.
+- **blur**(): void — Removes focus from the thumb.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **focus**(options?: FocusOptions): void — Sets focus on the thumb, or on the lower thumb of a range slider. A thumb
+that has the focus keeps it. A disabled slider does not take the focus.
+
+### [IgrRating](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRating)
+A rating component that allows users to view and provide ratings using customizable symbols.
+It supports fractional values, hover previews, keyboard navigation, single-selection mode,
+and integrates with forms as a number input.
+
+- **allowReset**: `boolean` — Whether to reset the rating when the user selects the same value.
+- **hoverPreview**: `boolean` — Whether to show a preview of the value when hovering over the symbols.
+- **label**: `string | undefined` — The label of the control.
+- **max**: `number` — The maximum value for the rating.
+
+With projected symbols, the maximum value is the number of symbols. A
+maximum below the value also lowers the value.
+- **readOnly**: `boolean` — Whether the rating is read-only. A read-only rating shows its value but
+ignores user input.
+- **single**: `boolean` — Whether only the symbol at the value is full, instead of all symbols up
+to it. It also sets step to 1 and rounds the value up.
+- **step**: `number` — The minimum value change allowed.
+
+Valid values are in the interval between 0.001 and 1 inclusive.
+The component clamps a value outside of the interval to the closest bound.
+In single selection mode, the step is always 1.
+- **value**: `number` — The value of the rating, clamped between 0 and `max`.
+- **valueFormat**: `string | undefined` — The format of the aria-valuetext of the rating. {0} stands for the
+value and {1} for the maximum value.
+
+Use it for screen readers and for localization.
+- **blur**(): void — Removes focus from the rating.
+- **focus**(options?: FocusOptions): void — Sets focus on the rating. A disabled rating does not take the focus.
+- **stepDown**(n?: number): void — Decrements the value of the control by n steps multiplied by
+the step factor.
+- **stepUp**(n?: number): void — Increments the value of the control by n steps multiplied by the
+step factor.
+
+### [IgrRatingSymbol](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRatingSymbol)
+A custom symbol for the rating. Put the full symbol in the default slot and
+the empty symbol in the empty slot.
+
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+
+### [IgrRipple](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrRipple)
+Shows a ripple wave on a pointer press, to mark an element as an
+interactive surface.
+
+
+### [IgrSelect](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSelect)
+Represents a control that provides a menu of options.
+
+- **autofocus**: `boolean` — Whether the control takes the focus after its first render.
+- **distance**: `number` — The distance of the select dropdown from its input.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
+- **label**: `string` — The label of the control.
+- **open**: `boolean` — Whether the component is open.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **placement**: `PopoverPlacement` — The preferred placement of the select dropdown around its input.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
+- **value**: `string | undefined` — The value of the control.
+- **groups**: `any` — Returns the groups of the select component.
+- **items**: `any` — Returns the items of the select component.
+- **selectedItem**: `any` — Returns the selected item from the dropdown or null.
+- **blur**(): void — Removes focus from the component.
+- **clearSelection**(): void — Resets the current value and selection of the component.
+- **focus**(options?: FocusOptions): void — Sets focus on the component.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **navigateTo**(value: string): IgcSelectItemComponent | null — Navigates to the item with the specified value. If it exists, returns the found item, otherwise - null.
+- **navigateTo**(index: number): IgcSelectItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **select**(value: string): IgcSelectItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
+- **select**(index: number): IgcSelectItemComponent | null — Selects the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
+
+### [IgrSelectGroup](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSelectGroup)
+A container for a group of select items.
+
+- **disabled**: `boolean` — Whether the group and all its children are disabled.
+- **items**: `IgcSelectItemComponent[]` — All child select items.
+
+### [IgrSelectHeader](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSelectHeader)
+Represents a header item in a select component.
+
+
+### [IgrSelectItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSelectItem)
+Represents an item in a select list.
+
+- **active**: `boolean` — Whether the item is active. The active item is the target of keyboard
+navigation and the only item in the tab order.
+- **active**: `boolean` — Whether the item is active. The active item has the visual focus during
+keyboard navigation.
+- **disabled**: `boolean` — Whether the item is disabled.
+- **selected**: `boolean` — Whether the item is selected. A change also sets active to the same
+value.
+- **value**: `string` — The value of the item. Falls back to the text content of the element.
+
+### [IgrSlider](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSlider)
+A slider component used to select a numeric value within a range.
+
+- **disabled**: `boolean` — Whether the slider is disabled. A disabled slider ignores user interaction.
+- **discreteTrack**: `boolean` — Whether the track shows the steps. It has no effect when step is 0.
+- **hidePrimaryLabels**: `boolean` — Whether the labels of the primary ticks are hidden.
+- **hideSecondaryLabels**: `boolean` — Whether the labels of the secondary ticks are hidden.
+- **hideTooltip**: `boolean` — Whether the thumb tooltip is hidden.
+- **locale**: `string` — The locale used to format the thumb and tick label values in the slider.
+- **lowerBound**: `number` — The lower bound of the slider value. If not set, the `min` value is applied.
+- **max**: `number` — The maximum value of the slider scale. Defaults to 100.
+
+If `max` is less than `min`, the update keeps the previous `max`. The
+update checks the values after all of them are set, so the order of the
+attributes has no effect.
+
+With slider labels in the default slot, `max` is always the number of
+labels minus one.
+
+If `upperBound` is greater than `max`, the slider uses `max` as the upper bound.
+- **min**: `number` — The minimum value of the slider scale. Defaults to 0.
+
+If `min` is greater than `max`, the update keeps the previous `min`. The
+update checks the values after all of them are set, so the order of the
+attributes has no effect.
+
+With slider labels in the default slot, `min` is always 0.
+
+If `lowerBound` is less than `min`, the slider uses `min` as the lower bound.
+- **primaryTicks**: `number` — The number of primary ticks. It defaults to 0 which means no primary ticks are displayed.
+- **secondaryTicks**: `number` — The number of secondary ticks between two primary ticks. Without primary
+ticks, it is the total number of ticks. The default 0 shows no secondary ticks.
+- **step**: `number` — The interval between two valid values, counted from `min`.
+
+If set to 0 no stepping is implied and any value in the range is allowed.
+A negative step is not valid, so the previous step stays.
+With slider labels in the default slot, the step is always 1.
+- **tickLabelRotation**: `SliderTickLabelRotation` — The degrees for the rotation of the tick labels. Defaults to 0.
+- **tickOrientation**: `SliderTickOrientation` — Where the ticks are drawn: before the track (start), after it (end),
+or on both sides (mirror).
+- **upperBound**: `number` — The upper bound of the slider value. If not set, the `max` value is applied.
+- **value**: `number` — The current value of the component.
+- **valueFormat**: `string | undefined` — String format used for the thumb and tick label values in the slider.
+The {0} placeholder holds the formatted number.
+- **valueFormatOptions**: `NumberFormatOptions | undefined` — Number format options used for the thumb and tick label values in the slider.
+- **blur**(): void — Removes focus from the thumb.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **focus**(options?: FocusOptions): void — Sets focus on the thumb, or on the lower thumb of a range slider. A thumb
+that has the focus keeps it. A disabled slider does not take the focus.
+- **stepDown**(stepDecrement?: number): void — Decrements the value of the slider by stepDecrement * step, where stepDecrement defaults to 1.
+- **stepUp**(stepIncrement?: number): void — Increments the value of the slider by stepIncrement * step, where stepIncrement defaults to 1.
+
+### [IgrSliderLabel](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSliderLabel)
+Allows formatting the values of the slider as string values.
+The text content of the slider labels is used for thumb and tick labels.
+
+
+### [IgrSnackbar](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSnackbar)
+Shows a brief message about an operation, with an optional action.
+
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
+
+- **actionText**: `string | undefined` — The text of the action button.
+- **displayTime**: `number` — The time in milliseconds that the component stays visible. The time
+stops while the pointer or the keyboard focus is in the component, and
+starts again from the full value when both leave. A value of 0 or less
+keeps the component open.
+- **keepOpen**: `boolean` — Whether the component stays open after the displayTime is over.
+- **open**: `boolean` — Whether the component is open.
+
+Setting it skips the fade. Use the show(), hide() and toggle()
+methods for a fade.
+- **position**: `AbsolutePosition` — The position of the component in the viewport or in the container.
+- **positioning**: `NotificationPositioning` — The positioning strategy of the component.
+
+viewport - positions against the viewport, ignoring every ancestor.
+container - positions inside the bounding box of the closest visible
+ancestor, at the place that position sets.
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **hide**(): Promise<boolean> — Closes the component. Resolves to false when it is already closed or
+fades out, or when open is set to false and then to true during the
+fade-out.
+- **show**(): Promise<boolean> — Opens the component, also during the fade-out of hide(). When it is
+already open, the display time starts again, and the promise resolves to
+false. It also resolves to false when container positioning finds no
+visible ancestor, or when open is set to false during the fade-in.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open.
+Resolves to true when the state changes.
+
+### [IgrSplitter](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSplitter)
+A splitter component that provides a resizable split-pane layout, dividing the view
+into two panels - *start* and *end* - separated by a draggable bar.
+
+Panels can be resized by dragging the bar, using keyboard shortcuts, or collapsed/expanded
+using the built-in collapse buttons or the programmatic toggle() API.
+Nested splitters are supported for more complex layouts.
+
+## Keyboard interactions
+
+When the splitter bar is focused:
+
+| Key | Action |
+|---|---|
+| Arrow Left / Arrow Right | Resize panes (horizontal orientation) |
+| Arrow Up / Arrow Down | Resize panes (vertical orientation) |
+| Home | Snap start pane to its minimum size |
+| End | Snap start pane to its maximum size |
+| Ctrl + Arrow Left / Ctrl + Arrow Up | Expand the end pane if it is collapsed, else toggle the start pane |
+| Ctrl + Arrow Right / Ctrl + Arrow Down | Expand the start pane if it is collapsed, else toggle the end pane |
+
+In a right-to-left context, Arrow Left and Arrow Right swap their actions.
+
+- **disableCollapse**: `boolean` — Whether collapsing either pane is disabled. When true, this also hides
+the expand/collapse buttons on the splitter bar.
+- **disableResize**: `boolean` — Whether resizing the panes by dragging the splitter bar or using keyboard
+shortcuts is disabled. When true, this also hides the drag handle on the
+splitter bar.
+- **endCollapsed**: `boolean` — Whether the end pane is currently collapsed. Set this property to
+collapse or expand the pane programmatically.
+- **endMaxSize**: `string | undefined` — The maximum size of the end pane.
+
+Accepts a CSS length with an explicit unit, e.g. 500px or 80%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **endMinSize**: `string | undefined` — The minimum size of the end pane.
+
+Accepts a CSS length with an explicit unit, e.g. 100px or 20%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **endSize**: `string | undefined` — The size of the end pane.
+
+Accepts a CSS length with an explicit unit, e.g. `200px` or `50%`, or a
+unitless `0`. Setting `auto`, any other unitless or unparsable value, a
+negative value, or a percentage above 100 falls back to automatic sizing.
+- **hideCollapseButtons**: `boolean` — Whether the expand/collapse buttons on the splitter bar are hidden.
+
+The buttons are also hidden when disable-collapse is true. While a pane
+is collapsed, only its expand button shows.
+- **hideDragHandle**: `boolean` — Whether the drag handle on the splitter bar is hidden.
+
+The drag handle is also hidden when disable-resize is true.
+- **locale**: `string`
+- **orientation**: `SplitterOrientation` — The orientation of the splitter, which determines the direction of resizing and collapsing.
+
+Changing the orientation after the initial render returns the panes to the
+sizes set through startSize and endSize, or to automatic sizing. The
+sizes from a drag, a key press or a collapse were measured on the other
+axis, so they are dropped. The minimum and maximum sizes stay.
+- **resourceStrings**: `TGet`
+- **startCollapsed**: `boolean` — Whether the start pane is currently collapsed. Set this property to
+collapse or expand the pane programmatically.
+- **startMaxSize**: `string | undefined` — The maximum size of the start pane.
+
+Accepts a CSS length with an explicit unit, e.g. 500px or 80%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **startMinSize**: `string | undefined` — The minimum size of the start pane.
+
+Accepts a CSS length with an explicit unit, e.g. 100px or 20%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **startSize**: `string | undefined` — The size of the start pane.
+
+Accepts a CSS length with an explicit unit, e.g. `200px` or `50%`, or a
+unitless `0`. Setting `auto`, any other unitless or unparsable value, a
+negative value, or a percentage above 100 falls back to automatic sizing.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **toggle**(position: PanePosition): void — Toggles the collapsed state of the specified pane.
+
+Does not emit igcLayoutChanged - that event reports user-driven changes,
+and a programmatic call is already known to the caller.
+
+### [IgrStep](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrStep)
+A step component used within a stepper to represent an individual step in a wizard-like workflow.
+
+- **active**: `boolean` — Whether the step is active.
+
+Active steps are styled with an active state and their content is visible.
+Setting it activates the step at once, also a disabled step, so of several
+steps set in one task, the last one is active.
+- **complete**: `boolean` — Whether the step is completed.
+- **disabled**: `boolean` — Whether the step is disabled.
+
+Disabled steps are styled with a disabled state and are not interactive.
+- **invalid**: `boolean` — Whether the step is invalid.
+
+A visited step that is not active shows an error state. In linear mode,
+the user cannot open the steps after an invalid step.
+- **optional**: `boolean` — Whether the step is optional.
+
+In linear mode, an invalid optional step does not block the steps after it.
+
+### [IgrStepper](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrStepper)
+A stepper component that provides a wizard-like workflow by dividing content into logical steps.
+
+- **animationDuration**: `number` — The animation duration in either vertical or horizontal mode in milliseconds.
+- **contentTop**: `boolean` — Whether the content is displayed above the steps. Applies only to the
+horizontal orientation.
+- **horizontalAnimation**: `HorizontalTransitionAnimation` — The animation type when in horizontal mode.
+- **linear**: `boolean` — Whether the stepper is linear.
+- **orientation**: `StepperOrientation` — The orientation of the stepper.
+- **stepType**: `StepperStepType` — The visual type of the steps.
+- **titlePosition**: `StepperTitlePosition` — The position of the steps title.
+- **verticalAnimation**: `StepperVerticalAnimation` — The animation type when in vertical mode.
+- **steps**: `any` — The steps of the stepper.
+- **navigateTo**(index: number): void — Activates the step at a given index. Does nothing for a disabled step.
+- **next**(): void — Activates the next enabled step.
+- **prev**(): void — Activates the previous enabled step.
+- **reset**(): void — Resets the stepper to its initial state and activates the first enabled step.
+
+### [IgrSwitch](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrSwitch)
+Similar to a checkbox, a switch controls the state of a single setting on or off.
+
+- **checked**: `boolean` — Whether the control is checked.
+- **labelPosition**: `ToggleLabelPosition` — The label position of the control.
+- **value**: `string` — The value of the control, submitted when the control is checked.
+- **blur**(): void — Removes focus from the control.
+- **click**(): void — Simulates a click on the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+
+### [IgrTab](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTab)
+A tab nested in a tabs component. Find-in-page, a text fragment or a link to
+an element in the panel of a tab that is not disabled selects it.
+
+- **disabled**: `boolean` — Whether the tab is disabled.
+- **href**: `string | undefined` — The URL of the tab. When set, the tab header renders as a link.
+
+A plain click selects the tab and follows the link; cancel igcNavigate to route
+on the client. A click with a modifier key or the middle button opens the link
+without selecting the tab. A disabled tab does not follow its link.
+- **label**: `string` — The tab item label.
+- **rel**: `string | undefined` — Space-separated link types, used when href is set.
+- **selected**: `boolean` — Whether the tab is selected.
+- **target**: `"_blank" | "_parent" | "_self" | "_top" | undefined` — Where to open the URL when href is set. Without it, the target of the page's
+<base> element applies. A target other than _self never changes the selection.
+In a page that is not in a frame, _parent and _top count as _self.
+
+### [IgrTabs](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTabs)
+Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy.
+
+- **activation**: `TabsActivation` — The activation behavior of the tabs.
+
+With auto, a tab is selected when it receives keyboard focus.
+With manual, a tab is selected only on click, or on Enter or Space.
+- **alignment**: `TabsAlignment` — The alignment of the tab headers in the header strip.
+
+In a column, start is the top and end is the bottom.
+- **headerPosition**: `TabsHeaderPosition` — The side of the panels on which the tab headers are placed.
+
+With top, the headers form a row above the panels. With start and end, they
+form a column before or after the panels in the text direction, so start is on
+the right in a right-to-left layout. In a column, the Up and Down arrow keys move
+between the tabs. When the headers do not fit in the height of the tabs, scroll
+buttons above and below them scroll the column.
+- **selected**: `any` — The label of the selected tab, or its `id` when the tab has no label.
+An empty string when no tab is selected.
+- **selectedTab**: `any` — The selected tab, or `null` when no tab is selected.
+- **tabs**: `any` — The tab children of the component.
+- **select**(idOrLabel: string): void — Selects the tab matching the passed IDREF or label and displays the corresponding panel.
+
+Disabled tabs and values not matching any tab are ignored.
+- **select**(ref: IgcTabComponent): void — Selects the passed tab and displays the corresponding panel.
+
+A disabled tab, or a tab that is not a child of the component, is ignored.
+
+### [IgrTextarea](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTextarea)
+A multi-line plain-text field for a large amount of free-form text,
+for example a comment in a review or feedback form.
+
+- **autocapitalize**: `string` — Whether and how the browser capitalizes the text that the user enters.
+
+[MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize).
+- **autocomplete**: `string` — A hint for the browser on how to autofill the control.
+Refer to [this page](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for additional information.
+- **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
+
+[MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
+- **label**: `string` — The label for the control.
+- **maxLength**: `number` — The maximum number of characters (UTF-16 code units) that the user can enter.
+If this value isn't specified, the user can enter an unlimited number of characters.
+- **minLength**: `number` — The minimum number of characters (UTF-16 code units) that the value must have.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **readOnly**: `boolean` — Whether the control is read-only.
+- **resize**: `TextareaResize` — How the user can resize the control.
+With auto, the height of the control fits its content and the resize handle is hidden.
+- **rows**: `number` — The number of visible text lines of the control. As in the native textarea, a value
+less than 1 shows 2 lines.
+- **spellcheck**: `boolean` — Whether the browser checks the spelling of the value. As for the native attribute,
+only the "false" attribute value turns the check off.
+- **validateOnly**: `boolean` — Whether the validation rules apply without restricting user input. The user can type past maxLength.
+- **value**: `string` — The value of the component.
+- **wrap**: `"off" | "hard" | "soft"` — How the control wraps long lines of text. With off, the lines do not wrap.
+Unlike the native element, hard does not add line breaks to the submitted value.
+Refer to [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes)
+for explanation of the available values.
+- **selectionEnd**: `any` — The offset of the end of the text selection, in UTF-16 code units.
+- **selectionStart**: `any` — The offset of the start of the text selection, in UTF-16 code units.
+Equals `selectionEnd` when no text is selected.
+- **blur**(): void — Removes focus from the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **scrollTo**(options?: ScrollToOptions): void — Scrolls the text of the control to the given position.
+- **scrollTo**(x: number, y: number): void — Scrolls the text of the control to the given x and y coordinates.
+- **select**(): void — Selects all text within the control.
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode?: RangeTextSelectMode): void — Replaces the text from start to end in the control. Without start and
+end, replaces the selected text.
+- **setSelectionRange**(start: number, end: number, direction?: SelectionRangeDirection): void — Sets the text selection range of the control.
+
+### [IgrThemeProvider](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrThemeProvider)
+Provides a theme to its descendant components through Lit context.
+
+Use it to scope a theme to a part of the page. The library components in
+the provider use its theme instead of the global theme.
+
+- **theme**: `"material" | "bootstrap" | "indigo" | "fluent"` — The theme to provide to descendant components.
+- **variant**: `"light" | "dark"` — The theme variant to provide to descendant components.
+
+### [IgrTile](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTile)
+The tile component is used within the tile manager as a container
+for displaying various types of information.
+
+- **colSpan**: `number` — The number of columns the tile spans. A value is truncated to a whole
+number, at least 1. The tile spans at most the columns from its start to
+the last column, and the value stays.
+- **colStart**: `number | null` — The start column of the tile. A value below 1 removes the explicit start.
+A start after the last column moves the tile back so that its span fits,
+and the value stays. A resize that changes the column span of such a tile
+sets the start to the column where the tile is.
+- **disableFullscreen**: `boolean` — Whether to hide the fullscreen-action slot and the default fullscreen
+action.
+- **disableMaximize**: `boolean` — Whether to hide the maximize-action slot and the default maximize action.
+- **disableResize**: `boolean` — Whether to disable resizing of the tile, whatever the resize mode of the
+manager.
+- **locale**: `string`
+- **maximized**: `boolean` — Whether the tile occupies all available space within the layout.
+- **position**: `number` — The visual position of the tile in the layout, as the CSS order. A value
+is truncated to a whole number.
+- **resourceStrings**: `TGet`
+- **rowSpan**: `number` — The number of rows the tile spans. A value is truncated to a whole
+number, at least 1.
+- **rowStart**: `number | null` — The start row of the tile. A value below 1 removes the explicit start.
+- **fullscreen**: `any` — Whether the tile occupies the whole screen.
+
+### [IgrTileManager](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTileManager)
+The tile manager component enables the dynamic arrangement, resizing, and interaction of tiles.
+
+- **columnCount**: `number` — The number of columns, truncated to a whole number. A value of 0 or less
+gives a responsive layout.
+- **dragMode**: `TileManagerDragMode` — The drag mode of the tiles. none turns drag and drop off.
+- **gap**: `string | undefined` — The gap between the tiles.
+- **locale**: `string` — The locale of the tiles. A tile without its own locale takes this one.
+Without it, the manager takes its own `lang`, else the locale of the
+nearest ancestor that has a `locale` (a component) or a `lang`, and then
+the global locale.
+- **minColumnWidth**: `string | undefined` — The minimum width of a column.
+- **minRowHeight**: `string | undefined` — The minimum height of a row.
+- **resizeMode**: `TileManagerResizeMode` — The resize mode of the tiles. none turns resizing off.
+- **tiles**: `any` — The tiles, sorted by their position in the layout.
+- **loadLayout**(data: string): void — Applies a layout from saveLayout to the tiles with the same id. Invalid JSON throws.
+- **saveLayout**(): string — Returns the tile properties as a JSON string. The content of the tiles is not saved.
+
+### [IgrToast](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrToast)
+Shows a brief, non-interactive notification.
+
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
+
+- **displayTime**: `number` — The time in milliseconds that the component stays visible. The time
+stops while the pointer or the keyboard focus is in the component, and
+starts again from the full value when both leave. A value of 0 or less
+keeps the component open.
+- **keepOpen**: `boolean` — Whether the component stays open after the displayTime is over.
+- **open**: `boolean` — Whether the component is open.
+
+Setting it skips the fade. Use the show(), hide() and toggle()
+methods for a fade.
+- **position**: `AbsolutePosition` — The position of the component in the viewport or in the container.
+- **positioning**: `NotificationPositioning` — The positioning strategy of the component.
+
+viewport - positions against the viewport, ignoring every ancestor.
+container - positions inside the bounding box of the closest visible
+ancestor, at the place that position sets.
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **hide**(): Promise<boolean> — Closes the component. Resolves to false when it is already closed or
+fades out, or when open is set to false and then to true during the
+fade-out.
+- **show**(): Promise<boolean> — Opens the component, also during the fade-out of hide(). When it is
+already open, the display time starts again, and the promise resolves to
+false. It also resolves to false when container positioning finds no
+visible ancestor, or when open is set to false during the fade-in.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open.
+Resolves to true when the state changes.
+
+### [IgrToggleButton](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrToggleButton)
+The toggle button wraps a native button element and exposes additional value and selected properties.
+Use it in a button group to make a toolbar or a set of options.
+
+- **disabled**: `boolean` — Whether the button is disabled.
+- **selected**: `boolean` — Whether the button is selected.
+- **value**: `string` — The value of the control.
+- **blur**(): void — Removes focus from the button.
+- **click**(): void — Simulates a mouse click on the element.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **focus**(options?: FocusOptions): void — Sets focus on the button.
+
+### [IgrTooltip](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTooltip)
+Shows supplementary information about an element when the user interacts with it, for example on hover or focus.
+It supports custom placement, delays, a sticky mode and animations.
+
+- **anchor**: `string | Element | undefined` — An element instance or an IDREF to use as the anchor for the tooltip.
+- **hideDelay**: `number` — The time in milliseconds before a hide trigger closes the tooltip.
+A negative value is the same as 0.
+- **hideTriggers**: `string` — The anchor events that hide the tooltip.
+A list of event names, separated by commas or spaces.
+- **locale**: `string`
+- **message**: `string` — The plain-text content of the tooltip. Slotted content replaces it.
+- **offset**: `number` — The offset of the tooltip from the anchor in pixels.
+- **open**: `boolean` — Whether the tooltip is showing.
+- **placement**: `PopoverPlacement` — Where to place the tooltip relative to its anchor element.
+- **resourceStrings**: `TGet`
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the tooltip when an ancestor scroll container scrolls.
+
+If the value is hide, the tooltip hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the tooltip stays visible and anchored.
+
+If the value is close, the tooltip closes on each scroll, also in
+sticky mode. The Escape key also closes a sticky tooltip.
+- **showDelay**: `number` — The time in milliseconds before a show trigger opens the tooltip.
+A negative value is the same as 0.
+- **showTriggers**: `string` — The anchor events that show the tooltip.
+A list of event names, separated by commas or spaces.
+- **sticky**: `boolean` — Whether the tooltip stays visible until the user closes it with the close button or the Escape key.
+- **withArrow**: `boolean` — Whether to render an arrow indicator for the tooltip.
+- **hide**(): Promise<boolean> — Hides the tooltip if not already hidden.
+- **show**(target?: string | Element): Promise<boolean> — Shows the tooltip if not already showing.
+If a target is provided, sets it as a transient anchor.
+- **showAt**(rect: TooltipRect): Promise<boolean> — Shows the tooltip at a point or against a rectangle, in viewport
+coordinates, for example at the clientX and clientY of a pointer event.
+Without width and height, the rectangle is a point.
+- **toggle**(): Promise<boolean> — Toggles the tooltip between shown/hidden state.
+
+### [IgrTree](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTree)
+The tree allows users to represent hierarchical data in a tree-view structure,
+maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model.
+
+- **locale**: `string`
+- **resourceStrings**: `TGet`
+- **selection**: `TreeSelection` — The selection mode of the tree. A change clears the current selection.
+- **singleBranchExpand**: `boolean` — Whether only one branch of the tree can be expanded at a time. When the user
+expands an item, the items outside its path collapse.
+- **toggleNodeOnClick**: `boolean` — Whether a click on an item toggles its expanded state.
+- **items**: `any` — All items of the tree, in document order. Empty during server-side rendering.
+- **collapse**(items?: IgcTreeItemComponent[]): void — Collapses all of the passed items.
+If no items are passed, collapses ALL items.
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **deselect**(items?: IgcTreeItemComponent[]): void — Deselects the passed items. Without an argument, deselects all items. Emits no event.
+- **expand**(items?: IgcTreeItemComponent[]): void — Expands all of the passed items.
+If no items are passed, expands ALL items.
+- **select**(items?: IgcTreeItemComponent[]): void — Selects the passed items. Without an argument, selects all items. Emits no event.
+
+### [IgrTreeItem](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrTreeItem)
+The tree-item component represents a child item of the tree component or another tree item.
+Find-in-page, a text fragment or a link to an element in the children of a
+collapsed item expands it.
+
+- **active**: `boolean` — Whether the item is the active item of the tree. When true, the ancestors of
+the item expand.
+- **disabled**: `boolean` — Whether the tree item is disabled. A disabled item does not respond to user interaction.
+- **expanded**: `boolean` — Whether the tree item is expanded.
+- **label**: `string` — The tree item label.
+- **level**: `number` — The depth of the item, relative to the root.
+- **loading**: `boolean` — Whether the item is loading data, for load-on-demand scenarios. The item
+shows a loading indicator in place of the expand indicator.
+- **parent**: `IgcTreeItemComponent | null` — The parent item of the current tree item (if any)
+- **selected**: `boolean` — Whether the tree item is selected.
+- **value**: `any` — The value that the tree item represents. The component does not use it.
+- **path**: `any` — The full path to the tree item, starting from the top-most ancestor.
+- **tree**: `any` — A reference to the tree the item is a part of.
+- **collapse**(): void — Collapses the tree item.
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **expand**(): void — Expands the tree item.
+- **getChildren**(options?: any): IgcTreeItemComponent[] — Returns the child items. With flatten: true it returns all the
+descendant items, otherwise only the direct children.
+- **toggle**(): void — Toggles tree item expansion state.
+
+### [IgrVirtualScroll](https://www.infragistics.com/api/react/igniteui-react/19.11/classes/IgrVirtualScroll)
+A virtual scroll component for large lists. Only the items visible in the
+viewport are rendered.
+
+The component renders into its light DOM, so ::part() does not apply to its
+parts. Select them with attribute selectors, such as [part~="virtualization-track"].
+
+- **data**: `T[]` — The array of items to virtualize.
+
+Compared by reference: a mutation in place (data.push(...)) causes no
+update. Assign a new array instead. The igcDataRequest flow also
+expects a new array.
+- **estimatedItemSize**: `number` — Estimated item size in pixels, used before an item is measured in the DOM.
+After the first render of an item, the engine replaces the estimate with the measured size.
+The average measured size also replaces the estimate of the items that are not measured
+yet, so the scrollbar follows the real content.
+- **itemTemplate**: `VirtualScrollItemTemplate<T> | null` — A function that renders each item in the virtual scroll list.
+Receives a VirtualScrollItemContext<T> with the item data, its index, and the total count.
+Without it, nothing is rendered.
+
+Items are measured by their border box, so margins accumulate as drift
+down the list. Use padding on the item, or a gap on a wrapper, instead.
+
+Only the current window is in the DOM, so assistive technology cannot
+infer an item's position from the markup. In a template that renders a
+role with set semantics (option, listitem, row, ...), map the
+context's index and count to aria-posinset and aria-setsize.
+
+Item elements are recycled (see keyFunction), so DOM state that the
+template does not bind moves to another item, for example the state of a
+checkbox without a checked binding. Bind all item state. Lit compares a
+binding with the value that it set last, not with the element, so bind
+state that the user changes with Lit's live directive. Also write user
+changes back to the item, or they are lost when the item leaves the window.
+To get new DOM for each item, wrap the content in Lit's keyed directive
+with the item key:  html${keyed(ctx.value.id, content)} .
+- **keyFunction**: `VirtualScrollKeyFunction<T> | null` — A function that returns a unique key for an item. Receives the item and its index in data.
+
+An item keeps its rendered element while its key stays in the rendered window. The elements
+of keys that leave the window are reused for keys that enter it. Without it, the index is the
+key, so after a data change an index keeps its element and shows its new item. Set it when
+items move within data, for example on sort, insert or remove.
+- **orientation**: `"vertical" | "horizontal"` — The scroll axis of the component.
+- **overScan**: `number` — Number of extra items to render beyond the visible area of the viewport.
+Higher values reduce blank flashes during fast scrolling but can lower performance.
+- **layoutComplete**: `any` — Resolves when the virtual scroll has settled: the current render pass is
+complete, the item-size measurements it triggers are complete, and so
+are the renders those measurements schedule.
+
+`updateComplete` covers one Lit render pass. This covers `data` changes,
+scrolls, and viewport resizes, where the stable DOM state comes after
+one or more follow-up renders.
+- **scrollToIndex**(index: number, options?: ScrollIntoViewOptions): Promise<void> — Scrolls to the specified item index.
+
+block (inline in the horizontal orientation) positions the item as in
+scrollIntoView, and defaults to start. With nearest, the item
+scrolls the smallest distance that brings it into view.
+
+Items outside the rendered window have only an estimated size, so the
+first jump can miss the target. The items at the landing point are then
+measured, and the scroll position is corrected. This repeats until the
+offset is stable.
+
+A hidden or detached list cannot scroll. It keeps the call and scrolls
+when it shows. A newer call replaces the kept one.
+
+The returned promise resolves when the scroll settles on the final,
+corrected offset, or when a newer call replaces this one. Callers that
+need only the first, approximate scroll can ignore it.
+
+## Interfaces
+
+### [BaseColumnConfiguration](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/BaseColumnConfiguration)
+Configuration object for grid columns.
+
+- **cellTemplate?**: `any` — Cell template callback.
+- **dataType?**: `DataType` — The type of data this column will reference.
+
+Affects the default filter operands if the column is with filtering enabled.
+- **field**: `K` — The field from the data for this column.
+- **filterable?**: `boolean` — Whether the column can be filtered.
+- **filteringCaseSensitive?**: `boolean` — Whether the filter operations will be case sensitive.
+- **header?**: `string` — Optional text to display in the column header. By default, the column field is used
+to render the header text.
+- **headerTemplate?**: `any` — Header template callback.
+- **hidden?**: `boolean` — Whether the column is hidden or not.
+- **resizable?**: `boolean` — Whether the column can be resized or not.
+- **sortable?**: `boolean` — Whether the column can be sorted.
+- **sortConfiguration?**: `ColumnSortConfiguration<T, K>` — Sort configuration options for the column (e.g., custom comparer).
+- **sortingCaseSensitive?**: `boolean` — Whether the sort operations will be case sensitive.
+- **width?**: `string` — Width for the current column.
+
+Accepts most CSS units for controlling width.
+
+### [BaseColumnSortConfiguration](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/BaseColumnSortConfiguration)
+Extended sort configuration for a column.
+
+- **comparer?**: `SortComparer<T, K>` — Custom comparer function for sort operations for this column.
+
+### [BaseFilterExpression](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/BaseFilterExpression)
+Represents a filter operation for a given column.
+
+- **caseSensitive?**: `boolean` — Whether the filter operation should be case sensitive.
+- **condition**: `FilterOperation<PropertyType<T, K>> | OperandKeys<PropertyType<T, K>>` — The filter function which will be executed against the data records.
+- **criteria?**: `FilterCriteria` — Dictates how this expression should resolve in the filter operation in relation to
+other expressions.
+- **key**: `K` — The target column for the filter operation.
+- **searchTerm?**: `PropertyType<T, K>` — The filtering value used in the filter condition function.
+
+### [BaseIgcCellContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/BaseIgcCellContext)
+Context object for the row cell template callback.
+
+- **column**: `ColumnConfiguration<T, K>` — The current configuration for the column.
+- **parent**: `IgcGridLiteCell<T>` — The cell element parent of the template.
+- **row**: `IgcGridLiteRow<T>` — The row element containing the cell.
+- **value**: `PropertyType<T, K>` — The value from the data source for this cell.
+
+### [BaseSortingExpression](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/BaseSortingExpression)
+Represents a sort operation for a given column.
+
+- **caseSensitive?**: `boolean` — Whether the sort operation should be case sensitive.
+- **comparer?**: `SortComparer<T, K>` — Custom comparer function for this operation.
+- **direction**: `SortingDirection` — Sort direction for this operation.
+- **key**: `K` — The target column.
+
+### [ChatAttachmentRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatAttachmentRenderContext)
+The context object for renderers that deal with a specific attachment within a message.
+It extends the message context with the attachment data.
+
+- **attachment**: `IgcChatMessageAttachment` — The specific attachment being rendered.
+
+### [ChatInputRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatInputRenderContext)
+The context object for renderers that deal with the chat input area.
+It extends the base context with input-specific properties.
+
+- **attachments**: `IgcChatMessageAttachment[]` — The list of attachments currently in the input area.
+- **value**: `string` — The current value of the input field.
+
+### [ChatMessageRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatMessageRenderContext)
+The context object for renderers that deal with a specific chat message.
+It extends the base context with the message data.
+
+- **message**: `IgcChatMessage` — The specific chat message being rendered.
+
+### [ChatRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatRenderContext)
+The base context object passed to custom renderer functions, containing the chat component instance.
+
+- **instance**: `IgcChatComponent` — The instance of the IgcChatComponent.
+
+### [ComboGroupHeaderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ComboGroupHeaderContext)
+The context of the group header template.
+
+- **item**: `T` — **Deprecated:** since 7.5.0. Use the key property instead. A record made for the header, not a data item. Only the groupKey,
+valueKey and displayKey fields are set, and each contains the group value.
+- **key**: `unknown` — The value that the items of the group share in the groupKey field.
+Other for the items without a value in that field.
+
+### [ComboTemplateProps](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ComboTemplateProps)
+
+- **item**: `T`
+
+### [CustomDateRange](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/CustomDateRange)
+A predefined date range with label for IgcDateRangePickerComponent.customRanges
+
+- **dateRange**: `DateRangeValue`
+- **label**: `string`
+
+### [CustomEvent](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/CustomEvent)
+The **CustomEvent** interface can be used to attach custom data to an event generated by an application.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
+
+- **detail**: `T` — The read-only **detail** property of the CustomEvent interface returns any data passed when initializing the event.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
+
+### [DataPipelineConfiguration](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/DataPipelineConfiguration)
+Configuration for customizing the various data operations of the grid.
+
+- **filter?**: `DataPipelineHook<T>` — Hook for customizing filter operations.
+- **sort?**: `DataPipelineHook<T>` — Hook for customizing sort operations.
+
+### [DatePartDeltas](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/DatePartDeltas)
+The amounts by which each date or time part is incremented or decremented on
+a step action in date-time input; every part defaults to 1.
+
+- **date?**: `number` — The number of days the date part is spun by.
+- **hours?**: `number` — The number of hours the hours part is spun by.
+- **minutes?**: `number` — The number of minutes the minutes part is spun by.
+- **month?**: `number` — The number of months the month part is spun by.
+- **seconds?**: `number` — The number of seconds the seconds part is spun by.
+- **year?**: `number` — The number of years the year part is spun by.
+
+### [DateRangeDescriptor](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/DateRangeDescriptor)
+Describes a set of dates by combining a range type with the dates it applies to.
+
+- **dateRange?**: `Date[]` — The date or dates the descriptor applies to, interpreted according to DateRangeDescriptor.type.
+DateRangeType.After and DateRangeType.Before use the first date,
+DateRangeType.Between uses the first and the last, and
+DateRangeType.Specific matches every date listed. Not used by
+DateRangeType.Weekdays and DateRangeType.Weekends.
+- **label?**: `string` — What the dates mean, for example 'Free delivery'. The calendar adds the label
+to the accessible name of each matching date, so assistive technologies announce it.
+- **type**: `DateRangeType` — The kind of range being described, which determines how DateRangeDescriptor.dateRange is matched.
+
+### [FilteringOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/FilteringOptions)
+Filtering options for the combo component.
+
+- **caseSensitive?**: `boolean` — Determines whether the filtering operation should be case sensitive.
+- **filterKey**: `any | undefined` — The key in the data source used when filtering the list of options.
+- **matchDiacritics?**: `boolean` — When true, the filter distinguishes between accented letters and their base letters.
+- **mode?**: `ComboFilteringMode` — Where the filtering runs. With remote, the combo does not filter the
+options: the application sets data on igcSearchInput, and appends to
+it on igcDataRequest. Default is local.
+
+### [FilterOperation](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/FilterOperation)
+
+- **label?**: `string`
+- **logic**: `FilterOperationLogic<T>`
+- **name**: `string`
+- **unary**: `boolean`
+
+### [GridLiteSortingOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/GridLiteSortingOptions)
+Configures the sort behavior for the grid.
+
+- **mode**: `"single" | "multiple"` — The sorting mode - either 'single' or 'multiple' column sorting.
+
+### [ICalendarResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ICalendarResourceStrings)
+
+- **calendar_first_picker_of?**: `string`
+- **calendar_multi_selection?**: `string`
+- **calendar_next_month?**: `string`
+- **calendar_next_year?**: `string`
+- **calendar_next_years?**: `string`
+- **calendar_previous_month?**: `string`
+- **calendar_previous_year?**: `string`
+- **calendar_previous_years?**: `string`
+- **calendar_range_end?**: `string`
+- **calendar_range_label_end?**: `string`
+- **calendar_range_label_start?**: `string`
+- **calendar_range_placeholder?**: `string`
+- **calendar_range_selection?**: `string`
+- **calendar_range_start?**: `string`
+- **calendar_select_date?**: `string`
+- **calendar_select_month?**: `string`
+- **calendar_select_year?**: `string`
+- **calendar_selected_month_is?**: `string`
+- **calendar_single_selection?**: `string`
+- **calendar_singular_multi_selection?**: `string`
+- **calendar_singular_range_selection?**: `string`
+- **calendar_singular_single_selection?**: `string`
+
+### [ICarouselResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ICarouselResourceStrings)
+
+- **carousel_next_slide?**: `string`
+- **carousel_of?**: `string`
+- **carousel_previous_slide?**: `string`
+- **carousel_role_description?**: `string`
+- **carousel_slide?**: `string`
+
+### [IChatResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IChatResourceStrings)
+
+- **chat_attach_files?**: `string`
+- **chat_attachment_label?**: `string`
+- **chat_attachments_list_label?**: `string`
+- **chat_file_input_label?**: `string`
+- **chat_input_label?**: `string`
+- **chat_message_copied?**: `string`
+- **chat_reaction_copy?**: `string`
+- **chat_reaction_dislike?**: `string`
+- **chat_reaction_like?**: `string`
+- **chat_reaction_regenerate?**: `string`
+- **chat_remove_attachment?**: `string`
+- **chat_send_message?**: `string`
+- **chat_suggestions_header?**: `string`
+
+### [IChipResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IChipResourceStrings)
+
+- **chip_remove?**: `string`
+- **chip_select?**: `string`
+
+### [IColorPickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IColorPickerResourceStrings)
+
+- **color_picker_alpha?**: `string`
+- **color_picker_alpha_value?**: `string`
+- **color_picker_canvas_label?**: `string`
+- **color_picker_canvas_value?**: `string`
+- **color_picker_copy?**: `string`
+- **color_picker_dialog_label?**: `string`
+- **color_picker_eye_dropper?**: `string`
+- **color_picker_format?**: `string`
+- **color_picker_hue?**: `string`
+- **color_picker_open?**: `string`
+- **color_picker_value?**: `string`
+
+### [IComboResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IComboResourceStrings)
+
+- **combo_addCustomValues_placeholder?**: `string`
+- **combo_apply?**: `string`
+- **combo_aria_label_no_options?**: `string`
+- **combo_aria_label_options?**: `string`
+- **combo_cancel?**: `string`
+- **combo_clearItems_placeholder?**: `string`
+- **combo_empty_message?**: `string`
+- **combo_filter_search_placeholder?**: `string`
+- **combo_loading?**: `string`
+- **combo_select_all?**: `string`
+
+### [IconMeta](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IconMeta)
+Identifies a registered icon by its name and the collection it belongs to.
+
+- **collection**: `string` — The name of the collection the icon is registered in.
+- **name**: `string` — The name identifier of the icon in the collection.
+
+### [IDatePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IDatePickerResourceStrings)
+
+- **date_picker_change_date?**: `string`
+- **date_picker_choose_date?**: `string`
+
+### [IDateRangePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IDateRangePickerResourceStrings)
+
+- **date_range_picker_cancel_button?**: `string`
+- **date_range_picker_currentMonth?**: `string`
+- **date_range_picker_date_separator?**: `string`
+- **date_range_picker_done_button?**: `string`
+- **date_range_picker_last30Days?**: `string`
+- **date_range_picker_last7Days?**: `string`
+- **date_range_picker_yearToDate?**: `string`
+
+### [IDialogResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IDialogResourceStrings)
+
+- **dialog_default_action?**: `string`
+
+### [IFileInputResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IFileInputResourceStrings)
+
+- **file_input_placeholder?**: `string`
+- **file_input_upload_button?**: `string`
+
+### [IgrActiveStepChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrActiveStepChangedEventArgsDetail)
+
+- **index**: `number`
+
+### [IgrActiveStepChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrActiveStepChangingEventArgsDetail)
+
+- **newIndex**: `number`
+- **oldIndex**: `number`
+
+### [IgrCalendarResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrCalendarResourceStrings)
+**Deprecated:** since 7.2.0. Use the newly provided ICalendarResourceStrings interface, or set global resource strings with the registerI18n method.
+
+- **endDate?**: `string`
+- **nextMonth?**: `string`
+- **nextYear?**: `string`
+- **nextYears?**: `string`
+- **previousMonth?**: `string`
+- **previousYear?**: `string`
+- **previousYears?**: `string`
+- **selectDate?**: `string`
+- **selectedDate?**: `string`
+- **selectMonth?**: `string`
+- **selectRange?**: `string`
+- **selectYear?**: `string`
+- **startDate?**: `string`
+- **weekLabel?**: `string`
+
+### [IgrChatDraftMessage](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatDraftMessage)
+Represents a draft message that is being composed by the user, including the text and any attachments.
+
+- **attachments?**: `IgcChatMessageAttachment[]` — An array of attachments associated with the draft message.
+- **text**: `string` — The textual content of the draft message.
+
+### [IgrChatMessage](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatMessage)
+Represents a single chat message in the conversation.
+
+- **attachments?**: `IgcChatMessageAttachment[]` — Optional list of attachments associated with the message,
+such as images, files, or links.
+- **id**: `string` — A unique identifier for the message.
+- **reactions?**: `string[]` — Optional list of reactions associated with the message.
+- **sender**: `string` — The identifier or name of the sender of the message.
+- **text**: `string` — The textual content of the message.
+- **timestamp?**: `string` — The timestamp indicating when the message was sent.
+
+### [IgrChatMessageAttachment](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatMessageAttachment)
+Represents an attachment associated with a chat message.
+
+- **file?**: `File` — The actual File object, if the attachment was provided locally (e.g. via upload).
+- **id**: `string` — A unique identifier for the attachment.
+- **name**: `string` — The display name of the attachment (e.g. file name).
+- **thumbnail?**: `string` — Optional URL to a thumbnail preview of the attachment (e.g. for images or videos).
+- **type?**: `string` — The MIME type or a custom type identifier for the attachment (e.g. "image/png", "pdf", "audio").
+- **url?**: `string` — The URL from which the attachment can be downloaded or viewed.
+Typically used for attachments stored on a server or CDN.
+
+### [IgrChatMessageLink](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatMessageLink)
+A link in a chat message that the user follows.
+
+- **href**: `string` — The absolute URL that the browser follows.
+- **message**: `IgcChatMessage` — The chat message that holds the link.
+
+### [IgrChatMessageReaction](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatMessageReaction)
+Represents a user's reaction to a specific chat message.
+
+- **message**: `IgcChatMessage` — The chat message that the reaction is associated with.
+- **reaction**: `string` — The string representation of the reaction, such as an emoji or a string;
+
+### [IgrChatOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatOptions)
+Configuration options for customizing the behavior and appearance of the chat component.
+
+- **acceptedFiles?**: `string` — The accepted files that could be attached.
+Defines the file types as a list of comma-separated values (e.g. "image/*,.pdf") that the file input should accept.
+- **adoptRootStyles?**: `boolean` — A boolean flag that, when true, enables a **quick and dirty workaround** for styling
+components rendered within the Shadow DOM, from custom message renderers, by allowing them
+to inherit styles from the document's root. This can be useful for developers who prefer not to handle
+Shadow DOM encapsulation, but it is **not the recommended approach**.
+
+It is highly advised to use standard Web Component styling methods first, in this order:
+
+1.  **CSS Variables and Parts API**: Use the exposed ::part API with custom CSS variables to style
+your content in your custom renderers.
+
+2.  **link elements**: For larger style sheets, link them directly within the Shadow DOM to maintain
+encapsulation.
+
+3.  **Inline <style> tags**: Use these for small, self-contained styles within a template.
+
+This property should be used as a **last resort** as it can lead to **style leakage**, where
+global styles unexpectedly bleed into the component, breaking encapsulation and causing
+unpredictable visual issues.
+- **currentUserId?**: `string` — The ID of the current user. Used to differentiate between incoming and outgoing messages.
+- **disableAutoScroll?**: `boolean` — If true, prevents the chat from automatically scrolling to the latest message.
+- **disableInputAttachments?**: `boolean` — If true, disables the ability to upload and send attachments.
+Defaults to false.
+- **headerText?**: `string` — Optional header text to display at the top of the chat component.
+- **inputPlaceholder?**: `string` — Optional placeholder text for the chat input area.
+Provides a hint to the user about what they can type (e.g. "Type a message...").
+- **isTyping?**: `boolean` — Indicates whether the other user is currently typing a message.
+- **renderers?**: `ChatRenderers` — An object containing a collection of custom renderers for different parts of the chat UI.
+- **stopTypingDelay?**: `number` — Time in milliseconds to wait before dispatching a stop typing event.
+Default is 3000.
+- **suggestions?**: `string[]` — Suggested text snippets or quick replies that can be shown as user-selectable options.
+- **suggestionsPosition?**: `ChatSuggestionsPosition` — Controls the position of the chat suggestions within the component layout.
+
+- "below-input": Renders suggestions below the chat input area.
+- "below-messages": Renders suggestions below the chat messages area.
+
+Default is "below-messages".
+
+### [IgrChatResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrChatResourceStrings)
+**Deprecated:** since 7.2.0. Use the newly provided IChatResourceStrings interface, or set global resource strings with the registerI18n method.
+
+- **attachmentLabel?**: `string`
+- **attachmentsListLabel?**: `string`
+- **messageCopied?**: `string`
+- **reactionCopy?**: `string`
+- **reactionDislike?**: `string`
+- **reactionLike?**: `string`
+- **reactionRegenerate?**: `string`
+- **suggestionsHeader?**: `string`
+
+### [IgrCheckboxChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrCheckboxChangeEventArgsDetail)
+
+- **checked**: `boolean`
+- **value?**: `string`
+
+### [IgrComboChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrComboChangeEventArgsDetail)
+
+- **items**: `T[]`
+- **newValue**: `ComboValue<T>[]`
+- **type**: `ComboChangeType`
+
+### [IgrComboClosingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrComboClosingEventArgsDetail)
+
+- **trigger**: `ComboCloseTrigger` — The user action that closes the list.
+
+### [IgrComboSearchInputEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrComboSearchInputEventArgsDetail)
+
+- **searchText**: `string` — The text of the search input, or of the main input in single selection mode.
+
+### [IgrDateRangePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrDateRangePickerResourceStrings)
+**Deprecated:** since 7.2.0. Use the newly provided ICalendarResourceStrings and IDateRangePickerResourceStrings interfaces, or set global resource strings with the registerI18n method.
+
+- **cancel?**: `string`
+- **currentMonth?**: `string`
+- **done?**: `string`
+- **last30Days?**: `string`
+- **last7Days?**: `string`
+- **separator?**: `string`
+- **yearToDate?**: `string`
+
+### [IgrFilteredEvent](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrFilteredEvent)
+Event object for the filtered event of the grid.
+
+- **key**: `Keys<T>` — The target column for the filter operation.
+- **state**: `FilterExpression<T>[]` — The filter state of the column after the operation.
+
+### [IgrFilteringEvent](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrFilteringEvent)
+Event object for the filtering event of the grid.
+
+- **expressions**: `FilterExpression<T>[]` — The filter expression(s) to apply.
+- **key**: `Keys<T>` — The target column for the filter operation.
+- **type**: `"remove" | "add" | "modify"` — The type of modification which will be applied to the filter
+state of the column.
+
+### [IgrHeaderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrHeaderContext)
+Context object for the column header template callback.
+
+- **column**: `ColumnConfiguration<T, any> | ColumnConfiguration<T, Exclude<any & string, any>> | ColumnConfiguration<T, Exclude<any, any>>` — The current configuration for the column.
+- **parent**: `IgcGridLiteHeader<T>` — The header element parent of the template.
+
+### [IgrRadioChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrRadioChangeEventArgsDetail)
+
+- **checked**: `boolean`
+- **value?**: `string`
+
+### [IgrRangeSliderValueEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrRangeSliderValueEventArgsDetail)
+
+- **lower**: `number`
+- **upper**: `number`
+
+### [IgrSplitterLayoutChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrSplitterLayoutChangedEventArgsDetail)
+
+- **endCollapsed**: `boolean` — Whether the end pane is currently collapsed
+- **endSize**: `string` — The current size of the end pane
+- **startCollapsed**: `boolean` — Whether the start pane is currently collapsed
+- **startSize**: `string` — The current size of the start pane
+
+### [IgrSplitterResizeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrSplitterResizeEventArgsDetail)
+
+- **delta?**: `number` — The change in size since the resize operation started (only for igcResizing and igcResizeEnd)
+- **endPanelSize**: `number` — The current size of the end panel in pixels
+- **startPanelSize**: `number` — The current size of the start panel in pixels
+
+### [IgrTileChangeStateEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrTileChangeStateEventArgsDetail)
+
+- **state**: `boolean`
+- **tile**: `IgcTileComponent`
+
+### [IgrTreeSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrTreeSelectionEventArgsDetail)
+
+- **newSelection**: `IgcTreeItemComponent[]`
+
+### [ISplitterResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ISplitterResourceStrings)
+
+- **splitter_resize_panes?**: `string`
+
+### [ITileResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ITileResourceStrings)
+
+- **tile_enter_fullscreen?**: `string`
+- **tile_exit_fullscreen?**: `string`
+- **tile_maximize?**: `string`
+- **tile_restore?**: `string`
+
+### [ITooltipResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ITooltipResourceStrings)
+
+- **tooltip_close?**: `string`
+
+### [ITreeResourceStrings](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ITreeResourceStrings)
+
+- **collapse?**: `string`
+- **expand?**: `string`
+
+### [NavigateToOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/NavigateToOptions)
+Options for the navigateTo API of the grid.
+
+- **activate?**: `boolean` — When true, the navigated cell becomes the active cell.
+- **column?**: `Keys<T>` — The column field to navigate to. Without it, only the row scrolls into view.
+
+### [QrCodeCopyOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/QrCodeCopyOptions)
+Options for copying the QR code to the clipboard.
+
+- **format?**: `QrCodeCopyFormat` — The image format. An svg copy also holds a PNG image for applications that do not read SVG.
+- **scale?**: `number` — Multiplier applied to the size of the component. A 256px QR code with a scale of 2 copies as a 512x512 image.
+
+### [QrCodeExportOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/QrCodeExportOptions)
+Options for exporting the QR code to a file.
+
+- **download?**: `boolean` — Whether to open the browser download dialog for the exported file.
+- **fileName?**: `string` — The name of the exported file. The extension of the format is appended when the name does not end with it.
+- **format?**: `QrCodeExportFormat` — The output format.
+- **scale?**: `number` — Multiplier applied to the size of the component. A 256px QR code with a scale of 2 exports as a 512x512 image.
+For svg, the multiplier applies to the width and height attributes while the viewBox is unchanged.
+
+### [RegisterIconOptions](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/RegisterIconOptions)
+Options for registering an SVG icon.
+
+- **collection?**: `string` — The collection to register the icon in.
+- **stripMeta?**: `boolean` — Whether to strip SVG meta elements (<title> and <desc>) from the icon
+before storing it.
+
+### [VirtualScrollDataRequest](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/VirtualScrollDataRequest)
+A request for more data, emitted when the rendered window comes near the
+end of the loaded items. Consumers listen for it and append the requested
+items.
+
+- **count**: `number` — Number of items being requested.
+- **startIndex**: `number` — The first index that does not yet have data.
+Append at least count more items starting here.
+
+### [VirtualScrollItemContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/VirtualScrollItemContext)
+Context passed to the item template: the item data, its index, and utility
+properties for rendering.
+
+- **count**: `number` — The total number of items
+- **index**: `number` — The index of the current item
+- **value**: `T` — The current item in the virtual scroll
+- **isFirst**: `any`
+- **isLast**: `any`
+
+### [VirtualScrollState](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/VirtualScrollState)
+Snapshot of the currently rendered virtual window
+
+- **endIndex**: `number` — The index of the last item currently rendered in the viewport (inclusive).
+- **startIndex**: `number` — The index of the first item currently rendered in the viewport.
+- **totalSize**: `number` — The total size of the virtual scroll content in pixels.
+- **viewportSize**: `number` — The size of the viewport in pixels.
+
+## Enumerations
+
+### [DatePart](https://www.infragistics.com/api/react/igniteui-react/19.11/enums/DatePart)
+Date/time part classes of the date-time input. Each date part type has its own class;
+the time parts share one class. Only the types and the factory are exported.
+
+- **AmPm** = "amPm"
+- **Date** = "date"
+- **Hours** = "hours"
+- **Minutes** = "minutes"
+- **Month** = "month"
+- **Seconds** = "seconds"
+- **Year** = "year"
+
+### [DateRangeType](https://www.infragistics.com/api/react/igniteui-react/19.11/enums/DateRangeType)
+
+- **After** = 0
+- **Before** = 1
+- **Between** = 2
+- **Specific** = 3
+- **Weekdays** = 4
+- **Weekends** = 5
+
+## Type Aliases
+
+### [AbsolutePosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/AbsolutePosition)
+`"bottom" | "middle" | "top"`
+
+### [AvatarShape](https://www.infragistics.com/api/react/igniteui-react/19.11/types/AvatarShape)
+`"square" | "circle" | "rounded"`
+
+### [BadgeShape](https://www.infragistics.com/api/react/igniteui-react/19.11/types/BadgeShape)
+`"rounded" | "square"`
+
+### [BaseSortComparer](https://www.infragistics.com/api/react/igniteui-react/19.11/types/BaseSortComparer)
+`any`
+Custom comparer function for a given column used when sorting is performed.
+
+### [ButtonGroupSelection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ButtonGroupSelection)
+`"single" | "single-required" | "multiple"`
+
+### [ButtonVariant](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ButtonVariant)
+`"contained" | "flat" | "outlined" | "fab"`
+
+### [CalendarActiveView](https://www.infragistics.com/api/react/igniteui-react/19.11/types/CalendarActiveView)
+`"days" | "months" | "years"`
+
+### [CalendarHeaderOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/CalendarHeaderOrientation)
+`"horizontal" | "vertical"`
+
+### [CalendarSelection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/CalendarSelection)
+`"single" | "multiple" | "range"`
+
+### [CarouselIndicatorsOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/CarouselIndicatorsOrientation)
+`"end" | "start"`
+
+### [ChatSuggestionsPosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ChatSuggestionsPosition)
+`"below-input" | "below-messages"`
+A string literal type defining the two possible positions for chat suggestions.
+
+### [ChatTemplateRenderer](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ChatTemplateRenderer)
+`any`
+A generic type for a function that serves as a custom renderer.
+It takes a context object of type T and returns a template result.
+
+### [ColorFormat](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ColorFormat)
+`"hex" | "rgb" | "hsl"`
+
+### [ColorPickerMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ColorPickerMode)
+`"default" | "input"`
+
+### [ColumnConfiguration](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ColumnConfiguration)
+`any`
+See BaseColumnConfiguration for the full documentation.
+
+### [ColumnSortConfiguration](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ColumnSortConfiguration)
+`any`
+See BaseColumnSortConfiguration for the full documentation.
+
+### [ComboCloseTrigger](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ComboCloseTrigger)
+`"enter" | "escape" | "tab" | "arrow-up" | "outside-click" | "scroll" | "toggle" | "selection" | "apply" | "cancel"`
+The user action that closes the list of options. toggle is a click on the
+input, selection an item click in single selection mode, and apply and
+cancel the buttons of the confirm mode.
+
+### [ComboFilteringMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ComboFilteringMode)
+`"local" | "remote"`
+
+### [ComboGroupHeaderTemplate](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ComboGroupHeaderTemplate)
+`any`
+
+### [ComboItemTemplate](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ComboItemTemplate)
+`any`
+
+### [ComboSelectionCommit](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ComboSelectionCommit)
+`"immediate" | "confirm"`
+
+### [ContentOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ContentOrientation)
+`"horizontal" | "vertical"`
+
+### [DataPipelineHook](https://www.infragistics.com/api/react/igniteui-react/19.11/types/DataPipelineHook)
+`any`
+Callback function for customizing data operations in the grid.
+
+### [DataPipelineParams](https://www.infragistics.com/api/react/igniteui-react/19.11/types/DataPipelineParams)
+`any`
+The parameters passed to a DataPipelineHook callback.
+
+### [DataType](https://www.infragistics.com/api/react/igniteui-react/19.11/types/DataType)
+`"number" | "string" | "boolean"`
+The data for the current column.
+
+### [DateRangeValue](https://www.infragistics.com/api/react/igniteui-react/19.11/types/DateRangeValue)
+`any`
+
+### [DividerType](https://www.infragistics.com/api/react/igniteui-react/19.11/types/DividerType)
+`"solid" | "dashed"`
+
+### [ExpansionPanelIndicatorPosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ExpansionPanelIndicatorPosition)
+`"start" | "end" | "none"`
+
+### [FilterCriteria](https://www.infragistics.com/api/react/igniteui-react/19.11/types/FilterCriteria)
+`"and" | "or"`
+Controls how a data record should resolve in a filter operation:
+ - 'and' - the record must pass all the conditions.
+ - 'or'  - the record must pass at least one condition.
+
+### [FilterExpression](https://www.infragistics.com/api/react/igniteui-react/19.11/types/FilterExpression)
+`any`
+See BaseFilterExpression for the full documentation.
+
+### [FilterOperationLogic](https://www.infragistics.com/api/react/igniteui-react/19.11/types/FilterOperationLogic)
+`any`
+
+### [GroupingDirection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/GroupingDirection)
+`"asc" | "desc" | "none"`
+
+### [HorizontalTransitionAnimation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/HorizontalTransitionAnimation)
+`"slide" | "fade" | "none"`
+
+### [IconButtonVariant](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IconButtonVariant)
+`"contained" | "flat" | "outlined"`
+
+### [IgrActiveStepChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrActiveStepChangedEventArgs)
+`CustomEvent<IgrActiveStepChangedEventArgsDetail>`
+
+### [IgrActiveStepChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrActiveStepChangingEventArgs)
+`CustomEvent<IgrActiveStepChangingEventArgsDetail>`
+
+### [IgrCellContext](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrCellContext)
+`any`
+See BaseIgcCellContext for the full documentation.
+
+### [IgrCheckboxChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrCheckboxChangeEventArgs)
+`CustomEvent<IgrCheckboxChangeEventArgsDetail>`
+
+### [IgrComboChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrComboChangeEventArgs)
+`CustomEvent<IgrComboChangeEventArgsDetail>`
+
+### [IgrComboClosingEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrComboClosingEventArgs)
+`CustomEvent<IgrComboClosingEventArgsDetail>`
+
+### [IgrComboSearchInputEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrComboSearchInputEventArgs)
+`CustomEvent<IgrComboSearchInputEventArgsDetail>`
+
+### [IgrRadioChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrRadioChangeEventArgs)
+`CustomEvent<IgrRadioChangeEventArgsDetail>`
+
+### [IgrRangeSliderValueEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrRangeSliderValueEventArgs)
+`CustomEvent<IgrRangeSliderValueEventArgsDetail>`
+
+### [IgrSplitterLayoutChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrSplitterLayoutChangedEventArgs)
+`CustomEvent<IgrSplitterLayoutChangedEventArgsDetail>`
+
+### [IgrSplitterResizeEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrSplitterResizeEventArgs)
+`CustomEvent<IgrSplitterResizeEventArgsDetail>`
+
+### [IgrTileChangeStateEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrTileChangeStateEventArgs)
+`CustomEvent<IgrTileChangeStateEventArgsDetail>`
+
+### [IgrTreeSelectionEventArgs](https://www.infragistics.com/api/react/igniteui-react/19.11/types/IgrTreeSelectionEventArgs)
+`CustomEvent<IgrTreeSelectionEventArgsDetail>`
+
+### [InputType](https://www.infragistics.com/api/react/igniteui-react/19.11/types/InputType)
+`"text" | "email" | "number" | "password" | "search" | "tel" | "url"`
+
+### [Keys](https://www.infragistics.com/api/react/igniteui-react/19.11/types/Keys)
+`FlatKeys<T> | NestedKeys<T>`
+Helper type for resolving keys of type T.
+
+### [LinearProgressLabelAlign](https://www.infragistics.com/api/react/igniteui-react/19.11/types/LinearProgressLabelAlign)
+`"top-start" | "top" | "top-end" | "bottom-start" | "bottom" | "bottom-end"`
+
+### [MaskInputValueMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/MaskInputValueMode)
+`"raw" | "withFormatting"`
+
+### [NavDrawerPosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/NavDrawerPosition)
+`"start" | "end" | "top" | "bottom" | "relative"`
+
+### [NotificationPositioning](https://www.infragistics.com/api/react/igniteui-react/19.11/types/NotificationPositioning)
+`"viewport" | "container"`
+
+### [OperandKeys](https://www.infragistics.com/api/react/igniteui-react/19.11/types/OperandKeys)
+`any`
+
+### [PickerMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/PickerMode)
+`"dropdown" | "dialog"`
+
+### [PopoverPlacement](https://www.infragistics.com/api/react/igniteui-react/19.11/types/PopoverPlacement)
+`"top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | "right" | "right-start" | "right-end" | "left" | "left-start" | "left-end"`
+Describes the preferred placement of a toggle component.
+
+### [PopoverScrollStrategy](https://www.infragistics.com/api/react/igniteui-react/19.11/types/PopoverScrollStrategy)
+`"scroll" | "hide" | "close"`
+
+### [PropertyType](https://www.infragistics.com/api/react/igniteui-react/19.11/types/PropertyType)
+`any`
+Helper type for resolving types of type T.
+
+### [QrCodeCopyFormat](https://www.infragistics.com/api/react/igniteui-react/19.11/types/QrCodeCopyFormat)
+`"png" | "svg"`
+Image format of a QR code copied to the clipboard.
+
+### [QrCodeExportFormat](https://www.infragistics.com/api/react/igniteui-react/19.11/types/QrCodeExportFormat)
+`"svg" | "png" | "jpeg" | "webp"`
+Output format of an exported QR code.
+
+### [QrCornerSquareStyle](https://www.infragistics.com/api/react/igniteui-react/19.11/types/QrCornerSquareStyle)
+`"square" | "circle" | "rounded"`
+Shape of the outer square of each finder-pattern corner.
+
+### [QrDotStyle](https://www.infragistics.com/api/react/igniteui-react/19.11/types/QrDotStyle)
+`"square" | "circle" | "rounded"`
+Shape of individual data modules in the QR code body.
+
+### [QrErrorCorrectionLevel](https://www.infragistics.com/api/react/igniteui-react/19.11/types/QrErrorCorrectionLevel)
+`"L" | "M" | "Q" | "H"`
+QR error correction level. Higher levels recover more data but reduce capacity.
+- L ~7%, M ~15%, Q ~25%, H ~30%.
+
+### [RangeTextSelectMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/RangeTextSelectMode)
+`"preserve" | "select" | "start" | "end"`
+
+### [SelectionRangeDirection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SelectionRangeDirection)
+`"none" | "backward" | "forward"`
+
+### [SliderTickLabelRotation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SliderTickLabelRotation)
+`0 | 90 | -90`
+
+### [SliderTickOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SliderTickOrientation)
+`"end" | "mirror" | "start"`
+
+### [SortComparer](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SortComparer)
+`any`
+See BaseSortComparer for the full documentation.
+
+### [SortingDirection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SortingDirection)
+`"ascending" | "descending" | "none"`
+Sort direction for a given sort expression.
+
+### [SortingExpression](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SortingExpression)
+`any`
+See BaseSortingExpression for the full documentation.
+
+### [SortState](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SortState)
+`Map<Keys<T>, SortingExpression<T>>`
+Represents the sort state of the grid.
+
+### [SplitterOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/SplitterOrientation)
+`"horizontal" | "vertical"`
+
+### [StepperOrientation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/StepperOrientation)
+`"horizontal" | "vertical"`
+
+### [StepperStepType](https://www.infragistics.com/api/react/igniteui-react/19.11/types/StepperStepType)
+`"full" | "indicator" | "title"`
+
+### [StepperTitlePosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/StepperTitlePosition)
+`"auto" | "bottom" | "top" | "end" | "start"`
+
+### [StepperVerticalAnimation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/StepperVerticalAnimation)
+`"grow" | "fade" | "none"`
+
+### [StyleVariant](https://www.infragistics.com/api/react/igniteui-react/19.11/types/StyleVariant)
+`"primary" | "info" | "success" | "warning" | "danger"`
+
+### [TabsActivation](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TabsActivation)
+`"auto" | "manual"`
+
+### [TabsAlignment](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TabsAlignment)
+`"start" | "end" | "center" | "justify"`
+
+### [TabsHeaderPosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TabsHeaderPosition)
+`"top" | "start" | "end"`
+
+### [TextareaResize](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TextareaResize)
+`"vertical" | "auto" | "none"`
+
+### [Theme](https://www.infragistics.com/api/react/igniteui-react/19.11/types/Theme)
+`any`
+
+### [ThemeVariant](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ThemeVariant)
+`any`
+
+### [TileManagerDragMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TileManagerDragMode)
+`"none" | "tile-header" | "tile"`
+
+### [TileManagerResizeMode](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TileManagerResizeMode)
+`"none" | "hover" | "always"`
+
+### [ToggleLabelPosition](https://www.infragistics.com/api/react/igniteui-react/19.11/types/ToggleLabelPosition)
+`"after" | "before"`
+
+### [TooltipRect](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TooltipRect)
+`any`
+A rectangle in viewport coordinates for the tooltip showAt() method.
+Without width and height, it is a point.
+
+### [TreeSelection](https://www.infragistics.com/api/react/igniteui-react/19.11/types/TreeSelection)
+`"none" | "multiple" | "cascade"`
+
+### [VirtualScrollItemTemplate](https://www.infragistics.com/api/react/igniteui-react/19.11/types/VirtualScrollItemTemplate)
+`any`
+
+### [VirtualScrollKeyFunction](https://www.infragistics.com/api/react/igniteui-react/19.11/types/VirtualScrollKeyFunction)
+`any`
+
+### [WeekDays](https://www.infragistics.com/api/react/igniteui-react/19.11/types/WeekDays)
+`"sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday"`
+
+## Functions
+
+### [configureTheme](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/configureTheme)
+`configureTheme(t: "material" | "bootstrap" | "indigo" | "fluent", v?: "light" | "dark"): void`
+Allows the global configuration of the active theme.
+
+Usage:
+  import { configureTheme } from 'igniteui-webcomponents';
+
+ configureTheme('material', 'light');
+
+### [registerI18n](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/registerI18n)
+`registerI18n(resourceStrings: IResourceStrings, locale: string): void`
+Register resources for a specific locale.
+
+### [registerIcon](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/registerIcon)
+`registerIcon(name: string, url: string, collection?: string): Promise<void>`
+Registers an icon by fetching it from a URL.
+
+### [registerIcon](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/registerIcon)
+`registerIcon(name: string, url: string, options?: RegisterIconOptions): Promise<void>`
+Registers an icon by fetching it from a URL.
+
+### [registerIconFromText](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/registerIconFromText)
+`registerIconFromText(name: string, iconText: string, collection?: string): void`
+Registers an icon from SVG text content.
+
+### [registerIconFromText](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/registerIconFromText)
+`registerIconFromText(name: string, iconText: string, options?: RegisterIconOptions): void`
+Registers an icon from SVG text content.
+
+### [setCurrentI18n](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/setCurrentI18n)
+`setCurrentI18n(locale: string): void`
+Set the current locale of all Ignite UI components.
+
+### [setIconRef](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/setIconRef)
+`setIconRef(name: string, collection: string, icon: IconMeta): void`
+Sets an icon reference/alias that points to another icon.
+
+### [θaddAdoptedStylesController](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/θaddAdoptedStylesController)
+`θaddAdoptedStylesController(host: ReactiveControllerHost & LitElement): AdoptedStylesController`
+Creates an AdoptedStylesController and adds it to a Lit component.
+
+### [θaddThemingController](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/θaddThemingController)
+`θaddThemingController(host: ReactiveControllerHost & ReactiveElement, themes: ComponentThemes, config?: ThemingControllerConfig): ThemingController`
+Creates and attaches a ThemingController to the given host element.
+
+This is the preferred way to add theming support to a component. The controller
+is registered with the host's reactive controller lifecycle and automatically
+resolves the active theme from an ancestor theme provider context or
+falls back to the application-wide theme set via configureTheme().
+
+### [θcreateAbortHandle](https://www.infragistics.com/api/react/igniteui-react/19.11/functions/θcreateAbortHandle)
+`θcreateAbortHandle(): AbortHandle`
+Creates an AbortHandle, which wraps an AbortController and gives a
+signal that the caller can reset. An abort or a reset installs a new
+controller, so the caller keeps the same handle.
+
+## Variables
+
+### [BooleanOperands](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/BooleanOperands)
+`Readonly<FilterOperands<boolean, BooleanKeys>>`
+
+### [CalendarResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/CalendarResourceStringsEN)
+`ICalendarResourceStrings`
+English resource strings for Ignite UI Calendar
+
+### [CarouselResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/CarouselResourceStringsEN)
+`ICarouselResourceStrings`
+English resource strings for Ignite UI Carousel
+
+### [ChatResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/ChatResourceStringsEN)
+`IChatResourceStrings`
+English resource strings for Ignite UI Chat
+
+### [ChipResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/ChipResourceStringsEN)
+`IChipResourceStrings`
+English resource strings for Ignite UI Chip
+
+### [ColorPickerResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/ColorPickerResourceStringsEN)
+`IColorPickerResourceStrings`
+English resource strings for Ignite UI Color Picker
+
+### [ComboResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/ComboResourceStringsEN)
+`IComboResourceStrings`
+English resource strings for Ignite UI Combo
+
+### [DatePickerResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/DatePickerResourceStringsEN)
+`IDatePickerResourceStrings`
+English resource strings for Ignite UI Date Picker
+
+### [DateRangePickerResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/DateRangePickerResourceStringsEN)
+`IDateRangePickerResourceStrings`
+English resource strings for Ignite UI Date Range Picker
+
+### [DialogResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/DialogResourceStringsEN)
+`IDialogResourceStrings`
+English resource strings for Ignite UI Dialog
+
+### [FileInputResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/FileInputResourceStringsEN)
+`IFileInputResourceStrings`
+English resource strings for Ignite UI File Input
+
+### [IgrCalendarResourceStringEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/IgrCalendarResourceStringEN)
+`IgcCalendarResourceStrings`
+**Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.
+
+### [IgrChatResourceStringEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/IgrChatResourceStringEN)
+`IgcChatResourceStrings`
+**Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.
+
+### [IgrDateRangePickerResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/IgrDateRangePickerResourceStringsEN)
+`IgcDateRangePickerResourceStrings`
+**Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.
+
+### [NumberOperands](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/NumberOperands)
+`Readonly<FilterOperands<number, NumberKeys>>`
+
+### [SplitterResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/SplitterResourceStringsEN)
+`ISplitterResourceStrings`
+English resource strings for Ignite UI Splitter
+
+### [StringOperands](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/StringOperands)
+`Readonly<FilterOperands<string, StringKeys>>`
+
+### [TileResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/TileResourceStringsEN)
+`ITileResourceStrings`
+English resource strings for Ignite UI Tile
+
+### [TooltipResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/TooltipResourceStringsEN)
+`ITooltipResourceStrings`
+English resource strings for Ignite UI Tooltip
+
+### [TreeResourceStringsEN](https://www.infragistics.com/api/react/igniteui-react/19.11/variables/TreeResourceStringsEN)
+`ITreeResourceStrings`
+English resource strings for Ignite UI Tree
