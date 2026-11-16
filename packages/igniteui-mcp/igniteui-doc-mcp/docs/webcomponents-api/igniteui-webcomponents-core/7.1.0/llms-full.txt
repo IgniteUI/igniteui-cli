@@ -1,10 +1,10 @@
-# Ignite UI for Web Components Core v7.1.0 — Full API Reference
+# Ignite UI for Web Components Core v7.1.1-beta.19 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Core package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Core package (7.1.1-beta.19). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-core
-Version: 7.1.0
+Version: 7.1.1-beta.19
 
 ## Classes
 
@@ -51,6 +51,7 @@ Version: 7.1.0
 - static **getArrayOfProperties**(obj: any): any[]
 - static **getArrayOfValues**(obj: any): any[]
 - static **getHashCodeStatic**(obj: any): number
+- static **getIdentityHashCodeStatic**(obj: any): number
 - static **referenceEquals**(a: any, b: any): boolean
 
 ### [BaseError](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/BaseError)
@@ -123,6 +124,7 @@ Version: 7.1.0
 
 - **constructor**(): ComponentRendererAdapter
 - **isBlazorRenderer**: `boolean`
+- **supportsNativeReset**: `boolean`
 - **addItemToCollection**(propertyName: string, propertyMetadata: TypeDescriptionMetadata, target: any, newIndex: number, item: any): void
 - **clearCollection**(target: any, propertyName: string, metadata: TypeDescriptionMetadata): void
 - **clearContainer**(container: any, context: TypeDescriptionContext, continueActions: any): void
@@ -138,6 +140,8 @@ Version: 7.1.0
 - **executeMethod**(target: any, methodName: string, argumentValues_: any[], argumentMetadata: TypeDescriptionMetadata[], onFinished: any): void
 - **flushChanges**(container: any): void
 - **forPropertyValueItem**(target: any, propertyName: string, forItem: any): void
+- **getImplementationObject**(value: any): any
+- **getImplementationTypeName**(value: any): string
 - **getMarkupCollection**(target: any, propertyName: string, metadata: TypeDescriptionMetadata, isCollection: boolean): MarkupCollection
 - **getMarkupTypeMatcher**(target: any, propertyName: string, metadata: TypeDescriptionMetadata, isCollection: boolean): any | null
 - **getPropertyValue**(target: any, propertyName: string): any
@@ -217,6 +221,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -327,6 +332,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -437,6 +443,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -552,6 +559,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -662,6 +670,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -777,6 +786,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -892,6 +902,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1002,6 +1013,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1112,6 +1124,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1222,6 +1235,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1332,6 +1346,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1442,6 +1457,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1552,6 +1568,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1662,6 +1679,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1772,6 +1790,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1882,6 +1901,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -1992,6 +2012,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -2102,6 +2123,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -2212,6 +2234,7 @@ Version: 7.1.0
 - **BreakEvenTitle_TotalCost**: `string`
 - **BreakEvenTitle_VariableCost**: `string`
 - **BubbleSeries_Radius**: `string`
+- **DashboardTile_NoData**: `string`
 - **DataChart_InteractivityNotLoaded**: `string`
 - **DataChart_NumberAbbreviatorNotLoaded**: `string`
 - **DataChart_VisualDataNotLoaded**: `string`
@@ -2420,8 +2443,12 @@ The base class for generic data sources.
 - **executionContext**: `IDataSourceExecutionContext` — Gets or sets the execution context that the data source should synchronize asynchronous actions with, or use to defer delayed actions.
 - **filterExpressions**: `IgcFilterExpressionCollection` — Gets the current filter that is applied to the data source.
 - **groupDescriptions**: `IgcDataSourceGroupDescriptionCollection` — Gets the current grouping that is applied to the data source.
+- **isReadOnly**: `boolean` — Gets or sets whether the data source is read only.
+- **primaryKey**: `string[]` — Gets or sets a list of property references that indicate the user provided primary key of the items in the data source. Consumers of the data source will often need to uniquely identify items in the data source. For this purpose a primary key should be specified.
 - **sortDescriptions**: `IgcDataSourceSortDescriptionCollection` — Gets the current sort that is applied to the data source.
 - **summaryDescriptions**: `IgcDataSourceSummaryDescriptionCollection` — Gets the current summaries that are applied to the data source.
+- **addItem**(item: any): void — Adds the provided item to the data source, recording it as an add for the data source to
+report and to carry in its next batch of changes.
 - **findByName**(name: string): any
 - **queueAutoRefresh**(): void — Called to manually queue a refresh of the data source.
 - static **_createFromInternal**(internal: any): IgcBaseGenericDataSource
@@ -2540,6 +2567,72 @@ Represent a column in summary row
 - **addUnits**(units: string): void — Add unit in the summary column
 - **addValue**(value: number): void — Add a value in the summary column
 
+### [IgcDataSeriesAdapterBulkChangeReinferenceRuleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterBulkChangeReinferenceRuleComponent)
+Asks for the data to be analyzed again once enough of it has changed since it was last
+analyzed, either as a number of items or as a share of the items.
+
+- **constructor**(): IgcDataSeriesAdapterBulkChangeReinferenceRuleComponent
+- static **htmlTagName**: `string`
+- **minimumChangedFraction**: `number` — Gets or sets the share of the items, from 0 to 1, that, once changed, has the data
+analyzed again. Zero or less ignores the share.
+- **minimumChangedItemCount**: `number` — Gets or sets the number of items that, once changed, has the data analyzed again. Zero
+or less ignores the count.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcDataSeriesAdapterItemCountReinferenceRuleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterItemCountReinferenceRuleComponent)
+Asks for the data to be analyzed again when the number of items crosses one of a set of
+thresholds, where the analysis can come to a different conclusion: with the default
+thresholds of 1 and 2, between no items, a single item and many.
+
+- **constructor**(): IgcDataSeriesAdapterItemCountReinferenceRuleComponent
+- static **htmlTagName**: `string`
+- **itemCountThresholds**: `number[]` — Gets or sets the item counts at which the data is analyzed again: a change that takes
+the number of items from below a threshold to at or above it, or back, crosses it.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcDataSeriesAdapterReinferenceRequestedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterReinferenceRequestedEventArgs)
+Describes a change to the data a DataSeriesAdapter is analyzing, and carries back whether
+the change should make it analyze the data again.
+
+- **constructor**(): IgcDataSeriesAdapterReinferenceRequestedEventArgs
+- **changesSinceInference**: `number` — Gets the number of items changed since the data was last analyzed, this change included.
+- **changeType**: `DataSeriesAdapterDataChangeType` — Gets the kind of change made to the items.
+- **itemCount**: `number` — Gets the number of items after the change.
+- **previousItemCount**: `number` — Gets the number of items before the change.
+- **shouldReinfer**: `boolean` — Gets or sets whether the change should make the adapter analyze the data again.
+
+### [IgcDataSeriesAdapterReinferenceRuleCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterReinferenceRuleCollection)
+
+- **constructor**(list?: IgcDataSeriesAdapterReinferenceRuleComponent[]): IgcDataSeriesAdapterReinferenceRuleCollection
+
+### [IgcDataSeriesAdapterReinferenceRuleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterReinferenceRuleComponent)
+A rule for when a change to the items of the data should make a DataSeriesAdapter analyze
+the data again, and so possibly choose a different visualization for it.
+Analyzing the data is not cheap, and choosing a different visualization in response to a
+small edit would replace a chart a user is watching animate. So a change to the items
+re-runs the analysis only when a rule asks for it. A change to the data's schema, a reset,
+or the data being replaced always re-runs it; those are not rules.
+A rule answers through ReinferenceRequested. The built-in rules derive from this one and
+answer from their own properties as well, so they work without a handler on platforms
+that cannot answer an event synchronously.
+
+- **constructor**(): IgcDataSeriesAdapterReinferenceRuleComponent
+- static **htmlTagName**: `string`
+- **reinferenceRequested**: `any` — Raised for a change to the items, to ask whether the data should be analyzed again.
+- static **observedAttributes**: `string[]`
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **_createFromInternal**(internal: any): IgcDataSeriesAdapterReinferenceRuleComponent
+- static **register**(): void
+
 ### [IgcDataSeriesCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesCollection)
 
 - **constructor**(list?: DataSeries[]): IgcDataSeriesCollection
@@ -2558,13 +2651,18 @@ Provides information about a schema change event.
 ### [IgcDataSourceGroupDescriptionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourceGroupDescriptionCollection)
 
 - **constructor**(): IgcDataSourceGroupDescriptionCollection
+- **count**: `number`
+- **i**: `DataSourceGroupDescriptionCollection`
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgcDataSourceGroupDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgcDataSourceGroupDescription): number
 - **insert**(index: number, item: IgcDataSourceGroupDescription): void
+- **item**(index: number, value?: IgcDataSourceGroupDescription): IgcDataSourceGroupDescription
 - **remove**(item: IgcDataSourceGroupDescription): boolean
 - **removeAt**(index: number): IgcDataSourceGroupDescription
+- **toArray**(): IgcDataSourceGroupDescription[]
 
 ### [IgcDataSourcePropertiesRequestedChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourcePropertiesRequestedChangedEventArgs)
 Provides information about a properties requested changed event.
@@ -2602,14 +2700,19 @@ Provides information about a schema change event that has occurred.
 ### [IgcDataSourceSortDescriptionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourceSortDescriptionCollection)
 
 - **constructor**(): IgcDataSourceSortDescriptionCollection
+- **count**: `number`
+- **i**: `DataSourceSortDescriptionCollection`
 - **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgcDataSourceSortDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgcDataSourceSortDescription): number
 - **insert**(index: number, item: IgcDataSourceSortDescription): void
+- **item**(index: number, value?: IgcDataSourceSortDescription): IgcDataSourceSortDescription
 - **remove**(item: IgcDataSourceSortDescription): boolean
 - **removeAt**(index: number): IgcDataSourceSortDescription
+- **toArray**(): IgcDataSourceSortDescription[]
 
 ### [IgcDataSourceSummaryDescription](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourceSummaryDescription)
 
@@ -2625,14 +2728,19 @@ Provides information about a schema change event that has occurred.
 ### [IgcDataSourceSummaryDescriptionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourceSummaryDescriptionCollection)
 
 - **constructor**(): IgcDataSourceSummaryDescriptionCollection
+- **count**: `number`
+- **i**: `DataSourceSummaryDescriptionCollection`
 - **shouldDetachOnTargetChange**: `boolean` — Gets or sets whether this collection should detach the sync when the target collection changes.
+- **[iterator]**(): Generator<any, void, unknown>
 - **add**(item: IgcDataSourceSummaryDescription): boolean
 - **clear**(): void
 - **findByName**(name: string): any
 - **indexOf**(item: IgcDataSourceSummaryDescription): number
 - **insert**(index: number, item: IgcDataSourceSummaryDescription): void
+- **item**(index: number, value?: IgcDataSourceSummaryDescription): IgcDataSourceSummaryDescription
 - **remove**(item: IgcDataSourceSummaryDescription): boolean
 - **removeAt**(index: number): IgcDataSourceSummaryDescription
+- **toArray**(): IgcDataSourceSummaryDescription[]
 
 ### [IgcDateTimeFormatSpecifier](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDateTimeFormatSpecifier)
 
@@ -2716,11 +2824,13 @@ The base class for generic data sources.
 
 - **constructor**(): IgcGenericVirtualDataSource
 - **pageRequested**: `any` — Raised when the datasource requests page data.
+- **pageSizeRequested**: `number` — Gets or sets the desired page size for the virtual data source.
 - **addSchemaProperty**(propertyName: string, propertyType: string | GenericDataSourceSchemaPropertyType): void
 - **addSummaryDate**(propertyName: string, operand: string | DataSourceSummaryOperand, value: Date): void
 - **addSummaryDouble**(propertyName: string, operand: string | DataSourceSummaryOperand, value: number): void
 - **addSummaryInt**(propertyName: string, operand: string | DataSourceSummaryOperand, value: number): void
 - **addSummaryString**(propertyName: string, operand: string | DataSourceSummaryOperand, value: string): void
+- **destroy**(): void — Releases the data source and any pending virtual data work.
 - **fillColumnBool**(column: string, values: boolean[]): void
 - **fillColumnDate**(column: string, values: Date[]): void
 - **fillColumnDouble**(column: string, values: number[]): void
@@ -2736,6 +2846,10 @@ after FillPageStart.
 - **fillGroupValueString**(propertyName: string, value: string): void
 - **fillPageEnd**(): void — Ends the current page. Must be called after FillPageStart.
 - **fillPageStart**(requestId: number): void — Starts filling a page for the specified request. Must later be followed by FillPageEnd to complete the request.
+Ambiguous when both the original and a clone have raised events with
+the same request id; callers in that situation should use
+FillPageStartForSource. This overload finds the first matching entry.
+- **fillPageStartForSource**(dataSourceId: number, requestId: number): void
 
 ### [IgcGetTileImageUriArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcGetTileImageUriArgs)
 Event arguments for GetTileImageUri event
@@ -2896,10 +3010,35 @@ Information about the requested page.
 
 - **constructor**(): IgcPageRequestedEventArgs
 - **dataSourceId**: `number` — The Unique ID for the data source making the request.
+- **filterExpressions**: `IgcFilterExpressionCollection` — Snapshot of the data source's FilterExpressions at the time PageRequested
+was raised.
+- **groupDescriptions**: `IgcDataSourceGroupDescriptionCollection` — Snapshot of the data source's GroupDescriptions at the time PageRequested
+was raised.
+- **isFilterExpressionsDirty**: `boolean` — True if the data source's FilterExpressions collection changed since
+it last raised PageRequested.
+- **isGroupDescriptionsDirty**: `boolean` — True if the data source's GroupDescriptions collection changed since
+it last raised PageRequested.
 - **isSchemaRequest**: `boolean` — The data source is requesting the schema for the data.
+- **isSortDescriptionsDirty**: `boolean` — True if the data source's SortDescriptions collection changed since
+it last raised PageRequested. Any *Dirty flag being true signals the
+data source's pipeline state changed (sort/group/filter/summary/scope)
+and consumers should promote pending future state.
+- **isSummaryDescriptionsDirty**: `boolean` — True if the data source's SummaryDescriptions collection changed since
+it last raised PageRequested.
+- **isSummaryScopeDirty**: `boolean` — True if the data source's SummaryScope property changed since it last
+raised PageRequested.
 - **pageIndex**: `number` — The page index being requested.
 - **pageSize**: `number` — The page size being requested.
 - **requestId**: `number` — The unique ID for the page request.
+- **sortDescriptions**: `IgcDataSourceSortDescriptionCollection` — Snapshot of the data source's SortDescriptions at the time PageRequested
+was raised. Populated from the originating data source (clone or original);
+the values cross the wire by-value so consumers see the exact pipeline state
+the page was requested under.
+- **sourceName**: `string` — The name of the data source the page request originated from. This corresponds to the SourceName of the
+originating data source (clone or original) and can be used to determine where the request came from.
+- **summaryDescriptions**: `IgcDataSourceSummaryDescriptionCollection` — Snapshot of the data source's SummaryDescriptions at the time PageRequested
+was raised.
+- **summaryScope**: `DataSourceSummaryScope` — The data source's SummaryScope at the time PageRequested was raised.
 
 ### [IgcPopupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcPopupComponent)
 
@@ -2910,6 +3049,7 @@ Information about the requested page.
 - **actualPenumbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
 - **actualUmbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
 - **animationDuration**: `number` — Gets or sets the duration of the Popup and Closeup animations in milliseconds.
+- **animationEasing**: `PopupAnimationEasing` — Gets or sets the easing function applied to the popup's open and close animations.
 - **animationEnabled**: `boolean` — Gets or sets whether the popup and closeup animations are animated.
 - **animationType**: `PopupAnimationType` — Gets or sets the type of animation to use when the popup opens and closes.
 - **background**: `string` — Gets or sets the background color of the popup.
@@ -2945,6 +3085,7 @@ Information about the requested page.
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
 - **exportVisualModel**(): any — Exports visual information about the current state of the grid.
 - **findByName**(name: string): any
+- **getBoundingRect**(): IgRect — Gets the bounding rectangle of the popup in root-relative coordinates.
 - **showRelativeToExclusionRect**(exclusionRect: IgRect, popupDirection: string | PopupDirection, popupAlignment: string | PopupAlignment): void
 - **updateStyle**(): void
 - static **register**(): void
@@ -3044,6 +3185,32 @@ Represents a record of data from a Shapefile (.shp and .dbf).
 - **getLabel**(context: any): any
 - **render**(context: any): void
 - static **register**(): void
+
+### [IgcSimulateInputCompletedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcSimulateInputCompletedEventArgs)
+Event args for signaling that an async SimulateInput operation has completed.
+
+- **constructor**(): IgcSimulateInputCompletedEventArgs
+- **id**: `string`
+
+### [IgcSimulateInputResult](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcSimulateInputResult)
+The outcome of a simulated input operation.
+Async reports that the operation did not finish before returning and
+that a SimulateInputCompleted event will follow; a caller that needs the input to
+have taken effect must wait for it.
+Handled reports that something along the path consumed the input, the
+same way a real event handler stops propagation. A container that drills input to a
+child (the grid handing a key to an open editor, for instance) uses this to decide
+whether to also apply its own handling for that input, so a key the editor acted on
+is not acted on twice.
+
+- **constructor**(): IgcSimulateInputResult
+- **isAsync**: `boolean` — The input did not finish before returning and a SimulateInputCompleted event will
+follow; a caller that needs the input to have taken effect must wait for it.
+- **isHandled**: `boolean` — Something along the path consumed the input, the same way a real event handler stops
+propagation. A container that drills input to a child (the grid handing a key to an
+open editor) uses this to decide whether to also apply its own handling, so a key the
+editor acted on is not acted on twice.
+- **findByName**(name: string): any
 
 ### [IgcSizeDefinitionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcSizeDefinitionCollection)
 
@@ -3227,6 +3394,7 @@ Class for converting Itf files into enumerable triangulations.
 - **constructor**(id: string): PortalManager
 - **renderer**: `WebComponentRenderer`
 - **_destroy**(portal: WebComponentDomPortal): void
+- **dispose**(): void
 - **getPortal**(hostElement: DomWrapper, elementTag: string, portalCallback: any, isContentPortal: boolean): void
 - **onChildrenChanged**(children: any[]): void
 
@@ -3346,7 +3514,12 @@ Class for converting Itf files into enumerable triangulations.
 ### [TypeRegistrar](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/TypeRegistrar)
 
 - **constructor**(): TypeRegistrar
+- static **_factorySymbol**: `symbol`
+- static **_pendingFactories**: `Promise<void>[]` — Every registerFactory retry-loop this class kicks off when the
+initial factory arg was undefined. awaitPendingFactories() lets a
+boot sequence pause until they all resolve (or reject).
 - static **_registrar**: `Map<string, Function>`
+- static **awaitPendingFactories**(): Promise<void>
 - static **callRegister**(typeName: string): void
 - static **create**(typeName: string, rest: any[]): any
 - static **createFromInternal**(internal: any, prefix: string, postfix: string): any
@@ -3354,6 +3527,9 @@ Class for converting Itf files into enumerable triangulations.
 - static **isRegistered**(typeName: string): boolean
 - static **register**(typeName: string, type: Type): void
 - static **registerCons**(typeName: string, type: Function): void
+- static **registerFactory**(typeName: string, factory: any): void — Register a factory function under typeName. create(typeName, ...)
+will invoke the factory with plain call semantics (no new) and return
+its result. Use this for wasm-Dart bridge factories exposed via
 
 ### [ValueType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/ValueType)
 
@@ -3392,6 +3568,7 @@ Class for converting Itf files into enumerable triangulations.
 - **hasWindow**(): boolean
 - **listen**(element: any, eventName: string, handler: any): any
 - **querySelector**(selector: string): DomWrapper
+- **rehookSizeWatcher**(): void
 - **removeSizeWatcher**(): void
 - **runInMainZone**(action: any): void
 - **setCssQueryFontString**(fontString: any): void
@@ -3832,12 +4009,42 @@ An enum representing the available collision modes of callout layers.
 - **Jpeg** = 1
 - **Png** = 0
 
+### [CodeGenerationAttributeLayout](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationAttributeLayout)
+How an element's attributes are laid out. See
+CodeGenerationRendererOptions.AttributeLayout.
+
+Kept, because CodeGenerationRendererOptions is kept and names it. An enumeration can be kept
+on its own — it drags nothing else along — which is what makes it the right shape for a
+setting on a public surface.
+
+- **Default** = 0 — One attribute per line, which is what the emitters already wrote.
+- **SingleLine** = 1 — All of an element's attributes on the tag's own line.
+
+### [CodeGenerationColorNotation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationColorNotation)
+How a colour is written out. See CodeGenerationRendererOptions.ColorNotation.
+
+Kept, because CodeGenerationRendererOptions is kept and names it. An enumeration can be kept
+on its own — it drags nothing else along — which is what makes it the right shape for a
+setting on a public surface.
+
+- **Default** = 0 — The platform's own: rgba() on the web-backed platforms, Blazor among them, and hex in XAML.
+- **Hex** = 1 — "#rrggbb", with the alpha where the colour is not opaque in the order the platform reads:
+"#rrggbbaa" on the web-backed platforms, as CSS reads it, and "#aarrggbb" in XAML.
+- **Rgba** = 2 — "rgba(r, g, b, a)", the alpha to two places.
+
 ### [CodeGenerationLibraryItemContentLocation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationLibraryItemContentLocation)
 
 - **CDN** = 2
 - **CDNSkipHydrate** = 3
 - **Code** = 0
 - **JsonFile** = 1
+
+### [CodeGenerationLibraryItemLifetime](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationLibraryItemLifetime)
+How many of a supporting item there are: one that everything asking for it gets, or one per
+asking. Read from the item's config, and Shared when nothing says otherwise.
+
+- **Instance** = 1
+- **Shared** = 0
 
 ### [CodeGenerationLibraryItemPlatform](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationLibraryItemPlatform)
 
@@ -3848,6 +4055,9 @@ An enum representing the available collision modes of callout layers.
 - **Blazor** = 14
 - **Desktop** = 8
 - **DotNet** = 13
+- **DotNetAndroid** = 24
+- **DotNetIOS** = 23
+- **Flutter** = 25
 - **GTK** = 19
 - **iOS** = 18
 - **JQuery** = 3
@@ -3855,30 +4065,95 @@ An enum representing the available collision modes of callout layers.
 - **React** = 1
 - **Swift** = 17
 - **Unknown** = 12
+- **Uno** = 21
 - **Web** = 6
 - **WebComponents** = 2
 - **Win** = 9
 - **WindowsForms** = 5
+- **WinUI** = 20
 - **WPF** = 4
+- **Xaml** = 22
 - **XPlat** = 10
 
 ### [CodeGenerationLibraryItemType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationLibraryItemType)
 
 - **Data** = 0
 - **EventHandler** = 1
-- **Template** = 2
-- **Unknown** = 3
+- **Supporting** = 2 — Types a handler needs alongside it, emitted as peers of the component rather than
+members of it.
+
+A handler item's content is written into the component class, so a class it depends on
+has nowhere to go — and nesting one is not open to every platform, since Kotlin, Swift
+and their like do not all offer it. An item of this type carries those declarations, is
+named in another item's "requires", and reaches the generated output through the
+supportingTypes insertion point each template provides.
+- **Template** = 3
+- **Unknown** = 4
+
+### [CodeGenerationNumericAttributeStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationNumericAttributeStyle)
+How a numeric attribute value is delimited. See
+CodeGenerationRendererOptions.NumericAttributeStyle.
+
+Kept, because CodeGenerationRendererOptions is kept and names it. An enumeration can be kept
+on its own — it drags nothing else along — which is what makes it the right shape for a
+setting on a public surface.
+
+- **Bare** = 2 — Undelimited, as interval=10. Valid in html, not in XAML.
+- **Braced** = 3 — In braces, as interval={10}. The JSX form.
+- **Default** = 0 — Whatever the platform's emitter already wrote.
+- **Quoted** = 1 — In quotes, as interval="10".
+
+### [CodeGenerationSnippetChannel](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationSnippetChannel)
+Which emitted output a snippet is after. Markup is the default; Code asks for the code
+behind form of the same setup; Handler asks for the library handler body.
+
+Kept, because the recorder's public surface names it, and an enumeration is the kind of type that
+can be kept without dragging anything else with it.
+
+- **AllCode** = 2 — Every part of the code behind, delimited by a comment naming each one.
+
+For the topic that wants the whole picture in a single block rather than one snippet per
+part. Ordinary Code is the common case.
+- **Code** = 1 — The code behind form of the component itself: its construction and property
+assignments, and nothing else.
+
+Deliberately narrow. The generated code behind file also carries field declarations,
+init lines and binding setup, each of which the template drops into a different part of
+the file. Concatenating them into one snippet declares the same symbols several times
+over and does not compile, and it is not what documentation shows: of 1257 code examples
+across the docs, 698 are a body with no fields and no imports. Those other parts are
+addressed by region name, or all together through AllCode.
+- **CodeFile** = 3 — The complete generated code behind file, exactly as the template renders it.
+
+Unlike every other channel this is not assembled from recorded writes — it is the
+finished file, so it includes the template's own scaffolding.
+- **Data** = 5 — A data source, taken from the code generation library.
+- **Handler** = 4 — An event handler body, taken from the code generation library.
+- **Markup** = 0 — The component markup: XAML, Razor, HTML, JSX. The default.
+- **Module** = 8 — Module imports and registrations.
+- **Supporting** = 7 — Types a handler needs beside it, taken from a supporting item in the code generation
+library.
+
+A channel of its own rather than part of Handler: a topic showing a handler shows the
+lines that do the work, and the helper class it calls into is usually a separate topic
+the reader is pointed at. Asking for this channel is asking for that class.
+- **Template** = 6 — A template, taken from the code generation library.
 
 ### [CodeGenerationTargetPlatforms](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CodeGenerationTargetPlatforms)
 
 - **Angular** = 1
 - **Blazor** = 5
+- **DotNetAndroid** = 12
+- **DotNetIOS** = 11
+- **Flutter** = 13
 - **GTK** = 8
 - **Kotlin** = 6
 - **React** = 2
 - **Swift** = 7
+- **Uno** = 10
 - **WebComponents** = 3
 - **WindowsForms** = 4
+- **WinUI** = 9
 - **WPF** = 0
 
 ### [CollisionGeometryType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/CollisionGeometryType)
@@ -4014,6 +4289,13 @@ Describes mode for displaying values in the data legend.
 - **Currency** = 2 — Specifies values with currency symbol, e.g. $170.25 for 170.25
 Note symbol of the currency depends on the ValueFormatCulture property
 - **Decimal** = 1 — Specifies values as decimal number, e.g. 170.25 for 170.25
+
+### [DataSeriesAdapterDataChangeType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/DataSeriesAdapterDataChangeType)
+The kind of change made to the items of the data a DataSeriesAdapter is analyzing.
+
+- **Insert** = 0 — An item was inserted.
+- **Remove** = 1 — An item was removed.
+- **Set** = 2 — An item was replaced.
 
 ### [DataSeriesAxisType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/DataSeriesAxisType)
 Indicates which axis type is suggested in a data series.
@@ -4169,6 +4451,7 @@ Enumerates the available property types on a data source schema.
 - **ShortValue** = 4 — The property if of type short.
 - **SingleValue** = 7 — The property is of type single.
 - **StringValue** = 0 — The property is of type string.
+- **UriValue** = 12 — The property is a uri type.
 
 ### [DataSourceSectionHeaderDisplayMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/DataSourceSectionHeaderDisplayMode)
 Enumerates possible display modes for section headers.
@@ -4613,6 +4896,13 @@ Describes available modes for displaying empty values in chart legend.
 - **AlwaysVisible** = 1 — Always show legend items for zero values even when the Others Category is present.
 - **ShowWhenNoOthersCategory** = 2 — Show legend items for zero values only when the Others Category is not present.
 
+### [LegendItemBadgeMarkerSizeScaling](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/LegendItemBadgeMarkerSizeScaling)
+Describes how marker series legend badges scale with the series' MarkerSize when the badge shape is Marker (or Line in MatchSeries mode)
+
+- **Auto** = 0 — Linearly interpolates from MarkerSize at the platform default up to 32 onto a 1x..2x badge scale, clamped at the bounds
+- **Linear** = 2 — Scales the legend badge linearly with MarkerSize relative to the platform default (e.g. MarkerSize == 2*default yields a 2x badge).
+- **None** = 1 — Disables scaling; the legend badge keeps its default size regardless of MarkerSize
+
 ### [LegendItemBadgeMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/LegendItemBadgeMode)
 Describes mode of legend badges that represent all series in a legend
 
@@ -4734,8 +5024,16 @@ Indicates which side of the exclusion rectangle to which the popup is aligned.
 - **Middle** = 3 — Popup should be aligned in the middle.
 - **Near** = 1 — Popup should be aligned to the near side. This usually means left or top.
 
+### [PopupAnimationEasing](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/PopupAnimationEasing)
+
+- **CircleInOut** = 3
+- **CubicInOut** = 1
+- **ExponentialInOut** = 2
+- **Linear** = 0
+
 ### [PopupAnimationType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/PopupAnimationType)
 
+- **ClipSlide** = 2
 - **FadeInOutSlide** = 1
 - **GrowShrink** = 0
 
@@ -4841,6 +5139,35 @@ Describes available types of item represented by the current row of a shapefile.
 - **PolyPointM** = 28 — Specifies a polypointm shape (not supported; cannot occur when reading a shapefile)
 - **PolyPointZ** = 18 — Specifies a polypointz shape (not supported; cannot occur when reading a shapefile)
 
+### [SimulatedInputType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/SimulatedInputType)
+
+- **Click** = 5
+- **ClickSequence** = 24
+- **DoubleClick** = 6
+- **DragSequence** = 25
+- **GotFocus** = 19
+- **KeyDown** = 21
+- **KeyPressSequence** = 23
+- **KeyUp** = 22
+- **LostFocus** = 20
+- **MouseEnter** = 1
+- **MouseLeave** = 2
+- **MouseLeftButtonDown** = 3
+- **MouseLeftButtonUp** = 4
+- **MouseMove** = 0
+- **MouseRightButtonDown** = 7
+- **MouseRightButtonUp** = 8
+- **PointerDown** = 14
+- **PointerEnter** = 17
+- **PointerLeave** = 18
+- **PointerMove** = 16
+- **PointerUp** = 15
+- **TouchDown** = 9
+- **TouchEnter** = 12
+- **TouchLeave** = 13
+- **TouchMove** = 11
+- **TouchUp** = 10
+
 ### [SmartPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/SmartPosition)
 Describes available positions for smart label placement with respect to the notional rectangle's
 origin
@@ -4923,10 +5250,12 @@ Represents type for toolbar action
 - **IconButton** = 3
 - **IconMenu** = 8
 - **Label** = 4
+- **LabelMenu** = 19
 - **NumberInput** = 5
 - **Radio** = 6
 - **RadioGroup** = 17
 - **Separator** = 7
+- **Slider** = 20
 - **SubPanel** = 10
 - **TextInput** = 15
 - **Unknown** = 0
@@ -5004,13 +5333,18 @@ Describes available types of trend lines supported by series.
 ### [TypeDescriptionPlatform](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/enums/TypeDescriptionPlatform)
 
 - **Angular** = 3
-- **Blazor** = 12
-- **GTK** = 15
+- **Blazor** = 13
+- **Dart** = 17
+- **DotNetAndroid** = 19
+- **DotNetIOS** = 18
+- **GTK** = 16
 - **JQuery** = 1
-- **Kotlin** = 13
+- **Kotlin** = 14
+- **Maui** = 20
 - **React** = 2
-- **Swift** = 14
-- **Unknown** = 11
+- **Swift** = 15
+- **Unknown** = 12
+- **Uno** = 11
 - **UWP** = 9
 - **WebComponents** = 4
 - **WindowsForms** = 8

@@ -1,10 +1,10 @@
-# Ignite UI for Web Components Inputs v7.1.0 — Full API Reference
+# Ignite UI for Web Components Inputs v7.1.1-beta.19 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Inputs package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Inputs package (7.1.1-beta.19). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-inputs
-Version: 7.1.0
+Version: 7.1.1-beta.19
 
 ## Classes
 
@@ -428,6 +428,7 @@ will use an intrinsic size.
 - **raisedTextColor**: `string` — Gets or sets the color to use for the text of the button when type is raised.
 - **restingElevation**: `number` — Gets or sets the elevation to use for the button regardless of type.
 - **rippleColor**: `string` — Gets or sets the color to use for the background of the button regardless of type.
+- **simulateInputCompleted**: `any`
 - **stopPropagation**: `boolean` — Gets or sets whether mouse events on the button will bubble up to parent elements.
 - **tabIndex**: `number` — Gets or sets TabIndex to use for the checkbox.
 - **textColor**: `string` — Gets or sets the color to use for the text of the button regardless of type.
@@ -452,6 +453,7 @@ will use an intrinsic size.
 - **findByName**(name: string): any
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgcXButtonComponent
 - static **register**(): void
@@ -623,6 +625,7 @@ Or adding and removing style mappings from the manual style mappings collection 
 - **labelPosition**: `CheckboxLabelPosition` — Gets or sets LabelPosition to use for the checkbox.
 - **name**: `string` — Gets or sets name to use for the checkbox.
 - **required**: `number` — Gets or sets if the checkbox is required.
+- **simulateInputCompleted**: `any`
 - **tabIndex**: `number` — Gets or sets TabIndex to use for the checkbox.
 - **tickColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
 - **tickStrokeWidth**: `number` — Gets or sets the corner radius to use for the checkbox.
@@ -640,6 +643,7 @@ Or adding and removing style mappings from the manual style mappings collection 
 - **findByName**(name: string): any
 - **onAttachedToUI**(): void
 - **onDetachedFromUI**(): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **updateStyle**(): void
 - static **_createFromInternal**(internal: any): IgcXCheckboxComponent
 - static **register**(): void
@@ -808,6 +812,7 @@ class where # is a number from 0 to count - 1.
 - **selectionEnd**: `number` — Returns / Sets the end index of the selected text. When nothing is selected, this returns the position of the text input cursor (caret) inside of the input.
 - **selectionStart**: `number` — Returns / Sets the beginning index of the selected text. When nothing is selected, this returns the position of the text input cursor (caret) inside of the input.
 - **showSpinner**: `boolean`
+- **simulateInputCompleted**: `any`
 - **tabIndex**: `number` — Gets or sets TabIndex to use for the checkbox.
 - **textAlignment**: `HorizontalAlignment` — Gets or sets the alignment of the text.
 - **textColor**: `string` — Gets or sets the color to use for the text.
@@ -825,6 +830,7 @@ class where # is a number from 0 to count - 1.
 - **onDetachedFromUI**(): void
 - **select**(): void
 - **setSelectionRange**(selectionStart: number, selectionEnd: number): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **updateStyle**(): void
 - static **register**(): void
 

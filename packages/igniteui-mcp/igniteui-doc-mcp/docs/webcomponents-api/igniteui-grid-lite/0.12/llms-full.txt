@@ -1,14 +1,14 @@
-# Ignite UI Grid Lite v0.11.0 — Full API Reference
+# Ignite UI Grid Lite v0.12.0-rc.0 — Full API Reference
 
-> Complete API reference for the Ignite UI Grid Lite package (0.11.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI Grid Lite package (0.12.0-rc.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-grid-lite
-Version: 0.11.0
+Version: 0.12.0-rc.0
 
 ## Classes
 
-### [IgcGridLite](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/classes/IgcGridLite)
+### [IgcGridLite](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/classes/IgcGridLite)
 IgcGridLite is a web component for displaying data in a tabular format quick and easy.
 
 Out of the box it provides row virtualization, sort and filter operations (client and server side),
@@ -55,7 +55,7 @@ have been applied.
 - **navigateTo**(row: number, column?: Keys<T>, activate?: boolean): Promise<void> — **Deprecated:** Use navigateTo(row, options) instead. Navigates to a position in the grid based on provided row index and column field.
 - **sort**(expressions: SortingExpression<T> | SortingExpression<T>[]): void — Performs a sort operation in the grid based on the passed expression(s).
 
-### [IgcGridLiteColumn](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/classes/IgcGridLiteColumn)
+### [IgcGridLiteColumn](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/classes/IgcGridLiteColumn)
 
 - **cellTemplate**: `any` — Custom cell template for the column.
 - **dataType**: `DataType` — The data type of the column's values.
@@ -93,7 +93,7 @@ loading application code:
 
 ## Interfaces
 
-### [BaseColumnConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/BaseColumnConfiguration)
+### [BaseColumnConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/BaseColumnConfiguration)
 Configuration object for grid columns.
 
 - **cellTemplate?**: `any` — Cell template callback.
@@ -115,12 +115,12 @@ to render the header text.
 
 Accepts most CSS units for controlling width.
 
-### [BaseColumnSortConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/BaseColumnSortConfiguration)
+### [BaseColumnSortConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/BaseColumnSortConfiguration)
 Extended sort configuration for a column.
 
 - **comparer?**: `SortComparer<T, K>` — Custom comparer function for sort operations for this column.
 
-### [BaseFilterExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/BaseFilterExpression)
+### [BaseFilterExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/BaseFilterExpression)
 Represents a filter operation for a given column.
 
 - **caseSensitive?**: `boolean` — Whether the filter operation should be case sensitive.
@@ -130,7 +130,7 @@ other expressions.
 - **key**: `K` — The target column for the filter operation.
 - **searchTerm?**: `PropertyType<T, K>` — The filtering value used in the filter condition function.
 
-### [BaseIgcCellContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/BaseIgcCellContext)
+### [BaseIgcCellContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/BaseIgcCellContext)
 Context object for the row cell template callback.
 
 - **column**: `ColumnConfiguration<T, K>` — The current configuration for the column.
@@ -138,7 +138,7 @@ Context object for the row cell template callback.
 - **row**: `IgcGridLiteRow<T>` — The row element containing the cell.
 - **value**: `PropertyType<T, K>` — The value from the data source for this cell.
 
-### [BaseSortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/BaseSortingExpression)
+### [BaseSortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/BaseSortingExpression)
 Represents a sort operation for a given column.
 
 - **caseSensitive?**: `boolean` — Whether the sort operation should be case sensitive.
@@ -146,24 +146,24 @@ Represents a sort operation for a given column.
 - **direction**: `SortingDirection` — Sort direction for this operation.
 - **key**: `K` — The target column.
 
-### [DataPipelineConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/DataPipelineConfiguration)
+### [DataPipelineConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/DataPipelineConfiguration)
 Configuration for customizing the various data operations of the grid.
 
 - **filter?**: `DataPipelineHook<T>` — Hook for customizing filter operations.
 - **sort?**: `DataPipelineHook<T>` — Hook for customizing sort operations.
 
-### [GridLiteSortingOptions](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/GridLiteSortingOptions)
+### [GridLiteSortingOptions](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/GridLiteSortingOptions)
 Configures the sort behavior for the grid.
 
 - **mode**: `"single" | "multiple"` — The sorting mode - either 'single' or 'multiple' column sorting.
 
-### [IgcFilteredEvent](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/IgcFilteredEvent)
+### [IgcFilteredEvent](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/IgcFilteredEvent)
 Event object for the filtered event of the grid.
 
 - **key**: `Keys<T>` — The target column for the filter operation.
 - **state**: `FilterExpression<T>[]` — The filter state of the column after the operation.
 
-### [IgcFilteringEvent](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/IgcFilteringEvent)
+### [IgcFilteringEvent](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/IgcFilteringEvent)
 Event object for the filtering event of the grid.
 
 - **expressions**: `FilterExpression<T>[]` — The filter expression(s) to apply.
@@ -171,7 +171,7 @@ Event object for the filtering event of the grid.
 - **type**: `"remove" | "add" | "modify"` — The type of modification which will be applied to the filter
 state of the column.
 
-### [IgcGridLiteEventMap](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/IgcGridLiteEventMap)
+### [IgcGridLiteEventMap](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/IgcGridLiteEventMap)
 Events for the igc-grid-lite.
 
 - **filtered**: `CustomEvent<IgcFilteredEvent<T>>` — Emitted when a filter operation initiated through the UI has completed.
@@ -182,13 +182,13 @@ Returns the sort expression used for the operation.
 - **sorting**: `CustomEvent<SortingExpression<T, any>>` — Emitted when sorting is initiated through the UI.
 Returns the sort expression which will be used for the operation.
 
-### [IgcHeaderContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/IgcHeaderContext)
+### [IgcHeaderContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/IgcHeaderContext)
 Context object for the column header template callback.
 
 - **column**: `ColumnConfiguration<T, any> | ColumnConfiguration<T, Exclude<any & string, any>> | ColumnConfiguration<T, Exclude<any, any>>` — The current configuration for the column.
 - **parent**: `IgcGridLiteHeader<T>` — The header element parent of the template.
 
-### [NavigateToOptions](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/interfaces/NavigateToOptions)
+### [NavigateToOptions](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/interfaces/NavigateToOptions)
 Options for the navigateTo API of the grid.
 
 - **activate?**: `boolean` — When true, the navigated cell becomes the active cell.
@@ -196,64 +196,64 @@ Options for the navigateTo API of the grid.
 
 ## Type Aliases
 
-### [BaseSortComparer](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/BaseSortComparer)
+### [BaseSortComparer](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/BaseSortComparer)
 `any`
 Custom comparer function for a given column used when sorting is performed.
 
-### [ColumnConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/ColumnConfiguration)
+### [ColumnConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/ColumnConfiguration)
 `any`
 See BaseColumnConfiguration for the full documentation.
 
-### [ColumnSortConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/ColumnSortConfiguration)
+### [ColumnSortConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/ColumnSortConfiguration)
 `any`
 See BaseColumnSortConfiguration for the full documentation.
 
-### [DataPipelineHook](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/DataPipelineHook)
+### [DataPipelineHook](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/DataPipelineHook)
 `any`
 Callback function for customizing data operations in the grid.
 
-### [DataPipelineParams](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/DataPipelineParams)
+### [DataPipelineParams](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/DataPipelineParams)
 `any`
 The parameters passed to a DataPipelineHook callback.
 
-### [DataType](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/DataType)
+### [DataType](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/DataType)
 `"number" | "string" | "boolean"`
 The data for the current column.
 
-### [FilterCriteria](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/FilterCriteria)
+### [FilterCriteria](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/FilterCriteria)
 `"and" | "or"`
 Controls how a data record should resolve in a filter operation:
  - 'and' - the record must pass all the conditions.
  - 'or'  - the record must pass at least one condition.
 
-### [FilterExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/FilterExpression)
+### [FilterExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/FilterExpression)
 `any`
 See BaseFilterExpression for the full documentation.
 
-### [IgcCellContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/IgcCellContext)
+### [IgcCellContext](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/IgcCellContext)
 `any`
 See BaseIgcCellContext for the full documentation.
 
-### [Keys](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/Keys)
+### [Keys](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/Keys)
 `FlatKeys<T> | NestedKeys<T>`
 Helper type for resolving keys of type T.
 
-### [PropertyType](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/PropertyType)
+### [PropertyType](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/PropertyType)
 `any`
 Helper type for resolving types of type T.
 
-### [SortComparer](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/SortComparer)
+### [SortComparer](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/SortComparer)
 `any`
 See BaseSortComparer for the full documentation.
 
-### [SortingDirection](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/SortingDirection)
+### [SortingDirection](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/SortingDirection)
 `"ascending" | "descending" | "none"`
 Sort direction for a given sort expression.
 
-### [SortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/SortingExpression)
+### [SortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/SortingExpression)
 `any`
 See BaseSortingExpression for the full documentation.
 
-### [SortState](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.11.0/types/SortState)
+### [SortState](https://www.infragistics.com/api/webcomponents/igniteui-grid-lite/0.12/types/SortState)
 `Map<Keys<T>, SortingExpression<T>>`
 Represents the sort state of the grid.

@@ -167,6 +167,11 @@ describe('ApiDocLoader', () => {
       expect(snapshotVersion('Package: igniteui-webcomponents\nVersion: 7.4.1\n', '7.4.0')).toBe('7.4.1');
     });
 
+    it('drops the pre-release suffix', () => {
+      expect(snapshotVersion('Package: igniteui-angular\nVersion: 22.3.0-rc.0\n', '22.3')).toBe('22.3.0');
+      expect(snapshotVersion('Version: 7.1.1-beta.19\n', '7.1.0')).toBe('7.1.1');
+    });
+
     it('falls back to the folder name when there is no header', () => {
       expect(snapshotVersion('### [IgxGridComponent](url)', '22.2.0')).toBe('22.2.0');
     });

@@ -1,14 +1,14 @@
-# Ignite UI Grids for React v19.9.1 — Full API Reference
+# Ignite UI Grids for React v19.10.0 — Full API Reference
 
-> Complete API reference for the Ignite UI Grids for React package (19.9.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI Grids for React package (19.10.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: React
 Package: igniteui-react-grids
-Version: 19.9.1
+Version: 19.10.0
 
 ## Classes
 
-### [IgrActionStrip](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrActionStrip)
+### [IgrActionStrip](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrActionStrip)
 Action Strip provides templatable area for one or more actions.
 
 - **actionButtons**: `IgcGridActionsBaseDirective[]` — ActionButton as ContentChildren inside the Action Strip
@@ -19,17 +19,17 @@ Could be used to set if the Action Strip will be initially hidden.
 - **hide**(): void — Hiding the Action Strip and removing it from its current context element.
 - **show**(context?: any): void — Showing the Action Strip and appending it the specified context element.
 
-### [IgrBooleanFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrBooleanFilteringOperand)
+### [IgrBooleanFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrBooleanFilteringOperand)
 Provides filtering operations for booleans
 
 - **constructor**(): IgcBooleanFilteringOperand
 
-### [IgrByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrByLevelTreeGridMergeStrategy)
+### [IgrByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrByLevelTreeGridMergeStrategy)
 
 - **constructor**(): IgcByLevelTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 
-### [IgrColumn](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrColumn)
+### [IgrColumn](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrColumn)
 **Ignite UI for Angular Column** -  [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid#columns-configuration)  The Ignite UI Column is used within an igx-grid element to define what data the column will show. Features such as sorting,  filtering & editing are enabled at the column level.  You can also provide a template containing custom content inside  the column using ng-template which will be used for all cells within the column.
 
 - **additionalTemplateContext**: `any` — Sets/gets custom properties provided in additional template context.
@@ -141,7 +141,7 @@ Column cannot be unpinned if:
 - Is already unpinned
 - index argument is out of range
 
-### [IgrColumnGroup](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrColumnGroup)
+### [IgrColumnGroup](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrColumnGroup)
 **Ignite UI for Angular Column Group**
 
 - **additionalTemplateContext**: `any` — Sets/gets custom properties provided in additional template context.
@@ -270,7 +270,7 @@ Column cannot be unpinned if:
 - Is already unpinned
 - index argument is out of range
 
-### [IgrColumnLayout](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrColumnLayout)
+### [IgrColumnLayout](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrColumnLayout)
 Column layout for declaration of Multi-row Layout
 
 - **additionalTemplateContext**: `any` — Sets/gets custom properties provided in additional template context.
@@ -402,14 +402,14 @@ Column cannot be unpinned if:
 - Is already unpinned
 - index argument is out of range
 
-### [IgrCsvExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrCsvExporterOptions)
+### [IgrCsvExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrCsvExporterOptions)
 Objects of this class are used to configure the CSV exporting process.
 
 - **constructor**(fileName: string, fileType: CsvFileTypes): IgcCsvExporterOptions
 - **fileType**: `CsvFileTypes`
 - **valueDelimiter**: `string`
 
-### [IgrCsvExporterService](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrCsvExporterService)
+### [IgrCsvExporterService](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrCsvExporterService)
 **Ignite UI for Angular CSV Exporter Service** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/exporter-csv)
 The Ignite UI for Angular CSV Exporter service can export data in a Character Separated Values format from
@@ -418,12 +418,12 @@ Example:
 
 - **constructor**(args: any[]): IgcCsvExporterService
 
-### [IgrDateFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrDateFilteringOperand)
+### [IgrDateFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrDateFilteringOperand)
 Provides filtering operations for Dates
 
 - **constructor**(): IgcDateFilteringOperand
 
-### [IgrDateSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrDateSummaryOperand)
+### [IgrDateSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrDateSummaryOperand)
 
 - **constructor**(): IgcDateSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
@@ -432,23 +432,23 @@ If filtering is applied, returns the latest date value in the filtered data reco
 - static **latest**(data: any[]): void — Returns the latest date value in the data records.
 If filtering is applied, returns the latest date value in the filtered data records.
 
-### [IgrDateTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrDateTimeFilteringOperand)
+### [IgrDateTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrDateTimeFilteringOperand)
 
 - **constructor**(): IgcDateTimeFilteringOperand
 
-### [IgrDefaultMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrDefaultMergeStrategy)
+### [IgrDefaultMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrDefaultMergeStrategy)
 
 - **constructor**(): IgcDefaultMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 - **merge**(data: any[], field: string, comparer: any, result: any[], activeRowIndexes: number[], isDate?: boolean, isTime?: boolean, grid?: IgcGridBaseDirective): any[]
 - static **instance**(): IgcDefaultMergeStrategy
 
-### [IgrDefaultTreeGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrDefaultTreeGridMergeStrategy)
+### [IgrDefaultTreeGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrDefaultTreeGridMergeStrategy)
 
 - **constructor**(): IgcDefaultTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 
-### [IgrExcelExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrExcelExporterOptions)
+### [IgrExcelExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrExcelExporterOptions)
 Objects of this class are used to configure the Excel exporting process.
 
 - **constructor**(fileName: string): IgcExcelExporterOptions
@@ -458,7 +458,7 @@ Objects of this class are used to configure the Excel exporting process.
 - **rowHeight**: `number`
 - **worksheetName**: `string`
 
-### [IgrExcelExporterService](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrExcelExporterService)
+### [IgrExcelExporterService](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrExcelExporterService)
 **Ignite UI for Angular Excel Exporter Service** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/exporter_excel.html)
 The Ignite UI for Angular Excel Exporter service can export data in Microsoft® Excel® format from both raw data
@@ -467,7 +467,7 @@ Example:
 
 - **constructor**(args: any[]): IgcExcelExporterService
 
-### [IgrFilteringExpressionsTree](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrFilteringExpressionsTree)
+### [IgrFilteringExpressionsTree](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrFilteringExpressionsTree)
 
 - **constructor**(): IgcFilteringExpressionsTree
 - **entity**: `string`
@@ -478,7 +478,7 @@ Example:
 - **filteringOperands**: `IgcFilteringExpressionsTree | IgcFilteringExpression[]`
 - **operator**: `FilteringLogic`
 
-### [IgrFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrFilteringOperand)
+### [IgrFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrFilteringOperand)
 Provides base filtering operations
 Implementations should be Singleton
 
@@ -489,7 +489,7 @@ Implementations should be Singleton
 - **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
 - static **instance**(): IgcFilteringOperand
 
-### [IgrGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGrid)
+### [IgrGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGrid)
 Grid provides a way to present and manipulate tabular data.
 
 - **actionStripComponents**: `IgcActionStripToken[]`
@@ -688,7 +688,7 @@ May degrade performance if used when not needed, or if misused:
 - **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
 - **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 
-### [IgrGridEditingActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridEditingActions)
+### [IgrGridEditingActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridEditingActions)
 Grid Editing Actions for the Action Strip
 
 - **addChild**: `boolean` — An input to enable/disable action strip child row adding button
@@ -699,7 +699,7 @@ Grid Editing Actions for the Action Strip
 - **hasChildren**: `any`
 - **startEdit**(evt?: any): void — Enter row or cell edit mode depending the grid rowEditable option
 
-### [IgrGridPinningActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridPinningActions)
+### [IgrGridPinningActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridPinningActions)
 Grid Pinning Actions for the Action Strip
 
 - **asMenuItems**: `boolean` — Gets/Sets if the action buttons will be rendered as menu items. When in menu, items will be rendered with text label.
@@ -707,7 +707,7 @@ Grid Pinning Actions for the Action Strip
 - **scrollToRow**(evt: IgcMouseEvent): void
 - **unpin**(evt?: any): void — Unpin the row according to the context.
 
-### [IgrGridState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridState)
+### [IgrGridState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridState)
 State component allows saving and restoring the state of the grid features.
 
 - **options**: `IgcGridStateOptions` — An object with options determining if a certain feature state should be saved.
@@ -716,22 +716,22 @@ State component allows saving and restoring the state of the grid features.
 - **getState**(features?: string[]): IgcGridStateInfo — Gets the state of a feature or states of all grid features, unless a certain feature is disabled through the options property.
 - **getStateAsString**(features?: string[]): string — Gets the state of a feature or states of all grid features, unless a certain feature is disabled through the options property.
 
-### [IgrGridToolbar](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbar)
+### [IgrGridToolbar](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbar)
 Provides a context-aware container component for UI operations for the grid components.
 
 - **grid**: `IgcGridBaseDirective` — Gets/sets the grid component for the toolbar component.
 - **showProgress**: `boolean` — When enabled, shows the indeterminate progress bar.
 
-### [IgrGridToolbarActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarActions)
+### [IgrGridToolbarActions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarActions)
 Provides a way to template the action portion of the toolbar in the grid.
 
 
-### [IgrGridToolbarAdvancedFiltering](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarAdvancedFiltering)
+### [IgrGridToolbarAdvancedFiltering](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarAdvancedFiltering)
 Provides a pre-configured button to open the advanced filtering dialog of the grid.
 
 - **overlaySettings**: `IgcOverlaySettings`
 
-### [IgrGridToolbarExporter](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarExporter)
+### [IgrGridToolbarExporter](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarExporter)
 Provides a pre-configured exporter component for the grid.
 
 - **columnListHeight**: `string` — Sets the height of the column list in the dropdown.
@@ -744,7 +744,7 @@ Provides a pre-configured exporter component for the grid.
 - **title**: `string` — Title text for the column action component
 - **export**(type: GridToolbarExporterType): void — Export the grid's data
 
-### [IgrGridToolbarHiding](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarHiding)
+### [IgrGridToolbarHiding](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarHiding)
 Provides a pre-configured column hiding component for the grid.
 
 - **columnListHeight**: `string` — Sets the height of the column list in the dropdown.
@@ -752,7 +752,7 @@ Provides a pre-configured column hiding component for the grid.
 - **prompt**: `string` — The placeholder text for the search input.
 - **title**: `string` — Title text for the column action component
 
-### [IgrGridToolbarPinning](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarPinning)
+### [IgrGridToolbarPinning](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarPinning)
 Provides a pre-configured column pinning component for the grid.
 
 - **columnListHeight**: `string` — Sets the height of the column list in the dropdown.
@@ -760,11 +760,11 @@ Provides a pre-configured column pinning component for the grid.
 - **prompt**: `string` — The placeholder text for the search input.
 - **title**: `string` — Title text for the column action component
 
-### [IgrGridToolbarTitle](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrGridToolbarTitle)
+### [IgrGridToolbarTitle](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrGridToolbarTitle)
 Provides a way to template the title portion of the toolbar in the grid.
 
 
-### [IgrHierarchicalGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrHierarchicalGrid)
+### [IgrHierarchicalGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrHierarchicalGrid)
 Hierarchical grid
 
 - **actionStripComponents**: `IgcActionStripToken[]`
@@ -952,19 +952,19 @@ May degrade performance if used when not needed, or if misused:
 - **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
 - **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 
-### [IgrNoopFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrNoopFilteringStrategy)
+### [IgrNoopFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrNoopFilteringStrategy)
 
 - **constructor**(): IgcNoopFilteringStrategy
 - **filter**(data: any[], _: IgcFilteringExpressionsTree, __?: IgcFilteringExpressionsTree): any[]
 - static **instance**(): void
 
-### [IgrNoopPivotDimensionsStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrNoopPivotDimensionsStrategy)
+### [IgrNoopPivotDimensionsStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrNoopPivotDimensionsStrategy)
 
 - **constructor**(): IgcNoopPivotDimensionsStrategy
 - **process**(collection: any[], _: IgcPivotDimension[], __: IgcPivotValue[]): any[]
 - static **instance**(): IgcNoopPivotDimensionsStrategy
 
-### [IgrNoopSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrNoopSortingStrategy)
+### [IgrNoopSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrNoopSortingStrategy)
 Represents a class implementing the IGridSortingStrategy interface with a no-operation sorting strategy.
 It performs no sorting and returns the data as it is.
 
@@ -972,12 +972,12 @@ It performs no sorting and returns the data as it is.
 - **sort**(data: any[]): any[]
 - static **instance**(): IgcNoopSortingStrategy
 
-### [IgrNumberFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrNumberFilteringOperand)
+### [IgrNumberFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrNumberFilteringOperand)
 Provides filtering operations for numbers
 
 - **constructor**(): IgcNumberFilteringOperand
 
-### [IgrNumberSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrNumberSummaryOperand)
+### [IgrNumberSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrNumberSummaryOperand)
 
 - **constructor**(): IgcNumberSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
@@ -990,7 +990,7 @@ If filtering is applied, returns the minimum value in the filtered data records.
 - static **sum**(data: any[]): number — Returns the sum of the numeric values in the provided data records.
 If filtering is applied, returns the sum of the numeric values in the data records.
 
-### [IgrPaginator](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrPaginator)
+### [IgrPaginator](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrPaginator)
 Paginator component description
 
 - **overlaySettings**: `IgcOverlaySettings` — Sets custom OverlaySettings.
@@ -1009,7 +1009,7 @@ By default it uses EN resources.
 - **paginate**(val: number): void — Goes to the desired page index.
 - **previousPage**(): void — Goes to the previous page of the paginator, if the paginator is not already at the first page.
 
-### [IgrPivotDataSelector](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrPivotDataSelector)
+### [IgrPivotDataSelector](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrPivotDataSelector)
 Pivot Data Selector provides means to configure the pivot state of the Pivot Grid via a vertical panel UI
 
 - **columnsExpanded**: `boolean` — Gets/sets whether the columns panel is expanded
@@ -1022,7 +1022,7 @@ Get
 - **valuesExpanded**: `boolean` — Gets/sets whether the values panel is expanded
 Get
 
-### [IgrPivotDateDimension](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrPivotDateDimension)
+### [IgrPivotDateDimension](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrPivotDateDimension)
 Configuration of a pivot dimension.
 
 - **constructor**(inBaseDimension?: IgcPivotDimension, inOptions?: IgcPivotDateDimensionOptions): IgcPivotDateDimension
@@ -1033,7 +1033,7 @@ Configuration of a pivot dimension.
 - **options**: `IgcPivotDateDimensionOptions`
 - **resourceStrings**: `IgcGridResourceStrings`
 
-### [IgrPivotGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrPivotGrid)
+### [IgrPivotGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrPivotGrid)
 Pivot Grid provides a way to present and manipulate data in a pivot table view.
 
 - **addRowEmptyTemplate**: `IgcRenderFunction<void>` — Gets/Sets a custom template for adding row UI when grid is empty.
@@ -1227,7 +1227,7 @@ May degrade performance if used when not needed, or if misused:
 - **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
 - **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 
-### [IgrQueryBuilder](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrQueryBuilder)
+### [IgrQueryBuilder](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrQueryBuilder)
 A component used for operating with complex filters by creating or editing conditions  and grouping them using AND/OR logic.  It is used internally in the Advanced Filtering of the Grid.
 
 - **disableEntityChange**: `boolean` — Disables subsequent entity changes at the root level after the initial selection.
@@ -1248,14 +1248,14 @@ Default value is `true`.
 - **commit**(): void — Commits the expression tree in the current state if it is valid. If not throws an exception.
 - **discard**(): void — Discards all unsaved changes to the expression tree.
 
-### [IgrQueryBuilderHeader](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrQueryBuilderHeader)
+### [IgrQueryBuilderHeader](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrQueryBuilderHeader)
 
 - **resourceStrings**: `IgcQueryBuilderResourceStrings` — Sets the resource strings.
 By default it uses EN resources.
 - **showLegend**: `boolean` — Show/hide the legend.
 - **title**: `string` — Sets the title of the query builder header.
 
-### [IgrRowIsland](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrRowIsland)
+### [IgrRowIsland](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrRowIsland)
 Row island
 
 - **actionStripComponents**: `IgcActionStripToken[]`
@@ -1416,24 +1416,24 @@ May degrade performance if used when not needed, or if misused:
 - **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
 - **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 
-### [IgrStringFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrStringFilteringOperand)
+### [IgrStringFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrStringFilteringOperand)
 Provides filtering operations for strings
 
 - **constructor**(): IgcStringFilteringOperand
 - static **applyIgnoreCase**(a: string, ignoreCase: boolean): string — Applies case sensitivity on strings if provided
 
-### [IgrSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrSummaryOperand)
+### [IgrSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrSummaryOperand)
 
 - **constructor**(): IgcSummaryOperand
 - **operate**(data?: any[], _allData?: any[], _fieldName?: string, _groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static count method and returns summary result[]`.
 - static **count**(data: any[]): number — Counts all the records in the data source.
 If filtering is applied, counts only the filtered records.
 
-### [IgrTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrTimeFilteringOperand)
+### [IgrTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrTimeFilteringOperand)
 
 - **constructor**(): IgcTimeFilteringOperand
 
-### [IgrTimeSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrTimeSummaryOperand)
+### [IgrTimeSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrTimeSummaryOperand)
 
 - **constructor**(): IgcTimeSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[]
@@ -1442,7 +1442,7 @@ If filtering is applied, returns the earliest time value in the filtered data re
 - static **latestTime**(data: any[]): void — Returns the latest time value in the data records. Compare only the time part of the date.
 If filtering is applied, returns the latest time value in the filtered data records.
 
-### [IgrTreeGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/classes/IgrTreeGrid)
+### [IgrTreeGrid](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/classes/IgrTreeGrid)
 **Ignite UI for Angular Tree Grid** -  [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid)  The Ignite UI Tree Grid displays and manipulates hierarchical data with consistent schema formatted as a table and  provides features such as sorting, filtering, editing, column pinning, paging, column moving and hiding.  Example:
 
 - **actionStripComponents**: `IgcActionStripToken[]`
@@ -1641,7 +1641,7 @@ May degrade performance if used when not needed, or if misused:
 
 ## Interfaces
 
-### [CustomEvent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/CustomEvent)
+### [CustomEvent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/CustomEvent)
 The **CustomEvent** interface can be used to attach custom data to an event generated by an application.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
@@ -1650,15 +1650,15 @@ The **CustomEvent** interface can be used to attach custom data to an event gene
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
 
-### [IActionStripResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IActionStripResourceStrings)
+### [IActionStripResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IActionStripResourceStrings)
 
 - **action_strip_button_more_title?**: `string`
 
-### [IBannerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IBannerResourceStrings)
+### [IBannerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IBannerResourceStrings)
 
 - **banner_button_dismiss?**: `string`
 
-### [ICalendarResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/ICalendarResourceStrings)
+### [ICalendarResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/ICalendarResourceStrings)
 
 - **calendar_first_picker_of?**: `string`
 - **calendar_multi_selection?**: `string`
@@ -1683,19 +1683,19 @@ The **CustomEvent** interface can be used to attach custom data to an event gene
 - **calendar_singular_range_selection?**: `string`
 - **calendar_singular_single_selection?**: `string`
 
-### [ICarouselResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/ICarouselResourceStrings)
+### [ICarouselResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/ICarouselResourceStrings)
 
 - **carousel_next_slide?**: `string`
 - **carousel_of?**: `string`
 - **carousel_previous_slide?**: `string`
 - **carousel_slide?**: `string`
 
-### [IChipResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IChipResourceStrings)
+### [IChipResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IChipResourceStrings)
 
 - **chip_remove?**: `string`
 - **chip_select?**: `string`
 
-### [IComboResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IComboResourceStrings)
+### [IComboResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IComboResourceStrings)
 
 - **combo_addCustomValues_placeholder?**: `string`
 - **combo_aria_label_no_options?**: `string`
@@ -1704,12 +1704,12 @@ The **CustomEvent** interface can be used to attach custom data to an event gene
 - **combo_empty_message?**: `string`
 - **combo_filter_search_placeholder?**: `string`
 
-### [IDatePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IDatePickerResourceStrings)
+### [IDatePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IDatePickerResourceStrings)
 
 - **date_picker_change_date?**: `string`
 - **date_picker_choose_date?**: `string`
 
-### [IDateRangePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IDateRangePickerResourceStrings)
+### [IDateRangePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IDateRangePickerResourceStrings)
 
 - **date_range_picker_cancel_button?**: `string`
 - **date_range_picker_currentMonth?**: `string`
@@ -1719,16 +1719,16 @@ The **CustomEvent** interface can be used to attach custom data to an event gene
 - **date_range_picker_last7Days?**: `string`
 - **date_range_picker_yearToDate?**: `string`
 
-### [IFileInputResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IFileInputResourceStrings)
+### [IFileInputResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IFileInputResourceStrings)
 
 - **file_input_placeholder?**: `string`
 - **file_input_upload_button?**: `string`
 
-### [IgrActionStripResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrActionStripResourceStrings)
+### [IgrActionStripResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrActionStripResourceStrings)
 
 - **igx_action_strip_button_more_title?**: `string`
 
-### [IgrActiveNodeChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrActiveNodeChangeEventArgsDetail)
+### [IgrActiveNodeChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrActiveNodeChangeEventArgsDetail)
 Emitted when the active node is changed
 
 - **column**: `number` — Represents the column index of the active node
@@ -1738,23 +1738,23 @@ Represents the hierarchical level of the active node
 - **tag**: `GridKeydownTargetType` — Represents the type of the active node.
 The GridKeydownTargetType is an enum or that specifies the possible target types
 
-### [IgrBaseEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrBaseEventArgsDetail)
+### [IgrBaseEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrBaseEventArgsDetail)
 
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgrBaseExporter](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrBaseExporter)
+### [IgrBaseExporter](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrBaseExporter)
 
 - **export**: `any`
 - **exportData**: `any`
 
-### [IgrBaseFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrBaseFilteringStrategy)
+### [IgrBaseFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrBaseFilteringStrategy)
 
 - **filter**: `any`
 - **findMatchByExpression**: `any`
 - **getFilterItems**: `any`
 - **matchRecord**: `any`
 
-### [IgrBaseSearchInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrBaseSearchInfo)
+### [IgrBaseSearchInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrBaseSearchInfo)
 
 - **caseSensitive**: `any`
 - **content**: `any`
@@ -1762,26 +1762,26 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 - **matchCount**: `any`
 - **searchText**: `any`
 
-### [IgrCancelableBrowserEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCancelableBrowserEventArgsDetail)
+### [IgrCancelableBrowserEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCancelableBrowserEventArgsDetail)
 
 
-### [IgrCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCancelableEventArgsDetail)
+### [IgrCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCancelableEventArgsDetail)
 
 - **cancel**: `boolean` — Provides the ability to cancel the event.
 
-### [IgrCellPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCellPosition)
+### [IgrCellPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCellPosition)
 The event is triggered when getting the current position of a certain cell
 
 - **rowIndex**: `any`
 - **visibleColumnIndex**: `any`
 
-### [IgrCellTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCellTemplateContext)
+### [IgrCellTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCellTemplateContext)
 
 - **additionalTemplateContext**: `any`
 - **cell**: `any`
 - **implicit**: `any`
 
-### [IgrCellType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCellType)
+### [IgrCellType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCellType)
 Interface representing a cell in the grid. It is essentially the blueprint to a cell object.
 Contains definitions of properties and methods, relevant to a cell
 
@@ -1806,7 +1806,7 @@ Whether it's valid or invalid, and if it has errors
 - **setEditMode?**: `any`
 - **update**: `any`
 
-### [IgrClipboardOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrClipboardOptions)
+### [IgrClipboardOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrClipboardOptions)
 An interface describing settings for clipboard options
 
 - **copyFormatters**: `any`
@@ -1814,10 +1814,10 @@ An interface describing settings for clipboard options
 - **enabled**: `any`
 - **separator**: `any`
 
-### [IgrColumnEditorOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnEditorOptions)
+### [IgrColumnEditorOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnEditorOptions)
 
 
-### [IgrColumnExportingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnExportingEventArgsDetail)
+### [IgrColumnExportingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnExportingEventArgsDetail)
 columnExporting event arguments
 
 - **cancel**: `boolean` — Skip the exporting column when set to true
@@ -1827,7 +1827,7 @@ columnExporting event arguments
 - **header**: `string` — Contains the exporting column header
 - **skipFormatter**: `boolean` — Export the column's data without applying its formatter, when set to true
 
-### [IgrColumnMovingEndEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnMovingEndEventArgsDetail)
+### [IgrColumnMovingEndEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnMovingEndEventArgsDetail)
 Represents event arguments related to the end of a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -1837,7 +1837,7 @@ The ColumnType contains the information (the grid it belongs to, css data, setti
 - **target**: `IgcColumnComponent` — The target of the event represents the column, the source is being moved to.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgrColumnMovingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnMovingEventArgsDetail)
+### [IgrColumnMovingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnMovingEventArgsDetail)
 Represents event arguments related to a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -1845,27 +1845,27 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgrColumnMovingStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnMovingStartEventArgsDetail)
+### [IgrColumnMovingStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnMovingStartEventArgsDetail)
 Represents event arguments related to the start of a column moving operation in a grid.
 
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgrColumnPipeArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnPipeArgs)
+### [IgrColumnPipeArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnPipeArgs)
 
 
-### [IgrColumnResizeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnResizeEventArgsDetail)
+### [IgrColumnResizeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnResizeEventArgsDetail)
 The event arguments when a column is being resized
 
 - **column**: `IgcColumnComponent` — Represents the information of the column that is being resized
 - **newWidth**: `string` — Represents the new width, the column is being resized to
 - **prevWidth**: `string` — Represents the old width of the column before the resizing
 
-### [IgrColumnsAutoGeneratedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnsAutoGeneratedEventArgsDetail)
+### [IgrColumnsAutoGeneratedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnsAutoGeneratedEventArgsDetail)
 
 - **columns?**: `IgcColumnComponent[]`
 
-### [IgrColumnSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnSelectionEventArgsDetail)
+### [IgrColumnSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnSelectionEventArgsDetail)
 The event arguments when the selection state of a column is being changed
 The event is cancelable
 
@@ -1878,7 +1878,7 @@ Whenever a column has been selected, the array is "refreshed" with the selected 
 - **removed**: `string[]` — Represents an array of all columns, removed from the selection
 Whenever a column has been deselected, the array is "refreshed" with the columns, that have been previously selected, but are no longer
 
-### [IgrColumnState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnState)
+### [IgrColumnState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnState)
 
 - **colEnd?**: `number`
 - **collapsible?**: `boolean`
@@ -1913,26 +1913,26 @@ Whenever a column has been deselected, the array is "refreshed" with the columns
 - **sortingIgnoreCase**: `any`
 - **width**: `any`
 
-### [IgrColumnTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnTemplateContext)
+### [IgrColumnTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnTemplateContext)
 
 - **column**: `any`
 - **implicit**: `any`
 
-### [IgrColumnToggledEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnToggledEventArgsDetail)
+### [IgrColumnToggledEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnToggledEventArgsDetail)
 Event emitted when a checkbox in the checkbox
 list of an column actions component is clicked.
 
 - **checked**: `boolean` — The checked state after the action.
 - **column**: `IgcColumnComponent` — The column that is toggled.
 
-### [IgrColumnVisibilityChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnVisibilityChangedEventArgsDetail)
+### [IgrColumnVisibilityChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnVisibilityChangedEventArgsDetail)
 The event arguments after a column's visibility is changed.
 
 - **column**: `any` — Represents the column the event originated from
 - **newValue**: `boolean` — The new hidden state that the column will have, if operation is successful.
 Will be true when hiding and false when showing.
 
-### [IgrColumnVisibilityChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrColumnVisibilityChangingEventArgsDetail)
+### [IgrColumnVisibilityChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrColumnVisibilityChangingEventArgsDetail)
 The event arguments when a column's visibility is changed.
 The event is cancelable
 It contains information about the column and the it's visibility after the operation (will be true when hiding and false when showing)
@@ -1942,21 +1942,21 @@ It contains information about the column and the it's visibility after the opera
 - **newValue**: `boolean` — The new hidden state that the column will have, if operation is successful.
 Will be true when hiding and false when showing.
 
-### [IgrCsvExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrCsvExportEndedEventArgsDetail)
+### [IgrCsvExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrCsvExportEndedEventArgsDetail)
 
 - **csvData?**: `string`
 
-### [IgrDataCloneStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrDataCloneStrategy)
+### [IgrDataCloneStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrDataCloneStrategy)
 
 - **clone**: `any`
 
-### [IgrDimensionsChange](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrDimensionsChange)
+### [IgrDimensionsChange](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrDimensionsChange)
 Event emitted when dimension collection for rows, columns of filters is changed.
 
 - **dimensionCollectionType**: `any`
 - **dimensions**: `any`
 
-### [IgrEntityType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrEntityType)
+### [IgrEntityType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrEntityType)
 Describes an entity in the QueryBuilder.
 An entity represents a logical grouping of fields and can have nested child entities.
 
@@ -1965,21 +1965,21 @@ This allows building hierarchical or nested query structures.
 - **fields**: `any`
 - **name**: `any`
 
-### [IgrExcelExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrExcelExportEndedEventArgsDetail)
+### [IgrExcelExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrExcelExportEndedEventArgsDetail)
 
 - **xlsx?**: `any`
 
-### [IgrExporterEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrExporterEventArgsDetail)
+### [IgrExporterEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrExporterEventArgsDetail)
 
 - **cancel**: `boolean`
 - **exporter**: `IgcBaseExporter`
 - **grid**: `IgcGridBaseDirective`
 - **options**: `IgcExporterOptionsBase`
 
-### [IgrExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrExporterOptions)
+### [IgrExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrExporterOptions)
 
 
-### [IgrExporterOptionsBase](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrExporterOptionsBase)
+### [IgrExporterOptionsBase](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrExporterOptionsBase)
 
 - **alwaysExportHeaders**: `any`
 - **exportSummaries**: `any`
@@ -1992,7 +1992,7 @@ This allows building hierarchical or nested query structures.
 - **ignoreMultiColumnHeaders**: `any`
 - **ignoreSorting**: `any`
 
-### [IgrExpressionTree](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrExpressionTree)
+### [IgrExpressionTree](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrExpressionTree)
 
 - **entity?**: `string`
 - **fieldName?**: `string`
@@ -2000,12 +2000,12 @@ This allows building hierarchical or nested query structures.
 - **filteringOperands**: `any`
 - **operator**: `any`
 
-### [IgrFieldEditorOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFieldEditorOptions)
+### [IgrFieldEditorOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFieldEditorOptions)
 
 - **dateTimeFormat?**: `string` — A custom input format string used for the built-in editors of date/time columns.
 See the Editing section under https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-types#datetime-date-and-time
 
-### [IgrFieldPipeArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFieldPipeArgs)
+### [IgrFieldPipeArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFieldPipeArgs)
 
 - **currencyCode?**: `string` — The currency code of type string, default value undefined
 - **digitsInfo?**: `string` — Decimal representation options, specified by a string in the following format:
@@ -2019,7 +2019,7 @@ The value is of type string. By default is set to 'symbol'
 - **timezone?**: `string` — A timezone offset (such as '+0430'), or a standard UTC/GMT or continental US timezone abbreviation.
 - **weekStart?**: `number` — The first week day to be displayed in calendar when filtering or editing a date column
 
-### [IgrFieldType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFieldType)
+### [IgrFieldType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFieldType)
 Describes a field that can be used in the Grid and QueryBuilder components.
 
 - **defaultDateTimeFormat?**: `string` — Default date/time format for Date/Time fields.
@@ -2033,7 +2033,7 @@ Describes a field that can be used in the Grid and QueryBuilder components.
 - **field**: `any`
 - **formatter?**: `any`
 
-### [IgrFilteringEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFilteringEventArgsDetail)
+### [IgrFilteringEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFilteringEventArgsDetail)
 Represents event arguments related to filtering operations
 The event is cancelable
 
@@ -2042,7 +2042,7 @@ The event is cancelable
 The expression contains information like filtering operands and operator, an expression or condition, etc.
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgrFilteringExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFilteringExpression)
+### [IgrFilteringExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFilteringExpression)
 Represents filtering expressions.
 
 - **condition?**: `IgcFilteringOperation`
@@ -2052,7 +2052,7 @@ Represents filtering expressions.
 - **searchVal?**: `any`
 - **fieldName**: `any`
 
-### [IgrFilteringOperation](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFilteringOperation)
+### [IgrFilteringOperation](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFilteringOperation)
 Interface describing filtering operations
 
 - **hidden?**: `boolean`
@@ -2062,40 +2062,40 @@ Interface describing filtering operations
 - **isUnary**: `any`
 - **name**: `any`
 
-### [IgrFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFilteringStrategy)
+### [IgrFilteringStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFilteringStrategy)
 
 - **filter**: `any`
 - **getFilterItems**: `any`
 
-### [IgrFilterItem](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrFilterItem)
+### [IgrFilterItem](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrFilterItem)
 
 - **children?**: `IgcFilterItem[]`
 - **label?**: `string`
 - **value**: `any`
 
-### [IgrForOfDataChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrForOfDataChangeEventArgsDetail)
+### [IgrForOfDataChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrForOfDataChangeEventArgsDetail)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 
-### [IgrForOfDataChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrForOfDataChangingEventArgsDetail)
+### [IgrForOfDataChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrForOfDataChangingEventArgsDetail)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 - **containerSize**: `number`
 - **state**: `IgcForOfState`
 
-### [IgrForOfState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrForOfState)
+### [IgrForOfState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrForOfState)
 
 - **chunkSize?**: `number`
 - **startIndex?**: `number`
 
-### [IgrGridActionsBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridActionsBaseDirective)
+### [IgrGridActionsBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridActionsBaseDirective)
 The **HTMLElement** interface represents any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
 
 - **asMenuItems**: `any`
 
-### [IgrGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridBaseComponent)
+### [IgrGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridBaseComponent)
 Grid provides a way to present and manipulate tabular data.
 
 - **data**: `any`
@@ -2130,7 +2130,7 @@ Grid provides a way to present and manipulate tabular data.
 - **toggleGroup**: `any`
 - **unpinRow**: `any`
 
-### [IgrGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridBaseDirective)
+### [IgrGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridBaseDirective)
 
 - **addRowEmptyTemplate**: `any`
 - **advancedFilteringExpressionsTree**: `any`
@@ -2280,20 +2280,20 @@ Grid provides a way to present and manipulate tabular data.
 - **updateCell**: `any`
 - **updateRow**: `any`
 
-### [IgrGridCellEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridCellEventArgsDetail)
+### [IgrGridCellEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridCellEventArgsDetail)
 Represents an event argument related to grid cell interactions.
 
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
 
-### [IgrGridClipboardEvent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridClipboardEvent)
+### [IgrGridClipboardEvent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridClipboardEvent)
 The event arguments when data from a grid is being copied.
 
 - **cancel**: `any`
 - **data**: `any`
 
-### [IgrGridContextMenuEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridContextMenuEventArgsDetail)
+### [IgrGridContextMenuEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridContextMenuEventArgsDetail)
 Represents an event argument for the grid contextMenu output
 
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
@@ -2301,14 +2301,14 @@ Represents an event argument for the grid contextMenu output
 Examples of such events include: selecting, clicking, double clicking, etc.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
-### [IgrGridCreatedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridCreatedEventArgsDetail)
+### [IgrGridCreatedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridCreatedEventArgsDetail)
 
 - **grid**: `IgcHierarchicalGridComponent`
 - **owner**: `IgcRowIslandComponent` — Provides reference to the owner component.
 - **parentID**: `any`
 - **parentRowData?**: `any`
 
-### [IgrGridEditDoneEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridEditDoneEventArgsDetail)
+### [IgrGridEditDoneEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridEditDoneEventArgsDetail)
 Represents event arguments related to grid editing completion.
 
 - **cellID?**: `any`
@@ -2329,7 +2329,7 @@ The only case rowData (of the current object) is used directly, is when there is
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgrGridEditEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridEditEventArgsDetail)
+### [IgrGridEditEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridEditEventArgsDetail)
 Represents event arguments related to grid editing.
 The event is cancelable
 It contains information about the row and the column, as well as the old and nwe value of the element/cell
@@ -2353,26 +2353,26 @@ The only case rowData (of the current object) is used directly, is when there is
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgrGridEmptyTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridEmptyTemplateContext)
+### [IgrGridEmptyTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridEmptyTemplateContext)
 
 
-### [IgrGridFormGroupCreatedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridFormGroupCreatedEventArgsDetail)
+### [IgrGridFormGroupCreatedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridFormGroupCreatedEventArgsDetail)
 Interface representing the event arguments when a form group is created in the grid.
 - formGroup: The form group that is created.
 - owner: The grid instance that owns the form group.
 
 - **owner**: `IgcGridBaseDirective`
 
-### [IgrGridGroupingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridGroupingStrategy)
+### [IgrGridGroupingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridGroupingStrategy)
 Represents a grouping strategy for the grid data, extending the Sorting Strategy interface (contains a sorting method).
 
 - **groupBy**: `any`
 
-### [IgrGridHeaderTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridHeaderTemplateContext)
+### [IgrGridHeaderTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridHeaderTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridKeydownEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridKeydownEventArgsDetail)
+### [IgrGridKeydownEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridKeydownEventArgsDetail)
 Represents an event, emitted when keydown is triggered over element inside grid's body
 This event is fired only if the key combination is supported in the grid.
 
@@ -2383,22 +2383,22 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 - **target**: `any` — Represents the information and details of the object itself
 - **targetType**: `GridKeydownTargetType` — The targetType represents the type of the targeted object. For example a cell or a row
 
-### [IgrGridMasterDetailContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridMasterDetailContext)
+### [IgrGridMasterDetailContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridMasterDetailContext)
 
 - **implicit**: `any`
 - **index**: `any`
 
-### [IgrGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridMergeStrategy)
+### [IgrGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridMergeStrategy)
 Merge strategy interface.
 
 - **comparer**: `any`
 - **merge**: `any`
 
-### [IgrGridPaginatorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridPaginatorTemplateContext)
+### [IgrGridPaginatorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridPaginatorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridResourceStrings)
+### [IgrGridResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridResourceStrings)
 
 - **igx_grid_actions_add_child_label?**: `string`
 - **igx_grid_actions_add_label?**: `string`
@@ -2574,39 +2574,39 @@ Merge strategy interface.
 - **igx_grid_toolbar_pinning_button_tooltip?**: `string`
 - **igx_grid_toolbar_pinning_title?**: `string`
 
-### [IgrGridRowDragGhostContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridRowDragGhostContext)
+### [IgrGridRowDragGhostContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridRowDragGhostContext)
 
 - **data**: `any`
 - **grid**: `any`
 - **implicit**: `any`
 
-### [IgrGridRowEditActionsTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridRowEditActionsTemplateContext)
+### [IgrGridRowEditActionsTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridRowEditActionsTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridRowEditTextTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridRowEditTextTemplateContext)
+### [IgrGridRowEditTextTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridRowEditTextTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridRowEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridRowEventArgsDetail)
+### [IgrGridRowEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridRowEventArgsDetail)
 Represents an event argument related to grid row interactions.
 
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
-### [IgrGridRowTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridRowTemplateContext)
+### [IgrGridRowTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridRowTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridScrollEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridScrollEventArgsDetail)
+### [IgrGridScrollEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridScrollEventArgsDetail)
 Event emitted when a grid is scrolled.
 
 - **direction**: `string` — The scroll direction - vertical or horizontal.
 - **event**: `any` — The original browser scroll event.
 - **scrollPosition**: `number` — The new scroll position
 
-### [IgrGridSelectionRange](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridSelectionRange)
+### [IgrGridSelectionRange](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridSelectionRange)
 Represents a range selection between certain rows and columns of the grid.
 Range selection can be made either through drag selection or through keyboard selection.
 
@@ -2615,26 +2615,26 @@ Range selection can be made either through drag selection or through keyboard se
 - **rowEnd**: `any`
 - **rowStart**: `any`
 
-### [IgrGridSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridSortingStrategy)
+### [IgrGridSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridSortingStrategy)
 Represents a sorting strategy for the grid data
 Contains a single method sort that sorts the provided data based on the given sorting expressions
 
 - **sort**: `any`
 
-### [IgrGridStateBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridStateBaseDirective)
+### [IgrGridStateBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridStateBaseDirective)
 The **HTMLElement** interface represents any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
 
 - **options**: `any`
 
-### [IgrGridStateCollection](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridStateCollection)
+### [IgrGridStateCollection](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridStateCollection)
 
 - **id**: `any`
 - **parentRowID**: `any`
 - **state**: `any`
 
-### [IgrGridStateInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridStateInfo)
+### [IgrGridStateInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridStateInfo)
 
 - **advancedFiltering?**: `IgcFilteringExpressionsTree`
 - **cellSelection?**: `IgcGridSelectionRange[]`
@@ -2653,7 +2653,7 @@ The **HTMLElement** interface represents any HTML element. Some elements directl
 - **rowSelection?**: `any[]`
 - **sorting?**: `IgcSortingExpression[]`
 
-### [IgrGridStateOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridStateOptions)
+### [IgrGridStateOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridStateOptions)
 
 - **advancedFiltering?**: `boolean`
 - **cellSelection?**: `boolean`
@@ -2671,16 +2671,16 @@ The **HTMLElement** interface represents any HTML element. Some elements directl
 - **rowSelection?**: `boolean`
 - **sorting?**: `boolean`
 
-### [IgrGridStyleCSSProperty](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridStyleCSSProperty)
+### [IgrGridStyleCSSProperty](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridStyleCSSProperty)
 A map of CSS style properties to either a static value or a callback that
 computes one.
 
 
-### [IgrGridTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridTemplateContext)
+### [IgrGridTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridToolbarExportEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridToolbarExportEventArgsDetail)
+### [IgrGridToolbarExportEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridToolbarExportEventArgsDetail)
 Represents the arguments for the grid toolbar export event.
 It provides information about the grid instance, exporter service, export options,
 and allows the event to be canceled.
@@ -2696,11 +2696,11 @@ and methods for preparing the data from the elements for exporting
 The type (an abstract class exporter options base) has properties for column settings
 (whether they should be ignored) as well as method for generating a file name
 
-### [IgrGridToolbarTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridToolbarTemplateContext)
+### [IgrGridToolbarTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridToolbarTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGridValidationState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridValidationState)
+### [IgrGridValidationState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridValidationState)
 Interface representing the validation state of a grid.
 - status: The validation status ('VALID' or 'INVALID').
 - errors: The validation errors if any.
@@ -2708,7 +2708,7 @@ Interface representing the validation state of a grid.
 - **errors?**: `IgcValidationErrors`
 - **status**: `any`
 
-### [IgrGridValidationStatusEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGridValidationStatusEventArgsDetail)
+### [IgrGridValidationStatusEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGridValidationStatusEventArgsDetail)
 Interface representing the event arguments for the grid validation status change event.
 - status: The validation status ('VALID' or 'INVALID').
 - owner: The grid instance that owns the validation state.
@@ -2716,17 +2716,17 @@ Interface representing the event arguments for the grid validation status change
 - **owner**: `IgcGridBaseDirective`
 - **status**: `ValidationStatus`
 
-### [IgrGroupByExpandState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByExpandState)
+### [IgrGroupByExpandState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByExpandState)
 
 - **expanded**: `any`
 - **hierarchy**: `any`
 
-### [IgrGroupByKey](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByKey)
+### [IgrGroupByKey](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByKey)
 
 - **fieldName**: `any`
 - **value**: `any`
 
-### [IgrGroupByRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByRecord)
+### [IgrGroupByRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByRecord)
 
 - **column?**: `IgcColumnComponent`
 - **groups?**: `IgcGroupByRecord[]`
@@ -2737,42 +2737,42 @@ Interface representing the event arguments for the grid validation status change
 - **records**: `any`
 - **value**: `any`
 
-### [IgrGroupByResult](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByResult)
+### [IgrGroupByResult](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByResult)
 
 - **data**: `any`
 - **metadata**: `any`
 
-### [IgrGroupByRowSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByRowSelectorTemplateContext)
+### [IgrGroupByRowSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByRowSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGroupByRowSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByRowSelectorTemplateDetails)
+### [IgrGroupByRowSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByRowSelectorTemplateDetails)
 
 - **groupRow**: `any`
 - **selectedCount**: `any`
 - **totalCount**: `any`
 
-### [IgrGroupByRowTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupByRowTemplateContext)
+### [IgrGroupByRowTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupByRowTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrGroupingDoneEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupingDoneEventArgsDetail)
+### [IgrGroupingDoneEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupingDoneEventArgsDetail)
 
 - **expressions**: `IgcSortingExpression[]`
 - **groupedColumns**: `IgcColumnComponent[]`
 - **ungroupedColumns**: `IgcColumnComponent[]`
 
-### [IgrGroupingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupingExpression)
+### [IgrGroupingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupingExpression)
 
 - **groupingComparer?**: `any`
 
-### [IgrGroupingState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrGroupingState)
+### [IgrGroupingState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrGroupingState)
 
 - **defaultExpanded**: `any`
 - **expansion**: `any`
 - **expressions**: `any`
 
-### [IgrHeaderType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrHeaderType)
+### [IgrHeaderType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrHeaderType)
 Interface representing a header cell in the grid. It is essentially the blueprint to a header cell object.
 Contains definitions of properties, relevant to the header
 
@@ -2783,18 +2783,18 @@ Contains definitions of properties, relevant to the header
 - **sorted**: `any`
 - **title**: `any`
 
-### [IgrHeadSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrHeadSelectorTemplateContext)
+### [IgrHeadSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrHeadSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrHeadSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrHeadSelectorTemplateDetails)
+### [IgrHeadSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrHeadSelectorTemplateDetails)
 
 - **selectedCount**: `any`
 - **totalCount**: `any`
 - **deselectAll?**: `any`
 - **selectAll?**: `any`
 
-### [IgrHierarchicalGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrHierarchicalGridBaseComponent)
+### [IgrHierarchicalGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrHierarchicalGridBaseComponent)
 Hierarchical grid
 
 - **data**: `any`
@@ -2814,13 +2814,13 @@ Hierarchical grid
 - **pinRow**: `any`
 - **unpinRow**: `any`
 
-### [IgrHierarchicalGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrHierarchicalGridBaseDirective)
+### [IgrHierarchicalGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrHierarchicalGridBaseDirective)
 
 - **hasChildrenKey**: `any`
 - **rootGrid**: `any`
 - **showExpandAll**: `any`
 
-### [IGridResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IGridResourceStrings)
+### [IGridResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IGridResourceStrings)
 
 - **grid_actions_add_child_label?**: `string`
 - **grid_actions_add_label?**: `string`
@@ -2996,12 +2996,12 @@ Hierarchical grid
 - **grid_toolbar_pinning_button_tooltip?**: `string`
 - **grid_toolbar_pinning_title?**: `string`
 
-### [IgrOverlayOutletDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrOverlayOutletDirective)
+### [IgrOverlayOutletDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrOverlayOutletDirective)
 Mark an element as an igxOverlay outlet container.
 Directive instance is exported as overlay-outlet to be assigned to templates variables:
 
 
-### [IgrOverlaySettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrOverlaySettings)
+### [IgrOverlaySettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrOverlaySettings)
 
 - **closeOnEscape?**: `boolean` — Set if the overlay should close when Esc key is pressed
 - **closeOnOutsideClick?**: `boolean` — Set if the overlay should close on outside click
@@ -3010,17 +3010,17 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 - **scrollStrategy?**: `IgcScrollStrategy` — Scroll strategy to use with these settings
 - **target?**: `HTMLElement | Point` — Attaching target for the component to show
 
-### [IgrPageCancellableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPageCancellableEventArgsDetail)
+### [IgrPageCancellableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPageCancellableEventArgsDetail)
 
 - **current**: `number`
 - **next**: `number`
 
-### [IgrPageEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPageEventArgsDetail)
+### [IgrPageEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPageEventArgsDetail)
 
 - **current**: `number`
 - **previous**: `number`
 
-### [IgrPaginatorResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPaginatorResourceStrings)
+### [IgrPaginatorResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPaginatorResourceStrings)
 
 - **igx_paginator_first_page_button_text?**: `string`
 - **igx_paginator_label?**: `string`
@@ -3029,12 +3029,12 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 - **igx_paginator_pager_text?**: `string`
 - **igx_paginator_previous_page_button_text?**: `string`
 
-### [IgrPagingState](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPagingState)
+### [IgrPagingState](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPagingState)
 
 - **index**: `any`
 - **recordsPerPage**: `any`
 
-### [IgrPinColumnCancellableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPinColumnCancellableEventArgsDetail)
+### [IgrPinColumnCancellableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPinColumnCancellableEventArgsDetail)
 The event arguments before a column's pin state is changed.
 insertAtIndexspecifies at which index in the pinned/unpinned area the column is inserted.
 Can be changed in the columnPin event.
@@ -3048,7 +3048,7 @@ If unpinned, specifies at which index in the unpinned area the column is inserte
 - **isPinned**: `boolean` — Returns the actual pin state of the column.
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
 
-### [IgrPinColumnEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPinColumnEventArgsDetail)
+### [IgrPinColumnEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPinColumnEventArgsDetail)
 The event arguments after a column's pin state is changed.
 insertAtIndexspecifies at which index in the pinned/unpinned area the column was inserted.
 isPinned returns the actual pin state of the column after the operation completed.
@@ -3059,13 +3059,13 @@ If unpinned, specifies at which index in the unpinned area the column is inserte
 - **isPinned**: `boolean` — Returns the actual pin state of the column.
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
 
-### [IgrPinningConfig](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPinningConfig)
+### [IgrPinningConfig](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPinningConfig)
 An interface describing settings for row/column pinning position.
 
 - **columns?**: `ColumnPinningPosition`
 - **rows?**: `RowPinningPosition`
 
-### [IgrPinRowEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPinRowEventArgsDetail)
+### [IgrPinRowEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPinRowEventArgsDetail)
 Event emitted when a row's pin state changes.
 The event is cancelable
 
@@ -3078,13 +3078,13 @@ The event is cancelable
 ID is either the primaryKey value or the data record instance.
 - **rowKey**: `any`
 
-### [IgrPivotAggregation](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotAggregation)
+### [IgrPivotAggregation](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotAggregation)
 Interface describing a PivotAggregation function.
 Accepts an array of extracted data members and an optional array of the original data records,
 which can be omitted or undefined.
 
 
-### [IgrPivotAggregator](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotAggregator)
+### [IgrPivotAggregator](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotAggregator)
 Interface describing a IPivotAggregator class.
 Used for specifying custom aggregator lists.
 
@@ -3095,7 +3095,7 @@ If not set will use the specified aggregator function.
 - **key**: `any`
 - **label**: `any`
 
-### [IgrPivotConfiguration](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotConfiguration)
+### [IgrPivotConfiguration](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotConfiguration)
 Configuration of the pivot grid.
 
 - **columnStrategy?**: `IgcPivotDimensionStrategy` — A strategy to transform the columns.
@@ -3106,12 +3106,12 @@ Configuration of the pivot grid.
 - **rows**: `any`
 - **values**: `any`
 
-### [IgrPivotConfigurationChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotConfigurationChangedEventArgsDetail)
+### [IgrPivotConfigurationChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotConfigurationChangedEventArgsDetail)
 Event emitted when pivot configuration is changed.
 
 - **pivotConfiguration**: `IgcPivotConfiguration` — The new configuration.
 
-### [IgrPivotDateDimensionOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotDateDimensionOptions)
+### [IgrPivotDateDimensionOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotDateDimensionOptions)
 
 - **fullDate?**: `boolean` — Enabled/Disables dimensions for the full date provided
 - **months?**: `boolean` — Enables/Disables dimensions per month from provided periods.
@@ -3119,7 +3119,7 @@ Event emitted when pivot configuration is changed.
 - **total?**: `boolean` — Enables/Disables total value of all periods.
 - **years?**: `boolean` — Enables/Disables dimensions per year from provided periods.
 
-### [IgrPivotDimension](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotDimension)
+### [IgrPivotDimension](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotDimension)
 Configuration of a pivot dimension.
 
 - **childLevel?**: `IgcPivotDimension` — Allows defining a hierarchy when multiple sub groups need to be extracted from single member.
@@ -3140,13 +3140,13 @@ Return null or undefined to fall back to the raw value.
 - **enabled**: `any`
 - **memberName**: `any`
 
-### [IgrPivotDimensionStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotDimensionStrategy)
+### [IgrPivotDimensionStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotDimensionStrategy)
 Interface describing Pivot data processing for dimensions.
 Should contain a process method and return records hierarchy based on the provided dimensions.
 
 - **process**: `any`
 
-### [IgrPivotGridColumn](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotGridColumn)
+### [IgrPivotGridColumn](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotGridColumn)
 Interface describing the Pivot column data.
  Contains information on the related column dimensions and their values.
 
@@ -3154,12 +3154,12 @@ Interface describing the Pivot column data.
 - **field**: `any`
 - **value**: `any`
 
-### [IgrPivotGridGroupRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotGridGroupRecord)
+### [IgrPivotGridGroupRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotGridGroupRecord)
 
 - **height?**: `number`
 - **rowSpan?**: `number`
 
-### [IgrPivotGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotGridRecord)
+### [IgrPivotGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotGridRecord)
 
 - **dataIndex?**: `number` — The index of the record in the total view
 - **level?**: `number` — Record level*
@@ -3167,11 +3167,11 @@ Interface describing the Pivot column data.
 - **totalRecordDimensionName?**: `string` — If set, it specifies the name of the dimension, that has total record enabled.
 - **dimensions**: `any`
 
-### [IgrPivotGridValueTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotGridValueTemplateContext)
+### [IgrPivotGridValueTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotGridValueTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrPivotKeys](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotKeys)
+### [IgrPivotKeys](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotKeys)
 Interface describing the Pivot data keys used for data generation.
  Can be used for custom remote scenarios where the data is pre-populated.
 
@@ -3182,14 +3182,14 @@ Interface describing the Pivot data keys used for data generation.
 - **records**: `any`
 - **rowDimensionSeparator**: `any`
 
-### [IgrPivotUISettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotUISettings)
+### [IgrPivotUISettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotUISettings)
 
 - **horizontalSummariesPosition?**: `PivotSummaryPosition`
 - **rowLayout?**: `PivotRowLayoutType`
 - **showConfiguration?**: `boolean`
 - **showRowHeaders?**: `boolean`
 
-### [IgrPivotValue](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPivotValue)
+### [IgrPivotValue](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPivotValue)
 Configuration of a pivot value aggregation.
 
 - **aggregateList?**: `IgcPivotAggregator[]` — List of aggregates to show in aggregate drop-down.
@@ -3201,7 +3201,7 @@ Configuration of a pivot value aggregation.
 - **enabled**: `any`
 - **member**: `any`
 
-### [IgrPositionSettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPositionSettings)
+### [IgrPositionSettings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPositionSettings)
 
 - **horizontalDirection?**: `HorizontalAlignment` — Direction in which the component should show
 - **horizontalStartPoint?**: `HorizontalAlignment` — Target's starting point
@@ -3210,14 +3210,14 @@ Configuration of a pivot value aggregation.
 - **verticalDirection?**: `VerticalAlignment` — Direction in which the component should show
 - **verticalStartPoint?**: `VerticalAlignment` — Target's starting point
 
-### [IgrPositionStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrPositionStrategy)
+### [IgrPositionStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrPositionStrategy)
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/overlay-position)
 Position strategies determine where to display the component in the provided overlay.
 
 - **settings**: `any`
 - **clone**: `any`
 
-### [IgrQueryBuilderResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrQueryBuilderResourceStrings)
+### [IgrQueryBuilderResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrQueryBuilderResourceStrings)
 
 - **igx_query_builder_add_condition?**: `string`
 - **igx_query_builder_add_condition_root?**: `string`
@@ -3292,13 +3292,13 @@ Position strategies determine where to display the component in the provided ove
 - **igx_query_builder_value_placeholder?**: `string`
 - **igx_query_builder_where_label?**: `string`
 
-### [IgrQueryBuilderSearchValueContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrQueryBuilderSearchValueContext)
+### [IgrQueryBuilderSearchValueContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrQueryBuilderSearchValueContext)
 
 - **implicit**: `any`
 - **selectedCondition**: `any`
 - **selectedField**: `any`
 
-### [IgrRowDataCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowDataCancelableEventArgsDetail)
+### [IgrRowDataCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowDataCancelableEventArgsDetail)
 
 - **cancel**: `boolean` — Provides the ability to cancel the event.
 - **cellID?**: `any` — **Deprecated.**
@@ -3315,7 +3315,7 @@ Available if primaryKey exists
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgrRowDataEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowDataEventArgsDetail)
+### [IgrRowDataEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowDataEventArgsDetail)
 Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
@@ -3325,7 +3325,7 @@ Available if primaryKey exists
 - **rowData**: `any`
 - **rowKey**: `any`
 
-### [IgrRowDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowDirective)
+### [IgrRowDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowDirective)
 
 - **addRowUI**: `any`
 - **cells**: `any`
@@ -3346,14 +3346,14 @@ Available if primaryKey exists
 - **unpin**: `any`
 - **update**: `any`
 
-### [IgrRowDragEndEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowDragEndEventArgsDetail)
+### [IgrRowDragEndEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowDragEndEventArgsDetail)
 Emitted when a dragging operation is finished (when the row is dropped)
 
 - **animation**: `boolean` — animation returns whether the event is animated
 - **dragData**: `IgcRowType` — Represents the information of the row that is being dragged.
 - **dragDirective**: `any` — Represents the drag directive or information associated with the drag operation
 
-### [IgrRowDragStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowDragStartEventArgsDetail)
+### [IgrRowDragStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowDragStartEventArgsDetail)
 Emitted when a dragging operation is starting (when the row is "picked")
 The event is cancelable
 
@@ -3362,7 +3362,7 @@ The event is cancelable
 - **dragDirective**: `any` — Represents the drag directive or information associated with the drag operation
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgrRowExportingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowExportingEventArgsDetail)
+### [IgrRowExportingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowExportingEventArgsDetail)
 rowExporting event arguments
 this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 // set args properties here
@@ -3372,14 +3372,14 @@ this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 - **rowData**: `any` — Contains the exporting row data
 - **rowIndex**: `number` — Contains the exporting row index
 
-### [IgrRowIslandBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowIslandBaseComponent)
+### [IgrRowIslandBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowIslandBaseComponent)
 Row island
 
 - **expandChildren**: `any`
 - **paginatorTemplate**: `any`
 - **toolbarTemplate**: `any`
 
-### [IgrRowSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowSelectionEventArgsDetail)
+### [IgrRowSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowSelectionEventArgsDetail)
 The event arguments when the selection state of a row is being changed
 The event is cancelable
 
@@ -3394,11 +3394,11 @@ Whenever a row has been selected, the array is "refreshed" with the selected row
 Whenever a row has been deselected, the array is "refreshed" with the rows,
 that have been previously selected, but are no longer
 
-### [IgrRowSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowSelectorTemplateContext)
+### [IgrRowSelectorTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrRowSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowSelectorTemplateDetails)
+### [IgrRowSelectorTemplateDetails](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowSelectorTemplateDetails)
 
 - **index**: `any`
 - **key**: `any`
@@ -3407,7 +3407,7 @@ that have been previously selected, but are no longer
 - **deselect?**: `any`
 - **select?**: `any`
 
-### [IgrRowToggleEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowToggleEventArgsDetail)
+### [IgrRowToggleEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowToggleEventArgsDetail)
 Represents event arguments related to the row's expansion state being changed in a grid
 
 - **cancel**: `boolean` — The event is cancelable
@@ -3418,7 +3418,7 @@ Indicating whether the row is being expanded (true) or collapsed (false)
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead. Represents the ID of the row that emitted the event (which state is changed)
 - **rowKey**: `any`
 
-### [IgrRowType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrRowType)
+### [IgrRowType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrRowType)
 Interface representing a row in the grid. It is essentially the blueprint to a row object.
 Contains definitions of properties and methods, relevant to a row
 
@@ -3464,24 +3464,24 @@ It is of type ITreeGridRecord, which contains the data, children, the hierarchic
 - **unpin?**: `any`
 - **update?**: `any`
 
-### [IgrScrollStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrScrollStrategy)
+### [IgrScrollStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrScrollStrategy)
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/overlay-scroll).
 Scroll strategies determines how the scrolling will be handled in the provided overlay.
 
 - **attach**: `any`
 - **detach**: `any`
 
-### [IgrSearchInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSearchInfo)
+### [IgrSearchInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSearchInfo)
 
 - **activeMatchIndex**: `any`
 - **matchInfoCache**: `any`
 
-### [IgrSize](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSize)
+### [IgrSize](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSize)
 
 - **height**: `any`
 - **width**: `any`
 
-### [IgrSortingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSortingEventArgsDetail)
+### [IgrSortingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSortingEventArgsDetail)
 Represents event arguments related to sorting and grouping operations
 The event is cancelable
 
@@ -3496,45 +3496,45 @@ Represents the sorting expressions applied to the grid.
 It can be a single sorting expression or an array of them
 The expression contains information like file name, whether the letter case should be taken into account, etc.
 
-### [IgrSortingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSortingExpression)
+### [IgrSortingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSortingExpression)
 
 - **ignoreCase?**: `boolean`
 - **strategy?**: `IgcSortingStrategy`
 - **dir**: `any`
 - **fieldName**: `any`
 
-### [IgrSortingOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSortingOptions)
+### [IgrSortingOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSortingOptions)
 
 - **mode**: `any`
 
-### [IgrSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSortingStrategy)
+### [IgrSortingStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSortingStrategy)
 
 
-### [IgrSummaryExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSummaryExpression)
+### [IgrSummaryExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSummaryExpression)
 
 - **customSummary?**: `any`
 - **fieldName**: `any`
 
-### [IgrSummaryResult](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSummaryResult)
+### [IgrSummaryResult](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSummaryResult)
 
 - **defaultFormatting?**: `boolean` — Apply default formatting based on the grid column type.
 - **key**: `any`
 - **label**: `any`
 - **summaryResult**: `any`
 
-### [IgrSummaryTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrSummaryTemplateContext)
+### [IgrSummaryTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrSummaryTemplateContext)
 
 - **implicit**: `any`
 
-### [IgrToggleViewCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrToggleViewCancelableEventArgsDetail)
+### [IgrToggleViewCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrToggleViewCancelableEventArgsDetail)
 
 - **id**: `string` — Id of the toggle view
 
-### [IgrToggleViewEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrToggleViewEventArgsDetail)
+### [IgrToggleViewEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrToggleViewEventArgsDetail)
 
 - **id**: `string` — Id of the toggle view
 
-### [IgrTreeGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrTreeGridBaseComponent)
+### [IgrTreeGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrTreeGridBaseComponent)
 **Ignite UI for Angular Tree Grid** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid)
 The Ignite UI Tree Grid displays and manipulates hierarchical data with consistent schema formatted as a table and
@@ -3568,7 +3568,7 @@ Example:
 - **pinRow**: `any`
 - **unpinRow**: `any`
 
-### [IgrTreeGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrTreeGridRecord)
+### [IgrTreeGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrTreeGridRecord)
 
 - **children?**: `IgcTreeGridRecord[]`
 - **expanded?**: `boolean`
@@ -3578,10 +3578,10 @@ Example:
 - **data**: `any`
 - **key**: `any`
 
-### [IgrValidationErrors](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrValidationErrors)
+### [IgrValidationErrors](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrValidationErrors)
 
 
-### [IgrValidationResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrValidationResourceStrings)
+### [IgrValidationResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrValidationResourceStrings)
 
 - **igx_grid_disabled_date_validation_error?**: `string`
 - **igx_grid_email_validation_error?**: `string`
@@ -3594,17 +3594,17 @@ Example:
 - **igx_grid_required_validation_error?**: `string`
 - **igx_grid_url_validation_error?**: `string`
 
-### [IgrValuesChange](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IgrValuesChange)
+### [IgrValuesChange](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IgrValuesChange)
 Event emitted when values list is changed.
 
 - **values**: `any`
 
-### [IListResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IListResourceStrings)
+### [IListResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IListResourceStrings)
 
 - **list_loading?**: `string`
 - **list_no_items?**: `string`
 
-### [IPaginatorResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IPaginatorResourceStrings)
+### [IPaginatorResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IPaginatorResourceStrings)
 
 - **paginator_first_page_button_text?**: `string`
 - **paginator_label?**: `string`
@@ -3613,7 +3613,7 @@ Event emitted when values list is changed.
 - **paginator_pager_text?**: `string`
 - **paginator_previous_page_button_text?**: `string`
 
-### [IQueryBuilderResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IQueryBuilderResourceStrings)
+### [IQueryBuilderResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IQueryBuilderResourceStrings)
 
 - **query_builder_add_condition?**: `string`
 - **query_builder_add_condition_root?**: `string`
@@ -3688,29 +3688,29 @@ Event emitted when values list is changed.
 - **query_builder_value_placeholder?**: `string`
 - **query_builder_where_label?**: `string`
 
-### [IResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/IResourceStrings)
+### [IResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/IResourceStrings)
 
 
-### [ITimePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/ITimePickerResourceStrings)
+### [ITimePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/ITimePickerResourceStrings)
 
 - **time_picker_cancel?**: `string`
 - **time_picker_change_time?**: `string`
 - **time_picker_choose_time?**: `string`
 - **time_picker_ok?**: `string`
 
-### [ITreeResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/ITreeResourceStrings)
+### [ITreeResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/ITreeResourceStrings)
 
 - **collapse?**: `string`
 - **expand?**: `string`
 
-### [Point](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/interfaces/Point)
+### [Point](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/interfaces/Point)
 
 - **x**: `number`
 - **y**: `number`
 
 ## Enumerations
 
-### [ColumnPinningPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/ColumnPinningPosition)
+### [ColumnPinningPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/ColumnPinningPosition)
 Enumeration representing the possible positions for pinning columns.
 - Start: Columns are pinned to the start of the grid.
 - End: Columns are pinned to the end of the grid.
@@ -3718,7 +3718,7 @@ Enumeration representing the possible positions for pinning columns.
 - **End**
 - **Start**
 
-### [CsvFileTypes](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/CsvFileTypes)
+### [CsvFileTypes](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/CsvFileTypes)
 This enumeration is used to configure the default value separator
 as well as the default file extension used when performing CSV exporting.
 
@@ -3726,37 +3726,37 @@ as well as the default file extension used when performing CSV exporting.
 - **TAB**
 - **TSV**
 
-### [DropPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/DropPosition)
+### [DropPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/DropPosition)
 This enumeration is used to configure whether the drop position is set before or after
 the target.
 
 - **AfterDropTarget**
 - **BeforeDropTarget**
 
-### [FilteringExpressionsTreeType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/FilteringExpressionsTreeType)
+### [FilteringExpressionsTreeType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/FilteringExpressionsTreeType)
 
 - **Advanced**
 - **Regular**
 
-### [FilteringLogic](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/FilteringLogic)
+### [FilteringLogic](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/FilteringLogic)
 
 - **And**
 - **Or**
 
-### [HorizontalAlignment](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/HorizontalAlignment)
+### [HorizontalAlignment](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/HorizontalAlignment)
 
 - **Center** = -0.5
 - **Left** = -1
 - **Right** = 0
 
-### [PivotDimensionType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/PivotDimensionType)
+### [PivotDimensionType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/PivotDimensionType)
 The dimension types - Row, Column or Filter.
 
 - **Column**
 - **Filter**
 - **Row**
 
-### [RowPinningPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/RowPinningPosition)
+### [RowPinningPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/RowPinningPosition)
 Enumeration representing the possible positions for pinning rows.
 - Top: Rows are pinned to the top of the grid.
 - Bottom: Rows are pinned to the bottom of the grid.
@@ -3764,13 +3764,13 @@ Enumeration representing the possible positions for pinning rows.
 - **Bottom**
 - **Top**
 
-### [SortingDirection](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/SortingDirection)
+### [SortingDirection](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/SortingDirection)
 
 - **Asc** = 1
 - **Desc** = 2
 - **None** = 0
 
-### [VerticalAlignment](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/enums/VerticalAlignment)
+### [VerticalAlignment](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/enums/VerticalAlignment)
 
 - **Bottom** = 0
 - **Middle** = -0.5
@@ -3778,201 +3778,201 @@ Enumeration representing the possible positions for pinning rows.
 
 ## Type Aliases
 
-### [FilterMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/FilterMode)
+### [FilterMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/FilterMode)
 `"quickFilter" | "excelStyleFilter"`
 
-### [GridCellMergeMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridCellMergeMode)
+### [GridCellMergeMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridCellMergeMode)
 `"onSort" | "always"`
 
-### [GridColumnDataType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridColumnDataType)
+### [GridColumnDataType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridColumnDataType)
 `"string" | "number" | "boolean" | "date" | "dateTime" | "time" | "currency" | "percent" | "image"`
 
-### [GridKeydownTargetType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridKeydownTargetType)
+### [GridKeydownTargetType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridKeydownTargetType)
 `"dataCell" | "summaryCell" | "groupRow" | "hierarchicalRow" | "headerCell" | "masterDetailRow"`
 
-### [GridPagingMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridPagingMode)
+### [GridPagingMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridPagingMode)
 `"local" | "remote"`
 
-### [GridSelectionMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridSelectionMode)
+### [GridSelectionMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridSelectionMode)
 `"none" | "single" | "multiple" | "multipleCascade"`
 
-### [GridSummaryCalculationMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridSummaryCalculationMode)
+### [GridSummaryCalculationMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridSummaryCalculationMode)
 `"rootLevelOnly" | "childLevelsOnly" | "rootAndChildLevels"`
 
-### [GridSummaryPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridSummaryPosition)
+### [GridSummaryPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridSummaryPosition)
 `"top" | "bottom"`
 
-### [GridToolbarExporterType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridToolbarExporterType)
+### [GridToolbarExporterType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridToolbarExporterType)
 `"excel" | "csv" | "pdf"`
 
-### [GridValidationTrigger](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/GridValidationTrigger)
+### [GridValidationTrigger](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/GridValidationTrigger)
 `"change" | "blur"`
 
-### [IgrActiveNodeChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrActiveNodeChangeEventArgs)
+### [IgrActiveNodeChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrActiveNodeChangeEventArgs)
 `CustomEvent<IgrActiveNodeChangeEventArgsDetail>`
 
-### [IgrBaseEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrBaseEventArgs)
+### [IgrBaseEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrBaseEventArgs)
 `CustomEvent<IgrBaseEventArgsDetail>`
 
-### [IgrCancelableBrowserEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrCancelableBrowserEventArgs)
+### [IgrCancelableBrowserEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrCancelableBrowserEventArgs)
 `CustomEvent<IgrCancelableBrowserEventArgsDetail>`
 
-### [IgrCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrCancelableEventArgs)
+### [IgrCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrCancelableEventArgs)
 `CustomEvent<IgrCancelableEventArgsDetail>`
 
-### [IgrColumnExportingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnExportingEventArgs)
+### [IgrColumnExportingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnExportingEventArgs)
 `CustomEvent<IgrColumnExportingEventArgsDetail>`
 
-### [IgrColumnMovingEndEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnMovingEndEventArgs)
+### [IgrColumnMovingEndEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnMovingEndEventArgs)
 `CustomEvent<IgrColumnMovingEndEventArgsDetail>`
 
-### [IgrColumnMovingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnMovingEventArgs)
+### [IgrColumnMovingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnMovingEventArgs)
 `CustomEvent<IgrColumnMovingEventArgsDetail>`
 
-### [IgrColumnMovingStartEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnMovingStartEventArgs)
+### [IgrColumnMovingStartEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnMovingStartEventArgs)
 `CustomEvent<IgrColumnMovingStartEventArgsDetail>`
 
-### [IgrColumnResizeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnResizeEventArgs)
+### [IgrColumnResizeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnResizeEventArgs)
 `CustomEvent<IgrColumnResizeEventArgsDetail>`
 
-### [IgrColumnsAutoGeneratedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnsAutoGeneratedEventArgs)
+### [IgrColumnsAutoGeneratedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnsAutoGeneratedEventArgs)
 `CustomEvent<IgrColumnsAutoGeneratedEventArgsDetail>`
 
-### [IgrColumnSelectionEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnSelectionEventArgs)
+### [IgrColumnSelectionEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnSelectionEventArgs)
 `CustomEvent<IgrColumnSelectionEventArgsDetail>`
 
-### [IgrColumnToggledEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnToggledEventArgs)
+### [IgrColumnToggledEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnToggledEventArgs)
 `CustomEvent<IgrColumnToggledEventArgsDetail>`
 
-### [IgrColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnVisibilityChangedEventArgs)
+### [IgrColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnVisibilityChangedEventArgs)
 `CustomEvent<IgrColumnVisibilityChangedEventArgsDetail>`
 
-### [IgrColumnVisibilityChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrColumnVisibilityChangingEventArgs)
+### [IgrColumnVisibilityChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrColumnVisibilityChangingEventArgs)
 `CustomEvent<IgrColumnVisibilityChangingEventArgsDetail>`
 
-### [IgrCsvExportEndedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrCsvExportEndedEventArgs)
+### [IgrCsvExportEndedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrCsvExportEndedEventArgs)
 `CustomEvent<IgrCsvExportEndedEventArgsDetail>`
 
-### [IgrExcelExportEndedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrExcelExportEndedEventArgs)
+### [IgrExcelExportEndedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrExcelExportEndedEventArgs)
 `CustomEvent<IgrExcelExportEndedEventArgsDetail>`
 
-### [IgrExporterEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrExporterEventArgs)
+### [IgrExporterEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrExporterEventArgs)
 `CustomEvent<IgrExporterEventArgsDetail>`
 
-### [IgrFilteringEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrFilteringEventArgs)
+### [IgrFilteringEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrFilteringEventArgs)
 `CustomEvent<IgrFilteringEventArgsDetail>`
 
-### [IgrForOfDataChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrForOfDataChangeEventArgs)
+### [IgrForOfDataChangeEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrForOfDataChangeEventArgs)
 `CustomEvent<IgrForOfDataChangeEventArgsDetail>`
 
-### [IgrForOfDataChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrForOfDataChangingEventArgs)
+### [IgrForOfDataChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrForOfDataChangingEventArgs)
 `CustomEvent<IgrForOfDataChangingEventArgsDetail>`
 
-### [IgrGridCellEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridCellEventArgs)
+### [IgrGridCellEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridCellEventArgs)
 `CustomEvent<IgrGridCellEventArgsDetail>`
 
-### [IgrGridContextMenuEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridContextMenuEventArgs)
+### [IgrGridContextMenuEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridContextMenuEventArgs)
 `CustomEvent<IgrGridContextMenuEventArgsDetail>`
 
-### [IgrGridCreatedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridCreatedEventArgs)
+### [IgrGridCreatedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridCreatedEventArgs)
 `CustomEvent<IgrGridCreatedEventArgsDetail>`
 
-### [IgrGridEditDoneEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridEditDoneEventArgs)
+### [IgrGridEditDoneEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridEditDoneEventArgs)
 `CustomEvent<IgrGridEditDoneEventArgsDetail>`
 
-### [IgrGridEditEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridEditEventArgs)
+### [IgrGridEditEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridEditEventArgs)
 `CustomEvent<IgrGridEditEventArgsDetail>`
 
-### [IgrGridFormGroupCreatedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridFormGroupCreatedEventArgs)
+### [IgrGridFormGroupCreatedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridFormGroupCreatedEventArgs)
 `CustomEvent<IgrGridFormGroupCreatedEventArgsDetail>`
 
-### [IgrGridKeydownEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridKeydownEventArgs)
+### [IgrGridKeydownEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridKeydownEventArgs)
 `CustomEvent<IgrGridKeydownEventArgsDetail>`
 
-### [IgrGridRowEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridRowEventArgs)
+### [IgrGridRowEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridRowEventArgs)
 `CustomEvent<IgrGridRowEventArgsDetail>`
 
-### [IgrGridScrollEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridScrollEventArgs)
+### [IgrGridScrollEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridScrollEventArgs)
 `CustomEvent<IgrGridScrollEventArgsDetail>`
 
-### [IgrGridToolbarExportEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridToolbarExportEventArgs)
+### [IgrGridToolbarExportEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridToolbarExportEventArgs)
 `CustomEvent<IgrGridToolbarExportEventArgsDetail>`
 
-### [IgrGridValidationStatusEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGridValidationStatusEventArgs)
+### [IgrGridValidationStatusEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGridValidationStatusEventArgs)
 `CustomEvent<IgrGridValidationStatusEventArgsDetail>`
 
-### [IgrGroupingDoneEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrGroupingDoneEventArgs)
+### [IgrGroupingDoneEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrGroupingDoneEventArgs)
 `CustomEvent<IgrGroupingDoneEventArgsDetail>`
 
-### [IgrPageCancellableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPageCancellableEventArgs)
+### [IgrPageCancellableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPageCancellableEventArgs)
 `CustomEvent<IgrPageCancellableEventArgsDetail>`
 
-### [IgrPageEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPageEventArgs)
+### [IgrPageEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPageEventArgs)
 `CustomEvent<IgrPageEventArgsDetail>`
 
-### [IgrPinColumnCancellableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPinColumnCancellableEventArgs)
+### [IgrPinColumnCancellableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPinColumnCancellableEventArgs)
 `CustomEvent<IgrPinColumnCancellableEventArgsDetail>`
 
-### [IgrPinColumnEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPinColumnEventArgs)
+### [IgrPinColumnEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPinColumnEventArgs)
 `CustomEvent<IgrPinColumnEventArgsDetail>`
 
-### [IgrPinRowEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPinRowEventArgs)
+### [IgrPinRowEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPinRowEventArgs)
 `CustomEvent<IgrPinRowEventArgsDetail>`
 
-### [IgrPivotConfigurationChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrPivotConfigurationChangedEventArgs)
+### [IgrPivotConfigurationChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrPivotConfigurationChangedEventArgs)
 `CustomEvent<IgrPivotConfigurationChangedEventArgsDetail>`
 
-### [IgrRowDataCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowDataCancelableEventArgs)
+### [IgrRowDataCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowDataCancelableEventArgs)
 `CustomEvent<IgrRowDataCancelableEventArgsDetail>`
 
-### [IgrRowDataEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowDataEventArgs)
+### [IgrRowDataEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowDataEventArgs)
 `CustomEvent<IgrRowDataEventArgsDetail>`
 
-### [IgrRowDragEndEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowDragEndEventArgs)
+### [IgrRowDragEndEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowDragEndEventArgs)
 `CustomEvent<IgrRowDragEndEventArgsDetail>`
 
-### [IgrRowDragStartEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowDragStartEventArgs)
+### [IgrRowDragStartEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowDragStartEventArgs)
 `CustomEvent<IgrRowDragStartEventArgsDetail>`
 
-### [IgrRowExportingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowExportingEventArgs)
+### [IgrRowExportingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowExportingEventArgs)
 `CustomEvent<IgrRowExportingEventArgsDetail>`
 
-### [IgrRowSelectionEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowSelectionEventArgs)
+### [IgrRowSelectionEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowSelectionEventArgs)
 `CustomEvent<IgrRowSelectionEventArgsDetail>`
 
-### [IgrRowToggleEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrRowToggleEventArgs)
+### [IgrRowToggleEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrRowToggleEventArgs)
 `CustomEvent<IgrRowToggleEventArgsDetail>`
 
-### [IgrSortingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrSortingEventArgs)
+### [IgrSortingEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrSortingEventArgs)
 `CustomEvent<IgrSortingEventArgsDetail>`
 
-### [IgrToggleViewCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrToggleViewCancelableEventArgs)
+### [IgrToggleViewCancelableEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrToggleViewCancelableEventArgs)
 `CustomEvent<IgrToggleViewCancelableEventArgsDetail>`
 
-### [IgrToggleViewEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/IgrToggleViewEventArgs)
+### [IgrToggleViewEventArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/IgrToggleViewEventArgs)
 `CustomEvent<IgrToggleViewEventArgsDetail>`
 
-### [PivotAggregationType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/PivotAggregationType)
+### [PivotAggregationType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/PivotAggregationType)
 `"SUM" | "AVG" | "MIN" | "MAX" | "COUNT" | "LATEST" | "EARLIEST"`
 
-### [PivotRowLayoutType](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/PivotRowLayoutType)
+### [PivotRowLayoutType](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/PivotRowLayoutType)
 `"vertical" | "horizontal"`
 
-### [PivotSummaryPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/PivotSummaryPosition)
+### [PivotSummaryPosition](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/PivotSummaryPosition)
 `"top" | "bottom"`
 
-### [SortingOptionsMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/SortingOptionsMode)
+### [SortingOptionsMode](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/SortingOptionsMode)
 `"single" | "multiple"`
 
-### [ValidationStatus](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/types/ValidationStatus)
+### [ValidationStatus](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/types/ValidationStatus)
 `"VALID" | "INVALID"`
 
 ## Functions
 
-### [registerI18n](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/functions/registerI18n)
+### [registerI18n](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/functions/registerI18n)
 `registerI18n(resourceStrings: IResourceStrings, locale: string): void`
 Register resources for a specific locale.
 
-### [setCurrentI18n](https://www.infragistics.com/api/react/igniteui-react-grids/19.9.0/functions/setCurrentI18n)
+### [setCurrentI18n](https://www.infragistics.com/api/react/igniteui-react-grids/19.10/functions/setCurrentI18n)
 `setCurrentI18n(locale: string): void`
 Set the current locale of all Ignite UI components.

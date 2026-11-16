@@ -444,7 +444,8 @@ export function addPackageVersions(text: string, framework: Platform, docLoader:
   if (!componentLine) return text;
 
   const packages = new Set<string>();
-  for (const name of componentLine[1].split(',').map(n => n.trim()).filter(Boolean)) {
+  // Commas inside generic arguments ("IgbCombo<TValue, TItem>") are part of the name.
+  for (const name of componentLine[1].split(/,(?![^<]*>)/).map(n => n.trim()).filter(Boolean)) {
     // A doc can list another framework's components: Angular breadcrumbs uses the Igc web components.
     const entry = docLoader.get(inferPlatform(name) ?? framework, name);
     for (const pkg of entry ? docLoader.getPackageVersions(entry) : []) packages.add(pkg);

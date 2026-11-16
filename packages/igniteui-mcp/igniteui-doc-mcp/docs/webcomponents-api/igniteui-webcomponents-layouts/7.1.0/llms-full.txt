@@ -1,10 +1,10 @@
-# Ignite UI for Web Components Layouts v7.1.0 — Full API Reference
+# Ignite UI for Web Components Layouts v7.1.1-beta.19 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Layouts package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Layouts package (7.1.1-beta.19). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-layouts
-Version: 7.1.0
+Version: 7.1.1-beta.19
 
 ## Classes
 
@@ -66,6 +66,7 @@ Version: 7.1.0
 be an IDataSource instance.
 - **dataSourceDesiredProperties**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
 - **density**: `ControlDisplayDensity` — Gets or sets the display Density to use for the buttons and dropdown grid.
+- **displayMode**: `ComboEditorDisplayMode` — Determines how the selection is presented while the list is closed: as editable text, or as the selected item's icon (see IconField) on a button that opens the list.
 - **dropDownButtonVisible**: `boolean` — Gets or sets the visibility of the drop down button.
 - **fields**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
 - **focusBorderColor**: `string` — Gets or sets the color to use the hovered background of the inputs in the group.
@@ -79,6 +80,8 @@ be an IDataSource instance.
 - **hoverUnderlineOpacity**: `number` — Gets or sets the color to use for the underline element.
 - **hoverUnderlineWidth**: `number` — Gets or sets the width to use for the underline element when hovered.
 - **i**: `ComboEditor`
+- **iconCollectionName**: `string` — Determines the name of the registered icon collection the items' icons (see IconField) are taken from.
+- **iconField**: `string` — Determines the name of the field in the data source holding the name of the icon shown beside each item in the list. The icon is looked up in the collection IconCollectionName names.
 - **isFixed**: `boolean` — Indicates that the dropdown will position itself relative to the window instead of the document.
 - **keyDown**: `any`
 - **label**: `string` — The text displayed in the label portion of the control.
@@ -385,6 +388,19 @@ Event arguments for the SelectionChanged event.
 
 - **constructor**(): IgcPropertyEditorDescriptionObject
 - **descriptionType**: `string`
+- **isSuggested**: `boolean` — Whether this item is only a suggested override, derived from the target's current
+content, rather than one the user has made. Suggested items are not emitted until
+they are edited.
+- **matchIndex**: `number` — When this object is an item of a collection being edited as overrides, the index of
+the item it applies to, used only when nothing more stable identifies it; -1 when
+unused.
+- **matchPredicate**: `string` — When this object is an item of a collection being edited as overrides, a filter
+over the item's values that picks out which items of the target's collection the
+override applies to, e.g.
+ValueMemberPath eq 'Revenue'
+.
+- **matchType**: `string` — When this object is an item of a collection being edited as overrides, an optional
+type that narrows which items of the target's collection the override applies to.
 - **properties**: `IgcPropertyEditorPropertyDescriptionCollection`
 - **findByName**(name: string): any
 
@@ -393,6 +409,16 @@ Event arguments for the SelectionChanged event.
 - **constructor**(list?: IgcPropertyEditorDescriptionObject[]): IgcPropertyEditorDescriptionObjectCollection
 
 ### [IgcPropertyEditorPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcPropertyEditorPanelComponent)
+Simulated input, delegated to the editor row the path names.
+The panel builds each of its rows as a tool action and hands them to a toolbar, so
+input into it is input into one of those actions and the walk is the same one the
+toolbar does: this level consumes the name that addresses the row, and the action
+takes the rest.
+tile.SimulateInput(Click, new[] { "editor", "Title", ... }, ...)
+tile consumes "editor" -> this consumes "Title" -> the action
+Which matters because the editor is how a tile is configured by hand: a scenario
+that changes a setting through it is exercising the path a user takes, rather than
+setting a property on the tile and assuming the two agree.
 
 - **constructor**(): IgcPropertyEditorPanelComponent
 - **actualProperties**: `IgcPropertyEditorPropertyDescriptionComponent[]` — The properties actually present in the editor. Do not directly modify this array.
@@ -414,6 +440,7 @@ This array's contents can be modified by using the properties property or provid
 - **isWrappingEnabled**: `boolean`
 - **properties**: `IgcPropertyEditorPropertyDescriptionCollection` — A collection of manually added properties for the editor.
 - **rowHeight**: `number` — Gets or Sets the property name that contains the values.
+- **simulateInputCompleted**: `any` — Raised when input delegated into a row has finished its asynchronous work.
 - **target**: `any`
 - **textColor**: `string` — Gets or sets the color to use for the text of the component.
 - **updateMode**: `PropertyEditorPanelUpdateMode` — Gets or Sets the property name that contains the values.
@@ -424,12 +451,16 @@ This array's contents can be modified by using the properties property or provid
 - **connectedCallback**(): void
 - **destroy**(): void
 - **disconnectedCallback**(): void
+- **exportSerializedVisualData**(): string — Returns a serialized copy of the exported visual model.
+The panel lays its rows out as tool actions in a toolbar, so its display list is
+that toolbar panel and there is nothing to assemble here -- it just asks for it.
 - **findByName**(name: string): any
 - **notifyClearItems**(): void — Manually notifies the checkboxlist's grid that the data it has bound to has been cleared and needs to be re-examined.
 This should not be called if the data that the grid is bound to is already observable.
 - **notifyInsertItem**(index: number, newItem: any): void
 - **notifyRemoveItem**(index: number, oldItem: any): void
 - **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **updateStyle**(): void
 - static **register**(): void
 
@@ -458,6 +489,8 @@ This should not be called if the data that the grid is bound to is already obser
 - **constructor**(): IgcPropertyEditorPropertyDescriptionComponent
 - static **htmlTagName**: `string`
 - **buttonClicked**: `any`
+- **category**: `string` — The heading the row is shown under. Rows of a category are gathered under one heading,
+placed where the category's first row would be.
 - **changed**: `any`
 - **coercedComplexValue**: `IgcPropertyEditorDescriptionObject`
 - **coercedComplexValues**: `IgcPropertyEditorDescriptionObjectCollection`
@@ -470,6 +503,12 @@ This should not be called if the data that the grid is bound to is already obser
 - **dropDownValues**: `string[]`
 - **editorWidth**: `number`
 - **elementDescriptionType**: `string`
+- **hasModifiedValue**: `boolean` — Whether this property's value has been set explicitly, by the user editing it or by
+whoever supplied the description, rather than reflecting the target's current value.
+Deliberately raises no change notification: it records where the value came from and
+changes nothing the panel displays, so it must not cause the panel to rebuild.
+- **isAdHoc**: `boolean` — Whether the row was added to the editor rather than suggested for it. Such a row can
+be removed again, and it is only applied once it has been given a value.
 - **label**: `string`
 - **labelWidth**: `number`
 - **max**: `number`
@@ -479,6 +518,9 @@ This should not be called if the data that the grid is bound to is already obser
 - **properties**: `IgcPropertyEditorPropertyDescriptionCollection`
 - **propertyDescriptionType**: `string`
 - **propertyPath**: `string`
+- **resolvesCurrentValue**: `boolean` — Whether the row's value, until it is edited, is the one in effect on the target, which
+the target is asked for. For properties whose value in effect is only known once the
+target has rendered, such as a series' brush coming from its chart's palette.
 - **shouldOverrideDefaultEditor**: `boolean`
 - **step**: `number`
 - **subtitle**: `string`
@@ -685,9 +727,9 @@ Represents base class for all tool actions in toolbar
 - **actualPaddingTop**: `number`
 - **actualSubPanelRowHeight**: `number`
 - **actualSubtitleTextColor**: `string` — Gets the actual label text color.
-- **actualSubtitleTextStyle**: `FontInfo` — Gets the actual font used.
+- **actualSubtitleTextStyle**: `string` — Gets the actual font used.
 - **actualTextColor**: `string` — Gets the actual label text color.
-- **actualTextStyle**: `FontInfo` — Gets the actual font used.
+- **actualTextStyle**: `string` — Gets the actual font used.
 - **afterId**: `string` — Gets or sets the Id of the action that this action will be inserted after.
 Subsequent actions will continue to insert after the target action, following
 the original action that set this property. If using this property do not use the
@@ -746,6 +788,7 @@ overlaid onto the generated actions.
 - **paddingTop**: `number`
 - **parentId**: `string`
 - **performed**: `any`
+- **simulateInputCompleted**: `any`
 - **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel if different than default
 - **subtitle**: `string` — Gets or sets the subtitle of the tool.
 - **subtitleTextColor**: `string` — Gets or sets the label text color.
@@ -765,6 +808,7 @@ overlaid onto the generated actions.
 - **exportVisualData**(): any
 - **findByName**(name: string): any
 - **openSubMenu**(): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - static **_createFromInternal**(internal: any): IgcToolActionComponent
 
 ### [IgcToolActionEventDetail](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionEventDetail)
@@ -801,19 +845,11 @@ Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionFieldSelectorComponent
 - static **htmlTagName**: `string`
-- **actualPaddingBottom**: `number`
-- **actualPaddingLeft**: `number`
-- **actualPaddingRight**: `number`
-- **actualPaddingTop**: `number`
 - **aggregations**: `IgcToolActionFieldSelectorAggregationsCollection` — Gets or sets a list of aggregations to use, if null a default list is used instead.
 If list provided has custom aggregations the data source is never updated.
 - **dataSource**: `IDataSource` — Gets or sets if the tool action is checked.
 - **fieldType**: `ToolActionFieldSelectorType` — Gets or sets if the tool action is checked.
 - **legendTarget**: `any`
-- **paddingBottom**: `number`
-- **paddingLeft**: `number`
-- **paddingRight**: `number`
-- **paddingTop**: `number`
 - **selectedAggregations**: `IgcToolActionFieldSelectorSelectedAggregationsCollection` — Used to set default values when using custom aggregations, will be overriden otherwise
 - **singleSelection**: `boolean` — Gets or sets if the list only takes one selection at a time.
 - **updateDataSource**: `boolean` — Gets or sets if the data source has to be updated when changes are made.
@@ -882,6 +918,7 @@ Represents base class for all tool actions in toolbar
 - **arrowStroke**: `string` — Gets or sets the stroke color of the arrow icon.
 - **showArrowIcon**: `boolean` — Gets or sets whether the arrow icon should be shown.
 - static **observedAttributes**: `string[]`
+- **closeSubmenu**(): void
 - **connectedCallback**(): void
 - **disconnectedCallback**(): void
 - **exportVisualData**(): any
@@ -891,6 +928,18 @@ Represents base class for all tool actions in toolbar
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionLabelComponent
+- static **htmlTagName**: `string`
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
+### [IgcToolActionLabelMenuComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionLabelMenuComponent)
+A labeled row whose trailing button opens a popup panel. Labels nested inside
+a popup continue to use ToolActionLabel and drill down within that popup.
+
+- **constructor**(): IgcToolActionLabelMenuComponent
 - static **htmlTagName**: `string`
 - static **observedAttributes**: `string[]`
 - **connectedCallback**(): void
@@ -983,6 +1032,23 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 - static **register**(): void
 
+### [IgcToolActionSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSliderComponent)
+A row holding a single-thumb slider over a numeric range.
+The property editor's Slider rows build one of these. The slider is the native slider proxy,
+which the XAML platforms back with a multi slider holding one thumb.
+
+- **constructor**(): IgcToolActionSliderComponent
+- static **htmlTagName**: `string`
+- **max**: `number` — Gets or sets the maximum value for the slider.
+- **min**: `number` — Gets or sets the minimum value for the slider.
+- **step**: `number` — Gets or sets the step the slider value snaps to.
+- **value**: `number` — Gets or sets the value for the slider.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **exportVisualData**(): any
+- static **register**(): void
+
 ### [IgcToolActionSubPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSubPanelComponent)
 Represents base class for all tool actions in toolbar
 
@@ -1020,6 +1086,8 @@ This array's contents can be modified by using the actions property or providing
 - **autoGeneratedActions**: `IgcToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
 - **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cascadePopupAlignment**: `CascadePopupAlignment` — Gets or sets the vertical alignment strategy for cascade popups.
+Only applies when NestedActionMode is Cascading.
 - **cellTextStyle**: `string` — Gets or sets the text style.
 - **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this toolbar's sub-menus.
 - **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this toolbar's sub-menus.
@@ -1044,7 +1112,9 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **i**: `Toolbar`
 - **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
 - **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **inputBorderColor**: `string` — Gets or sets the border color of the inputs in the toolbar's menus, such as number and text inputs.
 - **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
+- **nestedActionMode**: `NestedActionMode` — Gets or sets the mode used when displaying nested actions.
 - **onCommand**: `any` — Event raised when a command is triggered in the toolbar.
 - **orientation**: `ToolbarOrientation` — Gets or sets the orientation of the toolbar.
 - **rowHeight**: `number` — Gets or sets the row height that should be used.
@@ -1060,6 +1130,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **separatorVerticalPaddingTop**: `number` — Gets or sets the top padding for separators in the vertical orientation.
 - **showOnHover**: `boolean` — Gets or sets if the tool actions should display their submenus on mouse hover.
 - **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
+- **simulateInputCompleted**: `any`
 - **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
 - **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
 - **subMenuClosing**: `any` — Event raised when a submenu is closed on the toolbar
@@ -1069,6 +1140,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **subtitleTextStyle**: `string` — Gets or sets the text style for subtitles.
 - **target**: `any` — Gets or sets a target component which the toolbar can request actions from.
 - **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipAnimationDuration**: `number` — Gets or sets the animation duration in milliseconds for dropdown menus when they open and close.
 - **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
 - **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
 - **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
@@ -1104,7 +1176,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **getMultiPathSVGFromCache**(iconCollection: string, iconName: string): string[]
 - **getStringContextItem**(key: string): string
 - **isOpen**(): boolean — Is a dropdown menu or tooltip currently open.
-- **onCommandStateChanged**(id: string, type: any, value: any): void
+- **onCommandStateChanged**(commandId: string, type: any, value: any): void
 - **registerIconFromDataURL**(iconCollection: string, iconName: string, dataURL: string): void
 - **registerIconFromText**(iconCollection: string, iconName: string, iconText: string): void
 - **registerIconSource**(iconCollection: string, iconName: string, source: any): void
@@ -1120,6 +1192,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **setExternalIntContextItem**(key: string, value: any): void
 - **setIntContextItem**(key: string, value: number): void
 - **setStringContextItem**(key: string, value: string): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **updateStyle**(): void
 - static **register**(): void
 
@@ -1176,6 +1249,7 @@ This array's contents can be modified by using the actions property or providing
 - **actualHoverBackgroundColor**: `string`
 - **actualIconFill**: `string` — Gets the actual icon fill color.
 - **actualIconStroke**: `string` — Gets the actual icon stroke color.
+- **actualInputBorderColor**: `string` — Gets the actual border color of the inputs in the tool panel.
 - **actualMenuArrowStroke**: `string` — Gets the actual stroke color for all icon menu dropdown arrows.
 - **actualRowHeight**: `number` — Gets the actual row height used by the panel.
 - **actualSeparatorBackgroundColor**: `string`
@@ -1190,6 +1264,7 @@ This array's contents can be modified by using the actions property or providing
 - **actualSubmenuBackgroundColor**: `string`
 - **actualSubtitleTextColor**: `string`
 - **actualTextColor**: `string`
+- **actualToolTipAnimationDuration**: `number` — Gets the actual animation duration in milliseconds used by dropdown menus when they open and close.
 - **actualToolTipBackgroundColor**: `string` — Gets the actual tooltip background color.
 - **actualToolTipCornerRadius**: `number` — Gets the actual tooltip corner radius.
 - **actualToolTipElevation**: `number` — Gets the actual shadow elevation used by the tooltip.
@@ -1198,6 +1273,8 @@ This array's contents can be modified by using the actions property or providing
 - **actualUncheckedBorderColor**: `string` — Gets the actual border color of the radio when in the unchecked state.
 - **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
 - **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cascadePopupAlignment**: `CascadePopupAlignment` — Gets or sets the vertical alignment strategy for cascade popups.
+Only applies when NestedActionMode is Cascading.
 - **cellTextStyle**: `string` — Gets or sets the text style for the panel.
 - **checkboxListScrollbarActiveBackground**: `string` — Gets or sets the scrollbar thumb active (dragging) background color for checkbox lists hosted in this tool panel's actions.
 - **checkboxListScrollbarBackground**: `string` — Gets or sets the scrollbar background color for checkbox lists hosted in this tool panel's actions.
@@ -1224,6 +1301,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **i**: `ToolPanel`
 - **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
 - **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **inputBorderColor**: `string` — Gets or sets the border color of the inputs in the tool panel, such as number and text inputs.
 - **isOpen**: `boolean`
 - **itemSpacing**: `number` — Gets or sets the spacing between items
 - **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
@@ -1249,6 +1327,7 @@ always keep the dropdown open during a hover open and will require an extra clic
 - **subtitleTextColor**: `string` — Gets or sets the color to use for the subtitle of the component.
 - **subtitleTextStyle**: `string` — Gets or sets the subtitle text style for the panel.
 - **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipAnimationDuration**: `number` — Gets or sets the animation duration in milliseconds for dropdown menus when they open and close.
 - **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
 - **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
 - **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
@@ -1347,12 +1426,24 @@ always keep the dropdown open during a hover open and will require an extra clic
 
 ## Enumerations
 
+### [CascadePopupAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/CascadePopupAlignment)
+
+- **Far** = 1 — The bottom edge of the cascade popup aligns with the bottom of the triggering row.
+- **Middle** = 2 — The cascade popup is vertically centered relative to the triggering row.
+- **Near** = 0 — The top edge of the cascade popup aligns with the top of the triggering row.
+
 ### [ComboEditorCloneDataSourceFilterOperation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ComboEditorCloneDataSourceFilterOperation)
 Indicates the current operation underway for the cloned data source.
 
 - **None** = 0
 - **TextToValue** = 2
 - **ValueToText** = 1
+
+### [ComboEditorDisplayMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ComboEditorDisplayMode)
+Indicates how the ComboEditor presents its selection while the list is closed.
+
+- **Icon** = 1 — The selected item's icon (see IconField), as a button that opens the list.
+- **Text** = 0 — The selected item's text, in an editable input.
 
 ### [ComboEditorSelectedItemChangeType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/ComboEditorSelectedItemChangeType)
 Indicates what type of operation is taking place when the selected row, value, or text in the combo box changes.
@@ -1388,6 +1479,8 @@ Indicates the selection mode to use for the grid.
 
 ### [NestedActionMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/NestedActionMode)
 
+- **Cascading** = 1 — Each submenu level opens in its own popup, positioned adjacent
+to the triggering row (cascading desktop-style menus).
 - **Replace** = 0 — Replaces the current tool action view with the nested view.
 
 ### [PropertyEditorPanelUpdateMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/enums/PropertyEditorPanelUpdateMode)

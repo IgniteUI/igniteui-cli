@@ -503,6 +503,8 @@ describe('addPackageVersions', () => {
     IgrButton: { package: 'igniteui-react', version: '19.9.1' },
     IgrLegacy: { package: 'igniteui-react-legacy' },
     'webcomponents:IgcBreadcrumbsComponent': { package: 'igniteui-webcomponents', version: '7.4.1' },
+    'IgbCombo<TValue, TItem>': { package: 'IgniteUI.Blazor.Lite', version: '1.0.1' },
+    IgbButton: { package: 'IgniteUI.Blazor', version: '26.1.98' },
   };
   const loader = {
     get: (platform: string, name: string) => entries[name] ?? entries[`${platform}:${name}`],
@@ -529,6 +531,12 @@ describe('addPackageVersions', () => {
   it("looks a component up in the framework its prefix names, not the doc's", () => {
     expect(addPackageVersions(doc('IgcBreadcrumbsComponent'), 'angular', loader)).toContain(
       '\npackage: igniteui-webcomponents@7.4.1\n'
+    );
+  });
+
+  it('keeps commas inside generic arguments as part of the component name', () => {
+    expect(addPackageVersions(doc('IgbCombo<TValue, TItem>, IgbButton'), 'blazor', loader)).toContain(
+      '\ncomponent: IgbCombo<TValue, TItem>, IgbButton\npackage: IgniteUI.Blazor.Lite@1.0.1, IgniteUI.Blazor@26.1.98\n'
     );
   });
 

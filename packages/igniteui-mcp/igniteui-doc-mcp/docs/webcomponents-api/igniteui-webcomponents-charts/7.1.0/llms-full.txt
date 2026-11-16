@@ -1,10 +1,10 @@
-# Ignite UI for Web Components Charts v7.1.0 — Full API Reference
+# Ignite UI for Web Components Charts v7.1.1-beta.19 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Charts package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Charts package (7.1.1-beta.19). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-charts
-Version: 7.1.0
+Version: 7.1.1-beta.19
 
 ## Classes
 
@@ -267,6 +267,12 @@ Represents event arguments base class for the AssigningCategoryStyleEventArgsBas
 
 - **constructor**(): IgcAssigningCategoryStyleEventArgsBase
 
+### [IgcAssigningFlowStyleEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcAssigningFlowStyleEventArgs)
+Represents event arguments for the AssigningStyle event of a Flow series. StartIndex/EndIndex
+identify the single node the event is being raised for (no bucket ranges — flow has no buckets).
+
+- **constructor**(): IgcAssigningFlowStyleEventArgs
+
 ### [IgcAssigningPolarMarkerStyleEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcAssigningPolarMarkerStyleEventArgs)
 Represents event arguments class for the AssigningPolarStyleEvent
 
@@ -463,6 +469,9 @@ The ActualMajorStroke property is used for ActualMajorStroke of the axis.
 The ActualMinorStroke property is used for ActualMinorStroke of the axis.
 - **actualStroke**: `string` — Gets or sets the effective stroke used for the axis.
 - **annotations**: `IgcAxisAnnotationCollection` — Gets the current annotations for the axis.
+- **areAnnotationsVisible**: `boolean` — Gets or sets the AreAnnotationsVisible property. If true, the axis' annotations will be rendered.
+- **areLabelsVisible**: `boolean` — Gets or sets the AreLabelsVisible property. If true, the axis' labels will be rendered.
+- **areTickMarksVisible**: `boolean` — Gets or sets the AreTickMarksVisible property. If true, the axis' tickmarks will be rendered.
 - **axisInternal**: `Axis`
 - **coercionMethods**: `any` — Gets or sets the coercion methods to use when loading data from data sources.
 Should be specified before setting any member paths, if being used. Setting it later
@@ -531,6 +540,7 @@ The IsDisabled property is used to decide if the axis will not be rendered.
 - **isInverted**: `boolean` — Gets or sets the IsInverted property.
 
 Gets or sets the IsInverted property.
+- **isLabelPanelVisible**: `boolean` — Gets or sets the IsLabelPanelVisible property. If true, the axis label panel will be rendered.
 - **isNumeric**: `boolean` — Gets or sets if the current axis is of numeric axis type
 
     Gets or sets if the current axis is of numeric axis type
@@ -789,7 +799,7 @@ Represents a IgxDataChartComponent bar series.
 - **disconnectedCallback**(): void
 - **getItemSpan**(): number — For a category plotted series, returns the current width of the items within the categories. This only returns a value if the items have some form of width (e.g. columns, bars, etc.) otherwise 0 is returned.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
-- **scrollIntoView**(item: any): boolean — Scrolls the series to display the item for the specified data item.
+- **scrollIntoView**(item: any): boolean — Returns the range requirement of this series on the given axis.
 The series is scrolled by the minimum amount required to place the specified data item within
 the central 80% of the visible axis.
 - static **register**(): void
@@ -1467,6 +1477,13 @@ Note: Transitions are not currently supported for stacked series.
 
 Set IsTransitionInEnabled to true if you want your chart series to animate into position when the chart is loading into view.
 - **isValueAxisInverted**: `boolean` — Gets whether the current series shows an area shape.
+- **prefersGroupedCategoryLayout**: `boolean` — Gets whether the current series prefers a grouped category layout (side-by-side
+clustering within a category, e.g. Bar/Column/RangeBar/RangeColumn). Consumed by
+the Legend to decide whether to reverse item order for vertical (bar-oriented)
+layouts so the legend reads bottom-up in the same direction as the category axis.
+Kept as a plain bool virtual on Series so per-partition consumers (Legend) don't
+have to reference category-series-specific interfaces or enums — that would drag
+unrelated types into their partition and defeat the tree-shaking boundaries.
 - **transitionInMode**: `CategoryTransitionInMode` — Gets or sets the method by which to animate the data into the chart when the chart data source is swapped.
 Note: Transitions are not currently supported for stacked series.
 
@@ -1509,6 +1526,9 @@ Represents an annotation layer that displays grouped tooltips for series that us
 - **disconnectedCallback**(): void
 - **findByName**(name: string): any
 - **hideToolTips**(): void — Hides any tooltips presented by the layer, if any.
+- **hideToolTipsImmediate**(): void — Synchronously hides any tooltips presented by the layer without
+depending on a subsequent render. Used by SeriesViewer.HideToolTipImmediate
+during disposal paths.
 - static **register**(): void
 
 ### [IgcCategoryXAxisComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcCategoryXAxisComponent)
@@ -2271,6 +2291,19 @@ EndValueMemberPath
 
 ### [IgcDataChartComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcDataChartComponent)
 Represents a control for viewing series objects.
+This is not another SimulateHover. SimulateHover reaches into the interaction
+manager partway up and needs the chart put into a particular mode first
+(ShouldSimulateHoverMoveCrosshairPoint) before the crosshair and tooltip follow it,
+which is a sign of how far past the real entry point it starts. It stays exactly as
+it is, because the tests already written against it are written against that
+behaviour -- but new simulation goes through here.
+This raises on the event proxy instead, which is the thing the platform itself
+talks to. Everything above it -- hit testing, hover state, tooltips, selection,
+the events the chart surfaces -- runs on the way out exactly as it would for a
+real pointer, and needs no mode set first, because nothing is being faked.
+Input is addressed by position rather than by name. A pointer arrives somewhere and
+the chart decides what is under it; naming a series here would describe a mechanism
+that does not exist, so a path with anything in it is reported unhandled.
 
 - **constructor**(): IgcDataChartComponent
 - **actualAxes**: `IgcAxisComponent[]` — The axes actually present in the chart. Do not directly modify this array.
@@ -2368,6 +2401,10 @@ this.chart.windowScaleVertical="0.75";
 - **connectedCallback**(): void
 - **destroy**(): void — Release any resources held by the control.
 - **disconnectedCallback**(): void
+- **exportSerializedAdditionalState**(): string — Export this chart's additional (non-visual) state.
+The same export DomainChart exposes for its sub chart, offered here for a chart
+used directly rather than inside a domain chart. Unguarded for the script
+compile because the React Native wrappers are generated from it.
 - **exportSerializedVisualData**(): string — Export serialized visual data.
 - **findByName**(name: string): any
 - **notifyContainerResized**(): void — Notification from the containing object that the container has been resized.
@@ -2633,6 +2670,12 @@ This property is ignored when setting ValueFormatSpecifiers or ValueFormatString
 - **exportSerializedVisualData**(): string — Returns the legend visuals expressed as a serialized string.
 - **findByName**(name: string): any
 - **flush**(): void — Forces any pending refresh to the legend to be finished.
+- **flushNonVisual**(): void — Non-visual portion of Flush — empty by design.
+Trace: Flush() -> View.Flush() -> Model.DoRefresh(). DataLegendView.QueueRefresh
+queues exactly Model.DoRefresh via Container.MakePending(Model.DoRefresh, Context),
+so the helper-driven drain in FlushAsync runs the same DoRefresh during
+the legend context's next paint event. Nothing in Flush bypasses
+MakePending in a non-render way that needs explicit invocation here.
 - **getAbbreviatedNumber**(number: number, mode: any, minDigits: number, maxDigits: number): number
 - **getAbbreviatedString**(number: number, mode: any, minDigits: number, maxDigits: number): string
 - **getAbbreviatedSymbol**(number: number, mode: any, minDigits: number, maxDigits: number): string
@@ -3299,6 +3342,9 @@ to appear blurry.
 - **plotAreaPointerLeave**: `any` — Occurs when the pointer leaves the plot area.
 - **plotAreaPointerMove**: `any` — Occurs when the pointer is over the plot area.
 - **plotAreaPointerUp**: `any` — Occurs when the pointer is released over the plot area.
+- **reinferenceRules**: `IgcDataSeriesAdapterReinferenceRuleCollection` — Gets the rules for when a change to the items of the data should make the chart analyze
+the data again, and so possibly choose differently what to show. A change to the data's
+schema, a reset, or the data being replaced always does; these decide the rest.
 - **resolution**: `number` — Gets or sets the rendering resolution for all series in this chart.
 Where n = Resolution, for every n horizontal pixels, combine all items into a single data point.  When Resolution = 0, all data points will be rendered as graphical objects.  Charts with a higher resolution will have faster performance.
 
@@ -3373,6 +3419,7 @@ SeriesRemoved event raised when a series is removed from this chart.
 - **shouldPanOnMaximumZoom**: `boolean` — Gets or sets a whether the chart should pan its content when zoo,ing in passed max zoom level.
 - **shouldSimulateHoverMoveCrosshairPoint**: `boolean` — Gets or sets whether calling SimulateHover should shift the crosshair point.
 - **shouldUseSkeletonStyleForMockData**: `boolean` — Gets or sets whether the chart should use a faded skeleton style for mock data.
+- **simulateInputCompleted**: `any` — Raised when delegated input finishes its asynchronous work.
 - **sortDescriptions**: `IgcChartSortDescriptionCollection` — Gets the current sort that is applied to the grid. Collection can be updated to modify the sort for the grid. Once sort descriptions are in this collection, the grid will no longer listen for changes on their properties.
 - **subtitle**: `string` — Gets or sets text to display below the Title, above the plot area.
 
@@ -3575,6 +3622,23 @@ this.chart.destroy();
 - **ensureDataToolTipValueRowMargin**(): void
 - **ensureDataToolTipValueTextMargin**(): void
 - **exportDomainChartTestingInfo**(): IgcDomainChartTestingInfo
+- **exportSubChartSerializedAdditionalState**(): string — Export the sub chart's additional (non-visual) state.
+The companion to ExportSerializedVisualData, NOT an extension of it. The visual
+data export stays a pure display list so tests assert on what was drawn; this
+carries the state that was never drawn and so cannot be read back from it --
+axis ranges and formats, series member paths, axis bindings. A host combines
+the two.
+This exists because a host does not always share an address space with the
+chart. Where it does, it can walk the chart's own object graph and never needs
+this. Where it does not -- React Native driving a native renderer, Blazor
+driving a JS one -- there is no graph to walk, and the alternative is each such
+host hand-maintaining its own extraction shim that drifts from this code.
+The work lives on the visual-data manager so it stays in the optional module
+and out of trimmed builds; this is only the delegation.
+Unguarded, unlike ExportSerializedVisualData next door, which needs a separate
+script variant because it names ChartVisualData and calls Serialize on it. This
+returns a string straight from the manager, so one declaration serves every
+platform.
 - **findByName**(name: string): any
 - **finishAnnotationFlow**(flowInformation: IgcUserAnnotationInformation): void
 - **flush**(): void — Forces any pending refresh to the chart to be finished.
@@ -3583,6 +3647,10 @@ this.chart.destroy();
 Method flush used to Forces any pending deferred work to render on the chart before continuing.
 
 this.chart.flush();
+- **flushNonVisual**(): void — Non-visual portion of Flush — data adapter resolution, series
+repopulation, and the underlying SeriesViewer's non-visual flush.
+Skips the SeriesViewer's render-scheduler flush so cross-context
+rendering doesn't happen here.
 - **getDesiredToolbarActions**(): ToolActionInfo[]
 - **hideToolTip**(): void — Hides the active main tooltip, if displayed.
 
@@ -3590,6 +3658,10 @@ this.chart.flush();
 Use the HideToolTip method to hide the active tooltip.
 
 this.chart.hideToolTip();
+- **hideToolTipImmediate**(): void — Hides the active main tooltip, if displayed, and synchronously
+dismisses the underlying tooltip views without depending on a
+subsequent render. Intended for disposal paths where rendering
+against the chart's surface is no longer safe.
 - **loadAnnotationsFromJson**(jsonString: string): void
 - **notifyClearItems**(source_: any): void — Used to manually notify the chart that the data source has reset or cleared its items.
 
@@ -3618,11 +3690,13 @@ provideContainer method provide container for the control.
 - **removeCommandAvailabilityListener**(listener: ICommandAvailabilityListener): void
 - **removeCommandStateChangedListener**(listener: ICommandStateChangedListener): void
 - **replayTransitionIn**(): void — Replays transition-in animation on all series in the chart.
+- **requestReinference**(): void — Analyzes the data again now, whatever the reinference rules would say.
 - **resetAnnotations**(): void
 - **resetZoom**(): void — Resets the zoom level to default.
 - **saveAnnotationsToJson**(): string
 - **simulateClick**(point: IgPoint): void
 - **simulateHover**(point: IgPoint): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **simulatePlotPointerUp**(point: IgPoint): void
 - **simulatePressAndHold**(point: IgPoint): void
 - **startCreatingAnnotation**(): void
@@ -3711,6 +3785,11 @@ to appear blurry.
 - **flush**(): void — Use to force the doughnut chart to finish any deferred work before printing or evaluating its visual.
 This should only be called if the visual of the doughnut chart needs to be synchronously saved or evaluated.
 Calling this method too often will hinder the performance of the doughnut chart.
+- **flushNonVisual**(): void — Non-visual portion of Flush — empty by design.
+Trace: Flush() iterates Series, AnalyzeRings (data-only side-effects
+already happen during property changes), then calls arc.Flush() per
+arc — each arc's Flush is a sub-PieChartBase Flush, which is itself
+driven from its rendering context's paint events. Drain handles all.
 - **getCenterCoordinates**(): IgPoint — Gets the center coordinates of the doughnut chart's center presenter.
 - **getContainerID**(): string — Gets the ID of the UI container.
 - **getHoleRadius**(): number — Gets the hole radius of the doughnut chart's center presenter.
@@ -4387,6 +4466,64 @@ number offset= series.getOffsetValue();
 - **getSeriesVolumeValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
+### [IgcFlowSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcFlowSeriesComponent)
+Base class for the Flow series family (Sankey and future flow variants). This is a fork of the
+category-series family rather than a subclass of it: a category series assumes one value per x
+(category) slot and drives coloring/styling/highlight/selection/hit-test through category
+buckets and a category interaction manager, none of which hold for a flow series (many nodes per
+layer, plus a separate link collection). FlowSeries keeps the shared Series/MarkerSeries render
+pipeline and adds the flow-specific pieces — FlowFrame geometry, a per-node/link render manager
+(styling Phase B), geometry hit-test, and node/link validation — while deliberately omitting the
+bucket / marker-collision / value-per-x machinery.
+Concrete flow series (e.g. SankeySeries) provide the resolved node/link model, projection, and
+drawing; FlowSeries provides the family scaffolding they hang on.
+
+- **constructor**(): IgcFlowSeriesComponent
+- **actualStyleMappings**: `IgcFlowStyleMappingComponent[]`
+- **assigningStyle**: `any` — Event raised as each node band / ribbon is about to be styled, letting a handler override
+the fill/stroke/opacity for that element. Flow analog of
+CategorySeries.AssigningCategoryStyle
+.
+- **contentStyleMappings**: `IgcFlowStyleMappingComponent[]`
+- **isTransitionInEnabled**: `boolean` — Gets or sets whether the series should transition into the plot area when a new data source
+is assigned. (Widget surface promoted in Phase B.)
+- **styleMappings**: `IgcFlowStyleMappingCollection` — Declarative per-node style bindings: each
+FlowStyleMapping selects nodes (by
+label and/or value range) and supplies their fill/outline. Flow analog of TreeMap's node
+style-mappings; resolved in
+Int32,System.Boolean) before the highlight pass.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- **getCategoryWidth**(): number — The value-space width of a category slot.
+- **getOffsetValue**(): number — The value-space offset a flow bucket starts at (0 for flow — no bar offset).
+
+### [IgcFlowStyleMappingCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcFlowStyleMappingCollection)
+
+- **constructor**(list?: IgcFlowStyleMappingComponent[]): IgcFlowStyleMappingCollection
+
+### [IgcFlowStyleMappingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcFlowStyleMappingComponent)
+Represents a style to apply to the set of Flow nodes matched by its Name and/or value range.
+
+- **constructor**(): IgcFlowStyleMappingComponent
+- static **htmlTagName**: `string`
+- **fill**: `string` — Gets or sets the fill brush applied to matched node bands.
+- **maximumValue**: `number` — Gets or sets the inclusive maximum node value this mapping applies to (NaN = unbounded).
+- **minimumValue**: `number` — Gets or sets the inclusive minimum node value this mapping applies to (NaN = unbounded).
+- **nodeLabel**: `string` — Gets or sets the node label (or id) this mapping applies to. When set, the mapping applies
+only to the node whose label equals this value. (Named NodeLabel, not Name, because Name is
+the reserved renderer-element identity — a widget property called Name would be overwritten
+with the element's synthetic id during marshaling.)
+- **outline**: `string` — Gets or sets the outline brush applied to matched node bands.
+- static **observedAttributes**: `string[]`
+- **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **_createFromInternal**(internal: any): IgcFlowStyleMappingComponent
+- static **register**(): void
+
 ### [IgcForceIndexIndicatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcForceIndexIndicatorComponent)
 Represents a IgxDataChartComponent Force Index indicator series.
 Default required members: Close, Volume
@@ -4520,6 +4657,12 @@ Use ui.selected to check if slice became selected.
 - **flush**(): void — Use to force the funnel chart to finish any deferred work before printing or evaluating its visual.
 This should only be called if the visual of the funnel chart needs to be synchronously saved or evaluated.
 Calling this method too often will hinder the performance of the funnel chart.
+- **flushNonVisual**(): void — Non-visual portion of Flush — empty by design.
+Trace: Flush() -> Connector.RefreshVisuals(). The name is accurate —
+it drives the visual render. The funnel's data-side updates are
+already triggered through ordinary property changes, not Flush; so
+nothing data-only bypasses MakePending. The helper-driven drain
+handles any queued visual work as the context paints.
 - **notifyClearItems**(source_: any): void — Manually notifies the chart's data source that the data it has bound to has been cleared and needs to be re-examined.
 This should not be called if the data that the chart is bound to is already observable.
 - **notifyContainerResized**(): void
@@ -4983,6 +5126,15 @@ MarkerSeries represents the base class for series containing markers.
 Example:
 
 - **constructor**(): IgcMarkerSeriesComponent
+- **actualLegendItemBadgeMarkerHeight**: `number` — Gets the actual height (in device-independent pixels) of the marker drawn in the legend badge for this series. Reflects scaling
+applied via LegendItemBadgeMarkerSizeScaling when MarkerSize is non-default; otherwise equals the platform default.
+- **actualLegendItemBadgeMarkerWidth**: `number` — Gets the actual width (in device-independent pixels) of the marker drawn in the legend badge for this series. Reflects scaling
+applied via LegendItemBadgeMarkerSizeScaling when MarkerSize is non-default; otherwise equals the platform default.
+- **actualLegendItemBadgeOverlaidMarkerHeight**: `number` — Gets the actual height (in device-independent pixels) of the marker overlay used inside a line-with-marker legend badge.
+Defaults to the platform's inset marker size and scales with MarkerSize and LegendItemBadgeMarkerSizeScaling.
+- **actualLegendItemBadgeOverlaidMarkerWidth**: `number` — Gets the actual width (in device-independent pixels) of the marker overlay used inside a line-with-marker legend badge.
+Defaults to the platform's inset marker size and scales with MarkerSize and LegendItemBadgeMarkerSizeScaling.
+Kept smaller than the cell so the underlying line stays visible behind the marker.
 - **actualMarkerBrush**: `string` — Gets the effective marker brush for the current series object.
 
 ActualMarkerBrush property gets the effective marker brush for the current series object. For example, you can use it like this:
@@ -5005,6 +5157,11 @@ HasMarkers property is overriden, it returns whether the current series supports
  let gotMarkers: boolean = this.series.hasMarkers;
 - **hasVisibleMarkers**: `boolean` — Returns whether the current series has a visible marker style.
 - **isCustomMarkerCircular**: `boolean` — Gets or sets whether the marker for the current series object should be treated as circular.
+- **legendItemBadgeMarkerSizeScaling**: `LegendItemBadgeMarkerSizeScaling` — Gets or sets how the legend badge size scales with the series' MarkerSize. Applies when the
+resolved badge shape draws a marker — that's Marker (always) and Line/LineWithMarker when
+LegendItemBadgeMode is MatchSeries (the overlaid-marker variant). No effect on shape-only
+badges (Circle, Square, Bar, Column) or on Line in Simplified mode.
+Scaling only takes effect when MarkerSize is set to a non-default value.
 - **markerBrush**: `string` — Gets or sets the brush that specifies how the current series object's marker interiors are painted.
 
 MarkerBrush property gets or sets the brush that specifies how the current series object's marker interiors are painted. You can use it like this:
@@ -5625,6 +5782,12 @@ The default zero value is equivalent to 3 o'clock.
 - **flush**(): void — Use to force the pie chart to finish any deferred work before printing or evaluating its visual.
 This should only be called if the visual of the pie chart needs to be synchronously saved or evaluated.
 Calling this method too often will hinder the performance of the pie chart.
+- **flushNonVisual**(): void — Non-visual portion of Flush — empty by design.
+Trace: Flush() -> View.Flush() body is if (_dirty) Undirty() on the
+JS-shared PieChartBaseView. Undirty is the visual render path and is
+driven from paint events naturally. PieChartViewManager.QueueWork
+queues via Container.MakePending(work, MainContext) for any deferred
+work, so the helper-driven drain handles it.
 - **notifyClearItems**(source_: any): void — Manually notifies the pie chart's data source that the data it has bound to has been cleared and needs to be re-examined.
 This should not be called if the data that the pie chart is bound to is already observable.
 - **notifyContainerResized**(): void — Notification from the containing object that the container has been resized.
@@ -6120,6 +6283,39 @@ in and halfway out.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 - static **register**(): void
 
+### [IgcRadialSankeySeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcRadialSankeySeriesComponent)
+A radial (circular) projection of the
+SankeySeries layered-graph flow diagram.
+The entire flow model — node derivation, layering, stacking, face offsets, the interpolated
+transition buffers, item coloring, highlight / selection, and the auto-layout adapter — is
+inherited from
+SankeySeries unchanged: the resolved model is value-space, so it is
+projection-independent. This class only re-projects that model to a polar layout — the stage
+(layer) axis becomes an angle (
+RadialSankeySeries.AngleAxis, a
+CategoryAngleAxis) and the
+stacked-flow axis becomes a radius (
+RadialSankeySeries.RadiusAxis, a
+NumericRadiusAxis) —
+so node bands are annular sectors and ribbons sweep around the circle. Because the value-space
+frame is what the animation machinery interpolates, enter/exit/morph animation works identically;
+each frame is simply re-projected to polar geometry.
+
+- **constructor**(): IgcRadialSankeySeriesComponent
+- static **htmlTagName**: `string`
+- **angleAxis**: `IgcCategoryAngleAxisComponent` — Gets or sets the angle axis (stages) for the current RadialSankeySeries object. Layers are
+projected to angles through this axis.
+- **angleAxisName**: `string` — Gets or sets the name to use to resolve angleAxis from markup.
+- **radiusAxis**: `IgcNumericRadiusAxisComponent` — Gets or sets the radius axis (stacked flow value) for the current RadialSankeySeries object.
+Node Low/High offsets are projected to radii through this axis.
+- **radiusAxisName**: `string` — Gets or sets the name to use to resolve radiusAxis from markup.
+- static **observedAttributes**: `string[]`
+- **bindAxes**(axes: IgcAxisComponent[]): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- static **register**(): void
+
 ### [IgcRangeAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcRangeAreaSeriesComponent)
 Represents a IgxDataChartComponent range area series.
 
@@ -6367,6 +6563,157 @@ IgxDoughnutChartComponent series.
 - **disconnectedCallback**(): void
 - **findByName**(name: string): any
 - **sychronizeCollections**(): void
+- static **register**(): void
+
+### [IgcSankeyLayoutAdapter](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcSankeyLayoutAdapter)
+Computes a Sankey node/link layout from a flat, "regular" data source on demand, so a
+SankeySeries can be driven from just an edge list (and an optional node overlay)
+without hand-authoring node layers. The heavy lifting is the same resumable, time-sliced
+SankeyLayout
+engine the series uses in its in-series edge-list mode; standing it up as a
+separate widget lets one computed layout be shared/reused and configured independently.
+Mirrors the standalone-converter pattern (ItfConverter / data-source widgets): inputs are
+bound as dependency properties, the computation runs off the UI thread's dispatch context in
+bounded slices, and
+SankeyLayoutAdapter.LayoutCompleted fires when a fresh result is published.
+
+- **constructor**(): IgcSankeyLayoutAdapter
+- **dimensionMemberPaths**: `string[]` — Gets or sets an ordered set of member paths naming the dimension (category) columns of a tidy
+table bound to
+SankeyLayoutAdapter.LinkItemsSource. When two or more are supplied the adapter runs
+in tidy/alluvial mode: each column becomes a layer, the distinct values in a column become its
+nodes, and each row contributes a link between its value in one column and the next (weighted
+by
+SankeyLayoutAdapter.LinkValueMemberPath, aggregated). Supersedes the source/target edge paths.
+- **layoutStatusChanged**: `any` — Raised (0..100) as an on-demand, time-sliced computation progresses; fires at 100 when the
+derived layout is published.
+- **linkAggregation**: `SankeyLinkAggregationMode` — Gets or sets whether duplicate (source,target) edges are summed or kept separate.
+- **linkIdMemberPath**: `string` — Optional member path for a link's durable identifier (from LinkItemsSource). When supplied,
+this id gives the link a stable identity across data changes; otherwise the bound row's
+object identity is used.
+- **linkItemsSource**: `any[]` — Gets or sets the flat edge collection. Each row is a weighted directed edge referencing a
+source and target node by id; the node set is derived from the edge endpoints.
+- **linkSourceMemberPath**: `string` — Member path for a link's source node id (from LinkItemsSource).
+- **linkTargetMemberPath**: `string` — Member path for a link's target node id (from LinkItemsSource).
+- **linkValueMemberPath**: `string` — Member path for a link's value/weight (from LinkItemsSource).
+- **nodeAlignment**: `SankeyNodeAlignment` — Gets or sets how derived nodes are positioned into layers.
+- **nodeIdMemberPath**: `string` — Member path for a node's identifier (from NodeItemsSource).
+- **nodeItemsSource**: `any[]` — Gets or sets an optional node-metadata overlay keyed by id: supplies labels and/or pinned
+layers for specific ids. Ids not present here are auto-created (label = id, layer computed).
+- **nodeLabelMemberPath**: `string` — Member path for a node's display label (from NodeItemsSource).
+- **nodeLayerMemberPath**: `string` — Optional member path for a node's pinned layer (from NodeItemsSource). When a row supplies a
+finite layer the engine pins that node to it instead of computing its layer.
+- **findByName**(name: string): any
+
+### [IgcSankeyLayoutStatusEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcSankeyLayoutStatusEventArgs)
+Reports the progress (0 to 100) of an on-demand, time-sliced Sankey auto-layout computation.
+
+- **constructor**(): IgcSankeyLayoutStatusEventArgs
+- **currentStatus**: `number` — The current status, from 0 to 100, of the in-progress auto-layout computation.
+
+### [IgcSankeySeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcSankeySeriesComponent)
+Represents a Sankey series in the IgxDataChartComponent.
+Displays a node/link (layered-graph) flow diagram: nodes are arranged into
+layers along the category (x) axis and stacked by value along the numeric (y) axis,
+and weighted links (ribbons) connect them.
+Nodes are bound through the base
+Series.ItemsSource (primary
+items); links are bound through
+SankeySeries.LinkSource (a secondary source that
+references nodes by id) — mirroring ScatterTriangulationSeries' vertices/triangles.
+
+- **constructor**(): IgcSankeySeriesComponent
+- static **htmlTagName**: `string`
+- **dataLegendScope**: `SankeyDataLegendScope` — Gets or sets what the series describes in a data legend for the cursor position:
+SankeyDataLegendScope.Stage (the default) lists, for every node in the closest stage,
+the ribbons meeting it on the cursor's side, grouped and totalled per node;
+SankeyDataLegendScope.Node
+does so for the closest node only, and
+SankeyDataLegendScope.Element describes only
+the closest node or ribbon.
+- **dataToolTipScope**: `SankeyDataLegendScope` — Gets or sets what the series describes in a data tooltip for the cursor position:
+SankeyDataLegendScope.Node (the default) pins the tooltip to the closest node and lists
+the ribbons meeting it on the cursor's side (flowing in on its upstream side, out on its downstream
+side) with their total,
+SankeyDataLegendScope.Stage does so for every node in the
+closest stage, and
+SankeyDataLegendScope.Element describes only the closest node or
+ribbon. In the data tooltip's individual grouping mode each listed ribbon gets its own tooltip.
+- **highlightedLinkSource**: `any[]` — An optional separate link data source for the highlighted-values overlay. When set, the cloned
+overlay series reads its links from this source instead of
+SankeySeries.LinkSource (usable in
+concert with
+SankeySeries.HighlightedLinkValueMemberPath). Mirrors the base HighlightedItemsSource.
+- **highlightedLinkValueMemberPath**: `string` — Member path for a link's highlighted (alternate) value, on the same LinkSource (or on
+SankeySeries.HighlightedLinkSource if set). When the series draws a highlighted-values overlay,
+the cloned overlay series reads its link values from this path instead of
+SankeySeries.LinkValueMemberPath. Mirrors the category series' HighlightedValueMemberPath.
+- **highlightScope**: `SankeyHighlightScope` — Gets or sets how a hover highlight propagates across the flow graph:
+SankeyHighlightScope.Element
+highlights only the hovered node or ribbon, while
+SankeyHighlightScope.ConnectedFlow
+(the default) also highlights a hovered node's in/out ribbons, and a hovered ribbon's source and
+target nodes. Composes with the chart-level highlighting mode (which decides brighten-vs-fade).
+- **isColoredItemwise**: `boolean` — A flow series' elements are each styled on their own (item-wise color, style mappings, the
+AssigningStyle event), so the data legend must always ask for the hovered element's badge
+rather than showing the series brush.
+- **layoutAdapter**: `IgcSankeyLayoutAdapter` — Gets or sets an optional
+SankeyLayoutAdapter that computes the node/link layout
+from a flat "regular" data source. When set, the series draws the adapter's derived nodes and
+links (its own ItemsSource/LinkSource/member-path bindings are ignored); the adapter owns the
+on-demand, time-sliced computation and the series re-renders when the adapter publishes a
+result. This is the standalone-converter delivery mode (the series' built-in edge-list mode is
+the zero-wiring alternative).
+- **layoutStatusChanged**: `any` — Raised (0..100) as an on-demand, time-sliced auto-layout computation progresses; fires at
+100 when the derived layout is published and the series re-renders.
+- **linkAggregation**: `SankeyLinkAggregationMode` — Gets or sets how the series treats multiple edges sharing the same source and target when
+it derives links from a raw link (edge) source. Ignored when nodes carry an explicit layer.
+- **linkIdMemberPath**: `string` — Optional member path for a link's durable identifier (from LinkSource). When supplied,
+this id is used to correlate a link across data changes (so a replaced item is still the
+same ribbon, and the transition morphs it); when omitted, the link falls back to the
+bound data item's object identity.
+- **linkSource**: `any[]` — Gets or sets the items source that provides the Sankey links. Each link references
+two nodes (by the ids resolved from the node ItemsSource) and carries a value.
+- **linkSourceMemberPath**: `string` — Member path for a link's source node id (from LinkSource).
+- **linkTargetMemberPath**: `string` — Member path for a link's target node id (from LinkSource).
+- **linkValueMemberPath**: `string` — Member path for a link's value/weight (from LinkSource).
+- **nodeAlignment**: `SankeyNodeAlignment` — Gets or sets how the series positions nodes into layers when it derives the layout from a
+raw link (edge) source (i.e. when no explicit per-node layer is bound). Ignored when nodes
+carry an explicit layer.
+- **nodeGap**: `number` — Gets or sets the vertical gap (in value-axis units) inserted between stacked nodes within a
+layer. Increasing it separates the node bands and fans the ribbons apart; because a layer's
+total gap grows with its node count, downstream layers (with more nodes) fan out more —
+giving the successive spreading seen in a typical Sankey. Defaults to NaN, which picks a gap
+automatically from the data (see
+SankeySeries.ResolveAutoNodeGap); set 0 to stack the bands flush.
+- **nodeIdMemberPath**: `string` — Gets or sets the member path used to resolve a node's identifier from the ItemsSource.
+- **nodeLabelMemberPath**: `string` — Gets or sets the member path used to resolve a node's label from the ItemsSource.
+- **nodeLayerMemberPath**: `string` — Gets or sets the member path used to resolve a node's layer (stage) index from the ItemsSource.
+v1 requires an explicit layer per node; automatic layering from an edge list is a
+deferred adapter.
+- **radiusX**: `number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the node bands.
+- **radiusY**: `number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the node bands.
+- **ribbonShape**: `SankeyRibbonShape` — Gets or sets the shape of the ribbon (link) bands: the classic curved S-curve, a straightened
+variant that reduces mid-bend pinching, or a constant perpendicular width band.
+- **xAxis**: `IgcCategoryAxisBaseComponent` — Gets or sets the effective x-axis (stages) for the current SankeySeries object.
+- **xAxisName**: `string` — Gets or sets the name to use to resolve xAxis from markup.
+- **yAxis**: `IgcNumericYAxisComponent` — Gets or sets the effective y-axis (value/width) for the current SankeySeries object.
+- **yAxisName**: `string` — Gets or sets the name to use to resolve yAxis from markup.
+- static **observedAttributes**: `string[]`
+- **bindAxes**(axes: IgcAxisComponent[]): void
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **findByName**(name: string): any
+- **getCategoryWidth**(): number — The value-space width of a category slot.
+- **getItem**(world: IgPoint): any — Returns the node data item under
+(tooltips, selection, hover).
+Overridden directly (not via the base CategorySeries interaction manager, which resolves a
+category index) because Sankey hit-tests geometry per the resolved node bands.
+- **getItemIndex**(world: IgPoint): number — The (node) FastItemsSource index under
+, else -1. The resolved
+node's Order is its index into the node source.
+- **getOffsetValue**(): number — The value-space offset a flow bucket starts at (0 for flow — no bar offset).
+- **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 - static **register**(): void
 
 ### [IgcScaleLegendComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcScaleLegendComponent)
@@ -6868,6 +7215,13 @@ The Outline along with the Brush and NegativeBrush can be used to affect the vis
 this.series.brush = "red";
 - **outlineMode**: `SeriesOutlineMode` — Gets or sets the outline mode to use for the series.
 - **percentChange**: `number` — The percent change from the beginning to the end of this series.
+- **prefersGroupedCategoryLayout**: `boolean` — Gets whether the current series prefers a grouped category layout (side-by-side
+clustering within a category, e.g. Bar/Column/RangeBar/RangeColumn). Consumed by
+the Legend to decide whether to reverse item order for vertical (bar-oriented)
+layouts so the legend reads bottom-up in the same direction as the category axis.
+Kept as a plain bool virtual on Series so per-partition consumers (Legend) don't
+have to reference category-series-specific interfaces or enums — that would drag
+unrelated types into their partition and defeat the tree-shaking boundaries.
 - **renderRequested**: `any` — This event is raised every time a render has been requested from a series.
 - **resolution**: `number` — Gets or sets the current series object's rendering resolution.
 
@@ -7082,6 +7436,19 @@ Provides data for Axis RangeChanged events.
 
 ### [IgcSeriesViewerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcSeriesViewerComponent)
 Represents a control for viewing series objects.
+This is not another SimulateHover. SimulateHover reaches into the interaction
+manager partway up and needs the chart put into a particular mode first
+(ShouldSimulateHoverMoveCrosshairPoint) before the crosshair and tooltip follow it,
+which is a sign of how far past the real entry point it starts. It stays exactly as
+it is, because the tests already written against it are written against that
+behaviour -- but new simulation goes through here.
+This raises on the event proxy instead, which is the thing the platform itself
+talks to. Everything above it -- hit testing, hover state, tooltips, selection,
+the events the chart surfaces -- runs on the way out exactly as it would for a
+real pointer, and needs no mode set first, because nothing is being faked.
+Input is addressed by position rather than by name. A pointer arrives somewhere and
+the chart decides what is under it; naming a series here would describe a mechanism
+that does not exist, so a path with anything in it is reported unhandled.
 
 - **constructor**(): IgcSeriesViewerComponent
 - **actualContentHitTestMode**: `ChartHitTestMode` — Resolved method of hit testing used when the pointer is over elements in the chart.
@@ -7179,9 +7546,9 @@ let viewport: IgxRect = this.chart.effectiveViewport;
 - **fireMouseLeaveOnManipulationStart**: `boolean` — Gets or sets how the mouse leave event fires when a manipulation is started.
 - **focusBrush**: `string` — Gets or sets the Focus brush to use for the series.
 - **focusDismissDelayMilliseconds**: `number` — Gets or sets the amount of time to delay before dismissing a selection effect.
-- **focusedSeriesItems**: `IgcChartSelectedItemCollection` — Gets the currently focused data items.  Adding or removing data items from this collection will
+- **focusedSeriesItems**: `IgcChartSelectedItemCollection` — Gets the currently focused ChartSelection items.  Adding or removing ChartSelection items from this collection will
 focus or blur the visuals associated with those items.
-- **focusedSeriesItemsChanged**: `any` — Raised when the SelectedItems collection has changed.
+- **focusedSeriesItemsChanged**: `any` — Raised when the FocusedSeriesItems collection has changed.
 - **focusMode**: `SeriesSelectionMode` — Gets or sets the focus mode to use for the series in the component, when supported.
 - **focusTransitionDuration**: `number` — Gets or sets the duration the Focus/de-Focus effects.
 - **fullSeries**: `IgcSeriesCollection`
@@ -7289,9 +7656,9 @@ The RightMargin property is used to set the left margin around the chart content
 
 this.chart.rightMargin=20;
 - **scrollbarsAnimationDuration**: `number` — Gets or sets the duration of the scrollbar effects.
-- **selectedSeriesItems**: `IgcChartSelectedItemCollection` — Gets the currently selected data items.  Adding or removing data items from this collection will
+- **selectedSeriesItems**: `IgcChartSelectedItemCollection` — Gets the currently selected ChartSelection items. Adding or removing ChartSelection items from this collection will
 select or deselect the visuals associated with those items.
-- **selectedSeriesItemsChanged**: `any` — Raised when the SelectedItems collection has changed.
+- **selectedSeriesItemsChanged**: `any` — Raised when the SelectedSeriesItems collection has changed.
 - **selectionBehavior**: `SeriesSelectionBehavior` — Gets or sets the selection behavior to use for the series in the component, when supported.
 - **selectionBrush**: `string` — Gets or sets the selection brush to use for the series.
 - **selectionDismissDelayMilliseconds**: `number` — Gets or sets the amount of time to delay before dismissing a selection effect.
@@ -7366,6 +7733,7 @@ public onSeriesMouseMove =( event: any, args: ChartMouseEventArgs) => {
 - **shouldMatchZOrderToSeriesOrder**: `boolean` — Gets or sets whether to match the z order of the series to their positional order in the series collection, regardless of mutation.
 - **shouldPanOnMaximumZoom**: `boolean` — Gets or sets a whether the chart should pan its content when zooming in passed max zoom level.
 - **shouldSimulateHoverMoveCrosshairPoint**: `boolean` — Gets or sets whether calling SimulateHover should shift the crosshair point.
+- **simulateInputCompleted**: `any` — Raised when simulated input finishes its asynchronous work.
 - **sizeChanged**: `any` — Occurs after the size of the series viewer changes.
 
 &lt;-- position: content member-->
@@ -7543,6 +7911,12 @@ Calling this method too often will hinder the performance of the SeriesViewer.
 
 
 this.chart.flush();
+- **flushNonVisual**(): void — Forces the non-visual side of the SeriesViewer's deferred work — data
+resolution, layout arrangement, and per-series flush — without
+touching any rendering context. Platforms that drive rendering through
+per-context paint events (iOS / Android / WinUI / MAUI) call this
+from FlushAsync, then drain each context separately so cross-context
+renderer state is never written outside its owning paint event.
 - **getActualWindowScaleHorizontal**(): number — Gets actual window scale for horizontal dimension of the control
 
 
@@ -7558,6 +7932,10 @@ let actualWindowScaleVertical: number = chart.getActualWindowScaleVertical();
 
 
 this.chart.hideToolTip();
+- **hideToolTipImmediate**(): void — Hides the active main tooltip, if displayed, and synchronously
+dismisses the underlying tooltip views without depending on a
+subsequent render. Intended for disposal paths where rendering
+against the chart's surface is no longer safe.
 - **isAnimationActive**(): boolean
 - **loadAnnotationsFromJson**(jsonString: string): void
 - **notifyClearItems**(source_: any): void — Used to manually notify the SeriesViewer that the data source has reset or cleared its items.  Invoking this method is only necessary if that datasource is not observable.
@@ -7575,6 +7953,7 @@ this.chart.hideToolTip();
 - **saveAnnotationsToJson**(): string
 - **simulateClick**(point: IgPoint): void
 - **simulateHover**(point: IgPoint): void
+- **simulateInput**(type: any, elementPath: string[], localX: number, localY: number, data: string[], id: string): IgcSimulateInputResult
 - **simulateMouseLeave**(): void
 - **simulatePlotPointerUp**(point: IgPoint): void
 - **simulatePressAndHold**(point: IgPoint): void
@@ -7645,6 +8024,10 @@ To be consistent with the Shapefile technical description, it is expected that e
 - **findByName**(name: string): any
 - **getExactItemIndex**(world: IgPoint): number — Gets the precise item index, if possible, based on the closeness to the previous or next whole integer. If the series cannot provide this information, GetExactItemIndex will return the same integer value as GetItemIndex.
 - **getItem**(world: IgPoint): any — Gets the item that is the best match for the specified world coordinates.
+- **getItemIndex**(world: IgPoint): number — Gets the item index associated with the specified world position
+
+
+let index: number = this.series.getItemIndex({x:.5,y:.5});
 - **getItemValue**(item: any, memberPathName: string): any
 - **getMemberPathValue**(memberPathName: string): string — Gets the value of a requested member path from the series.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
@@ -8453,8 +8836,9 @@ Use Range property for the visible axis range at which to apply this interval.
 
 - **constructor**(): IgcTimeAxisLabelFormatComponent
 - static **htmlTagName**: `string`
-- **format**: `string` — The DateTime format string to apply.
+- **format**: `string` — **Deprecated:** This property is deprecated. Use LabelFormat and LabelFormatSpecifiers instead. The DateTime format string to apply.
 Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
+This property is deprecated. Use LabelFormat and LabelFormatSpecifiers instead.
 
 The Format property provide the DateTime format string to apply.
 
@@ -8471,7 +8855,13 @@ labelFormat.format = "MMM-dd-yy";
 labelFormat.range = 24 * 60 * 60 * 1000;
 this.xAxis.labelFormats.add(labelFormat);
 - **i**: `TimeAxisLabelFormat`
+- **labelFormat**: `string` — The label format template string to apply, using {0} placeholders processed by BindingFormatter.
+Use this together with LabelFormatSpecifiers to control how DateTime values are formatted.
+For example, set LabelFormat to "{0}" and assign a DateTimeFormatSpecifier to LabelFormatSpecifiers.
 - **labelFormatOverride**: `any` — Gets or sets a label formatting override callback, allowing the user to take full control of label generation for the TimeXAxis.
+- **labelFormatSpecifiers**: `any[]` — The format specifiers to apply to the label format placeholders.
+Assign an array of FormatSpecifier objects (e.g. DateTimeFormatSpecifier) to control
+how the {0} placeholder in LabelFormat is formatted.
 - **range**: `number` — The visible axis range at which to apply this label format.
 
 The Range property provide the visible axis range at which to apply this label format.
@@ -8488,12 +8878,27 @@ labelFormat = new TimeAxisLabelFormat();
 labelFormat.format = "MMM-dd-yy";
 labelFormat.range = 24 * 60 * 60 * 1000;
 this.xAxis.labelFormats.add(labelFormat);
-- **repeatedDayFormat**: `string` — The DateTime format string to apply, if the day is repeated from the prior date.
+- **repeatedDayFormat**: `string` — **Deprecated:** This property is deprecated. Use RepeatedDayLabelFormat and RepeatedDayLabelFormatSpecifiers instead. The DateTime format string to apply, if the day is repeated from the prior date.
 Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
-- **repeatedMonthFormat**: `string` — The DateTime format string to apply, if the month is repeated from the prior date.
+This property is deprecated. Use RepeatedDayLabelFormat and RepeatedDayLabelFormatSpecifiers instead.
+- **repeatedDayLabelFormat**: `string` — The label format template string to apply when the day is repeated from the prior date.
+Use this together with RepeatedDayLabelFormatSpecifiers to control how DateTime values are formatted
+when the day is repeated.
+- **repeatedDayLabelFormatSpecifiers**: `any[]` — The format specifiers to apply when the day is repeated from the prior date.
+- **repeatedMonthFormat**: `string` — **Deprecated:** This property is deprecated. Use RepeatedMonthLabelFormat and RepeatedMonthLabelFormatSpecifiers instead. The DateTime format string to apply, if the month is repeated from the prior date.
 Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
-- **repeatedYearFormat**: `string` — The DateTime format string to apply, if the year is repeated from the prior date.
+This property is deprecated. Use RepeatedMonthLabelFormat and RepeatedMonthLabelFormatSpecifiers instead.
+- **repeatedMonthLabelFormat**: `string` — The label format template string to apply when the month is repeated from the prior date.
+Use this together with RepeatedMonthLabelFormatSpecifiers to control how DateTime values are formatted
+when the month is repeated.
+- **repeatedMonthLabelFormatSpecifiers**: `any[]` — The format specifiers to apply when the month is repeated from the prior date.
+- **repeatedYearFormat**: `string` — **Deprecated:** This property is deprecated. Use RepeatedYearLabelFormat and RepeatedYearLabelFormatSpecifiers instead. The DateTime format string to apply, if the year is repeated from the prior date.
 Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
+This property is deprecated. Use RepeatedYearLabelFormat and RepeatedYearLabelFormatSpecifiers instead.
+- **repeatedYearLabelFormat**: `string` — The label format template string to apply when the year is repeated from the prior date.
+Use this together with RepeatedYearLabelFormatSpecifiers to control how DateTime values are formatted
+when the year is repeated.
+- **repeatedYearLabelFormatSpecifiers**: `any[]` — The format specifiers to apply when the year is repeated from the prior date.
 - static **observedAttributes**: `string[]`
 - **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
 - **connectedCallback**(): void
@@ -9201,6 +9606,52 @@ Represents a vertically laid out category based series.
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 - **getSeriesValueMarkerBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value marker bounding box within the series that has the best value match for the world position provided.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
+- **scrollIntoView**(item: any): boolean — Tests whether the given position is over the filled area region of the series (value runs along X).
+
+### [IgcVerticalAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalAreaSeriesComponent)
+Represents a IgxDataChartComponent vertical area series.
+Displays trend over time or ordered categories laid out along the vertical (Y) axis.
+The vertical counterpart of
+AreaSeries, the way BarSeries is to ColumnSeries.
+
+- **constructor**(): IgcVerticalAreaSeriesComponent
+- static **htmlTagName**: `string`
+- **isArea**: `boolean` — Gets whether the current series shows an area shape.
+- **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
+- **unknownValuePlotting**: `UnknownValuePlotting` — Determines how unknown values will be plotted on the chart.
+Null and Double.NaN are two examples of unknown values.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcVerticalLineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalLineSeriesComponent)
+Represents a IgxDataChartComponent vertical line series.
+Displays trend over time or ordered categories laid out along the vertical (Y) axis.
+The vertical counterpart of
+LineSeries, the way BarSeries is to ColumnSeries.
+
+- **constructor**(): IgcVerticalLineSeriesComponent
+- static **htmlTagName**: `string`
+- **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
+- **isLineOnly**: `boolean` — Gets whether the current series shows only line shapes.
+- **unknownValuePlotting**: `UnknownValuePlotting` — Determines how unknown values will be plotted on the chart.
+Null and Double.NaN are two examples of unknown values.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcVerticalPointSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalPointSeriesComponent)
+Represents a IgxDataChartComponent point series.
+
+- **constructor**(): IgcVerticalPointSeriesComponent
+- static **htmlTagName**: `string`
+- **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
 
 ### [IgcVerticalRangeCategorySeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalRangeCategorySeriesComponent)
 Base class for ranged category series with a numeric X-axis and a category Y-axis.
@@ -9239,6 +9690,40 @@ vertical series must read world.Y instead.
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
+### [IgcVerticalSplineAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalSplineAreaSeriesComponent)
+Represents a IgxDataChartComponent spline area series.
+
+- **constructor**(): IgcVerticalSplineAreaSeriesComponent
+- static **htmlTagName**: `string`
+- **isArea**: `boolean` — Gets whether the current series shows an area shape.
+- **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcVerticalSplineSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalSplineSeriesBaseComponent)
+Represents the base class for all IgxDataChartComponent spline series.
+
+- **constructor**(): IgcVerticalSplineSeriesBaseComponent
+- **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
+- **isSplineShapePartOfRange**: `boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
+- **splineType**: `SplineType` — Gets or sets the type of spline to be rendered.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcVerticalSplineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalSplineSeriesComponent)
+Represents a IgxDataChartComponent spline series.
+
+- **constructor**(): IgcVerticalSplineSeriesComponent
+- static **htmlTagName**: `string`
+- **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
 ### [IgcVerticalStackedSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalStackedSeriesBaseComponent)
 Base class for stacked series with a numeric x-axis and a category y-axis.
 
@@ -9257,6 +9742,59 @@ Base class for stacked series with a numeric x-axis and a category y-axis.
 - **findByName**(name: string): any
 - **getCategoryWidth**(): number — Returns the width of the category grouping this series is in.
 - **getOffsetValue**(): number — Returns the offset value for this series if grouped on a category axis.
+
+### [IgcVerticalStepAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalStepAreaSeriesComponent)
+Represents a IgxDataChartComponent vertical step area series.
+The vertical counterpart of
+StepAreaSeries (category on the Y axis, values/fill on X).
+
+- **constructor**(): IgcVerticalStepAreaSeriesComponent
+- static **htmlTagName**: `string`
+- **isArea**: `boolean` — Gets whether the current series shows an area shape.
+- **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
+- **isMarkerlessDisplayPreferred**: `boolean` — Overridden by derived series classes to indicate when marker-less display is preferred or not.
+- **isStep**: `boolean` — Gets whether the current series shows step shapes.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcVerticalStepLineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalStepLineSeriesComponent)
+Represents a IgxDataChartComponent vertical step line series.
+The vertical counterpart of
+StepLineSeries (category on the Y axis, values on X).
+
+- **constructor**(): IgcVerticalStepLineSeriesComponent
+- static **htmlTagName**: `string`
+- **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
+- **isLineOnly**: `boolean` — Gets whether the current series shows only line shapes.
+- **isMarkerlessDisplayPreferred**: `boolean` — Overridden by derived series classes to indicate when marker-less display is preferred or not.
+- **isStep**: `boolean` — Gets whether the current series shows step shapes.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- static **register**(): void
+
+### [IgcVerticalWaterfallSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcVerticalWaterfallSeriesComponent)
+Represents a IgxDataChartComponent waterfall column series.
+
+- **constructor**(): IgcVerticalWaterfallSeriesComponent
+- static **htmlTagName**: `string`
+- **isFinancialWaterfall**: `boolean` — Gets whether the series is financial waterfall
+- **isMarkerlessDisplayPreferred**: `boolean` — Overridden by derived series classes to indicate when marker-less display is preferred or not.
+- **isNegativeColorSupported**: `boolean` — Overridden by derived series classes to indicate when negative colors are supported or not.
+- **isWaterfall**: `boolean` — Gets whether the current series shows a waterfall column shape.
+- **negativeBrush**: `string` — Gets or sets the brush to use for negative portions of the series.
+- **negativeOutline**: `string` — Brush to use for outlining negative elements in the waterfall series.
+- **radiusX**: `number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
+- **radiusY**: `number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the column.
+- static **observedAttributes**: `string[]`
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+- **getItemSpan**(): number — For a category plotted series, returns the current width of the items within the categories. This only returns a value if the items have some form of width (e.g. columns, bars, etc.) otherwise 0 is returned.
+- **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
+- **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
+- static **register**(): void
 
 ### [IgcWaterfallSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/classes/IgcWaterfallSeriesComponent)
 Represents a IgxDataChartComponent waterfall column series.
@@ -9364,6 +9902,9 @@ Represents a base class for domain charts with X/Y axes
 - **constructor**(): IgcXYChartComponent
 - **actualXAxisLabelTextColor**: `string` — Gets the actual color of labels on the X-axis
 - **actualYAxisLabelTextColor**: `string` — Gets the actual color of labels on the Y-axis
+- **xAxisAreAnnotationsVisible**: `boolean` — Gets or sets Visibility of X-axis annotations.
+- **xAxisAreLabelsVisible**: `boolean` — Gets or sets Visibility of X-axis labels.
+- **xAxisAreTickMarksVisible**: `boolean` — Gets or sets Visibility of X-axis tick marks.
 - **xAxisExtent**: `number` — Gets or sets the distance between the X-axis and the bottom of the chart.
 
 To allocate space between the x-axis and the edge of the chart, set the XAxisExtent property.
@@ -9381,6 +9922,7 @@ formatX(item: any): string {
 To reverse the direction of items along the x-axis, set the XAxisInverted property to true.
 
 this.chart.XAxisInverted="True";
+- **xAxisIsLabelPanelVisible**: `boolean` — Gets or sets Visibility of X-axis label panel.
 - **xAxisLabel**: `any` — Gets or sets the format for labels along the X-axis.
 - **xAxisLabelAngle**: `number` — Gets or sets the angle of rotation for labels along the X-axis.
 
@@ -9426,7 +9968,7 @@ this.chart.xAxisTitleTopMargin="250";
 Use the XAxisLabelVerticalAlignment property to change the vertical position of x-axis labels.
 
 this.chart.xAxisLabelVerticalAlignment="bottom";
-- **xAxisLabelVisibility**: `Visibility` — Gets or sets Visibility of X-axis labels.
+- **xAxisLabelVisibility**: `Visibility` — **Deprecated:** This property is deprecated. Use XAxisIsLabelPanelVisible instead. Gets or sets Visibility of X-axis labels.
 
 To hide the x-axis labels, set XAxisLabelVisibility to collapsed.
 
@@ -9531,6 +10073,9 @@ this.chart.xAxisTitleTextStyle="italic 15px arial, sans-serif";
 Use the XAxisTitleTopMargin property to apply a margin above the x-axis title.
 
 this.chart.xAxisTitleTopMargin="150";
+- **yAxisAreAnnotationsVisible**: `boolean` — Gets or sets Visibility of Y-axis annotations.
+- **yAxisAreLabelsVisible**: `boolean` — Gets or sets Visibility of Y-axis labels.
+- **yAxisAreTickMarksVisible**: `boolean` — Gets or sets Visibility of Y-axis tick marks.
 - **yAxisExtent**: `number` — Gets or sets the distance between the Y-axis and the left edge of the chart.
 
 To allocate space between the x-axis and the edge of the chart, set the XAxisExtent property.
@@ -9551,6 +10096,7 @@ this.chart.yAxisInverted="true";
 
 
 The default value of YAxisInverted is false.
+- **yAxisIsLabelPanelVisible**: `boolean` — Gets or sets Visibility of Y-axis label panel.
 - **yAxisLabel**: `any` — Gets or sets the property or string from which the labels are derived.
 - **yAxisLabelAngle**: `number` — Gets or sets the angle of rotation for labels along the Y-axis.
 
@@ -9598,7 +10144,7 @@ Use the YAxisLabelTopMargin property to apply a margin above the y-axis labels.
 
 this.chart.yAxisLabelTopMargin="250";
 - **yAxisLabelVerticalAlignment**: `VerticalAlignment` — Gets or sets Vertical alignment of Y-axis labels.
-- **yAxisLabelVisibility**: `Visibility` — Gets or sets Visibility of Y-axis labels.
+- **yAxisLabelVisibility**: `Visibility` — **Deprecated:** This property is deprecated. Use YAxisIsLabelPanelVisible instead. Gets or sets Visibility of Y-axis labels.
 
 To hide the y-axis labels, set YAxisLabelVisibility to collapsed.
 
@@ -10390,6 +10936,65 @@ Describes available display types of financial price series.
 - **Candlestick** = 0 — Displays prices as a Japanese Candlestick.
 - **OHLC** = 1 — Displays prices as an OHLC bar.
 
+### [SankeyDataLegendScope](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SankeyDataLegendScope)
+Determines what a Sankey series describes in the data tooltip and the data legend for the cursor
+position: the closest node, every node in the closest stage, or the single closest element.
+
+- **Element** = 2 — Only the node or ribbon under the cursor, else the closest one, as a single row.
+- **Node** = 0 — The node in the closest stage that the cursor is level with, else the closest node in that
+stage: one row per ribbon meeting it on the cursor's side of the stage (flowing in on the upstream
+side, out on the downstream side; the other side when there are none), with a summary row, headed
+by the node. The flow analog of a category series' closest category.
+- **Stage** = 1 — Every node in the closest stage, each as its own group of rows (its ribbons, as for Node) with
+its own summary.
+
+### [SankeyHighlightScope](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SankeyHighlightScope)
+Determines how a Sankey highlight propagates across the flow graph when an element is hovered.
+This composes with the chart-level highlighting mode (e.g. FadeOthersSpecific decides bright-vs-
+fade); this modifier decides <em>which</em> connected elements share the hovered element's state.
+
+- **ConnectedFlow** = 1 — The hovered element highlights together with what it flows to/from: hovering a node also
+highlights every ribbon in and out of it; hovering a ribbon also highlights its source and
+target nodes. This is the default.
+- **Element** = 0 — Only the hovered element highlights: a node on its own, or a single ribbon on its own — the
+rest of the graph (including the ribbon's own endpoint nodes) fades.
+
+### [SankeyLinkAggregationMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SankeyLinkAggregationMode)
+Determines how the auto-layout engine treats multiple edges that share the same source and
+target when it builds links from a raw edge list.
+
+- **Aggregate** = 0 — All edges with the same source and target are combined into a single link whose value is
+their sum (one ribbon per node pair).
+- **Separate** = 1 — Every edge row produces its own link, so multiple parallel ribbons can connect the same
+two nodes.
+
+### [SankeyNodeAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SankeyNodeAlignment)
+Determines how the auto-layout engine positions nodes into layers (columns) when it derives
+the layout from a raw edge list. Left is the plain longest-path assignment (roots at layer 0);
+the others adjust where terminal/sink nodes land, mirroring the classic Sankey alignment modes.
+
+- **Center** = 3 — Each node is placed midway between its earliest (Left) and latest (Right) possible layer.
+- **Justify** = 2 — Sources sit at layer 0 (as in Left), but nodes with no outgoing links are pushed to the
+last layer so all sinks align on the right edge.
+- **Left** = 0 — Each node is placed in the earliest layer possible — the longest path from any source
+(root) node. Sources sit at layer 0.
+- **Right** = 1 — Each node is placed in the latest layer possible — measured by the longest path to any
+sink node — so terminal nodes align on the right.
+
+### [SankeyRibbonShape](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SankeyRibbonShape)
+Determines the shape of the ribbon (link) bands connecting the nodes. All shapes are expressed
+with the same cubic control-point topology, so the ribbon control-point animation morphs
+between data states identically regardless of the chosen shape.
+
+- **Curved** = 0 — The classic Sankey S-curve: the band's top and bottom edges leave each node face
+horizontally (cubic control points at the horizontal midpoint). On steep runs the apparent
+(perpendicular) width narrows through the bend.
+- **Straightened** = 1 — A tauter S-curve: the edge tangents are shortened toward the node faces so the band turns
+diagonal sooner and holds a more even apparent width, reducing the mid-bend pinch — while
+still meeting each face vertically.
+- **UniformWidth** = 2 — A constant-width band: the edges are parallel offsets of the ribbon's center curve, so the
+perpendicular width stays uniform along the whole ribbon (no bend narrowing).
+
 ### [ScatterItemSearchMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/ScatterItemSearchMode)
 Describes available modes for searching for items in the scatter series.
 
@@ -10401,7 +11006,9 @@ The search is skipped if the line points are over ItemSearchThreshold.
 - **ClosestVisiblePoint** = 1 — When searching for a point, the closest visible point is selected.
 - **ClosestVisiblePointOnClosestLine** = 3 — When searching for a point, the closest visible point along the closest visible line is used.
 The search is skipped if the visible line points are over ItemSearchThreshold.
-- **None** = 6 — No points will be searched for the in the scatter series.
+- **None** = 7 — No points will be searched for the in the scatter series.
+- **SmallestRadiusDirectlyOver** = 6 — When searching for a point, the visible point with the smallest radius directly under the cursor is selected.
+If several points have the same radius, the topmost one is selected. No point is selected when the cursor is not directly over one.
 - **TopVisiblePoint** = 5 — When searching for a point, the topmost visible point is selected.
 
 ### [SeriesHighlightingBehavior](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-charts/7.1.0/enums/SeriesHighlightingBehavior)
@@ -10409,6 +11016,7 @@ Describes the highlighting mode to use for the series in the chart.
 
 - **Auto** = 0 — Highlighting behavior is determined by the component.
 - **DirectlyOver** = 1 — Series are highlighted when the cursor is directly above them.
+- **MatchItemSearch** = 5 — The item found by the series item search mode, which is the item shown in tooltips, will be highlighted.
 - **NearestItems** = 2 — The nearest items to the cursor will be highlighted.
 - **NearestItemsAndSeries** = 4 — The nearest items to the cursor will be highlighted, the main shapes of the series closest to the cursor will not be de-emphasized.
 - **NearestItemsRetainMainShapes** = 3 — The nearest items to the cursor will be highlighted, the main shapes of the series will not be de-emphasized.

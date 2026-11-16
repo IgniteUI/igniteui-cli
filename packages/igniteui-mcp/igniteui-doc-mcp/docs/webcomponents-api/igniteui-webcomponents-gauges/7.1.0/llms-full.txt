@@ -1,10 +1,10 @@
-# Ignite UI for Web Components Gauges v7.1.0 — Full API Reference
+# Ignite UI for Web Components Gauges v7.1.1-beta.19 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Gauges package (7.1.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Gauges package (7.1.1-beta.19). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-gauges
-Version: 7.1.0
+Version: 7.1.1-beta.19
 
 ## Classes
 
@@ -342,6 +342,9 @@ Calling this method too often will hinder the performance of the linear gauge.
 - **constructor**(): IgcLinearGraphRangeComponent
 - static **htmlTagName**: `string`
 - **brush**: `string` — Gets or sets the brush to use to fill the range.
+- **endInset**: `number` — Gets or sets the number of device independent pixels to inset the end of the range from where it would otherwise end along the scale.
+This is useful for introducing a small, pixel-precise gap between adjacent ranges without needing to know the pixel dimensions of the gauge.
+The inset will never collapse the range completely; at least one pixel of the range remains visible.
 - **endValue**: `number` — Gets or sets the value at which the range ends along the scale.
 - **i**: `XamLinearGraphRange`
 - **innerEndExtent**: `number` — Gets or sets the distance measured from the front/bottom of the bullet graph (from 0 to 1) at which to end rendering the inner edge of the range.
@@ -355,6 +358,9 @@ Values further from zero than 1 can be used to make this extend further than the
 Values further from zero than 1 can be used to make this extend further than the normal width/height of the bullet graph.
 - **outline**: `string` — Gets or sets the outline to use when rendering the range.
 - **rangeInternal**: `XamLinearGraphRange`
+- **startInset**: `number` — Gets or sets the number of device independent pixels to inset the start of the range from where it would otherwise begin along the scale.
+This is useful for introducing a small, pixel-precise gap between adjacent ranges without needing to know the pixel dimensions of the gauge.
+The inset will never collapse the range completely; at least one pixel of the range remains visible.
 - **startValue**: `number` — Gets or sets the value at which the range starts along the scale.
 - **strokeThickness**: `number` — Gets or sets the stroke thickness to use when rendering this range's outline.
 - static **observedAttributes**: `string[]`
@@ -624,6 +630,10 @@ Calling this method too often will hinder the performance of the radial gauge.
 - **constructor**(): IgcRadialGaugeRangeComponent
 - static **htmlTagName**: `string`
 - **brush**: `string` — Gets or sets the brush to use to fill the range.
+- **endInset**: `number` — Gets or sets the number of device independent pixels to inset the end of the range from where it would otherwise end along the scale.
+The pixel inset is resolved into an angular inset based on the current size of the gauge, so it is useful for introducing a small,
+pixel-precise gap between adjacent ranges without needing to know the pixel dimensions of the gauge.
+The inset will never collapse the range completely; at least one pixel of the range remains visible.
 - **endValue**: `number` — Gets or sets the value at which the range ends along the scale.
 - **i**: `XamRadialGaugeRange`
 - **innerEndExtent**: `number` — Gets or sets the distance from the center of the gauge (from 0 to 1) at which to end rendering the inner sweep of the range.
@@ -637,6 +647,10 @@ Values further from zero than 1 can be used to make this extend further than the
 Values further from zero than 1 can be used to make this extend further than the normal radius of the gauge.
 - **outline**: `string` — Gets or sets the outline to use when rendering the range.
 - **rangeInternal**: `XamRadialGaugeRange`
+- **startInset**: `number` — Gets or sets the number of device independent pixels to inset the start of the range from where it would otherwise begin along the scale.
+The pixel inset is resolved into an angular inset based on the current size of the gauge, so it is useful for introducing a small,
+pixel-precise gap between adjacent ranges without needing to know the pixel dimensions of the gauge.
+The inset will never collapse the range completely; at least one pixel of the range remains visible.
 - **startValue**: `number` — Gets or sets the value at which the range starts along the scale.
 - **strokeThickness**: `number` — Gets or sets the stroke thickness to use when rendering this range's outline.
 - static **observedAttributes**: `string[]`

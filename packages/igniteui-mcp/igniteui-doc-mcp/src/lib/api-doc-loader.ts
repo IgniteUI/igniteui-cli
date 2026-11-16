@@ -39,11 +39,12 @@ export function compareVersionNames(a: string, b: string): number {
 /**
  * The release a snapshot was generated from. The "Version:" header is the real
  * one ("7.4.1"); the folder is only a URL segment ("7.4.0", "7.3"). Older
- * snapshots carry no usable version at all ("latest").
+ * snapshots carry no usable version at all ("latest"). A pre-release is reported
+ * as the release it leads to ("22.3.0-rc.0" → "22.3.0").
  */
 export function snapshotVersion(content: string, folderName: string): string | undefined {
   const header = content.match(/^Version:\s*(\S+)/m)?.[1];
-  return [header, folderName].find(v => v && /^\d/.test(v));
+  return [header, folderName].find(v => v && /^\d/.test(v))?.replace(/-.*$/, '');
 }
 
 export class ApiDocLoader {

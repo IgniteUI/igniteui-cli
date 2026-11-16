@@ -1,14 +1,14 @@
-# Ignite UI for Web Components Dock Manager v2.2.1 — Full API Reference
+# Ignite UI for Web Components Dock Manager v2.3.0-beta.0 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Dock Manager package (2.2.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Dock Manager package (2.3.0-beta.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-dockmanager
-Version: 2.2.1
+Version: 2.3.0-beta.0
 
 ## Classes
 
-### [IgcDockManagerComponent](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/classes/IgcDockManagerComponent)
+### [IgcDockManagerComponent](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/classes/IgcDockManagerComponent)
 A powerful, flexible dock manager component for laying out, docking,
 undocking, pinning, and floating panes of content.
 
@@ -90,12 +90,12 @@ Use this event to show/hide auxiliary UI, update summary views, or respond to un
 
 ## Interfaces
 
-### [IgcActivePaneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcActivePaneEventArgs)
+### [IgcActivePaneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcActivePaneEventArgs)
 
 - **newPane**: `IgcContentPane` — Gets the new active pane.
 - **oldPane**: `IgcContentPane` — Gets the old active pane.
 
-### [IgcContentPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcContentPane)
+### [IgcContentPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcContentPane)
 
 - **acceptsInnerDock?**: `boolean` — Determines whether the end user can inner dock another pane in this one. Defaults to true.
 - **allowClose?**: `boolean` — Determines whether the end user is allowed to close the pane. Defaults to true.
@@ -126,13 +126,13 @@ If more than one document host is presented, the closest one in the pane hierarc
 If there is no document host, the default location is left.
 - **unpinnedSize?**: `number` — The absolute size of the pane in an unpinned state. Defaults to 200.
 
-### [IgcDockingIndicator](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockingIndicator)
+### [IgcDockingIndicator](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockingIndicator)
 
 - **direction?**: `string` — Gets a value indicating the direction of the docking indicator.
 - **isRoot**: `boolean` — Gets a value indicating whether the docking indicator is a root one.
 - **position**: `IgcDockingIndicatorPosition` — Gets the position of the docking indicator.
 
-### [IgcDockManagerEventMap](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockManagerEventMap)
+### [IgcDockManagerEventMap](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockManagerEventMap)
 
 - **activePaneChanged**: `CustomEvent<IgcActivePaneEventArgs>`
 - **floatingPaneResizeEnd**: `CustomEvent<IgcFloatingPaneResizeEventArgs>`
@@ -153,18 +153,18 @@ If there is no document host, the default location is left.
 - **tabHeaderConnected**: `CustomEvent<IgcTabHeaderConnectionEventArgs>`
 - **tabHeaderDisconnected**: `CustomEvent<IgcTabHeaderConnectionEventArgs>`
 
-### [IgcDockManagerLayout](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockManagerLayout)
+### [IgcDockManagerLayout](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockManagerLayout)
 Describes a Dock Manager layout.
 
 - **floatingPanes?**: `IgcSplitPane[]` — The floating panes of the layout.
 - **rootPane**: `IgcSplitPane` — The root split pane of the layout.
 
-### [IgcDockManagerPoint](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockManagerPoint)
+### [IgcDockManagerPoint](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockManagerPoint)
 
 - **x**: `number`
 - **y**: `number`
 
-### [IgcDockManagerResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockManagerResourceStrings)
+### [IgcDockManagerResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockManagerResourceStrings)
 Describes dock manager resource strings.
 
 - **close?**: `string`
@@ -175,27 +175,28 @@ Describes dock manager resource strings.
 - **moreTabs?**: `string`
 - **panes?**: `string`
 - **pin?**: `string`
+- **resizePanes?**: `string`
 - **unpin?**: `string`
 
-### [IgcDockPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDockPaneAction)
+### [IgcDockPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDockPaneAction)
 
 - **dockingIndicator**: `IgcDockingIndicator`
 - **targetPane**: `IgcDockManagerPane`
 - **type**: `"dockPane"`
 
-### [IgcDocumentHost](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcDocumentHost)
+### [IgcDocumentHost](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcDocumentHost)
 
 - **id?**: `string` — The id of the pane. If not set the Dock Manager generates it automatically.
 - **rootPane**: `IgcSplitPane | null` — The root split pane of the document host.
 - **size?**: `number` — The size of the pane relative to its sibling panes' sizes. Defaults to 100.
 - **type**: `"documentHost"` — The type of the pane.
 
-### [IgcFloatingPaneResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcFloatingPaneResizeEventArgs)
+### [IgcFloatingPaneResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcFloatingPaneResizeEventArgs)
 
 - **resizerLocation**: `IgcResizerLocation` — Gets the edge/corner that is being dragged.
 - **sourcePane**: `IgcSplitPane` — Gets the source pane that triggers the resize operation.
 
-### [IgcFloatingPaneResizeMoveEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcFloatingPaneResizeMoveEventArgs)
+### [IgcFloatingPaneResizeMoveEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcFloatingPaneResizeMoveEventArgs)
 
 - **newHeight**: `number` — Gets the pane's height after the resizing operation.
 - **newLocation**: `IgcDockManagerPoint` — Gets the pane's floating location after the resizing operation.
@@ -204,70 +205,70 @@ Describes dock manager resource strings.
 - **oldLocation**: `IgcDockManagerPoint` — Gets the pane's floating location before the resizing operation.
 - **oldWidth**: `number` — Gets the pane's width before the resizing operation.
 
-### [IgcFloatPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcFloatPaneAction)
+### [IgcFloatPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcFloatPaneAction)
 
 - **height**: `number`
 - **location**: `IgcDockManagerPoint`
 - **type**: `"floatPane"`
 - **width**: `number`
 
-### [IgcMoveFloatingPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcMoveFloatingPaneAction)
+### [IgcMoveFloatingPaneAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcMoveFloatingPaneAction)
 
 - **newLocation**: `IgcDockManagerPoint`
 - **oldLocation**: `IgcDockManagerPoint`
 - **type**: `"moveFloatingPane"`
 
-### [IgcMoveTabAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcMoveTabAction)
+### [IgcMoveTabAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcMoveTabAction)
 
 - **newIndex**: `number`
 - **oldIndex**: `number`
 - **type**: `"moveTab"`
 
-### [IgcPaneCloseEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneCloseEventArgs)
+### [IgcPaneCloseEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneCloseEventArgs)
 
 - **panes**: `IgcContentPane[]` — Gets/sets the panes that are about to close.
 - **sourcePane**: `IgcDockManagerPane` — Get the source pane that triggers the close.
 
-### [IgcPaneDragEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneDragEndEventArgs)
+### [IgcPaneDragEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneDragEndEventArgs)
 
 - **panes**: `IgcContentPane[]` — Gets the panes that end dragging.
 - **sourcePane**: `IgcContentPane | IgcSplitPane | IgcTabGroupPane` — Gets the source pane that ends dragging.
 
-### [IgcPaneDragOverEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneDragOverEventArgs)
+### [IgcPaneDragOverEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneDragOverEventArgs)
 
 - **action**: `IgcPaneDragAction` — Gets information about the action being performed.
 - **isValid**: `boolean` — Gets/sets whether the action is valid.
 - **panes**: `IgcContentPane[]` — Gets the panes that are dragged over.
 - **sourcePane**: `IgcContentPane | IgcSplitPane | IgcTabGroupPane` — Gets the source pane that triggers the drag over.
 
-### [IgcPaneDragStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneDragStartEventArgs)
+### [IgcPaneDragStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneDragStartEventArgs)
 
 - **panes**: `IgcContentPane[]` — Gets the panes that are about to get dragged.
 - **sourcePane**: `IgcContentPane | IgcSplitPane` — Gets the source pane that triggers the drag start.
 
-### [IgcPaneHeaderConnectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneHeaderConnectionEventArgs)
+### [IgcPaneHeaderConnectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneHeaderConnectionEventArgs)
 
 - **element**: `IgcPaneHeaderElement` — The header element that is being connected/disconnected.
 - **pane**: `IgcContentPane` — The pane whose header is being connected/disconnected.
 
-### [IgcPaneHeaderElement](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneHeaderElement)
+### [IgcPaneHeaderElement](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneHeaderElement)
 Describes a pane header element.
 
 - **dragService**: `IgcDragService` — Gets/sets the drag service.
 
-### [IgcPanePinnedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPanePinnedEventArgs)
+### [IgcPanePinnedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPanePinnedEventArgs)
 
 - **location**: `IgcUnpinnedLocation` — Gets the unpinned location.
 - **newValue**: `boolean` — Gets the new pinned value.
 - **panes**: `IgcContentPane[]` — Gets/sets the panes that are about to get pinned/unpinned.
 - **sourcePane**: `IgcContentPane` — Gets the source pane that triggers the pinned state change.
 
-### [IgcPaneScrollEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcPaneScrollEventArgs)
+### [IgcPaneScrollEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcPaneScrollEventArgs)
 
 - **contentElement**: `HTMLElement` — Gets the content element that is scrolled.
 - **pane**: `IgcContentPane` — Gets the content pane that is scrolled.
 
-### [IgcSplitPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcSplitPane)
+### [IgcSplitPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcSplitPane)
 
 - **allowEmpty?**: `boolean` — Determines whether the pane should present in the UI when empty.
 - **floatingHeight?**: `number` — The absolute height of the pane. Applies only for floating panes. Defaults to 100.
@@ -285,14 +286,14 @@ Describes a pane header element.
 - **useFixedSize?**: `boolean` — Determines whether child panes are sized in pixels (instead of relatively to their siblings) and can be resized beyond the viewport, allowing scrollable overflow within the container.
 Defaults to false.
 
-### [IgcSplitterResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcSplitterResizeEventArgs)
+### [IgcSplitterResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcSplitterResizeEventArgs)
 
 - **orientation**: `IgcSplitPaneOrientation` — Gets the pane's orientation.
 - **pane**: `IgcDockManagerPane` — Gets the pane being resized with the splitter.
 - **paneHeight**: `number` — Gets the pane's height.
 - **paneWidth**: `number` — Gets the pane's width.
 
-### [IgcTabGroupPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcTabGroupPane)
+### [IgcTabGroupPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcTabGroupPane)
 
 - **allowEmpty?**: `boolean` — Determines whether the pane should present in the UI when empty.
 - **id?**: `string` — The id of the pane. If not set the Dock Manager generates it automatically.
@@ -304,90 +305,90 @@ Defaults to false.
 - **size?**: `number` — The size of the pane relative to its sibling panes' sizes. Defaults to 100.
 - **type**: `"tabGroupPane"` — The type of the pane.
 
-### [IgcTabHeaderConnectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcTabHeaderConnectionEventArgs)
+### [IgcTabHeaderConnectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcTabHeaderConnectionEventArgs)
 
 - **element**: `IgcTabHeaderElement` — The tab header element that is being connected/disconnected.
 - **pane**: `IgcContentPane` — The pane whose tab header is being connected/disconnected.
 
-### [IgcTabHeaderElement](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/interfaces/IgcTabHeaderElement)
+### [IgcTabHeaderElement](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcTabHeaderElement)
 Describes a tab header element.
 
 - **dragService**: `IgcDragService` — Gets/sets the drag service.
 
 ## Type Aliases
 
-### [DockingIndicatorPosition](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/DockingIndicatorPosition)
+### [DockingIndicatorPosition](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/DockingIndicatorPosition)
 `any`
 **Deprecated:** Use DockingIndicatorPosition instead.
 
-### [DockManagerPaneType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/DockManagerPaneType)
+### [DockManagerPaneType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/DockManagerPaneType)
 `any`
 **Deprecated:** Use DockManagerPaneType instead.
 
-### [IgcDockManagerPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/IgcDockManagerPane)
+### [IgcDockManagerPane](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/IgcDockManagerPane)
 `IgcContentPane | IgcSplitPane | IgcTabGroupPane | IgcDocumentHost | undefined`
 
-### [IgcPaneDragAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/IgcPaneDragAction)
+### [IgcPaneDragAction](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/IgcPaneDragAction)
 `IgcFloatPaneAction | IgcMoveFloatingPaneAction | IgcDockPaneAction | IgcMoveTabAction`
 
-### [PaneActionBehavior](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/PaneActionBehavior)
+### [PaneActionBehavior](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/PaneActionBehavior)
 `any`
 **Deprecated:** Use PaneActionBehavior instead. Enumeration used to determine which panes within a dockable TabGroupPane are affected by a particular pane action such as closing or unpinning a pane.
 
-### [PaneDragActionType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/PaneDragActionType)
+### [PaneDragActionType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/PaneDragActionType)
 `any`
 **Deprecated:** Use PaneDragActionType instead.
 
-### [ResizerLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/ResizerLocation)
+### [ResizerLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/ResizerLocation)
 `any`
 **Deprecated:** Use ResizerLocation instead.
 
-### [SplitPaneOrientation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/SplitPaneOrientation)
+### [SplitPaneOrientation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/SplitPaneOrientation)
 `any`
 **Deprecated:** Use SplitPaneOrientation instead.
 
-### [UnpinnedLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/types/UnpinnedLocation)
+### [UnpinnedLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/types/UnpinnedLocation)
 `any`
 **Deprecated:** Use UnpinnedLocation instead.
 
 ## Functions
 
-### [addResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/functions/addResourceStrings)
+### [addResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/functions/addResourceStrings)
 `addResourceStrings(language: string, resourceStrings: IgcDockManagerResourceStrings): void`
 **Deprecated:** This method is deprecated. Please register via registerI18nof the igniteui-i18n-core package. Adds custom resource strings for a specified language.
 
-### [defineAllComponents](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/functions/defineAllComponents)
+### [defineAllComponents](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/functions/defineAllComponents)
 `defineAllComponents(): void`
 
-### [defineComponents](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/functions/defineComponents)
+### [defineComponents](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/functions/defineComponents)
 `defineComponents(components: IgniteComponent[]): void`
 
 ## Variables
 
-### [DockingIndicatorPosition](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/DockingIndicatorPosition)
+### [DockingIndicatorPosition](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/DockingIndicatorPosition)
 `any`
 **Deprecated:** Use DockingIndicatorPosition instead.
 
-### [DockManagerPaneType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/DockManagerPaneType)
+### [DockManagerPaneType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/DockManagerPaneType)
 `any`
 **Deprecated:** Use DockManagerPaneType instead.
 
-### [PaneActionBehavior](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/PaneActionBehavior)
+### [PaneActionBehavior](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/PaneActionBehavior)
 `any`
 **Deprecated:** Use PaneActionBehavior instead. Enumeration used to determine which panes within a dockable TabGroupPane are affected by a particular pane action such as closing or unpinning a pane.
 
-### [PaneDragActionType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/PaneDragActionType)
+### [PaneDragActionType](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/PaneDragActionType)
 `any`
 **Deprecated:** Use PaneDragActionType instead.
 
-### [ResizerLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/ResizerLocation)
+### [ResizerLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/ResizerLocation)
 `any`
 **Deprecated:** Use ResizerLocation instead.
 
-### [SplitPaneOrientation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/SplitPaneOrientation)
+### [SplitPaneOrientation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/SplitPaneOrientation)
 `any`
 **Deprecated:** Use SplitPaneOrientation instead.
 
-### [UnpinnedLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.2.1/variables/UnpinnedLocation)
+### [UnpinnedLocation](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/variables/UnpinnedLocation)
 `any`
 **Deprecated:** Use UnpinnedLocation instead.

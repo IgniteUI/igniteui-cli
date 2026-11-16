@@ -1,18 +1,19 @@
-# Ignite UI for Web Components v7.4.1 — Full API Reference
+# Ignite UI for Web Components v7.5.0-rc.0 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components package (7.4.1). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components package (7.5.0-rc.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents
-Version: 7.4.1
+Version: 7.5.0-rc.0
 
 ## Classes
 
-### [IgcAccordionComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcAccordionComponent)
+### [IgcAccordionComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcAccordionComponent)
 The Accordion is a container-based component that can house multiple expansion panels
 and offers keyboard navigation.
 
-- **singleExpand**: `boolean` — Allows only one panel to be expanded at a time.
+- **singleExpand**: `boolean` — Whether only one panel can be expanded at a time. When the user expands a
+panel, the other panels collapse.
 - static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -33,13 +34,12 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
-- **panels**: `IgcExpansionPanelComponent[]` — Returns all of the direct expansion panel children of the accordion.
+- **panels**: `IgcExpansionPanelComponent[]` — The direct expansion panel children of the accordion.
 - **hideAll**(): Promise<void> — Hides all of the child expansion panels' contents.
 - **showAll**(): Promise<void> — Shows all of the child expansion panels' contents.
 
-### [IgcAvatarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcAvatarComponent)
-An avatar component is used as a representation of a user identity
-typically in a user profile.
+### [IgcAvatarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcAvatarComponent)
+Shows the identity of a user, for example in a user profile.
 
 - **alt**: `string` — Alternative text for the image.
 - **initials**: `string` — Initials to use as a fallback when no image is available.
@@ -66,13 +66,11 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcBadgeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcBadgeComponent)
-The badge is a component indicating a status on a related item or an area
-where some active indication is required.
+### [IgcBadgeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcBadgeComponent)
+Shows a status on a related item, or marks an area that needs attention.
 
-- **dot**: `boolean` — Sets whether to render a dot type badge.
-When enabled, the badge appears as a small dot without any content.
-- **outlined**: `boolean` — Sets whether to draw an outlined version of the badge.
+- **dot**: `boolean` — Whether the badge renders as a small dot without content.
+- **outlined**: `boolean` — Whether the badge has an outline.
 - **shape**: `BadgeShape` — The shape of the badge.
 - **variant**: `StyleVariant` — The type (style variant) of the badge.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -96,49 +94,49 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcBannerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcBannerComponent)
+### [IgcBannerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcBannerComponent)
 A non-modal notification banner that displays important, concise messages
 requiring user acknowledgement.
 
 The banner slides into view with an animated grow transition and renders
 inline, pushing the surrounding page content rather than overlaying it.
 
-The component integrates with the
-[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
-an Ignite button or a native <button> with command="--show" / "--hide" /
-"--toggle" and commandfor pointing to this element will call the
-corresponding method declaratively without any JavaScript.
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
 
 - **open**: `boolean` — Whether the banner is open.
 
-Setting this property programmatically will immediately show or hide the
-banner without animation and without emitting close events.
-Prefer the show(), hide(), and toggle() methods for animated
-transitions.
+Setting it skips the animation and the close events. Use the show(),
+hide() and toggle() methods for an animated transition.
 - static readonly **tagName**: `"igc-banner"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **hide**(): Promise<boolean> — Closes the banner with an animated grow-out transition.
 
 Returns true when the banner was successfully closed, or false if it
-was already closed or the transition was superseded by a newer one.
+was already closed or closing, the transition was superseded by a newer
+one, or open was set to false and then to true during it.
 - **show**(): Promise<boolean> — Opens the banner with an animated grow-in transition.
 
 Returns true when the banner was successfully opened, or false if it
-was already open or the transition was superseded by a newer one.
+was already open or opening, the transition was superseded by a newer one,
+or open was set to false during it.
 - **toggle**(): Promise<boolean> — Toggles the banner open or closed depending on its current state.
 
 Equivalent to calling show() when closed and hide() when open.
-Returns true when the transition completed successfully.
+Returns true when the transition completed successfully, with the same
+false cases as these methods.
 
-### [IgcBreadcrumbComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcBreadcrumbComponent)
+### [IgcBreadcrumbComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcBreadcrumbComponent)
 A single item within a breadcrumb navigation trail.
 
-- **current**: `boolean` — Marks this breadcrumb as representing the current page.
-Sets aria-current="page" on the element when active.
-- **disabled**: `boolean` — Sets the disabled state of the breadcrumb.
+- **current**: `boolean` — Whether the breadcrumb represents the current page.
+Sets aria-current="page" on the element when true.
+- **disabled**: `boolean` — Whether the breadcrumb is disabled.
 Sets aria-disabled="true" on the element and removes the slotted
-content from the tab sequence while active.
+content from the tab sequence while true.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -160,7 +158,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcBreadcrumbsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcBreadcrumbsComponent)
+### [IgcBreadcrumbsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcBreadcrumbsComponent)
 A breadcrumb navigation component that renders an ordered list of breadcrumb items.
 
 - **separator**: `string` — The icon name used as the default separator between breadcrumb items.
@@ -186,41 +184,64 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcButtonComponent)
+### [IgcButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcButtonComponent)
 Represents a clickable button, used to submit forms or anywhere in a
 document for accessible, standard button functionality.
 
-The button supports multiple visual variants, can render as an anchor
-(<a>) element when the href attribute is set, and is fully
-form-associated, acting as a native submit or reset control.
+The button has several visual variants. It renders as an anchor (<a>)
+element when the href attribute is set. It is form-associated and can
+act as a native submit or reset control.
 
 - **variant**: `ButtonVariant` — The variant of the button which determines its visual appearance.
 - contained – filled background; highest visual emphasis (default).
 - outlined – transparent background with a visible border.
 - flat – no background or border; lowest visual emphasis.
 - fab – floating action button shape; typically used for primary actions.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
+using the css tag function, via constructible stylesheets, or
+imported from native CSS module scripts.
 
-### [IgcButtonGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcButtonGroupComponent)
+Note on Content Security Policy:
+
+Element styles are implemented with <style> tags when the browser doesn't
+support adopted StyleSheets. To use such <style> tags with the style-src
+CSP directive, the style-src value must either include 'unsafe-inline' or
+nonce-<base64-value> with <base64-value> replaced be a server-generated
+nonce.
+
+To provide a nonce to use on generated <style> elements, set
+window.litNonce to a server-generated nonce in your page's HTML, before
+loading application code:
+
+<script>
+  // Generated and unique per request:
+  window.litNonce = 'a1b2c3d4';
+</script>
+
+### [IgcButtonGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcButtonGroupComponent)
 Groups a series of toggle buttons together, exposing features such as layout and selection.
 
 - **alignment**: `ContentOrientation` — The orientation of the buttons in the group.
-- **disabled**: `boolean` — Disables all buttons inside the group.
-- **selection**: `ButtonGroupSelection` — Controls the mode of selection for the button group.
+- **disabled**: `boolean` — Whether all buttons in the group are disabled.
+- **selection**: `ButtonGroupSelection` — The selection mode of the group. A change of the mode clears the selection.
 - static readonly **tagName**: `"igc-button-group"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **selectedItems**: `string[]` — Gets/Sets the currently selected buttons (their values).
+- **selectedItems**: `string[]` — The values of the selected buttons. A button without a value is not in
+the list.
 
-### [IgcCalendarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCalendarComponent)
-Represents a calendar that lets users
-to select a date value in a variety of different ways.
+When set, selects the buttons with these values. A single selection mode
+selects only the first matching button.
 
-- **activeView**: `CalendarActiveView` — The current active view of the component.
+### [IgcCalendarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCalendarComponent)
+A calendar that lets the user select a single date, multiple dates or a date range.
+
+- **activeView**: `CalendarActiveView` — The active view of the calendar: days, months or years.
 - **formatOptions**: `Pick<Intl.DateTimeFormatOptions, "month" | "weekday">` — The options used to format the months and the weekdays in the calendar views.
 - **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header.
-- **hideHeader**: `boolean` — Whether to render the calendar header part.
-When the calendar selection is set to multiple the header is always hidden.
-- **hideOutsideDays**: `boolean` — Whether to hide the dates that do not belong to the current active month.
+- **hideHeader**: `boolean` — Whether the calendar hides its header.
+In multiple selection mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
 - **orientation**: `ContentOrientation` — The orientation of the calendar months when more than one month
 is being shown.
 - **visibleMonths**: `number` — The number of months displayed in the days view.
@@ -228,7 +249,7 @@ is being shown.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 
-### [IgcCardActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCardActionsComponent)
+### [IgcCardActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardActionsComponent)
 A container component for card action items such as buttons or icon buttons.
 Actions can be positioned at the start, center, or end of the container.
 
@@ -254,12 +275,12 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcCardComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCardComponent)
+### [IgcCardComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardComponent)
 A container component that wraps different elements related to a single subject.
 The card component provides a flexible container for organizing content such as headers,
 media, text content, and actions.
 
-- **elevated**: `boolean` — Sets the card to have an elevated appearance with shadow.
+- **elevated**: `boolean` — Whether the card has an elevated appearance with a shadow.
 When false, the card uses an outlined style with a border.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -282,9 +303,9 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcCardContentComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCardContentComponent)
+### [IgcCardContentComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardContentComponent)
 A container component for the card's main text content.
-This component should be used within a card to display the primary content.
+Use it in a card for the primary content.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -307,7 +328,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcCardHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCardHeaderComponent)
+### [IgcCardHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardHeaderComponent)
 A container component for the card's header section.
 Displays header content including an optional thumbnail, title, subtitle, and additional content.
 
@@ -332,11 +353,11 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcCardMediaComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCardMediaComponent)
+### [IgcCardMediaComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardMediaComponent)
 A container component for card media content such as images, GIFs, or videos.
-This component should be used within a card to display visual content.
+Use it in a card for visual content.
 
-- static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
 
@@ -357,17 +378,20 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcCarouselComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCarouselComponent)
+### [IgcCarouselComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCarouselComponent)
 The carousel presents a set of slides by sequentially displaying a subset of one or more.
 
 - **animationType**: `HorizontalTransitionAnimation` — The animation type.
-- **disableLoop**: `boolean` — Whether the carousel should skip rotating to the first slide after it reaches the last.
-- **disablePauseOnInteraction**: `boolean` — Whether the carousel should ignore use interactions and not pause on them.
-- **hideIndicators**: `boolean` — Whether the carousel should render the indicator controls (dots).
-- **hideNavigation**: `boolean` — Whether the carousel should skip rendering of the default navigation buttons.
-- **indicatorsOrientation**: `CarouselIndicatorsOrientation` — The orientation of the indicator controls (dots).
+- **disableLoop**: `boolean` — Whether the carousel stops at the first and the last slide instead of looping.
+- **disablePauseOnInteraction**: `boolean` — Whether the carousel keeps playing when the user hovers over it or moves the
+focus into it.
+- **hideIndicators**: `boolean` — Whether the indicator controls (dots) are hidden.
+- **hideNavigation**: `boolean` — Whether the navigation buttons are hidden.
+- **indicatorsOrientation**: `CarouselIndicatorsOrientation` — The position of the indicator controls (dots).
 - **interval**: `number | undefined` — The duration in milliseconds between changing the active slide.
-- **maximumIndicatorsCount**: `number` — The maximum number of indicator controls (dots) that can be shown. Default value is 10.
+A positive value starts the automatic rotation.
+- **maximumIndicatorsCount**: `number` — The maximum number of indicator controls (dots) that can be shown. With more slides,
+a label shows instead of the dots.
 - **vertical**: `boolean` — Whether the carousel has vertical alignment.
 - static readonly **tagName**: `"igc-carousel"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
@@ -379,19 +403,27 @@ The carousel presents a set of slides by sequentially displaying a subset of one
 - **slides**: `IgcCarouselSlideComponent[]` — The slides of the carousel.
 - **slidesLabelFormat**: `string`
 - **total**: `number` — Total number of slides.
+- **blur**(): void — Removes focus from the carousel.
 - **connectedCallback**(): void
 - **disconnectedCallback**(): void
-- **next**(): Promise<boolean> — Switches to the next slide, runs any animations, and returns if the operation was successful.
+- **focus**(options?: FocusOptions): void — Sets focus on the carousel.
+- **next**(): Promise<boolean> — Switches to the next slide, runs any animations, and returns whether the operation
+was successful.
 - **pause**(): void — Pauses the rotation of the carousel slides.
 - **play**(): void — Resumes playing of the carousel slides.
-- **prev**(): Promise<boolean> — Switches to the previous slide, runs any animations, and returns if the operation was successful.
-- **select**(slide: IgcCarouselSlideComponent, animationDirection?: "prev" | "next"): Promise<boolean> — Switches to the passed-in slide, runs any animations, and returns if the operation was successful.
-- **select**(index: number, animationDirection?: "prev" | "next"): Promise<boolean> — Switches to slide by index, runs any animations, and returns if the operation was successful.
+- **prev**(): Promise<boolean> — Switches to the previous slide, runs any animations, and returns whether the operation
+was successful.
+- **select**(slide: IgcCarouselSlideComponent, animationDirection?: "prev" | "next"): Promise<boolean> — Switches to the passed-in slide, runs any animations, and returns whether the operation
+was successful.
+- **select**(index: number, animationDirection?: "prev" | "next"): Promise<boolean> — Switches to slide by index, runs any animations, and returns whether the operation
+was successful.
 
-### [IgcCarouselIndicatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCarouselIndicatorComponent)
+### [IgcCarouselIndicatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCarouselIndicatorComponent)
 Used when a custom indicator needs to be passed to the carousel component.
 
-- static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
+- **active**: `boolean` — Whether the indicator is in its active state. The carousel sets this value.
+- **index**: `number` — The zero-based position of the indicator in the set. The carousel sets this value.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
 
@@ -413,11 +445,13 @@ loading application code:
 </script>
 - **connectedCallback**(): void
 
-### [IgcCarouselSlideComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCarouselSlideComponent)
+### [IgcCarouselSlideComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCarouselSlideComponent)
 A single content container within a set of containers used in the context of a carousel.
 
-- **active**: `boolean` — The current active slide for the carousel component.
-- static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
+- **active**: `boolean` — Whether the slide is the active slide of the carousel.
+- **previous**: `boolean` — Whether the slide is the outgoing slide of a running transition.
+The carousel sets this value.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
 
@@ -439,7 +473,7 @@ loading application code:
 </script>
 - **connectedCallback**(): void
 
-### [IgcChatComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcChatComponent)
+### [IgcChatComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcChatComponent)
 A chat UI component for displaying messages, attachments, and input interaction.
 
 - static readonly **tagName**: `"igc-chat"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
@@ -448,38 +482,64 @@ A chat UI component for displaying messages, attachments, and input interaction.
 - **draftMessage**: `IgcChatDraftMessage`
 - **messages**: `IgcChatMessage[]`
 - **options**: `IgcChatOptions`
-- **resourceStrings**: `IChatResourceStrings | IgcChatResourceStrings`
+- **resourceStrings**: `IgcChatResourceStrings | IChatResourceStrings`
+- **focusInput**(options?: FocusOptions): Promise<void> — Moves the focus to the text area of the chat input, after the first render
+of a new chat. The promise resolves when the focus moves. A disconnected
+chat does not wait. Does nothing when a custom input renderer replaces
+the text area.
 - **scrollToMessage**(messageId: string): void — Scrolls the view to a specific message by id.
 
-### [IgcCheckboxComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCheckboxComponent)
+### [IgcCheckboxComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCheckboxComponent)
 A check box allowing single values to be selected/deselected.
 
-- **indeterminate**: `boolean` — Draws the checkbox in indeterminate state.
+- **indeterminate**: `boolean` — Whether the checkbox is in the indeterminate state. A user click clears it.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
+using the css tag function, via constructible stylesheets, or
+imported from native CSS module scripts.
 
-### [IgcChipComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcChipComponent)
+Note on Content Security Policy:
+
+Element styles are implemented with <style> tags when the browser doesn't
+support adopted StyleSheets. To use such <style> tags with the style-src
+CSP directive, the style-src value must either include 'unsafe-inline' or
+nonce-<base64-value> with <base64-value> replaced be a server-generated
+nonce.
+
+To provide a nonce to use on generated <style> elements, set
+window.litNonce to a server-generated nonce in your page's HTML, before
+loading application code:
+
+<script>
+  // Generated and unique per request:
+  window.litNonce = 'a1b2c3d4';
+</script>
+
+### [IgcChipComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcChipComponent)
 Chips help people enter information, make selections, filter content, or trigger actions.
 
-- **disabled**: `boolean` — Whether the chip is disabled or not.
-- **outlined**: `boolean` — Whether the chip is outlined or not.
-- **removable**: `boolean` — Whether the chip is removable or not.
-- **selectable**: `boolean` — Whether the chip is selectable or not.
-- **selected**: `boolean` — Whether the chip is selected or not.
-- **variant**: `StyleVariant` — A property that sets the color variant of the chip component.
+- **disabled**: `boolean` — Whether the chip is disabled.
+- **outlined**: `boolean` — Whether the chip is outlined.
+- **removable**: `boolean` — Whether the chip shows a remove control. A disabled chip hides it.
+- **selectable**: `boolean` — Whether the chip can be selected.
+- **selected**: `boolean` — Whether the chip is selected.
+- **variant**: `StyleVariant` — The color variant of the chip.
 - static readonly **tagName**: `"igc-chip"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **blur**(): void — Removes focus from the chip.
+- **focus**(options?: FocusOptions): void — Sets focus on the chip.
 
-### [IgcCircularGradientComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCircularGradientComponent)
-Used for defining gradient stops in the circular progress component.
-For each circular gradient, defined as gradient slot of the circular progress, would be created a SVG stop element.
-The values passed as color, offset and opacity would be set as
-stop-color, offset and stop-opacity of the SVG element without further validations.
+### [IgcCircularGradientComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCircularGradientComponent)
+Defines a gradient stop for the fill of the circular progress.
+Put it in the gradient slot of the circular progress. Each one becomes an SVG <stop> element.
+The color, offset and opacity values go to the
+stop-color, offset and stop-opacity of that element without validation.
 
-- **color**: `string` — Defines the color of the gradient stop
-- **offset**: `string` — Defines where the gradient stop is placed along the gradient vector
-- **opacity**: `number` — Defines the opacity of the gradient stop
+- **color**: `string` — The color of the stop.
+- **offset**: `string` — Where the stop sits along the gradient vector.
+- **opacity**: `number` — The opacity of the stop.
 
-### [IgcCircularProgressComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcCircularProgressComponent)
+### [IgcCircularProgressComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCircularProgressComponent)
 A circular progress indicator used to express unspecified wait time or display
 the length of a process.
 
@@ -504,7 +564,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcColorPickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcColorPickerComponent)
+### [IgcColorPickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcColorPickerComponent)
 Color input component.
 
 The user picks a color with the HSV saturation/value canvas, the hue slider
@@ -515,11 +575,11 @@ The component supports pre-defined swatches and the native EyeDropper API,
 where the browser provides one. The anchor is a trigger button
 (mode="default") or an editable text field (mode="input").
 
-- **format**: `ColorFormat` — Sets the color format of the string value.
+- **format**: `ColorFormat` — The color format of the string value.
 
 A format change renders value in the new notation. The color does not
 change, so the component emits no igcInput or igcChange.
-- **hideFormats**: `boolean` — Whether to hide the format picker buttons.
+- **hideFormats**: `boolean` — Whether the format select is hidden.
 - **label**: `string` — The label of the component.
 
 In mode="input" the component forwards the label to the anchor input.
@@ -531,132 +591,172 @@ anchor is an editable text field with a color swatch prefix. The prefix
 also opens the picker.
 - **showAlpha**: `boolean` — Whether to show the alpha slider and input.
 - **swatches**: `string[]` — Pre-defined color strings. The component renders them as clickable
-swatches below the picker controls. A click on a swatch commits its color
-as the value.
+swatches below the picker controls. A click on a swatch sets its color as
+the value.
 - static readonly **tagName**: `"igc-color-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **value**: `string`
+- **blur**(): void — Removes focus from the color picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the color picker.
 
-### [IgcComboComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcComboComponent)
-The Combo component is similar to the Select component in that it provides a list of options from which the user can make a selection.
-In contrast to the Select component, the Combo component displays all options in a virtualized list of items,
-meaning the combo box can simultaneously show thousands of options, where one or more options can be selected.
-Additionally, users can create custom item templates, allowing for robust data visualization.
-The Combo component features case-sensitive filtering, grouping, complex data binding, dynamic addition of values and more.
+### [IgcComboComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcComboComponent)
+The combo lets the user select one or more options from a list. Unlike the select, it shows the options in a
+virtualized list, so the list can hold thousands of options.
+The combo supports custom item templates, case-sensitive filtering, grouping and binding to complex data.
 
-- **autofocus**: `boolean` — Whether the control should receive focus automatically.
-- **autofocusList**: `boolean` — Focuses the list of options when the menu opens.
-- **caseSensitiveIcon**: `boolean` — Enables the case sensitive search icon in the filtering input.
-- **data**: `T[]` — The data source used to generate the list of options.
-- **disableClear**: `boolean` — Hides the clear button.
-- **disableFiltering**: `boolean` — Disables the filtering of the list of options.
-- **groupHeaderTemplate**: `ComboItemTemplate<T>` — The template used for the content of each combo group header.
+- **autofocus**: `boolean` — Whether the control takes the focus automatically.
+- **autofocusList**: `boolean` — Whether the list of options, not the search input, takes the focus when
+the list opens. It has no effect in single selection mode.
+- **caseSensitiveIcon**: `boolean` — Whether the search input shows the icon that toggles case-sensitive
+filtering. In remote filtering mode, read filteringOptions.caseSensitive
+when you send the search to the server.
+- **data**: `T[]` — The data source used to generate the list of options. A new data source
+keeps the selection, also the selected items that it does not hold.
+- **disableClear**: `boolean` — Whether the clear button is hidden.
+- **disableFiltering**: `boolean` — Whether the filtering of the list of options is disabled. In multiple
+selection mode, it also hides the search input.
+- **groupHeaderTemplate**: `ComboGroupHeaderTemplate<T>` — The template used for the content of each combo group header.
 - **groupKey**: `string | any` — The key in the data source used to group items in the list.
-- **groupSorting**: `GroupingDirection` — Sorts the items in each group by ascending or descending order.
+- **groupSelection**: `boolean` — Whether a group header is an option that selects the items of its group
+that the list shows, or deselects them when all of them are selected.
+Only in multiple selection mode with groupKey.
+- **groupSorting**: `GroupingDirection` — The sort order of the groups, by their group value. With none, the
+groups keep the order of the data source.
 - **itemTemplate**: `ComboItemTemplate<T>` — The template used for the content of each combo item.
 - **label**: `string` — The label of the control.
+- **loading**: `boolean` — Whether the combo loads options. A spinner, which the loading slot can
+replace, then takes the place of the toggle icon, and an empty list shows
+a loading message instead of the empty message.
 - **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
-- **singleSelect**: `boolean` — Enables single selection mode and moves item filtering to the main input.
+- **selectionCommit**: `ComboSelectionCommit` — When the user's changes of the selection apply in multiple selection
+mode. With confirm, they change a pending selection while the list is
+open, and Enter or the Apply button applies it with one igcChange. Any
+other close drops it. While it exists, the selection methods change it too.
+- **showSelectAll**: `boolean` — Whether the list starts with an option that selects all the items that it
+shows, or deselects them when all of them are selected. Only in multiple
+selection mode.
+- **singleSelect**: `boolean` — Whether only one item can be selected. In this mode, the main input
+filters the list of options.
+- **totalItemCount**: `number` — The number of all the items of a remote source, when the source knows it.
+In remote filtering mode, the list shows a placeholder for each item that
+data does not hold yet, so the scrollbar shows the full list.
 - **valueKey**: `any` — The key in the data source used when selecting items.
 - static readonly **tagName**: `"igc-combo"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **displayKey**: `any | undefined`
 - **filteringOptions**: `Partial<FilteringOptions<T>>`
-- **locale**: `string`
+- **pendingValue**: `ComboValue<T>[]` — The values of the pending selection in the confirm mode of
+selectionCommit, which Enter, the Apply button or commitSelection()
+applies. Without a pending selection, the same as value.
 - **placeholderSearch**: `string | undefined`
 - **selection**: `T[]` — Returns the current selection as an array of objects as provided in the data source.
-- **value**: `ComboValue<T>[]` — Returns the current selection as a list of comma separated values,
-represented by the value key, when provided.
+- **value**: `ComboValue<T>[]` — The values of the selected items. With a valueKey, each value is that
+field of an item. Without it, each value is the item itself.
 - **blur**(): void — Removes focus from the component.
-- **deselect**(items?: Item<T> | Item<T>[]): void — Deselects option(s) in the list by either reference or valueKey.
-If not argument is provided all items will be deselected.
+- **cancelSelection**(): void — Puts value back as the pending selection of the confirm mode. It does
+not close the list.
+- **commitSelection**(): void — Applies the pending selection of the confirm mode to value. It does not
+emit igcChange or close the list.
+- **deselect**(items?: Item<T> | Item<T>[]): void — Deselects options in the list by reference or by valueKey value. It
+does not emit igcChange. Without an argument, it deselects all items.
+- **deselectAllItems**(ignoreFilter?: boolean): void — Deselects all the items that the list shows. It does not emit igcChange.
 - **focus**(options?: FocusOptions): void — Sets focus on the component.
-- **select**(items?: Item<T> | Item<T>[]): void — Selects option(s) in the list by either reference or valueKey.
-If not argument is provided all items will be selected.
+- **select**(items?: Item<T> | Item<T>[]): void — Selects options in the list by reference or by valueKey value. It does
+not emit igcChange. An object that data does not hold is selected as
+it is. Without an argument, it selects all the items of data, or clears
+the selection in single selection mode.
+- **selectAllItems**(ignoreFilter?: boolean): void — Selects all the items that the list shows. It does not emit igcChange,
+and does nothing in single selection mode.
 
-### [IgcDatePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDatePickerComponent)
-The date picker is a feature rich component used for entering a date through manual text input or
-choosing date values from a calendar dialog that pops up.
+### [IgcDatePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDatePickerComponent)
+A date field where the user types a date or selects one in a calendar.
+The calendar opens in a dropdown or in a dialog.
 
 - **placeholder**: `string` — The placeholder text of the control.
 - static readonly **tagName**: `"igc-date-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **resourceStrings**: `IgcCalendarResourceStrings | DatePickerResourceStringsType`
+- **selectionEnd**: `number` — The offset of the end of the text selection in the input, in UTF-16 code
+units.
+- **selectionStart**: `number` — The offset of the start of the text selection in the input, in UTF-16
+code units. Equals selectionEnd when no text is selected.
 - **value**: `string | Date | null | undefined`
-- **select**(): void — Selects the text in the input of the component
-- **setSelectionRange**(start: number, end: number, direction?: SelectionRangeDirection): void — Sets the text selection range in the input of the component
-- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements the passed in date part
-- **stepUp**(datePart?: DatePart, delta?: number): void — Increments the passed in date part
+- **select**(): void — Selects the text in the input of the component.
+- **setRangeText**(replacement: string, start?: number, end?: number, mode?: RangeTextSelectMode): void — Replaces the text from start to end in the input and re-applies the
+mask. Without start and end, replaces the selected text.
+- **setSelectionRange**(start: number, end: number, direction?: SelectionRangeDirection): void — Sets the text selection range in the input of the component.
+- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date part by delta, or by 1. Without datePart, it changes the
+part at the cursor or a default part.
+- **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date part by delta, or by 1. Without datePart, it changes the
+part at the cursor or a default part.
 
-### [IgcDateRangePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDateRangePickerComponent)
-The Date Range Picker includes a text input and a calendar pop-up, allowing users to easily select start and end dates.
+### [IgcDateRangePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDateRangePickerComponent)
+A date range field where the user types a start and an end date or selects a range in a calendar.
+The calendar opens in a dropdown or in a dialog.
 
-- **customRanges**: `CustomDateRange[]` — Renders chips with custom ranges based on the elements of the array.
+- **customRanges**: `CustomDateRange[]` — The custom date ranges that the picker shows as chips. A click on a chip selects its range.
 - **labelEnd**: `string` — The label of the end input.
 - **labelStart**: `string` — The label of the start input.
 - **placeholderEnd**: `string` — The placeholder text of the end input.
 - **placeholderStart**: `string` — The placeholder text of the start input.
-- **usePredefinedRanges**: `boolean` — Whether the control will show chips with predefined ranges.
-- **useTwoInputs**: `boolean` — Use two inputs to display the date range values. Makes the input editable in dropdown mode.
+- **usePredefinedRanges**: `boolean` — Whether the picker shows chips with predefined ranges.
+- **useTwoInputs**: `boolean` — Whether the picker shows the start and the end date in two separate inputs.
 - static readonly **tagName**: `"igc-date-range-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **placeholder**: `string`
-- **resourceStrings**: `DateRangeResourceStrings`
 - **value**: `string | DateRangeValue | null | undefined`
 - **visibleMonths**: `number` — The number of months displayed in the calendar.
 - **hasDateParts**(): boolean
 - **hasTimeParts**(): boolean
-- **select**(value: DateRangeValue | null): void — Selects a date range value in the picker
+- **select**(value: DateRangeValue | null): void — Sets the value of the picker to value. It does not emit events.
 
-### [IgcDateTimeInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDateTimeInputComponent)
-A date time input is an input field that lets you set and edit the date and time in a chosen input element
-using customizable display and input formats.
+### [IgcDateTimeInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDateTimeInputComponent)
+An input field to enter and edit a date and time value, with configurable input and display formats.
 
 - static readonly **tagName**: `"igc-date-time-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **value**: `Date | null` — The committed value of the input.
-- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date/time portion.
-- **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date/time portion.
+- **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
+- **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date or time part by delta, or by its spinDelta value.
+Without datePart, it changes the part at the cursor or a default part.
+The value updates at once.
 
-### [IgcDialogComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDialogComponent)
+### [IgcDialogComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDialogComponent)
 A modal dialog component built on the native <dialog> element.
 
 The dialog traps focus while open and blocks interaction with the rest
 of the page (modal semantics). It supports animated open/close
-transitions, an optional backdrop overlay, and multiple content areas
+transitions, a backdrop overlay, and multiple content areas
 through named slots.
 
-The component integrates with the
-[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
-an Ignite button or a native <button> with command="--show" / "--hide" / "--toggle"
-and commandfor pointing to this element will call the corresponding method
-declaratively without any JavaScript.
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a commandfor
+that points to this element calls the matching method.
 
-- **closeOnOutsideClick**: `boolean` — When set, clicking on the backdrop area outside the dialog surface
-will close it (emitting close events).
+- **closeOnOutsideClick**: `boolean` — Whether a click on the backdrop, outside the dialog surface, closes the
+dialog. The close emits the close events.
 
 Has no effect when the dialog is not yet open.
-- **hideDefaultAction**: `boolean` — When set, the built-in "OK" close button in the footer is not rendered.
+- **hideDefaultAction**: `boolean` — Whether the default action button in the footer is hidden.
 
-Has no effect when content is projected into the footer slot, since
-the slot content replaces the default button entirely.
-- **keepOpenOnEscape**: `boolean` — When set, pressing the Escape key will not close the dialog.
+Has no effect when content is projected into the footer slot, because
+the slot content replaces the default button.
+- **keepOpenOnEscape**: `boolean` — Whether the dialog stays open when the user presses the Escape key.
 
-By default the browser closes a modal dialog on Escape. Enable this
-option when the dialog guards unsaved work and should require an explicit
-user action to dismiss.
+Use it when the dialog guards unsaved work and needs an explicit user
+action to close.
 - **open**: `boolean` — Whether the dialog is open.
 
-Setting this property programmatically will open or close the dialog
-without animation and without emitting close events.
-Prefer the show(), hide(), and toggle() methods for animated
-transitions.
+Setting it skips the animation and the close events. Use the show(),
+hide() and toggle() methods for an animated transition.
 - **returnValue**: `string` — The return value of the dialog.
 
 Automatically set to the value of the submitter element when a
@@ -668,25 +768,42 @@ Overridden by any content projected into the title slot.
 - static readonly **tagName**: `"igc-dialog"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
 - **hide**(): Promise<boolean> — Closes the dialog with an animated fade-out transition.
 
 Returns true when the dialog was successfully closed, or false if it
-was already closed or the transition was superseded by a newer one.
+was already closed or closing, the transition was superseded by a newer
+one, or open was set to false and then to true during it.
 - **show**(): Promise<boolean> — Opens the dialog with an animated fade-in transition.
 
 Returns true when the dialog was successfully opened, or false if it
-was already open or the transition was superseded by a newer one.
+was already open or opening, the transition was superseded by a newer one,
+or open was set to false during it.
 - **toggle**(): Promise<boolean> — Toggles the dialog open or closed depending on its current state.
 
 Equivalent to calling show() when closed and hide() when open.
-Returns true when the transition completed successfully.
+Returns true when the transition completed successfully, with the same
+false cases as these methods.
 
-### [IgcDividerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDividerComponent)
-The divider allows the content author to easily create a horizontal/vertical
-rule as a break between content, to better organize information on a page.
+### [IgcDividerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDividerComponent)
+Shows a horizontal or vertical rule as a break between content on a page.
 
-- **middle**: `boolean` — When set and inset is provided, it will shrink the divider line from both sides.
-- **type**: `DividerType` — Whether to render a solid or a dashed divider line.
+- **middle**: `boolean` — Whether the --inset value shrinks the line from both sides, not only from the start.
+- **type**: `DividerType` — The style of the divider line: solid or dashed.
 - **vertical**: `boolean` — Whether to render a vertical divider line.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -709,14 +826,15 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcDropdownComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDropdownComponent)
-Represents a Dropdown component.
+### [IgcDropdownComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDropdownComponent)
+Shows a list of items in a popup next to a target element. The user
+selects one item from the list.
 
 - **distance**: `number` — The distance from the target element.
-- **flip**: `boolean` — Whether the component should be flipped to the opposite side of the target once it's about to overflow the visible area.
-When true, once enough space is detected on its preferred side, it will flip back.
+- **flip**: `boolean` — Whether the dropdown flips to the opposite side of the target when it does not fit in the visible area.
+It flips back when its preferred side has enough space again.
 - **placement**: `PopoverPlacement` — The preferred placement of the component around the target element.
-- **sameWidth**: `boolean` — Whether the dropdown's width should be the same as the target's one.
+- **sameWidth**: `boolean` — Whether the dropdown has the same width as the target.
 - static readonly **tagName**: `"igc-dropdown"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
@@ -730,10 +848,16 @@ When true, once enough space is detected on its preferred side, it will flip bac
 - **navigateTo**(index: number): IgcDropdownItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
 - **select**(value: string): IgcDropdownItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **select**(index: number): IgcDropdownItemComponent | null — Selects the item at the specified index. If it exists, returns the found item, otherwise - null.
-- **show**(target?: string | HTMLElement): Promise<boolean> — Shows the component.
-- **toggle**(target?: string | HTMLElement): Promise<boolean> — Toggles the open state of the component.
+- **show**(target?: string | HTMLElement): Promise<boolean> — Opens the dropdown. It does not emit events. The optional target is the
+anchor element, or its ID. The promise resolves to false when the
+dropdown is already open or has no anchor, or when a later call replaces
+this one.
+- **toggle**(target?: string | HTMLElement): Promise<boolean> — Opens the dropdown when it is closed, and closes it when it is open. It
+does not emit events. The optional target is the anchor element for
+the open, or its ID. The promise resolves to true when the state
+changes.
 
-### [IgcDropdownGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDropdownGroupComponent)
+### [IgcDropdownGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDropdownGroupComponent)
 A container for a group of dropdown items.
 
 - **items**: `IgcDropdownItemComponent[]` — All child dropdown items.
@@ -758,7 +882,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcDropdownHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDropdownHeaderComponent)
+### [IgcDropdownHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDropdownHeaderComponent)
 Represents a header item in a dropdown list.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -782,7 +906,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcDropdownItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcDropdownItemComponent)
+### [IgcDropdownItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDropdownItemComponent)
 Represents an item in a dropdown list.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -806,14 +930,15 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcExpansionPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcExpansionPanelComponent)
-The Expansion Panel Component provides a way to display information in a toggleable way -
-compact summary view containing title and description and expanded detail view containing
-additional content to the summary header.
+### [IgcExpansionPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcExpansionPanelComponent)
+Shows a header with a title and a subtitle, and content that the user can
+expand and collapse. Find-in-page, a text fragment or a link to an element in
+the content opens a collapsed panel that is not disabled.
 
-- **disabled**: `boolean` — Get/Set whether the expansion panel is disabled. Disabled panels are ignored for user interactions.
+- **disabled**: `boolean` — Whether the panel is disabled. A disabled panel does not respond to user
+interaction.
 - **indicatorPosition**: `ExpansionPanelIndicatorPosition` — The indicator position of the expansion panel.
-- **open**: `boolean` — Indicates whether the contents of the control should be visible.
+- **open**: `boolean` — Whether the panel is expanded and its content is visible.
 - static readonly **tagName**: `"igc-expansion-panel"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
@@ -822,29 +947,33 @@ additional content to the summary header.
 - **show**(): Promise<boolean> — Shows the panel content.
 - **toggle**(): Promise<boolean> — Toggles the panel open/close state.
 
-### [IgcFileInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcFileInputComponent)
+### [IgcFileInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcFileInputComponent)
+A form control that lets the user select one or more files, or a folder.
 
 - **accept**: `string` — The file types the control accepts, as a comma-separated list.
-- **autofocus**: `boolean` — Whether the control should receive focus automatically.
+- **autofocus**: `boolean` — Whether the control receives focus automatically.
+- **directory**: `boolean` — Whether the user selects a folder instead of files. The selection then holds
+every file in the folder and its subfolders, and the webkitRelativePath of
+each file gives its path from the folder.
 - **multiple**: `boolean` — Whether the control allows the user to select more than one file.
 - static readonly **tagName**: `"igc-file-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **files**: `FileList` — Returns the list of selected files.
+- **files**: `FileList` — The list of selected files.
 - **value**: `string` — The value of the control.
 
-### [IgcHighlightComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcHighlightComponent)
-The highlight component provides efficient searching and highlighting of text
-projected into it via its default slot. It uses the native CSS Custom Highlight API
-to apply highlight styles to matched text nodes without modifying the DOM.
+### [IgcHighlightComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcHighlightComponent)
+Searches the text projected into its default slot and highlights the matches.
+It uses the native CSS Custom Highlight API, so it does not change the DOM.
 
-The component supports case-sensitive matching, programmatic navigation between
-matches, and automatic scroll-into-view of the active match.
+The component supports case-sensitive matching and programmatic navigation between
+matches. Navigation scrolls the active match into view. When the content changes,
+the component searches it again and keeps the active match where it can.
 
-- **caseSensitive**: `boolean` — Whether to match the searched text with case sensitivity in mind.
+- **caseSensitive**: `boolean` — Whether the matching distinguishes upper and lower case.
 When true, only exact-case occurrences of searchText are highlighted.
 - **searchText**: `string` — The string to search and highlight in the DOM content of the component.
-Setting this property triggers a new search automatically.
+A change of this property starts a new search.
 An empty string clears all highlights.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -866,19 +995,19 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
-- **current**: `number` — The zero-based index of the currently active (focused) match. Returns 0 when there are no matches.
+- **current**: `number` — The zero-based index of the active match. Returns 0 when there are no matches.
 - **size**: `number` — The total number of matches found for the current searchText. Returns 0 when there are no matches or searchText is empty.
 - **next**(options?: HighlightNavigation): void — Moves the active highlight to the next match.
 Wraps around to the first match after the last one.
 - **previous**(options?: HighlightNavigation): void — Moves the active highlight to the previous match.
 Wraps around to the last match when going back from the first one.
-- **search**(): void — Re-runs the highlight search based on the current searchText and caseSensitive values.
+- **search**(): void — Re-runs the highlight search based on the current searchText and caseSensitive values,
+and makes the first match active.
 
-Call this method after the slotted content changes dynamically (e.g. after lazy loading
-or programmatic DOM mutations) to ensure all matches are up to date.
+The component also searches again by itself after its content changes.
 - **setActive**(index: number, options?: HighlightNavigation): void — Moves the active highlight to the match at the specified zero-based index.
 
-### [IgcIconButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcIconButtonComponent)
+### [IgcIconButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcIconButtonComponent)
 A button that displays a single icon, designed for compact, icon-only
 interactions such as toolbar actions, floating action buttons, or inline
 controls.
@@ -888,19 +1017,13 @@ attributes. Like the normal button, it can render as an anchor element when
 href is set and is fully form-associated.
 
 - **collection**: `string` — The collection the icon belongs to.
-- **mirrored**: `boolean` — Determines whether the icon should be mirrored in right-to-left contexts.
+- **mirrored**: `boolean` — Whether the icon is flipped horizontally. Use it for a directional icon
+in a right-to-left layout.
 - **name**: `string` — The name of the icon to display.
 - **variant**: `IconButtonVariant` — The variant of the button which determines its visual appearance.
 - contained – filled background; highest visual emphasis (default).
 - outlined – transparent background with a visible border.
 - flat – no background or border; lowest visual emphasis.
-
-### [IgcIconComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcIconComponent)
-The icon component allows visualizing collections of pre-registered SVG icons.
-
-- **collection**: `string` — The name of the registered collection for look up of icons.
-- **mirrored**: `boolean` — Whether to flip the icon horizontally. Useful for RTL (right-to-left) layouts.
-- **name**: `string` — The name of the icon glyph to draw.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -921,15 +1044,25 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+
+### [IgcIconComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcIconComponent)
+Shows an SVG icon from a collection of registered icons.
+
+- **collection**: `string` — The registered collection to look the icon up in.
+- **mirrored**: `boolean` — Whether the icon is flipped horizontally, for example for RTL layouts.
+- **name**: `string` — The name of the icon glyph to draw.
+- static readonly **tagName**: `"igc-icon"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **connectedCallback**(): void
 - **disconnectedCallback**(): void
 
-### [IgcInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcInputComponent)
-A highly customizable single-line text field for entering and editing data,
-with support for prefix/suffix content, helper text, form integration, and built-in validation.
+### [IgcInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcInputComponent)
+A single-line text field to enter and edit data. It supports prefix and
+suffix content, helper text, form integration and built-in validation.
 
 - **autocomplete**: `string` — A hint for the browser on how to autofill the control.
-- **autofocus**: `boolean` — Whether the control should receive focus automatically.
+- **autofocus**: `boolean` — Whether the control receives focus automatically.
 - **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
 See [relevant MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
 - **max**: `number` — The maximum value the control accepts.
@@ -937,23 +1070,49 @@ See [relevant MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Glo
 - **min**: `number` — The minimum value the control accepts.
 - **minLength**: `number` — The minimum string length required by the control.
 - **pattern**: `string` — The regular expression the value is validated against.
-- **readOnly**: `boolean` — Makes the control a readonly field.
+- **readOnly**: `boolean` — Whether the control is read-only.
 - **step**: `number` — The granularity the value must adhere to.
 - **type**: `InputType` — The type of the control.
-- **validateOnly**: `boolean` — Enables validation rules to be evaluated without restricting user input. This applies to the maxLength property for
-string-type inputs or allows spin buttons to exceed the predefined min/max limits for number-type inputs.
+- **validateOnly**: `boolean` — Whether the validation rules apply without restricting user input. The user can type past maxLength,
+and the spin buttons of a number input can go past min and max.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
+using the css tag function, via constructible stylesheets, or
+imported from native CSS module scripts.
+
+Note on Content Security Policy:
+
+Element styles are implemented with <style> tags when the browser doesn't
+support adopted StyleSheets. To use such <style> tags with the style-src
+CSP directive, the style-src value must either include 'unsafe-inline' or
+nonce-<base64-value> with <base64-value> replaced be a server-generated
+nonce.
+
+To provide a nonce to use on generated <style> elements, set
+window.litNonce to a server-generated nonce in your page's HTML, before
+loading application code:
+
+<script>
+  // Generated and unique per request:
+  window.litNonce = 'a1b2c3d4';
+</script>
+- **selectionEnd**: `number | null` — The offset of the end of the text selection, in UTF-16 code units.
+null before the first render and for the email and number types.
+- **selectionStart**: `number | null` — The offset of the start of the text selection, in UTF-16 code units.
+Equals selectionEnd when no text is selected. null before the first
+render and for the email and number types, which have no selection.
 - **value**: `string` — The value of the control.
-- **setRangeText**(replacement: string, start?: number, end?: number, selectMode: RangeTextSelectMode): void — Replaces the selected text in the input.
-- **setSelectionRange**(start?: number, end?: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode: RangeTextSelectMode): void — Replaces the text from start to end in the input. Without start and
+end, replaces the selected text.
+- **setSelectionRange**(start?: number, end?: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control.
 - **stepDown**(n?: number): void — Decrements the numeric value of the input by one or more steps.
 - **stepUp**(n?: number): void — Increments the numeric value of the input by one or more steps.
 
-### [IgcLinearProgressComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcLinearProgressComponent)
+### [IgcLinearProgressComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcLinearProgressComponent)
 A linear progress indicator used to express unspecified wait time or display
 the length of a process.
 
 - **labelAlign**: `LinearProgressLabelAlign` — The position for the default label of the control.
-- **striped**: `boolean` — Sets the striped look of the control.
+- **striped**: `boolean` — Whether the fill of the control is striped.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -975,7 +1134,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcListComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcListComponent)
+### [IgcListComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcListComponent)
 Displays a collection of data items in a templatable list format.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -999,7 +1158,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcListHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcListHeaderComponent)
+### [IgcListHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcListHeaderComponent)
 Header list item.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -1023,11 +1182,12 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcListItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcListItemComponent)
+### [IgcListItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcListItemComponent)
 The list-item component is a container
 intended for row items in the list component.
 
-- **selected**: `boolean` — Defines if the list item is selected or not.
+- **selected**: `boolean` — Whether the list item is selected. It changes only the visual style of the
+item.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1049,16 +1209,15 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcMaskInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcMaskInputComponent)
-A masked input is an input field where a developer can control user input and format the visible value,
-based on configurable rules
+### [IgcMaskInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcMaskInputComponent)
+An input field that restricts user input to a mask pattern and formats the visible value.
 
-- **valueMode**: `MaskInputValueMode` — Dictates the behavior when retrieving the value of the control:
+- **valueMode**: `MaskInputValueMode` — The format of the value and of the submitted form value:
 
-- raw: Returns clean input (e.g. "5551234567")
-- withFormatting: Returns with mask formatting (e.g. "(555) 123-4567")
+- raw: The input without the mask literals and prompts (e.g. "5551234567")
+- withFormatting: The input with the mask formatting (e.g. "(555) 123-4567")
 
-Empty values always return an empty string, regardless of the value mode.
+An empty value is always an empty string, regardless of the value mode.
 - static readonly **tagName**: `"igc-mask-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
@@ -1066,8 +1225,9 @@ Empty values always return an empty string, regardless of the value mode.
 - **prompt**: `string` — The prompt symbol for the unfilled parts of the mask pattern.
 - **value**: `string` — The value of the control.
 - **isValidMaskPattern**(): boolean — Returns whether the current masked input is valid according to the mask pattern.
+An empty control is valid. The required validator checks it.
 
-### [IgcNavbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcNavbarComponent)
+### [IgcNavbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcNavbarComponent)
 A navigation bar component is used to facilitate navigation through
 a series of hierarchical screens within an app.
 
@@ -1092,38 +1252,29 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcNavDrawerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcNavDrawerComponent)
+### [IgcNavDrawerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcNavDrawerComponent)
 A side navigation container that provides
 quick access between views within an application.
 
-For non-relative positions (start, end, top, bottom) the drawer is
-rendered as a native <dialog> element, providing modal semantics, automatic
-focus trapping, and a backdrop. For the relative position it is rendered
-inline as a <nav> landmark.
+The edge positions (start, end, top, bottom) render a modal <dialog>
+with a focus trap and a backdrop. The relative position renders an inline
+<nav> landmark.
 
-When content is provided in the mini slot, a compact icon-only variant is
-always displayed alongside the main drawer (hidden only while the full drawer
-is open).
+Content in the mini slot renders a compact variant, which shows while the
+drawer is closed.
 
 The component integrates with the
 [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
 an Ignite button or a native <button> with command="--show" / "--hide" / "--toggle"
-and commandfor pointing to this element will call the corresponding method
+and commandfor pointing to this element calls the corresponding method
 declaratively without any JavaScript.
 
-- **keepOpenOnEscape**: `boolean` — Determines whether the drawer should remain open when the Escape key is pressed.
-
-This is only applicable when the drawer is in a non-relative position,
-as the Escape key does not trigger the closing of relative drawers.
-- **label**: `string` — Sets an accessible label for the drawer.
-
-In non-relative positions this label is applied to the modal <dialog> element.
-In relative position it labels the <nav> landmark.
-
-When multiple navigation landmarks exist on the page each should receive a
-distinct label so screen-reader users can differentiate between them.
+- **keepOpenOnEscape**: `boolean` — Whether the drawer stays open when the user presses Escape. Applies only to the
+edge positions, because Escape does not close a relative drawer.
+- **label**: `string` — The accessible label of the <dialog>, or of the <nav> landmark in the relative
+position, and of the mini variant. Give each navigation landmark on a page a distinct label.
 - **open**: `boolean` — Whether the drawer is open.
-- **position**: `NavDrawerPosition` — Sets the position of the drawer.
+- **position**: `NavDrawerPosition` — The position of the drawer.
 
 - start - anchored to the inline-start edge (default).
 - end - anchored to the inline-end edge.
@@ -1133,11 +1284,12 @@ distinct label so screen-reader users can differentiate between them.
 - static readonly **tagName**: `"igc-nav-drawer"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **hide**(): Promise<boolean> — Closes the drawer. Returns true if the operation was successful, false if the drawer was already closed.
-- **show**(): Promise<boolean> — Opens the drawer. Returns true if the operation was successful, false if the drawer was already open.
-- **toggle**(): Promise<boolean> — Toggles the open state of the drawer. Delegates to show() or hide() depending on the current state.
+- **hide**(): Promise<boolean> — Closes the drawer. Returns true after the exit, or false when it is already closed or a
+reopen ends the exit.
+- **show**(): Promise<boolean> — Opens the drawer. Returns true on success, or false when it is already open.
+- **toggle**(): Promise<boolean> — Toggles the open state of the drawer.
 
-### [IgcNavDrawerHeaderItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcNavDrawerHeaderItemComponent)
+### [IgcNavDrawerHeaderItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcNavDrawerHeaderItemComponent)
 Represents a navigation drawer header item.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -1161,11 +1313,11 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcNavDrawerItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcNavDrawerItemComponent)
+### [IgcNavDrawerItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcNavDrawerItemComponent)
 Represents a navigation drawer item.
 
-- **active**: `boolean` — Determines whether the drawer item is active.
-- **disabled**: `boolean` — Determines whether the drawer item is disabled.
+- **active**: `boolean` — Whether the drawer item is active.
+- **disabled**: `boolean` — Whether the drawer item is disabled.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1187,92 +1339,92 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcQrCodeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcQrCodeComponent)
-Generates a QR code based on the provided value and options.
-The component renders an SVG representation of the QR code, which can be customized using various properties.
+### [IgcQrCodeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcQrCodeComponent)
+Generates a QR code from a value and renders it as an SVG image.
+Properties set the size, the shapes, the error correction level and an optional logo.
 
 - **dotStyle**: `QrDotStyle` — The style of the data modules (dots) in the QR code, and of the inner dot of each finder-pattern
 corner. This can be 'square', 'circle', or 'rounded'.
-- **errorLevel**: `QrErrorCorrectionLevel` — The error correction level for the QR code, which determines the QR code's ability to be read if it is partially obscured or damaged.
-Valid values are 'L', 'M', 'Q', and 'H', where 'L' provides the lowest level of error correction and 'H' provides the highest level.
 - **logoMargin**: `number` — The margin around the logo in pixels. This is the whitespace area surrounding the logo within the QR code,
 which helps ensure that the logo does not interfere with the QR code's scannability.
 - **logoSize**: `number` — The size of the logo, as a ratio of the maximum area that can safely be obscured by a logo
 while the QR code remains scannable (up to 9% of the code's area, at the highest error
-correction level). The value should be a number between 0 and 1, where 0 means no logo and 1
-means the logo will cover the full safe area (not the entire QR code).
+correction level). The value is a number from 0 to 1, where 0 means no logo and 1
+means the logo covers the full safe area (not the entire QR code). Other values are clamped.
 The default value is 0.4, meaning the logo covers 40% of that safe area (~3.6% of the QR code).
 
-When error-level is not explicitly set, the smallest error correction level that can
-accommodate the requested logo size is chosen automatically.
-- **logoSrc**: `string` — The source URL of an optional logo image to be displayed at the center of the QR code. The logo can help with branding and recognition.
-If provided, the component will attempt to render the logo within the QR code while maintaining scannability.
+When error-level is not set and the logo is larger than the safe area of level 'M', the
+component uses the smallest error correction level that holds the logo. When error-level
+is set, the logo does not grow past the safe area of that level.
+- **logoSrc**: `string` — The source URL of an optional logo image at the center of the QR code.
+The component does not render a logo that fails to load, a javascript: or vbscript: URL,
+or a data URI that is not an image.
 - **margin**: `number` — The margin (quiet zone) around the QR code, expressed as a number of QR code modules rather
 than pixels. This is the blank border area surrounding the code, which helps ensure that it
 can be properly scanned.
 - **size**: `number` — The size of the QR code in pixels. This determines the width and height of the generated QR code. The default value is 128 pixels.
 - **squareStyle**: `QrCornerSquareStyle` — The style of the corner squares in the QR code. This can be 'square', 'circle', or 'rounded'.
-- **value**: `string` — The value to be encoded in the QR code. This can be any string, such as a URL, text, or other data.
-When this property is set, the component will generate a QR code representing the provided value.
+- **value**: `string` — The value to encode in the QR code. This can be any string, such as a URL, text, or other data.
+Without a value, the component renders nothing.
 - **version**: `number` — The version of the QR code to generate, which determines the size and data capacity of the QR code.
 Valid values are integers from 1 to 40, where each version corresponds to a specific module size and data capacity.
 
-If not specified, the component will automatically select the smallest version that can accommodate the provided value.
-- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
-using the css tag function, via constructible stylesheets, or
-imported from native CSS module scripts.
+When it is not set, or it is not an integer from 1 to 40, the component selects the smallest
+version that holds the value. When the value does not fit the version, the component renders nothing.
+- static readonly **tagName**: `"igc-qr-code"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
-Note on Content Security Policy:
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **errorLevel**: `QrErrorCorrectionLevel | null | undefined`
+- **copyToClipboard**(options?: QrCodeCopyOptions): Promise<QrCodeCopyFormat> — Copies the QR code to the clipboard as an image and resolves to the format that the clipboard
+received. A browser that cannot copy SVG gets only the PNG.
 
-Element styles are implemented with <style> tags when the browser doesn't
-support adopted StyleSheets. To use such <style> tags with the style-src
-CSP directive, the style-src value must either include 'unsafe-inline' or
-nonce-<base64-value> with <base64-value> replaced be a server-generated
-nonce.
+Browsers accept a clipboard write only in a focused document during a user action, so call
+the method directly from the event handler, with no await before it.
 
-To provide a nonce to use on generated <style> elements, set
-window.litNonce to a server-generated nonce in your page's HTML, before
-loading application code:
-
-<script>
-  // Generated and unique per request:
-  window.litNonce = 'a1b2c3d4';
-</script>
+Rejects when there is no value or it does not fit the version, when format is not
+supported, when scale is not a positive finite number, when the image exceeds the maximum
+canvas size, when the Clipboard API is not available, or when the browser refuses the write.
 - **toBlob**(): Promise<Blob> — Serializes the QR code to an image/svg+xml blob.
 
 Theme colors are resolved to plain fill attributes and a logo that is not a data URI
 is fetched and inlined, so the blob renders identically outside the component.
 A logo that cannot be fetched (for example a cross-origin URL without CORS headers) is omitted.
 
-Rejects when the component has no value.
+Rejects when there is no value or it does not fit the version.
 - **toImage**(options?: QrCodeExportOptions): Promise<File> — Exports the QR code as an image file.
 
 The scale option multiplies the size of the component: a 256px QR code exported
 with scale: 2 produces a 512x512 image. When download is true the browser
 download dialog opens for the file.
 
-Rejects when the component has no value, when format is not supported, when scale
-is not a positive finite number, or when the resulting image exceeds the maximum canvas size.
+Rejects when there is no value or it does not fit the version, when format is not
+supported, when scale is not a positive finite number, or when the resulting image
+exceeds the maximum canvas size.
 
-### [IgcRadioComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRadioComponent)
-The radio component allows the user to select a single option from an available set of options that are listed side by side.
+### [IgcRadioComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRadioComponent)
+Lets the user select one option from a set. Radios with the same name
+form a group, and only one radio of the group is checked.
 
 - **labelPosition**: `ToggleLabelPosition` — The label position of the radio control.
 - static readonly **tagName**: `"igc-radio"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **checked**: `boolean`
-- **required**: `boolean` — When set, makes the component a required field for validation.
+- **required**: `boolean` — Whether the control is required. A required control that has no value, or
+is not checked, fails validation.
 - **value**: `string`
 - **blur**(): void — Removes focus from the radio control.
-- **checkValidity**(): boolean — Checks for validity of the control and emits the invalid event if it's invalid.
+- **checkValidity**(): boolean — Checks the validity of the whole group. Each invalid radio of the group
+emits invalid.
 - **click**(): void — Simulates a click on the radio control.
 - **focus**(options?: FocusOptions): void — Sets focus on the radio control.
-- **reportValidity**(): boolean — Checks for validity of the control and shows the browser message if it's invalid.
-- **setCustomValidity**(message: string): void — Sets a custom validation message for the control.
-As long as message is not empty, the control is considered invalid.
+- **reportValidity**(): boolean — Checks the validity of the group. An invalid radio emits invalid and
+takes the focus. It shows its own validation messages, not the message of
+the browser.
+- **setCustomValidity**(message: string): void — Sets a custom validation message on every radio of the group. The radios
+are invalid while message is not empty.
 
-### [IgcRadioGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRadioGroupComponent)
+### [IgcRadioGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRadioGroupComponent)
 Unifies one or more radio components into a single group.
 
 - **alignment**: `ContentOrientation` — Alignment of the radio controls inside this group.
@@ -1296,21 +1448,22 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **defaultValue**: `string`
 - **name**: `string`
 - **value**: `string`
 
-### [IgcRangeSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRangeSliderComponent)
+### [IgcRangeSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRangeSliderComponent)
 A range slider component used to select two numeric values within a range.
 
-- **thumbLabelLower**: `string` — The aria label for the lower thumb.
-- **thumbLabelUpper**: `string` — The aria label for the upper thumb.
+- **thumbLabelLower**: `string` — The accessible name of the lower thumb.
+- **thumbLabelUpper**: `string` — The accessible name of the upper thumb.
 - static readonly **tagName**: `"igc-range-slider"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **lower**: `number`
 - **upper**: `number`
 
-### [IgcRatingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRatingComponent)
+### [IgcRatingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRatingComponent)
 A rating component that allows users to view and provide ratings using customizable symbols.
 It supports fractional values, hover previews, keyboard navigation, single-selection mode,
 and integrates with forms as a number input.
@@ -1320,29 +1473,35 @@ and integrates with forms as a number input.
 - **label**: `string` — The label of the control.
 - **max**: `number` — The maximum value for the rating.
 
-If there are projected symbols, the maximum value will be resolved
-based on the number of symbols.
-- **readOnly**: `boolean` — Makes the control a readonly field.
-- **single**: `boolean` — Toggles single selection visual mode.
+With projected symbols, the maximum value is the number of symbols. A
+maximum below the value also lowers the value.
+- **readOnly**: `boolean` — Whether the rating is read-only. A read-only rating shows its value but
+ignores user input.
+- **single**: `boolean` — Whether only the symbol at the value is full, instead of all symbols up
+to it. It also sets step to 1 and rounds the value up.
 - **step**: `number` — The minimum value change allowed.
 
 Valid values are in the interval between 0.001 and 1 inclusive.
 The component clamps a value outside of the interval to the closest bound.
-- **valueFormat**: `string` — A format string which sets aria-valuetext. Instances of '{0}' will be replaced
-with the current value of the control and instances of '{1}' with the maximum value for the control.
+In single selection mode, the step is always 1.
+- **valueFormat**: `string` — The format of the aria-valuetext of the rating. {0} stands for the
+value and {1} for the maximum value.
 
-Important for screen-readers and useful for localization.
+Use it for screen readers and for localization.
 - static readonly **tagName**: `"igc-rating"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **value**: `number`
+- **blur**(): void — Removes focus from the rating.
+- **focus**(options?: FocusOptions): void — Sets focus on the rating. A disabled rating does not take the focus.
 - **stepDown**(n: number): void — Decrements the value of the control by n steps multiplied by
 the step factor.
 - **stepUp**(n: number): void — Increments the value of the control by n steps multiplied by the
 step factor.
 
-### [IgcRatingSymbolComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRatingSymbolComponent)
-Used when a custom icon/symbol/element needs to be passed to the rating component.
+### [IgcRatingSymbolComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRatingSymbolComponent)
+A custom symbol for the rating. Put the full symbol in the default slot and
+the empty symbol in the empty slot.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -1380,11 +1539,11 @@ connectedCallback() {
 Typically, anything done in connectedCallback() should be undone when the
 element is disconnected, in disconnectedCallback().
 
-### [IgcRippleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcRippleComponent)
-A ripple can be applied to an element to represent
-an interactive surface.
+### [IgcRippleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRippleComponent)
+Shows a ripple wave on a pointer press, to mark an element as an
+interactive surface.
 
-- static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
 
@@ -1405,10 +1564,10 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcSelectComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSelectComponent)
+### [IgcSelectComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectComponent)
 Represents a control that provides a menu of options.
 
-- **autofocus**: `boolean` — Whether the control should receive focus automatically.
+- **autofocus**: `boolean` — Whether the control takes the focus after its first render.
 - **distance**: `number` — The distance of the select dropdown from its input.
 - **label**: `string` — The label of the control.
 - **outlined**: `boolean` — Whether the control has an outlined appearance.
@@ -1426,14 +1585,13 @@ Represents a control that provides a menu of options.
 - **focus**(options?: FocusOptions): void — Sets focus on the component.
 - **navigateTo**(value: string): IgcSelectItemComponent | null — Navigates to the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **navigateTo**(index: number): IgcSelectItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
-- **reportValidity**(): boolean — Checks the validity of the control and moves the focus to it if it is not valid.
 - **select**(value: string): IgcSelectItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **select**(index: number): IgcSelectItemComponent | null — Selects the item at the specified index. If it exists, returns the found item, otherwise - null.
 
-### [IgcSelectGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSelectGroupComponent)
+### [IgcSelectGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectGroupComponent)
 A container for a group of select items.
 
-- **disabled**: `boolean` — Whether the group item and all its children are disabled.
+- **disabled**: `boolean` — Whether the group and all its children are disabled.
 - **items**: `IgcSelectItemComponent[]` — All child select items.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -1456,7 +1614,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcSelectHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSelectHeaderComponent)
+### [IgcSelectHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectHeaderComponent)
 Represents a header item in a select component.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -1480,7 +1638,7 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcSelectItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSelectItemComponent)
+### [IgcSelectItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectItemComponent)
 Represents an item in a select list.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
@@ -1503,10 +1661,11 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
-- **active**: `boolean` — Whether the item is active.
+- **active**: `boolean` — Whether the item is active. The active item has the visual focus during
+keyboard navigation.
 
-### [IgcSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSliderComponent)
-A slider component used to select numeric value within a range.
+### [IgcSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSliderComponent)
+A slider component used to select a numeric value within a range.
 
 - static readonly **tagName**: `"igc-slider"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
@@ -1515,47 +1674,25 @@ A slider component used to select numeric value within a range.
 - **stepDown**(stepDecrement: number): void — Decrements the value of the slider by stepDecrement * step, where stepDecrement defaults to 1.
 - **stepUp**(stepIncrement: number): void — Increments the value of the slider by stepIncrement * step, where stepIncrement defaults to 1.
 
-### [IgcSliderLabelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSliderLabelComponent)
+### [IgcSliderLabelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSliderLabelComponent)
 Allows formatting the values of the slider as string values.
 The text content of the slider labels is used for thumb and tick labels.
 
-- static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
-using the css tag function, via constructible stylesheets, or
-imported from native CSS module scripts.
 
-Note on Content Security Policy:
+### [IgcSnackbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSnackbarComponent)
+Shows a brief message about an operation, with an optional action.
 
-Element styles are implemented with <style> tags when the browser doesn't
-support adopted StyleSheets. To use such <style> tags with the style-src
-CSP directive, the style-src value must either include 'unsafe-inline' or
-nonce-<base64-value> with <base64-value> replaced be a server-generated
-nonce.
-
-To provide a nonce to use on generated <style> elements, set
-window.litNonce to a server-generated nonce in your page's HTML, before
-loading application code:
-
-<script>
-  // Generated and unique per request:
-  window.litNonce = 'a1b2c3d4';
-</script>
-
-### [IgcSnackbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSnackbarComponent)
-A snackbar component is used to provide feedback about an operation
-by showing a brief message at the bottom of the screen.
-
-The component integrates with the
-[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
-an Ignite button or a native <button> with command="--show" / "--hide" /
-"--toggle" and commandfor pointing to this element will call the
-corresponding method declaratively without any JavaScript.
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
 
 - **actionText**: `string` — The text of the action button.
 - static readonly **tagName**: `"igc-snackbar"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 
-### [IgcSplitterComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSplitterComponent)
+### [IgcSplitterComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSplitterComponent)
 A splitter component that provides a resizable split-pane layout, dividing the view
 into two panels - *start* and *end* - separated by a draggable bar.
 
@@ -1563,33 +1700,65 @@ Panels can be resized by dragging the bar, using keyboard shortcuts, or collapse
 using the built-in collapse buttons or the programmatic toggle() API.
 Nested splitters are supported for more complex layouts.
 
+## Keyboard interactions
+
+When the splitter bar is focused:
+
+| Key | Action |
+|---|---|
+| Arrow Left / Arrow Right | Resize panes (horizontal orientation) |
+| Arrow Up / Arrow Down | Resize panes (vertical orientation) |
+| Home | Snap start pane to its minimum size |
+| End | Snap start pane to its maximum size |
+| Ctrl + Arrow Left / Ctrl + Arrow Up | Expand the end pane if it is collapsed, else toggle the start pane |
+| Ctrl + Arrow Right / Ctrl + Arrow Down | Expand the start pane if it is collapsed, else toggle the end pane |
+
+In a right-to-left context, Arrow Left and Arrow Right swap their actions.
+
 - **disableCollapse**: `boolean` — Whether collapsing either pane is disabled. When true, this also hides
 the expand/collapse buttons on the splitter bar.
 - **disableResize**: `boolean` — Whether resizing the panes by dragging the splitter bar or using keyboard
 shortcuts is disabled. When true, this also hides the drag handle on the
 splitter bar.
+- **endMaxSize**: `string` — The maximum size of the end pane.
+
+Accepts a CSS length with an explicit unit, e.g. 500px or 80%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **endMinSize**: `string` — The minimum size of the end pane.
+
+Accepts a CSS length with an explicit unit, e.g. 100px or 20%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
 - **hideCollapseButtons**: `boolean` — Whether the expand/collapse buttons on the splitter bar are hidden.
 
-Note that the buttons will also be hidden if disable-collapse is true or
-if a pane is currently collapsed.
+The buttons are also hidden when disable-collapse is true. While a pane
+is collapsed, only its expand button shows.
 - **hideDragHandle**: `boolean` — Whether the drag handle on the splitter bar is hidden.
 
-Note that the drag handle will also be hidden if disable-resize is true.
+The drag handle is also hidden when disable-resize is true.
 - **orientation**: `SplitterOrientation` — The orientation of the splitter, which determines the direction of resizing and collapsing.
 
-Changing the orientation after the initial render clears the pane sizes and
-their min/max constraints, along with the corresponding attributes - a size
-authored for one axis rarely makes sense on the other.
+Changing the orientation after the initial render returns the panes to the
+sizes set through startSize and endSize, or to automatic sizing. The
+sizes from a drag, a key press or a collapse were measured on the other
+axis, so they are dropped. The minimum and maximum sizes stay.
+- **startMaxSize**: `string` — The maximum size of the start pane.
+
+Accepts a CSS length with an explicit unit, e.g. 500px or 80%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
+- **startMinSize**: `string` — The minimum size of the start pane.
+
+Accepts a CSS length with an explicit unit, e.g. 100px or 20%, or a
+unitless 0. Setting auto, any other unitless or unparsable value, a
+negative value, or a percentage above 100 removes the constraint.
 - static readonly **tagName**: `"igc-splitter"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **endCollapsed**: `boolean`
-- **endMaxSize**: `string | undefined`
-- **endMinSize**: `string | undefined`
 - **endSize**: `string | undefined`
 - **startCollapsed**: `boolean`
-- **startMaxSize**: `string | undefined`
-- **startMinSize**: `string | undefined`
 - **startSize**: `string | undefined`
 - **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
 
@@ -1610,50 +1779,35 @@ An element may be re-connected after being disconnected.
 Does not emit igcLayoutChanged - that event reports user-driven changes,
 and a programmatic call is already known to the caller.
 
-### [IgcStepComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcStepComponent)
+### [IgcStepComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcStepComponent)
 A step component used within a stepper to represent an individual step in a wizard-like workflow.
 
 - **active**: `boolean` — Whether the step is active.
 
 Active steps are styled with an active state and their content is visible.
+Setting it activates the step at once, also a disabled step, so of several
+steps set in one task, the last one is active.
 - **complete**: `boolean` — Whether the step is completed.
 - **disabled**: `boolean` — Whether the step is disabled.
 
 Disabled steps are styled with a disabled state and are not interactive.
 - **invalid**: `boolean` — Whether the step is invalid.
 
-Invalid steps are styled with an error state and are not
-interactive when the stepper is in linear mode.
+A visited step that is not active shows an error state. In linear mode,
+the user cannot open the steps after an invalid step.
 - **optional**: `boolean` — Whether the step is optional.
 
-Optional steps validity does not affect the default behavior when the stepper is in linear mode i.e.
-if optional step is invalid the user could still move to the next step.
-- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
-using the css tag function, via constructible stylesheets, or
-imported from native CSS module scripts.
+In linear mode, an invalid optional step does not block the steps after it.
+- static readonly **tagName**: `"igc-step"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
-Note on Content Security Policy:
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 
-Element styles are implemented with <style> tags when the browser doesn't
-support adopted StyleSheets. To use such <style> tags with the style-src
-CSP directive, the style-src value must either include 'unsafe-inline' or
-nonce-<base64-value> with <base64-value> replaced be a server-generated
-nonce.
-
-To provide a nonce to use on generated <style> elements, set
-window.litNonce to a server-generated nonce in your page's HTML, before
-loading application code:
-
-<script>
-  // Generated and unique per request:
-  window.litNonce = 'a1b2c3d4';
-</script>
-
-### [IgcStepperComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcStepperComponent)
+### [IgcStepperComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcStepperComponent)
 A stepper component that provides a wizard-like workflow by dividing content into logical steps.
 
 - **animationDuration**: `number` — The animation duration in either vertical or horizontal mode in milliseconds.
-- **contentTop**: `boolean` — Whether the content is displayed above the steps.
+- **contentTop**: `boolean` — Whether the content is displayed above the steps. Applies only to the
+horizontal orientation.
 - **horizontalAnimation**: `HorizontalTransitionAnimation` — The animation type when in horizontal mode.
 - **linear**: `boolean` — Whether the stepper is linear.
 - **orientation**: `StepperOrientation` — The orientation of the stepper.
@@ -1663,22 +1817,15 @@ A stepper component that provides a wizard-like workflow by dividing content int
 - static readonly **tagName**: `"igc-stepper"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **steps**: `any` — Returns all of the stepper's steps.
-- **navigateTo**(index: number): void — Activates the step at a given index.
+- **steps**: `any` — The steps of the stepper.
+- **navigateTo**(index: number): void — Activates the step at a given index. Does nothing for a disabled step.
 - **next**(): void — Activates the next enabled step.
 - **prev**(): void — Activates the previous enabled step.
-- **reset**(): void — Resets the stepper to its initial state, i.e. activates the first step.
+- **reset**(): void — Resets the stepper to its initial state and activates the first enabled step.
 
-### [IgcSwitchComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcSwitchComponent)
+### [IgcSwitchComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSwitchComponent)
 Similar to a checkbox, a switch controls the state of a single setting on or off.
 
-
-### [IgcTabComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTabComponent)
-A tab nested in a tabs component.
-
-- **disabled**: `boolean` — Determines whether the tab is disabled.
-- **label**: `string` — The tab item label.
-- **selected**: `boolean` — Determines whether the tab is selected.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1699,85 +1846,114 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
-- **connectedCallback**(): void
 
-### [IgcTabsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTabsComponent)
+### [IgcTabComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTabComponent)
+A tab nested in a tabs component. Find-in-page, a text fragment or a link to
+an element in the panel of a tab that is not disabled selects it.
+
+- **disabled**: `boolean` — Whether the tab is disabled.
+- **href**: `string` — The URL of the tab. When set, the tab header renders as a link.
+
+A plain click selects the tab and follows the link; cancel igcNavigate to route
+on the client. A click with a modifier key or the middle button opens the link
+without selecting the tab. A disabled tab does not follow its link.
+- **label**: `string` — The tab item label.
+- **rel**: `string` — Space-separated link types, used when href is set.
+- **selected**: `boolean` — Whether the tab is selected.
+- **target**: `"_parent" | "_top" | "_self" | "_blank"` — Where to open the URL when href is set. Without it, the target of the page's
+<base> element applies. A target other than _self never changes the selection.
+In a page that is not in a frame, _parent and _top count as _self.
+- static readonly **tagName**: `"igc-tab"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **connectedCallback**(): void
+- **disconnectedCallback**(): void
+
+### [IgcTabsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTabsComponent)
 Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy.
 
-The tabs component allows the user to navigate between multiple tab children.
-It supports keyboard navigation and provides API methods to control the selected tab.
+- **activation**: `TabsActivation` — The activation behavior of the tabs.
 
-- **activation**: `TabsActivation` — Determines the activation behavior of the tabs.
+With auto, a tab is selected when it receives keyboard focus.
+With manual, a tab is selected only on click, or on Enter or Space.
+- **alignment**: `TabsAlignment` — The alignment of the tab headers in the header strip.
 
-When set to 'auto', the tab will be selected when it receives focus.
-When set to 'manual', the tab will only be selected when it is clicked or activated with the keyboard.
-- **alignment**: `TabsAlignment` — Determines the alignment of the tabs header strip.
+In a column, start is the top and end is the bottom.
+- **headerPosition**: `TabsHeaderPosition` — The side of the panels on which the tab headers are placed.
+
+With top, the headers form a row above the panels. With start and end, they
+form a column before or after the panels in the text direction, so start is on
+the right in a right-to-left layout. In a column, the Up and Down arrow keys move
+between the tabs. When the headers do not fit in the height of the tabs, scroll
+buttons above and below them scroll the column.
 - static readonly **tagName**: `"igc-tabs"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **selected**: `string` — Returns the currently selected tab label or IDREF if no label property is set.
-- **selectedTab**: `IgcTabComponent | null` — Returns the currently selected tab, if any.
-- **tabs**: `IgcTabComponent[]` — Returns the direct tab children of this element.
+- **selected**: `string` — The label of the selected tab, or its id when the tab has no label.
+An empty string when no tab is selected.
+- **selectedTab**: `IgcTabComponent | null` — The selected tab, or null when no tab is selected.
+- **tabs**: `IgcTabComponent[]` — The tab children of the component.
+- **connectedCallback**(): void
 - **select**(idOrLabel: string): void — Selects the tab matching the passed IDREF or label and displays the corresponding panel.
 
 Disabled tabs and values not matching any tab are ignored.
-- **select**(ref: IgcTabComponent): void — Selects the tab matching the passed IDREF or label and displays the corresponding panel.
+- **select**(ref: IgcTabComponent): void — Selects the passed tab and displays the corresponding panel.
 
-Disabled tabs and values not matching any tab are ignored.
+A disabled tab, or a tab that is not a child of the component, is ignored.
 
-### [IgcTextareaComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTextareaComponent)
-Represents a multi-line plain-text editing control,
-useful when you want to allow users to enter a sizeable amount of free-form text,
-for example a comment on a review or feedback form.
+### [IgcTextareaComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTextareaComponent)
+A multi-line plain-text field for a large amount of free-form text,
+for example a comment in a review or feedback form.
 
-- **autocapitalize**: `string` — Controls whether and how text input is automatically capitalized as it is entered/edited by the user.
+- **autocapitalize**: `string` — Whether and how the browser capitalizes the text that the user enters.
 
 [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize).
-- **autocomplete**: `string` — Specifies what permission, if any, the browser has to provide automated assistance in filling out form field values,
-as well as guidance to the browser as to the type of information expected in the field.
+- **autocomplete**: `string` — A hint for the browser on how to autofill the control.
 Refer to [this page](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for additional information.
-- **inputMode**: `string` — Hints at the type of data that might be entered by the user while editing the element or its contents.
-This allows a browser to display an appropriate virtual keyboard.
+- **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
 
 [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
 - **label**: `string` — The label for the control.
-- **maxLength**: `number` — The maximum number of characters (UTF-16 code units) that the user can enter.
-If this value isn't specified, the user can enter an unlimited number of characters.
-- **minLength**: `number` — The minimum number of characters (UTF-16 code units) required that the user should enter.
-- **outlined**: `boolean` — Whether the control will have outlined appearance.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
-- **readOnly**: `boolean` — Makes the control a readonly field.
-- **resize**: `TextareaResize` — Controls whether the control can be resized.
-When auto is set, the control will try to expand and fit its content.
-- **rows**: `number` — The number of visible text lines for the control. If it is specified, it must be a positive integer.
-If it is not specified, the default value is 3.
-- **spellcheck**: `boolean` — Controls whether the element may be checked for spelling errors.
-- **validateOnly**: `boolean` — Enables validation rules to be evaluated without restricting user input. This applies to the maxLength property
-when it is defined.
-- **wrap**: `"off" | "hard" | "soft"` — Indicates how the control should wrap the value for form submission.
+- **readOnly**: `boolean` — Whether the control is read-only.
+- **resize**: `TextareaResize` — How the user can resize the control.
+With auto, the height of the control fits its content and the resize handle is hidden.
+- **rows**: `number` — The number of visible text lines of the control. As in the native textarea, a value
+less than 1 shows 2 lines.
+- **spellcheck**: `boolean` — Whether the browser checks the spelling of the value. As for the native attribute,
+only the "false" attribute value turns the check off.
+- **validateOnly**: `boolean` — Whether the validation rules apply without restricting user input. The user can type past maxLength.
+- **wrap**: `"off" | "hard" | "soft"` — How the control wraps long lines of text. With off, the lines do not wrap.
+Unlike the native element, hard does not add line breaks to the submitted value.
 Refer to [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes)
 for explanation of the available values.
 - static readonly **tagName**: `"igc-textarea"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **maxLength**: `number`
+- **minLength**: `number`
+- **selectionEnd**: `number` — The offset of the end of the text selection, in UTF-16 code units.
+- **selectionStart**: `number` — The offset of the start of the text selection, in UTF-16 code units.
+Equals selectionEnd when no text is selected.
 - **value**: `string`
-- **scrollTo**(options?: ScrollToOptions): void — The **scrollTo()** method of the Element interface scrolls to a particular set of coordinates inside a given element.
-
-[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo)
+- **blur**(): void — Removes focus from the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **scrollTo**(options?: ScrollToOptions): void — Scrolls the text of the control to the given position.
+- **scrollTo**(x: number, y: number): void — Scrolls the text of the control to the given x and y coordinates.
 - **select**(): void — Selects all text within the control.
-- **setRangeText**(replacement: string, start: number, end: number, selectMode: RangeTextSelectMode): void — Replaces the selected text in the control.
-- **setSelectionRange**(start: number, end: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode: RangeTextSelectMode): void — Replaces the text from start to end in the control. Without start and
+end, replaces the selected text.
+- **setSelectionRange**(start: number, end: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control.
 
-### [IgcThemeProviderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcThemeProviderComponent)
-A theme provider component that uses Lit context to provide theme information
-to descendant components.
+### [IgcThemeProviderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcThemeProviderComponent)
+Provides a theme to its descendant components through Lit context.
 
-This component allows you to scope a theme to a specific part of the page.
-All library components within this provider will use the specified theme
-instead of the global theme.
+Use it to scope a theme to a part of the page. The library components in
+the provider use its theme instead of the global theme.
 
-- **theme**: `Theme` — The theme to provide to descendant components.
-- **variant**: `ThemeVariant` — The theme variant to provide to descendant components.
+- **theme**: `"material" | "bootstrap" | "indigo" | "fluent"` — The theme to provide to descendant components.
+- **variant**: `"light" | "dark"` — The theme variant to provide to descendant components.
 - static **styles**: `CSSResult` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1799,41 +1975,44 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcTileComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTileComponent)
+### [IgcTileComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTileComponent)
 The tile component is used within the tile manager as a container
 for displaying various types of information.
 
-- **_tileContent**: `HTMLElement` — Not cached: toggling _resizeDisabled (maximize, fullscreen, resize mode)
-switches the render template and recreates this element.
-- **colSpan**: `number` — The number of columns the tile will span.
-- **colStart**: `number | null` — The starting column for the tile.
-- **disableFullscreen**: `boolean` — Whether to disable the rendering of the tile fullscreen-action slot and its
-default fullscreen action button.
-- **disableMaximize**: `boolean` — Whether to disable the rendering of the tile maximize-action slot and its
-default maximize action button.
-- **disableResize**: `boolean` — Indicates whether to disable tile resize behavior regardless
-of its tile manager parent settings.
-- **maximized**: `boolean` — Indicates whether the tile occupies all available space within the layout.
-- **position**: `number` — Gets/sets the tile's visual position in the layout.
-Corresponds to the CSS order property.
-- **rowSpan**: `number` — The number of rows the tile will span.
-- **rowStart**: `number | null` — The starting row for the tile.
+- **colSpan**: `number` — The number of columns the tile spans. A value is truncated to a whole
+number, at least 1. The tile spans at most the columns from its start to
+the last column, and the value stays.
+- **colStart**: `number | null` — The start column of the tile. A value below 1 removes the explicit start.
+A start after the last column moves the tile back so that its span fits,
+and the value stays. A resize that changes the column span of such a tile
+sets the start to the column where the tile is.
+- **disableFullscreen**: `boolean` — Whether to hide the fullscreen-action slot and the default fullscreen
+action.
+- **disableMaximize**: `boolean` — Whether to hide the maximize-action slot and the default maximize action.
+- **disableResize**: `boolean` — Whether to disable resizing of the tile, whatever the resize mode of the
+manager.
+- **maximized**: `boolean` — Whether the tile occupies all available space within the layout.
+- **position**: `number` — The visual position of the tile in the layout, as the CSS order. A value
+is truncated to a whole number.
+- **rowSpan**: `number` — The number of rows the tile spans. A value is truncated to a whole
+number, at least 1.
+- **rowStart**: `number | null` — The start row of the tile. A value below 1 removes the explicit start.
 - static readonly **tagName**: `"igc-tile"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **fullscreen**: `boolean` — Indicates whether the tile occupies the whole screen.
+- **fullscreen**: `boolean` — Whether the tile occupies the whole screen.
 - **connectedCallback**(): void
 
-### [IgcTileManagerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTileManagerComponent)
+### [IgcTileManagerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTileManagerComponent)
 The tile manager component enables the dynamic arrangement, resizing, and interaction of tiles.
 
-- **columnCount**: `number` — Sets the number of columns for the tile manager.
-Setting value <= than zero will trigger a responsive layout.
-- **dragMode**: `TileManagerDragMode` — Whether drag and drop operations are enabled.
-- **gap**: `string` — Sets the gap size between tiles in the tile manager.
-- **minColumnWidth**: `string` — Sets the minimum width for a column unit in the tile manager.
-- **minRowHeight**: `string` — Sets the minimum height for a row unit in the tile manager.
-- **resizeMode**: `TileManagerResizeMode` — Whether resize operations are enabled.
+- **columnCount**: `number` — The number of columns, truncated to a whole number. A value of 0 or less
+gives a responsive layout.
+- **dragMode**: `TileManagerDragMode` — The drag mode of the tiles. none turns drag and drop off.
+- **gap**: `string` — The gap between the tiles.
+- **minColumnWidth**: `string` — The minimum width of a column.
+- **minRowHeight**: `string` — The minimum height of a row.
+- **resizeMode**: `TileManagerResizeMode` — The resize mode of the tiles. none turns resizing off.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1854,18 +2033,18 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
-- **tiles**: `IgcTileComponent[]` — Gets the tiles sorted by their position in the layout.
-- **loadLayout**(data: string): void — Restores a previously serialized state produced by saveLayout.
-- **saveLayout**(): string — Returns the properties of the current tile collections as a JSON payload.
+- **locale**: `string`
+- **tiles**: `IgcTileComponent[]` — The tiles, sorted by their position in the layout.
+- **loadLayout**(data: string): void — Applies a layout from saveLayout to the tiles with the same id. Invalid JSON throws.
+- **saveLayout**(): string — Returns the tile properties as a JSON string. The content of the tiles is not saved.
 
-### [IgcToastComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcToastComponent)
-A toast component is used to show a brief, non-interactive notification.
+### [IgcToastComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcToastComponent)
+Shows a brief, non-interactive notification.
 
-The component integrates with the
-[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API):
-an Ignite button or a native <button> with command="--show" / "--hide" /
-"--toggle" and commandfor pointing to this element will call the
-corresponding method declaratively without any JavaScript.
+The component supports the
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+A button with command="--show", "--hide" or "--toggle" and a
+commandfor that points to this element calls the matching method.
 
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
@@ -1888,33 +2067,16 @@ loading application code:
   window.litNonce = 'a1b2c3d4';
 </script>
 
-### [IgcToggleButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcToggleButtonComponent)
+### [IgcToggleButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcToggleButtonComponent)
 The toggle button wraps a native button element and exposes additional value and selected properties.
-It is used in the context of a button group to facilitate the creation of group/toolbar like UX behaviors.
+Use it in a button group to make a toolbar or a set of options.
 
 - **disabled**: `boolean` — Whether the button is disabled.
 - **selected**: `boolean` — Whether the button is selected.
 - **value**: `string` — The value of the control.
-- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
-using the css tag function, via constructible stylesheets, or
-imported from native CSS module scripts.
+- static readonly **tagName**: `"igc-toggle-button"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
-Note on Content Security Policy:
-
-Element styles are implemented with <style> tags when the browser doesn't
-support adopted StyleSheets. To use such <style> tags with the style-src
-CSP directive, the style-src value must either include 'unsafe-inline' or
-nonce-<base64-value> with <base64-value> replaced be a server-generated
-nonce.
-
-To provide a nonce to use on generated <style> elements, set
-window.litNonce to a server-generated nonce in your page's HTML, before
-loading application code:
-
-<script>
-  // Generated and unique per request:
-  window.litNonce = 'a1b2c3d4';
-</script>
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **blur**(): void — Removes focus from the button.
 - **click**(): void — Simulates a mouse click on the element.
 - **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
@@ -1933,27 +2095,28 @@ disconnectedCallback() {
 An element may be re-connected after being disconnected.
 - **focus**(options?: FocusOptions): void — Sets focus on the button.
 
-### [IgcTooltipComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTooltipComponent)
-Provides a way to display supplementary information related to an element when a user interacts with it (e.g., hover, focus).
-It offers features such as placement customization, delays, sticky mode, and animations.
+### [IgcTooltipComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTooltipComponent)
+Shows supplementary information about an element when the user interacts with it, for example on hover or focus.
+It supports custom placement, delays, a sticky mode and animations.
 
 - **anchor**: `string | Element` — An element instance or an IDREF to use as the anchor for the tooltip.
-- **hideDelay**: `number` — Specifies the number of milliseconds that should pass before hiding the tooltip.
-- **message**: `string` — Specifies plain text as the tooltip content.
+- **hideDelay**: `number` — The time in milliseconds before a hide trigger closes the tooltip.
+A negative value is the same as 0.
+- **message**: `string` — The plain-text content of the tooltip. Slotted content replaces it.
 - **offset**: `number` — The offset of the tooltip from the anchor in pixels.
 - **placement**: `PopoverPlacement` — Where to place the tooltip relative to its anchor element.
-- **scrollStrategy**: `PopoverScrollStrategy` — Sets the behavior of the tooltip when the parent container scrolls.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the tooltip when an ancestor scroll container scrolls.
 
 If the value is hide, the tooltip hides while the anchor is fully out
 of view. hide is the default value.
 
 If the value is scroll, the tooltip stays visible and anchored.
 
-If the value is close, the tooltip closes on each scroll. The tooltip
-also closes if you set the sticky property. The Escape key behaves the
-same way.
-- **showDelay**: `number` — Specifies the number of milliseconds that should pass before showing the tooltip.
-- **sticky**: `boolean` — Specifies if the tooltip remains visible until the user closes it via the close button or Esc key.
+If the value is close, the tooltip closes on each scroll, also in
+sticky mode. The Escape key also closes a sticky tooltip.
+- **showDelay**: `number` — The time in milliseconds before a show trigger opens the tooltip.
+A negative value is the same as 0.
+- **sticky**: `boolean` — Whether the tooltip stays visible until the user closes it with the close button or the Escape key.
 - **withArrow**: `boolean` — Whether to render an arrow indicator for the tooltip.
 - static readonly **tagName**: `"igc-tooltip"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
@@ -1964,19 +2127,23 @@ same way.
 - **hide**(): Promise<boolean> — Hides the tooltip if not already hidden.
 - **show**(target?: string | Element): Promise<boolean> — Shows the tooltip if not already showing.
 If a target is provided, sets it as a transient anchor.
+- **showAt**(rect: TooltipRect): Promise<boolean> — Shows the tooltip at a point or against a rectangle, in viewport
+coordinates, for example at the clientX and clientY of a pointer event.
+Without width and height, the rectangle is a point.
 - **toggle**(): Promise<boolean> — Toggles the tooltip between shown/hidden state.
 
-### [IgcTreeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTreeComponent)
+### [IgcTreeComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTreeComponent)
 The tree allows users to represent hierarchical data in a tree-view structure,
 maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model.
 
-- **selection**: `TreeSelection` — The selection state of the tree.
-- **singleBranchExpand**: `boolean` — Whether a single or multiple of a parent's child items can be expanded.
-- **toggleNodeOnClick**: `boolean` — Whether clicking over nodes will change their expanded state or not.
+- **selection**: `TreeSelection` — The selection mode of the tree. A change clears the current selection.
+- **singleBranchExpand**: `boolean` — Whether only one branch of the tree can be expanded at a time. When the user
+expands an item, the items outside its path collapse.
+- **toggleNodeOnClick**: `boolean` — Whether a click on an item toggles its expanded state.
 - static readonly **tagName**: `"igc-tree"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
-- **items**: `IgcTreeItemComponent[]` — Returns all of the tree's items.
+- **items**: `IgcTreeItemComponent[]` — All items of the tree, in document order. Empty during server-side rendering.
 - **collapse**(items?: IgcTreeItemComponent[]): void — Collapses all of the passed items.
 If no items are passed, collapses ALL items.
 - **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
@@ -1994,47 +2161,31 @@ connectedCallback() {
 
 Typically, anything done in connectedCallback() should be undone when the
 element is disconnected, in disconnectedCallback().
-- **deselect**(items?: IgcTreeItemComponent[]): void — Deselect all items if the items collection is empty. Otherwise, deselect the items in the items collection.
+- **deselect**(items?: IgcTreeItemComponent[]): void — Deselects the passed items. Without an argument, deselects all items. Emits no event.
 - **expand**(items?: IgcTreeItemComponent[]): void — Expands all of the passed items.
 If no items are passed, expands ALL items.
-- **select**(items?: IgcTreeItemComponent[]): void — Select all items if the items collection is empty. Otherwise, select the items in the items collection.
+- **select**(items?: IgcTreeItemComponent[]): void — Selects the passed items. Without an argument, selects all items. Emits no event.
 
-### [IgcTreeItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcTreeItemComponent)
+### [IgcTreeItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTreeItemComponent)
 The tree-item component represents a child item of the tree component or another tree item.
+Find-in-page, a text fragment or a link to an element in the children of a
+collapsed item expands it.
 
-- **active**: `boolean` — Marks the item as the tree's active item.
-- **disabled**: `boolean` — Get/Set whether the tree item is disabled. Disabled items are ignored for user interactions.
-- **expanded**: `boolean` — The tree item expansion state.
+- **active**: `boolean` — Whether the item is the active item of the tree. When true, the ancestors of
+the item expand.
+- **disabled**: `boolean` — Whether the tree item is disabled. A disabled item does not respond to user interaction.
+- **expanded**: `boolean` — Whether the tree item is expanded.
 - **label**: `string` — The tree item label.
 - **level**: `number` — The depth of the item, relative to the root.
-- **loading**: `boolean` — To be used for load-on-demand scenarios in order to specify whether the item is loading data.
+- **loading**: `boolean` — Whether the item is loading data, for load-on-demand scenarios. The item
+shows a loading indicator in place of the expand indicator.
 - **parent**: `IgcTreeItemComponent | null` — The parent item of the current tree item (if any)
-- **selected**: `boolean` — The tree item selection state.
-- **value**: `any` — The value entry that the tree item is visualizing. Required for searching through items.
-- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
-using the css tag function, via constructible stylesheets, or
-imported from native CSS module scripts.
+- **selected**: `boolean` — Whether the tree item is selected.
+- **value**: `any` — The value that the tree item represents. The component does not use it.
+- static readonly **tagName**: `"igc-tree-item"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
-Note on Content Security Policy:
-
-Element styles are implemented with <style> tags when the browser doesn't
-support adopted StyleSheets. To use such <style> tags with the style-src
-CSP directive, the style-src value must either include 'unsafe-inline' or
-nonce-<base64-value> with <base64-value> replaced be a server-generated
-nonce.
-
-To provide a nonce to use on generated <style> elements, set
-window.litNonce to a server-generated nonce in your page's HTML, before
-loading application code:
-
-<script>
-  // Generated and unique per request:
-  window.litNonce = 'a1b2c3d4';
-</script>
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **path**: `IgcTreeItemComponent[]` — The full path to the tree item, starting from the top-most ancestor.
-
-parent is read into a local first: reading parent.path twice per level
-would make a single access cost 2^depth instead of depth.
 - **tree**: `IgcTreeComponent | undefined` — A reference to the tree the item is a part of.
 - **collapse**(): void — Collapses the tree item.
 - **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
@@ -2067,14 +2218,16 @@ disconnectedCallback() {
 
 An element may be re-connected after being disconnected.
 - **expand**(): void — Expands the tree item.
-- **getChildren**(options: any): IgcTreeItemComponent[] — Returns a collection of child items.
-If the parameter value is true returns all tree item's direct children,
-otherwise - only the direct children.
+- **getChildren**(options: any): IgcTreeItemComponent[] — Returns the child items. With flatten: true it returns all the
+descendant items, otherwise only the direct children.
 - **toggle**(): void — Toggles tree item expansion state.
 
-### [IgcVirtualScrollComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/classes/IgcVirtualScrollComponent)
+### [IgcVirtualScrollComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcVirtualScrollComponent)
 A virtual scroll component for large lists. Only the items visible in the
 viewport are rendered.
+
+The component renders into its light DOM, so ::part() does not apply to its
+parts. Select them with attribute selectors, such as [part~="virtualization-track"].
 
 - **data**: `T[]` — The array of items to virtualize.
 
@@ -2093,9 +2246,9 @@ Items are measured by their border box, so margins accumulate as drift
 down the list. Use padding on the item, or a gap on a wrapper, instead.
 
 Only the current window is in the DOM, so assistive technology cannot
-infer an item's position from the markup. Templates that render a role
-with set semantics (option, listitem, row, ...) should map the
-context's index and count onto aria-posinset and aria-setsize.
+infer an item's position from the markup. In a template that renders a
+role with set semantics (option, listitem, row, ...), map the
+context's index and count to aria-posinset and aria-setsize.
 
 Item elements are recycled (see keyFunction), so DOM state that the
 template does not bind moves to another item, for example the state of a
@@ -2111,7 +2264,7 @@ An item keeps its rendered element while its key stays in the rendered window. T
 of keys that leave the window are reused for keys that enter it. Without it, the index is the
 key, so after a data change an index keeps its element and shows its new item. Set it when
 items move within data, for example on sort, insert or remove.
-- **orientation**: `"horizontal" | "vertical"` — Scroll orientation of the virtual scroll.
+- **orientation**: `"horizontal" | "vertical"` — The scroll axis of the component.
 - **overScan**: `number` — Number of extra items to render beyond the visible area of the viewport.
 Higher values reduce blank flashes during fast scrolling but can lower performance.
 - static readonly **tagName**: `"igc-virtual-scroll"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
@@ -2143,35 +2296,43 @@ can ignore it.
 
 ## Interfaces
 
-### [ChatAttachmentRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/ChatAttachmentRenderContext)
+### [ChatAttachmentRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatAttachmentRenderContext)
 The context object for renderers that deal with a specific attachment within a message.
 It extends the message context with the attachment data.
 
 - **attachment**: `IgcChatMessageAttachment` — The specific attachment being rendered.
 
-### [ChatInputRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/ChatInputRenderContext)
+### [ChatInputRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatInputRenderContext)
 The context object for renderers that deal with the chat input area.
 It extends the base context with input-specific properties.
 
 - **attachments**: `IgcChatMessageAttachment[]` — The list of attachments currently in the input area.
 - **value**: `string` — The current value of the input field.
 
-### [ChatMessageRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/ChatMessageRenderContext)
+### [ChatMessageRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatMessageRenderContext)
 The context object for renderers that deal with a specific chat message.
 It extends the base context with the message data.
 
 - **message**: `IgcChatMessage` — The specific chat message being rendered.
 
-### [ChatRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/ChatRenderContext)
+### [ChatRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatRenderContext)
 The base context object passed to custom renderer functions, containing the chat component instance.
 
 - **instance**: `IgcChatComponent` — The instance of the IgcChatComponent.
 
-### [CustomDateRange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/CustomDateRange)
+### [ComboGroupHeaderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ComboGroupHeaderContext)
+The context of the group header template.
+
+- **item**: `T` — **Deprecated:** since 7.5.0. Use the key property instead. A record made for the header, not a data item. Only the groupKey,
+valueKey and displayKey fields are set, and each contains the group value.
+- **key**: `unknown` — The value that the items of the group share in the groupKey field.
+Other for the items without a value in that field.
+
+### [CustomDateRange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/CustomDateRange)
 A predefined date range with label for IgcDateRangePickerComponent.customRanges
 
 
-### [DatePartDeltas](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/DatePartDeltas)
+### [DatePartDeltas](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/DatePartDeltas)
 The amounts by which each date or time part is incremented or decremented on
 a step action in date-time input; every part defaults to 1.
 
@@ -2182,7 +2343,7 @@ a step action in date-time input; every part defaults to 1.
 - **seconds?**: `number` — The number of seconds the seconds part is spun by.
 - **year?**: `number` — The number of years the year part is spun by.
 
-### [DateRangeDescriptor](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/DateRangeDescriptor)
+### [DateRangeDescriptor](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/DateRangeDescriptor)
 Describes a set of dates by combining a range type with the dates it applies to.
 
 - **dateRange?**: `Date[]` — The date or dates the descriptor applies to, interpreted according to DateRangeDescriptor.type.
@@ -2190,49 +2351,58 @@ DateRangeType.After and DateRangeType.Before use the first date,
 DateRangeType.Between uses the first and the last, and
 DateRangeType.Specific matches every date listed. Not used by
 DateRangeType.Weekdays and DateRangeType.Weekends.
+- **label?**: `string` — What the dates mean, for example 'Free delivery'. The calendar adds the label
+to the accessible name of each matching date, so assistive technologies announce it.
 - **type**: `DateRangeType` — The kind of range being described, which determines how DateRangeDescriptor.dateRange is matched.
 
-### [FilteringOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/FilteringOptions)
+### [FilteringOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/FilteringOptions)
 Filtering options for the combo component.
 
 - **caseSensitive?**: `boolean` — Determines whether the filtering operation should be case sensitive.
 - **filterKey**: `any | undefined` — The key in the data source used when filtering the list of options.
 - **matchDiacritics?**: `boolean` — When true, the filter distinguishes between accented letters and their base letters.
+- **mode?**: `ComboFilteringMode` — Where the filtering runs. With remote, the combo does not filter the
+options: the application sets data on igcSearchInput, and appends to
+it on igcDataRequest. Default is local.
 
-### [IconMeta](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IconMeta)
+### [IconMeta](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IconMeta)
 Identifies a registered icon by its name and the collection it belongs to.
 
 - **collection**: `string` — The name of the collection the icon is registered in.
 - **external?**: `boolean` — Internal use only.
 - **name**: `string` — The name identifier of the icon in the collection.
 
-### [IgcCalendarResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcCalendarResourceStrings)
+### [IgcCalendarResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcCalendarResourceStrings)
 **Deprecated:** since 7.2.0. Use the newly provided ICalendarResourceStrings interface, or set global resource strings with the registerI18n method.
 
 
-### [IgcChatComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatComponentEventMap)
+### [IgcChatComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatComponentEventMap)
 Defines the custom events dispatched by the chat component.
 
-- **igcAttachmentAdded**: `CustomEvent<IgcChatMessageAttachment[]>` — Dispatched when attachment(s) are added either through drag & drop or through
-the default file input.
-- **igcAttachmentClick**: `CustomEvent<IgcChatMessageAttachment>` — Dispatched when a chat message attachment is clicked.
-- **igcAttachmentDrag**: `CustomEvent<void>` — Dispatched during an attachment drag operation.
-- **igcAttachmentDrop**: `CustomEvent<void>` — Dispatched when an attachment is dropped (e.g., in a drag-and-drop operation).
-- **igcAttachmentRemoved**: `CustomEvent<IgcChatMessageAttachment>` — Dispatched when an attachment is removed by the user.
+- **igcAttachmentAdded**: `CustomEvent<IgcChatMessageAttachment[]>` — Dispatched when the user adds attachments with drag and drop or with the
+default file input. Cancelable: a canceled event does not add them.
+- **igcAttachmentClick**: `CustomEvent<IgcChatMessageAttachment>` — Dispatched when the user clicks the header of a message attachment.
+- **igcAttachmentDrag**: `CustomEvent<void>` — Dispatched when the user drags files into the input area.
+- **igcAttachmentDrop**: `CustomEvent<void>` — Dispatched when the user drops files on the input area.
+- **igcAttachmentRemoved**: `CustomEvent<IgcChatMessageAttachment>` — Dispatched when the user removes an attachment from the input.
+Cancelable: a canceled event keeps the attachment.
 - **igcInputBlur**: `CustomEvent<void>` — Dispatched when the chat input field loses focus.
 - **igcInputChange**: `CustomEvent<string>` — Dispatched when the content of the chat input changes.
 - **igcInputFocus**: `CustomEvent<void>` — Dispatched when the chat input field gains focus.
-- **igcMessageCreated**: `CustomEvent<IgcChatMessage>` — Dispatched when a new chat message is created (sent).
-- **igcMessageReact**: `CustomEvent<IgcChatMessageReaction>` — Dispatched when a message is reacted to.
-- **igcTypingChange**: `CustomEvent<boolean>` — Dispatched when the typing status changes (e.g., user starts or stops typing).
+- **igcMessageCreated**: `CustomEvent<IgcChatMessage>` — Dispatched when the user sends a message, also with a click on a suggestion.
+Cancelable: a canceled event does not add the message.
+- **igcMessageReact**: `CustomEvent<IgcChatMessageReaction>` — Dispatched when the user clicks an action button of a message, for example like or copy.
+- **igcNavigate**: `CustomEvent<IgcChatMessageLink>` — Dispatched when a plain click or Enter opens a link in a message in the same tab, before the
+browser navigates. Cancel it to route on the client. Does not bubble.
+- **igcTypingChange**: `CustomEvent<boolean>` — Dispatched when the user starts or stops typing. The detail is true while the user types.
 
-### [IgcChatDraftMessage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatDraftMessage)
+### [IgcChatDraftMessage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatDraftMessage)
 Represents a draft message that is being composed by the user, including the text and any attachments.
 
 - **attachments?**: `IgcChatMessageAttachment[]` — An array of attachments associated with the draft message.
 - **text**: `string` — The textual content of the draft message.
 
-### [IgcChatMessage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatMessage)
+### [IgcChatMessage](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatMessage)
 Represents a single chat message in the conversation.
 
 - **attachments?**: `IgcChatMessageAttachment[]` — Optional list of attachments associated with the message,
@@ -2243,7 +2413,7 @@ such as images, files, or links.
 - **text**: `string` — The textual content of the message.
 - **timestamp?**: `string` — The timestamp indicating when the message was sent.
 
-### [IgcChatMessageAttachment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatMessageAttachment)
+### [IgcChatMessageAttachment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatMessageAttachment)
 Represents an attachment associated with a chat message.
 
 - **file?**: `File` — The actual File object, if the attachment was provided locally (e.g. via upload).
@@ -2254,13 +2424,19 @@ Represents an attachment associated with a chat message.
 - **url?**: `string` — The URL from which the attachment can be downloaded or viewed.
 Typically used for attachments stored on a server or CDN.
 
-### [IgcChatMessageReaction](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatMessageReaction)
+### [IgcChatMessageLink](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatMessageLink)
+A link in a chat message that the user follows.
+
+- **href**: `string` — The absolute URL that the browser follows.
+- **message**: `IgcChatMessage` — The chat message that holds the link.
+
+### [IgcChatMessageReaction](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatMessageReaction)
 Represents a user's reaction to a specific chat message.
 
 - **message**: `IgcChatMessage` — The chat message that the reaction is associated with.
 - **reaction**: `string` — The string representation of the reaction, such as an emoji or a string;
 
-### [IgcChatOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatOptions)
+### [IgcChatOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatOptions)
 Configuration options for customizing the behavior and appearance of the chat component.
 
 - **acceptedFiles?**: `string` — The accepted files that could be attached.
@@ -2302,15 +2478,21 @@ Default is 3000.
 
 Default is "below-messages".
 
-### [IgcChatResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcChatResourceStrings)
+### [IgcChatResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcChatResourceStrings)
 **Deprecated:** since 7.2.0. Use the newly provided IChatResourceStrings interface, or set global resource strings with the registerI18n method.
 
 
-### [IgcDateRangePickerResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/IgcDateRangePickerResourceStrings)
+### [IgcDateRangePickerResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcDateRangePickerResourceStrings)
 **Deprecated:** since 7.2.0. Use the newly provided ICalendarResourceStrings and IDateRangePickerResourceStrings interfaces, or set global resource strings with the registerI18n method.
 
 
-### [QrCodeExportOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/QrCodeExportOptions)
+### [QrCodeCopyOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/QrCodeCopyOptions)
+Options for copying the QR code to the clipboard.
+
+- **format?**: `QrCodeCopyFormat` — The image format. An svg copy also holds a PNG image for applications that do not read SVG.
+- **scale?**: `number` — Multiplier applied to the size of the component. A 256px QR code with a scale of 2 copies as a 512x512 image.
+
+### [QrCodeExportOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/QrCodeExportOptions)
 Options for exporting the QR code to a file.
 
 - **download?**: `boolean` — Whether to open the browser download dialog for the exported file.
@@ -2319,14 +2501,14 @@ Options for exporting the QR code to a file.
 - **scale?**: `number` — Multiplier applied to the size of the component. A 256px QR code with a scale of 2 exports as a 512x512 image.
 For svg, the multiplier applies to the width and height attributes while the viewBox is unchanged.
 
-### [RegisterIconOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/RegisterIconOptions)
+### [RegisterIconOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/RegisterIconOptions)
 Options for registering an SVG icon.
 
 - **collection?**: `string` — The collection to register the icon in.
 - **stripMeta?**: `boolean` — Whether to strip SVG meta elements (<title> and <desc>) from the icon
 before storing it.
 
-### [VirtualScrollDataRequest](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/VirtualScrollDataRequest)
+### [VirtualScrollDataRequest](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/VirtualScrollDataRequest)
 A request for more data, emitted when the rendered window comes near the
 end of the loaded items. Consumers listen for it and append the requested
 items.
@@ -2335,7 +2517,7 @@ items.
 - **startIndex**: `number` — The first index that does not yet have data.
 Append at least count more items starting here.
 
-### [VirtualScrollItemContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/VirtualScrollItemContext)
+### [VirtualScrollItemContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/VirtualScrollItemContext)
 Context passed to the item template: the item data, its index, and utility
 properties for rendering.
 
@@ -2345,7 +2527,7 @@ properties for rendering.
 - **isFirst**: `any`
 - **isLast**: `any`
 
-### [VirtualScrollState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/interfaces/VirtualScrollState)
+### [VirtualScrollState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/VirtualScrollState)
 Snapshot of the currently rendered virtual window
 
 - **endIndex**: `number` — The index of the last item currently rendered in the viewport (inclusive).
@@ -2355,40 +2537,55 @@ Snapshot of the currently rendered virtual window
 
 ## Type Aliases
 
-### [ChatSuggestionsPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/ChatSuggestionsPosition)
+### [ChatSuggestionsPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/ChatSuggestionsPosition)
 `"below-input" | "below-messages"`
 A string literal type defining the two possible positions for chat suggestions.
 
-### [ChatTemplateRenderer](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/ChatTemplateRenderer)
+### [ChatTemplateRenderer](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/ChatTemplateRenderer)
 `any`
 A generic type for a function that serves as a custom renderer.
 It takes a context object of type T and returns a template result.
 
-### [PopoverPlacement](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/PopoverPlacement)
+### [ComboCloseTrigger](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/ComboCloseTrigger)
+`"enter" | "escape" | "tab" | "arrow-up" | "outside-click" | "scroll" | "toggle" | "selection" | "apply" | "cancel"`
+The user action that closes the list of options. toggle is a click on the
+input, selection an item click in single selection mode, and apply and
+cancel the buttons of the confirm mode.
+
+### [PopoverPlacement](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/PopoverPlacement)
 `"top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | "right" | "right-start" | "right-end" | "left" | "left-start" | "left-end"`
 Describes the preferred placement of a toggle component.
 
-### [QrCodeExportFormat](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/QrCodeExportFormat)
+### [QrCodeCopyFormat](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/QrCodeCopyFormat)
+`"png" | "svg"`
+Image format of a QR code copied to the clipboard.
+
+### [QrCodeExportFormat](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/QrCodeExportFormat)
 `"svg" | "png" | "jpeg" | "webp"`
 Output format of an exported QR code.
 
-### [QrCornerSquareStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/QrCornerSquareStyle)
+### [QrCornerSquareStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/QrCornerSquareStyle)
 `"square" | "circle" | "rounded"`
 Shape of the outer square of each finder-pattern corner.
 
-### [QrDotStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/QrDotStyle)
+### [QrDotStyle](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/QrDotStyle)
 `"square" | "circle" | "rounded"`
 Shape of individual data modules in the QR code body.
 
-### [QrErrorCorrectionLevel](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/types/QrErrorCorrectionLevel)
+### [QrErrorCorrectionLevel](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/QrErrorCorrectionLevel)
 `"L" | "M" | "Q" | "H"`
 QR error correction level. Higher levels recover more data but reduce capacity.
 - L ~7%, M ~15%, Q ~25%, H ~30%.
 
+### [TooltipRect](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/types/TooltipRect)
+`any`
+A rectangle in viewport coordinates for the tooltip showAt() method.
+Without width and height, it is a point.
+
 ## Functions
 
-### [configureTheme](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/configureTheme)
-`configureTheme(t: Theme, v: ThemeVariant): void`
+### [configureTheme](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/configureTheme)
+`configureTheme(t: "material" | "bootstrap" | "indigo" | "fluent", v: "light" | "dark"): void`
 Allows the global configuration of the active theme.
 
 Usage:
@@ -2396,36 +2593,36 @@ Usage:
 
  configureTheme('material', 'light');
 
-### [registerIcon](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/registerIcon)
+### [registerIcon](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/registerIcon)
 `registerIcon(name: string, url: string, collection?: string): Promise<void>`
 Registers an icon by fetching it from a URL.
 
-### [registerIcon](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/registerIcon)
+### [registerIcon](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/registerIcon)
 `registerIcon(name: string, url: string, options?: RegisterIconOptions): Promise<void>`
 Registers an icon by fetching it from a URL.
 
-### [registerIconFromText](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/registerIconFromText)
+### [registerIconFromText](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/registerIconFromText)
 `registerIconFromText(name: string, iconText: string, collection?: string): void`
 Registers an icon from SVG text content.
 
-### [registerIconFromText](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/registerIconFromText)
+### [registerIconFromText](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/registerIconFromText)
 `registerIconFromText(name: string, iconText: string, options?: RegisterIconOptions): void`
 Registers an icon from SVG text content.
 
-### [setIconRef](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/functions/setIconRef)
+### [setIconRef](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/functions/setIconRef)
 `setIconRef(name: string, collection: string, icon: IconMeta): void`
 Sets an icon reference/alias that points to another icon.
 
 ## Variables
 
-### [IgcCalendarResourceStringEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/variables/IgcCalendarResourceStringEN)
+### [IgcCalendarResourceStringEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/variables/IgcCalendarResourceStringEN)
 `IgcCalendarResourceStrings`
 **Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.
 
-### [IgcChatResourceStringEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/variables/IgcChatResourceStringEN)
+### [IgcChatResourceStringEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/variables/IgcChatResourceStringEN)
 `IgcChatResourceStrings`
 **Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.
 
-### [IgcDateRangePickerResourceStringsEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.4.0/variables/IgcDateRangePickerResourceStringsEN)
+### [IgcDateRangePickerResourceStringsEN](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/variables/IgcDateRangePickerResourceStringsEN)
 `IgcDateRangePickerResourceStrings`
 **Deprecated:** since 7.2.0. Use the newly provided resources from the igniteui-i18n-resources package.

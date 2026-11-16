@@ -1,14 +1,14 @@
-# Ignite UI for Web Components Grids v7.3.2 — Full API Reference
+# Ignite UI for Web Components Grids v7.4.0-beta.2 — Full API Reference
 
-> Complete API reference for the Ignite UI for Web Components Grids package (7.3.2). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+> Complete API reference for the Ignite UI for Web Components Grids package (7.4.0-beta.2). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
 Platform: Web Components
 Package: igniteui-webcomponents-grids
-Version: 7.3.2
+Version: 7.4.0-beta.2
 
 ## Classes
 
-### [IgcActionStripComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcActionStripComponent)
+### [IgcActionStripComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcActionStripComponent)
 Action Strip provides templatable area for one or more actions.
 
 - **constructor**(): IgcActionStripComponent
@@ -23,17 +23,17 @@ Action Strip provides templatable area for one or more actions.
 - **show**(context?: any): void — Showing the Action Strip and appending it the specified context element.
 - static **register**(): void
 
-### [IgcBooleanFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcBooleanFilteringOperand)
+### [IgcBooleanFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcBooleanFilteringOperand)
 Provides filtering operations for booleans
 
 - **constructor**(): IgcBooleanFilteringOperand
 
-### [IgcByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcByLevelTreeGridMergeStrategy)
+### [IgcByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcByLevelTreeGridMergeStrategy)
 
 - **constructor**(): IgcByLevelTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 
-### [IgcColumnComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcColumnComponent)
+### [IgcColumnComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcColumnComponent)
 **Ignite UI for Angular Column** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid#columns-configuration)
 The Ignite UI Column is used within an igx-grid element to define what data the column will show. Features such as sorting,
@@ -132,7 +132,7 @@ Column cannot be unpinned if:
 - index argument is out of range
 - static **register**(): void
 
-### [IgcColumnGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcColumnGroupComponent)
+### [IgcColumnGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcColumnGroupComponent)
 **Ignite UI for Angular Column Group**
 
 - **constructor**(args: any[]): IgcColumnGroupComponent
@@ -157,7 +157,7 @@ Empty without children or if this column is not Group or Layout.
 - **width**: `string` — Gets the width of the column group.
 - static **register**(): void
 
-### [IgcColumnLayoutComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcColumnLayoutComponent)
+### [IgcColumnLayoutComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcColumnLayoutComponent)
 Column layout for declaration of Multi-row Layout
 
 - **constructor**(args: any[]): IgcColumnLayoutComponent
@@ -169,14 +169,14 @@ If the column is not visible, returns -1.
 - **width**: `any` — Gets the width of the column layout.
 - static **register**(): void
 
-### [IgcCsvExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcCsvExporterOptions)
+### [IgcCsvExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcCsvExporterOptions)
 Objects of this class are used to configure the CSV exporting process.
 
 - **constructor**(fileName: string, fileType: CsvFileTypes): IgcCsvExporterOptions
 - **fileType**: `CsvFileTypes`
 - **valueDelimiter**: `string`
 
-### [IgcCsvExporterService](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcCsvExporterService)
+### [IgcCsvExporterService](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcCsvExporterService)
 **Ignite UI for Angular CSV Exporter Service** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/exporter-csv)
 The Ignite UI for Angular CSV Exporter service can export data in a Character Separated Values format from
@@ -185,37 +185,37 @@ Example:
 
 - **constructor**(args: any[]): IgcCsvExporterService
 
-### [IgcDateFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcDateFilteringOperand)
+### [IgcDateFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateFilteringOperand)
 Provides filtering operations for Dates
 
 - **constructor**(): IgcDateFilteringOperand
 
-### [IgcDateSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcDateSummaryOperand)
+### [IgcDateSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateSummaryOperand)
 
 - **constructor**(): IgcDateSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
-- static **earliest**(data: any[]): void — Returns the earliest date value in the data records.
+- static **earliest**(data: any[]): any — Returns the earliest date value in the data records.
 If filtering is applied, returns the latest date value in the filtered data records.
-- static **latest**(data: any[]): void — Returns the latest date value in the data records.
+- static **latest**(data: any[]): any — Returns the latest date value in the data records.
 If filtering is applied, returns the latest date value in the filtered data records.
 
-### [IgcDateTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcDateTimeFilteringOperand)
+### [IgcDateTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateTimeFilteringOperand)
 
 - **constructor**(): IgcDateTimeFilteringOperand
 
-### [IgcDefaultMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcDefaultMergeStrategy)
+### [IgcDefaultMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDefaultMergeStrategy)
 
 - **constructor**(): IgcDefaultMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 - **merge**(data: any[], field: string, comparer: any, result: any[], activeRowIndexes: number[], isDate?: boolean, isTime?: boolean, grid?: IgcGridBaseDirective): any[]
 - static **instance**(): IgcDefaultMergeStrategy
 
-### [IgcDefaultTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcDefaultTreeGridMergeStrategy)
+### [IgcDefaultTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDefaultTreeGridMergeStrategy)
 
 - **constructor**(): IgcDefaultTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 
-### [IgcExcelExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcExcelExporterOptions)
+### [IgcExcelExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcExcelExporterOptions)
 Objects of this class are used to configure the Excel exporting process.
 
 - **constructor**(fileName: string): IgcExcelExporterOptions
@@ -225,7 +225,7 @@ Objects of this class are used to configure the Excel exporting process.
 - **rowHeight**: `number`
 - **worksheetName**: `string`
 
-### [IgcExcelExporterService](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcExcelExporterService)
+### [IgcExcelExporterService](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcExcelExporterService)
 **Ignite UI for Angular Excel Exporter Service** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/exporter_excel.html)
 The Ignite UI for Angular Excel Exporter service can export data in Microsoft® Excel® format from both raw data
@@ -234,7 +234,7 @@ Example:
 
 - **constructor**(args: any[]): IgcExcelExporterService
 
-### [IgcFilteringExpressionsTree](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcFilteringExpressionsTree)
+### [IgcFilteringExpressionsTree](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcFilteringExpressionsTree)
 
 - **constructor**(): IgcFilteringExpressionsTree
 - **entity**: `string`
@@ -245,7 +245,7 @@ Example:
 - **filteringOperands**: `IgcFilteringExpressionsTree | IgcFilteringExpression[]`
 - **operator**: `FilteringLogic`
 
-### [IgcFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcFilteringOperand)
+### [IgcFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcFilteringOperand)
 Provides base filtering operations
 Implementations should be Singleton
 
@@ -256,7 +256,7 @@ Implementations should be Singleton
 - **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
 - static **instance**(): IgcFilteringOperand
 
-### [IgcGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridComponent)
+### [IgcGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridComponent)
 Grid provides a way to present and manipulate tabular data.
 
 - **constructor**(args: any[]): IgcGridComponent
@@ -266,7 +266,7 @@ Grid provides a way to present and manipulate tabular data.
 - **actionStripComponents**: `IgcActionStripToken[]`
 - static **register**(): void
 
-### [IgcGridEditingActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridEditingActionsComponent)
+### [IgcGridEditingActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridEditingActionsComponent)
 Grid Editing Actions for the Action Strip
 
 - **constructor**(): IgcGridEditingActionsComponent
@@ -279,7 +279,7 @@ Grid Editing Actions for the Action Strip
 - **startEdit**(evt?: any): void — Enter row or cell edit mode depending the grid rowEditable option
 - static **register**(): void
 
-### [IgcGridPinningActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridPinningActionsComponent)
+### [IgcGridPinningActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridPinningActionsComponent)
 Grid Pinning Actions for the Action Strip
 
 - **constructor**(): IgcGridPinningActionsComponent
@@ -289,7 +289,7 @@ Grid Pinning Actions for the Action Strip
 - **unpin**(evt?: any): void — Unpin the row according to the context.
 - static **register**(): void
 
-### [IgcGridStateComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridStateComponent)
+### [IgcGridStateComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridStateComponent)
 State component allows saving and restoring the state of the grid features.
 
 - **constructor**(args: any[]): IgcGridStateComponent
@@ -302,14 +302,14 @@ State component allows saving and restoring the state of the grid features.
 - **getStateAsString**(features?: string[]): string — Gets the state of a feature or states of all grid features, unless a certain feature is disabled through the options property.
 - static **register**(): void
 
-### [IgcGridToolbarActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarActionsComponent)
+### [IgcGridToolbarActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarActionsComponent)
 Provides a way to template the action portion of the toolbar in the grid.
 
 - **constructor**(): IgcGridToolbarActionsComponent
 - static readonly **tagName**: `string`
 - static **register**(): void
 
-### [IgcGridToolbarAdvancedFilteringComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarAdvancedFilteringComponent)
+### [IgcGridToolbarAdvancedFilteringComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarAdvancedFilteringComponent)
 Provides a pre-configured button to open the advanced filtering dialog of the grid.
 
 - **constructor**(): IgcGridToolbarAdvancedFilteringComponent
@@ -317,7 +317,7 @@ Provides a pre-configured button to open the advanced filtering dialog of the gr
 - **overlaySettings**: `IgcOverlaySettings`
 - static **register**(): void
 
-### [IgcGridToolbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarComponent)
+### [IgcGridToolbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarComponent)
 Provides a context-aware container component for UI operations for the grid components.
 
 - **constructor**(): IgcGridToolbarComponent
@@ -326,7 +326,7 @@ Provides a context-aware container component for UI operations for the grid comp
 - **showProgress**: `boolean`
 - static **register**(): void
 
-### [IgcGridToolbarExporterComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarExporterComponent)
+### [IgcGridToolbarExporterComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarExporterComponent)
 Provides a pre-configured exporter component for the grid.
 
 - **constructor**(args: any[]): IgcGridToolbarExporterComponent
@@ -340,28 +340,28 @@ Provides a pre-configured exporter component for the grid.
 - **export**(type: GridToolbarExporterType): void — Export the grid's data
 - static **register**(): void
 
-### [IgcGridToolbarHidingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarHidingComponent)
+### [IgcGridToolbarHidingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarHidingComponent)
 Provides a pre-configured column hiding component for the grid.
 
 - **constructor**(args: any[]): IgcGridToolbarHidingComponent
 - static readonly **tagName**: `string`
 - static **register**(): void
 
-### [IgcGridToolbarPinningComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarPinningComponent)
+### [IgcGridToolbarPinningComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarPinningComponent)
 Provides a pre-configured column pinning component for the grid.
 
 - **constructor**(args: any[]): IgcGridToolbarPinningComponent
 - static readonly **tagName**: `string`
 - static **register**(): void
 
-### [IgcGridToolbarTitleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcGridToolbarTitleComponent)
+### [IgcGridToolbarTitleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarTitleComponent)
 Provides a way to template the title portion of the toolbar in the grid.
 
 - **constructor**(): IgcGridToolbarTitleComponent
 - static readonly **tagName**: `string`
 - static **register**(): void
 
-### [IgcHierarchicalGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcHierarchicalGridComponent)
+### [IgcHierarchicalGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcHierarchicalGridComponent)
 Hierarchical grid
 
 - **constructor**(args: any[]): IgcHierarchicalGridComponent
@@ -372,19 +372,19 @@ Hierarchical grid
 - **childLayoutList**: `IgcRowIslandComponent[]`
 - static **register**(): void
 
-### [IgcNoopFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcNoopFilteringStrategy)
+### [IgcNoopFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNoopFilteringStrategy)
 
 - **constructor**(): IgcNoopFilteringStrategy
 - **filter**(data: any[], _: IgcFilteringExpressionsTree, __?: IgcFilteringExpressionsTree): any[]
-- static **instance**(): void
+- static **instance**(): IgcNoopFilteringStrategy
 
-### [IgcNoopPivotDimensionsStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcNoopPivotDimensionsStrategy)
+### [IgcNoopPivotDimensionsStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNoopPivotDimensionsStrategy)
 
 - **constructor**(): IgcNoopPivotDimensionsStrategy
 - **process**(collection: any[], _: IgcPivotDimension[], __: IgcPivotValue[]): any[]
 - static **instance**(): IgcNoopPivotDimensionsStrategy
 
-### [IgcNoopSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcNoopSortingStrategy)
+### [IgcNoopSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNoopSortingStrategy)
 Represents a class implementing the IGridSortingStrategy interface with a no-operation sorting strategy.
 It performs no sorting and returns the data as it is.
 
@@ -392,12 +392,12 @@ It performs no sorting and returns the data as it is.
 - **sort**(data: any[]): any[]
 - static **instance**(): IgcNoopSortingStrategy
 
-### [IgcNumberFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcNumberFilteringOperand)
+### [IgcNumberFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNumberFilteringOperand)
 Provides filtering operations for numbers
 
 - **constructor**(): IgcNumberFilteringOperand
 
-### [IgcNumberSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcNumberSummaryOperand)
+### [IgcNumberSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNumberSummaryOperand)
 
 - **constructor**(): IgcNumberSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
@@ -410,7 +410,7 @@ If filtering is applied, returns the minimum value in the filtered data records.
 - static **sum**(data: any[]): number — Returns the sum of the numeric values in the provided data records.
 If filtering is applied, returns the sum of the numeric values in the data records.
 
-### [IgcPaginatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcPaginatorComponent)
+### [IgcPaginatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPaginatorComponent)
 Paginator component description
 
 - **constructor**(args: any[]): IgcPaginatorComponent
@@ -431,7 +431,7 @@ Paginator component description
 - **previousPage**(): void — Goes to the previous page of the paginator, if the paginator is not already at the first page.
 - static **register**(): void
 
-### [IgcPivotDataSelectorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcPivotDataSelectorComponent)
+### [IgcPivotDataSelectorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPivotDataSelectorComponent)
 Pivot Data Selector provides means to configure the pivot state of the Pivot Grid via a vertical panel UI
 
 - **constructor**(args: any[]): IgcPivotDataSelectorComponent
@@ -445,7 +445,7 @@ Pivot Data Selector provides means to configure the pivot state of the Pivot Gri
 - **valuesExpanded**: `boolean`
 - static **register**(): void
 
-### [IgcPivotDateDimension](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcPivotDateDimension)
+### [IgcPivotDateDimension](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPivotDateDimension)
 Configuration of a pivot dimension.
 
 - **constructor**(inBaseDimension?: IgcPivotDimension, inOptions?: IgcPivotDateDimensionOptions): IgcPivotDateDimension
@@ -456,7 +456,7 @@ Configuration of a pivot dimension.
 - **options**: `IgcPivotDateDimensionOptions`
 - **resourceStrings**: `IgcGridResourceStrings`
 
-### [IgcPivotGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcPivotGridComponent)
+### [IgcPivotGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPivotGridComponent)
 Pivot Grid provides a way to present and manipulate data in a pivot table view.
 
 - **constructor**(args: any[]): IgcPivotGridComponent
@@ -477,7 +477,7 @@ Pivot Grid provides a way to present and manipulate data in a pivot table view.
 - **valueChipTemplate**: `IgcRenderFunction<IgcPivotGridValueTemplateContext>`
 - **autoSizeRowDimension**(dimension: IgcPivotDimension): void — Auto-sizes row dimension cells.
 - **filterDimension**(dimension: IgcPivotDimension, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation): void — Filters a single IPivotDimension.
-- **getColumnGroupExpandState**(col: IgcColumnComponent): void
+- **getColumnGroupExpandState**(col: IgcColumnComponent): boolean
 - **insertDimensionAt**(dimension: IgcPivotDimension, targetCollectionType: PivotDimensionType, index?: number): void — Inserts dimension in target collection by type at specified index or at the collection's end.
 - **insertValueAt**(value: IgcPivotValue, index?: number): void — Inserts value at specified index or at the end.
 - **moveDimension**(dimension: IgcPivotDimension, targetCollectionType: PivotDimensionType, index?: number): void — Move dimension from its currently collection to the specified target collection by type at specified index or at the collection's end.
@@ -492,7 +492,7 @@ Pivot Grid provides a way to present and manipulate data in a pivot table view.
 - **toggleValue**(value: IgcPivotValue): void — Toggles the value's enabled state on or off.
 - static **register**(): void
 
-### [IgcQueryBuilderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcQueryBuilderComponent)
+### [IgcQueryBuilderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcQueryBuilderComponent)
 A component used for operating with complex filters by creating or editing conditions
 and grouping them using AND/OR logic.
 It is used internally in the Advanced Filtering of the Grid.
@@ -515,7 +515,7 @@ It is used internally in the Advanced Filtering of the Grid.
 - **discard**(): void — Discards all unsaved changes to the expression tree.
 - static **register**(): void
 
-### [IgcQueryBuilderHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcQueryBuilderHeaderComponent)
+### [IgcQueryBuilderHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcQueryBuilderHeaderComponent)
 
 - **constructor**(): IgcQueryBuilderHeaderComponent
 - static readonly **tagName**: `string`
@@ -526,7 +526,7 @@ It is used internally in the Advanced Filtering of the Grid.
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title)
 - static **register**(): void
 
-### [IgcRowIslandComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcRowIslandComponent)
+### [IgcRowIslandComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcRowIslandComponent)
 Row island
 
 - **constructor**(args: any[]): IgcRowIslandComponent
@@ -615,6 +615,7 @@ Row island
 - **toolbarTemplate**: `IgcRenderFunction<IgcGridToolbarTemplateContext>`
 - **totalRecords**: `number`
 - **transactions**: `TransactionService` — Get transactions service for the grid.
+- **validationTooltipTrigger**: `GridValidationTooltipTrigger`
 - **validationTrigger**: `GridValidationTrigger`
 - **width**: `string`
 - **addRow**(data: any): void — Creates a new grid row and adds the data record to the end of the data source.
@@ -650,15 +651,15 @@ Row island
 - **getHeaderGroupWidth**(column: IgcColumnComponent): string — Gets the width to be set on grid header group.
 - **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the next cell,
 according to the current position, that match specific criteria.
-- **getPinnedEndWidth**(takeHidden?: boolean): void — Gets calculated width of the pinned areas.
-- **getPinnedStartWidth**(takeHidden?: boolean): void — Gets calculated width of the pinned areas.
+- **getPinnedEndWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPinnedStartWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
 - **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the previous cell,
 according to the current position, that match specific criteria.
 - **getRowData**(rowSelector: any): any — Returns the data that is contained in the row component.
-- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): void — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
-- **getSelectedData**(formatters?: boolean, headers?: boolean): void — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
 - **getSelectedRanges**(): IgcGridSelectionRange[] — Get the currently selected ranges in the grid.
-- **isRecordPinnedByIndex**(rowIndex: number): void — Returns whether the record is pinned or not.
+- **isRecordPinnedByIndex**(rowIndex: number): boolean — Returns whether the record is pinned or not.
 - **markForCheck**(): void — Triggers change detection for the grid.
 Calling markForCheck also triggers the grid pipes explicitly, resulting in all updates being processed.
 May degrade performance if used when not needed, or if misused:
@@ -684,33 +685,33 @@ May degrade performance if used when not needed, or if misused:
 - **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 - static **register**(): void
 
-### [IgcStringFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcStringFilteringOperand)
+### [IgcStringFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcStringFilteringOperand)
 Provides filtering operations for strings
 
 - **constructor**(): IgcStringFilteringOperand
 - static **applyIgnoreCase**(a: string, ignoreCase: boolean): string — Applies case sensitivity on strings if provided
 
-### [IgcSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcSummaryOperand)
+### [IgcSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcSummaryOperand)
 
 - **constructor**(): IgcSummaryOperand
 - **operate**(data?: any[], _allData?: any[], _fieldName?: string, _groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static count method and returns summary result[]`.
 - static **count**(data: any[]): number — Counts all the records in the data source.
 If filtering is applied, counts only the filtered records.
 
-### [IgcTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcTimeFilteringOperand)
+### [IgcTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcTimeFilteringOperand)
 
 - **constructor**(): IgcTimeFilteringOperand
 
-### [IgcTimeSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcTimeSummaryOperand)
+### [IgcTimeSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcTimeSummaryOperand)
 
 - **constructor**(): IgcTimeSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[]
-- static **earliestTime**(data: any[]): void — Returns the earliest time value in the data records. Compare only the time part of the date.
+- static **earliestTime**(data: any[]): any — Returns the earliest time value in the data records. Compare only the time part of the date.
 If filtering is applied, returns the earliest time value in the filtered data records.
-- static **latestTime**(data: any[]): void — Returns the latest time value in the data records. Compare only the time part of the date.
+- static **latestTime**(data: any[]): any — Returns the latest time value in the data records. Compare only the time part of the date.
 If filtering is applied, returns the latest time value in the filtered data records.
 
-### [IgcTreeGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/classes/IgcTreeGridComponent)
+### [IgcTreeGridComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcTreeGridComponent)
 **Ignite UI for Angular Tree Grid** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid)
 The Ignite UI Tree Grid displays and manipulates hierarchical data with consistent schema formatted as a table and
@@ -726,11 +727,11 @@ Example:
 
 ## Interfaces
 
-### [IgcActionStripResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcActionStripResourceStrings)
+### [IgcActionStripResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcActionStripResourceStrings)
 
 - **igx_action_strip_button_more_title?**: `string`
 
-### [IgcActiveNodeChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcActiveNodeChangeEventArgs)
+### [IgcActiveNodeChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcActiveNodeChangeEventArgs)
 Emitted when the active node is changed
 
 - **column**: `number` — Represents the column index of the active node
@@ -740,29 +741,29 @@ Represents the hierarchical level of the active node
 - **tag**: `GridKeydownTargetType` — Represents the type of the active node.
 The GridKeydownTargetType is an enum or that specifies the possible target types
 
-### [IgcBaseEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseEventArgs)
+### [IgcBaseEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseEventArgs)
 
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgcBaseExporter](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseExporter)
+### [IgcBaseExporter](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseExporter)
 
 - **export**: `any`
 - **exportData**: `any`
 
-### [IgcBaseExporterEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseExporterEventMap)
+### [IgcBaseExporterEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseExporterEventMap)
 
 - **columnExporting**: `CustomEvent<IgcColumnExportingEventArgs>` — This event is emitted when a column is exported.
 - **exportEnded**: `CustomEvent<IgcBaseEventArgs>`
 - **rowExporting**: `CustomEvent<IgcRowExportingEventArgs>` — This event is emitted when a row is exported.
 
-### [IgcBaseFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseFilteringStrategy)
+### [IgcBaseFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseFilteringStrategy)
 
 - **filter**: `any`
 - **findMatchByExpression**: `any`
 - **getFilterItems**: `any`
 - **matchRecord**: `any`
 
-### [IgcBaseSearchInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseSearchInfo)
+### [IgcBaseSearchInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseSearchInfo)
 
 - **caseSensitive**: `any`
 - **content**: `any`
@@ -770,7 +771,7 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 - **matchCount**: `any`
 - **searchText**: `any`
 
-### [IgcBaseToolbarDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcBaseToolbarDirectiveEventMap)
+### [IgcBaseToolbarDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseToolbarDirectiveEventMap)
 
 - **closed**: `CustomEvent<IgcToggleViewEventArgs>` — Emits an event after the toggle container is closed.
 - **closing**: `CustomEvent<IgcToggleViewEventArgs>` — Emits an event before the toggle container is closed.
@@ -778,26 +779,26 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 - **opened**: `CustomEvent<IgcToggleViewEventArgs>` — Emits an event after the toggle container is opened.
 - **opening**: `CustomEvent<IgcToggleViewCancelableEventArgs>` — Emits an event before the toggle container is opened.
 
-### [IgcCancelableBrowserEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCancelableBrowserEventArgs)
+### [IgcCancelableBrowserEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCancelableBrowserEventArgs)
 
 
-### [IgcCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCancelableEventArgs)
+### [IgcCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCancelableEventArgs)
 
 - **cancel**: `boolean` — Provides the ability to cancel the event.
 
-### [IgcCellPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCellPosition)
+### [IgcCellPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCellPosition)
 The event is triggered when getting the current position of a certain cell
 
 - **rowIndex**: `any`
 - **visibleColumnIndex**: `any`
 
-### [IgcCellTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCellTemplateContext)
+### [IgcCellTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCellTemplateContext)
 
 - **additionalTemplateContext**: `any`
 - **cell**: `any`
 - **implicit**: `any`
 
-### [IgcCellType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCellType)
+### [IgcCellType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCellType)
 Interface representing a cell in the grid. It is essentially the blueprint to a cell object.
 Contains definitions of properties and methods, relevant to a cell
 
@@ -822,7 +823,7 @@ Whether it's valid or invalid, and if it has errors
 - **setEditMode?**: `any`
 - **update**: `any`
 
-### [IgcClipboardOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcClipboardOptions)
+### [IgcClipboardOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcClipboardOptions)
 An interface describing settings for clipboard options
 
 - **copyFormatters**: `any`
@@ -830,17 +831,17 @@ An interface describing settings for clipboard options
 - **enabled**: `any`
 - **separator**: `any`
 
-### [IgcColumnComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnComponentEventMap)
+### [IgcColumnComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnComponentEventMap)
 
 - **expandedChange**: `CustomEvent<boolean>` — Emitted when the column expanded or collapsed.
 - **hiddenChange**: `CustomEvent<boolean>` — Emitted when the column is hidden or shown.
 - **pinnedChange**: `CustomEvent<boolean>` — Emitted when the column is pinned/unpinned.
 - **widthChange**: `CustomEvent<string>` — Emitted when the column width changes.
 
-### [IgcColumnEditorOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnEditorOptions)
+### [IgcColumnEditorOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnEditorOptions)
 
 
-### [IgcColumnExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnExportingEventArgs)
+### [IgcColumnExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnExportingEventArgs)
 columnExporting event arguments
 
 - **cancel**: `boolean` — Skip the exporting column when set to true
@@ -850,7 +851,7 @@ columnExporting event arguments
 - **header**: `string` — Contains the exporting column header
 - **skipFormatter**: `boolean` — Export the column's data without applying its formatter, when set to true
 
-### [IgcColumnMovingEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnMovingEndEventArgs)
+### [IgcColumnMovingEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingEndEventArgs)
 Represents event arguments related to the end of a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -860,7 +861,7 @@ The ColumnType contains the information (the grid it belongs to, css data, setti
 - **target**: `IgcColumnComponent` — The target of the event represents the column, the source is being moved to.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgcColumnMovingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnMovingEventArgs)
+### [IgcColumnMovingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingEventArgs)
 Represents event arguments related to a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -868,27 +869,27 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgcColumnMovingStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnMovingStartEventArgs)
+### [IgcColumnMovingStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingStartEventArgs)
 Represents event arguments related to the start of a column moving operation in a grid.
 
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
-### [IgcColumnPipeArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnPipeArgs)
+### [IgcColumnPipeArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnPipeArgs)
 
 
-### [IgcColumnResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnResizeEventArgs)
+### [IgcColumnResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnResizeEventArgs)
 The event arguments when a column is being resized
 
 - **column**: `IgcColumnComponent` — Represents the information of the column that is being resized
 - **newWidth**: `string` — Represents the new width, the column is being resized to
 - **prevWidth**: `string` — Represents the old width of the column before the resizing
 
-### [IgcColumnsAutoGeneratedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnsAutoGeneratedEventArgs)
+### [IgcColumnsAutoGeneratedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnsAutoGeneratedEventArgs)
 
 - **columns?**: `IgcColumnComponent[]`
 
-### [IgcColumnSelectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnSelectionEventArgs)
+### [IgcColumnSelectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnSelectionEventArgs)
 The event arguments when the selection state of a column is being changed
 The event is cancelable
 
@@ -901,7 +902,7 @@ Whenever a column has been selected, the array is "refreshed" with the selected 
 - **removed**: `string[]` — Represents an array of all columns, removed from the selection
 Whenever a column has been deselected, the array is "refreshed" with the columns, that have been previously selected, but are no longer
 
-### [IgcColumnState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnState)
+### [IgcColumnState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnState)
 
 - **colEnd?**: `number`
 - **collapsible?**: `boolean`
@@ -936,26 +937,26 @@ Whenever a column has been deselected, the array is "refreshed" with the columns
 - **sortingIgnoreCase**: `any`
 - **width**: `any`
 
-### [IgcColumnTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnTemplateContext)
+### [IgcColumnTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnTemplateContext)
 
 - **column**: `any`
 - **implicit**: `any`
 
-### [IgcColumnToggledEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnToggledEventArgs)
+### [IgcColumnToggledEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnToggledEventArgs)
 Event emitted when a checkbox in the checkbox
 list of an column actions component is clicked.
 
 - **checked**: `boolean` — The checked state after the action.
 - **column**: `IgcColumnComponent` — The column that is toggled.
 
-### [IgcColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnVisibilityChangedEventArgs)
+### [IgcColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnVisibilityChangedEventArgs)
 The event arguments after a column's visibility is changed.
 
 - **column**: `any` — Represents the column the event originated from
 - **newValue**: `boolean` — The new hidden state that the column will have, if operation is successful.
 Will be true when hiding and false when showing.
 
-### [IgcColumnVisibilityChangingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcColumnVisibilityChangingEventArgs)
+### [IgcColumnVisibilityChangingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnVisibilityChangingEventArgs)
 The event arguments when a column's visibility is changed.
 The event is cancelable
 It contains information about the column and the it's visibility after the operation (will be true when hiding and false when showing)
@@ -965,25 +966,25 @@ It contains information about the column and the it's visibility after the opera
 - **newValue**: `boolean` — The new hidden state that the column will have, if operation is successful.
 Will be true when hiding and false when showing.
 
-### [IgcCsvExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCsvExportEndedEventArgs)
+### [IgcCsvExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCsvExportEndedEventArgs)
 
 - **csvData?**: `string`
 
-### [IgcCsvExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcCsvExporterServiceEventMap)
+### [IgcCsvExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCsvExporterServiceEventMap)
 
 - **exportEnded**: `CustomEvent<IgcCsvExportEndedEventArgs>` — This event is emitted when the export process finishes.
 
-### [IgcDataCloneStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcDataCloneStrategy)
+### [IgcDataCloneStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcDataCloneStrategy)
 
 - **clone**: `any`
 
-### [IgcDimensionsChange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcDimensionsChange)
+### [IgcDimensionsChange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcDimensionsChange)
 Event emitted when dimension collection for rows, columns of filters is changed.
 
 - **dimensionCollectionType**: `any`
 - **dimensions**: `any`
 
-### [IgcEntityType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcEntityType)
+### [IgcEntityType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcEntityType)
 Describes an entity in the QueryBuilder.
 An entity represents a logical grouping of fields and can have nested child entities.
 
@@ -992,25 +993,25 @@ This allows building hierarchical or nested query structures.
 - **fields**: `any`
 - **name**: `any`
 
-### [IgcExcelExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExcelExportEndedEventArgs)
+### [IgcExcelExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExcelExportEndedEventArgs)
 
 - **xlsx?**: `any`
 
-### [IgcExcelExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExcelExporterServiceEventMap)
+### [IgcExcelExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExcelExporterServiceEventMap)
 
 - **exportEnded**: `CustomEvent<IgcExcelExportEndedEventArgs>` — This event is emitted when the export process finishes.
 
-### [IgcExporterEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExporterEventArgs)
+### [IgcExporterEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExporterEventArgs)
 
 - **cancel**: `boolean`
 - **exporter**: `IgcBaseExporter`
 - **grid**: `IgcGridBaseDirective`
 - **options**: `IgcExporterOptionsBase`
 
-### [IgcExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExporterOptions)
+### [IgcExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExporterOptions)
 
 
-### [IgcExporterOptionsBase](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExporterOptionsBase)
+### [IgcExporterOptionsBase](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExporterOptionsBase)
 
 - **alwaysExportHeaders**: `any`
 - **exportSummaries**: `any`
@@ -1023,7 +1024,7 @@ This allows building hierarchical or nested query structures.
 - **ignoreMultiColumnHeaders**: `any`
 - **ignoreSorting**: `any`
 
-### [IgcExpressionTree](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcExpressionTree)
+### [IgcExpressionTree](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExpressionTree)
 
 - **entity?**: `string`
 - **fieldName?**: `string`
@@ -1031,12 +1032,12 @@ This allows building hierarchical or nested query structures.
 - **filteringOperands**: `any`
 - **operator**: `any`
 
-### [IgcFieldEditorOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFieldEditorOptions)
+### [IgcFieldEditorOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFieldEditorOptions)
 
 - **dateTimeFormat?**: `string` — A custom input format string used for the built-in editors of date/time columns.
 See the Editing section under https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-types#datetime-date-and-time
 
-### [IgcFieldPipeArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFieldPipeArgs)
+### [IgcFieldPipeArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFieldPipeArgs)
 
 - **currencyCode?**: `string` — The currency code of type string, default value undefined
 - **digitsInfo?**: `string` — Decimal representation options, specified by a string in the following format:
@@ -1050,7 +1051,7 @@ The value is of type string. By default is set to 'symbol'
 - **timezone?**: `string` — A timezone offset (such as '+0430'), or a standard UTC/GMT or continental US timezone abbreviation.
 - **weekStart?**: `number` — The first week day to be displayed in calendar when filtering or editing a date column
 
-### [IgcFieldType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFieldType)
+### [IgcFieldType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFieldType)
 Describes a field that can be used in the Grid and QueryBuilder components.
 
 - **defaultDateTimeFormat?**: `string` — Default date/time format for Date/Time fields.
@@ -1064,7 +1065,7 @@ Describes a field that can be used in the Grid and QueryBuilder components.
 - **field**: `any`
 - **formatter?**: `any`
 
-### [IgcFilteringEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFilteringEventArgs)
+### [IgcFilteringEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFilteringEventArgs)
 Represents event arguments related to filtering operations
 The event is cancelable
 
@@ -1073,7 +1074,7 @@ The event is cancelable
 The expression contains information like filtering operands and operator, an expression or condition, etc.
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgcFilteringExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFilteringExpression)
+### [IgcFilteringExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFilteringExpression)
 Represents filtering expressions.
 
 - **condition?**: `IgcFilteringOperation`
@@ -1083,7 +1084,7 @@ Represents filtering expressions.
 - **searchVal?**: `any`
 - **fieldName**: `any`
 
-### [IgcFilteringOperation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFilteringOperation)
+### [IgcFilteringOperation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFilteringOperation)
 Interface describing filtering operations
 
 - **hidden?**: `boolean`
@@ -1093,37 +1094,37 @@ Interface describing filtering operations
 - **isUnary**: `any`
 - **name**: `any`
 
-### [IgcFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFilteringStrategy)
+### [IgcFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFilteringStrategy)
 
 - **filter**: `any`
 - **getFilterItems**: `any`
 
-### [IgcFilterItem](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcFilterItem)
+### [IgcFilterItem](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcFilterItem)
 
 - **children?**: `IgcFilterItem[]`
 - **label?**: `string`
 - **value**: `any`
 
-### [IgcForOfDataChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcForOfDataChangeEventArgs)
+### [IgcForOfDataChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfDataChangeEventArgs)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 
-### [IgcForOfDataChangingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcForOfDataChangingEventArgs)
+### [IgcForOfDataChangingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfDataChangingEventArgs)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 - **containerSize**: `number`
 - **state**: `IgcForOfState`
 
-### [IgcForOfState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcForOfState)
+### [IgcForOfState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfState)
 
 - **chunkSize?**: `number`
 - **startIndex?**: `number`
 
-### [IgcGridActionsBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridActionsBaseDirective)
+### [IgcGridActionsBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridActionsBaseDirective)
 
 - **asMenuItems**: `any`
 
-### [IgcGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridBaseComponent)
+### [IgcGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseComponent)
 Grid provides a way to present and manipulate tabular data.
 
 - **data**: `any`
@@ -1158,14 +1159,14 @@ Grid provides a way to present and manipulate tabular data.
 - **toggleGroup**: `any`
 - **unpinRow**: `any`
 
-### [IgcGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridBaseComponentEventMap)
+### [IgcGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseComponentEventMap)
 
 - **dataPreLoad**: `CustomEvent<IgcForOfState>` — Emitted when a new chunk of data is loaded from virtualization.
 - **groupingDone**: `CustomEvent<IgcGroupingDoneEventArgs>` — Emitted when columns are grouped/ungrouped.
 - **groupingExpansionStateChange**: `CustomEvent<IgcGroupByExpandState[]>` — Emitted when groups are expanded/collapsed.
 - **groupingExpressionsChange**: `CustomEvent<IgcGroupingExpression[]>` — Emitted when grouping is performed.
 
-### [IgcGridBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridBaseDirective)
+### [IgcGridBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseDirective)
 
 - **addRowEmptyTemplate**: `any`
 - **advancedFilteringExpressionsTree**: `any`
@@ -1252,6 +1253,7 @@ Grid provides a way to present and manipulate tabular data.
 - **totalRecords**: `any`
 - **transactions**: `any`
 - **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
 - **validationTrigger**: `any`
 - **virtualizationState**: `any`
 - **visibleColumns**: `any`
@@ -1315,7 +1317,7 @@ Grid provides a way to present and manipulate tabular data.
 - **updateCell**: `any`
 - **updateRow**: `any`
 
-### [IgcGridBaseDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridBaseDirectiveEventMap)
+### [IgcGridBaseDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseDirectiveEventMap)
 
 - **activeNodeChange**: `CustomEvent<IgcActiveNodeChangeEventArgs>` — Emitted when the active node is changed.
 - **advancedFilteringExpressionsTreeChange**: `CustomEvent<IgcFilteringExpressionsTree>` — Emitted after advanced filtering is performed.
@@ -1371,25 +1373,25 @@ Grid provides a way to present and manipulate tabular data.
 - **toolbarExporting**: `CustomEvent<IgcGridToolbarExportEventArgs>` — Emitted when an export process is initiated by the user.
 - **validationStatusChange**: `CustomEvent<IgcGridValidationStatusEventArgs>` — Emitted when grid's validation status changes.
 
-### [IgcGridCellEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridCellEventArgs)
+### [IgcGridCellEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridCellEventArgs)
 Represents an event argument related to grid cell interactions.
 
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
 
-### [IgcGridClipboardEvent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridClipboardEvent)
+### [IgcGridClipboardEvent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridClipboardEvent)
 The event arguments when data from a grid is being copied.
 
 - **cancel**: `any`
 - **data**: `any`
 
-### [IgcGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridComponentEventMap)
+### [IgcGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridComponentEventMap)
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`
 
-### [IgcGridContextMenuEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridContextMenuEventArgs)
+### [IgcGridContextMenuEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridContextMenuEventArgs)
 Represents an event argument for the grid contextMenu output
 
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
@@ -1397,14 +1399,14 @@ Represents an event argument for the grid contextMenu output
 Examples of such events include: selecting, clicking, double clicking, etc.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
-### [IgcGridCreatedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridCreatedEventArgs)
+### [IgcGridCreatedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridCreatedEventArgs)
 
 - **grid**: `IgcHierarchicalGridComponent`
 - **owner**: `IgcRowIslandComponent` — Provides reference to the owner component.
 - **parentID**: `any`
 - **parentRowData?**: `any`
 
-### [IgcGridEditDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridEditDoneEventArgs)
+### [IgcGridEditDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridEditDoneEventArgs)
 Represents event arguments related to grid editing completion.
 
 - **cellID?**: `any`
@@ -1425,7 +1427,7 @@ The only case rowData (of the current object) is used directly, is when there is
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgcGridEditEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridEditEventArgs)
+### [IgcGridEditEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridEditEventArgs)
 Represents event arguments related to grid editing.
 The event is cancelable
 It contains information about the row and the column, as well as the old and nwe value of the element/cell
@@ -1449,26 +1451,26 @@ The only case rowData (of the current object) is used directly, is when there is
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgcGridEmptyTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridEmptyTemplateContext)
+### [IgcGridEmptyTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridEmptyTemplateContext)
 
 
-### [IgcGridFormGroupCreatedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridFormGroupCreatedEventArgs)
+### [IgcGridFormGroupCreatedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridFormGroupCreatedEventArgs)
 Interface representing the event arguments when a form group is created in the grid.
 - formGroup: The form group that is created.
 - owner: The grid instance that owns the form group.
 
 - **owner**: `IgcGridBaseDirective`
 
-### [IgcGridGroupingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridGroupingStrategy)
+### [IgcGridGroupingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridGroupingStrategy)
 Represents a grouping strategy for the grid data, extending the Sorting Strategy interface (contains a sorting method).
 
 - **groupBy**: `any`
 
-### [IgcGridHeaderTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridHeaderTemplateContext)
+### [IgcGridHeaderTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridHeaderTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridKeydownEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridKeydownEventArgs)
+### [IgcGridKeydownEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridKeydownEventArgs)
 Represents an event, emitted when keydown is triggered over element inside grid's body
 This event is fired only if the key combination is supported in the grid.
 
@@ -1479,22 +1481,22 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 - **target**: `any` — Represents the information and details of the object itself
 - **targetType**: `GridKeydownTargetType` — The targetType represents the type of the targeted object. For example a cell or a row
 
-### [IgcGridMasterDetailContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridMasterDetailContext)
+### [IgcGridMasterDetailContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridMasterDetailContext)
 
 - **implicit**: `any`
 - **index**: `any`
 
-### [IgcGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridMergeStrategy)
+### [IgcGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridMergeStrategy)
 Merge strategy interface.
 
 - **comparer**: `any`
 - **merge**: `any`
 
-### [IgcGridPaginatorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridPaginatorTemplateContext)
+### [IgcGridPaginatorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridPaginatorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridResourceStrings)
+### [IgcGridResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridResourceStrings)
 
 - **igx_grid_actions_add_child_label?**: `string`
 - **igx_grid_actions_add_label?**: `string`
@@ -1670,39 +1672,39 @@ Merge strategy interface.
 - **igx_grid_toolbar_pinning_button_tooltip?**: `string`
 - **igx_grid_toolbar_pinning_title?**: `string`
 
-### [IgcGridRowDragGhostContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridRowDragGhostContext)
+### [IgcGridRowDragGhostContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowDragGhostContext)
 
 - **data**: `any`
 - **grid**: `any`
 - **implicit**: `any`
 
-### [IgcGridRowEditActionsTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridRowEditActionsTemplateContext)
+### [IgcGridRowEditActionsTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowEditActionsTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridRowEditTextTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridRowEditTextTemplateContext)
+### [IgcGridRowEditTextTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowEditTextTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridRowEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridRowEventArgs)
+### [IgcGridRowEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowEventArgs)
 Represents an event argument related to grid row interactions.
 
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
-### [IgcGridRowTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridRowTemplateContext)
+### [IgcGridRowTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridScrollEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridScrollEventArgs)
+### [IgcGridScrollEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridScrollEventArgs)
 Event emitted when a grid is scrolled.
 
 - **direction**: `string` — The scroll direction - vertical or horizontal.
 - **event**: `any` — The original browser scroll event.
 - **scrollPosition**: `number` — The new scroll position
 
-### [IgcGridSelectionRange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridSelectionRange)
+### [IgcGridSelectionRange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridSelectionRange)
 Represents a range selection between certain rows and columns of the grid.
 Range selection can be made either through drag selection or through keyboard selection.
 
@@ -1711,28 +1713,28 @@ Range selection can be made either through drag selection or through keyboard se
 - **rowEnd**: `any`
 - **rowStart**: `any`
 
-### [IgcGridSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridSortingStrategy)
+### [IgcGridSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridSortingStrategy)
 Represents a sorting strategy for the grid data
 Contains a single method sort that sorts the provided data based on the given sorting expressions
 
 - **sort**: `any`
 
-### [IgcGridStateBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStateBaseDirective)
+### [IgcGridStateBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStateBaseDirective)
 
 - **options**: `any`
 
-### [IgcGridStateCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStateCollection)
+### [IgcGridStateCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStateCollection)
 
 - **id**: `any`
 - **parentRowID**: `any`
 - **state**: `any`
 
-### [IgcGridStateComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStateComponentEventMap)
+### [IgcGridStateComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStateComponentEventMap)
 
 - **stateParsed**: `CustomEvent<IgcGridStateInfo>` — Event emitted when set state is called with a string.
 Returns the parsed state object so that it can be further modified before applying to the grid.
 
-### [IgcGridStateInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStateInfo)
+### [IgcGridStateInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStateInfo)
 
 - **advancedFiltering?**: `IgcFilteringExpressionsTree`
 - **cellSelection?**: `IgcGridSelectionRange[]`
@@ -1751,7 +1753,7 @@ Returns the parsed state object so that it can be further modified before applyi
 - **rowSelection?**: `any[]`
 - **sorting?**: `IgcSortingExpression[]`
 
-### [IgcGridStateOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStateOptions)
+### [IgcGridStateOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStateOptions)
 
 - **advancedFiltering?**: `boolean`
 - **cellSelection?**: `boolean`
@@ -1769,22 +1771,22 @@ Returns the parsed state object so that it can be further modified before applyi
 - **rowSelection?**: `boolean`
 - **sorting?**: `boolean`
 
-### [IgcGridStyleCSSProperty](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridStyleCSSProperty)
+### [IgcGridStyleCSSProperty](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridStyleCSSProperty)
 A map of CSS style properties to either a static value or a callback that
 computes one.
 
 
-### [IgcGridTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridTemplateContext)
+### [IgcGridTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridToolbarExporterComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridToolbarExporterComponentEventMap)
+### [IgcGridToolbarExporterComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridToolbarExporterComponentEventMap)
 
 - **exportEnded**: `CustomEvent<void>` — Emitted on successful ending of an export operation.
 - **exportStarted**: `CustomEvent<IgcExporterEventArgs>` — Emitted when starting an export operation. Re-emitted additionally
 by the grid itself.
 
-### [IgcGridToolbarExportEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridToolbarExportEventArgs)
+### [IgcGridToolbarExportEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridToolbarExportEventArgs)
 Represents the arguments for the grid toolbar export event.
 It provides information about the grid instance, exporter service, export options,
 and allows the event to be canceled.
@@ -1800,11 +1802,11 @@ and methods for preparing the data from the elements for exporting
 The type (an abstract class exporter options base) has properties for column settings
 (whether they should be ignored) as well as method for generating a file name
 
-### [IgcGridToolbarTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridToolbarTemplateContext)
+### [IgcGridToolbarTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridToolbarTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGridValidationState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridValidationState)
+### [IgcGridValidationState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridValidationState)
 Interface representing the validation state of a grid.
 - status: The validation status ('VALID' or 'INVALID').
 - errors: The validation errors if any.
@@ -1812,7 +1814,7 @@ Interface representing the validation state of a grid.
 - **errors?**: `IgcValidationErrors`
 - **status**: `any`
 
-### [IgcGridValidationStatusEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGridValidationStatusEventArgs)
+### [IgcGridValidationStatusEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridValidationStatusEventArgs)
 Interface representing the event arguments for the grid validation status change event.
 - status: The validation status ('VALID' or 'INVALID').
 - owner: The grid instance that owns the validation state.
@@ -1820,17 +1822,17 @@ Interface representing the event arguments for the grid validation status change
 - **owner**: `IgcGridBaseDirective`
 - **status**: `ValidationStatus`
 
-### [IgcGroupByExpandState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByExpandState)
+### [IgcGroupByExpandState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByExpandState)
 
 - **expanded**: `any`
 - **hierarchy**: `any`
 
-### [IgcGroupByKey](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByKey)
+### [IgcGroupByKey](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByKey)
 
 - **fieldName**: `any`
 - **value**: `any`
 
-### [IgcGroupByRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByRecord)
+### [IgcGroupByRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByRecord)
 
 - **column?**: `IgcColumnComponent`
 - **groups?**: `IgcGroupByRecord[]`
@@ -1841,42 +1843,42 @@ Interface representing the event arguments for the grid validation status change
 - **records**: `any`
 - **value**: `any`
 
-### [IgcGroupByResult](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByResult)
+### [IgcGroupByResult](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByResult)
 
 - **data**: `any`
 - **metadata**: `any`
 
-### [IgcGroupByRowSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByRowSelectorTemplateContext)
+### [IgcGroupByRowSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByRowSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGroupByRowSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByRowSelectorTemplateDetails)
+### [IgcGroupByRowSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByRowSelectorTemplateDetails)
 
 - **groupRow**: `any`
 - **selectedCount**: `any`
 - **totalCount**: `any`
 
-### [IgcGroupByRowTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupByRowTemplateContext)
+### [IgcGroupByRowTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupByRowTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcGroupingDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupingDoneEventArgs)
+### [IgcGroupingDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupingDoneEventArgs)
 
 - **expressions**: `IgcSortingExpression[]`
 - **groupedColumns**: `IgcColumnComponent[]`
 - **ungroupedColumns**: `IgcColumnComponent[]`
 
-### [IgcGroupingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupingExpression)
+### [IgcGroupingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupingExpression)
 
 - **groupingComparer?**: `any`
 
-### [IgcGroupingState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcGroupingState)
+### [IgcGroupingState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupingState)
 
 - **defaultExpanded**: `any`
 - **expansion**: `any`
 - **expressions**: `any`
 
-### [IgcHeaderType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHeaderType)
+### [IgcHeaderType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHeaderType)
 Interface representing a header cell in the grid. It is essentially the blueprint to a header cell object.
 Contains definitions of properties, relevant to the header
 
@@ -1887,18 +1889,18 @@ Contains definitions of properties, relevant to the header
 - **sorted**: `any`
 - **title**: `any`
 
-### [IgcHeadSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHeadSelectorTemplateContext)
+### [IgcHeadSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHeadSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcHeadSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHeadSelectorTemplateDetails)
+### [IgcHeadSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHeadSelectorTemplateDetails)
 
 - **selectedCount**: `any`
 - **totalCount**: `any`
 - **deselectAll?**: `any`
 - **selectAll?**: `any`
 
-### [IgcHierarchicalGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHierarchicalGridBaseComponent)
+### [IgcHierarchicalGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseComponent)
 Hierarchical grid
 
 - **data**: `any`
@@ -1916,27 +1918,27 @@ Hierarchical grid
 - **pinRow**: `any`
 - **unpinRow**: `any`
 
-### [IgcHierarchicalGridBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHierarchicalGridBaseDirective)
+### [IgcHierarchicalGridBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseDirective)
 
 - **hasChildrenKey**: `any`
 - **rootGrid**: `any`
 - **showExpandAll**: `any`
 
-### [IgcHierarchicalGridBaseDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHierarchicalGridBaseDirectiveEventMap)
+### [IgcHierarchicalGridBaseDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseDirectiveEventMap)
 
 - **dataPreLoad**: `CustomEvent<IgcForOfState>` — Emitted when a new chunk of data is loaded from virtualization.
 
-### [IgcHierarchicalGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcHierarchicalGridComponentEventMap)
+### [IgcHierarchicalGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridComponentEventMap)
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`
 
-### [IgcOverlayOutletDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcOverlayOutletDirective)
+### [IgcOverlayOutletDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcOverlayOutletDirective)
 Mark an element as an igxOverlay outlet container.
 Directive instance is exported as overlay-outlet to be assigned to templates variables:
 
 
-### [IgcOverlaySettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcOverlaySettings)
+### [IgcOverlaySettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcOverlaySettings)
 
 - **closeOnEscape?**: `boolean` — Set if the overlay should close when Esc key is pressed
 - **closeOnOutsideClick?**: `boolean` — Set if the overlay should close on outside click
@@ -1945,24 +1947,24 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 - **scrollStrategy?**: `IgcScrollStrategy` — Scroll strategy to use with these settings
 - **target?**: `HTMLElement | Point` — Attaching target for the component to show
 
-### [IgcPageCancellableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPageCancellableEventArgs)
+### [IgcPageCancellableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPageCancellableEventArgs)
 
 - **current**: `number`
 - **next**: `number`
 
-### [IgcPageEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPageEventArgs)
+### [IgcPageEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPageEventArgs)
 
 - **current**: `number`
 - **previous**: `number`
 
-### [IgcPaginatorComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPaginatorComponentEventMap)
+### [IgcPaginatorComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPaginatorComponentEventMap)
 
 - **pageChange**: `CustomEvent<number>` — Emitted after the current page is changed.
 - **paging**: `CustomEvent<IgcPageCancellableEventArgs>` — Emitted before paging is performed.
 - **pagingDone**: `CustomEvent<IgcPageEventArgs>` — Emitted after paging is performed.
 - **perPageChange**: `CustomEvent<number>` — Emitted when perPage property value of the paginator is changed.
 
-### [IgcPaginatorResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPaginatorResourceStrings)
+### [IgcPaginatorResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPaginatorResourceStrings)
 
 - **igx_paginator_first_page_button_text?**: `string`
 - **igx_paginator_label?**: `string`
@@ -1971,12 +1973,12 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 - **igx_paginator_pager_text?**: `string`
 - **igx_paginator_previous_page_button_text?**: `string`
 
-### [IgcPagingState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPagingState)
+### [IgcPagingState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPagingState)
 
 - **index**: `any`
 - **recordsPerPage**: `any`
 
-### [IgcPinColumnCancellableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPinColumnCancellableEventArgs)
+### [IgcPinColumnCancellableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPinColumnCancellableEventArgs)
 The event arguments before a column's pin state is changed.
 insertAtIndexspecifies at which index in the pinned/unpinned area the column is inserted.
 Can be changed in the columnPin event.
@@ -1990,7 +1992,7 @@ If unpinned, specifies at which index in the unpinned area the column is inserte
 - **isPinned**: `boolean` — Returns the actual pin state of the column.
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
 
-### [IgcPinColumnEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPinColumnEventArgs)
+### [IgcPinColumnEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPinColumnEventArgs)
 The event arguments after a column's pin state is changed.
 insertAtIndexspecifies at which index in the pinned/unpinned area the column was inserted.
 isPinned returns the actual pin state of the column after the operation completed.
@@ -2001,13 +2003,13 @@ If unpinned, specifies at which index in the unpinned area the column is inserte
 - **isPinned**: `boolean` — Returns the actual pin state of the column.
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
 
-### [IgcPinningConfig](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPinningConfig)
+### [IgcPinningConfig](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPinningConfig)
 An interface describing settings for row/column pinning position.
 
 - **columns?**: `ColumnPinningPosition`
 - **rows?**: `RowPinningPosition`
 
-### [IgcPinRowEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPinRowEventArgs)
+### [IgcPinRowEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPinRowEventArgs)
 Event emitted when a row's pin state changes.
 The event is cancelable
 
@@ -2020,13 +2022,13 @@ The event is cancelable
 ID is either the primaryKey value or the data record instance.
 - **rowKey**: `any`
 
-### [IgcPivotAggregation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotAggregation)
+### [IgcPivotAggregation](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotAggregation)
 Interface describing a PivotAggregation function.
 Accepts an array of extracted data members and an optional array of the original data records,
 which can be omitted or undefined.
 
 
-### [IgcPivotAggregator](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotAggregator)
+### [IgcPivotAggregator](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotAggregator)
 Interface describing a IPivotAggregator class.
 Used for specifying custom aggregator lists.
 
@@ -2037,7 +2039,7 @@ If not set will use the specified aggregator function.
 - **key**: `any`
 - **label**: `any`
 
-### [IgcPivotConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotConfiguration)
+### [IgcPivotConfiguration](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotConfiguration)
 Configuration of the pivot grid.
 
 - **columnStrategy?**: `IgcPivotDimensionStrategy` — A strategy to transform the columns.
@@ -2048,19 +2050,19 @@ Configuration of the pivot grid.
 - **rows**: `any`
 - **values**: `any`
 
-### [IgcPivotConfigurationChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotConfigurationChangedEventArgs)
+### [IgcPivotConfigurationChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotConfigurationChangedEventArgs)
 Event emitted when pivot configuration is changed.
 
 - **pivotConfiguration**: `IgcPivotConfiguration` — The new configuration.
 
-### [IgcPivotDataSelectorComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotDataSelectorComponentEventMap)
+### [IgcPivotDataSelectorComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotDataSelectorComponentEventMap)
 
 - **columnsExpandedChange**: `CustomEvent<boolean>` — Emitted when the columns panel is expanded or collapsed.
 - **filtersExpandedChange**: `CustomEvent<boolean>` — Emitted when the filters panel is expanded or collapsed.
 - **rowsExpandedChange**: `CustomEvent<boolean>` — Emitted when the rows panel is expanded or collapsed.
 - **valuesExpandedChange**: `CustomEvent<boolean>` — Emitted when the values panel is expanded or collapsed.
 
-### [IgcPivotDateDimensionOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotDateDimensionOptions)
+### [IgcPivotDateDimensionOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotDateDimensionOptions)
 
 - **fullDate?**: `boolean` — Enabled/Disables dimensions for the full date provided
 - **months?**: `boolean` — Enables/Disables dimensions per month from provided periods.
@@ -2068,7 +2070,7 @@ Event emitted when pivot configuration is changed.
 - **total?**: `boolean` — Enables/Disables total value of all periods.
 - **years?**: `boolean` — Enables/Disables dimensions per year from provided periods.
 
-### [IgcPivotDimension](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotDimension)
+### [IgcPivotDimension](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotDimension)
 Configuration of a pivot dimension.
 
 - **childLevel?**: `IgcPivotDimension` — Allows defining a hierarchy when multiple sub groups need to be extracted from single member.
@@ -2089,13 +2091,13 @@ Return null or undefined to fall back to the raw value.
 - **enabled**: `any`
 - **memberName**: `any`
 
-### [IgcPivotDimensionStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotDimensionStrategy)
+### [IgcPivotDimensionStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotDimensionStrategy)
 Interface describing Pivot data processing for dimensions.
 Should contain a process method and return records hierarchy based on the provided dimensions.
 
 - **process**: `any`
 
-### [IgcPivotGridColumn](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotGridColumn)
+### [IgcPivotGridColumn](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridColumn)
 Interface describing the Pivot column data.
  Contains information on the related column dimensions and their values.
 
@@ -2103,7 +2105,7 @@ Interface describing the Pivot column data.
 - **field**: `any`
 - **value**: `any`
 
-### [IgcPivotGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotGridComponentEventMap)
+### [IgcPivotGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridComponentEventMap)
 
 - **dimensionInit**: `CustomEvent<IgcPivotDimension>` — Emitted when the dimension is initialized.
 - **dimensionsChange**: `CustomEvent<IgcDimensionsChange>` — Emitted when the dimension collection is changed via the grid chip area.
@@ -2112,12 +2114,12 @@ Interface describing the Pivot column data.
 - **valueInit**: `CustomEvent<IgcPivotValue>` — Emitted when the value is initialized.
 - **valuesChange**: `CustomEvent<IgcValuesChange>` — Emitted when the values collection is changed via the grid chip area.
 
-### [IgcPivotGridGroupRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotGridGroupRecord)
+### [IgcPivotGridGroupRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridGroupRecord)
 
 - **height?**: `number`
 - **rowSpan?**: `number`
 
-### [IgcPivotGridRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotGridRecord)
+### [IgcPivotGridRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridRecord)
 
 - **dataIndex?**: `number` — The index of the record in the total view
 - **level?**: `number` — Record level*
@@ -2125,11 +2127,11 @@ Interface describing the Pivot column data.
 - **totalRecordDimensionName?**: `string` — If set, it specifies the name of the dimension, that has total record enabled.
 - **dimensions**: `any`
 
-### [IgcPivotGridValueTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotGridValueTemplateContext)
+### [IgcPivotGridValueTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridValueTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcPivotKeys](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotKeys)
+### [IgcPivotKeys](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotKeys)
 Interface describing the Pivot data keys used for data generation.
  Can be used for custom remote scenarios where the data is pre-populated.
 
@@ -2140,14 +2142,14 @@ Interface describing the Pivot data keys used for data generation.
 - **records**: `any`
 - **rowDimensionSeparator**: `any`
 
-### [IgcPivotUISettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotUISettings)
+### [IgcPivotUISettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotUISettings)
 
 - **horizontalSummariesPosition?**: `PivotSummaryPosition`
 - **rowLayout?**: `PivotRowLayoutType`
 - **showConfiguration?**: `boolean`
 - **showRowHeaders?**: `boolean`
 
-### [IgcPivotValue](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPivotValue)
+### [IgcPivotValue](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotValue)
 Configuration of a pivot value aggregation.
 
 - **aggregateList?**: `IgcPivotAggregator[]` — List of aggregates to show in aggregate drop-down.
@@ -2159,7 +2161,7 @@ Configuration of a pivot value aggregation.
 - **enabled**: `any`
 - **member**: `any`
 
-### [IgcPositionSettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPositionSettings)
+### [IgcPositionSettings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPositionSettings)
 
 - **horizontalDirection?**: `HorizontalAlignment` — Direction in which the component should show
 - **horizontalStartPoint?**: `HorizontalAlignment` — Target's starting point
@@ -2168,18 +2170,18 @@ Configuration of a pivot value aggregation.
 - **verticalDirection?**: `VerticalAlignment` — Direction in which the component should show
 - **verticalStartPoint?**: `VerticalAlignment` — Target's starting point
 
-### [IgcPositionStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcPositionStrategy)
+### [IgcPositionStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPositionStrategy)
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/overlay-position)
 Position strategies determine where to display the component in the provided overlay.
 
 - **settings**: `any`
 - **clone**: `any`
 
-### [IgcQueryBuilderComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcQueryBuilderComponentEventMap)
+### [IgcQueryBuilderComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcQueryBuilderComponentEventMap)
 
 - **expressionTreeChange**: `CustomEvent<IgcExpressionTree>` — Event fired as the expression tree is changed.
 
-### [IgcQueryBuilderResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcQueryBuilderResourceStrings)
+### [IgcQueryBuilderResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcQueryBuilderResourceStrings)
 
 - **igx_query_builder_add_condition?**: `string`
 - **igx_query_builder_add_condition_root?**: `string`
@@ -2254,13 +2256,13 @@ Position strategies determine where to display the component in the provided ove
 - **igx_query_builder_value_placeholder?**: `string`
 - **igx_query_builder_where_label?**: `string`
 
-### [IgcQueryBuilderSearchValueContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcQueryBuilderSearchValueContext)
+### [IgcQueryBuilderSearchValueContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcQueryBuilderSearchValueContext)
 
 - **implicit**: `any`
 - **selectedCondition**: `any`
 - **selectedField**: `any`
 
-### [IgcRowDataCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowDataCancelableEventArgs)
+### [IgcRowDataCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDataCancelableEventArgs)
 
 - **cancel**: `boolean` — Provides the ability to cancel the event.
 - **cellID?**: `any` — **Deprecated.**
@@ -2277,7 +2279,7 @@ Available if primaryKey exists
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead.
 - **rowKey**: `any`
 
-### [IgcRowDataEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowDataEventArgs)
+### [IgcRowDataEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDataEventArgs)
 Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
@@ -2287,7 +2289,7 @@ Available if primaryKey exists
 - **rowData**: `any`
 - **rowKey**: `any`
 
-### [IgcRowDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowDirective)
+### [IgcRowDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDirective)
 
 - **addRowUI**: `any`
 - **cells**: `any`
@@ -2308,14 +2310,14 @@ Available if primaryKey exists
 - **unpin**: `any`
 - **update**: `any`
 
-### [IgcRowDragEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowDragEndEventArgs)
+### [IgcRowDragEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDragEndEventArgs)
 Emitted when a dragging operation is finished (when the row is dropped)
 
 - **animation**: `boolean` — animation returns whether the event is animated
 - **dragData**: `IgcRowType` — Represents the information of the row that is being dragged.
 - **dragDirective**: `any` — Represents the drag directive or information associated with the drag operation
 
-### [IgcRowDragStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowDragStartEventArgs)
+### [IgcRowDragStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDragStartEventArgs)
 Emitted when a dragging operation is starting (when the row is "picked")
 The event is cancelable
 
@@ -2324,7 +2326,7 @@ The event is cancelable
 - **dragDirective**: `any` — Represents the drag directive or information associated with the drag operation
 - **owner?**: `any` — Provides reference to the owner component.
 
-### [IgcRowExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowExportingEventArgs)
+### [IgcRowExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowExportingEventArgs)
 rowExporting event arguments
 this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 // set args properties here
@@ -2334,20 +2336,20 @@ this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 - **rowData**: `any` — Contains the exporting row data
 - **rowIndex**: `number` — Contains the exporting row index
 
-### [IgcRowIslandBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowIslandBaseComponent)
+### [IgcRowIslandBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowIslandBaseComponent)
 Row island
 
 - **expandChildren**: `any`
 - **paginatorTemplate**: `any`
 - **toolbarTemplate**: `any`
 
-### [IgcRowIslandBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowIslandBaseComponentEventMap)
+### [IgcRowIslandBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowIslandBaseComponentEventMap)
 
 - **gridCreated**: `CustomEvent<IgcGridCreatedEventArgs>` — Event emitted when a grid is being created based on this row island.
 - **gridInitialized**: `CustomEvent<IgcGridCreatedEventArgs>` — Emitted after a grid is being initialized for this row island.
 The emitting is done in ngAfterViewInit.
 
-### [IgcRowIslandComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowIslandComponentEventMap)
+### [IgcRowIslandComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowIslandComponentEventMap)
 
 - **activeNodeChange**: `CustomEvent<IgcActiveNodeChangeEventArgs>` — Emitted when the active node is changed.
 - **advancedFilteringExpressionsTreeChange**: `CustomEvent<IgcFilteringExpressionsTree>` — Emitted after advanced filtering is performed.
@@ -2408,7 +2410,7 @@ The emitting is done in ngAfterViewInit.
 - **toolbarExporting**: `CustomEvent<IgcGridToolbarExportEventArgs>` — Emitted when an export process is initiated by the user.
 - **validationStatusChange**: `CustomEvent<IgcGridValidationStatusEventArgs>` — Emitted when grid's validation status changes.
 
-### [IgcRowSelectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowSelectionEventArgs)
+### [IgcRowSelectionEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowSelectionEventArgs)
 The event arguments when the selection state of a row is being changed
 The event is cancelable
 
@@ -2423,11 +2425,11 @@ Whenever a row has been selected, the array is "refreshed" with the selected row
 Whenever a row has been deselected, the array is "refreshed" with the rows,
 that have been previously selected, but are no longer
 
-### [IgcRowSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowSelectorTemplateContext)
+### [IgcRowSelectorTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowSelectorTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcRowSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowSelectorTemplateDetails)
+### [IgcRowSelectorTemplateDetails](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowSelectorTemplateDetails)
 
 - **index**: `any`
 - **key**: `any`
@@ -2436,7 +2438,7 @@ that have been previously selected, but are no longer
 - **deselect?**: `any`
 - **select?**: `any`
 
-### [IgcRowToggleEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowToggleEventArgs)
+### [IgcRowToggleEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowToggleEventArgs)
 Represents event arguments related to the row's expansion state being changed in a grid
 
 - **cancel**: `boolean` — The event is cancelable
@@ -2447,7 +2449,7 @@ Indicating whether the row is being expanded (true) or collapsed (false)
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead. Represents the ID of the row that emitted the event (which state is changed)
 - **rowKey**: `any`
 
-### [IgcRowType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcRowType)
+### [IgcRowType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowType)
 Interface representing a row in the grid. It is essentially the blueprint to a row object.
 Contains definitions of properties and methods, relevant to a row
 
@@ -2493,24 +2495,24 @@ It is of type ITreeGridRecord, which contains the data, children, the hierarchic
 - **unpin?**: `any`
 - **update?**: `any`
 
-### [IgcScrollStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcScrollStrategy)
+### [IgcScrollStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcScrollStrategy)
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/overlay-scroll).
 Scroll strategies determines how the scrolling will be handled in the provided overlay.
 
 - **attach**: `any`
 - **detach**: `any`
 
-### [IgcSearchInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSearchInfo)
+### [IgcSearchInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSearchInfo)
 
 - **activeMatchIndex**: `any`
 - **matchInfoCache**: `any`
 
-### [IgcSize](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSize)
+### [IgcSize](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSize)
 
 - **height**: `any`
 - **width**: `any`
 
-### [IgcSortingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSortingEventArgs)
+### [IgcSortingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSortingEventArgs)
 Represents event arguments related to sorting and grouping operations
 The event is cancelable
 
@@ -2525,45 +2527,45 @@ Represents the sorting expressions applied to the grid.
 It can be a single sorting expression or an array of them
 The expression contains information like file name, whether the letter case should be taken into account, etc.
 
-### [IgcSortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSortingExpression)
+### [IgcSortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSortingExpression)
 
 - **ignoreCase?**: `boolean`
 - **strategy?**: `IgcSortingStrategy`
 - **dir**: `any`
 - **fieldName**: `any`
 
-### [IgcSortingOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSortingOptions)
+### [IgcSortingOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSortingOptions)
 
 - **mode**: `any`
 
-### [IgcSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSortingStrategy)
+### [IgcSortingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSortingStrategy)
 
 
-### [IgcSummaryExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSummaryExpression)
+### [IgcSummaryExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSummaryExpression)
 
 - **customSummary?**: `any`
 - **fieldName**: `any`
 
-### [IgcSummaryResult](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSummaryResult)
+### [IgcSummaryResult](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSummaryResult)
 
 - **defaultFormatting?**: `boolean` — Apply default formatting based on the grid column type.
 - **key**: `any`
 - **label**: `any`
 - **summaryResult**: `any`
 
-### [IgcSummaryTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcSummaryTemplateContext)
+### [IgcSummaryTemplateContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSummaryTemplateContext)
 
 - **implicit**: `any`
 
-### [IgcToggleViewCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcToggleViewCancelableEventArgs)
+### [IgcToggleViewCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcToggleViewCancelableEventArgs)
 
 - **id**: `string` — Id of the toggle view
 
-### [IgcToggleViewEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcToggleViewEventArgs)
+### [IgcToggleViewEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcToggleViewEventArgs)
 
 - **id**: `string` — Id of the toggle view
 
-### [IgcTreeGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcTreeGridBaseComponent)
+### [IgcTreeGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcTreeGridBaseComponent)
 **Ignite UI for Angular Tree Grid** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid)
 The Ignite UI Tree Grid displays and manipulates hierarchical data with consistent schema formatted as a table and
@@ -2595,12 +2597,12 @@ Example:
 - **pinRow**: `any`
 - **unpinRow**: `any`
 
-### [IgcTreeGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcTreeGridComponentEventMap)
+### [IgcTreeGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcTreeGridComponentEventMap)
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`
 
-### [IgcTreeGridRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcTreeGridRecord)
+### [IgcTreeGridRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcTreeGridRecord)
 
 - **children?**: `IgcTreeGridRecord[]`
 - **expanded?**: `boolean`
@@ -2610,10 +2612,10 @@ Example:
 - **data**: `any`
 - **key**: `any`
 
-### [IgcValidationErrors](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcValidationErrors)
+### [IgcValidationErrors](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcValidationErrors)
 
 
-### [IgcValidationResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcValidationResourceStrings)
+### [IgcValidationResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcValidationResourceStrings)
 
 - **igx_grid_disabled_date_validation_error?**: `string`
 - **igx_grid_email_validation_error?**: `string`
@@ -2624,24 +2626,25 @@ Example:
 - **igx_grid_min_validation_error?**: `string`
 - **igx_grid_pattern_validation_error?**: `string`
 - **igx_grid_required_validation_error?**: `string`
+- **igx_grid_step_validation_error?**: `string`
 - **igx_grid_url_validation_error?**: `string`
 
-### [IgcValuesChange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/IgcValuesChange)
+### [IgcValuesChange](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcValuesChange)
 Event emitted when values list is changed.
 
 - **values**: `any`
 
-### [Point](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/Point)
+### [Point](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/Point)
 
 - **x**: `number`
 - **y**: `number`
 
-### [TemplateContent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/interfaces/TemplateContent)
+### [TemplateContent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/TemplateContent)
 
 
 ## Enumerations
 
-### [ColumnPinningPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/ColumnPinningPosition)
+### [ColumnPinningPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/ColumnPinningPosition)
 Enumeration representing the possible positions for pinning columns.
 - Start: Columns are pinned to the start of the grid.
 - End: Columns are pinned to the end of the grid.
@@ -2649,7 +2652,7 @@ Enumeration representing the possible positions for pinning columns.
 - **End**
 - **Start**
 
-### [CsvFileTypes](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/CsvFileTypes)
+### [CsvFileTypes](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/CsvFileTypes)
 This enumeration is used to configure the default value separator
 as well as the default file extension used when performing CSV exporting.
 
@@ -2657,37 +2660,37 @@ as well as the default file extension used when performing CSV exporting.
 - **TAB**
 - **TSV**
 
-### [DropPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/DropPosition)
+### [DropPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/DropPosition)
 This enumeration is used to configure whether the drop position is set before or after
 the target.
 
 - **AfterDropTarget**
 - **BeforeDropTarget**
 
-### [FilteringExpressionsTreeType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/FilteringExpressionsTreeType)
+### [FilteringExpressionsTreeType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/FilteringExpressionsTreeType)
 
 - **Advanced**
 - **Regular**
 
-### [FilteringLogic](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/FilteringLogic)
+### [FilteringLogic](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/FilteringLogic)
 
 - **And**
 - **Or**
 
-### [HorizontalAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/HorizontalAlignment)
+### [HorizontalAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/HorizontalAlignment)
 
 - **Center** = -0.5
 - **Left** = -1
 - **Right** = 0
 
-### [PivotDimensionType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/PivotDimensionType)
+### [PivotDimensionType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/PivotDimensionType)
 The dimension types - Row, Column or Filter.
 
 - **Column**
 - **Filter**
 - **Row**
 
-### [RowPinningPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/RowPinningPosition)
+### [RowPinningPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/RowPinningPosition)
 Enumeration representing the possible positions for pinning rows.
 - Top: Rows are pinned to the top of the grid.
 - Bottom: Rows are pinned to the bottom of the grid.
@@ -2695,13 +2698,13 @@ Enumeration representing the possible positions for pinning rows.
 - **Bottom**
 - **Top**
 
-### [SortingDirection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/SortingDirection)
+### [SortingDirection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/SortingDirection)
 
 - **Asc** = 1
 - **Desc** = 2
 - **None** = 0
 
-### [VerticalAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/enums/VerticalAlignment)
+### [VerticalAlignment](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/enums/VerticalAlignment)
 
 - **Bottom** = 0
 - **Middle** = -0.5
@@ -2709,71 +2712,74 @@ Enumeration representing the possible positions for pinning rows.
 
 ## Type Aliases
 
-### [FilterMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/FilterMode)
+### [FilterMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/FilterMode)
 `"quickFilter" | "excelStyleFilter"`
 
-### [GridCellMergeMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridCellMergeMode)
+### [GridCellMergeMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridCellMergeMode)
 `"onSort" | "always"`
 
-### [GridColumnDataType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridColumnDataType)
+### [GridColumnDataType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridColumnDataType)
 `"string" | "number" | "boolean" | "date" | "dateTime" | "time" | "currency" | "percent" | "image"`
 
-### [GridKeydownTargetType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridKeydownTargetType)
+### [GridKeydownTargetType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridKeydownTargetType)
 `"dataCell" | "summaryCell" | "groupRow" | "hierarchicalRow" | "headerCell" | "masterDetailRow"`
 
-### [GridPagingMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridPagingMode)
+### [GridPagingMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridPagingMode)
 `"local" | "remote"`
 
-### [GridSelectionMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridSelectionMode)
+### [GridSelectionMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridSelectionMode)
 `"none" | "single" | "multiple" | "multipleCascade"`
 
-### [GridSummaryCalculationMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridSummaryCalculationMode)
+### [GridSummaryCalculationMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridSummaryCalculationMode)
 `"rootLevelOnly" | "childLevelsOnly" | "rootAndChildLevels"`
 
-### [GridSummaryPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridSummaryPosition)
+### [GridSummaryPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridSummaryPosition)
 `"top" | "bottom"`
 
-### [GridToolbarExporterType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridToolbarExporterType)
+### [GridToolbarExporterType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridToolbarExporterType)
 `"excel" | "csv" | "pdf"`
 
-### [GridValidationTrigger](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/GridValidationTrigger)
+### [GridValidationTooltipTrigger](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridValidationTooltipTrigger)
+`"active" | "hover"`
+
+### [GridValidationTrigger](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/GridValidationTrigger)
 `"change" | "blur"`
 
-### [IgcBaseToolbarColumnActionsDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcBaseToolbarColumnActionsDirectiveEventMap)
+### [IgcBaseToolbarColumnActionsDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcBaseToolbarColumnActionsDirectiveEventMap)
 `IgcBaseToolbarDirectiveEventMap`
 
-### [IgcColumnGroupComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcColumnGroupComponentEventMap)
+### [IgcColumnGroupComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcColumnGroupComponentEventMap)
 `IgcColumnComponentEventMap`
 
-### [IgcColumnLayoutComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcColumnLayoutComponentEventMap)
+### [IgcColumnLayoutComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcColumnLayoutComponentEventMap)
 `IgcColumnComponentEventMap`
 
-### [IgcGridToolbarHidingComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcGridToolbarHidingComponentEventMap)
+### [IgcGridToolbarHidingComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcGridToolbarHidingComponentEventMap)
 `IgcBaseToolbarDirectiveEventMap`
 
-### [IgcGridToolbarPinningComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcGridToolbarPinningComponentEventMap)
+### [IgcGridToolbarPinningComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcGridToolbarPinningComponentEventMap)
 `IgcBaseToolbarDirectiveEventMap`
 
-### [IgcHierarchicalGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcHierarchicalGridBaseComponentEventMap)
+### [IgcHierarchicalGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcHierarchicalGridBaseComponentEventMap)
 `IgcHierarchicalGridBaseDirectiveEventMap`
 
-### [IgcRenderFunction](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcRenderFunction)
+### [IgcRenderFunction](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcRenderFunction)
 `any`
 
-### [IgcTreeGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/IgcTreeGridBaseComponentEventMap)
+### [IgcTreeGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/IgcTreeGridBaseComponentEventMap)
 `IgcGridBaseDirectiveEventMap`
 
-### [PivotAggregationType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/PivotAggregationType)
+### [PivotAggregationType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/PivotAggregationType)
 `"SUM" | "AVG" | "MIN" | "MAX" | "COUNT" | "LATEST" | "EARLIEST"`
 
-### [PivotRowLayoutType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/PivotRowLayoutType)
+### [PivotRowLayoutType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/PivotRowLayoutType)
 `"vertical" | "horizontal"`
 
-### [PivotSummaryPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/PivotSummaryPosition)
+### [PivotSummaryPosition](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/PivotSummaryPosition)
 `"top" | "bottom"`
 
-### [SortingOptionsMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/SortingOptionsMode)
+### [SortingOptionsMode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/SortingOptionsMode)
 `"single" | "multiple"`
 
-### [ValidationStatus](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.3/types/ValidationStatus)
+### [ValidationStatus](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/types/ValidationStatus)
 `"VALID" | "INVALID"`
