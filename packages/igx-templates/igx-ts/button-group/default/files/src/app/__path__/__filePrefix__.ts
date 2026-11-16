@@ -9,8 +9,8 @@ import { IgxButtonGroupComponent } from '<%=igxPackage%>';
 })
 export class <%=ClassName%> {
   public fontOptions = [
-    { icon: 'format_bold', selected: false },
-    { icon: 'format_italic', selected: false },
-    { icon: 'format_underlined', selected: false }
+    { label: 'Bold', icon: 'format_bold', selected: false },
+    { label: 'Italic', icon: 'format_italic', selected: false },
+    { label: 'Underline', icon: 'format_underlined', selected: false }
   ];
 }
