@@ -52,22 +52,6 @@ jobs:
       - name: Validate MCP package contents
         run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
 
-      # Scaffolds a project per framework with the CLI built above, adds every template, installs and builds.
-      - name: Smoke test generated projects
-        timeout-minutes: 20
-        run: bash scripts/smoke-test.sh --frameworks angular,react,webcomponents --jobs 3
-
-      - name: Upload smoke test logs
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: smoke-test-logs
-          path: |
-            output/smoke/results.tsv
-            output/smoke/logs/
-          retention-days: 30
-          if-no-files-found: ignore
-
       - name: Define npm tag
         id: npm-tag
         run: |
@@ -131,6 +115,30 @@ jobs:
           path: release-notes/*
           retention-days: 30
           if-no-files-found: error
+
+      # Scaffolds a project per framework with the CLI built above, adds every template, installs and builds.
+      # Generated projects depend on igniteui-cli at the CLI's own version, which is not on npm until the
+      # publish job runs, so they are pointed at the latest published one. Runs last: the release is packed.
+      - name: Smoke test generated projects
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          PUBLISHED=$(npm view igniteui-cli@latest version)
+          echo "Generated projects use igniteui-cli@~${PUBLISHED}"
+          jq --arg v "$PUBLISHED" '.version = $v' packages/core/package.json > "$RUNNER_TEMP/core-package.json"
+          cp "$RUNNER_TEMP/core-package.json" packages/core/package.json
+          bash scripts/smoke-test.sh --frameworks angular,react,webcomponents --jobs 3
+
+      - name: Upload smoke test logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: smoke-test-logs
+          path: |
+            output/smoke/results.tsv
+            output/smoke/logs/
+          retention-days: 30
+          if-no-files-found: ignore
 
   attest:
     name: Attest build provenance
