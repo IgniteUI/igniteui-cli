@@ -31,7 +31,7 @@ export default host => append(host, "first");`,
 export async function second(host) { await null; append(host, "second"); host.write("src/new.ts", "new"); }`,
 		"migrations/2.0.0/broken.js": `export default host => { host.write("src/app.tsx", "broken"); throw new Error("boom"); };`,
 		"migrations/2.0.0/unresolved.js": `import "not-installed"; export default () => {};`,
-		"migrations/2.0.0/host.js": `export default host => { host.write("src\\\\app.tsx", "staged"); host.write("host.json", JSON.stringify({
+		"migrations/2.0.0/host.js": `export default host => { host.write(${JSON.stringify(path.join("src", "app.tsx"))}, "staged"); host.write("host.json", JSON.stringify({
 	root: host.root, files: host.files().sort(), staged: host.read("./src/app.tsx"),
 	typescript: typeof host.typescript.createProgram })); };`,
 		"migrations/2.0.0/rule.js": `export default host => { host.write("src/app.tsx", "staged"); return tree => tree; };`,
