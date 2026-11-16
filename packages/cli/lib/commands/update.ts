@@ -10,7 +10,7 @@ import * as resolve from "resolve";
 import * as semver from "semver";
 import { ArgumentsCamelCase } from "yargs";
 import { PositionalArgs, UpdateCommandType } from "./types";
-import { checkDevKit, runMigrations } from "../update/migration-runner";
+import { migrationsUnsupported, runMigrations } from "../update/migration-runner";
 
 const WEBCOMPONENTS_SIGNAL = /^(lit$|(@infragistics\/)?igniteui-(webcomponents|dockmanager))/;
 
@@ -165,12 +165,6 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 	if (!fs.existsSync(manifest)) {
 		return fail("Unable to run the migrations.", `Package ${name} is not installed.`);
 	}
-	let pkgJson;
-	try {
-		pkgJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
-	} catch {
-		return fail("No valid package.json found in the current directory.");
-	}
 
 	let collection: string | undefined;
 	let migrations: Migration[];
@@ -217,33 +211,24 @@ async function migrateOnly({ name, spec }: PackageRequest, migrate: MigrateOptio
 		return;
 	}
 
-	const managers = PackageManager.detectManagers(pkgJson.packageManager);
-	const pm = managers.length === 1 ? managers[0] : undefined;
-	if (await runAndReport(name, collection, { required, optional }, pm, false)) {
+	if (await runAndReport(name, collection, { required, optional })) {
 		Util.log("Migrations completed. Review the changes, then run your build and tests.");
 	}
 }
 
-/**
- * Runs the required, then the chosen optional migrations, checking DevKit before the first run unless `devKitChecked`;
- * the number run, or undefined on a failure or a cancelled prompt
- */
-async function runAndReport(name: string, collection: string, { required, optional }: { required: Migration[]; optional: Migration[] },
-	pm: string | undefined, devKitChecked: boolean): Promise<number | undefined> {
+/** Runs the required, then the chosen optional migrations; the number run, or undefined on a failure or a cancelled prompt */
+async function runAndReport(name: string, collection: string, { required, optional }: { required: Migration[]; optional: Migration[] }):
+	Promise<number | undefined> {
 	const run = async (migrations: Migration[]): Promise<boolean> => {
 		if (!migrations.length) {
 			return true;
 		}
-		if (!devKitChecked) {
-			try {
-				await checkDevKit();
-			} catch (error) {
-				fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
-				return false;
-			}
-			devKitChecked = true;
+		const unsupported = migrationsUnsupported();
+		if (unsupported) {
+			fail("Unable to run the migrations.", unsupported);
+			return false;
 		}
-		const { failed, notRun } = await runMigrations(collection, migrations, pm);
+		const { failed, notRun } = await runMigrations(collection, migrations);
 		if (failed) {
 			const { name: failedName, version } = failed.migration;
 			fail("A migration failed, and some of its changes may have been written.", `${failedName}${version ? ` (${version})` : ""}: ${failed.error}`);
@@ -432,12 +417,9 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 		return fail("Nothing was updated: migrations aren't supported in Yarn Plug'n'Play projects.",
 			`Set "nodeLinker: node-modules" in .yarnrc.yml and reinstall, or update only packages without migrations.`);
 	}
-	if (migrating.length && !flags.skipInstall) {
-		try {
-			await checkDevKit();
-		} catch (error) {
-			return fail("Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
-		}
+	const unsupported = migrating.length && !flags.skipInstall ? migrationsUnsupported() : undefined;
+	if (unsupported) {
+		return fail("Nothing was updated: unable to run the migrations.", unsupported);
 	}
 	const backup = flags.skipInstall || !pm ? undefined : new Map(["package.json", ...PackageManager.lockfiles[pm]]
 		.map(file => [file, fs.existsSync(file) ? fs.readFileSync(file) : undefined] as const));
@@ -463,7 +445,7 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 			return;
 		}
 		Util.log(`Updated ${changes.length} package(s).${migrating.length ? "" : " Next: run your build and tests."}`);
-		if (migrating.length && !await migratePackages(migrating, framework, pm)) {
+		if (migrating.length && !await migratePackages(migrating, framework)) {
 			return;
 		}
 	}
@@ -473,18 +455,12 @@ async function updatePackages(frameworkName: string, flags: UpdateFlags, request
 }
 
 /** Runs each package's migrations from its baseline to its installed version, until one fails; true when all succeed */
-async function migratePackages(updates: PackageUpdate[], framework: string | undefined, pm: string): Promise<boolean> {
+async function migratePackages(updates: PackageUpdate[], framework: string | undefined): Promise<boolean> {
 	const stop = (rest: PackageUpdate[]) => {
 		Util.log(`The new versions remain installed.${rest.length ? " To run the remaining migrations, use:" : ""}`);
 		rest.forEach(c => Util.log(`  ig update ${c.name} --migrate-only --from ${c.baseline} --allow-dirty`));
 		return false;
 	};
-	try {
-		await checkDevKit();
-	} catch (error) {
-		fail("Unable to load @angular-devkit/schematics to run the migrations.", (error as Error).message);
-		return stop(updates);
-	}
 	for (const [index, { name, baseline, target }] of updates.entries()) {
 		const packageDir = path.join("node_modules", name);
 		let collection: string | undefined;
@@ -506,7 +482,7 @@ async function migratePackages(updates: PackageUpdate[], framework: string | und
 			Util.log("No migrations to run.");
 			continue;
 		}
-		if (await runAndReport(name, collection, selected, pm, true) === undefined) {
+		if (await runAndReport(name, collection, selected) === undefined) {
 			return stop(updates.slice(index + 1));
 		}
 	}

@@ -10,6 +10,7 @@ export interface Migration {
 	description?: string;
 	optional?: boolean;
 	recommended?: boolean;
+	factory?: string;
 }
 
 /** Absolute path of the `ig-update` collection for `framework`; throws on invalid metadata, or on a framework map without a framework */
@@ -70,7 +71,8 @@ export function readMigrations(collectionPath: string): Migration[] {
 			version: coerceVersionNumber(entry?.version),
 			description: entry?.description,
 			optional: !!entry?.optional,
-			recommended: !!entry?.recommended
+			recommended: !!entry?.recommended,
+			factory: entry?.factory
 		};
 	});
 }

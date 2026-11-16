@@ -82,8 +82,8 @@ describe("Unit - update migrations metadata", () => {
 					"none": {},
 				},
 			}`));
-			expect(migrations[0]).toEqual({ name: "full", version: "2.1.0", description: "Full", optional: false, recommended: false });
-			expect(migrations[1]).toEqual({ name: "major", version: "3.0.0", description: undefined, optional: true, recommended: true });
+			expect(migrations[0]).toEqual({ name: "full", version: "2.1.0", description: "Full", optional: false, recommended: false, factory: "./full" });
+			expect(migrations[1]).toEqual({ name: "major", version: "3.0.0", description: undefined, optional: true, recommended: true, factory: undefined });
 			expect(migrations.map(m => m.version)).toEqual(["2.1.0", "3.0.0", "3.1.0", "3.1.0-rc.1", undefined, undefined, undefined]);
 		});
 

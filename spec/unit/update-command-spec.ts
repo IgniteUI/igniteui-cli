@@ -63,7 +63,6 @@ describe("Unit - Update command", () => {
 	};
 	const MAP = { react: "./migrations/react.json", webcomponents: "./migrations/webcomponents.json" };
 	let runMigrations: jasmine.Spy;
-	let checkDevKit: jasmine.Spy;
 	let execSync: jasmine.Spy;
 	let spawnSync: jasmine.Spy;
 	let getConfig: jasmine.Spy;
@@ -100,7 +99,6 @@ describe("Unit - Update command", () => {
 		getConfig = spyOn(ProjectConfig, "getConfig").and.returnValue({} as any);
 		configure("webcomponents");
 		runMigrations = spyOn(updateMigrations, "runMigrations").and.callFake(async (_collection, migrations) => ({ completed: migrations, notRun: [] }));
-		checkDevKit = spyOn(updateMigrations, "checkDevKit").and.resolveTo();
 		spyOn(Util, "canPrompt").and.returnValue(false);
 	});
 
@@ -190,7 +188,6 @@ describe("Unit - Update command", () => {
 			expect(getPlan).not.toHaveBeenCalled();
 			expect(spawnSync).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
 		});
 
@@ -605,8 +602,7 @@ describe("Unit - Update command", () => {
 			await migrate();
 
 			expect(spawnSync).toHaveBeenCalledOnceWith("git", ["status", "--porcelain", "--", "."], gitOptions());
-			expect(checkDevKit).toHaveBeenCalledBefore(runMigrations);
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"));
 			expect(output).toEqual([
 				"Not a Git repository: review and revert the update's changes manually.",
 				"Migrations of fixture-lib from 1.0.0 to 2.0.0:",
@@ -628,8 +624,7 @@ describe("Unit - Update command", () => {
 				message: "Select the optional migrations of fixture-lib to run",
 				choices: [{ value: "later", name: "later", checked: false }, { value: "extra", name: "extra: Extra", checked: true }]
 			});
-			expect(runMigrations.calls.allArgs()).toEqual([[collection, named("first", "second"), "npm"], [collection, named("later"), "npm"]]);
-			expect(checkDevKit).toHaveBeenCalledTimes(1);
+			expect(runMigrations.calls.allArgs()).toEqual([[collection, named("first", "second")], [collection, named("later")]]);
 		});
 
 		it("bounds the range with --to, accepts short versions and rejects invalid ones, keeping them out of analytics", async () => {
@@ -637,7 +632,7 @@ describe("Unit - Update command", () => {
 			await migrate({ from: "x" });
 			await migrate({ to: "y" });
 
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first"));
 			expect(output).toContain("Migrations of fixture-lib from 1.0.0 to 1.6.0:");
 			expect(output).toContain(`"x" is not a valid version.`);
 			expect(output).toContain(`"y" is not a valid version.`);
@@ -660,7 +655,7 @@ describe("Unit - Update command", () => {
 			await migrate({ from: undefined, name: "old" });
 			await migrate({ from: undefined, name: "missing" });
 
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("old"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("old"));
 			expect(output).toContain(`fixture-lib has no migration named "missing".`);
 			expect(posted()).toEqual(["Unable to run the migrations."]);
 
@@ -692,7 +687,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain(`fixture-lib has no migration named "old,extra".`);
 		});
 
-		it("lists the migrations with --dry-run, without checking git, loading DevKit or running them", async () => {
+		it("lists the migrations with --dry-run, without checking git or running them", async () => {
 			await migrate({ dryRun: true });
 			await migrate({ from: "2.0.0", dryRun: true });
 
@@ -707,31 +702,27 @@ describe("Unit - Update command", () => {
 				"No migrations to run."
 			]);
 			expect(spawnSync).not.toHaveBeenCalled();
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
 
-		it("stops before running anything when the DevKit preflight fails, showing its error locally, not in analytics", async () => {
-			const error = `Cannot find module 'x'\nRequire stack:\n- ${path.join(tempDir, "node_modules/@angular-devkit/schematics/tools/index.js")}`;
-			checkDevKit.and.rejectWith(new Error(error));
-
-			await migrate();
-
-			expect(posted()).toEqual(["Unable to load @angular-devkit/schematics to run the migrations."]);
-			expect(Util.warn).toHaveBeenCalledWith(error, "red");
-			expect(runMigrations).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-		});
-
-		it("lists optional-only migrations without a terminal, even when DevKit is unavailable", async () => {
-			checkDevKit.and.rejectWith(new Error("Running migrations requires @angular-devkit/schematics."));
-
+		it("lists optional-only migrations without a terminal, running none", async () => {
 			await migrate({ from: "1.6.0", to: "1.9.0" });
 
 			expect(output.slice(-2)).toEqual(["To run the optional migrations of fixture-lib, use:", "  ig update fixture-lib --name later --allow-dirty"]);
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).not.toBe(1);
+		});
+
+		it("runs nothing when Node.js can't load the migrations, showing why locally, not in analytics", async () => {
+			const unsupported = "Running migrations requires Node.js 20.19, 22.12 or later (running v20.18.0).";
+			spyOn(updateMigrations, "migrationsUnsupported").and.returnValue(unsupported);
+
+			await migrate();
+
+			expect(posted()).toEqual(["Unable to run the migrations."]);
+			expect(Util.warn).toHaveBeenCalledWith(unsupported, "red");
+			expect(runMigrations).not.toHaveBeenCalled();
+			expect(process.exitCode).toBe(1);
 		});
 
 		it("shows a reader error locally, not in analytics", async () => {
@@ -842,7 +833,7 @@ describe("Unit - Update command", () => {
 
 				await migrate();
 
-				expect(runMigrations).toHaveBeenCalledOnceWith(framework === "react" ? react : webcomponents, named("first", "second"), "npm");
+				expect(runMigrations).toHaveBeenCalledOnceWith(framework === "react" ? react : webcomponents, named("first", "second"));
 			});
 		}
 
@@ -861,7 +852,7 @@ describe("Unit - Update command", () => {
 			installFixture();
 			await migrate();
 
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"));
 
 			configure("react");
 			installFixture({ webcomponents: MAP.webcomponents });
@@ -886,7 +877,6 @@ describe("Unit - Update command", () => {
 
 		it("updates the requested packages after the Git check, then runs the new migrations from the baseline to the installed version", async () => {
 			const getPlan = plan(FIXTURE, {});
-			execSync.and.callFake(() => expect(checkDevKit).toHaveBeenCalledTimes(1));
 
 			await update(["fixture-lib", WC]);
 
@@ -894,7 +884,7 @@ describe("Unit - Update command", () => {
 			expect(getPlan).toHaveBeenCalledOnceWith({ requests: [{ name: "fixture-lib" }, { name: WC }], force: false, verbose: false });
 			expect(read("package.json")).toContain(`"fixture-lib": "^2.0.0"`);
 			expect(execSync).toHaveBeenCalledOnceWith("npm install", installOptions());
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"));
 			expect(output).toEqual([
 				"Not a Git repository: review and revert the update's changes manually.",
 				"Update plan (Web Components, npm)",
@@ -911,7 +901,7 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(0);
 		});
 
-		it("loads no DevKit when no new version declares migrations for the framework", async () => {
+		it("runs no migrations when no new version declares migrations for the framework", async () => {
 			project({ dependencies: { [WC]: "~6.0.0", "fixture-lib": "^1.0.0", "igniteui-grid-lite": "~0.11.0" } });
 			plan({}, { ...FIXTURE, manifest: { version: "2.0.0", "ig-update": { migrations: { react: "./react.json" } } } },
 				{ name: "igniteui-grid-lite", declared: "~0.11.0", installed: "0.11.0", baseline: "0.11.0", target: "0.11.0", newRange: "0.11.0",
@@ -922,7 +912,6 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("  fixture-lib             1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  no migrations declared");
 			expect(output).toContain("  igniteui-grid-lite      0.11.0 -> 0.11.0  (~0.11.0 -> 0.11.0)");
 			expect(output).toContain("Updated 3 package(s). Next: run your build and tests.");
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(0);
 		});
@@ -940,21 +929,25 @@ describe("Unit - Update command", () => {
 			expect(read("package.json")).not.toContain(`"^1.0.0"`);
 		});
 
-		it("changes nothing when the DevKit preflight fails", async () => {
+		it("changes nothing when Node.js can't load the migrations, but still updates with --skip-install", async () => {
+			const unsupported = "Running migrations requires Node.js 20.19, 22.12 or later (running v20.18.0).";
+			spyOn(updateMigrations, "migrationsUnsupported").and.returnValue(unsupported);
 			plan(FIXTURE);
-			checkDevKit.and.rejectWith(new Error("Running migrations requires Node.js ^22.22.3 (running v20.0.0)."));
 
 			await update(["fixture-lib"]);
 
-			expect(output.slice(-2)).toEqual(["Nothing was updated: unable to load @angular-devkit/schematics to run the migrations.",
-				"Running migrations requires Node.js ^22.22.3 (running v20.0.0)."]);
+			expect(output.slice(-2)).toEqual(["Nothing was updated: unable to run the migrations.", unsupported]);
 			expect(read("package.json")).toBe(original);
 			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
+
+			await update(["fixture-lib"], { skipInstall: true });
+
+			expect(read("package.json")).toContain(`"fixture-lib": "^2.0.0"`);
 		});
 
-		it("previews with --dry-run, without checking Git, loading DevKit, installing or running migrations", async () => {
+		it("previews with --dry-run, without checking Git, installing or running migrations", async () => {
 			plan(FIXTURE);
 
 			await update(["fixture-lib"], { dryRun: true });
@@ -963,7 +956,6 @@ describe("Unit - Update command", () => {
 			expect(log()).toContain("Dry run: no files were changed.");
 			expect(read("package.json")).toBe(original);
 			expect(spawnSync).not.toHaveBeenCalled();
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
@@ -980,7 +972,6 @@ describe("Unit - Update command", () => {
 				"  ig update fixture-lib --migrate-only --from 1.0.0 --to 2.0.0 --allow-dirty"
 			]);
 			expect(spawnSync).toHaveBeenCalledTimes(1);
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(execSync).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 		});
@@ -1048,7 +1039,6 @@ describe("Unit - Update command", () => {
 			await update(["fixture-lib"]);
 
 			expect(output).toContain("  fixture-lib  1.0.0 -> 2.0.0  (^1.0.0 -> ^2.0.0)  migrations declared");
-			expect(checkDevKit).toHaveBeenCalled();
 			expect(output.slice(-4)).toEqual([
 				"Unable to read the migrations of an updated package.",
 				`fixture-lib has an invalid "ig-update" field: "migrations" must be a path, or an object that maps framework ids to paths.`,
@@ -1058,44 +1048,16 @@ describe("Unit - Update command", () => {
 			expect(process.exitCode).toBe(1);
 		});
 
-		it("lists the migrations to run when DevKit can't be loaded after the install", async () => {
-			project({ dependencies: { "fixture-lib": "^1.0.0", "other-lib": "^1.0.0" } });
-			installFixture(undefined, "other-lib");
-			const error = "Cannot find module '@angular-devkit/schematics/package.json'";
-			let loads = 0;
-			checkDevKit.and.callFake(async () => {
-				if (loads++) {
-					throw new Error(error);
-				}
-			});
-			plan(FIXTURE, { ...FIXTURE, name: "other-lib" });
-
-			await update(["fixture-lib", "other-lib"]);
-
-			expect(output.slice(-5)).toEqual([
-				"Unable to load @angular-devkit/schematics to run the migrations.",
-				error,
-				"The new versions remain installed. To run the remaining migrations, use:",
-				"  ig update fixture-lib --migrate-only --from 1.0.0 --allow-dirty",
-				"  ig update other-lib --migrate-only --from 1.0.0 --allow-dirty"
-			]);
-			expect(posted()).toEqual(["Unable to load @angular-devkit/schematics to run the migrations."]);
-			expect(runMigrations).not.toHaveBeenCalled();
-			expect(process.exitCode).toBe(1);
-		});
-
-		it("checks DevKit once before changing anything and once after the install, however many migrations run", async () => {
+		it("runs the required and the chosen optional migrations of each package", async () => {
 			project({ dependencies: { "fixture-lib": "^1.0.0", "other-lib": "^1.0.0" } });
 			installFixture(undefined, "other-lib");
 			plan(FIXTURE, { ...FIXTURE, name: "other-lib" });
 			(Util.canPrompt as jasmine.Spy).and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.resolveTo(["extra"]);
-			execSync.and.callFake(() => expect(checkDevKit).toHaveBeenCalledTimes(1));
 
 			await update(["fixture-lib", "other-lib"]);
 
 			expect(runMigrations).toHaveBeenCalledTimes(4);
-			expect(checkDevKit).toHaveBeenCalledTimes(2);
 			expect(process.exitCode).toBe(0);
 		});
 
@@ -1108,7 +1070,7 @@ describe("Unit - Update command", () => {
 
 			await update(["fixture-lib", "other-lib"]);
 
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"));
 			expect(output.slice(-6)).toEqual([
 				"Cancelled: no optional migrations were run.",
 				"To run the optional migrations of fixture-lib, use:",
@@ -1142,7 +1104,7 @@ describe("Unit - Update command", () => {
 
 			expect(output).toContain("Installed fixture-lib 1.8.0 instead of the planned 1.6.0.");
 			expect(output).toContain("Migrations of fixture-lib from 1.0.0 to 1.8.0:");
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first"));
 			expect(output).toContain("  ig update fixture-lib --name later --allow-dirty");
 		});
 
@@ -1237,7 +1199,6 @@ describe("Unit - Update command", () => {
 			expect(registry).not.toHaveBeenCalled();
 			expect(read("package.json")).toBe(original);
 			expect(execSync).not.toHaveBeenCalled();
-			expect(checkDevKit).not.toHaveBeenCalled();
 			expect(runMigrations).not.toHaveBeenCalled();
 			expect(process.exitCode).toBe(1);
 		});
@@ -1288,7 +1249,7 @@ describe("Unit - Update command", () => {
 			expect(output).toContain("    Skipped map-lib migrations: can't tell whether this is a React or Web Components project. " +
 				`Set "project.framework" in ignite-ui-cli.json, then run ig update map-lib --migrate-only --from 1.0.0 --allow-dirty`);
 			expect(read("package.json")).toContain(`"map-lib": "^2.0.0"`);
-			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"), "npm");
+			expect(runMigrations).toHaveBeenCalledOnceWith(collection, named("first", "second"));
 			expect(process.exitCode).toBe(0);
 
 			configure("webcomponents");
@@ -1312,7 +1273,7 @@ describe("Unit - Update command", () => {
 
 				await update(["map-lib"]);
 
-				expect(runMigrations).toHaveBeenCalledOnceWith(framework === "react" ? react : webcomponents, named("first", "second"), "npm");
+				expect(runMigrations).toHaveBeenCalledOnceWith(framework === "react" ? react : webcomponents, named("first", "second"));
 			});
 		}
 	});
